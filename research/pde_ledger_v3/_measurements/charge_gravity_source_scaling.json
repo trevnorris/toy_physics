@@ -1,0 +1,53 @@
+{
+  "base": "df13acaa78634e254be4c732068260e62a210d4f",
+  "status": "Working calculation pending independent review",
+  "scope": "Two symbolic mouth preparations of the same nonzero elementary charge magnitude in one ambient medium, on the branch with far-field volume rate proportional to inertial mass. Test only fixed proportionalities from a single positive source amplitude. No numeric mass, charge, measured source, or physical conversion law is inferred.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-radius-source-scaling-sympy --memory-gib 2 --log-directory _scratch/s11c/charge_gravity_source_scaling_sympy01 -- python3 software/stage1_solver/tools/charge_gravity_source_scaling.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/charge_gravity_source_scaling.py": "2dfc451b8a76b66e6d14bd03dccdc880accde3c697c8d30353b10482668bd5e4"
+      },
+      "start_utc": "2026-11-19T04:06:05.843661+00:00",
+      "end_utc_outcome_written": "2026-11-19T04:06:06.419230+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 53088256,
+      "stdout_path": "_scratch/s11c/charge_gravity_source_scaling_sympy01/stdout",
+      "stdout_bytes": 180,
+      "stdout_sha256": "ad737e38779c168d9798c4f1eab6b7fe1b4cda388d61865e7c32d7a65ae5fb52",
+      "stdout_claim_lines": [
+        "proportional source rows, determinant = 0",
+        "target source rows, determinant = e*k*(M1 - M2)",
+        "equal-inertia control = 0",
+        "electric gain ratio required if drain strength tracks x = M1/M2"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-radius-source-scaling-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/charge_gravity_source_scaling_wolfram01 -- math -noprompt -script software/stage1_solver/tools/charge_gravity_source_scaling.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/charge_gravity_source_scaling.wl": "572bd76d9d913f0fe0d8b12accd458809031e2deee6a780db7f86aa67f5903db"
+      },
+      "start_utc": "2026-11-19T04:06:05.151891+00:00",
+      "end_utc_outcome_written": "2026-11-19T04:06:10.014856+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 225439744,
+      "stdout_path": "_scratch/s11c/charge_gravity_source_scaling_wolfram01/stdout",
+      "stdout_bytes": 203,
+      "stdout_sha256": "18d2990562df5114b2eb6ce33ff4b7c1bd888eb903017c1b162af792689d824b",
+      "stdout_claim_lines": [
+        "\"electric magnitude ratio using one common amplitude = m2/m1\"",
+        "\"equal units require = m1 == m2\"",
+        "\"electric gain ratio for equal units = m1/m2\"",
+        "\"second magnitude after calibrating the first = (m2*unit)/m1\""
+      ]
+    }
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "working_base": "df13acaa78634e254be4c732068260e62a210d4f",
+  "scope": "Static equilibrium comparisons for prescribed radii with variable exterior Maxwell fields, followed by single-patch and pair handedness tests. Finite-basis attained energies and all-field analytical bounds are separate.",
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "prior_report": {
+    "software/stage1_solver/reports/mouth_coherence_energy.md": "59c7151fe6d3118ee05cbb1449f731286ce8046e27418a84e15810da2b21ae2e"
+  },
+  "prior_failed_diagnostic": "_scratch/s11c/mouth_flux_bound01 exited 1 before completing the auxiliary high-multipole bound. A signed fluctuation variable had been declared positive. The repaired bound02 is cited. This failure contributes no sector result.",
+  "runs": {
+    "mouth_flux_patch_sympy01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-flux-patch-sympy --memory-gib 2 --log-directory _scratch/s11c/mouth_flux_patch_sympy01 -- python3 software/stage1_solver/tools/mouth_flux_patch_trials.py",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_flux_patch_trials.py": "6c1c3848c8c3ad406a137ff7eb237c3321f23f743a98515c4e6e9fced7ca3cd1"
+      },
+      "started_utc": "2026-11-19T04:49:53.509275+00:00",
+      "outcome_written_utc": "2026-11-19T04:49:58.116317+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 2147483648,
+      "observed_memory_peak_bytes": 87908352,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flux_patch_sympy01/stdout",
+      "stdout_bytes": 5185,
+      "stdout_sha256": "d0816e38f1eb1732e092f905da88e03ec346a4e5ce8b03c5ecb4306275a77f50",
+      "selected_stdout": [
+        "angular Maxwell coefficients (normal, tangential), exterior dipole cost, dipole matrix: 4/3 2/3 8/15 Matrix([[4/25, 11/150], [11/150, 499/2400]])",
+        "vacuum dipole Euler residual, shell net perturbation: 0 0",
+        "n=0 gains=(3/2, 3/2) relaxed=False k=(0, -2) coeff=[[387/500, -23/1000, -11/500], [387/500, 23/1000, -11/500]]",
+        "  E/B3 monopole, patch, material, total (decimal): 0.0000000000 0.0000000000 -0.1049609355 -0.1049609355",
+        "n=0 gains=(3/2, 3/2) relaxed=True k=(2, 0) coeff=[[1051/1000, 24/125, 1/500], [1051/1000, -24/125, 1/500]]",
+        "  E/B3 monopole, patch, material, total (decimal): 0.0000000000 0.0795759185 -0.2665093325 -0.1869334140",
+        "n=0 gains=(3/2, 6/5) relaxed=False k=(1, 0) coeff=[[1393/1000, 0, 17/200], [0, 0, 0]]",
+        "  E/B3 monopole, patch, material, total (decimal): 0.0000000000 0.0000000000 -0.0917030782 -0.0917030782",
+        "n=0 gains=(3/2, 6/5) relaxed=True k=(0, -2) coeff=[[573/500, -139/500, 3/125], [631/1000, 21/500, -9/1000]]",
+        "  E/B3 monopole, patch, material, total (decimal): 0.0000000000 0.0574083780 -0.1736061542 -0.1161977762",
+        "n=-1 gains=(3/2, 3/2) relaxed=False k=(0, -3) coeff=[[1189/1000, -9/40, 23/500], [0, 0, 0]]",
+        "  E/B3 monopole, patch, material, total (decimal): 0.2222222222 0.0000000000 -0.3490689919 -0.1268467697",
+        "n=-1 gains=(3/2, 3/2) relaxed=True k=(0, -2) coeff=[[327/250, -44/125, 93/1000], [0, 0, 0]]",
+        "  E/B3 monopole, patch, material, total (decimal): 0.2222222222 0.0459347234 -0.4670980992 -0.1989411536",
+        "n=-1 gains=(3/2, 6/5) relaxed=False k=(0, -3) coeff=[[1189/1000, -9/40, 23/500], [0, 0, 0]]",
+        "  E/B3 monopole, patch, material, total (decimal): 0.2222222222 0.0000000000 -0.3490689919 -0.1268467697",
+        "n=-1 gains=(3/2, 6/5) relaxed=True k=(0, -2) coeff=[[327/250, -44/125, 93/1000], [0, 0, 0]]",
+        "  E/B3 monopole, patch, material, total (decimal): 0.2222222222 0.0459347234 -0.4670980992 -0.1989411536",
+        "n=1 gains=(3/2, 6/5) relaxed=False k=(0, -1) coeff=[[0, 0, 0], [977/1000, 7/50, 11/500]]",
+        "  E/B3 monopole, patch, material, total (decimal): 0.2222222222 0.0000000000 -0.1684608059 0.0537614163",
+        "n=1 gains=(3/2, 6/5) relaxed=True k=(3, 0) coeff=[[0, 0, 0], [1087/1000, -233/1000, 49/1000]]",
+        "  E/B3 monopole, patch, material, total (decimal): 0.2222222222 0.0287436199 -0.2351313565 0.0158344856"
+      ]
+    },
+    "mouth_flux_bound02": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-flux-bound --memory-gib 2 --log-directory _scratch/s11c/mouth_flux_bound02 -- /usr/bin/python3 software/stage1_solver/tools/mouth_flux_relaxation_bound.py",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_flux_relaxation_bound.py": "bf5fe9750736d7a67f679c81b014f048696b8c2cc28f32b66cb693d19774f1d9"
+      },
+      "started_utc": "2026-11-19T04:51:58.886914+00:00",
+      "outcome_written_utc": "2026-11-19T04:51:59.536178+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 2147483648,
+      "observed_memory_peak_bytes": 55713792,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flux_bound02/stdout",
+      "stdout_bytes": 839,
+      "stdout_sha256": "a8aaa9d2e245dbafd48153fe27e86c9d1465cc4d406a63aedca05788c59166a8",
+      "selected_stdout": [
+        "B/(4pi), Coulomb/B, unit trial T M P4, E/B: 9/40 2/9 101/300 97/150 11007/21875 -2288938/18128529",
+        "Maxwell cutoff comparison (L, t, E0/B floor, gap to old unit):",
+        "18 125/3773 -1798281/14235529 -15945980447/258069200306841",
+        "19 75/2507 -7059649/56565441 165970640593/113938693062921"
+      ]
+    },
+    "mouth_flux_ritz01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-flux-ritz --memory-gib 3 --log-directory _scratch/s11c/mouth_flux_ritz01 -- python3 -u software/stage1_solver/tools/mouth_flux_ritz.py --fields _scratch/s11c/mouth_flux_ritz01/fields",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_flux_ritz.py": "e87791869afd949dd524c48b146c159f5cce43bf605d3977c050f41f2f2f716b"
+      },
+      "started_utc": "2026-11-19T04:54:23.923051+00:00",
+      "outcome_written_utc": "2026-11-19T04:54:25.930240+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 3221225472,
+      "observed_memory_peak_bytes": 49983488,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flux_ritz01/stdout",
+      "stdout_bytes": 8495,
+      "stdout_sha256": "4080a42507b35838ad615373f136ff40bc2292999f70e51bfcb717d2549ed11d",
+      "selected_stdout": [
+        "n0_1.5 level=(1, 2, 0, 2) start=0 E=-0.187590506114 dof=72 it=9 ok=True grad=3.04e-09 quadrature=8.60e-16 gradient_check=6.82e-12",
+        "n0_1.5 best (3, 4, 2, 3) E=-0.188115295555 mono=0.0000000000 patch=0.0808845102 matter=-0.2689998057 matter_radial=0.0000319326",
+        "n-1_1.5 level=(1, 2, 0, 2) start=0 E=-0.202829691145 dof=72 it=11 ok=True grad=1.43e-09 quadrature=1.11e-16 gradient_check=4.39e-11",
+        "n-1_1.5 best (3, 4, 2, 3) E=-0.207589731781 mono=0.2222222222 patch=0.0588356844 matter=-0.4886476384 matter_radial=0.0000798910",
+        "n0_1.2 level=(1, 2, 0, 2) start=0 E=-0.116617412641 dof=72 it=12 ok=True grad=1.29e-07 quadrature=6.11e-16 gradient_check=1.80e-11",
+        "n0_1.2 best (3, 4, 2, 3) E=-0.117003868978 mono=0.0000000000 patch=0.0582995828 matter=-0.1753034518 matter_radial=0.0000190583",
+        "n-1_1.2 level=(1, 2, 0, 2) start=0 E=-0.202829691145 dof=72 it=11 ok=True grad=1.43e-09 quadrature=1.11e-16 gradient_check=3.90e-11",
+        "n-1_1.2 best (3, 4, 2, 3) E=-0.207589731781 mono=0.2222222222 patch=0.0588356843 matter=-0.4886476383 matter_radial=0.0000798910",
+        "n1_1.2 level=(1, 2, 0, 2) start=0 E=0.014060414511 dof=72 it=10 ok=True grad=4.05e-09 quadrature=9.37e-17 gradient_check=6.51e-12",
+        "n1_1.2 best (3, 4, 2, 3) E=0.012828409866 mono=0.2222222222 patch=0.0339196846 matter=-0.2433134969 matter_radial=0.0000290642"
+      ]
+    },
+    "mouth_flux_ritz_stability01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-flux-ritz --memory-gib 3 --log-directory _scratch/s11c/mouth_flux_ritz_stability01 -- python3 -u software/stage1_solver/tools/mouth_flux_ritz_stability.py _scratch/s11c/mouth_flux_ritz01/fields _scratch/s11c/mouth_flux_ritz_stability01/fields",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_flux_ritz_stability.py": "66ac1ac6bf6d94240b0a7a13531b06d704a78eecb487a274d91b09c086e82862",
+        "software/stage1_solver/tools/mouth_flux_ritz.py": "e87791869afd949dd524c48b146c159f5cce43bf605d3977c050f41f2f2f716b",
+        "_scratch/s11c/mouth_flux_ritz01/fields/n-1_1.2_l3.npz": "f69c32578475ee50677ea3462d86449084a29e8f4ae779d6ff10cd34069977f0",
+        "_scratch/s11c/mouth_flux_ritz01/fields/n-1_1.5_l3.npz": "69273823ba5f751b440a8e327ef5f78c2c6a9d5ef8179b93a43bb129bed73adf",
+        "_scratch/s11c/mouth_flux_ritz01/fields/n0_1.2_l3.npz": "a1c89a2f9c08deb00bb788e5a7a6b55ea9daa2666880f18400549a8f055e2de6",
+        "_scratch/s11c/mouth_flux_ritz01/fields/n0_1.5_l3.npz": "709868cde936a63bbbea0d5070d9ded17a6858e73aca46e688d5e49d02dbc812",
+        "_scratch/s11c/mouth_flux_ritz01/fields/n1_1.2_l3.npz": "2c6b7b568e9098e63d0a557e2b57baed019a2415cc8bfa2eb29fefc779f369db"
+      },
+      "started_utc": "2026-11-19T04:56:16.003457+00:00",
+      "outcome_written_utc": "2026-11-19T04:56:37.269194+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 3221225472,
+      "observed_memory_peak_bytes": 73519104,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flux_ritz_stability01/stdout",
+      "stdout_bytes": 4543,
+      "stdout_sha256": "afa24d8f4816960666b0c70558949d08d62a54de850707f36903844f9ca1c93f",
+      "selected_stdout": [
+        "n-1_1.2 Hessian dof=456 asymmetry=1.99e-10 first7=[-3.94789093e-08 -3.94702881e-08 -8.92049579e-09  1.93985745e+00  1.93985745e+00  4.46058769e+00  4.46683866e+00] negative_below_-1e-5=0",
+        "n-1_1.2 level=(7, 8, 3, 4) seed=transferred E=-0.207628194173 shift=-8.6545e-08 dof=2000 it=9 ok=True grad=1.89e-08 quadrature=8.33e-17",
+        "n-1_1.2 level=(7, 8, 3, 4) seed=two_spots E=-0.207628194173 shift=-8.6545e-08 dof=2000 it=26 ok=True grad=5.68e-08 quadrature=0.00e+00",
+        "n-1_1.5 Hessian dof=456 asymmetry=3.09e-10 first7=[-1.92430348e-08 -4.51795880e-09  9.06119197e-09  8.74711558e-01  8.74711558e-01  3.40219690e+00  3.40219690e+00] negative_below_-1e-5=0",
+        "n-1_1.5 level=(7, 8, 3, 4) seed=transferred E=-0.207628194173 shift=-8.6545e-08 dof=2000 it=9 ok=True grad=1.98e-08 quadrature=2.50e-16",
+        "n-1_1.5 level=(7, 8, 3, 4) seed=two_spots E=-0.207628194173 shift=-8.6545e-08 dof=2000 it=30 ok=True grad=6.15e-08 quadrature=5.55e-17",
+        "n0_1.2 Hessian dof=456 asymmetry=2.36e-10 first7=[-2.61182393e-08 -1.15786663e-08 -5.59393775e-09  2.83161688e-08  8.61393520e-01  8.61393520e-01  1.75537043e+00] negative_below_-1e-5=0",
+        "n0_1.2 level=(7, 8, 3, 4) seed=transferred E=-0.117007995196 shift=-2.4357e-10 dof=2000 it=6 ok=True grad=5.15e-08 quadrature=5.55e-17",
+        "n0_1.2 level=(7, 8, 3, 4) seed=two_spots E=-0.117007995196 shift=-2.4357e-10 dof=2000 it=46 ok=True grad=2.44e-08 quadrature=1.11e-16",
+        "n0_1.5 Hessian dof=456 asymmetry=1.43e-09 first7=[8.23257596e-10 8.25050865e-10 1.63989401e-09 1.63997690e-09 1.92185384e+00 1.92185384e+00 2.60827789e+00] negative_below_-1e-5=0",
+        "n0_1.5 level=(7, 8, 3, 4) seed=transferred E=-0.188121765417 shift=-1.9979e-10 dof=2000 it=6 ok=True grad=6.95e-08 quadrature=1.11e-15",
+        "n0_1.5 level=(7, 8, 3, 4) seed=two_spots E=-0.188121765417 shift=-1.9979e-10 dof=2000 it=30 ok=True grad=6.73e-08 quadrature=3.05e-16",
+        "n1_1.2 Hessian dof=456 asymmetry=9.41e-10 first7=[-2.52072742e-08 -2.52042576e-08 -1.18866891e-08  3.97235702e-01  3.97235702e-01  2.21846699e+00  2.21846699e+00] negative_below_-1e-5=0",
+        "n1_1.2 level=(7, 8, 3, 4) seed=transferred E=0.012820801130 shift=-2.6913e-09 dof=2000 it=7 ok=True grad=4.46e-08 quadrature=3.12e-17",
+        "n1_1.2 level=(7, 8, 3, 4) seed=two_spots E=0.012820801130 shift=-2.6913e-09 dof=2000 it=35 ok=True grad=2.20e-08 quadrature=6.25e-17"
+      ]
+    },
+    "mouth_flux_relaxation_wolfram01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-flux-relaxation-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_flux_relaxation_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_flux_relaxation.wl",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_flux_relaxation.wl": "1425af1b3a0d33c0cd9c51dff764e75eee11f5a3379159935e175afba80f0f5d"
+      },
+      "started_utc": "2026-11-19T04:52:38.229112+00:00",
+      "outcome_written_utc": "2026-11-19T04:52:44.850861+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 4294967296,
+      "observed_memory_peak_bytes": 225325056,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flux_relaxation_wolfram01/stdout",
+      "stdout_bytes": 2328,
+      "stdout_sha256": "60808b4282606a38789f987b304dc3939f10e95c494c43f703e4777e6bde41c6",
+      "selected_stdout": [
+        "\"vacuum radial,tangential,total costs / (4 Pi gamma epsilon^2/R), l=0,1,2 = {{1, 0, 1}, {1/9, 1/18, 1/6}, {1/25, 2/75, 1/15}}\"",
+        "\"original neutral trial,uniform unit trial,and difference = {-0.16473492346349197315514274689504374137`16., -0.12539402650961861143603143288891992605`16., 0.03934089695387336171911131400612381531`16.}\"",
+        "\"magnetic square residual,and remaining local density polynomial = {0, 4*rhoS*rhoW}\"",
+        "\"aspect,strong,weak,m,y,c,d,and radial p = {5/3, 9/5, 1/10, 1/2, 125/648, 27/49, 11/147, (a*(-1 + t)*(-5 + 3*t)*(8 + 3*t))/(49*t^2)}\"",
+        "\"radial endpoint values,linear-coefficient residual,and uniform bound = {0, 0, 0, True}\"",
+        "\"neutral residual weak coefficient,and positive lower bound = {-1/24010*(32000*a^2 - 78400*a^2*t - 2401*t^2 + 48020*a^2*t^2 + 14400*a^2*t^3 - 17640*a^2*t^4 + 1620*a^2*t^6)/t^2, 100301/1080450}\"",
+        "\"alternate aligned unit upper; floors for neutral,opposite unit,|n|>=2 = {-244225/1262016, -57636485776/312617511045, 107/648, -17216767/95295690}\"",
+        "\"alternate floors minus aligned unit upper = {57314990506043/6262353981253440, 4073521/11358144, 12267892603/954481631040}\"",
+        "\"alternate numerical energies = {-0.1935197335057558699731223692885034738`14., -0.18436742581481133294012276240563656619`14., 0.16512345679012345679012345679012345679`14., -0.18066679615835721426645843059638898674`14.}\"",
+        "\"m interval endpoints,y values,and endpoint margins = {{1/2, 51/100}, {125/648, 85/432}, {{57314990506043/6262353981253440, 4073521/11358144, 12267892603/954481631040}, {33154674220343/6262353981253440, 4073521/11358144, 23315133703/954481631040}}}\"",
+        "\"zero-native neutral upper,all charged lower,and gap at lower m = {-45/49, -289458943/381182760, 60606857/381182760}\"",
+        "\"favored helicity,orientation,winner,fixed-helicity mirror,swapped mirror = {{-1, -1, -1, 1, -1}, {-1, 1, 1, -1, 1}, {1, -1, 1, -1, 1}, {1, 1, -1, 1, -1}}\"",
+        "\"physical B3, y = {(324*Pi*stiffness^2)/(125*quarticU*radius), (125*m0)/324}\"",
+        "\"checks = {True, True, True, True, True, True, True, True, True, True, True, True}\""
+      ]
+    },
+    "mouth_flux_free_cert01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-flux-free-cert --memory-gib 2 --log-directory _scratch/s11c/mouth_flux_free_cert01 -- /usr/bin/python3 software/stage1_solver/tools/mouth_flux_free_certificate.py",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_flux_free_certificate.py": "288479bf72ee9eb333ecb3c08fa44332e5d7615a740f342d1d84f7b919c69e8c"
+      },
+      "started_utc": "2026-11-19T04:53:48.012772+00:00",
+      "outcome_written_utc": "2026-11-19T04:53:48.564965+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 2147483648,
+      "observed_memory_peak_bytes": 53612544,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flux_free_cert01/stdout",
+      "stdout_bytes": 953,
+      "stdout_sha256": "ac25db2f8844d8bbbff07f805400504b0d51596344fe264f317f7a113b50f226",
+      "selected_stdout": [
+        "angular square residual, two-component quartic surplus: 0 4*rho_s*rho_w",
+        "radial moments (length, volume, inverse), c: 2/3 98/81 2/5 27/49",
+        "calibration p_a, boundary values, (t^2*p_a)'/a: a*(t - 1)*(3*t - 5)*(3*t + 8)/(49*t**2) 0 0 (27*t**2 - 49)/49",
+        "calibrated signed-mean square residual: 0",
+        "n=0 strong/weak degrees, gains, d, weak cost lower, E floor: -2 2 4/5 -9/10 1/10 97229/1080450 -441166953616/3722487890625",
+        "n=-1 strong/weak degrees, gains, d, weak cost lower, E floor: -3 1 3/10 -2/5 1/10 5918/60025 79720925689/735306250000",
+        "|n|>=2 E floor, all floors without radial calibration: -9751909007/91913281250 -16/125 107/1000 -37/250",
+        "favored n=1 trial (T, M, P4, amplitude squared, E): 23/72 67/108 3991/8505 29889/31928 -158069/1277120",
+        "certified gaps (neutral, wrong unit, |n|>=2): 4997359716227441/950812746975000000 2725528903089821/11738428975000000 207428242288641/11738428975000000"
+      ]
+    },
+    "mouth_flux_handed_probe01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-flux-handed-probe --memory-gib 2 --log-directory _scratch/s11c/mouth_flux_handed_probe01 -- /usr/bin/python3 software/stage1_solver/tools/mouth_flux_handed_probe.py",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_flux_handed_probe.py": "d68ec6920d4528ffd0301a8027782efbe85d889da93cc0324af7951311a37e1d"
+      },
+      "started_utc": "2026-11-19T04:56:26.995934+00:00",
+      "outcome_written_utc": "2026-11-19T04:56:27.521521+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 2147483648,
+      "observed_memory_peak_bytes": 52830208,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flux_handed_probe01/stdout",
+      "stdout_bytes": 898,
+      "stdout_sha256": "b5a9e5f47c2fd86a05ac9c173de6c5fe3e324a1e3dff678eff804ae7b79648ab",
+      "selected_stdout": [
+        "isotropic G, G under tangent reflection, fixed-state constraint: Matrix([[a, -I*d], [I*d, a]]) Matrix([[a, I*d], [-I*d, a]]) {d: 0}",
+        "g_+, g_-, reflected probe helicities swapped: a + d a - d True True",
+        "chosen favored plus, mean and odd coefficients, normalized contrast: 19/20 17/20 17/19",
+        "degenerate wave at fixed total action, energy and imbalance slope: I*omega 0",
+        "s=1 fixed axial L, <L.n>, <(L.n)^2>, min, max: 0 L**2/3 -L L",
+        "s=-1 fixed axial L, <L.n>, <(L.n)^2>, min, max: 0 L**2/3 -L L",
+        "L=chi*n spherical mean, mean square, min, max, tangent-reflected projection: chi chi**2 chi chi -chi",
+        "w mirror axial texture held (new chi, h, unit flux/original): -chi -h 1",
+        "w mirror axial texture reversed (new chi, h, unit flux/original): chi h -1",
+        "independent +/-chi at fixed s (two selected unit fluxes): -h*s h*s"
+      ]
+    },
+    "mouth_handed_pair_force01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-handed-pair-force --memory-gib 2 --log-directory _scratch/s11c/mouth_handed_pair_force01 -- /usr/bin/python3 software/stage1_solver/tools/mouth_handed_pair_force.py",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_handed_pair_force.py": "a2df0926b3ef2f0aed6fe822cf4f1b78c0aa041c8b2f26c4ec833d7c59d39d34"
+      },
+      "started_utc": "2026-11-19T04:57:55.465702+00:00",
+      "outcome_written_utc": "2026-11-19T04:57:56.223037+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 2147483648,
+      "observed_memory_peak_bytes": 54403072,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_handed_pair_force01/stdout",
+      "stdout_bytes": 1094,
+      "stdout_sha256": "aeb281f2b4b8f5ad95ebe17e8574f5946875867e4189cf1d30fbaa62d4f06a13",
+      "selected_stdout": [
+        "radial operator residual, short-distance flux, normalized Green function: 0 4*pi*a exp(-d*mu)/(4*pi*d)",
+        "alignment amplitude A, mediated cross energy: lambda**2/(4*pi*kappa) -chi1*chi2*lambda**2*exp(-d*mu)/(4*pi*d*kappa)",
+        "pair energy, outward pair force at fixed signs: chi1*chi2*(-A + C*s1*s2*exp(d*mu))*exp(-d*mu)/d chi1*chi2*(-A*d*mu - A + C*s1*s2*exp(d*mu))*exp(-d*mu)/d**2",
+        "s1*s2=1 aligned chi (n1*n2, E_aligned-E_opposed, force): 1 -2*(A - C*exp(d*mu))*exp(-d*mu)/d -(A*d*mu + A - C*exp(d*mu))*exp(-d*mu)/d**2",
+        "s1*s2=1 opposed chi (n1*n2, force): -1 -(-A*d*mu - A + C*exp(d*mu))*exp(-d*mu)/d**2",
+        "s1*s2=-1 aligned chi (n1*n2, E_aligned-E_opposed, force): -1 -2*(A + C*exp(d*mu))*exp(-d*mu)/d -(A*d*mu + A + C*exp(d*mu))*exp(-d*mu)/d**2",
+        "s1*s2=-1 opposed chi (n1*n2, force): 1 -(-A*d*mu - A - C*exp(d*mu))*exp(-d*mu)/d**2",
+        "like orientations, aligned advantage delta>0 (U, F, F at equal energies): -delta/d -(C*d*mu + d*delta*mu + delta)/d**2 -C*mu/d",
+        "mu=0 (d*U, d^2*F): chi1*chi2*(-A + C*s1*s2) chi1*chi2*(-A + C*s1*s2)",
+        "fixed mu>0 and d to infinity (d*U, d^2*F): C*chi1*chi2*s1*s2 C*chi1*chi2*s1*s2"
+      ]
+    },
+    "mouth_handed_pair_force_wolfram01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-handed-pair-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_handed_pair_force_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_handed_pair_force.wl",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_handed_pair_force.wl": "c6f3781ef55645fb720edcb41a872e5bfc0d73a2e3e2330bfa83cd524099bf36"
+      },
+      "started_utc": "2026-11-19T04:59:26.236195+00:00",
+      "outcome_written_utc": "2026-11-19T04:59:31.195408+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 4294967296,
+      "observed_memory_peak_bytes": 225439744,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_handed_pair_force_wolfram01/stdout",
+      "stdout_bytes": 1091,
+      "stdout_sha256": "b0beead30ecd0504e65a05b0a34aa2e78d1ab637283ca7d0ccd5cd94cf315c40",
+      "selected_stdout": [
+        "\"circular gain (+,-), reflected gains, reflection-invariant condition = {{aa + b, aa - b}, {aa - b, aa + b}, {{b -> 0}}}\"",
+        "\"example mean,handed coefficient,split,normalized contrast,ratio = {19/20, 17/20, 17/10, 17/19, 18}\"",
+        "\"integrated-out scalar cross energy,combined cross energy,outward force = {-1/4*(chi1*chi2*lambda^2)/(d*E^(d*mu)*kappa*Pi), (chi1*chi2*(-lambda^2 + 4*coul*E^(d*mu)*kappa*Pi*s1*s2))/(4*d*E^(d*mu)*kappa*Pi), (chi1*chi2*(-lambda^2 - d*lambda^2*mu + 4*coul*E^(d*mu)*kappa*Pi*s1*s2))/(4*d^2*E^(d*mu)*kappa*Pi)}\"",
+        "\"same orientation aligned: d*(U_aligned-U_anti), d\u00b2 F, d U_aligned-d\u00b2 F = {2*(coul - v), coul - v*(1 + x), v*x}\"",
+        "\"finite screening strict lower-and-repulsive parameter set = False\"",
+        "\"infinite range difference and force, strict simultaneous parameter set = {{2*(coul - v), coul - v}, False}\"",
+        "\"checks = {True, True, True, True, True, True, True}\""
+      ]
+    },
+    "mouth_formation_match_sympy01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-formation-match-sympy --memory-gib 2 --log-directory _scratch/s11c/mouth_formation_match_sympy01 -- /usr/bin/python3 software/stage1_solver/tools/mouth_formation_spin_match.py",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_formation_spin_match.py": "827de49e3f7c3d7350297609ffd519e36f7f63311074ec67b513898c9bd4b050"
+      },
+      "started_utc": "2026-11-19T05:01:35.733332+00:00",
+      "outcome_written_utc": "2026-11-19T05:01:36.791896+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 2147483648,
+      "observed_memory_peak_bytes": 55709696,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_formation_match_sympy01/stdout",
+      "stdout_bytes": 1385,
+      "stdout_sha256": "5c07b3484c5219045627846c6c5c6ae73fe094d755ff9695feb1bbb20dddd6cf",
+      "selected_stdout": [
+        "unit-sphere direction mean, second moment: Matrix([[0, 0, 0]]) Matrix([[1/3, 0, 0], [0, 1/3, 0], [0, 0, 1/3]])",
+        "det M=1 chi1*chi2=1, trace M, global residual, patch mean square: 2*cos(theta) + 1 Matrix([[0, 0, 0]]) (3*l1**2 - 4*l1*l2*cos(theta) - 2*l1*l2 + 3*l2**2)/3",
+        "det M=1 chi1*chi2=-1, trace M, global residual, patch mean square: 2*cos(theta) + 1 Matrix([[0, 0, 0]]) (3*l1**2 + 4*l1*l2*cos(theta) + 2*l1*l2 + 3*l2**2)/3",
+        "det M=-1 chi1*chi2=1, trace M, global residual, patch mean square: -2*cos(theta) - 1 Matrix([[0, 0, 0]]) (3*l1**2 + 4*l1*l2*cos(theta) + 2*l1*l2 + 3*l2**2)/3",
+        "det M=-1 chi1*chi2=-1, trace M, global residual, patch mean square: -2*cos(theta) - 1 Matrix([[0, 0, 0]]) (3*l1**2 - 4*l1*l2*cos(theta) - 2*l1*l2 + 3*l2**2)/3",
+        "identical patches chi2=1, mean square, n1, n2, total n: (l1 - l2)**2 -1 1 0",
+        "identical patches chi2=-1, mean square, n1, n2, total n: (l1 + l2)**2 -1 -1 -2",
+        "antipodal patches chi2=1, mean square, n1, n2, total n: (l1 + l2)**2 -1 1 0",
+        "antipodal patches chi2=-1, mean square, n1, n2, total n: (l1 - l2)**2 -1 -1 -2",
+        "two neutral births (A+, A-), (B+, B-), same-side charge product: (-1, 1) (-1, 1) 1",
+        "two neutral births (A+, A-), (B+, B-), same-side charge product: (-1, 1) (1, -1) -1",
+        "two neutral births (A+, A-), (B+, B-), same-side charge product: (1, -1) (-1, 1) -1",
+        "two neutral births (A+, A-), (B+, B-), same-side charge product: (1, -1) (1, -1) 1"
+      ]
+    },
+    "mouth_formation_match_wolfram01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-formation-match-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_formation_match_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_formation_spin_match.wl",
+      "input_sha256": {
+        "software/stage1_solver/tools/mouth_formation_spin_match.wl": "251cb1a0dd9a6eef0624efaa7b88fbc721538e9726095be02ef42252dbb6d6b4"
+      },
+      "started_utc": "2026-11-19T05:00:57.324333+00:00",
+      "outcome_written_utc": "2026-11-19T05:01:03.686944+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_limit_bytes": 4294967296,
+      "observed_memory_peak_bytes": 240332800,
+      "swap_limit_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_formation_match_wolfram01/stdout",
+      "stdout_bytes": 934,
+      "stdout_sha256": "59f9806286610f6b564012897b4159b2ed883c63f5c835d900a72693a64091f2",
+      "selected_stdout": [
+        "\"whole-sphere spin on each mirrored mouth = {{0, 0, 0}, {0, 0, 0}}\"",
+        "\"two charges,total charge,pointwise mismatch squared (sphere mean) = {{-(chi1*s), chi2*s}, -(chi1*s) + chi2*s, s^2*(chi1*l1 - chi2*l2*signMap)^2}\"",
+        "\"point registration,chi2,charges,mean square,nonnegative magnitudes with exact match = {{1, 1, {-1, 1}, (l1 - l2)^2, l1 >= 0 && l2 == l1}, {1, -1, {-1, -1}, (l1 + l2)^2, l1 == 0 && l2 == 0}, {-1, 1, {-1, 1}, (l1 + l2)^2, l1 == 0 && l2 == 0}, {-1, -1, {-1, -1}, (l1 - l2)^2, l1 >= 0 && l2 == l1}}\"",
+        "\"positive-magnitude local-match implication for both orientations = {{-1, True}, {1, True}}\"",
+        "\"independent matched births: chiA,chiB,pairA,pairB,same-orientation product = {{-1, -1, {1, -1}, {1, -1}, 1}, {-1, 1, {1, -1}, {-1, 1}, -1}, {1, -1, {-1, 1}, {1, -1}, -1}, {1, 1, {-1, 1}, {-1, 1}, 1}}\"",
+        "\"two antipodally matched births with zero four-mouth net charge = {{{-1, -1}, {1, 1}}, 0}\"",
+        "\"checks = {True, True, True, True}\""
+      ]
+    }
+  },
+  "local_review": {
+    "role": "Fresh independent local Codex agent",
+    "report": "software/stage1_solver/reports/mouth_free_flux.md",
+    "report_sha256": "dede54c38040684b479c2aba5bfbc51e8790ec07623f963e340385890ce70d62",
+    "verdict_verbatim": "Scoped clear for the free-field collar comparison, the reported finite-basis energies, and the conditional handedness, pair-force and formation tests.",
+    "scope_verbatim": "The report correctly leaves universal handedness, charge transport and 0PN gravity open."
+  }
+}

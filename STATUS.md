@@ -1,5 +1,13 @@
 # Project status — S15 conditional shell-crossing record
 
+## Common-medium research
+
+Resume under the [standing research direction](AGENTS.md#standing-direction-for-the-common-medium-research). A round mouth with a responding layer whose width scales with its radius can prefer one electric flux spacing even when the field redistributes freely. The analytical example requires different gains for the two circular polarizations. At the original coefficients, redistribution defeats the earlier neutral bound and the numerical ordering remains provisional. The flux spacing and the material law are inputs. [Free-field comparison](software/stage1_solver/reports/mouth_free_flux.md) · [Guarded calculations](research/pde_ledger_v3/_measurements/mouth_free_flux.json)
+
+**Current material test.** A single angular bend radiates into an extended brane inlet and an open four-dimensional receiving bulk. Most of its actual outgoing carrier wave escapes. The returned fraction depends on the radial modes launched. Two peaks survive with the trial wall inertia and stiffness and the specified selective readout. Measure or derive the kinetic and static stiffness coefficients for the same bend at the same intake next. Physical linewidth, electric sign and 0PN free fall remain open. [Open reservoirs and returned power](software/stage1_solver/reports/mouth_open_reservoirs.md) · [Runs and independent review](research/pde_ledger_v3/_measurements/mouth_open_reservoirs.json) · [Prior finite guides](software/stage1_solver/reports/mouth_carrier_bend_work.md)
+
+The trapped-wave branch separately needs shared handedness across independent births. The two-face material hypothesis tests another possible source of electric sign. [Pair-formation comparison](software/stage1_solver/reports/mouth_free_flux.md#can-forming-a-pair-select-the-sign) · [Joint requirements](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#energy-selection-of-one-electric-flux-spacing)
+
 ## Electric charge requirements checkpoint
 
 The [charge requirements](docs/em_charge_attribute_requirements.md#november-checkpoint--what-a-charge-law-must-explain) collect the mirror, conservation, localization and force tests. The [calculation index](memory/topics/charge-and-electromagnetism.md#november-mouth-calculations-and-where-to-resume) links the working results. The next identified 0PN test is whether a drain leaves a net long-range slab bend after its receiving-side reaction is included.

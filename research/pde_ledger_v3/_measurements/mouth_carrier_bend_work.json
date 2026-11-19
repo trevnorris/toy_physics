@@ -1,0 +1,682 @@
+{
+  "working_base": "df13acaa78634e254be4c732068260e62a210d4f",
+  "status": "Working research with a fresh independent local scoped review. Formal review and commit pending.",
+  "report": "software/stage1_solver/reports/mouth_carrier_bend_work.md",
+  "report_sha256": "a54e73fb11e2c56af0e396fb3409d04b0a3f0e3f18b90f87383afab32af0b18a",
+  "inputs_and_source_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519",
+    "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e",
+    "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+    "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b",
+    "software/stage1_solver/reports/mouth_driven_bend.md": "c32ab38194ca480ffc11c8c52d341a577562473f1e8f28ea8f314a86dc1436d7",
+    "research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json": "a53c5edf9cee951de8e8cce20cbc90d27a4e8e5ce55efadb69b5fa52eae274d7",
+    "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9",
+    "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44",
+    "software/stage1_solver/tools/mouth_carrier_bend_spectrum.py": "08a04e6f2bb6dbe18f897546d244a7261d4cc5289c5dc19a11610f383a63ee4c"
+  },
+  "model": {
+    "preparation": "Single positive-w half sleeve has section r<R for 0<w<H and r<2R above H, where R=1.892410005412, H=L/2 and L=2.0918395048. Radius and reference length held. Steady 4D axisymmetric OpenSleeve fixes stationary current by feed phase, with both baths fixing amplitude. The side is reflecting in its moving frame. The displacement is Re[b exp(-i omega t)] f(w) cos(theta) with f=sin^2(pi w/H) on 0<w<H, zero elsewhere. Material degree of freedom is the GNLS carrier. This sharp, reflecting carrier boundary is separate from the smooth scalar-wave trapping well. Trace extrapolation and meshing refer to one section radius and one sleeve length. Matching the same fixed stationary rate for each control does not constitute a nonlinear time-dependent intake servo. The dipole perturbation changes integrated current by zero at first order by angular parity.",
+    "variational_force": "In the rotating grand-canonical frame, S=integral_D [i hbar/2(psi*psi_t-cc) - k|grad psi|^2 - K|psi|^10/4 + mu |psi|^2], k=hbar^2/(2m). A moving natural wall imposes k partial_n psi=(i hbar/2) v_n psi. Then j_n=n v_n. With psi0=x+iy, delta psi=(X+iY)cos(theta), the linear pressure variation in real time is hbar(y Xdot - x Ydot)+2(mu-h)(xX+yY)-2k(x_w X_w+y_w Y_w). Multiply by (4pi R^2/3) f(w) and integrate to get induced fluid force. Shape-dependent values at fixed background add static in-phase contributions but no work over a periodic bend. Relative-angle normalization is integral cos^2(theta)=4pi/3; integral |grad_S cos(theta)|^2=8pi/3. This computes the generalized side traction under the chosen reflecting interface law.",
+    "response": "Write the boundary-action cross term b(s^T u+t^T udot). The Hermitian bulk stiffness (half Hessian) for two quadratures includes angular l=1 kinetic energy, density Hessian and i omega hbar W J for exp(-i omega t). Source is (s+i omega t)b/2. Force per unit b is (s+i omega t)^dagger u/b. Positive work on the carrier is P=(omega/2)Im(F b*). Code label work_per_b2 is cycle-averaged POWER divided by peak-displacement squared. Energy per cycle =2pi P/omega, and C_eff=2P/(omega^2 |b|^2). Measured pressure directly on the side, the two terminal fluxes and a distinct downstream bond-current flux. Subtract the stationary state. The zero-flow control also measures radiation from fluid at rest. This is excess quadratic rotating-frame wave energy. Mean second-order transport times the chemical potential and controller changes would be needed for an absolute laboratory bath-energy ledger.",
+    "ports": "Continue each selected AC cut by a uniform semi-infinite reflecting cylindrical waveguide at bath density, matched to mean outward DC current, with conserved radial finite-volume metric. At signed current, rotate local carrier phase by the discrete Bloch step m Q dw/(hbar n A) through arcsin and allow a DC chemical offset. Match decaying and outgoing energy-carrying roots of the quadrature recurrence. The actual finite DC state may have nonuniform terminal traces; the uniform continuation is an explicit boundary law for perturbations. Clamped AC ends set both angular quadratures to zero while leaving stationary mean intake unchanged. Doubling the length to the receiver termination and varying lead drift test this matching. Widening the downstream cylinder from 2R to 3R changes physical return/radiation impedance; neither geometry is an infinite 4D half-space. Zero-flow continuum solved independently with radial spherical Bessel modes and step aperture matching. Flowing quotients are direct finite-grid evaluations, with no rigorous continuum bound for the dissipative part.",
+    "support": "Prescribed b cos(omega t), lossless dipole q, maintained coherent support at ws, coupling g cos(ws t)bq. In addition to the carrier work, the actuator does g bdot cos(ws t)q and the support does -g ws b sin(ws t)q. Their sum accounts for the change in dipole energy plus interaction. At the exact combination frequencies a single displacement drive forces q resonantly; its particular solution contains -g b t sin(wd t)/(4wd). Finite-time coherent transfer may go in either direction. Exclude this stored/driven energy from the steady retarded carrier loss. No additive positive damping was taken from it. With b imposed, the two sectors share the displacement and are otherwise independent at this order.",
+    "spectral_scope": "An illustrative bend has measured-static K=6 by hypothesis and M=12. Rebase the induced force by subtracting its static field response, so unknown geometric static stiffness is contained once in K. No bare bend loss or intrinsic dipole dephasing. Sum measured retarded carrier forces for one arm or for two identical independent receiving arms coupled to the same bend; total flow in the latter is twice the per-arm intake. Grounded or transmitting AC feed does not change the prescribed per-arm DC intake. Chi_b=1/[K-M omega^2-N(Fr(omega)-Fr(0))]. At leading order the dipole energy-decay rate is g^2/(4wd) Im[chi_b(wd-ws)+chi_b(wd+ws)]. Near the line, keep the central dipole and the two directly coupled bend Fourier components, with F_r evaluated on both detuned sidebands and checked at two spectral sampling densities and two spatial meshes. Absorptive FWHM diagnoses a local single-pole linewidth, not the measured complete Floquet time-domain ringdown. Counts add two equal-area, selective cold single-jump Lorentzians, common shift, no pure dephasing and widths 1:3. Reviewer solved the merger condition at FWHM/gap=0.503226486865. The flowing 224-cell first-order rates and the 80-cell three-frequency widths use distinct objects. No charged/mirror-sensitive signal or calibrated companion acceleration is produced.",
+    "next": "Replace the fixed-width receiver guide and ideal feed reflection with the outgoing response of the receiving bulk and brane feeding region. At the same prescribed bend, compare wave return and net radiated energy in this physical geometry. A final two-excitation conclusion also needs independent bend mass/stiffness, intrinsic loss, a calibrated readout and phase noise."
+  },
+  "independent_review": {
+    "agent": "fresh local reviewer",
+    "verdict": [
+      "Scoped clear for the projected linear carrier work with the stated moving reflecting wall and AC lead models.",
+      "Scoped clear for the leading dipole energy-decay estimate and the stated conditional peak counts; the three-frequency FWHM is a local spectral check."
+    ],
+    "dispositions": [
+      "Quantified mesh bias against a separate zero-current continuum calculation. Flowing minus resting uses the same grid.",
+      "Separated perturbation energy from mean bath transport, identified the real response as induced-field only, and included a separate coherent pump energy ledger.",
+      "Identified both physical AC reservoirs and which arm is driven. The conditional two-arm comparison holds intake fixed per arm, not in total. Peak counts require the stated readout."
+    ]
+  },
+  "runs": {
+    "carrier_bend_work16": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-bend --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_work16 -- python3 software/stage1_solver/tools/mouth_carrier_bend_work.py --cells 16 --controls",
+      "started_utc": "2026-11-19T19:21:41.686789+00:00",
+      "outcome_written_utc": "2026-11-19T19:21:42.238204+00:00",
+      "duration_seconds": 0.5356646371074021,
+      "memory_peak_sampled_bytes": 42713088,
+      "memory_limit_bytes": 2147483648,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_work16/stdout",
+      "stdout_size": 3721,
+      "stdout_sha256": "daefe7db70b9913334a73774a15c4684d52cf907a40605c6f351d3049019c584",
+      "stdout_lines": [
+        "carrier cells=16 receiver_lengths=1 current=0.0373999726942 inlet=0.0373999726942 exit=0.0373999726942 residual=4.02e-16",
+        "work cells=16 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0542812880442 feed_per_b2=0.0339376072482 receiver_per_b2=0.020343680796 cut_per_b2=0.020343680796 effective_C=0.520711574636 reactive_F_per_b=-0.0667084434508",
+        "work cells=16 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.99728088015 feed_per_b2=1.92613716911 receiver_per_b2=2.07114371104 cut_per_b2=2.07114371104 effective_C=0.517354636559 reactive_F_per_b=-3.4365229075",
+        "work cells=16 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.105462089174 feed_per_b2=0 receiver_per_b2=0.105462089174 cut_per_b2=0.105462089174 effective_C=1.01168068218 reactive_F_per_b=-0.191966622202",
+        "work cells=16 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=5.70669189346 feed_per_b2=0 receiver_per_b2=5.70669189346 cut_per_b2=5.70669189346 effective_C=0.738597961718 reactive_F_per_b=-3.93717512789",
+        "work cells=16 current=0.0373999726942 ports=none drift=1 trace=2 omega=0.456605832128 work_per_b2=-3.15616527989e-18 feed_per_b2=0 receiver_per_b2=0 cut_per_b2=1.01572229504e-18 effective_C=-3.02765806029e-17 reactive_F_per_b=0.111146847913",
+        "work cells=16 current=0.0373999726942 ports=none drift=1 trace=2 omega=3.93100103488 work_per_b2=-1.92569489573e-14 feed_per_b2=0 receiver_per_b2=0 cut_per_b2=5.73586531833e-14 effective_C=-2.49236221515e-15 reactive_F_per_b=31.5171985913",
+        "work cells=16 current=0.0373999726942 ports=feed+receiver drift=0 trace=2 omega=0.456605832128 work_per_b2=0.0542788081535 feed_per_b2=0.0339380040393 receiver_per_b2=0.0203408041141 cut_per_b2=0.0203408041141 effective_C=0.520687785447 reactive_F_per_b=-0.0667055276895",
+        "work cells=16 current=0.0373999726942 ports=feed+receiver drift=0 trace=2 omega=3.93100103488 work_per_b2=3.99718758568 feed_per_b2=1.9261409346 receiver_per_b2=2.07104665107 cut_per_b2=2.07104665107 effective_C=0.517342561768 reactive_F_per_b=-3.43650773727",
+        "work cells=16 current=0.0373999726942 ports=feed+receiver drift=1 trace=1 omega=0.456605832128 work_per_b2=0.0532704706689 feed_per_b2=0.0332569637002 receiver_per_b2=0.0200135069687 cut_per_b2=0.0200135069687 effective_C=0.511014967828 reactive_F_per_b=-0.0940580274948",
+        "work cells=16 current=0.0373999726942 ports=feed+receiver drift=1 trace=1 omega=3.93100103488 work_per_b2=2.01933726963 feed_per_b2=0.976203596415 receiver_per_b2=1.04313367321 cut_per_b2=1.04313367321 effective_C=0.261356039403 reactive_F_per_b=-2.29819168379",
+        "carrier cells=16 receiver_lengths=1 current=0 inlet=0 exit=0 residual=5.55e-17",
+        "work cells=16 current=0 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0543427994957 feed_per_b2=0.0338222036063 receiver_per_b2=0.0205205958895 cut_per_b2=0.0205205958895 effective_C=0.521301643994 reactive_F_per_b=-0.0667621355173",
+        "work cells=16 current=0 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.99976738714 feed_per_b2=1.95364440766 receiver_per_b2=2.04612297948 cut_per_b2=2.04612297948 effective_C=0.517676456806 reactive_F_per_b=-3.43816844592",
+        "work cells=16 current=0 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.10562367488 feed_per_b2=0 receiver_per_b2=0.10562367488 cut_per_b2=0.10562367488 effective_C=1.0132307476 reactive_F_per_b=-0.191759470324",
+        "work cells=16 current=0 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=5.71085376548 feed_per_b2=0 receiver_per_b2=5.71085376548 cut_per_b2=5.71085376548 effective_C=0.739136618833 reactive_F_per_b=-3.93823553525"
+      ]
+    },
+    "carrier_bend_work32": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-work-32 --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_work32 -- python3 software/stage1_solver/tools/mouth_carrier_bend_work.py --cells 32 --receiver-lengths 1 --controls",
+      "started_utc": "2026-11-19T19:22:02.141403+00:00",
+      "outcome_written_utc": "2026-11-19T19:22:04.245194+00:00",
+      "duration_seconds": 2.086138910148293,
+      "memory_peak_sampled_bytes": 65835008,
+      "memory_limit_bytes": 2147483648,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_work32/stdout",
+      "stdout_size": 3726,
+      "stdout_sha256": "4e781c4e46bc40ad323f22bc9f5dc6527218f1938561502ea2ec3f07ab667701",
+      "stdout_lines": [
+        "carrier cells=32 receiver_lengths=1 current=0.0373999726942 inlet=0.0373999726942 exit=0.0373999726942 residual=1.67e-16",
+        "work cells=32 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0561165072801 feed_per_b2=0.035174849067 receiver_per_b2=0.0209416582131 cut_per_b2=0.0209416582131 effective_C=0.538316534514 reactive_F_per_b=-0.0434986755305",
+        "work cells=32 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=2.50314146962 feed_per_b2=1.27950240991 receiver_per_b2=1.22363905971 cut_per_b2=1.22363905971 effective_C=0.323973191801 reactive_F_per_b=1.05291219424",
+        "work cells=32 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.109973348348 feed_per_b2=0 receiver_per_b2=0.109973348348 cut_per_b2=0.109973348348 effective_C=1.05495645829 reactive_F_per_b=-0.149673675273",
+        "work cells=32 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=0.612062314142 feed_per_b2=0 receiver_per_b2=0.612062314142 cut_per_b2=0.612062314142 effective_C=0.0792171692654 reactive_F_per_b=0.361983141296",
+        "work cells=32 current=0.0373999726942 ports=none drift=1 trace=2 omega=0.456605832128 work_per_b2=4.28867164502e-17 feed_per_b2=0 receiver_per_b2=0 cut_per_b2=8.45412878184e-19 effective_C=4.11405301134e-16 reactive_F_per_b=0.116118181049",
+        "work cells=32 current=0.0373999726942 ports=none drift=1 trace=2 omega=3.93100103488 work_per_b2=7.81594292837e-16 feed_per_b2=0 receiver_per_b2=0 cut_per_b2=-7.09021692398e-16 effective_C=1.01159123772e-16 reactive_F_per_b=0.503968159101",
+        "work cells=32 current=0.0373999726942 ports=feed+receiver drift=0 trace=2 omega=0.456605832128 work_per_b2=0.0561139418639 feed_per_b2=0.0351752226831 receiver_per_b2=0.0209387191808 cut_per_b2=0.0209387191808 effective_C=0.538291924893 reactive_F_per_b=-0.0434966909028",
+        "work cells=32 current=0.0373999726942 ports=feed+receiver drift=0 trace=2 omega=3.93100103488 work_per_b2=2.50317183672 feed_per_b2=1.2795030746 receiver_per_b2=1.22366876211 cut_per_b2=1.22366876211 effective_C=0.323977122113 reactive_F_per_b=1.05291684534",
+        "work cells=32 current=0.0373999726942 ports=feed+receiver drift=1 trace=1 omega=0.456605832128 work_per_b2=0.0558626957044 feed_per_b2=0.0350050156256 receiver_per_b2=0.0208576800788 cut_per_b2=0.0208576800788 effective_C=0.535881761316 reactive_F_per_b=-0.0598177017781",
+        "work cells=32 current=0.0373999726942 ports=feed+receiver drift=1 trace=1 omega=3.93100103488 work_per_b2=2.09225961376 feed_per_b2=1.07053471346 receiver_per_b2=1.0217249003 cut_per_b2=1.0217249003 effective_C=0.270794133442 reactive_F_per_b=0.206847912896",
+        "carrier cells=32 receiver_lengths=1 current=0 inlet=0 exit=0 residual=8.33e-17",
+        "work cells=32 current=0 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0561756388625 feed_per_b2=0.035052879134 receiver_per_b2=0.0211227597285 cut_per_b2=0.0211227597285 effective_C=0.538883774174 reactive_F_per_b=-0.0435353326171",
+        "work cells=32 current=0 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=2.50416335782 feed_per_b2=1.30123331229 receiver_per_b2=1.20293004554 cut_per_b2=1.20293004554 effective_C=0.324105451359 reactive_F_per_b=1.05141992773",
+        "work cells=32 current=0 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.110118672873 feed_per_b2=0 receiver_per_b2=0.110118672873 cut_per_b2=0.110118672873 effective_C=1.05635053284 reactive_F_per_b=-0.149408279515",
+        "work cells=32 current=0 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=0.612789792978 feed_per_b2=0 receiver_per_b2=0.612789792978 cut_per_b2=0.612789792978 effective_C=0.0793113244074 reactive_F_per_b=0.359548196812"
+      ]
+    },
+    "carrier_bend_work40": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-work-40 --memory-gib 3 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_work40 -- python3 software/stage1_solver/tools/mouth_carrier_bend_work.py --cells 40 --receiver-lengths 2",
+      "started_utc": "2026-11-19T19:22:03.334769+00:00",
+      "outcome_written_utc": "2026-11-19T19:22:06.046587+00:00",
+      "duration_seconds": 2.632521741092205,
+      "memory_peak_sampled_bytes": 105717760,
+      "memory_limit_bytes": 3221225472,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_work40/stdout",
+      "stdout_size": 1142,
+      "stdout_sha256": "7b084595cc1d64e603419e73942a2f008411c1626bdb6a471d002df5b8ee4688",
+      "stdout_lines": [
+        "carrier cells=40 receiver_lengths=2 current=0.0373999726942 inlet=0.0373999726942 exit=0.0373999726942 residual=1.87e-16",
+        "work cells=40 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0563442563882 feed_per_b2=0.035335665521 receiver_per_b2=0.0210085908672 cut_per_b2=0.0210085908672 effective_C=0.540501294695 reactive_F_per_b=-0.0391826798371",
+        "work cells=40 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.23249828614 feed_per_b2=1.74544968482 receiver_per_b2=1.48704860132 cut_per_b2=1.48704860132 effective_C=0.418371394492 reactive_F_per_b=0.576901379179",
+        "work cells=40 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.110510349987 feed_per_b2=0 receiver_per_b2=0.110510349987 cut_per_b2=0.110510349987 effective_C=1.06010782774 reactive_F_per_b=-0.142952864609",
+        "work cells=40 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=1.78593833785 feed_per_b2=0 receiver_per_b2=1.78593833785 cut_per_b2=1.78593833785 effective_C=0.231147999703 reactive_F_per_b=-0.965889879431"
+      ]
+    },
+    "carrier_bend_work48": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-work-48 --memory-gib 3 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_work48 -- python3 software/stage1_solver/tools/mouth_carrier_bend_work.py --cells 48 --receiver-lengths 1",
+      "started_utc": "2026-11-19T19:22:02.434152+00:00",
+      "outcome_written_utc": "2026-11-19T19:22:04.833291+00:00",
+      "duration_seconds": 2.3679952062666416,
+      "memory_peak_sampled_bytes": 92684288,
+      "memory_limit_bytes": 3221225472,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_work48/stdout",
+      "stdout_size": 1141,
+      "stdout_sha256": "ec5a39cd65403c67bf3ee70fcf215a6b79fca392483630b07fc8d2ea394231d3",
+      "stdout_lines": [
+        "carrier cells=48 receiver_lengths=1 current=0.0373999726942 inlet=0.0373999726942 exit=0.0373999726942 residual=7.7e-16",
+        "work cells=48 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0564740629844 feed_per_b2=0.0354264100031 receiver_per_b2=0.0210476529813 cut_per_b2=0.0210476529813 effective_C=0.541746508276 reactive_F_per_b=-0.0363673872502",
+        "work cells=48 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.09878869073 feed_per_b2=1.94123235195 receiver_per_b2=1.15755633878 cut_per_b2=1.15755633878 effective_C=0.401065810718 reactive_F_per_b=0.953559796922",
+        "work cells=48 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.110819612852 feed_per_b2=0 receiver_per_b2=0.110819612852 cut_per_b2=0.110819612852 effective_C=1.06307453614 reactive_F_per_b=-0.138802019708",
+        "work cells=48 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=6.96004153124 feed_per_b2=0 receiver_per_b2=6.96004153124 cut_per_b2=6.96004153124 effective_C=0.900814795055 reactive_F_per_b=-1.02221777067"
+      ]
+    },
+    "carrier_bend_work64": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-work-64 --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_work64 -- python3 software/stage1_solver/tools/mouth_carrier_bend_work.py --cells 64 --receiver-lengths 1 --controls",
+      "started_utc": "2026-11-19T19:22:02.994690+00:00",
+      "outcome_written_utc": "2026-11-19T19:22:11.743209+00:00",
+      "duration_seconds": 8.694769171066582,
+      "memory_peak_sampled_bytes": 156930048,
+      "memory_limit_bytes": 4294967296,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_work64/stdout",
+      "stdout_size": 3731,
+      "stdout_sha256": "f927bea6c6d2578e761479894c993608a9b7f21dfda26d04fb78e5ff413e7e8c",
+      "stdout_lines": [
+        "carrier cells=64 receiver_lengths=1 current=0.0373999726942 inlet=0.0373999726942 exit=0.0373999726942 residual=5.83e-16",
+        "work cells=64 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0566127024848 feed_per_b2=0.0355265107905 receiver_per_b2=0.0210861916943 cut_per_b2=0.0210861916943 effective_C=0.543076454473 reactive_F_per_b=-0.0329325137405",
+        "work cells=64 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=2.83523919895 feed_per_b2=1.23313188898 receiver_per_b2=1.60210730997 cut_per_b2=1.60210730997 effective_C=0.366955485318 reactive_F_per_b=0.292851030542",
+        "work cells=64 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.111148251746 feed_per_b2=0 receiver_per_b2=0.111148251746 cut_per_b2=0.111148251746 effective_C=1.06622711565 reactive_F_per_b=-0.133975171686",
+        "work cells=64 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.63986809213 feed_per_b2=0 receiver_per_b2=3.63986809213 cut_per_b2=3.63986809213 effective_C=0.471095900035 reactive_F_per_b=-0.305538855594",
+        "work cells=64 current=0.0373999726942 ports=none drift=1 trace=2 omega=0.456605832128 work_per_b2=-6.15916371531e-17 feed_per_b2=0 receiver_per_b2=0 cut_per_b2=1.45249693947e-18 effective_C=-5.90838565589e-16 reactive_F_per_b=0.121877886506",
+        "work cells=64 current=0.0373999726942 ports=none drift=1 trace=2 omega=3.93100103488 work_per_b2=-1.06610100884e-15 feed_per_b2=0 receiver_per_b2=0 cut_per_b2=5.40779256913e-15 effective_C=-1.37981872303e-16 reactive_F_per_b=-4.54138268809",
+        "work cells=64 current=0.0373999726942 ports=feed+receiver drift=0 trace=2 omega=0.456605832128 work_per_b2=0.0566101180732 feed_per_b2=0.0355268796241 receiver_per_b2=0.0210832384491 cut_per_b2=0.0210832384491 effective_C=0.543051662632 reactive_F_per_b=-0.0329307908586",
+        "work cells=64 current=0.0373999726942 ports=feed+receiver drift=0 trace=2 omega=3.93100103488 work_per_b2=2.83523753156 feed_per_b2=1.23312681712 receiver_per_b2=1.60211071445 cut_per_b2=1.60211071445 effective_C=0.366955269514 reactive_F_per_b=0.292868807703",
+        "work cells=64 current=0.0373999726942 ports=feed+receiver drift=1 trace=1 omega=0.456605832128 work_per_b2=0.0565500098547 feed_per_b2=0.0354846288228 receiver_per_b2=0.0210653810319 cut_per_b2=0.0210653810319 effective_C=0.542475054261 reactive_F_per_b=-0.041803435327",
+        "work cells=64 current=0.0373999726942 ports=feed+receiver drift=1 trace=1 omega=3.93100103488 work_per_b2=2.70793206477 feed_per_b2=1.17844376767 receiver_per_b2=1.52948829711 cut_per_b2=1.52948829711 effective_C=0.350478550595 reactive_F_per_b=-0.203419306038",
+        "carrier cells=64 receiver_lengths=1 current=0 inlet=0 exit=0 residual=1.11e-16",
+        "work cells=64 current=0 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0566711804641 feed_per_b2=0.0354027927238 receiver_per_b2=0.0212683877402 cut_per_b2=0.0212683877402 effective_C=0.543637424224 reactive_F_per_b=-0.0329646445178",
+        "work cells=64 current=0 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=2.83641569969 feed_per_b2=1.25869445793 receiver_per_b2=1.57772124176 cut_per_b2=1.57772124176 effective_C=0.367107755858 reactive_F_per_b=0.291115811626",
+        "work cells=64 current=0 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.111289203367 feed_per_b2=0 receiver_per_b2=0.111289203367 cut_per_b2=0.111289203367 effective_C=1.06757924163 reactive_F_per_b=-0.133695991289",
+        "work cells=64 current=0 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.63980609463 feed_per_b2=0 receiver_per_b2=3.63980609463 cut_per_b2=3.63980609463 effective_C=0.471087875907 reactive_F_per_b=-0.307093514763"
+      ]
+    },
+    "carrier_bend_work96": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-refine-96 --memory-gib 5 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_work96 -- python3 software/stage1_solver/tools/mouth_carrier_bend_work.py --cells 96",
+      "started_utc": "2026-11-19T19:22:43.016252+00:00",
+      "outcome_written_utc": "2026-11-19T19:22:52.764878+00:00",
+      "duration_seconds": 9.720228505320847,
+      "memory_peak_sampled_bytes": 319127552,
+      "memory_limit_bytes": 5368709120,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_work96/stdout",
+      "stdout_size": 1143,
+      "stdout_sha256": "36cd5f1e925ae3eb0b2bd0a55d1870c3c1ee09c0ca3b9b01c932580185d144d4",
+      "stdout_lines": [
+        "carrier cells=96 receiver_lengths=1 current=0.0373999726942 inlet=0.0373999726942 exit=0.0373999726942 residual=1.29e-15",
+        "work cells=96 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0567244635965 feed_per_b2=0.0356090866409 receiver_per_b2=0.0211153769556 cut_per_b2=0.0211153769556 effective_C=0.544148560654 reactive_F_per_b=-0.0295978175877",
+        "work cells=96 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.19856614683 feed_per_b2=1.36008845656 receiver_per_b2=1.83847769027 cut_per_b2=1.83847769027 effective_C=0.413979671687 reactive_F_per_b=0.0559869350494",
+        "work cells=96 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.111415192228 feed_per_b2=0 receiver_per_b2=0.111415192228 cut_per_b2=0.111415192228 effective_C=1.0687878323 reactive_F_per_b=-0.129571615795",
+        "work cells=96 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.48568945531 feed_per_b2=0 receiver_per_b2=3.48568945531 cut_per_b2=3.48568945531 effective_C=0.451141076991 reactive_F_per_b=-0.660724559143"
+      ]
+    },
+    "carrier_bend_work128": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-refine-128 --memory-gib 8 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_work128 -- python3 software/stage1_solver/tools/mouth_carrier_bend_work.py --cells 128",
+      "started_utc": "2026-11-19T19:22:41.850004+00:00",
+      "outcome_written_utc": "2026-11-19T19:23:05.384984+00:00",
+      "duration_seconds": 23.51700359210372,
+      "memory_peak_sampled_bytes": 592666624,
+      "memory_limit_bytes": 8589934592,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_work128/stdout",
+      "stdout_size": 1147,
+      "stdout_sha256": "e41539761ff8337ef8ff5e3555e0c0365d28914d3c0bcdf5d8cac5268dd54bdd",
+      "stdout_lines": [
+        "carrier cells=128 receiver_lengths=1 current=0.0373999726942 inlet=0.0373999726942 exit=0.0373999726942 residual=1.32e-16",
+        "work cells=128 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0567697966418 feed_per_b2=0.0356433525089 receiver_per_b2=0.0211264441329 cut_per_b2=0.0211264441329 effective_C=0.54458343319 reactive_F_per_b=-0.0279730359796",
+        "work cells=128 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.37055687928 feed_per_b2=1.4466083051 receiver_per_b2=1.92394857417 cut_per_b2=1.92394857417 effective_C=0.436239854431 reactive_F_per_b=0.0150328734959",
+        "work cells=128 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.111524589085 feed_per_b2=0 receiver_per_b2=0.111524589085 cut_per_b2=0.111524589085 effective_C=1.06983725857 reactive_F_per_b=-0.127536848356",
+        "work cells=128 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.54628321217 feed_per_b2=0 receiver_per_b2=3.54628321217 cut_per_b2=3.54628321217 effective_C=0.458983523394 reactive_F_per_b=-0.776374189342"
+      ]
+    },
+    "carrier_bend_work160": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-refine-160 --memory-gib 12 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_work160 -- python3 software/stage1_solver/tools/mouth_carrier_bend_work.py --cells 160",
+      "started_utc": "2026-11-19T19:22:43.705311+00:00",
+      "outcome_written_utc": "2026-11-19T19:23:20.563696+00:00",
+      "duration_seconds": 36.79166242526844,
+      "memory_peak_sampled_bytes": 958783488,
+      "memory_limit_bytes": 12884901888,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_work160/stdout",
+      "stdout_size": 1145,
+      "stdout_sha256": "a7ef64eb289f5a643ae38c5eedfa6f9b0c5eb5da61038eac95c072938dde4e58",
+      "stdout_lines": [
+        "carrier cells=160 receiver_lengths=1 current=0.0373999726942 inlet=0.0373999726942 exit=0.0373999726942 residual=2.24e-15",
+        "work cells=160 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0567933852448 feed_per_b2=0.0356614541519 receiver_per_b2=0.0211319310929 cut_per_b2=0.0211319310929 effective_C=0.544809714826 reactive_F_per_b=-0.027013538603",
+        "work cells=160 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.45771499662 feed_per_b2=1.49329755755 receiver_per_b2=1.96441743907 cut_per_b2=1.96441743907 effective_C=0.447520436776 reactive_F_per_b=0.0118865643588",
+        "work cells=160 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.11158196086 feed_per_b2=0 receiver_per_b2=0.11158196086 cut_per_b2=0.11158196086 effective_C=1.07038761668 reactive_F_per_b=-0.126372644983",
+        "work cells=160 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.59098411908 feed_per_b2=0 receiver_per_b2=3.59098411908 cut_per_b2=3.59098411908 effective_C=0.464769011614 reactive_F_per_b=-0.819975227624"
+      ]
+    },
+    "carrier_bend_fine": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-fine --memory-gib 7 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_fine -- python3 software/stage1_solver/tools/mouth_carrier_bend_work.py --cells 224",
+      "started_utc": "2026-11-19T19:24:43.832436+00:00",
+      "outcome_written_utc": "2026-11-19T19:26:46.509892+00:00",
+      "duration_seconds": 122.6406306149438,
+      "memory_peak_sampled_bytes": 2069602304,
+      "memory_limit_bytes": 7516192768,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_fine/stdout",
+      "stdout_size": 1149,
+      "stdout_sha256": "e764db6f4039a6e0fc9098b338883187a80788fc2f1a349c75f6041baf9ddeda",
+      "stdout_lines": [
+        "carrier cells=224 receiver_lengths=1 current=0.0373999726942 inlet=0.0373999726941 exit=0.0373999726941 residual=8.06e-14",
+        "work cells=224 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.0568167676247 feed_per_b2=0.0356796581186 receiver_per_b2=0.0211371095061 cut_per_b2=0.0211371095061 effective_C=0.545034018196 reactive_F_per_b=-0.0259326858427",
+        "work cells=224 current=0.0373999726942 ports=feed+receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.53760352967 feed_per_b2=1.53737769844 receiver_per_b2=2.00022583123 cut_per_b2=2.00022583123 effective_C=0.457860141245 reactive_F_per_b=0.0269394832635",
+        "work cells=224 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=0.456605832128 work_per_b2=0.111639285149 feed_per_b2=0 receiver_per_b2=0.111639285149 cut_per_b2=0.111639285149 effective_C=1.07093751927 reactive_F_per_b=-0.125097299877",
+        "work cells=224 current=0.0373999726942 ports=receiver drift=1 trace=2 omega=3.93100103488 work_per_b2=3.63830769915 feed_per_b2=0 receiver_per_b2=3.63830769915 cut_per_b2=3.63830769915 effective_C=0.470893943613 reactive_F_per_b=-0.843456334887"
+      ]
+    },
+    "carrier_bend_rest224": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-rest224 --memory-gib 7 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_rest224 -- python3 software/stage1_solver/tools/mouth_carrier_bend_budget.py control --cells 224 --rest",
+      "started_utc": "2026-11-19T19:24:42.979478+00:00",
+      "outcome_written_utc": "2026-11-19T19:26:14.567750+00:00",
+      "duration_seconds": 91.57095389300957,
+      "memory_peak_sampled_bytes": 2022899712,
+      "memory_limit_bytes": 7516192768,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_rest224/stdout",
+      "stdout_size": 887,
+      "stdout_sha256": "46931a071f7646f14635aa19651053c8c1679e354ec71c88ebb02f9949ec5a37",
+      "stdout_lines": [
+        "control cells=224 receiver_radii=2 receiver_lengths=1 achieved_intake=0 ports=feed+receiver omega=0.456605832128 power_per_b2=0.0568749884214 feed_per_b2=0.0355552408884 cut_per_b2=0.021319747533 induced_reaction_real=-0.0259630286535",
+        "control cells=224 receiver_radii=2 receiver_lengths=1 achieved_intake=0 ports=feed+receiver omega=3.93100103488 power_per_b2=3.54003427544 feed_per_b2=1.56742027115 cut_per_b2=1.97261400429 induced_reaction_real=0.024983019214",
+        "control cells=224 receiver_radii=2 receiver_lengths=1 achieved_intake=0 ports=receiver omega=0.456605832128 power_per_b2=0.111778609572 feed_per_b2=0 cut_per_b2=0.111778609572 induced_reaction_real=-0.124812791331",
+        "control cells=224 receiver_radii=2 receiver_lengths=1 achieved_intake=0 ports=receiver omega=3.93100103488 power_per_b2=3.64006964813 feed_per_b2=0 cut_per_b2=3.64006964813 induced_reaction_real=-0.846261122495"
+      ]
+    },
+    "carrier_bend_pump": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-extra-pump --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_pump -- python3 software/stage1_solver/tools/mouth_carrier_bend_budget.py pump",
+      "started_utc": "2026-11-19T19:24:07.270618+00:00",
+      "outcome_written_utc": "2026-11-19T19:24:09.317452+00:00",
+      "duration_seconds": 1.952155645005405,
+      "memory_peak_sampled_bytes": 62435328,
+      "memory_limit_bytes": 1073741824,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_pump/stdout",
+      "stdout_size": 1267,
+      "stdout_sha256": "a383a0c5a03d56dda9b72c362da15e07935acdad7020566b0ba64a7f0dc37ec6",
+      "stdout_lines": [
+        "support omega=0.45660583213 cycles=1 external_wall_work_per_b2=0.538506141514 pump_work_per_b2=2.17554019003 dipole_energy_per_b2=2.49531390096 interaction_energy_per_b2=0.218732430571 balance_error=-1.38e-11",
+        "support omega=0.45660583213 cycles=4 external_wall_work_per_b2=8.68491551754 pump_work_per_b2=32.7939271707 dipole_energy_per_b2=42.0137217236 interaction_energy_per_b2=-0.534879035444 balance_error=-1.42e-10",
+        "support omega=0.45660583213 cycles=16 external_wall_work_per_b2=138.781381135 pump_work_per_b2=530.778071799 dipole_energy_per_b2=664.035570219 interaction_energy_per_b2=5.52388270617 balance_error=-9.11e-09",
+        "support omega=3.93100103489 cycles=1 external_wall_work_per_b2=0.0369509648409 pump_work_per_b2=-0.0302645653014 dipole_energy_per_b2=0.0334289724748 interaction_energy_per_b2=-0.0267425729353 balance_error=-5.39e-14",
+        "support omega=3.93100103489 cycles=4 external_wall_work_per_b2=0.980391964002 pump_work_per_b2=-0.455315830224 dipole_energy_per_b2=0.560447962895 interaction_energy_per_b2=-0.0353718291174 balance_error=-5.82e-14",
+        "support omega=3.93100103489 cycles=16 external_wall_work_per_b2=16.6357095349 pump_work_per_b2=-7.10333299233 dipole_energy_per_b2=9.03401770016 interaction_energy_per_b2=0.498358842446 balance_error=-2.22e-12"
+      ]
+    },
+    "carrier_bend_static96": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-extra-static96 --memory-gib 5 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_static96 -- python3 software/stage1_solver/tools/mouth_carrier_bend_budget.py control --cells 96 --static",
+      "started_utc": "2026-11-19T19:24:04.074357+00:00",
+      "outcome_written_utc": "2026-11-19T19:24:11.037308+00:00",
+      "duration_seconds": 6.9462647759355605,
+      "memory_peak_sampled_bytes": 343080960,
+      "memory_limit_bytes": 5368709120,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_static96/stdout",
+      "stdout_size": 386,
+      "stdout_sha256": "047f6bd5947e466715b0cf1dc7a946803ebb7dc193dbae102f593be8dcad1d82",
+      "stdout_lines": [
+        "control cells=96 receiver_radii=2 receiver_lengths=1 achieved_intake=0.0373999726942 ports=feed+receiver omega=0 power_per_b2=0 feed_per_b2=-0 cut_per_b2=0 induced_reaction_real=3.35104828986e-05",
+        "control cells=96 receiver_radii=2 receiver_lengths=1 achieved_intake=0.0373999726942 ports=receiver omega=0 power_per_b2=0 feed_per_b2=0 cut_per_b2=0 induced_reaction_real=2.85652156321e-05"
+      ]
+    },
+    "carrier_bend_rest128": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-extra-rest128 --memory-gib 6 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_rest128 -- python3 software/stage1_solver/tools/mouth_carrier_bend_budget.py control --cells 128 --rest",
+      "started_utc": "2026-11-19T19:24:07.122341+00:00",
+      "outcome_written_utc": "2026-11-19T19:24:24.777957+00:00",
+      "duration_seconds": 17.587357196956873,
+      "memory_peak_sampled_bytes": 616931328,
+      "memory_limit_bytes": 6442450944,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_rest128/stdout",
+      "stdout_size": 888,
+      "stdout_sha256": "f3c10fa8cdb63c38eb4b3efd3feb73456263cdbbe8641d1e35af3de2858947a1",
+      "stdout_lines": [
+        "control cells=128 receiver_radii=2 receiver_lengths=1 achieved_intake=0 ports=feed+receiver omega=0.456605832128 power_per_b2=0.0568280748447 feed_per_b2=0.0355190937309 cut_per_b2=0.0213089811137 induced_reaction_real=-0.0280037803529",
+        "control cells=128 receiver_radii=2 receiver_lengths=1 achieved_intake=0 ports=feed+receiver omega=3.93100103488 power_per_b2=3.37272673471 feed_per_b2=1.47583583266 cut_per_b2=1.89689090205 induced_reaction_real=0.0131071427861",
+        "control cells=128 receiver_radii=2 receiver_lengths=1 achieved_intake=0 ports=receiver omega=0.456605832128 power_per_b2=0.111664264106 feed_per_b2=0 cut_per_b2=0.111664264106 induced_reaction_real=-0.127253539406",
+        "control cells=128 receiver_radii=2 receiver_lengths=1 achieved_intake=0 ports=receiver omega=3.93100103488 power_per_b2=3.54768477193 feed_per_b2=0 cut_per_b2=3.54768477193 induced_reaction_real=-0.77896214034"
+      ]
+    },
+    "carrier_bend_long64": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-extra-long64 --memory-gib 5 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_long64 -- python3 software/stage1_solver/tools/mouth_carrier_bend_budget.py control --cells 64 --lengths 2",
+      "started_utc": "2026-11-19T19:24:04.356571+00:00",
+      "outcome_written_utc": "2026-11-19T19:24:11.134931+00:00",
+      "duration_seconds": 6.750457665883005,
+      "memory_peak_sampled_bytes": 262336512,
+      "memory_limit_bytes": 5368709120,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_long64/stdout",
+      "stdout_size": 937,
+      "stdout_sha256": "537a15754243cd56554aed7f955f2e6c89f6639fcb0a141b5a2c6075cef94528",
+      "stdout_lines": [
+        "control cells=64 receiver_radii=2 receiver_lengths=2 achieved_intake=0.0373999726942 ports=feed+receiver omega=0.456605832128 power_per_b2=0.0566129126907 feed_per_b2=0.035528109297 cut_per_b2=0.0210848033938 induced_reaction_real=-0.032934964756",
+        "control cells=64 receiver_radii=2 receiver_lengths=2 achieved_intake=0.0373999726942 ports=feed+receiver omega=3.93100103488 power_per_b2=2.83525298694 feed_per_b2=1.23291944409 cut_per_b2=1.60233354284 induced_reaction_real=0.29284039913",
+        "control cells=64 receiver_radii=2 receiver_lengths=2 achieved_intake=0.0373999726942 ports=receiver omega=0.456605832128 power_per_b2=0.111146329743 feed_per_b2=0 cut_per_b2=0.111146329743 induced_reaction_real=-0.133970073107",
+        "control cells=64 receiver_radii=2 receiver_lengths=2 achieved_intake=0.0373999726942 ports=receiver omega=3.93100103488 power_per_b2=3.63990419125 feed_per_b2=0 cut_per_b2=3.63990419125 induced_reaction_real=-0.305546048796"
+      ]
+    },
+    "carrier_bend_radius3": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-extra-radius3 --memory-gib 5 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_radius3 -- python3 software/stage1_solver/tools/mouth_carrier_bend_budget.py control --cells 64 --radii 3",
+      "started_utc": "2026-11-19T19:24:04.811303+00:00",
+      "outcome_written_utc": "2026-11-19T19:24:12.552100+00:00",
+      "duration_seconds": 7.67296364530921,
+      "memory_peak_sampled_bytes": 216903680,
+      "memory_limit_bytes": 5368709120,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_radius3/stdout",
+      "stdout_size": 941,
+      "stdout_sha256": "683ef36b75730ad44484dbae5bdb2920e66bf4dcb9b0f4194c29eee157873361",
+      "stdout_lines": [
+        "control cells=64 receiver_radii=3 receiver_lengths=1 achieved_intake=0.0373999726942 ports=feed+receiver omega=0.456605832128 power_per_b2=0.0459657781787 feed_per_b2=0.0201388438685 cut_per_b2=0.0258269343101 induced_reaction_real=0.0285888202453",
+        "control cells=64 receiver_radii=3 receiver_lengths=1 achieved_intake=0.0373999726942 ports=feed+receiver omega=3.93100103488 power_per_b2=3.65196124086 feed_per_b2=1.76347164382 cut_per_b2=1.88848959703 induced_reaction_real=0.167368690708",
+        "control cells=64 receiver_radii=3 receiver_lengths=1 achieved_intake=0.0373999726942 ports=receiver omega=0.456605832128 power_per_b2=0.0760659602282 feed_per_b2=0 cut_per_b2=0.0760659602282 induced_reaction_real=-0.0116311798997",
+        "control cells=64 receiver_radii=3 receiver_lengths=1 achieved_intake=0.0373999726942 ports=receiver omega=3.93100103488 power_per_b2=3.86466704057 feed_per_b2=0 cut_per_b2=3.86466704057 induced_reaction_real=-1.42440499062"
+      ]
+    },
+    "carrier_bend_spectrum160": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-spectrum160 --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_spectrum160 -- python3 software/stage1_solver/tools/mouth_carrier_bend_budget.py interpret _scratch/s11c/carrier_bend_work160/stdout _scratch/s11c/carrier_bend_static96/stdout",
+      "started_utc": "2026-11-19T19:25:29.728483+00:00",
+      "outcome_written_utc": "2026-11-19T19:25:30.487000+00:00",
+      "duration_seconds": 0.7088148891925812,
+      "memory_peak_sampled_bytes": 62955520,
+      "memory_limit_bytes": 1073741824,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44",
+        "_scratch/s11c/carrier_bend_work160/stdout": "a7ef64eb289f5a643ae38c5eedfa6f9b0c5eb5da61038eac95c072938dde4e58",
+        "_scratch/s11c/carrier_bend_static96/stdout": "047f6bd5947e466715b0cf1dc7a946803ebb7dc193dbae102f593be8dcad1d82"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_spectrum160/stdout",
+      "stdout_size": 1370,
+      "stdout_sha256": "064cd26bab300fa136285527e77bcd014833a3989a6f7c71a392709009850318",
+      "stdout_lines": [
+        "cycle ports=feed+receiver omega=0.456605832128 mean_power_per_b2=0.0567933852448 energy_per_cycle_b1e5=7.81512934366e-11 feed_fraction=0.627915627818 effective_C=0.544809714825",
+        "cycle ports=feed+receiver omega=3.93100103488 mean_power_per_b2=3.45771499662 energy_per_cycle_b1e5=5.52670016375e-10 feed_fraction=0.431874101541 effective_C=0.447520436776",
+        "transfer ports=feed+receiver identical_arms=1 first_order_energy_rate=0.00100243594917 dipole_shift=-0.00694341599438 loss_over_conservative_gap=0.246732889838 conditional_peaks=2",
+        "transfer ports=feed+receiver identical_arms=2 first_order_energy_rate=0.00194627149505 dipole_shift=-0.0067886233287 loss_over_conservative_gap=0.479042267769 conditional_peaks=2",
+        "cycle ports=receiver omega=0.456605832128 mean_power_per_b2=0.11158196086 energy_per_cycle_b1e5=1.53543841907e-10 feed_fraction=0 effective_C=1.07038761669",
+        "cycle ports=receiver omega=3.93100103488 mean_power_per_b2=3.59098411908 energy_per_cycle_b1e5=5.7397132321e-10 feed_fraction=0 effective_C=0.464769011615",
+        "transfer ports=receiver identical_arms=1 first_order_energy_rate=0.0018366791699 dipole_shift=-0.00665927079371 loss_over_conservative_gap=0.452067944761 conditional_peaks=2",
+        "transfer ports=receiver identical_arms=2 first_order_energy_rate=0.00327091633329 dipole_shift=-0.00612355449468 loss_over_conservative_gap=0.805081501716 conditional_peaks=1"
+      ]
+    },
+    "carrier_bend_spectrum224": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-spectrum224 --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_spectrum224 -- python3 software/stage1_solver/tools/mouth_carrier_bend_budget.py interpret _scratch/s11c/carrier_bend_fine/stdout _scratch/s11c/carrier_bend_static96/stdout",
+      "started_utc": "2026-11-19T19:27:07.338887+00:00",
+      "outcome_written_utc": "2026-11-19T19:27:07.947940+00:00",
+      "duration_seconds": 0.5932909748516977,
+      "memory_peak_sampled_bytes": 63217664,
+      "memory_limit_bytes": 1073741824,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44",
+        "_scratch/s11c/carrier_bend_fine/stdout": "e764db6f4039a6e0fc9098b338883187a80788fc2f1a349c75f6041baf9ddeda",
+        "_scratch/s11c/carrier_bend_static96/stdout": "047f6bd5947e466715b0cf1dc7a946803ebb7dc193dbae102f593be8dcad1d82"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_spectrum224/stdout",
+      "stdout_size": 1370,
+      "stdout_sha256": "cdd0386daa2d9b10026411bb423526a62ce1efcd64bb387202bcf872be26dbcf",
+      "stdout_lines": [
+        "cycle ports=feed+receiver omega=0.456605832128 mean_power_per_b2=0.0568167676247 energy_per_cycle_b1e5=7.81834690716e-11 feed_fraction=0.627977613128 effective_C=0.545034018196",
+        "cycle ports=feed+receiver omega=3.93100103488 mean_power_per_b2=3.53760352967 energy_per_cycle_b1e5=5.65439141914e-10 feed_fraction=0.434581683772 effective_C=0.457860141245",
+        "transfer ports=feed+receiver identical_arms=1 first_order_energy_rate=0.00100351683106 dipole_shift=-0.00694555033094 loss_over_conservative_gap=0.246998930889 conditional_peaks=2",
+        "transfer ports=feed+receiver identical_arms=2 first_order_energy_rate=0.00194948405686 dipole_shift=-0.0067925956488 loss_over_conservative_gap=0.47983298628 conditional_peaks=2",
+        "cycle ports=receiver omega=0.456605832128 mean_power_per_b2=0.111639285149 energy_per_cycle_b1e5=1.53622723758e-10 feed_fraction=0 effective_C=1.07093751928",
+        "cycle ports=receiver omega=3.93100103488 mean_power_per_b2=3.63830769915 energy_per_cycle_b1e5=5.81535371664e-10 feed_fraction=0 effective_C=0.470893943613",
+        "transfer ports=receiver identical_arms=1 first_order_energy_rate=0.00183889494346 dipole_shift=-0.0066614356957 loss_over_conservative_gap=0.452613320466 conditional_peaks=2",
+        "transfer ports=receiver identical_arms=2 first_order_energy_rate=0.0032766234608 dipole_shift=-0.00612682889926 loss_over_conservative_gap=0.806486215967 conditional_peaks=1"
+      ]
+    },
+    "carrier_bend_metrics": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-metrics --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_metrics -- python3 _scratch/s11c/carrier_bend_compare.py",
+      "started_utc": "2026-11-19T19:27:06.681252+00:00",
+      "outcome_written_utc": "2026-11-19T19:27:06.804219+00:00",
+      "duration_seconds": 0.10354314278811216,
+      "memory_peak_sampled_bytes": 14151680,
+      "memory_limit_bytes": 1073741824,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "_scratch/s11c/carrier_bend_compare.py": "6398f1ded705173643ffde08ddafd11808688972e8689d4079fc0c1d09967591"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_metrics/stdout",
+      "stdout_size": 995,
+      "stdout_sha256": "4290f2aa7be2875a317e029f2489fcf5bc3256b0c66569de6988d2b3e68fa101",
+      "stdout_lines": [
+        "compare ports=feed+receiver omega=0.456605832128 throughput_power_change_percent=-0.1023662568 zero_grid_vs_continuum_percent=-0.06045433542 mesh160_to224_percent=0.04115401294 cycle_energy_at_1e5=7.81834690716e-11 feed_fraction=0.6279776131 C=0.545034018196",
+        "compare ports=feed+receiver omega=3.93100103488 throughput_power_change_percent=-0.06866446991 zero_grid_vs_continuum_percent=-2.418962477 mesh160_to224_percent=2.258266999 cycle_energy_at_1e5=5.65439141914e-10 feed_fraction=0.4345816838 C=0.457860141245",
+        "compare ports=receiver omega=0.456605832128 throughput_power_change_percent=-0.1246431885 zero_grid_vs_continuum_percent=-0.07681913566 mesh160_to224_percent=0.05134777504 cycle_energy_at_1e5=1.53622723758e-10 feed_fraction=0 C=1.07093751927",
+        "compare ports=receiver omega=3.93100103488 throughput_power_change_percent=-0.04840426559 zero_grid_vs_continuum_percent=-1.544132662 mesh160_to224_percent=1.300703074 cycle_energy_at_1e5=5.81535371664e-10 feed_fraction=0 C=0.470893943613"
+      ],
+      "independent_or_summary_script_as_run": "\"\"\"Compare calibrated work, mesh changes and port physics in the finished runs.\"\"\"\nfrom pathlib import Path\nfrom math import pi\nr=Path('_scratch/s11c')\ndef rows(name,tag):\n    return [dict(field.split('=',1) for field in line.split()[1:]) for line in (r/name/'stdout').read_text().splitlines() if line.startswith(tag+' ')]\nflow=rows('carrier_bend_fine','work')\nrest=rows('carrier_bend_rest224','control')\ncontinuum=rows('referee_carrier_continuum01','modes=256')\ncoarse=rows('carrier_bend_work160','work')\ndef choose(table, **fields):\n    found=[row for row in table if all(row.get(key)==val for key,val in fields.items())]\n    assert len(found)==1,(len(found),fields)\n    return found[0]\nfor row in flow:\n    ports=row['ports']\n    omega=row['omega']\n    current=float(row['work_per_b2'])\n    zero=float(choose(rest,ports=ports,omega=omega)['power_per_b2'])\n    reference=choose(continuum,clamped='1' if ports=='receiver' else '0',omega=omega)\n    exact=float(reference['power'])\n    previous=float(choose(coarse,ports=ports,omega=omega)['work_per_b2'])\n    print(f\"compare ports={ports} omega={omega} throughput_power_change_percent={100*(current-zero)/zero:.10g} \"\n          f\"zero_grid_vs_continuum_percent={100*(zero-exact)/exact:.10g} \"\n          f\"mesh160_to224_percent={100*(current-previous)/current:.10g} cycle_energy_at_1e5={2*pi*1e-10*current/float(omega):.12g} \"\n          f\"feed_fraction={float(row['feed_per_b2'])/current:.10g} C={row['effective_C']}\")\n"
+    },
+    "carrier_bend_lines48": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-lines-48 --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_lines48 -- python3 software/stage1_solver/tools/mouth_carrier_bend_spectrum.py --cells 48",
+      "started_utc": "2026-11-19T19:26:24.797304+00:00",
+      "outcome_written_utc": "2026-11-19T19:26:34.894470+00:00",
+      "duration_seconds": 10.062293528113514,
+      "memory_peak_sampled_bytes": 117727232,
+      "memory_limit_bytes": 2147483648,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_spectrum.py": "08a04e6f2bb6dbe18f897546d244a7261d4cc5289c5dc19a11610f383a63ee4c"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_lines48/stdout",
+      "stdout_size": 902,
+      "stdout_sha256": "8924acf47e4434b5f265f70aade0cd0612115055d1b245354f376a1756e607b7",
+      "stdout_lines": [
+        "lineshape cells=48 ports=feed+receiver arms=1 three_tone_shift=-0.00679224265573 dipole_FWHM=0.000989801420478 width_over_gap=0.243623111325 right_over_left=0.998935474 frequency_sampling_change=1.77e-08 conditional_peak_count=2",
+        "lineshape cells=48 ports=feed+receiver arms=2 three_tone_shift=-0.00662617011104 dipole_FWHM=0.00191311892437 width_over_gap=0.470882315428 right_over_left=0.997738712 frequency_sampling_change=3.06e-09 conditional_peak_count=2",
+        "lineshape cells=48 ports=receiver arms=1 three_tone_shift=-0.00659559080975 dipole_FWHM=0.00189605152514 width_over_gap=0.466681459765 right_over_left=0.99529478 frequency_sampling_change=4.46e-08 conditional_peak_count=2",
+        "lineshape cells=48 ports=receiver arms=2 three_tone_shift=-0.00608438332164 dipole_FWHM=0.00344377450109 width_over_gap=0.847627656718 right_over_left=0.984294188 frequency_sampling_change=2.45e-07 conditional_peak_count=1"
+      ]
+    },
+    "carrier_bend_lines80": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-lines-80 --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/carrier_bend_lines80 -- python3 software/stage1_solver/tools/mouth_carrier_bend_spectrum.py --cells 80",
+      "started_utc": "2026-11-19T19:26:25.122160+00:00",
+      "outcome_written_utc": "2026-11-19T19:27:01.277934+00:00",
+      "duration_seconds": 36.10883046593517,
+      "memory_peak_sampled_bytes": 243625984,
+      "memory_limit_bytes": 4294967296,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_carrier_bend_spectrum.py": "08a04e6f2bb6dbe18f897546d244a7261d4cc5289c5dc19a11610f383a63ee4c"
+      },
+      "stdout_path": "_scratch/s11c/carrier_bend_lines80/stdout",
+      "stdout_size": 901,
+      "stdout_sha256": "d8f586ec3e0a4a350afed346f7f18840244cd2b2b9f491f2e62f2a15d22af220",
+      "stdout_lines": [
+        "lineshape cells=80 ports=feed+receiver arms=1 three_tone_shift=-0.00680148810613 dipole_FWHM=0.000995379428922 width_over_gap=0.244996045071 right_over_left=0.998996086 frequency_sampling_change=1.81e-08 conditional_peak_count=2",
+        "lineshape cells=80 ports=feed+receiver arms=2 three_tone_shift=-0.00664316718203 dipole_FWHM=0.00192918033604 width_over_gap=0.474835564033 right_over_left=0.997865431 frequency_sampling_change=3.4e-10 conditional_peak_count=2",
+        "lineshape cells=80 ports=receiver arms=1 three_tone_shift=-0.00660765502079 dipole_FWHM=0.00190539590409 width_over_gap=0.468981422794 right_over_left=0.995507902 frequency_sampling_change=5.07e-08 conditional_peak_count=2",
+        "lineshape cells=80 ports=receiver arms=2 three_tone_shift=-0.00610293935893 dipole_FWHM=0.00347215115991 width_over_gap=0.85461209801 right_over_left=0.984566713 frequency_sampling_change=2.65e-07 conditional_peak_count=1"
+      ]
+    },
+    "referee_carrier_step_green01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-step-referee --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/referee_carrier_step_green01 -- python3 _scratch/s11c/referee_carrier_step_green.py",
+      "started_utc": "2026-11-19T19:23:33.227556+00:00",
+      "outcome_written_utc": "2026-11-19T19:23:34.079839+00:00",
+      "duration_seconds": 0.8356295991688967,
+      "memory_peak_sampled_bytes": 42082304,
+      "memory_limit_bytes": 2147483648,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "_scratch/s11c/referee_carrier_step_green.py": "1e7b7a8e6e5dbd651d977f77908afcc24090e82460b782ce7abfd9023061baf6"
+      },
+      "stdout_path": "_scratch/s11c/referee_carrier_step_green01/stdout",
+      "stdout_size": 894,
+      "stdout_sha256": "4a7c94191c42817c297704df156bf4d85a0b0ef48fd33ce8aa88a263da8ead9a",
+      "stdout_lines": [
+        "cells=16 omega=0.456605832128 wall=0.0543427994957 feed=0.0338222036063 receiver=0.0205205958895 residual=-2.08e-17",
+        "cells=16 omega=3.93100103488 wall=3.99976738714 feed=1.95364440766 receiver=2.04612297948 residual=-4.44e-16",
+        "cells=32 omega=0.456605832128 wall=0.0561756388625 feed=0.035052879134 receiver=0.0211227597285 residual=-1.04e-17",
+        "cells=32 omega=3.93100103488 wall=2.50416335782 feed=1.30123331229 receiver=1.20293004554 residual=1.11e-15",
+        "cells=64 omega=0.456605832128 wall=0.0566711804641 feed=0.0354027927239 receiver=0.0212683877402 residual=1.39e-17",
+        "cells=64 omega=3.93100103488 wall=2.83641569969 feed=1.25869445793 receiver=1.57772124176 residual=6e-15",
+        "cells=128 omega=0.456605832128 wall=0.0568280748446 feed=0.0355190937309 receiver=0.0213089811137 residual=1.18e-16",
+        "cells=128 omega=3.93100103488 wall=3.37272673471 feed=1.47583583266 receiver=1.89689090205 residual=-2.02e-14"
+      ],
+      "independent_or_summary_script_as_run": "\"\"\"Radiation from a moving Neumann sleeve into two half-guides at zero flow.\n\nUse symmetric/antisymmetric Bogoliubov polarizations in phase-shifted real\ncoordinates and image Green functions on two free-ended half-chains. Their\nonly unknown is the bond force across the aperture. There are no finite ports\nand no two-dimensional response solve. Unit physical wall displacement.\n\"\"\"\nfrom pathlib import Path\nimport json\nimport numpy as np\nfrom scipy.linalg import eigh\nimport yaml\n\n\ndef radial(cells, dr):\n    edges = np.arange(cells+1)*dr\n    measure = 4*np.pi*np.diff(edges**3)/9\n    difference = np.diff(np.eye(cells), axis=0)\n    grad = difference.T @ ((4*np.pi/3*edges[1:-1]**2/dr)[:,None]*difference)\n    polar = 8*np.pi/3*dr*np.eye(cells)\n    eigen, phi = eigh(grad+polar, np.diag(measure))\n    return measure, eigen, phi\n\n\ndef axial(lam, dz, kappa, shift):\n    cosk = 1 + dz**2*(lam + shift/kappa)/2\n    z = np.empty(len(lam), complex)\n    open_ = abs(cosk)<1\n    z[open_] = np.exp(1j*np.arccos(cosk[open_]))\n    closed = cosk[~open_]\n    z[~open_] = 1/(closed+np.sign(closed)*np.sqrt(closed**2-1))\n    return z, dz/kappa/(1/z-z), open_\n\n\ndef response(cells, radius, length, kappa, hbar, g, omega):\n    dw = length/(2*cells)\n    dr = radius/cells\n    measure, lam_l, phi_l = radial(cells,dr)\n    _, lam_r, phi_r = radial(2*cells,dr)\n    distance = np.arange(cells)\n    axial_shape = np.sin(2*np.pi*(length/2-(distance+.5)*dw)/length)**2\n    boundary_quad = (4*np.pi/3)*radius**2\n    proj = (9*phi_l[-1] - phi_l[-2])/8\n    shifts, pol = eigh([[2*g,hbar*omega],[hbar*omega,0]])\n    p_l, p_r, direct = 0, 0, 0\n    for shift, phase_weight in zip(shifts,pol[1]):\n        zl, gl, ol = axial(lam_l,dw,kappa,shift)\n        zr, gr, or_ = axial(lam_r,dw,kappa,shift)\n        force = (-hbar*omega*phase_weight/2*boundary_quad*dw*\n                 proj[:,None]*axial_shape)\n        image_l = gl*(1+zl)\n        image_r = gr*(1+zr)\n        wall_to_cut = image_l[:,None]*zl[:,None]**distance\n        field_free_end = phi_l @ (wall_to_cut*force).sum(axis=1)\n        narrow_compliance = (phi_l*image_l)@phi_l.T\n        aperture = phi_r[:cells]\n        wide_compliance = (aperture*image_r)@aperture.T\n        t = np.linalg.solve(narrow_compliance+wide_compliance+np.diag(dw/kappa/measure),-field_free_end)\n        left_interface = phi_l.T@t\n        right_interface = -aperture.T@t\n        zo=zl[ol,None]\n        a_l = gl[ol]*((zo**(-distance)+zo**(1+distance))*force[ol]).sum(axis=1) + image_l[ol]*left_interface[ol]\n        a_r = image_r[or_]*right_interface[or_]\n        p_l += omega*kappa/dw*(zl[ol].imag*abs(a_l)**2).sum()\n        p_r += omega*kappa/dw*(zr[or_].imag*abs(a_r)**2).sum()\n        for d in distance:\n            G = gl[:,None]*(zl[:,None]**abs(d-distance) + zl[:,None]**(1+d+distance))\n            field = (G*force).sum(axis=1) + wall_to_cut[:,d]*left_interface\n            direct += omega*(force[:,d]@field).imag\n    return direct, p_l, p_r\n\n\nif __name__=='__main__':\n    archive = yaml.safe_load(Path('software/stage1_solver/reports/pathA_26_derrick_results.yaml').read_text())\n    params = archive['parameters']\n    hbar = params['hbar']\n    runs = json.loads(Path('research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json').read_text())['runs']\n    def value(run,key,tag):\n        line, = (s for s in runs[run]['stdout_lines'] if s.startswith(tag))\n        return float(dict(t.split('=',1) for t in line.split() if '=' in t)[key])\n    length = value('smooth_dipole_l015_01','L','point n=1 ')\n    for n in [16,32,64,128]:\n        for key in ['difference','sum']:\n            w=value('mouth_wave_linewidth_budget01',key,'bow h=0.015 ')\n            p,l,r = response(n,archive['phase_A']['q_star'][0],length,hbar**2/(2*params['m']),hbar,5*params['K_eos'],w)\n            print(f\"cells={n} omega={w:.12g} wall={p:.12g} feed={l:.12g} receiver={r:.12g} residual={p-l-r:.3g}\", flush=True)\n            assert abs(p-l-r)<1e-8*max(1.,abs(p))\n"
+    },
+    "referee_carrier_continuum01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-step-referee --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/referee_carrier_continuum01 -- python3 _scratch/s11c/referee_carrier_continuum.py",
+      "started_utc": "2026-11-19T19:24:56.632686+00:00",
+      "outcome_written_utc": "2026-11-19T19:24:59.737941+00:00",
+      "duration_seconds": 3.058759470935911,
+      "memory_peak_sampled_bytes": 54992896,
+      "memory_limit_bytes": 2147483648,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "_scratch/s11c/referee_carrier_continuum.py": "be9aef130c3b323a6a2232c47f501e9b963e27f9da18bc28a677400ab1e6a081"
+      },
+      "stdout_path": "_scratch/s11c/referee_carrier_continuum01/stdout",
+      "stdout_size": 2746,
+      "stdout_sha256": "8d6747f49411dde9d36b3b12105848d890c0c86c0a987ba4668a69e180d24f11",
+      "stdout_lines": [
+        "modes=16 clamped=0 omega=0.456605832128 power=0.0568214019125 feed=0.0355074440968 receiver=0.0213139578157 open=2,4 min_axial_k=2.369161,2.173725",
+        "modes=16 clamped=1 omega=0.456605832128 power=0.111695298004 feed=0 receiver=0.111695298004 open=2,4 min_axial_k=2.369161,2.173725",
+        "modes=16 clamped=0 omega=3.93100103488 power=3.61281282578 feed=1.60785613469 receiver=2.00495669109 open=9,18 min_axial_k=4.321272,4.222972",
+        "modes=16 clamped=1 omega=3.93100103488 power=3.68638725086 feed=0 receiver=3.68638725086 open=9,18 min_axial_k=4.321272,4.222972",
+        "modes=32 clamped=0 omega=0.456605832128 power=0.0568739451931 feed=0.0355525188807 receiver=0.0213214263123 open=2,4 min_axial_k=2.369161,2.173725",
+        "modes=32 clamped=1 omega=0.456605832128 power=0.111788186323 feed=0 receiver=0.111788186323 open=2,4 min_axial_k=2.369161,2.173725",
+        "modes=32 clamped=0 omega=3.93100103488 power=3.6238459092 feed=1.61493166902 receiver=2.00891424019 open=9,18 min_axial_k=4.321272,4.222972",
+        "modes=32 clamped=1 omega=3.93100103488 power=3.69630688417 feed=0 receiver=3.69630688417 open=9,18 min_axial_k=4.321272,4.222972",
+        "modes=64 clamped=0 omega=0.456605832128 power=0.0568965102112 feed=0.0355717610302 receiver=0.021324749181 open=2,4 min_axial_k=2.369161,2.173725",
+        "modes=64 clamped=1 omega=0.456605832128 power=0.111834947725 feed=0 receiver=0.111834947725 open=2,4 min_axial_k=2.369161,2.173725",
+        "modes=64 clamped=0 omega=3.93100103488 power=3.62663053326 feed=1.61666258198 receiver=2.00996795128 open=9,18 min_axial_k=4.321272,4.222972",
+        "modes=64 clamped=1 omega=3.93100103488 power=3.69748070369 feed=0 receiver=3.69748070369 open=9,18 min_axial_k=4.321272,4.222972",
+        "modes=128 clamped=0 omega=0.456605832128 power=0.0569057066085 feed=0.0355796039454 receiver=0.0213261026631 open=2,4 min_axial_k=2.369161,2.173725",
+        "modes=128 clamped=1 omega=0.456605832128 power=0.111855754951 feed=0 receiver=0.111855754951 open=2,4 min_axial_k=2.369161,2.173725",
+        "modes=128 clamped=0 omega=3.93100103488 power=3.62749621721 feed=1.61719486496 receiver=2.01030135226 open=9,18 min_axial_k=4.321272,4.222972",
+        "modes=128 clamped=1 omega=3.93100103488 power=3.69735531533 feed=0 receiver=3.69735531533 open=9,18 min_axial_k=4.321272,4.222972",
+        "modes=256 clamped=0 omega=0.456605832128 power=0.0569093926165 feed=0.0355827503551 receiver=0.0213266422614 open=2,4 min_axial_k=2.369161,2.173725",
+        "modes=256 clamped=1 omega=0.456605832128 power=0.111864542947 feed=0 receiver=0.111864542947 open=2,4 min_axial_k=2.369161,2.173725",
+        "modes=256 clamped=0 omega=3.93100103488 power=3.62778913333 feed=1.61737382181 receiver=2.01041531152 open=9,18 min_axial_k=4.321272,4.222972",
+        "modes=256 clamped=1 omega=3.93100103488 power=3.69715868291 feed=0 receiver=3.69715868291 open=9,18 min_axial_k=4.321272,4.222972"
+      ],
+      "independent_or_summary_script_as_run": "\"\"\"Continuum, zero-current, spherical-Bessel guide-aperture matching.\n\nThe interface traction is expanded on narrow l=1 Neumann transverse modes.\nWide guide modes implement free-boundary compliance with the traction\nextended by zero on the rigid shelf. Both half-lines radiate to infinity.\n\"\"\"\nimport json\nfrom pathlib import Path\nimport numpy as np\nfrom scipy.special import spherical_jn\nfrom scipy.optimize import brentq\nimport yaml\n\n\ndef spectrum(radius,narrow,wide):\n    x = np.array([brentq(lambda x: spherical_jn(1,x,True),\n                         (n-.5)*np.pi,n*np.pi) for n in range(1,wide+1)])\n    overlap_weight = 4*np.pi/3\n    norm = 1 / np.sqrt(overlap_weight*radius**3/2*\n                       (spherical_jn(1,x)**2-spherical_jn(0,x)*spherical_jn(2,x)))\n    kn,kw = x[:narrow]/radius,x/(2*radius)\n    phin = norm[:narrow]*spherical_jn(1,x[:narrow])\n    dwide = norm/np.sqrt(8)*kw*spherical_jn(1,kw*radius,True)\n    # Green's transverse identity, since the narrow-mode slope at the lip vanishes.\n    overlap = overlap_weight*radius**2*np.outer(dwide,phin)/(kn[None,:]**2-kw[:,None]**2)\n    return kn,kw,phin,overlap\n\n\ndef gamma(k, shift,kappa):\n    v=k**2+shift/kappa\n    return np.where(v<0,-1j*np.sqrt(abs(v)),np.sqrt(abs(v))+0j),v<0\n\n\ndef shape_integral(beta, sleeve):\n    # Laplace transform of sin(pi*z/sleeve)^2 on [0,sleeve].\n    p=2*np.pi/sleeve\n    return -np.expm1(-beta*sleeve)*p**2/(2*beta*(beta**2+p**2))\n\n\ndef response(modes,radius,length,kappa,hbar,g,omega,clamped):\n    kn,kw,phin,Q = spectrum(radius,modes,3*modes)\n    shifts,pol = np.linalg.eigh([[2*g,hbar*omega],[hbar*omega,0]])\n    pl,pr=0.,0.\n    info=None\n    for shift,phase_weight in zip(shifts,pol[1]):\n        gn,ol=gamma(kn,shift,kappa)\n        gw,ow=gamma(kw,shift,kappa)\n        if ol.any():\n            info=(ol.sum(),ow.sum(),np.min(abs(gn.imag[ol])),np.min(abs(gw.imag[ow])))\n        cn,cw=1/(kappa*gn),1/(kappa*gw)\n        B=-hbar*omega*phase_weight/2*4*np.pi/3*radius**2*phin\n        if clamped:\n            tail=np.exp(-gn*length/2)\n            # Feed fixes both field quadratures at d=length/2. The shape\n            # is symmetric in the sleeve, so its reflected integral uses\n            # only decaying exponentials even in high evanescent channels.\n            pfree = cn*B*shape_integral(gn,length/2)*(1-tail)/(1+tail**2)\n            narrow_compliance = cn*(1-tail**2)/(1+tail**2)\n        else:\n            pfree = cn*B*shape_integral(gn,length/2)\n            narrow_compliance = cn\n        traction = np.linalg.solve(np.diag(narrow_compliance)+(Q.T*cw)@Q,-pfree)\n        z=gn[ol]\n        a_l = cn[ol]*(traction[ol]+B[ol]*(shape_integral(z,length/2)+shape_integral(-z,length/2))/2)\n        a_r = -cw[ow]*(Q[ow]@traction)\n        if not clamped:\n            pl += omega*kappa*(-gn[ol].imag*abs(a_l)**2).sum()\n        pr += omega*kappa*(-gw[ow].imag*abs(a_r)**2).sum()\n    return pl,pr,info\n\n\nif __name__=='__main__':\n    archive=yaml.safe_load(Path('software/stage1_solver/reports/pathA_26_derrick_results.yaml').read_text())\n    params=archive['parameters']\n    runs=json.loads(Path('research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json').read_text())['runs']\n    def val(run,tag,key):\n        line,=(s for s in runs[run]['stdout_lines'] if s.startswith(tag))\n        return float(dict(t.split('=',1) for t in line.split() if '=' in t)[key])\n    length=val('smooth_dipole_l015_01','point n=1 ','L')\n    for modes in [16,32,64,128,256]:\n        for key in ['difference','sum']:\n            w=val('mouth_wave_linewidth_budget01','bow h=0.015 ',key)\n            for clamped in [False,True]:\n                l,r,info=response(modes,archive['phase_A']['q_star'][0],length,params['hbar']**2/(2*params['m']),params['hbar'],5*params['K_eos'],w,clamped)\n                nl,nr,kl,kr=info\n                print(f\"modes={modes} clamped={int(clamped)} omega={w:.12g} power={l+r:.12g} feed={l:.12g} receiver={r:.12g} open={nl},{nr} min_axial_k={kl:.7g},{kr:.7g}\",flush=True)\n"
+    },
+    "referee_carrier_transfer01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool carrier-step-referee --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/referee_carrier_transfer01 -- python3 _scratch/s11c/referee_carrier_transfer.py",
+      "started_utc": "2026-11-19T19:27:23.361308+00:00",
+      "outcome_written_utc": "2026-11-19T19:27:23.715229+00:00",
+      "duration_seconds": 0.3371730977669358,
+      "memory_peak_sampled_bytes": 42565632,
+      "memory_limit_bytes": 1073741824,
+      "swap_limit": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "data_arguments_sha256": {
+        "_scratch/s11c/referee_carrier_transfer.py": "c37d042d37bef1bba0604420e9d4824bba4ee0831ab2d55491b8dac9dc774205"
+      },
+      "stdout_path": "_scratch/s11c/referee_carrier_transfer01/stdout",
+      "stdout_size": 1177,
+      "stdout_sha256": "18982d809393808d07ccf2e1261883fd6456e484dafa065466ec58b19252ff63",
+      "stdout_lines": [
+        "fold_position=-0.787998036058 fold_FWHM_over_gap=0.503226486865",
+        "file=carrier_bend_spectrum160 ports=feed+receiver arms=1 ratio=0.246732889838 derivative_maxima=2",
+        "file=carrier_bend_spectrum160 ports=feed+receiver arms=2 ratio=0.479042267769 derivative_maxima=2",
+        "file=carrier_bend_spectrum160 ports=receiver arms=1 ratio=0.452067944761 derivative_maxima=2",
+        "file=carrier_bend_spectrum160 ports=receiver arms=2 ratio=0.805081501716 derivative_maxima=1",
+        "file=carrier_bend_lines48 ports=feed+receiver arms=1 ratio=0.243623111325 derivative_maxima=2",
+        "file=carrier_bend_lines48 ports=feed+receiver arms=2 ratio=0.470882315428 derivative_maxima=2",
+        "file=carrier_bend_lines48 ports=receiver arms=1 ratio=0.466681459765 derivative_maxima=2",
+        "file=carrier_bend_lines48 ports=receiver arms=2 ratio=0.847627656718 derivative_maxima=1",
+        "file=carrier_bend_lines80 ports=feed+receiver arms=1 ratio=0.244996045071 derivative_maxima=2",
+        "file=carrier_bend_lines80 ports=feed+receiver arms=2 ratio=0.474835564033 derivative_maxima=2",
+        "file=carrier_bend_lines80 ports=receiver arms=1 ratio=0.468981422794 derivative_maxima=2",
+        "file=carrier_bend_lines80 ports=receiver arms=2 ratio=0.85461209801 derivative_maxima=1"
+      ],
+      "independent_or_summary_script_as_run": "\"\"\"Count maxima directly from the derivative polynomial for the stated readout.\"\"\"\nfrom pathlib import Path\nimport numpy as np\nfrom numpy.polynomial import Polynomial as Poly\nfrom scipy.optimize import root\n\nx=Poly([0.,1.])\ndef stationary(ratio):\n    a=ratio/2\n    return x*((x+1)**2+9*a*a)**2+3*(x+1)*(x*x+a*a)**2\n\ndef merge(v):\n    t,r=v\n    p=stationary(r)\n    return (p(t),p.deriv()(t))\n\ncross=root(merge,[-.7,.65],tol=1e-12)\nassert cross.success\nprint(\"fold_position=%.12g fold_FWHM_over_gap=%.12g\"%tuple(cross.x))\nfor file in [\"carrier_bend_spectrum160\",\"carrier_bend_lines48\",\"carrier_bend_lines80\"]:\n    for line in Path(\"_scratch/s11c\",file,\"stdout\").read_text().splitlines():\n        if not line.startswith((\"transfer \",\"lineshape \")):\n            continue\n        f=dict(v.split(\"=\",1) for v in line.split() if \"=\" in v)\n        r=float(f.get(\"width_over_gap\",f.get(\"loss_over_conservative_gap\")))\n        p=stationary(r)\n        maxima=[z.real for z in p.roots() if abs(z.imag)<1e-7 and p.deriv()(z.real)>0]\n        print(f\"file={file} ports={f['ports']} arms={f.get('arms',f.get('identical_arms'))} ratio={r:.12g} derivative_maxima={len(maxima)}\")\n"
+    }
+  }
+}

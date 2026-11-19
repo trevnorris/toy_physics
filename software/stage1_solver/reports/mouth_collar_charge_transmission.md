@@ -1,0 +1,16 @@
+# Can the winding of a draining mouth reach the exterior?
+
+**Yes, if rim material selectively aligns the angular field.** We held the earlier inward preparation fixed and freed every angular and radial link on seven nested spheres. Incoming material starts uniformly oriented. After six encounters its preferred orientation wraps once around the rim, with opposite signs on mirror mouths. We measured the field flux in units of \(2\pi\) in a source-free exterior beginning at model radius 16. [Preparation](mouth_turnover_and_orientation.md) · [Methods, guarded measurements and review](../../../research/pde_ledger_v3/_measurements/mouth_collar_charge_transmission.json)
+
+| Proposed material law | Ground-state exterior reading |
+|---|---|
+| Neighboring polarized fractions couple coherently to their dominant orientations. Rim and feed attachment strengths are \(64K\) and \(gK\), in units of the spring energy \(K\). | For \(0\le g<0.016023\), every global minimum carries the rim's signed unit outside. For \(g>1.751255\), the feeding layer cancels the rim winding and the exterior reads zero. These are sufficient bounds on two finite lattices at two rotations. The intervening range remains open. |
+| The prepared internal state transfers between patches regardless of orientation, including at the rim. | Every cut is neutral at the global minimum for any nonnegative attachment strengths and every common real emission-record overlap between zero and one. A neutral trial costs at most \(0.05282545K\). One exterior unit alone costs at least \(0.09817477K\). |
+
+**Can the trapped material itself favor a sign?** We tried a mobile excitation with two internal states. Its energy favors alignment with the local polarization by strength \(J\). Hopping has amplitude \(t\) and acquires the phase \(e^{-ia_{ij}}\) of the free link it crosses. On three sites with orthogonal unit polarizations, one excitation preferred approximately \(+0.401293\) radians at \(J/t=4\). Mirroring the loop reversed the sign. Filling all six states removed the preference. On the prepared rim with 128 triangles at the first rotation, the independently preferred phases summed to approximately \(\pm0.751665\) turns at \(J/t=16\). [Local phase measurements](../tools/mouth_collar_exchange_triangle.py) · [Related spin-aligned hopping model](https://doi.org/10.1103/PhysRevB.62.R6065)
+
+**Can one shared excitation pay for an exterior unit?** We allowed one excitation to visit every rim site at zero temperature. A bound on its maximum energy gain in any field establishes neutral ground states on every cut for \(0<t/K<3.481278\), at each tested \(J/t=1,4,16\), on both lattices, rotations and mirrors. The isolated loops' preferred phases cannot be added as independent energy contributions for one excitation. [Whole-rim bound](../tools/mouth_collar_mobile_rim.py)
+
+The outstanding material measurements are the response to a phase bias between held patches, the splitting between neighboring trapped modes, and which modes are occupied at fixed intake. The standing-wave equations allow different polarization populations at the same radial load. Radius-independent electric charge, force on a probe and 0PN free fall remain open. [Standing-wave controls](../../em_charge_attribute/reports/trapped_wave_charge.md)
+
+Working calculation on base `df13acaa`. No new commit.

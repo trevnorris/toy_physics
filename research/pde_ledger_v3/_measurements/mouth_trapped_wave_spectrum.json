@@ -1,0 +1,886 @@
+{
+  "working_base": "df13acaa78634e254be4c732068260e62a210d4f",
+  "status": "Uncommitted working calculation with a scoped independent local review. Formal two-leg acceptance pending.",
+  "report": "software/stage1_solver/reports/mouth_trapped_wave_spectrum.md",
+  "report_sha256": "1840e3bdde694647ed33fd69d2151d9d92f45f7ffc3f877c93d4c97244504ec5",
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "input_sha256": {
+    "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b",
+    "software/stage1_solver/reports/pathA_26_derrick.md": "dc878f77efce234f83858f220bd0bedaaa35190f57e3d5cae7957e0e5ea04a6c",
+    "software/stage1_solver/tools/pathA_26_derrick_sympy.py": "0137ce798625b830c33f37db01e0ef789279b27a205a11c1b0a4f3955f2cf4ce",
+    "notes/inner_throat/inner_throat_freeze_sheet.md": "3c2d49ffae18ae6486aa0ba5b2a35b9ced660846c460b05ba25a24b281b58a74",
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "notes/inner_throat/4d_next_steps.md": "ced07efc15ac19dad2e72a1900bb417771ed4b958dc1454920ff8e8050e08c80",
+    "software/stage1_solver/reports/mouth_standing_wave_budget.md": "89bd841c1c4bf77989a4bd3f8589819e29d4f26006fa54720639779d6de7defa",
+    "software/stage1_solver/reports/mouth_rim_retained_excitation.md": "543b61e795a78a23d2a203c741183c09df953345863ce2f108631e665a3e8559",
+    "research/pde_ledger_v3/_measurements/mouth_rim_retained_excitation.json": "e088ddb15f13cd93a97d2e470d0b1297c05ca343d16c11cd17d09baaebbecf9e",
+    "research/pde_ledger_v3/steps/S11bA_interface_response.md": "c571273fe6bfe6667c3f85ac16aabb935c0ba976c84e7badf5369421c67b0426",
+    "software/em_charge_attribute/reports/undriven_trapped_bow.md": "26e3c803dd838e33b44b48f67bd21ee0d57fada5332222e26a0d128f33506962"
+  },
+  "equations_and_scope": {
+    "objective": "Select an existing trapped mode and determine its first and second addition energies, test whether relaxation gives a common material response, and quantify the physically allowed losses and missing response data.",
+    "models": "The native real scalar A has energy (1/2)integral[(partial_t A)^2+c^2|grad A|^2+mu_A^2(q)A^2] and fixed-shape oscillators are harmonic. The n=5 carrier potential belongs to a different field. For the archived hard radial/DN surrogate, fixed boundary energies and controller work are compared explicitly. The finite-side comparator uses a finite radial gap and reflecting end throughout (DN), a mouth node and no radial-axial mixing at fixed R. The primary open calculation uses the freeze-sheet smooth mass well in R^3 x R, symmetric in w, with two ends open to a scalar exterior gap mu_out=2.5. These are different boundary conditions. In the open test the radius is held, the length varies; the archived pressure-volume and cap/side tension law are kept. The smooth result is a conservative comparison. An exact stationary solution for the full nonlinear flowing medium has not been assumed.",
+    "actions": "Support monopole action I_s=1. A selected real dipole polarization above it has J_d=n*h_w, n=0,1,2. The action step h_w=.03 is a *trial* identification with the carrier hbar. Treat additions as excess over background and omit geometry-dependent vacuum forces (normal-ordering convention). The classical wave sector itself has continuous action; it gives neither the quantum nor a real parcel transition matrix element. At held shape E=e_wall+I_s*omega_s+J_d*omega_d. When one or more shape coordinates relax, the curvature of the minimum with respect to J is -grad(omega_d)^T K^-1 grad(omega_d) for positive reduced Hessian K. A hard stop at maximum length can suppress this effect. Results for changing the macroscopic fundamental by .03 at I=1 are separate action increments. They are not the first two quanta of an otherwise unsupported throat. At zero action Phase A has no open stationary shape and the small-action unsupported sharp trials exceed the scalar cutoff.",
+    "current": "The optional fixed-current calculation holds archive mass flux Phi=.01 R0^3/L0 at each action by controlling the feed. Its work kernel gives F=s Phi²/rho0 grad(R²L) in archive units; at fixed R the corresponding axial load is constant. Reported energies include the work of this controlled load. Signs s are two work routings, not mouth mirrors. Fixed R0 in mouth_wave_depth_response; independent verify.py also tests holding the radius at the distinct, all-shape equilibrium for each sign. Only the zero-flow rows of those two choices should coincide. The native Phase C slaved fixed-feed force is generally nonconservative over R,L and gave instability over the required gain box; the weak controlled comparison does not establish a physical stable drain. The earlier total intake .25 has not been identified with archive dimensional mass flux.",
+    "smooth_method": "Write u=r A_l; the radial kinetic term includes l(l+1)/r². Impose regularity at r=0 and evenness at w=0 for the lowest axial mode; numerical outer boxes are tested. The interior well uses the archived tanh gates with radius R0, smooth axial absolute value and independent thicknesses. Compute lowest l=0 and l=1 frequencies, and their Hellmann-Feynman length derivatives. Solve stationarity of pressure-volume plus side/cap tension and both mode energies, test positive curvature and the 2.5 continuum thresholds. Compare h=.03 and .015 at outer extent 7.2 and extent 9 at h=.03. These are numerical sensitivities, not rigorous error bounds. Angular degeneracy means the three dipole directions share static energies, including matched mirrors. Scalar frequencies and charged/helical quantum numbers are independent concepts.",
+    "finite_side": "Independent radial matching and axial minimization test an empty dipole above a separate occupied monopole under the same wall-energy parameters. In the reflected-end cylinder the true lowest open radial scalar continuum is sqrt(mu_out²+[pi/(2L)]²). Under exact separation, L-only motion has zero radial overlap with outgoing modes at fixed R. For the smooth-gate problem the exterior threshold is mu_out. For example 2omega_d-omega_s exceeds the smooth threshold but is below the true reflecting-end continuum in the tested geometry. A fixed quadratic wave Hamiltonian cannot convert quanta merely because energies allow it.",
+    "conditional_quantum_readout": "Independently assume a quantized material depth coordinate, M(L)=rho0*(4pi R^3/3)*L/4, metric coordinate y=(2/3)*sqrt(M/L)*L^(3/2), common trial action step .03 for the wall, and kinetic operator -hbar² partial_y²/2. Quantize the one-dimensional action-diagonal potentials E_n(L) in the finite-side comparator. There is no additional wave zero-point or Born-Huang term, flexible higher modes, or calibrated wall kinetic operator supplied by the archive. A different choice can change the numbers. For a rotating-wave parcel interaction G(a_d sigma_+ + h.c.) taken independent of L, use full adjacent-ladder resolvents and wall overlap factors to second order in G. Instrumental angular HWHM .001, test detunings ±.08. Absorption and dephasing in a real drain are not inferred from this regularizer. Finite-difference and sine-Galerkin give about 0.9914 for first ground-wall overlap squared and -16.38 or -15.41 in units of G² for the two excess common shifts in the resting comparator. G and a local physical connection remain unselected. Fixed-R finite-side response to an independently applied axial force also gives d(first spacing)/dF=-(L1-L0), checked at two test strengths.",
+    "loss_selection": "Rigid bound modes below the gap have zero linear scalar radiation. The wave force on a boundary (at fixed lab field) is -A² partial_q mu_A²/2; for a harmonic coherent standing mode the DC and double-frequency force amplitudes both equal |I partial_q omega|. The scalar parity A -> -A forbids 2 bound scalars -> 1 outgoing scalar for parity eigenstates without an external parity-odd source. A coherent support or energy in material modes allows different processes. In an isotropic radius/length displacement, the mixed s–d term vanishes by angular orthogonality. The uniform pair force from a real dipole can drive 2omega_d, and two quanta of the same circular m=+1 or -1 have zero overlap with this scalar pair force. Other nonspherical modes/ports are not thereby forbidden. A coherent s mode drives uniform breathing at 2omega_s, allowing the incident dipole to scatter into an outgoing l=1 scalar at 2omega_s+omega_d. At 2omega_d driving the support also yields a positive-frequency l=0 output at 2omega_d-omega_s; this conjugate sideband adds support action. Stimulated emission and externally supplied modulation work must both be counted.",
+    "outgoing": "Use the actual smooth well at the optimized n=1 length. For a prescribed axial excursion eps*cos(Omega*t), real incident field sqrt(2I/omega_in) u cos(omega_in t), and v=(partial_L mu_A²)u, each distinct outgoing tone has mean power I eps² nu/(4 omega_in) Im <v|(H_l-nu²-i0)^-1|v>. This is a per-initial-action and per-squared-displacement coefficient. A cubic absorber outside extent 6 approximates outgoing radial and axial waves. Test mesh, box and absorber; verify shell flux, absorption and source work. Check a closed test at frequency 1. Upper coefficients range roughly .127-.132 and lower .0098-.0109 across recorded controls; these are estimates, not precision linewidths. The cold undriven exterior is the scalar wave bath. To estimate an actual *partial* high-sideband action loss under the coherent support, optionally extrapolate the archive mass, conservative static stiffness and damping samples into chi_L(Omega)=[K-M Omega²-iC Omega]^-1; set amplitude=I_s |partial_L omega_s chi_L(2omega_s)|. Divide outgoing power by nu to count emitted action, which equals removed dipole action for this upper tone. For the low tone the drive supplies both emitted energy and added support energy; treating this as damping of the incident support would give the wrong sign. One partial rate cannot stand in for other bath ports.",
+    "odd_bow": "Impose a radius change b f(w) cos(theta) to measure an independent nonspherical port. The smooth-well shape is pinned at the centre and nominal ends, f=sin²(2pi w/L) inside |w|<L/2, zero outside. It couples the aligned real dipole and monopole with normalized angular factor 1/sqrt(3); this single bow does not couple to orthogonal circular modes aligned with its axis. The finite-side shape uses sin(pi z/L), with normalized axial overlap 2/pi. Define k=<u_s|partial_b mu²|u_d>, f_sd=h_w k/(2 sqrt(omega_s omega_d)). For a cold passive quantum bow with an incoherent support population N_s=I_s/h_w, the two positive-frequency channels give Gamma_d=(2/h_w) |f_sd|²[(N_s+1) Im chi_b(omega_d-omega_s)+N_s Im chi_b(omega_d+omega_s)] for one real dipole. In a driven nonthermal brane, unsymmetrized noise and phase diffusion matter. Susceptibility is displacement per force, not velocity per force. A resting homogeneous GNLS admits longitudinal waves at the kinematic frequencies; its plane impedance alone does not give this shape's susceptibility or overlap.",
+    "underdetermination": "Classical counterexamples keep the same smooth-gate mixed matrix element and occupation-stationary shape, a maintained coherent monopole, and the same newly postulated bend mass 12 and stiffness 6. Linearize dipole q and bow b with reciprocal potential k sqrt(2 I_s/omega_s) cos(omega_s t) q b. Only the damping C changes (.1 vs 6.5). Follow the dipole pair of Floquet multipliers from zero coupling and verify pump work and dissipated power over a full period. Rate=-2 log|multiplier|/period is an action decay rate. A single isolated Lorentzian with only action damping would have angular FWHM Gamma; here compare to the unperturbed relaxed splitting as a resolution benchmark, not a full multi-line synthetic spectrum including frequency renormalization or pure dephasing. The two examples are admissible hypotheses rather than limits on the physical rate. They show what independent dissipative measurement matters.",
+    "gravity_and_charge": "Scalar occupation and its static pressure are mirror-even. A global trapped mode is not a set of independently bound rim sites. The spectral result provides material data necessary for a possible parcel response but neither the energy source of a mirror-opposite electric flux unit nor a new companion-directed force or calibrated 0PN inertia. Existing couplings to moving geometry would enter a future momentum accounting once measured.",
+    "literature_context": "Radiation-pressure-induced level shifts and mechanical sidebands occur in other models, for example P. Rabl, Phys. Rev. Lett. 107, 063601 (2011), https://doi.org/10.1103/PhysRevLett.107.063601 . The numerical results and proposed material parameters here come from the archived toy-model actions."
+  },
+  "runs": {
+    "mouth_wave_relaxed_levels01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool relaxed-wave-levels --memory-gib 3 --tasks-max 64 --log-directory _scratch/s11c/mouth_wave_relaxed_levels01 -- math -noprompt -script software/stage1_solver/tools/mouth_wave_relaxed_levels.wl",
+      "child_argv": [
+        "math",
+        "-noprompt",
+        "-script",
+        "software/stage1_solver/tools/mouth_wave_relaxed_levels.wl"
+      ],
+      "started_utc": "2026-11-19T18:53:54.412785+00:00",
+      "memory_max_bytes": 3221225472,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "de2bd7de01d463195c59b776ab0d528e042996d91c2077ce93d6a405598776bb",
+      "stdout_lines": [
+        "Phase A {radius,length,omega,E} at reference = {1.89241000541167751484773488225946247474`17., 1.81206770991015427980256852695528145069`17., 1.8834465877497892476492229964862107356`17., 2.45274197546793648494141130277473286096`17.}",
+        "fixed {E',E'' implicit,E'' centered,deltaI^2 E''} = {1.8834465877497892476492229964862107356`17., 0, 0``38.826881608823946, 0}",
+        "fixed {first,second,second-first,first/deltaI,second/deltaI} = {0.05650339763249367742947668989458632207`17., 0.05650339763249367742947668989458632207`17., 0``48.82041556657471, 1.8834465877497892476492229964862107356`17., 1.8834465877497892476492229964862107356`17.}",
+        "fixed {action,r,L,omega,curv_min,cap_margin,cut_margin,frozen_jump_relaxation_energy} = {{1.`17., 1.89241000541167751484773488225946247474`17., 1.81206770991015427980256852695528145069`17., 1.8834465877497892476492229964862107356`17., 0.31131173372843871586975504393552666549`17., 0.68793229008984572019743147304471854931`17., 0.6165534122502107523507770035137892644`17., 0}, {1.03`17., 1.89241000541167751484773488225946247474`17., 1.81206770991015427980256852695528145069`17., 1.8834465877497892476492229964862107356`17., 0.32259351295477083592518728376479318673`17., 0.68793229008984572019743147304471854931`17., 0.6165534122502107523507770035137892644`17., 0``49.12144556223869}, {1.06`17., 1.89241000541167751484773488225946247474`17., 1.81206770991015427980256852695528145069`17., 1.8834465877497892476492229964862107356`17., 0.33383751024565038423858063693421809218`17., 0.68793229008984572019743147304471854931`17., 0.6165534122502107523507770035137892644`17., 0``49.115074379782754}}",
+        "",
+        "                                                                                                                                                   2",
+        "                                                                                                                                                 Pi",
+        "FindRoot::precw: The precision of the argument function (0.22017255427242286373615944036677360050727477590523 - --------------------------------------------------------------------- == 0) is less than WorkingPrecision (50.).",
+        "                                                                                                                                                                                  2",
+        "                                                                                                                   3                                                            Pi",
+        "                                                                                                                4 l  Sqrt[2.7959369288792744974788492979228113158470705503153 + ----]",
+        "                                                                                                                                                                                   2",
+        "                                                                                                                                                                                4 l",
+        "",
+        "                                                                                                                                                         2",
+        "                                                                                                                                                100001 Pi",
+        "FindRoot::precw: The precision of the argument function (0.22017255427242286373615944036677360050727477590523 - -------------------------------------------------------------------------- == 0) is less than WorkingPrecision (50.).",
+        "                                                                                                                                                                                       2",
+        "                                                                                                                        3                                                            Pi",
+        "                                                                                                                400000 l  Sqrt[2.7959369288792744974788492979228113158470705503153 + ----]",
+        "                                                                                                                                                                                        2",
+        "                                                                                                                                                                                     4 l",
+        "",
+        "                                                                                                                                                        2",
+        "                                                                                                                                                99999 Pi",
+        "FindRoot::precw: The precision of the argument function (0.22017255427242286373615944036677360050727477590523 - -------------------------------------------------------------------------- == 0) is less than WorkingPrecision (50.).",
+        "                                                                                                                                                                                       2",
+        "                                                                                                                        3                                                            Pi",
+        "                                                                                                                400000 l  Sqrt[2.7959369288792744974788492979228113158470705503153 + ----]",
+        "                                                                                                                                                                                        2",
+        "                                                                                                                                                                                     4 l",
+        "",
+        "General::stop: Further output of FindRoot::precw will be suppressed during this calculation.",
+        "free length {E',E'' implicit,E'' centered,deltaI^2 E''} = {1.88344658775380609278550925214133733277`17., -0.14309290853178917648050740885864379689`17., -0.14309290853718758060532787557808856012`17., -0.00012878361767861025883245666797277942`17.}",
+        "free length {first,second,second-first,first/deltaI,second/deltaI} = {0.05644006898122932128128128549227220294`17., 0.05631750041279465195604118893814536349`17., -0.00012256856843466932524009655412683946`17., 1.88133563270764404270937618307574009818`17., 1.87725001375982173186803963127151211634`17.}",
+        "free length {action,r,L,omega,curv_min,cap_margin,cut_margin,frozen_jump_relaxation_energy} = {{1.`17., 1.89241000541167751484773488225946247474`17., 1.81206770991015427980256852695528145069`17., 1.8834465877497892476492229964862107356`17., 0.31131173372843871586975504393552666549`17., 0.68793229008984572019743147304471854931`17., 0.6165534122502107523507770035137892644`17., 0}, {1.03`17., 1.89241000541167751484773488225946247474`17., 1.83136827873665228254020259529205156243`17., 1.87925941863454155782563977196089558661`17., 0.30899909987522551692850561855983989326`17., 0.66863172126334771745979740470794843757`17., 0.62074058136545844217436022803910441339`17., 0.00006332865126435614819540440231411912`17.}, {1.06`17., 1.89241000541167751484773488225946247474`17., 1.8502880040582466059704605608448498812`17., 1.87527273335489094077518675583510130319`17., 0.30675269861297622628668922943634521533`17., 0.6497119959417533940295394391551501188`17., 0.62472726664510905922481324416489869681`17., 0.00006028214624159477872800422068150411`17.}}",
+        "free {E',E'' implicit,E'' centered,deltaI^2 E''} = {1.88344658775869299025403406247192755828`17., -0.42884308310638034164520310856605095186`17., -0.42884308311638060534867197448166464361`17., -0.00038595877479574230748068279770944586`17.}",
+        "free {first,second,second-first,first/deltaI,second/deltaI} = {0.05631278252711228295529122842706135791`17., 0.05594070347599673183633586472680731761`17., -0.0003720790511155511189553637002540403`17., 1.8770927509037427651763742809020452636`17., 1.86469011586655772787786215756024392027`17.}",
+        "free {action,r,L,omega,curv_min,cap_margin,cut_margin,frozen_jump_relaxation_energy} = {{1.`17., 1.89241000541167751484773488225946247474`17., 1.81206770991015427980256852695528145069`17., 1.8834465877497892476492229964862107356`17., 0.31131173372843871586975504393552666549`17., 0.68793229008984572019743147304471854931`17., 0.6165534122502107523507770035137892644`17., 0}, {1.03`17., 1.90541707673551579874527487977738841797`17., 1.82414755437300783740315198443091516626`17., 1.87081642439387337013754401343563821404`17., 0.31427544607308096720259904165306507592`17., 0.67585244562699216259684801556908483374`17., 0.62918357560612662986245598656436178596`17., 0.00019061510538139447418546146752496416`17.}, {1.06`17., 1.9181317219554798175252060788897485331`17., 1.83595247305064813307727632383234655194`17., 1.85863640785434666113180194336579877872`17., 0.31718333972445875568536886315870165392`17., 0.66404752694935186692272367616765344806`17., 0.64136359214565333886819805663420122128`17., 0.00018378925581946926779045567626182881`17.}}",
+        "unconstrained and fixed-radius cutoff {action,r,length} = {{0.29201208222390147761354986213489034003`17., 1.4197465520593956994477899849538900414`17., 1.37053636652950027381861673976011690579`17.}, {0.13468761766060578385217900156927173316`17., 1.89241000541167751484773488225946247474`17., 0.84519076927835947325719284553354101167`17.}}",
+        "unsupported low-action trials {action,r,L,omega,cut_margin} = {{0.03`17., 0.82658526514218533428915268550950350412`17., 0.80781718923107148288075551001487221933`17., 4.27390791953605947819561146108162578788`17., -1.77390791953605947819561146108162578788`17.}, {0.06`17., 0.97580702863903333689779662984898825279`17., 0.95045107428804469163980973177635933019`17., 3.62442119684074179497355445953037784533`17., -1.12442119684074179497355445953037784533`17.}}",
+        "maximum derivative, stationarity, cutoff and archived-dimension residual = 1.000026370346886591561369176`17.*^-11"
+      ],
+      "stdout_path": "_scratch/s11c/mouth_wave_relaxed_levels01/stdout",
+      "stdout_bytes": 10147,
+      "wall_seconds": 4.691451768856496,
+      "recorded_peak_memory_bytes": 225382400,
+      "outcome_file_written_utc": "2026-11-19T18:53:59.124137+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_wave_relaxed_levels.wl": "8f0c149ead9ed5a8d5b65d5994f09d32e939ed7da852daed1984725a768576c9"
+      },
+      "precision_note": "FindRoot emitted precw messages on fixed-radius inputs reused at finite reference precision. The independent mpmath stationarity calculation reproduces the reported values. Do not infer 50 verified digits from the requested solver precision."
+    },
+    "mouth_trapped_wave_ports01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool native-trapped-wave-ports --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/mouth_trapped_wave_ports01 -- python3 software/stage1_solver/tools/mouth_trapped_wave_ports.py",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_trapped_wave_ports.py"
+      ],
+      "started_utc": "2026-11-19T18:55:34.944400+00:00",
+      "memory_max_bytes": 4294967296,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "b9df03ee90ce05649d2a2e991ce59ccf237028ff2f004b06afe233cde4f08583",
+      "stdout_lines": [
+        "ports mode=sharp_fixed_mass_surrogate omega=1.88344658775 scalar_gap=2.5 evanescent_kappa=1.64396744222 trial_single_energy=0.0565033976325 trial_double_energy=0.113006795265 pair_force_a=0.0164023844501 pair_force_L=0.00467056518472 coherent_Fa_DC_and_at_2omega=0.773215818155 coherent_FL_DC_and_at_2omega=0.220172554273",
+        "threshold mode=sharp_fixed_mass_surrogate harmonic=1 omega=1.88344658775 scalar_propagates=0 scalar_k_if_open=0 homogeneous_GNLS_k=10.2611973917 GNLS_dispersion_residual=1.25e-16",
+        "threshold mode=sharp_fixed_mass_surrogate harmonic=2 omega=3.7668931755 scalar_propagates=1 scalar_k_if_open=2.81770903317 homogeneous_GNLS_k=15.1619687781 GNLS_dispersion_residual=0",
+        "threshold mode=sharp_fixed_mass_surrogate harmonic=3 omega=5.65033976325 scalar_propagates=1 scalar_k_if_open=5.06718259392 homogeneous_GNLS_k=18.8446811958 GNLS_dispersion_residual=0",
+        "smooth step=0.12 extent=7.2 omega=1.80511547042 domega_da=-0.390710698777 domega_dL=-0.34946455715 gate_overlap=0.852170127656 eigen_residual=8.27e-14",
+        "smooth step=0.06 extent=7.2 omega=1.80474816009 domega_da=-0.410297917474 domega_dL=-0.271646506933 gate_overlap=0.852000358922 eigen_residual=3.37e-13",
+        "derivative coord=0 HF=-0.410297917474 separate_eigenfrequency_slope=-0.410298188097 error=2.71e-07",
+        "derivative coord=1 HF=-0.271646506933 separate_eigenfrequency_slope=-0.271646550267 error=4.33e-08",
+        "smooth step=0.03 extent=7.2 omega=1.80516802501 domega_da=-0.414164512063 domega_dL=-0.274064628503 gate_overlap=0.851753617438 eigen_residual=1.35e-12",
+        "smooth step=0.015 extent=7.2 omega=1.80527541742 domega_da=-0.414211006141 domega_dL=-0.274092533501 gate_overlap=0.851693610121 eigen_residual=5.21e-12",
+        "refinement last_frequency_change=0.00010739241 last_max_slope_change=4.6494078e-05",
+        "ports mode=smooth_fixed_gate_finest omega=1.80527541742 scalar_gap=2.5 evanescent_kappa=1.72944519059 trial_single_energy=0.0541582625226 trial_double_energy=0.108316525045 pair_force_a=0.00878674233854 pair_force_L=0.00581438067334 coherent_Fa_DC_and_at_2omega=0.414211006141 coherent_FL_DC_and_at_2omega=0.274092533501",
+        "threshold mode=smooth_fixed_gate_finest harmonic=1 omega=1.80527541742 scalar_propagates=0 scalar_k_if_open=0 homogeneous_GNLS_k=10.0081905459 GNLS_dispersion_residual=1.36e-16",
+        "threshold mode=smooth_fixed_gate_finest harmonic=2 omega=3.61055083484 scalar_propagates=1 scalar_k_if_open=2.60501004431 homogeneous_GNLS_k=14.8156940573 GNLS_dispersion_residual=1.36e-16",
+        "threshold mode=smooth_fixed_gate_finest harmonic=3 omega=5.41582625226 scalar_propagates=1 scalar_k_if_open=4.80428704333 homogeneous_GNLS_k=18.4259621628 GNLS_dispersion_residual=1.21e-16",
+        "smooth step=0.06 extent=9 omega=1.80474815885 domega_da=-0.410297915338 domega_dL=-0.271646503707 gate_overlap=0.852000347342 eigen_residual=3.36e-13",
+        "domain_change step=0.06 omega_difference=1.2395009e-09 max_slope_difference=3.2262794e-09"
+      ],
+      "stdout_path": "_scratch/s11c/mouth_trapped_wave_ports01/stdout",
+      "stdout_bytes": 2873,
+      "wall_seconds": 3.4418204110115767,
+      "recorded_peak_memory_bytes": 456712192,
+      "outcome_file_written_utc": "2026-11-19T18:55:38.402726+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_trapped_wave_ports.py": "8a5838daaea498418359858b6ef5ec043296343e91545353478864b927f6b0d3"
+      }
+    },
+    "mouth_wave_depth_response01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-depth-response --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_wave_depth_response01 -- python3 software/stage1_solver/tools/mouth_wave_depth_response.py",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_wave_depth_response.py"
+      ],
+      "started_utc": "2026-11-19T18:56:05.498179+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "806905f6e185fc0ff977256535c49c6576194c1bc285916f8a3b08c517e944bf",
+      "stdout_lines": [
+        "archive reference_inward_current=0.0373999726942 zero_action_open_endpoint=0 trial_action_step=0.03 held_radius=1.89241000541",
+        "shape model=rest axial_slope=0.220172554273 L0=1.81206770991 L1=1.83136827874 L2=1.85028800406 first=0.0564400689812263 second=0.056317500412792 U=-0.000122568568434289 width_to_resolve=0.00408561894781 max_wave_frequency=1.88344658775",
+        "static model=rest stiffness=0.338772578965 axial_mass=12.8602303059 mechanical_frequency=0.162304197646 curvature_in_action=-0.143092908532",
+        "step model=rest damping=0 first_half_time=6.45206696058 one_wave_period=3.33600397699 fraction_after_period=0.143036402412",
+        "step model=rest damping=1 first_half_time=7.0983753587 one_wave_period=3.33600397699 fraction_after_period=0.131487759611",
+        "shape model=controlled_-1 axial_slope=0.225181808131 L0=1.79749871912 L1=1.81666268654 L2=1.835448431 first=0.0565364065821305 second=0.0564119368677698 U=-0.000124469714360753 width_to_resolve=0.00414899047869 max_wave_frequency=1.88669058955",
+        "static model=controlled_-1 stiffness=0.348949180786 axial_mass=12.7568342927 mechanical_frequency=0.16539014747 curvature_in_action=-0.145312983967",
+        "step model=controlled_-1 damping=0 first_half_time=6.33168037647 one_wave_period=3.33026800577 fraction_after_period=0.147890507288",
+        "step model=controlled_-1 damping=1 first_half_time=6.95842802585 one_wave_period=3.33026800577 fraction_after_period=0.135880735643",
+        "shape model=controlled_+1 axial_slope=0.215163300414 L0=1.8270794701 L1=1.84652085375 L2=1.86557869368 first=0.0563430366500035 second=0.0562223825522463 U=-0.000120654097757189 width_to_resolve=0.00402180325857 max_wave_frequency=1.88017919878",
+        "static model=controlled_+1 stiffness=0.328667760961 axial_mass=12.9667686501 mechanical_frequency=0.159207188091 curvature_in_action=-0.140857276996",
+        "step model=controlled_+1 damping=0 first_half_time=6.57757707897 one_wave_period=3.34180130876 fraction_after_period=0.138225398051",
+        "step model=controlled_+1 damping=1 first_half_time=7.24453993379 one_wave_period=3.34180130876 fraction_after_period=0.127131246456",
+        "threshold at_action=1 cap_on_current=0.191818070399 no_finite_uncapped_above=0.247951280145",
+        "shape model=above_cap_unrestricted axial_slope=0.0470233914157 L0=3.10857750043 L1=3.1402367704 L2=3.17127958052 first=0.0523815162009562 second=0.052338570672819 U=-4.29455281372171e-05 width_to_resolve=0.00143151760457 max_wave_frequency=1.74679004458",
+        "static model=above_cap_unrestricted stiffness=0.0441150772727 axial_mass=22.0615501069 mechanical_frequency=0.0447172935036 curvature_in_action=-0.050123437993",
+        "step model=above_cap_unrestricted damping=0 first_half_time=23.418178274 one_wave_period=3.59698941877 fraction_after_period=0.0129081144007",
+        "step model=above_cap_unrestricted damping=1 first_half_time=29.031830551 one_wave_period=3.59698941877 fraction_after_period=0.0122345648115",
+        "shape model=above_cap_hard_slab axial_slope=0.0470233914157 L0=2.5 L1=2.5 L2=2.5 first=0.0535877690749493 second=0.0535877690749493 U=0 width_to_resolve=0 max_wave_frequency=1.78625896916",
+        "held both_first=0.0565033976324909 both_second=0.0565033976324909 U=0"
+      ],
+      "stdout_path": "_scratch/s11c/mouth_wave_depth_response01/stdout",
+      "stdout_bytes": 3107,
+      "wall_seconds": 0.33403329784050584,
+      "recorded_peak_memory_bytes": 46235648,
+      "outcome_file_written_utc": "2026-11-19T18:56:05.852185+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_wave_depth_response.py": "9a7d8d55f750273f2691e3c8c6e19a4ca30ed4e8a3564b62ddd8907e256612a4"
+      }
+    },
+    "mouth_dipole_spectroscopy01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-dipole-spectrum --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_dipole_spectroscopy01 -- python3 software/stage1_solver/tools/mouth_dipole_spectroscopy.py",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_dipole_spectroscopy.py"
+      ],
+      "started_utc": "2026-11-19T18:58:05.959315+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "d6dd64b1e3850c6fb1fe9c71666832c4a9ae1269df59ee3323feda88394928ea",
+      "stdout_lines": [
+        "static sign=+0 L0=1.9142845434 L1=1.9301443887 L2=1.94573577435 support_frequency=1.59755969496 dipole_frequency=2.09590881262 rigid_step=0.062877264378618 first=0.06283753766059 second=0.062760195946238 U=-7.73417143516e-05",
+        "odd_bow sign=+0 derivative_abs=0.788284611903 single_pair_force=0.00646189011325 diff_freq=0.498349117661 sum_freq=3.69346850758 twice_dipole=4.19181762524 sound_k_diff=4.21282930625 sound_k_sum=15.0003249688 sound_k_twice_dipole=16.0659406601",
+        "dressed sign=+0 cells=2000 L_limit=6 first=0.062821112799765 second=0.062744240584575 U=-7.68722151898e-05 width_to_resolve=0.00256240717299",
+        "sideband sign=+0 start_n=0 zero_wall_excitation_weight=0.991420984447 one_wall_excitation_weight=0.00840302293707 missing_weight_above_ten=2.1e-14 wall_first_frequency=0.150240058634 prob_L_above_optional_cap=8.61161708937e-12",
+        "sideband sign=+0 start_n=1 zero_wall_excitation_weight=0.991698777756 one_wall_excitation_weight=0.00813480751403 missing_weight_above_ten=1.68e-14 wall_first_frequency=0.149193877631 prob_L_above_optional_cap=2.90925940755e-11",
+        "dressed sign=+0 cells=4000 L_limit=6 first=0.062821111470345 second=0.062744239302421 U=-7.68721679236e-05 width_to_resolve=0.00256240559745",
+        "readout sign=+0 detuning_freq=0.08 width_freq=.001 full_shift_per_G2=-16.3815971355 lowest_lines_only=-13.7821306749 unit_overlap_zero_width=-13.7874763179",
+        "readout sign=+0 detuning_freq=-0.08 width_freq=.001 full_shift_per_G2=-15.4082682262 lowest_lines_only=-12.7027574935 unit_overlap_zero_width=-12.9316604962",
+        "sideband sign=+0 start_n=0 zero_wall_excitation_weight=0.991420987511 one_wall_excitation_weight=0.00840301993822 missing_weight_above_ten=2.14e-14 wall_first_frequency=0.150240111367 prob_L_above_optional_cap=8.79763991651e-12",
+        "sideband sign=+0 start_n=1 zero_wall_excitation_weight=0.991698780699 one_wall_excitation_weight=0.00813480463092 missing_weight_above_ten=1.63e-14 wall_first_frequency=0.149193929633 prob_L_above_optional_cap=2.97053211251e-11",
+        "dressed sign=+0 cells=6200 L_limit=8 first=0.062821111464481 second=0.062744239296779 U=-7.6872167702e-05 width_to_resolve=0.00256240559007",
+        "readout sign=+0 detuning_freq=0.08 width_freq=.001 full_shift_per_G2=-16.3815945184 lowest_lines_only=-13.7821306246 unit_overlap_zero_width=-13.7874762768",
+        "readout sign=+0 detuning_freq=-0.08 width_freq=.001 full_shift_per_G2=-15.4082654936 lowest_lines_only=-12.7027575458 unit_overlap_zero_width=-12.9316604601",
+        "refinement sign=+0 max_step_difference=1.33e-09 domain_max_step_difference=5.86e-12 domain_max_readout_difference=2.73e-06",
+        "static sign=-1 L0=1.89860089507 L1=1.91436336778 L2=1.92985846868 support_frequency=1.6010518921 dipole_frequency=2.09857187941 rigid_step=0.062957156382309 first=0.062916738527012 second=0.06283805476915 U=-7.86837578621e-05",
+        "odd_bow sign=-1 derivative_abs=0.788284611903 single_pair_force=0.00645074210035 diff_freq=0.497519987312 sum_freq=3.69962377151 twice_dipole=4.19714375882 sound_k_diff=4.20737419297 sound_k_sum=15.0139415824 sound_k_twice_dipole=16.0769527251",
+        "dressed sign=-1 cells=2000 L_limit=6 first=0.062899988072029 second=0.062821783665719 U=-7.82044063099e-05 width_to_resolve=0.00260681354366",
+        "sideband sign=-1 start_n=0 zero_wall_excitation_weight=0.991435289234 one_wall_excitation_weight=0.00838873862938 missing_weight_above_ten=1.89e-14 wall_first_frequency=0.153100614882 prob_L_above_optional_cap=1.8760674703e-12",
+        "sideband sign=-1 start_n=1 zero_wall_excitation_weight=0.991713119592 one_wall_excitation_weight=0.00812049935211 missing_weight_above_ten=1.85e-14 wall_first_frequency=0.152033799506 prob_L_above_optional_cap=6.57046400031e-12",
+        "dressed sign=-1 cells=4000 L_limit=6 first=0.062899986690359 second=0.062821782333231 U=-7.82043571284e-05 width_to_resolve=0.00260681190428",
+        "readout sign=-1 detuning_freq=0.08 width_freq=.001 full_shift_per_G2=-16.5373137792 lowest_lines_only=-14.0271584447 unit_overlap_zero_width=-14.0344603124",
+        "readout sign=-1 detuning_freq=-0.08 width_freq=.001 full_shift_per_G2=-15.5252451587 lowest_lines_only=-12.918066976 unit_overlap_zero_width=-13.14869321",
+        "sideband sign=-1 start_n=0 zero_wall_excitation_weight=0.991435292351 one_wall_excitation_weight=0.00838873557822 missing_weight_above_ten=2.15e-14 wall_first_frequency=0.153100669641 prob_L_above_optional_cap=1.91807653422e-12",
+        "sideband sign=-1 start_n=1 zero_wall_excitation_weight=0.991713122586 one_wall_excitation_weight=0.00812049641894 missing_weight_above_ten=1.75e-14 wall_first_frequency=0.152033853506 prob_L_above_optional_cap=6.71402874973e-12",
+        "dressed sign=-1 cells=6200 L_limit=8 first=0.062899986684269 second=0.062821782327383 U=-7.82043568859e-05 width_to_resolve=0.0026068118962",
+        "readout sign=-1 detuning_freq=0.08 width_freq=.001 full_shift_per_G2=-16.5373112389 lowest_lines_only=-14.0271583911 unit_overlap_zero_width=-14.0344602675",
+        "readout sign=-1 detuning_freq=-0.08 width_freq=.001 full_shift_per_G2=-15.5252425232 lowest_lines_only=-12.9180670273 unit_overlap_zero_width=-13.1486931705",
+        "refinement sign=-1 max_step_difference=1.38e-09 domain_max_step_difference=6.09e-12 domain_max_readout_difference=2.64e-06",
+        "static sign=+1 L0=1.93044405886 L1=1.94640433594 L2=1.96209503003 support_frequency=1.59404249066 dipole_frequency=2.09322914032 rigid_step=0.062796874209552 first=0.062757841437083 second=0.062681847303594 U=-7.59941334887e-05",
+        "odd_bow sign=+1 derivative_abs=0.788284611903 single_pair_force=0.00647315453232 diff_freq=0.499186649662 sum_freq=3.68727163097 twice_dipole=4.18645828064 sound_k_diff=4.21833537794 sound_k_sum=14.9866039879 sound_k_twice_dipole=16.0548523944",
+        "dressed sign=+1 cells=2000 L_limit=6 first=0.062741742739228 second=0.062666208259529 U=-7.55344796994e-05 width_to_resolve=0.00251781598998",
+        "sideband sign=+1 start_n=0 zero_wall_excitation_weight=0.991406170782 one_wall_excitation_weight=0.00841780936936 missing_weight_above_ten=1.87e-14 wall_first_frequency=0.147369489725 prob_L_above_optional_cap=3.88022266895e-11",
+        "sideband sign=+1 start_n=1 zero_wall_excitation_weight=0.991683933501 one_wall_excitation_weight=0.00814961149224 missing_weight_above_ten=1.75e-14 wall_first_frequency=0.146343982477 prob_L_above_optional_cap=1.26346619008e-10",
+        "dressed sign=+1 cells=4000 L_limit=6 first=0.062741741461143 second=0.062666207026865 U=-7.5534434278e-05 width_to_resolve=0.00251781447593",
+        "readout sign=+1 detuning_freq=0.08 width_freq=.001 full_shift_per_G2=-16.2326680286 lowest_lines_only=-13.5363692321 unit_overlap_zero_width=-13.5397492711",
+        "readout sign=+1 detuning_freq=-0.08 width_freq=.001 full_shift_per_G2=-15.2989793381 lowest_lines_only=-12.4863169043 unit_overlap_zero_width=-12.7134894645",
+        "sideband sign=+1 start_n=0 zero_wall_excitation_weight=0.991406173792 one_wall_excitation_weight=0.008417806423 missing_weight_above_ten=2.18e-14 wall_first_frequency=0.147369540462 prob_L_above_optional_cap=3.9609454162e-11",
+        "sideband sign=+1 start_n=1 zero_wall_excitation_weight=0.991683936393 one_wall_excitation_weight=0.00814960865943 missing_weight_above_ten=1.54e-14 wall_first_frequency=0.146344032511 prob_L_above_optional_cap=1.2890710778e-10",
+        "dressed sign=+1 cells=6200 L_limit=8 first=0.062741741455525 second=0.062666207021433 U=-7.55344340919e-05 width_to_resolve=0.00251781446973",
+        "readout sign=+1 detuning_freq=0.08 width_freq=.001 full_shift_per_G2=-16.2326653318 lowest_lines_only=-13.536369188 unit_overlap_zero_width=-13.5397492367",
+        "readout sign=+1 detuning_freq=-0.08 width_freq=.001 full_shift_per_G2=-15.2989765015 lowest_lines_only=-12.48631696 unit_overlap_zero_width=-12.7134894341",
+        "refinement sign=+1 max_step_difference=1.28e-09 domain_max_step_difference=5.62e-12 domain_max_readout_difference=2.84e-06"
+      ],
+      "stdout_path": "_scratch/s11c/mouth_dipole_spectroscopy01/stdout",
+      "stdout_bytes": 7648,
+      "wall_seconds": 0.6960676810704172,
+      "recorded_peak_memory_bytes": 49205248,
+      "outcome_file_written_utc": "2026-11-19T18:58:06.675795+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_dipole_spectroscopy.py": "9acacc42fa73ccba2f5b610dfbefb2986e48de64f7ab41ddf1463e2c272034a6"
+      }
+    },
+    "mouth_dipole_wall_readout01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-dipole-wall-test --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_dipole_wall_readout01 -- python3 software/stage1_solver/tools/mouth_dipole_wall_readout.py",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_dipole_wall_readout.py"
+      ],
+      "started_utc": "2026-11-19T19:00:12.468530+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "40e2b7f263dfb89b1cea06b85cbe7d0b3a18066441fefe357d85747d1208d01b",
+      "stdout_lines": [
+        "test_force magnitude=0.001 first_plus=0.0628216679257214 first_minus=0.0628533876569572 odd_energy_slope=-0.0158598656179 independent_depth_prediction=-0.0158598453057 absolute_error=2.03e-08",
+        "test_force magnitude=0.0005 first_plus=0.0628296052680959 first_minus=0.06284546511848 odd_energy_slope=-0.0158598503841 independent_depth_prediction=-0.0158598453057 absolute_error=5.08e-09",
+        "matrix uniform_overlap=0 axial_overlap=0.636619772368 angular_overlap=0.57735026919 mixed_force=0.00646189011325 independent_error=8.67e-19",
+        "cold_rate delta_frequency=0.498349117661 sum_frequency=3.69346850758 coeff_down_to_monopole=0.0955748990016 coeff_pair_down=0.0927911640793 classical_line_gap_frequency=0.0025780571451 inverse_line_gap_time=387.888996914 Q_if_equal_width=812.979966952",
+        "isolated_path_bench if_ImChi_equal=0.0136864204885 if_only_difference=0.0269742073706 if_only_sum=0.0277834335918",
+        "frozen_length line_slope=0.16782161348 length_jitter_for_one_gap=0.015361889876"
+      ],
+      "stdout_path": "_scratch/s11c/mouth_dipole_wall_readout01/stdout",
+      "stdout_bytes": 969,
+      "wall_seconds": 0.38284881971776485,
+      "recorded_peak_memory_bytes": 45924352,
+      "outcome_file_written_utc": "2026-11-19T19:00:12.865384+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_dipole_wall_readout.py": "e64a0fe7cd6d1d71aa34ac4446e5d8c9aeb7d0e9eade453520e1ab5393e6d39d"
+      }
+    },
+    "smooth_dipole_l030_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool relaxed-smooth-dipoles --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/smooth_dipole_l030_01 -- python3 software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py --step .03 --extent 7.2",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py",
+        "--step",
+        ".03",
+        "--extent",
+        "7.2"
+      ],
+      "started_utc": "2026-11-19T18:58:26.029099+00:00",
+      "memory_max_bytes": 4294967296,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "705650e50e3d049e18fb5859ee176ff2c03c37ee90d6e98428b7c345dff5c8d4",
+      "stdout_lines": [
+        "point n=0 step=0.03 extent=7.2 L=2.06581757576 E=2.36792802159 omega_s=1.74276387776 omega_d=2.19784427688 domega_s_dL=-0.220172554272 domega_d_dL=-0.161617525452 cutoff_margin=0.3021557231 grad=6.19e-13 bracket_gradients=-0.0568289,0.0650604 eig_residual=1.44e-12",
+        "point n=1 step=0.03 extent=7.2 L=2.09172605167 E=2.43380081022 omega_s=1.73712125051 omega_d=2.19370268531 domega_s_dL=-0.215429358666 domega_d_dL=-0.15810652023 cutoff_margin=0.3062973147 grad=-5.22e-15 bracket_gradients=-0.0629307,0.0616603 eig_residual=1.38e-12",
+        "point n=2 step=0.03 extent=7.2 L=2.11720795598 E=2.49955173616 omega_s=1.73168982817 omega_d=2.18971688149 domega_s_dL=-0.210887992951 domega_d_dL=-0.154742688695 cutoff_margin=0.3102831185 grad=6.12e-15 bracket_gradients=-0.0690325,0.0582603 eig_residual=1.39e-12",
+        "levels step=0.03 extent=7.2 rigid_spacing_at_empty=0.0659353283064 relaxed_first=0.0658727886278 relaxed_second=0.0657509259476 U=-0.00012186268023 U_over_action=-0.00406208934101 support_stiffness_at_one=0.18470109156 midpoint_U_prediction=-0.000121807101275 prediction_residual=5.5579e-08"
+      ],
+      "stdout_path": "_scratch/s11c/smooth_dipole_l030_01/stdout",
+      "stdout_bytes": 1086,
+      "wall_seconds": 21.15487218881026,
+      "recorded_peak_memory_bytes": 137420800,
+      "outcome_file_written_utc": "2026-11-19T18:58:47.232785+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py": "f58eeb92e04662b1f0effc620cdb9a532e4fabe6e9c9fd086a5a994e011d6efd"
+      }
+    },
+    "smooth_dipole_l015_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool relaxed-smooth-dipoles --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/smooth_dipole_l015_01 -- python3 software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py --step .015 --extent 7.2",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py",
+        "--step",
+        ".015",
+        "--extent",
+        "7.2"
+      ],
+      "started_utc": "2026-11-19T18:58:23.379549+00:00",
+      "memory_max_bytes": 4294967296,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "98398a443646d088b7e1323969ef6bdbbe21f5a1de533de57f8ebc77bc8a48ef",
+      "stdout_lines": [
+        "point n=0 step=0.015 extent=7.2 L=2.06592653908 E=2.36802933282 omega_s=1.74284119826 omega_d=2.19794551522 domega_s_dL=-0.220172554272 domega_d_dL=-0.16160880838 cutoff_margin=0.3020544848 grad=7.57e-13 bracket_gradients=-0.0568575,0.0650481 eig_residual=5.61e-12",
+        "point n=1 step=0.015 extent=7.2 L=2.0918395048 E=2.4339051628 omega_s=1.73719760138 omega_d=2.19380343351 domega_s_dL=-0.215429604946 domega_d_dL=-0.158098310887 cutoff_margin=0.3061965665 grad=-2.89e-15 bracket_gradients=-0.0629596,0.0616479 eig_residual=5.55e-12",
+        "point n=2 step=0.015 extent=7.2 L=2.11731864922 E=2.49965910761 omega_s=1.73176674556 omega_d=2.18981825556 domega_s_dL=-0.210888458791 domega_d_dL=-0.154734924698 cutoff_margin=0.3101817444 grad=-5.3e-15 bracket_gradients=-0.0690617,0.0582477 eig_residual=5.56e-12",
+        "levels step=0.015 extent=7.2 rigid_spacing_at_empty=0.0659383654567 relaxed_first=0.0658758299798 relaxed_second=0.0657539448169 U=-0.000121885162918 U_over_action=-0.00406283876392 support_stiffness_at_one=0.18459957494 midpoint_U_prediction=-0.000121861430733 prediction_residual=2.3732e-08"
+      ],
+      "stdout_path": "_scratch/s11c/smooth_dipole_l015_01/stdout",
+      "stdout_bytes": 1089,
+      "wall_seconds": 102.71837194496766,
+      "recorded_peak_memory_bytes": 482611200,
+      "outcome_file_written_utc": "2026-11-19T19:00:06.114858+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py": "f58eeb92e04662b1f0effc620cdb9a532e4fabe6e9c9fd086a5a994e011d6efd"
+      }
+    },
+    "smooth_dipole_box9_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool relaxed-smooth-dipoles --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/smooth_dipole_box9_01 -- python3 software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py --step .03 --extent 9",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py",
+        "--step",
+        ".03",
+        "--extent",
+        "9"
+      ],
+      "started_utc": "2026-11-19T18:58:25.372309+00:00",
+      "memory_max_bytes": 4294967296,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "14ad48e93d00bf79220b0548ce1bbb2c65b4a1ceafa35589cfae57bb1733471d",
+      "stdout_lines": [
+        "point n=0 step=0.03 extent=9 L=2.06581756856 E=2.36792802089 omega_s=1.74276387864 omega_d=2.19784405575 domega_s_dL=-0.220172554272 domega_d_dL=-0.161616951912 cutoff_margin=0.3021559443 grad=6.22e-13 bracket_gradients=-0.0568289,0.0650604 eig_residual=1.46e-12",
+        "point n=1 step=0.03 extent=9 L=2.09172596034 E=2.43380080331 omega_s=1.73712126952 omega_d=2.19370249163 domega_s_dL=-0.215429373936 domega_d_dL=-0.158106011231 cutoff_margin=0.3062975084 grad=-6.48e-15 bracket_gradients=-0.0629306,0.0616603 eig_residual=1.44e-12",
+        "point n=2 step=0.03 extent=9 L=2.11720779465 E=2.4995517238 omega_s=1.73168986155 omega_d=2.18971671102 domega_s_dL=-0.210888020171 domega_d_dL=-0.154742235018 cutoff_margin=0.310283289 grad=1.02e-15 bracket_gradients=-0.0690324,0.0582603 eig_residual=1.47e-12",
+        "levels step=0.03 extent=9 rigid_spacing_at_empty=0.0659353216725 relaxed_first=0.0658727824176 relaxed_second=0.065750920495 U=-0.00012186192262 U_over_action=-0.00406206408732 support_stiffness_at_one=0.184701047551 midpoint_U_prediction=-0.000121806346021 prediction_residual=5.5577e-08"
+      ],
+      "stdout_path": "_scratch/s11c/smooth_dipole_box9_01/stdout",
+      "stdout_bytes": 1077,
+      "wall_seconds": 36.55240450613201,
+      "recorded_peak_memory_bytes": 196915200,
+      "outcome_file_written_utc": "2026-11-19T18:59:01.953056+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py": "f58eeb92e04662b1f0effc620cdb9a532e4fabe6e9c9fd086a5a994e011d6efd"
+      }
+    },
+    "smooth_dipole_compare01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool smooth-dipole-compare --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/smooth_dipole_compare01 -- python3 _scratch/s11c/smooth_dipole_compare.py",
+      "child_argv": [
+        "python3",
+        "_scratch/s11c/smooth_dipole_compare.py"
+      ],
+      "started_utc": "2026-11-19T19:00:14.750730+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "8161f30f9b66275f4a906af67cbbb511bc15475ecd19d5f86b52024aeb859ddc",
+      "stdout_lines": [
+        "field=U absolute_mesh_change=2.2482688e-08 absolute_box_change=7.57610000004e-10",
+        "field=relaxed_first absolute_mesh_change=3.04135200001e-06 absolute_box_change=6.21019999314e-09",
+        "field=relaxed_second absolute_mesh_change=3.0188693e-06 absolute_box_change=5.45259999651e-09",
+        "frequency_resolution=0.00406283876392 ratio_omega1_over_split=540.474561488 one_over_split_time=246.133321578 beat_period=1546.50126975 coherent_monopole_upper_scalar_sideband=5.66819863627 dipole_pair_minus_monopole=2.65040926564 cutoff=2.5"
+      ],
+      "stdout_path": "_scratch/s11c/smooth_dipole_compare01/stdout",
+      "stdout_bytes": 514,
+      "wall_seconds": 0.11661178898066282,
+      "recorded_peak_memory_bytes": 14151680,
+      "outcome_file_written_utc": "2026-11-19T19:00:14.887908+00:00",
+      "data_arguments_sha256": {
+        "_scratch/s11c/smooth_dipole_compare.py": "a536fb82b21dbf5807b04424ce589e847d6120b383aa0d71325df3cb859bb81b"
+      },
+      "review_or_summary_source": {
+        "_scratch/s11c/smooth_dipole_compare.py": {
+          "sha256": "a536fb82b21dbf5807b04424ce589e847d6120b383aa0d71325df3cb859bb81b",
+          "as_run": "from pathlib import Path\n\ndef row(path, prefix):\n    words=next(s for s in Path(path).read_text().splitlines() if s.startswith(prefix)).split()\n    return {k:float(v) for word in words if '=' in word for k,v in [word.split('=',1)] if ',' not in v}\n\nfolders=[\"smooth_dipole_l030_01\",\"smooth_dipole_l015_01\",\"smooth_dipole_box9_01\"]\np=[Path(\"_scratch/s11c\") / f / \"stdout\" for f in folders]\ncoarse, fine, larger=[row(q,\"levels \") for q in p]\nfor field in (\"U\",\"relaxed_first\",\"relaxed_second\"):\n    print(f\"field={field} absolute_mesh_change={abs(fine[field]-coarse[field]):.12g} \"\n          f\"absolute_box_change={abs(larger[field]-coarse[field]):.12g}\")\nsplit=abs(fine[\"U_over_action\"])\nomega1=fine[\"relaxed_first\"]/.03\nmid=row(p[1],\"point n=1 \")\nprint(f\"frequency_resolution={split:.12g} ratio_omega1_over_split={omega1/split:.12g} \"\n      f\"one_over_split_time={1/split:.12g} beat_period={2*3.141592653589793/split:.12g} \"\n      f\"coherent_monopole_upper_scalar_sideband={mid['omega_d']+2*mid['omega_s']:.12g} \"\n      f\"dipole_pair_minus_monopole={2*mid['omega_d']-mid['omega_s']:.12g} cutoff=2.5\")\n"
+        }
+      }
+    },
+    "wave_outgoing_h08_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-outgoing-scalar --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/wave_outgoing_h08_01 -- python3 software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py _scratch/s11c/smooth_dipole_l015_01/stdout --step 0.08 --extent 16 --absorber 5 --closed-control",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout",
+        "--step",
+        "0.08",
+        "--extent",
+        "16",
+        "--absorber",
+        "5",
+        "--closed-control"
+      ],
+      "started_utc": "2026-11-19T19:02:15.183233+00:00",
+      "memory_max_bytes": 4294967296,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "6d9b2f65c4d6cb9acd5b4d340e0eb457a45563249a69ea8a5056ce9d0f55f331",
+      "stdout_lines": [
+        "sideband kind=high ell=1 h=0.08 extent=16 absorber=5 depth=2.0918395048 input_frequency=2.19302337439 out_frequency=5.66598147338 Im_response=0.196468308324 shell_flux=0.196468308324 absorbed=0.196468308324 power_per_action_eps2=0.126900812831",
+        "sideband kind=low ell=0 h=0.08 extent=16 absorber=5 depth=2.0918395048 input_frequency=1.7364790495 out_frequency=2.64956769929 Im_response=0.0258019567397 shell_flux=0.0258019567397 absorbed=0.0258019567397 power_per_action_eps2=0.00984233457582",
+        "sideband kind=closed ell=0 h=0.08 extent=16 absorber=5 depth=2.0918395048 input_frequency=1.7364790495 out_frequency=1 Im_response=8.96944564419e-15 shell_flux=8.96944564419e-15 absorbed=8.96944564419e-15 power_per_action_eps2=1.2913264987e-15"
+      ],
+      "stdout_path": "_scratch/s11c/wave_outgoing_h08_01/stdout",
+      "stdout_bytes": 735,
+      "wall_seconds": 1.0892590046860278,
+      "recorded_peak_memory_bytes": 151212032,
+      "outcome_file_written_utc": "2026-11-19T19:02:16.290309+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py": "45c57953116d50d4745f01420f6b95092c267cfd4bb045875edec270496c0e12",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout": "98398a443646d088b7e1323969ef6bdbbe21f5a1de533de57f8ebc77bc8a48ef"
+      }
+    },
+    "wave_outgoing_h05_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-outgoing-scalar --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/wave_outgoing_h05_01 -- python3 software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py _scratch/s11c/smooth_dipole_l015_01/stdout --step 0.05 --extent 18 --absorber 6",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout",
+        "--step",
+        "0.05",
+        "--extent",
+        "18",
+        "--absorber",
+        "6"
+      ],
+      "started_utc": "2026-11-19T19:02:16.350486+00:00",
+      "memory_max_bytes": 4294967296,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "ebbb4834d8b1e485071386f1e7b9dfb6b95526774257a1cfc172598794b4ac33",
+      "stdout_lines": [
+        "sideband kind=high ell=1 h=0.05 extent=18 absorber=6 depth=2.0918395048 input_frequency=2.19341308944 out_frequency=5.66713106524 Im_response=0.204509810123 shell_flux=0.204509810123 absorbed=0.204509810123 power_per_action_eps2=0.132098224415",
+        "sideband kind=low ell=0 h=0.05 extent=18 absorber=6 depth=2.0918395048 input_frequency=1.7368589879 out_frequency=2.64996719098 Im_response=0.0283672274354 shell_flux=0.0283672274354 absorbed=0.0283672274354 power_per_action_eps2=0.0108201389011"
+      ],
+      "stdout_path": "_scratch/s11c/wave_outgoing_h05_01/stdout",
+      "stdout_bytes": 490,
+      "wall_seconds": 3.837211636826396,
+      "recorded_peak_memory_bytes": 436502528,
+      "outcome_file_written_utc": "2026-11-19T19:02:20.204316+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py": "45c57953116d50d4745f01420f6b95092c267cfd4bb045875edec270496c0e12",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout": "98398a443646d088b7e1323969ef6bdbbe21f5a1de533de57f8ebc77bc8a48ef"
+      }
+    },
+    "wave_outgoing_box_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-outgoing-scalar --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/wave_outgoing_box_01 -- python3 software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py _scratch/s11c/smooth_dipole_l015_01/stdout --step 0.05 --extent 24 --absorber 8",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout",
+        "--step",
+        "0.05",
+        "--extent",
+        "24",
+        "--absorber",
+        "8"
+      ],
+      "started_utc": "2026-11-19T19:02:16.449056+00:00",
+      "memory_max_bytes": 4294967296,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "361027ce4396942a66207646a9eb93148f8f2015eb3ba2781bf541c29c8d0b89",
+      "stdout_lines": [
+        "sideband kind=high ell=1 h=0.05 extent=24 absorber=8 depth=2.0918395048 input_frequency=2.19341308944 out_frequency=5.66713106524 Im_response=0.204540344757 shell_flux=0.204540344757 absorbed=0.204540344757 power_per_action_eps2=0.132117947532",
+        "sideband kind=low ell=0 h=0.05 extent=24 absorber=8 depth=2.0918395048 input_frequency=1.7368589879 out_frequency=2.64996719098 Im_response=0.0280427020653 shell_flux=0.0280427020653 absorbed=0.0280427020653 power_per_action_eps2=0.0106963548764"
+      ],
+      "stdout_path": "_scratch/s11c/wave_outgoing_box_01/stdout",
+      "stdout_bytes": 490,
+      "wall_seconds": 7.511122975964099,
+      "recorded_peak_memory_bytes": 768532480,
+      "outcome_file_written_utc": "2026-11-19T19:02:23.997077+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py": "45c57953116d50d4745f01420f6b95092c267cfd4bb045875edec270496c0e12",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout": "98398a443646d088b7e1323969ef6bdbbe21f5a1de533de57f8ebc77bc8a48ef"
+      }
+    },
+    "wave_outgoing_h03_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-outgoing-scalar --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/wave_outgoing_h03_01 -- python3 software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py _scratch/s11c/smooth_dipole_l015_01/stdout --step 0.03 --extent 18 --absorber 6",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout",
+        "--step",
+        "0.03",
+        "--extent",
+        "18",
+        "--absorber",
+        "6"
+      ],
+      "started_utc": "2026-11-19T19:02:16.450971+00:00",
+      "memory_max_bytes": 4294967296,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "e5315537265b3927f58aa2ecdc86c7fd3e4ed9de7fe13668b431791eb0e067e1",
+      "stdout_lines": [
+        "sideband kind=high ell=1 h=0.03 extent=18 absorber=6 depth=2.0918395048 input_frequency=2.19368894402 out_frequency=5.66788267477 Im_response=0.20086812468 shell_flux=0.20086812468 absorbed=0.20086812468 power_per_action_eps2=0.129746854823",
+        "sideband kind=low ell=0 h=0.03 extent=18 absorber=6 depth=2.0918395048 input_frequency=1.73709686538 out_frequency=2.65028102266 Im_response=0.0285581813369 shell_flux=0.0285581813369 absorbed=0.0285581813369 power_per_action_eps2=0.0108927728136"
+      ],
+      "stdout_path": "_scratch/s11c/wave_outgoing_h03_01/stdout",
+      "stdout_bytes": 488,
+      "wall_seconds": 11.855204802006483,
+      "recorded_peak_memory_bytes": 1233317888,
+      "outcome_file_written_utc": "2026-11-19T19:02:28.391820+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py": "45c57953116d50d4745f01420f6b95092c267cfd4bb045875edec270496c0e12",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout": "98398a443646d088b7e1323969ef6bdbbe21f5a1de533de57f8ebc77bc8a48ef"
+      }
+    },
+    "mouth_wave_linewidth_budget01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-linewidth-budget --memory-gib 3 --tasks-max 32 --log-directory _scratch/s11c/mouth_wave_linewidth_budget01 -- python3 software/stage1_solver/tools/mouth_wave_linewidth_budget.py _scratch/s11c/smooth_dipole_l015_01/stdout _scratch/s11c/wave_outgoing_h03_01/stdout",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_wave_linewidth_budget.py",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout",
+        "_scratch/s11c/wave_outgoing_h03_01/stdout"
+      ],
+      "started_utc": "2026-11-19T19:03:42.730352+00:00",
+      "memory_max_bytes": 3221225472,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "caa86af588425b3a8b9a3ff91094f01be9e0ccbccdf3700621d86f75b4795b04",
+      "stdout_lines": [
+        "bow h=0.06 overlap=0.612555172469 force_matrix=0.00470793384194 difference=0.456511235136 sum=3.92994235475 loss_per_ImChi_difference=0.0507324006486 loss_per_ImChi_sum=0.0492547579113 equal_ImChi_one_spacing=0.0406336055793",
+        "bow h=0.03 overlap=0.618408045427 force_matrix=0.00475189976019 difference=0.456587937953 sum=3.93078155903 loss_per_ImChi_difference=0.0516843730463 loss_per_ImChi_sum=0.0501790029576 equal_ImChi_one_spacing=0.0398851768251",
+        "bow h=0.015 overlap=0.618498902707 force_matrix=0.00475233148617 difference=0.456605832128 sum=3.93100103488 loss_per_ImChi_difference=0.0516937648692 loss_per_ImChi_sum=0.0501881212322 equal_ImChi_one_spacing=0.0398779304093",
+        "coherent_sample damping=0 mass=14.845768537 stiffness=0.18459957494 force_amplitude=0.215429604946 drive_frequency=3.47439520276 depth_amplitude=0.00120334969915 power_per_dipole_action=1.87879997798e-07 upper_action_loss_rate=3.31481804721e-08 ratio_to_spacing=8.15887176387e-06",
+        "coherent_sample damping=1 mass=14.845768537 stiffness=0.18459957494 force_amplitude=0.215429604946 drive_frequency=3.47439520276 depth_amplitude=0.00120312314576 power_per_dipole_action=1.87809260515e-07 upper_action_loss_rate=3.31357001003e-08 ratio_to_spacing=8.15579992851e-06",
+        "target linewidth=0.00406283876392 inverse_width=246.133321578 rms_depth_for_one_spacing=0.02569817945"
+      ],
+      "stdout_path": "_scratch/s11c/mouth_wave_linewidth_budget01/stdout",
+      "stdout_bytes": 1338,
+      "wall_seconds": 5.9953001560643315,
+      "recorded_peak_memory_bytes": 484646912,
+      "outcome_file_written_utc": "2026-11-19T19:03:48.742790+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_wave_linewidth_budget.py": "fa235638de604320b5b8b7fee41473f3e2179d685afe1fd087a9c58895342a7e",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout": "98398a443646d088b7e1323969ef6bdbbe21f5a1de533de57f8ebc77bc8a48ef",
+        "_scratch/s11c/wave_outgoing_h03_01/stdout": "e5315537265b3927f58aa2ecdc86c7fd3e4ed9de7fe13668b431791eb0e067e1"
+      }
+    },
+    "mouth_dipole_bow_decay01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool dipole-bow-decay --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_dipole_bow_decay01 -- python3 software/stage1_solver/tools/mouth_dipole_bow_decay.py _scratch/s11c/smooth_dipole_l015_01/stdout _scratch/s11c/mouth_wave_linewidth_budget01/stdout",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_dipole_bow_decay.py",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout",
+        "_scratch/s11c/mouth_wave_linewidth_budget01/stdout"
+      ],
+      "started_utc": "2026-11-19T19:05:08.608840+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "d63f421f3ea802a5a5741e431671d34ca14006c148be03e4e7da82a0a5b45b3b",
+      "stdout_lines": [
+        "bow damping=0.1 bare_mass=12 bare_stiffness=6 ImChi_diff=0.00373073791209 ImChi_sum=1.22094282075e-05 perturbative_rate=0.00018785149488 exact_linear_rate=0.000177499200921 action_time=5633.82817958 width_over_initial_split=0.0436884679001 max_multiplier=0.99967905741 energy_error=1.5e-13",
+        "bow damping=6.5 bare_mass=12 bare_stiffness=6 ImChi_diff=0.141024203017 ImChi_sum=0.000777843454358 perturbative_rate=0.00711677829925 exact_linear_rate=0.00713343083854 action_time=140.184999705 width_over_initial_split=1.75577502654 max_multiplier=0.987182572842 energy_error=1.32e-13"
+      ],
+      "stdout_path": "_scratch/s11c/mouth_dipole_bow_decay01/stdout",
+      "stdout_bytes": 577,
+      "wall_seconds": 0.4709330420009792,
+      "recorded_peak_memory_bytes": 46112768,
+      "outcome_file_written_utc": "2026-11-19T19:05:09.105104+00:00",
+      "data_arguments_sha256": {
+        "software/stage1_solver/tools/mouth_dipole_bow_decay.py": "b056125e3150e0a992490d6a0a0e5f44e4638be8c49813228a5ffc8648f6427d",
+        "_scratch/s11c/smooth_dipole_l015_01/stdout": "98398a443646d088b7e1323969ef6bdbbe21f5a1de533de57f8ebc77bc8a48ef",
+        "_scratch/s11c/mouth_wave_linewidth_budget01/stdout": "caa86af588425b3a8b9a3ff91094f01be9e0ccbccdf3700621d86f75b4795b04"
+      }
+    },
+    "wave_material_review/levels": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-wave-review --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/wave_material_review/levels -- python3 _scratch/s11c/wave_material_review/verify.py",
+      "child_argv": [
+        "python3",
+        "_scratch/s11c/wave_material_review/verify.py"
+      ],
+      "started_utc": "2026-11-19T18:54:26.095671+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "69e5b02cc34707fa89d88191173f534259eee998b4341ce43ada5d9d4cc6e2a8",
+      "stdout_lines": [
+        "constrained 0 RL phi= 0 R0= 1.89241000541168 L0= 1.81206770991015 E01= 0.05650339763249368 E12= 0.05650339763249368 U= -3.503246160812043e-46 lower_gap= 0.05650339763249368",
+        "constrained 0 R phi= 0 R0= 1.89241000541168 L0= 1.81206770991015 E01= 0.05644006898122932 E12= 0.05631750041279465 U= -0.0001225685684346693 lower_gap= 0.05656889634869562",
+        "constrained 0 free phi= 0 R0= 1.89241000541168 L0= 1.81206770991015 E01= 0.05631278252711228 E12= 0.05594070347599673 U= -0.0003720790511155511 lower_gap= 0.05669882233756877",
+        "constrained 1 RL phi= 0.0373999726942087 R0= 1.89703178087856 L0= 1.82449829233464 E01= 0.05631499712074954 E12= 0.05631499712074954 U= 3.503246160812043e-46 lower_gap= 0.05631499712074954",
+        "constrained 1 R phi= 0.0373999726942087 R0= 1.89703178087856 L0= 1.82449829233464 E01= 0.05625235259815356 E12= 0.05613110793955482 U= -0.0001212446585987362 lower_gap= 0.05637978816840675",
+        "constrained 1 free phi= 0.0373999726942087 R0= 1.89703178087856 L0= 1.82449829233464 E01= 0.05612528967808421 E12= 0.05575498069169178 U= -0.0003703089863924321 lower_gap= 0.05650949035374499",
+        "constrained -1 RL phi= 0.0373999726942087 R0= 1.88784338245855 L0= 1.79999919314884 E01= 0.05668992216027219 E12= 0.05668992216027219 U= 0.0 lower_gap= 0.05668992216027219",
+        "constrained -1 R phi= 0.0373999726942087 R0= 1.88784338245855 L0= 1.79999919314884 E01= 0.05662591962796819 E12= 0.05650204698092209 U= -0.0001238726470461027 lower_gap= 0.05675611794488481",
+        "constrained -1 free phi= 0.0373999726942087 R0= 1.88784338245855 L0= 1.79999919314884 E01= 0.05649841167449671 E12= 0.05612458646664526 U= -0.0003738252078514495 lower_gap= 0.05688626570903061",
+        "fixed_feed_curl_per_area_at_reference 0.02647023553974808 predicted= 0.02647023553974808"
+      ],
+      "stdout_path": "_scratch/s11c/wave_material_review/levels/stdout",
+      "stdout_bytes": 1734,
+      "wall_seconds": 0.38393640564754605,
+      "recorded_peak_memory_bytes": 19894272,
+      "outcome_file_written_utc": "2026-11-19T18:54:26.498664+00:00",
+      "data_arguments_sha256": {
+        "_scratch/s11c/wave_material_review/verify.py": "12bafc1a4db9c77c4cb6ad405cdfa49eb986884b414b6cabc8fc48e8bc9b5b4f"
+      },
+      "review_or_summary_source": {
+        "_scratch/s11c/wave_material_review/verify.py": {
+          "sha256": "12bafc1a4db9c77c4cb6ad405cdfa49eb986884b414b6cabc8fc48e8bc9b5b4f",
+          "as_run": "\"\"\"Independent high precision constrained potential and growing-action checks.\"\"\"\nfrom pathlib import Path\nimport mpmath as m\nimport yaml\nm.mp.dps=45\ncfg=yaml.safe_load(Path(\"software/stage1_solver/reports/pathA_26_derrick_results.yaml\").read_text())\nd=lambda a:m.mpf(str(a))\ns=cfg['parameters']; p=d(s['alpha_volume']); sig=d(s['sigma']); R0,L0=map(d,cfg['phase_A']['q_star'])\nh=d(s['hbar']); rho=d(s['rho0']); c=d(s['c_w']); mu=d(s['mu_in'])\n# Physical normalization used for the conditional Path C map, not brane D.\nphi=d(s['gain_min'])**2*R0**3/L0\nw=lambda r,l:m.sqrt(mu**2+(c*m.pi/r)**2+(c*m.pi/(2*l))**2)\ne=lambda r,l,I,sign:4*m.pi/3*p*r**3*l+4*m.pi*sig*(r*r*l+d(2)/3*r**3)+I*w(r,l)-sign*phi**2/rho*r*r*l\ndef eq(I, sign, clamped_radius):\n    if clamped_radius:\n        r=clamped_radius\n        l=m.findroot(lambda l:m.diff(lambda a:e(r,a,I,sign),l),L0)\n    else:\n        r,l=m.findroot(lambda r,l:(m.diff(lambda a:e(a,l,I,sign),r), m.diff(lambda a:e(r,a,I,sign),l)),(R0,L0))\n    return r,l,e(r,l,I,sign)\ndef dataset(sign, clamp):\n    q0=eq(d(1),sign,False)\n    Rfix=q0[0] if clamp=='R' else False\n    energies=[]\n    for n in (-1,0,1,2):\n        I=d(1)+n*h\n        if clamp=='RL':\n            r,l=q0[:2]; value=e(r,l,I,sign)\n        else:\n            r,l,value=eq(I,sign,Rfix)\n        energies.append(value)\n    old,a,b,c=energies\n    delta=b-a; later=c-b\n    print('constrained',sign,clamp,'phi=',m.nstr(phi if sign else 0,15),'R0=',m.nstr(q0[0],15),'L0=',m.nstr(q0[1],15),'E01=',m.nstr(delta,16),'E12=',m.nstr(later,16),'U=',m.nstr(later-delta,16),'lower_gap=',m.nstr(a-old,16),flush=True)\n    if clamp=='RL':\n        assert abs(later-delta)<m.mpf('1e-40')\n    else:\n        assert later<delta<a-old and all(q>0 for q in q0)\nfor sign in (0,1,-1):\n    for clamp in ('RL','R','free'):\n        dataset(sign,clamp)\n# Sector C fixed drive: a quasistatic sweep in I at fixed work law is allowed.\n# The following identity certifies nonzero generalized force circulation.\na,l=R0,L0; gain=d(s['gain_min'])**4/rho\ncurl=m.diff(lambda x:gain*x**8/l**2,a)-m.diff(lambda y:gain*2*a**7/y,l)\nprint('fixed_feed_curl_per_area_at_reference',m.nstr(curl,16),'predicted=',m.nstr(10*gain*a**7/l**2,16))\nassert abs(curl-10*gain*a**7/l**2)<1e-42\n"
+        }
+      }
+    },
+    "wave_material_review/dipole_levels": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-wave-dipole-review --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/wave_material_review/dipole_levels -- python3 _scratch/s11c/wave_material_review/dipole.py",
+      "child_argv": [
+        "python3",
+        "_scratch/s11c/wave_material_review/dipole.py"
+      ],
+      "started_utc": "2026-11-19T18:56:19.480160+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "45766063031657881e94307a0e086449f13922592eb99bc64ebe78dc1013160a",
+      "stdout_lines": [
+        "finite_side 0 I_d= 0.0 L= 1.914284543397526 omega_0= 1.597559694959674 omega_1= 2.095908812620631 total= 2.1893604239966329",
+        "finite_side 1 I_d= 0.03 L= 1.930144388703292 omega_0= 1.5941069823884 omega_1= 2.093278252684202 total= 2.2521979616572228",
+        "finite_side 2 I_d= 0.06 L= 1.945735774352318 omega_0= 1.590787637213611 omega_1= 2.090751558309318 total= 2.3149581576034606",
+        "dipole empty-to-one then one-to-two at R fixed; shifts= 0.062837537660589885 0.062760195946237787 U= -7.7341714352098203e-5 clamped= 0.062877264378618923",
+        "frequency_secants 2.0945845886863295 2.0920065315412596 curvature_at_empty -0.089494202233128227"
+      ],
+      "stdout_path": "_scratch/s11c/wave_material_review/dipole_levels/stdout",
+      "stdout_bytes": 623,
+      "wall_seconds": 0.1915784887969494,
+      "recorded_peak_memory_bytes": 19894272,
+      "outcome_file_written_utc": "2026-11-19T18:56:19.688004+00:00",
+      "data_arguments_sha256": {
+        "_scratch/s11c/wave_material_review/dipole.py": "2a96eed0ded0d4d3916cc08727802d53eb57243a8ffcf8c5b5f498f1687b789a"
+      },
+      "review_or_summary_source": {
+        "_scratch/s11c/wave_material_review/dipole.py": {
+          "sha256": "2a96eed0ded0d4d3916cc08727802d53eb57243a8ffcf8c5b5f498f1687b789a",
+          "as_run": "\"\"\"Independently check additions to an initially empty supported cavity family.\"\"\"\nfrom pathlib import Path\nimport mpmath as mp\nimport yaml\n\nmp.mp.dps=40\ncfg=yaml.safe_load(Path(\"software/stage1_solver/reports/pathA_26_derrick_results.yaml\").read_text())\nP=cfg[\"parameters\"]\nv=lambda k:mp.mpf(str(P[k]))\nr=mp.mpf(str(cfg[\"phase_A\"][\"q_star\"][0]))\nmu,cut,c=v(\"mu_in\"),v(\"mu_out\"),v(\"c_w\")\nV=r*mp.sqrt(cut**2-mu**2)/c\npi=mp.pi\ndef radial(l):\n    def sec(x):\n        y=mp.sqrt(V**2-x*x)\n        j0=lambda z:mp.sin(z)/z\n        j1=lambda z:mp.sin(z)/z**2-mp.cos(z)/z\n        return x*mp.cos(x)/mp.sin(x)+y if l==0 else x*j0(x)/j1(x) + y-y/(y+1)\n    bracket=(pi/2,pi-mp.mpf(\"1e-14\")) if l==0 else (pi,mp.mpf(\"4.48\"))\n    return mp.findroot(sec,bracket,solver=\"bisect\",tol=mp.mpf(\"1e-28\"))\nk=[radial(l)/r for l in (0,1)]\ndef wave(l,L):\n    return mp.sqrt(mu**2+c**2*(k[l]**2+(pi/(2*L))**2))\nsigma=v(\"sigma\")\npressure=v(\"alpha_volume\")\nC=4*pi*pressure*r**3/3+4*pi*sigma*r**2\ndef E(L,J):\n    return C*L+(8*pi/3)*sigma*r**3+v(\"I_wave\")*wave(0,L)+J*wave(1,L)\ndef point(J):\n    L=mp.findroot(lambda L:mp.diff(lambda z:E(z,J),L),1.8)\n    return L,E(L,J)\nh=v(\"hbar\")\np=[point(i*h) for i in (0,1,2)]\nfor i,(ell,energy) in enumerate(p):\n    print('finite_side',i,'I_d=',mp.nstr(i*h,8),'L=',mp.nstr(ell,16),'omega_0=',mp.nstr(wave(0,ell),16),'omega_1=',mp.nstr(wave(1,ell),16),'total=',mp.nstr(energy,17))\n    assert 0<wave(0,ell)<wave(1,ell)<cut and ell<v(\"d_slab\")\ns1=p[1][1]-p[0][1];s2=p[2][1]-p[1][1]\nL0=p[0][0]\nfrozen=h*wave(1,L0)\nprint('dipole empty-to-one then one-to-two at R fixed; shifts=',mp.nstr(s1,17),mp.nstr(s2,17),'U=',mp.nstr(s2-s1,17),'clamped=',mp.nstr(frozen,17))\nprint('frequency_secants',mp.nstr(s1/h,17),mp.nstr(s2/h,17),'curvature_at_empty',mp.nstr(-mp.diff(lambda z:wave(1,z),L0)**2/mp.diff(lambda z:E(z,0),L0,2),17))\nassert s2<s1<frozen\n"
+        }
+      }
+    },
+    "wave_material_review/dipole_ports": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-wave-port-review --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/wave_material_review/dipole_ports -- python3 _scratch/s11c/wave_material_review/dipole_ports.py",
+      "child_argv": [
+        "python3",
+        "_scratch/s11c/wave_material_review/dipole_ports.py"
+      ],
+      "started_utc": "2026-11-19T18:57:29.823067+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "3bb2e9c10b1875ad4cf4679867f79e885c2830f66a5f3ac6cda3822c8156ee76",
+      "stdout_lines": [
+        "monopole deformation: number kernel [[1, 0, 0], [0, 1, 0], [0, 0, 1]] pair kernel [[0, -1, 0], [-1, 0, 0], [0, 0, 1]]",
+        "L=1.9142845433975 true_reflecting_continuum=2.6312217971037 one_particle_shortfall=0.5353129844831 pair_to_cont_and_mono_shortfall=0.036963866822139 using_bare_gap_only=-0.094257930281588 number_conserving_wave_only=True",
+        "L=1.9301443887033 true_reflecting_continuum=2.6291268964988 one_particle_shortfall=0.53584864381463 pair_to_cont_and_mono_shortfall=0.036677373518825 using_bare_gap_only=-0.092449522980004 number_conserving_wave_only=True",
+        "L=1.9457357743523 true_reflecting_continuum=2.6271156185645 one_particle_shortfall=0.53636406025523 pair_to_cont_and_mono_shortfall=0.036400139159522 using_bare_gap_only=-0.090715479405025 number_conserving_wave_only=True"
+      ],
+      "stdout_path": "_scratch/s11c/wave_material_review/dipole_ports/stdout",
+      "stdout_bytes": 783,
+      "wall_seconds": 0.42102161096408963,
+      "recorded_peak_memory_bytes": 51257344,
+      "outcome_file_written_utc": "2026-11-19T18:57:30.261153+00:00",
+      "data_arguments_sha256": {
+        "_scratch/s11c/wave_material_review/dipole_ports.py": "337bbbf187bc328c10da5382e7dba404b84df768f826e4b7d8af319a47f284e2"
+      },
+      "review_or_summary_source": {
+        "_scratch/s11c/wave_material_review/dipole_ports.py": {
+          "sha256": "337bbbf187bc328c10da5382e7dba404b84df768f826e4b7d8af319a47f284e2",
+          "as_run": "\"\"\"Angular selection and same-scalar thresholds of the supported dipole.\"\"\"\nfrom pathlib import Path\nimport re\nimport sympy as sp\np=Path(\"_scratch/s11c/wave_material_review/dipole_levels/stdout\")\ni=sp.I; scale=sp.sqrt(2)\n# Cartesian real harmonics R_j=sqrt(3/4pi) n_j; int R_i R_j=delta_ij.\n# Columns are m=+1, -1, 0 in the Condon--Shortley convention.\nU=sp.Matrix([[-1/scale,1/scale,0],[-i/scale,-i/scale,0],[0,0,1]])\nwithin=sp.simplify(U.conjugate().T*U)\npair=sp.simplify(U.T*U)\nprint(\"monopole deformation: number kernel\",within.tolist(),\"pair kernel\",pair.tolist())\nassert within==sp.eye(3) and pair==sp.Matrix([[0,-1,0],[-1,0,0],[0,0,1]])\nfor line in p.read_text().splitlines():\n    if not line.startswith(\"finite_side \"): continue\n    numbers=dict(re.findall(r\"(L|omega_0|omega_1)=\\s+([.\\d]+)\",line))\n    L,w0,w1=map(lambda k: float(numbers[k]),(\"L\",\"omega_0\",\"omega_1\"))\n    econt=(2.5**2+(float(sp.pi)/(2*L))**2)**.5\n    closed=econt+w0-2*w1\n    approx=2.5+w0-2*w1\n    print(f\"L={L:.14g} true_reflecting_continuum={econt:.14g} \"\n          f\"one_particle_shortfall={econt-w1:.14g} pair_to_cont_and_mono_shortfall={closed:.14g} \"\n          f\"using_bare_gap_only={approx:.14g} number_conserving_wave_only=True\")\n    assert closed > 0 and approx < 0\n"
+        }
+      }
+    },
+    "wave_material_review/dressed_levels": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-wave-dressed-review --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/wave_material_review/dressed_levels -- python3 _scratch/s11c/wave_material_review/dressed.py",
+      "child_argv": [
+        "python3",
+        "_scratch/s11c/wave_material_review/dressed.py"
+      ],
+      "started_utc": "2026-11-19T18:58:46.759625+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "ed5be3ae095612ed11391bbe75ced9b95e5114f7aa152c4bae81a66f288abf3c",
+      "stdout_lines": [
+        "Ritz k=80 Ledge=4.5 sign=0 first=0.062821111026925 second=0.0627442388747816 U=-7.68721521434e-05 ground_overlaps=0.991421216559,0.991699000759 full_shift_per_G2_plus=-16.3813990349 minus=-15.4080613479",
+        "Ritz k=126 Ledge=6 sign=0 first=0.0628211110269259 second=0.0627442388747816 U=-7.68721521442e-05 ground_overlaps=0.991421216559,0.991699000758 full_shift_per_G2_plus=-16.3813990352 minus=-15.4080613481",
+        "sign=0 max_basis_domain_diff=2.77e-10",
+        "Ritz k=80 Ledge=4.5 sign=-1 first=0.0628999862295325 second=0.0628217818888088 U=-7.82043407237e-05 ground_overlaps=0.991435525389,0.991713346464 full_shift_per_G2_plus=-16.5371214038 minus=-15.5250455354",
+        "Ritz k=126 Ledge=6 sign=-1 first=0.0628999862295361 second=0.0628217818888124 U=-7.82043407237e-05 ground_overlaps=0.991435525389,0.991713346464 full_shift_per_G2_plus=-16.5371214038 minus=-15.5250455355",
+        "sign=-1 max_basis_domain_diff=1.26e-10",
+        "Ritz k=80 Ledge=4.5 sign=1 first=0.0627417410348827 second=0.0626662066157264 U=-7.55344191563e-05 ground_overlaps=0.991406398834,0.991684152618 full_shift_per_G2_plus=-16.232463573 minus=-15.2987643646",
+        "Ritz k=126 Ledge=6 sign=1 first=0.0627417410348854 second=0.0626662066157264 U=-7.5534419159e-05 ground_overlaps=0.991406398834,0.991684152618 full_shift_per_G2_plus=-16.2324635735 minus=-15.298764365",
+        "sign=1 max_basis_domain_diff=5.94e-10"
+      ],
+      "stdout_path": "_scratch/s11c/wave_material_review/dressed_levels/stdout",
+      "stdout_bytes": 1334,
+      "wall_seconds": 0.6712118028663099,
+      "recorded_peak_memory_bytes": 45993984,
+      "outcome_file_written_utc": "2026-11-19T18:58:47.505934+00:00",
+      "data_arguments_sha256": {
+        "_scratch/s11c/wave_material_review/dressed.py": "4f2e10e9d4b3d6d2c5ee0b83f91d874fc2abf2b922c74579078f6d0b478dd2e7"
+      },
+      "review_or_summary_source": {
+        "_scratch/s11c/wave_material_review/dressed.py": {
+          "sha256": "4f2e10e9d4b3d6d2c5ee0b83f91d874fc2abf2b922c74579078f6d0b478dd2e7",
+          "as_run": "\"\"\"Sine-Galerkin cross-check, including the sum over all resolved wall sidebands.\"\"\"\nimport numpy as np\nfrom scipy.special import roots_legendre\nfrom scipy.optimize import brentq\nfrom scipy.linalg import eigh\nfrom pathlib import Path\nimport yaml\n\ncfg=yaml.safe_load(Path(\"software/stage1_solver/reports/pathA_26_derrick_results.yaml\").read_text())\ns=cfg['parameters'];R,Lorig=cfg['phase_A']['q_star'];pi=np.pi;mu=s['mu_in'];c=s['c_w'];out=s['mu_out']\np=s['alpha_volume'];sigma=s['sigma'];h=s['hbar'];I=s['I_wave'];Phi=s['gain_min']**2*R**3/Lorig\nV=R*np.sqrt(out**2-mu**2)/c\ndef root(l):\n    y=lambda x: np.sqrt(V**2-x*x)\n    return (brentq(lambda x:x/np.tan(x)+y(x),pi/2,pi-1e-8) if l==0 else\n            brentq(lambda x:x*(np.sin(x)/x)/(np.sin(x)/x**2-np.cos(x)/x)+y(x)-y(x)/(1+y(x)),pi,4.48))\nbase=np.array([mu**2+(c*root(l)/R)**2 for l in (0,1)])\nmass0=s['rho0']*pi*R**3/3\nC=(4*pi/3*p*R**3+4*pi*sigma*R**2)\ncap=(8*pi/3)*sigma*R**3\ndef run(modes,Limit,sig):\n    yedge=2*np.sqrt(mass0)*Limit**1.5/3\n    u,weight=roots_legendre(550)\n    y=(u+1)*yedge/2\n    L=(3*y/2/np.sqrt(mass0))**(2/3)\n    nvec=np.arange(1,modes+1)\n    Q=np.sin(nvec[:,None]*pi*(u+1)[None,:]/2)*np.sqrt(weight)\n    kinetic=np.diag(.5*(h*pi*nvec/yedge)**2)\n    potential=cap+(C-sig*(Phi*R)**2/s['rho0'])*L\n    ws,wd=np.sqrt(base[:,None]+(c*pi/(2*L))**2)\n    ham=lambda n:kinetic+(Q*(potential+I*ws+n*h*wd))@Q.T\n    allstates=[eigh(ham(n)) for n in (0,1,2)]\n    levels=np.array([a[0][0] for a in allstates])\n    ca,cb=levels[1]-levels[0],levels[2]-levels[1]\n    overlaps={}\n    for n in (0,1):\n        _,q=allstates[n]\n        for target in [n-1,n+1]:\n            if target>=0:\n                overlaps[n,target]=np.square(allstates[target][1].T@q[:,0])\n    coeffs=[]\n    for df in (.08,-.08):\n        ep=ca-h*df\n        broad=h*.001\n        def shift(n):\n            keep=0.\n            for target,factor,en in [(n-1,n,-ep),(n+1,n+1,ep)]:\n                if factor:\n                    d=levels[n]+en-allstates[target][0]\n                    keep+=factor*np.sum(overlaps[n,target]*d/(d*d+broad*broad))/2\n            return keep\n        coeffs.append(shift(1)-shift(0))\n    z0=overlaps[0,1][0];z1=overlaps[1,2][0]\n    print(f\"Ritz k={modes} Ledge={Limit:g} sign={sig} first={ca:.15g} second={cb:.15g} U={cb-ca:.12g} \"\n          f\"ground_overlaps={z0:.12g},{z1:.12g} full_shift_per_G2_plus={coeffs[0]:.12g} minus={coeffs[1]:.12g}\")\n    return np.r_[ca,cb,z0,z1,coeffs]\nfor sig in (0,-1,1):\n    a=run(80,4.5,sig);b=run(126,6,sig)\n    err=max(abs(a-b))\n    print(f\"sign={sig} max_basis_domain_diff={err:.3g}\")\n    assert err<5e-7\n"
+        }
+      }
+    },
+    "wave_material_review/sideband": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-sideband-review --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/wave_material_review/sideband -- python3 _scratch/s11c/wave_material_review/sideband.py",
+      "child_argv": [
+        "python3",
+        "_scratch/s11c/wave_material_review/sideband.py"
+      ],
+      "started_utc": "2026-11-19T19:02:11.063982+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "7786d268be75fec56075fbc0c9f9dc49b75d438018e9b0cf4e87cccf5cf61f5d",
+      "stdout_lines": [
+        "outgoing half-line normalized boundary flux k*nu/(4*c**2*omega*(k**2 + 1)**2) difference 0",
+        "n=0 channel=dipole-up drive=3.4856823965 side_frequency=5.6836279117 bulk_wave_number=5.1042752903 input_gain_per_radiated_energy=-0.38671523705 external_work_per_radiated_energy=0.61328476295",
+        "n=0 channel=support-down drive=4.3958910304 side_frequency=2.6530498322 bulk_wave_number=0.88807286414 input_gain_per_radiated_energy=0.65691988787 external_work_per_radiated_energy=1.6569198879",
+        "n=1 channel=dipole-up drive=3.4743952028 side_frequency=5.6681986363 bulk_wave_number=5.0870891264 input_gain_per_radiated_energy=-0.38703714783 external_work_per_radiated_energy=0.61296285217",
+        "n=1 channel=support-down drive=4.387606867 side_frequency=2.6504092656 bulk_wave_number=0.88015298408 input_gain_per_radiated_energy=0.65544503783 external_work_per_radiated_energy=1.6554450378",
+        "n=2 channel=dipole-up drive=3.4635334911 side_frequency=5.6533517467 bulk_wave_number=5.070540994 input_gain_per_radiated_energy=-0.38734866566 external_work_per_radiated_energy=0.61265133434",
+        "n=2 channel=support-down drive=4.3796365111 side_frequency=2.6478697656 bulk_wave_number=0.8724759569 input_gain_per_radiated_energy=0.65402262909 external_work_per_radiated_energy=1.6540226291"
+      ],
+      "stdout_path": "_scratch/s11c/wave_material_review/sideband/stdout",
+      "stdout_bytes": 1252,
+      "wall_seconds": 0.6376940021291375,
+      "recorded_peak_memory_bytes": 53088256,
+      "outcome_file_written_utc": "2026-11-19T19:02:11.718529+00:00",
+      "data_arguments_sha256": {
+        "_scratch/s11c/wave_material_review/sideband.py": "047090c0570e9d378fb8c4296e0944cc4b9ac1a491d48dc0cd8054b15359b1e3"
+      },
+      "review_or_summary_source": {
+        "_scratch/s11c/wave_material_review/sideband.py": {
+          "sha256": "047090c0570e9d378fb8c4296e0944cc4b9ac1a491d48dc0cd8054b15359b1e3",
+          "as_run": "\"\"\"Independent analytic outgoing-flux normalization and smooth-well on-shell checks.\"\"\"\nimport re\nfrom pathlib import Path\nimport sympy as s\nk,c,nu,omega,eps,I=s.symbols('k c nu omega eps I',positive=True)\nr=s.symbols('r',positive=True)\n# Dirichlet half-line. Outgoing G has exterior coefficient sin(kr')/(c²k).\noverlap=s.integrate(s.exp(-r)*s.sin(k*r),(r,0,s.oo))\nhalf_source=eps*s.sqrt(2*I/omega)/2\namp=half_source*overlap/(c*c*k)\nboundary=s.factor(c*c*k*nu*amp**2/2)\nimag_res=overlap**2/(c*c*k)\nvolume=I*eps**2*nu/(4*omega)*imag_res\nprint('outgoing half-line normalized boundary flux',s.factor(boundary/(I*eps**2)), 'difference',s.factor(boundary-volume))\nassert s.simplify(boundary-volume)==0\np=Path('_scratch/s11c/smooth_dipole_l015_01/stdout')\nfor row in p.read_text().splitlines():\n    if not row.startswith('point '):continue\n    data=dict(re.findall(r'(?:^| )(n|omega_s|omega_d)=([\\d.]+)',row))\n    a,b=map(float,(data['omega_s'],data['omega_d']))\n    for lab,drive,incoming,side in [('dipole-up',2*a,b,2*a+b),('support-down',2*b,a,2*b-a)]:\n        # For the second branch Ω>ω. Correct background action sign for each emitted unit.\n        income=b*(-1.) if lab=='dipole-up' else a\n        print(f\"n={data['n']} channel={lab} drive={drive:.11g} side_frequency={side:.11g} \"\n              f\"bulk_wave_number={(side**2-2.5**2)**.5:.11g} \"\n              f\"input_gain_per_radiated_energy={income/side:.11g} \"\n              f\"external_work_per_radiated_energy={drive/side:.11g}\")\n        assert abs(drive-income-side)<1.e-13 and side>2.5\n"
+        }
+      }
+    },
+    "wave_material_review/floquet": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-wave-bow-review --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/wave_material_review/floquet -- python3 _scratch/s11c/wave_material_review/floquet.py",
+      "child_argv": [
+        "python3",
+        "_scratch/s11c/wave_material_review/floquet.py"
+      ],
+      "started_utc": "2026-11-19T19:06:07.421171+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "6b04d0f3a2be7b53d2efc713dacf9d8a98e03186df00800b6e7c11b20625bed9",
+      "stdout_lines": [
+        "Fourier damping=0.1 N=4 rate=0.000177499200899307 shifted_freq=2.186843002448 central_dipole_fraction=0.998121600375",
+        "Fourier damping=0.1 N=7 rate=0.000177499200906952 shifted_freq=2.186843002448 central_dipole_fraction=0.998121600375",
+        "Fourier damping=0.1 N=10 rate=0.000177499200905909 shifted_freq=2.186843002448 central_dipole_fraction=0.998121600375",
+        "Fourier damping=6.5 N=4 rate=0.0071334308385412 shifted_freq=2.1896884739852 central_dipole_fraction=0.998852077165",
+        "Fourier damping=6.5 N=7 rate=0.00713343083852716 shifted_freq=2.1896884739852 central_dipole_fraction=0.998852077165",
+        "Fourier damping=6.5 N=10 rate=0.00713343083853199 shifted_freq=2.1896884739852 central_dipole_fraction=0.998852077165"
+      ],
+      "stdout_path": "_scratch/s11c/wave_material_review/floquet/stdout",
+      "stdout_bytes": 703,
+      "wall_seconds": 0.42600631061941385,
+      "recorded_peak_memory_bytes": 34574336,
+      "outcome_file_written_utc": "2026-11-19T19:06:07.870426+00:00",
+      "data_arguments_sha256": {
+        "_scratch/s11c/wave_material_review/floquet.py": "e80afb851561ac472b4a4fa896de132dceb7f826749a4d7fd425322a868c30c1"
+      },
+      "review_or_summary_source": {
+        "_scratch/s11c/wave_material_review/floquet.py": {
+          "sha256": "e80afb851561ac472b4a4fa896de132dceb7f826749a4d7fd425322a868c30c1",
+          "as_run": "\"\"\"Fourier-Hill check of stroboscopic attenuation of a supported dipole.\"\"\"\nimport numpy as np\nfrom scipy.linalg import eig\nfrom pathlib import Path\ndef row(path,start):\n    line=next(l for l in Path(path).read_text().splitlines() if l.startswith(start))\n    return dict(s.split('=',1) for s in line.split() if '=' in s)\ns=row('_scratch/s11c/smooth_dipole_l015_01/stdout','point n=1 ')\nb=row('_scratch/s11c/mouth_wave_linewidth_budget01/stdout','bow h=0.015 ')\nws,wd=map(float,[s['omega_s'],s['omega_d']])\nv=float(b['overlap'])*np.sqrt(2/ws)\nfor c in (.1,6.5):\n    A=np.array([[0,1,0,0],[-wd**2,0,0,0],[0,0,0,1],[0,0,-.5,-c/12]],dtype=complex)\n    B=np.zeros((4,4)); B[1,2]=-v/2; B[3,0]=-v/24\n    control=[]\n    for N in (4,7,10):\n        ns=np.arange(-N,N+1)\n        size=2*N+1\n        hill=np.kron(np.eye(size),A)-1j*ws*np.kron(np.diag(ns),np.eye(4))+np.kron(np.diag(np.ones(size-1),1)+np.diag(np.ones(size-1),-1),B)\n        vals,vec=eig(hill)\n        j=np.argmin(abs(vals-1j*wd)); lam=vals[j]\n        mix=np.sum(abs(vec[4*N:4*N+2,j])**2)\n        print(f'Fourier damping={c} N={N} rate={-2*lam.real:.15g} shifted_freq={lam.imag:.14g} central_dipole_fraction={mix:.12g}')\n        control.append(-2*lam.real)\n        assert mix>.9\n    assert max(abs(np.diff(control)))<1e-10\n"
+        }
+      }
+    }
+  },
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_cavity_occupation.py": "6bc0e5713fac31b0fbe5b4e17426cef4eaf660e332df5b3110efa3f5c6bad49c",
+    "software/stage1_solver/tools/mouth_dipole_bow_decay.py": "b056125e3150e0a992490d6a0a0e5f44e4638be8c49813228a5ffc8648f6427d",
+    "software/stage1_solver/tools/mouth_dipole_spectroscopy.py": "9acacc42fa73ccba2f5b610dfbefb2986e48de64f7ab41ddf1463e2c272034a6",
+    "software/stage1_solver/tools/mouth_dipole_wall_readout.py": "e64a0fe7cd6d1d71aa34ac4446e5d8c9aeb7d0e9eade453520e1ab5393e6d39d",
+    "software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py": "f58eeb92e04662b1f0effc620cdb9a532e4fabe6e9c9fd086a5a994e011d6efd",
+    "software/stage1_solver/tools/mouth_trapped_wave_ports.py": "8a5838daaea498418359858b6ef5ec043296343e91545353478864b927f6b0d3",
+    "software/stage1_solver/tools/mouth_wave_depth_response.py": "9a7d8d55f750273f2691e3c8c6e19a4ca30ed4e8a3564b62ddd8907e256612a4",
+    "software/stage1_solver/tools/mouth_wave_linewidth_budget.py": "fa235638de604320b5b8b7fee41473f3e2179d685afe1fd087a9c58895342a7e",
+    "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py": "45c57953116d50d4745f01420f6b95092c267cfd4bb045875edec270496c0e12",
+    "software/stage1_solver/tools/mouth_wave_relaxed_levels.wl": "8f0c149ead9ed5a8d5b65d5994f09d32e939ed7da852daed1984725a768576c9"
+  },
+  "local_review": {
+    "verdict_and_scope": [
+      "Scoped clear for the one-page report’s conditional trapped-wave level spacings, driven scalar output and two passive bend decay examples."
+    ],
+    "dispositions": [
+      "The rates bracket the conservative separation. The independent Fourier–Hill calculation also found a shift in the real resonance frequency. A full comparison of dressed linewidths and line positions needs the material response.",
+      "The supported empty dipole is distinct from adding two increments to the already occupied fundamental.",
+      "Use the reflected-end radial continuum for its own geometry and the 2.5 scalar continuum for the fully open smooth case.",
+      "State width as a resolution target, distinguish sideband transfer power, abundance and sign from a total physical linewidth. Under driving, response is insufficient for noise state.",
+      "The two fixed-current routing signs are not a test of mirror charge. Absolute drain and parcel parameters are not borrowed from the earlier site law.",
+      "State the supported dipole is global, and the assumed quantum and contact are independent of its observed far-field electric sign."
+    ]
+  }
+}

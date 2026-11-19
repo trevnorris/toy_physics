@@ -1,0 +1,16 @@
+# Can an existing trapped mode remember one more excitation?
+
+**The model’s standing wave can produce unequal excitation energies at a fixed mouth radius.** An occupied, spherically symmetric wave supports the throat. We added one and then two equal action increments to an initially empty dipole mode, a wave with two opposite lobes. The radius stayed at its archived value, 1.892410005412. We used 0.03 for the action increment, borrowing the carrier value. The wave sector itself supplies a classical action. [Wave Hamiltonian](../../../notes/inner_throat/inner_throat_hard_mode.md#43-wave-energy-what-produces-pressure) · [Calculations, assumptions and review](../../../research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json)
+
+| Condition in the smooth well open to the scalar bulk | First addition | Second addition |
+|---|---:|---:|
+| Hold depth at its initial equilibrium | 0.0659383654567 | 0.0659383654567 |
+| Let depth settle after each addition | 0.0658758299798 | 0.0657539448169 |
+
+The first addition deepened the well from 2.06592653908 to 2.0918395048. The second reached 2.11731864922. Both modes stayed bound. The softer second addition gives an angular-frequency separation of **0.00406283876392**, about one part in 540 of the first transition frequency. Grid refinement changed the energy difference by \(2.25\times10^{-8}\). A separate cavity with a reflecting end also softened, including under a specified weak, fixed inward current. The smooth-well calculation uses conservative support. [Open-well calculation](../tools/mouth_smooth_dipole_relaxation.py) · [Fixed-current comparison](../tools/mouth_dipole_spectroscopy.py)
+
+**Can the two lines be distinguished?** We found an outgoing scalar wave when the support made the depth oscillate. With the archived mass and an illustrative damping law extended to that frequency, this channel alone gave an action loss rate of \(3.31\times10^{-8}\) in inverse model time. A bend that moves opposite sides of the throat in opposite directions also transfers energy between the two trapped modes and the surrounding material. Two passive examples with identical bend mass and stiffness gave dipole decay rates of **0.000177499200921** and **0.00713343083854**. These straddle the conservative line separation. The bend also shifts the resonance. Resolving both lines in a draining mouth requires its dynamic response. [Outgoing scalar power](../tools/mouth_wave_outgoing_sidebands.py) · [Bend dynamics and decay](../tools/mouth_dipole_bow_decay.py)
+
+**What to measure next.** At matched intake, apply a small alternating force to that bend and measure its displacement amplitude and lag at angular frequencies **0.456605832128** and **3.93100103488**, the difference and sum of the two mode frequencies at the one-increment geometry. Those readings distinguish the two damping examples. A direct ringdown also tests loss through other channels. This global mode has the same addition energies on the mirror mouth. Its coupling to a passing parcel and the formation of opposite exterior charges remain open. [Wall-response coefficients](../tools/mouth_wave_linewidth_budget.py)
+
+A fresh local reviewer independently reproduced both decay rates. Working base `df13acaa`. Formal review and commit are pending.

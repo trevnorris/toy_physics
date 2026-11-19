@@ -1,0 +1,1099 @@
+{
+  "working_base": "df13acaa78634e254be4c732068260e62a210d4f",
+  "status": "Working calculation with scoped local independent review; formal gate and commit pending.",
+  "report": "software/stage1_solver/reports/mouth_open_reservoirs.md",
+  "report_sha256": "7d6b2b0348b1c4e67d46988062f6ac60ef5dc339b8aed2359d9f629998b035f6",
+  "primary_source_and_input_sha256": {
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "research/pde_ledger_v3/_measurements/mouth_carrier_bend_work.json": "5c80657f020b1102d5d4c67201fc95db8b2ccf73ac7f1c2cc909929e01b9a162",
+    "research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json": "a53c5edf9cee951de8e8cce20cbc90d27a4e8e5ce55efadb69b5fa52eae274d7",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/drain_density_thickness.md": "6232c1421288d50669bb4481c81af38ae270e4918775f129668c9f0f194c05a5",
+    "software/stage1_solver/reports/mouth_carrier_bend_work.md": "a54e73fb11e2c56af0e396fb3409d04b0a3f0e3f18b90f87383afab32af0b18a",
+    "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b",
+    "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e",
+    "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+    "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519",
+    "software/stage1_solver/tools/mouth_aperture_return.py": "caa23cfa0a79b120fc201cb14d306173eb0daf44264524e973d64ff72c02a43d",
+    "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44",
+    "software/stage1_solver/tools/mouth_carrier_bend_spectrum.py": "08a04e6f2bb6dbe18f897546d244a7261d4cc5289c5dc19a11610f383a63ee4c",
+    "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9",
+    "software/stage1_solver/tools/mouth_driven_return.py": "a09a4f9c3b44c00b149988710f37be15ebf26a5cfff6510d2f11d7d4cb858acc",
+    "software/stage1_solver/tools/mouth_open_reservoirs.py": "3917e80ff614c90a9eb4beb78fd7c3136ba52016fb60261b07791e6bd519114c"
+  },
+  "physics": {
+    "question": "Whether replacing the previous two finite-width guide ends by an extended slab inlet and an unbounded four-spatial-dimensional bulk changes emitted carrier energy, angular-mode return and the conditional one-arm linewidth at the same intake.",
+    "hypothesis": "Uniform compressible longitudinal GNLS carrier of common equation of state, density and constituent mass across a sharp flush opening. The rest of the slab faces and the bulk plane reflect the carrier. Coordinates are r=length(x,y,z) and w: finite slab -W<w<0, neck 0<w<H and r<R, half-space w>H. R=1.892410005412, H=2.0918395048/2. The reference W=R uses the width-to-radius ratio from the earlier radius-one feeding-slab preparation; it is not a derived thickness. Tests W=R/2 and 2R. The bulk transmits compressive carrier perturbations. These waves are distinct from transverse shear/light; no extra returning charge or phase bias imposed.",
+    "flow": "Far radial slab bath fixes carrier amplitude; feed phase floats to give the archived weak inward current. Far w and radial bulk cuts fix receiving amplitude and phase. Stationary GNLS solved at finite radii, with fixed nonzero intake verified at feed, through neck and at bulk. The complex coordinate stretch is only for perturbations; variable coefficients are taken from the real steady state and continued numerically in the absorbing region. Scattering or reflection of that small nonuniform background outside the checked volume is not analytically excluded. Current conservation of the response is first order (the angular integral of a dipole vanishes). No second-order mean-current controller is assumed.",
+    "source": "On the rigid moving side the aperture action/momentum boundary rule from the previous study gives carrier force deltaF=(s+i omega t)†u for peak unit displacement, with exp(-i omega t), and mean power omega Im(deltaF)/2. Wall displacement b sin²(pi w/H) cos(theta); tested b=1e-5. Scales are model units. Work per cycle=2pi P/omega. Integrated angular cos² factor 4pi/3, angular Laplace eigenvalue 2, finite-volume radial measure proportional to r² dr. Measured two real-coordinate enclosing cuts for each reservoir; upstream + downstream net flux equals the work. The quoted energy is perturbative rotating-frame energy; the earlier coherent support work and DC bath transport remain separate.",
+    "open_boundaries": "Beyond the physical monitoring cuts use r -> r+i a(r-r0)_+³/(3d²) and the corresponding axial stretch into the receiving half-space, including stretched radial area and angular stiffness. Compare (.start=2R,width=2R,a=3) with (3R,2.5R,2) on the 64-cell grid; the far edge moves from 4R to 5.5R. The independent zero-flow Hankel calculation needs no finite external wall. It uses coth(gamma W)/(k gamma) and 1/(k gamma) for the slab and half-space aperture compliances. Slab radiation leaves radially within a finite thickness and bulk radiation spreads in all four spatial directions of the half-space.",
+    "incidence": "An isolated-junction diagnostic launches each propagating radial mode of angular order one with unit incident power in a matched straight neck. Outward and inward discrete lead eigenvectors normalized with omega*k/dw Im[z v†R(delta)v]; reflection is a flux norm, summing all returning modes. Independently record transmission with interior reservoir cuts. One versus 1.5 radius launch stub is a control (axial step also changes). These single-mode results are different experiments from the driven bow. For the latter the two-sided aperture trace and the exact face derivative are projected onto local uniform-neck waves with the same mean intake and area-weighted phase. Evaluate return/incident for propagating waves; the signed interference of evanescent pairs enters a separate flux term. Incoming minus returned plus near-field flux matches the net reservoir power. The exact split at finite current depends on this reference at the aperture. It is not a probability for all incident disturbances.",
+    "spectral_scope": "One arm; retain central trapped dipole and the two angular sidebands. Use the earlier illustrative bend mass 12 and static stiffness 6, subtract the static induced carrier force, and compute absorptive FWHM around the shifted resonance. Equal-area selective 01/12 readout, one cold loss, widths 1:3, common shift and no extra dephasing. The actual physical bend stiffness, inertia, additional loss and parcel readout remain independent inputs. Static energies and radiation are mirror-even. This calculation supplies no new companion-directed force or free-fall inertial calibration.",
+    "uncertainty": "Use the like-for-like continuum zero-flow comparison for percent changes of total power between the open geometry and the old guides. The older 224-cell flowing guide versus current 128-cell result is a mixed-mesh engineering comparison, not a continuum estimate. 128-cell values are discrete, and the continuum check covers zero intake only. Near-field flux and reactive loads can converge more slowly than total power. The upper frequency requires greater resolution."
+  },
+  "review": {
+    "verdict": "Scoped clear for geometry-dependent radiation, junction reflection, and the conditional two-peak result.",
+    "method": "Independent continuum slab/half-space matching over transverse Hankel momentum, brane channel residues, bulk angular flux, isolated junction and forced mouth trace, linewidth under the same readout.",
+    "record": {
+      "local_path": "_scratch/s11c/open_reservoir_aperture_review.md",
+      "sha256": "60d0e64685537a6f43464450971e23bd6b1b835abc5a15f6e196e281d8ec01e1",
+      "source": "# Independent review of the two open apertures\n\n**Scoped clear for the geometry-dependent radiation, junction reflection and conditional two-peak result.** I independently matched the finite cylindrical neck to a radially infinite reflecting slab of thickness R and a four-dimensional half-space at zero intake. The force on a second mouth and the origin of charge remain open. The nonlinear flowing background and its response are measured by the primary finite-volume solver.\n\nThe zero-flow carrier Hessian diagonalizes into two scalar Helmholtz operators. In each branch the slab and half-space aperture compliances in transverse dipole Hankel variable p are coth(γH)/(κγ) and 1/(κγ). The contour passes below all outgoing poles. The neck basis uses the three-dimensional ball's spherical j₁ modes with Neumann roots. The norms integrate cos²θ to 4π/3, and the exterior transform is normalized to δ(p−p′) in dp. Independent slab-residue and half-space angular flux integrals agree with wall work within 0.00000056 per unit squared bend amplitude.\n\n| Zero-flow reference at 192 aperture modes | Lower tone | Upper tone |\n|---|---:|---:|\n| Wall power per squared displacement | 0.0545704752591 | 3.47295524187 |\n| Brane fraction of emitted power | 0.420640170241 | 0.490495731005 |\n| Emitting slab channels for one dipole orientation | 3 | 10 |\n| Fundamental guide return at brane | 0.0985056139676 | 0.63397549822 |\n| Fundamental guide return at bulk | 0.0307481282911 | 0.00755098597384 |\n| Bend-driven propagating return at brane | 0.0712319781175 | 0.0582362152923 |\n| Bend-driven propagating return at bulk | 0.0557917228732 | 0.038654152494 |\n\nThe guide has 2 and 9 propagating radial modes per angular orientation. Diagonalizing the flux-normalized reflection power matrix gives the squared singular values of its amplitude matrix. The full complex-flux balance for every superposition closed within 4 × 10⁻¹⁵ at 192 modes. Near-field interference carries signed power at the driven mouths. At the lower tone, the slab and bulk evanescent powers were −0.000935393973747 and −0.0013864005623 per squared displacement. At the upper tone they were −0.00037678442528 and +0.00164339370256. The traveling return ratios use the local neck reference and exclude this interference. With 96 modes and slab widths R/2 and 2R, the lower tone brane fractions were 0.275431927198 and 0.454324368708.\n\nAt zero flow the 128-cell work was low by 0.305257873986% and 2.12982901502% against the 192-mode reference. At the upper tone the 80-cell isolated-junction rest reflection was high by 2.41041196811% for the brane and 6.01307557679% for the bulk. The 72-mode zero-flow three-frequency response gave shift −0.00684050737783, FWHM 0.000946966344636 and two peaks in the specified selective, equal-area readout. The 48-mode FWHM was 0.000946448060163. The magnitude of the carrier's reactive force at either tone requires more refinement than its radiated-power partition. The finite-current mode projection is relative to a prescribed uniform current in the reference neck. The radiation split and junction observables remain conditional on the assumed reflecting faces, slab thickness, carrier law and bend shape.\n\nNo commit. Working base `df13acaa`. All following paths are under `_scratch/s11c/`. Wall work and linewidth use `open_reservoir_aperture_refined.py` with run directories `open_reservoir_aperture_reference_b` and `open_reservoir_aperture_reference_lines`. Isolated and forced returns use `open_reservoir_ref_scatter.py` and `open_reservoir_ref_forced.py`, with respective run suffixes `_scatter` and `_forced` after `open_reservoir_aperture_reference`. Width and finite-volume comparisons use `open_reservoir_ref_width.py` and `open_reservoir_ref_comparison.py` with run suffixes `_width` and `_compare`. Each run directory contains the guard invocation and literal stdout.\n"
+    },
+    "dispositions": [
+      "Separated emitted power, isolated-mode reflection, driven propagating return and evanescent flux.",
+      "Distinguished both continuum zero-flow comparisons from measured flowing finite-volume quantities; quoted finite-mesh bias.",
+      "Specified the slab thickness, reflecting faces and one-arm readout. Confirmed the lower-tone thickness dependence."
+    ]
+  },
+  "source_versions": {
+    "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44": {
+      "local_path": "_scratch/s11c/open_reservoir_sources/original.py",
+      "sha256": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "source": "\"\"\"Angular carrier radiation from a neck joining a brane slab to a 4D half-space.\n\nThe nonlinear stationary solve sets the intake at the far radial edge of\nthe slab. Both untouched slab faces and the bulk plane outside the aperture\nreflect the scalar carrier. Outgoing waves are continued in complex radial\nand axial coordinates outside the monitoring cuts.\n\"\"\"\nimport argparse\n\nimport numpy as np\nfrom scipy import sparse\nfrom scipy.sparse.linalg import spsolve\n\nfrom mouth_carrier_bend_budget import settings\nfrom mouth_carrier_bend_work import OpenSleeve, wall_source\nfrom mouth_carrier_bend_spectrum import dipole_widths\n\n\nclass ReservoirDomain(OpenSleeve):\n    def __init__(self,radius,half_length,width,cells,clear,layer,stretch,params):\n        self.mouth_cells=self.sleeve_cells=cells\n        self.dr=radius/cells\n        self.dw=half_length/cells\n        self.radius=radius\n        self.length=2*half_length\n        self.stretch=stretch\n        self.layer=layer*radius\n        self.clear=clear*radius\n        self.hbar=params[\"hbar\"]\n        self.constituent_mass=params[\"m\"]\n        self.eos_k=params[\"K_eos\"]\n        self.bath_density=params[\"rho0\"]/self.constituent_mass\n        self.kinetic=self.hbar**2/(2*self.constituent_mass)\n        self.nr=round((clear+layer)*cells)\n        self.nfeed=round(width/self.dr)\n        nb=round((clear+layer)*cells)\n        self.re=self.dr*np.arange(self.nr+1)\n        self.ze=np.r_[np.linspace(-width,0,self.nfeed+1),self.dw*np.arange(1,cells+1),\n                      half_length+self.dr*np.arange(1,nb+1)]\n        self.neck_end=self.nfeed+cells\n        self.nw=len(self.ze)-1\n        rr,zz=np.indices((self.nr,self.nw))\n        mask=(zz<self.nfeed)|(zz>=self.neck_end)|(rr<cells)\n        ids=np.full(mask.shape,-1)\n        ids[mask]=np.arange(mask.sum())\n        self.r_index,self.z_index=rr[mask],zz[mask]\n        # The common sidewall formula uses neck-local axial cell indices.\n        self.w_index=np.where(self.z_index<self.nfeed,self.nw+self.z_index,self.z_index-self.nfeed)\n        self.lr,self.lz=np.nonzero(mask[:-1,:]&mask[1:,:])\n        self.ar,self.az=np.nonzero(mask[:,:-1]&mask[:,1:])\n        self.left=np.r_[ids[self.lr,self.lz],ids[self.ar,self.az]]\n        self.right=np.r_[ids[self.lr+1,self.lz],ids[self.ar,self.az+1]]\n        self.volume,self.conductance,self.inlet,self.outlet,_,self.operator=self.metric(self.re,self.ze)\n        def stretch_axis(x,start):\n            u=np.maximum(0.,x-start)\n            return x+1j*self.stretch*u**3/(3*self.layer**2)\n        self.ac=self.metric(stretch_axis(self.re,self.clear),\n                            stretch_axis(self.ze,half_length+self.clear))\n\n    def metric(self,r,z):\n        dr,dz=np.diff(r),np.diff(z)\n        shell=4*np.pi*np.diff(r**3)/3\n        ir,iz=self.r_index,self.z_index\n        volume=shell[ir]*dz[iz]\n        links=np.r_[4*np.pi*r[self.lr+1]**2*dz[self.lz]/((dr[self.lr]+dr[self.lr+1])/2),\n                    shell[self.ar]/((dz[self.az]+dz[self.az+1])/2)]\n        radial_end=np.where(ir==self.nr-1,8*np.pi*r[-1]**2*dz[iz]/dr[-1],0.)\n        inlet=np.where(iz<self.nfeed,radial_end,0.)\n        outlet=np.where(iz>=self.neck_end,radial_end,0.)+np.where(iz==self.nw-1,2*shell[ir]/dz[-1],0.)\n        adj=sparse.coo_matrix((-links,(self.left,self.right)),shape=(len(ir),len(ir))).tocsr()\n        adj=adj+adj.T\n        operator=self.kinetic*(adj+sparse.diags(inlet+outlet-np.asarray(adj.sum(axis=1)).ravel()))\n        angular=8*np.pi*dr[ir]*dz[iz]/3\n        return volume,links,inlet,outlet,angular,operator\n\n    def stationary(self,rate):\n        # A unit feed phase solves the linearized current problem. Starting\n        # on that phase profile keeps the nonlinear iteration well scaled even\n        # when the feed is far from the aperture.\n        bath=np.sqrt(self.bath_density)\n        hc=1.25*self.eos_k\n        scale=self.hbar/self.constituent_mass\n        if rate==0:\n            return np.full(len(self.volume),bath,dtype=complex),0.,0.\n        shape=spsolve(self.operator,self.kinetic*self.inlet)\n        phi=rate/(scale*bath**2*np.dot(self.inlet,shape-1))\n        psi=bath*np.exp(1j*phi*shape)\n        def evaluate(field,angle):\n            feed=bath*np.exp(1j*angle)\n            n=abs(field)**2\n            local=self.volume*hc*(n**4-self.bath_density**4)\n            edge=self.conductance*(field[self.left]-field[self.right])\n            residual=self.inlet*(field-feed)+self.outlet*(field-bath)\n            np.add.at(residual,self.left,edge)\n            np.add.at(residual,self.right,-edge)\n            residual=self.kinetic*residual+local*field\n            flux=scale*np.dot(self.inlet,(feed.conjugate()*field).imag)-rate\n            return np.r_[residual.real,residual.imag,flux],local,feed\n        for _ in range(20):\n            residual,local,feed=evaluate(psi,phi)\n            err=max(abs(residual))\n            if err<3e-11:\n                return psi,phi,err\n            x,y=psi.real,psi.imag\n            slope=self.volume*8*hc*abs(psi)**6\n            base=self.operator+sparse.diags(local)\n            xy=sparse.diags(slope*x*y)\n            phase_col=-1j*self.kinetic*self.inlet*feed\n            grad=-scale*np.dot(self.inlet,feed.real*x+feed.imag*y)\n            jac=sparse.bmat([[base+sparse.diags(slope*x*x),xy,sparse.csr_matrix(phase_col.real[:,None])],\n                             [xy,base+sparse.diags(slope*y*y),sparse.csr_matrix(phase_col.imag[:,None])],\n                             [sparse.csr_matrix(-scale*feed.imag*self.inlet),sparse.csr_matrix(scale*feed.real*self.inlet),\n                              sparse.csr_matrix([[grad]])]],format=\"csc\")\n            delta=spsolve(jac,-residual)\n            a,b=np.split(delta[:-1],2)\n            for power in range(15):\n                factor=.5**power\n                candidate=psi+factor*(a+1j*b)\n                angle=phi+factor*delta[-1]\n                if max(abs(evaluate(candidate,angle)[0])) < err:\n                    psi,phi=candidate,angle\n                    break\n            else:\n                raise ArithmeticError(f\"Stationary residual stopped decreasing at {err:g}\")\n        raise ArithmeticError(f\"Stationary residual {err:g}\")\n\n    def set_current(self,rate):\n        self.psi,phase,res=self.stationary(rate)\n        s=self.hbar/self.constituent_mass\n        self.rates=(s*sum(self.inlet*(np.sqrt(self.bath_density)*np.exp(-1j*phase)*self.psi).imag),\n                    s*sum(self.outlet*(self.psi.conj()*np.sqrt(self.bath_density)).imag))\n        j=s*self.conductance*(self.psi[self.left].conj()*self.psi[self.right]).imag\n        neck=sum(j[(self.z_index[self.left]==self.nfeed-1)&(self.z_index[self.right]==self.nfeed)])\n        if max(abs(v-rate) for v in (*self.rates,neck))>1e-8:\n            raise ArithmeticError(\"Background flow is not conserved\")\n        print(f\"DC rate={rate:.12g} inlet={self.rates[0]:.12g} neck={neck:.12g} bulk={self.rates[1]:.12g} residual={res:.3g}\",flush=True)\n        self.spatial,self.temporal=wall_source(self,self.psi,self.length,2)\n\n    def cuts(self,omega,u,cut_r,cut_w):\n        # Integrate signed power out of a box entirely within real coordinates.\n        # Feed and bulk are disconnected across the reflecting shoulders outside R.\n        r=self.r_index\n        z=self.z_index\n        l,h=self.left,self.right\n        inside=(r<cut_r)&(z<self.neck_end+cut_w)\n        cross=inside[l]&~inside[h]\n        a,b=np.split(u,2)\n        link=omega*self.kinetic*self.conductance/3*(a[l].conj()*a[h]+b[l].conj()*b[h]).imag\n        return np.array([sum(link[cross&(z[l]<self.nfeed)]),sum(link[cross&(z[l]>=self.neck_end)])])\n\n    def response(self,omega):\n        volume,_,_,_,ang,lap=self.ac\n        weight=volume/3\n        p=self.psi\n        n=abs(p)**2\n        hc=1.25*self.eos_k\n        h=lap/3+sparse.diags(self.kinetic*ang+hc*(n**4-self.bath_density**4)*weight)\n        coupling=8*hc*n**3*weight\n        xy=coupling*p.real*p.imag\n        symp=1j*omega*self.hbar*weight\n        a=sparse.bmat([[h+sparse.diags(coupling*p.real**2),sparse.diags(xy-symp)],\n                       [sparse.diags(xy+symp),h+sparse.diags(coupling*p.imag**2)]],format=\"csc\")\n        src=self.spatial+1j*omega*self.temporal\n        u=spsolve(a,src/2)\n        reaction=np.vdot(src,u)\n        power=.5*omega*reaction.imag\n        # Second energy ledger on two distinct interior monitoring surfaces.\n        cuts=[self.cuts(omega,u,round(f*self.mouth_cells),round((f-.5)*self.mouth_cells))\n              for f in (1.25,self.clear/self.radius-.125)]\n        if not np.allclose(cuts[0],cuts[1],atol=4e-8,rtol=1e-8) or abs(sum(cuts[0])-power)>4e-8*max(1,abs(power)):\n            raise ArithmeticError(f\"Wall and remote cut powers disagree: {power}, {cuts}\")\n        return reaction,power,*cuts[0]\n\n\ndef calculate(args):\n    point,energy,bend,current,archive=settings()\n    rate=float(current[\"reference_inward_current\"])/archive[\"parameters\"][\"m\"]\n    r=archive[\"phase_A\"][\"q_star\"][0]\n    domain=ReservoirDomain(r,float(point[\"L\"])/2,args.width*r,args.cells,args.clear,args.layer,args.stretch,archive[\"parameters\"])\n    domain.set_current(0. if args.rest else rate)\n    print(f\"geometry cells={args.cells} slab_width_over_R={args.width:g} PML_start_over_R={args.clear:g} \"\n          f\"PML_width_over_R={args.layer:g} stretch={args.stretch:g} active_cells={len(domain.volume)}\",flush=True)\n    if args.spectrum:\n        static=domain.response(0.)[0].real\n        offsets=np.array([-.016,-.012,-.009,-.0075,-.006,-.004,-.002,0.,.004])\n    else:\n        static=0.\n        offsets=np.array([0.])\n    forces=[]\n    for tone in (\"difference\",\"sum\"):\n        row=[]\n        for offset in offsets:\n            omega=float(bend[tone])+offset\n            force,power,feed,bulk=domain.response(omega)\n            if min(feed,bulk)<=0:\n                raise ArithmeticError(\"Nonpositive emitted power\")\n            print(f\"tone={tone} offset={offset:.8g} omega={omega:.12g} power_per_b2={power:.12g} \"\n                  f\"feed_per_b2={feed:.12g} bulk_per_b2={bulk:.12g} feed_fraction={feed/power:.10g} \"\n                  f\"effective_C={2*power/omega**2:.12g} cycle_b1em5={2*np.pi*1e-10*power/omega:.12g} \"\n                  f\"induced_real={force.real:.12g}\",flush=True)\n            row.append(force-static)\n        forces.append(np.array(row))\n    if args.spectrum:\n        ws,wd=float(point[\"omega_s\"]),float(point[\"omega_d\"])\n        g=float(bend[\"overlap\"])*np.sqrt(2*archive[\"parameters\"][\"I_wave\"]/ws)\n        gap=abs(float(energy[\"U_over_action\"]))\n        center,width,asym,count,err=dipole_widths(offsets,forces,ws,wd,g,gap,1)\n        print(f\"spectrum arms=1 static_induced={static:.12g} shift={center:.12g} FWHM={width:.12g} \"\n              f\"width_over_gap={width/gap:.12g} asymmetry={asym:.8g} frequency_sampling_change={err:.4g} peaks={count}\",flush=True)\n\n\nif __name__==\"__main__\":\n    parser=argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"--cells\",required=True,type=int)\n    parser.add_argument(\"--width\",default=1.,type=float,help=\"slab thickness in mouth radii\")\n    parser.add_argument(\"--clear\",default=2.,type=float,help=\"radius and bulk depth where absorption starts, in R\")\n    parser.add_argument(\"--layer\",default=2.,type=float,help=\"absorbing layer thickness in R\")\n    parser.add_argument(\"--stretch\",default=3.,type=float)\n    parser.add_argument(\"--rest\",action=\"store_true\")\n    parser.add_argument(\"--spectrum\",action=\"store_true\")\n    calculate(parser.parse_args())\n"
+    },
+    "ebdc902dc2bea9a4fbbcb0ae2ef8cbb697da7121ddb50c16108a35c37827ed6a": {
+      "local_path": "_scratch/s11c/open_reservoir_sources/mouth_open_reservoirs.py",
+      "sha256": "ebdc902dc2bea9a4fbbcb0ae2ef8cbb697da7121ddb50c16108a35c37827ed6a",
+      "source": "\"\"\"Angular carrier radiation from a neck joining a brane slab to a 4D half-space.\n\nThe nonlinear stationary solve sets the intake at the far radial edge of\nthe slab. Both untouched slab faces and the bulk plane outside the aperture\nreflect the scalar carrier. Outgoing waves are continued in complex radial\nand axial coordinates outside the monitoring cuts.\n\"\"\"\nimport argparse\n\nimport numpy as np\nfrom scipy import sparse\nfrom scipy.sparse.linalg import spsolve\n\nfrom mouth_carrier_bend_budget import settings\nfrom mouth_carrier_bend_work import OpenSleeve, wall_source\nfrom mouth_carrier_bend_spectrum import dipole_widths\n\n\nclass ReservoirDomain(OpenSleeve):\n    def __init__(self,radius,half_length,width,cells,clear,layer,stretch,params):\n        self.mouth_cells=self.sleeve_cells=cells\n        self.dr=radius/cells\n        self.dw=half_length/cells\n        self.radius=radius\n        self.length=2*half_length\n        self.stretch=stretch\n        self.layer=layer*radius\n        self.clear=clear*radius\n        self.hbar=params[\"hbar\"]\n        self.constituent_mass=params[\"m\"]\n        self.eos_k=params[\"K_eos\"]\n        self.bath_density=params[\"rho0\"]/self.constituent_mass\n        self.kinetic=self.hbar**2/(2*self.constituent_mass)\n        self.nr=round((clear+layer)*cells)\n        self.nfeed=round(width/self.dr)\n        nb=round((clear+layer)*cells)\n        self.re=self.dr*np.arange(self.nr+1)\n        self.ze=np.r_[np.linspace(-width,0,self.nfeed+1),self.dw*np.arange(1,cells+1),\n                      half_length+self.dr*np.arange(1,nb+1)]\n        self.neck_end=self.nfeed+cells\n        self.nw=len(self.ze)-1\n        rr,zz=np.indices((self.nr,self.nw))\n        mask=(zz<self.nfeed)|(zz>=self.neck_end)|(rr<cells)\n        ids=np.full(mask.shape,-1)\n        ids[mask]=np.arange(mask.sum())\n        self.r_index,self.z_index=rr[mask],zz[mask]\n        # The common sidewall formula uses neck-local axial cell indices.\n        self.w_index=np.where(self.z_index<self.nfeed,self.nw+self.z_index,self.z_index-self.nfeed)\n        self.lr,self.lz=np.nonzero(mask[:-1,:]&mask[1:,:])\n        self.ar,self.az=np.nonzero(mask[:,:-1]&mask[:,1:])\n        self.left=np.r_[ids[self.lr,self.lz],ids[self.ar,self.az]]\n        self.right=np.r_[ids[self.lr+1,self.lz],ids[self.ar,self.az+1]]\n        self.volume,self.conductance,self.inlet,self.outlet,_,self.operator=self.metric(self.re,self.ze)\n        def stretch_axis(x,start):\n            u=np.maximum(0.,x-start)\n            return x+1j*self.stretch*u**3/(3*self.layer**2)\n        self.ac=self.metric(stretch_axis(self.re,self.clear),\n                            stretch_axis(self.ze,half_length+self.clear))\n\n    def metric(self,r,z):\n        dr,dz=np.diff(r),np.diff(z)\n        shell=4*np.pi*np.diff(r**3)/3\n        ir,iz=self.r_index,self.z_index\n        volume=shell[ir]*dz[iz]\n        links=np.r_[4*np.pi*r[self.lr+1]**2*dz[self.lz]/((dr[self.lr]+dr[self.lr+1])/2),\n                    shell[self.ar]/((dz[self.az]+dz[self.az+1])/2)]\n        radial_end=np.where(ir==self.nr-1,8*np.pi*r[-1]**2*dz[iz]/dr[-1],0.)\n        inlet=np.where(iz<self.nfeed,radial_end,0.)\n        outlet=np.where(iz>=self.neck_end,radial_end,0.)+np.where(iz==self.nw-1,2*shell[ir]/dz[-1],0.)\n        adj=sparse.coo_matrix((-links,(self.left,self.right)),shape=(len(ir),len(ir))).tocsr()\n        adj=adj+adj.T\n        operator=self.kinetic*(adj+sparse.diags(inlet+outlet-np.asarray(adj.sum(axis=1)).ravel()))\n        angular=8*np.pi*dr[ir]*dz[iz]/3\n        return volume,links,inlet,outlet,angular,operator\n\n    def stationary(self,rate):\n        # A unit feed phase solves the linearized current problem. Starting\n        # on that phase profile keeps the nonlinear iteration well scaled even\n        # when the feed is far from the aperture.\n        bath=np.sqrt(self.bath_density)\n        hc=1.25*self.eos_k\n        scale=self.hbar/self.constituent_mass\n        if rate==0:\n            return np.full(len(self.volume),bath,dtype=complex),0.,0.\n        shape=spsolve(self.operator,self.kinetic*self.inlet)\n        phi=rate/(scale*bath**2*np.dot(self.inlet,shape-1))\n        psi=bath*np.exp(1j*phi*shape)\n        def evaluate(field,angle):\n            feed=bath*np.exp(1j*angle)\n            n=abs(field)**2\n            local=self.volume*hc*(n**4-self.bath_density**4)\n            edge=self.conductance*(field[self.left]-field[self.right])\n            residual=self.inlet*(field-feed)+self.outlet*(field-bath)\n            np.add.at(residual,self.left,edge)\n            np.add.at(residual,self.right,-edge)\n            residual=self.kinetic*residual+local*field\n            flux=scale*np.dot(self.inlet,(feed.conjugate()*field).imag)-rate\n            return np.r_[residual.real,residual.imag,flux],local,feed\n        for _ in range(20):\n            residual,local,feed=evaluate(psi,phi)\n            err=max(abs(residual))\n            if err<3e-11:\n                internal=(self.z_index[self.left]==self.nfeed-1)&(self.z_index[self.right]==self.nfeed)\n                through=scale*np.dot(self.conductance[internal],\n                    (psi[self.left[internal]].conj()*psi[self.right[internal]]).imag)\n                exterior=scale*np.dot(self.outlet,(psi.conjugate()*bath).imag)\n                if max(abs(through-rate),abs(exterior-rate),abs(residual[-1]))<1e-9:\n                    return psi,phi,err\n            x,y=psi.real,psi.imag\n            slope=self.volume*8*hc*abs(psi)**6\n            base=self.operator+sparse.diags(local)\n            xy=sparse.diags(slope*x*y)\n            phase_col=-1j*self.kinetic*self.inlet*feed\n            grad=-scale*np.dot(self.inlet,feed.real*x+feed.imag*y)\n            jac=sparse.bmat([[base+sparse.diags(slope*x*x),xy,sparse.csr_matrix(phase_col.real[:,None])],\n                             [xy,base+sparse.diags(slope*y*y),sparse.csr_matrix(phase_col.imag[:,None])],\n                             [sparse.csr_matrix(-scale*feed.imag*self.inlet),sparse.csr_matrix(scale*feed.real*self.inlet),\n                              sparse.csr_matrix([[grad]])]],format=\"csc\")\n            delta=spsolve(jac,-residual)\n            a,b=np.split(delta[:-1],2)\n            for power in range(15):\n                factor=.5**power\n                candidate=psi+factor*(a+1j*b)\n                angle=phi+factor*delta[-1]\n                if max(abs(evaluate(candidate,angle)[0])) < err:\n                    psi,phi=candidate,angle\n                    break\n            else:\n                raise ArithmeticError(f\"Stationary residual stopped decreasing at {err:g}\")\n        raise ArithmeticError(f\"Stationary residual {err:g}\")\n\n    def set_current(self,rate):\n        self.psi,phase,res=self.stationary(rate)\n        s=self.hbar/self.constituent_mass\n        self.rates=(s*sum(self.inlet*(np.sqrt(self.bath_density)*np.exp(-1j*phase)*self.psi).imag),\n                    s*sum(self.outlet*(self.psi.conj()*np.sqrt(self.bath_density)).imag))\n        j=s*self.conductance*(self.psi[self.left].conj()*self.psi[self.right]).imag\n        neck=sum(j[(self.z_index[self.left]==self.nfeed-1)&(self.z_index[self.right]==self.nfeed)])\n        if max(abs(v-rate) for v in (*self.rates,neck))>1e-8:\n            raise ArithmeticError(\"Background flow is not conserved\")\n        print(f\"DC rate={rate:.12g} inlet={self.rates[0]:.12g} neck={neck:.12g} bulk={self.rates[1]:.12g} residual={res:.3g}\",flush=True)\n        self.spatial,self.temporal=wall_source(self,self.psi,self.length,2)\n\n    def cuts(self,omega,u,cut_r,cut_w):\n        # Integrate signed power out of a box entirely within real coordinates.\n        # Feed and bulk are disconnected across the reflecting shoulders outside R.\n        r=self.r_index\n        z=self.z_index\n        l,h=self.left,self.right\n        inside=(r<cut_r)&(z<self.neck_end+cut_w)\n        cross=inside[l]&~inside[h]\n        a,b=np.split(u,2)\n        link=omega*self.kinetic*self.conductance/3*(a[l].conj()*a[h]+b[l].conj()*b[h]).imag\n        return np.array([sum(link[cross&(z[l]<self.nfeed)]),sum(link[cross&(z[l]>=self.neck_end)])])\n\n    def response(self,omega):\n        volume,_,_,_,ang,lap=self.ac\n        weight=volume/3\n        p=self.psi\n        n=abs(p)**2\n        hc=1.25*self.eos_k\n        h=lap/3+sparse.diags(self.kinetic*ang+hc*(n**4-self.bath_density**4)*weight)\n        coupling=8*hc*n**3*weight\n        xy=coupling*p.real*p.imag\n        symp=1j*omega*self.hbar*weight\n        a=sparse.bmat([[h+sparse.diags(coupling*p.real**2),sparse.diags(xy-symp)],\n                       [sparse.diags(xy+symp),h+sparse.diags(coupling*p.imag**2)]],format=\"csc\")\n        src=self.spatial+1j*omega*self.temporal\n        u=spsolve(a,src/2)\n        reaction=np.vdot(src,u)\n        power=.5*omega*reaction.imag\n        # Second energy ledger on two distinct interior monitoring surfaces.\n        cuts=[self.cuts(omega,u,round(f*self.mouth_cells),round((f-.5)*self.mouth_cells))\n              for f in (1.25,self.clear/self.radius-.125)]\n        if not np.allclose(cuts[0],cuts[1],atol=4e-8,rtol=1e-8) or abs(sum(cuts[0])-power)>4e-8*max(1,abs(power)):\n            raise ArithmeticError(f\"Wall and remote cut powers disagree: {power}, {cuts}\")\n        return reaction,power,*cuts[0]\n\n\ndef calculate(args):\n    point,energy,bend,current,archive=settings()\n    rate=float(current[\"reference_inward_current\"])/archive[\"parameters\"][\"m\"]\n    r=archive[\"phase_A\"][\"q_star\"][0]\n    domain=ReservoirDomain(r,float(point[\"L\"])/2,args.width*r,args.cells,args.clear,args.layer,args.stretch,archive[\"parameters\"])\n    domain.set_current(0. if args.rest else rate)\n    print(f\"geometry cells={args.cells} slab_width_over_R={args.width:g} PML_start_over_R={args.clear:g} \"\n          f\"PML_width_over_R={args.layer:g} stretch={args.stretch:g} active_cells={len(domain.volume)}\",flush=True)\n    if args.spectrum:\n        static=domain.response(0.)[0].real\n        offsets=np.array([-.016,-.012,-.009,-.0075,-.006,-.004,-.002,0.,.004])\n    else:\n        static=0.\n        offsets=np.array([0.])\n    forces=[]\n    for tone in (\"difference\",\"sum\"):\n        row=[]\n        for offset in offsets:\n            omega=float(bend[tone])+offset\n            force,power,feed,bulk=domain.response(omega)\n            if min(feed,bulk)<=0:\n                raise ArithmeticError(\"Nonpositive emitted power\")\n            print(f\"tone={tone} offset={offset:.8g} omega={omega:.12g} power_per_b2={power:.12g} \"\n                  f\"feed_per_b2={feed:.12g} bulk_per_b2={bulk:.12g} feed_fraction={feed/power:.10g} \"\n                  f\"effective_C={2*power/omega**2:.12g} cycle_b1em5={2*np.pi*1e-10*power/omega:.12g} \"\n                  f\"induced_real={force.real:.12g}\",flush=True)\n            row.append(force-static)\n        forces.append(np.array(row))\n    if args.spectrum:\n        ws,wd=float(point[\"omega_s\"]),float(point[\"omega_d\"])\n        g=float(bend[\"overlap\"])*np.sqrt(2*archive[\"parameters\"][\"I_wave\"]/ws)\n        gap=abs(float(energy[\"U_over_action\"]))\n        center,width,asym,count,err=dipole_widths(offsets,forces,ws,wd,g,gap,1)\n        print(f\"spectrum arms=1 static_induced={static:.12g} shift={center:.12g} FWHM={width:.12g} \"\n              f\"width_over_gap={width/gap:.12g} asymmetry={asym:.8g} frequency_sampling_change={err:.4g} peaks={count}\",flush=True)\n\n\nif __name__==\"__main__\":\n    parser=argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"--cells\",required=True,type=int)\n    parser.add_argument(\"--width\",default=1.,type=float,help=\"slab thickness in mouth radii\")\n    parser.add_argument(\"--clear\",default=2.,type=float,help=\"radius and bulk depth where absorption starts, in R\")\n    parser.add_argument(\"--layer\",default=2.,type=float,help=\"absorbing layer thickness in R\")\n    parser.add_argument(\"--stretch\",default=3.,type=float)\n    parser.add_argument(\"--rest\",action=\"store_true\")\n    parser.add_argument(\"--spectrum\",action=\"store_true\")\n    calculate(parser.parse_args())\n"
+    },
+    "3917e80ff614c90a9eb4beb78fd7c3136ba52016fb60261b07791e6bd519114c": {
+      "local_path": "software/stage1_solver/tools/mouth_open_reservoirs.py",
+      "sha256": "3917e80ff614c90a9eb4beb78fd7c3136ba52016fb60261b07791e6bd519114c"
+    }
+  },
+  "runs": {
+    "open_reservoir16b": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-mouth --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir16b -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 16",
+      "started_utc": "2026-11-19T19:37:32.904464+00:00",
+      "outcome_written_utc": "2026-11-19T19:37:33.708366+00:00",
+      "duration_seconds": 0.7882178979925811,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "recorded_peak_bytes": 104304640,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir16b/stdout",
+      "stdout_size": 683,
+      "stdout_sha256": "cccd088a178eafb8b14f5c6d9a80845865f1d95d637763d179152a666b822a13",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=2.86e-15",
+        "geometry cells=16 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=5376",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0516686292331 feed_per_b2=0.0218062143607 bulk_per_b2=0.0298624148724 feed_fraction=0.4220397306 effective_C=0.495648763259 cycle_b1em5=7.10993047387e-11 induced_real=-0.0376296736346",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.50537526351 feed_per_b2=1.70479727762 bulk_per_b2=1.8005779859 feed_fraction=0.4863380236 effective_C=0.453688945019 cycle_b1em5=5.60287879765e-10 induced_real=-3.37194585872"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_n32": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-n32 --memory-gib 3 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_n32 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 32",
+      "started_utc": "2026-11-19T19:37:52.937266+00:00",
+      "outcome_written_utc": "2026-11-19T19:37:58.163587+00:00",
+      "duration_seconds": 5.206248858012259,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "recorded_peak_bytes": 240656384,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_n32/stdout",
+      "stdout_size": 684,
+      "stdout_sha256": "e4323eb220458c9573e5357df1f79c57e646bef0772ef819f44b14066bf1629f",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=9.76e-15",
+        "geometry cells=32 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=21504",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0533917217159 feed_per_b2=0.0226089505436 bulk_per_b2=0.0307827711723 feed_fraction=0.4234542325 effective_C=0.512178109417 cycle_b1em5=7.34703890764e-11 induced_real=-0.0200607554555",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=2.75285074314 feed_per_b2=1.31052282556 bulk_per_b2=1.44232791759 feed_fraction=0.4760602546 effective_C=0.356292224245 cycle_b1em5=4.40006786788e-10 induced_real=1.23943770775"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_n48": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-n48 --memory-gib 5 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_n48 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 48",
+      "started_utc": "2026-11-19T19:37:53.738252+00:00",
+      "outcome_written_utc": "2026-11-19T19:38:08.580001+00:00",
+      "duration_seconds": 14.76530747814104,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 5368709120,
+      "recorded_peak_bytes": 518729728,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_n48/stdout",
+      "stdout_size": 679,
+      "stdout_sha256": "4929e81629156bc31c652ec8a3fa4632e7734340a57dee451a489d41f530f078",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=6.39e-16",
+        "geometry cells=48 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=48384",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0538674442 feed_per_b2=0.0228188175024 bulk_per_b2=0.0310486266977 feed_fraction=0.423610547 effective_C=0.516741637895 cycle_b1em5=7.41250133305e-11 induced_real=-0.013856475186",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.08759095608 feed_per_b2=1.48704910614 bulk_per_b2=1.60054184995 feed_fraction=0.4816211497 effective_C=0.399616525538 cycle_b1em5=4.93510583124e-10 induced_real=0.55093755955"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_n64": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-n64 --memory-gib 7 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_n64 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 64",
+      "started_utc": "2026-11-19T19:37:54.079973+00:00",
+      "outcome_written_utc": "2026-11-19T19:38:17.475283+00:00",
+      "duration_seconds": 22.941022952087224,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 7516192768,
+      "recorded_peak_bytes": 962199552,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_n64/stdout",
+      "stdout_size": 685,
+      "stdout_sha256": "4c8ddcb4c3cada3a794071df07759ae32a6eec6038b883c610bc4679d7cb8b17",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=3.05e-14",
+        "geometry cells=64 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=86016",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0540783231913 feed_per_b2=0.0229091075427 bulk_per_b2=0.0311692156487 feed_fraction=0.4236282893 effective_C=0.518764565787 cycle_b1em5=7.44151961724e-11 induced_real=-0.0107300065229",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.22660264079 feed_per_b2=1.55476294156 bulk_per_b2=1.67183969923 feed_fraction=0.4818575804 effective_C=0.417608340918 cycle_b1em5=5.15729762593e-10 induced_real=0.407918110795"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_n96": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-n96 --memory-gib 6 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_n96 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 96",
+      "started_utc": "2026-11-19T19:39:09.374952+00:00",
+      "outcome_written_utc": "2026-11-19T19:40:51.554159+00:00",
+      "duration_seconds": 101.84943218296394,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 6442450944,
+      "recorded_peak_bytes": 2409172992,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_n96/stdout",
+      "stdout_size": 685,
+      "stdout_sha256": "153b2afe3ca21bd78c04ce09fcffd2e4c09a064483a05e18d0492dd441f4ca1c",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=4.99e-14",
+        "geometry cells=96 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=193536",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.054266200539 feed_per_b2=0.0229876141103 bulk_per_b2=0.0312785864287 feed_fraction=0.4236083212 effective_C=0.52056684265 cycle_b1em5=7.46737272965e-11 induced_real=-0.00760731482426",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.34719938619 feed_per_b2=1.61120355044 bulk_per_b2=1.73599583575 feed_fraction=0.4813587016 effective_C=0.433216772564 cycle_b1em5=5.35005557538e-10 induced_real=0.335364574874"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_n128": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-n128 --memory-gib 9 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_n128 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 128",
+      "started_utc": "2026-11-19T19:39:09.271197+00:00",
+      "outcome_written_utc": "2026-11-19T19:43:38.103336+00:00",
+      "duration_seconds": 268.70145916892216,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 9663676416,
+      "recorded_peak_bytes": 4674203648,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_n128/stdout",
+      "stdout_size": 686,
+      "stdout_sha256": "c1ecffc339f0d38b2216ea4727aff09c36e71e54b22e280fbced28f728853f3b",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726943 neck=0.0373999726942 bulk=0.0373999726942 residual=1.35e-13",
+        "geometry cells=128 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=344064",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0543494618797 feed_per_b2=0.0230216529549 bulk_per_b2=0.0313278089248 feed_fraction=0.423585665 effective_C=0.52136555516 cycle_b1em5=7.47883001722e-11 induced_real=-0.00605411398528",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.39779660827 feed_per_b2=1.63499309072 bulk_per_b2=1.76280351756 feed_fraction=0.4811921605 effective_C=0.439765401051 cycle_b1em5=5.43092854376e-10 induced_real=0.331418372217"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_rest48": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-rest48 --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_rest48 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 48 --rest",
+      "started_utc": "2026-11-19T19:37:54.042301+00:00",
+      "outcome_written_utc": "2026-11-19T19:38:05.488844+00:00",
+      "duration_seconds": 11.137331943027675,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "recorded_peak_bytes": 525582336,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_rest48/stdout",
+      "stdout_size": 619,
+      "stdout_sha256": "6a9fac56e44ea2f951e7b0d08bb792cca96cddbca5c807816e4aa5eb2add745e",
+      "stdout_lines": [
+        "DC rate=0 inlet=0 neck=0 bulk=0 residual=0",
+        "geometry cells=48 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=48384",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.053921269683 feed_per_b2=0.0226856576819 bulk_per_b2=0.0312356120011 feed_fraction=0.4207181659 effective_C=0.517257977005 cycle_b1em5=7.41990806026e-11 induced_real=-0.0139801057744",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.08845964056 feed_per_b2=1.51451672911 bulk_per_b2=1.57394291145 feed_fraction=0.490379317 effective_C=0.399728956453 cycle_b1em5=4.9364943085e-10 induced_real=0.549789024236"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_rest128": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-rest128 --memory-gib 8 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_rest128 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 128 --rest",
+      "started_utc": "2026-11-19T19:39:08.886184+00:00",
+      "outcome_written_utc": "2026-11-19T19:42:14.422652+00:00",
+      "duration_seconds": 185.51727099809796,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 8589934592,
+      "recorded_peak_bytes": 4748009472,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_rest128/stdout",
+      "stdout_size": 625,
+      "stdout_sha256": "759aec167fdbfd97d6c7691d58e60dc819dec0c7f6ee4241ae0ba0ef8b2eb20f",
+      "stdout_lines": [
+        "DC rate=0 inlet=0 neck=0 bulk=0 residual=0",
+        "geometry cells=128 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=344064",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0544038945865 feed_per_b2=0.0228885546464 bulk_per_b2=0.0315153399401 feed_fraction=0.4207153701 effective_C=0.521887719271 cycle_b1em5=7.48632030227e-11 induced_real=-0.00617342758618",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.39898723345 feed_per_b2=1.66723763799 bulk_per_b2=1.73174959546 feed_fraction=0.4905101207 effective_C=0.439919499668 cycle_b1em5=5.43283160066e-10 induced_real=0.329853828468"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_far32": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-far32 --memory-gib 5 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_far32 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 32 --clear 3 --layer 3",
+      "started_utc": "2026-11-19T19:37:53.694234+00:00",
+      "outcome_written_utc": "2026-11-19T19:38:06.959537+00:00",
+      "duration_seconds": 13.236383805051446,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 5368709120,
+      "recorded_peak_bytes": 493989888,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_far32/stdout",
+      "stdout_size": 682,
+      "stdout_sha256": "77bb28410c6526c7a021e95d10e034eec9c1324c888b53061f39f5d605bccb67",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=4.51e-14",
+        "geometry cells=32 slab_width_over_R=1 PML_start_over_R=3 PML_width_over_R=3 stretch=3 active_cells=44032",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.053392265876 feed_per_b2=0.0226093524058 bulk_per_b2=0.0307829134703 feed_fraction=0.4234574434 effective_C=0.512183329457 cycle_b1em5=7.34711378753e-11 induced_real=-0.0200569125582",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=2.75289453883 feed_per_b2=1.31052767931 bulk_per_b2=1.44236685952 feed_fraction=0.4760544441 effective_C=0.356297892573 cycle_b1em5=4.4001378695e-10 induced_real=1.23944433518"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_far64b": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-control-far64 --memory-gib 5 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_far64b -- env PYTHONPATH=software/stage1_solver/tools python3 _scratch/s11c/open_reservoir_sources/mouth_open_reservoirs.py --cells 64 --clear 3 --layer 2.5 --stretch 2",
+      "started_utc": "2026-11-19T19:42:26.434662+00:00",
+      "outcome_written_utc": "2026-11-19T19:43:31.522446+00:00",
+      "duration_seconds": 65.04046622710302,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 5368709120,
+      "recorded_peak_bytes": 1845456896,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_far64b/stdout",
+      "stdout_size": 686,
+      "stdout_sha256": "1f3f0570e11144b2c5901c3608ea36770592646f6f55d3bfe429c9980b844c8a",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726943 neck=0.0373999726942 bulk=0.0373999726942 residual=1.18e-13",
+        "geometry cells=64 slab_width_over_R=1 PML_start_over_R=3 PML_width_over_R=2.5 stretch=2 active_cells=150528",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0540784489133 feed_per_b2=0.022909200541 bulk_per_b2=0.0311692483723 feed_fraction=0.4236290242 effective_C=0.518765771818 cycle_b1em5=7.44153691738e-11 induced_real=-0.0107289652205",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.22658887967 feed_per_b2=1.55476298436 bulk_per_b2=1.67182589531 feed_fraction=0.4818596488 effective_C=0.417606559863 cycle_b1em5=5.1572756306e-10 induced_real=0.407909178055"
+      ],
+      "open_reservoir_module_as_run": "ebdc902dc2bea9a4fbbcb0ae2ef8cbb697da7121ddb50c16108a35c37827ed6a",
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reservoir_sources/mouth_open_reservoirs.py": "ebdc902dc2bea9a4fbbcb0ae2ef8cbb697da7121ddb50c16108a35c37827ed6a"
+      }
+    },
+    "open_reservoir_thin32": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-thin32 --memory-gib 3 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_thin32 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 32 --width 0.5",
+      "started_utc": "2026-11-19T19:37:53.981688+00:00",
+      "outcome_written_utc": "2026-11-19T19:38:00.124570+00:00",
+      "duration_seconds": 6.035987691953778,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "recorded_peak_bytes": 226111488,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_thin32/stdout",
+      "stdout_size": 686,
+      "stdout_sha256": "752e16ada8641109f920d8655270c6bb305a7cdb30a731cd465172dc0a60bb00",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=7.34e-15",
+        "geometry cells=32 slab_width_over_R=0.5 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=19456",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0620779672834 feed_per_b2=0.0172286633203 bulk_per_b2=0.0448493039632 feed_fraction=0.2775326589 effective_C=0.595503851494 cycle_b1em5=8.54232128655e-11 induced_real=-0.0454686714172",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.07700299245 feed_per_b2=1.19988634466 bulk_per_b2=1.87711664779 feed_fraction=0.3899529339 effective_C=0.398246160973 cycle_b1em5=4.91818237155e-10 induced_real=1.32218707262"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_thin64": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-thin64 --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_thin64 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 64 --width 0.5",
+      "started_utc": "2026-11-19T19:39:08.997515+00:00",
+      "outcome_written_utc": "2026-11-19T19:39:41.032083+00:00",
+      "duration_seconds": 31.94273245939985,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "recorded_peak_bytes": 891211776,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_thin64/stdout",
+      "stdout_size": 687,
+      "stdout_sha256": "a53920ab59c8c8af2af553b9f7a391eaa63281a73c0fb2b3214d5efb579ef715",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=5.15e-15",
+        "geometry cells=64 slab_width_over_R=0.5 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=77824",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0628734354962 feed_per_b2=0.0174420260365 bulk_per_b2=0.0454314094597 feed_fraction=0.2774148716 effective_C=0.603134648783 cycle_b1em5=8.65178274839e-11 induced_real=-0.0360873519205",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.01027075349 feed_per_b2=1.44629472792 bulk_per_b2=1.56397602557 feed_fraction=0.4804533699 effective_C=0.389609231452 cycle_b1em5=4.81151971244e-10 induced_real=0.577470454547"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_thick32": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-thick32 --memory-gib 3 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_thick32 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 32 --width 2",
+      "started_utc": "2026-11-19T19:37:54.094815+00:00",
+      "outcome_written_utc": "2026-11-19T19:38:01.927694+00:00",
+      "duration_seconds": 7.1796459457837045,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "recorded_peak_bytes": 278614016,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_thick32/stdout",
+      "stdout_size": 684,
+      "stdout_sha256": "6ef871828bc1086ff9ca1cc307968e1a9469540b61824dfeb7eae222b38ab789",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=5.21e-15",
+        "geometry cells=32 slab_width_over_R=2 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=25600",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0462271093531 feed_per_b2=0.0211588353423 bulk_per_b2=0.0250682740108 feed_fraction=0.4577148699 effective_C=0.443449147384 cycle_b1em5=6.36114289052e-11 induced_real=-0.0461265843747",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=2.78955769659 feed_per_b2=1.35313661128 bulk_per_b2=1.43642108531 feed_fraction=0.4850721005 effective_C=0.361043081922 cycle_b1em5=4.45873907872e-10 induced_real=1.25089562033"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_thick64b": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-control-thick64 --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_thick64b -- env PYTHONPATH=software/stage1_solver/tools python3 _scratch/s11c/open_reservoir_sources/mouth_open_reservoirs.py --cells 64 --width 2",
+      "started_utc": "2026-11-19T19:42:27.543417+00:00",
+      "outcome_written_utc": "2026-11-19T19:43:02.911485+00:00",
+      "duration_seconds": 35.30068964930251,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "recorded_peak_bytes": 1168961536,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_thick64b/stdout",
+      "stdout_size": 685,
+      "stdout_sha256": "90656d9d41520b0d812193d3c46937ee6d87fd66885cb31367f46d33df3c33aa",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=1.02e-14",
+        "geometry cells=64 slab_width_over_R=2 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=102400",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0468840280327 feed_per_b2=0.0214590586562 bulk_per_b2=0.0254249693765 feed_fraction=0.4577050982 effective_C=0.449750861518 cycle_b1em5=6.45153905949e-11 induced_real=-0.037720962549",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.21374217463 feed_per_b2=1.55558920208 bulk_per_b2=1.65815297255 feed_fraction=0.4840429373 effective_C=0.415943853985 cycle_b1em5=5.13674187148e-10 induced_real=0.371100306699"
+      ],
+      "open_reservoir_module_as_run": "ebdc902dc2bea9a4fbbcb0ae2ef8cbb697da7121ddb50c16108a35c37827ed6a",
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reservoir_sources/mouth_open_reservoirs.py": "ebdc902dc2bea9a4fbbcb0ae2ef8cbb697da7121ddb50c16108a35c37827ed6a"
+      }
+    },
+    "open_reservoir_lines24": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-lines24 --memory-gib 3 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_lines24 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 24 --spectrum",
+      "started_utc": "2026-11-19T19:37:54.013808+00:00",
+      "outcome_written_utc": "2026-11-19T19:38:06.175232+00:00",
+      "duration_seconds": 11.961490721907467,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "recorded_peak_bytes": 156999680,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_lines24/stdout",
+      "stdout_size": 4723,
+      "stdout_sha256": "01f18b6e8eb49e2aef2e9002351064d9779595ede1b2f82cf2c437d2cd106121",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=1.11e-15",
+        "geometry cells=24 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=12096",
+        "tone=difference offset=-0.016 omega=0.440605832128 power_per_b2=0.0559809931017 feed_per_b2=0.026902005232 bulk_per_b2=0.0290789878697 feed_fraction=0.4805560556 effective_C=0.576726771032 cycle_b1em5=7.98307529519e-11 induced_real=-0.0465433121872",
+        "tone=difference offset=-0.012 omega=0.444605832128 power_per_b2=0.0550417686954 feed_per_b2=0.0256077997992 bulk_per_b2=0.0294339688962 feed_fraction=0.4652430401 effective_C=0.556893393803 cycle_b1em5=7.77852217306e-11 induced_real=-0.0422981549441",
+        "tone=difference offset=-0.009 omega=0.447605832128 power_per_b2=0.0544023955884 feed_per_b2=0.0247054355969 bulk_per_b2=0.0296969599915 feed_fraction=0.4541240387 effective_C=0.543070918137 cycle_b1em5=7.6366371504e-11 induced_real=-0.0386923586934",
+        "tone=difference offset=-0.0075 omega=0.449105832128 power_per_b2=0.0541052311929 feed_per_b2=0.0242770509927 bulk_per_b2=0.0298281802002 feed_fraction=0.4487006239 effective_C=0.536502639574 cycle_b1em5=7.5695564242e-11 induced_real=-0.0367683847913",
+        "tone=difference offset=-0.006 omega=0.450605832128 power_per_b2=0.0538236560956 feed_per_b2=0.0238640679269 bulk_per_b2=0.0299595881687 feed_fraction=0.4433750819 effective_C=0.530163193569 cycle_b1em5=7.50509605172e-11 induced_real=-0.034770282642",
+        "tone=difference offset=-0.004 omega=0.452605832128 power_per_b2=0.0534730492024 feed_per_b2=0.0233374803616 bulk_per_b2=0.0301355688409 feed_fraction=0.4364344415 effective_C=0.522065090407 cycle_b1em5=7.42326000306e-11 induced_real=-0.0319990340622",
+        "tone=difference offset=-0.002 omega=0.454605832128 power_per_b2=0.0531513765409 feed_per_b2=0.0228383598543 bulk_per_b2=0.0303130166866 feed_fraction=0.4296851999 effective_C=0.514368667959 cycle_b1em5=7.34614306585e-11 induced_real=-0.0291152541725",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0528590797329 feed_per_b2=0.0223665322543 bulk_per_b2=0.0304925474787 feed_fraction=0.423135105 effective_C=0.507068561437 cycle_b1em5=7.27374399887e-11 induced_real=-0.0261291994166",
+        "tone=difference offset=0.004 omega=0.460605832128 power_per_b2=0.0523636031086 feed_per_b2=0.0215034610855 bulk_per_b2=0.0308601420231 feed_fraction=0.4106566357 effective_C=0.493628985088 cycle_b1em5=7.14298861921e-11 induced_real=-0.0198883993932",
+        "tone=sum offset=-0.016 omega=3.91500103488 power_per_b2=5.95817905847 feed_per_b2=2.85269257963 bulk_per_b2=3.10548647884 feed_fraction=0.4787859767 effective_C=0.77746309701 cycle_b1em5=9.56228179358e-10 induced_real=5.51728467417",
+        "tone=sum offset=-0.012 omega=3.91900103488 power_per_b2=6.41658436641 feed_per_b2=3.0722173531 bulk_per_b2=3.34436701331 feed_fraction=0.478793261 effective_C=0.835570595135 cycle_b1em5=1.02874656716e-09 induced_real=5.81098375314",
+        "tone=sum offset=-0.009 omega=3.92200103488 power_per_b2=6.80978411088 feed_per_b2=3.2603366121 bulk_per_b2=3.54944749878 feed_fraction=0.4787723897 effective_C=0.885417153768 cycle_b1em5=1.09095166192e-09 induced_real=6.04220711582",
+        "tone=sum offset=-0.0075 omega=3.92350103488 power_per_b2=7.02438664904 feed_per_b2=3.36297620131 bulk_per_b2=3.66141044773 feed_fraction=0.4787572737 effective_C=0.912621847917 cycle_b1em5=1.12490152527e-09 induced_real=6.16127267866",
+        "tone=sum offset=-0.006 omega=3.92500103488 power_per_b2=7.25211932612 feed_per_b2=3.47188341623 bulk_per_b2=3.78023590989 feed_fraction=0.4787405254 effective_C=0.941489293927 cycle_b1em5=1.16092732692e-09 induced_real=6.28257254627",
+        "tone=sum offset=-0.004 omega=3.92700103488 power_per_b2=7.57779723956 feed_per_b2=3.62762319706 bulk_per_b2=3.9501740425 feed_fraction=0.4787173742 effective_C=0.982767859452 cycle_b1em5=1.21244440359e-09 induced_real=6.44764187767",
+        "tone=sum offset=-0.002 omega=3.92900103488 power_per_b2=7.93085611153 feed_per_b2=3.79646313179 bulk_per_b2=4.13439297974 feed_fraction=0.4786952478 effective_C=1.02750934374 cycle_b1em5=1.26828774416e-09 induced_real=6.61627900186",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=8.31391357022 feed_per_b2=3.97967151865 bulk_per_b2=4.33424205158 feed_fraction=0.4786760754 effective_C=1.0760419051 cycle_b1em5=1.32886913858e-09 induced_real=6.78811761465",
+        "tone=sum offset=0.004 omega=3.93500103488 power_per_b2=9.18174815838 feed_per_b2=4.3948741832 bulk_per_b2=4.78687397518 feed_fraction=0.4786533139 effective_C=1.18594806377 cycle_b1em5=1.46608919824e-09 induced_real=7.13925802125",
+        "spectrum arms=1 static_induced=3.37823918046e-05 shift=-0.00679961115024 FWHM=0.000907907003248 width_over_gap=0.223466166394 asymmetry=1.0001967 frequency_sampling_change=4.415e-08 peaks=2"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_lines48": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-lines48 --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_lines48 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 48 --spectrum",
+      "started_utc": "2026-11-19T19:39:09.341948+00:00",
+      "outcome_written_utc": "2026-11-19T19:40:24.649523+00:00",
+      "duration_seconds": 75.102984494064,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "recorded_peak_bytes": 518832128,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_lines48/stdout",
+      "stdout_size": 4728,
+      "stdout_sha256": "098c66e3f8943521658bed54e767ced614c6e250bfb8758c8c28def49dae4fa0",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=6.39e-16",
+        "geometry cells=48 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=48384",
+        "tone=difference offset=-0.016 omega=0.440605832128 power_per_b2=0.057012868695 feed_per_b2=0.0274666360324 bulk_per_b2=0.0295462326627 feed_fraction=0.4817620418 effective_C=0.587357348413 cycle_b1em5=8.13022417735e-11 induced_real=-0.0328820697906",
+        "tone=difference offset=-0.012 omega=0.444605832128 power_per_b2=0.0560885108314 feed_per_b2=0.0261525600693 bulk_per_b2=0.029935950762 feed_fraction=0.4662730331 effective_C=0.567483965189 cycle_b1em5=7.92644814105e-11 induced_real=-0.029039454206",
+        "tone=difference offset=-0.009 omega=0.447605832128 power_per_b2=0.0554499522367 feed_per_b2=0.0252307049429 bulk_per_b2=0.0302192472937 feed_fraction=0.4550176136 effective_C=0.553528133203 cycle_b1em5=7.78368600608e-11 induced_real=-0.0257129129564",
+        "tone=difference offset=-0.0075 omega=0.449105832128 power_per_b2=0.0551502785348 feed_per_b2=0.0247914351383 bulk_per_b2=0.0303588433965 feed_fraction=0.4495251121 effective_C=0.546865235668 cycle_b1em5=7.71576307827e-11 induced_real=-0.0239205836423",
+        "tone=difference offset=-0.006 omega=0.450605832128 power_per_b2=0.054864427195 feed_per_b2=0.0243669434758 bulk_per_b2=0.0304974837192 feed_fraction=0.4441300989 effective_C=0.540414792399 cycle_b1em5=7.65021973219e-11 induced_real=-0.0220486259989",
+        "tone=difference offset=-0.004 omega=0.452605832128 power_per_b2=0.0545055835758 feed_per_b2=0.0238241966349 bulk_per_b2=0.0306813869409 feed_fraction=0.4370964417 effective_C=0.532145872391 cycle_b1em5=7.56659896035e-11 induced_real=-0.0194369096298",
+        "tone=difference offset=-0.002 omega=0.454605832128 power_per_b2=0.0541730259258 feed_per_b2=0.0233081584103 bulk_per_b2=0.0308648675155 feed_fraction=0.4302539504 effective_C=0.524255607252 cycle_b1em5=7.48734698253e-11 induced_real=-0.0167027451529",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0538674442 feed_per_b2=0.0228188175024 bulk_per_b2=0.0310486266977 feed_fraction=0.423610547 effective_C=0.516741637895 cycle_b1em5=7.41250133305e-11 induced_real=-0.013856475186",
+        "tone=difference offset=0.004 omega=0.460605832128 power_per_b2=0.0533390680013 feed_per_b2=0.0219194610048 bulk_per_b2=0.0314196069964 feed_fraction=0.4109457069 effective_C=0.502824642308 cycle_b1em5=7.27605308026e-11 induced_real=-0.00786652282285",
+        "tone=sum offset=-0.016 omega=3.91500103488 power_per_b2=3.13282890845 feed_per_b2=1.50992334266 bulk_per_b2=1.62290556579 feed_fraction=0.4819680189 effective_C=0.408792492079 cycle_b1em5=5.02787723224e-10 induced_real=0.402027413905",
+        "tone=sum offset=-0.012 omega=3.91900103488 power_per_b2=3.12145008847 feed_per_b2=1.50428436645 bulk_per_b2=1.61716572202 feed_fraction=0.481918443 effective_C=0.406476679674 cycle_b1em5=5.0045022082e-10 induced_real=0.4396200032",
+        "tone=sum offset=-0.009 omega=3.92200103488 power_per_b2=3.11295667314 feed_per_b2=1.50002533197 bulk_per_b2=1.61293134117 feed_fraction=0.4818651493 effective_C=0.404750751632 cycle_b1em5=4.98706743231e-10 induced_real=0.467635946028",
+        "tone=sum offset=-0.0075 omega=3.92350103488 power_per_b2=3.10871968346 feed_per_b2=1.49788452552 bulk_per_b2=1.61083515794 feed_fraction=0.4818332555 effective_C=0.403890851105 cycle_b1em5=4.97837560526e-10 induced_real=0.481592310148",
+        "tone=sum offset=-0.006 omega=3.92500103488 power_per_b2=3.10448772792 feed_per_b2=1.49573550814 bulk_per_b2=1.60875221978 feed_fraction=0.4817978485 effective_C=0.403032800142 cycle_b1em5=4.96969848035e-10 induced_real=0.49551694346",
+        "tone=sum offset=-0.004 omega=3.92700103488 power_per_b2=3.09885121753 feed_per_b2=1.4928566111 bulk_per_b2=1.60599460643 feed_fraction=0.4817451715 effective_C=0.401891378396 cycle_b1em5=4.95814904712e-10 induced_real=0.514037187027",
+        "tone=sum offset=-0.002 omega=3.92900103488 power_per_b2=3.09321964318 feed_per_b2=1.48996140077 bulk_per_b2=1.60325824241 feed_fraction=0.4816862598 effective_C=0.400752710795 cycle_b1em5=4.94661926565e-10 induced_real=0.532509194345",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.08759095608 feed_per_b2=1.48704910614 bulk_per_b2=1.60054184995 feed_fraction=0.4816211497 effective_C=0.399616525538 cycle_b1em5=4.93510583124e-10 induced_real=0.55093755955",
+        "tone=sum offset=0.004 omega=3.93500103488 power_per_b2=3.07633491068 feed_per_b2=1.48117091097 bulk_per_b2=1.59516399971 feed_fraction=0.4814725815 effective_C=0.397350631701 cycle_b1em5=4.912116195e-10 induced_real=0.58768145889",
+        "spectrum arms=1 static_induced=3.5359457105e-05 shift=-0.00681805765076 FWHM=0.000928962459133 width_over_gap=0.228648615688 asymmetry=1.0001423 frequency_sampling_change=4.437e-08 peaks=2"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44"
+      }
+    },
+    "open_reservoir_trace48": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-trace48 --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_trace48 -- python3 software/stage1_solver/tools/mouth_driven_return.py --cells 48",
+      "started_utc": "2026-11-19T19:41:37.260626+00:00",
+      "outcome_written_utc": "2026-11-19T19:41:49.486777+00:00",
+      "duration_seconds": 12.169731727335602,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "recorded_peak_bytes": 535228416,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_trace48/stdout",
+      "stdout_size": 972,
+      "stdout_sha256": "004a8e39ec591d9d0fd0e280cd971c389912531fefb708bc912660f818831f2c",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=6.39e-16",
+        "aperture=brane tone=difference cells=48 incident_per_b2=0.0255007836936 returned_per_b2=0.00178790738036 near_field_per_b2=-0.000894058810897 net_per_b2=0.0228188175024 return_over_incident=0.0701118601626 residual=2.88e-16",
+        "aperture=bulk tone=difference cells=48 incident_per_b2=0.0343094572931 returned_per_b2=0.00197494812156 near_field_per_b2=-0.00128588247384 net_per_b2=0.0310486266977 return_over_incident=0.0575627910606 residual=-3.12e-17",
+        "aperture=brane tone=sum cells=48 incident_per_b2=1.52540350113 returned_per_b2=0.0787019532548 near_field_per_b2=0.0403475582591 net_per_b2=1.48704910614 return_over_incident=0.0515941868473 residual=-2.66e-15",
+        "aperture=bulk tone=sum cells=48 incident_per_b2=1.60179777139 returned_per_b2=0.0411014661015 near_field_per_b2=0.0398455446583 net_per_b2=1.60054184995 return_over_incident=0.0256595850211 residual=-6.22e-15"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_driven_return.py": "a09a4f9c3b44c00b149988710f37be15ebf26a5cfff6510d2f11d7d4cb858acc"
+      }
+    },
+    "open_reservoir_trace96": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-trace96 --memory-gib 6 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_trace96 -- python3 software/stage1_solver/tools/mouth_driven_return.py --cells 96",
+      "started_utc": "2026-11-19T19:41:39.124131+00:00",
+      "outcome_written_utc": "2026-11-19T19:43:04.258319+00:00",
+      "duration_seconds": 85.00302501115948,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 6442450944,
+      "recorded_peak_bytes": 2445197312,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_trace96/stdout",
+      "stdout_size": 972,
+      "stdout_sha256": "a4c4b065fb3f80df28b9f503e895e77bc30ede640d2b02898ffa7315165229bc",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=4.99e-14",
+        "aperture=brane tone=difference cells=96 incident_per_b2=0.025746523741 returned_per_b2=0.0018248954538 near_field_per_b2=-0.000934014176861 net_per_b2=0.0229876141103 return_over_incident=0.0708792950909 residual=-1.97e-15",
+        "aperture=bulk tone=difference cells=96 incident_per_b2=0.0345675062486 returned_per_b2=0.00195439940416 near_field_per_b2=-0.00133452041575 net_per_b2=0.0312785864287 return_over_incident=0.0565386287952 residual=-3.95e-15",
+        "aperture=brane tone=sum cells=96 incident_per_b2=1.69888572287 returned_per_b2=0.0955242807855 near_field_per_b2=0.00784210834919 net_per_b2=1.61120355044 return_over_incident=0.0562276081901 residual=6.22e-15",
+        "aperture=bulk tone=sum cells=96 incident_per_b2=1.78752521031 returned_per_b2=0.0610700440392 near_field_per_b2=0.00954066948391 net_per_b2=1.73599583575 return_over_incident=0.0341645777565 residual=-3.33e-15"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_driven_return.py": "a09a4f9c3b44c00b149988710f37be15ebf26a5cfff6510d2f11d7d4cb858acc"
+      }
+    },
+    "open_reservoir_trace64rest": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-trace64rest --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_trace64rest -- python3 software/stage1_solver/tools/mouth_driven_return.py --cells 64 --rest",
+      "started_utc": "2026-11-19T19:41:38.490738+00:00",
+      "outcome_written_utc": "2026-11-19T19:41:56.298276+00:00",
+      "duration_seconds": 17.72828286094591,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "recorded_peak_bytes": 977584128,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_trace64rest/stdout",
+      "stdout_size": 904,
+      "stdout_sha256": "0b81bfe4cfe698f78a2f35ad7d6c0ecd8417f45ed724abd792d64e99e4aa5646",
+      "stdout_lines": [
+        "DC rate=0 inlet=0 neck=0 bulk=0 residual=0",
+        "aperture=brane tone=difference cells=64 incident_per_b2=0.025463102156 returned_per_b2=0.00179481428236 near_field_per_b2=-0.000892311255925 net_per_b2=0.0227759766177 return_over_incident=0.0704868665004 residual=4.51e-17",
+        "aperture=bulk tone=difference cells=64 incident_per_b2=0.0346652752428 returned_per_b2=0.00197622445109 near_field_per_b2=-0.00133260185926 net_per_b2=0.0313564489324 return_over_incident=0.0570087627244 residual=1.39e-16",
+        "aperture=brane tone=sum cells=64 incident_per_b2=1.65270501503 returned_per_b2=0.0873824325055 near_field_per_b2=0.0191778314478 net_per_b2=1.58450041398 return_over_incident=0.0528723708772 residual=-1.33e-15",
+        "aperture=bulk tone=sum cells=64 incident_per_b2=1.67230361035 returned_per_b2=0.0503028245051 near_field_per_b2=0.0210683613991 net_per_b2=1.64306914724 return_over_incident=0.0300799592812 residual=-2e-14"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_driven_return.py": "a09a4f9c3b44c00b149988710f37be15ebf26a5cfff6510d2f11d7d4cb858acc"
+      }
+    },
+    "aperture_return16": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool junction-probe --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/aperture_return16 -- python3 software/stage1_solver/tools/mouth_aperture_return.py --cells 16",
+      "started_utc": "2026-11-19T19:39:57.506755+00:00",
+      "outcome_written_utc": "2026-11-19T19:39:59.167101+00:00",
+      "duration_seconds": 1.5413541062735021,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "recorded_peak_bytes": 95891456,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/aperture_return16/stdout",
+      "stdout_size": 1008,
+      "stdout_sha256": "5257d58cb12087d76018fda7619536417a7567ee1e251068a98596184fe0b761",
+      "stdout_lines": [
+        "settings cells=16 stub_over_R=1 slab_width_over_R=1 DC=0.0373999726942",
+        "junction=brane omega=0.456605832128 propagating_modes=2 fundamental_return=0.0928955954179 fundamental_transmission=0.907104404582 min_coherent_return=0.0509713131097 max_coherent_return=0.110513997021 channel_power_residual=2e-15",
+        "junction=brane omega=3.93100103488 propagating_modes=11 fundamental_return=0.762223279008 fundamental_transmission=0.237776720992 min_coherent_return=4.93065572224e-09 max_coherent_return=0.999999864717 channel_power_residual=9.55e-15",
+        "junction=bulk omega=0.456605832128 propagating_modes=2 fundamental_return=0.0354729750795 fundamental_transmission=0.964527024921 min_coherent_return=2.23565394751e-05 max_coherent_return=0.0804764993346 channel_power_residual=1.55e-15",
+        "junction=bulk omega=3.93100103488 propagating_modes=11 fundamental_return=0.0459507859922 fundamental_transmission=0.954049214008 min_coherent_return=1.61886048655e-12 max_coherent_return=0.256757051991 channel_power_residual=8.22e-15"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_aperture_return.py": "caa23cfa0a79b120fc201cb14d306173eb0daf44264524e973d64ff72c02a43d"
+      }
+    },
+    "aperture_r48": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool aperture-r48 --memory-gib 4 --tasks-max 32 --log-directory _scratch/s11c/aperture_r48 -- python3 software/stage1_solver/tools/mouth_aperture_return.py --cells 48",
+      "started_utc": "2026-11-19T19:40:23.699653+00:00",
+      "outcome_written_utc": "2026-11-19T19:40:39.232677+00:00",
+      "duration_seconds": 15.282353628892452,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "recorded_peak_bytes": 452608000,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/aperture_r48/stdout",
+      "stdout_size": 1006,
+      "stdout_sha256": "a6123f0d75a7356ff7ad4702ece6442905fd55bfef0e0fc7e8e03e3ea8b9c814",
+      "stdout_lines": [
+        "settings cells=48 stub_over_R=1 slab_width_over_R=1 DC=0.0373999726942",
+        "junction=brane omega=0.456605832128 propagating_modes=2 fundamental_return=0.0978585063815 fundamental_transmission=0.902141493618 min_coherent_return=0.0468135473428 max_coherent_return=0.120898597345 channel_power_residual=6.99e-15",
+        "junction=brane omega=3.93100103488 propagating_modes=9 fundamental_return=0.686875795141 fundamental_transmission=0.313124204859 min_coherent_return=9.46840210028e-11 max_coherent_return=0.999999999379 channel_power_residual=4e-15",
+        "junction=bulk omega=0.456605832128 propagating_modes=2 fundamental_return=0.0318016962094 fundamental_transmission=0.968198303791 min_coherent_return=1.8978976216e-05 max_coherent_return=0.0748172828185 channel_power_residual=2.89e-14",
+        "junction=bulk omega=3.93100103488 propagating_modes=9 fundamental_return=0.0082168817171 fundamental_transmission=0.991783118283 min_coherent_return=4.81309239925e-13 max_coherent_return=0.0879655131369 channel_power_residual=6.55e-15"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_aperture_return.py": "caa23cfa0a79b120fc201cb14d306173eb0daf44264524e973d64ff72c02a43d"
+      }
+    },
+    "aperture_r48sb": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool aperture-r48sb --memory-gib 3 --tasks-max 32 --log-directory _scratch/s11c/aperture_r48sb -- python3 software/stage1_solver/tools/mouth_aperture_return.py --cells 48 --stub 1.5",
+      "started_utc": "2026-11-19T19:42:43.632568+00:00",
+      "outcome_written_utc": "2026-11-19T19:43:03.718242+00:00",
+      "duration_seconds": 19.976015920285136,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "recorded_peak_bytes": 452653056,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/aperture_r48sb/stdout",
+      "stdout_size": 1011,
+      "stdout_sha256": "c119044740ac10a0427f94ff69e0527a02ff212a169227a6a370b9ad739c6778",
+      "stdout_lines": [
+        "settings cells=48 stub_over_R=1.5 slab_width_over_R=1 DC=0.0373999726942",
+        "junction=brane omega=0.456605832128 propagating_modes=2 fundamental_return=0.0987325170297 fundamental_transmission=0.90126748297 min_coherent_return=0.0470661452953 max_coherent_return=0.121503144896 channel_power_residual=6.66e-16",
+        "junction=brane omega=3.93100103488 propagating_modes=9 fundamental_return=0.673835314253 fundamental_transmission=0.326164685747 min_coherent_return=1.19082998414e-07 max_coherent_return=0.999999999388 channel_power_residual=5.55e-15",
+        "junction=bulk omega=0.456605832128 propagating_modes=2 fundamental_return=0.0318569414016 fundamental_transmission=0.968143058598 min_coherent_return=2.2441200164e-05 max_coherent_return=0.0749531032785 channel_power_residual=2.33e-15",
+        "junction=bulk omega=3.93100103488 propagating_modes=9 fundamental_return=0.00998567633563 fundamental_transmission=0.990014323664 min_coherent_return=7.36200589399e-05 max_coherent_return=0.0905130567294 channel_power_residual=1.89e-14"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_aperture_return.py": "caa23cfa0a79b120fc201cb14d306173eb0daf44264524e973d64ff72c02a43d"
+      }
+    },
+    "aperture_r80rest": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool aperture-r80rest --memory-gib 7 --tasks-max 32 --log-directory _scratch/s11c/aperture_r80rest -- python3 software/stage1_solver/tools/mouth_aperture_return.py --cells 80 --rest",
+      "started_utc": "2026-11-19T19:40:23.507683+00:00",
+      "outcome_written_utc": "2026-11-19T19:41:02.909304+00:00",
+      "duration_seconds": 39.188694692216814,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 7516192768,
+      "recorded_peak_bytes": 1338515456,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/aperture_r80rest/stdout",
+      "stdout_size": 992,
+      "stdout_sha256": "a2f19d8bea50ad5b69a2e03a1b3f56c90750bc468ba650e6795c16c421472bd2",
+      "stdout_lines": [
+        "settings cells=80 stub_over_R=1 slab_width_over_R=1 DC=0",
+        "junction=brane omega=0.456605832128 propagating_modes=2 fundamental_return=0.098289306731 fundamental_transmission=0.901710693269 min_coherent_return=0.0461457155844 max_coherent_return=0.122187267081 channel_power_residual=5.66e-15",
+        "junction=brane omega=3.93100103488 propagating_modes=9 fundamental_return=0.649256919504 fundamental_transmission=0.350743080496 min_coherent_return=2.43771976462e-11 max_coherent_return=0.999999999775 channel_power_residual=4e-15",
+        "junction=bulk omega=0.456605832128 propagating_modes=2 fundamental_return=0.0312889327196 fundamental_transmission=0.96871106728 min_coherent_return=1.90472669468e-05 max_coherent_return=0.0739809085979 channel_power_residual=4.11e-15",
+        "junction=bulk omega=3.93100103488 propagating_modes=9 fundamental_return=0.00800503246724 fundamental_transmission=0.991994967533 min_coherent_return=-8.18453841963e-20 max_coherent_return=0.100810440337 channel_power_residual=2.96e-14"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_aperture_return.py": "caa23cfa0a79b120fc201cb14d306173eb0daf44264524e973d64ff72c02a43d"
+      }
+    },
+    "aperture_r96b": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool aperture-r96b --memory-gib 5 --tasks-max 32 --log-directory _scratch/s11c/aperture_r96b -- python3 software/stage1_solver/tools/mouth_aperture_return.py --cells 96",
+      "started_utc": "2026-11-19T19:42:44.579182+00:00",
+      "outcome_written_utc": "2026-11-19T19:44:00.886381+00:00",
+      "duration_seconds": 76.14655468426645,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 5368709120,
+      "recorded_peak_bytes": 2043850752,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/aperture_r96b/stdout",
+      "stdout_size": 1008,
+      "stdout_sha256": "f9c5e1213a8ca1ca066954f744e5f50c6ab06634b1e85b186e932aa895803c80",
+      "stdout_lines": [
+        "settings cells=96 stub_over_R=1 slab_width_over_R=1 DC=0.0373999726942",
+        "junction=brane omega=0.456605832128 propagating_modes=2 fundamental_return=0.0983249586532 fundamental_transmission=0.901675041347 min_coherent_return=0.045889991112 max_coherent_return=0.122417149787 channel_power_residual=5.32e-14",
+        "junction=brane omega=3.93100103488 propagating_modes=9 fundamental_return=0.643920104433 fundamental_transmission=0.356079895567 min_coherent_return=4.23006499378e-11 max_coherent_return=0.999999999803 channel_power_residual=1.22e-14",
+        "junction=bulk omega=0.456605832128 propagating_modes=2 fundamental_return=0.0311495693711 fundamental_transmission=0.968850430629 min_coherent_return=1.83624211927e-05 max_coherent_return=0.0736726325222 channel_power_residual=3.82e-14",
+        "junction=bulk omega=3.93100103488 propagating_modes=9 fundamental_return=0.00792926267013 fundamental_transmission=0.99207073733 min_coherent_return=2.47833193661e-12 max_coherent_return=0.103104782051 channel_power_residual=5.11e-15"
+      ],
+      "open_reservoir_module_as_run": "99b4bb863f0e2bffd67c04207d7b96969d31d17ea6323d629e95335f9a34fc44",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_aperture_return.py": "caa23cfa0a79b120fc201cb14d306173eb0daf44264524e973d64ff72c02a43d"
+      }
+    },
+    "final_open_lines64": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool final-open-lines64 --memory-gib 5 --tasks-max 32 --log-directory _scratch/s11c/final_open_lines64 -- python3 software/stage1_solver/tools/mouth_open_reservoirs.py --cells 64 --spectrum",
+      "started_utc": "2026-11-19T19:44:45.422434+00:00",
+      "outcome_written_utc": "2026-11-19T19:46:20.898807+00:00",
+      "duration_seconds": 95.44360651401803,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 5368709120,
+      "recorded_peak_bytes": 962887680,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/final_open_lines64/stdout",
+      "stdout_size": 4736,
+      "stdout_sha256": "28c3bf5a7241ed08a22789be627c8f9e539eead5963b802f965a26112933523e",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726942 bulk=0.0373999726942 residual=3.05e-14",
+        "geometry cells=64 slab_width_over_R=1 PML_start_over_R=2 PML_width_over_R=2 stretch=3 active_cells=86016",
+        "tone=difference offset=-0.016 omega=0.440605832128 power_per_b2=0.0572180497064 feed_per_b2=0.0275734526608 bulk_per_b2=0.0296445970456 feed_fraction=0.4819013022 effective_C=0.589471161971 cycle_b1em5=8.15948367012e-11 induced_real=-0.0295351270872",
+        "tone=difference offset=-0.012 omega=0.444605832128 power_per_b2=0.0562993474436 feed_per_b2=0.0262570300479 bulk_per_b2=0.0300423173957 feed_fraction=0.4663824936 effective_C=0.569617136402 cycle_b1em5=7.95624364548e-11 induced_real=-0.0257566095067",
+        "tone=difference offset=-0.009 omega=0.447605832128 power_per_b2=0.0556629492684 feed_per_b2=0.0253324447396 bulk_per_b2=0.0303305045287 feed_fraction=0.4551042493 effective_C=0.555654372173 cycle_b1em5=7.81358507629e-11 induced_real=-0.022474711632",
+        "tone=difference offset=-0.0075 omega=0.449105832128 power_per_b2=0.0553637595202 feed_per_b2=0.0248915607889 bulk_per_b2=0.0304721987313 feed_fraction=0.4496002621 effective_C=0.548982094049 cycle_b1em5=7.74562999369e-11 induced_real=-0.0207034037702",
+        "tone=difference offset=-0.006 omega=0.450605832128 power_per_b2=0.0550780273839 feed_per_b2=0.0244653151805 bulk_per_b2=0.0306127122033 feed_fraction=0.4441937437 effective_C=0.542518754978 cycle_b1em5=7.68000384665e-11 induced_real=-0.0188515395392",
+        "tone=difference offset=-0.004 omega=0.452605832128 power_per_b2=0.0547188155121 feed_per_b2=0.0239200427312 bulk_per_b2=0.0307987727809 feed_fraction=0.4371447464 effective_C=0.534227686533 cycle_b1em5=7.59620034137e-11 induced_real=-0.0162651186807",
+        "tone=difference offset=-0.002 omega=0.454605832128 power_per_b2=0.0543853347174 feed_per_b2=0.0234012995732 bulk_per_b2=0.0309840351442 feed_fraction=0.4302869458 effective_C=0.52631021049 cycle_b1em5=7.51669054536e-11 induced_real=-0.0135544999513",
+        "tone=difference offset=0 omega=0.456605832128 power_per_b2=0.0540783231913 feed_per_b2=0.0229091075427 bulk_per_b2=0.0311692156487 feed_fraction=0.4236282893 effective_C=0.518764565787 cycle_b1em5=7.44151961724e-11 induced_real=-0.0107300065229",
+        "tone=difference offset=0.004 omega=0.460605832128 power_per_b2=0.0535457396866 feed_per_b2=0.0220037207126 bulk_per_b2=0.031542018974 feed_fraction=0.410933173 effective_C=0.504772925623 cycle_b1em5=7.30424543924e-11 induced_real=-0.00477832432818",
+        "tone=sum offset=-0.016 omega=3.91500103488 power_per_b2=3.28205902487 feed_per_b2=1.58051953635 bulk_per_b2=1.70153948853 feed_fraction=0.4815634102 effective_C=0.428265036852 cycle_b1em5=5.26737665167e-10 induced_real=0.241210026965",
+        "tone=sum offset=-0.012 omega=3.91900103488 power_per_b2=3.26755827477 feed_per_b2=1.5738276518 bulk_per_b2=1.69373062298 feed_fraction=0.4816525122 effective_C=0.425502955526 cycle_b1em5=5.23875190634e-10 induced_real=0.283892701765",
+        "tone=sum offset=-0.009 omega=3.92200103488 power_per_b2=3.25698939307 feed_per_b2=1.56893803029 bulk_per_b2=1.68805136278 feed_fraction=0.4817141971 effective_C=0.423478076736 cycle_b1em5=5.21781297817e-10 induced_real=0.315441706014",
+        "tone=sum offset=-0.0075 omega=3.92350103488 power_per_b2=3.25179465212 feed_per_b2=1.56652885613 bulk_per_b2=1.685265796 feed_fraction=0.4817428601 effective_C=0.422479426708 cycle_b1em5=5.20749916937e-10 induced_real=0.331074454244",
+        "tone=sum offset=-0.006 omega=3.92500103488 power_per_b2=3.24665574503 feed_per_b2=1.56414080213 bulk_per_b2=1.6825149429 feed_fraction=0.4817698349 effective_C=0.421489427788 cycle_b1em5=5.19728262321e-10 induced_real=0.346615977296",
+        "tone=sum offset=-0.004 omega=3.92700103488 power_per_b2=3.23988579394 feed_per_b2=1.56098632088 bulk_per_b2=1.67889947306 feed_fraction=0.4818028845 effective_C=0.420182214688 cycle_b1em5=5.18380378222e-10 induced_real=0.36720030058",
+        "tone=sum offset=-0.002 omega=3.92900103488 power_per_b2=3.23320350682 feed_per_b2=1.55786172859 bulk_per_b2=1.67534177824 feed_fraction=0.4818322525 effective_C=0.41888880176 cycle_b1em5=5.17047885425e-10 induced_real=0.387632467052",
+        "tone=sum offset=0 omega=3.93100103488 power_per_b2=3.22660264079 feed_per_b2=1.55476294156 bulk_per_b2=1.67183969923 feed_fraction=0.4818575804 effective_C=0.417608340918 cycle_b1em5=5.15729762593e-10 induced_real=0.407918110795",
+        "tone=sum offset=0.004 omega=3.93500103488 power_per_b2=3.21362157318 feed_per_b2=1.5486275284 bulk_per_b2=1.66499404478 feed_fraction=0.481894801 effective_C=0.415083077501 cycle_b1em5=5.13132771058e-10 induced_real=0.448072026809",
+        "spectrum arms=1 static_induced=3.57419393436e-05 shift=-0.00682372506359 FWHM=0.000934278953269 width_over_gap=0.229957182049 asymmetry=1.0001481 frequency_sampling_change=4.462e-08 peaks=2"
+      ],
+      "open_reservoir_module_as_run": "3917e80ff614c90a9eb4beb78fd7c3136ba52016fb60261b07791e6bd519114c",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_open_reservoirs.py": "3917e80ff614c90a9eb4beb78fd7c3136ba52016fb60261b07791e6bd519114c"
+      }
+    },
+    "final_open_r80": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool final-open-r80 --memory-gib 5 --tasks-max 32 --log-directory _scratch/s11c/final_open_r80 -- python3 software/stage1_solver/tools/mouth_aperture_return.py --cells 80",
+      "started_utc": "2026-11-19T19:44:44.805254+00:00",
+      "outcome_written_utc": "2026-11-19T19:45:17.700773+00:00",
+      "duration_seconds": 32.8670811871998,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 5368709120,
+      "recorded_peak_bytes": 1339129856,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/final_open_r80/stdout",
+      "stdout_size": 1004,
+      "stdout_sha256": "05351d0fe44beafd9fc18cf41908c0456e2d7554bfd32fa2573315fe890a0761",
+      "stdout_lines": [
+        "settings cells=80 stub_over_R=1 slab_width_over_R=1 DC=0.0373999726942",
+        "junction=brane omega=0.456605832128 propagating_modes=2 fundamental_return=0.0982572231921 fundamental_transmission=0.901742776808 min_coherent_return=0.046064665708 max_coherent_return=0.122155243202 channel_power_residual=1.5e-14",
+        "junction=brane omega=3.93100103488 propagating_modes=9 fundamental_return=0.64924653325 fundamental_transmission=0.35075346675 min_coherent_return=5.17776384505e-11 max_coherent_return=0.999999999774 channel_power_residual=4.66e-15",
+        "junction=bulk omega=0.456605832128 propagating_modes=2 fundamental_return=0.0312683160624 fundamental_transmission=0.968731683938 min_coherent_return=1.84756782643e-05 max_coherent_return=0.0738857987889 channel_power_residual=3.8e-14",
+        "junction=bulk omega=3.93100103488 propagating_modes=9 fundamental_return=0.00800395636014 fundamental_transmission=0.99199604364 min_coherent_return=1.78861195337e-12 max_coherent_return=0.100785915703 channel_power_residual=2.15e-14"
+      ],
+      "open_reservoir_module_as_run": "3917e80ff614c90a9eb4beb78fd7c3136ba52016fb60261b07791e6bd519114c",
+      "argv_file_inputs": {
+        "software/stage1_solver/tools/mouth_aperture_return.py": "caa23cfa0a79b120fc201cb14d306173eb0daf44264524e973d64ff72c02a43d"
+      }
+    },
+    "final_open_geometry": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-geometry-ratio --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/final_open_geometry -- python3 _scratch/s11c/open_reference_geometries.py",
+      "started_utc": "2026-11-19T19:45:15.612425+00:00",
+      "outcome_written_utc": "2026-11-19T19:45:15.781140+00:00",
+      "duration_seconds": 0.12068809196352959,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "recorded_peak_bytes": 13881344,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/final_open_geometry/stdout",
+      "stdout_size": 406,
+      "stdout_sha256": "575f19fb1e50a672b42619fd9214534e8d8b262601cb5a636d50e439d2b9cc18",
+      "stdout_lines": [
+        "tone=difference rest_continuum_open_vs_guide_power_pct=-4.10989689 rest_continuum_guide_feed_fraction=0.6252526818 rest_continuum_open_feed_fraction=0.420640170241 same_128_grid_flow_power_ratio=0.9573658018",
+        "tone=sum rest_continuum_open_vs_guide_power_pct=-4.2679959 rest_continuum_guide_feed_fraction=0.4458290607 rest_continuum_open_feed_fraction=0.490495731005 same_128_grid_flow_power_ratio=1.00808167"
+      ],
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reference_geometries.py": "a14a093ce410a6799c30b6b05f4723cf64d0a706ef8164a53d9033aa4fe1abe6"
+      }
+    },
+    "final_open_comparison": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool final-open-comparison --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/final_open_comparison -- python3 _scratch/s11c/open_reservoir_comparison.py",
+      "started_utc": "2026-11-19T19:44:44.711404+00:00",
+      "outcome_written_utc": "2026-11-19T19:44:44.875243+00:00",
+      "duration_seconds": 0.1426531528122723,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "recorded_peak_bytes": 14155776,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/final_open_comparison/stdout",
+      "stdout_size": 1605,
+      "stdout_sha256": "33aec60f668b9c31fd0f95ad0bc8914a9223525ffb08007a80ef400c21c29d19",
+      "stdout_lines": [
+        "compare tone=difference power=0.0543494618797 work_cycle=7.47883001722e-11 feed_percent=42.3585665 bulk_percent=57.6414335 flow_minus_rest_pct=-0.10005296 rest128_vs_continuum_pct=-0.305257874 power_vs_guide_pct=-4.3425662 boundary_shift_pct=0.000232481321 mesh96_to128_pct=0.153431307",
+        "width run=thin64 tone=difference work=0.0628734354962 feed_fraction=0.2774148716",
+        "width run=n64 tone=difference work=0.0540783231913 feed_fraction=0.4236282893",
+        "width run=thick64b tone=difference work=0.0468840280327 feed_fraction=0.4577050982",
+        "return tone=difference side=brane driven_percent=7.08792951 fundamental_percent=9.83249587 coherent_min=0.045889991112 coherent_max=0.122417149787",
+        "return tone=difference side=bulk driven_percent=5.65386288 fundamental_percent=3.11495694 coherent_min=1.83624211927e-05 coherent_max=0.0736726325222",
+        "compare tone=sum power=3.39779660827 work_cycle=5.43092854376e-10 feed_percent=48.1192161 bulk_percent=51.8807839 flow_minus_rest_pct=-0.0350288218 rest128_vs_continuum_pct=-2.12982902 power_vs_guide_pct=-3.95202346 boundary_shift_pct=-0.000426489454 mesh96_to128_pct=1.51162857",
+        "width run=thin64 tone=sum work=3.01027075349 feed_fraction=0.4804533699",
+        "width run=n64 tone=sum work=3.22660264079 feed_fraction=0.4818575804",
+        "width run=thick64b tone=sum work=3.21374217463 feed_fraction=0.4840429373",
+        "return tone=sum side=brane driven_percent=5.62276082 fundamental_percent=64.3920104 coherent_min=4.23006499378e-11 coherent_max=0.999999999803",
+        "return tone=sum side=bulk driven_percent=3.41645778 fundamental_percent=0.792926267 coherent_min=2.47833193661e-12 coherent_max=0.103104782051"
+      ],
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reservoir_comparison.py": "a86ac9959028660d2bfb765ef45ab56310d7c229be2847fe6d29caefa9f63477"
+      }
+    },
+    "open_reservoir_aperture_reference_a": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-mouth --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_aperture_reference_a -- python3 _scratch/s11c/open_reservoir_aperture_ref.py",
+      "started_utc": "2026-11-19T19:39:15.445264+00:00",
+      "outcome_written_utc": "2026-11-19T19:39:23.699594+00:00",
+      "duration_seconds": 8.049201802816242,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "recorded_peak_bytes": 81027072,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_aperture_reference_a/stdout",
+      "stdout_size": 2849,
+      "stdout_sha256": "fea8bab6b45687664c0a641e79a719cf865a25ed5a5125f08eedcf893a84fad7",
+      "stdout_lines": [
+        "modes=8 cutoff=5 gauss=12 hump=0.8 omega=0.456605832128 wall=0.0538728104644 slab=0.0226957885175 bulk=0.0311772294564 feed_fraction=0.421283035016 F_re=-0.0563863202378 aperture_flux=0.0538728104644 slab_channels=3 farflux_error=2.0751e-07",
+        "modes=8 cutoff=5 gauss=12 hump=0.8 omega=3.93100103488 wall=0.341694150035 slab=0.165230402356 bulk=0.176463424215 feed_fraction=0.483562738063 F_re=-2.4871378149 aperture_flux=0.341694150035 slab_channels=10 farflux_error=-3.2346e-07",
+        "modes=16 cutoff=5 gauss=12 hump=0.8 omega=0.456605832128 wall=0.0542805353811 slab=0.0228466938757 bulk=0.0314340497665 feed_fraction=0.420898689714 F_re=-0.0301835371319 aperture_flux=0.0542805353811 slab_channels=3 farflux_error=2.0826e-07",
+        "modes=16 cutoff=5 gauss=12 hump=0.8 omega=3.93100103488 wall=3.4761528422 slab=1.70413881888 bulk=1.77201097276 feed_fraction=0.490237452648 F_re=-1.65265637825 aperture_flux=3.4761528422 slab_channels=10 farflux_error=-3.0506e-06",
+        "modes=32 cutoff=5 gauss=12 hump=0.8 omega=0.456605832128 wall=0.054459650481 slab=0.0229133565744 bulk=0.0315465025402 feed_fraction=0.420738447489 F_re=-0.0161921691564 aperture_flux=0.054459650481 slab_channels=3 farflux_error=2.0863e-07",
+        "modes=32 cutoff=5 gauss=12 hump=0.8 omega=3.93100103488 wall=3.47466575561 slab=1.70389861382 bulk=1.77076404768 feed_fraction=0.490378140215 F_re=-0.576833204264 aperture_flux=3.47466575561 slab_channels=10 farflux_error=-3.0941e-06",
+        "modes=64 cutoff=5 gauss=12 hump=0.8 omega=0.456605832128 wall=0.0545330156704 slab=0.022940700916 bulk=0.0315925235484 feed_fraction=0.420673839505 F_re=-0.0089675530173 aperture_flux=0.0545330156704 slab_channels=3 farflux_error=2.0879e-07",
+        "modes=64 cutoff=5 gauss=12 hump=0.8 omega=3.93100103488 wall=3.47363484785 slab=1.70364866924 bulk=1.76998307565 feed_fraction=0.490451721529 F_re=-0.0458559672611 aperture_flux=3.47363484785 slab_channels=10 farflux_error=-3.103e-06",
+        "modes=64 cutoff=7 gauss=18 hump=0.6 omega=0.456605832128 wall=0.0545321864302 slab=0.022940241228 bulk=0.031591894343 feed_fraction=0.420673809815 F_re=-0.00896868739246 aperture_flux=0.0545321864302 slab_channels=3 farflux_error=-5.0859e-08",
+        "modes=64 cutoff=7 gauss=18 hump=0.6 omega=3.93100103488 wall=3.47365723384 slab=1.70365896539 bulk=1.76999724291 feed_fraction=0.490451231565 F_re=-0.0458450353313 aperture_flux=3.47365723384 slab_channels=10 farflux_error=-1.0255e-06",
+        "modes=96 cutoff=5 gauss=12 hump=0.8 omega=0.456605832128 wall=0.054553332617 slab=0.0229482771124 bulk=0.0316052643443 feed_fraction=0.420656047245 F_re=-0.00652855451713 aperture_flux=0.054553332617 slab_channels=3 farflux_error=2.0884e-07",
+        "modes=96 cutoff=5 gauss=12 hump=0.8 omega=3.93100103488 wall=3.47328574927 slab=1.70355637403 bulk=1.76972627064 feed_fraction=0.490474444008 F_re=0.132862987422 aperture_flux=3.47328574927 slab_channels=10 farflux_error=-3.1046e-06"
+      ],
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reservoir_aperture_ref.py": "0ff599b640ff9cdfdf489d7d1a8a368f65ffc1dccd1d7b9a3d0c76fb419a64b9"
+      }
+    },
+    "open_reservoir_aperture_reference_b": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-mouth --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_aperture_reference_b -- python3 _scratch/s11c/open_reservoir_aperture_refined.py",
+      "started_utc": "2026-11-19T19:40:13.261913+00:00",
+      "outcome_written_utc": "2026-11-19T19:40:50.948133+00:00",
+      "duration_seconds": 37.54785859026015,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "recorded_peak_bytes": 224985088,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_aperture_reference_b/stdout",
+      "stdout_size": 2386,
+      "stdout_sha256": "392cb6236d64e48489b4cc5a99d38a683464d308827dda9783f8ed62830a4247",
+      "stdout_lines": [
+        "modes=32 cutoff=5 gauss=20 hump=0.8 omega=0.456605832128 wall=0.0544595109322 slab=0.0229131664977 bulk=0.0315463431778 feed_fraction=0.420737656917 F_re=-0.0017355221465 aperture_flux=0.0544595109322 slab_channels=3 farflux_error=-1.2566e-09",
+        "modes=32 cutoff=5 gauss=20 hump=0.8 omega=3.93100103488 wall=3.47466836209 slab=1.70390325206 bulk=1.77076454318 feed_fraction=0.490378750565 F_re=0.496326823322 aperture_flux=3.47466836209 slab_channels=10 farflux_error=-5.6686e-07",
+        "modes=64 cutoff=5 gauss=20 hump=0.8 omega=0.456605832128 wall=0.0545328759239 slab=0.0229405107391 bulk=0.031592363905 feed_fraction=0.420673050684 F_re=-0.00167637035501 aperture_flux=0.0545328759239 slab_channels=3 farflux_error=-1.2799e-09",
+        "modes=64 cutoff=5 gauss=20 hump=0.8 omega=3.93100103488 wall=3.47363741548 slab=1.70365329784 bulk=1.76998355888 feed_fraction=0.490452332271 F_re=0.494580453475 aperture_flux=3.47363741548 slab_channels=10 farflux_error=-5.5876e-07",
+        "modes=96 cutoff=5 gauss=20 hump=0.8 omega=0.456605832128 wall=0.0545531928109 slab=0.0229480869035 bulk=0.0316051046209 feed_fraction=0.420655258881 F_re=-0.00165420903663 aperture_flux=0.0545531928109 slab_channels=3 farflux_error=-1.2865e-09",
+        "modes=96 cutoff=5 gauss=20 hump=0.8 omega=3.93100103488 wall=3.47328830705 slab=1.70356099964 bulk=1.76972675061 feed_fraction=0.490475054801 F_re=0.494120358347 aperture_flux=3.47328830705 slab_channels=10 farflux_error=-5.568e-07",
+        "modes=144 cutoff=4 gauss=20 hump=0.8 omega=0.456605832128 wall=0.0545652924213 slab=0.0229526001049 bulk=0.0316126910258 feed_fraction=0.420644692427 F_re=-0.00163898645786 aperture_flux=0.0545652924213 slab_channels=3 farflux_error=-1.2906e-09",
+        "modes=144 cutoff=4 gauss=20 hump=0.8 omega=3.93100103488 wall=3.47305783491 slab=1.70349787029 bulk=1.76955940893 feed_fraction=0.490489425694 F_re=0.493850337736 aperture_flux=3.47305783491 slab_channels=10 farflux_error=-5.5569e-07",
+        "modes=192 cutoff=4 gauss=20 hump=0.8 omega=0.456605832128 wall=0.0545704752591 slab=0.0229545334595 bulk=0.0316159405073 feed_fraction=0.420640170241 F_re=-0.00163210630141 aperture_flux=0.0545704752591 slab_channels=3 farflux_error=-1.2923e-09",
+        "modes=192 cutoff=4 gauss=20 hump=0.8 omega=3.93100103488 wall=3.47295524187 slab=1.70346944777 bulk=1.76948523887 feed_fraction=0.490495731005 F_re=0.493735315503 aperture_flux=3.47295524187 slab_channels=10 farflux_error=-5.5523e-07"
+      ],
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reservoir_aperture_refined.py": "d372c5fc1fd36a4d71656c2f5aad2a645afce6328f1a66883937ccc1cb3e858f"
+      }
+    },
+    "open_reservoir_aperture_reference_compare": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-mouth --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_aperture_reference_compare -- python3 _scratch/s11c/open_reservoir_ref_comparison.py",
+      "started_utc": "2026-11-19T19:42:45.540282+00:00",
+      "outcome_written_utc": "2026-11-19T19:42:46.365312+00:00",
+      "duration_seconds": 0.6325715170241892,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "recorded_peak_bytes": 13897728,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_aperture_reference_compare/stdout",
+      "stdout_size": 736,
+      "stdout_sha256": "88484704864ca8471a88c636fe523d310b4399f0ae88cfc718d39fbda5d1a9c2",
+      "stdout_lines": [
+        "mesh=rest48 omega=0.456605832128 power_bias_pct=-1.18966450818 feed_fraction_bias_points=0.0077995659",
+        "mesh=rest48 omega=3.93100103488 power_bias_pct=-11.071136094 feed_fraction_bias_points=-0.0116414005",
+        "mesh=rest128 omega=0.456605832128 power_bias_pct=-0.305257873986 feed_fraction_bias_points=0.0075199859",
+        "mesh=rest128 omega=3.93100103488 power_bias_pct=-2.12982901502 feed_fraction_bias_points=0.0014389695",
+        "mesh=rest80 side=slab omega=0.456605832128 reflected_power_bias_pct=-0.21958874006",
+        "mesh=rest80 side=slab omega=3.93100103488 reflected_power_bias_pct=2.41041196811",
+        "mesh=rest80 side=bulk omega=0.456605832128 reflected_power_bias_pct=1.75882064554",
+        "mesh=rest80 side=bulk omega=3.93100103488 reflected_power_bias_pct=6.01307557679"
+      ],
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reservoir_ref_comparison.py": "3db09807bd94bf6e085fea5076ea3004f10d275807679e3a510a9dba4d0efc10"
+      }
+    },
+    "open_reservoir_aperture_reference_forced": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-mouth --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_aperture_reference_forced -- python3 _scratch/s11c/open_reservoir_ref_forced.py",
+      "started_utc": "2026-11-19T19:43:19.692433+00:00",
+      "outcome_written_utc": "2026-11-19T19:43:43.927853+00:00",
+      "duration_seconds": 24.159892177209258,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "recorded_peak_bytes": 223846400,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_aperture_reference_forced/stdout",
+      "stdout_size": 3351,
+      "stdout_sha256": "c57c39e398d239dfe6151cd2386ffd7b946dccbefc661291b4e7ee6d0eafa9ad",
+      "stdout_lines": [
+        "modes=32 omega=0.456605832128 side=slab incident=0.0256647454853 returned=0.00182464910125 near=-0.000926929449381 net=0.0229131669347 return_over_incident=0.0710955463126",
+        "modes=32 omega=0.456605832128 side=bulk incident=0.0348775500434 returned=0.00195567646411 near=-0.0013755295818 net=0.0315463439975 return_over_incident=0.0560726444855",
+        "modes=32 omega=3.93100103488 side=slab incident=1.81017428301 returned=0.106024053584 near=-0.000246706529732 net=1.70390352289 return_over_incident=0.0585711854264",
+        "modes=32 omega=3.93100103488 side=bulk incident=1.84039549774 returned=0.071465815223 near=0.00183515668025 net=1.7707648392 return_over_incident=0.0388317702965",
+        "modes=64 omega=0.456605832128 side=slab incident=0.0257025155708 returned=0.0018296535494 near=-0.000932350836107 net=0.0229405111853 return_over_incident=0.0711857772971",
+        "modes=64 omega=0.456605832128 side=bulk incident=0.034927079086 returned=0.00195221407872 near=-0.00138250026862 net=0.0315923647386 return_over_incident=0.0558939977176",
+        "modes=64 omega=3.93100103488 side=slab incident=1.80959293671 returned=0.105598687192 near=-0.00034068443616 net=1.70365356509 return_over_incident=0.05835493997",
+        "modes=64 omega=3.93100103488 side=bulk incident=1.83949161303 returned=0.0712083139059 near=0.00170055127327 net=1.7699838504 return_over_incident=0.0387108663076",
+        "modes=96 omega=0.456605832128 side=slab incident=0.0257130942113 returned=0.00183104907443 near=-0.000933957784501 net=0.0229480873524 return_over_incident=0.0712107636438",
+        "modes=96 omega=0.456605832128 side=bulk incident=0.0349407630079 returned=0.00195109620376 near=-0.0013845613456 net=0.0316051054585 return_over_incident=0.055840114405",
+        "modes=96 omega=3.93100103488 side=slab incident=1.80939634072 returned=0.105473443422 near=-0.00036163127142 net=1.70356126603 return_over_incident=0.0582920618594",
+        "modes=96 omega=3.93100103488 side=bulk incident=1.83919861422 returned=0.0711398089698 near=0.00166823576448 net=1.76972704101 return_over_incident=0.0386797860872",
+        "modes=144 omega=0.456605832128 side=slab incident=0.0257194417039 returned=0.00183188310563 near=-0.000934958042856 net=0.0229526005554 return_over_incident=0.0712256170535",
+        "modes=144 omega=0.456605832128 side=bulk incident=0.0349489081014 returned=0.00195037377467 near=-0.00138584246078 net=0.0316126918659 return_over_incident=0.0558064294601",
+        "modes=144 omega=3.93100103488 side=slab incident=1.80926600273 returned=0.105395437385 near=-0.000372429146936 net=1.7034981362 return_over_incident=0.0582531464287",
+        "modes=144 omega=3.93100103488 side=bulk incident=1.83900838384 returned=0.0710993413628 near=0.00165065623003 net=1.76955969871 return_over_incident=0.0386617820709",
+        "modes=192 omega=0.456605832128 side=slab incident=0.0257221688534 returned=0.0018322409689 near=-0.000935393973747 net=0.0229545339107 return_over_incident=0.0712319781175",
+        "modes=192 omega=0.456605832128 side=bulk incident=0.0349523963199 returned=0.00195005440923 near=-0.0013864005623 net=0.0316159413484 return_over_incident=0.0557917228732",
+        "modes=192 omega=3.93100103488 side=slab incident=1.80920791983 returned=0.105361421928 near=-0.00037678442528 net=1.70346971348 return_over_incident=0.0582362152923",
+        "modes=192 omega=3.93100103488 side=bulk incident=1.83892419078 returned=0.0710820560954 near=0.00164339370256 net=1.76948552839 return_over_incident=0.038654152494"
+      ],
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reservoir_ref_forced.py": "876e78ddfea5c5af9c9a970c97b33dbb9d11f18a810f79b832af8eae0d5c1b4f"
+      }
+    },
+    "open_reservoir_aperture_reference_lines": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-mouth --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_aperture_reference_lines -- python3 _scratch/s11c/open_reservoir_aperture_refined.py --spectrum",
+      "started_utc": "2026-11-19T19:40:12.078186+00:00",
+      "outcome_written_utc": "2026-11-19T19:40:26.452625+00:00",
+      "duration_seconds": 14.27457496477291,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "recorded_peak_bytes": 78295040,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_aperture_reference_lines/stdout",
+      "stdout_size": 311,
+      "stdout_sha256": "53c755fd885889db7778c8f953f99de6efb19bd8760da546dbc5216379ac9ac6",
+      "stdout_lines": [
+        "spectral modes=24 shift=-0.00684032764948 width=0.000944588760359 width_over_gap=0.232494769112 peaks=2",
+        "spectral modes=48 shift=-0.0068404535843 width=0.000946448060163 width_over_gap=0.232952404749 peaks=2",
+        "spectral modes=72 shift=-0.00684050737783 width=0.000946966344636 width_over_gap=0.233079971828 peaks=2"
+      ],
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reservoir_aperture_refined.py": "d372c5fc1fd36a4d71656c2f5aad2a645afce6328f1a66883937ccc1cb3e858f"
+      }
+    },
+    "open_reservoir_aperture_reference_scatter": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-mouth --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_aperture_reference_scatter -- python3 _scratch/s11c/open_reservoir_ref_scatter.py",
+      "started_utc": "2026-11-19T19:41:31.204305+00:00",
+      "outcome_written_utc": "2026-11-19T19:41:46.692755+00:00",
+      "duration_seconds": 15.445926253683865,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "recorded_peak_bytes": 143302656,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_aperture_reference_scatter/stdout",
+      "stdout_size": 3986,
+      "stdout_sha256": "7123af82f0c4d21074e998d3b26ef6cb9dd50b7a9503ada75ee486117a7bb2f3",
+      "stdout_lines": [
+        "scatter modes=32 omega=0.456605832128 side=slab channels=2 fundamental=0.0985716693906 total_transmission=0.901428330609 min_return=0.0455954911206 max_return=0.123037737075 unitary_error=9.995e-16",
+        "scatter modes=32 omega=0.456605832128 side=bulk channels=2 fundamental=0.0308848265035 total_transmission=0.969115173496 min_return=1.85645223229e-05 max_return=0.073269550898 unitary_error=1.666e-15",
+        "scatter modes=32 omega=3.93100103488 side=slab channels=9 fundamental=0.633201490768 total_transmission=0.366798509232 min_return=8.29554966142e-13 max_return=0.99999999986 unitary_error=6.392e-16",
+        "scatter modes=32 omega=3.93100103488 side=bulk channels=9 fundamental=0.00766536193747 total_transmission=0.992334638063 min_return=-1.33024640267e-18 max_return=0.108759265519 unitary_error=9.993e-16",
+        "scatter modes=64 omega=0.456605832128 side=slab channels=2 fundamental=0.0985219891596 total_transmission=0.90147801084 min_return=0.0454157018915 max_return=0.123204415601 unitary_error=7.825e-16",
+        "scatter modes=64 omega=0.456605832128 side=bulk channels=2 fundamental=0.0307994018354 total_transmission=0.969200598165 min_return=1.85417530615e-05 max_return=0.0730907259585 unitary_error=2.333e-15",
+        "scatter modes=64 omega=3.93100103488 side=slab channels=9 fundamental=0.633653051431 total_transmission=0.366346948569 min_return=8.93401878465e-13 max_return=0.999999999846 unitary_error=1.444e-15",
+        "scatter modes=64 omega=3.93100103488 side=bulk channels=9 fundamental=0.0076044696468 total_transmission=0.992395530353 min_return=-2.97071089273e-18 max_return=0.107809201098 unitary_error=1.665e-15",
+        "scatter modes=96 omega=0.456605832128 side=slab channels=2 fundamental=0.0985120593634 total_transmission=0.901487940637 min_return=0.0453638091449 max_return=0.123253575067 unitary_error=1.679e-15",
+        "scatter modes=96 omega=0.456605832128 side=bulk channels=2 fundamental=0.0307726406959 total_transmission=0.969227359304 min_return=1.85267763106e-05 max_return=0.0730362840921 unitary_error=6.703e-16",
+        "scatter modes=96 omega=3.93100103488 side=slab channels=9 fundamental=0.633816226624 total_transmission=0.366183773376 min_return=9.37790669123e-13 max_return=0.999999999842 unitary_error=1.443e-15",
+        "scatter modes=96 omega=3.93100103488 side=bulk channels=9 fundamental=0.00757834502349 total_transmission=0.992421654977 min_return=-6.2529709605e-18 max_return=0.107510880713 unitary_error=2.443e-15",
+        "scatter modes=144 omega=0.456605832128 side=slab channels=2 fundamental=0.09850739086 total_transmission=0.90149260914 min_return=0.0453321327955 max_return=0.123283885499 unitary_error=3.348e-15",
+        "scatter modes=144 omega=0.456605832128 side=bulk channels=2 fundamental=0.0307556119714 total_transmission=0.969244388029 min_return=1.85148360307e-05 max_return=0.0730021114517 unitary_error=2.11e-15",
+        "scatter modes=144 omega=3.93100103488 side=slab channels=9 fundamental=0.633926155385 total_transmission=0.366073844615 min_return=9.69849657531e-13 max_return=0.99999999984 unitary_error=1.887e-15",
+        "scatter modes=144 omega=3.93100103488 side=bulk channels=9 fundamental=0.00755957288451 total_transmission=0.992440427115 min_return=-1.56224666901e-17 max_return=0.107319299437 unitary_error=1.221e-15",
+        "scatter modes=192 omega=0.456605832128 side=slab channels=2 fundamental=0.0985056139676 total_transmission=0.901494386032 min_return=0.0453184306066 max_return=0.123297053358 unitary_error=2.333e-15",
+        "scatter modes=192 omega=0.456605832128 side=bulk channels=2 fundamental=0.0307481282911 total_transmission=0.969251871709 min_return=1.85092002475e-05 max_return=0.0729871700302 unitary_error=1.778e-15",
+        "scatter modes=192 omega=3.93100103488 side=slab channels=9 fundamental=0.63397549822 total_transmission=0.36602450178 min_return=9.84946862638e-13 max_return=0.999999999839 unitary_error=2.442e-15",
+        "scatter modes=192 omega=3.93100103488 side=bulk channels=9 fundamental=0.00755098597384 total_transmission=0.992449014026 min_return=-1.54917039015e-17 max_return=0.107234872767 unitary_error=2.443e-15"
+      ],
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reservoir_ref_scatter.py": "191162782e2edc364a8f7d27447df0179014bca1ca8a03ca87815d6777fcc699"
+      }
+    },
+    "open_reservoir_aperture_reference_width": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool open-mouth --memory-gib 2 --tasks-max 32 --log-directory _scratch/s11c/open_reservoir_aperture_reference_width -- python3 _scratch/s11c/open_reservoir_ref_width.py",
+      "started_utc": "2026-11-19T19:42:18.093825+00:00",
+      "outcome_written_utc": "2026-11-19T19:42:24.267139+00:00",
+      "duration_seconds": 6.125276735052466,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "recorded_peak_bytes": 89985024,
+      "swap_max": 0,
+      "stdout_path": "_scratch/s11c/open_reservoir_aperture_reference_width/stdout",
+      "stdout_size": 1395,
+      "stdout_sha256": "b1587f1d11f3b40c8be4f6ea0a5908847fc84240d959ed130756214d3915970e",
+      "stdout_lines": [
+        "width_over_R=0.5 modes=48 omega=0.456605832128 wall=0.0633956050359 slab=0.0174630983748 bulk=0.0459325067436 feed_fraction=0.275462287049 slab_channels=2 flux_residual=8.245e-11",
+        "width_over_R=0.5 modes=48 omega=3.93100103488 wall=3.12036312106 slab=1.60066452036 bulk=1.51969882699 feed_fraction=0.512973760482 slab_channels=5 flux_residual=2.263e-07",
+        "width_over_R=2 modes=48 omega=0.456605832128 wall=0.0472878671712 slab=0.0214855832808 bulk=0.0258022843952 feed_fraction=0.45435720274 slab_channels=5 flux_residual=5.047e-10",
+        "width_over_R=2 modes=48 omega=3.93100103488 wall=3.53613532432 slab=1.72767063189 bulk=1.80846483299 feed_fraction=0.488575918273 slab_channels=19 flux_residual=1.406e-07",
+        "width_over_R=0.5 modes=96 omega=0.456605832128 wall=0.063445620766 slab=0.0174749496172 bulk=0.0459706712118 feed_fraction=0.275431927198 slab_channels=2 flux_residual=6.294e-11",
+        "width_over_R=0.5 modes=96 omega=3.93100103488 wall=3.11963816854 slab=1.60011440559 bulk=1.51952398838 feed_fraction=0.512916627991 slab_channels=5 flux_residual=2.254e-07",
+        "width_over_R=2 modes=96 omega=0.456605832128 wall=0.0473235210008 slab=0.0215002290274 bulk=0.0258232924658 feed_fraction=0.454324368708 slab_channels=5 flux_residual=4.924e-10",
+        "width_over_R=2 modes=96 omega=3.93100103488 wall=3.5356357712 slab=1.72748078832 bulk=1.80815512261 feed_fraction=0.488591255389 slab_channels=19 flux_residual=1.397e-07"
+      ],
+      "argv_file_inputs": {
+        "_scratch/s11c/open_reservoir_ref_width.py": "1f59370a07b1e8c016fc75015352804982db68a3df165a15630fd0a8008ed6ea"
+      }
+    }
+  },
+  "stationary_checks": "The initial uniform-start solve did not converge. Initializing from the finite-volume phase-flow solution fixed the primary preparation. On the large-box and thick-slab 64-cell controls a local residual threshold was reached before global flow balance; these failed outputs carry no result. Their recomputed results also check the integrated flux before stopping. The distributed script checks a mid-neck cut shared by full and isolated-junction geometries.",
+  "scratch_reproducers": {
+    "_scratch/s11c/open_reference_geometries.py": {
+      "local_path": "_scratch/s11c/open_reference_geometries.py",
+      "sha256": "a14a093ce410a6799c30b6b05f4723cf64d0a706ef8164a53d9033aa4fe1abe6",
+      "source": "from pathlib import Path\nr=Path('_scratch/s11c')\ndef pick(name,**keys):\n    rows=[dict(v.split('=',1) for v in s.split() if '=' in v) for s in (r/name/'stdout').read_text().splitlines()]\n    row,=[v for v in rows if all(v.get(k)==str(x) for k,x in keys.items())]\n    return row\nfor tone,omega in (('difference','0.456605832128'),('sum','3.93100103488')):\n    a=pick('referee_carrier_continuum01',modes=256,clamped=0,omega=omega)\n    b=pick('open_reservoir_aperture_reference_b',modes=192,omega=omega)\n    guide=pick('carrier_bend_work128',omega=omega,ports='feed+receiver')\n    slab=pick('open_reservoir_n128',tone=tone,offset=0)\n    x,y=float(a['power']),float(b['wall'])\n    print(f\"tone={tone} rest_continuum_open_vs_guide_power_pct={100*(y/x-1):.10g} \"\n          f\"rest_continuum_guide_feed_fraction={float(a['feed'])/x:.10g} rest_continuum_open_feed_fraction={b['feed_fraction']} \"\n          f\"same_128_grid_flow_power_ratio={float(slab['power_per_b2'])/float(guide['work_per_b2']):.10g}\")\n"
+    },
+    "_scratch/s11c/open_reservoir_comparison.py": {
+      "local_path": "_scratch/s11c/open_reservoir_comparison.py",
+      "sha256": "a86ac9959028660d2bfb765ef45ab56310d7c229be2847fe6d29caefa9f63477",
+      "source": "import json\nfrom pathlib import Path\nr=Path('_scratch/s11c')\ndef rows(name):\n    return [dict(x.split('=',1) for x in line.split() if '=' in x) for line in (r/name/'stdout').read_text().splitlines()]\ndef one(name,**keys):\n    row,=[v for v in rows(name) if all(v.get(k)==str(x) for k,x in keys.items())]\n    return row\nfor tone,oldfreq in [('difference','0.456605832128'),('sum','3.93100103488')]:\n    def w(name):\n        return one('open_reservoir_'+name,tone=tone,offset=0)\n    fine=w('n128')\n    rest=w('rest128')\n    continuum=one('open_reservoir_aperture_reference_b',modes=192,omega=oldfreq)\n    old=one('carrier_bend_fine',omega=oldfreq,ports='feed+receiver')\n    def val(a,k='power_per_b2'): return float(a[k])\n    def pct(a,b): return 100*(a/b-1)\n    print(f\"compare tone={tone} power={val(fine):.12g} work_cycle={fine['cycle_b1em5']} \"\n          f\"feed_percent={100*val(fine,'feed_fraction'):.9g} bulk_percent={100*(1-val(fine,'feed_fraction')):.9g} \"\n          f\"flow_minus_rest_pct={pct(val(fine),val(rest)):.9g} \"\n          f\"rest128_vs_continuum_pct={pct(val(rest),val(continuum,'wall')):.9g} \"\n          f\"power_vs_guide_pct={pct(val(fine),val(old,'work_per_b2')):.9g} \"\n          f\"boundary_shift_pct={pct(val(w('far64b')),val(w('n64'))):.9g} \"\n          f\"mesh96_to128_pct={pct(val(fine),val(w('n96'))):.9g}\")\n    for name in ('thin64','n64','thick64b'):\n        row=w(name)\n        print(f\"width run={name} tone={tone} work={row['power_per_b2']} feed_fraction={row['feed_fraction']}\")\n    for side in ('brane','bulk'):\n        trace=one('open_reservoir_trace96',aperture=side,tone=tone)\n        iso=one('aperture_r96b',junction=side,omega=oldfreq)\n        print(f\"return tone={tone} side={side} driven_percent={100*float(trace['return_over_incident']):.9g} \"\n              f\"fundamental_percent={100*float(iso['fundamental_return']):.9g} \"\n              f\"coherent_min={iso['min_coherent_return']} coherent_max={iso['max_coherent_return']}\")\n"
+    },
+    "_scratch/s11c/open_reservoir_aperture_ref.py": {
+      "local_path": "_scratch/s11c/open_reservoir_aperture_ref.py",
+      "sha256": "0ff599b640ff9cdfdf489d7d1a8a368f65ffc1dccd1d7b9a3d0c76fb419a64b9",
+      "source": "\"\"\"Zero-flow continuum matching; unconstrained aperture Neumann traction in a neck basis.\"\"\"\nimport json\nimport sys\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.optimize import brentq\nfrom scipy.special import spherical_jn as jn\nimport yaml\n\n\ndef inputs():\n    conf = yaml.safe_load(Path(\"software/stage1_solver/reports/pathA_26_derrick_results.yaml\").read_text())\n    runs = json.loads(Path(\"research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json\").read_text())[\"runs\"]\n    def get(run, prefix, field):\n        row, = (s for s in runs[run][\"stdout_lines\"] if s.startswith(prefix))\n        return float(dict(t.split(\"=\", 1) for t in row.split() if \"=\" in t)[field])\n    return (conf[\"parameters\"], conf[\"phase_A\"][\"q_star\"][0],\n            get(\"smooth_dipole_l015_01\", \"point n=1 \", \"L\")/2,\n            [get(\"mouth_wave_linewidth_budget01\", \"bow h=0.015 \", f) for f in [\"difference\",\"sum\"]])\n\n\ndef ref(nmode, omega, radius, depth, param, cutoff=5, ngauss=12, height=.8, width_ratio=1.):\n    area = 4*np.pi/3\n    width = width_ratio*radius\n    hbar = param[\"hbar\"]\n    kinetic = hbar**2/(2*param[\"m\"])\n    density = param[\"rho0\"]/param[\"m\"]\n    mass_term = 10*param[\"K_eos\"]*density**4\n    shifts, pola = np.linalg.eigh([[mass_term,-hbar*omega],[-hbar*omega,0.]])\n    x = np.array([brentq(lambda t:jn(1,t,True),(j-.5)*np.pi,j*np.pi)\n                  for j in range(1,nmode+1)])\n    k = x/radius\n    boundary = jn(1,x)/np.sqrt(area*radius**3*(jn(1,x)**2-jn(0,x)*jn(2,x))/2)\n    def trans(p):\n        # Basis of the dipolar Hankel transform normalizes to delta(p-p').\n        deriv = np.sqrt(2/(np.pi*area))*p**2*jn(1,p*radius,True)\n        return area*radius**2*(deriv[:,None]*boundary[None,:])/(k[None,:]**2-p[:,None]**2)\n    nodes,wts = leggauss(ngauss)\n    absc = ((np.arange(nmode*cutoff)[:,None]+(1+nodes[None,:])/2)*np.pi).ravel()\n    wts = np.tile(wts,nmode*cutoff)*np.pi/2\n    force = 0j\n    feed = bulk = stable_im = 0.\n    open_modes = 0\n    for shift,component in zip(shifts,pola[1]):\n        ksq = -shift/kinetic\n        cap = np.sqrt(max(0,ksq))*radius\n        e = np.maximum(0.,absc-cap-2)\n        y = height*absc/(1+absc)*np.exp(-(e/4)**2)\n        dy = height*np.exp(-(e/4)**2)/(1+absc)**2 - y*e/8\n        p = (absc-1j*y)/radius\n        dp = (1-1j*dy)*wts/radius\n        gamma = np.sqrt(p**2-ksq)\n        a = trans(p)\n        bw = dp/(kinetic*gamma)\n        half = a.T@(bw[:,None]*a)\n        slab = a.T@((bw/np.tanh(gamma*width))[:,None]*a)\n        gn = np.sqrt(k.astype(complex)**2-ksq)\n        inv = 1/(kinetic*gn)\n        e = np.exp(-gn*depth)\n        nsame = inv*(1+e**2)/(1-e**2)\n        ncross = inv*2*e/(1-e**2)\n        b = hbar*omega*np.sqrt(density)*area*radius**2*component*boundary/2\n        h = 2*np.pi/depth\n        closed = b/(2*kinetic)*(1/gn**2-1/(gn**2+h**2))\n        matrix = np.block([[np.diag(nsame)+slab,np.diag(ncross)],\n                           [np.diag(ncross),np.diag(nsame)+half]])\n        f, q = np.split(np.linalg.solve(matrix,-np.r_[closed,closed]),2)\n        force += 2*sum(b**2*depth/(4*kinetic)*(1/gn**2+.5/(gn**2+h**2))+closed*(f+q))\n        stable_im += omega*(np.vdot(f,slab.imag@f).real+np.vdot(q,half.imag@q).real)\n        if ksq>0:\n            mm = np.arange(int(np.sqrt(ksq)*width/np.pi)+1)\n            pp = np.sqrt(ksq-(mm*np.pi/width)**2)\n            channel = omega*np.pi/(2*kinetic*width)*np.where(mm==0,1.,2.)*abs(trans(pp)@f)**2/pp\n            feed += channel.sum()\n            open_modes = len(channel)\n            theta,wtheta = leggauss(50)\n            angle = (theta+1)*np.pi/4\n            bulk += omega/kinetic*np.dot(wtheta*np.pi/4,abs(trans(np.sqrt(ksq)*np.sin(angle))@q)**2)\n    return force,feed,bulk,stable_im,open_modes\n\n\nif __name__==\"__main__\":\n    param,r,d,ws = inputs()\n    for n,c,ng,y in [(8,5,12,.8),(16,5,12,.8),(32,5,12,.8),(64,5,12,.8),(64,7,18,.6),(96,5,12,.8)]:\n        for w in ws:\n            F,L,R,P,m = ref(n,w,r,d,param,c,ng,y)\n            print(f\"modes={n} cutoff={c} gauss={ng} hump={y} omega={w:.12g} \"\n                  f\"wall={w*F.imag/2:.12g} slab={L:.12g} bulk={R:.12g} \"\n                  f\"feed_fraction={L/(L+R):.12g} F_re={F.real:.12g} \"\n                  f\"aperture_flux={P:.12g} slab_channels={m} \"\n                  f\"farflux_error={L+R-w*F.imag/2:.5g}\",flush=True)\n"
+    },
+    "_scratch/s11c/open_reservoir_aperture_refined.py": {
+      "local_path": "_scratch/s11c/open_reservoir_aperture_refined.py",
+      "sha256": "d372c5fc1fd36a4d71656c2f5aad2a645afce6328f1a66883937ccc1cb3e858f",
+      "source": "\"\"\"Zero-flow continuum matching; unconstrained aperture Neumann traction in a neck basis.\"\"\"\nimport json\nimport sys\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.optimize import brentq\nfrom scipy.special import spherical_jn as jn\nimport yaml\n\n\ndef inputs():\n    conf = yaml.safe_load(Path(\"software/stage1_solver/reports/pathA_26_derrick_results.yaml\").read_text())\n    runs = json.loads(Path(\"research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json\").read_text())[\"runs\"]\n    def get(run, prefix, field):\n        row, = (s for s in runs[run][\"stdout_lines\"] if s.startswith(prefix))\n        return float(dict(t.split(\"=\", 1) for t in row.split() if \"=\" in t)[field])\n    return (conf[\"parameters\"], conf[\"phase_A\"][\"q_star\"][0],\n            get(\"smooth_dipole_l015_01\", \"point n=1 \", \"L\")/2,\n            [get(\"mouth_wave_linewidth_budget01\", \"bow h=0.015 \", f) for f in [\"difference\",\"sum\"]])\n\n\ndef ref(nmode, omega, radius, depth, param, cutoff=5, ngauss=12, height=.8, width_ratio=1.):\n    area = 4*np.pi/3\n    width = width_ratio*radius\n    hbar = param[\"hbar\"]\n    kinetic = hbar**2/(2*param[\"m\"])\n    density = param[\"rho0\"]/param[\"m\"]\n    mass_term = 10*param[\"K_eos\"]*density**4\n    shifts, pola = np.linalg.eigh([[mass_term,-hbar*omega],[-hbar*omega,0.]])\n    x = np.array([brentq(lambda t:jn(1,t,True),(j-.5)*np.pi,j*np.pi)\n                  for j in range(1,nmode+1)])\n    k = x/radius\n    boundary = jn(1,x)/np.sqrt(area*radius**3*(jn(1,x)**2-jn(0,x)*jn(2,x))/2)\n    def trans(p):\n        # Basis of the dipolar Hankel transform normalizes to delta(p-p').\n        deriv = np.sqrt(2/(np.pi*area))*p**2*jn(1,p*radius,True)\n        return area*radius**2*(deriv[:,None]*boundary[None,:])/(k[None,:]**2-p[:,None]**2)\n    nodes,wts = leggauss(ngauss)\n    absc = ((np.arange(nmode*cutoff)[:,None]+(1+nodes[None,:])/2)*np.pi).ravel()\n    wts = np.tile(wts,nmode*cutoff)*np.pi/2\n    force = 0j\n    feed = bulk = stable_im = 0.\n    open_modes = 0\n    for shift,component in zip(shifts,pola[1]):\n        ksq = -shift/kinetic\n        cap = np.sqrt(max(0,ksq))*radius\n        e = np.maximum(0.,absc-cap-2)\n        y = height*absc/(1+absc)*np.exp(-(e/4)**2)\n        dy = height*np.exp(-(e/4)**2)/(1+absc)**2 - y*e/8\n        p = (absc-1j*y)/radius\n        dp = (1-1j*dy)*wts/radius\n        gamma = np.sqrt(p**2-ksq)\n        a = trans(p)\n        bw = dp/(kinetic*gamma)\n        half = a.T@(bw[:,None]*a)\n        slab = a.T@((bw/np.tanh(gamma*width))[:,None]*a)\n        gn = np.sqrt(k.astype(complex)**2-ksq)\n        inv = 1/(kinetic*gn)\n        e = np.exp(-gn*depth)\n        nsame = inv*(1+e**2)/(1-e**2)\n        ncross = inv*2*e/(1-e**2)\n        b = hbar*omega*np.sqrt(density)*area*radius**2*component*boundary/2\n        h = 2*np.pi/depth\n        closed = b/(2*kinetic)*(1/gn**2-1/(gn**2+h**2))\n        matrix = np.block([[np.diag(nsame)+slab,np.diag(ncross)],\n                           [np.diag(ncross),np.diag(nsame)+half]])\n        f, q = np.split(np.linalg.solve(matrix,-np.r_[closed,closed]),2)\n        def wall_green(axial):\n            radial = np.sqrt(complex(ksq-axial**2))\n            return jn(1,radius*radial)/(radial*jn(1,radius*radial,True))\n        # Apply sidewall traction to a closed neck. Only the axial constant and\n        # the second cosine occur in sin²; regular j1 gives the full radial trace.\n        scale = (hbar*omega*np.sqrt(density)*component/2)**2\n        closed_reaction = scale*area*radius**2*depth/(4*kinetic)*(wall_green(0)+.5*wall_green(h))\n        force += 2*(closed_reaction + sum(closed*(f+q)))\n        stable_im += omega*(np.vdot(f,slab.imag@f).real+np.vdot(q,half.imag@q).real)\n        if ksq>0:\n            mm = np.arange(int(np.sqrt(ksq)*width/np.pi)+1)\n            pp = np.sqrt(ksq-(mm*np.pi/width)**2)\n            channel = omega*np.pi/(2*kinetic*width)*np.where(mm==0,1.,2.)*abs(trans(pp)@f)**2/pp\n            feed += channel.sum()\n            open_modes = len(channel)\n            theta,wtheta = leggauss(50)\n            angle = (theta+1)*np.pi/4\n            bulk += omega/kinetic*np.dot(wtheta*np.pi/4,abs(trans(np.sqrt(ksq)*np.sin(angle))@q)**2)\n    return force,feed,bulk,stable_im,open_modes\n\n\ndef linecheck(n,param,r,d,ws):\n    from scipy.interpolate import CubicSpline\n    from scipy.optimize import minimize_scalar\n    from scipy.signal import find_peaks\n    offsets = np.array([-.009,-.008,-.0075,-.007,-.0065,-.006,-.005,-.0045])\n    lines=[]\n    for w in ws:\n        samples = [ref(n,w+off,r,d,param,4,16,.8)[0] for off in offsets]\n        lines.append(CubicSpline(offsets,samples))\n    omega_d = sum(ws)/2\n    omega_s = (ws[1]-ws[0])/2\n    g = .618498902707*np.sqrt(2*param[\"I_wave\"]/omega_s)\n    def absorption(off):\n        susceptibility = [1/(6-12*(w+off)**2-spline(off)) for w,spline in zip(ws,lines)]\n        return (1/(omega_d**2-(omega_d+off)**2-g**2/4*sum(susceptibility))).imag\n    center = minimize_scalar(lambda x:-absorption(x),bounds=(offsets[0],offsets[-1]),method=\"bounded\",options={\"xatol\":1e-14}).x\n    half=lambda x: absorption(x)-.5*absorption(center)\n    left=brentq(half,offsets[0],center)\n    right=brentq(half,center,offsets[-1])\n    width=right-left\n    gap=.00406283876392\n    curve=np.linspace(-gap-6*width,6*width,20001)\n    absorption_read=.5*width/(curve**2+(.5*width)**2)+1.5*width/((curve+gap)**2+(1.5*width)**2)\n    print(f\"spectral modes={n} shift={center:.12g} width={width:.12g} width_over_gap={width/gap:.12g} peaks={len(find_peaks(absorption_read)[0])}\",flush=True)\n\n\nif __name__==\"__main__\":\n    param,r,d,ws = inputs()\n    if \"--spectrum\" in sys.argv:\n        for n in (24,48,72):\n            linecheck(n,param,r,d,ws)\n        sys.exit()\n    for n,c,ng,y in [(32,5,20,.8),(64,5,20,.8),(96,5,20,.8),(144,4,20,.8),(192,4,20,.8)]:\n        for w in ws:\n            F,L,R,P,m = ref(n,w,r,d,param,c,ng,y)\n            print(f\"modes={n} cutoff={c} gauss={ng} hump={y} omega={w:.12g} \"\n                  f\"wall={w*F.imag/2:.12g} slab={L:.12g} bulk={R:.12g} \"\n                  f\"feed_fraction={L/(L+R):.12g} F_re={F.real:.12g} \"\n                  f\"aperture_flux={P:.12g} slab_channels={m} \"\n                  f\"farflux_error={L+R-w*F.imag/2:.5g}\",flush=True)\n"
+    },
+    "_scratch/s11c/open_reservoir_ref_comparison.py": {
+      "local_path": "_scratch/s11c/open_reservoir_ref_comparison.py",
+      "sha256": "3db09807bd94bf6e085fea5076ea3004f10d275807679e3a510a9dba4d0efc10",
+      "source": "from pathlib import Path\n\nbase=Path(\"_scratch/s11c\")\ndef rows(run,prefix):\n    return [dict(s.split('=',1) for s in line.split() if '=' in s)\n            for line in (base/run/\"stdout\").read_text().splitlines() if line.startswith(prefix)]\n\nref=rows(\"open_reservoir_aperture_reference_b\",\"modes=192 \")\nfor prep in (\"rest48\",\"rest128\"):\n    for r,f in zip(ref,rows(\"open_reservoir_\"+prep,\"tone=\")):\n        delta=100*(float(f[\"power_per_b2\"])/float(r[\"wall\"])-1)\n        partition=100*(float(f[\"feed_fraction\"])-float(r[\"feed_fraction\"]))\n        print(f\"mesh={prep} omega={r['omega']} power_bias_pct={delta:.12g} feed_fraction_bias_points={partition:.12g}\")\nscatter=rows(\"open_reservoir_aperture_reference_scatter\",\"scatter modes=192\")\nfor f in rows(\"aperture_r80rest\",\"junction=\"):\n    side=\"slab\" if f[\"junction\"]==\"brane\" else \"bulk\"\n    r, = (t for t in scatter if t[\"side\"]==side and t[\"omega\"]==f[\"omega\"])\n    print(f\"mesh=rest80 side={side} omega={f['omega']} reflected_power_bias_pct={100*(float(f['fundamental_return'])/float(r['fundamental'])-1):.12g}\")\n"
+    },
+    "_scratch/s11c/open_reservoir_ref_forced.py": {
+      "local_path": "_scratch/s11c/open_reservoir_ref_forced.py",
+      "sha256": "876e78ddfea5c5af9c9a970c97b33dbb9d11f18a810f79b832af8eae0d5c1b4f",
+      "source": "\"\"\"Zero-flow continuum matching; unconstrained aperture Neumann traction in a neck basis.\"\"\"\nimport json\nimport sys\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.optimize import brentq\nfrom scipy.special import spherical_jn as jn\nimport yaml\n\n\ndef inputs():\n    conf = yaml.safe_load(Path(\"software/stage1_solver/reports/pathA_26_derrick_results.yaml\").read_text())\n    runs = json.loads(Path(\"research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json\").read_text())[\"runs\"]\n    def get(run, prefix, field):\n        row, = (s for s in runs[run][\"stdout_lines\"] if s.startswith(prefix))\n        return float(dict(t.split(\"=\", 1) for t in row.split() if \"=\" in t)[field])\n    return (conf[\"parameters\"], conf[\"phase_A\"][\"q_star\"][0],\n            get(\"smooth_dipole_l015_01\", \"point n=1 \", \"L\")/2,\n            [get(\"mouth_wave_linewidth_budget01\", \"bow h=0.015 \", f) for f in [\"difference\",\"sum\"]])\n\n\ndef ref(nmode, omega, radius, depth, param, cutoff=5, ngauss=12, height=.8, width_ratio=1.):\n    area = 4*np.pi/3\n    width = width_ratio*radius\n    hbar = param[\"hbar\"]\n    kinetic = hbar**2/(2*param[\"m\"])\n    density = param[\"rho0\"]/param[\"m\"]\n    mass_term = 10*param[\"K_eos\"]*density**4\n    shifts, pola = np.linalg.eigh([[mass_term,-hbar*omega],[-hbar*omega,0.]])\n    x = np.array([brentq(lambda t:jn(1,t,True),(j-.5)*np.pi,j*np.pi)\n                  for j in range(1,nmode+1)])\n    k = x/radius\n    boundary = jn(1,x)/np.sqrt(area*radius**3*(jn(1,x)**2-jn(0,x)*jn(2,x))/2)\n    def trans(p):\n        # Basis of the dipolar Hankel transform normalizes to delta(p-p').\n        deriv = np.sqrt(2/(np.pi*area))*p**2*jn(1,p*radius,True)\n        return area*radius**2*(deriv[:,None]*boundary[None,:])/(k[None,:]**2-p[:,None]**2)\n    nodes,wts = leggauss(ngauss)\n    absc = ((np.arange(nmode*cutoff)[:,None]+(1+nodes[None,:])/2)*np.pi).ravel()\n    wts = np.tile(wts,nmode*cutoff)*np.pi/2\n    force = 0j\n    feed = bulk = stable_im = 0.\n    projection = np.zeros((2,3))\n    for shift,component in zip(shifts,pola[1]):\n        ksq = -shift/kinetic\n        cap = np.sqrt(max(0,ksq))*radius\n        e = np.maximum(0.,absc-cap-2)\n        y = height*absc/(1+absc)*np.exp(-(e/4)**2)\n        dy = height*np.exp(-(e/4)**2)/(1+absc)**2 - y*e/8\n        p = (absc-1j*y)/radius\n        dp = (1-1j*dy)*wts/radius\n        gamma = np.sqrt(p**2-ksq)\n        a = trans(p)\n        bw = dp/(kinetic*gamma)\n        half = a.T@(bw[:,None]*a)\n        slab = a.T@((bw/np.tanh(gamma*width))[:,None]*a)\n        gn = np.sqrt(k.astype(complex)**2-ksq)\n        inv = 1/(kinetic*gn)\n        e = np.exp(-gn*depth)\n        nsame = inv*(1+e**2)/(1-e**2)\n        ncross = inv*2*e/(1-e**2)\n        b = hbar*omega*np.sqrt(density)*area*radius**2*component*boundary/2\n        h = 2*np.pi/depth\n        closed = b/(2*kinetic)*(1/gn**2-1/(gn**2+h**2))\n        matrix = np.block([[np.diag(nsame)+slab,np.diag(ncross)],\n                           [np.diag(ncross),np.diag(nsame)+half]])\n        f, q = np.split(np.linalg.solve(matrix,-np.r_[closed,closed]),2)\n        guide = k**2 < ksq\n        axial = np.sqrt(ksq - k[guide]**2)\n        for index,(C,t) in enumerate(((slab,f),(half,q))):\n            u = -C@t\n            slope_part = t[guide]/(1j*kinetic*axial)\n            inc = (u[guide]+slope_part)/2\n            back = (u[guide]-slope_part)/2\n            near = omega*np.vdot(u[~guide],t[~guide]).imag\n            projection[index] += [omega*kinetic*np.dot(axial,abs(inc)**2),\n                                  omega*kinetic*np.dot(axial,abs(back)**2),near]\n    for label,(inc,back,near) in zip((\"slab\",\"bulk\"),projection):\n        print(f\"modes={nmode} omega={omega:.12g} side={label} incident={inc:.12g} \"\n              f\"returned={back:.12g} near={near:.12g} net={inc-back+near:.12g} \"\n              f\"return_over_incident={back/inc:.12g}\",flush=True)\n\n\nif __name__==\"__main__\":\n    param,r,d,ws = inputs()\n    for n,c,ng,y in [(32,5,20,.8),(64,5,20,.8),(96,5,20,.8),(144,4,20,.8),(192,4,20,.8)]:\n        for w in ws:\n            ref(n,w,r,d,param,c,ng,y)\n"
+    },
+    "_scratch/s11c/open_reservoir_ref_scatter.py": {
+      "local_path": "_scratch/s11c/open_reservoir_ref_scatter.py",
+      "sha256": "191162782e2edc364a8f7d27447df0179014bca1ca8a03ca87815d6777fcc699",
+      "source": "\"\"\"Zero-flow continuum matching; unconstrained aperture Neumann traction in a neck basis.\"\"\"\nimport json\nimport sys\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.optimize import brentq\nfrom scipy.special import spherical_jn as jn\nimport yaml\n\n\ndef inputs():\n    conf = yaml.safe_load(Path(\"software/stage1_solver/reports/pathA_26_derrick_results.yaml\").read_text())\n    runs = json.loads(Path(\"research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json\").read_text())[\"runs\"]\n    def get(run, prefix, field):\n        row, = (s for s in runs[run][\"stdout_lines\"] if s.startswith(prefix))\n        return float(dict(t.split(\"=\", 1) for t in row.split() if \"=\" in t)[field])\n    return (conf[\"parameters\"], conf[\"phase_A\"][\"q_star\"][0],\n            get(\"smooth_dipole_l015_01\", \"point n=1 \", \"L\")/2,\n            [get(\"mouth_wave_linewidth_budget01\", \"bow h=0.015 \", f) for f in [\"difference\",\"sum\"]])\n\n\ndef ref(nmode, omega, radius, depth, param, cutoff=5, ngauss=12, height=.8, width_ratio=1.):\n    area = 4*np.pi/3\n    width = width_ratio*radius\n    hbar = param[\"hbar\"]\n    kinetic = hbar**2/(2*param[\"m\"])\n    density = param[\"rho0\"]/param[\"m\"]\n    mass_term = 10*param[\"K_eos\"]*density**4\n    shifts, pola = np.linalg.eigh([[mass_term,-hbar*omega],[-hbar*omega,0.]])\n    x = np.array([brentq(lambda t:jn(1,t,True),(j-.5)*np.pi,j*np.pi)\n                  for j in range(1,nmode+1)])\n    k = x/radius\n    boundary = jn(1,x)/np.sqrt(area*radius**3*(jn(1,x)**2-jn(0,x)*jn(2,x))/2)\n    def trans(p):\n        # Basis of the dipolar Hankel transform normalizes to delta(p-p').\n        deriv = np.sqrt(2/(np.pi*area))*p**2*jn(1,p*radius,True)\n        return area*radius**2*(deriv[:,None]*boundary[None,:])/(k[None,:]**2-p[:,None]**2)\n    nodes,wts = leggauss(ngauss)\n    absc = ((np.arange(nmode*cutoff)[:,None]+(1+nodes[None,:])/2)*np.pi).ravel()\n    wts = np.tile(wts,nmode*cutoff)*np.pi/2\n    force = 0j\n    feed = bulk = stable_im = 0.\n    open_modes = 0\n    for shift,component in zip(shifts,pola[1]):\n        ksq = -shift/kinetic\n        if ksq<0:\n            continue\n        cap = np.sqrt(max(0,ksq))*radius\n        e = np.maximum(0.,absc-cap-2)\n        y = height*absc/(1+absc)*np.exp(-(e/4)**2)\n        dy = height*np.exp(-(e/4)**2)/(1+absc)**2 - y*e/8\n        p = (absc-1j*y)/radius\n        dp = (1-1j*dy)*wts/radius\n        gamma = np.sqrt(p**2-ksq)\n        a = trans(p)\n        bw = dp/(kinetic*gamma)\n        half = a.T@(bw[:,None]*a)\n        slab = a.T@((bw/np.tanh(gamma*width))[:,None]*a)\n        # Incoming normalized traveling field + outgoing propagating/decaying tail.\n        guide_gamma = np.sqrt(k.astype(complex)**2-ksq).conj()\n        guide_compliance = 1/(kinetic*guide_gamma)\n        prop = np.flatnonzero(k<np.sqrt(ksq))\n        fluxscale = np.sqrt(omega*kinetic*(-guide_gamma[prop].imag))\n        inc=np.zeros((len(k),len(prop)))\n        inc[prop,prop]=1/fluxscale\n        for label,load in ((\"slab\",slab),(\"bulk\",half)):\n            traction = np.linalg.solve(np.diag(guide_compliance)+load,-2*inc)\n            reflected = (inc+guide_compliance[:,None]*traction)[prop]*fluxscale[:,None]\n            qmat=reflected.conj().T@reflected\n            returned=qmat[0,0].real\n            eigs = np.linalg.eigvalsh(qmat)\n            radiated=omega*traction.conj().T@load.imag@traction\n            err=np.max(abs(np.eye(len(prop))-qmat-radiated))\n            print(f\"scatter modes={nmode} omega={omega:.12g} side={label} channels={len(prop)} \"\n                  f\"fundamental={returned:.12g} total_transmission={radiated[0,0].real:.12g} \"\n                  f\"min_return={eigs.min():.12g} max_return={eigs.max():.12g} unitary_error={err:.4g}\",flush=True)\n        return\n\n\nif __name__==\"__main__\":\n    param,r,d,ws = inputs()\n    for n,c,ng,y in [(32,5,20,.8),(64,5,20,.8),(96,5,20,.8),(144,4,20,.8),(192,4,20,.8)]:\n        for w in ws:\n            ref(n,w,r,d,param,c,ng,y)\n"
+    },
+    "_scratch/s11c/open_reservoir_ref_width.py": {
+      "local_path": "_scratch/s11c/open_reservoir_ref_width.py",
+      "sha256": "1f59370a07b1e8c016fc75015352804982db68a3df165a15630fd0a8008ed6ea",
+      "source": "\"\"\"Independent finite-slab width controls from the zero-current aperture impedances.\"\"\"\nfrom open_reservoir_aperture_refined import inputs, ref\n\nparam,radius,depth,tones=inputs()\nfor nmode in (48,96):\n    for width in (.5,2.):\n        for omega in tones:\n            force,slab,bulk,_,nfeed=ref(nmode,omega,radius,depth,param,4,24,.8,width_ratio=width)\n            wall=.5*omega*force.imag\n            print(f\"width_over_R={width:g} modes={nmode} omega={omega:.12g} wall={wall:.12g} \"\n                  f\"slab={slab:.12g} bulk={bulk:.12g} feed_fraction={slab/(slab+bulk):.12g} \"\n                  f\"slab_channels={nfeed} flux_residual={slab+bulk-wall:.4g}\",flush=True)\n"
+    }
+  },
+  "older_comparison_data": {
+    "carrier_bend_fine": "e764db6f4039a6e0fc9098b338883187a80788fc2f1a349c75f6041baf9ddeda",
+    "carrier_bend_work128": "e41539761ff8337ef8ff5e3555e0c0365d28914d3c0bcdf5d8cac5268dd54bdd",
+    "referee_carrier_continuum01": "8d6747f49411dde9d36b3b12105848d890c0c86c0a987ba4668a69e180d24f11"
+  }
+}

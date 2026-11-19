@@ -1,0 +1,159 @@
+{
+  "working_base": "df13acaa78634e254be4c732068260e62a210d4f",
+  "report": "software/stage1_solver/reports/mouth_driven_bend.md",
+  "report_sha256": "c32ab38194ca480ffc11c8c52d341a577562473f1e8f28ea8f314a86dc1436d7",
+  "status": "Working result. Fresh local scoped review; formal acceptance and commit pending.",
+  "inputs_sha256": {
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json": "a53c5edf9cee951de8e8cce20cbc90d27a4e8e5ce55efadb69b5fa52eae274d7",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/mouth_trapped_wave_spectrum.md": "1840e3bdde694647ed33fd69d2151d9d92f45f7ffc3f877c93d4c97244504ec5",
+    "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b",
+    "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e",
+    "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+    "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519",
+    "software/stage1_solver/tools/mouth_bend_pair_release.py": "304895084f66e06a2ce48cdd336478076bcac92da67740e96465121f4d032a04",
+    "software/stage1_solver/tools/mouth_dipole_bow_decay.py": "b056125e3150e0a992490d6a0a0e5f44e4638be8c49813228a5ffc8648f6427d",
+    "software/stage1_solver/tools/mouth_driven_bend.py": "fadb351f7baebfdd70c3bc35a7757aeefd2db37023fbd1e473685ab30139e85e",
+    "software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py": "f58eeb92e04662b1f0effc620cdb9a532e4fabe6e9c9fd086a5a994e011d6efd",
+    "software/stage1_solver/tools/mouth_trapped_wave_ports.py": "8a5838daaea498418359858b6ef5ec043296343e91545353478864b927f6b0d3",
+    "software/stage1_solver/tools/mouth_wave_linewidth_budget.py": "fa235638de604320b5b8b7fee41473f3e2179d685afe1fd087a9c58895342a7e",
+    "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py": "45c57953116d50d4745f01420f6b95092c267cfd4bb045875edec270496c0e12"
+  },
+  "scope": {
+    "preparation": "Fixed round radius and held reference depth of the smooth-well one-increment geometry, same coherent monopole of action 1 and aligned real dipole. A static hold may balance a mean carrier load. One fixed-current axisymmetric OpenSleeve with a rigid reflecting side, one entrance and open receiver on a half-length core supplies the stationary number current (archived constituent mass is 1). The steady solve and the reduced bend dynamics are separate models. There is no time-dependent angular carrier solve or magnitude of its traction in these results. For an isotropic background a linear dipolar perturbation integrates to zero change of the scalar total current by angular orthogonality, while allowing a finite dipole force. Higher-order intake changes are unmeasured.",
+    "linear_hypothesis": "State (q,qdot,b,bdot): qddot+omega_d^2 q+g cos(omega_s t)b=0; M bddot+C bdot+K b+g cos(omega_s t)q=F(t). M=12, K=6, C=.1 or 6.5. g=0.618498902707 sqrt(2/omega_s) from the archived profile. The axial profile f(w)=sin^2(2pi w/L) on |w|<L/2 is multiplied by cos(theta); b is the signed displacement at unit profile. pde.tex equations linpde-wall-action and linpde-harmonic-modes admit effective inertia, axial and angular stiffness and a material forcing. They do not identify either tested C for the prepared flowing well. The model treats the support as a maintained coherent pump. The reported low/high drive is a single force on that wall coordinate with a specified phase. Subtraction of a static load cannot calibrate dissipative traction.",
+    "drive_and_fit": "Single-tone steady solutions use a periodically forced linear evolution, demodulation and a switch-off of the external force. Observed displacement is the Fourier component at the driven tone. The other frequency components remain in the generator. The wall signal sampled once each support period yields the four roots of a rank-four linear prediction; 72- versus 180-sample fits and half-strength inputs agree. Reported energy rates describe the envelope of the dipole-dominated mode. The bend has an additional mechanical pole pair; the full time trace is not a single exponential. Units of time, length, generalized force and scalar amplitude are those of the archived toy model.",
+    "phase_locked_test": "At the exact frequencies omega_d ± omega_s and absent direct dipole loss, the undriven Fourier equation at omega_d enforces b_- + b_+ = 0. Reciprocity of the symmetric harmonic stiffness for the real cosine pump makes both diagonal responses equal and the conversion response opposite to them. Equal in-phase forces give 2 F cos(omega_s t)cos(omega_d t); the steady solution b=0 and q=(2F/g)cos(omega_d t) satisfies both equations. At release from the common maximum the net bend acceleration is -2F/M. The numerical pair starts from rest and propagates the forced period map using repeated squaring to periodic settling, then measures the free wall signal with the support pump still on. Detuning, direct dipole damping and other couplings can lift the cancellation. Its presence alone cannot determine bend damping.",
+    "lines": "A conditional three-level line readout assigns the carrier action increment 0.03. The widths use one Markov jump sqrt(Gamma)a at zero bath temperature and no pure dephasing. Select 01 and 12 coherences separately, give each equal integrated area, and add their signals. Their decay rates are Gamma/2 and 3Gamma/2 (FWHM Gamma and 3Gamma); feeding of 01 by 12 does not enter a selective 12 measurement. Assume the common shift of the tracked dipole pole for both transitions. Using the archived printed additions introduces only roundoff against the stored conservative angular splitting. The independently checked extrema are for this ideal spectral test. Neither the full quantum response under pump nor the actual readout of a passing parcel has been measured.",
+    "next": "At matched intake prescribe this angular wall motion and extract the generalized force from the time-dependent carrier, using its density and stress at the wall, with outgoing boundary conditions, matched no-drive subtraction, and power at support and inlet separated. For a single Fourier component the passive loss per cycle after this subtraction constrains the dissipative part of the bend impedance. Independently test intrinsic wave loss, coherence noise and both line shifts. The present comparison adds neither a mirror-odd electric source nor a net moving-mouth free-fall force."
+  },
+  "review": {
+    "reviewer": "fresh independent local agent",
+    "verdict": "Scoped clear for the separable, linear, coherently pumped model.",
+    "method": "Independent frequency-space stiffness and quadratic eigenvalue pencil at three harmonic cutoffs. Counted real extrema of the derivative polynomial of the two conditional Lorentzians.",
+    "dispositions": [
+      "State that carrier current is a separate stationary control; the angular wall reaction and the physical linewidth remain free.",
+      "Count only peaks of the explicitly stated selective readout and give the dipole-branch ringdown, not a bare bend loss.",
+      "Associate equal tone responses and the in-phase null with the coherent lossless dipole coupling. The null alone does not measure damping."
+    ]
+  },
+  "runs": {
+    "mouth_driven_bend02": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool driven-bend --memory-gib 1 --log-directory _scratch/s11c/mouth_driven_bend02 -- python3 software/stage1_solver/tools/mouth_driven_bend.py research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_driven_bend.py",
+        "research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json"
+      ],
+      "started_utc": "2026-11-19T19:13:01.029118+00:00",
+      "outcome_written_utc": "2026-11-19T19:13:01.928758+00:00",
+      "guarded_duration_seconds": 0.8833205937407911,
+      "recorded_peak_memory_bytes": 75804672,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "stdout_path": "_scratch/s11c/mouth_driven_bend02/stdout",
+      "stdout_size": 3109,
+      "stdout_sha256": "ef7441c2c3d11fc64a70288b31d565c699204be30970d8d1f545cddb6c0fd2fb",
+      "stdout_lines": [
+        "carrier cells=8 mass_target=0.0373999726942 mass_in=0.0373999726942 mass_through=0.0373999726942 mass_out=0.0373999726942 phase=-0.0733986284907 cell_error=1.36e-16 residual=9.02e-17",
+        "carrier cells=16 mass_target=0.0373999726942 mass_in=0.0373999726942 mass_through=0.0373999726942 mass_out=0.0373999726942 phase=-0.0726893998152 cell_error=6.22e-16 residual=4.02e-16",
+        "drive C=0.1 omega=0.456605832128 force=0.001 same_tone_displacement=5.68290633648e-06 lag_deg=179.857136506 abs_chi=0.00568290633648 bare_abs_chi=0.285842395678 bare_lag_deg=0.747830305508",
+        "switch_off C=0.1 drive=0.456605832128 energy_rate=0.000177499200907 dipole_frequency=2.18684300245",
+        "drive C=0.1 omega=0.456605832128 force=0.0005 same_tone_displacement=2.84145316829e-06 lag_deg=179.857136499 abs_chi=0.00568290633657 bare_abs_chi=0.285842395678 bare_lag_deg=0.747830305508",
+        "switch_off C=0.1 drive=0.456605832128 energy_rate=0.000177499200907 dipole_frequency=2.18684300245",
+        "drive C=0.1 omega=3.93100103488 force=0.001 same_tone_displacement=5.68290625433e-06 lag_deg=179.857136512 abs_chi=0.00568290625433 bare_abs_chi=0.00557309034825 bare_lag_deg=179.874477315",
+        "switch_off C=0.1 drive=3.93100103488 energy_rate=0.000177499200908 dipole_frequency=2.18684300245",
+        "drive C=0.1 omega=3.93100103488 force=0.0005 same_tone_displacement=2.84145312713e-06 lag_deg=179.857136512 abs_chi=0.00568290625426 bare_abs_chi=0.00557309034825 bare_lag_deg=179.874477315",
+        "switch_off C=0.1 drive=3.93100103488 energy_rate=0.000177499200908 dipole_frequency=2.18684300245",
+        "selective_lines conditional_common_shift=-0.00696043106205 first_center=2.18890056826 second_center=2.1848377295 first_FWHM=0.000177499200907 second_FWHM=0.000532497602722 equal_area_peak_count=2 peak_omegas=2.184837476,2.188900822",
+        "drive C=6.5 omega=0.456605832128 force=0.001 same_tone_displacement=5.60972368175e-06 lag_deg=170.793905472 abs_chi=0.00560972368175 bare_abs_chi=0.217981391962 bare_lag_deg=40.312431179",
+        "switch_off C=6.5 drive=0.456605832128 energy_rate=0.00713343083853 dipole_frequency=2.18968847399",
+        "drive C=6.5 omega=0.456605832128 force=0.0005 same_tone_displacement=2.8048618409e-06 lag_deg=170.793905464 abs_chi=0.00560972368181 bare_abs_chi=0.217981391962 bare_lag_deg=40.312431179",
+        "switch_off C=6.5 drive=0.456605832128 energy_rate=0.00713343083854 dipole_frequency=2.18968847399",
+        "drive C=6.5 omega=3.93100103488 force=0.001 same_tone_displacement=5.6097236005e-06 lag_deg=170.793905376 abs_chi=0.0056097236005 bare_abs_chi=0.00551744284882 bare_lag_deg=171.895500562",
+        "switch_off C=6.5 drive=3.93100103488 energy_rate=0.00713343083854 dipole_frequency=2.18968847399",
+        "drive C=6.5 omega=3.93100103488 force=0.0005 same_tone_displacement=2.80486180022e-06 lag_deg=170.793905376 abs_chi=0.00560972360043 bare_abs_chi=0.00551744284882 bare_lag_deg=171.895500562",
+        "switch_off C=6.5 drive=3.93100103488 energy_rate=0.00713343083853 dipole_frequency=2.18968847399",
+        "selective_lines conditional_common_shift=-0.00411495952485 first_center=2.1917460398 second_center=2.18768320104 first_FWHM=0.00713343083853 second_FWHM=0.0214002925156 equal_area_peak_count=1 peak_omegas=2.191631189"
+      ]
+    },
+    "mouth_bend_pair_release01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool bend-pair-release --memory-gib 1 --log-directory _scratch/s11c/mouth_bend_pair_release01 -- python3 software/stage1_solver/tools/mouth_bend_pair_release.py research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_pair_release.py",
+        "research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json"
+      ],
+      "started_utc": "2026-11-19T19:15:07.373136+00:00",
+      "outcome_written_utc": "2026-11-19T19:15:08.091007+00:00",
+      "guarded_duration_seconds": 0.6968119717203081,
+      "recorded_peak_memory_bytes": 61927424,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "stdout_path": "_scratch/s11c/mouth_bend_pair_release01/stdout",
+      "stdout_size": 1969,
+      "stdout_sha256": "857bada5caa4a4254328f282c6f8cf72788661341711236217d9a19257935650",
+      "stdout_lines": [
+        "pair C=0.1 force_each=0.001 cycles_from_rest=131072 max_wall_per_force=8.719e-14 q_release=0.00301370455753 q_pred=0.00301370455753 relative_wave_error=8.81e-13 velocity_error=5.78e-13",
+        "pair_free C=0.1 support_cycles=0 time=0 wall=-3.48577081392e-17 wave=0.00301370455753",
+        "pair_free C=0.1 support_cycles=1 time=3.61685124489 wall=-0.000209767478672 wave=-0.000208306589445",
+        "pair_free C=0.1 support_cycles=2 time=7.23370248979 wall=0.000373732120577 wave=-0.00292207784806",
+        "pair_free C=0.1 support_cycles=4 time=14.4674049796 wall=-0.000431537809213 wave=0.00285154536508",
+        "pair_free C=0.1 support_cycles=16 time=57.8696199183 wall=-0.000375913713616 wave=0.00181779594268",
+        "pair_free C=0.1 support_cycles=64 time=231.478479673 wall=0.000283942683156 wave=-0.00265118570341",
+        "pair_free C=0.1 support_cycles=128 time=462.956959347 wall=-0.000207278939494 wave=0.00192957409243",
+        "pair_free_pole C=0.1 rank=4 ring_frequency=2.18684300245 energy_rate=0.000177499200907 max_sampled_wall=0.000431537809213",
+        "pair C=6.5 force_each=0.001 cycles_from_rest=4096 max_wall_per_force=2.447e-13 q_release=0.00301370455753 q_pred=0.00301370455753 relative_wave_error=1.29e-12 velocity_error=2.2e-12",
+        "pair_free C=6.5 support_cycles=0 time=0 wall=-1.64002141337e-16 wave=0.00301370455753",
+        "pair_free C=6.5 support_cycles=1 time=3.61685124489 wall=-0.00012679892695 wave=-0.00021939744628",
+        "pair_free C=6.5 support_cycles=2 time=7.23370248979 wall=0.000154959204592 wave=-0.0029338322586",
+        "pair_free C=6.5 support_cycles=4 time=14.4674049796 wall=-0.000190806044002 wave=0.00277577268207",
+        "pair_free C=6.5 support_cycles=16 time=57.8696199183 wall=-0.000165499838045 wave=0.0011964692382",
+        "pair_free C=6.5 support_cycles=64 time=231.478479673 wall=8.85358237287e-05 wave=-0.000624725534842",
+        "pair_free C=6.5 support_cycles=128 time=462.956959347 wall=-5.31528247326e-06 wave=-0.000319438045802",
+        "pair_free_pole C=6.5 rank=4 ring_frequency=2.18968847399 energy_rate=0.00713343083853 max_sampled_wall=0.000192946279667"
+      ]
+    },
+    "mouth_driven_bend_reviewer_b": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool driven-bend-review --memory-gib 1 --log-directory _scratch/s11c/mouth_driven_bend_reviewer_b -- python3 _scratch/mouth_driven_bend_fresh_reviewer.py",
+      "child_argv": [
+        "python3",
+        "_scratch/mouth_driven_bend_fresh_reviewer.py"
+      ],
+      "started_utc": "2026-11-19T19:14:50.334866+00:00",
+      "outcome_written_utc": "2026-11-19T19:14:50.542828+00:00",
+      "guarded_duration_seconds": 0.18978019198402762,
+      "recorded_peak_memory_bytes": 26157056,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "limits_verified": true,
+      "stdout_path": "_scratch/s11c/mouth_driven_bend_reviewer_b/stdout",
+      "stdout_size": 1655,
+      "stdout_sha256": "011e5cfebaddd55b6588a84094f822f4a9d9a32eaf5a9950d181304a0bf2bf07",
+      "stdout_lines": [
+        "C=0.1 N=5 exact_abs=0.005682906254204 lag=179.8571365123 diff_response=3.3e-17 opposite_cross=6.42e-17 rounded_abs=0.00568290633707,0.005682906254392 rounded_lag=179.8571365139,179.8571365123 pole=2.186843002448 energy_rate=0.0001774992009057",
+        "C=0.1 N=9 exact_abs=0.005682906254204 lag=179.8571365123 diff_response=3.3e-17 opposite_cross=6.42e-17 rounded_abs=0.00568290633707,0.005682906254392 rounded_lag=179.8571365139,179.8571365123 pole=2.186843002448 energy_rate=0.0001774992009057",
+        "C=0.1 N=15 exact_abs=0.005682906254204 lag=179.8571365123 diff_response=3.3e-17 opposite_cross=6.42e-17 rounded_abs=0.00568290633707,0.005682906254392 rounded_lag=179.8571365139,179.8571365123 pole=2.186843002448 energy_rate=0.0001774992009057",
+        "C=0.1 dimensionless_spacing=22.8893355159 real_extrema=[0.00014058463723379537, 13.482096358945132, 22.8893200141528] maxima=2",
+        "C=6.5 N=5 exact_abs=0.005609723600537 lag=170.7939053781 diff_response=1.66e-17 opposite_cross=0 rounded_abs=0.005609723682306,0.005609723600569 rounded_lag=170.7939054807,170.7939053754 pole=2.189688473985 energy_rate=0.007133430838536",
+        "C=6.5 N=9 exact_abs=0.005609723600537 lag=170.7939053781 diff_response=1.66e-17 opposite_cross=0 rounded_abs=0.005609723682306,0.005609723600569 rounded_lag=170.7939054807,170.7939053754 pole=2.189688473985 energy_rate=0.007133430838535",
+        "C=6.5 N=15 exact_abs=0.005609723600537 lag=170.7939053781 diff_response=1.66e-17 opposite_cross=0 rounded_abs=0.005609723682306,0.005609723600569 rounded_lag=170.7939054807,170.7939053754 pole=2.189688473985 energy_rate=0.007133430838537",
+        "C=6.5 dimensionless_spacing=0.569549050842 real_extrema=[0.5536339866753022] maxima=1"
+      ],
+      "independent_script": {
+        "path": "_scratch/mouth_driven_bend_fresh_reviewer.py",
+        "sha256": "56321177011d4756400bd502c0dc7c009b5c96ea7fad2473b22ac344127a6f2e",
+        "as_run": "\"\"\"Independent finite-sideband reduction, complex quadratic pencil, and exact stationary-point count.\"\"\"\nfrom pathlib import Path\nimport json\nimport numpy as np\nfrom numpy.polynomial import Polynomial\n\narchive = json.loads(Path(\"research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json\").read_text())[\"runs\"]\n\n\ndef read(run, prefix):\n    line, = [s for s in archive[run][\"stdout_lines\"] if s.startswith(prefix)]\n    return {k: float(v) for k,v in (s.split(\"=\") for s in line.split()[1:] if \"=\" in s) if \",\" not in v}\n\n\npoint = read(\"smooth_dipole_l015_01\",\"point n=1 \")\nbow = read(\"mouth_wave_linewidth_budget01\",\"bow h=0.015 \")\nlevels = read(\"smooth_dipole_l015_01\",\"levels \")\nwd, ws = point[\"omega_d\"], point[\"omega_s\"]\ng = bow[\"overlap\"]*np.sqrt(2/ws)\ngap = (levels[\"relaxed_first\"]-levels[\"relaxed_second\"])/.03\nfor c in (.1,6.5):\n    for N in (5,9,15):\n        n = np.arange(-N,N+1)\n        is_wall = (n % 2) == 1\n        mass = np.where(is_wall,12.,1.)\n        drag = np.where(is_wall,c,0.)\n        stiff = np.where(is_wall,6.,wd**2)\n        coupling = np.diag(np.full(len(n)-1,g/2),1)\n        coupling += coupling.T.copy()\n        at = [N-1,N+1]\n        def dynamic(z):\n            freq = z+n*ws\n            return coupling + np.diag(stiff-mass*freq**2+1j*drag*freq)\n        def response(z):\n            return np.linalg.solve(dynamic(z), np.eye(len(n))[:,at])[at,:]\n        exact = response(wd)\n        rounded = [response(bow[\"difference\"]+ws)[0,0],response(bow[\"sum\"]-ws)[1,1]]\n        b1 = (1j*drag-2*mass*n*ws)/mass\n        b0 = dynamic(0)/mass[:,None]\n        companion = np.block([[np.zeros_like(b0), np.eye(len(n))],[b0,np.diag(b1)]])\n        roots = np.linalg.eigvals(companion)\n        root = roots[np.argmin(abs(roots-wd))]\n        gamma = 2*root.imag\n        print(f\"C={c:g} N={N} exact_abs={abs(exact[0,0]):.13g} lag={-np.angle(exact[0,0],deg=True):.13g} diff_response={abs(exact[1,1]-exact[0,0]):.3g} opposite_cross={abs(exact[0,1]+exact[0,0]):.3g} rounded_abs={abs(rounded[0]):.13g},{abs(rounded[1]):.13g} rounded_lag={-np.angle(rounded[0],deg=True):.13g},{-np.angle(rounded[1],deg=True):.13g} pole={root.real:.13g} energy_rate={gamma:.13g}\")\n    # x relative to broad-line center in units of gamma. Common shift cancels.\n    broad = Polynomial([0,1])\n    narrow = Polynomial([-gap/gamma,1])\n    # The positive denominators are cleared in the exact derivative.\n    stationary = 1.5*broad*(narrow**2 + .25)**2 + .5*narrow*(broad**2+2.25)**2\n    extrema = sorted(z.real for z in stationary.roots() if abs(z.imag)<1e-10)\n    print(f\"C={c:g} dimensionless_spacing={gap/gamma:.12g} real_extrema={extrema} maxima={(len(extrema)+1)//2}\")\n"
+      }
+    }
+  }
+}

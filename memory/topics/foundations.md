@@ -6,10 +6,14 @@ sources:
   - research/4d/paper/4d.tex
   - research/brane_bulk_ontology/paper/brane_bulk_ontology.tex
   - research/pde/paper/pde.tex
-last_updated: 2026-09-03
+last_updated: 2026-11-19
 ---
 
 # Foundations
+
+## How we use the force requirements
+
+Light, gravity and electromagnetism are observable behaviors to explain through the organization and motion of one underlying material. Their equations tell us what a deeper material law must reproduce. When several microscopic arrangements fit the same observation, propose a physically motivated local rule, say what was assumed, and test a prediction that distinguishes it from the alternatives. Use the same rule across mouths, radii and sectors. A result earns explanatory weight when a second outcome follows without having been supplied as an input. This is the user's standing research direction. [Research instructions](../../AGENTS.md#standing-direction-for-the-common-medium-research)
 
 ## Working picture
 

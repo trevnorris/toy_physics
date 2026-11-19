@@ -1,0 +1,291 @@
+{
+  "working_base": "df13acaa78634e254be4c732068260e62a210d4f",
+  "status": "Uncommitted working research with scoped independent local review.",
+  "report": "software/stage1_solver/reports/mouth_standing_wave_budget.md",
+  "report_sha256": "89bd841c1c4bf77989a4bd3f8589819e29d4f26006fa54720639779d6de7defa",
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "input_sha256": {
+    "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b",
+    "software/stage1_solver/reports/pathA_26_derrick.md": "dc878f77efce234f83858f220bd0bedaaa35190f57e3d5cae7957e0e5ea04a6c",
+    "software/em_charge_attribute/reports/undriven_trapped_bow.md": "26e3c803dd838e33b44b48f67bd21ee0d57fada5332222e26a0d128f33506962",
+    "docs/_measurements/undriven_trapped_bow.json": "fa26d7a701a4b9c55ba1348036187296016ff313e78fd41c09c443404645c26c",
+    "software/em_charge_attribute/reports/trapped_wave_charge.md": "a60b9efce96db8aaaba9a48ae57f8903733684e32cd707928958eecf087981cf",
+    "software/em_charge_attribute/reports/wave_load_vs_radius.md": "54da025244699bd88daef5ce2e7142c64ef5e20ee1ec29dcd81c7554db77eae0",
+    "software/em_charge_attribute/reports/mouth_sign_selection.md": "94c05c026739d61a91e6e3f117718b036fc2104b4b59598e29c949ef742cf3f4",
+    "software/stage1_solver/reports/mouth_collar_charge_transmission.md": "b23114507cbe34fbf6a9e9a6b8481a74916b75126c40c0ce7ba4d522ed6734ec",
+    "research/pde_ledger_v3/_measurements/mouth_collar_charge_transmission.json": "73177df30c7b276372fa035e318bd76356a54022d6d0a3b6d0905cee0f68b9c5",
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "notes/lepton_mass_notes.md": "bb7c64824d8ded1792082997194b4726c146d8893a2b7c9da97c65b0a1a9aa06"
+  },
+  "model_and_readouts": {
+    "scope": "Held radii at the same intake; no equation for flow work or driven mode loading. Trapping, occupation diagnostics, the local triangle and the global angular model are independent comparisons. An orbital dipole of the scalar cavity is not identified with either of the proposed internal states, and the open-well mode counts are not used as mode counts for the angular lattice.",
+    "confinement": "Hard or finite spherical side, common Dirichlet mouth at z=0. The separable comparison has a reflecting end at z=L in both radial regions. In the finite side radial solution j_l(x) is matched to k_l(y), x^2+y^2=R^2(mu_out^2-mu_in^2)/c^2. We retain omega<mu_out, stricter than the guided continuum. The distinct open well has finite gap in B^3(R) x (0,L), exterior gap everywhere else in the half-space, and essential spectrum from mu_out^2. Continuous product trial functions extend into exterior in both directions; exact rational evaluations give upper bounds. The coordinates and inputs are the archived numerical parameters. This does not measure damping or lifetime of a driven, dissipative real drain. Angular matching derivatives: https://dlmf.nist.gov/10.51.",
+    "open_count": "Adding a free Neumann cut across z=L enlarges the form domain; the direct-sum exterior half-space cannot have spectrum below mu_out^2. In the remaining DN cylinder the first axial overtone is above threshold. At .9R0 and R0 the maximum interior radial phase at threshold is below 4.49. The l=2 first binding threshold is the first positive j1 root above 4.49; increasing l increases the potential. The second radial monopole starts at 3pi/2; comparison in l excludes higher radial overtones in all partial waves. Separated upper counts and the full open exact trial bounds together give exactly one l=0 radial/axial multiplet and one l=1 multiplet (three m values). Frequency upper bounds from the open trial are not exact eigenvalues.",
+    "load_inference": "The force matrix columns are (-partial_R omega_b,-partial_L omega_b) at independent geometry and fixed action. For the finite radial step minus partial_R(omega_b^2)=(mu_out^2-mu_in^2)|u_b(R)|^2 for radial unit L2 norm using u=r f. Two measured wave-only loads can invert a nonsingular two-column matrix after removal of other stresses. The reported inverse exercise uses synthetic loads with known 0.7,0.3. At doubled radius explicit positive action triples give the same two loads. Two independently calibrated in-plane dipole traction components resolve 2 Im(a_x* a_y) at a common dipole frequency after subtraction of the uniform component; a third axis would be needed for general spatial angular momentum. These are spatial harmonics rather than internal helicities. Occupations in an actual drain are unknown.",
+    "triangle": "Positive linear reciprocal oscillator with four real coordinates per site. Local alignment operator is the realification of p dot sigma. Free link transports the doublet by an orthogonal rotation. The proposed law is distinct from the native scalar wave. In a marked triangle imposing opposite clamped loop phases F,-F changes the 12-mode sum of omega^12 by 96 J_s^3 t_s^3 det(p0,p1,p2)sin(F); t_s and J_s are squared-frequency coupling scales (alpha*t and alpha*J in the script). All lower squared-frequency moment differences vanish. The independent scalar/copy controls are even; spectrum does not give mode population. Positivity and separate spectroscopy of single patch and pair are demonstrated. This is a local material test; a phase applied on one triangle is not the net flux through a closed surface. At a hard mouth displacement node a direct displacement contact would vanish; an actual coupling requires material support with finite amplitude or a strain-dependent contact.",
+    "whole_rim": "Two distinct triangulated networks with 128 or 512 triangles. Seven previously tested nested cuts. The new global oscillator assumes the six-encounter material polarization profile on the inner cut. Lattice sites have a complex doublet (four real coordinates), standard positive kinetic term, and dynamical matrix D_A=Omega_c^2 I+tau L_A+delta diag(I-p_i dot sigma). L_A is the degree-minus-phased-adjacency graph Laplacian. Omega_c^2=mu_in^2+(c*pi/R)^2+(c*pi/(2L))^2 is supplied as the common background frequency from the hard branch. The soft and open tests are separate. Coefficients chosen for this material hypothesis, not fitted to charge: tau=.04/s^2, delta=.16, s=R/R0. Rb=16s, exterior C=1. Each finite lattice carries its own fixed springs, so cross-lattice agreement is not a continuum limit.",
+    "comparison": "The axial component of every squared frequency is (v_z/L)^2 with v_z=c*pi/2. In the untwisted preparation F_L=(v_z^2/L^3) sum I_b/omega_b. For each held R set the axial benchmark equal to the conservative axial wall+volume balance 4pi sigma R^2+(4pi/3)alpha_volume R^3. No curvature contribution, no free-radius equilibrium assumed; the real drain's wave-only load is unmeasured. Compare against the untwisted neutral trial with the same fixed nonnegative actions on ordered frequency ranks. This covers arbitrary mixtures, not active reloading, rank-permuting continuations, discontinuous mode transfer or additional work by the inflow. A nonzero exterior unit costs at least pi/(2Rb) for E=(1/2)integral |B|^2 with flux 2pi on a source-free exterior.",
+    "ground_bound": "A spinor trial in the flat rim and a scalar comparison using the norm at each site bound the lowest squared frequency on opposite sides. If lambda_0(0)<=U and lambda_0(A)>=B, Omega_c^2 omitted from both, the maximal release per F_L is at most (U-B)omega_high/[(omega_high+omega_low)v_z^2/L^3]. Comparison covers any free links, both mirrors and both finite lattices.",
+    "all_rank_bounds": "Deleting positive springs to either of two spanning trees bounds every ordered frequency by the corresponding tree spectral line from below. All phases can be removed by site rephasing on each tree while preserving the signed onsite mixing. For each rank take the larger lower bound and an upper bound from the full untwisted network. The sorted eigenvalue enclosure uses a rounded dyadic Hermitian matrix and rounded candidate eigenvectors Q and eigenvalues V. Exact integer products bound g=||Q*Q-I|| and r=||H Q-QV||. With U the unitary polar factor, ||U-Q||<=g for g<1. Every sorted eigenvalue is certified within r+(||H||+||V||)g plus the material rounding bound. Independent floor La>=0 and face identity for L0 give D0<=Da+9tau I. The maximum wave release per unit F_L is bounded above by the maximum over ranks of omega_upper(omega_upper-omega_lower)/(v_z^2/L^3); apply only to occupied bound ranks at flat preparation. Antipodal site permutation takes the prepared plus mouth to its minus partner, and all possible fields are included. Realification doubles multiplicity, leaving the bound unchanged.",
+    "collar": "For nonzero net exterior flux, any compact half-turn face costs Kmin W(pi), any charged prism at least 5Kmin W(2pi/5), and with neither present all seven cuts have the same nonzero degree. Jensen then costs >=7 NF Kmin W(2pi/NF), W=8sin^2(F/8); take the smallest of these three costs in addition to the exterior. At s=2 both lattices exclude a unit if all compact loop springs exceed 0.354000 in common units. The explicit law K=1/s is the previous unit spring at the reference radius, scaled to match the 1/R energy of a homothetic fixed-flux field; it is an added constitutive assumption for large twists. For the five smaller sample radii the exterior cost alone exceeds the wave release. If K were negligible at doubled radius the available bounds allow the unit only with at least 0.671870 of the axial wave load in excited ranks across the two tests; this is necessary, not sufficient. No equilibrium formation, unique physical electric unit, probe force or translation balance is implied."
+  },
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_cavity_occupation.py": "6bc0e5713fac31b0fbe5b4e17426cef4eaf660e332df5b3110efa3f5c6bad49c",
+    "software/stage1_solver/tools/mouth_cavity_open_end.py": "00966765ebb0c75b6ab5b976c94bbf76ddc4241ede9a9594d73cfdb9836e6de3",
+    "software/stage1_solver/tools/mouth_collar_link_bounds.py": "ef8eaa09c6f85345be161b38129384d6ef72b930d6dad64df3ada4bf5cf74283",
+    "software/stage1_solver/tools/mouth_collar_loop_spectroscopy.wl": "0c00525517a95e9bb12379f1f3f877985a8dabb522236aa021397efdeb5ce2b0",
+    "software/stage1_solver/tools/mouth_collar_mobile_rim.py": "b7c9eefe01117f7574f567629ea40ebeef1b5dcaf01e81cff11e7393f91457a6",
+    "software/stage1_solver/tools/mouth_rim_all_mode_bounds.py": "02d9e6ee7707e360e0a7c27dc8c54fec9bd0d7a6c2f3df57939212ac6b0b0624",
+    "software/stage1_solver/tools/mouth_standing_mode_flux_budget.py": "9e925fe8582ac7f4c490adb93e97e09705a654793e734eed1ec1d9c5590066f1",
+    "software/stage1_solver/tools/mouth_standing_wave_collar_cost.py": "7fccb1351d03b4207117158073eb89f866581a755cb20266cd24b33be905c7d2"
+  },
+  "runs": {
+    "mouth_cavity_occupation01": {
+      "guard_command": "python3 scripts/s11c_guarded_run.py --pool cavity-occupation --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_cavity_occupation01 -- python3 software/stage1_solver/tools/mouth_cavity_occupation.py",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_cavity_occupation.py"
+      ],
+      "started_utc": "2026-11-19T16:25:22.578545+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "678a797b1e39e3c367349099e2740bc3a1024cad431b856a421198e6be2c934b",
+      "stdout_lines": [
+        "reference R=1.89241000541 L=1.81206770991 c=1 gaps=0.2,2.5",
+        "side=hard first_dipole_crosses_bulk_cut_R=1.92325432161",
+        "levels soft=False R/R0=0.9 groups=0/1/0@2.04788315",
+        "levels soft=False R/R0=1 groups=0/1/0@1.88344659",
+        "levels soft=False R/R0=1.125 groups=0/1/0@1.72306835,1/1/0@2.29043964",
+        "levels soft=False R/R0=1.25 groups=0/1/0@1.59850985,1/1/0@2.09755205",
+        "levels soft=False R/R0=1.5 groups=0/1/0@1.41996302,1/1/0@1.81581701,2/1/0@2.21672409,0/2/0@2.38555603",
+        "levels soft=False R/R0=2 groups=0/1/0@1.21672444,1/1/0@1.48355067,2/1/0@1.76360480,0/2/0@1.88344659,3/1/0@2.04945753,1/2/0@2.22656314,4/1/0@2.33782537",
+        "loads soft=False R=2.1289612561 radial,axial=[0.6895835209355627, 0.22278079570912618] action_fit=[0.6999999999999998, 0.30000000000000016] det=-0.11238772 max_force_derivative_error=3.48e-11",
+        "quadrature soft=False state=cw action_xy=0.3 twice_imag_axstar_ay=0.3",
+        "quadrature soft=False state=ccw action_xy=0.3 twice_imag_axstar_ay=-0.3",
+        "quadrature soft=False state=linear action_xy=0.3 twice_imag_axstar_ay=0",
+        "unresolved soft=False keys=[(0, 1, 0), (1, 1, 0), (2, 1, 0)] action_a=[0.3169632369161334, 0.9, 0.2897970304218457] action_b=[0.6830367630838666, 0.09999999999999998, 0.7102029695781543] load_a=[0.37401841015181186, 0.42773701496300265] load_b=[0.37401841015181186, 0.4277370149630026]",
+        "side=finite first_dipole_crosses_bulk_cut_R=1.42635388883",
+        "levels soft=True R/R0=0.9 groups=0/1/0@1.72096236,1/1/0@2.25703928",
+        "levels soft=True R/R0=1 groups=0/1/0@1.62182088,1/1/0@2.11445968",
+        "levels soft=True R/R0=1.125 groups=0/1/0@1.52012061,1/1/0@1.96280697,2/1/0@2.39113695",
+        "levels soft=True R/R0=1.25 groups=0/1/0@1.43759211,1/1/0@1.83621362,2/1/0@2.23018145,0/2/0@2.37225941",
+        "levels soft=True R/R0=1.5 groups=0/1/0@1.31355510,1/1/0@1.64013072,2/1/0@1.97235707,0/2/0@2.10391175,3/1/0@2.30219778,1/2/0@2.47543769",
+        "levels soft=True R/R0=2 groups=0/1/0@1.16316900,1/1/0@1.39177804,2/1/0@1.63406008,0/2/0@1.73595915,3/1/0@1.88226331,1/2/0@2.03034872,4/1/0@2.13247693,2/2/0@2.31417996,0/3/0@2.37632448,5/1/0@2.38236535",
+        "loads soft=True R=1.8924100054 radial,axial=[0.5451234548435808, 0.23781829166562474] action_fit=[0.6999999999999997, 0.30000000000000016] det=-0.085474435 max_force_derivative_error=2.43e-11",
+        "quadrature soft=True state=cw action_xy=0.3 twice_imag_axstar_ay=0.3",
+        "quadrature soft=True state=ccw action_xy=0.3 twice_imag_axstar_ay=-0.3",
+        "quadrature soft=True state=linear action_xy=0.3 twice_imag_axstar_ay=0",
+        "unresolved soft=True keys=[(0, 1, 0), (1, 1, 0), (2, 1, 0)] action_a=[0.3147580206910543, 0.9, 0.29060196680703854] action_b=[0.6852419793089457, 0.09999999999999998, 0.7093980331929615] load_a=[0.29016065419546666, 0.45411926442207956] load_b=[0.29016065419546666, 0.45411926442207956]"
+      ]
+    },
+    "mouth_cavity_open_end03": {
+      "guard_command": "python3 scripts/s11c_guarded_run.py --pool mouth-cavity-open-end --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_cavity_open_end03 -- python3 software/stage1_solver/tools/mouth_cavity_open_end.py",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_cavity_open_end.py"
+      ],
+      "started_utc": "2026-11-19T16:28:57.426632+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "4c1a189c8f2061c30a83a2ec57550f4b3f45a3a68c8dab32eb975df40d3792db",
+      "stdout_lines": [
+        "R0=1.892410005412 L0=1.812067709910 continuum_omega2=25/4",
+        "dipole_below_continuum_excluded_for_R_at_most=1.344613 (sufficient)",
+        "R/R0=0.9 ell=0 omega2_upper=4.15160715 Pr=0.91172226 Pz=0.92356120 bound_state_certified=True",
+        "R/R0=0.9 ell=1 omega2_upper=6.22185199 Pr=0.77254693 Pz=0.90497141 bound_state_certified=True",
+        "R/R0=1 ell=0 omega2_upper=3.82958479 Pr=0.93335262 Pz=0.92588783 bound_state_certified=True",
+        "R/R0=1 ell=1 omega2_upper=5.63081762 Pr=0.83787642 Pz=0.91457478 bound_state_certified=True",
+        "R/R0=1.125 ell=0 omega2_upper=3.51760499 Pr=0.95138054 Pz=0.92773471 bound_state_certified=True",
+        "R/R0=1.125 ell=1 omega2_upper=5.03503646 Pr=0.88659616 Pz=0.92069521 bound_state_certified=True"
+      ]
+    },
+    "mouth_open_neumann_review02": {
+      "guard_command": "python3 scripts/s11c_guarded_run.py --pool rim-open-spectrum-review --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_open_neumann_review02 -- python3 -c 'from pathlib import Path\nimport yaml\nfrom mpmath import iv\niv.dps = 50\nv = iv.mpf\ndata = yaml.load(Path(\"software/stage1_solver/reports/pathA_26_derrick_results.yaml\").read_bytes(), Loader=yaml.BaseLoader)\nr0, length = map(v, data[\"phase_A\"][\"q_star\"])\nspeed, mi, mo = (v(data[\"parameters\"][k]) for k in (\"c_w\", \"mu_in\", \"mu_out\"))\npi = iv.pi\ndef enclosure(x):\n    scale = 10**9\n    a, b = int((x*scale).a), int((x*scale).b)+1\n    return f\"[{a//scale}.{a%scale:09d},{b//scale}.{b%scale:09d}]\"\nz1 = 3*pi*speed/(2*length)\nx0 = v(\"4.49\")\ns2 = iv.sin(x0)-x0*iv.cos(x0)\nsecond_monopole_threshold = 3*pi/2\nprint(\"j=1 axial frequency\",enclosure(z1),\"squared cutoff margin mi^2+kz^2-mo^2\",enclosure(mi**2+z1**2-mo**2))\nprint(\"j1 first-root test at 4.49: interval for sin(x)-x*cos(x)\",enclosure(s2),\"radial n=2 monopole onset\",enclosure(second_monopole_threshold))\nresults = [mi**2+z1**2>mo**2, pi<x0, x0<3*pi/2, s2>0]\nfor ratio in (\".9\",\"1\"):\n    xcut = v(ratio)*r0*iv.sqrt(mo**2-mi**2-(pi*speed/(2*length))**2)/speed\n    print(\"ratio\",ratio,\"maximum allowable inside radial phase at continuum\",enclosure(xcut),\"first l=2 radial phase lower 4.49\",\"first n=2 lower\",enclosure(second_monopole_threshold))\n    results.extend((xcut<x0,xcut<second_monopole_threshold))\nassert all(results)\nprint(\"all sufficient inequalities\", [bool(k) for k in results])'",
+      "child_argv": [
+        "python3",
+        "-c",
+        "from pathlib import Path\nimport yaml\nfrom mpmath import iv\niv.dps = 50\nv = iv.mpf\ndata = yaml.load(Path(\"software/stage1_solver/reports/pathA_26_derrick_results.yaml\").read_bytes(), Loader=yaml.BaseLoader)\nr0, length = map(v, data[\"phase_A\"][\"q_star\"])\nspeed, mi, mo = (v(data[\"parameters\"][k]) for k in (\"c_w\", \"mu_in\", \"mu_out\"))\npi = iv.pi\ndef enclosure(x):\n    scale = 10**9\n    a, b = int((x*scale).a), int((x*scale).b)+1\n    return f\"[{a//scale}.{a%scale:09d},{b//scale}.{b%scale:09d}]\"\nz1 = 3*pi*speed/(2*length)\nx0 = v(\"4.49\")\ns2 = iv.sin(x0)-x0*iv.cos(x0)\nsecond_monopole_threshold = 3*pi/2\nprint(\"j=1 axial frequency\",enclosure(z1),\"squared cutoff margin mi^2+kz^2-mo^2\",enclosure(mi**2+z1**2-mo**2))\nprint(\"j1 first-root test at 4.49: interval for sin(x)-x*cos(x)\",enclosure(s2),\"radial n=2 monopole onset\",enclosure(second_monopole_threshold))\nresults = [mi**2+z1**2>mo**2, pi<x0, x0<3*pi/2, s2>0]\nfor ratio in (\".9\",\"1\"):\n    xcut = v(ratio)*r0*iv.sqrt(mo**2-mi**2-(pi*speed/(2*length))**2)/speed\n    print(\"ratio\",ratio,\"maximum allowable inside radial phase at continuum\",enclosure(xcut),\"first l=2 radial phase lower 4.49\",\"first n=2 lower\",enclosure(second_monopole_threshold))\n    results.extend((xcut<x0,xcut<second_monopole_threshold))\nassert all(results)\nprint(\"all sufficient inequalities\", [bool(k) for k in results])"
+      ],
+      "started_utc": "2026-11-19T16:33:43.676853+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "0b2eb3efe5dede2452e1f488a27ce3d7fdad6e85ba456e380efec360d82b1030",
+      "stdout_lines": [
+        "j=1 axial frequency [2.600558993,2.600558994] squared cutoff margin mi^2+kz^2-mo^2 [0.552907080,0.552907081]",
+        "j1 first-root test at 4.49: interval for sin(x)-x*cos(x) [0.014942868,0.014942869] radial n=2 monopole onset [4.712388980,4.712388981]",
+        "ratio .9 maximum allowable inside radial phase at continuum [3.979211500,3.979211501] first l=2 radial phase lower 4.49 first n=2 lower [4.712388980,4.712388981]",
+        "ratio 1 maximum allowable inside radial phase at continuum [4.421346111,4.421346112] first l=2 radial phase lower 4.49 first n=2 lower [4.712388980,4.712388981]",
+        "all sufficient inequalities [True, True, True, True, True, True, True, True]"
+      ]
+    },
+    "mouth_collar_loop_spectroscopy01": {
+      "guard_command": "python3 scripts/s11c_guarded_run.py --pool collar-loop-spectroscopy --memory-gib 3 --tasks-max 64 --log-directory _scratch/s11c/mouth_collar_loop_spectroscopy01 -- math -noprompt -script software/stage1_solver/tools/mouth_collar_loop_spectroscopy.wl",
+      "child_argv": [
+        "math",
+        "-noprompt",
+        "-script",
+        "software/stage1_solver/tools/mouth_collar_loop_spectroscopy.wl"
+      ],
+      "started_utc": "2026-11-19T16:24:48.921348+00:00",
+      "memory_max_bytes": 3221225472,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "aad53fe43a5329bb4fc8c1ba55385ee2f759048fa1f7d0371758cdb2a57509db",
+      "stdout_lines": [
+        "\"Tr H^n half differences n=1..5; sixth divided by oriented triple product\"\" = \"\"{{0, 0, 0, 0, 0}, 24*j^3*t^3*Sin[f]}\"",
+        "\"finite H full differences n=1..6 for positive, mirror, coplanar pins\"\" = \"\"{{0, 0, 0, 0, 0, 1536/5}, {0, 0, 0, 0, 0, -1536/5}, {0, 0, 0, 0, 0, 0}}\"",
+        "\"finite difference of det(x I-H)\"\" = \"\"-256/5\"",
+        "\"real reciprocal stiffness: symmetric, real, lower bound, block and squared secular residuals\"\" = \"\"{True, True, 3, 0, 0}\"",
+        "\"full squared-frequency moment differences n=1..6, all twelve real modes\"\" = \"\"{0, 0, 0, 0, 0, 34992/5}\"",
+        "\"six paired squared frequencies at +F,-F\"\" = \"\"{{3.63453890053126064566902178598617467742`10., 6.1018706572025695487`10., 6.912887917977399517`10., 11.2595515190476518355`10., 12.1462142577523487293`10., 13.9449367474887697238`10.}, {3.75750993680478937878980047471166869855`10., 5.4408335938858704975`10., 7.8046353681156475882`10., 10.3399195643977388775`10., 13.0531892973505216526`10., 13.6039122394454320055`10.}}\"",
+        "\"full sixth difference from measured squared frequencies\"\" = \"\"6998.4`12.\"",
+        "\"isolated marked pin aligned/opposed squared frequencies; unpolarized dimer pair; zero-pin untwisted real third central moment\"\" = \"\"{{6, 12}, {15/2, 21/2}, -81}\"",
+        "\"one real scalar even; complex scalar and two identical copies' secular differences\"\" = \"\"{True, 0, 0}\"",
+        "\"checks\"\" = \"\"{True, True, True, True, True, True, True}\""
+      ]
+    },
+    "mouth_standing_mode_flux_budget01": {
+      "guard_command": "python3 scripts/s11c_guarded_run.py --pool standing-mode-budget --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_standing_mode_flux_budget01 -- python3 software/stage1_solver/tools/mouth_standing_mode_flux_budget.py",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_standing_mode_flux_budget.py"
+      ],
+      "started_utc": "2026-11-19T16:27:04.560180+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "10ad64c23650c6fdb6d876928d15b16ccd958b685cad44f07baab65e87d5afe9",
+      "stdout_lines": [
+        "budget level=2 eta=+1 R/R0=.9 tau=0.049382716 delta=0.16 lowest_frequency_at_zero_upper=2.05223483 lowest_frequency_any_field_lower=2.05125864 axial_support_load=0.171441493 exterior_cost_lower=0.10908307 ground_saving_upper=0.00082825 any_fixed_occupation_saving_upper=0.13467482 ground_exclusion_below_load=22.579619 any_fixed_occupation_exclusion_below_load=0.138863",
+        "budget level=2 eta=+1 R/R0=1 tau=0.04 delta=0.16 lowest_frequency_at_zero_upper=1.88760874 lowest_frequency_any_field_lower=1.88680200 axial_support_load=0.220172554 exterior_cost_lower=0.09817477 ground_saving_upper=0.00080851 any_fixed_occupation_saving_upper=0.14534906 ground_exclusion_below_load=26.734909 any_fixed_occupation_exclusion_below_load=0.148713",
+        "budget level=2 eta=+1 R/R0=1.125 tau=0.031604938 delta=0.16 lowest_frequency_at_zero_upper=1.72700580 lowest_frequency_any_field_lower=1.72635638 axial_support_load=0.292129085 exterior_cost_lower=0.08726646 ground_saving_upper=0.00079008 any_fixed_occupation_saving_upper=0.15816355 ground_exclusion_below_load=32.266851 any_fixed_occupation_exclusion_below_load=0.161181",
+        "budget level=2 eta=+1 R/R0=1.25 tau=0.0256 delta=0.16 lowest_frequency_at_zero_upper=1.60223447 lowest_frequency_any_field_lower=1.60170051 axial_support_load=0.377286767 exterior_cost_lower=0.07853981 ground_saving_upper=0.00077837 any_fixed_occupation_saving_upper=0.17048663 ground_exclusion_below_load=38.069682 any_fixed_occupation_exclusion_below_load=0.173808",
+        "budget level=2 eta=+1 R/R0=1.5 tau=0.017777778 delta=0.16 lowest_frequency_at_zero_upper=1.42329447 lowest_frequency_any_field_lower=1.42291485 axial_support_load=0.591197641 exterior_cost_lower=0.06544984 ground_saving_upper=0.00077029 any_fixed_occupation_saving_upper=0.19396929 ground_exclusion_below_load=50.232902 any_fixed_occupation_exclusion_below_load=0.199484",
+        "budget level=2 eta=+1 R/R0=2 tau=0.01 delta=0.16 lowest_frequency_at_zero_upper=1.21939514 lowest_frequency_any_field_lower=1.21917589 axial_support_load=1.22134584 exterior_cost_lower=0.04908738 ground_saving_upper=0.00078738 any_fixed_occupation_saving_upper=0.23772950 ground_exclusion_below_load=76.142469 any_fixed_occupation_exclusion_below_load=0.252188",
+        "budget level=2 eta=-1 R/R0=.9 tau=0.049382716 delta=0.16 lowest_frequency_at_zero_upper=2.05223483 lowest_frequency_any_field_lower=2.05125864 axial_support_load=0.171441493 exterior_cost_lower=0.10908307 ground_saving_upper=0.00082825 any_fixed_occupation_saving_upper=0.13467482 ground_exclusion_below_load=22.579619 any_fixed_occupation_exclusion_below_load=0.138863",
+        "budget level=2 eta=-1 R/R0=1 tau=0.04 delta=0.16 lowest_frequency_at_zero_upper=1.88760874 lowest_frequency_any_field_lower=1.88680200 axial_support_load=0.220172554 exterior_cost_lower=0.09817477 ground_saving_upper=0.00080851 any_fixed_occupation_saving_upper=0.14534906 ground_exclusion_below_load=26.734909 any_fixed_occupation_exclusion_below_load=0.148713",
+        "budget level=2 eta=-1 R/R0=1.125 tau=0.031604938 delta=0.16 lowest_frequency_at_zero_upper=1.72700580 lowest_frequency_any_field_lower=1.72635638 axial_support_load=0.292129085 exterior_cost_lower=0.08726646 ground_saving_upper=0.00079008 any_fixed_occupation_saving_upper=0.15816355 ground_exclusion_below_load=32.266851 any_fixed_occupation_exclusion_below_load=0.161181",
+        "budget level=2 eta=-1 R/R0=1.25 tau=0.0256 delta=0.16 lowest_frequency_at_zero_upper=1.60223447 lowest_frequency_any_field_lower=1.60170051 axial_support_load=0.377286767 exterior_cost_lower=0.07853981 ground_saving_upper=0.00077837 any_fixed_occupation_saving_upper=0.17048663 ground_exclusion_below_load=38.069682 any_fixed_occupation_exclusion_below_load=0.173808",
+        "budget level=2 eta=-1 R/R0=1.5 tau=0.017777778 delta=0.16 lowest_frequency_at_zero_upper=1.42329447 lowest_frequency_any_field_lower=1.42291485 axial_support_load=0.591197641 exterior_cost_lower=0.06544984 ground_saving_upper=0.00077029 any_fixed_occupation_saving_upper=0.19396929 ground_exclusion_below_load=50.232902 any_fixed_occupation_exclusion_below_load=0.199484",
+        "budget level=2 eta=-1 R/R0=2 tau=0.01 delta=0.16 lowest_frequency_at_zero_upper=1.21939514 lowest_frequency_any_field_lower=1.21917589 axial_support_load=1.22134584 exterior_cost_lower=0.04908738 ground_saving_upper=0.00078738 any_fixed_occupation_saving_upper=0.23772950 ground_exclusion_below_load=76.142469 any_fixed_occupation_exclusion_below_load=0.252188",
+        "budget level=3 eta=+1 R/R0=.9 tau=0.049382716 delta=0.16 lowest_frequency_at_zero_upper=2.04978826 lowest_frequency_any_field_lower=2.04960203 axial_support_load=0.171441493 exterior_cost_lower=0.10908307 ground_saving_upper=0.00015782 any_fixed_occupation_saving_upper=0.13467482 ground_exclusion_below_load=118.502043 any_fixed_occupation_exclusion_below_load=0.138863",
+        "budget level=3 eta=+1 R/R0=1 tau=0.04 delta=0.16 lowest_frequency_at_zero_upper=1.88525440 lowest_frequency_any_field_lower=1.88509612 axial_support_load=0.220172554 exterior_cost_lower=0.09817477 ground_saving_upper=0.00015842 any_fixed_occupation_saving_upper=0.14534906 ground_exclusion_below_load=136.444645 any_fixed_occupation_exclusion_below_load=0.148713",
+        "budget level=3 eta=+1 R/R0=1.125 tau=0.031604938 delta=0.16 lowest_frequency_at_zero_upper=1.72476187 lowest_frequency_any_field_lower=1.72463004 axial_support_load=0.292129085 exterior_cost_lower=0.08726646 ground_saving_upper=0.00016017 any_fixed_occupation_saving_upper=0.15816355 ground_exclusion_below_load=159.165522 any_fixed_occupation_exclusion_below_load=0.161181",
+        "budget level=3 eta=+1 R/R0=1.25 tau=0.0256 delta=0.16 lowest_frequency_at_zero_upper=1.60009722 lowest_frequency_any_field_lower=1.59998549 axial_support_load=0.377286767 exterior_cost_lower=0.07853981 ground_saving_upper=0.00016264 any_fixed_occupation_saving_upper=0.17048663 ground_exclusion_below_load=182.196309 any_fixed_occupation_exclusion_below_load=0.173808",
+        "budget level=3 eta=+1 R/R0=1.5 tau=0.017777778 delta=0.16 lowest_frequency_at_zero_upper=1.42136156 lowest_frequency_any_field_lower=1.42127821 axial_support_load=0.591197641 exterior_cost_lower=0.06544984 ground_saving_upper=0.00016887 any_fixed_occupation_saving_upper=0.19396929 ground_exclusion_below_load=229.135743 any_fixed_occupation_exclusion_below_load=0.199484",
+        "budget level=3 eta=+1 R/R0=2 tau=0.01 delta=0.16 lowest_frequency_at_zero_upper=1.21782715 lowest_frequency_any_field_lower=1.21777589 axial_support_load=1.22134584 exterior_cost_lower=0.04908738 ground_saving_upper=0.00018380 any_fixed_occupation_saving_upper=0.23772950 ground_exclusion_below_load=326.188826 any_fixed_occupation_exclusion_below_load=0.252188",
+        "budget level=3 eta=-1 R/R0=.9 tau=0.049382716 delta=0.16 lowest_frequency_at_zero_upper=2.04978826 lowest_frequency_any_field_lower=2.04960203 axial_support_load=0.171441493 exterior_cost_lower=0.10908307 ground_saving_upper=0.00015782 any_fixed_occupation_saving_upper=0.13467482 ground_exclusion_below_load=118.502043 any_fixed_occupation_exclusion_below_load=0.138863",
+        "budget level=3 eta=-1 R/R0=1 tau=0.04 delta=0.16 lowest_frequency_at_zero_upper=1.88525440 lowest_frequency_any_field_lower=1.88509612 axial_support_load=0.220172554 exterior_cost_lower=0.09817477 ground_saving_upper=0.00015842 any_fixed_occupation_saving_upper=0.14534906 ground_exclusion_below_load=136.444645 any_fixed_occupation_exclusion_below_load=0.148713",
+        "budget level=3 eta=-1 R/R0=1.125 tau=0.031604938 delta=0.16 lowest_frequency_at_zero_upper=1.72476187 lowest_frequency_any_field_lower=1.72463004 axial_support_load=0.292129085 exterior_cost_lower=0.08726646 ground_saving_upper=0.00016017 any_fixed_occupation_saving_upper=0.15816355 ground_exclusion_below_load=159.165522 any_fixed_occupation_exclusion_below_load=0.161181",
+        "budget level=3 eta=-1 R/R0=1.25 tau=0.0256 delta=0.16 lowest_frequency_at_zero_upper=1.60009722 lowest_frequency_any_field_lower=1.59998549 axial_support_load=0.377286767 exterior_cost_lower=0.07853981 ground_saving_upper=0.00016264 any_fixed_occupation_saving_upper=0.17048663 ground_exclusion_below_load=182.196309 any_fixed_occupation_exclusion_below_load=0.173808",
+        "budget level=3 eta=-1 R/R0=1.5 tau=0.017777778 delta=0.16 lowest_frequency_at_zero_upper=1.42136156 lowest_frequency_any_field_lower=1.42127821 axial_support_load=0.591197641 exterior_cost_lower=0.06544984 ground_saving_upper=0.00016887 any_fixed_occupation_saving_upper=0.19396929 ground_exclusion_below_load=229.135743 any_fixed_occupation_exclusion_below_load=0.199484",
+        "budget level=3 eta=-1 R/R0=2 tau=0.01 delta=0.16 lowest_frequency_at_zero_upper=1.21782715 lowest_frequency_any_field_lower=1.21777589 axial_support_load=1.22134584 exterior_cost_lower=0.04908738 ground_saving_upper=0.00018380 any_fixed_occupation_saving_upper=0.23772950 ground_exclusion_below_load=326.188826 any_fixed_occupation_exclusion_below_load=0.252188"
+      ]
+    },
+    "mouth_rim_all_modes_l2_01": {
+      "guard_command": "python3 scripts/s11c_guarded_run.py --pool all-rim-modes-2 --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_rim_all_modes_l2_01 -- python3 software/stage1_solver/tools/mouth_rim_all_mode_bounds.py --level 2",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_all_mode_bounds.py",
+        "--level",
+        "2"
+      ],
+      "started_utc": "2026-11-19T16:30:39.958525+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "7786877457d91664ae1e308dc9c4ef8a44a410a2e713e8a69ab47c126bcc7f73",
+      "stdout_lines": [
+        "forest level=2 R/R0=.9 candidate_ranks=132 flat_spectrum_error_upper=0.00000604 all_occupations_gain_upper=0.05233967 exterior_cost_lower=0.10908307 analytic_only_gain_upper=0.09418586 any_occupation_exclusion_below_load=0.357307",
+        "forest level=2 R/R0=1 candidate_ranks=132 flat_spectrum_error_upper=0.00000543 all_occupations_gain_upper=0.05450381 exterior_cost_lower=0.09817477 analytic_only_gain_upper=0.09787842 any_occupation_exclusion_below_load=0.396584",
+        "forest level=2 R/R0=1.125 candidate_ranks=132 flat_spectrum_error_upper=0.00000493 all_occupations_gain_upper=0.05652758 exterior_cost_lower=0.08726646 analytic_only_gain_upper=0.10248153 any_occupation_exclusion_below_load=0.450984",
+        "forest level=2 R/R0=1.25 candidate_ranks=132 flat_spectrum_error_upper=0.00000442 all_occupations_gain_upper=0.05833557 exterior_cost_lower=0.07853981 analytic_only_gain_upper=0.10707295 any_occupation_exclusion_below_load=0.507958",
+        "forest level=2 R/R0=1.5 candidate_ranks=132 flat_spectrum_error_upper=0.00000396 all_occupations_gain_upper=0.06095034 exterior_cost_lower=0.06544984 analytic_only_gain_upper=0.11622994 any_occupation_exclusion_below_load=0.634841",
+        "forest level=2 R/R0=2 candidate_ranks=132 flat_spectrum_error_upper=0.00000344 all_occupations_gain_upper=0.06993027 exterior_cost_lower=0.04908738 analytic_only_gain_upper=0.13449160 any_occupation_exclusion_below_load=0.857320"
+      ]
+    },
+    "mouth_rim_all_modes_l3_01": {
+      "guard_command": "python3 scripts/s11c_guarded_run.py --pool all-rim-modes-3 --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_rim_all_modes_l3_01 -- python3 software/stage1_solver/tools/mouth_rim_all_mode_bounds.py --level 3",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_all_mode_bounds.py",
+        "--level",
+        "3"
+      ],
+      "started_utc": "2026-11-19T16:30:41.093534+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "5509f9e15e26f8ae5e99562f8672b3d6c2b5c462f478c2870e5e542a18c86a65",
+      "stdout_lines": [
+        "forest level=3 R/R0=.9 candidate_ranks=516 flat_spectrum_error_upper=0.00002256 all_occupations_gain_upper=0.05367509 exterior_cost_lower=0.10908307 analytic_only_gain_upper=0.09418586 any_occupation_exclusion_below_load=0.348418",
+        "forest level=3 R/R0=1 candidate_ranks=516 flat_spectrum_error_upper=0.00002013 all_occupations_gain_upper=0.05549243 exterior_cost_lower=0.09817477 analytic_only_gain_upper=0.09787842 any_occupation_exclusion_below_load=0.389519",
+        "forest level=3 R/R0=1.125 candidate_ranks=516 flat_spectrum_error_upper=0.00001808 all_occupations_gain_upper=0.05735625 exterior_cost_lower=0.08726646 analytic_only_gain_upper=0.10248153 any_occupation_exclusion_below_load=0.444469",
+        "forest level=3 R/R0=1.25 candidate_ranks=516 flat_spectrum_error_upper=0.00001621 all_occupations_gain_upper=0.05897926 exterior_cost_lower=0.07853981 analytic_only_gain_upper=0.10707295 any_occupation_exclusion_below_load=0.502414",
+        "forest level=3 R/R0=1.5 candidate_ranks=516 flat_spectrum_error_upper=0.00001427 all_occupations_gain_upper=0.06230051 exterior_cost_lower=0.06544984 analytic_only_gain_upper=0.11622994 any_occupation_exclusion_below_load=0.621083",
+        "forest level=3 R/R0=2 candidate_ranks=516 flat_spectrum_error_upper=0.00001243 all_occupations_gain_upper=0.07297098 exterior_cost_lower=0.04908738 analytic_only_gain_upper=0.13449160 any_occupation_exclusion_below_load=0.821596"
+      ]
+    },
+    "mouth_standing_wave_collar_cost01": {
+      "guard_command": "python3 scripts/s11c_guarded_run.py --pool standing-wave-collar-cost --memory-gib 1 --tasks-max 32 --log-directory _scratch/s11c/mouth_standing_wave_collar_cost01 -- python3 software/stage1_solver/tools/mouth_standing_wave_collar_cost.py _scratch/s11c/mouth_standing_mode_flux_budget01/stdout _scratch/s11c/mouth_rim_all_modes_l2_01/stdout _scratch/s11c/mouth_rim_all_modes_l3_01/stdout",
+      "child_argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_standing_wave_collar_cost.py",
+        "_scratch/s11c/mouth_standing_mode_flux_budget01/stdout",
+        "_scratch/s11c/mouth_rim_all_modes_l2_01/stdout",
+        "_scratch/s11c/mouth_rim_all_modes_l3_01/stdout"
+      ],
+      "started_utc": "2026-11-19T16:32:18.691030+00:00",
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "ab0b4d6ed4ac9bbf201bb8fcbc22040d7378cc60fcfa28a45ab15dbe7c34d2b4",
+      "stdout_lines": [
+        "symbolic axial force times L^3 omega / action = k**2",
+        "cost level=2 R/R0=.9 total_release_upper=0.05233968 scaled_collar_plus_exterior_lower=0.40893707 sufficient_Kmin_above=0.000001 necessary_excited_load_fraction_exterior_only=2.101569",
+        "cost level=2 R/R0=1 total_release_upper=0.05450382 scaled_collar_plus_exterior_lower=0.36804337 sufficient_Kmin_above=0.000001 necessary_excited_load_fraction_exterior_only=1.813310",
+        "cost level=2 R/R0=1.125 total_release_upper=0.05652759 scaled_collar_plus_exterior_lower=0.32714966 sufficient_Kmin_above=0.000001 necessary_excited_load_fraction_exterior_only=1.551493",
+        "cost level=2 R/R0=1.25 total_release_upper=0.05833558 scaled_collar_plus_exterior_lower=0.29443469 sufficient_Kmin_above=0.000001 necessary_excited_load_fraction_exterior_only=1.351028",
+        "cost level=2 R/R0=1.5 total_release_upper=0.06095035 scaled_collar_plus_exterior_lower=0.24536224 sufficient_Kmin_above=0.000001 necessary_excited_load_fraction_exterior_only=1.074767",
+        "cost level=2 R/R0=2 total_release_upper=0.06993028 scaled_collar_plus_exterior_lower=0.18402168 sufficient_Kmin_above=0.077234 necessary_excited_load_fraction_exterior_only=0.698553",
+        "cost level=3 R/R0=.9 total_release_upper=0.05367510 scaled_collar_plus_exterior_lower=0.18404745 sufficient_Kmin_above=0.000001 necessary_excited_load_fraction_exterior_only=2.035328",
+        "cost level=3 R/R0=1 total_release_upper=0.05549244 scaled_collar_plus_exterior_lower=0.16564271 sufficient_Kmin_above=0.000001 necessary_excited_load_fraction_exterior_only=1.771358",
+        "cost level=3 R/R0=1.125 total_release_upper=0.05735626 scaled_collar_plus_exterior_lower=0.14723796 sufficient_Kmin_above=0.000001 necessary_excited_load_fraction_exterior_only=1.522941",
+        "cost level=3 R/R0=1.25 total_release_upper=0.05897927 scaled_collar_plus_exterior_lower=0.13251416 sufficient_Kmin_above=0.000001 necessary_excited_load_fraction_exterior_only=1.332568",
+        "cost level=3 R/R0=1.5 total_release_upper=0.06230052 scaled_collar_plus_exterior_lower=0.11042847 sufficient_Kmin_above=0.000001 necessary_excited_load_fraction_exterior_only=1.050688",
+        "cost level=3 R/R0=2 total_release_upper=0.07297099 scaled_collar_plus_exterior_lower=0.08282135 sufficient_Kmin_above=0.354000 necessary_excited_load_fraction_exterior_only=0.671870"
+      ]
+    }
+  },
+  "local_reviews": [
+    {
+      "reviewer": "rim_action_referee",
+      "report_sha256": "89bd841c1c4bf77989a4bd3f8589819e29d4f26006fa54720639779d6de7defa",
+      "verdict": "Scoped clear for the exact open-well monopole and dipole counts at 0.9R₀ and R₀, the synthetic two-load occupation inference, and the exterior-unit exclusion on both tested rims at all six sampled radii under the stated spring law, axial support load, and fixed frequency-ranked actions. The largest-radius exclusion uses the seven-shell field energy. The physical coupling to an electric probe and the 0PN free-fall balance remain open.",
+      "disposition": "Checked the square-well radial and axial forms and independently ran the Neumann comparison. Strengthened the arbitrary-occupation bounds using spanning-tree spectra, retained sorted-action and wave-only-load qualifications, linked the earlier hard-wall root, and specified that the preferred flux sign reverses on the mirror."
+    },
+    {
+      "reviewer": "rim_spectrum_source_audit",
+      "role": "Read-only independent audit of native wave and archive assumptions. The standing scalar provides resonance frequencies, while signed rim mixing, physical link, mode occupations and their load transfer are unspecified. No formal acceptance verdict."
+    }
+  ]
+}

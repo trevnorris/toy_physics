@@ -24,6 +24,19 @@ At natural research milestones, ask whether a new result supplies an independent
 Newtonian (0PN) free fall of two draining mouths. The user considers a derivation from the model worth a paper.
 Flag a concrete connection when one appears, and keep working in the agreed sector when the gravity input is still open.
 
+### Standing direction for the common-medium research
+
+The user authorizes Codex to pursue the [joint requirements](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#joint-requirements-for-one-brane-and-bulk-medium) for light, 0PN gravity, electric charge, magnetism and gravitomagnetism. The aim is to find which physically plausible laws can coexist in one medium and what each would predict.
+
+The observable forces are behaviors we want to explain. Use what we know about them to constrain lower-level laws for the same material in its brane and bulk states. When the written equations allow several different outcomes, identify the material property or local interaction that could distinguish them. State each new law as a hypothesis, give an independent way to test it, and derive what an observer would measure. Assigning a mouth the desired charge or acceleration as input leaves its origin open. [Project memory](memory/topics/foundations.md#how-we-use-the-force-requirements)
+
+1. Start from the existing results. State the assumption you are adding, why the medium might behave that way, and an outcome that would rule it out. You may introduce a material law, coupling or parameter. Identify what would fix each new parameter independently.
+2. Run a test that distinguishes the hypothesis from a plausible alternative. Use the same parameters across the preparations being compared. Check the prediction against the other sectors' requirements, and record which conclusions depend on the new assumption.
+3. Send a potentially useful result to a fresh, independent agent for review. Address substantive objections, then use the evidence to decide what to keep, revise or rule out. A negative result should say which possibility it eliminates and under what conditions.
+4. Continue to the next discriminating test within this research scope without waiting for a routine “go.” Update the user when a finding changes the direction or a decision needs their input. At a stopping point, leave the result, its review status and the next calculation in the research record.
+
+After compaction, resume from the [current research entry in STATUS.md](STATUS.md#common-medium-research). Keep that entry pointed at the latest result and open test.
+
 ## Git hygiene
 
 - **Commit durable artifacts only:** specs, directives, scripts that produce reported results, result reports,

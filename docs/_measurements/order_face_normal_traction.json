@@ -1,0 +1,86 @@
+{
+  "base": "3666e56fde4265957649d0155ce51cde366edb4a",
+  "status": "Working result pending independent review",
+  "scope": "Bare order contribution to normal Cauchy traction on the exterior radial cut. Mirror-symmetric centered profile for the width cancellation. Two isolated logistic fronts for the tension and shape diagnostic. No physical discharge matching assumed.",
+  "source_sha256": {
+    "software/stage1_solver/tools/joined_mouth_normal.py": "c13640300225c95464b7c420e366af79e1088809bd83e3e9d03583147b63c6f3",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "docs/_measurements/joined_mouth_normal.json": "a88b1667381e2c861f917ce63eb30130830838388b2e1a908014a7a8c6f7c77c",
+    "docs/_measurements/width_pressure_patch.txt": "f51b5785b12089a4435460d1bdf94974fe634c0ae383c15878d9ce5239bb6301",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "research/pde_ledger_v3/steps/S12_order_source.md": "9ff32deaba86893378e6685d5120ddbe46c03eec4ffb2d8b96b6faeca59ec39d"
+  },
+  "archive_inventory": {
+    "command": "unzip -Z1 _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz",
+    "input_sha256": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+    "stdout_lines": [
+      "field.npy",
+      "currents.npy",
+      "x.npy",
+      "r.npy",
+      "dz.npy",
+      "d.npy"
+    ]
+  },
+  "archived_control": {
+    "prior_record": "docs/_measurements/joined_mouth_normal.json",
+    "stdout_path": "_scratch/s11c/joined_mouth_n16_l18/stdout",
+    "stdout_sha256": "20307a773268ad16fd2456fd8fe26955c0f5a817527ea2dda70998a192b06d18",
+    "stdout_claim_lines": [
+      "cells_per_radius=16 extent=18 rate=0.25 feed=0.25 mouth=0.250000000001 out=0.250000000001 far_feed_phase=-0.0605277465401 scaled_residual=7.77e-16",
+      "  radius=8 top_export=+3.24491298562e-07 side_export=+2.50048560381e-06 fluid_on_slab=-2.82497690237e-06"
+    ]
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool order-face-sympy --memory-gib 2 --log-directory _scratch/s11c/order_face_normal_sympy01 -- python3 software/stage1_solver/tools/order_face_normal_traction.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/order_face_normal_traction.py": "c39bb69c9eca0c90136dfb7b3df30a00708f2d7c3cb5c694f69b80ba243f1d30"
+      },
+      "start_utc": "2026-11-19T03:04:47.016783+00:00",
+      "end_utc_outcome_written": "2026-11-19T03:04:47.619204+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 54394880,
+      "stdout_path": "_scratch/s11c/order_face_normal_sympy01/stdout",
+      "stdout_bytes": 345,
+      "stdout_sha256": "9ff91681cb2ba63d1939e21a3ac0d8e38fd1956265abaa6e049a592ac5749542",
+      "stdout_claim_lines": [
+        "paired depth elements of common traction = 2*Cw**2*kappa*m_r",
+        "single-face translation stiffness = kappa/(6*delta)",
+        "two separated faces, common translation stiffness = kappa/(3*delta)",
+        "shape weight at the face marker = 0",
+        "shape to translation traction ratio = 1/5",
+        "two-face traction per area for translation and shape = kappa*(g_r + 5*m_r)/(15*delta)"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool order-face-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/order_face_normal_wolfram01 -- math -noprompt -script software/stage1_solver/tools/order_face_normal_traction.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/order_face_normal_traction.wl": "44db8da1b403a4e5280b7504a4e0e5b2e4aba92dc96fdb2f278eb46609f99f08"
+      },
+      "start_utc": "2026-11-19T03:04:47.226239+00:00",
+      "end_utc_outcome_written": "2026-11-19T03:04:59.059008+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 245575680,
+      "stdout_path": "_scratch/s11c/order_face_normal_wolfram01/stdout",
+      "stdout_bytes": 270,
+      "stdout_sha256": "f95482ce7dc3fd65cb0c73304e18f52a43108a9e466ce78ed44422d448125504",
+      "stdout_claim_lines": [
+        "\"translation stiffness from area energy = kap/(3*delta)\"",
+        "\"width gradient contribution to common traction = 0\"",
+        "\"mean half-order height slope = s\"",
+        "\"shape / translation coefficient from virtual work = 1/5\"",
+        "\"two-face traction from virtual work = (kap*(g + 5*s))/(15*delta)\""
+      ]
+    }
+  }
+}

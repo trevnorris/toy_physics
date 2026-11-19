@@ -1,0 +1,67 @@
+{
+  "base": "3666e56fde4265957649d0155ce51cde366edb4a",
+  "status": "Working calculation pending independent review",
+  "scope": "Single steady inward mouth, incompressible exterior, linear unpinned midpoint. Net mass rates matched. Complete normal recoil and face-pressure transfer to the same midpoint is a tested closure. Mouth-level traction matching remains open.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool isolated-midpoint-sympy --memory-gib 2 --log-directory _scratch/s11c/isolated_midpoint_sympy01 -- python3 software/stage1_solver/tools/isolated_mouth_bend.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/isolated_mouth_bend.py": "31b9c923db56e35f006b73bff93f45e1a407ba490bf4975f5ac16dbeee93f0c4"
+      },
+      "start_utc": "2026-11-19T02:58:41.003281+00:00",
+      "end_utc_outcome_written": "2026-11-19T02:58:46.008443+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 60596224,
+      "stdout_path": "_scratch/s11c/isolated_midpoint_sympy01/stdout",
+      "stdout_bytes": 602,
+      "stdout_sha256": "2a111ff24f16cccf055fb2f1dcc020f9cb64c8cafbbd112c1ea6bb3df065c3e7",
+      "stdout_claim_lines": [
+        "inward feed mass rate = 4*pi**2*A*rho_f/k",
+        "feed outward w flux = 8*pi*A*B*rho_f*exp(-k*r)/r",
+        "receiver outward w flux = 2*D**2*a**4*e**2/(7*pi**3*r**7*rho) - 4*D**2*a**2*e/(5*pi**3*r**5*rho) + 2*D**2/(3*pi**3*r**3*rho)",
+        "enclosed common load at infinity = 0",
+        "receiver part of midpoint displacement = -D**2*a**4*e**2/(112*pi**4*K*r**8*rho) + D**2*a**2*e/(30*pi**4*K*r**6*rho) - D**2/(24*pi**4*K*r**4*rho)",
+        "receiver height at infinity = 0",
+        "coefficient of 1/r in full displacement = 0",
+        "limit of r^4 times full displacement = -D**2/(24*pi**4*K*rho)",
+        "1/r coefficient with independent outward transfer T = -T/(4*pi*K)"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool isolated-midpoint-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/isolated_midpoint_wolfram01 -- math -noprompt -script software/stage1_solver/tools/isolated_mouth_bend.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/isolated_mouth_bend.wl": "376a02dd45afe21f40e60d9bf1c22437dda0d11ed661cc7bb43f2dbf0505285b"
+      },
+      "start_utc": "2026-11-19T02:58:41.150628+00:00",
+      "end_utc_outcome_written": "2026-11-19T02:58:54.826783+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 304369664,
+      "stdout_path": "_scratch/s11c/isolated_midpoint_wolfram01/stdout",
+      "stdout_bytes": 859,
+      "stdout_sha256": "682d1168452fc8fd5dc60239fff67e2881a844a795dbac6f46ee8ddb9981f035",
+      "stdout_claim_lines": [
+        "\"feed pressure load outside r = (8*aa*bb*Pi*rhof)/(E^(k*r)*r)\"",
+        "\"bulk pressure load outside r = (2*(15*a^4*eps^2 - 42*a^2*eps*r^2 + 35*r^4)*rate^2)/(105*Pi^3*r^7*rho)\"",
+        "\"bulk midpoint displacement = -1/1680*((15*a^4*eps^2 - 56*a^2*eps*r^2 + 70*r^4)*rate^2)/(Pi^4*r^8*rho*stiff)\"",
+        "\"combined radial force balance = 0\"",
+        "\"height at infinity = 0\"",
+        "\"1/r coefficient of total displacement = 0\"",
+        "\"r^4 times total displacement at infinity = -1/24*rate^2/(Pi^4*rho*stiff)\"",
+        "\"1/r coefficient with separate transfer = -1/4*transfer/(Pi*stiff)\""
+      ],
+      "diagnostics": [
+        "Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.",
+        "General::stop: Further output of Limit::alimv will be suppressed during this calculation."
+      ],
+      "diagnostic_scope": "Limit discards assumptions involving the variable taken to positive infinity. All limits were evaluated explicitly and independently checked in SymPy."
+    }
+  }
+}

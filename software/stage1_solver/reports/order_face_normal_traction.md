@@ -1,0 +1,20 @@
+# Can the conversion-layer stress account independently for one mouth's bend?
+
+**The existing one-mouth runs give the carrier momentum crossing the outer cuts. They cannot give the displacement of a freely bending slab or the reaction carried away by conversion on that same drain.** The bare order equation does identify one force that must be counted only once. When the two order fronts move with the slab, their tension supplies part of the slab's resistance to bending. [One-mouth bend test](isolated_mouth_bend.md) · [Guarded calculations and archive check](../../../docs/_measurements/order_face_normal_traction.json)
+
+**Force across a radial cut.** Let \(m(r)\) be the geometric midpoint of two material faces and \(H(r)\) their separation. On a weak, shape-preserving bend assume the order profile follows those faces, with \(\chi_B=C(w-m,H)\) even about the midpoint. The bare order energy has gradient coefficient \(\kappa_B>0\). Its Cauchy traction in the \(w\) direction on an outward radial cut, integrated through the depth, is
+
+\[
+\tau_\chi=-\kappa_B\int \partial_w\chi_B\,\partial_r\chi_B\,dw
+   = \kappa_B m'(r)\int C_w^2\,dw .
+\]
+
+The width term integrates to zero since \(C_w C_H\) is odd. For two well-separated equilibrium logistic fronts this gives \(\tau_\chi=2\sigma_{\rm wall}m'\), where the single-front tension is \(\sigma_{\rm wall}=\kappa_B/(6\delta_B)\). The signed load balanced by this part of the stress inside the sphere is \(-4\pi r^2\tau_\chi\). Including it in the midpoint stiffness and again as momentum exported elsewhere would count the same stress twice. The calculation assumes neither that an active mouth has this equilibrium profile nor that order supplies its entire stiffness. [Order energy and single-interface tension](../../../research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md) · [Two-face model](../../em_charge_attribute/reports/two_face_rim_bend.md)
+
+**What a face position misses.** As a diagnostic, let the level with order fraction \(c\) on each front shift by \(m(r)+g(r)(2c-1)^2\). The two half-order crossings move by \(m\). To first order the integrated traction is \(2\sigma_{\rm wall}(m'+g'/5)\). Thus even an unchanged half-order crossing can hide stress from a distorted profile. The factor \(1/5\) belongs to this imposed distortion. It supplies no prediction that the physical drain excites it or sustains it at large radius. SymPy integrated the order stress. Mathematica independently differentiated the gradient energy under a virtual common tilt. [SymPy](../tools/order_face_normal_traction.py) · [Mathematica](../tools/order_face_normal_traction.wl)
+
+**What the same-drain data supply.** The transparent aperture at inward number rate \(0.25\) has a fixed screen. Its net carrier load on the enclosed solids at eight mouth radii was \(-2.82497690237\times10^{-6}\) in solver units (box extent 18, 16 cells per radius). The saved isolated feeding-slab field contains the carrier, currents and grid. Neither preparation measures moving material faces or the normal reaction of a converting mouth. The model specifies the direction of normal bulk traction and leaves its magnitude and conversion partners open. [Joined aperture](../../em_charge_attribute/reports/joined_mouth_normal.md) · [Feeding archive](../../../docs/_measurements/width_pressure_patch.txt) · [Bulk traction](../../../research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md#L141) · [Conversion partners](../../../research/pde_ledger_v3/steps/S12_order_source.md#L298)
+
+**Decision for 0PN.** Reopen the two-mouth bend test if a single unheld mouth shows a nonzero stable \(1/r\) coefficient in the material midpoint on expanding cuts and a separately measured opposite momentum rate. Repeat with the outer boundary farther away. Use a calibrated total midpoint stiffness, independently locate the material faces or validate that order follows them, and account for the full profile if the conversion layer deforms. The physical source and the acceleration of a free target remain open.
+
+Working result on checkpoint 3666e56f, pending independent review.

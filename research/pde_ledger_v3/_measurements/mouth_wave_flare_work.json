@@ -1,0 +1,650 @@
+{
+  "title": "Occupied and empty scalar well on a coherent flared 0PN throat",
+  "base_commit": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "Exploratory. Isolated real conservative scalar confined by a prescribed material contrast. Same matched carrier within each occupied/empty pair. Energy-density axial fits and J=1 sideways runs are separate preparations.",
+  "source_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_carrier_0pn.json": "deaab25f18026c01425cf7c58b961a6f03be4eb78300b54f2c709b40777df651",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b",
+    "software/stage1_solver/tools/mouth_carrier_depth_requirement.py": "057e513328107b03f3fde1ce55f67425a333b2646f72da8e235eb2ce47c66016",
+    "software/stage1_solver/tools/mouth_carrier_depth_selection.py": "f59a8f9b6541dba28553acedc5824097c2e70708326174345b9799c148aaf85d",
+    "software/stage1_solver/tools/mouth_carrier_depth_work.py": "0c68069b2bdba8f87c6caa53c744739ec1a26f77f946775c68f7ecb9786e7d0b",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "9f5e670743f1c3a00e230e087c62869ba03188a445385bdc614cb24ac8199a02",
+    "software/stage1_solver/tools/mouth_carrier_radius_family.py": "57eff082861fcc4261a80f64f1c50cc41b18dc0ab39c3ec22f474afe3f5da794",
+    "software/stage1_solver/tools/mouth_carrier_weak_radius.py": "86a5025e4284ec3e9c12c05966a9f63f032eb4a0a84b4cda298e3fdb67f690d3",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "software/stage1_solver/tools/mouth_trapped_wave_ports.py": "8a5838daaea498418359858b6ef5ec043296343e91545353478864b927f6b0d3",
+    "software/stage1_solver/tools/mouth_wave_flare_binding_witness.py": "0d1c0f72e449056e00bf28e15852c7166363c780b58257a1f76befcdc0e659b8",
+    "software/stage1_solver/tools/mouth_wave_flare_energy_density.py": "8ab15256ea06c8e3f46c3b55f3a2880edff02d4e62780edbf1f893086eb58a74",
+    "software/stage1_solver/tools/mouth_wave_flare_sideways.py": "c2049cb26b2c34b0cc5c20b2c4f133b7f961246b0c5985dba3d9396e14c45c2c",
+    "software/stage1_solver/tools/mouth_wave_flare_threshold.py": "d8adc0b40a6d7c62d4092b5cd218f78a96ac58c404c51223c1d35c3a30cc1a8f",
+    "software/stage1_solver/tools/mouth_wave_flare_work.py": "c94de9f7f3a82f791d68a7eff62cf249b65b7ad2019594abcbbf2d338ed996ba"
+  },
+  "runs": {
+    "flare_wave_coarse_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 3 --log-directory _scratch/s11c/flare_wave_coarse_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_work.py --step .075 --pad 4.5",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "b63da3402a50c81d99394e3132a4f669145c486835439b3516ca4c015ad20b93",
+      "stdout_lines": [
+        "{\"test\": \"settings\", \"step\": 0.075, \"padding\": 4.5, \"wave_speed\": 1.0, \"mu_in\": 0.2, \"mu_out\": 2.5, \"delta_r\": 0.05, \"delta_w\": 0.05}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 0.5, \"strength_over_sobolev\": 0.9267890742769135, \"necessary_contrast\": 6.700553742333529}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 1.0, \"strength_over_sobolev\": 2.5892649940221655, \"necessary_contrast\": 2.3983640200354244}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 1.0, \"depth\": 1.0, \"omega\": 2.1390933224546385, \"bulk_threshold\": 2.5, \"force_per_action\": 0.3091814228789008, \"frequency_difference_force\": 0.31016439137154794, \"eigen_residual\": 7.996130341860458e-13, \"complementary_gate_norm_weight\": 0.2765765048858303}",
+        "{\"test\": \"action_center\", \"switch\": [0.55, 1.15], \"rigid_translation\": 0.9986400073506939, \"entrance_only\": 0.01388278778987593, \"flare_only\": 0.984757219560818, \"additivity_error\": 0.0}",
+        "{\"test\": \"action_center\", \"switch\": [1.2, 2.0], \"rigid_translation\": 0.9986400073506939, \"entrance_only\": 0.19569722236079892, \"flare_only\": 0.8029427849898948, \"additivity_error\": -2.220446049250313e-16}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 2.0, \"strength_over_sobolev\": 7.249039217286202, \"necessary_contrast\": 0.8566652509192544}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 2.0, \"depth\": 0.9947506011480172, \"omega\": 1.5409373382613, \"bulk_threshold\": 2.5, \"force_per_action\": 0.4609074389646162, \"frequency_difference_force\": 0.46199149748658963, \"eigen_residual\": 2.6985439739272915e-13, \"complementary_gate_norm_weight\": 0.0878799577197048}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 4.0, \"strength_over_sobolev\": 19.97521707700013, \"necessary_contrast\": 0.3108852322386183}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 4.0, \"depth\": 0.950896767876907, \"omega\": 1.2296954960003494, \"bulk_threshold\": 2.5, \"force_per_action\": 0.6224548404640068, \"frequency_difference_force\": 0.623252528474383, \"eigen_residual\": 2.240864489599052e-13, \"complementary_gate_norm_weight\": 0.05401162882581534}",
+        "{\"test\": \"reference_recalibration\", \"radius\": 2.0, \"min_restoration_growth\": 3.549245340199128, \"force_growth_at_common_action\": 1.4907345812466326, \"empty_deficit\": 0.03928371173921974, \"minimum_action_ratio_at_large_occupation\": 2.3808700655693236}",
+        "{\"test\": \"reference_recalibration\", \"radius\": 4.0, \"min_restoration_growth\": 10.905176662907095, \"force_growth_at_common_action\": 2.013234930702185, \"empty_deficit\": 0.9551287894521665, \"minimum_action_ratio_at_large_occupation\": 5.416743220873651}"
+      ]
+    },
+    "flare_wave_energy_fine_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 3 --log-directory _scratch/s11c/flare_wave_energy_fine_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_energy_density.py --step .05 --pad 4.5 --wave-reference _scratch/s11c/flare_wave_fine_01 --holdout _scratch/s11c/flare_wave_holdout_onehalf_01 _scratch/s11c/flare_wave_holdout_three_01",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "da8b16785eab6f6a0f774a2e2dd91f3dd54cc1454e3f52273b7d4e966e833f9c",
+      "stdout_lines": [
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 1.5, \"depth\": 0.9994652918510618, \"omega\": 1.760012957432958, \"bulk_threshold\": 2.5, \"force_per_action\": 0.4260027110105608, \"frequency_difference_force\": 0.425848161033949, \"eigen_residual\": 7.534536778950319e-12, \"complementary_gate_norm_weight\": 0.13254853901774255}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 3.0, \"depth\": 0.9762232102258807, \"omega\": 1.3233589931598486, \"bulk_threshold\": 2.5, \"force_per_action\": 0.5747674237047602, \"frequency_difference_force\": 0.5749271790249684, \"eigen_residual\": 4.5216033601273795e-13, \"complementary_gate_norm_weight\": 0.06075603676441288}",
+        "{\"test\": \"energy_density_calibration\", \"radii\": [1.0, 2.0, 4.0], \"mesh_step\": 0.05, \"pressure_force_at_one\": 0.021272024544877602, \"tension_force_at_one\": 0.1727598768494651, \"wave_force_at_one\": 0.010773470102245688, \"matrix_condition\": 930.9168412911536, \"action_at_one_per_bias_squared\": 0.032173267877218754}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 1.0, \"depth\": 1.0, \"held_out\": false, \"required\": 0.18325843129209698, \"predicted\": 0.18325843129209698, \"residual\": 0.0, \"fractional_residual\": 0.0, \"wave_force\": 0.010773470102245688, \"wave_action_per_bias_squared\": 0.032173267877218754}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 1.5, \"depth\": 0.9994652918510618, \"held_out\": true, \"required\": 0.39686202120490083, \"predicted\": 0.38272522187648617, \"residual\": -0.014136799328414662, \"fractional_residual\": -0.03562144668188292, \"wave_force\": 0.05620673112021387, \"wave_action_per_bias_squared\": 0.1319398437321693}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 2.0, \"depth\": 0.9947506011480172, \"held_out\": false, \"required\": 0.6111454215764576, \"predicted\": 0.6111454215764576, \"residual\": 0.0, \"fractional_residual\": 0.0, \"wave_force\": 0.17219796266390247, \"wave_action_per_bias_squared\": 0.35542634859378985}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 3.0, \"depth\": 0.9762232102258807, \"held_out\": true, \"required\": 0.9187781622555777, \"predicted\": 0.9953053111553855, \"residual\": 0.07652714889980772, \"fractional_residual\": 0.08329230280347048, \"wave_force\": 0.788093420738834, \"wave_action_per_bias_squared\": 1.371151857666263}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 4.0, \"depth\": 0.950896767876907, \"held_out\": false, \"required\": 1.043336778755373, \"predicted\": 1.0433367787553727, \"residual\": -2.220446049250313e-16, \"fractional_residual\": -2.1282160223462537e-16, \"wave_force\": 2.2020497694222843, \"wave_action_per_bias_squared\": 3.4065070981546737}"
+      ]
+    },
+    "flare_wave_energy_finest_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 3 --log-directory _scratch/s11c/flare_wave_energy_finest_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_energy_density.py --step .035 --pad 4.5 --wave-reference _scratch/s11c/flare_wave_finest_01 --holdout _scratch/s11c/flare_wave_holdout_onehalf_01 _scratch/s11c/flare_wave_holdout_three_01",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "509c690d339022e4d1ab2571b605c9f1dd54241aa09aa5fd4d7171dcc265d90f",
+      "stdout_lines": [
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 1.5, \"depth\": 0.9994652918510618, \"omega\": 1.7602041175743601, \"bulk_threshold\": 2.5, \"force_per_action\": 0.42450631748569856, \"frequency_difference_force\": 0.42449997231913955, \"eigen_residual\": 7.634789575464262e-12, \"complementary_gate_norm_weight\": 0.13264632108126362}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 3.0, \"depth\": 0.9762232102258807, \"omega\": 1.3234716858523723, \"bulk_threshold\": 2.5, \"force_per_action\": 0.5767102303415446, \"frequency_difference_force\": 0.5767052420073013, \"eigen_residual\": 9.883642318777334e-13, \"complementary_gate_norm_weight\": 0.060793856864080564}",
+        "{\"test\": \"energy_density_calibration\", \"radii\": [1.0, 2.0, 4.0], \"mesh_step\": 0.035, \"pressure_force_at_one\": 0.022277331829240764, \"tension_force_at_one\": 0.17200028546423565, \"wave_force_at_one\": 0.011019186001379425, \"matrix_condition\": 951.9378281144901, \"action_at_one_per_bias_squared\": 0.03308011918160912}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 1.0, \"depth\": 1.0, \"held_out\": false, \"required\": 0.18325843129209698, \"predicted\": 0.183258431292097, \"residual\": 2.7755575615628914e-17, \"fractional_residual\": 1.5145592712942681e-16, \"wave_force\": 0.011019186001379425, \"wave_action_per_bias_squared\": 0.03308011918160912}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 1.5, \"depth\": 0.9994652918510618, \"held_out\": true, \"required\": 0.39686202120490083, \"predicted\": 0.3831213526785402, \"residual\": -0.013740668526360633, \"fractional_residual\": -0.03462328918409225, \"wave_force\": 0.05758927460623737, \"wave_action_per_bias_squared\": 0.13566176104829708}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 2.0, \"depth\": 0.9947506011480172, \"held_out\": false, \"required\": 0.6111454215764576, \"predicted\": 0.6111454215764575, \"residual\": -1.1102230246251565e-16, \"fractional_residual\": -1.8166265923441295e-16, \"wave_force\": 0.17754444475432676, \"wave_action_per_bias_squared\": 0.36545904227828996}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 3.0, \"depth\": 0.9762232102258807, \"held_out\": true, \"required\": 0.9187781622555777, \"predicted\": 0.9921430505752893, \"residual\": 0.07336488831971155, \"fractional_residual\": 0.0798504920269356, \"wave_force\": 0.8130830037556342, \"wave_action_per_bias_squared\": 1.4098640200540622}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 4.0, \"depth\": 0.950896767876907, \"held_out\": false, \"required\": 1.043336778755373, \"predicted\": 1.0433367787553731, \"residual\": 2.220446049250313e-16, \"fractional_residual\": 2.1282160223462537e-16, \"wave_force\": 2.258105957373977, \"wave_action_per_bias_squared\": 3.5026823086975316}"
+      ]
+    },
+    "flare_wave_energy_mesh36_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 3 --log-directory _scratch/s11c/flare_wave_energy_mesh36_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_energy_density.py --step .035 --pad 4.5 --wave-reference _scratch/s11c/flare_wave_finest_01 --holdout _scratch/s11c/flare_wave_holdout_onehalf_mesh36_01 _scratch/s11c/flare_wave_holdout_three_mesh36_01",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "963880d388e791fd84aaadc2de316247bbd17c5dee1c81a0c569ccdf5753b34a",
+      "stdout_lines": [
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 1.5, \"depth\": 0.9990571469303946, \"omega\": 1.760377437837181, \"bulk_threshold\": 2.5, \"force_per_action\": 0.42480088603213184, \"frequency_difference_force\": 0.4247933600924592, \"eigen_residual\": 7.656526692121513e-12, \"complementary_gate_norm_weight\": 0.1326998549994607}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 3.0, \"depth\": 0.9759342624131598, \"omega\": 1.3236383656674704, \"bulk_threshold\": 2.5, \"force_per_action\": 0.5769915178603274, \"frequency_difference_force\": 0.5769864674950532, \"eigen_residual\": 9.962928225895434e-13, \"complementary_gate_norm_weight\": 0.06082527776259394}",
+        "{\"test\": \"energy_density_calibration\", \"radii\": [1.0, 2.0, 4.0], \"mesh_step\": 0.035, \"pressure_force_at_one\": 0.022277331829240764, \"tension_force_at_one\": 0.17200028546423565, \"wave_force_at_one\": 0.011019186001379425, \"matrix_condition\": 951.9378281144901, \"action_at_one_per_bias_squared\": 0.03308011918160912}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 1.0, \"depth\": 1.0, \"held_out\": false, \"required\": 0.18325843129209698, \"predicted\": 0.183258431292097, \"residual\": 2.7755575615628914e-17, \"fractional_residual\": 1.5145592712942681e-16, \"wave_force\": 0.011019186001379425, \"wave_action_per_bias_squared\": 0.03308011918160912}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 1.5, \"depth\": 0.9990571469303946, \"held_out\": true, \"required\": 0.39698659540800924, \"predicted\": 0.3830838261122777, \"residual\": -0.013902769295731532, \"fractional_residual\": -0.035020752480175665, \"wave_force\": 0.05760003098549106, \"wave_action_per_bias_squared\": 0.13559301046545888}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 2.0, \"depth\": 0.9947506011480172, \"held_out\": false, \"required\": 0.6111454215764576, \"predicted\": 0.6111454215764575, \"residual\": -1.1102230246251565e-16, \"fractional_residual\": -1.8166265923441295e-16, \"wave_force\": 0.17754444475432676, \"wave_action_per_bias_squared\": 0.36545904227828996}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 3.0, \"depth\": 0.9759342624131598, \"held_out\": true, \"required\": 0.9187716593619186, \"predicted\": 0.9919564757162521, \"residual\": 0.07318481635433349, \"fractional_residual\": 0.07965506511722391, \"wave_force\": 0.8131363953343805, \"wave_action_per_bias_squared\": 1.409269235620231}",
+        "{\"test\": \"energy_density_prediction\", \"radius\": 4.0, \"depth\": 0.950896767876907, \"held_out\": false, \"required\": 1.043336778755373, \"predicted\": 1.0433367787553731, \"residual\": 2.220446049250313e-16, \"fractional_residual\": 2.1282160223462537e-16, \"wave_force\": 2.258105957373977, \"wave_action_per_bias_squared\": 3.5026823086975316}"
+      ]
+    },
+    "flare_wave_fine_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 3 --log-directory _scratch/s11c/flare_wave_fine_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_work.py --step .05 --pad 4.5",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "3b130004d7b089cb93aebe85fbfc43be1cb84507f5957c9bbf69ad51915beb95",
+      "stdout_lines": [
+        "{\"test\": \"settings\", \"step\": 0.05, \"padding\": 4.5, \"wave_speed\": 1.0, \"mu_in\": 0.2, \"mu_out\": 2.5, \"delta_r\": 0.05, \"delta_w\": 0.05}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 0.5, \"strength_over_sobolev\": 0.9267890742769135, \"necessary_contrast\": 6.700553742333529}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 1.0, \"strength_over_sobolev\": 2.5892649940221655, \"necessary_contrast\": 2.3983640200354244}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 1.0, \"depth\": 1.0, \"omega\": 2.1397112068089004, \"bulk_threshold\": 2.5, \"force_per_action\": 0.33485781249700675, \"frequency_difference_force\": 0.33467751008064983, \"eigen_residual\": 9.419780153962534e-13, \"complementary_gate_norm_weight\": 0.27721518898111663}",
+        "{\"test\": \"action_center\", \"switch\": [0.55, 1.15], \"rigid_translation\": 0.999489023176976, \"entrance_only\": 0.013589739098539447, \"flare_only\": 0.9858992840784366, \"additivity_error\": 1.1102230246251565e-16}",
+        "{\"test\": \"action_center\", \"switch\": [1.2, 2.0], \"rigid_translation\": 0.999489023176976, \"entrance_only\": 0.19634084644127084, \"flare_only\": 0.8031481767357052, \"additivity_error\": 0.0}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 2.0, \"strength_over_sobolev\": 7.249039217286202, \"necessary_contrast\": 0.8566652509192544}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 2.0, \"depth\": 0.9947506011480172, \"omega\": 1.5413629429956501, \"bulk_threshold\": 2.5, \"force_per_action\": 0.4844828284261624, \"frequency_difference_force\": 0.4846009323342906, \"eigen_residual\": 4.980295500651897e-13, \"complementary_gate_norm_weight\": 0.08804674893954101}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 4.0, \"strength_over_sobolev\": 19.97521707700013, \"necessary_contrast\": 0.3108852322386183}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 4.0, \"depth\": 0.950896767876907, \"omega\": 1.2298563370580367, \"bulk_threshold\": 2.5, \"force_per_action\": 0.6464245357407734, \"frequency_difference_force\": 0.6462667729384984, \"eigen_residual\": 4.770016151180968e-13, \"complementary_gate_norm_weight\": 0.05408969356301918}",
+        "{\"test\": \"reference_recalibration\", \"radius\": 2.0, \"min_restoration_growth\": 3.549245340199128, \"force_growth_at_common_action\": 1.4468314918902874, \"empty_deficit\": 0.03928371173921974, \"minimum_action_ratio_at_large_occupation\": 2.453115901950706}",
+        "{\"test\": \"reference_recalibration\", \"radius\": 4.0, \"min_restoration_growth\": 10.905176662907095, \"force_growth_at_common_action\": 1.9304448384239257, \"empty_deficit\": 0.9551287894521665, \"minimum_action_ratio_at_large_occupation\": 5.649048574633407}"
+      ]
+    },
+    "flare_wave_finest_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 3 --log-directory _scratch/s11c/flare_wave_finest_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_work.py --step .035 --pad 4.5",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "39906cda4ecebb85072d4814c99e2f9fa0463ca58907991a42bfa18d5ef19ca7",
+      "stdout_lines": [
+        "{\"test\": \"settings\", \"step\": 0.035, \"padding\": 4.5, \"wave_speed\": 1.0, \"mu_in\": 0.2, \"mu_out\": 2.5, \"delta_r\": 0.05, \"delta_w\": 0.05}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 0.5, \"strength_over_sobolev\": 0.9267890742769135, \"necessary_contrast\": 6.700553742333529}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 1.0, \"strength_over_sobolev\": 2.5892649940221655, \"necessary_contrast\": 2.3983640200354244}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 1.0, \"depth\": 1.0, \"omega\": 2.1399908832144137, \"bulk_threshold\": 2.5, \"force_per_action\": 0.33310599459706713, \"frequency_difference_force\": 0.33310098050631787, \"eigen_residual\": 1.282511145105856e-12, \"complementary_gate_norm_weight\": 0.277484387097779}",
+        "{\"test\": \"action_center\", \"switch\": [0.55, 1.15], \"rigid_translation\": 0.9996906275598649, \"entrance_only\": 0.013593259529226676, \"flare_only\": 0.9860973680306383, \"additivity_error\": 0.0}",
+        "{\"test\": \"action_center\", \"switch\": [1.2, 2.0], \"rigid_translation\": 0.9996906275598649, \"entrance_only\": 0.19629715444093926, \"flare_only\": 0.8033934731189257, \"additivity_error\": 0.0}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 2.0, \"strength_over_sobolev\": 7.249039217286202, \"necessary_contrast\": 0.8566652509192544}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 2.0, \"depth\": 0.9947506011480172, \"omega\": 1.5415033548069266, \"bulk_threshold\": 2.5, \"force_per_action\": 0.4858121546193133, \"frequency_difference_force\": 0.4858183994905976, \"eigen_residual\": 1.0347679574351657e-12, \"complementary_gate_norm_weight\": 0.08810288615895756}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 4.0, \"strength_over_sobolev\": 19.97521707700013, \"necessary_contrast\": 0.3108852322386183}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 4.0, \"depth\": 0.950896767876907, \"omega\": 1.2299616915883378, \"bulk_threshold\": 2.5, \"force_per_action\": 0.6446790654598793, \"frequency_difference_force\": 0.6446778360539499, \"eigen_residual\": 9.831364672046277e-13, \"complementary_gate_norm_weight\": 0.05412380399748162}",
+        "{\"test\": \"reference_recalibration\", \"radius\": 2.0, \"min_restoration_growth\": 3.549245340199128, \"force_growth_at_common_action\": 1.4584311375331542, \"empty_deficit\": 0.03928371173921974, \"minimum_action_ratio_at_large_occupation\": 2.433605021765002}",
+        "{\"test\": \"reference_recalibration\", \"radius\": 4.0, \"min_restoration_growth\": 10.905176662907095, \"force_growth_at_common_action\": 1.935357141319832, \"empty_deficit\": 0.9551287894521665, \"minimum_action_ratio_at_large_occupation\": 5.634710219670476}"
+      ]
+    },
+    "flare_wave_holdout_onehalf_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 6 --log-directory _scratch/s11c/flare_wave_holdout_onehalf_01 -- python3 software/stage1_solver/tools/mouth_carrier_depth_requirement.py --radius 1.5 --mesh 26",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 6442450944,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "8edd0962b47a646041f067ec733197efa5af78b9a18c8a7e31b536821a9850ec",
+      "stdout_lines": [
+        "{\"test\": \"inverse_scan\", \"r\": 1.5, \"depths\": [0.25, 0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0, 2.5], \"ratios\": [0.8741763384314589, 0.31795946658738744, 0.13334962165535563, 0.07262709334891403, 0.04564676819678612, 0.028854524345818547, 0.017459533440160095, 0.011116486756923517, 0.007085026430204765]}",
+        "{\"test\": \"inverse_requirement\", \"radius\": 1.5, \"mesh\": 26, \"depth\": 0.9994652918510618, \"checked_ratio\": 0.045697276253897794, \"reference_ratio\": 0.045697272114506714, \"required_restoration\": 0.39686202120490083, \"energy_restoration\": 0.3968635993035847, \"pressure_only\": 0.6184972056108274, \"tension_only\": 0.3894497648321766, \"required_pressure_fraction_at_reference\": 0.032361227645793154}"
+      ]
+    },
+    "flare_wave_holdout_onehalf_mesh36_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 7 --log-directory _scratch/s11c/flare_wave_holdout_onehalf_mesh36_01 -- python3 software/stage1_solver/tools/mouth_carrier_depth_requirement.py --radius 1.5 --mesh 36",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 7516192768,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "adb54a340f8e77abd607fd56d8c65b50901d5e005703eccebb2142fa8977d76d",
+      "stdout_lines": [
+        "{\"test\": \"inverse_scan\", \"r\": 1.5, \"depths\": [0.25, 0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0, 2.5], \"ratios\": [0.8721808343383269, 0.3174015821028722, 0.13317417344580454, 0.0725520717758864, 0.04560827595384471, 0.028834792189050867, 0.01745006696732246, 0.011111573460231462, 0.007082449180630777]}",
+        "{\"test\": \"inverse_requirement\", \"radius\": 1.5, \"mesh\": 36, \"depth\": 0.9990571469303946, \"checked_ratio\": 0.045697284923602546, \"reference_ratio\": 0.045697272114506714, \"required_restoration\": 0.39698659540800924, \"energy_restoration\": 0.39698788452482425, \"pressure_only\": 0.6184972056108274, \"tension_only\": 0.38942124242325504, \"required_pressure_fraction_at_reference\": 0.033025520790060006}"
+      ]
+    },
+    "flare_wave_holdout_three_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 6 --log-directory _scratch/s11c/flare_wave_holdout_three_01 -- python3 software/stage1_solver/tools/mouth_carrier_depth_requirement.py --radius 3 --mesh 26",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 6442450944,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "fad3db09758057b84d74fc08a1a02c44449256bbc31e1c91e5ae4a36c5613072",
+      "stdout_lines": [
+        "{\"test\": \"inverse_scan\", \"r\": 3.0, \"depths\": [0.25, 0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0, 2.5], \"ratios\": [0.806269990913966, 0.3009869149565502, 0.12774003845097337, 0.06949805307020918, 0.043447412889827945, 0.027278552227460184, 0.016412837441708423, 0.010439792365688434, 0.0066780815310527935]}",
+        "{\"test\": \"inverse_requirement\", \"radius\": 3.0, \"mesh\": 26, \"depth\": 0.9762232102258807, \"checked_ratio\": 0.04569719474747027, \"reference_ratio\": 0.045697272114506714, \"required_restoration\": 0.9187781622555777, \"energy_restoration\": 0.918788662252506, \"pressure_only\": 4.9479776448866195, \"tension_only\": 1.2825278421492572, \"required_pressure_fraction_at_reference\": -0.09923739226275333}"
+      ]
+    },
+    "flare_wave_holdout_three_mesh36_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 7 --log-directory _scratch/s11c/flare_wave_holdout_three_mesh36_01 -- python3 software/stage1_solver/tools/mouth_carrier_depth_requirement.py --radius 3 --mesh 36",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 7516192768,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "e4f38e86c4ec4defc80ce82569bcf504ad6a428f934ae6b03b510b62e77d23ef",
+      "stdout_lines": [
+        "{\"test\": \"inverse_scan\", \"r\": 3.0, \"depths\": [0.25, 0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0, 2.5], \"ratios\": [0.8047453319310144, 0.30062686383926973, 0.12762736398182012, 0.06944798914385394, 0.04342092536243683, 0.027264654890838864, 0.016406066793949927, 0.01043625304806443, 0.00667621709187707]}",
+        "{\"test\": \"inverse_requirement\", \"radius\": 3.0, \"mesh\": 36, \"depth\": 0.9759342624131598, \"checked_ratio\": 0.045697192197021515, \"reference_ratio\": 0.045697272114506714, \"required_restoration\": 0.9187716593619186, \"energy_restoration\": 0.9187747998638188, \"pressure_only\": 4.9479776448866195, \"tension_only\": 1.282385941460229, \"required_pressure_fraction_at_reference\": -0.09919661313026872}"
+      ]
+    },
+    "flare_wave_referee_continuum_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 1 --log-directory _scratch/s11c/flare_wave_referee_continuum_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_binding_witness.py",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "958cfa0040ff4e35f16de6441052587bbfe2b051a8a28ab4c0117c4c1df2e29c",
+      "stdout_lines": [
+        "R 1 H 1 cellcount 16 gate_lower 0.45583921514293196 gradient 2.0 rayleigh_shift_upper -0.8307615260376076 frequency_upper 2.327925787898401",
+        "R 2 H 0.9947506011480172 cellcount 16 gate_lower 0.4537315969996321 gradient 0.875 rayleigh_shift_upper -1.9426732173677155 frequency_upper 2.0754100275926883",
+        "R 4 H 0.950896767876907 cellcount 16 gate_lower 0.4420466667853092 gradient 0.59375 rayleigh_shift_upper -2.15135980073677 frequency_upper 2.024509866427731"
+      ]
+    },
+    "flare_wave_referee_five_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 1 --log-directory _scratch/s11c/flare_wave_referee_five_01 -- python3 -c '\nimport json\nfrom pathlib import Path\nimport numpy as np\nfrom scipy.optimize import linprog\nbase=Path(\"_scratch/s11c\")\ndef rows(folder): return [json.loads(s) for s in (base/folder/\"stdout\").read_text().splitlines()]\nfor tag in (\"fine\",\"finest\"):\n    wave={z[\"radius\"]:z for folder in (\"flare_wave_\"+tag+\"_01\",\"flare_wave_energy_\"+tag+\"_01\") for z in rows(folder) if z[\"test\"]==\"occupied_minus_empty\"}\n    name={1:\"carrier_depth_one_01\",1.5:\"flare_wave_holdout_onehalf_01\",2:\"carrier_depth_inverse_two_01\",3:\"flare_wave_holdout_three_01\",4:\"carrier_depth_inverse_four_01\"}\n    ref=-rows(name[1])[-1][\"gradient\"]\n    mat=[]; needs=[]\n    for r,s in name.items():\n        z=rows(s)[-1]; om=wave[r][\"omega\"]; w=r**3*z[\"depth\"]*wave[r][\"force_per_action\"]/om\n        mat.append([z.get(\"pressure_only\",ref),z.get(\"tension_only\",ref),-w]); needs.append(z.get(\"required_restoration\",ref))\n    b=np.array(mat)/np.array(needs)[:,None]\n    anch=[0,2,4]; a=b[anch]\n    best=linprog([0,0,0,1],A_ub=np.column_stack((np.vstack((b,-b)),-np.ones(10))),b_ub=np.r_[np.ones(5),-np.ones(5)],bounds=(0,None))\n    assert best.success\n    print(tag,\"anchor_prediction_relative\",b@np.linalg.solve(a,np.ones(3))-1,\"minimax_relative\",best.fun,\"residuals\",b@best.x[:3]-1)\n'",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "1587da7bf32264d0dc532c16422ba43f9b9df0759522ea6a762990bacc28241a",
+      "stdout_lines": [
+        "fine anchor_prediction_relative [-1.11022302e-16 -3.56214467e-02  0.00000000e+00  8.32923028e-02",
+        "  0.00000000e+00] minimax_relative 0.0393186696206662 residuals [ 0.02161259 -0.03931867 -0.0220081   0.03931867 -0.03931867]",
+        "finest anchor_prediction_relative [ 0.00000000e+00 -3.46232892e-02  2.22044605e-16  7.98504920e-02",
+        "  0.00000000e+00] minimax_relative 0.038044008089324635 residuals [ 0.02297817 -0.03804401 -0.02153364  0.03804401 -0.03804401]"
+      ]
+    },
+    "flare_wave_referee_sideband_gap_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 1 --log-directory _scratch/s11c/flare_wave_referee_sideband_gap_01 -- python3 -c 'from math import sqrt, exp; r=1.615; t=.1247; w=sqrt(6.25-.8307615260376076); v=6.25-6.21/(1+exp((r-1.5)/.025)); bound=min(2/r**2+.04*t,t*v); margin=bound-t*w*w-.04*w-.0004; print(\"radius_split\",r,\"weight\",t,\"ground_omega_upper\",w,\"outer_V_min\",v,\"inner_shift\",2/r**2+.04*t,\"outer_shift\",v*t,\"upper_sideband_squared_gap_lower\",margin); assert margin>0'",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "b3825661e846b57600b82586a79c8efb7bef57a8cd4b5b3c1943a4a4271a47b1",
+      "stdout_lines": [
+        "radius_split 1.615 weight 0.1247 ground_omega_upper 2.327925787898401 outer_V_min 6.1881993104065245 inner_shift 0.7717930110707474 outer_shift 0.7716684540076937 upper_sideband_squared_gap_lower 0.0023723847886473167"
+      ]
+    },
+    "flare_wave_referee_sphere_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 1 --log-directory _scratch/s11c/flare_wave_referee_sphere_01 -- python3 -c 'import sys\nsys.path.insert(0,\"software/stage1_solver/tools\")\nimport numpy as np\nfrom scipy.special import jn_zeros\nimport mouth_wave_flare_threshold as trial\ntrial.ROUNDING=0.\ntrial.EXIT=2.\ndef sphere(w):\n    u=1.-(w-1.)**2\n    return np.where(u>0.,np.sqrt(np.maximum(u,0.)),-1.),0.\ntrial.radial_profile=sphere\nexact=jn_zeros(0,1)[0]**2\nfor dx in (.1,.05,.025,.0125):\n    c=trial.critical(1.,1.,dx,.25,{\"delta_r\":1.e-6,\"delta_parallel\":1.e-6,\"c_w\":1.})\n    print(\"h\",dx,\"critical\",c,\"exact\",exact,\"relative_error\",c/exact-1)\nassert abs(c/exact-1)<.001'",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "4f7a9be3919661b68833461b867819f052009442844185afe940edc36697655e",
+      "stdout_lines": [
+        "h 0.1 critical 5.700838077021928 exact 5.783185962946783 relative_error -0.014239190379224054",
+        "h 0.05 critical 5.752360197592662 exact 5.783185962946783 relative_error -0.00533023934413035",
+        "h 0.025 critical 5.786840382159851 exact 5.783185962946783 relative_error 0.0006319041504945222",
+        "h 0.0125 critical 5.782866720840986 exact 5.783185962946783 relative_error -5.5201770761348357e-05"
+      ]
+    },
+    "flare_wave_side_fine_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 3 --log-directory _scratch/s11c/flare_wave_side_fine_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_sideways.py --step .05 --pad 4.5",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "3eeb17bcd09642ea656e0efb8cad226946aa0e8d21e8babc3017bbaa271faded",
+      "stdout_lines": [
+        "{\"test\": \"settings\", \"step\": 0.05, \"padding\": 4.5, \"action\": 1.0, \"omega\": 2.1397112068089004}",
+        "{\"test\": \"response\", \"switch\": [0.55, 1.15], \"k_per_action\": 0.007600921600036779, \"direct_k_per_action\": 0.00793277801982938, \"mass_matrix_per_action\": [[0.0014621332986459853, 0.03248856491403357], [0.03248856491403382, 2.401364804000587]], \"wave_rigid_mass_per_action\": 2.4678040671273003, \"boosted_rigid_mass_per_action\": 2.468142943497195, \"carrier_mass\": 12.285890252178246, \"common_acceleration\": 0.06778148795176991, \"limit_distal_force_share\": 0.9480749899686803}",
+        "{\"test\": \"driven_following\", \"switch\": [0.55, 1.15], \"frequency\": 0.02, \"signed_excursion\": 0.7485008284991628, \"low_frequency_signed_excursion\": 0.748320903376815, \"acceleration_per_unit_held_sum\": 0.06776384483095035, \"empty_signed_excursion\": -37.735024244012386}",
+        "{\"test\": \"driven_following\", \"switch\": [0.55, 1.15], \"frequency\": 0.01, \"signed_excursion\": 0.18479044768328504, \"low_frequency_signed_excursion\": 0.184779538299547, \"acceleration_per_unit_held_sum\": 0.06777575602270301, \"empty_signed_excursion\": -37.735024244012386}",
+        "{\"test\": \"driven_following\", \"switch\": [0.55, 1.15], \"frequency\": 0.005, \"signed_excursion\": 0.04605397198036325, \"low_frequency_signed_excursion\": 0.04605329526163793, \"acceleration_per_unit_held_sum\": 0.06777866871454526, \"empty_signed_excursion\": -37.735024244012386}",
+        "{\"test\": \"response\", \"switch\": [1.2, 2.0], \"k_per_action\": 0.07298261523480885, \"direct_k_per_action\": 0.07330855078236444, \"mass_matrix_per_action\": [[0.13371665719221562, 0.35533073083692035], [0.35533073083692535, 1.6234259482612357]], \"wave_rigid_mass_per_action\": 2.4678040671272967, \"boosted_rigid_mass_per_action\": 2.468142943497195, \"carrier_mass\": 12.285890252178243, \"common_acceleration\": 0.06778148795176994, \"limit_distal_force_share\": 0.738605455437073}",
+        "{\"test\": \"driven_following\", \"switch\": [1.2, 2.0], \"frequency\": 0.02, \"signed_excursion\": 0.06022620753087412, \"low_frequency_signed_excursion\": 0.06021108726046027, \"acceleration_per_unit_held_sum\": 0.06776412709986601, \"empty_signed_excursion\": -6.257364912501334}",
+        "{\"test\": \"driven_following\", \"switch\": [1.2, 2.0], \"frequency\": 0.01, \"signed_excursion\": 0.01496232164978738, \"low_frequency_signed_excursion\": 0.014961386676657966, \"acceleration_per_unit_held_sum\": 0.06777577340513014, \"empty_signed_excursion\": -6.257364912501334}",
+        "{\"test\": \"driven_following\", \"switch\": [1.2, 2.0], \"frequency\": 0.005, \"signed_excursion\": 0.00373473665660016, \"low_frequency_signed_excursion\": 0.003734678375898197, \"acceleration_per_unit_held_sum\": 0.06777866979693904, \"empty_signed_excursion\": -6.257364912501334}"
+      ]
+    },
+    "flare_wave_side_finest_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 3 --log-directory _scratch/s11c/flare_wave_side_finest_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_sideways.py --step .03 --pad 5",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "035f14556815a85a221c89d949bb3cf93cd6b5144a72c91a15ff633c3835f314",
+      "stdout_lines": [
+        "{\"test\": \"settings\", \"step\": 0.03, \"padding\": 5.0, \"action\": 1.0, \"omega\": 2.1400620589380748}",
+        "{\"test\": \"response\", \"switch\": [0.55, 1.15], \"k_per_action\": 0.007603723093048891, \"direct_k_per_action\": 0.007609005781118858, \"mass_matrix_per_action\": [[0.00146098022751105, 0.03249165107656154], [0.03249165107656224, 2.4016590723277016]], \"wave_rigid_mass_per_action\": 2.4681033547083366, \"boosted_rigid_mass_per_action\": 2.4683701695486695, \"carrier_mass\": 12.285890252178246, \"common_acceleration\": 0.06778011299132812, \"limit_distal_force_share\": 0.9480757344943074}",
+        "{\"test\": \"driven_following\", \"switch\": [0.55, 1.15], \"frequency\": 0.02, \"signed_excursion\": 0.7482364163285766, \"low_frequency_signed_excursion\": 0.7480563502451092, \"acceleration_per_unit_held_sum\": 0.06776245224088795, \"empty_signed_excursion\": -37.735024244012386}",
+        "{\"test\": \"driven_following\", \"switch\": [0.55, 1.15], \"frequency\": 0.01, \"signed_excursion\": 0.18472598789244377, \"low_frequency_signed_excursion\": 0.18471506987894867, \"acceleration_per_unit_held_sum\": 0.06777437674865378, \"empty_signed_excursion\": -37.735024244012386}",
+        "{\"test\": \"driven_following\", \"switch\": [0.55, 1.15], \"frequency\": 0.005, \"signed_excursion\": 0.046037957353644375, \"low_frequency_signed_excursion\": 0.04603728010588403, \"acceleration_per_unit_held_sum\": 0.06777729271874887, \"empty_signed_excursion\": -37.735024244012386}",
+        "{\"test\": \"response\", \"switch\": [1.2, 2.0], \"k_per_action\": 0.07295044589814219, \"direct_k_per_action\": 0.07301512955927783, \"mass_matrix_per_action\": [[0.13357247990473264, 0.3552835635925636], [0.3552835635925692, 1.623963747618486]], \"wave_rigid_mass_per_action\": 2.4681033547083517, \"boosted_rigid_mass_per_action\": 2.4683701695486695, \"carrier_mass\": 12.285890252178243, \"common_acceleration\": 0.06778011299132804, \"limit_distal_force_share\": 0.7386237039264966}",
+        "{\"test\": \"driven_following\", \"switch\": [1.2, 2.0], \"frequency\": 0.02, \"signed_excursion\": 0.060255703754809355, \"low_frequency_signed_excursion\": 0.0602405573645069, \"acceleration_per_unit_held_sum\": 0.0677627345847908, \"empty_signed_excursion\": -6.257364912501334}",
+        "{\"test\": \"driven_following\", \"switch\": [1.2, 2.0], \"frequency\": 0.01, \"signed_excursion\": 0.014969607164245367, \"low_frequency_signed_excursion\": 0.014968670586267633, \"acceleration_per_unit_held_sum\": 0.06777439413569333, \"empty_signed_excursion\": -6.257364912501334}",
+        "{\"test\": \"driven_following\", \"switch\": [1.2, 2.0], \"frequency\": 0.005, \"signed_excursion\": 0.003736552565226721, \"low_frequency_signed_excursion\": 0.003736494185270921, \"acceleration_per_unit_held_sum\": 0.06777729380146094, \"empty_signed_excursion\": -6.257364912501334}"
+      ]
+    },
+    "flare_wave_side_wide_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 3 --log-directory _scratch/s11c/flare_wave_side_wide_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_sideways.py --step .05 --pad 6.5",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "53baeb0547c7de8222835f117691e14f8c69be7dfa3a7dd3802f31e4574bd8db",
+      "stdout_lines": [
+        "{\"test\": \"settings\", \"step\": 0.05, \"padding\": 6.5, \"action\": 1.0, \"omega\": 2.139710232372909}",
+        "{\"test\": \"response\", \"switch\": [0.55, 1.15], \"k_per_action\": 0.007600819535466482, \"direct_k_per_action\": 0.007932652950083736, \"mass_matrix_per_action\": [[0.001462146998375614, 0.03249032320107343], [0.03249032320107382, 2.40150032842997]], \"wave_rigid_mass_per_action\": 2.467943121830493, \"boosted_rigid_mass_per_action\": 2.468133745826931, \"carrier_mass\": 12.285890252178246, \"common_acceleration\": 0.06778084911205619, \"limit_distal_force_share\": 0.9480752766654976}",
+        "{\"test\": \"driven_following\", \"switch\": [0.55, 1.15], \"frequency\": 0.02, \"signed_excursion\": 0.7485184562777869, \"low_frequency_signed_excursion\": 0.7483384028970118, \"acceleration_per_unit_held_sum\": 0.06776319526298427, \"empty_signed_excursion\": -37.735024244012386}",
+        "{\"test\": \"driven_following\", \"switch\": [0.55, 1.15], \"frequency\": 0.01, \"signed_excursion\": 0.18479474458432257, \"low_frequency_signed_excursion\": 0.18478382746489458, \"acceleration_per_unit_held_sum\": 0.06777511457476819, \"empty_signed_excursion\": -37.735024244012386}",
+        "{\"test\": \"driven_following\", \"switch\": [0.55, 1.15], \"frequency\": 0.005, \"signed_excursion\": 0.04605503950206761, \"low_frequency_signed_excursion\": 0.046054362308379525, \"acceleration_per_unit_held_sum\": 0.06777802924569991, \"empty_signed_excursion\": -37.735024244012386}",
+        "{\"test\": \"response\", \"switch\": [1.2, 2.0], \"k_per_action\": 0.07298169233639967, \"direct_k_per_action\": 0.0733073053340692, \"mass_matrix_per_action\": [[0.133720267026032, 0.35535021748052387], [0.35535021748052736, 1.6235224198433933]], \"wave_rigid_mass_per_action\": 2.4679431218304764, \"boosted_rigid_mass_per_action\": 2.468133745826931, \"carrier_mass\": 12.285890252178243, \"common_acceleration\": 0.06778084911205626, \"limit_distal_force_share\": 0.7386063429592497}",
+        "{\"test\": \"driven_following\", \"switch\": [1.2, 2.0], \"frequency\": 0.02, \"signed_excursion\": 0.06022762622712174, \"low_frequency_signed_excursion\": 0.06021249505639653, \"acceleration_per_unit_held_sum\": 0.06776347771739512, \"empty_signed_excursion\": -6.257364912501334}",
+        "{\"test\": \"driven_following\", \"switch\": [1.2, 2.0], \"frequency\": 0.01, \"signed_excursion\": 0.014962670911934574, \"low_frequency_signed_excursion\": 0.014961735268437592, \"acceleration_per_unit_held_sum\": 0.06777513196855627, \"empty_signed_excursion\": -6.257364912501334}",
+        "{\"test\": \"driven_following\", \"switch\": [1.2, 2.0], \"frequency\": 0.005, \"signed_excursion\": 0.0037348236382558934, \"low_frequency_signed_excursion\": 0.0037347653161849685, \"acceleration_per_unit_held_sum\": 0.06777803032886189, \"empty_signed_excursion\": -6.257364912501334}"
+      ]
+    },
+    "flare_wave_threshold_coarse_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 2 --log-directory _scratch/s11c/flare_wave_threshold_coarse_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_threshold.py --step .05 --margin .5",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "b32a31b66dcfe5cccc096e4ad6b352a5690552f8b0c09b338d74ce67f1df491c",
+      "stdout_lines": [
+        "{\"test\": \"threshold\", \"step\": 0.05, \"margin\": 0.5, \"radius\": 0.5, \"depth\": 0.9938498808065714, \"contrast_threshold\": 9.546198309831585, \"archive_contrast\": 6.21, \"equivalent_mu_out_if_mu_in_fixed\": 3.096158637704403}",
+        "{\"test\": \"threshold\", \"step\": 0.05, \"margin\": 0.5, \"radius\": 1.0, \"depth\": 1.0, \"contrast_threshold\": 3.208837837399811, \"archive_contrast\": 6.21, \"equivalent_mu_out_if_mu_in_fixed\": 1.8024532830006472}",
+        "{\"test\": \"radius_threshold\", \"step\": 0.05, \"margin\": 0.5, \"depth\": 1.0, \"contrast\": 6.21, \"critical_radius\": 0.6522949017430217}"
+      ]
+    },
+    "flare_wave_threshold_fine_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 2 --log-directory _scratch/s11c/flare_wave_threshold_fine_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_threshold.py --step .025 --margin .5",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "ce74e3eafa67b2bb1d8b9e1d062ec5c600bb9f451361216b4f25a8dbd2de22b9",
+      "stdout_lines": [
+        "{\"test\": \"threshold\", \"step\": 0.025, \"margin\": 0.5, \"radius\": 0.5, \"depth\": 0.9938498808065714, \"contrast_threshold\": 9.540048668359956, \"archive_contrast\": 6.21, \"equivalent_mu_out_if_mu_in_fixed\": 3.0951653701151343}",
+        "{\"test\": \"threshold\", \"step\": 0.025, \"margin\": 0.5, \"radius\": 1.0, \"depth\": 1.0, \"contrast_threshold\": 3.208112198866727, \"archive_contrast\": 6.21, \"equivalent_mu_out_if_mu_in_fixed\": 1.8022519798481917}",
+        "{\"test\": \"radius_threshold\", \"step\": 0.025, \"margin\": 0.5, \"depth\": 1.0, \"contrast\": 6.21, \"critical_radius\": 0.652117095100265}"
+      ]
+    },
+    "flare_wave_threshold_finest_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 2 --log-directory _scratch/s11c/flare_wave_threshold_finest_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_threshold.py --step .0125 --margin .75",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "93428dc6d7b8a52cd1cd2c81f19dcba5b2b4928cf0025ba35422ce3a553107f7",
+      "stdout_lines": [
+        "{\"test\": \"threshold\", \"step\": 0.0125, \"margin\": 0.75, \"radius\": 0.5, \"depth\": 0.9938498808065714, \"contrast_threshold\": 9.53848346472247, \"archive_contrast\": 6.21, \"equivalent_mu_out_if_mu_in_fixed\": 3.0949125132582456}",
+        "{\"test\": \"threshold\", \"step\": 0.0125, \"margin\": 0.75, \"radius\": 1.0, \"depth\": 1.0, \"contrast_threshold\": 3.2079289273551588, \"archive_contrast\": 6.21, \"equivalent_mu_out_if_mu_in_fixed\": 1.8022011339900879}",
+        "{\"test\": \"radius_threshold\", \"step\": 0.0125, \"margin\": 0.75, \"depth\": 1.0, \"contrast\": 6.21, \"critical_radius\": 0.6520724172920331}"
+      ]
+    },
+    "flare_wave_threshold_wide_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 2 --log-directory _scratch/s11c/flare_wave_threshold_wide_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_threshold.py --step .025 --margin .75",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "9e94bd1802c6f69c1974f5f89095a8db8ed298acb66c2365a58d504c8821337f",
+      "stdout_lines": [
+        "{\"test\": \"threshold\", \"step\": 0.025, \"margin\": 0.75, \"radius\": 0.5, \"depth\": 0.9938498808065714, \"contrast_threshold\": 9.540048668246705, \"archive_contrast\": 6.21, \"equivalent_mu_out_if_mu_in_fixed\": 3.095165370096839}",
+        "{\"test\": \"threshold\", \"step\": 0.025, \"margin\": 0.75, \"radius\": 1.0, \"depth\": 1.0, \"contrast_threshold\": 3.2081121988330237, \"archive_contrast\": 6.21, \"equivalent_mu_out_if_mu_in_fixed\": 1.8022519798388414}",
+        "{\"test\": \"radius_threshold\", \"step\": 0.025, \"margin\": 0.75, \"depth\": 1.0, \"contrast\": 6.21, \"critical_radius\": 0.6521170950972248}"
+      ]
+    },
+    "flare_wave_wide_01": {
+      "reproduce": "python3 scripts/s11c_guarded_run.py --pool carrier-wave --memory-gib 3 --log-directory _scratch/s11c/flare_wave_wide_01 -- python3 software/stage1_solver/tools/mouth_wave_flare_work.py --step .05 --pad 6.5",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "duration_check": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stderr_bytes": 0,
+      "stdout_sha256": "0e51f8962fa20db8f9fcd67fe6560a89c94068a6b398bcad51bec7cbd066724e",
+      "stdout_lines": [
+        "{\"test\": \"settings\", \"step\": 0.05, \"padding\": 6.5, \"wave_speed\": 1.0, \"mu_in\": 0.2, \"mu_out\": 2.5, \"delta_r\": 0.05, \"delta_w\": 0.05}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 0.5, \"strength_over_sobolev\": 0.9267890742769135, \"necessary_contrast\": 6.700553742333529}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 1.0, \"strength_over_sobolev\": 2.5892649940221655, \"necessary_contrast\": 2.3983640200354244}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 1.0, \"depth\": 1.0, \"omega\": 2.139710232372909, \"bulk_threshold\": 2.5, \"force_per_action\": 0.3348547566410234, \"frequency_difference_force\": 0.33467445600188217, \"eigen_residual\": 4.726604142292906e-12, \"complementary_gate_norm_weight\": 0.27722538389077567}",
+        "{\"test\": \"action_center\", \"switch\": [0.55, 1.15], \"rigid_translation\": 0.9995220633654999, \"entrance_only\": 0.01359013506872462, \"flare_only\": 0.9859319282967748, \"additivity_error\": -4.440892098500626e-16}",
+        "{\"test\": \"action_center\", \"switch\": [1.2, 2.0], \"rigid_translation\": 0.9995220633654999, \"entrance_only\": 0.1963459246301112, \"flare_only\": 0.8031761387353882, \"additivity_error\": -5.551115123125783e-16}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 2.0, \"strength_over_sobolev\": 7.249039217286202, \"necessary_contrast\": 0.8566652509192544}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 2.0, \"depth\": 0.9947506011480172, \"omega\": 1.5413629416730128, \"bulk_threshold\": 2.5, \"force_per_action\": 0.4844828364598623, \"frequency_difference_force\": 0.4846009403696888, \"eigen_residual\": 5.407603368958328e-13, \"complementary_gate_norm_weight\": 0.08804675742618318}",
+        "{\"test\": \"continuum_binding_bound\", \"radius\": 4.0, \"strength_over_sobolev\": 19.97521707700013, \"necessary_contrast\": 0.3108852322386183}",
+        "{\"test\": \"occupied_minus_empty\", \"radius\": 4.0, \"depth\": 0.950896767876907, \"omega\": 1.2298563367403466, \"bulk_threshold\": 2.5, \"force_per_action\": 0.6464245383464071, \"frequency_difference_force\": 0.6462667755438944, \"eigen_residual\": 4.796732641306847e-13, \"complementary_gate_norm_weight\": 0.054089695090923984}",
+        "{\"test\": \"reference_recalibration\", \"radius\": 2.0, \"min_restoration_growth\": 3.549245340199128, \"force_growth_at_common_action\": 1.4468447195428247, \"empty_deficit\": 0.03928371173921974, \"minimum_action_ratio_at_large_occupation\": 2.4530934745510367}",
+        "{\"test\": \"reference_recalibration\", \"radius\": 4.0, \"min_restoration_growth\": 10.905176662907095, \"force_growth_at_common_action\": 1.9304624632804546, \"empty_deficit\": 0.9551287894521665, \"minimum_action_ratio_at_large_occupation\": 5.648996999597608}"
+      ]
+    }
+  },
+  "derivation": {
+    "geometry": "In three brane dimensions x and depth w, translate each fixed-w section in x by s1(w)X1+s2(w)X2, with s2=1-s1. For axial work the radius is R b(w/H), transported between w=.5H and 3.05H with physical radial and axial sigmoid widths fixed. The gate multiplies the squared frequency contrast. The frozen carrier feels the separately calculated wall forces, without a direct coupling of its current to the scalar or an occupation change under each virtual stretch.",
+    "field": "Real scalar action with kinetic coefficient one and operator L=-c² Laplacian+V, V=mu_out²-contrast*gate. At fixed geometry, wave energy is J omega. An occupied-minus-empty force is -J d(omega)/dH. The normalized 4D ground state reduces exactly to u=r*phi in a radial Dirichlet half-plane. The wave potential is prescribed and material shear need not have this dispersion.",
+    "continuum": "The sharp R^4 Sobolev inequality is ||grad f||₂² >= (4π√6/3)||f||₄². Cauchy-Schwarz applied to contrast*gate therefore excludes subthreshold eigenvalues when its L² norm <= c²(4π√6/3). The R=.5 rigorous upper ratio 0.92679 uses a squared exponential outside the radius, two exact exponential axial-tail bounds, and integration of piecewise polynomials inside. Independent Gaussian variational upper energies lie below the bulk threshold at R=1,2,4. At zero binding energy the radial half-plane Green kernel is log(|x-y_image|/|x-y|)/(2πc²). The inverse largest eigenvalue of sqrt(gate) G sqrt(gate) gives the critical squared frequency contrast. Threshold values from this latter calculation are numerical estimates. Equality at onset need not give a normalizable mode.",
+    "lateral": "Write B=L_dipole-omega² and q_i=s_i V_r u/sqrt(3), with q=q1+q2. Translation invariance gives the static relative stiffness k/J=[<s1² q,B⁻¹ q>-<q1,B⁻¹ q1>]/omega. A separate direct curvature uses the angular average (V_rr+2V_r/r)/3. For a slow harmonic drive nu the dipole sideband resolvents are (B−nu²±2 omega nu)⁻¹. Expanding their sum gives M_ij/J=[<B⁻¹q_i,B⁻¹q_j>+4omega²<B⁻¹q_i,B⁻²q_j>]/omega. The independent uniformly moving scalar well gives M_rigid/J=omega/c²+||d_x phi||²/omega. At R=1 its result is 2.46837 versus 2.46810 from the mass matrix. A continuum gap estimate excludes l=1 resonances at all sampled sidebands for this conservative well.",
+    "driven_coordinates": "At R=1 use the previously measured carrier mass matrix and incident-force split. The static force vector is slowly modulated as an input. At each frequency solve [J K_wave(nu)-nu² M_carrier]X=f, using the full sideband resolvents; the common displacement is weighted by the row sums of M_carrier+J M_wave_per_action. No bare mouth mass. J=1 is the archive preparation. No force law is applied between two mouths, and no statement about initial capture time follows from a particular harmonic solution.",
+    "axial_fit": "D_R is the carrier axial load divided by weak reservoir bias squared. The stationary relation is P V_H+sigma A_H = D_R + (J/delta_theta²) f_R, f_R=−d omega/dH, with P and sigma expressed per squared bias here. For a common action, restore-growth times the occupied reference load already exceeds the available load at R=2,4. For equal prepared energy per geometric collar-plus-flare volume take E_mode proportional to R³H; freeze J=E_mode/omega during each displacement. Fit pressure, tension and a single energy-density normalization using R=1,2,4. The retained carrier-only inverse depths, fixed box, and fixed weak-bias normalization scope this test. The five-radius minimax result also uses carrier-only inverse depths. There is no independent physical J or assertion that J remains proportional to bias squared as the bias changes.",
+    "cross_sector": "The tested neutral scalar is the archive wave surrogate. The material-wave sector supplies an order-dependent transverse stiffness. Identifying either confinement contrast or scalar wave action with a measured optical quantity would require an independent material law. The test concerns 0PN and makes no new prediction for light, electric charge or either magnetic sector."
+  },
+  "independent_local_review": [
+    {
+      "scope": "Axial work, binding and lateral action centroid",
+      "verdict": "Clear for continuum binding or its exclusion in the stated conservative scalar well, the force per fixed action, the common-action recalibration test on the carrier-only target depths, and the quasistatic action-centroid response of the prescribed shape."
+    },
+    {
+      "scope": "Open-domain threshold and radius identification, same reviewer",
+      "verdict": "Clear for the estimated onset of a subthreshold ground state in the stated open scalar well and the separate fixed-depth radius sweep."
+    },
+    {
+      "scope": "Free lateral coordinates and inertia, second reviewer",
+      "verdict": "Clear for the restoring force, wave inertia and subresonant harmonic following of the two prescribed transverse deformations at radius one, conditional on the occupied conservative scalar well and measured weak carrier loads."
+    },
+    {
+      "scope": "Volume preparation and predictions at unused radii, second reviewer",
+      "verdict": "Clear for the conditional energy-density preparation, fixed-action virtual force, and two withheld axial-force predictions at the carrier-only target depths."
+    }
+  ],
+  "formal_review": "Pending. Exploratory working result without a new commit."
+}

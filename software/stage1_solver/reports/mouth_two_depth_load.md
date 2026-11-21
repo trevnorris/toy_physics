@@ -1,0 +1,19 @@
+# Reading sideways force at two depths of one draining mouth
+
+Two weak sideways loads produced distinguishable motion at the entrance, middle and flare. The calculation measures the rate at which sideways momentum crosses each depth without assigning a wall tension. The additional force transmitted by a physical attachment remains open. [Measurements and independent review](../../../research/pde_ledger_v3/_measurements/mouth_two_depth_load.json)
+
+**Preparation.** The radius-one cubic mouth had inward intake 0.25, an undriven receiving bulk, zero bare wall mass and zero wave occupation. Both meshes used bath radius 9 and roof 10. Separate loads acted at depths 1.175 and 2.25, and all three transverse coordinates were free. The unsupported straight state has a growing bend. To read phase during a finite test, we switched on the cosine and sine components of a load proportional to $10^{-9}e^{(0.30+0.40i)t}$ from rest at $t=-96$ and read at $t=0$. This gives phase relative to an exponentially increasing drive. A slow periodic phase or travel time requires a separate measurement. [Load and section-flux calculation](../tools/mouth_two_depth_load.py) · [Unsupported-mouth stability](mouth_free_bend_response.md)
+
+| Wall station (depth) | Displacement amplitude per force, middle push | Signed lag | Displacement amplitude per force, flare push | Signed lag |
+|---|---:|---:|---:|---:|
+| Entrance (0.525) | 4.319 | −25.9° | 0.386 | −179.5° |
+| Middle (1.175) | 3.064 | +99.2° | 0.434 | −61.8° |
+| Flare (2.25) | 0.265 | −94.2° | 0.540 | +104.6° |
+
+Positive lag denotes a phase delay. Negative lag denotes a phase lead, modulo one cycle. The table gives linear displacement coefficients on mesh 34 in model units. At the middle cut the carrier's sideways momentum per unit time had amplitude **0.20413 times the applied force** for the middle push and **0.01270 times** for the flare push. A separate smooth pulse started and ended at zero. At peak force, the signed middle-cut readings were +0.20668 and −0.01167 for the same two drive locations. Reversing and halving each load reversed and halved the displacement. [Pulse test](../tools/mouth_two_depth_pulse.py) The oriented flux integrates flow and density-gradient stress over the three-dimensional cross-section normal to the fourth coordinate. Momentum can also be stored between cuts and exchanged with the wall.
+
+**Checking the force readout.** With the carrier response calibrated on mesh 26, we inferred additional known, opposed actuator forces from the three positions on mesh 34. The largest errors were 0.18% and 0.80% of the respective auxiliary force amplitudes. These controls applied external forces and tested the subtraction. The mouth’s own material connection still requires independent data. [Cross-mesh check](../tools/mouth_two_depth_force_check.py)
+
+**What would determine the attachment force.** For each push, subtract the calibrated carrier load from the applied load required for the observed motion. With internal support acting on the two relative bends, the two independent columns of relative displacement determine its complex two-by-two force response at the tested drive. The common-force residual must also close. The two displacement columns had condition number 13.74. Equal and opposite neighboring drives, formed by linear superposition, reduced it to 8.19. If the attachment also carries momentum in common translation, an independent common-motion drive is needed. The physical input is a three-position record from an independently supported mouth at the same intake, or a calibrated material law for grip and renewal that produces that record. The carrier-only run contains zero additional support by construction.
+
+Working base `49dca23e`. Independent local review scopes are recorded in the measurements. Formal review and commit are pending.

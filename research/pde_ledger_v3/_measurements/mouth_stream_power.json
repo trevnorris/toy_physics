@@ -1,0 +1,153 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "status": "Working result with scoped independent local reviews. Formal review pending.",
+  "report": "software/stage1_solver/reports/mouth_stream_power.md",
+  "report_sha256": "7ba94392599b869028edcf5b51f5fb7169e5cfa47a9c971868bf13aefed0e112",
+  "source_and_input_sha256": {
+    "software/stage1_solver/reports/mouth_energy_balance.md": "251197209a857c62770aeba4c16132480b05b4698fd8472e6a01fdde9f747bea",
+    "software/stage1_solver/reports/mouth_release_reaction.md": "6f6d7b27d86d869d0c82d34a120356352d12349ff83d7baba2a2578290c0a6d1",
+    "software/stage1_solver/reports/mouth_stress_energy.md": "bf7f36d6fa874ed91dd7be8a9d6bf85ea861f1b2124bc0dfc7605eb7579bf480",
+    "software/stage1_solver/reports/one_mouth_outer_holding_force.md": "f41587d49a0b3211551f7adae9525411db600cffd98e4bd2abe10221c595edb0",
+    "docs/_measurements/far_bulk_pressure_sweep.txt": "1a56622dbcb2538538008f118ad335692765ad15b381b0c43c8b1a38e7d619fd",
+    "docs/_measurements/feed_backpressure_current.txt": "936a212d87d40c5cbf8c0ef921ee3c6f0c9bf34abf56145a8d852cd053dbe4bb",
+    "docs/_measurements/one_throat_reservoir_head.txt": "45f7d8b7b406dfc43e74b4459636e76756dd54f3da30c861d3b6d91879fae529",
+    "docs/_measurements/mouth_feed_weak_run.json": "f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0",
+    "docs/_measurements/mouth_intake_redistribution.json": "f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711",
+    "software/stage1_solver/tools/mouth_feed_weak_flow.py": "9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83",
+    "software/stage1_solver/tools/mouth_carrier_momentum.py": "9bfdfe7e441137afc82c7863d21e4a846187cb82316f4381f78fee88fd12d434",
+    "software/stage1_solver/tools/mouth_release_input_check.py": "f341d0ced284b035aaf1450706a0bfa3a35be937b214072fb68c997e03fd8efb",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_stream_power.py": "8c5ecc33d6ae7c33c8a83b7e24c4fb1de93f0e03fa9932fbc3f6d22e5c80c55c",
+    "software/stage1_solver/tools/mouth_stream_power_check.wl": "74b943905b71b298ca312267788675fa88b11ede3cefb481c43527486f8752f7",
+    "software/stage1_solver/tools/mouth_stream_feed_check.py": "200f8c5534a86a7eb1982a682bd458de643fd1444611c6d8acdef9b8cc671552"
+  },
+  "archived_field_sha256": {
+    "_scratch/s11c/mouth_feed_weak01/fields/n24_restoring_slope_u0.npz": "90dc2e473a5219cdbec5025b1208fa8239746349732954ed28faa4de7877c132",
+    "_scratch/s11c/mouth_redistribution_coarse01/fields/n24_restoring_slope_u0.01.npz": "e05c180de9d5105d9bbcec6e8a62a41e448b80cff3f3a85bbb8343fdced58f29",
+    "_scratch/s11c/mouth_redistribution_coarse01/fields/n24_restoring_slope_u0.02.npz": "f913ef88f6a0f95310284a9bc5641c13589965da106c94c49ea28348130fc7cb",
+    "_scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz": "c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4",
+    "_scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz": "54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23",
+    "_scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz": "303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a"
+  },
+  "conventions": {
+    "exterior": "Outward fluxes on cuts co-translating at constant V about one ideal steady sink in 3D and one source in 4D, throughputs -D,+D. Separate uniform lab streams U,W. Bernoulli includes the time derivative of the co-translating potentials in the lab; carried lab energy uses relative crossing, pressure work uses lab material velocity. H=e+p_far/rho excludes the uniform kinetic energy. Heads may have different constant values; reported increments subtract the rest case with matching reservoir heads and fixed D. Moving-cut energy storage in a steadily co-translating shell has zero time derivative. No extra changing support or volume force. All center work assumes the benchmark single holder.",
+    "signed_test": "Mixed = [P(+U,+V)-P(+U,-V)-P(-U,+V)+P(-U,-V)]/4. A coefficient printed per DUV divides by positive D and magnitudes. This differs from the full power for an individual pair of signs. Susceptibility denotes the coefficient in the potential B*x/r^d with B=coefficient*(local stream−V). Python uses a common cut radius; Wolfram also checks different radii in the two domains and explicit different far pressures. Radial baselines and changing pressure and kinetic terms enter once.",
+    "feed": "Periodic neutral-carrier feed, m=hbar=1, restoring amplitude slope, fixed inward number rate .25. Stationary complex fields are reflected for negative relative speeds. A Galilean transform of the complete feeding preparation gives lab psi=exp[i Ux−i(mu0+U²/2)t] f_(U−V)(x−Vt). With flat aperture translating tangentially the advective energy sweep normal to the face vanishes. The current into the aperture is (mu0+U²/2)J_N+V integral Re[(d_x f)* d_w f] with complex conjugation of the first factor. Across the full periodic section the envelope momentum term integrates to zero by steady x-momentum conservation, with f=1 at the feed, no lateral body force and zero normal derivative outside the mouth. The improved and canonical stresses can differ by an edge term on a general patch. Two resolutions, two magnitudes, wall law and one-sided layers, and independent lab-time finite differences. No receiving-side field or total rim reaction reconstructed.",
+    "loss_hypothesis": "W=0 in the tested head control. At rest H_f−H_b=L(D0). Hypothesize surplus relative-frame head becomes loss L(D), with no other changing work/storage channels. Fixed-D extra head=UV−U²/2. At fixed heads the leading mixed intake coefficient is −1/L'(D0) for a differentiable invertible loss curve. Example only: normal kinetic loss on mixing with rho*A=1, D0=1/4 gives L(D)=D²/2. The example's positive rest head and slope are inputs from its own model. Actual loss and total reaction at the physical mouth need independent data. Any departure from imposed intake is tested as a separate control. The actual fixed-rate archive does not calibrate the material slope."
+  },
+  "review": {
+    "exterior_verdict": "Scoped clear for the ideal translating control surfaces, their pressure and kinetic power split, and the incremental transfer required by the single-holder benchmark. The source of that transfer at a physical mouth and its free acceleration remain open.",
+    "feed_verdict": "Scoped clear for the continuum cancellation of mixed neutral-carrier power on the translated periodic feed aperture and its four-drive archived-field reconstruction. The receiving-side energy current, total rim force and physical free fall remain open.",
+    "head_check": "The exterior reviewer independently checked the four-reversal head and intake signs, branch passivity, force order, and interpretation as a trial loss law. The loss relation alone does not select a lateral force.",
+    "report_verdict": "Scoped clear for the reported four-reversal benchmark power balance, the continuum feeding-aperture cancellation and archived numerical controls, and the conditional head–intake prediction for the stated loss law."
+  },
+  "runs": {
+    "mouth_stream_power01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_stream_power.py"
+      ],
+      "source_sha256": "8c5ecc33d6ae7c33c8a83b7e24c4fb1de93f0e03fa9932fbc3f6d22e5c80c55c",
+      "pool": "stream-head-power",
+      "log_directory": "_scratch/s11c/mouth_stream_power01",
+      "started_utc": "2026-11-19T23:23:40.803020+00:00",
+      "wall_seconds": 0.8930579298175871,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 54136832,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "e247cdbf857fd8eca2d8a140b0da4eb1846a2ce2b04d830722f1b89baf858305",
+      "stdout_lines": [
+        "cut=1 susceptibility=0 outward_flux_per_signed_rate=[(2*H + U**2)/2, (2*H + W**2)/2] holder=-D*(U - W)",
+        "mixed_per_DUV transport=1/3 pressure=-1/3 actuator=-1",
+        "cut=1 susceptibility=1/4 outward_flux_per_signed_rate=[(2*H + U**2)/2, (2*H + W**2)/2] holder=-D*(U - W)",
+        "mixed_per_DUV transport=1/8 pressure=-1/8 actuator=-1",
+        "cut=2 susceptibility=1/4 outward_flux_per_signed_rate=[(2*H + U**2)/2, (2*H + W**2)/2] holder=-D*(U - W)",
+        "mixed_per_DUV transport=141/512 pressure=-141/512 actuator=-1",
+        "jet rho_area=1 rest_D=0.25 rest_head=0.03125 rest_head_slope=0.25",
+        "U=+0.01 V=+0.02 incremental_arrival=1.25e-05 delivered=5e-05 fixed_D_extra_power=3.75e-05 fixed_D_extra_head=0.00015 fixed_head_jet_D=0.249399278267",
+        "U=+0.01 V=-0.02 incremental_arrival=1.25e-05 delivered=-5e-05 fixed_D_extra_power=-6.25e-05 fixed_D_extra_head=-0.00025 fixed_head_jet_D=0.25099800796",
+        "U=-0.01 V=+0.02 incremental_arrival=1.25e-05 delivered=-5e-05 fixed_D_extra_power=-6.25e-05 fixed_D_extra_head=-0.00025 fixed_head_jet_D=0.25099800796",
+        "U=-0.01 V=-0.02 incremental_arrival=1.25e-05 delivered=5e-05 fixed_D_extra_power=3.75e-05 fixed_D_extra_head=0.00015 fixed_head_jet_D=0.249399278267",
+        "U_abs=0.01 V_abs=0.02 fixed_head_jet_mixed_D_over_UV=-3.99682423356 rest_slope_prediction=-4",
+        "U=+0.005 V=+0.01 incremental_arrival=3.125e-06 delivered=1.25e-05 fixed_D_extra_power=9.375e-06 fixed_D_extra_head=3.75e-05 fixed_head_jet_D=0.249849954973",
+        "U=+0.005 V=-0.01 incremental_arrival=3.125e-06 delivered=-1.25e-05 fixed_D_extra_power=-1.5625e-05 fixed_D_extra_head=-6.25e-05 fixed_head_jet_D=0.250249875125",
+        "U=-0.005 V=+0.01 incremental_arrival=3.125e-06 delivered=-1.25e-05 fixed_D_extra_power=-1.5625e-05 fixed_D_extra_head=-6.25e-05 fixed_head_jet_D=0.250249875125",
+        "U=-0.005 V=-0.01 incremental_arrival=3.125e-06 delivered=1.25e-05 fixed_D_extra_power=9.375e-06 fixed_D_extra_head=3.75e-05 fixed_head_jet_D=0.249849954973",
+        "U_abs=0.005 V_abs=0.01 fixed_head_jet_mixed_D_over_UV=-3.99920151864 rest_slope_prediction=-4"
+      ]
+    },
+    "mouth_stream_power_referee01": {
+      "command": [
+        "math",
+        "-script",
+        "software/stage1_solver/tools/mouth_stream_power_check.wl"
+      ],
+      "source_sha256": "74b943905b71b298ca312267788675fa88b11ede3cefb481c43527486f8752f7",
+      "pool": "stream-power-referee",
+      "log_directory": "_scratch/s11c/mouth_stream_power_referee01",
+      "started_utc": "2026-11-19T23:21:30.969694+00:00",
+      "wall_seconds": 7.961532676126808,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 246726656,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "836fd9bf25796623702f7229f62d56856cf04e9d30facd8031f69867250f747a",
+      "stdout_lines": [
+        "cuts={1, 1} susceptibilities={0, 0} scale=1 signed powers per mdot U V {advected,pressure,net,actuator,residual}=InputForm[{1/3, -1/3, 0, -1, 1}] positive quadrant powers per mdot U^2 {net_above_rest,actuator,residual}=InputForm[{-1/2, -2, 3/2}] spurious mixed flux per mdot U V {omit_dt,subtract_pressure_sweep}=InputForm[{1/3, -1/3}]",
+        "cuts={1, 1} susceptibilities={0, 0} scale=1/2 signed powers per mdot U V {advected,pressure,net,actuator,residual}=InputForm[{1/3, -1/3, 0, -1, 1}] positive quadrant powers per mdot U^2 {net_above_rest,actuator,residual}=InputForm[{-1/2, -2, 3/2}] spurious mixed flux per mdot U V {omit_dt,subtract_pressure_sweep}=InputForm[{1/3, -1/3}]",
+        "cuts={1, 1} susceptibilities={1/4, -3/7} scale=1 signed powers per mdot U V {advected,pressure,net,actuator,residual}=InputForm[{1/8, -1/8, 0, -1, 1}] positive quadrant powers per mdot U^2 {net_above_rest,actuator,residual}=InputForm[{-1/2, -2, 3/2}] spurious mixed flux per mdot U V {omit_dt,subtract_pressure_sweep}=InputForm[{1/6, -1/6}]",
+        "cuts={1, 1} susceptibilities={1/4, -3/7} scale=1/2 signed powers per mdot U V {advected,pressure,net,actuator,residual}=InputForm[{1/8, -1/8, 0, -1, 1}] positive quadrant powers per mdot U^2 {net_above_rest,actuator,residual}=InputForm[{-1/2, -2, 3/2}] spurious mixed flux per mdot U V {omit_dt,subtract_pressure_sweep}=InputForm[{1/6, -1/6}]",
+        "cuts={2, 3} susceptibilities={1/4, -3/7} scale=1 signed powers per mdot U V {advected,pressure,net,actuator,residual}=InputForm[{141/512, -141/512, 0, -1, 1}] positive quadrant powers per mdot U^2 {net_above_rest,actuator,residual}=InputForm[{-1/2, -2, 3/2}] spurious mixed flux per mdot U V {omit_dt,subtract_pressure_sweep}=InputForm[{5/16, -5/16}]",
+        "cuts={2, 3} susceptibilities={1/4, -3/7} scale=1/2 signed powers per mdot U V {advected,pressure,net,actuator,residual}=InputForm[{141/512, -141/512, 0, -1, 1}] positive quadrant powers per mdot U^2 {net_above_rest,actuator,residual}=InputForm[{-1/2, -2, 3/2}] spurious mixed flux per mdot U V {omit_dt,subtract_pressure_sweep}=InputForm[{5/16, -5/16}]",
+        "independent lab speeds {U,V,W}={3/100, 1/100, -1/100} holder=-1/100 signed residual above rest=0",
+        "independent lab speeds {U,V,W}={3/50, 1/25, 1/50} holder=-1/100 signed residual above rest=0",
+        "independent lab speeds {U,V,W}={1/50, 1/50, 1/50} holder=0 signed residual above rest=0"
+      ]
+    },
+    "mouth_stream_feed_referee01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_stream_feed_check.py"
+      ],
+      "source_sha256": "200f8c5534a86a7eb1982a682bd458de643fd1444611c6d8acdef9b8cc671552",
+      "pool": "stream-feed-referee",
+      "log_directory": "_scratch/s11c/mouth_stream_feed_referee01",
+      "started_utc": "2026-11-19T23:22:59.817507+00:00",
+      "wall_seconds": 1.3399600149132311,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 195813376,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "f0ab8c7bb4dbd4cceef7addba25998f1062111f1bbf21451e23436afcc799103",
+      "stdout_lines": [
+        "n=24 speed=0.01 derivative=wall_law inward_rate_min=0.25 mixed_current_over_UV=-1.70002900646e-12 mixed_direct_over_UV=-1.70002900646e-12 envelope_momentum_over_relative=-1.78041737731e-12 mixed_rate_term_over_UV=8.67535210336e-14",
+        "n=24 speed=0.01 derivative=layers inward_rate_min=0.250020348538 mixed_current_over_UV=7.43475891962e-06 mixed_direct_over_UV=7.43475891962e-06 envelope_momentum_over_relative=-2.48455493011e-07 mixed_rate_term_over_UV=7.68321440703e-06",
+        "n=24 speed=0.005 derivative=wall_law inward_rate_min=0.25 mixed_current_over_UV=-1.38777878078e-12 mixed_direct_over_UV=-1.80411241502e-12 envelope_momentum_over_relative=-1.78046877653e-12 mixed_rate_term_over_UV=2.77569633944e-13",
+        "n=24 speed=0.005 derivative=layers inward_rate_min=0.250020353147 mixed_current_over_UV=7.43348965715e-06 mixed_direct_over_UV=7.43348979593e-06 envelope_momentum_over_relative=-2.48445895235e-07 mixed_rate_term_over_UV=7.68193558356e-06",
+        "n=32 speed=0.01 derivative=wall_law inward_rate_min=0.25 mixed_current_over_UV=-2.77555756156e-13 mixed_direct_over_UV=-2.08166817117e-13 envelope_momentum_over_relative=-2.63504496001e-13 mixed_rate_term_over_UV=0",
+        "n=32 speed=0.01 derivative=layers inward_rate_min=0.250002405827 mixed_current_over_UV=7.19374212976e-08 mixed_direct_over_UV=7.19374559921e-08 envelope_momentum_over_relative=-7.87263422855e-09 mixed_rate_term_over_UV=7.98100815227e-08",
+        "n=32 speed=0.005 derivative=wall_law inward_rate_min=0.25 mixed_current_over_UV=-2.77555756156e-13 mixed_direct_over_UV=-1.38777878078e-13 envelope_momentum_over_relative=-2.63504496001e-13 mixed_rate_term_over_UV=0",
+        "n=32 speed=0.005 derivative=layers inward_rate_min=0.250002405875 mixed_current_over_UV=7.19305170982e-08 mixed_direct_over_UV=7.19302395424e-08 envelope_momentum_over_relative=-7.87238208649e-09 mixed_rate_term_over_UV=7.98026576071e-08"
+      ]
+    }
+  }
+}

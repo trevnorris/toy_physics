@@ -1,0 +1,144 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "status": "Working result with scoped independent local review. Formal review pending.",
+  "report": "software/stage1_solver/reports/mouth_registering_rim.md",
+  "report_sha256": "d5e7dc697f0a14bcbd5c4389e17af2c1f9097bb77db610313722c51e4ca47c23",
+  "source_and_input_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_collar_charge_transmission.json": "73177df30c7b276372fa035e318bd76356a54022d6d0a3b6d0905cee0f68b9c5",
+    "software/stage1_solver/tools/mouth_collar_link_bounds.py": "ef8eaa09c6f85345be161b38129384d6ef72b930d6dad64df3ada4bf5cf74283",
+    "software/stage1_solver/reports/mouth_collar_charge_transmission.md": "b23114507cbe34fbf6a9e9a6b8481a74916b75126c40c0ce7ba4d522ed6734ec",
+    "software/stage1_solver/tools/mouth_registering_rim.py": "8825d32b79c57c23c1f8f6f08fb4f4ebf0b0cc26a5158ceadbe8bdbcae5aa586",
+    "software/stage1_solver/tools/mouth_registering_rim_check.py": "978c2ebc8cd63dd9205b673061b52ee84e93aa029255ef6e4a70172ee3ed4dd2",
+    "software/stage1_solver/tools/mouth_registration_counts.py": "c8b9c68742dce7704cc0c289b786077216c3db804c9d7e896f5193281e44d9c5"
+  },
+  "conventions": {
+    "angular": "Same stationary participating throughput across mirrors and registration controls. Per-link arrival rate j, exponential residence tau_feed=1 and tau_rim=128. Center attachment on capture. Swiveling sites acquire an independent constant angular registration hazard 1/256, register immediately, or never register. Mean stiffness j k ell² tau²/(tau+T) times prescribed visibility. The preferred phase and visibility are inherited from the earlier prepared seven-shell angular test. j k ell² tau_feed/K=2. The local held-cohort readings are synthetic predictions of this law. Neither the throughput nor these time scales were inferred from a physical mouth.",
+    "certificates": "Two mesh levels, two rotations and both mirror orientations. In the archived bounds a transmitting trial has zero rim mismatch. Wrong-rim cost grows with the minimum rim stiffness. Feed mismatch energies are nonnegative. The preferred screened trial has zero attachment mismatch on every link. Reported threshold inequalities are sufficient. The mean-energy ground state does not establish dynamical selection, lifetime, outgoing Maxwell charge or radius independence.",
+    "energy": "Registration at mismatch can raise interaction energy by k ell² v (1-cos(delta)); a reservoir or a thermodynamically specified rate law and release channel are needed at finite mismatch. The DC translational accounting includes outgoing kinetic energy and release of stored center spring energy on detachment.",
+    "mechanics": "One representative flowing mass stream counted once. Exponential departure independent of age, speed and angle. m=k=ell=1, Omega²=k/m, unstretched birth at sideways speed U. Stationary resident inventory with zero initial sideways motion. The only actuator load is the translational spring reaction at the massless geometric center. Four smooth force-controlled ensemble drives in resting incoming material using F0*(1-exp(-t/t0))³, t0=min(tau,4), time measured in feed dwells. Gamma is the DC coefficient. It is not a measurement of whole-mouth inertia.",
+    "finite_counts": "Stationary Poisson arrivals per link. Conditional fixed angular phase and visibility per registered contact. For different microscopic populations nu=j tau_feed, single-contact k ell²/K=2/nu preserves the mean strengths. Conservatively bound the complement of sufficient frozen-snapshot conditions on one level-3 mesh by the sum of all marginal tail probabilities; no cross-link independence required. Numerical SciPy evaluations are not outward-rounded interval bounds. No conclusion about long-time histories or force control for individual random patches."
+  },
+  "review": {
+    "primary_verdict": "Scoped clear for the eight archived mean-energy ground-state comparisons and the ensemble force, momentum and DC energy balance of one exponentially renewing spring patch. Physical registration, realized flux histories and whole-mouth free fall remain open.",
+    "followup_verdict": "Scoped clear for the smooth force-controlled response of the stationary mean patch and the Poisson union bound for a single frozen collar snapshot with the stated per-link energies.",
+    "method": "Independent exact rational trial-versus-forbidden-state comparisons using the archived energy terms, vector spring arms, age integration at constant and harmonic drives, and DC work balance. Follow-up source audit of force inversion and finite-occupancy tail events."
+  },
+  "runs": {
+    "mouth_registering_rim01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_registering_rim.py"
+      ],
+      "source_sha256": "8825d32b79c57c23c1f8f6f08fb4f4ebf0b0cc26a5158ceadbe8bdbcae5aa586",
+      "pool": "registering-rim",
+      "log_directory": "_scratch/s11c/mouth_registering_rim01",
+      "started_utc": "2026-11-19T22:34:11.777956+00:00",
+      "wall_seconds": 0.4354026890359819,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 45129728,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "17a626ca20d595c193f14c6866eed02bfc10865469005363ca19d28dce1dbfe6",
+      "stdout_lines": [
+        "held_cohort surviving_registered_age128=0.393469340287 fit_rate=0.00390625 surviving_registered_age256=0.632120558829 predicted_age256=0.632120558829",
+        "twist law=delayed patch=feed residence=1 aligned_fraction=0.00389105058366 modulus_over_K=0.00778210116732 torque_at_point04_over_K=0.000311201044254",
+        "twist law=delayed patch=rim residence=128 aligned_fraction=0.333333333333 modulus_over_K=85.3333333333 torque_at_point04_over_K=3.41242318393",
+        "twist law=immediate patch=feed residence=1 aligned_fraction=1 modulus_over_K=2 torque_at_point04_over_K=0.0799786683733",
+        "twist law=immediate patch=rim residence=128 aligned_fraction=1 modulus_over_K=256 torque_at_point04_over_K=10.2372695518",
+        "twist law=free_swivel patch=feed residence=1 aligned_fraction=0 modulus_over_K=0 torque_at_point04_over_K=0",
+        "twist law=free_swivel patch=rim residence=128 aligned_fraction=0 modulus_over_K=0 torque_at_point04_over_K=0",
+        "archived finite_cases=8 weak_ceiling=0.016023 strong_floor=1.751255",
+        "registration_time_in_feed_dwells transmitted_above=123.82057043 rim_certificate_through=384 screened_below=0.142038138364",
+        "angular_minimum law=delayed mirror_pair=+1,-1",
+        "angular_minimum law=immediate mirror_pair=0,0",
+        "angular_minimum law=free_swivel mirror_pair=0,0",
+        "steady residence=1 mass_in_stock_over_mass_rate=1 tow_force_over_mass_rate_V=0.5 held_pull_over_mass_rate_U=0.5 exit_px_over_mass_rate_V=0.5 exit_kinetic_over_mass_rate_V2=0.3 release_heat_over_mass_rate_V2=0.2",
+        "push residence=1 F_plateau_over_mass_rate=0.01 speed_at_tau_over_8=0.000382275139267 speed_at_tau=0.00760636809744 speed_at_8tau=0.0199245141575 terminal_speed=0.02",
+        "push residence=1 F_plateau_over_mass_rate=-0.01 speed_at_tau_over_8=-0.000382275139267 speed_at_tau=-0.00760636809744 speed_at_8tau=-0.0199245141575 terminal_speed=-0.02",
+        "push residence=1 F_plateau_over_mass_rate=0.005 speed_at_tau_over_8=0.000191137569827 speed_at_tau=0.00380318404871 speed_at_8tau=0.00996225707877 terminal_speed=0.01",
+        "push residence=1 F_plateau_over_mass_rate=-0.005 speed_at_tau_over_8=-0.000191137569827 speed_at_tau=-0.00380318404871 speed_at_8tau=-0.00996225707877 terminal_speed=-0.01",
+        "steady residence=128 mass_in_stock_over_mass_rate=128 tow_force_over_mass_rate_V=0.999938968569 held_pull_over_mass_rate_U=0.999938968569 exit_px_over_mass_rate_V=0.999938968569 exit_kinetic_over_mass_rate_V2=0.749942783208 release_heat_over_mass_rate_V2=0.249996185361",
+        "push residence=128 F_plateau_over_mass_rate=0.01 speed_at_tau_over_8=0.000667521292659 speed_at_tau=0.00610226011199 speed_at_8tau=0.00999705551626 terminal_speed=0.0100006103516",
+        "push residence=128 F_plateau_over_mass_rate=-0.01 speed_at_tau_over_8=-0.000667521292659 speed_at_tau=-0.00610226011199 speed_at_8tau=-0.00999705551626 terminal_speed=-0.0100006103516",
+        "push residence=128 F_plateau_over_mass_rate=0.005 speed_at_tau_over_8=0.000333760646294 speed_at_tau=0.003051130056 speed_at_8tau=0.00499852775813 terminal_speed=0.00500030517578",
+        "push residence=128 F_plateau_over_mass_rate=-0.005 speed_at_tau_over_8=-0.000333760646294 speed_at_tau=-0.003051130056 speed_at_8tau=-0.00499852775813 terminal_speed=-0.00500030517578"
+      ]
+    },
+    "mouth_registering_rim_referee01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_registering_rim_check.py"
+      ],
+      "source_sha256": "978c2ebc8cd63dd9205b673061b52ee84e93aa029255ef6e4a70172ee3ed4dd2",
+      "pool": "registering-rim-referee",
+      "log_directory": "_scratch/s11c/mouth_registering_rim_referee01",
+      "started_utc": "2026-11-19T22:33:49.509230+00:00",
+      "wall_seconds": 0.23858701763674617,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 15196160,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "39ad7f2edc276c9ea85389c8a3d23cc30a3ccaf9be4026867e48324b9f54dc4a",
+      "stdout_lines": [
+        "delayed_feed_rim=2/257,256/3 immediate_feed_rim=2,256",
+        "archived_cases=8 delayed_margin_K_ge=4571008367/25700000000 immediate_margin_K_ge=74623/200000",
+        "arm_energy_minus_constant=1.161788624 separated_energy=1.161788624 error=4.44e-16",
+        "patch w_tau=0.5 s_tau=0 center=1 incoming=0.25 cohort_force=0.15+0j moment_force=0.15 momentum_residual=1.39e-10",
+        "dc_center_work=0.15 net_exit_energy=0.15",
+        "patch w_tau=0.5 s_tau=0.37j center=1 incoming=0 cohort_force=0.194070653-0.04591886j moment_force=0.194070653-0.04591886j momentum_residual=1.6e-10",
+        "patch w_tau=0.5 s_tau=0.37j center=0 incoming=1 cohort_force=-0.155757476+0.103549126j moment_force=-0.155757476+0.103549126j momentum_residual=1.1e-10",
+        "patch w_tau=0.5 s_tau=0.37j center=1 incoming=1 cohort_force=0.0383131767+0.0576302662j moment_force=0.0383131767+0.0576302662j momentum_residual=1e-10",
+        "w_tau=0.5 center_slope_per_resident_mass=-0.12 moment_slope=-0.12",
+        "patch w_tau=2 s_tau=0 center=1 incoming=0.25 cohort_force=0.6+0j moment_force=0.6 momentum_residual=6.55e-10",
+        "dc_center_work=0.6 net_exit_energy=0.600000001",
+        "patch w_tau=2 s_tau=0.37j center=1 incoming=0 cohort_force=0.849167662+0.175117914j moment_force=0.849167662+0.175117915j momentum_residual=1.41e-09",
+        "patch w_tau=2 s_tau=0.37j center=0 incoming=1 cohort_force=-0.803906492+0.122327488j moment_force=-0.803906492+0.122327487j momentum_residual=1.79e-09",
+        "patch w_tau=2 s_tau=0.37j center=1 incoming=1 cohort_force=0.0452611702+0.297445402j moment_force=0.0452611703+0.297445402j momentum_residual=5.23e-10",
+        "w_tau=2 center_slope_per_resident_mass=0.479999999 moment_slope=0.48"
+      ]
+    },
+    "mouth_registration_counts01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_registration_counts.py"
+      ],
+      "source_sha256": "c8b9c68742dce7704cc0c289b786077216c3db804c9d7e896f5193281e44d9c5",
+      "pool": "registering-occupancy",
+      "log_directory": "_scratch/s11c/mouth_registration_counts01",
+      "started_utc": "2026-11-19T22:35:05.056864+00:00",
+      "wall_seconds": 0.4890326950699091,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 57524224,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "4afbc54fda5054bd4ae0867e8971ba9b1df6fe7be128e953d62b0699e8e5e00d",
+      "stdout_lines": [
+        "mesh_level=3 rim_links=768 feed_links=6156",
+        "nu=16 law=delayed single_contact_over_K=0.125 feed_mean_registered=0.0622568093385 rim_mean_registered=682.666666667 feed_bad_per_link=0.06035845292 snapshot_certificate_failure_upper=1",
+        "nu=16 law=immediate single_contact_over_K=0.125 feed_mean_registered=16 rim_mean_registered=2048 feed_bad_per_link=0.3675273598 snapshot_certificate_failure_upper=1",
+        "nu=1024 law=delayed single_contact_over_K=0.001953125 feed_mean_registered=3.98443579767 rim_mean_registered=43690.6666667 feed_bad_per_link=0.02090368182 snapshot_certificate_failure_upper=1",
+        "nu=1024 law=immediate single_contact_over_K=0.001953125 feed_mean_registered=1024 rim_mean_registered=131072 feed_bad_per_link=2.387801547e-05 snapshot_certificate_failure_upper=0.1469930633",
+        "nu=16384 law=delayed single_contact_over_K=0.0001220703125 feed_mean_registered=63.7509727626 rim_mean_registered=699050.666667 feed_bad_per_link=5.467977082e-14 snapshot_certificate_failure_upper=3.366086691e-10",
+        "nu=16384 law=immediate single_contact_over_K=0.0001220703125 feed_mean_registered=16384 rim_mean_registered=2097152 feed_bad_per_link=8.752458423e-60 snapshot_certificate_failure_upper=5.388013405e-56"
+      ]
+    }
+  }
+}

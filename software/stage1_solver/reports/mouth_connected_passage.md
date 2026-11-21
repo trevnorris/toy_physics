@@ -1,0 +1,22 @@
+# Connected brane material passing the first bend at 0PN
+
+**Material sites can slip along the drain, and a small sideways displacement can grow inside the bend.** On the same radius-one mouth at intake 0.25, an open material row delivered 27.55 sites per model time at both the waist and middle in the reference preparation. Its sites traveled between those stations in 4.39 time units. The carrier field takes 10.40. A separate connected sheet forced to follow that carrier developed a growing relative sideways motion inside the bend. These tests leave the one-transit holding force open. [Measurements and review](../../../research/pde_ledger_v3/_measurements/mouth_connected_passage.json) · [Earlier held-bend force](mouth_mobile_neighbor_hold.md)
+
+**What the sites did.** We tested a cold triangular sheet with the existing same-layer Morse interaction and unit site drag. We placed its stress-free spacing at the waist and transported its mean deformation with the carrier. The arclength speed falls from 0.51862 to 0.04250 mouth radii per time on the way to mid-depth, while the hoop radius grows by a factor of 1.905. Sites locked to the carrier would reach the middle at 8.20% of their original along-flow spacing. Counting passive labels conserves their supplied rate; their absolute abundance needs a material preparation.
+
+We displaced a group of sites sideways, released it and followed it relative to distant sites. A disturbance with a wavelength of eight initial lattice spacings decayed to 14.2% of its initial physical size between depths 0.50 and 0.55. A fresh disturbance of the same wavelength grew **11.11-fold** between 0.612 and 0.6362. A localized initial offset grew **3.36-fold** between 0.612 and 0.630, or 3.30-fold after removing the geometric hoop expansion. Halving the initial offset and moving the comparison tag from 16 to 32 spacings away preserved the latter result. The sites could move along and across the flow. This tests weak, locally uniform deformation with the same perturbation around the hoop. It establishes an instability of that proposed motion inside the bend. Its eventual rearrangement and wall traction remain unmeasured. [Linear stability](../tools/mouth_connected_passage.py) · [Direct nonlinear tag motions](../tools/mouth_connected_strip_tags.py)
+
+**What crossed the gates.** In the separate longitudinal test, nearest-neighbor Morse forces and drag set each site's speed through the spatially varying carrier. An upstream reservoir inserts a site when space opens. The downstream reservoir removes sites as they exit. The table varies the lengths of the uniform stretches connecting these boundaries to the gates. All four use one bare bond length for reservoir insertion and the same carrier. Rates are observed crossings per lane per model time in the last observation window. The last column uses identical tags at both gates.
+
+| Inlet / outlet length in bond lengths | Waist rate | Middle rate | Waist-to-middle tag time |
+|---|---:|---:|---:|
+| 8 / 8 | 27.55 | 27.55 | 4.39 |
+| 24 / 8 | 34.20 | 34.20 | 3.66 |
+| 8 / 24 | 24.80 | 24.80 | 4.98 |
+| 24 / 24 | 31.16 | 31.16 | 4.11 |
+
+For 8 / 8 the mean forward-neighbor gap at crossing was 0.7684 bond lengths at the waist and 0.8006 at the middle. Each bare bond length represents 0.01 mouth radii by assumption. Across the full run, 1,734 sites entered the band and 1,699 left, increasing its inventory from 86 to 121. Halving the time step gave 27.553 sites per time at both gates. [Open row and crossing readout](../tools/mouth_open_row_arrivals.py)
+
+**Implication for free fall.** The previous +21.45% and −6.36% local holding-force predictions used disconnected patches transported on the carrier clock. Substituting the new crossing rate alone would still assign the wrong passage time for this row. The next test needs one connected strip in which the same material sites can slip, rearrange sideways and exchange force with the held wall. Compare a weakly displaced first bend with its undisplaced copy at the same intake and feed. Record crossing times, relative displacement, and the signed waist-to-middle wall reaction together. Use the same early force at 0.0625 and read the force at both the measured material transit and the previous full carrier transit of 28.431. This supplies a local momentum-transfer test; the free-mouth acceleration is still open.
+
+Working base `49dca23e`. Independent local review covered the weak tag motions, linear stability and conditional row flux. Formal project review and commit are pending.

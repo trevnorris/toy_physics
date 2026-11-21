@@ -1,0 +1,2037 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "Exploratory 0PN neutral finite patch. No prescribed tangential material sites, bond list or net drive. Number of neutral particles, assignment to two planes at fixed gap, pairwise interactions, weak thermal preparation, and layer anisotropy are hypotheses. Force units are common across this experiment and uncalibrated to the earlier mouth fixture.",
+  "protocol": "Initial zero-temperature relaxation; 4000 overdamped steps at dt=.0005, kBT=.008, unit mobility; final relaxation. Mutual-nearest interplane association with strict 60% well-depth criterion, also 40% and 50%. Select tagged pair by midpoint nearest patch center before thermal test. Force observable is the applied reaction in the x direction conjugate to B-A at fixed midpoint and relative y=0; all other material interactions retained in matched background control. The applied q is an absolute separation. Qualifying a tag for the persistence claim requires its identity surviving the stated criterion and remaining registered in the clamped state.",
+  "checks": "Independent complex-step energy derivative on saved held frames, reconstruction of pair histories, and matched-increment half-timestep repeat for seed 1321. The reviewers shared initial seeds, material definition and equilibrium protocol. No absolute lifetime, tangential law selection for the brane, or free-fall prediction inferred.",
+  "sources": {
+    "software/stage1_solver/tools/neutral_patch_sites.py": "00595a5383311d4e20ed2af851cbd9d8c2bd59255b81c312829843ed8061f827",
+    "software/stage1_solver/tools/neutral_patch_hold.py": "b58cf7011db3f23b62e38341cf8d7da7159027608391d1a8774dac5f9e705d6d",
+    "_scratch/s11c/neutral_patch_material/first_sources/neutral_patch_sites.py": "d9349197c788cfea446ecf05130e0737cf01b3a6414e7801abfd535123f0b8f2",
+    "_scratch/s11c/neutral_patch_material/first_sources/neutral_patch_hold.py": "1ff994b6fa854b3c4b8128e14826d7d08965c480909cc6dafc61a500801c6b82",
+    "_scratch/neutral_patch_independent_review.py": "46741eb17c0c074df6c37b292848bbbd0c6152fe967da04cc31e8d9f7b167e8e",
+    "_scratch/neutral_patch_half_step_review.py": "483b90215d6027202ae00b7154936015ecbf10fe20e98e3a8443bb8be0f814b9"
+  },
+  "scientific_inputs_unchanged": "Final instruments additionally represent the absence of an eligible tag explicitly and can select a single material law for that control. The four earlier runs used the first_sources versions recorded here.",
+  "runs": {
+    "neutral_patch_cal01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_sites.py",
+        "--calibration",
+        "_scratch/s11c/neutral_patch_material/calibration.json"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "limits_verified": true,
+      "source_version": "original instruments",
+      "stdout_sha256": "b246592e82eebd1ffa276df30d7e880ce903df1d044ea274c20f8a5d56e7ff90",
+      "literal_stdout": [
+        "{\"test\": \"material_patch\", \"seed\": 191, \"law\": \"central\", \"constituents_per_layer\": 12, \"initial_energy\": 419.30037804250696, \"minimum_energy\": -49.09258479603204, \"measured_pitch\": 0.9975236660910706, \"tag\": [9, 16], \"tag_offset_before_clamp\": 0.008830737425148335, \"observed_model_time\": 2.0, \"dt\": 0.0005, \"kBT\": 0.008, \"initial_connected_components\": 1, \"persistent_components\": 1, \"interplane_contacts\": {\"0.4\": [11, 11], \"0.5\": [11, 11], \"0.6\": [11, 11]}, \"tag_survived\": {\"0.4\": true, \"0.5\": true, \"0.6\": true}, \"max_free_gradient\": 1.0427375111273993e-06}",
+        "{\"test\": \"material_patch\", \"seed\": 191, \"law\": \"layered\", \"constituents_per_layer\": 12, \"initial_energy\": 416.96901100962134, \"minimum_energy\": -54.63085465680061, \"measured_pitch\": 0.9939079571836641, \"tag\": [11, 17], \"tag_offset_before_clamp\": 0.5328489487480462, \"observed_model_time\": 2.0, \"dt\": 0.0005, \"kBT\": 0.008, \"initial_connected_components\": 1, \"persistent_components\": 2, \"interplane_contacts\": {\"0.4\": [11, 0], \"0.5\": [11, 0], \"0.6\": [5, 0]}, \"tag_survived\": {\"0.4\": false, \"0.5\": false, \"0.6\": false}, \"max_free_gradient\": 8.279869220251257e-07}",
+        "{\"test\": \"independent_tensile_calibration\", \"samples\": 251, \"normal_tension_at_gap\": 2.9714090770655006, \"sampled_maximum_tension\": 2.999860068422788, \"gap\": 1.0}"
+      ]
+    },
+    "neutral_patch_pred01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_hold.py",
+        "predict",
+        "_scratch/s11c/neutral_patch_material/calibration.json",
+        "_scratch/s11c/neutral_patch_material/predictions.json"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "limits_verified": true,
+      "source_version": "original instruments",
+      "stdout_sha256": "e0b2af4dccc1eaf79ae9e0a29484af602cc1af3e36e1d6166f87934bbb0bd792",
+      "literal_stdout": [
+        "{\"test\": \"blind_prediction\", \"law\": \"central\", \"fraction\": 0.0, \"pitch\": 0.9975236660910706, \"q\": 0.0, \"gap\": 1.0, \"radial_read_at\": 1.0, \"predicted\": 0.0, \"normalized\": 0.0, \"coarse_prediction\": 0.0}",
+        "{\"test\": \"blind_prediction\", \"law\": \"central\", \"fraction\": 0.0625, \"pitch\": 0.9975236660910706, \"q\": 0.06234522913069191, \"gap\": 1.0, \"radial_read_at\": 1.0019415789333022, \"predicted\": 0.1855806129796266, \"normalized\": 0.0618630898597873, \"coarse_prediction\": 0.18558530801512022}",
+        "{\"test\": \"blind_prediction\", \"law\": \"central\", \"fraction\": 0.125, \"pitch\": 0.9975236660910706, \"q\": 0.12469045826138382, \"gap\": 1.0, \"radial_read_at\": 1.0077438714184443, \"predicted\": 0.37111432653174037, \"normalized\": 0.12371054584784621, \"coarse_prediction\": 0.3711251986965246}",
+        "{\"test\": \"blind_prediction\", \"law\": \"central\", \"fraction\": -0.125, \"pitch\": 0.9975236660910706, \"q\": -0.12469045826138382, \"gap\": 1.0, \"radial_read_at\": 1.0077438714184443, \"predicted\": -0.37111432653174037, \"normalized\": -0.12371054584784621, \"coarse_prediction\": -0.3711251986965246}",
+        "{\"test\": \"blind_prediction\", \"law\": \"layered\", \"fraction\": 0.0, \"pitch\": 0.9939079571836641, \"q\": 0.0, \"gap\": 1.0, \"radial_read_at\": 1.0, \"predicted\": 0.0, \"normalized\": 0.0, \"coarse_prediction\": 0.0}",
+        "{\"test\": \"blind_prediction\", \"law\": \"layered\", \"fraction\": 0.0625, \"pitch\": 0.9939079571836641, \"q\": 0.062119247323979006, \"gap\": 1.0, \"radial_read_at\": 1.0000074451444319, \"predicted\": 0.0014245400645670374, \"normalized\": 0.00047486883790416476, \"coarse_prediction\": 0.0014245392058974563}",
+        "{\"test\": \"blind_prediction\", \"law\": \"layered\", \"fraction\": 0.125, \"pitch\": 0.9939079571836641, \"q\": 0.12423849464795801, \"gap\": 1.0, \"radial_read_at\": 1.0001191156600817, \"predicted\": 0.01139775192894796, \"normalized\": 0.0037994278629604424, \"coarse_prediction\": 0.011397650069970282}",
+        "{\"test\": \"blind_prediction\", \"law\": \"layered\", \"fraction\": -0.125, \"pitch\": 0.9939079571836641, \"q\": -0.12423849464795801, \"gap\": 1.0, \"radial_read_at\": 1.0001191156600817, \"predicted\": -0.01139775192894796, \"normalized\": -0.0037994278629604424, \"coarse_prediction\": -0.011397650069970282}"
+      ]
+    },
+    "neutral_patch_hold817_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_hold.py",
+        "measure",
+        "_scratch/s11c/neutral_patch_material/predictions.json",
+        "--seed",
+        "817",
+        "--frames",
+        "_scratch/s11c/neutral_patch_material/frames817.json"
+      ],
+      "guard_exit": 1,
+      "child_exit": 1,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "limits_verified": true,
+      "source_version": "original instruments",
+      "stdout_sha256": "a57fcd200b5df68b2ca8cf70632cb5447e61fe5ca4e6b2aad442fe441e1c5db9",
+      "literal_stdout": [
+        "{\"test\": \"prediction_file\", \"sha256\": \"9ed49baea775459cef8e8a82ea933e816491c514a4e11ba9a7e300ce64a4cb84\", \"seed\": 817}",
+        "{\"test\": \"material_patch\", \"seed\": 817, \"law\": \"central\", \"constituents_per_layer\": 12, \"initial_energy\": 324.56120871429243, \"minimum_energy\": -51.17068471896938, \"measured_pitch\": 0.9939382294984583, \"tag\": [4, 13], \"tag_offset_before_clamp\": 0.22519877857200546, \"observed_model_time\": 2.0, \"dt\": 0.0005, \"kBT\": 0.008, \"initial_connected_components\": 1, \"persistent_components\": 1, \"interplane_contacts\": {\"0.4\": [7, 7], \"0.5\": [7, 4], \"0.6\": [3, 2]}, \"tag_survived\": {\"0.4\": true, \"0.5\": true, \"0.6\": false}, \"max_free_gradient\": 6.119181080010971e-06}",
+        "{\"test\": \"held_sites\", \"law\": \"central\", \"seed\": 817, \"ids\": [4, 13], \"tagged_pair_persistent\": false, \"fraction\": 0.0, \"observed_xy\": [0.0, 0.0], \"check_patch_pitch\": 0.9939382294984583, \"reference_pitch\": 0.9975236660910706, \"total_holding\": 0.6024458705529886, \"matched_other_material\": 0.6024458710266837, \"single_contact\": -4.736950831585318e-10, \"normalized\": -1.5790572638529192e-10, \"predicted\": 0.0, \"reading_minus_prediction\": -4.736950831585318e-10, \"half_step_meter_change\": -4.736950831585318e-10, \"site_force_discrepancy\": 4.736950831585318e-10, \"action_reaction_error\": 0.0, \"tag_still_registered\": true, \"max_spectator_gradient\": 5.178818777151761e-07}",
+        "{\"test\": \"held_sites\", \"law\": \"central\", \"seed\": 817, \"ids\": [4, 13], \"tagged_pair_persistent\": false, \"fraction\": 0.0625, \"observed_xy\": [0.06234522913069196, 0.0], \"check_patch_pitch\": 0.9939382294984583, \"reference_pitch\": 0.9975236660910706, \"total_holding\": -0.8226844727824791, \"matched_other_material\": -1.0082647577291937, \"single_contact\": 0.18558028494671452, \"normalized\": 0.061862980510382796, \"predicted\": 0.1855806129796266, \"reading_minus_prediction\": -3.2803291208360896e-07, \"half_step_meter_change\": -2.368475415792659e-10, \"site_force_discrepancy\": 2.328357506797829e-10, \"action_reaction_error\": 0.0, \"tag_still_registered\": true, \"max_spectator_gradient\": 7.771776701383277e-07}",
+        "{\"test\": \"held_sites\", \"law\": \"central\", \"seed\": 817, \"ids\": [4, 13], \"tagged_pair_persistent\": false, \"fraction\": 0.125, \"observed_xy\": [0.12469045826138381, 0.0], \"check_patch_pitch\": 0.9939382294984583, \"reference_pitch\": 0.9975236660910706, \"total_holding\": -0.5150788374190066, \"matched_other_material\": -0.886182664731431, \"single_contact\": 0.3711038273124244, \"normalized\": 0.12370704594482525, \"predicted\": 0.37111432653174037, \"reading_minus_prediction\": -1.0499219315951436e-05, \"half_step_meter_change\": 7.105427357601002e-10, \"site_force_discrepancy\": 5.06323538651543e-10, \"action_reaction_error\": 2.220446049250313e-16, \"tag_still_registered\": true, \"max_spectator_gradient\": 1.820727021081825e-06}",
+        "{\"test\": \"held_sites\", \"law\": \"central\", \"seed\": 817, \"ids\": [4, 13], \"tagged_pair_persistent\": false, \"fraction\": -0.125, \"observed_xy\": [-0.12469045826138381, 0.0], \"check_patch_pitch\": 0.9939382294984583, \"reference_pitch\": 0.9975236660910706, \"total_holding\": 0.45095148563471327, \"matched_other_material\": 0.8220553124734425, \"single_contact\": -0.3711038268387293, \"normalized\": -0.1237070457869195, \"predicted\": -0.37111432653174037, \"reading_minus_prediction\": 1.0499693011090105e-05, \"half_step_meter_change\": -2.368475415792659e-10, \"site_force_discrepancy\": 3.2628344470708726e-11, \"action_reaction_error\": 1.6653345369377348e-16, \"tag_still_registered\": true, \"max_spectator_gradient\": 1.1188888269231256e-06}"
+      ],
+      "stop": "ArithmeticError: No strongly registered interplane contact after assembly",
+      "interpretation": "Central tag produced a complete set of clamp lines but failed the strict persistence criterion. Layered preparation had no eligible tag at relaxation. Its connectivity history is completed in neutral_patch_no_tag817_01; no layered clamp is assigned."
+    },
+    "neutral_patch_hold1321_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_hold.py",
+        "measure",
+        "_scratch/s11c/neutral_patch_material/predictions.json",
+        "--seed",
+        "1321",
+        "--frames",
+        "_scratch/s11c/neutral_patch_material/frames1321.json"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "limits_verified": true,
+      "source_version": "original instruments",
+      "stdout_sha256": "f189aedd75a7876b805e57a746bfb768f38900cf68d26aef6907d9dd3c27a85b",
+      "literal_stdout": [
+        "{\"test\": \"prediction_file\", \"sha256\": \"9ed49baea775459cef8e8a82ea933e816491c514a4e11ba9a7e300ce64a4cb84\", \"seed\": 1321}",
+        "{\"test\": \"material_patch\", \"seed\": 1321, \"law\": \"central\", \"constituents_per_layer\": 12, \"initial_energy\": 683.9621382390395, \"minimum_energy\": -52.165182170256, \"measured_pitch\": 0.9974840502699172, \"tag\": [5, 12], \"tag_offset_before_clamp\": 0.039011054125948394, \"observed_model_time\": 2.0, \"dt\": 0.0005, \"kBT\": 0.008, \"initial_connected_components\": 1, \"persistent_components\": 1, \"interplane_contacts\": {\"0.4\": [9, 9], \"0.5\": [9, 9], \"0.6\": [9, 9]}, \"tag_survived\": {\"0.4\": true, \"0.5\": true, \"0.6\": true}, \"max_free_gradient\": 1.3193337143127537e-06}",
+        "{\"test\": \"held_sites\", \"law\": \"central\", \"seed\": 1321, \"ids\": [5, 12], \"tagged_pair_persistent\": true, \"fraction\": 0.0, \"observed_xy\": [0.0, 0.0], \"check_patch_pitch\": 0.9974840502699172, \"reference_pitch\": 0.9975236660910706, \"total_holding\": 0.10063019608708144, \"matched_other_material\": 0.10063019561338628, \"single_contact\": 4.736951664252587e-10, \"normalized\": 1.5790575414216223e-10, \"predicted\": 0.0, \"reading_minus_prediction\": 4.736951664252587e-10, \"half_step_meter_change\": 4.736951664252587e-10, \"site_force_discrepancy\": 4.736951664252587e-10, \"action_reaction_error\": 0.0, \"tag_still_registered\": true, \"max_spectator_gradient\": 1.1942560367780852e-06}",
+        "{\"test\": \"held_sites\", \"law\": \"central\", \"seed\": 1321, \"ids\": [5, 12], \"tagged_pair_persistent\": true, \"fraction\": 0.0625, \"observed_xy\": [0.062345229130691904, 0.0], \"check_patch_pitch\": 0.9974840502699172, \"reference_pitch\": 0.9975236660910706, \"total_holding\": 0.2549483339109315, \"matched_other_material\": 0.06936804896421715, \"single_contact\": 0.18558028494671436, \"normalized\": 0.06186298051038274, \"predicted\": 0.1855806129796266, \"reading_minus_prediction\": -3.280329122501424e-07, \"half_step_meter_change\": -2.3684759709041714e-10, \"site_force_discrepancy\": 2.328357229242073e-10, \"action_reaction_error\": 5.551115123125783e-17, \"tag_still_registered\": true, \"max_spectator_gradient\": 7.214637807919505e-07}",
+        "{\"test\": \"held_sites\", \"law\": \"central\", \"seed\": 1321, \"ids\": [5, 12], \"tagged_pair_persistent\": true, \"fraction\": 0.125, \"observed_xy\": [0.12469045826138381, 0.0], \"check_patch_pitch\": 0.9974840502699172, \"reference_pitch\": 0.9975236660910706, \"total_holding\": 0.8841518905455813, \"matched_other_material\": 0.5130480636476401, \"single_contact\": 0.3711038268979412, \"normalized\": 0.12370704580665773, \"predicted\": 0.37111432653174037, \"reading_minus_prediction\": -1.0499633799176955e-05, \"half_step_meter_change\": 4.736951941808343e-10, \"site_force_discrepancy\": 9.184009108764712e-11, \"action_reaction_error\": 0.0, \"tag_still_registered\": true, \"max_spectator_gradient\": 9.484479349085306e-07}",
+        "{\"test\": \"held_sites\", \"law\": \"central\", \"seed\": 1321, \"ids\": [5, 12], \"tagged_pair_persistent\": true, \"fraction\": -0.125, \"observed_xy\": [-0.12469045826138381, 0.0], \"check_patch_pitch\": 0.9974840502699172, \"reference_pitch\": 0.9975236660910706, \"total_holding\": -0.884149943244002, \"matched_other_material\": -0.5130461164052728, \"single_contact\": -0.3711038268387292, \"normalized\": -0.12370704578691948, \"predicted\": -0.37111432653174037, \"reading_minus_prediction\": 1.0499693011145617e-05, \"half_step_meter_change\": -2.368475415792659e-10, \"site_force_discrepancy\": 3.262823344840626e-11, \"action_reaction_error\": 1.1102230246251565e-16, \"tag_still_registered\": true, \"max_spectator_gradient\": 1.3855481369312583e-06}",
+        "{\"test\": \"material_patch\", \"seed\": 1321, \"law\": \"layered\", \"constituents_per_layer\": 12, \"initial_energy\": 681.4868386538151, \"minimum_energy\": -55.70034298679341, \"measured_pitch\": 0.9916451648138633, \"tag\": [2, 23], \"tag_offset_before_clamp\": 0.3286051021005592, \"observed_model_time\": 2.0, \"dt\": 0.0005, \"kBT\": 0.008, \"initial_connected_components\": 1, \"persistent_components\": 1, \"interplane_contacts\": {\"0.4\": [11, 9], \"0.5\": [11, 9], \"0.6\": [11, 9]}, \"tag_survived\": {\"0.4\": true, \"0.5\": true, \"0.6\": true}, \"max_free_gradient\": 1.2084509934118248e-06}",
+        "{\"test\": \"held_sites\", \"law\": \"layered\", \"seed\": 1321, \"ids\": [2, 23], \"tagged_pair_persistent\": true, \"fraction\": 0.0, \"observed_xy\": [0.0, 0.0], \"check_patch_pitch\": 0.9916451648138633, \"reference_pitch\": 0.9939079571836641, \"total_holding\": 0.31885553273269807, \"matched_other_material\": 0.31885553273269807, \"single_contact\": 0.0, \"normalized\": 0.0, \"predicted\": 0.0, \"reading_minus_prediction\": 0.0, \"half_step_meter_change\": 0.0, \"site_force_discrepancy\": 0.0, \"action_reaction_error\": 0.0, \"tag_still_registered\": true, \"max_spectator_gradient\": 1.3255242837378889e-06}",
+        "{\"test\": \"held_sites\", \"law\": \"layered\", \"seed\": 1321, \"ids\": [2, 23], \"tagged_pair_persistent\": true, \"fraction\": 0.0625, \"observed_xy\": [0.06211924732397911, 0.0], \"check_patch_pitch\": 0.9916451648138633, \"reference_pitch\": 0.9939079571836641, \"total_holding\": -1.853515261629468, \"matched_other_material\": -1.8549398021150407, \"single_contact\": 0.0014245404855728339, \"normalized\": 0.00047486897824597634, \"predicted\": 0.0014245400645670374, \"reading_minus_prediction\": 4.2100579641414504e-10, \"half_step_meter_change\": 0.0, \"site_force_discrepancy\": 1.2797340964709747e-10, \"action_reaction_error\": 2.220446049250313e-16, \"tag_still_registered\": true, \"max_spectator_gradient\": 1.0271264856420714e-06}",
+        "{\"test\": \"held_sites\", \"law\": \"layered\", \"seed\": 1321, \"ids\": [2, 23], \"tagged_pair_persistent\": true, \"fraction\": 0.125, \"observed_xy\": [0.124238494647958, 0.0], \"check_patch_pitch\": 0.9916451648138633, \"reference_pitch\": 0.9939079571836641, \"total_holding\": -1.3894532227591105, \"matched_other_material\": -1.4008510049142346, \"single_contact\": 0.011397782155124103, \"normalized\": 0.0037994379388224674, \"predicted\": 0.01139775192894796, \"reading_minus_prediction\": 3.02261761436079e-08, \"half_step_meter_change\": -4.736950831585318e-10, \"site_force_discrepancy\": 1.5161183419820645e-10, \"action_reaction_error\": 2.220446049250313e-16, \"tag_still_registered\": true, \"max_spectator_gradient\": 6.020962823871656e-07}",
+        "{\"test\": \"held_sites\", \"law\": \"layered\", \"seed\": 1321, \"ids\": [2, 23], \"tagged_pair_persistent\": true, \"fraction\": -0.125, \"observed_xy\": [-0.124238494647958, 0.0], \"check_patch_pitch\": 0.9916451648138633, \"reference_pitch\": 0.9939079571836641, \"total_holding\": 1.3894543697527217, \"matched_other_material\": 1.4008521519078458, \"single_contact\": -0.011397782155124103, \"normalized\": -0.0037994379388224674, \"predicted\": -0.01139775192894796, \"reading_minus_prediction\": -3.02261761436079e-08, \"half_step_meter_change\": 4.736950831585318e-10, \"site_force_discrepancy\": 1.5161161215360153e-10, \"action_reaction_error\": 2.220446049250313e-16, \"tag_still_registered\": true, \"max_spectator_gradient\": 8.264116921484689e-07}"
+      ]
+    },
+    "neutral_patch_no_tag817_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_hold.py",
+        "measure",
+        "_scratch/s11c/neutral_patch_material/predictions.json",
+        "--seed",
+        "817",
+        "--law",
+        "layered",
+        "--frames",
+        "_scratch/s11c/neutral_patch_material/frames817_layered.json"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "limits_verified": true,
+      "source_version": "see script and source hashes",
+      "stdout_sha256": "e1f26127328cdc4384e9fcd36ca4fd63ce7bd06fb30d777c906715c5b200e14d",
+      "literal_stdout": [
+        "{\"test\": \"prediction_file\", \"sha256\": \"9ed49baea775459cef8e8a82ea933e816491c514a4e11ba9a7e300ce64a4cb84\", \"seed\": 817}",
+        "{\"test\": \"material_patch\", \"seed\": 817, \"law\": \"layered\", \"constituents_per_layer\": 12, \"initial_energy\": 322.8093500504152, \"minimum_energy\": -55.91379545032112, \"measured_pitch\": 0.9935252655553047, \"tag\": null, \"tag_offset_before_clamp\": null, \"observed_model_time\": 2.0, \"dt\": 0.0005, \"kBT\": 0.008, \"initial_connected_components\": 1, \"persistent_components\": 2, \"interplane_contacts\": {\"0.4\": [10, 0], \"0.5\": [10, 0], \"0.6\": [0, 0]}, \"tag_survived\": {\"0.4\": null, \"0.5\": null, \"0.6\": null}, \"max_free_gradient\": 6.387949005592919e-07}",
+        "{\"test\": \"clamp_unavailable\", \"seed\": 817, \"law\": \"layered\", \"reason\": \"no eligible initial tag\"}"
+      ]
+    },
+    "neutral_patch_independent_review02": {
+      "command": [
+        "python3",
+        "_scratch/neutral_patch_independent_review.py"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "limits_verified": true,
+      "source_version": "see script and source hashes",
+      "stdout_sha256": "f0716cde82bea737315c1431948908be019c1166fe71fae21102d2a87cf2c89f",
+      "literal_stdout": [
+        "prediction_hash 9ed49baea775459cef8e8a82ea933e816491c514a4e11ba9a7e300ce64a4cb84",
+        "normal_calibration_max_curve_error_peak 1.4816247784210645e-07 2.999860078197636",
+        "one_eighth central total 0.884151890921023 control 0.5130480641149217 pair 0.37110382680610104 q [0.12469045826138381, 0.0] blind_minus_analytic 1.0499725639323554e-05",
+        "complex_step_max_errors central 3.9995007306004027e-10 4.672815467898772e-10 4.736951664252587e-10",
+        "one_eighth layered total -1.3894532229369998 control -1.4008510052437353 pair 0.011397782306735669 q [0.124238494647958, 0.0] blind_minus_analytic -3.0377787708923965e-08",
+        "complex_step_max_errors layered 4.86160889323628e-10 3.3454927717002647e-10 1.5161156531606768e-10",
+        "history 191 central start [11, 11, 11] persistent [11, 11, 11] components 1 tag [9, 16] tag_survived [True, True, True] min_bound_fraction_prequench 0.7827188006794915",
+        "history 191 layered start [11, 11, 5] persistent [0, 0, 0] components 2 tag [11, 17] tag_survived [False, False, False] min_bound_fraction_prequench 0.5236176545748288",
+        "history 817 central start [7, 7, 3] persistent [7, 4, 2] components 1 tag [4, 13] tag_survived [True, True, False] min_bound_fraction_prequench 0.5583501360031262",
+        "history 817 layered start [10, 10, 0] persistent [0, 0, 0] components 2 tag [] tag_survived None min_bound_fraction_prequench None",
+        "history 1321 central start [9, 9, 9] persistent [9, 9, 9] components 1 tag [5, 12] tag_survived [True, True, True] min_bound_fraction_prequench 0.771944390174582",
+        "history 1321 layered start [11, 11, 11] persistent [9, 9, 9] components 1 tag [2, 23] tag_survived [True, True, True] min_bound_fraction_prequench 0.7322568446667785"
+      ]
+    },
+    "neutral_patch_half_step_review01": {
+      "command": [
+        "python3",
+        "_scratch/neutral_patch_half_step_review.py"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "limits_verified": true,
+      "source_version": "see script and source hashes",
+      "stdout_sha256": "92241cf604b6acd52a6b56887e456bb63726c6ffed7c8e8d72e9a491de0c127c",
+      "literal_stdout": [
+        "initial_and_minimum central raw [(3, 19), (7, 13)] relaxed [(1, 21), (2, 23), (3, 20), (4, 16), (5, 12), (6, 18), (7, 13), (10, 17), (11, 15)] new [(1, 21), (2, 23), (3, 20), (4, 16), (5, 12), (6, 18), (10, 17), (11, 15)] tag (5, 12)",
+        "half_step_survival central counts [9, 9, 9] components 1 tagged [True, True, True]",
+        "initial_and_minimum layered raw [(1, 21), (3, 19), (5, 12), (6, 17), (7, 13), (11, 15)] relaxed [(1, 12), (2, 23), (3, 14), (4, 22), (5, 20), (6, 18), (7, 19), (8, 16), (9, 21), (10, 15), (11, 13)] new [(1, 12), (2, 23), (3, 14), (4, 22), (5, 20), (6, 18), (7, 19), (8, 16), (9, 21), (10, 15), (11, 13)] tag (2, 23)",
+        "half_step_survival layered counts [9, 9, 9] components 1 tagged [True, True, True]"
+      ]
+    }
+  },
+  "replay_sources": {
+    "_scratch/s11c/neutral_patch_material/first_sources/neutral_patch_sites.py": "\"\"\"Zero-charge, zero-intake material patch with mobile sites on two parallel planes.\n\nAll pairs on/in between the planes interact. No sites, bonds, edges of a rigid\npad, or registry phases are prescribed in the tangent plane. The planes and\nthe finite number of constituents on each one are part of the hypothesis.\n\"\"\"\nimport argparse\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nfrom scipy.optimize import minimize\nfrom scipy.sparse.csgraph import connected_components\n\n\nCOUNT = 12\nGAP = 1.\nPITCH_UNIT = 1.  # Isolated same-plane preferred distance; the patch pitch is measured.\nWITHIN = (1., 7., PITCH_UNIT)  # well energy, inverse range, rest length\nBETWEEN = (.6, 10., .94)\nSTEP = .0005\nSAMPLES = 4000\nTEMPERATURE = .008  # k_B T in the within-plane well-energy unit\nLAWS = (\"central\", \"layered\")\n\n\ndef emit(**row):\n    print(json.dumps(row, allow_nan=False), flush=True)\n\n\ndef morse(r, depth, alpha, length):\n    weight = np.exp(-alpha*(r-length))\n    return depth*weight*(weight-2), 2*depth*alpha*weight*(1-weight)\n\n\nclass Patch:\n    def __init__(self, law):\n        if law not in LAWS:\n            raise ValueError(\"Unknown interplane interaction\")\n        self.law = law\n        self.i, self.j = np.triu_indices(2*COUNT, 1)\n        self.cross = (self.i < COUNT) & (self.j >= COUNT)\n        self.depth, self.alpha, self.length = [\n            np.where(self.cross, cross, same) for cross, same in zip(BETWEEN, WITHIN, strict=True)]\n\n    def evaluate(self, points, removed=None):\n        delta = points[self.j]-points[self.i]\n        tangent_sq = np.einsum(\"ij,ij->i\", delta, delta)\n        radius_sq = tangent_sq.copy()\n        projection = np.ones_like(radius_sq)\n        if self.law == \"layered\":\n            radius_sq[self.cross] = tangent_sq[self.cross]**2/PITCH_UNIT**2\n            projection[self.cross] = 2*tangent_sq[self.cross]/PITCH_UNIT**2\n        radius_sq[self.cross] += GAP**2\n        radius = np.sqrt(radius_sq)\n        if np.any(radius == 0):\n            raise ArithmeticError(\"Coincident in-plane particles\")\n        energy, radial_derivative = morse(radius, self.depth, self.alpha, self.length)\n        if removed is not None:\n            energy[removed] = radial_derivative[removed] = 0.\n        gradients = delta*(projection*radial_derivative/radius)[:,None]\n        nodal = np.stack([np.bincount(self.j, weights=g, minlength=2*COUNT) -\n                          np.bincount(self.i, weights=g, minlength=2*COUNT)\n                          for g in gradients.T], axis=1)\n        return energy, nodal, np.sqrt(tangent_sq)\n\n    def relaxed(self, positions, fixed=()):\n        free = np.ones(2*COUNT, dtype=bool)\n        free[list(fixed)] = False\n        state = positions.copy()\n\n        def objective(flat):\n            state[free] = flat.reshape(-1, 2)\n            energy, gradient, _ = self.evaluate(state)\n            return float(sum(energy)), gradient[free].ravel()\n\n        result = minimize(objective, state[free].ravel(), method=\"L-BFGS-B\", jac=True,\n                          options={\"maxiter\": 5000, \"gtol\": 3e-9, \"ftol\": 1e-15, \"maxls\": 70})\n        _, gradient = objective(result.x)\n        error = float(np.max(abs(gradient)))\n        if not result.success or error > 8e-6:\n            raise ArithmeticError(f\"Patch failed to equilibrate: {result.message}, residual {error}\")\n        return state.copy(), error\n\n    def neighbors(self, energy, distances, fraction):\n        # Every sufficiently deeply bound same-plane pair is in the network.\n        # Between planes a registered link also has to be mutual nearest in x,y.\n        pair_distance = distances[self.cross].reshape(COUNT, COUNT)\n        lower = np.arange(COUNT)\n        upper = pair_distance.argmin(axis=1)\n        mutual = pair_distance.argmin(axis=0)[upper] == lower\n        cross_links = np.zeros((COUNT, COUNT), dtype=bool)\n        cross_links[lower[mutual], upper[mutual]] = True\n        active = energy < -fraction*self.depth\n        active[self.cross] &= cross_links.ravel()\n        return active\n\n    def pitch(self, distances):\n        same = ~self.cross\n        nearest = np.full(2*COUNT, np.inf)\n        np.minimum.at(nearest, self.i[same], distances[same])\n        np.minimum.at(nearest, self.j[same], distances[same])\n        return float(np.median(nearest))\n\n    def component_count(self, edges):\n        graph = np.zeros((2*COUNT, 2*COUNT), dtype=bool)\n        graph[self.i[edges], self.j[edges]] = True\n        return int(connected_components(graph, directed=False, return_labels=False))\n\n\ndef initial(seed):\n    rng = np.random.default_rng(seed)\n    planes = []\n    for _ in range(2):\n        points = []\n        while len(points) < COUNT:\n            trial = rng.uniform(-2.1, 2.1, 2)\n            if trial@trial < 2.1**2 and all(np.linalg.norm(trial-p) > .62 for p in points):\n                points.append(trial)\n        planes.extend(points)\n    return np.array(planes)\n\n\ndef prepare(patch, seed):\n    raw = initial(seed)\n    start, residual = patch.relaxed(raw)\n    raw_energy = patch.evaluate(raw)[0].sum()\n    energy, gradient, distances = patch.evaluate(start)\n    final_energy = energy.sum()\n    fractions = (.4, .5, .6)\n    survivors = {f: patch.neighbors(energy, distances, f) for f in fractions}\n    counts = {f: int(sum(edges & patch.cross)) for f, edges in survivors.items()}\n    initial_components = patch.component_count(survivors[.5])\n    eligible = np.flatnonzero(survivors[.6] & patch.cross)\n    if not len(eligible):\n        raise ArithmeticError(\"No strongly registered interplane contact after assembly\")\n    mid = (start[patch.i[eligible]] + start[patch.j[eligible]])/2\n    tagged = int(eligible[np.linalg.norm(mid-start.mean(axis=0), axis=1).argmin()])\n    # Brownian dynamics at unit mobility. Record identity at every integration\n    # step. The tag is chosen at the first minimum, before the survival test.\n    rng = np.random.default_rng(seed+10000)\n    state = start.copy()\n    noise = np.sqrt(2*TEMPERATURE*STEP)\n    for _ in range(SAMPLES):\n        state += -STEP*gradient + noise*rng.normal(size=state.shape)\n        energy, gradient, distances = patch.evaluate(state)\n        for f in fractions:\n            survivors[f] &= patch.neighbors(energy, distances, f)\n    rested, final_residual = patch.relaxed(state)\n    e_end, _, d_end = patch.evaluate(rested)\n    for f in fractions:\n        survivors[f] &= patch.neighbors(e_end, d_end, f)\n    summary = dict(seed=seed, law=patch.law, constituents_per_layer=COUNT,\n                   initial_energy=float(raw_energy), minimum_energy=float(final_energy),\n                   measured_pitch=patch.pitch(d_end), tag=[int(patch.i[tagged]), int(patch.j[tagged])],\n                   tag_offset_before_clamp=float(d_end[tagged]),\n                   observed_model_time=SAMPLES*STEP, dt=STEP, kBT=TEMPERATURE,\n                   initial_connected_components=initial_components,\n                   persistent_components=patch.component_count(survivors[.5]),\n                   interplane_contacts={str(f): [counts[f], int(sum(edges & patch.cross))]\n                                        for f, edges in survivors.items()},\n                   tag_survived={str(f): bool(edges[tagged]) for f, edges in survivors.items()},\n                   max_free_gradient=max(residual, final_residual))\n    emit(test=\"material_patch\", **summary)\n    return rested, tagged, summary\n\n\ndef radial_calibration():\n    # Independent isolated neutral pair, normal extension only. The virtual\n    # work instrument reads potential energies on opposite sides of each gap.\n    grid = np.linspace(.90, 1.40, 251)\n    h = 1e-5\n    high = morse(grid+h, *BETWEEN)[0]\n    low = morse(grid-h, *BETWEEN)[0]\n    return grid, (high-low)/(2*h)\n\n\ndef calibrate(path):\n    grid, tension = radial_calibration()\n    data = {\"normal_separations\": grid.tolist(), \"normal_tensions\": tension.tolist(),\n            \"force_unit_measured\": float(tension.max()), \"gap\": GAP,\n            \"layered_crossover_length\": PITCH_UNIT, \"patches\": {}}\n    for law in LAWS:\n        _, _, result = prepare(Patch(law), 191)\n        data[\"patches\"][law] = result\n    path.write_text(json.dumps(data, allow_nan=False)+\"\\n\")\n    emit(test=\"independent_tensile_calibration\", samples=len(grid),\n         normal_tension_at_gap=float(tension[np.argmin(abs(grid-GAP))]),\n         sampled_maximum_tension=data[\"force_unit_measured\"], gap=GAP)\n\n\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"--calibration\", required=True, type=Path)\n    calibrate(parser.parse_args().calibration)\n",
+    "_scratch/s11c/neutral_patch_material/first_sources/neutral_patch_hold.py": "\"\"\"Predict from neutral calibration first, then clamp a separately assembled patch.\"\"\"\nimport argparse\nimport hashlib\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nfrom scipy.interpolate import PchipInterpolator\n\n\ndef emit(**row):\n    print(json.dumps(row, allow_nan=False), flush=True)\n\n\ndef predict(source, destination):\n    # Only the reference patch metrology and axial tension readings enter.\n    # The extrapolation from axial to tangential response is a hypothesis.\n    raw = source.read_bytes()\n    material = json.loads(raw)\n    grid = material[\"normal_separations\"]\n    force = material[\"normal_tensions\"]\n    fine = PchipInterpolator(grid, force, extrapolate=False)\n    coarse = PchipInterpolator(grid[::2], force[::2], extrapolate=False)\n    gap = material[\"gap\"]\n    scale = material[\"force_unit_measured\"]\n    length = material[\"layered_crossover_length\"]\n    predictions = []\n    for law, patch in material[\"patches\"].items():\n        pitch = patch[\"measured_pitch\"]\n        for fraction in (0., .0625, .125, -.125):\n            q = fraction*pitch\n            if law == \"central\":\n                radius = np.hypot(gap, q)\n                jacobian = q/radius\n            elif law == \"layered\":\n                radius = np.hypot(gap, q*q/length)\n                jacobian = 2*q**3/(length**2*radius)\n            else:\n                raise ValueError(\"Unknown calibration\")\n            estimate = float(fine(radius)*jacobian)\n            row = dict(law=law, fraction=fraction, pitch=pitch, q=q, gap=gap,\n                       radial_read_at=float(radius), predicted=estimate,\n                       normalized=estimate/scale, coarse_prediction=float(coarse(radius)*jacobian))\n            emit(test=\"blind_prediction\", **row)\n            predictions.append(row)\n    payload = dict(source_hash=hashlib.sha256(raw).hexdigest(), force_scale=scale, readings=predictions)\n    destination.write_text(json.dumps(payload, allow_nan=False)+\"\\n\")\n\n\ndef centered_force(patch, positions, ids, removed):\n    # Virtual translation of both tagged sites at fixed midpoint. Spectators\n    # and grips are at the identical configuration for the control and signal.\n    left, right = ids\n    diff = np.zeros_like(positions)\n    diff[left,0], diff[right,0] = -.5, .5\n    def gauge(step):\n        energy = patch.evaluate(positions+step*diff, removed)[0]\n        return float(energy.sum())\n    h = 2e-5\n    coarse = (gauge(h)-gauge(-h))/(2*h)\n    fine = (gauge(h/2)-gauge(-h/2))/h\n    return (4*fine-coarse)/3, coarse\n\n\ndef measure(source, seed, frames):\n    from neutral_patch_sites import LAWS, Patch, prepare\n\n    raw = source.read_bytes()\n    frozen = json.loads(raw)\n    emit(test=\"prediction_file\", sha256=hashlib.sha256(raw).hexdigest(), seed=seed)\n    archive = {}\n    for law in LAWS:\n        patch = Patch(law)\n        rested, tag, summary = prepare(patch, seed)\n        ids = summary[\"tag\"]\n        left, right = ids\n        midpoint = (rested[left]+rested[right])/2\n        calibration = [r for r in frozen[\"readings\"] if r[\"law\"] == law]\n        archive[law] = {\"rested_xy\": rested.tolist(), \"sites\": ids, \"held_states\": []}\n        for reading in calibration:\n            q = reading[\"q\"]\n            start = rested.copy()\n            start[ids] = midpoint+np.array([[-q/2, 0.], [q/2, 0.]])\n            held, residual = patch.relaxed(start, ids)\n            energy, gradient, distances = patch.evaluate(held)\n            _, control_gradient, _ = patch.evaluate(held, removed=tag)\n            intact = bool(patch.neighbors(energy, distances, .6)[tag])\n            total, total_coarse = centered_force(patch, held, ids, None)\n            control, control_coarse = centered_force(patch, held, ids, tag)\n            measured = total-control\n            site_force = gradient-control_gradient\n            observed = held[right]-held[left]\n            balance = float(max(abs(site_force[right]+site_force[left])))\n            force_error = max(abs(measured-site_force[right,0]), abs(measured+site_force[left,0]))\n            emit(test=\"held_sites\", law=law, seed=seed, ids=ids, tagged_pair_persistent=summary[\"tag_survived\"][\"0.6\"],\n                 fraction=reading[\"fraction\"], observed_xy=observed.tolist(),\n                 check_patch_pitch=summary[\"measured_pitch\"], reference_pitch=reading[\"pitch\"],\n                 total_holding=total, matched_other_material=control, single_contact=measured,\n                 normalized=measured/frozen[\"force_scale\"], predicted=reading[\"predicted\"],\n                 reading_minus_prediction=measured-reading[\"predicted\"],\n                 half_step_meter_change=measured-(total_coarse-control_coarse),\n                 site_force_discrepancy=float(force_error), action_reaction_error=balance,\n                 tag_still_registered=intact, max_spectator_gradient=residual)\n            archive[law][\"held_states\"].append({\"fraction\": reading[\"fraction\"], \"xy\": held.tolist()})\n            if np.max(abs(observed-[q,0.])) > 1e-12 or force_error > 5e-8 or balance > 1e-10:\n                raise ArithmeticError(\"Clamp alignment or virtual-work readout failed\")\n    frames.write_text(json.dumps(archive, allow_nan=False)+\"\\n\")\n\n\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description=__doc__)\n    sub = parser.add_subparsers(dest=\"mode\", required=True)\n    train = sub.add_parser(\"predict\")\n    train.add_argument(\"calibration\", type=Path)\n    train.add_argument(\"output\", type=Path)\n    test = sub.add_parser(\"measure\")\n    test.add_argument(\"predictions\", type=Path)\n    test.add_argument(\"--seed\", required=True, type=int)\n    test.add_argument(\"--frames\", required=True, type=Path)\n    args = parser.parse_args()\n    if args.mode == \"predict\":\n        predict(args.calibration, args.output)\n    else:\n        measure(args.predictions, args.seed, args.frames)\n",
+    "_scratch/neutral_patch_independent_review.py": "\"\"\"Independent scalar-energy virtual work and link-history reviews of neutral patches.\"\"\"\nfrom pathlib import Path\nimport hashlib\nimport json\nimport sys\n\nimport numpy as np\nfrom scipy.sparse.csgraph import connected_components\n\nsys.path.insert(0, str(Path(\"software/stage1_solver/tools\").resolve()))\nfrom neutral_patch_sites import Patch, initial\n\n\nscratch = Path(\"_scratch/s11c\")\nframes = json.loads((scratch / \"neutral_patch_material/frames1321.json\").read_text())\ncal = json.loads((scratch / \"neutral_patch_material/calibration.json\").read_text())\npred_file = scratch / \"neutral_patch_material/predictions.json\"\nsamples = json.loads(pred_file.read_text())\nassert samples[\"source_hash\"] == hashlib.sha256(\n    (scratch / \"neutral_patch_material/calibration.json\").read_bytes()).hexdigest()\npinned = hashlib.sha256(pred_file.read_bytes()).hexdigest()\nprim = {}\nfor seed in (817, 1321):\n    stdout = scratch / f\"neutral_patch_hold{seed}_01/stdout\"\n    for row in map(json.loads, stdout.read_text().splitlines()):\n        if row[\"test\"] == \"prediction_file\":\n            assert row[\"sha256\"] == pinned\n        if row[\"test\"] == \"held_sites\":\n            prim[seed,row[\"law\"],row[\"fraction\"]] = row\nprint(\"prediction_hash\", pinned, flush=True)\n\n\ndef bonded(r, e, k, l):\n    # Expanding the square makes the potential energy evaluable by complex step.\n    p = np.expm1(-k*(r-l))\n    return e*(p*p-1)\n\n\ndef isolated_tension(r):\n    return bonded(r+1.e-20j, .6, 10., .94).imag*1.e20\n\n\ngaps = np.array(cal[\"normal_separations\"])\nax = isolated_tension(gaps)\nprint(\"normal_calibration_max_curve_error_peak\",\n      float(max(abs(ax-cal[\"normal_tensions\"]))), float(max(ax)), flush=True)\nassert max(abs(ax-cal[\"normal_tensions\"])) < 2e-7\n\nfor law, frame in frames.items():\n    left, right = frame[\"sites\"]\n    max_total_error = max_control_error = max_pair_error = 0.\n    for datum in frame[\"held_states\"]:\n        frac = datum[\"fraction\"]\n        p = np.array(datum[\"xy\"], dtype=complex)\n        p[left,0] -= .5e-20j\n        p[right,0] += .5e-20j\n        total = other = pair = 0.\n        for i in range(len(p)):\n            for j in range(i):\n                ds = p[i]-p[j]\n                h2 = np.dot(ds, ds)\n                if i//12 == j//12:\n                    value = bonded(np.sqrt(h2), 1., 7., 1.)\n                else:\n                    value = bonded(np.sqrt(1+(h2 if law == \"central\" else h2*h2)), .6, 10., .94)\n                signed = value.imag*1.e20\n                total += signed\n                if (j,i) == (left,right):\n                    pair += signed\n                else:\n                    other += signed\n        output = prim[1321,law,frac]\n        max_total_error = max(max_total_error,abs(total-output[\"total_holding\"]))\n        max_control_error = max(max_control_error,abs(other-output[\"matched_other_material\"]))\n        max_pair_error = max(max_pair_error,abs(pair-output[\"single_contact\"]))\n        if frac == .125:\n            print(\"one_eighth\", law, \"total\", total, \"control\", other, \"pair\", pair,\n                  \"q\", (p[right]-p[left]).real.tolist(),\n                  \"blind_minus_analytic\", output[\"predicted\"]-pair, flush=True)\n    print(\"complex_step_max_errors\", law, max_total_error,max_control_error,max_pair_error, flush=True)\n    assert max(max_control_error,max_total_error,max_pair_error) < 5.e-8\n\n\ncross = (np.arange(24)[:,None]//12) != (np.arange(24)[None,:]//12)\neye = np.eye(24,dtype=bool)\ne = np.where(cross,.6,1.)\nk = np.where(cross,10.,7.)\nl = np.where(cross,.94,1.)\n\n\ndef dimensions(p,law):\n    diff = p[:,None,:]-p[None,:,:]\n    xy = (diff**2).sum(axis=-1)\n    radius = np.sqrt(xy+cross if law==\"central\" else np.where(cross,1+xy**2,xy))\n    # Self-terms have zero gradient and must not enter the graph.\n    np.fill_diagonal(radius,1.)\n    m = np.expm1(-k*(radius-l))\n    rr = -2*e*k*m*(m+1)/radius\n    if law == \"layered\":\n        rr[cross] *= 2*xy[cross]\n    grad = (rr[:,:,None]*diff).sum(axis=1)\n    v = e*(m**2-1)\n    v[eye] = np.inf\n    dist = xy[:12,12:]\n    mutual = np.zeros_like(cross)\n    nearest = dist == dist.min(axis=1)[:,None]\n    nearest &= dist == dist.min(axis=0)[None,:]\n    mutual[:12,12:] = nearest\n    mutual[12:,:12] = nearest.T\n    return grad, (v[None,:,:] < -np.array([.4,.5,.6])[:,None,None]*e) & (mutual | ~cross)[None,:,:], -v/e\n\n\nfor seed in (191,817,1321):\n    for law in (\"central\",\"layered\"):\n        # Take the original minimum as a shared preparation, then evolve the\n        # noise path with independent forces and recompute all three graphs.\n        prepared = Patch(law)\n        p,_ = prepared.relaxed(initial(seed))\n        g, survival, fbound = dimensions(p,law)\n        initial_link_counts = survival[:,:12,12:].sum(axis=(1,2)).tolist()\n        tags = np.argwhere(survival[2,:12,12:])\n        ids = []\n        if len(tags):\n            tags[:,1] += 12\n            d = p[tags].mean(axis=1)-p.mean(axis=0)\n            ids = list(map(int,tags[np.sum(d**2,axis=1).argmin()]))\n        rng = np.random.default_rng(seed+10000)\n        tag_depth = (float(fbound[tuple(ids)]) if ids else None)\n        for _ in range(4000):\n            p += -.0005*g + np.sqrt(2*.008*.0005)*rng.normal(size=p.shape)\n            g, graph, fbound = dimensions(p,law)\n            survival &= graph\n            if ids:\n                tag_depth = min(tag_depth,float(fbound[tuple(ids)]))\n        p,_ = prepared.relaxed(p)\n        g, graph, _ = dimensions(p,law)\n        survival &= graph\n        end = survival[:,:12,12:].sum(axis=(1,2)).tolist()\n        components = int(connected_components(survival[1],directed=False,return_labels=False))\n        tag_survived = survival[:,ids[0],ids[1]].tolist() if ids else None\n        print(\"history\",seed,law,\"start\",initial_link_counts,\"persistent\",end,\"components\",components,\n              \"tag\",ids,\"tag_survived\",tag_survived,\"min_bound_fraction_prequench\",tag_depth,flush=True)\n        if seed==1321:\n            assert set(ids) == set(frames[law][\"sites\"])\n            assert tag_survived == [True]*3 and components == 1\n",
+    "_scratch/neutral_patch_half_step_review.py": "\"\"\"Matched Brownian-bridge refinement and emergent identity changes in seed 1321.\"\"\"\nfrom pathlib import Path\nimport sys\nimport numpy as np\nfrom scipy.sparse.csgraph import connected_components\n\nsys.path.insert(0, str(Path(\"software/stage1_solver/tools\").resolve()))\nfrom neutral_patch_sites import Patch, initial\n\n\ndef edges(p, law, fraction):\n    off = p[:,None,:]-p[None,:,:]\n    sq = np.sum(off**2,axis=2)\n    cross = sq[:12,12:]\n    root = np.sqrt(1+(cross if law==\"central\" else cross**2))\n    xx = np.expm1(-10*(root-.94))\n    links = (xx*xx-1 < -fraction)\n    links &= (cross == cross.min(0)) & (cross == cross.min(1)[:,None])\n    whole = np.zeros((24,24),dtype=bool)\n    whole[:12,12:] = links\n    whole[12:,:12] = links.T\n    for layer in (slice(12),slice(12,24)):\n        dist = np.sqrt(sq[layer,layer])\n        uu = np.expm1(-7*(dist-1))\n        whole[layer,layer] = uu*uu-1 < -fraction\n    return whole\n\n\ndef pairs(g):\n    return {tuple(map(int,r)) for r in np.argwhere(g[:12,12:])+[0,12]}\n\n\nseed = 1321\ndt = .0005\nkbt = .008\nfor law in (\"central\",\"layered\"):\n    bare = initial(seed)\n    mech = Patch(law)\n    p,_ = mech.relaxed(bare)\n    strong = edges(p,law,.6)\n    before = pairs(edges(bare,law,.6))\n    after = pairs(strong)\n    ids = tuple(min(after, key=lambda t: np.linalg.norm(p[list(t)].mean(axis=0)-p.mean(axis=0))))\n    print(\"initial_and_minimum\",law,\"raw\",sorted(before),\"relaxed\",sorted(after),\n          \"new\",sorted(after-before),\"tag\",ids,flush=True)\n    surviving = {f:edges(p,law,f) for f in (.4,.5,.6)}\n    original_noise = np.random.default_rng(seed+10000)\n    bridge_noise = np.random.default_rng(seed+27613)\n    for step in range(4000):\n        w = np.sqrt(2*kbt*dt)*original_noise.normal(size=p.shape)\n        z = np.sqrt(2*kbt*dt)*bridge_noise.normal(size=p.shape)\n        for inc in ((w+z)*.5,(w-z)*.5):\n            p += inc - .5*dt*mech.evaluate(p)[1]\n            for f in surviving:\n                surviving[f] &= edges(p,law,f)\n    p,_ = mech.relaxed(p)\n    for f in surviving:\n        surviving[f] &= edges(p,law,f)\n    print(\"half_step_survival\",law,\"counts\",[len(pairs(g)) for g in surviving.values()],\n          \"components\",connected_components(surviving[.5],directed=False,return_labels=False),\n          \"tagged\",[bool(g[ids]) for g in surviving.values()],flush=True)\n"
+  },
+  "saved_measurements": {
+    "calibration.json": {
+      "sha256": "79c98051190c319b063a45b3712d1ff1fb54b22aa07b7db730c178a96567bf2d",
+      "contents": {
+        "normal_separations": [
+          0.9,
+          0.902,
+          0.904,
+          0.906,
+          0.908,
+          0.91,
+          0.912,
+          0.914,
+          0.916,
+          0.918,
+          0.92,
+          0.922,
+          0.924,
+          0.926,
+          0.928,
+          0.93,
+          0.932,
+          0.934,
+          0.936,
+          0.9380000000000001,
+          0.9400000000000001,
+          0.9420000000000001,
+          0.9440000000000001,
+          0.9460000000000001,
+          0.948,
+          0.95,
+          0.952,
+          0.954,
+          0.956,
+          0.958,
+          0.96,
+          0.962,
+          0.964,
+          0.966,
+          0.968,
+          0.97,
+          0.972,
+          0.974,
+          0.976,
+          0.978,
+          0.98,
+          0.982,
+          0.984,
+          0.986,
+          0.988,
+          0.99,
+          0.992,
+          0.994,
+          0.996,
+          0.998,
+          1.0,
+          1.002,
+          1.004,
+          1.006,
+          1.008,
+          1.01,
+          1.012,
+          1.014,
+          1.016,
+          1.018,
+          1.02,
+          1.022,
+          1.024,
+          1.026,
+          1.028,
+          1.03,
+          1.032,
+          1.034,
+          1.036,
+          1.038,
+          1.04,
+          1.042,
+          1.044,
+          1.046,
+          1.048,
+          1.05,
+          1.052,
+          1.054,
+          1.056,
+          1.058,
+          1.06,
+          1.062,
+          1.064,
+          1.066,
+          1.068,
+          1.07,
+          1.072,
+          1.074,
+          1.076,
+          1.078,
+          1.08,
+          1.082,
+          1.084,
+          1.086,
+          1.088,
+          1.09,
+          1.092,
+          1.0939999999999999,
+          1.096,
+          1.0979999999999999,
+          1.1,
+          1.1019999999999999,
+          1.104,
+          1.1059999999999999,
+          1.108,
+          1.1099999999999999,
+          1.112,
+          1.1139999999999999,
+          1.116,
+          1.1179999999999999,
+          1.1199999999999999,
+          1.1219999999999999,
+          1.1239999999999999,
+          1.126,
+          1.128,
+          1.13,
+          1.132,
+          1.134,
+          1.136,
+          1.138,
+          1.14,
+          1.142,
+          1.144,
+          1.146,
+          1.148,
+          1.15,
+          1.152,
+          1.154,
+          1.156,
+          1.158,
+          1.16,
+          1.162,
+          1.164,
+          1.166,
+          1.168,
+          1.17,
+          1.172,
+          1.174,
+          1.176,
+          1.178,
+          1.18,
+          1.182,
+          1.184,
+          1.186,
+          1.188,
+          1.19,
+          1.192,
+          1.194,
+          1.196,
+          1.198,
+          1.2,
+          1.202,
+          1.204,
+          1.206,
+          1.208,
+          1.21,
+          1.212,
+          1.214,
+          1.216,
+          1.218,
+          1.22,
+          1.222,
+          1.224,
+          1.226,
+          1.228,
+          1.23,
+          1.232,
+          1.234,
+          1.236,
+          1.238,
+          1.24,
+          1.242,
+          1.244,
+          1.246,
+          1.248,
+          1.25,
+          1.252,
+          1.254,
+          1.256,
+          1.258,
+          1.26,
+          1.262,
+          1.264,
+          1.266,
+          1.268,
+          1.27,
+          1.272,
+          1.274,
+          1.276,
+          1.278,
+          1.28,
+          1.282,
+          1.2839999999999998,
+          1.286,
+          1.2879999999999998,
+          1.29,
+          1.2919999999999998,
+          1.294,
+          1.2959999999999998,
+          1.298,
+          1.2999999999999998,
+          1.302,
+          1.3039999999999998,
+          1.306,
+          1.3079999999999998,
+          1.31,
+          1.3119999999999998,
+          1.314,
+          1.3159999999999998,
+          1.318,
+          1.3199999999999998,
+          1.322,
+          1.3239999999999998,
+          1.326,
+          1.3279999999999998,
+          1.33,
+          1.3319999999999999,
+          1.334,
+          1.3359999999999999,
+          1.3379999999999999,
+          1.3399999999999999,
+          1.3419999999999999,
+          1.3439999999999999,
+          1.3459999999999999,
+          1.3479999999999999,
+          1.3499999999999999,
+          1.3519999999999999,
+          1.3539999999999999,
+          1.3559999999999999,
+          1.3579999999999999,
+          1.3599999999999999,
+          1.3619999999999999,
+          1.3639999999999999,
+          1.3659999999999999,
+          1.3679999999999999,
+          1.3699999999999999,
+          1.3719999999999999,
+          1.3739999999999999,
+          1.376,
+          1.378,
+          1.38,
+          1.382,
+          1.384,
+          1.386,
+          1.388,
+          1.39,
+          1.392,
+          1.394,
+          1.396,
+          1.398,
+          1.4
+        ],
+        "normal_tensions": [
+          -8.804594918376818,
+          -8.111899714527414,
+          -7.453245688660014,
+          -6.827161829786598,
+          -6.232237503772663,
+          -5.6671200325208995,
+          -5.130512369072582,
+          -4.621170865004576,
+          -4.137903126300024,
+          -3.6795659543675803,
+          -3.2450633686786907,
+          -2.83334470797536,
+          -2.4434028068176517,
+          -2.0742722446009942,
+          -1.7250276640456972,
+          -1.3947821566162586,
+          -1.082685712017195,
+          -0.7879237293673124,
+          -0.5097155876376824,
+          -0.24731327284421842,
+          -5.999645225074346e-08,
+          0.232910752595572,
+          0.45207705854921615,
+          0.6581291102814024,
+          0.8516706393346672,
+          1.033279932083353,
+          1.2035108626129443,
+          1.3628938842324965,
+          1.5119369816518622,
+          1.6511265849672438,
+          1.7809284472536377,
+          1.9017884870686783,
+          2.014133597350032,
+          2.118372421849868,
+          2.2148961006940304,
+          2.3040789859540833,
+          2.386279328703278,
+          2.4618399384557232,
+          2.5310888163321277,
+          2.5943397626793097,
+          2.6518929604646413,
+          2.704035535217031,
+          2.751042092502542,
+          2.7931752338061773,
+          2.8306860516968952,
+          2.863814605186254,
+          2.892790375735865,
+          2.9178327052237214,
+          2.939151216013735,
+          2.95694621429976,
+          2.9714090770655006,
+          2.9827226234929722,
+          2.9910614714051538,
+          2.996592379292395,
+          2.9994745745581803,
+          2.999860068422788,
+          2.997893958134323,
+          2.9937147170006058,
+          2.987454472569428,
+          2.979239273626088,
+          2.969189346327394,
+          2.9574193398912425,
+          2.944038562419093,
+          2.929151207028968,
+          2.9128565688540937,
+          2.895249253154208,
+          2.876419375016925,
+          2.856452750843452,
+          2.8354310820877244,
+          2.8134321314182693,
+          2.790529891766313,
+          2.7667947483628326,
+          2.742293634216963,
+          2.717090179163439,
+          2.6912448528648714,
+          2.664815101838247,
+          2.6378554809497468,
+          2.610417779438934,
+          2.582551141763756,
+          2.554302183466195,
+          2.525715102252857,
+          2.4968317844903387,
+          2.467691907270808,
+          2.4383330362559574,
+          2.408790719507503,
+          2.379098577356964,
+          2.3492883885617433,
+          2.319390172880742,
+          2.289432270202729,
+          2.2594414163801257,
+          2.229442815876448,
+          2.1994602113661887,
+          2.169515950434242,
+          2.1396310494983806,
+          2.109825254954789,
+          2.080117101861678,
+          2.0505239700555067,
+          2.0210621379607163,
+          1.9917468340568953,
+          1.9625922862295806,
+          1.9336117689852659,
+          1.9048176486527455,
+          1.8762214266859754,
+          1.847833781092045,
+          1.8196646060952835,
+          1.7917230501041101,
+          1.7640175520305943,
+          1.7365558760681907,
+          1.7093451449456951,
+          1.6823918717615014,
+          1.6557019904231416,
+          1.6292808847684357,
+          1.6031334164279263,
+          1.5772639514535778,
+          1.5516763857831293,
+          1.52637416960949,
+          1.5013603306440746,
+          1.4766374963837146,
+          1.4522079153589382,
+          1.4280734774788082,
+          1.4042357334251296,
+          1.380695913229257,
+          1.3574549439648862,
+          1.3345134666928327,
+          1.3118718526022866,
+          1.2895302184484647,
+          1.2674884412769427,
+          1.2457461724776908,
+          1.224302851197956,
+          1.2031577171375818,
+          1.1823098227517481,
+          1.1617580448992915,
+          1.1415010959255067,
+          1.1215375342578382,
+          1.1018657744818472,
+          1.0824840969460292,
+          1.0633906569218476,
+          1.0445834933113518,
+          1.0260605369558085,
+          1.007819618525918,
+          0.989858476047739,
+          0.9721747620455855,
+          0.9547660503539389,
+          0.9376298425768647,
+          0.9207635742358721,
+          0.904164620606218,
+          0.8878303022721855,
+          0.8717578903819078,
+          0.8559446116530866,
+          0.8403876531080933,
+          0.8250841665710661,
+          0.8100312729353297,
+          0.7952260661893417,
+          0.7806656172455738,
+          0.7663469775598396,
+          0.7522671825535564,
+          0.7384232548424129,
+          0.7248122073061357,
+          0.7114310459604977,
+          0.6982767726954052,
+          0.6853463878297993,
+          0.6726368925451254,
+          0.6601452911522698,
+          0.6478685932440054,
+          0.6358038157024126,
+          0.6239479845945861,
+          0.6122981369448277,
+          0.6008513223978995,
+          0.5896046047747239,
+          0.5785550635274694,
+          0.567699795095411,
+          0.55703591416989,
+          0.5465605548728852,
+          0.5362708718488485,
+          0.5261640412815988,
+          0.5162372618289918,
+          0.5064877554930569,
+          0.49691276841207216,
+          0.4875095715995564,
+          0.47827546160866813,
+          0.4692077611473388,
+          0.46030381963511885,
+          0.45156101369965557,
+          0.442976747635701,
+          0.43454845380375134,
+          0.4262735929964206,
+          0.41814965474409876,
+          0.4101741575994466,
+          0.40234464936984843,
+          0.39465870731968106,
+          0.38711393833094904,
+          0.3797079790434504,
+          0.3724384959536558,
+          0.3653031854861793,
+          0.35829977404096264,
+          0.351426018014439,
+          0.3446797037919002,
+          0.338058647720782,
+          0.3315606960631323,
+          0.3251837249220596,
+          0.31892564015603697,
+          0.31278437727065567,
+          0.30675790129563313,
+          0.30084420664534123,
+          0.29504131696389546,
+          0.2893472849581011,
+          0.2837601922172153,
+          0.2782781490205666,
+          0.27289929413268355,
+          0.2676217945909651,
+          0.2624438454817274,
+          0.257363669708445,
+          0.2523795177501037,
+          0.24748966741712505,
+          0.24269242359271911,
+          0.23798611797562483,
+          0.23336910881157494,
+          0.22883978062354646,
+          0.22439654393524575,
+          0.22003783499043025,
+          0.21576211547084248,
+          0.21156787220703158,
+          0.2074536168907362,
+          0.2034178857815427,
+          0.19945923941163538,
+          0.19557626229193406,
+          0.19176756261510966,
+          0.18803177195287482,
+          0.18436754496298915,
+          0.1807735590839479,
+          0.17724851423869117,
+          0.17379113253345593,
+          0.17040015795766886,
+          0.16707435608522697,
+          0.16381251377647205,
+          0.1606134388799918,
+          0.15747595993546165,
+          0.1543989258781346,
+          0.15138120574688732,
+          0.14842168838879663,
+          0.14551928217004795,
+          0.14267291468649662,
+          0.13988153247596405,
+          0.1371441007336563,
+          0.13445960302836332,
+          0.13182704102299506,
+          0.1292454341943368,
+          0.12671381955809552,
+          0.12423125139429321,
+          0.12179680097769081,
+          0.1194095563073448
+        ],
+        "force_unit_measured": 2.999860068422788,
+        "gap": 1.0,
+        "layered_crossover_length": 1.0,
+        "patches": {
+          "central": {
+            "seed": 191,
+            "law": "central",
+            "constituents_per_layer": 12,
+            "initial_energy": 419.30037804250696,
+            "minimum_energy": -49.09258479603204,
+            "measured_pitch": 0.9975236660910706,
+            "tag": [
+              9,
+              16
+            ],
+            "tag_offset_before_clamp": 0.008830737425148335,
+            "observed_model_time": 2.0,
+            "dt": 0.0005,
+            "kBT": 0.008,
+            "initial_connected_components": 1,
+            "persistent_components": 1,
+            "interplane_contacts": {
+              "0.4": [
+                11,
+                11
+              ],
+              "0.5": [
+                11,
+                11
+              ],
+              "0.6": [
+                11,
+                11
+              ]
+            },
+            "tag_survived": {
+              "0.4": true,
+              "0.5": true,
+              "0.6": true
+            },
+            "max_free_gradient": 1.0427375111273993e-06
+          },
+          "layered": {
+            "seed": 191,
+            "law": "layered",
+            "constituents_per_layer": 12,
+            "initial_energy": 416.96901100962134,
+            "minimum_energy": -54.63085465680061,
+            "measured_pitch": 0.9939079571836641,
+            "tag": [
+              11,
+              17
+            ],
+            "tag_offset_before_clamp": 0.5328489487480462,
+            "observed_model_time": 2.0,
+            "dt": 0.0005,
+            "kBT": 0.008,
+            "initial_connected_components": 1,
+            "persistent_components": 2,
+            "interplane_contacts": {
+              "0.4": [
+                11,
+                0
+              ],
+              "0.5": [
+                11,
+                0
+              ],
+              "0.6": [
+                5,
+                0
+              ]
+            },
+            "tag_survived": {
+              "0.4": false,
+              "0.5": false,
+              "0.6": false
+            },
+            "max_free_gradient": 8.279869220251257e-07
+          }
+        }
+      }
+    },
+    "predictions.json": {
+      "sha256": "9ed49baea775459cef8e8a82ea933e816491c514a4e11ba9a7e300ce64a4cb84",
+      "contents": {
+        "source_hash": "79c98051190c319b063a45b3712d1ff1fb54b22aa07b7db730c178a96567bf2d",
+        "force_scale": 2.999860068422788,
+        "readings": [
+          {
+            "law": "central",
+            "fraction": 0.0,
+            "pitch": 0.9975236660910706,
+            "q": 0.0,
+            "gap": 1.0,
+            "radial_read_at": 1.0,
+            "predicted": 0.0,
+            "normalized": 0.0,
+            "coarse_prediction": 0.0
+          },
+          {
+            "law": "central",
+            "fraction": 0.0625,
+            "pitch": 0.9975236660910706,
+            "q": 0.06234522913069191,
+            "gap": 1.0,
+            "radial_read_at": 1.0019415789333022,
+            "predicted": 0.1855806129796266,
+            "normalized": 0.0618630898597873,
+            "coarse_prediction": 0.18558530801512022
+          },
+          {
+            "law": "central",
+            "fraction": 0.125,
+            "pitch": 0.9975236660910706,
+            "q": 0.12469045826138382,
+            "gap": 1.0,
+            "radial_read_at": 1.0077438714184443,
+            "predicted": 0.37111432653174037,
+            "normalized": 0.12371054584784621,
+            "coarse_prediction": 0.3711251986965246
+          },
+          {
+            "law": "central",
+            "fraction": -0.125,
+            "pitch": 0.9975236660910706,
+            "q": -0.12469045826138382,
+            "gap": 1.0,
+            "radial_read_at": 1.0077438714184443,
+            "predicted": -0.37111432653174037,
+            "normalized": -0.12371054584784621,
+            "coarse_prediction": -0.3711251986965246
+          },
+          {
+            "law": "layered",
+            "fraction": 0.0,
+            "pitch": 0.9939079571836641,
+            "q": 0.0,
+            "gap": 1.0,
+            "radial_read_at": 1.0,
+            "predicted": 0.0,
+            "normalized": 0.0,
+            "coarse_prediction": 0.0
+          },
+          {
+            "law": "layered",
+            "fraction": 0.0625,
+            "pitch": 0.9939079571836641,
+            "q": 0.062119247323979006,
+            "gap": 1.0,
+            "radial_read_at": 1.0000074451444319,
+            "predicted": 0.0014245400645670374,
+            "normalized": 0.00047486883790416476,
+            "coarse_prediction": 0.0014245392058974563
+          },
+          {
+            "law": "layered",
+            "fraction": 0.125,
+            "pitch": 0.9939079571836641,
+            "q": 0.12423849464795801,
+            "gap": 1.0,
+            "radial_read_at": 1.0001191156600817,
+            "predicted": 0.01139775192894796,
+            "normalized": 0.0037994278629604424,
+            "coarse_prediction": 0.011397650069970282
+          },
+          {
+            "law": "layered",
+            "fraction": -0.125,
+            "pitch": 0.9939079571836641,
+            "q": -0.12423849464795801,
+            "gap": 1.0,
+            "radial_read_at": 1.0001191156600817,
+            "predicted": -0.01139775192894796,
+            "normalized": -0.0037994278629604424,
+            "coarse_prediction": -0.011397650069970282
+          }
+        ]
+      }
+    },
+    "frames1321.json": {
+      "sha256": "4ea029572e454a350fcd2c85fda3db342549d64c827f8939e8b2c69223bac851",
+      "contents": {
+        "central": {
+          "rested_xy": [
+            [
+              -0.39537952868416965,
+              -1.6338727999425777
+            ],
+            [
+              0.36865620769374763,
+              -0.9907604619374727
+            ],
+            [
+              -0.7431984640993122,
+              0.3300892954947984
+            ],
+            [
+              0.023026974609305757,
+              0.972776716790654
+            ],
+            [
+              1.131958043677292,
+              -0.34594319213705865
+            ],
+            [
+              0.19390531792960036,
+              -0.009471586860616889
+            ],
+            [
+              -0.5696654271891834,
+              -0.6519361943710366
+            ],
+            [
+              -0.9159561978342564,
+              1.3127202162234044
+            ],
+            [
+              1.3080491028527677,
+              -1.3286338814060357
+            ],
+            [
+              0.5444847393604985,
+              -1.9732979670977844
+            ],
+            [
+              -1.507803686522129,
+              -0.3133709675253465
+            ],
+            [
+              -1.6812928531564304,
+              0.670164604516766
+            ],
+            [
+              0.18493882754139232,
+              -0.04743820896656474
+            ],
+            [
+              -0.9172678356521093,
+              1.2856221131613028
+            ],
+            [
+              0.7880300955645186,
+              1.5726110958917627
+            ],
+            [
+              -1.6860748217132906,
+              0.6498486644295589
+            ],
+            [
+              1.1211928777540778,
+              -0.3963886082226242
+            ],
+            [
+              -1.5190364382048116,
+              -0.33440743079567964
+            ],
+            [
+              -0.5835448133077342,
+              -0.6833538746886956
+            ],
+            [
+              -0.14799629217982735,
+              1.9212079941472353
+            ],
+            [
+              0.01818221103602128,
+              0.936492163555292
+            ],
+            [
+              0.3519659395475636,
+              -1.0326118498514587
+            ],
+            [
+              0.9540246746989216,
+              0.5877782744450893
+            ],
+            [
+              -0.7498972991341685,
+              0.3014089080002066
+            ]
+          ],
+          "sites": [
+            5,
+            12
+          ],
+          "held_states": [
+            {
+              "fraction": 0.0,
+              "xy": [
+                [
+                  -0.40586516111884474,
+                  -1.6480103634668732
+                ],
+                [
+                  0.3609368222137171,
+                  -1.0083799230467527
+                ],
+                [
+                  -0.7442609853372814,
+                  0.31910234894778117
+                ],
+                [
+                  0.026494380172602677,
+                  0.9559465852227387
+                ],
+                [
+                  1.126980518235054,
+                  -0.3655930695452782
+                ],
+                [
+                  0.18942207273549633,
+                  -0.028454897913590814
+                ],
+                [
+                  -0.5771113462732912,
+                  -0.6651367877015729
+                ],
+                [
+                  -0.9100517677553952,
+                  1.3032778510018213
+                ],
+                [
+                  1.2989054548984158,
+                  -1.3494613252509398
+                ],
+                [
+                  0.5328172114048839,
+                  -1.9915304208863844
+                ],
+                [
+                  -1.5127000688129446,
+                  -0.3188440116297737
+                ],
+                [
+                  -1.6798393432365684,
+                  0.6660125118408495
+                ],
+                [
+                  0.18942207273549633,
+                  -0.028454897913590814
+                ],
+                [
+                  -0.9227538847384515,
+                  1.2941979746620782
+                ],
+                [
+                  0.7801977054010578,
+                  1.594834604868613
+                ],
+                [
+                  -1.687042738939703,
+                  0.6527777628228162
+                ],
+                [
+                  1.1272170050825943,
+                  -0.3727299029745452
+                ],
+                [
+                  -1.5130827261622297,
+                  -0.3302424516330342
+                ],
+                [
+                  -0.5748101517434768,
+                  -0.6714168225847907
+                ],
+                [
+                  -0.15863429457749312,
+                  1.9362189365210727
+                ],
+                [
+                  0.015316991693245538,
+                  0.9528234139704953
+                ],
+                [
+                  0.36240492386965517,
+                  -1.0137682442351132
+                ],
+                [
+                  0.9542755874345281,
+                  0.6112873789906391
+                ],
+                [
+                  -0.7483935114280428,
+                  0.3115442912647673
+                ]
+              ]
+            },
+            {
+              "fraction": 0.0625,
+              "xy": [
+                [
+                  1.8760603843662504,
+                  -0.22830787432980257
+                ],
+                [
+                  1.0742883312695009,
+                  0.3671667190699341
+                ],
+                [
+                  0.045926624009205455,
+                  -1.0190833195439286
+                ],
+                [
+                  -0.7570077551041186,
+                  -0.4226217357368734
+                ],
+                [
+                  0.2717940744464488,
+                  0.961737637714546
+                ],
+                [
+                  0.15824945817015038,
+                  -0.028454897913590814
+                ],
+                [
+                  0.9605632680677275,
+                  -0.6232496479926768
+                ],
+                [
+                  -0.8697590311715948,
+                  -1.4147031364942266
+                ],
+                [
+                  1.1873153525026745,
+                  1.359190962525781
+                ],
+                [
+                  1.990069271721219,
+                  0.7642768892922374
+                ],
+                [
+                  0.8491454019929031,
+                  -1.6142238322517402
+                ],
+                [
+                  -0.06747428026764728,
+                  -2.010453823996359
+                ],
+                [
+                  0.22059468730084228,
+                  -0.028454897913590814
+                ],
+                [
+                  -0.8342916229593896,
+                  -1.4004652178706027
+                ],
+                [
+                  -1.4938349756453848,
+                  0.19811627113725272
+                ],
+                [
+                  -0.043056629304393516,
+                  -2.0079682026407357
+                ],
+                [
+                  0.35054572109196136,
+                  0.962338444433521
+                ],
+                [
+                  0.8790753239458486,
+                  -1.6253836644217008
+                ],
+                [
+                  1.0110545526875103,
+                  -0.6356488167064971
+                ],
+                [
+                  -1.6250580598808912,
+                  -0.7919767267452211
+                ],
+                [
+                  -0.7021355193930908,
+                  -0.41063010539269407
+                ],
+                [
+                  1.1427417964386655,
+                  0.3546755198204412
+                ],
+                [
+                  -0.5707162569407022,
+                  0.5791482879420148
+                ],
+                [
+                  0.08791642886999816,
+                  -1.0175690962697694
+                ]
+              ]
+            },
+            {
+              "fraction": 0.125,
+              "xy": [
+                [
+                  1.846401289443511,
+                  -0.24329196416785895
+                ],
+                [
+                  1.0495325356757317,
+                  0.3587074022599315
+                ],
+                [
+                  0.01216733202789363,
+                  -1.0192220521159745
+                ],
+                [
+                  -0.7884151637809957,
+                  -0.4187601595840551
+                ],
+                [
+                  0.25364099908298926,
+                  0.9602894841413278
+                ],
+                [
+                  0.12707684360480442,
+                  -0.028454897913590814
+                ],
+                [
+                  0.9276541955690765,
+                  -0.6291152950804618
+                ],
+                [
+                  -0.9050026139512831,
+                  -1.4099366040227237
+                ],
+                [
+                  1.1716712123606108,
+                  1.3499310353801939
+                ],
+                [
+                  1.9686885455861411,
+                  0.7478870351303848
+                ],
+                [
+                  0.8127167388811456,
+                  -1.6193558781660162
+                ],
+                [
+                  -0.10598464731916807,
+                  -2.009987210148408
+                ],
+                [
+                  0.25176730186618823,
+                  -0.028454897913590814
+                ],
+                [
+                  -0.8463047819828663,
+                  -1.3693968709477016
+                ],
+                [
+                  -1.4567409877171509,
+                  0.24874850556687841
+                ],
+                [
+                  -0.07333422992055134,
+                  -1.999689293850896
+                ],
+                [
+                  0.4076960439130848,
+                  0.9588647282817413
+                ],
+                [
+                  0.8594934737327725,
+                  -1.6438890271279984
+                ],
+                [
+                  1.0217645931287764,
+                  -0.6585581789379651
+                ],
+                [
+                  -1.617628290841639,
+                  -0.7367630747848486
+                ],
+                [
+                  -0.6837417569942618,
+                  -0.3836569148976473
+                ],
+                [
+                  1.1825531497981678,
+                  0.3286243573034777
+                ],
+                [
+                  -0.5224808096685294,
+                  0.6012371643180041
+                ],
+                [
+                  0.08709257218245206,
+                  -1.0133243901482745
+                ]
+              ]
+            },
+            {
+              "fraction": -0.125,
+              "xy": [
+                [
+                  -1.4675572579263816,
+                  0.18638113000023354
+                ],
+                [
+                  -0.6706881377489002,
+                  -0.41561773512096006
+                ],
+                [
+                  0.3666762743204525,
+                  0.9623123038080018
+                ],
+                [
+                  1.1672591055410126,
+                  0.36185085906922376
+                ],
+                [
+                  0.12520377458742338,
+                  -1.0171993436039937
+                ],
+                [
+                  0.25176730186618823,
+                  -0.028454897913590814
+                ],
+                [
+                  -0.5488103945571646,
+                  0.5722050413020211
+                ],
+                [
+                  1.2838460169053219,
+                  1.3530273651319997
+                ],
+                [
+                  -0.7928261944854879,
+                  -1.4068414470713084
+                ],
+                [
+                  -1.5898439056438507,
+                  -0.8047979488705743
+                ],
+                [
+                  -0.4338734566528827,
+                  1.5624456928093833
+                ],
+                [
+                  0.4848277174485114,
+                  1.953077523789203
+                ],
+                [
+                  0.12707684360480442,
+                  -0.028454897913590814
+                ],
+                [
+                  1.2251481972666967,
+                  1.3124876341344713
+                ],
+                [
+                  1.8355852845826843,
+                  -0.30565740804951863
+                ],
+                [
+                  0.45217731390597043,
+                  1.9427796541305844
+                ],
+                [
+                  -0.028851375502734644,
+                  -1.0157746084518167
+                ],
+                [
+                  -0.48065020474612463,
+                  1.5869789052781982
+                ],
+                [
+                  -0.6429207948733023,
+                  0.6016479733708868
+                ],
+                [
+                  1.9964720485395313,
+                  0.6798542623219608
+                ],
+                [
+                  1.0625857066378637,
+                  0.3267476004952711
+                ],
+                [
+                  -0.8037088127868034,
+                  -0.38553464665077264
+                ],
+                [
+                  0.901325290802599,
+                  -0.6581465661148511
+                ],
+                [
+                  0.291751036434709,
+                  0.9564146669405407
+                ]
+              ]
+            }
+          ]
+        },
+        "layered": {
+          "rested_xy": [
+            [
+              -0.8313991542156777,
+              -1.7212348460919704
+            ],
+            [
+              0.19193173143841608,
+              -0.3331270371848082
+            ],
+            [
+              -0.6108791906287305,
+              0.2528984999906696
+            ],
+            [
+              0.3719288825085728,
+              1.6582782851131148
+            ],
+            [
+              1.106250037908127,
+              0.06066532783455872
+            ],
+            [
+              0.3068262785521971,
+              0.6612039506513799
+            ],
+            [
+              -0.7181881640758486,
+              -0.7346735046452431
+            ],
+            [
+              -0.5231679402458006,
+              1.233221132443036
+            ],
+            [
+              0.9942615048450987,
+              -0.9280507203328002
+            ],
+            [
+              0.08259097651740172,
+              -1.3235371548639392
+            ],
+            [
+              -1.524976051703299,
+              -0.17242209631226194
+            ],
+            [
+              -1.4320173000581133,
+              0.8158772607991586
+            ],
+            [
+              0.26347907972912443,
+              -0.2861258368437935
+            ],
+            [
+              -0.9882062799983243,
+              0.9007023815009025
+            ],
+            [
+              0.6586147699026225,
+              1.3946786138785603
+            ],
+            [
+              -1.6724087965271108,
+              0.18334769291647404
+            ],
+            [
+              1.2357925635160352,
+              -0.5052290693539929
+            ],
+            [
+              -1.3849934890894753,
+              -0.7749915852454107
+            ],
+            [
+              -0.41446788196618234,
+              -1.0222000546979793
+            ],
+            [
+              -0.304455727062604,
+              1.6276261222162263
+            ],
+            [
+              -0.029341295792722395,
+              0.6685511624853819
+            ],
+            [
+              0.5596926652897674,
+              -1.2371776030111443
+            ],
+            [
+              0.9387517467782182,
+              0.44309419379258
+            ],
+            [
+              -0.7043176110334564,
+              -0.062142092185622264
+            ]
+          ],
+          "sites": [
+            2,
+            23
+          ],
+          "held_states": [
+            {
+              "fraction": 0.0,
+              "xy": [
+                [
+                  -0.8356752095511021,
+                  -1.885148198346441
+                ],
+                [
+                  0.1529911408188776,
+                  -0.47553965334298715
+                ],
+                [
+                  -0.6575984008310934,
+                  0.09537820390252366
+                ],
+                [
+                  0.347809840236042,
+                  1.5078460239656302
+                ],
+                [
+                  1.0618561233495434,
+                  -0.04501920523591953
+                ],
+                [
+                  0.2509125681398296,
+                  0.5135456548558717
+                ],
+                [
+                  -0.7629314267609837,
+                  -0.8895027166148465
+                ],
+                [
+                  -0.5514823508902688,
+                  1.0957253419368764
+                ],
+                [
+                  0.9768209664838893,
+                  -1.0348845850607356
+                ],
+                [
+                  0.06684599117151388,
+                  -1.4553559445121822
+                ],
+                [
+                  -1.5708051678752701,
+                  -0.29630440806826075
+                ],
+                [
+                  -1.457319689416802,
+                  0.6939454324525164
+                ],
+                [
+                  0.3088021592805708,
+                  -0.14851047018568106
+                ],
+                [
+                  -0.9521359124518168,
+                  1.04202523796453
+                ],
+                [
+                  0.7213285964021872,
+                  1.522247209622672
+                ],
+                [
+                  -1.6305778538391331,
+                  0.30740318378259296
+                ],
+                [
+                  1.2710844333040252,
+                  -0.40413762834011235
+                ],
+                [
+                  -1.3358034892608825,
+                  -0.6420087372129827
+                ],
+                [
+                  -0.37364213599630786,
+                  -0.8679385061912221
+                ],
+                [
+                  -0.2501684652452273,
+                  1.7555125019664788
+                ],
+                [
+                  0.026118963592437334,
+                  0.8093976543546857
+                ],
+                [
+                  0.5793630549885,
+                  -1.1170971940800574
+                ],
+                [
+                  0.9951095331287735,
+                  0.5590869040734636
+                ],
+                [
+                  -0.6575984008310934,
+                  0.09537820390252366
+                ]
+              ]
+            },
+            {
+              "fraction": 0.0625,
+              "xy": [
+                [
+                  1.2984421885007933,
+                  0.20465145736954743
+                ],
+                [
+                  -0.23894646352373408,
+                  0.979716716557615
+                ],
+                [
+                  -0.688658024493083,
+                  0.09537820390252366
+                ],
+                [
+                  -2.2310522646825777,
+                  0.8796603052525146
+                ],
+                [
+                  -0.7937421928417229,
+                  1.817110002649524
+                ],
+                [
+                  -1.2329373591756947,
+                  0.9342620871275249
+                ],
+                [
+                  0.30277842979944697,
+                  0.13611223166589814
+                ],
+                [
+                  -1.6900927147905738,
+                  0.05141354989152429
+                ],
+                [
+                  0.19750797738476975,
+                  1.875664188281283
+                ],
+                [
+                  0.7441905389263209,
+                  1.0364329156931467
+                ],
+                [
+                  -0.16009007237997386,
+                  -0.7485327475595266
+                ],
+                [
+                  -1.1557037992798178,
+                  -0.7859129796205394
+                ],
+                [
+                  -0.5387728623996162,
+                  1.0874479373185348
+                ],
+                [
+                  -1.5197923591553872,
+                  -0.3396844244265885
+                ],
+                [
+                  -2.2538046704385004,
+                  1.2356548412095683
+                ],
+                [
+                  -0.6936709250712008,
+                  -0.8987917377314706
+                ],
+                [
+                  -0.4380203226056819,
+                  2.0775190776388888
+                ],
+                [
+                  0.20125966886349314,
+                  -0.4632636291213866
+                ],
+                [
+                  0.27966863770986156,
+                  0.5247357912678786
+                ],
+                [
+                  -2.3339185485931546,
+                  0.24080480099424437
+                ],
+                [
+                  -1.4403577412396829,
+                  0.6591731075614349
+                ],
+                [
+                  0.3747909890205069,
+                  1.5061365674600744
+                ],
+                [
+                  -1.3457507667425483,
+                  1.654710492063732
+                ],
+                [
+                  -0.6265387771691039,
+                  0.09537820390252366
+                ]
+              ]
+            },
+            {
+              "fraction": 0.125,
+              "xy": [
+                [
+                  1.265893971295616,
+                  0.24040482191172527
+                ],
+                [
+                  -0.2853212592705097,
+                  0.9879986335104859
+                ],
+                [
+                  -0.7197176481550724,
+                  0.09537820390252366
+                ],
+                [
+                  -2.276681060690068,
+                  0.8425754300988805
+                ],
+                [
+                  -0.8521075855785927,
+                  1.815258300494167
+                ],
+                [
+                  -1.279776948186819,
+                  0.9244078490233846
+                ],
+                [
+                  0.27181968134476336,
+                  0.15762472729006693
+                ],
+                [
+                  -1.715415283796859,
+                  0.027525018107920393
+                ],
+                [
+                  0.13766178555004105,
+                  1.891261596137218
+                ],
+                [
+                  0.6985565048689057,
+                  1.063034731973736
+                ],
+                [
+                  -0.16581560295617725,
+                  -0.7353012143340116
+                ],
+                [
+                  -1.1594837366814827,
+                  -0.7984353826319494
+                ],
+                [
+                  -0.5360705516358888,
+                  1.0889397335615907
+                ],
+                [
+                  -1.4814739246830504,
+                  -0.3593899848745604
+                ],
+                [
+                  -2.255220025505532,
+                  1.1925241522487537
+                ],
+                [
+                  -0.6462462378190761,
+                  -0.9005322625588648
+                ],
+                [
+                  -0.46475353794422,
+                  2.0811942793162173
+                ],
+                [
+                  0.24020712404081157,
+                  -0.44512844087331066
+                ],
+                [
+                  0.29821148139182047,
+                  0.5471250800789059
+                ],
+                [
+                  -2.3110348294264087,
+                  0.19747257902636525
+                ],
+                [
+                  -1.4256944650792487,
+                  0.6371061709822028
+                ],
+                [
+                  0.3641835404972444,
+                  1.5326218415049575
+                ],
+                [
+                  -1.3595802955138587,
+                  1.6339175960471475
+                ],
+                [
+                  -0.5954791535071144,
+                  0.09537820390252366
+                ]
+              ]
+            },
+            {
+              "fraction": -0.125,
+              "xy": [
+                [
+                  -2.581090857215939,
+                  -0.04964754398600841
+                ],
+                [
+                  -1.0298759469170726,
+                  -0.7972420258430851
+                ],
+                [
+                  -0.5954791535071144,
+                  0.09537820390252366
+                ],
+                [
+                  0.9614839183658193,
+                  -0.6518197327467681
+                ],
+                [
+                  -0.46308998810400537,
+                  -1.6245019397303535
+                ],
+                [
+                  -0.03542022654508018,
+                  -0.7336516806377273
+                ],
+                [
+                  -1.5870165232403246,
+                  0.033132114946508834
+                ],
+                [
+                  0.40021852259157253,
+                  0.16323094772521568
+                ],
+                [
+                  -1.452859391014956,
+                  -1.7005048029847132
+                ],
+                [
+                  -2.0137537469913815,
+                  -0.8722776981206735
+                ],
+                [
+                  -1.149380832603623,
+                  0.9260578555899217
+                ],
+                [
+                  -0.15571266734103084,
+                  0.9891915921906431
+                ],
+                [
+                  -0.779126717560113,
+                  -0.8981833053853427
+                ],
+                [
+                  0.16627732003143014,
+                  0.5501459915231309
+                ],
+                [
+                  0.9400227035268386,
+                  -1.0017685027650145
+                ],
+                [
+                  -0.6689501221523206,
+                  1.0912886467712126
+                ],
+                [
+                  -0.8504441878586018,
+                  -1.8904378175687047
+                ],
+                [
+                  -1.555403687264932,
+                  0.6358852232595559
+                ],
+                [
+                  -1.6134084968827758,
+                  -0.3563682669813267
+                ],
+                [
+                  0.9958379653240653,
+                  -0.006716954424819477
+                ],
+                [
+                  0.11049740177679185,
+                  -0.446350146241195
+                ],
+                [
+                  -1.6793810160666491,
+                  -1.3418650004186383
+                ],
+                [
+                  0.04438277366075092,
+                  -1.4431615435677083
+                ],
+                [
+                  -0.7197176481550724,
+                  0.09537820390252366
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "frames817_layered.json": {
+      "sha256": "4fd603363e6cbdd53ceddb36ccfbecd2acb514ef2b621f7d6fb475b5d36c08cd",
+      "contents": {
+        "layered": {
+          "rested_xy": [
+            [
+              0.630762827967112,
+              -1.1912915215306905
+            ],
+            [
+              0.6466909405901639,
+              0.5343983290082427
+            ],
+            [
+              1.138723504088104,
+              -0.33206194359937885
+            ],
+            [
+              -0.3488411378783999,
+              0.5401782456504627
+            ],
+            [
+              0.14005461845149356,
+              -0.3239804196354197
+            ],
+            [
+              -0.8589913940633555,
+              -0.31667763992726455
+            ],
+            [
+              -0.3681029788828822,
+              -1.183253860067777
+            ],
+            [
+              0.16074874126073183,
+              1.4007120578155428
+            ],
+            [
+              -1.3436267824056023,
+              0.5511911560898323
+            ],
+            [
+              -0.8377013857196947,
+              1.4119188618509517
+            ],
+            [
+              1.155517511901813,
+              1.3931323960329578
+            ],
+            [
+              1.6421983469760029,
+              0.5293281002767338
+            ],
+            [
+              0.6398875445331906,
+              1.1589600562908533
+            ],
+            [
+              -0.37161780606347905,
+              -0.5515342514807793
+            ],
+            [
+              1.1307535305197112,
+              0.28691835156462475
+            ],
+            [
+              -0.8580912221026135,
+              0.3227857226598284
+            ],
+            [
+              0.6226825708731285,
+              -0.567763046635872
+            ],
+            [
+              0.11353648462720865,
+              -1.4209117535781033
+            ],
+            [
+              0.1364028207385219,
+              0.3017027030046736
+            ],
+            [
+              1.6177055792501536,
+              -0.5787575147866354
+            ],
+            [
+              1.6360942634012232,
+              1.139798470095452
+            ],
+            [
+              -1.365132735227015,
+              -0.5330284897081924
+            ],
+            [
+              1.1071637500800053,
+              -1.4370612614897509
+            ],
+            [
+              -0.8798972027335893,
+              -1.40646525771952
+            ]
+          ],
+          "sites": null,
+          "held_states": []
+        }
+      }
+    }
+  },
+  "independent_reviews": [
+    "Scoped clear for the static, background-subtracted force on one tagged pair.",
+    "Scoped clear for emergence of registered partners, finite-window persistence in the tested preparations, and the conditional isolated-pair transfer."
+  ],
+  "status": "Two independent local reviews. Formal review and commit pending."
+}

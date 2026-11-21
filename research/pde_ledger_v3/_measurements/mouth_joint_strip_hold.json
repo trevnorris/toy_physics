@@ -1,0 +1,617 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "Joint weak-bend reaction and actual tag motion on one open strip, with a compressed native-cell energy test on a measured material snapshot.",
+  "assumptions": "First-order transverse response about an open Morse row. Nine registered wall contacts share each section position. The scalar twelve-site material response has unit drag and a common orientationally averaged site law. Like sites in adjacent sections have positive reference shear times local order; weak bends can change axial forces starting at second order. External traction uses the inherited four-dimensional axisymmetric carrier and order fields. The native snapshot trial replaces inter-section shear with strained triangular Morse bonds; wall and exterior offsets are fixed in the perturbation.",
+  "source_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_bend_renewal.py": "8e89119a8f8a43d0a7fb9dbd3827c1960ba5d5e3dd7f2f2b93153d7eb19ba681",
+    "software/stage1_solver/tools/mouth_bend_static_shear.py": "17c706eb42ff1a76a01903ed5051f037a4654aab9ca8d4c1043918a80f547fec",
+    "software/stage1_solver/tools/mouth_carrier_attachment_tension.py": "3ad065608f0abaa864eb68fa9da05fdc67899874eecb9da1a706a28b203c8f24",
+    "software/stage1_solver/tools/mouth_carrier_free_center.py": "ad4fbd4dbc20f92098f66eb054226c145390e26c296168688e13ec70e310e1bb",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "software/stage1_solver/tools/mouth_connected_passage.py": "d5893b4efb31cd7fdf04c018734873dc42b142f078619a0908614a2135ef96eb",
+    "software/stage1_solver/tools/mouth_contact_tracking.py": "fb8351e126e7bc7368b929ac393034263eb2677b9b5338d9e9da26dac9e14cef",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_empty_bend_stiffness.py": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_bend_drive.py": "def4a7b4812929ebfeeac11525af3d652c0b6d9f70b01ef27e68aef622062bb9",
+    "software/stage1_solver/tools/mouth_free_bend_release.py": "7b95f8e53ae9735b75af77ebacc303d5bc7cf64baa81f11724b8ee6c4266961f",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "software/stage1_solver/tools/mouth_joint_strip_hold.py": "c299c0cc70aafa99c391eda3982f1f5e276567c20ea61dbedda64a4eeb1ffa80",
+    "software/stage1_solver/tools/mouth_joint_strip_stability.py": "77ed7517c2fbb43e35b5ed61262b179ee67be74405a8d69e7e79ab16ce7cb22a",
+    "software/stage1_solver/tools/mouth_middle_tag_grip.py": "d22322f69f8e50060e962e18764a38b9eca502c44e3debec2058e9654c084793",
+    "software/stage1_solver/tools/mouth_order_wave_pulse.py": "d4fc14a69fd269039a58197ee6751107708c67bff9329d414581896401f50433",
+    "software/stage1_solver/tools/mouth_segment_contact_hold.py": "74322c7c7c3d4fc3d0db8fb50ec25b6b9d7417799725f8b54bbb50da2de55884",
+    "software/stage1_solver/tools/mouth_two_depth_load.py": "13d9bd92859b47620b38b3d796c6946b544005eefa1d703dfe60095897ea058e",
+    "software/stage1_solver/tools/neutral_patch_conversion.py": "cbb432510cf4f29f9a4cc886f465896dc215c47af8cc8e19bd742db66be1ecea",
+    "software/stage1_solver/tools/neutral_patch_resting_order_hold.py": "dad6d61e691fab6bfd4b867cff19ef4b54b4cdf1023da8cebb4ca68d771ff0cf",
+    "software/stage1_solver/tools/neutral_patch_sites.py": "00595a5383311d4e20ed2af851cbd9d8c2bd59255b81c312829843ed8061f827",
+    "software/stage1_solver/tools/neutral_patch_turning_neighbor.py": "2d392d95568d05f5a3cc1aa5c660c49124c82522c26272fea8815471dc139958"
+  },
+  "inputs_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_connected_passage.json": "5b5c6cdc2ed188a027e7e2dec81cd2ba978eb976fd7124e072589e24faeac410",
+    "research/pde_ledger_v3/_measurements/mouth_mobile_neighbor_hold.json": "e2f2c7e5bc7a009ac21be3e9efd90858dcbdf1a5e701b2207e0c7f5cad94f392",
+    "research/pde_ledger_v3/_measurements/neutral_patch_conversion.json": "5b4073159b150b3513471374c26589e2b4cefa08e93265a23e52bbf5ffe33471",
+    "research/pde_ledger_v3/_measurements/neutral_patch_sites.json": "4fcc2af5e38d654e1db9289dd25ca733616d052e27758852a8bebad4c4cf0340",
+    "_scratch/s11c/mobile_neighbor_probe_02/response.npz": "4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz": "6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341",
+    "_scratch/s11c/mouth_flared_cubic_n34/field.npz": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d",
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz": "fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847",
+    "_scratch/s11c/mouth_flared_cubic_n26/field.npz": "c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2"
+  },
+  "initial_worker_patch_from_final": "--- final\n+++ initial\n@@ -28,7 +28,6 @@\n                                 trace.edges[(trace.edges > WAIST) & (trace.edges < self.end)]])\n         w = np.r_[np.concatenate([np.linspace(a,b,48,endpoint=False)\n                                   for a,b in zip(knots[:-1],knots[1:])]), self.end]\n-        self.depths = w\n         self.arc = np.r_[0.,integrals(lambda v: np.hypot(1.,trace.geometry.radius(v)[1]),w)]/PITCH\n         self.carrier_time = np.r_[0.,integrals(lambda v: 1/trace.speed(v),w)]\n         self.gates = self.arc[np.searchsorted(w,[WAIST,MIDDLE,self.end])]\n@@ -258,10 +257,7 @@\n         trips=[events[j][tag]-events[0][tag] for tag in cohort]\n         clock=float(np.mean(trips))\n         sample_forces=[reaction(t) for t in trips]\n-        crossed_at=[events[j][tag] for tag in cohort]\n-        emit(entrance_times=[events[0][tag] for tag in cohort],gate_crossing_times=crossed_at,\n-             wall_forces_at_crossings=[reaction(t) for t in crossed_at],\n-             sample_force_range=[min(sample_forces),max(sample_forces)],test='tag_clock',gate=j,cohort=cohort,individual_transits=trips,clock=clock,\n+        emit(sample_force_range=[min(sample_forces),max(sample_forces)],test='tag_clock',gate=j,cohort=cohort,individual_transits=trips,clock=clock,\n              entry_count=len(events[0]),exit_count=len(events[j]),initial_inventory=int(initial_inventory[j-1]),\n              final_inventory=inv,force_at_clock=reaction(clock),early_force=initial,\n              fraction=reaction(clock)/initial if initial else None)\n",
+  "answers": {
+    "base": {
+      "clocks": [
+        6.9209748643824325,
+        13.329457572371924,
+        28.431027677955868
+      ],
+      "fractions": [
+        -0.04308321085342716,
+        -0.03378438201443316,
+        -0.032347105239128926
+      ],
+      "early_force": 4.340280947131525e-06,
+      "forces": [
+        -1.8699323920838004e-07,
+        -1.466337095678572e-07,
+        -1.403955245642496e-07
+      ],
+      "differential_tag_displacement": [
+        -7.1093751969021505e-09,
+        5.8649843473106645e-08
+      ]
+    },
+    "half": {
+      "clocks": [
+        6.920368213936986,
+        13.327702950800786,
+        28.431027677955868
+      ],
+      "fractions": [
+        -0.04307521356193698,
+        -0.033764515273434034,
+        -0.032333153880970425
+      ],
+      "early_force": -2.1701471918204026e-06,
+      "forces": [
+        9.347955374850165e-08,
+        7.327396800381996e-08,
+        7.016770309748492e-08
+      ],
+      "differential_tag_displacement": [
+        3.5708207218574293e-09,
+        -2.932171623716795e-08
+      ]
+    },
+    "control": {
+      "clocks": [
+        6.9209748643824325,
+        13.329457572371924,
+        28.431027677955868
+      ],
+      "fractions": [
+        null,
+        null,
+        null
+      ],
+      "early_force": 0.0,
+      "forces": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "differential_tag_displacement": [
+        0.0,
+        0.0
+      ]
+    },
+    "inlet": {
+      "clocks": [
+        5.692190180102881,
+        10.890614463091739,
+        28.431027677955868
+      ],
+      "fractions": [
+        -0.010395090056402236,
+        0.007119694194170581,
+        0.009247582403267876
+      ],
+      "early_force": 4.3441182163063986e-06,
+      "forces": [
+        -4.5157500074162465e-08,
+        3.0928793243427325e-08,
+        4.017259117483048e-08
+      ],
+      "differential_tag_displacement": [
+        -9.580898219963166e-09,
+        5.630482744369276e-08
+      ]
+    },
+    "outlet": {
+      "clocks": [
+        7.353808614462259,
+        14.300760284969913,
+        28.431027677955868
+      ],
+      "fractions": [
+        -0.04881831404653035,
+        -0.04095757770289195,
+        -0.039743487204858576
+      ],
+      "early_force": 4.343748297262217e-06,
+      "forces": [
+        -2.1205446851482835e-07,
+        -1.7790940840692183e-07,
+        -1.7263570487336712e-07
+      ],
+      "differential_tag_displacement": [
+        -6.218075077875256e-09,
+        5.6872735589442844e-08
+      ]
+    },
+    "nolinks": {
+      "clocks": [
+        6.9209748643824325,
+        13.329457572371924,
+        28.431027677955868
+      ],
+      "fractions": [
+        -0.059606186625927864,
+        -0.04802568633893204,
+        -0.04651936737226499
+      ],
+      "early_force": 4.340702894734393e-06,
+      "forces": [
+        -2.5873274683124356e-07,
+        -2.0846523571300831e-07,
+        -2.019267526140033e-07
+      ],
+      "differential_tag_displacement": [
+        -7.835409342995263e-09,
+        6.947322296017588e-08
+      ]
+    },
+    "native": {
+      "negative_native_including_wall": 9,
+      "positive_reference_including_wall": 9,
+      "trials": 9
+    },
+    "native26": {
+      "negative_native_including_wall": 9,
+      "positive_reference_including_wall": 9,
+      "trials": 9
+    },
+    "resolution": {
+      "clocks": [
+        6.920368213936986,
+        13.327702950800786,
+        28.431027677955868
+      ],
+      "fractions": [
+        -0.04313907081256613,
+        -0.03383641952253987,
+        -0.03240504138538108
+      ],
+      "early_force": 4.341738405627964e-06,
+      "forces": [
+        -1.8729856053002267e-07,
+        -1.4690888214995117e-07,
+        -1.4069421271887263e-07
+      ],
+      "differential_tag_displacement": [
+        -7.1371167331926715e-09,
+        5.86280718426841e-08
+      ],
+      "actual_crossing_force_ranges": [
+        [
+          -1.8714066044284328e-07,
+          -1.8036697272484558e-07
+        ],
+        [
+          -1.46876107808756e-07,
+          -1.4586914834062414e-07
+        ]
+      ]
+    },
+    "opposite": {
+      "clocks": [
+        6.920368213936986,
+        13.327702950800786,
+        28.431027677955868
+      ],
+      "fractions": [
+        -0.04313907081256613,
+        -0.03383641952253987,
+        -0.03240504138538108
+      ],
+      "early_force": -2.170869202813982e-06,
+      "forces": [
+        9.364928026501133e-08,
+        7.345444107497559e-08,
+        7.034710635943632e-08
+      ],
+      "differential_tag_displacement": [
+        3.5685583665963357e-09,
+        -2.931403592134205e-08
+      ]
+    }
+  },
+  "guarded_runs": {
+    "base": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joint_strip_hold.py"
+      ],
+      "actual_joint_worker_sha256": "c94c0cd78bf109011b02a886ecb76429e2daa0fb7bbd7ec225e4ace35ae29b41",
+      "started_utc": "2026-11-20T22:58:55.796215+00:00",
+      "outcome_utc": "2026-11-20T22:59:18.857626+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "memory_cap": 3221225472,
+      "peak_sampled_bytes": 316686336,
+      "wall_seconds": 23.009127457160503,
+      "stdout_sha256": "906b0932db347a9723b77b1c7c48a493d1a13b142da03f5966675dee7f4ea6cd",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"setup\", \"mesh\": 34, \"sub\": 3, \"dt\": 0.00390625, \"coverage\": 1.0, \"brane_grip\": 0.0, \"wall_grip\": 1.0, \"tip_drags\": [1.0, 1.0], \"pitch\": 0.01, \"phase\": 0.0, \"intake\": 0.2500000000013136, \"transit\": 28.431027677955868, \"inlet_duration_per_pitch\": 0.019282028852422486, \"families\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"neutral_tangents\": [2.976314217474747, 2.9737346910931137, 2.9748567697800277, 2.9774605857321235, 2.9752615271733918, 2.974487460482316, 2.9734046150931346, 2.972972900488997, 2.9726202879733874], \"shear_energy_curvature_per_bulk_site\": 36.75, \"contact_force_scale\": 2.0408163265306123, \"ordered_instantaneous_grip\": 6.070547178070576, \"amplitude\": 1e-05, \"read_cut\": 1.175, \"active_end\": 1.9243386243386242, \"wall_samples\": 745}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"joint_setup\", \"intake\": 0.2500000000013136, \"arc_gates\": [0.0, 85.82376937392698, 171.28244911849853], \"carrier_clocks\": [0.0, 10.400934903160893, 28.4310276779558], \"model\": \"order-weighted reference shear per material bond, smooth axial sliding\", \"shear_at_reference\": 36.75, \"independent_shear_coupon\": {\"step\": 0.00025, \"curvature\": 84.87048592087376, \"relative_error\": 4.300671829771119e-08}, \"input_sha256\": \"4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042\", \"tags\": [21, 23, 20, 16, 12, 18, 13, 17, 15], \"lead\": [8.0, 8.0], \"dt\": 0.00390625, \"mesh\": 34, \"sub\": 3, \"amplitude\": 1e-05}",
+        "{\"test\": \"balance\", \"wall\": 4.6950640516766e-06, \"integrated_support\": 4.6950640516765975e-06, \"exchange_error\": 5.963111948670274e-19, \"material_work_error\": 1.3677858843742512e-16, \"material_drag\": 4.838070765331548e-08}",
+        "{\"test\": \"balance\", \"wall\": 4.340280947131525e-06, \"integrated_support\": 4.340280947131525e-06, \"exchange_error\": 9.75781955236954e-19, \"material_work_error\": 2.5228474187063313e-16, \"material_drag\": 2.6061744120321626e-08}",
+        "{\"test\": \"balance\", \"wall\": -1.404141527850053e-07, \"integrated_support\": -1.404141527850086e-07, \"exchange_error\": 1.0842021724855044e-19, \"material_work_error\": 1.870472800395494e-16, \"material_drag\": 2.210320510143229e-09}",
+        "{\"test\": \"balance\", \"wall\": -1.403955245642496e-07, \"integrated_support\": -1.403955245642525e-07, \"exchange_error\": 1.2197274440461925e-19, \"material_work_error\": 0.0, \"material_drag\": 2.209926322857947e-09}",
+        "{\"test\": \"strain_check\", \"gate\": 0, \"mean_forward_gap\": 0.7517913565329436, \"hoop\": 1.0, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -377.000151446925}",
+        "{\"test\": \"strain_check\", \"gate\": 1, \"mean_forward_gap\": 0.6795101504440257, \"hoop\": 1.9050014314904273, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -1636.6018814503343}",
+        "{\"test\": \"strain_check\", \"gate\": 2, \"mean_forward_gap\": 0.8267997199714417, \"hoop\": 2.2857233825000227, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -134.45658002767885}",
+        "{\"sample_force_range\": [-1.869953071087907e-07, -1.8699219152659315e-07], \"test\": \"tag_clock\", \"gate\": 1, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [6.921040316418557, 6.921034541015842, 6.920990336858044, 6.9209240170923305, 6.920843710514039, 6.920753619432553, 6.920993229579606, 6.921077481890473, 6.921086956001173, 6.921051358961423, 6.9209901176986985, 6.9209126871264495], \"clock\": 6.9209748643824325, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 128, \"final_inventory\": 128, \"force_at_clock\": -1.8699323920838004e-07, \"early_force\": 4.340280947131525e-06, \"fraction\": -0.04308321085342716}",
+        "{\"sample_force_range\": [-1.4663442779640052e-07, -1.4663349966350592e-07], \"test\": \"tag_clock\", \"gate\": 2, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [13.329488110394877, 13.329498550348983, 13.329484784836492, 13.329456865291867, 13.329419657634128, 13.32924777803468, 13.329440082461463, 13.329504182157008, 13.329518885368568, 13.3295069096198, 13.329480515695243, 13.32944454661998], \"clock\": 13.329457572371924, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 246, \"final_inventory\": 246, \"force_at_clock\": -1.466337095678572e-07, \"early_force\": 4.340280947131525e-06, \"fraction\": -0.03378438201443316}",
+        "{\"test\": \"middle_tag\", \"section_site\": 12, \"neighbors_in_each_direction\": 8, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_relative_displacements\": [[-7.795222099468332e-09, 5.84449631909389e-08], [-7.671067361992786e-09, 5.848935231844825e-08], [-7.545618913504305e-09, 5.85310004161267e-08], [-7.419679351702529e-09, 5.8569837610964354e-08], [-7.29353740001393e-09, 5.860687149096126e-08], [-7.167405902840918e-09, 5.8642287715067264e-08], [-7.04181547714452e-09, 5.867709310052522e-08], [-6.917467444026352e-09, 5.8708916747488483e-08], [-6.7949163371871555e-09, 5.8739689096005936e-08], [-6.673893153348889e-09, 5.876927912909822e-08], [-6.554494678376365e-09, 5.879671715355545e-08], [-6.437384243219724e-09, 5.8822113708099674e-08]], \"mean_relative_by_component\": [-7.1093751969021505e-09, 5.8649843473106645e-08], \"amplitude\": 1e-05}",
+        "{\"test\": \"joint_force\", \"early_time\": 0.0625, \"early\": 4.340280947131525e-06, \"zero_time\": 4.6950640516766e-06, \"matched_time\": 28.3125, \"matched\": -1.404141527850053e-07, \"carrier_time\": 28.431027677955868, \"carrier_force\": -1.403955245642496e-07, \"carrier_fraction\": -0.032347105239128926, \"peak_cut_difference\": 7.623296525288703e-21, \"peak_absolute_force\": 4.6950640516766e-06}"
+      ]
+    },
+    "half": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joint_strip_hold.py",
+        "--amplitude=-0.000005",
+        "--dt",
+        ".001953125"
+      ],
+      "actual_joint_worker_sha256": "c94c0cd78bf109011b02a886ecb76429e2daa0fb7bbd7ec225e4ace35ae29b41",
+      "started_utc": "2026-11-20T22:58:55.482335+00:00",
+      "outcome_utc": "2026-11-20T22:59:40.461253+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "memory_cap": 3221225472,
+      "peak_sampled_bytes": 309735424,
+      "wall_seconds": 44.962423720862716,
+      "stdout_sha256": "10fa9e78a4b6416826b4ecd0127d547241ebdfa660256ee4bb8a223afa6a9942",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"setup\", \"mesh\": 34, \"sub\": 3, \"dt\": 0.001953125, \"coverage\": 1.0, \"brane_grip\": 0.0, \"wall_grip\": 1.0, \"tip_drags\": [1.0, 1.0], \"pitch\": 0.01, \"phase\": 0.0, \"intake\": 0.2500000000013136, \"transit\": 28.431027677955868, \"inlet_duration_per_pitch\": 0.019282028852422486, \"families\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"neutral_tangents\": [2.976314217474747, 2.9737346910931137, 2.9748567697800277, 2.9774605857321235, 2.9752615271733918, 2.974487460482316, 2.9734046150931346, 2.972972900488997, 2.9726202879733874], \"shear_energy_curvature_per_bulk_site\": 36.75, \"contact_force_scale\": 2.0408163265306123, \"ordered_instantaneous_grip\": 6.070547178070576, \"amplitude\": -5e-06, \"read_cut\": 1.175, \"active_end\": 1.9243386243386242, \"wall_samples\": 745}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"joint_setup\", \"intake\": 0.2500000000013136, \"arc_gates\": [0.0, 85.82376937392698, 171.28244911849853], \"carrier_clocks\": [0.0, 10.400934903160893, 28.4310276779558], \"model\": \"order-weighted reference shear per material bond, smooth axial sliding\", \"shear_at_reference\": 36.75, \"independent_shear_coupon\": {\"step\": 0.00025, \"curvature\": 84.87048592087376, \"relative_error\": 4.300671829771119e-08}, \"input_sha256\": \"4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042\", \"tags\": [21, 23, 20, 16, 12, 18, 13, 17, 15], \"lead\": [8.0, 8.0], \"dt\": 0.001953125, \"mesh\": 34, \"sub\": 3, \"amplitude\": -5e-06}",
+        "{\"test\": \"balance\", \"wall\": -2.3475320258383e-06, \"integrated_support\": -2.3475320258382996e-06, \"exchange_error\": 3.2526065174565133e-19, \"material_work_error\": 1.3681860010803968e-16, \"material_drag\": 1.2091639760965823e-08}",
+        "{\"test\": \"balance\", \"wall\": -2.1701471918204026e-06, \"integrated_support\": -2.170147191820401e-06, \"exchange_error\": 2.439454888092385e-19, \"material_work_error\": 0.0, \"material_drag\": 6.5157382636745706e-09}",
+        "{\"test\": \"balance\", \"wall\": 7.017329551609002e-08, \"integrated_support\": 7.017329551609187e-08, \"exchange_error\": 9.486769009248164e-20, \"material_work_error\": 0.0, \"material_drag\": 5.525527917145692e-10}",
+        "{\"test\": \"balance\", \"wall\": 7.016770309748492e-08, \"integrated_support\": 7.016770309748632e-08, \"exchange_error\": 9.486769009248164e-20, \"material_work_error\": 1.8713565756491843e-16, \"material_drag\": 5.524400199387823e-10}",
+        "{\"test\": \"strain_check\", \"gate\": 0, \"mean_forward_gap\": 0.7515579927283328, \"hoop\": 1.0, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -378.84107437599425}",
+        "{\"test\": \"strain_check\", \"gate\": 1, \"mean_forward_gap\": 0.6795173739556772, \"hoop\": 1.9050014314904273, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -1636.4092076074749}",
+        "{\"test\": \"strain_check\", \"gate\": 2, \"mean_forward_gap\": 0.8270159665019391, \"hoop\": 2.2857233825000227, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -133.92925311177223}",
+        "{\"sample_force_range\": [9.347923245428145e-08, 9.347996622914267e-08], \"test\": \"tag_clock\", \"gate\": 1, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [6.920343136705173, 6.920429783921568, 6.920428090847852, 6.920388557944562, 6.92032432868332, 6.920408546888932, 6.920404888510558, 6.920361514542536, 6.920289169792676, 6.920367279894959, 6.920359688741196, 6.920313580770515], \"clock\": 6.920368213936986, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 128, \"final_inventory\": 128, \"force_at_clock\": 9.347955374850165e-08, \"early_force\": -2.1701471918204026e-06, \"fraction\": -0.04307521356193698}",
+        "{\"sample_force_range\": [7.32738971456014e-08, 7.327407048062407e-08], \"test\": \"tag_clock\", \"gate\": 2, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [13.327709491113923, 13.327769847378374, 13.327767769610007, 13.327744066670803, 13.32764246427152, 13.327718138968503, 13.327725034802175, 13.32770588982234, 13.32760620341403, 13.327683395031746, 13.327691154304246, 13.327671954221795], \"clock\": 13.327702950800786, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 246, \"final_inventory\": 246, \"force_at_clock\": 7.327396800381996e-08, \"early_force\": -2.1701471918204026e-06, \"fraction\": -0.033764515273434034}",
+        "{\"test\": \"middle_tag\", \"section_site\": 12, \"neighbors_in_each_direction\": 8, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_relative_displacements\": [[3.913946920256888e-09, -2.9218117335846173e-08], [3.8518405002408e-09, -2.9240032235661956e-08], [3.789094348065431e-09, -2.926116385099973e-08], [3.7260970071163184e-09, -2.9281146351921103e-08], [3.663073328900615e-09, -2.9300030744746606e-08], [3.6001141298537994e-09, -2.93180781759529e-08], [3.5373488900166985e-09, -2.933552008748217e-08], [3.475158499351056e-09, -2.9351663210735212e-08], [3.413634477078975e-09, -2.9367341802919677e-08], [3.3527911025564198e-09, -2.9382123215198078e-08], [3.292798920003099e-09, -2.9396276835144234e-08], [3.2339505388490538e-09, -2.940910099940757e-08]], \"mean_relative_by_component\": [3.5708207218574293e-09, -2.932171623716795e-08], \"amplitude\": -5e-06}",
+        "{\"test\": \"joint_force\", \"early_time\": 0.0625, \"early\": -2.1701471918204026e-06, \"zero_time\": -2.3475320258383e-06, \"matched_time\": 28.3125, \"matched\": 7.017329551609002e-08, \"carrier_time\": 28.431027677955868, \"carrier_force\": 7.016770309748492e-08, \"carrier_fraction\": -0.032333153880970425, \"peak_cut_difference\": 4.658681209898652e-21, \"peak_absolute_force\": 2.3475320258383e-06}"
+      ]
+    },
+    "control": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joint_strip_hold.py",
+        "--amplitude",
+        "0"
+      ],
+      "actual_joint_worker_sha256": "c94c0cd78bf109011b02a886ecb76429e2daa0fb7bbd7ec225e4ace35ae29b41",
+      "started_utc": "2026-11-20T22:58:56.879559+00:00",
+      "outcome_utc": "2026-11-20T22:59:27.616734+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "memory_cap": 3221225472,
+      "peak_sampled_bytes": 315641856,
+      "wall_seconds": 30.58528283284977,
+      "stdout_sha256": "dfe7d4b44c36c0088595e048d655a1d7d2da894549486fa1ed19de3a631dfa62",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"setup\", \"mesh\": 34, \"sub\": 3, \"dt\": 0.00390625, \"coverage\": 1.0, \"brane_grip\": 0.0, \"wall_grip\": 1.0, \"tip_drags\": [1.0, 1.0], \"pitch\": 0.01, \"phase\": 0.0, \"intake\": 0.2500000000013136, \"transit\": 28.431027677955868, \"inlet_duration_per_pitch\": 0.019282028852422486, \"families\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"neutral_tangents\": [2.976314217474747, 2.9737346910931137, 2.9748567697800277, 2.9774605857321235, 2.9752615271733918, 2.974487460482316, 2.9734046150931346, 2.972972900488997, 2.9726202879733874], \"shear_energy_curvature_per_bulk_site\": 36.75, \"contact_force_scale\": 2.0408163265306123, \"ordered_instantaneous_grip\": 6.070547178070576, \"amplitude\": 0.0, \"read_cut\": 1.175, \"active_end\": 1.9243386243386242, \"wall_samples\": 745}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"joint_setup\", \"intake\": 0.2500000000013136, \"arc_gates\": [0.0, 85.82376937392698, 171.28244911849853], \"carrier_clocks\": [0.0, 10.400934903160893, 28.4310276779558], \"model\": \"order-weighted reference shear per material bond, smooth axial sliding\", \"shear_at_reference\": 36.75, \"independent_shear_coupon\": {\"step\": 0.00025, \"curvature\": 84.87048592087376, \"relative_error\": 4.300671829771119e-08}, \"input_sha256\": \"4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042\", \"tags\": [21, 23, 20, 16, 12, 18, 13, 17, 15], \"lead\": [8.0, 8.0], \"dt\": 0.00390625, \"mesh\": 34, \"sub\": 3, \"amplitude\": 0.0}",
+        "{\"test\": \"balance\", \"wall\": 0.0, \"integrated_support\": 0.0, \"exchange_error\": 0.0, \"material_work_error\": 0.0, \"material_drag\": 0.0}",
+        "{\"test\": \"balance\", \"wall\": 0.0, \"integrated_support\": 0.0, \"exchange_error\": 0.0, \"material_work_error\": 0.0, \"material_drag\": 0.0}",
+        "{\"test\": \"balance\", \"wall\": 0.0, \"integrated_support\": 0.0, \"exchange_error\": 0.0, \"material_work_error\": 0.0, \"material_drag\": 0.0}",
+        "{\"test\": \"balance\", \"wall\": 0.0, \"integrated_support\": 0.0, \"exchange_error\": 0.0, \"material_work_error\": 0.0, \"material_drag\": 0.0}",
+        "{\"test\": \"strain_check\", \"gate\": 0, \"mean_forward_gap\": 0.7517913565329436, \"hoop\": 1.0, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -377.000151446925}",
+        "{\"test\": \"strain_check\", \"gate\": 1, \"mean_forward_gap\": 0.6795101504440257, \"hoop\": 1.9050014314904273, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -1636.6018814503343}",
+        "{\"test\": \"strain_check\", \"gate\": 2, \"mean_forward_gap\": 0.8267997199714417, \"hoop\": 2.2857233825000227, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -134.45658002767885}",
+        "{\"sample_force_range\": [0.0, 0.0], \"test\": \"tag_clock\", \"gate\": 1, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [6.921040316418557, 6.921034541015842, 6.920990336858044, 6.9209240170923305, 6.920843710514039, 6.920753619432553, 6.920993229579606, 6.921077481890473, 6.921086956001173, 6.921051358961423, 6.9209901176986985, 6.9209126871264495], \"clock\": 6.9209748643824325, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 128, \"final_inventory\": 128, \"force_at_clock\": 0.0, \"early_force\": 0.0, \"fraction\": null}",
+        "{\"sample_force_range\": [0.0, 0.0], \"test\": \"tag_clock\", \"gate\": 2, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [13.329488110394877, 13.329498550348983, 13.329484784836492, 13.329456865291867, 13.329419657634128, 13.32924777803468, 13.329440082461463, 13.329504182157008, 13.329518885368568, 13.3295069096198, 13.329480515695243, 13.32944454661998], \"clock\": 13.329457572371924, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 246, \"final_inventory\": 246, \"force_at_clock\": 0.0, \"early_force\": 0.0, \"fraction\": null}",
+        "{\"test\": \"middle_tag\", \"section_site\": 12, \"neighbors_in_each_direction\": 8, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_relative_displacements\": [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]], \"mean_relative_by_component\": [0.0, 0.0], \"amplitude\": 0.0}",
+        "{\"test\": \"joint_force\", \"early_time\": 0.0625, \"early\": 0.0, \"zero_time\": 0.0, \"matched_time\": 28.3125, \"matched\": 0.0, \"carrier_time\": 28.431027677955868, \"carrier_force\": 0.0, \"carrier_fraction\": null, \"peak_cut_difference\": 0.0, \"peak_absolute_force\": 0.0}"
+      ]
+    },
+    "inlet": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joint_strip_hold.py",
+        "--lead",
+        "24"
+      ],
+      "actual_joint_worker_sha256": "c94c0cd78bf109011b02a886ecb76429e2daa0fb7bbd7ec225e4ace35ae29b41",
+      "started_utc": "2026-11-20T22:58:55.769986+00:00",
+      "outcome_utc": "2026-11-20T22:59:26.874223+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "memory_cap": 3221225472,
+      "peak_sampled_bytes": 315813888,
+      "wall_seconds": 31.07310016080737,
+      "stdout_sha256": "c588943bb06d51d367347e5b8dd91a60676c9d4b2259d4234d5454a6cc183d84",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"setup\", \"mesh\": 34, \"sub\": 3, \"dt\": 0.00390625, \"coverage\": 1.0, \"brane_grip\": 0.0, \"wall_grip\": 1.0, \"tip_drags\": [1.0, 1.0], \"pitch\": 0.01, \"phase\": 0.0, \"intake\": 0.2500000000013136, \"transit\": 28.431027677955868, \"inlet_duration_per_pitch\": 0.019282028852422486, \"families\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"neutral_tangents\": [2.976314217474747, 2.9737346910931137, 2.9748567697800277, 2.9774605857321235, 2.9752615271733918, 2.974487460482316, 2.9734046150931346, 2.972972900488997, 2.9726202879733874], \"shear_energy_curvature_per_bulk_site\": 36.75, \"contact_force_scale\": 2.0408163265306123, \"ordered_instantaneous_grip\": 6.070547178070576, \"amplitude\": 1e-05, \"read_cut\": 1.175, \"active_end\": 1.9243386243386242, \"wall_samples\": 745}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"joint_setup\", \"intake\": 0.2500000000013136, \"arc_gates\": [0.0, 85.82376937392698, 171.28244911849853], \"carrier_clocks\": [0.0, 10.400934903160893, 28.4310276779558], \"model\": \"order-weighted reference shear per material bond, smooth axial sliding\", \"shear_at_reference\": 36.75, \"independent_shear_coupon\": {\"step\": 0.00025, \"curvature\": 84.87048592087376, \"relative_error\": 4.300671829771119e-08}, \"input_sha256\": \"4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042\", \"tags\": [21, 23, 20, 16, 12, 18, 13, 17, 15], \"lead\": [24.0, 8.0], \"dt\": 0.00390625, \"mesh\": 34, \"sub\": 3, \"amplitude\": 1e-05}",
+        "{\"test\": \"balance\", \"wall\": 4.6950640516766e-06, \"integrated_support\": 4.6950640516765975e-06, \"exchange_error\": 5.963111948670274e-19, \"material_work_error\": 1.4218187430977413e-16, \"material_drag\": 4.654211327954982e-08}",
+        "{\"test\": \"balance\", \"wall\": 4.3441182163063986e-06, \"integrated_support\": 4.344118216306393e-06, \"exchange_error\": 8.673617379884035e-19, \"material_work_error\": 2.602360118161138e-16, \"material_drag\": 2.5265850533636052e-08}",
+        "{\"test\": \"balance\", \"wall\": 4.017914948093576e-08, \"integrated_support\": 4.0179149480931454e-08, \"exchange_error\": 2.168404344971009e-19, \"material_work_error\": 3.01369307483912e-16, \"material_drag\": 2.744097671919082e-09}",
+        "{\"test\": \"balance\", \"wall\": 4.017259117483048e-08, \"integrated_support\": 4.0172591174824474e-08, \"exchange_error\": 2.981555974335137e-19, \"material_work_error\": 0.0, \"material_drag\": 2.743640626359199e-09}",
+        "{\"test\": \"strain_check\", \"gate\": 0, \"mean_forward_gap\": 0.6795639105179866, \"hoop\": 1.0, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -1479.6382758954587}",
+        "{\"test\": \"strain_check\", \"gate\": 1, \"mean_forward_gap\": 0.6566420171479301, \"hoop\": 1.9050014314904273, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -2373.447300655087}",
+        "{\"test\": \"strain_check\", \"gate\": 2, \"mean_forward_gap\": 0.8093119693815588, \"hoop\": 2.2857233825000227, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -184.01440018521683}",
+        "{\"sample_force_range\": [-4.5160894935978913e-08, -4.51554689987285e-08], \"test\": \"tag_clock\", \"gate\": 1, \"cohort\": [-2678, -2679, -2680, -2681, -2682, -2683, -2684, -2685, -2686, -2687, -2688, -2689], \"individual_transits\": [5.6922350834713855, 5.692250236213053, 5.692257220400121, 5.692254648660504, 5.692241785262018, 5.692219983213179, 5.692190949399376, 5.692156724194144, 5.692118813927927, 5.692078124912091, 5.692114581010573, 5.6921640105702025], \"clock\": 5.692190180102881, \"entry_count\": 666, \"exit_count\": 667, \"initial_inventory\": 134, \"final_inventory\": 133, \"force_at_clock\": -4.5157500074162465e-08, \"early_force\": 4.3441182163063986e-06, \"fraction\": -0.010395090056402236}",
+        "{\"sample_force_range\": [3.0928721102843676e-08, 3.092906327056039e-08], \"test\": \"tag_clock\", \"gate\": 2, \"cohort\": [-2678, -2679, -2680, -2681, -2682, -2683, -2684, -2685, -2686, -2687, -2688, -2689], \"individual_transits\": [10.890609096707411, 10.890606973511646, 10.89060708813658, 10.89060776572191, 10.890608196900965, 10.890607991246949, 10.890607090147677, 10.890605361988733, 10.890602834175874, 10.8905994635621, 10.890674966005458, 10.890636728995565], \"clock\": 10.890614463091739, \"entry_count\": 666, \"exit_count\": 667, \"initial_inventory\": 256, \"final_inventory\": 255, \"force_at_clock\": 3.0928793243427325e-08, \"early_force\": 4.3441182163063986e-06, \"fraction\": 0.007119694194170581}",
+        "{\"test\": \"middle_tag\", \"section_site\": 12, \"neighbors_in_each_direction\": 8, \"cohort\": [-2678, -2679, -2680, -2681, -2682, -2683, -2684, -2685, -2686, -2687, -2688, -2689], \"individual_relative_displacements\": [[-1.0310847298595412e-08, 5.625282650048887e-08], [-1.0175609541674879e-08, 5.626638707096223e-08], [-1.0040370097543488e-08, 5.6277571822562644e-08], [-9.905374824817723e-09, 5.629025127911736e-08], [-9.770837376605545e-09, 5.630304727624003e-08], [-9.637374444484909e-09, 5.631385285123238e-08], [-9.505441270485377e-09, 5.632189396840271e-08], [-9.37527265481274e-09, 5.6325214750270847e-08], [-9.247239089546414e-09, 5.632594848728884e-08], [-9.121934720670659e-09, 5.632707105529139e-08], [-8.999792757465064e-09, 5.6328212687906216e-08], [-8.88068456285578e-09, 5.6325651574549624e-08]], \"mean_relative_by_component\": [-9.580898219963166e-09, 5.630482744369276e-08], \"amplitude\": 1e-05}",
+        "{\"test\": \"joint_force\", \"early_time\": 0.0625, \"early\": 4.3441182163063986e-06, \"zero_time\": 4.6950640516766e-06, \"matched_time\": 28.3125, \"matched\": 4.017914948093576e-08, \"carrier_time\": 28.431027677955868, \"carrier_force\": 4.017259117483048e-08, \"carrier_fraction\": 0.009247582403267876, \"peak_cut_difference\": 6.888760141341614e-21, \"peak_absolute_force\": 4.6950640516766e-06}"
+      ]
+    },
+    "outlet": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joint_strip_hold.py",
+        "--exit-lead",
+        "24"
+      ],
+      "actual_joint_worker_sha256": "c94c0cd78bf109011b02a886ecb76429e2daa0fb7bbd7ec225e4ace35ae29b41",
+      "started_utc": "2026-11-20T22:58:55.954501+00:00",
+      "outcome_utc": "2026-11-20T22:59:19.031564+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "memory_cap": 3221225472,
+      "peak_sampled_bytes": 315891712,
+      "wall_seconds": 23.013818685896695,
+      "stdout_sha256": "b759ac9bd0cfe0ed63165259ab2fe556333151a5ea57dfc7a9911a8077395003",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"setup\", \"mesh\": 34, \"sub\": 3, \"dt\": 0.00390625, \"coverage\": 1.0, \"brane_grip\": 0.0, \"wall_grip\": 1.0, \"tip_drags\": [1.0, 1.0], \"pitch\": 0.01, \"phase\": 0.0, \"intake\": 0.2500000000013136, \"transit\": 28.431027677955868, \"inlet_duration_per_pitch\": 0.019282028852422486, \"families\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"neutral_tangents\": [2.976314217474747, 2.9737346910931137, 2.9748567697800277, 2.9774605857321235, 2.9752615271733918, 2.974487460482316, 2.9734046150931346, 2.972972900488997, 2.9726202879733874], \"shear_energy_curvature_per_bulk_site\": 36.75, \"contact_force_scale\": 2.0408163265306123, \"ordered_instantaneous_grip\": 6.070547178070576, \"amplitude\": 1e-05, \"read_cut\": 1.175, \"active_end\": 1.9243386243386242, \"wall_samples\": 745}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"joint_setup\", \"intake\": 0.2500000000013136, \"arc_gates\": [0.0, 85.82376937392698, 171.28244911849853], \"carrier_clocks\": [0.0, 10.400934903160893, 28.4310276779558], \"model\": \"order-weighted reference shear per material bond, smooth axial sliding\", \"shear_at_reference\": 36.75, \"independent_shear_coupon\": {\"step\": 0.00025, \"curvature\": 84.87048592087376, \"relative_error\": 4.300671829771119e-08}, \"input_sha256\": \"4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042\", \"tags\": [21, 23, 20, 16, 12, 18, 13, 17, 15], \"lead\": [8.0, 24.0], \"dt\": 0.00390625, \"mesh\": 34, \"sub\": 3, \"amplitude\": 1e-05}",
+        "{\"test\": \"balance\", \"wall\": 4.6950640516766e-06, \"integrated_support\": 4.6950640516765975e-06, \"exchange_error\": 6.505213034913027e-19, \"material_work_error\": 1.375680025210929e-16, \"material_drag\": 4.810308196057137e-08}",
+        "{\"test\": \"balance\", \"wall\": 4.343748297262217e-06, \"integrated_support\": 4.343748297262218e-06, \"exchange_error\": 8.131516293641283e-19, \"material_work_error\": 1.2669921460734634e-16, \"material_drag\": 2.5947722840501866e-08}",
+        "{\"test\": \"balance\", \"wall\": -1.7263210252673557e-07, \"integrated_support\": -1.726321025267389e-07, \"exchange_error\": 1.8973538018496328e-19, \"material_work_error\": 0.0, \"material_drag\": 2.060022038943364e-09}",
+        "{\"test\": \"balance\", \"wall\": -1.7263570487336712e-07, \"integrated_support\": -1.7263570487337162e-07, \"exchange_error\": 1.4907779871675686e-19, \"material_work_error\": 2.0071101955466024e-16, \"material_drag\": 2.0600561269695704e-09}",
+        "{\"test\": \"strain_check\", \"gate\": 0, \"mean_forward_gap\": 0.7501748353815049, \"hoop\": 1.0, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -389.9032916856952}",
+        "{\"test\": \"strain_check\", \"gate\": 1, \"mean_forward_gap\": 0.6735187656117335, \"hoop\": 1.9050014314904273, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -1804.3491645612453}",
+        "{\"test\": \"strain_check\", \"gate\": 2, \"mean_forward_gap\": 0.7626752689475049, \"hoop\": 2.2857233825000227, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -412.4131410121777}",
+        "{\"sample_force_range\": [-2.1205556167344522e-07, -2.1205355876127037e-07], \"test\": \"tag_clock\", \"gate\": 1, \"cohort\": [-2017, -2018, -2019, -2020, -2021, -2022, -2023, -2024, -2025, -2026, -2027, -2028], \"individual_transits\": [7.353709225334922, 7.353871489804994, 7.353828931795999, 7.35370065968346, 7.353863040224557, 7.3538204373077205, 7.353694038179247, 7.353869776053671, 7.353841016809532, 7.353723365840079, 7.353903967670406, 7.3538774248425085], \"clock\": 7.353808614462259, \"entry_count\": 496, \"exit_count\": 496, \"initial_inventory\": 128, \"final_inventory\": 128, \"force_at_clock\": -2.1205446851482835e-07, \"early_force\": 4.343748297262217e-06, \"fraction\": -0.04881831404653035}",
+        "{\"sample_force_range\": [-1.7790991394857588e-07, -1.77909090891177e-07], \"test\": \"tag_clock\", \"gate\": 2, \"cohort\": [-2017, -2018, -2019, -2020, -2021, -2022, -2023, -2024, -2025, -2026, -2027, -2028], \"individual_transits\": [14.300622705410495, 14.30079702683171, 14.300771508535709, 14.300643920600947, 14.300817853047189, 14.300791756344418, 14.300663685436685, 14.300837352567164, 14.30081077723537, 14.300682302202679, 14.300855763030896, 14.300828768395684], \"clock\": 14.300760284969913, \"entry_count\": 496, \"exit_count\": 497, \"initial_inventory\": 250, \"final_inventory\": 249, \"force_at_clock\": -1.7790940840692183e-07, \"early_force\": 4.343748297262217e-06, \"fraction\": -0.04095757770289195}",
+        "{\"test\": \"middle_tag\", \"section_site\": 12, \"neighbors_in_each_direction\": 8, \"cohort\": [-2017, -2018, -2019, -2020, -2021, -2022, -2023, -2024, -2025, -2026, -2027, -2028], \"individual_relative_displacements\": [[-6.87282339745166e-09, 5.665897500459597e-08], [-6.753376123214013e-09, 5.670071261006178e-08], [-6.634560646181184e-09, 5.6745216015700535e-08], [-6.514149827721694e-09, 5.67889323947234e-08], [-6.393361723067567e-09, 5.682521063008579e-08], [-6.274199186178637e-09, 5.686438056530598e-08], [-6.154595037292933e-09, 5.690302594645884e-08], [-6.035389214942203e-09, 5.693348006488732e-08], [-5.918596337738643e-09, 5.696710400235808e-08], [-5.80249275472769e-09, 5.7001415307892445e-08], [-5.687587492106424e-09, 5.702758767571382e-08], [-5.575769193880421e-09, 5.705678685553017e-08]], \"mean_relative_by_component\": [-6.218075077875256e-09, 5.6872735589442844e-08], \"amplitude\": 1e-05}",
+        "{\"test\": \"joint_force\", \"early_time\": 0.0625, \"early\": 4.343748297262217e-06, \"zero_time\": 4.6950640516766e-06, \"matched_time\": 28.3125, \"matched\": -1.7263210252673557e-07, \"carrier_time\": 28.431027677955868, \"carrier_force\": -1.7263570487336712e-07, \"carrier_fraction\": -0.039743487204858576, \"peak_cut_difference\": 8.470329472543003e-21, \"peak_absolute_force\": 4.6950640516766e-06}"
+      ]
+    },
+    "nolinks": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joint_strip_hold.py",
+        "--no-links"
+      ],
+      "actual_joint_worker_sha256": "c94c0cd78bf109011b02a886ecb76429e2daa0fb7bbd7ec225e4ace35ae29b41",
+      "started_utc": "2026-11-20T22:58:56.627149+00:00",
+      "outcome_utc": "2026-11-20T22:59:28.059291+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "memory_cap": 3221225472,
+      "peak_sampled_bytes": 310030336,
+      "wall_seconds": 31.328646895010024,
+      "stdout_sha256": "964ca3bea714052ee8b0122ae851bfe4e70c8122c1cbdb1c7a4e2529fa825d0b",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"setup\", \"mesh\": 34, \"sub\": 3, \"dt\": 0.00390625, \"coverage\": 1.0, \"brane_grip\": 0.0, \"wall_grip\": 1.0, \"tip_drags\": [1.0, 1.0], \"pitch\": 0.01, \"phase\": 0.0, \"intake\": 0.2500000000013136, \"transit\": 28.431027677955868, \"inlet_duration_per_pitch\": 0.019282028852422486, \"families\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"neutral_tangents\": [2.976314217474747, 2.9737346910931137, 2.9748567697800277, 2.9774605857321235, 2.9752615271733918, 2.974487460482316, 2.9734046150931346, 2.972972900488997, 2.9726202879733874], \"shear_energy_curvature_per_bulk_site\": 36.75, \"contact_force_scale\": 2.0408163265306123, \"ordered_instantaneous_grip\": 6.070547178070576, \"amplitude\": 1e-05, \"read_cut\": 1.175, \"active_end\": 1.9243386243386242, \"wall_samples\": 745}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"joint_setup\", \"intake\": 0.2500000000013136, \"arc_gates\": [0.0, 85.82376937392698, 171.28244911849853], \"carrier_clocks\": [0.0, 10.400934903160893, 28.4310276779558], \"model\": \"order-weighted reference shear per material bond, smooth axial sliding\", \"shear_at_reference\": 0.0, \"independent_shear_coupon\": {\"step\": 0.00025, \"curvature\": 84.87048592087376, \"relative_error\": 4.300671829771119e-08}, \"input_sha256\": \"4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042\", \"tags\": [21, 23, 20, 16, 12, 18, 13, 17, 15], \"lead\": [8.0, 8.0], \"dt\": 0.00390625, \"mesh\": 34, \"sub\": 3, \"amplitude\": 1e-05}",
+        "{\"test\": \"balance\", \"wall\": 4.6950640516766e-06, \"integrated_support\": 4.6950640516765975e-06, \"exchange_error\": 5.963111948670274e-19, \"material_work_error\": 1.3677858843742512e-16, \"material_drag\": 4.838070765331548e-08}",
+        "{\"test\": \"balance\", \"wall\": 4.340702894734393e-06, \"integrated_support\": 4.340702894734393e-06, \"exchange_error\": 8.131516293641283e-19, \"material_work_error\": 2.5125297659671837e-16, \"material_drag\": 2.6250052534714827e-08}",
+        "{\"test\": \"balance\", \"wall\": -2.0194695499833097e-07, \"integrated_support\": -2.0194695499833378e-07, \"exchange_error\": 2.168404344971009e-19, \"material_work_error\": 0.0, \"material_drag\": 2.3718269090054656e-09}",
+        "{\"test\": \"balance\", \"wall\": -2.019267526140033e-07, \"integrated_support\": -2.0192675261400717e-07, \"exchange_error\": 1.2197274440461925e-19, \"material_work_error\": 1.7440452772696392e-16, \"material_drag\": 2.371412491835444e-09}",
+        "{\"test\": \"strain_check\", \"gate\": 0, \"mean_forward_gap\": 0.7517913565329436, \"hoop\": 1.0, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -377.000151446925}",
+        "{\"test\": \"strain_check\", \"gate\": 1, \"mean_forward_gap\": 0.6795101504440257, \"hoop\": 1.9050014314904273, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -1636.6018814503343}",
+        "{\"test\": \"strain_check\", \"gate\": 2, \"mean_forward_gap\": 0.8267997199714417, \"hoop\": 2.2857233825000227, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -134.45658002767885}",
+        "{\"sample_force_range\": [-2.587354330774508e-07, -2.587313858705262e-07], \"test\": \"tag_clock\", \"gate\": 1, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [6.921040316418557, 6.921034541015842, 6.920990336858044, 6.9209240170923305, 6.920843710514039, 6.920753619432553, 6.920993229579606, 6.921077481890473, 6.921086956001173, 6.921051358961423, 6.9209901176986985, 6.9209126871264495], \"clock\": 6.9209748643824325, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 128, \"final_inventory\": 128, \"force_at_clock\": -2.5873274683124356e-07, \"early_force\": 4.340702894734393e-06, \"fraction\": -0.059606186625927864}",
+        "{\"sample_force_range\": [-2.0846598599685368e-07, -2.0846501644040307e-07], \"test\": \"tag_clock\", \"gate\": 2, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [13.329488110394877, 13.329498550348983, 13.329484784836492, 13.329456865291867, 13.329419657634128, 13.32924777803468, 13.329440082461463, 13.329504182157008, 13.329518885368568, 13.3295069096198, 13.329480515695243, 13.32944454661998], \"clock\": 13.329457572371924, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 246, \"final_inventory\": 246, \"force_at_clock\": -2.0846523571300831e-07, \"early_force\": 4.340702894734393e-06, \"fraction\": -0.04802568633893204}",
+        "{\"test\": \"middle_tag\", \"section_site\": 12, \"neighbors_in_each_direction\": 8, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_relative_displacements\": [[-1.3764205600419138e-08, 6.914195195733477e-08], [-1.236027915408132e-08, 6.923670725586745e-08], [-1.0960514182911787e-08, 6.930984981506207e-08], [-9.634842024626903e-09, 6.938589645371934e-08], [-8.432019415421375e-09, 6.944820196326806e-08], [-7.387031790102796e-09, 6.949434434354444e-08], [-6.5150544056322595e-09, 6.954108172504853e-08], [-5.819051842754353e-09, 6.95737816058128e-08], [-5.283965106467318e-09, 6.960358542091346e-08], [-4.8838735971569524e-09, 6.96261457225837e-08], [-4.59376651196362e-09, 6.964864152896454e-08], [-4.390308484405338e-09, 6.966848772999129e-08]], \"mean_relative_by_component\": [-7.835409342995263e-09, 6.947322296017588e-08], \"amplitude\": 1e-05}",
+        "{\"test\": \"joint_force\", \"early_time\": 0.0625, \"early\": 4.340702894734393e-06, \"zero_time\": 4.6950640516766e-06, \"matched_time\": 28.3125, \"matched\": -2.0194695499833097e-07, \"carrier_time\": 28.431027677955868, \"carrier_force\": -2.019267526140033e-07, \"carrier_fraction\": -0.04651936737226499, \"peak_cut_difference\": 6.935082255644584e-21, \"peak_absolute_force\": 4.6950640516766e-06}"
+      ]
+    },
+    "native": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joint_strip_stability.py"
+      ],
+      "actual_joint_worker_sha256": "c299c0cc70aafa99c391eda3982f1f5e276567c20ea61dbedda64a4eeb1ffa80",
+      "started_utc": "2026-11-20T23:01:07.655266+00:00",
+      "outcome_utc": "2026-11-20T23:01:21.009249+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "memory_cap": 4294967296,
+      "peak_sampled_bytes": 1014566912,
+      "wall_seconds": 13.30874408222735,
+      "stdout_sha256": "ccd13a1bee821671a02e4ecf212d787ad506749e4920814a732d07b591235b7d",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"setup\", \"mesh\": 34, \"sub\": 5, \"dt\": 0.001953125, \"coverage\": 1.0, \"brane_grip\": 0.0, \"wall_grip\": 1.0, \"tip_drags\": [1.0, 1.0], \"pitch\": 0.01, \"phase\": 0.0, \"intake\": 0.2500000000013136, \"transit\": 28.431027677955868, \"inlet_duration_per_pitch\": 0.019282028852422486, \"families\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"neutral_tangents\": [2.976314217474747, 2.9737346910931137, 2.9748567697800277, 2.9774605857321235, 2.9752615271733918, 2.974487460482316, 2.9734046150931346, 2.972972900488997, 2.9726202879733874], \"shear_energy_curvature_per_bulk_site\": 36.75, \"contact_force_scale\": 2.0408163265306123, \"ordered_instantaneous_grip\": 6.070547178070576, \"amplitude\": 1e-05, \"read_cut\": 1.175, \"active_end\": 1.928253968253968, \"wall_samples\": 1235}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"joint_setup\", \"intake\": 0.2500000000013136, \"arc_gates\": [0.0, 85.82376937392698, 171.28244911849853], \"carrier_clocks\": [0.0, 10.400934903160893, 28.4310276779558], \"model\": \"order-weighted reference shear per material bond, smooth axial sliding\", \"shear_at_reference\": 36.75, \"independent_shear_coupon\": {\"step\": 0.00025, \"curvature\": 84.87048592087376, \"relative_error\": 4.300671829771119e-08}, \"input_sha256\": \"4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042\", \"tags\": [21, 23, 20, 16, 12, 18, 13, 17, 15], \"lead\": [8.0, 8.0], \"dt\": 0.001953125, \"mesh\": 34, \"sub\": 5, \"amplitude\": 1e-05}",
+        "{\"test\": \"snapshot\", \"id\": -2128, \"time\": 6.9337829432473, \"depth\": 1.175}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.6515916167454281, \"width_each_side\": 12, \"wavelength\": 4.0, \"section_count\": 265, \"native\": -140438.12460803584, \"native_centered_differences\": [-140438.0971507635, -140438.11752344482], \"wall_if_held\": 96.39429950613909, \"reference_shear\": 4177.893052018425, \"total_native\": -140341.7303085297, \"total_reference\": 4274.287351524564, \"native_per_unit_drag\": -2598.920931639438}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.6515916167454281, \"width_each_side\": 12, \"wavelength\": 8.0, \"section_count\": 265, \"native\": -52302.24203246093, \"native_centered_differences\": [-52302.23760008812, -52302.23760008812], \"wall_if_held\": 96.3117468969716, \"reference_shear\": 1257.2307020099881, \"total_native\": -52205.930285563954, \"total_reference\": 1353.5424489069596, \"native_per_unit_drag\": -966.7764867697026}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.6515916167454281, \"width_each_side\": 12, \"wavelength\": 16.0, \"section_count\": 265, \"native\": -15921.285519977166, \"native_centered_differences\": [-15921.283193165436, -15921.278827590868], \"wall_if_held\": 96.2573000067043, \"reference_shear\": 361.8637924271991, \"total_native\": -15825.028219970462, \"total_reference\": 458.1210924339034, \"native_per_unit_drag\": -293.0560781476011}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.8979756325772601, \"width_each_side\": 12, \"wavelength\": 4.0, \"section_count\": 265, \"native\": -192638.78605204527, \"native_centered_differences\": [-192638.75165052013, -192638.77620687708], \"wall_if_held\": 201.02751021262299, \"reference_shear\": 4176.7709987873595, \"total_native\": -192437.75854183265, \"total_reference\": 4377.798508999983, \"native_per_unit_drag\": -3563.662195219122}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.8979756325772601, \"width_each_side\": 12, \"wavelength\": 8.0, \"section_count\": 265, \"native\": -71263.08916839918, \"native_centered_differences\": [-71263.08446459007, -71263.0819180049], \"wall_if_held\": 201.5278232218518, \"reference_shear\": 1256.891390226199, \"total_native\": -71061.56134517732, \"total_reference\": 1458.4192134480509, \"native_per_unit_drag\": -1315.9548397255057}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.8979756325772601, \"width_each_side\": 12, \"wavelength\": 16.0, \"section_count\": 265, \"native\": -21689.793062029006, \"native_centered_differences\": [-21689.790628443006, -21689.788991352543], \"wall_if_held\": 201.4164391023922, \"reference_shear\": 361.76450742895895, \"total_native\": -21488.376622926615, \"total_reference\": 563.1809465313511, \"native_per_unit_drag\": -397.9329004245669}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 1.175, \"width_each_side\": 12, \"wavelength\": 4.0, \"section_count\": 265, \"native\": -120054.22561892435, \"native_centered_differences\": [-120054.20448986115, -120054.21740468591], \"wall_if_held\": 254.84678475883618, \"reference_shear\": 3597.2092108510724, \"total_native\": -119799.37883416552, \"total_reference\": 3852.0559956099087, \"native_per_unit_drag\": -2218.507015447509}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 1.175, \"width_each_side\": 12, \"wavelength\": 8.0, \"section_count\": 265, \"native\": -44384.57178553251, \"native_centered_differences\": [-44384.56835487159, -44384.57035575993], \"wall_if_held\": 255.43963127775805, \"reference_shear\": 1081.3050591859349, \"total_native\": -44129.13215425475, \"total_reference\": 1336.744690463693, \"native_per_unit_drag\": -817.2061510047174}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 1.175, \"width_each_side\": 12, \"wavelength\": 16.0, \"section_count\": 265, \"native\": -13469.195171646232, \"native_centered_differences\": [-13469.194891513325, -13469.198165694252], \"wall_if_held\": 256.2664522418134, \"reference_shear\": 310.0215755471242, \"total_native\": -13212.92871940442, \"total_reference\": 566.2880277889376, \"native_per_unit_drag\": -244.6838651741559}"
+      ]
+    },
+    "native26": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joint_strip_stability.py",
+        "--mesh",
+        "26"
+      ],
+      "actual_joint_worker_sha256": "c299c0cc70aafa99c391eda3982f1f5e276567c20ea61dbedda64a4eeb1ffa80",
+      "started_utc": "2026-11-20T23:01:07.668937+00:00",
+      "outcome_utc": "2026-11-20T23:01:18.063176+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "memory_cap": 4294967296,
+      "peak_sampled_bytes": 571375616,
+      "wall_seconds": 10.296973965130746,
+      "stdout_sha256": "35d04abc19d11c790a297c15c5f0d4253051594149bd7eeb3ffaa443edde783f",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"setup\", \"mesh\": 26, \"sub\": 5, \"dt\": 0.001953125, \"coverage\": 1.0, \"brane_grip\": 0.0, \"wall_grip\": 1.0, \"tip_drags\": [1.0, 1.0], \"pitch\": 0.01, \"phase\": 0.0, \"intake\": 0.24999999999797987, \"transit\": 28.431057557562912, \"inlet_duration_per_pitch\": 0.01927090086585628, \"families\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"neutral_tangents\": [2.976314217474747, 2.9737346910931137, 2.9748567697800277, 2.9774605857321235, 2.9752615271733918, 2.974487460482316, 2.9734046150931346, 2.972972900488997, 2.9726202879733874], \"shear_energy_curvature_per_bulk_site\": 36.75, \"contact_force_scale\": 2.0408163265306123, \"ordered_instantaneous_grip\": 6.070547178070576, \"amplitude\": 1e-05, \"read_cut\": 1.175, \"active_end\": 1.9248979591836732, \"wall_samples\": 970}",
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"joint_setup\", \"intake\": 0.24999999999797987, \"arc_gates\": [0.0, 85.82376937392708, 171.28244911849856], \"carrier_clocks\": [0.0, 10.401120980772609, 28.431057557562927], \"model\": \"order-weighted reference shear per material bond, smooth axial sliding\", \"shear_at_reference\": 36.75, \"independent_shear_coupon\": {\"step\": 0.00025, \"curvature\": 84.87048592087376, \"relative_error\": 4.300671829771119e-08}, \"input_sha256\": \"4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042\", \"tags\": [21, 23, 20, 16, 12, 18, 13, 17, 15], \"lead\": [8.0, 8.0], \"dt\": 0.001953125, \"mesh\": 26, \"sub\": 5, \"amplitude\": 1e-05}",
+        "{\"test\": \"snapshot\", \"id\": -2128, \"time\": 6.920197457745962, \"depth\": 1.175}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.6516010348256239, \"width_each_side\": 12, \"wavelength\": 4.0, \"section_count\": 265, \"native\": -140483.96325998803, \"native_centered_differences\": [-140483.93732082332, -140483.9538736269], \"wall_if_held\": 96.22437589075342, \"reference_shear\": 4177.893042106351, \"total_native\": -140387.73888409729, \"total_reference\": 4274.117417997104, \"native_per_unit_drag\": -2599.7729422980974}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.6516010348256239, \"width_each_side\": 12, \"wavelength\": 8.0, \"section_count\": 265, \"native\": -52319.04284245797, \"native_centered_differences\": [-52319.03887761291, -52319.040696602315], \"wall_if_held\": 96.31188721984714, \"reference_shear\": 1257.2306990421325, \"total_native\": -52222.73095523813, \"total_reference\": 1353.5425862619797, \"native_per_unit_drag\": -967.0876102821873}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.6516010348256239, \"width_each_side\": 12, \"wavelength\": 16.0, \"section_count\": 265, \"native\": -15926.085595220491, \"native_centered_differences\": [-15926.084961392917, -15926.083142403513], \"wall_if_held\": 96.1708158093522, \"reference_shear\": 361.86379127532683, \"total_native\": -15829.91477941114, \"total_reference\": 458.034607084679, \"native_per_unit_drag\": -293.14656998909516}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.8979788219323913, \"width_each_side\": 12, \"wavelength\": 4.0, \"section_count\": 265, \"native\": -192666.91282774112, \"native_centered_differences\": [-192666.87813797034, -192666.89341748133], \"wall_if_held\": 200.45033643063027, \"reference_shear\": 4176.769404451649, \"total_native\": -192466.4624913105, \"total_reference\": 4377.219740882279, \"native_per_unit_drag\": -3564.193749839082}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.8979788219323913, \"width_each_side\": 12, \"wavelength\": 8.0, \"section_count\": 265, \"native\": -71273.37516157265, \"native_centered_differences\": [-71273.37048586924, -71273.36793928407], \"wall_if_held\": 201.1049349268938, \"reference_shear\": 1256.8910186853814, \"total_native\": -71072.27022664576, \"total_reference\": 1457.9959536122751, \"native_per_unit_drag\": -1316.1531523452916}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 0.8979788219323913, \"width_each_side\": 12, \"wavelength\": 16.0, \"section_count\": 265, \"native\": -21692.987751523946, \"native_centered_differences\": [-21692.986774723977, -21692.985319532454], \"wall_if_held\": 201.13586890410133, \"reference_shear\": 361.7643765395863, \"total_native\": -21491.851882619845, \"total_reference\": 562.9002454436876, \"native_per_unit_drag\": -397.9972570855527}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 1.175, \"width_each_side\": 12, \"wavelength\": 4.0, \"section_count\": 265, \"native\": -120066.89251671231, \"native_centered_differences\": [-120066.8708406738, -120066.88557448797], \"wall_if_held\": 255.8658136235636, \"reference_shear\": 3596.990882313082, \"total_native\": -119811.02670308875, \"total_reference\": 3852.8566959366453, \"native_per_unit_drag\": -2218.7227167238652}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 1.175, \"width_each_side\": 12, \"wavelength\": 8.0, \"section_count\": 265, \"native\": -44389.27605695155, \"native_centered_differences\": [-44389.27207957022, -44389.27135197446], \"wall_if_held\": 255.04130157152497, \"reference_shear\": 1081.2471111888754, \"total_native\": -44134.23475538003, \"total_reference\": 1336.2884127604002, \"native_per_unit_drag\": -817.3006436181485}",
+        "{\"test\": \"joint_trial_curvature\", \"center_depth\": 1.175, \"width_each_side\": 12, \"wavelength\": 16.0, \"section_count\": 265, \"native\": -13469.35253986506, \"native_centered_differences\": [-13469.35114270309, -13469.346595229581], \"wall_if_held\": 256.3408244829648, \"reference_shear\": 309.9756212736828, \"total_native\": -13213.011715382096, \"total_reference\": 566.3164457566477, \"native_per_unit_drag\": -244.68540213670548}"
+      ]
+    },
+    "resolution": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joint_strip_hold.py",
+        "--sub",
+        "5",
+        "--dt",
+        ".001953125"
+      ],
+      "actual_joint_worker_sha256": "c299c0cc70aafa99c391eda3982f1f5e276567c20ea61dbedda64a4eeb1ffa80",
+      "started_utc": "2026-11-20T23:01:07.314151+00:00",
+      "outcome_utc": "2026-11-20T23:01:54.431111+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "memory_cap": 4294967296,
+      "peak_sampled_bytes": 995758080,
+      "wall_seconds": 47.10288258315995,
+      "stdout_sha256": "689041e68567d22eb71cd0b49feb306306ae04c6713b72e7fd461ab8ce739f70",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"setup\", \"mesh\": 34, \"sub\": 5, \"dt\": 0.001953125, \"coverage\": 1.0, \"brane_grip\": 0.0, \"wall_grip\": 1.0, \"tip_drags\": [1.0, 1.0], \"pitch\": 0.01, \"phase\": 0.0, \"intake\": 0.2500000000013136, \"transit\": 28.431027677955868, \"inlet_duration_per_pitch\": 0.019282028852422486, \"families\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"neutral_tangents\": [2.976314217474747, 2.9737346910931137, 2.9748567697800277, 2.9774605857321235, 2.9752615271733918, 2.974487460482316, 2.9734046150931346, 2.972972900488997, 2.9726202879733874], \"shear_energy_curvature_per_bulk_site\": 36.75, \"contact_force_scale\": 2.0408163265306123, \"ordered_instantaneous_grip\": 6.070547178070576, \"amplitude\": 1e-05, \"read_cut\": 1.175, \"active_end\": 1.928253968253968, \"wall_samples\": 1235}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"joint_setup\", \"intake\": 0.2500000000013136, \"arc_gates\": [0.0, 85.82376937392698, 171.28244911849853], \"carrier_clocks\": [0.0, 10.400934903160893, 28.4310276779558], \"model\": \"order-weighted reference shear per material bond, smooth axial sliding\", \"shear_at_reference\": 36.75, \"independent_shear_coupon\": {\"step\": 0.00025, \"curvature\": 84.87048592087376, \"relative_error\": 4.300671829771119e-08}, \"input_sha256\": \"4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042\", \"tags\": [21, 23, 20, 16, 12, 18, 13, 17, 15], \"lead\": [8.0, 8.0], \"dt\": 0.001953125, \"mesh\": 34, \"sub\": 5, \"amplitude\": 1e-05}",
+        "{\"test\": \"balance\", \"wall\": 4.696621287935041e-06, \"integrated_support\": 4.6966212879350396e-06, \"exchange_error\": 7.589415207398531e-19, \"material_work_error\": 0.0, \"material_drag\": 4.8372888644958577e-08}",
+        "{\"test\": \"balance\", \"wall\": 4.341738405627964e-06, \"integrated_support\": 4.3417384056279595e-06, \"exchange_error\": 7.047314121155779e-19, \"material_work_error\": 0.0, \"material_drag\": 2.6064333025933258e-08}",
+        "{\"test\": \"balance\", \"wall\": -1.4070947537798982e-07, \"integrated_support\": -1.4070947537799348e-07, \"exchange_error\": 1.2197274440461925e-19, \"material_work_error\": 1.871331042893575e-16, \"material_drag\": 2.2093881037779148e-09}",
+        "{\"test\": \"balance\", \"wall\": -1.4069421271887263e-07, \"integrated_support\": -1.4069421271887554e-07, \"exchange_error\": 2.710505431213761e-19, \"material_work_error\": 0.0, \"material_drag\": 2.2093751766653997e-09}",
+        "{\"test\": \"strain_check\", \"gate\": 0, \"mean_forward_gap\": 0.7515579927283328, \"hoop\": 1.0, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -378.84107437599425}",
+        "{\"test\": \"strain_check\", \"gate\": 1, \"mean_forward_gap\": 0.6795173739556772, \"hoop\": 1.9050014314904273, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -1636.4092076074749}",
+        "{\"test\": \"strain_check\", \"gate\": 2, \"mean_forward_gap\": 0.8270159665019391, \"hoop\": 2.2857233825000227, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -133.92925311177223}",
+        "{\"entrance_times\": [0.01343980654212664, 0.06751240265501811, 0.12167295516410745, 0.175873233976582, 0.23009972631433664, 0.28417612841657897, 0.3383402078786347, 0.3925438446015062, 0.44677369682643514, 0.5008524822938323, 0.555018921780033, 0.609225300170726], \"gate_crossing_times\": [6.9337829432473, 6.9879421865765865, 7.042101046011959, 7.096261791921144, 7.150424054997656, 7.204584675305511, 7.258745096389193, 7.312905359144042, 7.367062866619111, 7.421219762188792, 7.475378610521229, 7.529538880941241], \"wall_forces_at_crossings\": [-1.8714066044284328e-07, -1.8653959805410436e-07, -1.859341129473206e-07, -1.8531223856180792e-07, -1.8469173790685372e-07, -1.8407739068843572e-07, -1.8345290552605825e-07, -1.8283326860857504e-07, -1.8222153752814332e-07, -1.8160988451586458e-07, -1.8098578917954569e-07, -1.8036697272484558e-07], \"sample_force_range\": [-1.8729942024687194e-07, -1.8729789086937144e-07], \"test\": \"tag_clock\", \"gate\": 1, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [6.920343136705173, 6.920429783921568, 6.920428090847852, 6.920388557944562, 6.92032432868332, 6.920408546888932, 6.920404888510558, 6.920361514542536, 6.920289169792676, 6.920367279894959, 6.920359688741196, 6.920313580770515], \"clock\": 6.920368213936986, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 128, \"final_inventory\": 128, \"force_at_clock\": -1.8729856053002267e-07, \"early_force\": 4.341738405627964e-06, \"fraction\": -0.04313907081256613}",
+        "{\"entrance_times\": [0.01343980654212664, 0.06751240265501811, 0.12167295516410745, 0.175873233976582, 0.23009972631433664, 0.28417612841657897, 0.3383402078786347, 0.3925438446015062, 0.44677369682643514, 0.5008524822938323, 0.555018921780033, 0.609225300170726], \"gate_crossing_times\": [13.34114929765605, 13.395282250033391, 13.449440724774115, 13.503617300647385, 13.557742190585856, 13.611894267385082, 13.666065242680808, 13.720249734423847, 13.774379900240465, 13.828535877325578, 13.882710076084278, 13.936897254392521], \"wall_forces_at_crossings\": [-1.46876107808756e-07, -1.4678478661177774e-07, -1.4669356836835372e-07, -1.4658800832131686e-07, -1.4649321891809076e-07, -1.4640533304136677e-07, -1.4631796271847568e-07, -1.462166492158945e-07, -1.4612680371728912e-07, -1.4604410689718844e-07, -1.4595112248867702e-07, -1.4586914834062414e-07], \"sample_force_range\": [-1.4690905341475298e-07, -1.469087637278471e-07], \"test\": \"tag_clock\", \"gate\": 2, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [13.327709491113923, 13.327769847378374, 13.327767769610007, 13.327744066670803, 13.32764246427152, 13.327718138968503, 13.327725034802175, 13.32770588982234, 13.32760620341403, 13.327683395031746, 13.327691154304246, 13.327671954221795], \"clock\": 13.327702950800786, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 246, \"final_inventory\": 246, \"force_at_clock\": -1.4690888214995117e-07, \"early_force\": 4.341738405627964e-06, \"fraction\": -0.03383641952253987}",
+        "{\"test\": \"middle_tag\", \"section_site\": 12, \"neighbors_in_each_direction\": 8, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_relative_displacements\": [[-7.82321088986134e-09, 5.842144428319489e-08], [-7.698851662733094e-09, 5.846472524457462e-08], [-7.573556512415483e-09, 5.8506710170946644e-08], [-7.4476297950361415e-09, 5.85473301577168e-08], [-7.321576851975214e-09, 5.8584942072506834e-08], [-7.195579012503757e-09, 5.862037156060987e-08], [-7.0702589333525985e-09, 5.865526805042293e-08], [-6.945909478573485e-09, 5.868856680907993e-08], [-6.82278665435365e-09, 5.871928170656346e-08], [-6.701122720979113e-09, 5.8748273876074374e-08], [-6.581291256773453e-09, 5.877688612598258e-08], [-6.463627029754727e-09, 5.880306205453628e-08]], \"mean_relative_by_component\": [-7.1371167331926715e-09, 5.86280718426841e-08], \"amplitude\": 1e-05}",
+        "{\"test\": \"joint_force\", \"early_time\": 0.0625, \"early\": 4.341738405627964e-06, \"zero_time\": 4.696621287935041e-06, \"matched_time\": 28.3125, \"matched\": -1.4070947537798982e-07, \"carrier_time\": 28.431027677955868, \"carrier_force\": -1.4069421271887263e-07, \"carrier_fraction\": -0.03240504138538108, \"peak_cut_difference\": 1.0164395367051604e-20, \"peak_absolute_force\": 4.696621287935041e-06}"
+      ]
+    },
+    "opposite": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joint_strip_hold.py",
+        "--sub",
+        "5",
+        "--dt",
+        ".001953125",
+        "--amplitude=-0.000005"
+      ],
+      "actual_joint_worker_sha256": "c299c0cc70aafa99c391eda3982f1f5e276567c20ea61dbedda64a4eeb1ffa80",
+      "started_utc": "2026-11-20T23:01:07.564898+00:00",
+      "outcome_utc": "2026-11-20T23:01:54.871189+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "memory_cap": 4294967296,
+      "peak_sampled_bytes": 993591296,
+      "wall_seconds": 47.27476460579783,
+      "stdout_sha256": "abb362e20c06698f1bde83806223816382a0505193de279e0f51a9ac39beeef4",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"setup\", \"mesh\": 34, \"sub\": 5, \"dt\": 0.001953125, \"coverage\": 1.0, \"brane_grip\": 0.0, \"wall_grip\": 1.0, \"tip_drags\": [1.0, 1.0], \"pitch\": 0.01, \"phase\": 0.0, \"intake\": 0.2500000000013136, \"transit\": 28.431027677955868, \"inlet_duration_per_pitch\": 0.019282028852422486, \"families\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"neutral_tangents\": [2.976314217474747, 2.9737346910931137, 2.9748567697800277, 2.9774605857321235, 2.9752615271733918, 2.974487460482316, 2.9734046150931346, 2.972972900488997, 2.9726202879733874], \"shear_energy_curvature_per_bulk_site\": 36.75, \"contact_force_scale\": 2.0408163265306123, \"ordered_instantaneous_grip\": 6.070547178070576, \"amplitude\": -5e-06, \"read_cut\": 1.175, \"active_end\": 1.928253968253968, \"wall_samples\": 1235}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"joint_setup\", \"intake\": 0.2500000000013136, \"arc_gates\": [0.0, 85.82376937392698, 171.28244911849853], \"carrier_clocks\": [0.0, 10.400934903160893, 28.4310276779558], \"model\": \"order-weighted reference shear per material bond, smooth axial sliding\", \"shear_at_reference\": 36.75, \"independent_shear_coupon\": {\"step\": 0.00025, \"curvature\": 84.87048592087376, \"relative_error\": 4.300671829771119e-08}, \"input_sha256\": \"4addc4e8581caab474400b3518f63fa7e1eb0e79e3f1bc47fefe8ac558111042\", \"tags\": [21, 23, 20, 16, 12, 18, 13, 17, 15], \"lead\": [8.0, 8.0], \"dt\": 0.001953125, \"mesh\": 34, \"sub\": 5, \"amplitude\": -5e-06}",
+        "{\"test\": \"balance\", \"wall\": -2.3483106439675206e-06, \"integrated_support\": -2.3483106439675198e-06, \"exchange_error\": 3.7947076036992655e-19, \"material_work_error\": 0.0, \"material_drag\": 1.2093222161239644e-08}",
+        "{\"test\": \"balance\", \"wall\": -2.170869202813982e-06, \"integrated_support\": -2.1708692028139797e-06, \"exchange_error\": 3.5236570605778894e-19, \"material_work_error\": 0.0, \"material_drag\": 6.5160832564833146e-09}",
+        "{\"test\": \"balance\", \"wall\": 7.035473768899491e-08, \"integrated_support\": 7.035473768899674e-08, \"exchange_error\": 6.098637220230962e-20, \"material_work_error\": 1.871331042893575e-16, \"material_drag\": 5.523470259444787e-10}",
+        "{\"test\": \"balance\", \"wall\": 7.034710635943632e-08, \"integrated_support\": 7.034710635943777e-08, \"exchange_error\": 1.3552527156068805e-19, \"material_work_error\": 0.0, \"material_drag\": 5.523437941663499e-10}",
+        "{\"test\": \"strain_check\", \"gate\": 0, \"mean_forward_gap\": 0.7515579927283328, \"hoop\": 1.0, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -378.84107437599425}",
+        "{\"test\": \"strain_check\", \"gate\": 1, \"mean_forward_gap\": 0.6795173739556772, \"hoop\": 1.9050014314904273, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -1636.4092076074749}",
+        "{\"test\": \"strain_check\", \"gate\": 2, \"mean_forward_gap\": 0.8270159665019391, \"hoop\": 2.2857233825000227, \"neutral_curvature\": 36.75000000000004, \"local_affine_curvature\": -133.92925311177223}",
+        "{\"entrance_times\": [0.01343980654212664, 0.06751240265501811, 0.12167295516410745, 0.175873233976582, 0.23009972631433664, 0.28417612841657897, 0.3383402078786347, 0.3925438446015062, 0.44677369682643514, 0.5008524822938323, 0.555018921780033, 0.609225300170726], \"gate_crossing_times\": [6.9337829432473, 6.9879421865765865, 7.042101046011959, 7.096261791921144, 7.150424054997656, 7.204584675305511, 7.258745096389193, 7.312905359144042, 7.367062866619111, 7.421219762188792, 7.475378610521229, 7.529538880941241], \"wall_forces_at_crossings\": [9.357033022142164e-08, 9.326979902705218e-08, 9.29670564736603e-08, 9.265611928090396e-08, 9.234586895342686e-08, 9.203869534421786e-08, 9.172645276302913e-08, 9.141663430428752e-08, 9.111076876407166e-08, 9.080494225793229e-08, 9.049289458977284e-08, 9.018348636242279e-08], \"sample_force_range\": [9.364894543468572e-08, 9.364971012343597e-08], \"test\": \"tag_clock\", \"gate\": 1, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [6.920343136705173, 6.920429783921568, 6.920428090847852, 6.920388557944562, 6.92032432868332, 6.920408546888932, 6.920404888510558, 6.920361514542536, 6.920289169792676, 6.920367279894959, 6.920359688741196, 6.920313580770515], \"clock\": 6.920368213936986, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 128, \"final_inventory\": 128, \"force_at_clock\": 9.364928026501133e-08, \"early_force\": -2.170869202813982e-06, \"fraction\": -0.04313907081256613}",
+        "{\"entrance_times\": [0.01343980654212664, 0.06751240265501811, 0.12167295516410745, 0.175873233976582, 0.23009972631433664, 0.28417612841657897, 0.3383402078786347, 0.3925438446015062, 0.44677369682643514, 0.5008524822938323, 0.555018921780033, 0.609225300170726], \"gate_crossing_times\": [13.34114929765605, 13.395282250033391, 13.449440724774115, 13.503617300647385, 13.557742190585856, 13.611894267385082, 13.666065242680808, 13.720249734423847, 13.774379900240465, 13.828535877325578, 13.882710076084278, 13.936897254392521], \"wall_forces_at_crossings\": [7.3438053904378e-08, 7.339239330588887e-08, 7.334678418417686e-08, 7.329400416065843e-08, 7.324660945904538e-08, 7.320266652068338e-08, 7.315898135923784e-08, 7.310832460794725e-08, 7.306340185864456e-08, 7.302205344859422e-08, 7.297556124433851e-08, 7.293457417031207e-08], \"sample_force_range\": [7.345438186392355e-08, 7.345452670737649e-08], \"test\": \"tag_clock\", \"gate\": 2, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_transits\": [13.327709491113923, 13.327769847378374, 13.327767769610007, 13.327744066670803, 13.32764246427152, 13.327718138968503, 13.327725034802175, 13.32770588982234, 13.32760620341403, 13.327683395031746, 13.327691154304246, 13.327671954221795], \"clock\": 13.327702950800786, \"entry_count\": 525, \"exit_count\": 525, \"initial_inventory\": 246, \"final_inventory\": 246, \"force_at_clock\": 7.345444107497559e-08, \"early_force\": -2.170869202813982e-06, \"fraction\": -0.03383641952253987}",
+        "{\"test\": \"middle_tag\", \"section_site\": 12, \"neighbors_in_each_direction\": 8, \"cohort\": [-2128, -2129, -2130, -2131, -2132, -2133, -2134, -2135, -2136, -2137, -2138, -2139], \"individual_relative_displacements\": [[3.91160544493067e-09, -2.9210722141597446e-08], [3.849425831366547e-09, -2.923236262228731e-08], [3.786778256207741e-09, -2.9253355085473322e-08], [3.7238148975180707e-09, -2.92736650788584e-08], [3.660788425987607e-09, -2.9292471036253417e-08], [3.5977895062518783e-09, -2.9310185780304934e-08], [3.5351294666762993e-09, -2.9327634025211465e-08], [3.4729547392867425e-09, -2.9344283404539966e-08], [3.411393327176825e-09, -2.935964085328173e-08], [3.3505613604895564e-09, -2.9374136938037187e-08], [3.2906456283867267e-09, -2.938844306299129e-08], [3.2318135148773633e-09, -2.940153102726814e-08]], \"mean_relative_by_component\": [3.5685583665963357e-09, -2.931403592134205e-08], \"amplitude\": -5e-06}",
+        "{\"test\": \"joint_force\", \"early_time\": 0.0625, \"early\": -2.170869202813982e-06, \"zero_time\": -2.3483106439675206e-06, \"matched_time\": 28.3125, \"matched\": 7.035473768899491e-08, \"carrier_time\": 28.431027677955868, \"carrier_force\": 7.034710635943632e-08, \"carrier_fraction\": -0.03240504138538108, \"peak_cut_difference\": 5.082197683525802e-21, \"peak_absolute_force\": 2.3483106439675206e-06}"
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "verbatim": "Scoped clear for the joint weak-bend force and material transit clocks of the open strip with order-weighted reference shear.",
+      "limit": "Method review. Neutral shear continued into the compressed material is a constitutive hypothesis. The work check is instantaneous at fixed geometry."
+    },
+    {
+      "verbatim": "Scoped clear for the conditional signed wall reactions and measured material clocks, and for a constrained negative-curvature witness on the reconstructed nearest-neighbor triangular snapshots.",
+      "limit": "Verified ten guarded runs, tag timestamps, force ratios, inventories, and centered energy test. Nine trial displacements are not nine independent eigenmodes. Dynamics after rearrangement and free-mouth acceleration remain open."
+    }
+  ],
+  "status": "Local scopes quoted in reviews. Formal project review and commit pending."
+}

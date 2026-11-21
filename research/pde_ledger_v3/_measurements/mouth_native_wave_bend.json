@@ -1,0 +1,991 @@
+{
+  "title": "Held native torsional wave under relative sideways shifts of entrance and flare",
+  "base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "Radius-one, intake-0.25 stationary carrier, section-attached frozen order, rho_T=mu_T=chi in ordered units. Aligned axisymmetric azimuthal polarization. Signed wave work per unit on-grid stored energy. The two displacement increments have disjoint depth ranges. No selection of elastic constants or wave occupation, no moving-mouth or paired gravity run.",
+  "conventions": {
+    "wave_stiffness": "positive if the wave force opposes prescribed offset",
+    "force_direction": "positive toward imposed displacement of deeper end",
+    "intervals_model_depth": [
+      [
+        0.55,
+        1.15
+      ],
+      [
+        1.2,
+        2.0
+      ]
+    ],
+    "area_tension_unit": "energy per three-dimensional wall area; sigma/E has inverse length cubed",
+    "cut": "locally dissipative, or free in reflecting controls; the deeper profile is clipped if cut at 1.8460",
+    "wave_momentum": "canonical momentum of the model field; the physical mechanical momentum of the reservoir is not specified"
+  },
+  "source_sha256": {
+    "_scratch/native_bend_independent_work_review.py": "47de75efc1334351e3dfc2cc5abe38a6f180461d0543346fca4132ae15b8427e",
+    "_scratch/native_bend_window_review.py": "ad6a2dec3a8295ec69c8d6024d632b6780afca441de2bffeb79b4e37ff486dfd",
+    "_scratch/s11c/native_bend_referee/angular_form_check.py": "bcc85ce7d3857b961d502cf6bd1f3c15a8b90097d7cecae75488fe490636718f",
+    "_scratch/s11c/native_bend_referee/mixed_degree_one.py": "4a295d06e88d755cf6f475cad2777b7510990d7ffdb537de260512a6ead1f634",
+    "research/pde_ledger_v3/_measurements/mouth_free_order_depth.json": "917da8d7812928e1831855037336fc55b8b111977d52fb1eb97d11be4d2c54b9",
+    "research/pde_ledger_v3/_measurements/mouth_shear_pattern_release.json": "bb60157606a4e0f58f90f4dcaa61e8c622f9d80fceb454c506569ed063c89c09",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/figures/mouth_native_wave_bend.png": "b00ea764a5f0a1ff3376465e60fb1fd4dd90a75f62dac61ef8c942089b74eadb",
+    "software/stage1_solver/tools/mouth_carrier_attachment_tension.py": "3ad065608f0abaa864eb68fa9da05fdc67899874eecb9da1a706a28b203c8f24",
+    "software/stage1_solver/tools/mouth_carrier_depth_selection.py": "f59a8f9b6541dba28553acedc5824097c2e70708326174345b9799c148aaf85d",
+    "software/stage1_solver/tools/mouth_carrier_depth_work.py": "0c68069b2bdba8f87c6caa53c744739ec1a26f77f946775c68f7ecb9786e7d0b",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "9f5e670743f1c3a00e230e087c62869ba03188a445385bdc614cb24ac8199a02",
+    "software/stage1_solver/tools/mouth_carrier_radius_family.py": "57eff082861fcc4261a80f64f1c50cc41b18dc0ab39c3ec22f474afe3f5da794",
+    "software/stage1_solver/tools/mouth_carrier_weak_radius.py": "86a5025e4284ec3e9c12c05966a9f63f032eb4a0a84b4cda298e3fdb67f690d3",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "software/stage1_solver/tools/mouth_free_order_diffuse.py": "b883ef93eaa9134efb5404fae541bfc782ec6de9fd67c4ac51d5dcef38e959d9",
+    "software/stage1_solver/tools/mouth_free_order_residual_check.py": "02437154907740e2ed53c480a0dc0c47c401c088f3560dd7150fd80a45710fef",
+    "software/stage1_solver/tools/mouth_native_wave_bend.py": "10665bd837a76e52d3a30e52d8129b09ddf931a02257e5d0c6439e6c9856604e",
+    "software/stage1_solver/tools/mouth_native_wave_bend_family.py": "3b6a8381e1ed826aa02e0c1c75c2d7ed19be833a0d05a7eec2ea43fb85beaec8",
+    "software/stage1_solver/tools/mouth_native_wave_bend_offset.py": "64bc84391cc2a7d79e93ed9787f13df4fca33eb0e188c84ada07b515f70c4ebc",
+    "software/stage1_solver/tools/mouth_native_wave_bend_release.py": "151af42d8cb89e44ed5b1778589c699b8080918adb816adcd4df5d2678b296b7",
+    "software/stage1_solver/tools/mouth_native_wave_bend_requirements.py": "9d6edc32f0173977c778a5374815c4d920cc4d9f53cebe55ce2d3c27fd61d08c",
+    "software/stage1_solver/tools/mouth_order_wave_pulse.py": "d4fc14a69fd269039a58197ee6751107708c67bff9329d414581896401f50433",
+    "software/stage1_solver/tools/mouth_shear_cut.py": "d43b3bbd2cf53428e146b15cd379e31e9f623f1f5964927494e4567aff99160c",
+    "software/stage1_solver/tools/mouth_shear_pattern_release.py": "c93fb251592d41b95270b5d4937a3134ce4b71fde81b4e1eb95395fa16e7287f",
+    "software/stage1_solver/tools/mouth_shear_ringdown.py": "37c0d48e078b6ea0fabdea6b3f032c51d4449ac60c0e594b2574c55dd2358a40",
+    "software/stage1_solver/tools/mouth_shear_ringdown_burst.py": "ee150830468cc3a5624dd76288eacc096fba44e4b360bbaf30996c15e863b9b7",
+    "software/stage1_solver/tools/mouth_shear_ringdown_state.py": "8dfc35f294d85c8d6c2eb17353683bbf373b2d2217375ec871eb7ae31e190eed"
+  },
+  "input_sha256": {
+    "_scratch/s11c/mouth_flared_cubic_n26/field.npz": "c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2",
+    "_scratch/s11c/mouth_flared_cubic_n34/field.npz": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d",
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz": "fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz": "6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341"
+  },
+  "runs": {
+    "_scratch/s11c/native_bend_waist_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend.py",
+        "--boundary",
+        "waist",
+        "--fd",
+        "--five"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_waist_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"straight\", \"mesh\": 34, \"sub\": 1, \"outer\": 12.0, \"cut\": 2.1396825396825396, \"boundary\": \"waist\", \"seed_frequency\": 6.446222520160313, \"open_frequency\": 6.446222520160297, \"amplitude_loss\": 2.1057750699332764e-34, \"seed_overlap_squared\": 0.9999999999999993, \"relative_residual\": 6.930119332077137e-14, \"nodes\": 1904, \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\"}",
+        "{\"test\": \"bend\", \"interval\": [0.55, 1.15], \"k_over_energy_pole\": -0.031994993413256276, \"amplitude_loss_second_derivative\": -2.589066554774698e-25, \"virtual_work_over_energy\": -0.031994993413256186, \"frozen_over_energy\": 0.7459945061731592, \"readjustment_over_energy\": [-0.5987735610063182, -0.17921593858009707], \"shape_norm_derivatives\": [0.7482498948776002, 0.3242550972969203]}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": 0.02, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446181204165798, \"loss\": -2.1185229388259594e-32, \"frequency_secant\": -0.03204667103044552, \"flare_force_over_energy\": 0.0006419650143204925, \"curvature_from_direct_stress\": -0.03209825071602462, \"straight_overlap_squared\": 0.9997340795883543, \"residual\": 1.0221771950692572e-13}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": -0.02, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.44618120416581, \"loss\": -1.0535015470939505e-33, \"frequency_secant\": -0.03204667102148964, \"flare_force_over_energy\": -0.0006419650143205124, \"curvature_from_direct_stress\": -0.032098250716025616, \"straight_overlap_squared\": 0.9997340795883551, \"residual\": 1.0618846192083932e-13}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": 0.01, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446212203635569, \"loss\": -6.611898055013667e-31, \"frequency_secant\": -0.032007969614956513, \"flare_force_over_energy\": 0.00032020978519299234, \"curvature_from_direct_stress\": -0.032020978519299234, \"straight_overlap_squared\": 0.9999335035164558, \"residual\": 1.160822220252829e-13}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": 0.005, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446219941813138, \"loss\": -1.2200973084698884e-32, \"frequency_secant\": -0.03199823959938553, \"flare_force_over_energy\": 0.0001600075019448289, \"curvature_from_direct_stress\": -0.03200150038896578, \"straight_overlap_squared\": 0.9999833748582156, \"residual\": 1.0455546204368581e-13}",
+        "{\"test\": \"bend\", \"interval\": [1.2, 2.0], \"k_over_energy_pole\": -0.00047702366022027486, \"amplitude_loss_second_derivative\": -1.846315454478766e-27, \"virtual_work_over_energy\": -0.0004770236602202735, \"frozen_over_energy\": 0.01834998754949457, \"readjustment_over_energy\": [-0.015628261931557717, -0.0031987492781571513], \"shape_norm_derivatives\": [0.06400697233457836, 0.02623014583583341]}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": 0.02, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446221905124049, \"loss\": 1.260157964436253e-25, \"frequency_secant\": -0.00047705167311952386, \"flare_force_over_energy\": 9.541594229904805e-06, \"curvature_from_direct_stress\": -0.0004770797114952402, \"straight_overlap_squared\": 0.9999980860863877, \"residual\": 7.35039144808649e-14}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": -0.02, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446221905124052, \"loss\": -5.2506581851510546e-27, \"frequency_secant\": -0.0004770516710527823, \"flare_force_over_energy\": -9.541594229905158e-06, \"curvature_from_direct_stress\": -0.0004770797114952579, \"straight_overlap_squared\": 0.9999980860863882, \"residual\": 7.730038275354392e-14}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": 0.01, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446222366408034, \"loss\": -6.866245319043687e-27, \"frequency_secant\": -0.00047703057719901924, \"flare_force_over_energy\": 4.7703771021283825e-06, \"curvature_from_direct_stress\": -0.0004770377102128382, \"straight_overlap_squared\": 0.9999995215119251, \"residual\": 7.6055556255323e-14}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": 0.005, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.4462224817226845, \"loss\": -1.2116903504194741e-27, \"frequency_secant\": -0.0004770249501505351, \"flare_force_over_energy\": 2.3851358752149516e-06, \"curvature_from_direct_stress\": -0.0004770271750429903, \"straight_overlap_squared\": 0.999999880377388, \"residual\": 7.791294410376469e-14}"
+      ]
+    },
+    "_scratch/s11c/native_bend_open_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend.py",
+        "--outer",
+        "12",
+        "--fd"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_open_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"straight\", \"mesh\": 34, \"sub\": 1, \"outer\": 12.0, \"cut\": 2.1396825396825396, \"boundary\": \"open\", \"seed_frequency\": 6.446222520160313, \"open_frequency\": 6.44599937802209, \"amplitude_loss\": 7.283226953448702e-09, \"seed_overlap_squared\": 0.9999845956420271, \"relative_residual\": 5.978763308649835e-14, \"nodes\": 8799, \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\"}",
+        "{\"test\": \"bend\", \"interval\": [0.55, 1.15], \"k_over_energy_pole\": -0.04280108309927423, \"amplitude_loss_second_derivative\": 9.816847409199008e-05, \"virtual_work_over_energy\": -0.04280107562541802, \"frozen_over_energy\": 0.7466327451893969, \"readjustment_over_energy\": [-0.6107139881353448, -0.17871983267947036], \"shape_norm_derivatives\": [0.7700950846822898, 0.3232778043160336]}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": 0.02, \"degrees\": [3, 4, 5], \"frequency\": 6.4459449412471335, \"loss\": 2.6836382180569014e-08, \"frequency_secant\": -0.04222524062118736, \"flare_force_over_energy\": 0.0008330130224386589, \"curvature_from_direct_stress\": -0.04165065112193295, \"straight_overlap_squared\": 0.9997214947794573, \"residual\": 9.763219523879211e-14}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": -0.02, \"degrees\": [3, 4, 5], \"frequency\": 6.445944941247127, \"loss\": 2.6836382180567197e-08, \"frequency_secant\": -0.04222524062600992, \"flare_force_over_energy\": -0.0008330130224385632, \"curvature_from_direct_stress\": -0.041650651121928166, \"straight_overlap_squared\": 0.9997214947794573, \"residual\": 9.478829543567753e-14}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": 0.01, \"degrees\": [3, 4, 5], \"frequency\": 6.44598562968906, \"loss\": 1.2186608923070858e-08, \"frequency_secant\": -0.04265694804823435, \"flare_force_over_energy\": 0.0004251294920546817, \"curvature_from_direct_stress\": -0.04251294920546817, \"straight_overlap_squared\": 0.999930276877299, \"residual\": 9.164242439327401e-14}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": 0.005, \"degrees\": [3, 4, 5], \"frequency\": 6.445995932229477, \"loss\": 8.510017645726902e-09, \"frequency_secant\": -0.04276503810745199, \"flare_force_over_energy\": 0.0002136450572303901, \"curvature_from_direct_stress\": -0.042729011446078026, \"straight_overlap_squared\": 0.9999825631502295, \"residual\": 8.856954006547118e-14}",
+        "{\"test\": \"bend\", \"interval\": [1.2, 2.0], \"k_over_energy_pole\": -0.00047704754526669185, \"amplitude_loss_second_derivative\": 1.7652740166300942e-08, \"virtual_work_over_energy\": -0.0004770474625411755, \"frozen_over_energy\": 0.018345081919628116, \"readjustment_over_energy\": [-0.015624013731942318, -0.003198115650226965], \"shape_norm_derivatives\": [0.06400729186233133, 0.02622643802876913]}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": 0.02, \"degrees\": [3, 4, 5], \"frequency\": 6.445998764290482, \"loss\": 7.286751918475472e-09, \"frequency_secant\": -0.0004760562108100427, \"flare_force_over_energy\": 9.501302199884358e-06, \"curvature_from_direct_stress\": -0.00047506510999421783, \"straight_overlap_squared\": 0.999998086412349, \"residual\": 7.133141074023883e-14}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": -0.02, \"degrees\": [3, 4, 5], \"frequency\": 6.445998764290488, \"loss\": 7.286751918474694e-09, \"frequency_secant\": -0.0004760562059874787, \"flare_force_over_energy\": -9.50130219988557e-06, \"curvature_from_direct_stress\": -0.0004750651099942785, \"straight_overlap_squared\": 0.9999980864123488, \"residual\": 6.282847582526113e-14}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": 0.01, \"degrees\": [3, 4, 5], \"frequency\": 6.445999224349572, \"loss\": 7.284109241399992e-09, \"frequency_secant\": -0.0004767996655470039, \"flare_force_over_energy\": 4.765517392461662e-06, \"curvature_from_direct_stress\": -0.0004765517392461662, \"straight_overlap_squared\": 0.9999995215438157, \"residual\": 6.03283426253761e-14}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": 0.005, \"degrees\": [3, 4, 5], \"frequency\": 6.445999339588987, \"loss\": 7.283447590882532e-09, \"frequency_secant\": -0.0004769854996069223, \"flare_force_over_energy\": 2.384617616336227e-06, \"curvature_from_direct_stress\": -0.0004769235232672454, \"straight_overlap_squared\": 0.9999998803822574, \"residual\": 6.329147237001937e-14}"
+      ]
+    },
+    "_scratch/s11c/native_bend_openfine_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend.py",
+        "--sub",
+        "2",
+        "--outer",
+        "12"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_openfine_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"straight\", \"mesh\": 34, \"sub\": 2, \"outer\": 12.0, \"cut\": 2.1396825396825396, \"boundary\": \"open\", \"seed_frequency\": 6.446957144661109, \"open_frequency\": 6.446724800188171, \"amplitude_loss\": 7.102163237327785e-09, \"seed_overlap_squared\": 0.9999841507747491, \"relative_residual\": 2.674842788895864e-13, \"nodes\": 27350, \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\"}",
+        "{\"test\": \"bend\", \"interval\": [0.55, 1.15], \"k_over_energy_pole\": -0.042503923649838064, \"amplitude_loss_second_derivative\": 0.00010801237681682321, \"virtual_work_over_energy\": -0.04250391703803996, \"frozen_over_energy\": 0.7479954113091524, \"readjustment_over_energy\": [-0.6115229009900099, -0.17897642735718178], \"shape_norm_derivatives\": [0.7672124318773537, 0.3227254155213014]}",
+        "{\"test\": \"bend\", \"interval\": [1.2, 2.0], \"k_over_energy_pole\": -0.0005628071166482716, \"amplitude_loss_second_derivative\": 1.7470797799813742e-08, \"virtual_work_over_energy\": -0.0005628070296651296, \"frozen_over_energy\": 0.018321430567156804, \"readjustment_over_energy\": [-0.015674124182889913, -0.003210113413931968], \"shape_norm_derivatives\": [0.06349658254142132, 0.026025370088597496]}"
+      ]
+    },
+    "_scratch/s11c/native_bend_broad_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend.py",
+        "--outer",
+        "25",
+        "--feed-spacing",
+        ".06"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_broad_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"straight\", \"mesh\": 34, \"sub\": 1, \"outer\": 25.0, \"cut\": 2.1396825396825396, \"boundary\": \"open\", \"seed_frequency\": 6.446222520160313, \"open_frequency\": 6.445999379005242, \"amplitude_loss\": 7.231235464328993e-09, \"seed_overlap_squared\": 0.9999844236620082, \"relative_residual\": 5.847657753934487e-14, \"nodes\": 18389, \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\"}",
+        "{\"test\": \"bend\", \"interval\": [0.55, 1.15], \"k_over_energy_pole\": -0.042803822227456344, \"amplitude_loss_second_derivative\": 9.940975087245878e-05, \"virtual_work_over_energy\": -0.04280380724346868, \"frozen_over_energy\": 0.7466326139065477, \"readjustment_over_energy\": [-0.6107166167877319, -0.17871980436228366], \"shape_norm_derivatives\": [0.7710482712481176, 0.32327778607219565]}",
+        "{\"test\": \"bend\", \"interval\": [1.2, 2.0], \"k_over_energy_pole\": -0.00047704760764372974, \"amplitude_loss_second_derivative\": 1.7810237107840137e-08, \"virtual_work_over_energy\": -0.00047704744121618075, \"frozen_over_energy\": 0.01834507878496289, \"readjustment_over_energy\": [-0.015624011123395306, -0.0031981151027838093], \"shape_norm_derivatives\": [0.06400753858183955, 0.02622643578917173]}"
+      ]
+    },
+    "_scratch/s11c/native_bend_shallow_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend.py",
+        "--outer",
+        "16",
+        "--cut",
+        "1.85"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_shallow_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"straight\", \"mesh\": 34, \"sub\": 1, \"outer\": 16.0, \"cut\": 1.846031746031746, \"boundary\": \"open\", \"seed_frequency\": 6.446222579903009, \"open_frequency\": 6.445999733640046, \"amplitude_loss\": 1.1509332344797238e-06, \"seed_overlap_squared\": 0.9999845311465788, \"relative_residual\": 6.797710481210933e-14, \"nodes\": 9999, \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\"}",
+        "{\"test\": \"bend\", \"interval\": [0.55, 1.15], \"k_over_energy_pole\": -0.042804152960877064, \"amplitude_loss_second_derivative\": 9.623690929834802e-05, \"virtual_work_over_energy\": -0.04280413838837964, \"frozen_over_energy\": 0.7466330212483702, \"readjustment_over_energy\": [-0.6107172669934231, -0.17871989264332697], \"shape_norm_derivatives\": [0.7703909999568062, 0.3232778704293126]}",
+        "{\"test\": \"bend\", \"interval\": [1.2, 2.0], \"k_over_energy_pole\": -0.00047619354616731046, \"amplitude_loss_second_derivative\": 1.0057601302184546e-05, \"virtual_work_over_energy\": -0.00047628279938312314, \"frozen_over_energy\": 0.01834481163843752, \"readjustment_over_energy\": [-0.015622504823840679, -0.0031985896139799645], \"shape_norm_derivatives\": [0.06398104873466373, 0.026224132680497034]}"
+      ]
+    },
+    "_scratch/s11c/native_bend_reflect_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend.py",
+        "--boundary",
+        "reflect",
+        "--outer",
+        "16"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_reflect_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"straight\", \"mesh\": 34, \"sub\": 1, \"outer\": 16.0, \"cut\": 2.1396825396825396, \"boundary\": \"reflect\", \"seed_frequency\": 6.446222520160313, \"open_frequency\": 6.445999374647462, \"amplitude_loss\": 9.321500930834222e-32, \"seed_overlap_squared\": 0.9999846084391641, \"relative_residual\": 5.747113518427291e-14, \"nodes\": 10339, \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\"}",
+        "{\"test\": \"bend\", \"interval\": [0.55, 1.15], \"k_over_energy_pole\": -0.042771079554931986, \"amplitude_loss_second_derivative\": 8.135524262714979e-18, \"virtual_work_over_energy\": -0.04277107955493207, \"frozen_over_energy\": 0.7466327636082705, \"readjustment_over_energy\": [-0.6106840159448426, -0.17871982721835994], \"shape_norm_derivatives\": [0.7728918568796175, 0.3232777940742948]}",
+        "{\"test\": \"bend\", \"interval\": [1.2, 2.0], \"k_over_energy_pole\": -0.0004770474500746843, \"amplitude_loss_second_derivative\": 4.250182867624138e-20, \"virtual_work_over_energy\": -0.00047704745007468523, \"frozen_over_energy\": 0.01834508228053113, \"readjustment_over_energy\": [-0.015624014405773875, -0.0031981153248319574], \"shape_norm_derivatives\": [0.06400803386112378, 0.026226439451151173]}"
+      ]
+    },
+    "_scratch/s11c/native_bend_waistfine_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend.py",
+        "--boundary",
+        "waist",
+        "--sub",
+        "2",
+        "--fd",
+        "--five"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_waistfine_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"straight\", \"mesh\": 34, \"sub\": 2, \"outer\": 12.0, \"cut\": 2.1396825396825396, \"boundary\": \"waist\", \"seed_frequency\": 6.446957144661109, \"open_frequency\": 6.446957144661025, \"amplitude_loss\": 6.56478256635326e-33, \"seed_overlap_squared\": 1.0000000000000022, \"relative_residual\": 2.7671318035854513e-13, \"nodes\": 7616, \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\"}",
+        "{\"test\": \"bend\", \"interval\": [0.55, 1.15], \"k_over_energy_pole\": -0.03173132605379323, \"amplitude_loss_second_derivative\": -2.1863354425595156e-26, \"virtual_work_over_energy\": -0.03173132605379282, \"frozen_over_energy\": 0.7473398426049078, \"readjustment_over_energy\": [-0.5995889013003842, -0.17948226735831663], \"shape_norm_derivatives\": [0.745317048759884, 0.3237229840444415]}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": 0.02, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446916157772473, \"loss\": -7.869927531749562e-30, \"frequency_secant\": -0.03178777804155958, \"flare_force_over_energy\": 0.0006368826090596515, \"curvature_from_direct_stress\": -0.03184413045298258, \"straight_overlap_squared\": 0.9997359647883809, \"residual\": 6.578186189890676e-13}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": -0.02, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.4469161577725265, \"loss\": -8.237354760293112e-32, \"frequency_secant\": -0.03178777800022946, \"flare_force_over_energy\": -0.0006368826090600594, \"curvature_from_direct_stress\": -0.03184413045300297, \"straight_overlap_squared\": 0.9997359647883816, \"residual\": 6.828275313678893e-13}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": 0.01, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446946911568985, \"loss\": 4.039060279368911e-30, \"frequency_secant\": -0.0317454942227674, \"flare_force_over_energy\": 0.0003175969727996304, \"curvature_from_direct_stress\": -0.031759697279963035, \"straight_overlap_squared\": 0.9999339757317526, \"residual\": 7.846670686130149e-13}",
+        "{\"test\": \"displaced\", \"interval\": [0.55, 1.15], \"offset\": 0.005, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.4469545872443605, \"loss\": 5.000509804245449e-30, \"frequency_secant\": -0.031734867868140455, \"flare_force_over_energy\": 0.00015869214759051985, \"curvature_from_direct_stress\": -0.03173842951810397, \"straight_overlap_squared\": 0.9999834929692091, \"residual\": 5.995429226759486e-13}",
+        "{\"test\": \"bend\", \"interval\": [1.2, 2.0], \"k_over_energy_pole\": -0.000562816183506789, \"amplitude_loss_second_derivative\": -1.939463624204415e-29, \"virtual_work_over_energy\": -0.0005628161835067817, \"frozen_over_energy\": 0.01832649364590629, \"readjustment_over_energy\": [-0.015678540027007297, -0.0032107698024057578], \"shape_norm_derivatives\": [0.06349670249645623, 0.026029174226854475]}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": 0.02, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446956418920015, \"loss\": 1.4136387421560532e-25, \"frequency_secant\": -0.0005628554628377991, \"flare_force_over_energy\": 1.125790614383572e-05, \"curvature_from_direct_stress\": -0.0005628953071917859, \"straight_overlap_squared\": 0.9999981163085343, \"residual\": 6.215302374313347e-13}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": -0.02, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446956418919996, \"loss\": -1.2924697071141057e-26, \"frequency_secant\": -0.0005628554779921773, \"flare_force_over_energy\": -1.1257906143835692e-05, \"curvature_from_direct_stress\": -0.0005628953071917846, \"straight_overlap_squared\": 0.9999981163085361, \"residual\": 6.252253519511645e-13}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": 0.01, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446956963235681, \"loss\": -7.472090494253424e-27, \"frequency_secant\": -0.0005628247249371641, \"flare_force_over_energy\": 5.62836002337478e-06, \"curvature_from_direct_stress\": -0.0005628360023374779, \"straight_overlap_squared\": 0.9999995290681339, \"residual\": 8.151353837515212e-13}",
+        "{\"test\": \"displaced\", \"interval\": [1.2, 2.0], \"offset\": 0.005, \"degrees\": [2, 3, 4, 5, 6], \"frequency\": 6.446957099305503, \"loss\": -3.862262991962074e-27, \"frequency_secant\": -0.0005628146238553248, \"flare_force_over_energy\": 2.8141057029257405e-06, \"curvature_from_direct_stress\": -0.0005628211405851481, \"straight_overlap_squared\": 0.9999998822664983, \"residual\": 4.262925039616189e-13}"
+      ]
+    },
+    "_scratch/s11c/native_bend_drive_collar_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_release.py",
+        "--profile",
+        "collar",
+        "--trace",
+        "_scratch/s11c/native_bend_drive_collar_01/force.npz"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/native_bend_drive_collar_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"release\", \"profile\": \"collar\", \"sub\": 1, \"cut\": 2.1396825396825396, \"outer\": 91.0, \"dt\": 0.004, \"work\": 3.1409610463742815e-09, \"ledger_error\": 1.672289726666613e-14, \"far_work_per_input\": 6.993320414935258e-19, \"omega_drive\": 6.446, \"time_end_after_switch\": 81.14954951239878, \"intake\": 0.24999999998599196}",
+        "{\"test\": \"window\", \"window\": [8, 24], \"mean_energy_per_input\": 0.9999999269472792, \"deeper_config_force_per_energy_per_offset\": 0.0429160141309502, \"storage_correction\": [3.706935255285295e-05, 0.0005657431169231596], \"cut_bath_correction\": [0.0, 5.095006382414445e-10], \"both_reactions\": [-0.04287894477839734, 0.04348175775737399], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [20, 44], \"mean_energy_per_input\": 0.9999998899191952, \"deeper_config_force_per_energy_per_offset\": 0.04287251828980352, \"storage_correction\": [4.7251731733531484e-06, 0.00020568319419976235], \"cut_bath_correction\": [0.0, 5.78074781570954e-10], \"both_reactions\": [-0.042867793116630165, 0.04307820206207807], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [32, 54], \"mean_energy_per_input\": 0.9999998655169244, \"deeper_config_force_per_energy_per_offset\": 0.042851176824824616, \"storage_correction\": [-1.5453797680409985e-05, -0.00037888502507384613], \"cut_bath_correction\": [0.0, 4.233494612028347e-10], \"both_reactions\": [-0.04286663062250503, 0.04247229222310023], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [44, 70], \"mean_energy_per_input\": 0.9999998355855242, \"deeper_config_force_per_energy_per_offset\": 0.042900624074341386, \"storage_correction\": [2.4256384033748618e-05, 0.000348272862901087], \"cut_bath_correction\": [0.0, 2.0551535678386043e-10], \"both_reactions\": [-0.042876367690307636, 0.04324889714275783], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [56, 80], \"mean_energy_per_input\": 0.9999998127074036, \"deeper_config_force_per_energy_per_offset\": 0.04288830214112062, \"storage_correction\": [1.9030351411409048e-05, 0.00035807028942795745], \"cut_bath_correction\": [0.0, 1.129210596333125e-10], \"both_reactions\": [-0.04286927178970921, 0.043246372543469636], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}"
+      ],
+      "trace_sha256": "a2564e3921b4f8d3f5fd3b284b00024cbefc4c8aa324a76112496fe2f0271478"
+    },
+    "_scratch/s11c/native_bend_drive_deep_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_release.py",
+        "--profile",
+        "deep",
+        "--trace",
+        "_scratch/s11c/native_bend_drive_deep_01/force.npz"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/native_bend_drive_deep_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"release\", \"profile\": \"deep\", \"sub\": 1, \"cut\": 2.1396825396825396, \"outer\": 91.0, \"dt\": 0.004, \"work\": 3.1409610463742815e-09, \"ledger_error\": 1.672289726666613e-14, \"far_work_per_input\": 6.993320414935258e-19, \"omega_drive\": 6.446, \"time_end_after_switch\": 81.14954951239878, \"intake\": 0.24999999998599196}",
+        "{\"test\": \"window\", \"window\": [8, 24], \"mean_energy_per_input\": 0.9999999269472792, \"deeper_config_force_per_energy_per_offset\": 0.0004771099841098649, \"storage_correction\": [1.2323971668192627e-05, 3.547448333162838e-08], \"cut_bath_correction\": [0.0, 2.7470317217529745e-10], \"both_reactions\": [-0.0004647860124416723, 0.0004771457332963687], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [20, 44], \"mean_energy_per_input\": 0.9999998899191952, \"deeper_config_force_per_energy_per_offset\": 0.00047710980161664034, \"storage_correction\": [1.2929872537030504e-05, 4.27956147039331e-08], \"cut_bath_correction\": [0.0, 4.8975712282173216e-11], \"both_reactions\": [-0.00046417992907960985, 0.00047715264620705656], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [32, 54], \"mean_energy_per_input\": 0.9999998655169244, \"deeper_config_force_per_energy_per_offset\": 0.00047709998926255434, \"storage_correction\": [-2.3194360115920477e-05, -7.25305523637993e-08], \"cut_bath_correction\": [0.0, 2.1800797108149508e-10], \"both_reactions\": [-0.0005002943493784748, 0.00047702767671816164], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [44, 70], \"mean_energy_per_input\": 0.9999998355855242, \"deeper_config_force_per_energy_per_offset\": 0.0004771070185028173, \"storage_correction\": [2.784384938366467e-06, 1.1395554971272752e-08], \"cut_bath_correction\": [0.0, 4.662179607055479e-11], \"both_reactions\": [-0.0004743226335644508, 0.0004771184606795846], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [56, 80], \"mean_energy_per_input\": 0.9999998127074036, \"deeper_config_force_per_energy_per_offset\": 0.00047710984740272853, \"storage_correction\": [1.0725885244112841e-05, 3.3136682604358007e-08], \"cut_bath_correction\": [-0.0, -2.023906648291808e-11], \"both_reactions\": [-0.0004663839621586157, 0.00047714296384626637], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}"
+      ],
+      "trace_sha256": "e3342fc1803854e0c130256c140ae3267a8a9ab74c7332468a8a054b70462894"
+    },
+    "_scratch/s11c/native_bend_drive_collar_fine_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_release.py",
+        "--profile",
+        "collar",
+        "--sub",
+        "2",
+        "--end",
+        "60",
+        "--outer",
+        "64",
+        "--trace",
+        "_scratch/s11c/native_bend_drive_collar_fine_01/force.npz"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/native_bend_drive_collar_fine_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"release\", \"profile\": \"collar\", \"sub\": 2, \"cut\": 2.1396825396825396, \"outer\": 64.0, \"dt\": 0.0019672131147540984, \"work\": 3.1438431082892864e-09, \"ledger_error\": 2.946846436505262e-14, \"far_work_per_input\": 3.5552094211942745e-22, \"omega_drive\": 6.446, \"time_end_after_switch\": 54.1505659058414, \"intake\": 0.24999999998599196}",
+        "{\"test\": \"window\", \"window\": [8, 24], \"mean_energy_per_input\": 0.9999999268308822, \"deeper_config_force_per_energy_per_offset\": 0.04259372300994995, \"storage_correction\": [3.485297050448896e-05, 0.0005322085586433587], \"cut_bath_correction\": [0.0, 4.875132886120854e-10], \"both_reactions\": [-0.04255887003944546, 0.0431259320561066], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [20, 44], \"mean_energy_per_input\": 0.9999998904014895, \"deeper_config_force_per_energy_per_offset\": 0.042554795742829006, \"storage_correction\": [5.117243781320554e-06, 0.00020940632105941617], \"cut_bath_correction\": [0.0, 3.1577455046684646e-10], \"both_reactions\": [-0.042549678499047686, 0.042764202379662976], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [32, 54], \"mean_energy_per_input\": 0.9999998667942922, \"deeper_config_force_per_energy_per_offset\": 0.04253670590274126, \"storage_correction\": [-1.6018243774930114e-05, -0.0003952902113249122], \"cut_bath_correction\": [0.0, 2.1875015079186658e-10], \"both_reactions\": [-0.04255272414651619, 0.04214141591016649], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}"
+      ],
+      "trace_sha256": "cc29b0eeabe2edab89879e854e064477928f977e9af15e9890b12d3cb4bd82ca"
+    },
+    "_scratch/s11c/native_bend_drive_deep_fine_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_release.py",
+        "--profile",
+        "deep",
+        "--sub",
+        "2",
+        "--end",
+        "60",
+        "--outer",
+        "64",
+        "--trace",
+        "_scratch/s11c/native_bend_drive_deep_fine_01/force.npz"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/native_bend_drive_deep_fine_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"release\", \"profile\": \"deep\", \"sub\": 2, \"cut\": 2.1396825396825396, \"outer\": 64.0, \"dt\": 0.0019672131147540984, \"work\": 3.1438431082892864e-09, \"ledger_error\": 2.946846436505262e-14, \"far_work_per_input\": 3.5552094211942745e-22, \"omega_drive\": 6.446, \"time_end_after_switch\": 54.1505659058414, \"intake\": 0.24999999998599196}",
+        "{\"test\": \"window\", \"window\": [8, 24], \"mean_energy_per_input\": 0.9999999268308822, \"deeper_config_force_per_energy_per_offset\": 0.0005628477328223732, \"storage_correction\": [1.084931491535875e-05, 3.153970443541389e-08], \"cut_bath_correction\": [0.0, 2.3762458963124353e-10], \"both_reactions\": [-0.0005519984179070145, 0.0005628795101513982], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [20, 44], \"mean_energy_per_input\": 0.9999998904014895, \"deeper_config_force_per_energy_per_offset\": 0.000562848360592805, \"storage_correction\": [1.2971145208690875e-05, 4.2678805230829774e-08], \"cut_bath_correction\": [0.0, 2.318840324336287e-10], \"both_reactions\": [-0.0005498772153841141, 0.0005628912712820682], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}",
+        "{\"test\": \"window\", \"window\": [32, 54], \"mean_energy_per_input\": 0.9999998667942922, \"deeper_config_force_per_energy_per_offset\": 0.0005628380869342313, \"storage_correction\": [-2.3368627370109948e-05, -7.211553948240708e-08], \"cut_bath_correction\": [0.0, 2.2875004489191857e-10], \"both_reactions\": [-0.0005862067143043412, 0.0005627662001447937], \"sign_order\": \"entrance, deeper flare; positive along the imposed deeper offset\"}"
+      ],
+      "trace_sha256": "aab8674c848fb19b301589d57a0d31dfabd413c27abc8ae4f299f37fa9ca58c1"
+    },
+    "_scratch/s11c/native_bend_family_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_family.py",
+        "--outer",
+        "16"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_family_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"settings\", \"radius\": 1.0, \"mesh\": 34, \"sub\": 1, \"cut\": 2.1396825396825396, \"outer\": 16.0, \"boundary\": \"open\", \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"coordinates\": [\"collar offset\", \"deeper offset\"]}",
+        "{\"test\": \"pattern\", \"degree\": 1, \"omega\": 3.1571461915862375, \"loss\": 0.00011152018970711017, \"residual\": 3.19457353784161e-13, \"seed_overlap_squared\": 0.9917121258817776, \"mean_work_stiffness\": [[-0.12760631065751307, -0.00025260498360887905], [-0.00025260498005296903, 9.3599502524021e-05]], \"pole_stiffness\": [[-0.12806567569803437, -0.0002535142914285426], [-0.000253514291428542, 9.393650604301823e-05]], \"shape_eigenvalues\": [-0.12760681033701235, 9.409918202329575e-05], \"positive_eigenvector_if_any\": [0.0019781024034316863, -0.9999980435535271], \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": 9.3599502524021e-05, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.12760631065751307}",
+        "{\"test\": \"pattern\", \"degree\": 2, \"omega\": 4.267401037322849, \"loss\": 5.276694224474428e-06, \"residual\": 1.5785601541768624e-13, \"seed_overlap_squared\": 0.9991694397245734, \"mean_work_stiffness\": [[-0.1304999186737857, -0.0007546133623412076], [-0.0007546132505350404, -9.35486929050003e-05]], \"pole_stiffness\": [[-0.13052964402618716, -0.0007547845893163042], [-0.0007547845893163005, -9.356977565796039e-05]], \"shape_eigenvalues\": [-0.13050428519495968, -8.918217173099784e-05], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -9.35486929050003e-05, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.1304999186737857}",
+        "{\"test\": \"pattern\", \"degree\": 3, \"omega\": 5.362315075169531, \"loss\": 1.9791474456024777e-07, \"residual\": 9.449210730325608e-14, \"seed_overlap_squared\": 0.999899061557944, \"mean_work_stiffness\": [[-0.06904960340783974, -0.0006940802201709724], [-0.0006940802195867502, -0.00026804476249902057]], \"pole_stiffness\": [[-0.06905016625458882, -0.0006940858761704358], [-0.0006940858761704309, -0.0002680469460501466]], \"shape_eigenvalues\": [-0.06905660671388308, -0.0002610414564556763], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.00026804476249902057, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.06904960340783974}",
+        "{\"test\": \"pattern\", \"degree\": 4, \"omega\": 6.445999379164657, \"loss\": 7.340521506417562e-09, \"residual\": 6.704742473290189e-14, \"seed_overlap_squared\": 0.9999845387507423, \"mean_work_stiffness\": [[-0.04280409780575952, -0.0006671413458438379], [-0.000667141345863136, -0.0004770475025036788]], \"pole_stiffness\": [[-0.04280410808441353, -0.0006671415060504963], [-0.0006671415060504901, -0.00047704761648906875]], \"shape_eigenvalues\": [-0.0428146103989486, -0.0004665349093146037], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.0004770475025036788, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.04280409780575952}"
+      ]
+    },
+    "_scratch/s11c/native_bend_familyfine_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_family.py",
+        "--outer",
+        "13",
+        "--sub",
+        "2"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_familyfine_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"settings\", \"radius\": 1.0, \"mesh\": 34, \"sub\": 2, \"cut\": 2.1396825396825396, \"outer\": 13.0, \"boundary\": \"open\", \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"coordinates\": [\"collar offset\", \"deeper offset\"]}",
+        "{\"test\": \"pattern\", \"degree\": 1, \"omega\": 3.1571565167591364, \"loss\": 0.00011112898780328802, \"residual\": 1.2067877894390486e-12, \"seed_overlap_squared\": 0.9918557195429588, \"mean_work_stiffness\": [[-0.12787587914928256, -0.0002496405621773585], [-0.0002496405589525816, 8.330029357462646e-05]], \"pole_stiffness\": [[-0.12824925607209983, -0.0002503694336178642], [-0.000250369433617864, 8.354358627780869e-05]], \"shape_eigenvalues\": [-0.12787636618094805, 8.378732524012084e-05], \"positive_eigenvector_if_any\": [0.0019509279162843894, -0.9999980969383219], \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": 8.330029357462646e-05, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.12787587914928256}",
+        "{\"test\": \"pattern\", \"degree\": 2, \"omega\": 4.267429270003306, \"loss\": 5.829021382725792e-06, \"residual\": 6.93116443034211e-13, \"seed_overlap_squared\": 0.9991931005170228, \"mean_work_stiffness\": [[-0.13333827910401488, -0.0007500967295065546], [-0.0007500966112869783, -0.00018099280674124425]], \"pole_stiffness\": [[-0.13336980429795686, -0.0007502740363901392], [-0.0007502740363901402, -0.00018103557200942829]], \"shape_eigenvalues\": [-0.1333425043865929, -0.00017676752416323057], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.00018099280674124425, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.13333827910401488}",
+        "{\"test\": \"pattern\", \"degree\": 3, \"omega\": 5.362612011989038, \"loss\": 1.7211352680692276e-07, \"residual\": 3.946339229871774e-13, \"seed_overlap_squared\": 0.9999004695421922, \"mean_work_stiffness\": [[-0.06965310759098006, -0.0006828136307717126], [-0.0006828136301282092, -0.0003642228346071711]], \"pole_stiffness\": [[-0.0696534311619175, -0.0006828168016546131], [-0.0006828168016546122, -0.00036422452531210443]], \"shape_eigenvalues\": [-0.06965983578680754, -0.0003574946387796826], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.0003642228346071711, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.06965310759098006}",
+        "{\"test\": \"pattern\", \"degree\": 4, \"omega\": 6.44672480056102, \"loss\": 6.7602288141432805e-09, \"residual\": 2.556803870878329e-13, \"seed_overlap_squared\": 0.9999841485455788, \"mean_work_stiffness\": [[-0.042505112608386734, -0.0006538451112062357], [-0.0006538451112216595, -0.000562807054579243]], \"pole_stiffness\": [[-0.04250511897837521, -0.0006538452091941728], [-0.000653845209194174, -0.0005628071383603096]], \"shape_eigenvalues\": [-0.04251530302541831, -0.0005526166375476666], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.000562807054579243, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.042505112608386734}"
+      ]
+    },
+    "_scratch/s11c/native_bend_family_third_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_family.py",
+        "--sub",
+        "3",
+        "--outer",
+        "10.5",
+        "--feed-spacing",
+        ".09"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "_scratch/s11c/native_bend_family_third_01"
+      ],
+      "verified_memory_bytes": 6442450944,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"settings\", \"radius\": 1.0, \"mesh\": 34, \"sub\": 3, \"cut\": 2.1396825396825396, \"outer\": 10.5, \"boundary\": \"open\", \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"coordinates\": [\"collar offset\", \"deeper offset\"]}",
+        "{\"test\": \"pattern\", \"degree\": 1, \"omega\": 3.157160549725413, \"loss\": 0.00011184216442301259, \"residual\": 2.652341893725595e-12, \"seed_overlap_squared\": 0.9930148151720274, \"mean_work_stiffness\": [[-0.12807555892214254, -0.0002493847578869257], [-0.0002493847546749246, 8.145880133133872e-05]], \"pole_stiffness\": [[-0.1283788032878891, -0.00024997519017437743], [-0.0002499751901743781, 8.165172379092893e-05]], \"shape_eigenvalues\": [-0.12807604420591606, 8.194408510486683e-05], \"positive_eigenvector_if_any\": [0.001945920279872346, -0.9999981066953397], \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": 8.145880133133872e-05, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.12807555892214254}",
+        "{\"test\": \"pattern\", \"degree\": 2, \"omega\": 4.267433518609738, \"loss\": 4.603266901145607e-06, \"residual\": 1.4498466859793185e-12, \"seed_overlap_squared\": 0.9992685473012736, \"mean_work_stiffness\": [[-0.13153463078522942, -0.0007406945640106814], [-0.0007406944466636008, -0.00019740060907779677]], \"pole_stiffness\": [[-0.13154853249285595, -0.0007407725379990123], [-0.0007407725379990173, -0.00019742123547677087]], \"shape_eigenvalues\": [-0.13153880790165862, -0.00019322349264859265], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.00019740060907779677, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.13153463078522942}",
+        "{\"test\": \"pattern\", \"degree\": 3, \"omega\": 5.362666836439692, \"loss\": 1.9525936287188135e-07, \"residual\": 8.159000965303399e-13, \"seed_overlap_squared\": 0.999900719379015, \"mean_work_stiffness\": [[-0.06984560548302711, -0.0006810813138628048], [-0.0006810813132701566, -0.00038230105628625537]], \"pole_stiffness\": [[-0.06984595362103153, -0.0006810847091283449], [-0.0006810847091283402, -0.00038230296204002897]], \"shape_eigenvalues\": [-0.0698522827808207, -0.0003756237584926729], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.00038230105628625537, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.06984560548302711}",
+        "{\"test\": \"pattern\", \"degree\": 4, \"omega\": 6.446858743641676, \"loss\": 7.71507584701852e-09, \"residual\": 5.992610590886188e-13, \"seed_overlap_squared\": 0.9999840745788617, \"mean_work_stiffness\": [[-0.04245284486005903, -0.0006514288687024307], [-0.0006514288687205133, -0.0005789617504859133]], \"pole_stiffness\": [[-0.04245285179901343, -0.0006514289751800592], [-0.0006514289751800607, -0.0005789618445574125]], \"shape_eigenvalues\": [-0.04246297663878469, -0.0005688299717602483], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.0005789617504859133, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.04245284486005903}"
+      ]
+    },
+    "_scratch/s11c/native_bend_family_wide_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_family.py",
+        "--outer",
+        "28",
+        "--feed-spacing",
+        ".065"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_family_wide_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"settings\", \"radius\": 1.0, \"mesh\": 34, \"sub\": 1, \"cut\": 2.1396825396825396, \"outer\": 28.0, \"boundary\": \"open\", \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"coordinates\": [\"collar offset\", \"deeper offset\"]}",
+        "{\"test\": \"pattern\", \"degree\": 1, \"omega\": 3.157145181438848, \"loss\": 0.00011256148401621126, \"residual\": 3.1916619459475695e-13, \"seed_overlap_squared\": 0.9889838529305974, \"mean_work_stiffness\": [[-0.12725386320967538, -0.00025190712749495594], [-0.00025190712388308326, 9.334187719962557e-05]], \"pole_stiffness\": [[-0.12806258545544183, -0.00025350800824809676], [-0.000253508008248097, 9.393514536248477e-05]], \"shape_eigenvalues\": [-0.12725436150841407, 9.384017593832173e-05], \"positive_eigenvector_if_any\": [0.001978101105475581, -0.9999980435560946], \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": 9.334187719962557e-05, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.12725386320967538}",
+        "{\"test\": \"pattern\", \"degree\": 2, \"omega\": 4.26740119506171, \"loss\": 5.523089310573133e-06, \"residual\": 1.4717107034404472e-13, \"seed_overlap_squared\": 0.9989894825963773, \"mean_work_stiffness\": [[-0.13091199897600372, -0.0007561001629833693], [-0.0007561000487906474, -9.353792663081155e-05]], \"pole_stiffness\": [[-0.13097059609496575, -0.0007564376755687256], [-0.0007564376755687205, -9.357947854755384e-05]], \"shape_eigenvalues\": [-0.13091636891178493, -8.91679908495929e-05], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -9.353792663081155e-05, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.13091199897600372}",
+        "{\"test\": \"pattern\", \"degree\": 3, \"omega\": 5.362315089995635, \"loss\": 1.5938293902315273e-07, \"residual\": 1.0191076809700907e-13, \"seed_overlap_squared\": 0.9998964613427056, \"mean_work_stiffness\": [[-0.06906384771370257, -0.0006941387157893091], [-0.000694138715112611, -0.00026804432613598253]], \"pole_stiffness\": [[-0.06906446003073687, -0.0006941448693647759], [-0.0006941448693647717, -0.0002680467019295623]], \"shape_eigenvalues\": [-0.06907085075008046, -0.00026104128975809105], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.00026804432613598253, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.06906384771370257}",
+        "{\"test\": \"pattern\", \"degree\": 4, \"omega\": 6.445999378262156, \"loss\": 6.9516669072688435e-09, \"residual\": 5.948637348469748e-14, \"seed_overlap_squared\": 0.9999843986713166, \"mean_work_stiffness\": [[-0.04280132268687313, -0.0006671283228856902], [-0.000667128322903854, -0.00047704737437444033]], \"pole_stiffness\": [[-0.04280133762857995, -0.000667128555772671], [-0.0006671285557726665, -0.0004770475403316191]], \"shape_eigenvalues\": [-0.04281183555863409, -0.0004665345026134835], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.00047704737437444033, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.04280132268687313}"
+      ]
+    },
+    "_scratch/s11c/native_bend_family_waist_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_family.py",
+        "--boundary",
+        "waist"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/native_bend_family_waist_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"settings\", \"radius\": 1.0, \"mesh\": 34, \"sub\": 1, \"cut\": 2.1396825396825396, \"outer\": 16.0, \"boundary\": \"waist\", \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"coordinates\": [\"collar offset\", \"deeper offset\"]}",
+        "{\"test\": \"pattern\", \"degree\": 1, \"omega\": 3.1840733295905657, \"loss\": 1.4703729861978124e-33, \"residual\": 2.4906887029542483e-13, \"seed_overlap_squared\": 1.0000000000000009, \"mean_work_stiffness\": [[-0.16539457182523104, -0.000334379328024615], [-0.0003343793280246151, 9.781601364017452e-05]], \"pole_stiffness\": [[-0.16539457182523273, -0.00033437932802461836], [-0.0003343793280246185, 9.781601364017551e-05]], \"shape_eigenvalues\": [-0.16539524743986211, 9.8491628271247e-05], \"positive_eigenvector_if_any\": [0.0020204994608717325, -0.9999979587888811], \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": 9.781601364017452e-05, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.16539457182523104}",
+        "{\"test\": \"pattern\", \"degree\": 2, \"omega\": 4.272776552665339, \"loss\": -2.0805956135966783e-34, \"residual\": 1.4975281739274174e-13, \"seed_overlap_squared\": 1.0000000000000036, \"mean_work_stiffness\": [[-0.016765940167311467, -0.00030389787784365537], [-0.0003038978778436555, -9.311873201715024e-05]], \"pole_stiffness\": [[-0.016765940167311352, -0.0003038978778436533], [-0.0003038978778436534, -9.311873201714961e-05]], \"shape_eigenvalues\": [-0.016771477517919128, -8.758138140949074e-05], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -9.311873201715024e-05, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.016765940167311467}",
+        "{\"test\": \"pattern\", \"degree\": 3, \"omega\": 5.363410161570316, \"loss\": 8.930619965700628e-34, \"residual\": 9.4671742263602e-14, \"seed_overlap_squared\": 1.0, \"mean_work_stiffness\": [[-0.03099235340938703, -0.0005255881533539219], [-0.0005255881533539187, -0.0002679613945140057]], \"pole_stiffness\": [[-0.030992353409386976, -0.0005255881533539209], [-0.0005255881533539177, -0.0002679613945140052]], \"shape_eigenvalues\": [-0.031001341776547172, -0.00025897302735386485], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.0002679613945140057, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.03099235340938703}",
+        "{\"test\": \"pattern\", \"degree\": 4, \"omega\": 6.446222520160313, \"loss\": 2.1394695134736433e-34, \"residual\": 6.989412341475852e-14, \"seed_overlap_squared\": 1.0000000000000009, \"mean_work_stiffness\": [[-0.031994993413240747, -0.0006138456976498462], [-0.000613845697649843, -0.0004770236602202066]], \"pole_stiffness\": [[-0.03199499341324076, -0.0006138456976498465], [-0.0006138456976498432, -0.00047702366022020677]], \"shape_eigenvalues\": [-0.03200694417411745, -0.00046507289934349775], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.0004770236602202066, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.031994993413240747}"
+      ]
+    },
+    "_scratch/s11c/native_bend_family_order26_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_family.py",
+        "--mesh",
+        "26",
+        "--sub",
+        "2",
+        "--outer",
+        "14"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "_scratch/s11c/native_bend_family_order26_01"
+      ],
+      "verified_memory_bytes": 6442450944,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"settings\", \"radius\": 1.0, \"mesh\": 26, \"sub\": 2, \"cut\": 2.143877551020408, \"outer\": 14.0, \"boundary\": \"open\", \"intake\": 0.24999999999784914, \"order_sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"coordinates\": [\"collar offset\", \"deeper offset\"]}",
+        "{\"test\": \"pattern\", \"degree\": 1, \"omega\": 3.1571577733324214, \"loss\": 0.00011855415620969358, \"residual\": 7.053715520251793e-13, \"seed_overlap_squared\": 0.9806222654494362, \"mean_work_stiffness\": [[-0.12638050382027516, -0.0002474656451037675], [-0.0002474656414113092, 8.460923193172772e-05]], \"pole_stiffness\": [[-0.12961486490894011, -0.00025379869046131135], [-0.0002537986904613117, 8.677519962573258e-05]], \"shape_eigenvalues\": [-0.12638098805666753, 8.509346832412081e-05], \"positive_eigenvector_if_any\": [0.0019567785610625113, -0.999998085506999], \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": 8.460923193172772e-05, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.12638050382027516}",
+        "{\"test\": \"pattern\", \"degree\": 2, \"omega\": 4.267430261275362, \"loss\": 5.675170772508722e-06, \"residual\": 3.8121592631065954e-13, \"seed_overlap_squared\": 0.9991822693637892, \"mean_work_stiffness\": [[-0.1325448221922806, -0.000750312119604851], [-0.0007503120027763035, -0.00016178599140160419]], \"pole_stiffness\": [[-0.13257727569114053, -0.0007504955108434341], [-0.0007504955108434321, -0.00016182540583960302]], \"shape_eigenvalues\": [-0.13254907462614318, -0.00015753355753900513], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.00016178599140160419, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.1325448221922806}",
+        "{\"test\": \"pattern\", \"degree\": 3, \"omega\": 5.36255705257967, \"loss\": 2.0392515423756976e-07, \"residual\": 2.2828108308447625e-13, \"seed_overlap_squared\": 0.9998991551597358, \"mean_work_stiffness\": [[-0.06957921096647617, -0.0006853932936670969], [-0.0006853932930886359, -0.00034311513910812114]], \"pole_stiffness\": [[-0.06957972394432413, -0.0006853983467514252], [-0.000685398346751487, -0.00034311766850696006]], \"shape_eigenvalues\": [-0.06958599525918313, -0.00033633084640116354], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.00034311513910812114, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.06957921096647617}",
+        "{\"test\": \"pattern\", \"degree\": 4, \"omega\": 6.446579567635514, \"loss\": 6.896659359652844e-09, \"residual\": 1.497981072960959e-13, \"seed_overlap_squared\": 0.9999842181344469, \"mean_work_stiffness\": [[-0.042564451572834484, -0.0006566428831197851], [-0.0006566428831321632, -0.000544001480719186]], \"pole_stiffness\": [[-0.0425644589370138, -0.0006566429967293144], [-0.00065664299672933, -0.0005440015743660566]], \"shape_eigenvalues\": [-0.04257471025960154, -0.000533742793952128], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.000544001480719186, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.042564451572834484}"
+      ]
+    },
+    "_scratch/s11c/native_bend_family_shallow_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_family.py",
+        "--sub",
+        "2",
+        "--outer",
+        "14",
+        "--cut",
+        "1.85"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "_scratch/s11c/native_bend_family_shallow_01"
+      ],
+      "verified_memory_bytes": 6442450944,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"settings\", \"radius\": 1.0, \"mesh\": 34, \"sub\": 2, \"cut\": 1.846031746031746, \"outer\": 14.0, \"boundary\": \"open\", \"intake\": 0.24999999998599196, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"coordinates\": [\"collar offset\", \"deeper offset\"]}",
+        "{\"test\": \"pattern\", \"degree\": 1, \"omega\": 3.157154158306409, \"loss\": 0.0001164959954540767, \"residual\": 1.129294193494426e-12, \"seed_overlap_squared\": 0.9832974253706704, \"mean_work_stiffness\": [[-0.12676909006592568, -0.0002474601163896418], [-0.0002474617258528402, 8.250543261527922e-05]], \"pole_stiffness\": [[-0.12866046841803216, -0.000251153140173495], [-0.0002511531401734953, 8.37424360169345e-05]], \"shape_eigenvalues\": [-0.12676957280856838, 8.298817525797951e-05], \"positive_eigenvector_if_any\": [0.001950779630026525, -0.9999980972276074], \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": 8.250543261527922e-05, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.12676909006592568}",
+        "{\"test\": \"pattern\", \"degree\": 2, \"omega\": 4.267428948123212, \"loss\": 6.6357690601144495e-06, \"residual\": 6.56889917945516e-13, \"seed_overlap_squared\": 0.9991801632623017, \"mean_work_stiffness\": [[-0.1327441039602048, -0.0007478339519794643], [-0.0007478368317089143, -0.00018082346298040996]], \"pole_stiffness\": [[-0.1327767131209803, -0.0007480173225356618], [-0.0007480173225356537, -0.00018083612030378983]], \"shape_eigenvalues\": [-0.132748322624484, -0.0001766047987012157], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.00018082346298040996, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.1327441039602048}",
+        "{\"test\": \"pattern\", \"degree\": 3, \"omega\": 5.362612288873469, \"loss\": 1.220928978629791e-06, \"residual\": 3.7190549541481554e-13, \"seed_overlap_squared\": 0.9998988785621367, \"mean_work_stiffness\": [[-0.06969557578161617, -0.0006829195117689136], [-0.0006829247347298059, -0.00036382573549470563]], \"pole_stiffness\": [[-0.06969610617369182, -0.0006829247080735891], [-0.000682924708073588, -0.0003637712577727464]], \"shape_eigenvalues\": [-0.06970230195519037, -0.00035709956192051705], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.00036382573549470563, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.06969557578161617}",
+        "{\"test\": \"pattern\", \"degree\": 4, \"omega\": 6.44672516216458, \"loss\": 1.1438577969552405e-06, \"residual\": 2.9006010078416655e-13, \"seed_overlap_squared\": 0.9999841241452034, \"mean_work_stiffness\": [[-0.04250693383575806, -0.0006537715583778628], [-0.0006537776557207946, -0.0005620478452248623]], \"pole_stiffness\": [[-0.04250694543334187, -0.0006537717360547471], [-0.0006537717360547476, -0.0005619576219947192]], \"shape_eigenvalues\": [-0.042517121429303, -0.0005518602516799253], \"positive_eigenvector_if_any\": null, \"fraction_for_maximum\": 0.0, \"max_monotone_stiffness\": -0.0005620478452248623, \"fraction_for_minimum\": 1.0, \"min_monotone_stiffness\": -0.04250693383575806}"
+      ]
+    },
+    "_scratch/s11c/native_bend_one_deepplus_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_offset.py",
+        "--offset",
+        ".02",
+        "--outer",
+        "51",
+        "--end",
+        "91"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/native_bend_one_deepplus_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"offset\", \"intake\": 0.24999999998599196, \"offset\": 0.02, \"collar_fraction\": 0.0, \"sub\": 1, \"cut\": 2.1396825396825396, \"omega0\": 3.157143982752224, \"omega\": 3.1571440419545365, \"loss\": 0.00011367799160740608, \"residual\": 3.029974018812808e-13, \"frequency_curvature\": 9.375928483020124e-05, \"configurational_flare_force_per_energy\": -1.8530382803040832e-06}",
+        "{\"test\": \"burst\", \"input_work\": 1.4429259234692679e-08, \"dt\": 0.004, \"energy_balance\": 2.2151004669873294e-13}",
+        "{\"test\": \"force\", \"window\": [10, 30], \"flare_config_force_per_energy\": -1.8682910475795643e-06, \"restoring_slope_per_energy\": 9.341455237897821e-05}",
+        "{\"test\": \"force\", \"window\": [30, 54], \"flare_config_force_per_energy\": -1.8591320957596748e-06, \"restoring_slope_per_energy\": 9.295660478798374e-05}",
+        "{\"test\": \"force\", \"window\": [54, 78], \"flare_config_force_per_energy\": -1.856869348532427e-06, \"restoring_slope_per_energy\": 9.284346742662135e-05}"
+      ]
+    },
+    "_scratch/s11c/native_bend_one_deepminus_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_offset.py",
+        "--offset",
+        "-.02",
+        "--outer",
+        "51",
+        "--end",
+        "91"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/native_bend_one_deepminus_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"offset\", \"intake\": 0.24999999998599196, \"offset\": -0.02, \"collar_fraction\": 0.0, \"sub\": 1, \"cut\": 2.1396825396825396, \"omega0\": 3.157143982752224, \"omega\": 3.1571440419545365, \"loss\": 0.00011367799160740608, \"residual\": 3.029974018812808e-13, \"frequency_curvature\": 9.375928483020124e-05, \"configurational_flare_force_per_energy\": 1.8530382803040832e-06}",
+        "{\"test\": \"burst\", \"input_work\": 1.4429259234692679e-08, \"dt\": 0.004, \"energy_balance\": 2.2151004669873294e-13}",
+        "{\"test\": \"force\", \"window\": [10, 30], \"flare_config_force_per_energy\": 1.8682910475795643e-06, \"restoring_slope_per_energy\": 9.341455237897821e-05}",
+        "{\"test\": \"force\", \"window\": [30, 54], \"flare_config_force_per_energy\": 1.8591320957596748e-06, \"restoring_slope_per_energy\": 9.295660478798374e-05}",
+        "{\"test\": \"force\", \"window\": [54, 78], \"flare_config_force_per_energy\": 1.856869348532427e-06, \"restoring_slope_per_energy\": 9.284346742662135e-05}"
+      ]
+    },
+    "_scratch/s11c/native_bend_one_half_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_offset.py",
+        "--offset",
+        ".01",
+        "--outer",
+        "51",
+        "--end",
+        "91"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/native_bend_one_half_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"offset\", \"intake\": 0.24999999998599196, \"offset\": 0.01, \"collar_fraction\": 0.0, \"sub\": 1, \"cut\": 2.1396825396825396, \"omega0\": 3.157143982752224, \"omega\": 3.1571439975530007, \"loss\": 0.00011367797052216779, \"residual\": 2.8942727623427005e-13, \"frequency_curvature\": 9.376054234571455e-05, \"configurational_flare_force_per_energy\": -9.265451528985426e-07}",
+        "{\"test\": \"burst\", \"input_work\": 1.4429258123304686e-08, \"dt\": 0.004, \"energy_balance\": 1.8447706655801402e-13}",
+        "{\"test\": \"force\", \"window\": [10, 30], \"flare_config_force_per_energy\": -9.34171545268077e-07, \"restoring_slope_per_energy\": 9.341715452680771e-05}",
+        "{\"test\": \"force\", \"window\": [30, 54], \"flare_config_force_per_energy\": -9.295919446261812e-07, \"restoring_slope_per_energy\": 9.295919446261812e-05}",
+        "{\"test\": \"force\", \"window\": [54, 78], \"flare_config_force_per_energy\": -9.284605371001895e-07, \"restoring_slope_per_energy\": 9.284605371001895e-05}"
+      ]
+    },
+    "_scratch/s11c/native_bend_one_mix_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_offset.py",
+        "--offset",
+        ".02",
+        "--collar-fraction",
+        ".05",
+        "--outer",
+        "51",
+        "--end",
+        "91"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/native_bend_one_mix_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"offset\", \"intake\": 0.24999999998599196, \"offset\": 0.02, \"collar_fraction\": 0.05, \"sub\": 1, \"cut\": 2.1396825396825396, \"omega0\": 3.157143982752224, \"omega\": 3.157143819224942, \"loss\": 0.00011367765002512597, \"residual\": 4.529104462229843e-13, \"frequency_curvature\": -0.0002589797659390387, \"configurational_flare_force_per_energy\": 5.118537871600172e-06}",
+        "{\"test\": \"burst\", \"input_work\": 1.4429252160318939e-08, \"dt\": 0.003870967741935484, \"energy_balance\": 9.092005856803211e-14}",
+        "{\"test\": \"force\", \"window\": [10, 30], \"flare_config_force_per_energy\": 5.160572173335693e-06, \"restoring_slope_per_energy\": -0.0002580286086667846}",
+        "{\"test\": \"force\", \"window\": [30, 54], \"flare_config_force_per_energy\": 5.135587950875752e-06, \"restoring_slope_per_energy\": -0.0002567793975437876}",
+        "{\"test\": \"force\", \"window\": [54, 78], \"flare_config_force_per_energy\": 5.1292684552930715e-06, \"restoring_slope_per_energy\": -0.0002564634227646536}"
+      ]
+    },
+    "_scratch/s11c/native_bend_one_fd_fine_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_offset.py",
+        "--offset",
+        ".01",
+        "--sub",
+        "2",
+        "--no-burst",
+        "--outer",
+        "14"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/native_bend_one_fd_fine_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"offset\", \"intake\": 0.24999999998599196, \"offset\": 0.01, \"collar_fraction\": 0.0, \"sub\": 2, \"cut\": 2.1396825396825396, \"omega0\": 3.1571535724046687, \"omega\": 3.1571535856414696, \"loss\": 0.00011591092169097489, \"residual\": 1.209388208601468e-12, \"frequency_curvature\": 8.385275334297044e-05, \"configurational_flare_force_per_energy\": -8.255742602794571e-07}"
+      ]
+    },
+    "_scratch/s11c/native_bend_requirements_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_native_wave_bend_requirements.py",
+        "--figure",
+        "software/stage1_solver/reports/figures/mouth_native_wave_bend.png",
+        "--offsets",
+        "_scratch/s11c/native_bend_open_01",
+        "_scratch/s11c/native_bend_family_01",
+        "_scratch/s11c/native_bend_familyfine_01",
+        "_scratch/s11c/native_bend_family_third_01",
+        "_scratch/s11c/native_bend_family_order26_01",
+        "_scratch/s11c/native_bend_family_shallow_01",
+        "_scratch/s11c/native_bend_family_wide_01",
+        "_scratch/s11c/native_bend_family_waist_01"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/native_bend_requirements_01"
+      ],
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"material_wall\", \"area_stiffness_per_unit_tension\": [1.9965716717309319, 7.58649303401496], \"finite_offset_area_checks\": [[1.9965775357455584, 1.9965731450355406], [7.586481879151563, 7.586490234245957]], \"radius\": 1.0}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_01\", \"degree\": 1, \"collar_stiffness\": -0.12760631065751307, \"deep_stiffness\": 9.3599502524021e-05, \"stiffness_at_five_percent_collar\": -0.00025853969888979154, \"monotone_zero\": 0.02455766638737881, \"redistribution_at_fixed_total\": -0.12700750119132723, \"marginal_wall_tension_per_stored_energy\": 0.063912778107903}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_01\", \"degree\": 2, \"collar_stiffness\": -0.1304999186737857, \"deep_stiffness\": -9.35486929050003e-05, \"stiffness_at_five_percent_collar\": -0.00048236575614284875, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.12908424075381444, \"marginal_wall_tension_per_stored_energy\": 0.06536257580927371}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_01\", \"degree\": 3, \"collar_stiffness\": -0.06904960340783974, \"deep_stiffness\": -0.00026804476249902057, \"stiffness_at_five_percent_collar\": -0.00048047202756345723, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.06792948773058102, \"marginal_wall_tension_per_stored_energy\": 0.03458500505552427}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_01\", \"degree\": 4, \"collar_stiffness\": -0.04280409780575952, \"deep_stiffness\": -0.0004770475025036788, \"stiffness_at_five_percent_collar\": -0.0006009240433800501, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.041946862616556224, \"marginal_wall_tension_per_stored_energy\": 0.021440173061366412}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_familyfine_01\", \"degree\": 1, \"collar_stiffness\": -0.12787587914928256, \"deep_stiffness\": 8.330029357462646e-05, \"stiffness_at_five_percent_collar\": -0.0002682270361757782, \"monotone_zero\": 0.023098999421682406, \"redistribution_at_fixed_total\": -0.12729329773457798, \"marginal_wall_tension_per_stored_energy\": 0.06404779212088868}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_familyfine_01\", \"degree\": 2, \"collar_stiffness\": -0.13333827910401488, \"deep_stiffness\": -0.00018099280674124425, \"stiffness_at_five_percent_collar\": -0.0005679508895317031, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.1320190785699626, \"marginal_wall_tension_per_stored_energy\": 0.06678417403796988}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_familyfine_01\", \"degree\": 3, \"collar_stiffness\": -0.06965310759098006, \"deep_stiffness\": -0.0003642228346071711, \"stiffness_at_five_percent_collar\": -0.0005677111721031683, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.06865170316468731, \"marginal_wall_tension_per_stored_energy\": 0.034887238240289054}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_familyfine_01\", \"degree\": 4, \"collar_stiffness\": -0.042505112608386734, \"deep_stiffness\": -0.000562807054579243, \"stiffness_at_five_percent_collar\": -0.0006763114338440585, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.04176022944053808, \"marginal_wall_tension_per_stored_energy\": 0.021290379549428903}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_third_01\", \"degree\": 1, \"collar_stiffness\": -0.12807555892214254, \"deep_stiffness\": 8.145880133133872e-05, \"stiffness_at_five_percent_collar\": -0.0002703638809505111, \"monotone_zero\": 0.022814691576110453, \"redistribution_at_fixed_total\": -0.12749533060824936, \"marginal_wall_tension_per_stored_energy\": 0.06414780321190763}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_third_01\", \"degree\": 2, \"collar_stiffness\": -0.13153463078522942, \"deep_stiffness\": -0.00019740060907779677, \"stiffness_at_five_percent_collar\": -0.0005773566046628135, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.13025064238363293, \"marginal_wall_tension_per_stored_energy\": 0.06588079494861085}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_third_01\", \"degree\": 3, \"collar_stiffness\": -0.06984560548302711, \"deep_stiffness\": -0.00038230105628625537, \"stiffness_at_five_percent_collar\": -0.0005843434417947289, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.06886574391218041, \"marginal_wall_tension_per_stored_energy\": 0.03498364561288117}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_third_01\", \"degree\": 4, \"collar_stiffness\": -0.04245284486005903, \"deep_stiffness\": -0.0005789617504859133, \"stiffness_at_five_percent_collar\": -0.0006905308344912742, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.04172894887312199, \"marginal_wall_tension_per_stored_energy\": 0.021264192751301578}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_order26_01\", \"degree\": 1, \"collar_stiffness\": -0.12638050382027516, \"deep_stiffness\": 8.460923193172772e-05, \"stiffness_at_five_percent_collar\": -0.00026310066384176986, \"monotone_zero\": 0.023428153674385922, \"redistribution_at_fixed_total\": -0.12580096330182836, \"marginal_wall_tension_per_stored_energy\": 0.06329882022847827}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_order26_01\", \"degree\": 2, \"collar_stiffness\": -0.1325448221922806, \"deep_stiffness\": -0.00016178599140160419, \"stiffness_at_five_percent_collar\": -0.000548653558533754, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.13120598406130102, \"marginal_wall_tension_per_stored_energy\": 0.06638676798877376}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_order26_01\", \"degree\": 3, \"collar_stiffness\": -0.06957921096647617, \"deep_stiffness\": -0.00034311513910812114, \"stiffness_at_five_percent_collar\": -0.000548721803332167, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.06855153951882854, \"marginal_wall_tension_per_stored_energy\": 0.034850234047462576}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_order26_01\", \"degree\": 4, \"collar_stiffness\": -0.042564451572834484, \"deep_stiffness\": -0.000544001480719186, \"stiffness_at_five_percent_collar\": -0.000659753539178119, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.041795167287301725, \"marginal_wall_tension_per_stored_energy\": 0.021320109352645285}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_shallow_01\", \"degree\": 1, \"collar_stiffness\": -0.12676909006592568, \"deep_stiffness\": 8.250543261527922e-05, \"stiffness_at_five_percent_collar\": -0.00026597035973604263, \"monotone_zero\": 0.023088264463001027, \"redistribution_at_fixed_total\": -0.12619166279106792, \"marginal_wall_tension_per_stored_energy\": 0.06349344677562074}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_shallow_01\", \"degree\": 2, \"collar_stiffness\": -0.1327441039602048, \"deep_stiffness\": -0.00018082346298040996, \"stiffness_at_five_percent_collar\": -0.00056609779746553, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.13142925663949684, \"marginal_wall_tension_per_stored_energy\": 0.06648657546129831}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_shallow_01\", \"degree\": 3, \"collar_stiffness\": -0.06969557578161617, \"deep_stiffness\": -0.00036382573549470563, \"stiffness_at_five_percent_collar\": -0.0005674692674467014, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.06869355727061216, \"marginal_wall_tension_per_stored_energy\": 0.03490850853704344}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_shallow_01\", \"degree\": 4, \"collar_stiffness\": -0.04250693383575806, \"deep_stiffness\": -0.0005620478452248623, \"stiffness_at_five_percent_collar\": -0.0006756241025745195, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.04176143246688426, \"marginal_wall_tension_per_stored_energy\": 0.021291291376421946}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_wide_01\", \"degree\": 1, \"collar_stiffness\": -0.12725386320967538, \"deep_stiffness\": 9.334187719962557e-05, \"stiffness_at_five_percent_collar\": -0.0002578247907919833, \"monotone_zero\": 0.024557790824083253, \"redistribution_at_fixed_total\": -0.12665670708109772, \"marginal_wall_tension_per_stored_energy\": 0.0637362516067983}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_wide_01\", \"degree\": 2, \"collar_stiffness\": -0.13091199897600372, \"deep_stiffness\": -9.353792663081155e-05, \"stiffness_at_five_percent_collar\": -0.0004835274862835826, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.12949333669086052, \"marginal_wall_tension_per_stored_energy\": 0.06556897020430243}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_wide_01\", \"degree\": 3, \"collar_stiffness\": -0.06906384771370257, \"deep_stiffness\": -0.00026804432613598253, \"stiffness_at_five_percent_collar\": -0.00048051280158982186, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.06794361460893664, \"marginal_wall_tension_per_stored_energy\": 0.034592139403044814}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_wide_01\", \"degree\": 4, \"collar_stiffness\": -0.04280132268687313, \"deep_stiffness\": -0.00047704737437444033, \"stiffness_at_five_percent_collar\": -0.0006009157527651185, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.04194411341545803, \"marginal_wall_tension_per_stored_energy\": 0.02143878315504233}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_waist_01\", \"degree\": 1, \"collar_stiffness\": -0.16539457182523104, \"deep_stiffness\": 9.781601364017452e-05, \"stiffness_at_five_percent_collar\": -0.0003569735134151586, \"monotone_zero\": 0.021891159374599296, \"redistribution_at_fixed_total\": -0.16462799715554166, \"marginal_wall_tension_per_stored_energy\": 0.08283937513968773}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_waist_01\", \"degree\": 2, \"collar_stiffness\": -0.016765940167311467, \"deep_stiffness\": -9.311873201715024e-05, \"stiffness_at_five_percent_collar\": -0.00015482480445890403, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.016251263143641306, \"marginal_wall_tension_per_stored_energy\": 0.00839809162774481}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_waist_01\", \"degree\": 3, \"collar_stiffness\": -0.03099235340938703, \"deep_stiffness\": -0.0002679613945140057, \"stiffness_at_five_percent_collar\": -0.0003692469166409802, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.030209138497193196, \"marginal_wall_tension_per_stored_energy\": 0.015523962781893256}",
+        "{\"test\": \"wave_requirement\", \"run\": \"native_bend_family_waist_01\", \"degree\": 4, \"collar_stiffness\": -0.031994993413240747, \"deep_stiffness\": -0.0004770236602202066, \"stiffness_at_five_percent_collar\": -0.0005688166781585736, \"monotone_zero\": null, \"redistribution_at_fixed_total\": -0.031244325678161267, \"marginal_wall_tension_per_stored_energy\": 0.01602652446216048}",
+        "{\"test\": \"figure\", \"path\": \"software/stage1_solver/reports/figures/mouth_native_wave_bend.png\", \"sha256\": \"b00ea764a5f0a1ff3376465e60fb1fd4dd90a75f62dac61ef8c942089b74eadb\"}"
+      ]
+    },
+    "_scratch/s11c/native_bend_referee/verify_02": {
+      "scientific_command": [
+        "python3",
+        "_scratch/s11c/native_bend_referee/angular_form_check.py"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend-referee",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/native_bend_referee/verify_02"
+      ],
+      "verified_memory_bytes": 1073741824,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "candidate K1, K2 [ 24.57181013 302.45958791]",
+        "Cartesian real-space K1, K2 [ 24.57181013 302.4595879 ]",
+        "relative errors [4.71505946e-12 5.29599613e-11]",
+        "angle-frozen mutation K1, K2 [ 0.71233109 38.9498772 ]"
+      ]
+    },
+    "_scratch/s11c/native_bend_referee/mixed_degree_one_01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/s11c/native_bend_referee/mixed_degree_one.py"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend-referee",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/native_bend_referee/mixed_degree_one_01"
+      ],
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "family collar fraction crossing 0.024557666387378833 eig signs [(-1, 1), (-1, -1), (-1, -1), (-1, -1)] zero-total redistribution stiffness -0.1270075011913272",
+        "familyfine collar fraction crossing 0.023098999421682427 eig signs [(-1, 1), (-1, -1), (-1, -1), (-1, -1)] zero-total redistribution stiffness -0.127293297734578",
+        "family_wide collar fraction crossing 0.024557790824083284 eig signs [(-1, 1), (-1, -1), (-1, -1), (-1, -1)] zero-total redistribution stiffness -0.12665670708109772",
+        "family_waist collar fraction crossing 0.021891159374599296 eig signs [(-1, 1), (-1, -1), (-1, -1), (-1, -1)] zero-total redistribution stiffness -0.16462799715554163",
+        "waist double displacement 0.02 mixed finite difference -0.00033411606233205366 linear-response mixed -0.000334379328024615",
+        "waist double displacement 0.01 mixed finite difference -0.00033431346844550833 linear-response mixed -0.000334379328024615",
+        "waist double displacement 0.005 mixed finite difference -0.00033436290431087254 linear-response mixed -0.000334379328024615"
+      ]
+    },
+    "_scratch/s11c/native_bend_cartesian_review_host_01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/native_bend_independent_work_review.py"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend-review",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/native_bend_cartesian_review_host_01"
+      ],
+      "verified_memory_bytes": 1073741824,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "angular Cartesian derivative: max absolute projected error 2.85060650153e-11",
+        "complex mean force from assembled K derivative -2.53554169838266",
+        "mean force from Cartesian finite difference of integrated energy -2.53554169080239",
+        "two real quadrature release snapshots give mean -2.53554169079906",
+        "relative error assembled vs Cartesian 2.98960510797e-09"
+      ]
+    },
+    "_scratch/s11c/native_bend_window_review_01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/native_bend_window_review.py"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "native-bend-review",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/native_bend_window_review_01"
+      ],
+      "verified_memory_bytes": 1073741824,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "collar time sample 0.1200000000000001",
+        "[8, 24] force from direct derivative -0.04287906133588658 0.04348140308366538 largest change 3.546737086107532e-07",
+        "[20, 44] force from direct derivative -0.042867756686974505 0.04307836084988773 largest change 1.5878780966482875e-07",
+        "[32, 54] force from direct derivative -0.04286656286491225 0.042472630215934594 largest change 3.3799283436636296e-07",
+        "[44, 70] force from direct derivative -0.042876391723823994 0.04324868137893631 largest change 2.1576382151777818e-07",
+        "[56, 80] force from direct derivative -0.04286919768211271 0.04324654556128863 largest change 1.7301781899542457e-07",
+        "deep time sample 0.1200000000000001",
+        "[8, 24] force from direct derivative -0.0004647992368940803 0.00047714562989070687 largest change 1.3224452408036429e-08",
+        "[20, 44] force from direct derivative -0.0004641819148752831 0.0004771547587990187 largest change 2.112591962152334e-09",
+        "[32, 54] force from direct derivative -0.0005002783477478193 0.00047702756024946557 largest change 1.6001630655498172e-08",
+        "[44, 70] force from direct derivative -0.00047431974253240287 0.0004771167166367004 largest change 2.8910320479269037e-09",
+        "[56, 80] force from direct derivative -0.00046637614162154555 0.00047714209508482267 largest change 7.820537070149167e-09"
+      ]
+    }
+  },
+  "independent_check_sources": {
+    "_scratch/s11c/native_bend_referee/angular_form_check.py": "\"\"\"Independent real-space angular quadrature against the candidate element forms.\"\"\"\nimport sys\nfrom pathlib import Path\nfrom types import SimpleNamespace\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.special import lpmv\n\nsys.path.insert(0, str(Path(\"software/stage1_solver/tools\").resolve()))\nfrom mouth_native_wave_bend import Bend, bend_forms\n\nlo, hi = .53, 1.21\nrlo, rhi = .12, 1.14\npg, vg = np.array([lo, hi]), np.array([rlo, rhi])\nchart = lambda ib,p,v: (v,p,np.zeros_like(p),np.ones_like(p),np.ones_like(p),np.zeros_like(p))\norder_at = lambda w,r: .38 + .15*w + .12*r + .02*w*r\norder = order_at(np.linspace(lo,hi,3)[:,None],np.linspace(rlo,rhi,3)[None,:]).ravel()\nold = (pg,vg,np.arange(9).reshape(1,-1))\ndom = SimpleNamespace(chart=chart, order_blocks=[None,None,old])\nforms = Bend(bend_forms(dom,(pg,vg,np.arange(4).reshape(1,-1)),order,4,(lo,hi)))\ndegrees = list(range(2,7))\nfield = np.random.default_rng(14231).normal(size=(len(degrees),4))\ncandidate = np.zeros(2)\nfor i,fi in zip(degrees,field):\n    for j,fj in zip(degrees,field):\n        for k,A in enumerate([forms.linear(i,j),forms.square(i,j)]):\n            if A is not None:\n                candidate[k] += fi@(A@fj)\n\naxis, qweight = leggauss(3)\nt, tw = leggauss(40)\ndef amplitude(w,r,z):\n    val = 0.\n    for l,coefs in zip(degrees,field):\n        a,b = (w-lo)/(hi-lo), (r-rlo)/(rhi-rlo)\n        f = ((1-a)*((1-b)*coefs[0]+b*coefs[1])+a*((1-b)*coefs[2]+b*coefs[3]))\n        val += r*f*np.sqrt((2*l+1)/(2*l*(l+1)))*lpmv(1,l,z)\n    return val\ncorrect, frozen_angle = np.zeros(2), np.zeros(2)\neps = 2.e-6\nfor wp,pw in zip(axis,qweight):\n    w=(hi+lo+wp*(hi-lo))/2\n    a=(w-lo)/(hi-lo)\n    slope = 30*a**2*(1-a)**2/(hi-lo)\n    for rp,rw in zip(axis,qweight):\n        r=(rhi+rlo+rp*(rhi-rlo))/2\n        x=r*t\n        s=r*np.sqrt(1-t*t)\n        weight=8*np.pi/3*r**2*pw*rw*(hi-lo)*(rhi-rlo)/4*order_at(w,r)\n        dw=(amplitude(w+eps,r,t)-amplitude(w-eps,r,t))/(2*eps)\n        xp, xm = x+eps, x-eps\n        r1, r2 = np.hypot(xp,s), np.hypot(xm,s)\n        for result,t1,t2 in [(correct,xp/r1,xm/r2),(frozen_angle,t,t)]:\n            dx=(amplitude(w,r1,t1)-amplitude(w,r2,t2))/(2*eps)\n            result += weight*np.array([-2*slope*(tw@(dw*dx)),slope**2*(tw@dx**2)])\nprint(\"candidate K1, K2\", candidate)\nprint(\"Cartesian real-space K1, K2\", correct)\nprint(\"relative errors\", abs(candidate-correct)/abs(correct))\nprint(\"angle-frozen mutation K1, K2\", frozen_angle)\nassert np.allclose(candidate,correct,rtol=1e-8,atol=1e-9)\nassert np.all(abs(frozen_angle-correct)>.05*abs(correct))\n",
+    "_scratch/s11c/native_bend_referee/mixed_degree_one.py": "\"\"\"Compare the independently displaced waist eigenvalue with the reported mixed work.\"\"\"\nimport json\nimport sys\nfrom pathlib import Path\nfrom types import SimpleNamespace\n\nimport numpy as np\nfrom scipy import sparse\nfrom scipy.sparse.linalg import eigsh\n\nsys.path.insert(0, str(Path(\"software/stage1_solver/tools\").resolve()))\nimport mouth_native_wave_bend as native\n\ndef records(name):\n    return [json.loads(s) for s in Path(\"_scratch/s11c/native_bend_\"+name+\"_01/stdout\").read_text().splitlines()]\nfor run in [\"family\",\"familyfine\",\"family_wide\",\"family_waist\"]:\n    rows=records(run)\n    matrices=[np.array(row[\"mean_work_stiffness\"]) for row in rows[1:]]\n    H=(matrices[0]+matrices[0].T)/2\n    a,b,d=H[0,0],H[0,1],H[1,1]\n    roots=np.roots([a-2*b+d,2*(b-d),d])\n    signs=[tuple(np.sign(np.linalg.eigvalsh((Q+Q.T)/2)).astype(int)) for Q in matrices]\n    print(run,\"collar fraction crossing\",roots[(roots>=0)&(roots<=1)][0],\"eig signs\",signs,\n          \"zero-total redistribution stiffness\",a-2*b+d,flush=True)\n    assert signs==[(-1,1),(-1,-1),(-1,-1),(-1,-1)]\n\nargs=SimpleNamespace(radius=1.,state=None,mesh=34,sub=1,cut=2.15,feed_spacing=.09,outer=16.,\n                     boundary='waist')\ng,chi,_,_=native.prepared(args)\ng,chi,cut=native.truncate(g,chi,args.cut)\np,blocks,_,parts,_,_=native.assemble(g,chi,1,1,.09)\nmass=native.momentum_and_mass(g,blocks,chi,len(p),0.)[0].sum(axis=0)\nlims=[(.55,1.15),(1.2,2.0)]\nbend=[native.Bend(native.bend_forms(g,blocks[2],chi,len(p),s)) for s in lims]\nK0=sum(parts)\nA=sum(native.angular_stiffness(g,blocks,chi,len(p)))\ndegrees=[1,2,3]\ncuts=[(mass>0)&(p[:,1]>.5000000001)&((p[:,0]>0)|(l==1)) for l in degrees]\nscale=[sparse.diags(1/np.sqrt(mass[mask])) for mask in cuts]\n\ndef block_global(i,j,Q):\n    return scale[i]@Q[cuts[i]][:,cuts[j]]@scale[j]\n\nkmat=sparse.block_diag([block_global(i,i,K0+(l*(l+1)-2)*A) for i,l in enumerate(degrees)],format='csr')\nperturbed=[]\nfor mech in bend:\n    matrices=[]\n    for factory in [mech.linear,mech.square]:\n        full=[]\n        for i,l in enumerate(degrees):\n            fields=[]\n            for j,h in enumerate(degrees):\n                part=factory(l,h)\n                fields.append(block_global(i,j,part) if part is not None else None)\n            full.append(fields)\n        matrices.append(sparse.bmat(full,format='csr'))\n    perturbed.append(matrices)\ntarget=records(\"family_waist\")[1]\nw=target[\"omega\"]\nH=np.array(target[\"mean_work_stiffness\"])\nstart=np.random.default_rng(3454).normal(size=kmat.shape[0])\ndef solve(x,y):\n    K=kmat+x*perturbed[0][0]+x*x*perturbed[0][1]+y*perturbed[1][0]+y*y*perturbed[1][1]\n    e=eigsh(K,k=1,sigma=w**2+1e-7,v0=start,return_eigenvectors=False,tol=1e-13)[0]\n    return np.sqrt(e)\nfor step in [.02,.01,.005]:\n    curvature=(solve(step,step)-solve(step,-step))/(2*w*step**2)\n    print(\"waist double displacement\",step,\"mixed finite difference\",curvature,\"linear-response mixed\",H[0,1],flush=True)\nassert abs(curvature/H[0,1]-1)<.001\n",
+    "_scratch/native_bend_independent_work_review.py": "\"\"\"Cross-check a bend on a manufactured curved mesh by Cartesian differentiation.\"\"\"\nfrom pathlib import Path\nfrom types import SimpleNamespace\nimport sys\nimport numpy as np\nfrom numpy.polynomial.legendre import Legendre, leggauss\nfrom scipy import sparse\nsys.path.insert(0,str(Path('software/stage1_solver/tools').resolve()))\nfrom mouth_native_wave_bend import Bend, bend_forms, x_derivative\n\ndegrees=range(2,7)\nlo,hi=.55,1.15\nleg={n:Legendre.basis(n).deriv() for n in range(1,10)}\ndef tor(n,mu):\n    return (2*(2*n+1)/(3*n*(n+1)))**.5*np.sqrt(1-mu**2)*leg[n](mu)\n\ndef h(p):\n    t=np.clip((p-lo)/(hi-lo),0.,1.)\n    return (10-15*t+6*t*t)*t**3\n\n# Differentiate Cartesian fields along x while y and z are fixed.\nmu,mw=leggauss(28)\nr=1.21\nx,s = r*mu,r*(1-mu**2)**.5\nstep=2e-5\nerr=0.\nfor j in degrees:\n    power=0.13*j+.35\n    def field(xhere):\n        rad=np.hypot(xhere,s)\n        return rad**(1+power)*tor(j,xhere/rad)\n    deriv=(field(x-2*step)-8*field(x-step)+8*field(x+step)-field(x+2*step))/(12*step)\n    for i in range(1,9):\n        direct=.75*sum(mw*deriv*tor(i,mu))/r**power\n        expected=0.\n        if abs(i-j)==1:\n            c,a=x_derivative(i,j)\n            expected=c*(power+a)\n        err=max(err,abs(direct-expected))\nprint('angular Cartesian derivative: max absolute projected error',format(err,'.12g'))\n\npg=np.array([.41,.59,.73,.94,1.07,1.21,1.36])\nvg=np.linspace(.02,1,6)\nnn=len(pg)*len(vg)\nids=np.arange(nn).reshape(len(pg),len(vg))\ncells=np.stack([ids[:-1,:-1],ids[:-1,1:],ids[1:,:-1],ids[1:,1:]],axis=-1).reshape(-1,4)\ndef chart(b,p,v):\n    return (v+.14)*(1+.24*p**2),p, .48*(v+.14)*p, 1+.24*p**2, np.ones_like(v), np.zeros_like(v)\ndef order(p,v):\n    return .37+.21*p+.09*v-.15*p*v+.04*v**2\ngrids=[np.sort(np.r_[g,.5*(g[1:]+g[:-1])]) for g in (pg,vg)]\npp,vv=np.meshgrid(*grids,indexing='ij')\nold=np.arange(pp.size).reshape(pp.shape)\noc=np.stack([old[a:a+2*(len(pg)-1):2,b:b+2*(len(vg)-1):2]\n             for a in range(3) for b in range(3)],axis=-1).reshape(-1,9)\nbody=SimpleNamespace(order_blocks=[None,None,(pg,vg,oc)],chart=chart)\nmatrices=Bend(bend_forms(body,(pg,vg,cells),order(pp,vv).ravel(),nn,(lo,hi)))\nd=.061\np0,v0=np.meshgrid(pg,vg,indexing='ij')\nwaves={n:(np.cos(p0*(.4*n+.2))*np.sin((.25*n+.6)*v0+.4)+\n          1j*np.sin((.16*n+.3)*p0+.6)*np.cos((.3*n+.4)*v0-.5)).ravel() for n in degrees}\ndef assembled_force():\n    total=0j\n    for i in degrees:\n        for j in degrees:\n            l,b=matrices.linear(i,j),matrices.square(i,j)\n            if l is not None:\n                total += np.vdot(waves[i],l@waves[j])\n            if b is not None:\n                total += 2*d*np.vdot(waves[i],b@waves[j])\n    return -.25*total.real\n# Independently sample at fixed laboratory x and transverse radius s, then change w.\n# The quadrature in material coordinates is identical for every bend.\nnodes,ww=leggauss(3)\ndef cart_field(i,j,xlab,s,w,delta):\n    x=xlab-delta*h(w)\n    r=np.hypot(x,s)\n    v=r/(1+.24*w*w)-.14\n    a=(w-pg[i])/(pg[i+1]-pg[i])\n    b=(v-vg[j])/(vg[j+1]-vg[j])\n    f=np.stack([(1-a)*(1-b),(1-a)*b,a*(1-b),a*b],axis=-1)\n    points=cells[i*(len(vg)-1)+j]\n    return sum((f@waves[n][points])*r*tor(n,x/r) for n in degrees)\n\ndef integrated_energy(delta,phase=None):\n    weight=total=0.\n    eps=3e-5\n    for i in range(len(pg)-1):\n        for j in range(len(vg)-1):\n            for k,pnode in enumerate(nodes):\n                w=.5*((1-pnode)*pg[i]+(1+pnode)*pg[i+1])\n                for l,vnode in enumerate(nodes):\n                    v=.5*((1-vnode)*vg[j]+(1+vnode)*vg[j+1])\n                    r=(v+.14)*(1+.24*w*w)\n                    x=r*mu+delta*h(w)\n                    s=r*np.sqrt(1-mu**2)\n                    vals=[cart_field(i,j,x,s,w+a*eps,delta) for a in (-2,-1,1,2)]\n                    dz=(vals[0]-8*vals[1]+8*vals[2]-vals[3])/(12*eps)\n                    base=.25 if phase is None else .5\n                    if phase is not None: dz=(dz*np.exp(-1j*phase)).real\n                    wt=2*np.pi*r*r*(1+.24*w*w)*(pg[i+1]-pg[i])*(vg[j+1]-vg[j])*.25\n                    total+=base*wt*ww[k]*ww[l]*order(w,v)*(mw@abs(dz)**2)\n    return total\nstep=3e-4\nf=-(integrated_energy(d+step)-integrated_energy(d-step))/(2*step)\nf0=-(integrated_energy(d+step,0)-integrated_energy(d-step,0))/(2*step)\nf90=-(integrated_energy(d+step,np.pi/2)-integrated_energy(d-step,np.pi/2))/(2*step)\na=assembled_force()\nprint('complex mean force from assembled K derivative',format(a,'.15g'))\nprint('mean force from Cartesian finite difference of integrated energy',format(f,'.15g'))\nprint('two real quadrature release snapshots give mean',format(.5*(f0+f90),'.15g'))\nprint('relative error assembled vs Cartesian',format(abs(a-f)/abs(a),'.12g'))\nif err>1e-8 or abs(f-a)>2e-6*abs(a) or abs(f-.5*(f0+f90))>2e-8*abs(f):\n    raise ArithmeticError('Independent cross check failed')\n",
+    "_scratch/native_bend_window_review.py": "\"\"\"Integrate signed momentum by directly differentiating cubic spline traces on exact Hann-window endpoints.\"\"\"\nfrom pathlib import Path\nimport json\nimport numpy as np\nfrom scipy.interpolate import CubicSpline\nfrom scipy.integrate import simpson\n\nfor profile in ('collar','deep'):\n    root=Path('_scratch/s11c')/f'native_bend_drive_{profile}_01'\n    if not json.loads((root/'limit-validation.json').read_text())['verified'] or json.loads((root/'outcome.json').read_text())['exitCode']:\n        raise ArithmeticError('unverified recording')\n    with np.load(root/'force.npz') as saved:\n        tr=saved['values']\n        print(profile,'time sample',np.median(np.diff(tr[:,0])))\n    interp=CubicSpline(tr[:,0],tr[:,1:],axis=0)\n    for row in [json.loads(l) for l in (root/'stdout').read_text().splitlines()][1:]:\n        lo,hi=row['window']\n        t=np.linspace(lo,hi,int((hi-lo)*80)+1)\n        wt=np.sin(np.pi*(t-lo)/(hi-lo))**2\n        def avg(vals):\n            return simpson(vals*wt,x=t,axis=-1)\n        vals=interp(t).T\n        e=avg(vals[1])\n        geom=avg(vals[4])/e\n        mw=avg(interp(t,1).T[5:7])/e\n        cut=avg(vals[7])/e\n        f=[-geom+mw[0],geom+mw[1]+cut]\n        reported=np.asarray(row['both_reactions'])\n        print(row['window'],'force from direct derivative',float(f[0]),float(f[1]),'largest change',float(np.max(np.abs(np.array(f)-reported))))\n        if np.any(np.sign(f)!=np.sign(reported)) or np.max(np.abs(np.array(f)-reported))>.06*max(abs(reported)):\n            raise ArithmeticError('integration changes interpretation')\n"
+  },
+  "scientific_reviews": [
+    {
+      "scope": "Fixed shape, frequency curvature and angular form",
+      "verdict": "Scoped clear for the implemented fixed-support, axis-aligned degree-four wave calculation. On both tested meshes, both prescribed bends produce an anti-restoring configurational stress. The finite-offset force reverses with the offset, and its slope approaches the perturbative value."
+    },
+    {
+      "scope": "Two available shape coordinates and four angular patterns, same reviewer",
+      "verdict": "Scoped clear for the two-profile static directional work of the four aligned lowest modes on the reported grids. Degrees two through four are anti-restoring in every tested shape direction. Degree one has a weak restoring direction and an anti-restoring direction, so the wave alone leaves the freely deformable shape at a saddle."
+    },
+    {
+      "scope": "Independent Cartesian work and direct time differentiation, second reviewer",
+      "verdict": "Scoped clear for the native m=0 bend’s prescribed configurational stress and the signs of the stated window-averaged held-guide wave reactions, conditional on the fixed guide, adopted lab-frame wave action and pre-feedback treatment of the remote feed; physical bath carryover and free-mouth mechanics remain open."
+    },
+    {
+      "scope": "Independent area tension, finite offsets and fine drive-off window, second reviewer",
+      "verdict": "Scoped clear for the two-shape, radius-one directional-work threshold of an independently specified wave-empty area tension, for the finite-offset degree-one configurational sign reversal across the two paths, and for the sign of the three common coarse/fine degree-four held-guide reaction windows. Full shape stability, independent tension and mode occupation, and free-mouth acceleration remain open."
+    }
+  ],
+  "project_review": "Formal project review and commit pending."
+}

@@ -1,0 +1,16 @@
+# Can the drain power the contacts that align a held bend?
+
+**The stationary carrier can transmit sideways momentum, but its two reservoirs supply zero net power for renewing contacts.** We tested the same radius-one, later-opening mouth in four spatial dimensions, with no trapped wave. The straight intake was 0.25. We held the entrance straight and displaced the deeper bend by 0, ±0.01 and ±0.005. The trial contacts have unit stiffness and shear modulus. Their relaxed configuration travels with the material and renews in one transit. [Contact law and preparation](mouth_bend_renewal.md)
+
+| Contacts entering the bend at +0.01 | Deep holding force¹ | Renewal power | Mean spring power entering | Minimum power from other sources² |
+|---|---:|---:|---:|---:|
+| Straight reference | +6.49201 × 10⁻⁵ | 5.71097 × 10⁻⁸ | 8.10303 × 10⁻⁹ | 4.90067 × 10⁻⁸ |
+| Zero entry traction | +6.16172 × 10⁻⁵ | 5.56421 × 10⁻⁸ | 0 | 5.56421 × 10⁻⁸ |
+
+¹ Positive holding force means the mouth tends to straighten. This weak-bend law reverses the holding force when the bend reverses and quarters the power when the displacement halves. ² This bound credits all incoming mean spring energy. Contact formation and other internal energy are separate possible sources. All entries are in model units. [Contact work calculation](../tools/mouth_bend_reaction_work.py) · [Measurements and local review scopes](../../../research/pde_ledger_v3/_measurements/mouth_bend_flow_reaction.json)
+
+**Original drive.** A spatial phase difference maintains the flow. Equal reservoir frequencies give equal energy per constituent and net carrier power \(Q(\mu_{\rm feed}-\mu_{\rm bulk})=0\). The stationary holder does zero work. Funding the straight-reference renewal entirely from drainage would require a drop of \(2.28439\times10^{-7}\) per constituent. With the original drive and the bend at +0.01, the carrier alone drew 0.24999768188. The straight carrier’s energy derivative predicts this change. A static phase adjustment restores intake 0.25 with zero net power. [Finite bends and reservoir controls](../tools/mouth_bend_drive_control.py) · [Energy derivative check](../tools/mouth_bend_drive_comparison.py) · [Exact port identities](../tools/mouth_bend_drive_identity.wl)
+
+**Momentum.** At +0.01 and fixed intake, \(6.83561\times10^{-5}\) of sideways carrier momentum per time entered the bend segment, \(3.06293\times10^{-5}\) left through the deeper cut and \(3.77121\times10^{-5}\) went to the wall. The imbalance was 0.022% of the incoming rate. This balance includes flow and stress. Pressure on the sloping wall transfers sideways momentum even though the carrier's tangential traction vanishes. The added contact stress balances across the same cuts in its own shear calculation. What transfers its reaction back to the flowing material remains open.
+
+**Implication for 0PN.** Compare straight and bent conversion layers at equal intake. Measure incoming and outgoing material energy, losses during conversion, and traction along the flow. The existing passive conversion law consumes energy. A bend could redirect some of that power if the full system supplies it and couples it to the contacts. Free acceleration remains open. Working base `49dca23e`. Formal review and commit are pending. [Existing conversion balance](mouth_order_and_flare.md)

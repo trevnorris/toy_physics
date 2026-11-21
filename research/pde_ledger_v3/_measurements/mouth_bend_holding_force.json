@@ -1,0 +1,224 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "report": "software/stage1_solver/reports/mouth_bend_holding_force.md",
+  "report_sha256": "561e3612f3cbd2bc9453aeaca303475e4cc321f2a40ff28f0c74a52211d21925",
+  "source_and_input_sha256": {
+    "software/stage1_solver/tools/mouth_bend_holding_force.py": "7af979375d369621b7eebebb472d80d0514313e9f2ce2c904f6fa0ef0e029e50",
+    "software/stage1_solver/tools/mouth_open_reservoirs.py": "3917e80ff614c90a9eb4beb78fd7c3136ba52016fb60261b07791e6bd519114c",
+    "software/stage1_solver/tools/mouth_carrier_bend_work.py": "2edee3ce087cf5ef53d693abc337f605f1ab87adcec16fd81201082415bc6df9",
+    "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44",
+    "software/stage1_solver/tools/mouth_smooth_dipole_relaxation.py": "f58eeb92e04662b1f0effc620cdb9a532e4fabe6e9c9fd086a5a994e011d6efd",
+    "software/stage1_solver/tools/mouth_wave_outgoing_sidebands.py": "45c57953116d50d4745f01420f6b95092c267cfd4bb045875edec270496c0e12",
+    "software/stage1_solver/tools/mouth_driven_bend.py": "fadb351f7baebfdd70c3bc35a7757aeefd2db37023fbd1e473685ab30139e85e",
+    "software/stage1_solver/tools/mouth_projected_bend_spectrum.py": "96a65898d1ffb5c06d197da68be377e8864d56be93243ff884ae33495ca14222",
+    "software/stage1_solver/src/stage1_solver/p2_driven_absorber.py": "332b7d7c3ea8bb08706f006dddd662293dd2d69d35dd1e71f87344a82d64966e",
+    "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519",
+    "research/pde_ledger_v3/_measurements/mouth_bend_coefficients.json": "6ec83f27883999e8b33dfb59a081e92f6883921336670a09fb9eaa2fc010f946",
+    "research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json": "a53c5edf9cee951de8e8cce20cbc90d27a4e8e5ce55efadb69b5fa52eae274d7",
+    "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b",
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "software/stage1_solver/tools/mouth_bend_holding_force_check.py": "14acd083793016a1b89e69e088eae0b1dc91b2e5820d0e79b74ad671b12b1395",
+    "research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md": "610642c63867d921763ee47c3e4936fbaad4672232b783f77b1ab15ad482397d"
+  },
+  "scope": {
+    "force_convention": "Positive incremental external generalized force in phase with peak b, conjugate by virtual work to simultaneous sin\u00b2(w) cos(theta) deformation of both well halves. One draining carrier arm. Static scalar force is the pump-cycle mean. Drive-frequency force excludes pump satellites at 2ws\u00b1omega, with motion at all these other tones clamped. Results to linear order in b. The dipole intake variation integrates to zero; a nonlinear finite-amplitude DC intake change was not measured.",
+    "carrier": "Real equilibrium on a graded radial/slab-bulk mesh; uniform collar through radius 2R. DC real far boundary, AC complex stretch in both open directions starting one-quarter of the outer radius/depth. Constant amplitude at the two far DC reservoirs, inlet phase floated to the specified mean intake. The induced carrier traction is read from the action source. Global power and two interior flux cuts checked. Positive emitted power fixes the quadrature sign.",
+    "wave": "Translated spherical sections and smooth scalar well with reference occupied monopole action and empty dipole. With v=(dV/db)s and R(nu)=(H1-nu\u00b2)^-1, the in-phase scalar load divided by b is I/(2ws) times [<s|Vsecond|s> - v^T(R(ws+omega)+R(ws-omega))v]. Both sidebands stay below the dipole bound pole. The 0.015 and 0.03 grids separately solve these resolvents at all three settings.",
+    "inverse": "Known field force equals b times the sum of the scalar load and minus the induced carrier response. A local residual K-M*omega\u00b2 fits two independent total readings. The third checks that the 0.02 corrected force drop is four times the 0.01 drop. Fitting synthetic totals for the three supplied masses is a sensitivity control. No measured F_total at these settings exists in this implementation. The peak cutoff also requires validity of that wall law at the excitation sidebands and the earlier selective readout. Additional frequency-independent contact stiffness enters the intercept; a frequency-dependent contact also affects the slope.",
+    "related_solver_audit": "Distributed wall equation pde.tex lines 971\u20131008 and 2533\u20132538 requires constitutive wall coefficients. The older driven-bend solver sets mass=12 and stiffness=6. The quadrupole smoke operator lacks the physical matter/gauge-to-wall source. An outer force for rigid center translation has a different virtual displacement from the present fixed-end bend. No independent wall momentum or total clamp multiplier for this bend in these paths."
+  },
+  "runs": {
+    "fluid32": {
+      "argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_holding_force.py",
+        "carrier",
+        "--cells",
+        "32",
+        "--outer",
+        "36"
+      ],
+      "guard_pool": "hold-bend-fluid32",
+      "log_directory": "_scratch/s11c/bend_hold_fluid32",
+      "started_utc": "2026-11-19T21:31:55.630630+00:00",
+      "memory_cap_bytes": 3221225472,
+      "peak_bytes": 485961728,
+      "swap_cap_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "duration_seconds": 15.42275329073891,
+      "stdout_sha256": "c1c8575b5573c6c83e7617a355abcf05f8ade9681fde32d3b4066027bb308e97",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726907 bulk=0.0373999726907 residual=2.52e-13",
+        "carrier cells=32 outer_R=36 omega=0 holding_per_b=-3.4577573232174e-05 holding_imag_per_b=-0 power_per_b2=0 feed=0 bulk=0",
+        "carrier cells=32 outer_R=36 omega=0.01 holding_per_b=-0.00036899521026183 holding_imag_per_b=-3.2442298414905e-08 power_per_b2=1.62211492075e-10 feed=1.51176060184e-10 bulk=1.10354318908e-11",
+        "carrier cells=32 outer_R=36 omega=0.02 holding_per_b=-0.0013831282112596 holding_imag_per_b=-1.0575925849928e-06 power_per_b2=1.05759258499e-08 feed=9.22002718794e-09 bulk=1.35589866199e-09"
+      ]
+    },
+    "fluid48": {
+      "argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_holding_force.py",
+        "carrier",
+        "--cells",
+        "48",
+        "--outer",
+        "36"
+      ],
+      "guard_pool": "hold-bend-fluid48",
+      "log_directory": "_scratch/s11c/bend_hold_fluid48",
+      "started_utc": "2026-11-19T21:31:55.637030+00:00",
+      "memory_cap_bytes": 4294967296,
+      "peak_bytes": 1129996288,
+      "swap_cap_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "duration_seconds": 29.0148536702618,
+      "stdout_sha256": "7d70ed96fd53c261013a2d4938ff12fdf2c4808d61db1a117843be64d071ea53",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726942 neck=0.0373999726908 bulk=0.0373999726908 residual=1.32e-13",
+        "carrier cells=48 outer_R=36 omega=0 holding_per_b=-3.5359426199946e-05 holding_imag_per_b=-0 power_per_b2=0 feed=0 bulk=0",
+        "carrier cells=48 outer_R=36 omega=0.01 holding_per_b=-0.00037191369272072 holding_imag_per_b=-3.2624315385911e-08 power_per_b2=1.6312157693e-10 feed=1.52024671237e-10 bulk=1.10969056929e-11",
+        "carrier cells=48 outer_R=36 omega=0.02 holding_per_b=-0.0013924284367154 holding_imag_per_b=-1.0628174767036e-06 power_per_b2=1.0628174767e-08 feed=9.26547495705e-09 bulk=1.36269980999e-09"
+      ]
+    },
+    "fluid48far": {
+      "argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_holding_force.py",
+        "carrier",
+        "--cells",
+        "48",
+        "--outer",
+        "48"
+      ],
+      "guard_pool": "hold-bend-fluid48far",
+      "log_directory": "_scratch/s11c/bend_hold_fluid48far",
+      "started_utc": "2026-11-19T21:31:56.630822+00:00",
+      "memory_cap_bytes": 4294967296,
+      "peak_bytes": 1130000384,
+      "swap_cap_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "duration_seconds": 32.99838834023103,
+      "stdout_sha256": "93132a48dce8f0b51172cd1b86a62cc734a0bae602f99a65cfba985a9fe00cf2",
+      "stdout_lines": [
+        "DC rate=0.0373999726942 inlet=0.0373999726943 neck=0.0373999726861 bulk=0.0373999726861 residual=2.95e-13",
+        "carrier cells=48 outer_R=48 omega=0 holding_per_b=-3.5359436987848e-05 holding_imag_per_b=-0 power_per_b2=0 feed=0 bulk=0",
+        "carrier cells=48 outer_R=48 omega=0.01 holding_per_b=-0.00037191374765157 holding_imag_per_b=-3.2623142670282e-08 power_per_b2=1.63115713351e-10 feed=1.52019560139e-10 bulk=1.10961532121e-11",
+        "carrier cells=48 outer_R=48 omega=0.02 holding_per_b=-0.001392428687459 holding_imag_per_b=-1.0628403453891e-06 power_per_b2=1.06284034539e-08 feed=9.26567462998e-09 bulk=1.36272882391e-09"
+      ]
+    },
+    "wave030": {
+      "argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_holding_force.py",
+        "wave",
+        "--step",
+        ".03"
+      ],
+      "guard_pool": "hold-bend-wave030",
+      "log_directory": "_scratch/s11c/bend_hold_wave030",
+      "started_utc": "2026-11-19T21:31:55.934444+00:00",
+      "memory_cap_bytes": 2147483648,
+      "peak_bytes": 164225024,
+      "swap_cap_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "duration_seconds": 3.7706631841138005,
+      "stdout_sha256": "34bc8e662384c5f429d4bd5e9df29412b1bb3db4bae7fc24e9fc03daa2b21895",
+      "stdout_lines": [
+        "wave step=0.03 omega=0 holding_per_b=0.072442044013018",
+        "wave step=0.03 omega=0.01 holding_per_b=0.072387980621488",
+        "wave step=0.03 omega=0.02 holding_per_b=0.07222548571444"
+      ]
+    },
+    "wave015": {
+      "argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_holding_force.py",
+        "wave",
+        "--step",
+        ".015"
+      ],
+      "guard_pool": "hold-bend-wave015",
+      "log_directory": "_scratch/s11c/bend_hold_wave015",
+      "started_utc": "2026-11-19T21:31:55.883899+00:00",
+      "memory_cap_bytes": 4294967296,
+      "peak_bytes": 539246592,
+      "swap_cap_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "duration_seconds": 17.407552365213633,
+      "stdout_sha256": "bf474b28dbe2088a725ab6a4018ca358e86406d790e11be61f5f6ed868677455",
+      "stdout_lines": [
+        "wave step=0.015 omega=0 holding_per_b=0.072413091655517",
+        "wave step=0.015 omega=0.01 holding_per_b=0.072359026283537",
+        "wave step=0.015 omega=0.02 holding_per_b=0.072196525439975"
+      ]
+    },
+    "readout": {
+      "argv": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_holding_force.py",
+        "combine",
+        "_scratch/s11c/bend_hold_fluid48/stdout",
+        "_scratch/s11c/bend_hold_wave015/stdout"
+      ],
+      "guard_pool": "hold-bend-readout",
+      "log_directory": "_scratch/s11c/bend_hold_readout",
+      "started_utc": "2026-11-19T21:32:32.643714+00:00",
+      "memory_cap_bytes": 1073741824,
+      "peak_bytes": 61960192,
+      "swap_cap_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "duration_seconds": 0.5946568879298866,
+      "stdout_sha256": "061543a89436ed522e847d837af3b0b68f7d4faa875e6e7e82c606017722bac5",
+      "stdout_lines": [
+        "correction b=1e-05 omega=0 carrier_force=-3.53594261999e-10 wave_force=7.24130916555e-07 combined_field_force=7.23777322293e-07",
+        "correction b=1e-05 omega=0.01 carrier_force=-3.71913692721e-09 wave_force=7.23590262835e-07 combined_field_force=7.19871125908e-07",
+        "correction b=1e-05 omega=0.02 carrier_force=-1.39242843672e-08 wave_force=7.219652544e-07 combined_field_force=7.08040970033e-07",
+        "conditional sheet=uniform F0=4.97038084524e-06 F1=4.95905176459e-06 F2=4.92495295591e-06 recovered_input_K=0.424660352295 recovered_input_M=7.42288426851 F2_error=-3.39e-21 residual_drop1=7.42288426851e-09 residual_drop2=2.9691537074e-08",
+        "conditional sheet=spectral_fold F0=4.97038084524e-06 F1=4.95346985727e-06 F2=4.90262532664e-06 recovered_input_K=0.424660352295 recovered_input_M=13.0047915856 F2_error=-5.08e-21 residual_drop1=1.30047915856e-08 residual_drop2=5.20191663424e-08",
+        "conditional sheet=central F0=4.97038084524e-06 F1=4.95075141477e-06 F2=4.89175155662e-06 recovered_input_K=0.424660352295 recovered_input_M=15.7232340895 F2_error=-3.39e-21 residual_drop1=1.57232340895e-08 residual_drop2=6.2892936358e-08"
+      ]
+    },
+    "independent_check": {
+      "argv": [
+        "python3",
+        "_scratch/mouth_bend_hold_fresh_20261119/check.py"
+      ],
+      "guard_pool": "bend-hold-independent",
+      "log_directory": "_scratch/s11c/bend_hold_field_fresh_20261119",
+      "started_utc": "2026-11-19T21:34:16.739564+00:00",
+      "exit_code": 0,
+      "limits_verified": true,
+      "duration_seconds": 8.194291976746172,
+      "memory_cap_bytes": 2147483648,
+      "peak_bytes": 579350528,
+      "swap_cap_bytes": 0,
+      "stdout_lines": [
+        "translated_well h=0.03 omega=0 holding_per_b=0.0724420684787",
+        "translated_well h=0.03 omega=0.01 holding_per_b=0.0723880050815",
+        "translated_well h=0.03 omega=0.02 holding_per_b=0.0722255101573",
+        "DC rate=0.0373999726942 inlet=0.0373999726943 neck=0.037399972687 bulk=0.0373999726869 residual=7.05e-13",
+        "pressure n=32 outer_R=46 omega=0 holding_per_b=-3.45775848339e-05 holding_imag_per_b=0 emitted_power=0",
+        "pressure n=32 outer_R=46 omega=0.01 holding_per_b=-0.00036899531177 holding_imag_per_b=-3.24401731432e-08 emitted_power=1.62200865716e-10",
+        "pressure n=32 outer_R=46 omega=0.02 holding_per_b=-0.00138312868061 holding_imag_per_b=-1.05760433483e-06 emitted_power=1.05760433483e-08",
+        "fitted_printed_totals sheet=uniform K=0.424660352295 M01=7.42288426499 M02=7.42288426736 high_holdout=-9.45910016981e-18",
+        "fitted_printed_totals sheet=spectral_fold K=0.424660352295 M01=13.004791585 M02=13.0047915849 high_holdout=5.45119505091e-19",
+        "fitted_printed_totals sheet=central K=0.424660352295 M01=15.723234085 M02=15.7232340899 high_holdout=-1.94555482835e-17",
+        "quartic_null_test=1.2e-07"
+      ],
+      "stdout_sha256": "cdd97fcdc742b466645ff451a50231ebb92004ed651d856d1db2f6cbeaecfbb3",
+      "durable_script": "software/stage1_solver/tools/mouth_bend_holding_force_check.py"
+    }
+  },
+  "review": {
+    "scope_and_verdict": "Scoped clear for the three field corrections, their holding-force signs, and the conditional inversion. Physical wall coefficients and the peak count remain unresolved.",
+    "method": "Direct local wall-pressure projection on a different far layer, finite-translation angular quadrature and static Green function moments, invert rounded synthetic totals with either tone, reject a quartic perturbed residual. These checks share the physical setup and base discretization.",
+    "qualification": "A parent confinement variation gives the field force. The additional distributed wall law still requires inertial and elastic constitutive data. A rigid-translation control volume reads a different generalized force. No formal acceptance claimed."
+  },
+  "reproduction": "From the repository root run each argv under scripts/s11c_guarded_run.py using its recorded pool, cap and log directory or a fresh equivalent. The combine step and independent check read prior stdout; the retained stdout_lines may also be restored at their listed paths with a trailing newline."
+}

@@ -1,0 +1,22 @@
+# Measuring the wall force while fresh brane passes
+
+On the radius-one cubic mouth with inward intake 0.25, held-displacement histories predicted the residual force after the middle push under each of the two existing renewal laws. A separate microscopic trial followed both ends of one attachment and measured the total load on its support while its partners changed. The physical connection between those two scales is open. [Guarded measurements and review](../../../research/pde_ledger_v3/_measurements/mouth_fixed_station_hold.json)
+
+**Following the ends.** We used the observed tangential separation of neutral sites 5 and 12 at the middle station, depth 1.175. In a new cold material trial one mobile wall-side site faced a row of arriving brane sites. Each site responded along the wall to unit drag and the central binding force. Neighboring brane sites could stretch along the flow. We held the row sideways at zero or at opposite offsets of 0.0001 and 0.00005 pitch relative to the wall fixture. The wall-side site could move sideways and downstream. We used the central interaction, linearized row stretch, a pitch of 0.01 mouth radii, the archived local flow, and fixed local order 0.87530. This local model idealizes a small patch and its feed. [Mobile sites and force readouts](../tools/mouth_fixed_station_pair.py) · [Earlier preparation](mouth_middle_tag_grip.md)
+
+With unit axial anchoring, at time 0.072 the initially registered brane site had moved 0.301 pitch downstream and the wall site 0.016 pitch relative to the mark on the unforced copy. The original pair had just fallen below the 60%-of-well registration threshold. Over 12 time units 52 distinct brane partners qualified, including the original. Removing axial spring anchoring while retaining wall drag changed the wall site's final displacement from 0.00494 to 0.21625 pitch. Both runs preserved the downstream feed.
+
+We collected the force delivered to the wall spring **and** to the same wall through viscous drag. Their sum agrees with the direct lateral force from all passing sites. The local hold determined force per actual sideways slip at each time. On the same initial registry phase, that measurement predicted a separate smooth **displacement** pulse with maximum error 0.0011% of peak local force on the finer time grid. This is a test of the cold row with a prescribed lateral grip and shared reference for incoming sites.
+
+**Forecasting the free middle push.** On each continuum preparation we held the two bend shapes separately and measured both forces conjugate to their displacements and the integrated waist-to-middle wall force. The material could relax during each hold. A separate program read those histories and the bare carrier, then solved for the three free mouth positions under the original **force** pulse. No pulse forces or motion histories entered the forecast. First differences of the midpoint hold histories give the response to successive displacement bins. The separate direct solves provide the validation target. [Hold and forecast](../tools/mouth_held_wall_forecast.py) · [Comparison with direct solves](../tools/mouth_held_wall_check.py)
+
+| Waist-to-middle wall force, percent of peak middle push | Renewal at fixed positions | Relaxed positions travel with carrier |
+|---|---:|---:|
+| Time 18.5, just after full material replacement | +7.62% | +4.04% |
+| Time 28.375 | +7.44% | +0.46% |
+
+On the two meshes, the forecast matched the archived band force at all four common readings within 4.2 × 10⁻¹⁴ of peak. This precision checks the numerical reconstruction of each assumed law. The 0PN free-fall coefficient is still open.
+
+**A measurement to select the law.** Hold only the first bend displaced between depths 0.55 and 1.15. On the finer mesh the ratio of waist-to-middle force at time 28.3125 to that at 0.0625 was **45.93%** for fixed renewal and **81.32%** for traveling renewal. Obtain that ratio from a wall segment populated by independently interacting attachments, with their coverage, common wall reaction and the unloaded offsets of newly arriving sites determined by the substrate. A single fixed-order cell does not measure either macroscopic ratio. A result outside both predictions would motivate revising the renewal laws.
+
+Working base `49dca23e`. Independent local review covered the two-end trial and the continuum reconstruction. Formal review and commit are pending.

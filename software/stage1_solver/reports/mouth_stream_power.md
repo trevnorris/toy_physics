@@ -1,0 +1,21 @@
+# Can pressure work supply the 0PN pull on a moving drain?
+
+**Working result.** In the ideal exterior, pressure carries power across the moving surface, but its part that reverses with both stream and mouth velocity cancels the corresponding kinetic-energy flux. The archived feeding carrier independently gives zero for that mixed power in its continuum preparation. A steady head drop across conversion could still pay for the pull by changing how much energy the drain dissipates. [Calculations, archive checks and review](../../../research/pde_ledger_v3/_measurements/mouth_stream_power.json)
+
+### Where the power goes at fixed intake
+
+Let \(D>0\) be mass intake. The lab speeds of the brane stream, mouth and bulk stream are \(U,V,W\) along the same axis. On a cut traveling with the mouth, advected energy uses the velocity relative to the cut. Pressure work uses the lab material velocity. For a steady inviscid 3D sink and 4D source, each cut has signed outward energy flux \(q(H+S^2/2)\), where \(S\) is its far stream speed and \(H=e+p_\infty/\rho\) its static specific head. Here \(q=-D,+D\) on the brane and bulk, respectively. The single-holder benchmark transfers mechanical power \(D(U-W)V\) to the moving center. [Exterior balance and assumptions](mouth_energy_balance.md)
+
+At \(W=0\), reversing \(U,V\) independently isolates the product \(UV\). In units of \(DUV\), the radial solution gives outward carried power \(+1/3\) and pressure work \(-1/3\). A decaying dipole gives \(+1/8,-1/8\) at the unit cuts. The cancellation holds at a second radius and half strength. At unchanged reservoir heads, \(D=0.25,\ U=0.01,\ V=0.02\), the exterior supplies **0.0000125** above rest and the mouth delivers **0.0000500** in model power units. The balance requires **0.0000375** more. Reversing only the motion gives **−0.0000625** for that requirement. A reduction in an existing dissipative output could fund the positive increment.
+
+### What the saved mouth contributes
+
+We reconstructed constant-speed translations of the periodic neutral-carrier feed from verified fields at relative speed \(U-V\) on two grids. In its continuum limit, conservation of lateral momentum across the full periodic section fixes the integrated aperture energy current to \(D(\mu_0+U^2/2)\) in solver units. The feeding boundary has unit envelope and the normal derivative vanishes outside the opening. On the finer grid at \(|U|=|V|=0.01\), the four-drive contrast divided by \(|U|\,|V|\) was \(-2.78\times10^{-13}\) with the wall law and \(+7.19\times10^{-8}\) from interior layers. The latter residual was primarily intake discretization error. These are transformations of saved held fields. The ideal receiving solution fails the phase match to this aperture. [Carrier energy current](mouth_stress_energy.md) · [Receiving-side comparison](one_mouth_outer_holding_force.md)
+
+### A test for the inward-flow power
+
+Assume all surplus mouth-frame head is dissipated according to a rest loss per unit mass \(L(D)\), with \(L'(D_0)>0\) and sufficient positive loss on the tested branch. The physical preparation must independently establish this curve. At \(W=0\), keeping intake fixed requires an extra brane-minus-bulk static head \(UV-U^2/2\). Keeping the heads fixed instead predicts a small change in intake whose four-reversal component is \(-UV/L'(D_0)\) to leading order. This quadratic change first alters the ideal pull \(DU\) at cubic order. A normal jet that loses its kinetic energy on mixing gave mixed intake coefficients \(-3.99682\) and \(-3.99920\) at full and half strength against \(-4\) from its rest slope.
+
+Measure the head and intake together on one inward mouth at rest, then check the signed response using that calibration. The existing pressure tests prescribe the current or supply an additional outlet condition. The physical loss curve, receiving-side energy and force transferred to the free center remain open. [Pressure and current inventory](../../../docs/_measurements/far_bulk_pressure_sweep.txt) · [Energy per constituent](../../../docs/_measurements/one_throat_reservoir_head.txt)
+
+Working base 49dca23e. Scoped independent local reviews are in the measurement record. Formal review is pending.

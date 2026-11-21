@@ -1,0 +1,97 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "Fixed carrier and reservoir data, radius one, inward intake 0.25, half external conversion head. No microscopic site, pitch, force law or force gauge is supplied to the scalar-order calculation. No tagged force was measurable.",
+  "operator": "Stationary driven order Jacobian J0, weighted mass M. For positive angular degree restrict to regular zero-axis amplitudes and add nu*ell*(ell+1) times the weighted mass with inverse-squared physical radius inside the quadrature. Linearized dynamics M*dv/dt=-Jv. Positive pivots bound the lowest rates; the nonnegative angular term covers higher degrees on these meridional FE spaces. These numerical positivity checks apply to their discretizations.",
+  "sources": {
+    "software/stage1_solver/tools/mouth_anchor_order_spectrum.py": "afd9bb59963aeb536dba01ab14bc9fd375052d6c5e5ec9f48c02da2e830ee794",
+    "_scratch/anchor_spectrum_independent.py": "73318f6625739e9895ffcc8c65a292d00547dc4de2fa5b1b63c899e74b5353ce",
+    "research/pde_ledger_v3/_measurements/mouth_offset_brane_readout.json": "0e6500211a3cb7e255a3b0dcf02d8b758c6bcde638bef0b0f5593f0823298464",
+    "research/pde_ledger_v3/_measurements/mouth_two_site_clamp.json": "fd46e0dcf7d9ef56ab5b643ec88b4e4d9c2c229558854a5c57d5b509e3882a56",
+    "software/stage1_solver/tools/mouth_conversion_supply.py": "4a62e9c16d282f2a944c1afe070cd468c36a299a8861caf6c20f2c079f99286a",
+    "software/stage1_solver/tools/mouth_free_order_diffuse.py": "b883ef93eaa9134efb5404fae541bfc782ec6de9fd67c4ac51d5dcef38e959d9",
+    "software/stage1_solver/tools/mouth_free_order_residual_check.py": "02437154907740e2ed53c480a0dc0c47c401c088f3560dd7150fd80a45710fef",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "9f5e670743f1c3a00e230e087c62869ba03188a445385bdc614cb24ac8199a02",
+    "software/stage1_solver/tools/mouth_order_wave_pulse.py": "d4fc14a69fd269039a58197ee6751107708c67bff9329d414581896401f50433"
+  },
+  "runs": {
+    "anchor_order_n34_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_anchor_order_spectrum.py",
+        "--mesh",
+        "34"
+      ],
+      "pool": "anchor-order",
+      "memory_max_bytes": 10737418240,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified": true,
+      "stdout_sha256": "08b62fc27d8cec71c6619010d9bf5e3643dc984c3d3bdadb99324e16adf7b506",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_delayed_n34/field.npz\", \"sha256\": \"6da396c92c8acf3db352fbb8324fd154828963c2d11db193f26a4be63133d9b4\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000034167, \"profile\": \"delayed\"}",
+        "{\"test\": \"state\", \"mesh\": 34, \"intake\": 0.2500000000034167, \"head\": 0.024867959858448512, \"fields\": {\"_scratch/s11c/mouth_flared_delayed_n34/field.npz\": \"6da396c92c8acf3db352fbb8324fd154828963c2d11db193f26a4be63133d9b4\", \"_scratch/s11c/contact_supply_n34_01/order_0.50000.npz\": \"bc8f70040b37b83d8215f0cb18933bfad32b823c8b8c9578e6133eec4f86112b\"}, \"patch\": [0.8011586888784716, 1.3701375535001505], \"local_order\": 0.5000000000030168, \"max_stationary_weak_residual\": 2.0435609688918124e-15, \"outer_radius\": 9.0, \"nu\": 0.4, \"minimum_weight\": 1.4948930865131052e-09}",
+        "{\"test\": \"angular_order\", \"degree\": 0, \"free_dofs\": 33467, \"rate\": 0.3080592167754736, \"eigen_residual\": 6.208000283792088e-12, \"lower_test\": 0.30497862460771885, \"shifted_positive\": true}",
+        "{\"test\": \"angular_order\", \"degree\": 1, \"free_dofs\": 33157, \"rate\": 2.1051202080436306, \"eigen_residual\": 2.0801843076102312e-11, \"lower_test\": 2.0840690059631943, \"shifted_positive\": true}",
+        "{\"test\": \"positive_angular_cost\", \"degree\": 1, \"rate\": 2.1051202080436306, \"lower_bound\": 0.31485516781759537}",
+        "{\"test\": \"angular_order\", \"degree\": 2, \"free_dofs\": 33157, \"rate\": 4.890133630716664, \"eigen_residual\": 1.8721875270739773e-11, \"lower_test\": 4.841232294409497, \"shifted_positive\": true}",
+        "{\"test\": \"positive_angular_cost\", \"degree\": 2, \"rate\": 4.890133630716664, \"lower_bound\": 0.33460825423734847}"
+      ]
+    },
+    "anchor_order_n48_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_anchor_order_spectrum.py",
+        "--mesh",
+        "48"
+      ],
+      "pool": "anchor-order",
+      "memory_max_bytes": 10737418240,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified": true,
+      "stdout_sha256": "311a82bac5788e95b0058e9ee756557a627af116b0bb3083110a9976a3d4ddbb",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_delayed_n48/field.npz\", \"sha256\": \"cff2f00e18dc3113226e71f8269f61c39ad80a28cb872d810a51854b471d54ea\", \"mesh\": 48, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999821823, \"profile\": \"delayed\"}",
+        "{\"test\": \"state\", \"mesh\": 48, \"intake\": 0.24999999999821823, \"head\": 0.024867959857931412, \"fields\": {\"_scratch/s11c/mouth_flared_delayed_n48/field.npz\": \"cff2f00e18dc3113226e71f8269f61c39ad80a28cb872d810a51854b471d54ea\", \"_scratch/s11c/contact_supply_n48_01/order_0.50000.npz\": \"29f73b013b87a919769aab75723f9722979085133fee3dfcc9b0912e5fa64557\"}, \"patch\": [0.8011570545420537, 1.3700554972030288], \"local_order\": 0.5000000000000019, \"max_stationary_weak_residual\": 2.018606334777358e-15, \"outer_radius\": 9.0, \"nu\": 0.4, \"minimum_weight\": 3.8593436656716086e-10}",
+        "{\"test\": \"angular_order\", \"degree\": 0, \"free_dofs\": 66447, \"rate\": 0.3080171891157353, \"eigen_residual\": 1.2311519560735332e-11, \"lower_test\": 0.30493701722457794, \"shifted_positive\": true}",
+        "{\"test\": \"angular_order\", \"degree\": 1, \"free_dofs\": 66011, \"rate\": 2.1050813647567663, \"eigen_residual\": 4.099492387108999e-11, \"lower_test\": 2.0840305511091985, \"shifted_positive\": true}",
+        "{\"test\": \"positive_angular_cost\", \"degree\": 1, \"rate\": 2.1050813647567663, \"lower_bound\": 0.31481356043445446}",
+        "{\"test\": \"angular_order\", \"degree\": 2, \"free_dofs\": 66011, \"rate\": 4.890096921479467, \"eigen_residual\": 3.697417639995541e-11, \"lower_test\": 4.841195952264672, \"shifted_positive\": true}",
+        "{\"test\": \"positive_angular_cost\", \"degree\": 2, \"rate\": 4.890096921479467, \"lower_bound\": 0.33456664685420756}"
+      ]
+    },
+    "anchor_spectrum_independent34_02": {
+      "command": [
+        "python3",
+        "_scratch/anchor_spectrum_independent.py"
+      ],
+      "pool": "anchor_review",
+      "memory_max_bytes": 3221225472,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified": true,
+      "stdout_sha256": "79dfa764d25eef2d766877248f2086ec13430fa81c2faf4c1e5f2032f2b0c23e",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_delayed_n34/field.npz\", \"sha256\": \"6da396c92c8acf3db352fbb8324fd154828963c2d11db193f26a4be63133d9b4\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000034167, \"profile\": \"delayed\"}",
+        "{\"ell\": 0, \"minimum\": 0.30805921677563725, \"shifts\": [-2e-06, 2e-06], \"counts\": [[0, 0.00020716514832942403], [1, 0.00020716514826534058]], \"residual_max\": 2.0779927258074427e-14}",
+        "{\"ell\": 1, \"minimum\": 2.105120208043662, \"shifts\": [-2e-06, 2e-06], \"counts\": [[0, 0.005533154479365861], [1, 0.005533154477035829]], \"residual_max\": 9.774897523069562e-14}",
+        "{\"ell\": 2, \"minimum\": 4.8901336307166465, \"shifts\": [-2e-06, 2e-06], \"counts\": [[0, 0.007570096745811591], [1, 0.0075700967438951435]], \"residual_max\": 6.283114511922347e-14}"
+      ]
+    }
+  },
+  "independent_validation_source": {
+    "_scratch/anchor_spectrum_independent.py": "\"\"\"Independent gradient quadrature and inertia cross-check for the n=34 half-head state.\"\"\"\nimport hashlib\nimport json\nfrom pathlib import Path\nimport sys\nfrom types import SimpleNamespace\n\nimport numpy as np\nfrom scipy.sparse.linalg import eigsh, splu\n\nsys.path.insert(0, str(Path(\"software/stage1_solver/tools\").resolve()))\nfrom mouth_carrier_lateral_response import prepare\nfrom mouth_empty_bend_stiffness import quadrature\n\n\ndef gram(basis, weight):\n    return (basis.T @ basis.multiply(weight[:, None])).tocsr()\n\n\ndef inertia(matrix):\n    factor = splu(matrix.tocsc(), permc_spec=\"MMD_AT_PLUS_A\", diag_pivot_thresh=0,\n                  options={\"SymmetricMode\": True, \"Equil\": False})\n    if not np.array_equal(factor.perm_r, factor.perm_c):\n        raise ArithmeticError(\"Unmatched symmetric pivots\")\n    diagonal = factor.U.diagonal()\n    return int((diagonal < 0).sum()), float(np.min(np.abs(diagonal)))\n\n\nsource = Path(\"_scratch/s11c/contact_supply_n34_01\")\nrecords = [json.loads(line) for line in (source / \"stdout\").read_text().splitlines()]\ncal = next(r for r in records if r[\"test\"] == \"calibration\")\nhalf = next(r for r in records if r.get(\"multiple\") == 0.5)\nfield = Path(half[\"path\"])\nif hashlib.sha256(field.read_bytes()).hexdigest() != \"bc8f70040b37b83d8215f0cb18933bfad32b823c8b8c9578e6133eec4f86112b\":\n    raise ArithmeticError(\"Stored preparation changed\")\nwith np.load(field) as data:\n    chi = data[\"chi\"]\ndom, psi = prepare(SimpleNamespace(source=Path(\"_scratch/s11c/mouth_flared_delayed_n34\")))\nr, z, dr, dw = quadrature(dom)\nnu = 0.4\nq = dom.weight * np.exp(-np.angle(dom.N @ psi)/nu)\nc = dom.N @ chi\nfor ell in (0, 1, 2):\n    dof = dom.free.copy()\n    if ell:\n        dof &= dom.points[:, 0] != 0\n    shape = dom.N[:, dof]\n    mass = gram(shape, q)\n    drive = cal[\"mobility\"] * half[\"head\"] * abs(dom.N @ psi)**2\n    pot = nu/cal[\"width\"]**2 * (1-6*c+6*c*c) + drive*(6-12*c)\n    K = nu * (gram(dr[:, dof], q) + gram(dw[:, dof], q))\n    K += gram(shape, q*(pot+nu*ell*(ell+1)/r**2))\n    value, vec = eigsh(K, k=1, M=mass, sigma=0., which=\"LM\",\n                       tol=1e-11, v0=np.ones(shape.shape[1]))\n    value = float(value[0])\n    increments = [-2.e-6, 2.e-6]\n    counts = [inertia(K-(value+x)*mass) for x in increments]\n    above, below = counts[1][0], counts[0][0]\n    if (below, above) != (0, 1):\n        raise ArithmeticError((ell, counts))\n    defect = K @ vec[:, 0] - value * (mass @ vec[:, 0])\n    print(json.dumps(dict(ell=ell, minimum=value, shifts=increments, counts=counts,\n                          residual_max=float(max(abs(defect))))), flush=True)\n"
+  },
+  "independent_reviews": [
+    "Scoped clear for the conclusion that the matched native carrier/order observations cannot identify an individual mechanical attachment, its pitch, or its background-subtracted zero-step force.",
+    "Scoped clear for the linear, fixed-carrier scalar order hypothesis on these two archived FE preparations."
+  ],
+  "status": "Independent local checks recorded. Formal review and commit pending."
+}

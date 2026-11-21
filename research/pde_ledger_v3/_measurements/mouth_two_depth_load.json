@@ -1,0 +1,137 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "case": "One radius-one cubic mouth, intake 0.25, fixed finite reservoirs, linear transverse dipole, freely moving common coordinate and two bends, zero material wall tension, zero occupied wave.",
+  "conventions": {
+    "phase": "Negative angle of displacement relative to the positive sine-frequency complex load, modulo 360 degrees. The envelope grows at rate 0.30 while the angular frequency is 0.40. This is a switch-on experiment, not a steady-frequency response.",
+    "force": "Drive is positive along x. Cut flux is outward (+w) transport of x momentum, in the action stress convention. F_required - Z_car q is the additional applied force needed to balance the material at that motion; the material force on the wall has opposite sign.",
+    "pulse": "Cut rows in the smooth-pulse jobs are instantaneous signed readings at time 4. Their imaginary components vanish; phasor lag is inapplicable to these snapshots."
+  },
+  "runs": {
+    "two_depth_observation_n26_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-depth-readout --memory-gib 7 --log-directory _scratch/s11c/two_depth_observation_n26_01 -- python3 software/stage1_solver/tools/mouth_two_depth_load.py --source _scratch/s11c/mouth_flared_cubic_n26 --extension compact --dt .25",
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "stdout_sha256": "965f4d4dec72ec603022cff9b56398bcee1156af048f2465f948062c2f5e159d",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n26/field.npz\", \"sha256\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"mesh\": 26, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999797987, \"profile\": \"cubic\"}",
+        "{\"test\": \"instrument\", \"depths\": [0.525, 1.175, 2.25], \"forcing_depths\": [1.175, 2.25], \"envelope_growth\": 0.3, \"omega\": 0.4, \"peak_force\": 1e-09, \"dt\": 0.25, \"third_drive\": \"entrance, -i/2\", \"field_balance\": 1.8836740521426603e-14}",
+        "{\"test\": \"motion\", \"elapsed\": 64.0, \"per_peak_force_real\": [[3.8854037706617333, -0.38650269551105393, -6.0786782850719225], [-0.4888930269691829, 0.2051437848207927, 0.18602723477771388], [-0.01928511957513801, -0.13639777494730193, 0.023814774306673586]], \"per_peak_force_imag\": [[1.8845185348826232, 0.003970276791811907, 2.085464386606992], [-3.0253038774273904, 0.38280880293620173, 0.9069703034354044], [0.26445732839472846, -0.5226003208653984, -0.031079930394161903]], \"gain\": [[4.3183066784781, 0.3865230869367496, 6.426468034714793], [3.0645521602016004, 0.4343115840684513, 0.9258516422152916], [0.2651595639962938, 0.5401068860690375, 0.03915489175803898]], \"lag_degrees\": [[-25.87455165403957, -179.41146050065737, -161.06400287367575], [99.17971189180983, -61.81354414661003, -78.40891310073836], [-94.17081855908557, 104.6277776668458, 52.539117369881914]], \"switch_on_relative_error\": [0.00018016284959583646, 0.00040263539207622265, 1.6126414726425427e-05]}",
+        "{\"test\": \"motion\", \"elapsed\": 96.0, \"per_peak_force_real\": [[3.885437300300664, -0.386488969118009, -6.078666147813607], [-0.4889431489829592, 0.20513581164709083, 0.1861067000929273], [-0.01928623550780656, -0.13639476846424042, 0.023810454281301213]], \"per_peak_force_imag\": [[1.8854124189980404, 0.0036737050862313617, 2.085506675854078], [-3.0249634367417944, 0.3826943536680463, 0.9069399766440389], [0.26448150065166764, -0.5226207991760958, -0.031085752622921237]], \"gain\": [[4.3187270120117285, 0.38650642861272294, 6.4264702778124665], [3.0642240774072156, 0.4342069432304307, 0.9258379043086152], [0.26518375339945066, 0.5401259414209567, 0.03915688635751558]], \"lag_degrees\": [[-25.885027684691337, -179.45540112526567, -161.06361112879847], [99.18165260986012, -61.80733809574274, -78.40371855996634], [-94.17067918335141, 104.62692048899811, 52.549316559162754]], \"switch_on_relative_error\": [4.763134051833723e-06, 9.872614050196358e-06, 3.889113198994507e-06]}",
+        "{\"test\": \"cut\", \"depth\": 0.525, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[0.059817302980618395, 0.059873988967203286, -5.6685986584831155e-05], [-0.01320724638163243, -0.013202317496202761, -4.928885429663202e-06]], \"per_peak_force_imag\": [[0.22061467446888594, 0.2205212072351047, 9.346723378117555e-05], [-0.014830392483187857, -0.01482368148766279, -6.7109955250641775e-06]], \"gain\": [0.22858027982940177, 0.019858799011786634], \"lag_degrees\": [-74.82960193157552, 131.6867489873275]}",
+        "{\"test\": \"cut\", \"depth\": 1.175, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[0.10865189884628894, 0.10979724284233684, -0.001145343996047939], [-3.504101546645384e-05, 1.5448299404400176e-05, -5.0489314870851876e-05]], \"per_peak_force_imag\": [[-0.1730774227698804, -0.17300055024423872, -7.687252564173723e-05], [0.012729801700398342, 0.012726500860932447, 3.300839465902263e-06]], \"gain\": [0.2043551550501433, 0.012729849928582403], \"lag_degrees\": [57.88084804552554, -90.15771630009795]}",
+        "{\"test\": \"cut\", \"depth\": 2.25, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[-0.00777432489276287, -0.007768836523414539, -5.488369348332327e-06], [0.024923846480425737, 0.025020582081432804, -9.673560100704882e-05]], \"per_peak_force_imag\": [[0.0028656638270421735, 0.0028608946379663066, 4.769189075870543e-06], [-0.03425124195366746, -0.03425128179482421, 3.9841156759759036e-08]], \"gain\": [0.008285659702633846, 0.04235971787852818], \"lag_degrees\": [-159.76580420578568, 53.957473591257134]}",
+        "{\"test\": \"inverse\", \"data\": \"finite_record\", \"relative_offset_condition\": 13.739607969082392, \"common_force_residual\": 2.1141932269406824e-05, \"force_per_peak_residual\": 2.1141932269406824e-05, \"extra_force_matrix_real\": [[-7.071857199379778e-07, -9.181862589435087e-07], [-1.0527577184920476e-06, 1.8559125525649995e-06]], \"extra_force_matrix_imag\": [[-2.2115645611293866e-06, 1.9545262728374857e-06], [7.29364565546373e-07, 4.541140414570239e-06]], \"held_out_force_error\": 8.0806178471687e-06}",
+        "{\"test\": \"inverse\", \"data\": \"particular\", \"relative_offset_condition\": 13.739555516675066, \"common_force_residual\": 1.9800005153223732e-13, \"force_per_peak_residual\": 1.9800005153223732e-13, \"extra_force_matrix_real\": [[-3.3959633084113653e-15, 4.645458552716952e-16], [-3.752473027809508e-15, 5.623012840085664e-16]], \"extra_force_matrix_imag\": [[-1.0910378220898898e-14, 6.656439074682691e-15], [-1.581462943733813e-14, -3.956554041251141e-15]], \"held_out_force_error\": 1.7700862823819047e-13}"
+      ]
+    },
+    "two_depth_observation_n34_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-depth-readout --memory-gib 7 --log-directory _scratch/s11c/two_depth_observation_n34_01 -- python3 software/stage1_solver/tools/mouth_two_depth_load.py --source _scratch/s11c/mouth_flared_cubic_n34 --extension wide --dt .125",
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "stdout_sha256": "1981715e141161b4a37f3d86bc6f59dc9ecbc334ce9e38a9304d83ac29627dba",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}",
+        "{\"test\": \"instrument\", \"depths\": [0.525, 1.175, 2.25], \"forcing_depths\": [1.175, 2.25], \"envelope_growth\": 0.3, \"omega\": 0.4, \"peak_force\": 1e-09, \"dt\": 0.125, \"third_drive\": \"entrance, -i/2\", \"field_balance\": 8.69474596730938e-14}",
+        "{\"test\": \"motion\", \"elapsed\": 64.0, \"per_peak_force_real\": [[3.885379737805288, -0.38636861887979607, -6.078651356703971], [-0.4889582040429006, 0.20508714233574016, 0.18610260799283918], [-0.019268426231782265, -0.13635012472724856, 0.02380455060623418]], \"per_peak_force_imag\": [[1.8845957111243883, 0.003964909199553484, 2.0855587138955682], [-3.0252362232639896, 0.3826930284169046, 0.9069222305038507], [0.2643836373339048, -0.5224226759590376, -0.031072798837959215]], \"gain\": [[4.318318735496065, 0.38638896226476477, 6.42647317472537], [3.0644957712239425, 0.4341827840326489, 0.9258196978266426], [0.2650848542247469, 0.5399229656806033, 0.03914301287827808]], \"lag_degrees\": [[-25.875612137437873, -179.4120521742674, -161.06312949365645], [99.18111666994083, -61.81291604896967, -78.40374587325802], [-94.1683784181176, 104.62764570318632, 52.54464699934648]], \"switch_on_relative_error\": [0.00015797672491040706, 0.00039508567192961074, 5.806450158460144e-06]}",
+        "{\"test\": \"motion\", \"elapsed\": 96.0, \"per_peak_force_real\": [[3.8853737096589827, -0.3863716665468526, -6.078632791892792], [-0.4889468938883921, 0.2050809067475261, 0.18610823138169152], [-0.019268710099774156, -0.1363494507181452, 0.023804363778982346]], \"per_peak_force_imag\": [[1.885363960319008, 0.0036767228722368378, 2.0855333055624263], [-3.024881814596646, 0.3825777179743326, 0.9069143709808953], [0.26440524950907873, -0.5224276851222062, -0.031073402169745745]], \"gain\": [[4.318648645882063, 0.3863891600462822, 6.426447369058934], [3.064144098654729, 0.4340782056298559, 0.9258131291355153], [0.2651064298670768, 0.5399276422755988, 0.03914337820532211]], \"lag_degrees\": [[-25.884817596059985, -179.45478832215994, -161.0632900496098], [99.18196527167575, -61.806452161518465, -78.4033071886532], [-94.16810008891487, 104.62744225913835, 52.545401149060424]], \"switch_on_relative_error\": [1.8487726374116999e-06, 4.084446716643076e-06, 2.3538822285090545e-06]}",
+        "{\"test\": \"cut\", \"depth\": 0.525, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[0.05981634943072558, 0.05987228423997329, -5.5934809247718014e-05], [-0.013232336406330232, -0.013227175108069205, -5.1612982610298e-06]], \"per_peak_force_imag\": [[0.22071836776010634, 0.2206259735454872, 9.239421461905625e-05], [-0.014831772324870445, -0.014824911494805767, -6.860830064664254e-06]], \"gain\": [0.22868011178479034, 0.01987652376717532], \"lag_degrees\": [-74.83663132870795, 131.73811481102828]}",
+        "{\"test\": \"cut\", \"depth\": 1.175, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[0.10856540830413942, 0.10971027332471558, -0.0011448650205761024], [-2.967055411125414e-05, 2.0304244143641157e-05, -4.997479825489527e-05]], \"per_peak_force_imag\": [[-0.1728609206577299, -0.1727838845571759, -7.703610055383333e-05], [0.012703614984902032, 0.01270083702984714, 2.777955054908167e-06]], \"gain\": [0.20412580868396457, 0.012703649634117305], \"lag_degrees\": [57.8690991108712, -90.13381973849523]}",
+        "{\"test\": \"cut\", \"depth\": 2.25, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[-0.007769385637578408, -0.007764013704246211, -5.371933332188027e-06], [0.024930343199314586, 0.02502694351426343, -9.660031494882564e-05]], \"per_peak_force_imag\": [[0.002867469696163384, 0.0028629463772996302, 4.523318863759013e-06], [-0.03424425618441525, -0.034244446873790566, 1.9068937532137185e-07]], \"gain\": [0.00828165053862, 0.04235789293224432], \"lag_degrees\": [-159.7422629253197, 53.94480804288434]}",
+        "{\"test\": \"inverse\", \"data\": \"finite_record\", \"relative_offset_condition\": 13.743731568974251, \"common_force_residual\": 4.815741449123539e-06, \"force_per_peak_residual\": 5.099921917800794e-06, \"extra_force_matrix_real\": [[-3.9021326081129095e-06, -5.503533429468636e-06], [-2.877838212469266e-06, -4.371002314457752e-06]], \"extra_force_matrix_imag\": [[1.9905105395252596e-07, 3.846721278760677e-06], [1.4759521593536525e-07, 2.7399683141282197e-06]], \"held_out_force_error\": 2.531634309511725e-05}",
+        "{\"test\": \"inverse\", \"data\": \"particular\", \"relative_offset_condition\": 13.743749191231387, \"common_force_residual\": 3.0372228250336815e-13, \"force_per_peak_residual\": 3.0372228250336815e-13, \"extra_force_matrix_real\": [[5.872626459117103e-15, 4.821800298380908e-15], [2.045874624135986e-15, 3.81146035101538e-15]], \"extra_force_matrix_imag\": [[-4.0824867405012016e-15, 2.0807073548304072e-14], [-5.916652579636191e-15, -1.856946816085943e-14]], \"held_out_force_error\": 3.0372228250336815e-13}"
+      ]
+    },
+    "two_depth_pulse_n26_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-depth-readout --memory-gib 7 --log-directory _scratch/s11c/two_depth_pulse_n26_01 -- python3 software/stage1_solver/tools/mouth_two_depth_pulse.py --source _scratch/s11c/mouth_flared_cubic_n26 --extension compact --dt .25",
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "stdout_sha256": "b8478c4d883e8a7c0fd32f706320829b0ec92190e03aed600d077ae173ef52a2",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n26/field.npz\", \"sha256\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"mesh\": 26, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999797987, \"profile\": \"cubic\"}",
+        "{\"test\": \"smooth_pulse\", \"time\": 4.0, \"displacement_per_peak\": [[-1.8511666990228763, 0.138283472271944], [1.7163342189937258, -0.2273634251333303], [-0.16465066499181072, 0.3391720820284363]], \"energy\": [1.4290883464649465e-18, 2.802037604310512e-19, 3.572720866162366e-19, 7.00509401077628e-20], \"work\": [1.4290883464650524e-18, 2.802037604310472e-19, 3.572720866162631e-19, 7.00509401077618e-20], \"relative_error\": [7.412148255446455e-14, 1.4262137768800318e-14, 7.412148255446455e-14, 1.4262137768800318e-14]}",
+        "{\"test\": \"cut\", \"depth\": 0.525, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[-0.1802544741926637, -0.18012149739907116, -0.0001329767935925165], [0.013975619655018309, 0.013971877847942342, 3.74180707596762e-06]], \"per_peak_force_imag\": [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]], \"gain\": [0.1802544741926637, 0.013975619655018309], \"lag_degrees\": [-180.0, -0.0]}",
+        "{\"test\": \"cut\", \"depth\": 1.175, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[0.20696793093831306, 0.20790131511115492, -0.0009333841728419743], [-0.011708284725507312, -0.0116356660341682, -7.261869133910454e-05]], \"per_peak_force_imag\": [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]], \"gain\": [0.20696793093831306, 0.011708284725507312], \"lag_degrees\": [-0.0, -180.0]}",
+        "{\"test\": \"cut\", \"depth\": 2.25, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[-0.00745582901216406, -0.007448832403324302, -6.996608839763306e-06], [0.04236672892303843, 0.042464190293917604, -9.746137087917005e-05]], \"per_peak_force_imag\": [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]], \"gain\": [0.00745582901216406, 0.04236672892303843], \"lag_degrees\": [-180.0, -0.0]}",
+        "{\"test\": \"smooth_pulse\", \"time\": 8.0, \"displacement_per_peak\": [[-23.989490029359988, 2.336703968999805], [10.042490904141498, -1.795875783628792], [-0.8021850093875095, 2.172916363340735]], \"energy\": [5.365125052078737e-18, 1.0880304956964038e-18, 1.3412812630196842e-18, 2.7200762392410096e-19], \"work\": [5.3651250520869096e-18, 1.0880304956964298e-18, 1.3412812630217274e-18, 2.7200762392410746e-19], \"relative_error\": [1.5233337960729571e-12, 2.3896438888494106e-14, 1.5233337960729571e-12, 2.3896438888494106e-14]}",
+        "{\"test\": \"smooth_pulse\", \"time\": 16.0, \"displacement_per_peak\": [[-239.3314370495209, 36.10157808069171], [-3.3211023173655962, -4.728081978013328], [-0.8882433168953716, 6.5675743003278475]], \"energy\": [5.3651250517793116e-18, 1.0880304956872894e-18, 1.3412812629448279e-18, 2.7200762392182235e-19], \"work\": [5.3651250520869096e-18, 1.0880304956964298e-18, 1.3412812630217274e-18, 2.7200762392410746e-19], \"relative_error\": [5.73328621703262e-11, 8.400925849243927e-12, 5.73328621703262e-11, 8.400925849243927e-12]}",
+        "{\"test\": \"pulse_timing\", \"width\": 8.0, \"force_peak_time\": 4.0, \"half_endpoint_time\": [[6.546620817712807, 6.712139196382379], [5.748304795763239, 6.119360623924574], [5.467243037717995, 5.927153190151894]], \"definition\": \"First time reaching half the signed displacement at force shutoff\"}"
+      ]
+    },
+    "two_depth_pulse_n34_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-depth-readout --memory-gib 7 --log-directory _scratch/s11c/two_depth_pulse_n34_01 -- python3 software/stage1_solver/tools/mouth_two_depth_pulse.py --source _scratch/s11c/mouth_flared_cubic_n34 --extension wide --dt .125",
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "stdout_sha256": "d30ecb4bb1703edf99bae4d3f5603aa7dd878e6d35e9f9b5fceb9810a4707969",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}",
+        "{\"test\": \"smooth_pulse\", \"time\": 4.0, \"displacement_per_peak\": [[-1.8444627345611881, 0.13749964591882727], [1.7154591769800984, -0.22702426917857496], [-0.1646442624283046, 0.3386956363984949]], \"energy\": [1.4295239856870054e-18, 2.800119040481515e-19, 3.5738099642175135e-19, 7.000297601203787e-20], \"work\": [1.4295239856868319e-18, 2.800119040481357e-19, 3.5738099642170797e-19, 7.000297601203392e-20], \"relative_error\": [1.2138746164928263e-13, 5.6399836277176594e-14, 1.2138746164928263e-13, 5.6399836277176594e-14]}",
+        "{\"test\": \"cut\", \"depth\": 0.525, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[-0.1801459956048791, -0.18001285014945512, -0.00013314545542398117], [0.013944714995839646, 0.013940883099859901, 3.831895979733488e-06]], \"per_peak_force_imag\": [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]], \"gain\": [0.1801459956048791, 0.013944714995839646], \"lag_degrees\": [-180.0, -0.0]}",
+        "{\"test\": \"cut\", \"depth\": 1.175, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[0.20667930604371015, 0.20761049646887017, -0.0009311904251600261], [-0.01167398458000362, -0.01160266911352484, -7.131546647877238e-05]], \"per_peak_force_imag\": [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]], \"gain\": [0.20667930604371015, 0.01167398458000362], \"lag_degrees\": [-0.0, -180.0]}",
+        "{\"test\": \"cut\", \"depth\": 2.25, \"channels\": [\"total\", \"advective\", \"amplitude_gradient\"], \"per_peak_force_real\": [[-0.007463978089342598, -0.007457271757042153, -6.7063323004423e-06], [0.04234891813184346, 0.04244577811412614, -9.685998228268557e-05]], \"per_peak_force_imag\": [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]], \"gain\": [0.007463978089342598, 0.04234891813184346], \"lag_degrees\": [-180.0, -0.0]}",
+        "{\"test\": \"smooth_pulse\", \"time\": 8.0, \"displacement_per_peak\": [[-23.966457910099034, 2.3319801223796595], [10.047180964046252, -1.795354472813397], [-0.8020947039648568, 2.1721894059254123]], \"energy\": [5.367639294759869e-18, 1.087622463721672e-18, 1.3419098236899672e-18, 2.71905615930418e-19], \"work\": [5.367639294762779e-18, 1.0876224637213679e-18, 1.3419098236906948e-18, 2.7190561593034197e-19], \"relative_error\": [5.422244625859528e-13, 2.7960468670188427e-13, 5.422244625859528e-13, 2.7960468670188427e-13]}",
+        "{\"test\": \"smooth_pulse\", \"time\": 16.0, \"displacement_per_peak\": [[-239.21660178765947, 36.06269811829055], [-3.2875996296414884, -4.732532522493798], [-0.8869300541141398, 6.564834794418825]], \"energy\": [5.367639294455482e-18, 1.087622463714333e-18, 1.3419098236138704e-18, 2.7190561592858326e-19], \"work\": [5.367639294762779e-18, 1.0876224637213679e-18, 1.3419098236906948e-18, 2.7190561593034197e-19], \"relative_error\": [5.7250033616522935e-11, 6.468093977935229e-12, 5.7250033616522935e-11, 6.468093977935229e-12]}",
+        "{\"test\": \"pulse_timing\", \"width\": 8.0, \"force_peak_time\": 4.0, \"half_endpoint_time\": [[6.548405475142453, 6.714079721355346], [5.748895706976115, 6.121258537495888], [5.467479282014717, 5.928254217685076]], \"definition\": \"First time reaching half the signed displacement at force shutoff\"}"
+      ]
+    },
+    "two_depth_force_check_01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-depth-readout --memory-gib 7 --log-directory _scratch/s11c/two_depth_force_check_01 -- python3 software/stage1_solver/tools/mouth_two_depth_force_check.py",
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_max": 0,
+      "stdout_sha256": "ab1eada296ef73c557d83ae32b0bf0ae505540e3db42a7fbaa31b3b5a7bf02cd",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n26/field.npz\", \"sha256\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"mesh\": 26, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999797987, \"profile\": \"cubic\"}",
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}",
+        "{\"test\": \"auxiliary_force\", \"peak_scale\": 1e-09, \"applied_real\": [[-0.0, 0.0], [0.0, -0.05], [0.0, 0.05]], \"applied_imag\": [[-0.08, 0.0], [0.08, 0.0], [0.0, 0.0]], \"inferred_real\": [[2.653965588628182e-06, -1.4927033040734727e-06], [3.3671314065841784e-06, -0.050010637388149703], [0.00012759476532764324, 0.049601519528128524]], \"inferred_imag\": [[-0.08000135157377186, 1.3659495543549838e-06], [0.07999858483890288, 2.5284000518821514e-06], [6.299391082320582e-05, -6.495569921383115e-06]], \"max_error_per_primary\": 0.0003985334100066395, \"peak_relative_error_by_drive\": [0.001778722194960927, 0.007970668200132789]}",
+        "{\"test\": \"force_resolution\", \"singular_values\": [7.444514132089539, 0.5416661475617828], \"condition_single\": 13.743731568974251, \"condition_balanced\": 8.187008518660184, \"null_error_per_primary\": [3.854318670752816e-05, 0.00014258251865988537, 0.00037538193457097566]}",
+        "{\"test\": \"station_summary\", \"station\": \"entrance\", \"amplitude_per_peak\": [4.318648645882063, 0.3863891600462822], \"signed_lag_degrees\": [-25.884817596059985, -179.45478832215994]}",
+        "{\"test\": \"station_summary\", \"station\": \"middle\", \"amplitude_per_peak\": [3.064144098654729, 0.4340782056298559], \"signed_lag_degrees\": [99.18196527167575, -61.806452161518465]}",
+        "{\"test\": \"station_summary\", \"station\": \"flare\", \"amplitude_per_peak\": [0.2651064298670768, 0.5399276422755988], \"signed_lag_degrees\": [-94.16810008891487, 104.62744225913835]}"
+      ]
+    }
+  },
+  "source_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_carrier_attachment_tension.py": "3ad065608f0abaa864eb68fa9da05fdc67899874eecb9da1a706a28b203c8f24",
+    "software/stage1_solver/tools/mouth_carrier_free_center.py": "ad4fbd4dbc20f92098f66eb054226c145390e26c296168688e13ec70e310e1bb",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_empty_bend_stiffness.py": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_bend_drive.py": "def4a7b4812929ebfeeac11525af3d652c0b6d9f70b01ef27e68aef622062bb9",
+    "software/stage1_solver/tools/mouth_free_bend_release.py": "7b95f8e53ae9735b75af77ebacc303d5bc7cf64baa81f11724b8ee6c4266961f",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "software/stage1_solver/tools/mouth_two_depth_force_check.py": "e31ac2a04eb5985eaf1b8cefa9b18f7515e8acf26eda3e09e84e23d4d3bf03ce",
+    "software/stage1_solver/tools/mouth_two_depth_load.py": "13d9bd92859b47620b38b3d796c6946b544005eefa1d703dfe60095897ea058e",
+    "software/stage1_solver/tools/mouth_two_depth_pulse.py": "af15939965dac0aeef0a82a2398b5e2d42459181b956b35d7269cd4a665c9be5"
+  },
+  "input_field_sha256": {
+    "_scratch/s11c/mouth_flared_cubic_n26/field.npz": "c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2",
+    "_scratch/s11c/mouth_flared_cubic_n34/field.npz": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d"
+  },
+  "review": [
+    {
+      "scope": "Carrier cut, reconstructed cosine/sine amplitudes, density-gradient and advective portions, drive sign, conditions for force identification and finite switch-on. Audit of the two drive locations, three gauges and causal pulse.",
+      "verbatim": "The advective/amplitude split follows directly from ψ=A exp(iθ) and the code reconstructs each real quadrature correctly.",
+      "disposition": "Reported only actual finite-switch measurements. Added a separate zero-start smooth pulse with reversed half-strength loads; use no steady-phase or travel-time inference.",
+      "final_verdict": "Scoped clear on the two-depth displacement and signed phase at s=0.30+0.40i, the canonical +w carrier flux and its two-term split, the conditional one-frequency inverse and cross-mesh auxiliary-force control, and the smooth-pulse displacement, flux and half-endpoint timing."
+    },
+    {
+      "scope": "Archived physical observables, work-conjugate force signs, positive control and conditional ranks of the carrier-only inverse.",
+      "verbatim": "Scoped clear for same-model cross-mesh recovery at s=0.30+0.40i",
+      "disposition": "Distinguished hidden external calibration forces, inferred material reactions and flux; balanced-drive conditioning uses superposition. The two auxiliary-force errors are example recoveries, not a universal sensitivity."
+    }
+  ],
+  "formal_status": "Two independent local scopes recorded; formal review and commit pending."
+}

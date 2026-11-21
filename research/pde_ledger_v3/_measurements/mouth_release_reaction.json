@@ -1,0 +1,253 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "status": "Working result with scoped independent local review. Formal review pending.",
+  "report": "software/stage1_solver/reports/mouth_release_reaction.md",
+  "report_sha256": "6f6d7b27d86d869d0c82d34a120356352d12349ff83d7baba2a2578290c0a6d1",
+  "source_and_input_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_registering_rim.json": "a703fb3129957680f6cb37bc84f98383e32b2bc39fa09db19943e0525d1dfc8f",
+    "software/stage1_solver/reports/mouth_registering_rim.md": "d5e7dc697f0a14bcbd5c4389e17af2c1f9097bb77db610313722c51e4ca47c23",
+    "software/stage1_solver/reports/mouth_tow_and_companion.md": "84f0304f3f1322781d8177865056c33e91655d9cd832ce0409f07f2afeb6ecc5",
+    "software/stage1_solver/reports/mouth_conversion_drag.md": "ca30dce63e63591207c1f7a065e72e8a46a85dfcb1407503952120de7523f868",
+    "docs/_measurements/receiving_force_motion_check.txt": "4d522d87151e763beb6b881c901c78a19268b4db0900747bd8ac409255f9489f",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "software/stage1_solver/tools/mouth_release_reaction.py": "4f2d3b712c53522d4243bb38c5bd58af5d875122397f70dd1e4d9bb0e62a031b",
+    "software/stage1_solver/tools/mouth_release_power.py": "745e1493c8502e07aa788d2685b97356a033768f1972b87dc4b745a962ca7fe2",
+    "software/stage1_solver/tools/mouth_release_reaction_check.py": "4b19e19d47bdbece7389b02284c10e65e77161c5ad1604986f7651ba915f4851"
+  },
+  "preparation": {
+    "units": "Forces divided by participating mass throughput. Unit constituent mass, center spring stiffness and lever, and unit feed residence time. Held gain c=-F_act/(mass rate times U) at V=W=0 and drag g=F_act/(mass rate times V) at U=W=0. U incoming, V prescribed rim velocity, W local velocity of a separately supported material degree of freedom. Fixed throughput per representative patch, no bare center mass or free acceleration inferred.",
+    "residence": "Same independent decision hazard 1/128 and registration hazard 1/256 across all preparations, steady injection of initially unstretched material. One third of departures have registered before the decision. Registration ends at the decision even if center springs remain attached. The remaining portion of a full spring cycle is a new local release law. Extra translation-only inventory is allowed with no crowding or feedback on intake, phase or angular registration.",
+    "work_and_ownership": "The unloading anchor moves at (1-h)V+hW; the conjugate forces have weights (1-h,h). At switching both extension and parcel velocity are continuous with no impulse or work by the ideal switch. Count release spring energy as outgoing internal energy or heat once. Do not identify external support reactions as mouth force. A receiving-side coupling needs a physical support or a projected normal load to be compatible with a shear-free bulk. W is independently specified and not identified with a distant bulk velocity.",
+    "analytic": "A=E[1-cos(omega a)] and B=E[unload*(1-cos(omega a))], where a is decision age. The complementary-phase tail yields c=A-B+hB and g=A-B+h²B, and A*g-c²=B(A-B)(1-h)². Full or partial return is an assumption; the calculation also tests release pi/6 beyond precise recovery. The smallest available sideways power over U at fixed V in the more general passive budget is mass rate times (g-c²/2)V².",
+    "energy_scope": "Stationary independently supported receiver, steady motion, no draw on stored or radial flow/pressure energy, cold uniform incoming sideways speed, actuator the sole other power input, nonnegative outgoing sideways kinetic energy plus heat. The four reversals give (P(U,V)-P(U,-V)-P(-U,V)+P(-U,-V))/4=-mass rate*c*U*V for the actuator. This restriction does not apply to the full open drain without its full incremental power budget or to two independently moving supports. No physical force, radius scaling or charge readout measured."
+  },
+  "review": {
+    "verdict": "Scoped clear for the steady parcel momentum and energy balances, the held and tow coefficients, and their dependence on the independently moving receiving support in the prescribed release law. The physical release timing, support motion, and whole-mouth free fall remain open.",
+    "method": "Fresh local reviewer derived cohort weights and mean slopes from the two competing clocks, independently rotated each parcel through both stages, tested work per parcel and compared independent port drives including common boosts. Author also used symbolic algebra and a separate finite-age quadrature.",
+    "report_verdict": "Scoped clear for the report’s stationary-support held and tow gains, reversible-release timing control, four-reversal power identity, and conditional one-stream energy bound."
+  },
+  "archived_field_inventory": {
+    "_scratch/s11c/mouth_prescribed_accel_negative02/stdout": {
+      "sha256": "10ff3f7748df9d9b94df9ccec9d58078e5197c11f3fd8661ee88e50846ee1e8b",
+      "saved_history_keys": {
+        "16": [
+          "carried",
+          "feed_load",
+          "inward_rate",
+          "stress",
+          "t",
+          "x"
+        ],
+        "32": [
+          "carried",
+          "feed_load",
+          "inward_rate",
+          "stress",
+          "t",
+          "x"
+        ]
+      }
+    },
+    "_scratch/s11c/mouth_prescribed_accel_negative_half02/stdout": {
+      "sha256": "4fee98a0f146996effb79996d33b493a31b02d4bd71d4981f8202347bf553b6d",
+      "saved_history_keys": {
+        "16": [
+          "carried",
+          "feed_load",
+          "inward_rate",
+          "stress",
+          "t",
+          "x"
+        ],
+        "32": [
+          "carried",
+          "feed_load",
+          "inward_rate",
+          "stress",
+          "t",
+          "x"
+        ]
+      }
+    },
+    "_scratch/s11c/mouth_prescribed_accel_positive02/stdout": {
+      "sha256": "7391b79ee45b0aedd4fa38489ae03d91089afe8b6de95b9fd565f13c524b26ed",
+      "saved_history_keys": {
+        "16": [
+          "carried",
+          "feed_load",
+          "inward_rate",
+          "stress",
+          "t",
+          "x"
+        ],
+        "32": [
+          "carried",
+          "feed_load",
+          "inward_rate",
+          "stress",
+          "t",
+          "x"
+        ]
+      }
+    },
+    "_scratch/s11c/mouth_prescribed_accel_positive_half02/stdout": {
+      "sha256": "e4198b0b5a46d8d5e44c3e870757ddc721d514ff1738b3fceaaff1c988816a2a",
+      "saved_history_keys": {
+        "16": [
+          "carried",
+          "feed_load",
+          "inward_rate",
+          "stress",
+          "t",
+          "x"
+        ],
+        "32": [
+          "carried",
+          "feed_load",
+          "inward_rate",
+          "stress",
+          "t",
+          "x"
+        ]
+      }
+    },
+    "_scratch/s11c/mouth_prescribed_accel_zero02/stdout": {
+      "sha256": "06fdb3e9bce54ccdcbf174bf2251dfa5cdc7ce46fe325d018d043d678cea542f",
+      "saved_history_keys": {
+        "16": [
+          "carried",
+          "feed_load",
+          "inward_rate",
+          "stress",
+          "t",
+          "x"
+        ],
+        "32": [
+          "carried",
+          "feed_load",
+          "inward_rate",
+          "stress",
+          "t",
+          "x"
+        ]
+      }
+    }
+  },
+  "runs": {
+    "mouth_release_reaction01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_release_reaction.py"
+      ],
+      "source_sha256": "4f2d3b712c53522d4243bb38c5bd58af5d875122397f70dd1e4d9bb0e62a031b",
+      "log_directory": "_scratch/s11c/mouth_release_reaction01",
+      "pool": "release-reaction",
+      "started_utc": "2026-11-19T23:06:34.636124+00:00",
+      "wall_seconds": 0.18509771581739187,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 25878528,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "8a5f5d53d61d9f761fa136a06b92da27869c989cb24b3222ecbf5f926ead79f5",
+      "stdout_lines": [
+        "registered_departure_fraction=0.333333333333 initial_impulse_coefficient=0.999938968569 registered_part=0.333363842065 unregistered_part=0.666575126503",
+        "release=direct share=0 held_gain=0.999938968569 tow_drag=0.999938968569 support_drive_rim=0 tow_support=0 tow_net_export=0.999938968569 tow_exit_kinetic=0.749942783208 tow_release_heat=0.249996185361 extra_dwell=0",
+        "release=registered share=0 held_gain=0.666575126503 tow_drag=0.666575126503 support_drive_rim=0 tow_support=-0 tow_net_export=0.666575126503 tow_exit_kinetic=0.499914181686 tow_release_heat=0.166660944817 extra_dwell=1.04719884119",
+        "release=registered share=0.5 held_gain=0.833257047536 tow_drag=0.74991608702 support_drive_rim=0.0833409605163 tow_support=-0.250022881549 tow_net_export=0.499893205471 tow_exit_kinetic=0.562421332067 tow_release_heat=0.187494754953 extra_dwell=1.04719884119",
+        "release=registered share=1 held_gain=0.999938968569 tow_drag=0.999938968569 support_drive_rim=0 tow_support=-0.666727684131 tow_net_export=0.333211284438 tow_exit_kinetic=0.749942783208 tow_release_heat=0.249996185361 extra_dwell=1.04719884119",
+        "release=all share=0 held_gain=-0 tow_drag=0 support_drive_rim=0 tow_support=-0 tow_net_export=1.03578838872e-17 tow_exit_kinetic=4.28990730344e-33 tow_release_heat=4.2355693559e-32 extra_dwell=3.16729371626",
+        "release=all share=0.5 held_gain=0.499969484284 tow_drag=0.249984742142 support_drive_rim=0.249984742142 tow_support=-0.749954226427 tow_net_export=-0.499969484284 tow_exit_kinetic=0.187485695802 tow_release_heat=0.0624990463402 extra_dwell=3.16729371626",
+        "release=all share=1 held_gain=0.999938968569 tow_drag=0.999938968569 support_drive_rim=0 tow_support=-1.99987793714 tow_net_export=-0.999938968569 tow_exit_kinetic=0.749942783208 tow_release_heat=0.249996185361 extra_dwell=3.16729371626",
+        "late_phase=pi/6 release=registered rim_only held_gain=0.711233325242 tow_drag=0.711233325242",
+        "late_phase=pi/6 release=all rim_only held_gain=0.133974596216 tow_drag=0.133974596216",
+        "mixed release=registered share=0.5 U=0.01 V=0.02 W=0 available_per_U2=1.83315025301 outgoing_plus_heat_per_U2=1.83315025301",
+        "mixed release=all share=0.5 U=0.01 V=0.02 W=0 available_per_U2=0.5 outgoing_plus_heat_per_U2=0.5",
+        "mixed proposed_held_gain=1 proposed_tow_drag=0 U=0.01 V=0.02 W=0 available_per_U2=-1.5",
+        "largest_balance_or_control_residual=3.05e-16"
+      ]
+    },
+    "mouth_release_power01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_release_power.py"
+      ],
+      "source_sha256": "745e1493c8502e07aa788d2685b97356a033768f1972b87dc4b745a962ca7fe2",
+      "log_directory": "_scratch/s11c/mouth_release_power01",
+      "pool": "release-power",
+      "started_utc": "2026-11-19T23:07:24.698950+00:00",
+      "wall_seconds": 1.0375273381359875,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 71413760,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "eaed45990a7c65927bfa801fee4fc7c785eecdfea3a21907f58171e3aa20dc75",
+      "stdout_lines": [
+        "returned_cohort_exit_change_over_1_minus_cos = -h*(V - W)",
+        "returned_cohort_energy_residual = 0",
+        "held_coefficient = A + B*h - B tow_coefficient = A + B*h**2 - B A*g-c^2 = B*(A - B)*(h - 1)**2",
+        "minimum_available_at_U_equals_cV = -V**2*(c**2 - 2*g)/2",
+        "four_signed_runs_cross_power_per_mass_rate = -U*V*c",
+        "ideal_branch_deficit_at_V_equals_2U_per_mass_rate = 3*U**2/2"
+      ]
+    },
+    "mouth_release_reaction_referee01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_release_reaction_check.py"
+      ],
+      "source_sha256": "4b19e19d47bdbece7389b02284c10e65e77161c5ad1604986f7651ba915f4851",
+      "log_directory": "_scratch/s11c/mouth_release_reaction_referee01",
+      "pool": "mouth-release-independent",
+      "started_utc": "2026-11-19T23:06:04.310137+00:00",
+      "wall_seconds": 0.18137590307742357,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 26013696,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "1706998e60cdc35f7fdcfb21202537ac85af4b8559fc66fc17d6d70ea2e65614",
+      "stdout_lines": [
+        "immediate_gain=0.999938968569 unregistered_gain=0.666575126503 registered_gain=0.333363842065 registered_fraction=0.333333333333",
+        "held policy=none h=0 (U,V,W)=(-1,0,0) rim=0.999938968569 receiver=0 net_export=0.999938968569 net_kinetic=-0.249996185361 release_energy=0.249996185361 mean_extra_residence=0 parcel_energy_residual=1.11e-16",
+        "tow policy=none h=0 (U,V,W)=(0,1,0) rim=0.999938968569 receiver=0 net_export=0.999938968569 net_kinetic=0.749942783208 release_energy=0.249996185361 mean_extra_residence=0 parcel_energy_residual=2.22e-16",
+        "held policy=none h=0.5 (U,V,W)=(-1,0,0) rim=0.999938968569 receiver=0 net_export=0.999938968569 net_kinetic=-0.249996185361 release_energy=0.249996185361 mean_extra_residence=0 parcel_energy_residual=1.11e-16",
+        "tow policy=none h=0.5 (U,V,W)=(0,1,0) rim=0.999938968569 receiver=0 net_export=0.999938968569 net_kinetic=0.749942783208 release_energy=0.249996185361 mean_extra_residence=0 parcel_energy_residual=2.5e-16",
+        "held policy=none h=1 (U,V,W)=(-1,0,0) rim=0.999938968569 receiver=0 net_export=0.999938968569 net_kinetic=-0.249996185361 release_energy=0.249996185361 mean_extra_residence=0 parcel_energy_residual=1.11e-16",
+        "tow policy=none h=1 (U,V,W)=(0,1,0) rim=0.999938968569 receiver=0 net_export=0.999938968569 net_kinetic=0.749942783208 release_energy=0.249996185361 mean_extra_residence=0 parcel_energy_residual=3.89e-16",
+        "held policy=registered h=0 (U,V,W)=(-1,0,0) rim=0.666575126503 receiver=0 net_export=0.666575126503 net_kinetic=-0.166660944817 release_energy=0.166660944817 mean_extra_residence=1.04719884119 parcel_energy_residual=1.11e-16",
+        "tow policy=registered h=0 (U,V,W)=(0,1,0) rim=0.666575126503 receiver=0 net_export=0.666575126503 net_kinetic=0.499914181686 release_energy=0.166660944817 mean_extra_residence=1.04719884119 parcel_energy_residual=2.22e-16",
+        "held policy=registered h=0.5 (U,V,W)=(-1,0,0) rim=0.833257047536 receiver=-0.166681921033 net_export=0.666575126503 net_kinetic=-0.166660944817 release_energy=0.166660944817 mean_extra_residence=1.04719884119 parcel_energy_residual=1.11e-16",
+        "tow policy=registered h=0.5 (U,V,W)=(0,1,0) rim=0.74991608702 receiver=-0.250022881549 net_export=0.499893205471 net_kinetic=0.562421332067 release_energy=0.187494754953 mean_extra_residence=1.04719884119 parcel_energy_residual=2.5e-16",
+        "held policy=registered h=1 (U,V,W)=(-1,0,0) rim=0.999938968569 receiver=-0.333363842065 net_export=0.666575126503 net_kinetic=-0.166660944817 release_energy=0.166660944817 mean_extra_residence=1.04719884119 parcel_energy_residual=1.11e-16",
+        "tow policy=registered h=1 (U,V,W)=(0,1,0) rim=0.999938968569 receiver=-0.666727684131 net_export=0.333211284438 net_kinetic=0.749942783208 release_energy=0.249996185361 mean_extra_residence=1.04719884119 parcel_energy_residual=3.89e-16",
+        "held policy=all h=0 (U,V,W)=(-1,0,0) rim=1.07118790865e-17 receiver=0 net_export=6.43383841176e-18 net_kinetic=-6.43383841176e-18 release_energy=3.82467106191e-32 mean_extra_residence=3.16729371626 parcel_energy_residual=1.11e-16",
+        "tow policy=all h=0 (U,V,W)=(0,1,0) rim=-2.55177433068e-17 receiver=0 net_export=-2.10519397631e-17 net_kinetic=2.89786059096e-33 release_energy=3.7566318587e-32 mean_extra_residence=3.16729371626 parcel_energy_residual=2.22e-16",
+        "held policy=all h=0.5 (U,V,W)=(-1,0,0) rim=0.499969484284 receiver=-0.499969484284 net_export=6.43383841176e-18 net_kinetic=-6.43383841176e-18 release_energy=3.82467106191e-32 mean_extra_residence=3.16729371626 parcel_energy_residual=1.11e-16",
+        "tow policy=all h=0.5 (U,V,W)=(0,1,0) rim=0.249984742142 receiver=-0.749954226427 net_export=-0.499969484284 net_kinetic=0.187485695802 release_energy=0.0624990463402 mean_extra_residence=3.16729371626 parcel_energy_residual=2.5e-16",
+        "held policy=all h=1 (U,V,W)=(-1,0,0) rim=0.999938968569 receiver=-0.999938968569 net_export=6.43383841176e-18 net_kinetic=-6.43383841176e-18 release_energy=3.82467106191e-32 mean_extra_residence=3.16729371626 parcel_energy_residual=1.11e-16",
+        "tow policy=all h=1 (U,V,W)=(0,1,0) rim=0.999938968569 receiver=-1.99987793714 net_export=-0.999938968569 net_kinetic=0.749942783208 release_energy=0.249996185361 mean_extra_residence=3.16729371626 parcel_energy_residual=3.89e-16",
+        "independent_drives policy=registered h=0.5 (U,V,W)=(1,0,1) rim=-0.74991608702 receiver=0.250022881549 net_export=-0.499893205471 net_kinetic=0.0625281265959 release_energy=0.187494754953 mean_extra_residence=1.04719884119 parcel_energy_residual=2.91e-16",
+        "independent_drives policy=registered h=0.5 (U,V,W)=(0,1,1) rim=0.833257047536 receiver=-0.166681921033 net_export=0.666575126503 net_kinetic=0.499914181686 release_energy=0.166660944817 mean_extra_residence=1.04719884119 parcel_energy_residual=2.22e-16",
+        "independent_drives policy=registered h=0.5 (U,V,W)=(0.5,0.5,0.5) rim=0 receiver=0 net_export=0 net_kinetic=0 release_energy=0 mean_extra_residence=1.04719884119 parcel_energy_residual=0",
+        "independent_drives policy=registered h=0.5 (U,V,W)=(0.3,-0.1,0.2) rim=-0.30830053086 receiver=0.091675056568 net_export=-0.216625474292 net_kinetic=0.0206242703166 release_energy=0.028540794083 mean_extra_residence=1.04719884119 parcel_energy_residual=1.02e-16"
+      ]
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "Held radius-one delayed flare, inward intake 0.25, half the trial reference head. No use of either two-direction contact law. Carrier markers at fixed angular separation have arc spacing proportional to the wall radius. They have no persistent contact-pair identity or measured registry force.",
+  "bulk_control": "An interior point at r=0.8 a(w), chi=0.5. Compatible displacement components g b(w) and h b(w) along perpendicular brane-Cartesian axes. b-prime is piecewise linear on native w element edges with a unit plateau at the probe and zero net integral. All other displacement, carrier and background-order terms match. The fixed-geometry 0PN shear action gives stress per cut measure mu0 chi g. The native order mobility times the strain contribution to its variational derivative is projected into the Q2 basis with the weighted mass matrix. At the common initial state the other order residuals and advection cancel in differences. Stress at fixed strains and its initial rate are distinct observables; strain units are not contact-pitch units. The imposed preparation and instantaneous calculation do not give the unforced later response.",
+  "identifiability": "With a live-window half-width a and local measured offset q, the mixed-energy perturbation used to test uniqueness is lambda*y²*phi(q/a)/2, phi(u)=u²(1-u²)²(u²-1/3) in the live region. It has zero force differences on each coordinate axis and zero uniform mean transverse stiffness difference. Near half order, q=1/8, a=1/4, the symmetric change in holding force can shift by lambda*h²/4. Small positive or negative lambda can be used inside a stable patch. No such term is adopted. This tests non-uniqueness of the contact channel even if actual offset is given.",
+  "protocol": "Observe both material features, continuity of the physical contact identity, actual relative offset and the calibrated holding reaction, with no new background from a changed clamp configuration. At common order, offset and history compare zero and both signs, retaining even and odd force channels; calibrate the direct apparatus and matched surrounding-material reaction. This channel alone provides no independent free-mouth force.",
+  "prior_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_matched_attachment.json": "25d08c1dfb68011fa77cc55280782f23e2b6abc48fc1480a9624537e380580f9"
+  },
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_offset_brane_readout.py": "401b1b874371602a8fa62c92431c33c2831ae19215702f3d4284d4fda689f38e",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "9f5e670743f1c3a00e230e087c62869ba03188a445385bdc614cb24ac8199a02",
+    "software/stage1_solver/tools/mouth_contact_tracking.py": "fb8351e126e7bc7368b929ac393034263eb2677b9b5338d9e9da26dac9e14cef",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_free_order_diffuse.py": "b883ef93eaa9134efb5404fae541bfc782ec6de9fd67c4ac51d5dcef38e959d9",
+    "software/stage1_solver/tools/mouth_native_order_contrast.py": "f26a5cb9975d6ad0f11bbedfcb47a9f8135b4f1a49fdf7321f9061c6a170c709",
+    "software/stage1_solver/tools/mouth_order_wave_pulse.py": "d4fc14a69fd269039a58197ee6751107708c67bff9329d414581896401f50433",
+    "software/stage1_solver/tools/mouth_free_order_residual_check.py": "02437154907740e2ed53c480a0dc0c47c401c088f3560dd7150fd80a45710fef",
+    "software/stage1_solver/tools/mouth_conversion_supply.py": "4a62e9c16d282f2a944c1afe070cd468c36a299a8861caf6c20f2c079f99286a",
+    "software/stage1_solver/tools/mouth_bend_conversion_feedback.py": "b3dcf0bc616f4b6526a0b795c9206f2fa66d44b99d6c1484c8c932912fbdfb0a"
+  },
+  "verified_runs": {
+    "native_offset_brane34_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_offset_brane_readout.py",
+        "--mesh",
+        "34"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified": true,
+      "memory_bytes": 10737418240,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "0e7b08a8e9d35f80dc129f76a3f1618112d0c64a8aca91d837d8efca8b64bdb9",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_delayed_n34/field.npz\", \"sha256\": \"6da396c92c8acf3db352fbb8324fd154828963c2d11db193f26a4be63133d9b4\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000034167, \"profile\": \"delayed\"}",
+        "{\"test\": \"state\", \"mesh\": 34, \"intake\": 0.2500000000034167, \"head\": 0.024867959858448512, \"fields\": {\"_scratch/s11c/mouth_flared_delayed_n34/field.npz\": \"6da396c92c8acf3db352fbb8324fd154828963c2d11db193f26a4be63133d9b4\", \"_scratch/s11c/contact_supply_n34_01/order_0.50000.npz\": \"bc8f70040b37b83d8215f0cb18933bfad32b823c8b8c9578e6133eec4f86112b\"}, \"carrier_arrays\": [\"points\", \"psi\", \"r\", \"h\", \"q\", \"hprime\", \"phase\"], \"order_arrays\": [\"chi\"], \"mobility\": 5.0}",
+        "{\"test\": \"carrier_markers\", \"mesh\": 34, \"wall_order\": 0.75, \"w\": 1.3218941353438092, \"elapsed\": 1.4161289363619076, \"arc_spacing_over_entry\": 1.000508035370016}",
+        "{\"test\": \"carrier_markers\", \"mesh\": 34, \"wall_order\": 0.5, \"w\": 1.365424357854533, \"elapsed\": 2.2083384597011575, \"arc_spacing_over_entry\": 1.0012982175894536}",
+        "{\"test\": \"carrier_markers\", \"mesh\": 34, \"wall_order\": 0.3, \"w\": 1.3988836010855563, \"elapsed\": 2.8002003156606907, \"arc_spacing_over_entry\": 1.0022487163209508}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 34, \"position\": [0.8011586888784716, 1.3701375535001505], \"local_order\": 0.5000000000030168, \"preload_strain\": 0.001, \"transverse_strain\": 1e-05, \"frozen_stress\": [0.0005000000000030168, 0.0005000000000030168, 0.0005000000000030168], \"order_induced_stress_rates_relative_to_unstrained\": [-2.5002499999995594e-09, -2.4999999999995588e-09, -2.5002499999995594e-09], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": -2.5000000000069707e-13, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": -2.5000000000000005e-13}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 34, \"position\": [0.8011586888784716, 1.3701375535001505], \"local_order\": 0.5000000000030168, \"preload_strain\": 0.001, \"transverse_strain\": 5e-06, \"frozen_stress\": [0.0005000000000030168, 0.0005000000000030168, 0.0005000000000030168], \"order_induced_stress_rates_relative_to_unstrained\": [-2.5000624999995596e-09, -2.4999999999995588e-09, -2.5000624999995596e-09], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": -6.250000000089805e-14, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": -6.250000000000001e-14}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 34, \"position\": [0.8011586888784716, 1.3701375535001505], \"local_order\": 0.5000000000030168, \"preload_strain\": -0.001, \"transverse_strain\": 1e-05, \"frozen_stress\": [-0.0005000000000030168, -0.0005000000000030168, -0.0005000000000030168], \"order_induced_stress_rates_relative_to_unstrained\": [2.5002499999995594e-09, 2.4999999999995588e-09, 2.5002499999995594e-09], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": 2.5000000000069707e-13, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": 2.5000000000000005e-13}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 34, \"position\": [0.8011586888784716, 1.3701375535001505], \"local_order\": 0.5000000000030168, \"preload_strain\": -0.001, \"transverse_strain\": 5e-06, \"frozen_stress\": [-0.0005000000000030168, -0.0005000000000030168, -0.0005000000000030168], \"order_induced_stress_rates_relative_to_unstrained\": [2.5000624999995596e-09, 2.4999999999995588e-09, 2.5000624999995596e-09], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": 6.250000000089805e-14, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": 6.250000000000001e-14}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 34, \"position\": [0.8011586888784716, 1.3701375535001505], \"local_order\": 0.5000000000030168, \"preload_strain\": 0.0, \"transverse_strain\": 1e-05, \"frozen_stress\": [0.0, 0.0, 0.0], \"order_induced_stress_rates_relative_to_unstrained\": [-0.0, 0.0, -0.0], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": -0.0, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": -0.0}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 34, \"position\": [0.8011586888784716, 1.3701375535001505], \"local_order\": 0.5000000000030168, \"preload_strain\": 0.0, \"transverse_strain\": 5e-06, \"frozen_stress\": [0.0, 0.0, 0.0], \"order_induced_stress_rates_relative_to_unstrained\": [-0.0, 0.0, -0.0], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": -0.0, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": -0.0}"
+      ]
+    },
+    "native_offset_brane48_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_offset_brane_readout.py",
+        "--mesh",
+        "48"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified": true,
+      "memory_bytes": 12884901888,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "b969f1c409df24f1753f3ba19525665a313e365a9a5986227bcefd0a91b4130f",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_delayed_n48/field.npz\", \"sha256\": \"cff2f00e18dc3113226e71f8269f61c39ad80a28cb872d810a51854b471d54ea\", \"mesh\": 48, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999821823, \"profile\": \"delayed\"}",
+        "{\"test\": \"state\", \"mesh\": 48, \"intake\": 0.24999999999821823, \"head\": 0.024867959857931412, \"fields\": {\"_scratch/s11c/mouth_flared_delayed_n48/field.npz\": \"cff2f00e18dc3113226e71f8269f61c39ad80a28cb872d810a51854b471d54ea\", \"_scratch/s11c/contact_supply_n48_01/order_0.50000.npz\": \"29f73b013b87a919769aab75723f9722979085133fee3dfcc9b0912e5fa64557\"}, \"carrier_arrays\": [\"points\", \"psi\", \"r\", \"h\", \"q\", \"hprime\", \"phase\"], \"order_arrays\": [\"chi\"], \"mobility\": 5.0}",
+        "{\"test\": \"carrier_markers\", \"mesh\": 48, \"wall_order\": 0.75, \"w\": 1.3219278152792093, \"elapsed\": 1.414983016046076, \"arc_spacing_over_entry\": 1.0005082798655607}",
+        "{\"test\": \"carrier_markers\", \"mesh\": 48, \"wall_order\": 0.5, \"w\": 1.365391179393372, \"elapsed\": 2.2059415993999494, \"arc_spacing_over_entry\": 1.0012972355887142}",
+        "{\"test\": \"carrier_markers\", \"mesh\": 48, \"wall_order\": 0.3, \"w\": 1.3988398786256708, \"elapsed\": 2.797627377764412, \"arc_spacing_over_entry\": 1.0022470550924611}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 48, \"position\": [0.8011570545420537, 1.3700554972030288], \"local_order\": 0.5000000000000019, \"preload_strain\": 0.001, \"transverse_strain\": 1e-05, \"frozen_stress\": [0.0005000000000000019, 0.0005000000000000019, 0.0005000000000000019], \"order_induced_stress_rates_relative_to_unstrained\": [-2.5002499999990313e-09, -2.499999999999032e-09, -2.5002499999990313e-09], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": -2.499999999994563e-13, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": -2.5000000000000005e-13}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 48, \"position\": [0.8011570545420537, 1.3700554972030288], \"local_order\": 0.5000000000000019, \"preload_strain\": 0.001, \"transverse_strain\": 5e-06, \"frozen_stress\": [0.0005000000000000019, 0.0005000000000000019, 0.0005000000000000019], \"order_induced_stress_rates_relative_to_unstrained\": [-2.5000624999990303e-09, -2.499999999999032e-09, -2.5000624999990303e-09], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": -6.249999999841651e-14, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": -6.250000000000001e-14}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 48, \"position\": [0.8011570545420537, 1.3700554972030288], \"local_order\": 0.5000000000000019, \"preload_strain\": -0.001, \"transverse_strain\": 1e-05, \"frozen_stress\": [-0.0005000000000000019, -0.0005000000000000019, -0.0005000000000000019], \"order_induced_stress_rates_relative_to_unstrained\": [2.5002499999990313e-09, 2.499999999999032e-09, 2.5002499999990313e-09], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": 2.499999999994563e-13, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": 2.5000000000000005e-13}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 48, \"position\": [0.8011570545420537, 1.3700554972030288], \"local_order\": 0.5000000000000019, \"preload_strain\": -0.001, \"transverse_strain\": 5e-06, \"frozen_stress\": [-0.0005000000000000019, -0.0005000000000000019, -0.0005000000000000019], \"order_induced_stress_rates_relative_to_unstrained\": [2.5000624999990303e-09, 2.499999999999032e-09, 2.5000624999990303e-09], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": 6.249999999841651e-14, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": 6.250000000000001e-14}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 48, \"position\": [0.8011570545420537, 1.3700554972030288], \"local_order\": 0.5000000000000019, \"preload_strain\": 0.0, \"transverse_strain\": 1e-05, \"frozen_stress\": [0.0, 0.0, 0.0], \"order_induced_stress_rates_relative_to_unstrained\": [-0.0, 0.0, -0.0], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": -0.0, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": -0.0}",
+        "{\"test\": \"contact_free_bulk\", \"mesh\": 48, \"position\": [0.8011570545420537, 1.3700554972030288], \"local_order\": 0.5000000000000019, \"preload_strain\": 0.0, \"transverse_strain\": 5e-06, \"frozen_stress\": [0.0, 0.0, 0.0], \"order_induced_stress_rates_relative_to_unstrained\": [-0.0, 0.0, -0.0], \"even_frozen\": 0.0, \"odd_frozen\": 0.0, \"even_initial_rate\": -0.0, \"odd_initial_rate\": 0.0, \"local_continuum_even_rate\": -0.0}"
+      ]
+    },
+    "native_offset_ident01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_offset_brane_readout.py",
+        "--identifiability"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "d9261abf89654ec7beab22dbf9824e211b0cfa448fce8112d73b99291e951d2e",
+      "literal_stdout": [
+        "{\"test\": \"undetermined_contact_readout\", \"same_uniaxial_force_differences\": [\"0\", \"0\", \"0\", \"0\"], \"change_in_uniform_mean_stiffness\": \"0\", \"change_in_odd_read\": \"0\", \"change_in_even_read_at_half_order_eighth_pitch\": \"h**2*lambda/4\"}"
+      ]
+    },
+    "offset_scope_ref01": {
+      "command": [
+        "python3",
+        "_scratch/s11c/offset_scope_ref_src/witness.py"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "4ba1b5768d761627d65ae955664d3d48f9909b22626d9f39ef7b65d821562ce9",
+      "literal_stdout": [
+        "{\"extension\": \"c*y^2*phi(x/a)/2 with |x|<a\", \"axis_energy_force_checks\": [\"0\", \"0\", \"0\", \"0\", \"0\", \"0\"], \"mean_patch_stiffness_added\": \"0\", \"shape_derivative_at_half\": \"1/8\", \"center_gradient\": \"0\", \"odd\": \"0\", \"even_at_target\": \"c*h**2/4\", \"half_step\": \"1/4\", \"sample_steps\": {\"1/100000\": \"c/40000000000\", \"1/200000\": \"c/160000000000\"}}",
+        "{\"verified_native_field_schema\": {\"_scratch/s11c/mouth_flared_delayed_n48/field.npz\": [\"points.npy\", \"psi.npy\", \"r.npy\", \"h.npy\", \"q.npy\", \"hprime.npy\", \"phase.npy\"], \"_scratch/s11c/contact_supply_n48_01/order_0.50000.npz\": [\"chi.npy\"]}}"
+      ]
+    },
+    "native_order_mixed_ref01": {
+      "command": [
+        "python3",
+        "_scratch/s11c/native_order_mixed_ref_source/check.py"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "903900caa221afdac3446d08cee06b52151044b4d763c466a412d3c385b28373",
+      "literal_stdout": [
+        "{\"preload\": 0.001, \"transverse_strain\": 1e-05, \"initial_even\": \"0\", \"initial_odd\": \"0\", \"rate_even\": \"-1/4000000000000\", \"rate_odd\": \"0\", \"rate_even_float\": -2.5e-13}",
+        "{\"preload\": 0.001, \"transverse_strain\": 5e-06, \"initial_even\": \"0\", \"initial_odd\": \"0\", \"rate_even\": \"-1/16000000000000\", \"rate_odd\": \"0\", \"rate_even_float\": -6.25e-14}",
+        "{\"preload\": -0.001, \"transverse_strain\": 1e-05, \"initial_even\": \"0\", \"initial_odd\": \"0\", \"rate_even\": \"1/4000000000000\", \"rate_odd\": \"0\", \"rate_even_float\": 2.5e-13}",
+        "{\"preload\": -0.001, \"transverse_strain\": 5e-06, \"initial_even\": \"0\", \"initial_odd\": \"0\", \"rate_even\": \"1/16000000000000\", \"rate_odd\": \"0\", \"rate_even_float\": 6.25e-14}",
+        "{\"preload\": 0.0, \"transverse_strain\": 1e-05, \"initial_even\": \"0\", \"initial_odd\": \"0\", \"rate_even\": \"0\", \"rate_odd\": \"0\", \"rate_even_float\": 0.0}",
+        "{\"preload\": 0.0, \"transverse_strain\": 5e-06, \"initial_even\": \"0\", \"initial_odd\": \"0\", \"rate_even\": \"0\", \"rate_odd\": \"0\", \"rate_even_float\": 0.0}"
+      ]
+    }
+  },
+  "independent_review_source": {
+    "_scratch/s11c/offset_scope_ref_src/witness.py": {
+      "sha256": "466c4e1d3e7ae8d2e7faede52d7ff92106ac74c695c7d7a86ccee67dd724c5a6",
+      "source": "\"\"\"Exact local information test. Contains no constitutive registry/sideways force solver.\"\"\"\nimport hashlib\nimport json\nfrom pathlib import Path\nfrom zipfile import ZipFile\n\nimport sympy as s\n\n\nx, y, a, h, c = s.symbols('x y a h c', real=True, nonzero=True)\nu = s.symbols('u', real=True)\nshape = u**2*(1-u**2)**2*(u**2-s.Rational(1, 3))\nextension = c*y**2*shape.subs(u, x/a)/2\nholding = s.diff(extension, x)\neven = s.factor((holding.subs(y,h)+holding.subs(y,-h))/2 - holding.subs(y,0))\nodd = s.factor((holding.subs(y,h)-holding.subs(y,-h))/2)\ndef emit(**fields): print(json.dumps(fields))\n\ndef persist(expr): return str(s.factor(expr))\n\ngrid = {x: s.Rational(1,8), a: s.Rational(1,4)}\nat_target = s.factor(even.subs(grid))\naxis_checks = [s.simplify(expr.subs(coord,0)) for expr in\n               (extension, holding, s.diff(extension,y)) for coord in (x,y)]\naggregate = s.integrate(shape, (u,-1,1))/2\ntraction_unchanged_bare = s.factor(s.diff(extension,y).subs(y,0))\nemit(extension='c*y^2*phi(x/a)/2 with |x|<a',\n     axis_energy_force_checks=list(map(str,axis_checks)),mean_patch_stiffness_added=str(aggregate),\n     shape_derivative_at_half=str(s.diff(shape,u).subs(u,s.Rational(1,2))),\n     center_gradient= str(traction_unchanged_bare), odd=str(odd), even_at_target=str(at_target),\n     half_step= str(s.simplify(at_target.subs(h,h/2)/at_target)),\n     sample_steps={str(step): persist(at_target.subs(h,step)) for step in (s.Rational(1,100000),s.Rational(1,200000))})\nassert not any(axis_checks) and odd == 0 and aggregate == 0 and s.simplify(at_target-c*h**2/4)==0\nsource = Path('research/pde_ledger_v3/_measurements/mouth_matched_attachment.json')\nmanifest = json.loads(source.read_text())['verified_runs']['matched_attachment01']['literal_stdout']\nfine = next(row for row in map(json.loads, manifest) if row['test']=='preparation' and row['mesh']==48)\nfields={}\nfor filename, expected in fine['field_sha256'].items():\n    path = Path(filename)\n    assert hashlib.sha256(path.read_bytes()).hexdigest()==expected\n    with ZipFile(path) as raw: fields[filename]=raw.namelist()\nemit(verified_native_field_schema=fields)\n"
+    },
+    "_scratch/s11c/native_order_mixed_ref_source/check.py": {
+      "sha256": "af1a92ddc8f5db83142a9081c8fbb0370e185e03ebbd7b29ab139825f2b2b046",
+      "source": "\"\"\"Independent rational-energy control using the curl of affine displacement in 4D.\"\"\"\nimport json\nfrom fractions import Fraction as Q\n\n\ndef density(shear_a,shear_b,chi,modulus):\n    # u=(a*w,b*w,0,0), so the curl has only the (1,4) and (2,4) components.\n    gradients=[[Q(0),Q(0),Q(0),shear_a],[Q(0),Q(0),Q(0),shear_b],[Q(0)]*4,[Q(0)]*4]\n    curls=[gradients[i][j]-gradients[j][i] for i in range(4) for j in range(i)]\n    return modulus*chi*sum(f*f for f in curls)/2\n\n\ndef stress(a,b,c,mu):\n    d=Q(1,10000000)\n    return (density(a+d,b,c,mu)-density(a-d,b,c,mu))/(2*d)\n\n\ndef chi_rate(a,b,c,mu,M):\n    d=Q(1,8000000)\n    dfdc=(density(a,b,c+d,mu)-density(a,b,c-d,mu))/(2*d)\n    # A generic nonzero common background represents advection, head and well terms.\n    return Q(23,71)-M*dfdc\n\n\ndef even_odd(vals):\n    minus,zero,plus=vals\n    return (plus+minus)/2-zero,(plus-minus)/2\n\n\ndef run():\n    for g in (Q(1,1000), Q(-1,1000), Q(0)):\n        for h in (Q(1,100000),Q(1,200000)):\n            mu,M,c,dt=map(Q,(1,5,'0.5','0.00001'))\n            initial=[]\n            rates=[]\n            for s in (-h,Q(0),h):\n                tau=stress(g,s,c,mu)\n                taux=stress(g,s,c+dt*chi_rate(g,s,c,mu,M),mu)\n                initial.append(tau)\n                rates.append((taux-tau)/dt)\n            frozen,odd0=even_odd(initial)\n            even,odd=even_odd(rates)\n            print(json.dumps(dict(preload=float(g),transverse_strain=float(h),initial_even=str(frozen),initial_odd=str(odd0),rate_even=str(even),rate_odd=str(odd),rate_even_float=float(even))),flush=True)\n            assert (frozen,odd0,even,odd)==(0,0,-M*mu**2*g*h*h/2,0)\n\n\nif __name__=='__main__':\n    run()\n"
+    }
+  },
+  "independent_reviews": [
+    "Scoped clear for the absence of an independently resolved feature-pair registry/holding force in the archived continuum state, and for its nonidentifiability from single-axis and averaged measurements.",
+    "Scoped clear for the frozen bulk-traction null and the conversion-induced initial even stress-rate on the prescribed interior shear plateau."
+  ],
+  "status": "Exploratory with two independent local checks. Formal review and commit pending."
+}

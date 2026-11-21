@@ -1,0 +1,451 @@
+{
+  "base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "Measured conditional site transport and relative motion in two distinct cold reductions of the same cubic 0PN carrier. No common contact reaction or force forecast computed.",
+  "source_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_bend_renewal.py": "8e89119a8f8a43d0a7fb9dbd3827c1960ba5d5e3dd7f2f2b93153d7eb19ba681",
+    "software/stage1_solver/tools/mouth_bend_static_shear.py": "17c706eb42ff1a76a01903ed5051f037a4654aab9ca8d4c1043918a80f547fec",
+    "software/stage1_solver/tools/mouth_carrier_attachment_tension.py": "3ad065608f0abaa864eb68fa9da05fdc67899874eecb9da1a706a28b203c8f24",
+    "software/stage1_solver/tools/mouth_carrier_free_center.py": "ad4fbd4dbc20f92098f66eb054226c145390e26c296168688e13ec70e310e1bb",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "software/stage1_solver/tools/mouth_connected_passage.py": "d5893b4efb31cd7fdf04c018734873dc42b142f078619a0908614a2135ef96eb",
+    "software/stage1_solver/tools/mouth_connected_strip_tags.py": "d7052f3e677e890fe9c5b41c46ce3889e7c457b9c72001d3a586ac76f4cc8c80",
+    "software/stage1_solver/tools/mouth_contact_tracking.py": "fb8351e126e7bc7368b929ac393034263eb2677b9b5338d9e9da26dac9e14cef",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_empty_bend_stiffness.py": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_bend_drive.py": "def4a7b4812929ebfeeac11525af3d652c0b6d9f70b01ef27e68aef622062bb9",
+    "software/stage1_solver/tools/mouth_free_bend_release.py": "7b95f8e53ae9735b75af77ebacc303d5bc7cf64baa81f11724b8ee6c4266961f",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "software/stage1_solver/tools/mouth_middle_tag_grip.py": "d22322f69f8e50060e962e18764a38b9eca502c44e3debec2058e9654c084793",
+    "software/stage1_solver/tools/mouth_open_row_arrivals.py": "b26ee8a9c6ca7d721464912bb869416eff9b861b2f23dbe77e9a61210303d771",
+    "software/stage1_solver/tools/mouth_order_wave_pulse.py": "d4fc14a69fd269039a58197ee6751107708c67bff9329d414581896401f50433",
+    "software/stage1_solver/tools/mouth_segment_contact_hold.py": "74322c7c7c3d4fc3d0db8fb50ec25b6b9d7417799725f8b54bbb50da2de55884",
+    "software/stage1_solver/tools/mouth_two_depth_load.py": "13d9bd92859b47620b38b3d796c6946b544005eefa1d703dfe60095897ea058e",
+    "software/stage1_solver/tools/neutral_patch_conversion.py": "cbb432510cf4f29f9a4cc886f465896dc215c47af8cc8e19bd742db66be1ecea",
+    "software/stage1_solver/tools/neutral_patch_resting_order_hold.py": "dad6d61e691fab6bfd4b867cff19ef4b54b4cdf1023da8cebb4ca68d771ff0cf",
+    "software/stage1_solver/tools/neutral_patch_sites.py": "00595a5383311d4e20ed2af851cbd9d8c2bd59255b81c312829843ed8061f827",
+    "software/stage1_solver/tools/neutral_patch_turning_neighbor.py": "2d392d95568d05f5a3cc1aa5c660c49124c82522c26272fea8815471dc139958"
+  },
+  "input_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_mobile_neighbor_hold.json": "e2f2c7e5bc7a009ac21be3e9efd90858dcbdf1a5e701b2207e0c7f5cad94f392",
+    "_scratch/s11c/mouth_flared_cubic_n34/field.npz": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz": "6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/stdout": "546eb29a2c7121fa24974ee8c964a7b578333023f439dab2d87bf8e4daed0392",
+    "_scratch/s11c/mouth_flared_cubic_n26/field.npz": "c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2",
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz": "fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847",
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/stdout": "d53098b42ca1a45fe4e80d62f245ebf060b80c7051da84f2fafddb04de3b7117"
+  },
+  "initial_open_row_source": {
+    "sha256": "fdbdd848d96a34e29b7e1955476f00550240c1a3eb150ed050ae1e5fa4daab64",
+    "note": "First four open-row controls used identical lengths at the two ends. The later version permits separate lengths and labels them in output.",
+    "text": "\"\"\"Count actual tag crossings in an axially mobile open Morse row on the 0PN carrier.\"\"\"\nimport argparse\n\nimport numpy as np\nfrom scipy.linalg import solve_banded\n\nfrom mouth_connected_passage import MIDDLE, WAIST, arc_speed, bond_derivatives, integrals, path_grid\nfrom mouth_middle_tag_grip import cubic_trace\nfrom mouth_order_wave_pulse import emit\nfrom mouth_segment_contact_hold import PITCH\n\n\ndef experiment(args):\n    trace,intake=cubic_trace(args.mesh)\n    w=path_grid(trace,48)\n    arc=np.r_[0., integrals(lambda v:np.hypot(1., trace.geometry.radius(v)[1]), w)]/PITCH\n    speed=arc_speed(trace,w)/PITCH\n    gates=[0.,arc[-1]]\n    carrier_time=trace.transit(WAIST,MIDDLE,8)\n    left,right=-args.lead,arc[-1]+args.lead\n    pos=np.arange(left,right,args.feed_pitch,dtype=float)\n    ids=np.arange(len(pos))\n    events=[{},{}]\n    def readings(i,start,stop):\n        a=sorted((t,g,tag) for tag,(t,g) in events[i].items() if start<=t<stop)\n        if len(a)<16: raise ArithmeticError('Too few crossing events')\n        ts,gap,_=zip(*a)\n        return dict(count=len(a),rate=(len(a)-1)/(ts[-1]-ts[0]),mean_gap=float(np.mean(gap)),\n                    min_gap=min(gap),max_gap=max(gap),period_scatter=float(np.std(np.diff(ts))))\n    # Four carrier passages for startup, followed by two complete observation windows.\n    window=carrier_time\n    steps=int(np.ceil(6*window/args.dt))\n    dt=6*window/steps\n    lo_stretch=float('inf')\n    for step in range(steps):\n        now=step*dt\n        dist=np.diff(pos)\n        tension,k=bond_derivatives(dist)\n        velocity=np.interp(pos,arc,speed)\n        velocity[:-1]+=tension\n        velocity[1:]-=tension\n        mat=np.empty((3,len(pos)))\n        mat[1]=1.\n        mat[1,:-1]+=dt*k\n        mat[1,1:]+=dt*k\n        mat[0,0]=mat[2,-1]=0.\n        mat[0,1:]=mat[2,:-1]=-dt*k\n        new=pos+dt*solve_banded((1,1),mat,velocity,check_finite=False)\n        if np.any(np.diff(new)<=0) or np.any(~np.isfinite(new)):\n            raise ArithmeticError('Open row lost ordering')\n        lo_stretch=min(lo_stretch,float(np.min(np.diff(new))))\n        for gate,log in zip(gates,events):\n            for j in np.flatnonzero((pos<gate)&(new>=gate)):\n                if j+1==len(new) or ids[j] in log:\n                    raise ArithmeticError('Crossing identity invalid')\n                mix=(gate-pos[j])/(new[j]-pos[j])\n                gap=dist[j]+mix*(new[j+1]-new[j]-dist[j])\n                log[int(ids[j])]=(now+mix*dt,float(gap))\n        pos=new\n        if pos[-1]>=right:\n            live=pos<right\n            ids,pos=ids[live],pos[live]\n        if pos[0]>=left+args.feed_pitch:\n            # An unloaded reservoir supplies a label when enough space opens.\n            # Its insertion time is an outcome of the preceding constituent's motion.\n            ids=np.r_[ids[0]-1,ids]\n            pos=np.r_[pos[0]-args.feed_pitch,pos]\n    emit(test='open_row',intake=intake,mesh=args.mesh,actual_dt=dt,\n         feed_pitch=args.feed_pitch,uniform_lead=args.lead,model_time=6*window,\n         minimum_spacing=lo_stretch,waist_to_middle_carrier_time=window)\n    for j in (4,5):\n        stats=[readings(i,j*window,(j+1)*window) for i in (0,1)]\n        trips=[events[1][tag][0]-t for tag,(t,_) in events[0].items()\n               if j*window<=t<(j+1)*window and tag in events[1]]\n        if not trips: raise ArithmeticError('No complete tracked passage')\n        emit(test='observed_crossings',window=j,waist=stats[0],middle=stats[1],\n             paired_ids=len(trips),mean_tag_transit=float(np.mean(trips)),\n             first_last_id_at_middle=[max(events[1]),min(events[1])])\n    # Inventory of all labels initially and finally in the measured band,\n    # including the exactly-on-waist initial label if present.\n    initial=np.arange(left,right,args.feed_pitch,dtype=float)\n    inventory=lambda x:int(np.count_nonzero((x>=0)&(x<gates[1])))\n    error=inventory(pos)-inventory(initial)-len(events[0])+len(events[1])\n    emit(test='number_balance',initial=inventory(initial),final=inventory(pos),\n         waist_crossings=len(events[0]),middle_crossings=len(events[1]),error=error)\n    if error: raise ArithmeticError('Unbalanced label flux')\n\n\nif __name__=='__main__':\n    p=argparse.ArgumentParser(description=__doc__)\n    p.add_argument('--mesh',type=int,default=34)\n    p.add_argument('--dt',type=float,default=.002)\n    p.add_argument('--lead',type=float,default=8.)\n    p.add_argument('--feed-pitch',type=float,default=1.)\n    experiment(p.parse_args())\n"
+  },
+  "runs": {
+    "connected_passage_waist_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_connected_passage.py",
+        "--feed",
+        "waist"
+      ],
+      "worker_source_sha256": "d5893b4efb31cd7fdf04c018734873dc42b142f078619a0908614a2135ef96eb",
+      "started_utc": "2026-11-20T22:12:24.328521+00:00",
+      "outcome_utc": "2026-11-20T22:12:24.840619+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52940800,
+      "wall_seconds": 0.4915840779431164,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "00362121d7327d009963f61395a7597641cb8f3f81bf2a7306dd135ff368b4bb",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"arrivals\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"reference\": \"waist\", \"natural_pitch_in_patch\": 0.9982626826663246, \"native_length_in_R\": 0.01, \"local_arc_speed\": [0.5186176245527013, 0.042501065439649294], \"period_from_crossings\": [0.019248529849468746, 0.019248529849468742], \"rate\": 51.95201959943968, \"local_pitch_in_R\": [0.009982626826663246, 0.000818083026749314], \"simultaneous_tag_gaps_in_R\": [[0.009982626826663246, 0.010032956113141783], [0.0008166901427096862, 0.00081808302674935]], \"waist_middle_time\": 10.4009349031609, \"hoop_middle_over_waist\": 1.9050014314904273, \"axial_middle_over_waist\": 0.08195067700660139}",
+        "{\"test\": \"stability\", \"reference\": \"waist\", \"range\": 5.0, \"sub\": 32, \"neighbors\": 2592, \"waves\": [4.0, 8.0, 16.0, 32.0], \"rates_at_waist\": [87.89851870086605, 22.752362386476417, 5.736753568274492, 1.4372295059875757], \"rates_at_middle\": [-177083843.3039106, -69175195.09982151, -20322747.600997977, -5321124.958262938], \"min_rate\": [-274411647.4300082, -115551673.4592563, -35581908.191857144, -9473697.305100191], \"max_rate\": [87.89851870086605, 22.752362386476417, 5.736753568274492, 1.4372295059875757], \"log_gain_end\": [1444790166.7667363, 578972196.0772711, 173343148.507453, 45710812.79433093]}",
+        "{\"test\": \"tracked_mode\", \"wave\": 4.0, \"max_log_amplification\": 1444790181.6966274, \"first_negative_depth_bracket\": [0.6130208333333333, 0.6139322916666667], \"first_negative_time\": 0.22803657062495802, \"tenfold_seed_depth\": 0.6139322916666667, \"tenfold_depth_bracket\": [0.6276041666666666, 0.628515625], \"elapsed_to_tenfold\": 0.036619769221199305}",
+        "{\"test\": \"tracked_mode\", \"wave\": 8.0, \"max_log_amplification\": 578972199.8850812, \"first_negative_depth_bracket\": [0.6111979166666667, 0.6121093750000001], \"first_negative_time\": 0.22369708194672216, \"tenfold_seed_depth\": 0.6121093750000001, \"tenfold_depth_bracket\": [0.6358072916666666, 0.63671875], \"elapsed_to_tenfold\": 0.06324053645619682}",
+        "{\"test\": \"tracked_mode\", \"wave\": 16.0, \"max_log_amplification\": 173343149.46426553, \"first_negative_depth_bracket\": [0.6111979166666667, 0.6121093750000001], \"first_negative_time\": 0.22369708194672216, \"tenfold_seed_depth\": 0.6111979166666667, \"tenfold_depth_bracket\": [0.6485677083333332, 0.6494791666666666], \"elapsed_to_tenfold\": 0.10281797465227474}",
+        "{\"test\": \"tracked_mode\", \"wave\": 32.0, \"max_log_amplification\": 45710813.03383646, \"first_negative_depth_bracket\": [0.6102864583333334, 0.6111979166666667], \"first_negative_time\": 0.22154384612691772, \"tenfold_seed_depth\": 0.6111979166666667, \"tenfold_depth_bracket\": [0.6640625, 0.6649739583333334], \"elapsed_to_tenfold\": 0.1537501297847119}"
+      ]
+    },
+    "connected_passage_waistfine_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_connected_passage.py",
+        "--feed",
+        "waist",
+        "--range",
+        "7",
+        "--sub",
+        "96"
+      ],
+      "worker_source_sha256": "d5893b4efb31cd7fdf04c018734873dc42b142f078619a0908614a2135ef96eb",
+      "started_utc": "2026-11-20T22:12:25.041731+00:00",
+      "outcome_utc": "2026-11-20T22:12:25.993907+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 53358592,
+      "wall_seconds": 0.9069742620922625,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "13218a4b083d0da14b9d65782c10b7741be96779b58acf0e3aaf73e8416eb44e",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"arrivals\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"reference\": \"waist\", \"natural_pitch_in_patch\": 0.9982626826663246, \"native_length_in_R\": 0.01, \"local_arc_speed\": [0.5186176245527013, 0.042501065439649294], \"period_from_crossings\": [0.019248529849468746, 0.019248529849468742], \"rate\": 51.95201959943968, \"local_pitch_in_R\": [0.009982626826663246, 0.000818083026749314], \"simultaneous_tag_gaps_in_R\": [[0.009982626826663246, 0.010032954357728833], [0.0008166965134900339, 0.00081808302674935]], \"waist_middle_time\": 10.40093490316087, \"hoop_middle_over_waist\": 1.9050014314904273, \"axial_middle_over_waist\": 0.08195067700660139}",
+        "{\"test\": \"stability\", \"reference\": \"waist\", \"range\": 7.0, \"sub\": 96, \"neighbors\": 4840, \"waves\": [4.0, 8.0, 16.0, 32.0], \"rates_at_waist\": [87.89851870086605, 22.752362386476417, 5.736753568274492, 1.4372295059875757], \"rates_at_middle\": [-177083843.3039106, -69175195.09982151, -20322747.600997977, -5321124.958262938], \"min_rate\": [-275102745.70825225, -115895891.71621731, -35699057.24290168, -9505999.38830027], \"max_rate\": [87.89851870086605, 22.752362386476417, 5.736753568274492, 1.4372295059875757], \"log_gain_end\": [1444904428.5314715, 579024343.6657383, 173359941.1249446, 45715352.26556126]}",
+        "{\"test\": \"tracked_mode\", \"wave\": 4.0, \"max_log_amplification\": 1444904443.4626362, \"first_negative_depth_bracket\": [0.6136284722222223, 0.6139322916666667], \"first_negative_time\": 0.228036570624958, \"tenfold_seed_depth\": 0.6136284722222223, \"tenfold_depth_bracket\": [0.6279079861111111, 0.6282118055555556], \"elapsed_to_tenfold\": 0.03654534764114553}",
+        "{\"test\": \"tracked_mode\", \"wave\": 8.0, \"max_log_amplification\": 579024347.4739876, \"first_negative_depth_bracket\": [0.6115017361111111, 0.6118055555555556], \"first_negative_time\": 0.22297812415712198, \"tenfold_seed_depth\": 0.6118055555555556, \"tenfold_depth_bracket\": [0.6358072916666666, 0.6361111111111111], \"elapsed_to_tenfold\": 0.06226407844448817}",
+        "{\"test\": \"tracked_mode\", \"wave\": 16.0, \"max_log_amplification\": 173359942.08181563, \"first_negative_depth_bracket\": [0.6111979166666667, 0.6115017361111111], \"first_negative_time\": 0.22226038035868556, \"tenfold_seed_depth\": 0.6111979166666667, \"tenfold_depth_bracket\": [0.6485677083333332, 0.6488715277777777], \"elapsed_to_tenfold\": 0.10094909630106741}",
+        "{\"test\": \"tracked_mode\", \"wave\": 32.0, \"max_log_amplification\": 45715352.50508155, \"first_negative_depth_bracket\": [0.6108940972222222, 0.6111979166666667], \"first_negative_time\": 0.2215438461269177, \"tenfold_seed_depth\": 0.6111979166666667, \"tenfold_depth_bracket\": [0.6640625, 0.6643663194444445], \"elapsed_to_tenfold\": 0.15162784559612347}"
+      ]
+    },
+    "connected_passage_waist26_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_connected_passage.py",
+        "--feed",
+        "waist",
+        "--mesh",
+        "26"
+      ],
+      "worker_source_sha256": "d5893b4efb31cd7fdf04c018734873dc42b142f078619a0908614a2135ef96eb",
+      "started_utc": "2026-11-20T22:12:24.618233+00:00",
+      "outcome_utc": "2026-11-20T22:12:25.151904+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 51408896,
+      "wall_seconds": 0.5033813766203821,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "00a285b8e4937c004c2b5826b006fc747f2cfab52f8f31603212178bbbd365d5",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"arrivals\", \"intake\": 0.24999999999797987, \"mesh\": 26, \"reference\": \"waist\", \"natural_pitch_in_patch\": 0.9982626826663246, \"native_length_in_R\": 0.01, \"local_arc_speed\": [0.5189171004308242, 0.042577190151697385], \"period_from_crossings\": [0.019237421195746493, 0.019237421195746486], \"rate\": 51.982019306262636, \"local_pitch_in_R\": [0.009982626826663246, 0.000819075340279592], \"simultaneous_tag_gaps_in_R\": [[0.009982626826663246, 0.010030544642985867], [0.0008176884221612335, 0.0008190753402795847]], \"waist_middle_time\": 10.401120980772617, \"hoop_middle_over_waist\": 1.9050014314904273, \"axial_middle_over_waist\": 0.08205008105600727}",
+        "{\"test\": \"stability\", \"reference\": \"waist\", \"range\": 5.0, \"sub\": 32, \"neighbors\": 2592, \"waves\": [4.0, 8.0, 16.0, 32.0], \"rates_at_waist\": [87.89851870086605, 22.752362386476417, 5.736753568274492, 1.4372295059875757], \"rates_at_middle\": [-176551099.71386474, -68933970.30705473, -20246284.62927246, -5300608.881221412], \"min_rate\": [-278458128.01440233, -117569840.28822774, -36269526.44810652, -9663384.256736347], \"max_rate\": [87.89851870086605, 22.752362386476417, 5.736753568274492, 1.4372295059875757], \"log_gain_end\": [1446892955.1859663, 579950041.3009511, 173661845.30175716, 45797335.86037383]}",
+        "{\"test\": \"tracked_mode\", \"wave\": 4.0, \"max_log_amplification\": 1446892970.15767, \"first_negative_depth_bracket\": [0.6128289473684211, 0.6139802631578948], \"first_negative_time\": 0.22811615760946471, \"tenfold_seed_depth\": 0.6139802631578948, \"tenfold_depth_bracket\": [0.6266447368421053, 0.627796052631579], \"elapsed_to_tenfold\": 0.03465386714247251}",
+        "{\"test\": \"tracked_mode\", \"wave\": 8.0, \"max_log_amplification\": 579950045.1212302, \"first_negative_depth_bracket\": [0.6116776315789474, 0.6128289473684211], \"first_negative_time\": 0.22536794174139005, \"tenfold_seed_depth\": 0.6116776315789474, \"tenfold_depth_bracket\": [0.6347039473684211, 0.6358552631578948], \"elapsed_to_tenfold\": 0.061905096192906184}",
+        "{\"test\": \"tracked_mode\", \"wave\": 16.0, \"max_log_amplification\": 173661846.26161593, \"first_negative_depth_bracket\": [0.6105263157894737, 0.6116776315789474], \"first_negative_time\": 0.22263984679040894, \"tenfold_seed_depth\": 0.6116776315789474, \"tenfold_depth_bracket\": [0.6485197368421053, 0.649671052631579], \"elapsed_to_tenfold\": 0.10229846302341922}",
+        "{\"test\": \"tracked_mode\", \"wave\": 32.0, \"max_log_amplification\": 45797336.100632116, \"first_negative_depth_bracket\": [0.6105263157894737, 0.6116776315789474], \"first_negative_time\": 0.22263984679040894, \"tenfold_seed_depth\": 0.6116776315789474, \"tenfold_depth_bracket\": [0.6634868421052632, 0.6646381578947369], \"elapsed_to_tenfold\": 0.15147416986236045}"
+      ]
+    },
+    "connected_passage_middleref_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_connected_passage.py",
+        "--feed",
+        "middle"
+      ],
+      "worker_source_sha256": "d5893b4efb31cd7fdf04c018734873dc42b142f078619a0908614a2135ef96eb",
+      "started_utc": "2026-11-20T22:12:24.896475+00:00",
+      "outcome_utc": "2026-11-20T22:12:25.429144+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52682752,
+      "wall_seconds": 0.5014380989596248,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "98da8bd674b756903178e9c445b59b3cd396e78056216c9f59b73efd719f25e7",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"arrivals\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"reference\": \"middle\", \"natural_pitch_in_patch\": 0.9982626826663246, \"native_length_in_R\": 0.01, \"local_arc_speed\": [0.5186176245527013, 0.042501065439649294], \"period_from_crossings\": [0.23487944886554402, 0.234879448865544], \"rate\": 4.257503178034306, \"local_pitch_in_R\": [0.12181262182689612, 0.009982626826663246], \"simultaneous_tag_gaps_in_R\": [[0.12181262182689612, 0.12050649926234659], [0.00978962053024146, 0.009982626826663177]], \"waist_middle_time\": 10.4009349031609, \"hoop_middle_over_waist\": 1.9050014314904273, \"axial_middle_over_waist\": 0.0819506770066014}",
+        "{\"test\": \"stability\", \"reference\": \"middle\", \"range\": 5.0, \"sub\": 32, \"neighbors\": 536, \"waves\": [4.0, 8.0, 16.0, 32.0], \"rates_at_waist\": [-1.7291798269193234e-21, -4.493991950994493e-22, -1.1343965434906218e-22, -2.8428358748751074e-23], \"rates_at_middle\": [87.89851870086605, 22.752362386476417, 5.736753568274492, 1.4372295059875757], \"min_rate\": [-3.2940072747408506, -9.021567157749905, -2.8505913457433967, -0.7507558446759883], \"max_rate\": [201.9172437735872, 51.71787021208943, 13.009442228702856, 3.257439405775012], \"log_gain_end\": [-661.3379760882838, -152.6421802359502, -37.249447569391926, -9.253479413679631]}",
+        "{\"test\": \"tracked_mode\", \"wave\": 4.0, \"max_log_amplification\": 2.637067209805301, \"first_negative_depth_bracket\": [0.5, 0.5], \"first_negative_time\": 0.0, \"tenfold_seed_depth\": 0.5, \"tenfold_depth_bracket\": [0.8919270833333333, 0.8928385416666667], \"elapsed_to_tenfold\": 2.7202869685499613}",
+        "{\"test\": \"tracked_mode\", \"wave\": 8.0, \"max_log_amplification\": 7.3537570560021805, \"first_negative_depth_bracket\": [0.5, 0.5], \"first_negative_time\": 0.0, \"tenfold_seed_depth\": 1.076953125, \"tenfold_depth_bracket\": [1.0888020833333332, 1.0897135416666666], \"elapsed_to_tenfold\": 0.38172161025214013}",
+        "{\"test\": \"tracked_mode\", \"wave\": 16.0, \"max_log_amplification\": 2.473586798127709, \"first_negative_depth_bracket\": [0.5, 0.5], \"first_negative_time\": 0.0, \"tenfold_seed_depth\": 1.0760416666666666, \"tenfold_depth_bracket\": [1.1124999999999998, 1.1134114583333332], \"elapsed_to_tenfold\": 1.0975127482726528}",
+        "{\"test\": \"tracked_mode\", \"wave\": 32.0, \"max_log_amplification\": 0.6601832380481545, \"first_negative_depth_bracket\": [0.5, 0.5], \"first_negative_time\": 0.0}"
+      ]
+    },
+    "connected_tags_waist_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_connected_strip_tags.py",
+        "--shape",
+        "wave",
+        "--start",
+        ".50",
+        "--end",
+        ".55"
+      ],
+      "worker_source_sha256": "d7052f3e677e890fe9c5b41c46ce3889e7c457b9c72001d3a586ac76f4cc8c80",
+      "started_utc": "2026-11-20T22:14:53.407040+00:00",
+      "outcome_utc": "2026-11-20T22:14:54.241627+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52678656,
+      "wall_seconds": 0.8136874190531671,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "79360aa01af275b097263e9fa95df6c1b4af820316825284eb022ba2c3127a2f",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"actual_tags\", \"mesh\": 34, \"depth\": [0.5, 0.55], \"transit_time\": 0.0948903813904399, \"shape\": \"wave\", \"period_in_pitches\": 32, \"reference_tag_distance\": 4.0, \"amplitude\": 1e-06, \"normalized_relative_offset\": 0.1410629449734691, \"physical_offset_over_initial\": 0.14201791480961537, \"max_absolute_shift\": 7.053147340046031e-08, \"maximum_even_axial_shift\": 1.5714094959896575e-15, \"linear_gain\": 0.14106294455788834, \"relative_error\": 2.9460660577740327e-09}",
+        "{\"test\": \"actual_tags\", \"mesh\": 34, \"depth\": [0.5, 0.55], \"transit_time\": 0.0948903813904399, \"shape\": \"wave\", \"period_in_pitches\": 32, \"reference_tag_distance\": 4.0, \"amplitude\": 5e-07, \"normalized_relative_offset\": 0.1410629478565906, \"physical_offset_over_initial\": 0.14201791771225505, \"max_absolute_shift\": 3.526574000323718e-08, \"maximum_even_axial_shift\": 3.9398063879970487e-16, \"linear_gain\": 0.14106294455788834, \"relative_error\": 2.3384612246601932e-08}"
+      ]
+    },
+    "connected_tags_bend_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_connected_strip_tags.py",
+        "--shape",
+        "wave",
+        "--start",
+        ".612",
+        "--end",
+        ".6362"
+      ],
+      "worker_source_sha256": "d7052f3e677e890fe9c5b41c46ce3889e7c457b9c72001d3a586ac76f4cc8c80",
+      "started_utc": "2026-11-20T22:14:53.469477+00:00",
+      "outcome_utc": "2026-11-20T22:14:57.495161+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52678656,
+      "wall_seconds": 3.9984580548480153,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "22789c2e8971648b6570f9ead886daca87e8077fd627b83fa11277e1ca4e7e45",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"actual_tags\", \"mesh\": 34, \"depth\": [0.612, 0.6362], \"transit_time\": 0.06205163945649021, \"shape\": \"wave\", \"period_in_pitches\": 32, \"reference_tag_distance\": 4.0, \"amplitude\": 1e-06, \"normalized_relative_offset\": 10.859017356374757, \"physical_offset_over_initial\": 11.111917088185429, \"max_absolute_shift\": 5.429508678187959e-06, \"maximum_even_axial_shift\": 5.3306407131247964e-12, \"linear_gain\": 10.859017248427946, \"relative_error\": 9.940753109560774e-09}",
+        "{\"test\": \"actual_tags\", \"mesh\": 34, \"depth\": [0.612, 0.6362], \"transit_time\": 0.06205163945649021, \"shape\": \"wave\", \"period_in_pitches\": 32, \"reference_tag_distance\": 4.0, \"amplitude\": 5e-07, \"normalized_relative_offset\": 10.85901727540113, \"physical_offset_over_initial\": 11.111917005325976, \"max_absolute_shift\": 2.7147543188481882e-06, \"maximum_even_axial_shift\": 1.3326577305581315e-12, \"linear_gain\": 10.859017248427946, \"relative_error\": 2.4839432732903788e-09}"
+      ]
+    },
+    "connected_tags_group_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_connected_strip_tags.py",
+        "--shape",
+        "localized",
+        "--start",
+        ".612",
+        "--end",
+        ".63"
+      ],
+      "worker_source_sha256": "d7052f3e677e890fe9c5b41c46ce3889e7c457b9c72001d3a586ac76f4cc8c80",
+      "started_utc": "2026-11-20T22:14:53.611535+00:00",
+      "outcome_utc": "2026-11-20T22:14:56.348200+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52420608,
+      "wall_seconds": 2.696864454075694,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "971b5ddb16a9023604318c21d29637970abb29794ce5f963c6dd0c0df80b4cfd",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"actual_tags\", \"mesh\": 34, \"depth\": [0.612, 0.63], \"transit_time\": 0.04515502104478815, \"shape\": \"localized\", \"period_in_pitches\": 32, \"reference_tag_distance\": 16.0, \"amplitude\": 1e-06, \"normalized_relative_offset\": 3.3012474497460484, \"physical_offset_over_initial\": 3.3566497947427845, \"max_absolute_shift\": 3.183749257454449e-06, \"maximum_even_axial_shift\": 3.518117669511765e-12}",
+        "{\"test\": \"actual_tags\", \"mesh\": 34, \"depth\": [0.612, 0.63], \"transit_time\": 0.04515502104478815, \"shape\": \"localized\", \"period_in_pitches\": 32, \"reference_tag_distance\": 16.0, \"amplitude\": 5e-07, \"normalized_relative_offset\": 3.301247449803117, \"physical_offset_over_initial\": 3.356649794800811, \"max_absolute_shift\": 1.591874628756422e-06, \"maximum_even_axial_shift\": 8.795367617866031e-13}"
+      ]
+    },
+    "connected_tags_groupwide_02": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_connected_strip_tags.py",
+        "--shape",
+        "localized",
+        "--start",
+        ".612",
+        "--end",
+        ".63",
+        "--cycles",
+        "8"
+      ],
+      "worker_source_sha256": "d7052f3e677e890fe9c5b41c46ce3889e7c457b9c72001d3a586ac76f4cc8c80",
+      "started_utc": "2026-11-20T22:15:50.402820+00:00",
+      "outcome_utc": "2026-11-20T22:15:55.753691+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 53895168,
+      "wall_seconds": 5.3347074198536575,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "d7b1548627fa1b3c7400e69504ebbdd86c7ef8c9a878713350b6038150b640dd",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"actual_tags\", \"mesh\": 34, \"depth\": [0.612, 0.63], \"transit_time\": 0.04515502104478815, \"shape\": \"localized\", \"period_in_pitches\": 64, \"reference_tag_distance\": 32.0, \"amplitude\": 1e-06, \"normalized_relative_offset\": 3.301247457829111, \"physical_offset_over_initial\": 3.356649802961499, \"max_absolute_shift\": 3.2424983576433073e-06, \"maximum_even_axial_shift\": 3.5187012106784435e-12}",
+        "{\"test\": \"actual_tags\", \"mesh\": 34, \"depth\": [0.612, 0.63], \"transit_time\": 0.04515502104478815, \"shape\": \"localized\", \"period_in_pitches\": 64, \"reference_tag_distance\": 32.0, \"amplitude\": 5e-07, \"normalized_relative_offset\": 3.301247457884776, \"physical_offset_over_initial\": 3.3566498030180982, \"max_absolute_shift\": 1.6212491788486122e-06, \"maximum_even_axial_shift\": 8.796788161916185e-13}"
+      ]
+    },
+    "connected_openrow_base_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_open_row_arrivals.py"
+      ],
+      "worker_source_sha256": "fdbdd848d96a34e29b7e1955476f00550240c1a3eb150ed050ae1e5fa4daab64",
+      "started_utc": "2026-11-20T22:15:41.364070+00:00",
+      "outcome_utc": "2026-11-20T22:15:44.815617+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52981760,
+      "wall_seconds": 3.3930850848555565,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "c70c1f4795cbf6006325d3068c44fbc54449aae8d768223e4db3b539d8c5c39c",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"open_row\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"actual_dt\": 0.001999987482580705, \"feed_pitch\": 1.0, \"uniform_lead\": 8.0, \"model_time\": 62.40560941896574, \"minimum_spacing\": 0.6800347482800255, \"waist_to_middle_carrier_time\": 10.400934903160957}",
+        "{\"test\": \"observed_crossings\", \"window\": 4, \"waist\": {\"count\": 287, \"rate\": 27.550185069811075, \"mean_gap\": 0.7683986773608276, \"min_gap\": 0.7682577559660774, \"max_gap\": 0.7685038945950288, \"period_scatter\": 3.203290267040003e-05}, \"middle\": {\"count\": 287, \"rate\": 27.550485137362767, \"mean_gap\": 0.8006492460044934, \"min_gap\": 0.800561311432708, \"max_gap\": 0.80076756557661, \"period_scatter\": 2.1058790467418525e-05}, \"paired_ids\": 287, \"mean_tag_transit\": 4.394558082977564, \"first_last_id_at_middle\": [93, -1605]}",
+        "{\"test\": \"observed_crossings\", \"window\": 5, \"waist\": {\"count\": 286, \"rate\": 27.550613849755997, \"mean_gap\": 0.7683973500958049, \"min_gap\": 0.7682577559660785, \"max_gap\": 0.7685038945950288, \"period_scatter\": 3.196098844288086e-05}, \"middle\": {\"count\": 286, \"rate\": 27.55030912846586, \"mean_gap\": 0.8006496711145105, \"min_gap\": 0.8005613114327079, \"max_gap\": 0.8007675655766093, \"period_scatter\": 2.123053652233736e-05}, \"paired_ids\": 165, \"mean_tag_transit\": 4.394559729144024, \"first_last_id_at_middle\": [93, -1605]}",
+        "{\"test\": \"number_balance\", \"initial\": 86, \"final\": 121, \"waist_crossings\": 1734, \"middle_crossings\": 1699, \"error\": 0}"
+      ]
+    },
+    "connected_openrow_fine_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_open_row_arrivals.py",
+        "--dt",
+        ".001"
+      ],
+      "worker_source_sha256": "fdbdd848d96a34e29b7e1955476f00550240c1a3eb150ed050ae1e5fa4daab64",
+      "started_utc": "2026-11-20T22:15:41.283387+00:00",
+      "outcome_utc": "2026-11-20T22:15:47.339465+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52989952,
+      "wall_seconds": 6.007165936753154,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "f953ac82f97669d467228be314511a77966dad61f3e6e8a6522870589cc0289a",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"open_row\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"actual_dt\": 0.0009999937412903525, \"feed_pitch\": 1.0, \"uniform_lead\": 8.0, \"model_time\": 62.40560941896574, \"minimum_spacing\": 0.6800334707406535, \"waist_to_middle_carrier_time\": 10.400934903160957}",
+        "{\"test\": \"observed_crossings\", \"window\": 4, \"waist\": {\"count\": 287, \"rate\": 27.552859094892614, \"mean_gap\": 0.7681656177947808, \"min_gap\": 0.7681051133783813, \"max_gap\": 0.7682183065638213, \"period_scatter\": 1.6673386378956605e-05}, \"middle\": {\"count\": 287, \"rate\": 27.552868024760922, \"mean_gap\": 0.800840104318856, \"min_gap\": 0.8007968648411637, \"max_gap\": 0.8008895155894146, \"period_scatter\": 1.0658206907051693e-05}, \"paired_ids\": 287, \"mean_tag_transit\": 4.394192621222139, \"first_last_id_at_middle\": [93, -1605]}",
+        "{\"test\": \"observed_crossings\", \"window\": 5, \"waist\": {\"count\": 286, \"rate\": 27.552789806968324, \"mean_gap\": 0.76816565873898, \"min_gap\": 0.768105113378381, \"max_gap\": 0.768218306563796, \"period_scatter\": 1.6671228687202628e-05}, \"middle\": {\"count\": 286, \"rate\": 27.55288607914616, \"mean_gap\": 0.8008398661696305, \"min_gap\": 0.8007968648411767, \"max_gap\": 0.8008895155894148, \"period_scatter\": 1.0652611435909838e-05}, \"paired_ids\": 165, \"mean_tag_transit\": 4.3941928588691885, \"first_last_id_at_middle\": [93, -1605]}",
+        "{\"test\": \"number_balance\", \"initial\": 86, \"final\": 121, \"waist_crossings\": 1734, \"middle_crossings\": 1699, \"error\": 0}"
+      ]
+    },
+    "connected_openrow_dense_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_open_row_arrivals.py",
+        "--feed-pitch",
+        ".95"
+      ],
+      "worker_source_sha256": "fdbdd848d96a34e29b7e1955476f00550240c1a3eb150ed050ae1e5fa4daab64",
+      "started_utc": "2026-11-20T22:15:40.974867+00:00",
+      "outcome_utc": "2026-11-20T22:15:44.433241+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52989952,
+      "wall_seconds": 3.4414476067759097,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "508fbdf32fc5c9d8dd252c81b4a20e4817db6b02e26fd32ea2838c78201bcb32",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"open_row\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"actual_dt\": 0.001999987482580705, \"feed_pitch\": 0.95, \"uniform_lead\": 8.0, \"model_time\": 62.40560941896574, \"minimum_spacing\": 0.6798790977525684, \"waist_to_middle_carrier_time\": 10.400934903160957}",
+        "{\"test\": \"observed_crossings\", \"window\": 4, \"waist\": {\"count\": 287, \"rate\": 27.59196020550868, \"mean_gap\": 0.7676217075788284, \"min_gap\": 0.7674987300017987, \"max_gap\": 0.7677141171966607, \"period_scatter\": 3.208062850973291e-05}, \"middle\": {\"count\": 287, \"rate\": 27.592063983354784, \"mean_gap\": 0.8005334589639111, \"min_gap\": 0.8004431993625326, \"max_gap\": 0.8006547937119536, \"period_scatter\": 2.0325935546169006e-05}, \"paired_ids\": 287, \"mean_tag_transit\": 4.389071713534868, \"first_last_id_at_middle\": [98, -1606]}",
+        "{\"test\": \"observed_crossings\", \"window\": 5, \"waist\": {\"count\": 287, \"rate\": 27.59216595300011, \"mean_gap\": 0.7676206145425011, \"min_gap\": 0.7674987300018017, \"max_gap\": 0.7677141171966606, \"period_scatter\": 3.213319900820655e-05}, \"middle\": {\"count\": 287, \"rate\": 27.59214830826144, \"mean_gap\": 0.8005335425858832, \"min_gap\": 0.8004431993625326, \"max_gap\": 0.8006547937119488, \"period_scatter\": 2.037064299666835e-05}, \"paired_ids\": 166, \"mean_tag_transit\": 4.389071420123182, \"first_last_id_at_middle\": [98, -1606]}",
+        "{\"test\": \"number_balance\", \"initial\": 90, \"final\": 121, \"waist_crossings\": 1736, \"middle_crossings\": 1705, \"error\": 0}"
+      ]
+    },
+    "connected_openrow_longlead_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_open_row_arrivals.py",
+        "--lead",
+        "24"
+      ],
+      "worker_source_sha256": "fdbdd848d96a34e29b7e1955476f00550240c1a3eb150ed050ae1e5fa4daab64",
+      "started_utc": "2026-11-20T22:15:41.159244+00:00",
+      "outcome_utc": "2026-11-20T22:15:44.639444+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52989952,
+      "wall_seconds": 3.4512354601174593,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "3ebc0986bfa42e66567301c7d85458547bb447b6db65a101b6931fd97da37643",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"open_row\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"actual_dt\": 0.001999987482580705, \"feed_pitch\": 1.0, \"uniform_lead\": 24.0, \"model_time\": 62.40560941896574, \"minimum_spacing\": 0.6503465179750272, \"waist_to_middle_carrier_time\": 10.400934903160957}",
+        "{\"test\": \"observed_crossings\", \"window\": 4, \"waist\": {\"count\": 324, \"rate\": 31.159561857347448, \"mean_gap\": 0.6943122322639474, \"min_gap\": 0.6942801109071993, \"max_gap\": 0.6943356992993373, \"period_scatter\": 8.62542298240216e-06}, \"middle\": {\"count\": 324, \"rate\": 31.159645691052415, \"mean_gap\": 0.7197894420561596, \"min_gap\": 0.7197703539652235, \"max_gap\": 0.7198164980782872, \"period_scatter\": 6.885218118779413e-06}, \"paired_ids\": 324, \"mean_tag_transit\": 4.1143374801395165, \"first_last_id_at_middle\": [109, -1808]}",
+        "{\"test\": \"observed_crossings\", \"window\": 5, \"waist\": {\"count\": 324, \"rate\": 31.159625137182964, \"mean_gap\": 0.6943122031303078, \"min_gap\": 0.6942801109071983, \"max_gap\": 0.6943356992993028, \"period_scatter\": 8.597399920292436e-06}, \"middle\": {\"count\": 324, \"rate\": 31.159618585637933, \"mean_gap\": 0.7197893029612996, \"min_gap\": 0.7197703539652542, \"max_gap\": 0.7198164980782912, \"period_scatter\": 6.8923262647892065e-06}, \"paired_ids\": 196, \"mean_tag_transit\": 4.114337122495137, \"first_last_id_at_middle\": [109, -1808]}",
+        "{\"test\": \"number_balance\", \"initial\": 86, \"final\": 128, \"waist_crossings\": 1960, \"middle_crossings\": 1918, \"error\": 0}"
+      ]
+    },
+    "connected_openrow_inlet24_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_open_row_arrivals.py",
+        "--lead",
+        "24",
+        "--exit-lead",
+        "8"
+      ],
+      "worker_source_sha256": "b26ee8a9c6ca7d721464912bb869416eff9b861b2f23dbe77e9a61210303d771",
+      "started_utc": "2026-11-20T22:16:36.123738+00:00",
+      "outcome_utc": "2026-11-20T22:16:39.496941+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52989952,
+      "wall_seconds": 3.352996078785509,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "973ce7f4f9e6326eec2cbd738199b30867115766ee6a1f3d08dcffac0ae546bf",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"open_row\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"actual_dt\": 0.001999987482580705, \"feed_pitch\": 1.0, \"inlet_lead\": 24.0, \"outlet_lead\": 8.0, \"model_time\": 62.40560941896574, \"minimum_spacing\": 0.6584510371102752, \"waist_to_middle_carrier_time\": 10.400934903160957}",
+        "{\"test\": \"observed_crossings\", \"window\": 4, \"waist\": {\"count\": 356, \"rate\": 34.20343874249461, \"mean_gap\": 0.7014081236964048, \"min_gap\": 0.7013946534785384, \"max_gap\": 0.7014186180906503, \"period_scatter\": 3.3972372792199898e-06}, \"middle\": {\"count\": 356, \"rate\": 34.203613510421135, \"mean_gap\": 0.784476907087287, \"min_gap\": 0.7843278436714849, \"max_gap\": 0.7846148057166122, \"period_scatter\": 1.5595726807934596e-05}, \"paired_ids\": 356, \"mean_tag_transit\": 3.6613981313266284, \"first_last_id_at_middle\": [109, -1997]}",
+        "{\"test\": \"observed_crossings\", \"window\": 5, \"waist\": {\"count\": 356, \"rate\": 34.20347561796182, \"mean_gap\": 0.7014080541243018, \"min_gap\": 0.701394653478537, \"max_gap\": 0.7014186180906128, \"period_scatter\": 3.3956234144495227e-06}, \"middle\": {\"count\": 356, \"rate\": 34.20345911954451, \"mean_gap\": 0.7844768931364818, \"min_gap\": 0.7843278436716214, \"max_gap\": 0.7846148057166153, \"period_scatter\": 1.5614435333772252e-05}, \"paired_ids\": 231, \"mean_tag_transit\": 3.6613973369613273, \"first_last_id_at_middle\": [109, -1997]}",
+        "{\"test\": \"number_balance\", \"initial\": 86, \"final\": 125, \"waist_crossings\": 2146, \"middle_crossings\": 2107, \"error\": 0}"
+      ]
+    },
+    "connected_openrow_outlet24_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_open_row_arrivals.py",
+        "--lead",
+        "8",
+        "--exit-lead",
+        "24"
+      ],
+      "worker_source_sha256": "b26ee8a9c6ca7d721464912bb869416eff9b861b2f23dbe77e9a61210303d771",
+      "started_utc": "2026-11-20T22:16:36.162687+00:00",
+      "outcome_utc": "2026-11-20T22:16:39.483239+00:00",
+      "limits_verified": true,
+      "swap_max": 0,
+      "cap_bytes": 2147483648,
+      "peak_sampled_bytes": 52752384,
+      "wall_seconds": 3.292637635022402,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "0bce5fad2fd93b9f3790045980285f5f21cf60d4cc1487535a5fc0d225812958",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"open_row\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"actual_dt\": 0.001999987482580705, \"feed_pitch\": 1.0, \"inlet_lead\": 8.0, \"outlet_lead\": 24.0, \"model_time\": 62.40560941896574, \"minimum_spacing\": 0.6727212149683766, \"waist_to_middle_carrier_time\": 10.400934903160957}",
+        "{\"test\": \"observed_crossings\", \"window\": 4, \"waist\": {\"count\": 258, \"rate\": 24.803941538931788, \"mean_gap\": 0.7627320327245306, \"min_gap\": 0.762614552476282, \"max_gap\": 0.7628240232221025, \"period_scatter\": 3.99375150661274e-05}, \"middle\": {\"count\": 258, \"rate\": 24.803859606874184, \"mean_gap\": 0.7380890495980121, \"min_gap\": 0.7380782868599138, \"max_gap\": 0.7381019165314652, \"period_scatter\": 5.03870646814953e-06}, \"paired_ids\": 258, \"mean_tag_transit\": 4.982994684379242, \"first_last_id_at_middle\": [93, -1435]}",
+        "{\"test\": \"observed_crossings\", \"window\": 5, \"waist\": {\"count\": 258, \"rate\": 24.80368906662619, \"mean_gap\": 0.7627317399873152, \"min_gap\": 0.7626145524762761, \"max_gap\": 0.7628240232220529, \"period_scatter\": 4.018305086243259e-05}, \"middle\": {\"count\": 258, \"rate\": 24.80389005224654, \"mean_gap\": 0.7380890715471641, \"min_gap\": 0.7380782868599284, \"max_gap\": 0.7381019165314548, \"period_scatter\": 5.0248572926210145e-06}, \"paired_ids\": 134, \"mean_tag_transit\": 4.982996050593136, \"first_last_id_at_middle\": [93, -1435]}",
+        "{\"test\": \"number_balance\", \"initial\": 86, \"final\": 124, \"waist_crossings\": 1567, \"middle_crossings\": 1529, \"error\": 0}"
+      ]
+    }
+  },
+  "interpretation": "The affine arrival count repeats supplied material density. The open-row crossing counts come from independent mobile tag trajectories. Only the open row lets the background axial transport change under the nonlinear bond forces. The connected sheet independently tests a local affine background and perturbations uniform around the hoop. A single self-consistent held-wall force is unmeasured.",
+  "review": [
+    {
+      "verbatim": "Scoped clear for the transverse linear stability and conditional tag transport of the locally affine triangular Morse strip."
+    },
+    {
+      "verbatim": "Scoped clear for weak relative tag motion on the locally affine Morse sheet and for counted, reservoir-dependent crossings in the separate mobile longitudinal row."
+    },
+    {
+      "verbatim": "Scoped clear for the reported tag gains, four conditional crossing preparations, and the need for a joint wall-traction test."
+    }
+  ],
+  "status": "Independent local scientific review. Formal project review and commit pending."
+}

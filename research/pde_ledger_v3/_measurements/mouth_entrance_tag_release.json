@@ -1,0 +1,590 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "0PN fixed intake, one matched held material path and a separate finite-bath flexible-carrier identifiability test. No microscopic strip force was added to the free carrier. Two independent bend tensions are hypotheses.",
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_entrance_tag_transport.cpp": "2a71a9d0b3a90cd3f2ae7fdc1403a8f18993d5eaa80f8fb8a640075866c9bec4",
+    "software/stage1_solver/tools/mouth_entrance_tag_path.py": "86e9c95dc8a60e4ec583a8fd9f131dd8797f73b3acdf84323c696fec1c0bfb2b",
+    "software/stage1_solver/tools/mouth_entrance_release_gate.py": "b056a5849dcc5cad9067cb4877a7f3210fcf785a86f6eb97b6d18ee67d6979c3",
+    "software/stage1_solver/tools/mouth_free_bend_drive.py": "def4a7b4812929ebfeeac11525af3d652c0b6d9f70b01ef27e68aef622062bb9",
+    "software/stage1_solver/tools/mouth_free_bend_incident.py": "7034c6b0c55c61cabafcbb751b5102a395730c782192ed44f1886c24af686a31",
+    "software/stage1_solver/tools/mouth_free_bend_inertia.py": "4867cafb54e9b8ab2b1ebb171110411c628ecec39be3696b66a879e22e989b95",
+    "software/stage1_solver/tools/mouth_free_bend_release.py": "7b95f8e53ae9735b75af77ebacc303d5bc7cf64baa81f11724b8ee6c4266961f",
+    "software/stage1_solver/tools/mouth_free_bend_held_flow.py": "0bcf2c7e3576a8a65d675f676dc451cdba292a5197f2b3df670679b7d57d7be0",
+    "software/stage1_solver/tools/mouth_carrier_attachment_tension.py": "3ad065608f0abaa864eb68fa9da05fdc67899874eecb9da1a706a28b203c8f24",
+    "software/stage1_solver/tools/mouth_joint_strip_hold.py": "c299c0cc70aafa99c391eda3982f1f5e276567c20ea61dbedda64a4eeb1ffa80",
+    "software/stage1_solver/tools/mouth_connected_passage.py": "d5893b4efb31cd7fdf04c018734873dc42b142f078619a0908614a2135ef96eb",
+    "software/stage1_solver/tools/mouth_middepth_rearrangement.py": "7454b3dd93e96836b37438213a2f4858be1960ef9c3ae763bac7501ec873cd08",
+    "software/stage1_solver/tools/mouth_middle_tag_grip.py": "d22322f69f8e50060e962e18764a38b9eca502c44e3debec2058e9654c084793",
+    "software/stage1_solver/tools/mouth_empty_bend_stiffness.py": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27"
+  },
+  "input_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_free_bend_response.json": "52d4c749368177c14a245d98e63abe94700b5561d2c4fce70eb936ffde27b52e",
+    "research/pde_ledger_v3/_measurements/mouth_middepth_bend_wall.json": "551ebc3a30c48a33ef3f58ded59cc90db406d5ceaf113089517353278e4d6bac",
+    "research/pde_ledger_v3/_measurements/mouth_joint_strip_hold.json": "952f984b1fcaa875060cf9e6b3b43f5b60ea644befeb1bb8cf7564422653033e",
+    "_scratch/s11c/entrance_tag_build/path02/path.dat": "2510d5775315141f5196341aa6c6020c6ba75175d5ce54881c3f910637c1ba8b",
+    "_scratch/s11c/entrance_tag_build/path02/wall.dat": "3c6449d587aa51fe95342798be5480e5f12ee2bf4d22b490d9e9826d234b83a1",
+    "_scratch/s11c/entrance_tag_build/transport02": "6a86ae4a427feb4d5d18184a0b9e40c147c6fdbf3d1176ff2e19caa9b155afe1",
+    "_scratch/s11c/mouth_flared_cubic_n34/field.npz": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d",
+    "_scratch/s11c/mouth_flared_cubic_n26/field.npz": "c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2"
+  },
+  "build": "g++ -O3 -std=c++17 -Wall -Wextra -pedantic software/stage1_solver/tools/mouth_entrance_tag_transport.cpp -o _scratch/s11c/entrance_tag_build/transport02",
+  "axial_and_release_runs": {
+    "entrance_tag_path02": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_entrance_tag_path.py",
+        "_scratch/s11c/entrance_tag_build/path02"
+      ],
+      "exit": 0,
+      "child_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T00:56:47.374797+00:00",
+      "wall_seconds": 5.593217061366886,
+      "stdout_sha256": "22716e34e0974ddc961358547a7a39cb22c9ef4c541b0837b9fd8e05d959d1f1",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"wall_law\", \"table_sha256\": \"3c6449d587aa51fe95342798be5480e5f12ee2bf4d22b490d9e9826d234b83a1\", \"slope_at_test_offset\": 0.2794222022428541, \"offset\": 0.35, \"zero_curvature_check\": 1.000000388977565}",
+        "{\"test\": \"tag_path\", \"intake\": 0.2500000000013136, \"waist\": 0.5, \"middle\": 1.175, \"tag\": -2132, \"tag_clock\": 6.920325030516827, \"archived_clock\": 6.920368213936986, \"arrival_period\": 0.05415963069944924, \"gap_at_middle\": 0.6795185087399241, \"archived_gap\": 0.6795173739556772, \"gauge_arc\": [81.74666513019291, 89.90087361766105], \"middle_arc\": 85.82376937392698, \"middle_registry\": 127.77644421026677, \"gauge_registry\": [121.76070912601851, 133.76553589115193], \"max_sampled_registry\": 246.0, \"min_gap\": 0.6570938973156423, \"max_gap\": 0.8266376793231444, \"order_range\": [1.503862630354211e-09, 0.9999999947987631], \"prior_sha256\": \"551ebc3a30c48a33ef3f58ded59cc90db406d5ceaf113089517353278e4d6bac\", \"path_sha256\": \"2510d5775315141f5196341aa6c6020c6ba75175d5ce54881c3f910637c1ba8b\", \"wall_sha256\": \"3c6449d587aa51fe95342798be5480e5f12ee2bf4d22b490d9e9826d234b83a1\"}",
+        "{\"test\": \"fixed_shape_tension\", \"bend\": [0.55, 1.15], \"area_stiffness\": 1.996571671730932, \"finite_difference\": [1.9965775344132908, 1.99657313970647], \"trial_tensions\": [0.02, 0.04], \"amplitude_in_radii\": 5e-06, \"incremental_holder_difference\": 1.9965716717309322e-07}"
+      ],
+      "stderr": ""
+    },
+    "entrance_tag_release26_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_entrance_release_gate.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n26",
+        "--extension",
+        "compact"
+      ],
+      "exit": 0,
+      "child_exit": 0,
+      "memory_max": 4294967296,
+      "swap_max": 0,
+      "started": "2026-11-21T01:02:19.945268+00:00",
+      "wall_seconds": 7.461243160068989,
+      "stdout_sha256": "2a05bf3ec32d07e2b68f237d4e92ef7ca3fb51c0f0b23c62d99e405277484ac4",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n26/field.npz\", \"sha256\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"mesh\": 26, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999797987, \"profile\": \"cubic\"}",
+        "{\"test\": \"input\", \"archive_sha256\": \"52d4c749368177c14a245d98e63abe94700b5561d2c4fce70eb936ffde27b52e\", \"omega\": 0.005, \"area_per_tension\": [0.0, 1.9965716717309312, 7.586493034014961], \"active_coordinates\": [\"entrance translation\", \"first bend\", \"deeper bend\"]}",
+        "{\"test\": \"release\", \"first\": 0.02, \"deeper\": 0.02, \"positive_step_radius\": 5e-06, \"first_bend_area_holder\": 1.9965716717309316e-07, \"second_bend_area_holder\": 7.586493034014962e-07, \"static_pull_per_incident_speed\": 0.250010744866133, \"effective_mass\": 15.56955150421234, \"bath_spring\": 7.5636504947549125e-06, \"rigid_mass\": 12.257521332631905, \"bend_flow_mass\": 3.3130632643076905, \"pull_over_mass\": 0.016057671590507448, \"free_entrance_per_speed\": [0.016110860576059784, -0.00011781576843161545], \"entrance_per_external_push\": [0.06442011856210801, -2.842170943040401e-18], \"balance\": 8.493348733305096e-11}",
+        "{\"test\": \"release\", \"first\": 0.02, \"deeper\": 0.04, \"positive_step_radius\": 5e-06, \"first_bend_area_holder\": 1.9965716717309316e-07, \"second_bend_area_holder\": 1.5172986068029924e-06, \"static_pull_per_incident_speed\": 0.2500107470464453, \"effective_mass\": 15.307135695183119, \"bath_spring\": 7.5636529315106285e-06, \"rigid_mass\": 12.257521332631905, \"bend_flow_mass\": 3.0505794167242555, \"pull_over_mass\": 0.016332954252513698, \"free_entrance_per_speed\": [0.016410425238536207, -0.0001197583753475719], \"entrance_per_external_push\": [0.06561819810247442, -5.684341886080802e-18], \"balance\": 7.920881312715193e-11}",
+        "{\"test\": \"release\", \"first\": 0.04, \"deeper\": 0.02, \"positive_step_radius\": 5e-06, \"first_bend_area_holder\": 3.9931433434618633e-07, \"second_bend_area_holder\": 7.586493034014962e-07, \"static_pull_per_incident_speed\": 0.25001080275288357, \"effective_mass\": 13.572272145975436, \"bath_spring\": 7.563671396487839e-06, \"rigid_mass\": 12.257521332631905, \"bend_flow_mass\": 1.3151461247988285, \"pull_over_mass\": 0.01842070362750712, \"free_entrance_per_speed\": [0.01872798981084919, -0.00013006839416847884], \"entrance_per_external_push\": [0.07489093621733056, -2.842170943040401e-18], \"balance\": 1.2227019396961252e-10}",
+        "{\"test\": \"release\", \"first\": 0.04, \"deeper\": 0.04, \"positive_step_radius\": 5e-06, \"first_bend_area_holder\": 3.9931433434618633e-07, \"second_bend_area_holder\": 1.5172986068029924e-06, \"static_pull_per_incident_speed\": 0.2500108038369339, \"effective_mass\": 13.372902572570474, \"bath_spring\": 7.563673214079947e-06, \"rigid_mass\": 12.257521332631905, \"bend_flow_mass\": 1.1157265491464994, \"pull_over_mass\": 0.01869532829392909, \"free_entrance_per_speed\": [0.019027887691399584, -0.0001320108225751703], \"entrance_per_external_push\": [0.07609031128612326, -0.0], \"balance\": 1.0436105452773162e-10}",
+        "{\"test\": \"same_first_bend\", \"fractional_change_free_acceleration\": 0.018593957849872167}"
+      ],
+      "stderr": ""
+    },
+    "entrance_tag_release34_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_entrance_release_gate.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n34",
+        "--extension",
+        "wide"
+      ],
+      "exit": 0,
+      "child_exit": 0,
+      "memory_max": 4294967296,
+      "swap_max": 0,
+      "started": "2026-11-21T01:02:19.555661+00:00",
+      "wall_seconds": 18.544997951947153,
+      "stdout_sha256": "86d11d7eb4507cb2c475ae305a79cb814bfaa8e86441008cdc6f6fc137b717ac",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}",
+        "{\"test\": \"input\", \"archive_sha256\": \"52d4c749368177c14a245d98e63abe94700b5561d2c4fce70eb936ffde27b52e\", \"omega\": 0.005, \"area_per_tension\": [0.0, 1.996571671730932, 7.586493034014965], \"active_coordinates\": [\"entrance translation\", \"first bend\", \"deeper bend\"]}",
+        "{\"test\": \"release\", \"first\": 0.02, \"deeper\": 0.02, \"positive_step_radius\": 5e-06, \"first_bend_area_holder\": 1.9965716717309322e-07, \"second_bend_area_holder\": 7.586493034014966e-07, \"static_pull_per_incident_speed\": 0.25000392947287287, \"effective_mass\": 15.5726037974162, \"bath_spring\": 7.56332745570985e-06, \"rigid_mass\": 12.260451288995842, \"bend_flow_mass\": 3.3131858884608825, \"pull_over_mass\": 0.016054086569283515, \"free_entrance_per_speed\": [0.016107115378853, -0.00014406789206182537], \"entrance_per_external_push\": [0.06440689616612565, -0.0], \"balance\": 7.864286999392812e-11}",
+        "{\"test\": \"release\", \"first\": 0.02, \"deeper\": 0.04, \"positive_step_radius\": 5e-06, \"first_bend_area_holder\": 1.9965716717309322e-07, \"second_bend_area_holder\": 1.5172986068029933e-06, \"static_pull_per_incident_speed\": 0.25000393165324597, \"effective_mass\": 15.31016647455881, \"bath_spring\": 7.563329892685287e-06, \"rigid_mass\": 12.260451288995842, \"bend_flow_mass\": 3.050680503183708, \"pull_over_mass\": 0.016329275848742872, \"free_entrance_per_speed\": [0.016406582415290125, -0.0001464985250617673], \"entrance_per_external_push\": [0.06560461795569829, 2.842170943040401e-18], \"balance\": 9.899459030338181e-11}",
+        "{\"test\": \"release\", \"first\": 0.04, \"deeper\": 0.02, \"positive_step_radius\": 5e-06, \"first_bend_area_holder\": 3.9931433434618643e-07, \"second_bend_area_holder\": 7.586493034014966e-07, \"static_pull_per_incident_speed\": 0.2500039873588274, \"effective_mass\": 13.575260090032186, \"bath_spring\": 7.563348358128672e-06, \"rigid_mass\": 12.260451288995842, \"bend_flow_mass\": 1.3152042265794732, \"pull_over_mass\": 0.018416147145673925, \"free_entrance_per_speed\": [0.018723212448091175, -0.00016058535412989415], \"entrance_per_external_push\": [0.07487387168009617, 2.842170943040401e-18], \"balance\": 1.2241230251675053e-10}",
+        "{\"test\": \"release\", \"first\": 0.04, \"deeper\": 0.04, \"positive_step_radius\": 5e-06, \"first_bend_area_holder\": 3.9931433434618643e-07, \"second_bend_area_holder\": 1.5172986068029933e-06, \"static_pull_per_incident_speed\": 0.2500039884429206, \"effective_mass\": 13.375872879508783, \"bath_spring\": 7.563350175899483e-06, \"rigid_mass\": 12.260451288995842, \"bend_flow_mass\": 1.1157669956474352, \"pull_over_mass\": 0.018690667195702428, \"free_entrance_per_speed\": [0.01902299914305405, -0.0001630162391399658], \"entrance_per_external_push\": [0.07607283479847216, -0.0], \"balance\": 1.0293454977300241e-10}",
+        "{\"test\": \"same_first_bend\", \"fractional_change_free_acceleration\": 0.01859222023269891}"
+      ],
+      "stderr": ""
+    }
+  },
+  "excluded_fixed_step_transports": {
+    "base": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport01",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "4",
+        "64",
+        "0",
+        ".0005"
+      ],
+      "exit": 1,
+      "child_exit": 1,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T00:58:30.013958+00:00",
+      "wall_seconds": 0.32850889721885324,
+      "stdout_sha256": "3aee3fa58cb6f37c8ac1b194805f86215f0582dd9b5a2027875fb1832af1759f",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":64,\"preparation\":0,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}"
+      ],
+      "stderr": "Uncalibrated contact displacement\n"
+    },
+    "fine": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport01",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "4",
+        "128",
+        "0",
+        ".0005"
+      ],
+      "exit": 1,
+      "child_exit": 1,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T00:58:29.825851+00:00",
+      "wall_seconds": 0.42630677577108145,
+      "stdout_sha256": "475d134782054794e4373a1ee73c310406639974ad01072de3e581fa7cebc12a",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":128,\"preparation\":0,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}"
+      ],
+      "stderr": "Uncalibrated contact displacement\n"
+    },
+    "half": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport01",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "4",
+        "64",
+        "0",
+        ".00025"
+      ],
+      "exit": 1,
+      "child_exit": 1,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T00:58:29.872806+00:00",
+      "wall_seconds": 0.3133871532045305,
+      "stdout_sha256": "c7d40ae180a43b7374265f1bf3a2a118303188c65c62fd999442378263b56906",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":64,\"preparation\":0,\"step_bond_lengths\":0.00025,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}"
+      ],
+      "stderr": "Uncalibrated contact displacement\n"
+    },
+    "outlet": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport01",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "184",
+        "4",
+        "64",
+        "0",
+        ".0005"
+      ],
+      "exit": 1,
+      "child_exit": 1,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T00:58:29.851863+00:00",
+      "wall_seconds": 0.36793380370363593,
+      "stdout_sha256": "b88a96d40471a97c774bae102c23559bdad2581a9fbd86f5981b955c1af8fa2f",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":184,\"lanes\":4,\"sub\":64,\"preparation\":0,\"step_bond_lengths\":0.0005,\"outlet_arc\":124.8221340249145,\"largest_bond_hoop_difference\":0.04374901278757903}"
+      ],
+      "stderr": "Uncalibrated contact displacement\n"
+    },
+    "wide": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport01",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "8",
+        "64",
+        "0",
+        ".0005"
+      ],
+      "exit": 1,
+      "child_exit": 1,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T00:58:30.143898+00:00",
+      "wall_seconds": 0.6624975986778736,
+      "stdout_sha256": "5d5a4a7be7541bab705f58ffacf074f4a8bfbc0d2b966e1f23b3591d240adfa1",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":8,\"sub\":64,\"preparation\":0,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}"
+      ],
+      "stderr": "Uncalibrated contact displacement\n"
+    },
+    "quiet": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport01",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "4",
+        "64",
+        "2",
+        ".0005"
+      ],
+      "exit": 1,
+      "child_exit": 1,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T00:58:29.730591+00:00",
+      "wall_seconds": 0.3358910530805588,
+      "stdout_sha256": "47f98025d32aa526b3678f3053b85f2f0aa03cd74a612aea0f2387b2a65a2f71",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":64,\"preparation\":2,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}"
+      ],
+      "stderr": "Uncalibrated contact displacement\n"
+    },
+    "offset": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport01",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "4",
+        "64",
+        "1",
+        ".0005"
+      ],
+      "exit": 1,
+      "child_exit": 1,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T00:58:29.425556+00:00",
+      "wall_seconds": 0.240833577234298,
+      "stdout_sha256": "076b39f3f9d876c5dbe202d1febebff900679ab39df72f5107bdaed95d404d7d",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":64,\"preparation\":1,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}"
+      ],
+      "stderr": "Uncalibrated contact displacement\n"
+    }
+  },
+  "fixed_step_diagnostic": {
+    "command": [
+      "_scratch/s11c/entrance_tag_build/diagnose",
+      "_scratch/s11c/entrance_tag_build/path02/path.dat",
+      "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+      "160",
+      "4",
+      "128",
+      "0",
+      ".0005"
+    ],
+    "exit": 1,
+    "child_exit": 1,
+    "memory_max": 2147483648,
+    "swap_max": 0,
+    "started": "2026-11-21T01:00:02.177416+00:00",
+    "wall_seconds": 0.34239000361412764,
+    "stdout_sha256": "475d134782054794e4373a1ee73c310406639974ad01072de3e581fa7cebc12a",
+    "literal_stdout": [
+      "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":128,\"preparation\":0,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}"
+    ],
+    "stderr": "contact outside table: arc=30.2509 row=44 lane=2 slip=-7.49676\nUnforced initialization: arrival=0 step=8\nUnresolved contact\n"
+  },
+  "independent_local_review": [
+    {
+      "scope": "Finite-bath carrier, independently variable effective support at two depths and a common fixed axial geometry.",
+      "verbatim": "Scoped clear for the two-mesh finite-bath carrier counterexample. Holding the first-bend area coefficient fixed while doubling deeper support gives the same prescribed first-bend area reaction and a different free entrance response to an oscillating brane stream."
+    },
+    {
+      "scope": "Separate axial calibration and first fixed-step microscopic transport attempts.",
+      "verbatim": "Scoped clear for the recovered axial tag clock and spacing, the linear geometric holder-force difference at prescribed shape, and the absence of a transverse result from the seven attempted transports. The physical arriving sideways displacement, contact traction and free-mouth response remain unresolved."
+    },
+    {
+      "scope": "Completed seven locally error-controlled transport cases and both late windows, including sign convention, motion of fresh cohorts, wall-force controls, and separation from the two-depth release.",
+      "verbatim": "Scoped clear for partial sideways following by fresh contacted material and a restoring incremental mid-depth wall force during the prescribed first bend in the radius-one strip model. Total flexible-mouth support and free two-mouth acceleration remain open."
+    }
+  ],
+  "formal_status": "Formal review and commit pending.",
+  "transport_runs": {
+    "base": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport02",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "4",
+        "64",
+        "0",
+        ".0005"
+      ],
+      "exit": 0,
+      "child_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T01:01:17.225590+00:00",
+      "wall_seconds": 648.2522075069137,
+      "stdout_sha256": "8231ed2ca5b739334d8cda04c0dd9e8f13a259a8faa32e776f6b3e716bbbe88e",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":64,\"preparation\":0,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":312,\"positive_wall\":-0.01255340241079901,\"negative_wall\":0.0125534024280758,\"contacted_tag_mean_per_step\":[0.1266966644502214,0.2222586689749532,0.2770176900269233],\"tag_rms_per_step\":[0.1270471754036955,0.2224074999365265,0.2771242944561311],\"cohort_per_gate\":16,\"energy_force_error\":3.602050931833523e-10,\"max_even_tag_fraction\":5.971652150549289e-05}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":320,\"positive_wall\":-0.01255338957977983,\"negative_wall\":0.01255338959736502,\"contacted_tag_mean_per_step\":[0.1266972657070724,0.2222593482589093,0.2770184159478671],\"tag_rms_per_step\":[0.1270477735902905,0.2224081790461938,0.2771250194151884],\"cohort_per_gate\":16,\"energy_force_error\":4.053770704531834e-10,\"max_even_tag_fraction\":5.971644223556893e-05}"
+      ],
+      "stderr": ""
+    },
+    "half": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport02",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "4",
+        "64",
+        "0",
+        ".00025"
+      ],
+      "exit": 0,
+      "child_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T01:12:05.559020+00:00",
+      "wall_seconds": 659.2030806178227,
+      "stdout_sha256": "a23861e30ac3c8da1c94bdfbc6a8ff63dfd8481e89ed0c88f2d0e016986e3674",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":64,\"preparation\":0,\"step_bond_lengths\":0.00025,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":312,\"positive_wall\":-0.006276705270687877,\"negative_wall\":0.006276705276523775,\"contacted_tag_mean_per_step\":[0.1266968261443156,0.2222587548894514,0.277017779694462],\"tag_rms_per_step\":[0.127047323840122,0.2224075859556817,0.2771243852122986],\"cohort_per_gate\":16,\"energy_force_error\":3.307192176366103e-10,\"max_even_tag_fraction\":2.982863134270985e-05}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":320,\"positive_wall\":-0.006276698855194865,\"negative_wall\":0.006276698861204391,\"contacted_tag_mean_per_step\":[0.1266974273998243,0.2222594341712108,0.2770185056089436],\"tag_rms_per_step\":[0.1270479220254118,0.2224082650631416,0.2771251101649155],\"cohort_per_gate\":16,\"energy_force_error\":3.330779766580472e-10,\"max_even_tag_fraction\":2.982859603761767e-05}"
+      ],
+      "stderr": ""
+    },
+    "fine": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport02",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "4",
+        "128",
+        "0",
+        ".0005"
+      ],
+      "exit": 0,
+      "child_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T01:12:05.558975+00:00",
+      "wall_seconds": 761.6641362910159,
+      "stdout_sha256": "3623a36c24f260b9b3931f313ec04e85ee4c620221c60ad2b082a71d61772d57",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":128,\"preparation\":0,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":312,\"positive_wall\":-0.01255342426741709,\"negative_wall\":0.01255342427034471,\"contacted_tag_mean_per_step\":[0.1266967345731569,0.2222586710306482,0.2770177057094964],\"tag_rms_per_step\":[0.1270472467116241,0.2224075033806107,0.2771243107174649],\"cohort_per_gate\":16,\"energy_force_error\":3.681868351868012e-10,\"max_even_tag_fraction\":5.967766658621088e-05}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":320,\"positive_wall\":-0.012553411435351,\"negative_wall\":0.01255341143827013,\"contacted_tag_mean_per_step\":[0.1266973358485783,0.2222593503319253,0.2770184316495771],\"tag_rms_per_step\":[0.1270478449165891,0.2224081825076262,0.277125035695583],\"cohort_per_gate\":16,\"energy_force_error\":3.824640413402358e-10,\"max_even_tag_fraction\":5.967758809344303e-05}"
+      ],
+      "stderr": ""
+    },
+    "offset": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport02",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "4",
+        "64",
+        "1",
+        ".0005"
+      ],
+      "exit": 0,
+      "child_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T01:12:05.542699+00:00",
+      "wall_seconds": 1014.9734310801141,
+      "stdout_sha256": "2839f1a1b25f17a08b039bd01ad0e4f38f0c2c49eabefeb9df980d439e9e7fa4",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":64,\"preparation\":1,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":312,\"positive_wall\":-0.01255340238651008,\"negative_wall\":0.01255340239499956,\"contacted_tag_mean_per_step\":[0.1266966664517026,0.2222586707552267,0.2770176916793654],\"tag_rms_per_step\":[0.1270471773977654,0.2224075017149103,0.2771242961074378],\"cohort_per_gate\":16,\"energy_force_error\":3.232252399759661e-10,\"max_even_tag_fraction\":5.971619121414307e-05}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":320,\"positive_wall\":-0.01255338955537847,\"negative_wall\":0.01255338956429252,\"contacted_tag_mean_per_step\":[0.1266972677048669,0.2222593500399361,0.277018417602616],\"tag_rms_per_step\":[0.127047775580657,0.2224081808253744,0.2771250210688043],\"cohort_per_gate\":16,\"energy_force_error\":4.095933592296319e-10,\"max_even_tag_fraction\":5.97161113891076e-05}"
+      ],
+      "stderr": ""
+    },
+    "quiet": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport02",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "4",
+        "64",
+        "2",
+        ".0005"
+      ],
+      "exit": 0,
+      "child_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T01:12:05.559830+00:00",
+      "wall_seconds": 1013.1962089622393,
+      "stdout_sha256": "83bf32c4512484fcc80985251e40baa9722ad89bf443b79c002a380a7ab24547",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":4,\"sub\":64,\"preparation\":2,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":312,\"positive_wall\":-0.01255340238966526,\"negative_wall\":0.01255340238677659,\"contacted_tag_mean_per_step\":[0.1266966666450726,0.2222586709187609,0.2770176918254291],\"tag_rms_per_step\":[0.127047177590531,0.2224075018782475,0.2771242962534404],\"cohort_per_gate\":16,\"energy_force_error\":3.289154382885018e-10,\"max_even_tag_fraction\":5.971604211119086e-05}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":320,\"positive_wall\":-0.01255338955842,\"negative_wall\":0.01255338955592232,\"contacted_tag_mean_per_step\":[0.1266972679104489,0.222259350212747,0.2770184177564933],\"tag_rms_per_step\":[0.1270477757855492,0.2224081809979387,0.2771250212225883],\"cohort_per_gate\":16,\"energy_force_error\":3.338251324674912e-10,\"max_even_tag_fraction\":5.971595429254961e-05}"
+      ],
+      "stderr": ""
+    },
+    "outlet": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport02",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "184",
+        "4",
+        "64",
+        "0",
+        ".0005"
+      ],
+      "exit": 0,
+      "child_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T01:12:05.559789+00:00",
+      "wall_seconds": 1310.2630136511289,
+      "stdout_sha256": "c982eecd8d2274772899f1da0931fc21bac76aaee151545de683e543afce8010",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":184,\"lanes\":4,\"sub\":64,\"preparation\":0,\"step_bond_lengths\":0.0005,\"outlet_arc\":124.8221340249145,\"largest_bond_hoop_difference\":0.04374901278757903}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":360,\"positive_wall\":-0.01255335276489107,\"negative_wall\":0.01255335278498542,\"contacted_tag_mean_per_step\":[0.1266989894649256,0.2222612956913882,0.277020497111],\"tag_rms_per_step\":[0.1270494885417451,0.2224101259789714,0.2771270978195094],\"cohort_per_gate\":16,\"energy_force_error\":3.318967149723573e-10,\"max_even_tag_fraction\":5.971621441780428e-05}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":368,\"positive_wall\":-0.01255334886888176,\"negative_wall\":0.01255334888862939,\"contacted_tag_mean_per_step\":[0.126699172280106,0.2222615022359659,0.277020717830687],\"tag_rms_per_step\":[0.1270496704242578,0.2224103324706021,0.277127318246949],\"cohort_per_gate\":16,\"energy_force_error\":3.187351233641111e-10,\"max_even_tag_fraction\":5.971619021494234e-05}"
+      ],
+      "stderr": ""
+    },
+    "wide": {
+      "command": [
+        "_scratch/s11c/entrance_tag_build/transport02",
+        "_scratch/s11c/entrance_tag_build/path02/path.dat",
+        "_scratch/s11c/entrance_tag_build/path02/wall.dat",
+        "160",
+        "8",
+        "64",
+        "0",
+        ".0005"
+      ],
+      "exit": 0,
+      "child_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "started": "2026-11-21T01:12:05.542672+00:00",
+      "wall_seconds": 2495.0759842749685,
+      "stdout_sha256": "4022401b7e69f749dea95f3c13f6715ef7ff98b7e760d15e5f95a6c8c037369d",
+      "literal_stdout": [
+        "{\"test\":\"strip\",\"rows\":160,\"lanes\":8,\"sub\":64,\"preparation\":0,\"step_bond_lengths\":0.0005,\"outlet_arc\":107.9659380409552,\"largest_bond_hoop_difference\":0.04374901278757903}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":312,\"positive_wall\":-0.01255340263971117,\"negative_wall\":0.01255340259990832,\"contacted_tag_mean_per_step\":[0.1266966659575225,0.2222586702487687,0.2770176915089644],\"tag_rms_per_step\":[0.1270471666180745,0.2224075036084538,0.2771242920825182],\"cohort_per_gate\":32,\"energy_force_error\":3.559254627139019e-10,\"max_even_tag_fraction\":5.971651884095763e-05}",
+        "{\"test\":\"fresh_window\",\"last_arrival\":320,\"positive_wall\":-0.01255338977073915,\"negative_wall\":0.01255338973476817,\"contacted_tag_mean_per_step\":[0.1266972669455113,0.2222593493097166,0.2770184171699052],\"tag_rms_per_step\":[0.1270477663882846,0.2224081820635304,0.2771250174754983],\"cohort_per_gate\":32,\"energy_force_error\":3.211465381819378e-10,\"max_even_tag_fraction\":5.971643235458401e-05}"
+      ],
+      "stderr": ""
+    }
+  },
+  "transport_comparison": {
+    "scope": "Incremental force on the mid-depth wall in native patch units. Displacements are odd signed crossing means, divided by the imposed end displacement. Each window spans eight arrivals. The extended outlet also shifts the observation later. Eight lanes doubles the transverse period at fixed represented coverage.",
+    "cases": {
+      "base": {
+        "positive_wall_per_bond_length": -25.10677915955966,
+        "fractional_change_positive_wall_from_previous_window": -1.0221148625255694e-06,
+        "last_window_arrivals": [
+          313,
+          320
+        ],
+        "last_window_contacted_tag_mean_per_step": [
+          0.1266972657070724,
+          0.2222593482589093,
+          0.2770184159478671
+        ],
+        "fractional_change_in_positive_wall_per_step_from_base": 0.0
+      },
+      "half": {
+        "positive_wall_per_bond_length": -25.10679542077946,
+        "fractional_change_positive_wall_from_previous_window": -1.0221115593900265e-06,
+        "last_window_arrivals": [
+          313,
+          320
+        ],
+        "last_window_contacted_tag_mean_per_step": [
+          0.1266974273998243,
+          0.2222594341712108,
+          0.2770185056089436
+        ],
+        "fractional_change_in_positive_wall_per_step_from_base": 6.476824325751807e-07
+      },
+      "fine": {
+        "positive_wall_per_bond_length": -25.106822870702,
+        "fractional_change_positive_wall_from_previous_window": -1.0221964793499794e-06,
+        "last_window_arrivals": [
+          313,
+          320
+        ],
+        "last_window_contacted_tag_mean_per_step": [
+          0.1266973358485783,
+          0.2222593503319253,
+          0.2770184316495771
+        ],
+        "fractional_change_in_positive_wall_per_step_from_base": 1.7410095520808966e-06
+      },
+      "offset": {
+        "positive_wall_per_bond_length": -25.10677911075694,
+        "fractional_change_positive_wall_from_previous_window": -1.0221238206931105e-06,
+        "last_window_arrivals": [
+          313,
+          320
+        ],
+        "last_window_contacted_tag_mean_per_step": [
+          0.1266972677048669,
+          0.2222593500399361,
+          0.277018417602616
+        ],
+        "fractional_change_in_positive_wall_per_step_from_base": -1.943806560156247e-09
+      },
+      "quiet": {
+        "positive_wall_per_bond_length": -25.10677911684,
+        "fractional_change_positive_wall_from_previous_window": -1.0221328737847202e-06,
+        "last_window_arrivals": [
+          313,
+          320
+        ],
+        "last_window_contacted_tag_mean_per_step": [
+          0.1266972679104489,
+          0.222259350212747,
+          0.2770184177564933
+        ],
+        "fractional_change_in_positive_wall_per_step_from_base": -1.7015190367786204e-09
+      },
+      "outlet": {
+        "positive_wall_per_bond_length": -25.106697737763522,
+        "fractional_change_positive_wall_from_previous_window": -3.1035607628293604e-07,
+        "last_window_arrivals": [
+          361,
+          368
+        ],
+        "last_window_contacted_tag_mean_per_step": [
+          0.126699172280106,
+          0.2222615022359659,
+          0.277020717830687
+        ],
+        "fractional_change_in_positive_wall_per_step_from_base": -3.243020366028304e-06
+      },
+      "wide": {
+        "positive_wall_per_bond_length": -25.1067795414783,
+        "fractional_change_positive_wall_from_previous_window": -1.0251381549197802e-06,
+        "last_window_arrivals": [
+          313,
+          320
+        ],
+        "last_window_contacted_tag_mean_per_step": [
+          0.1266972669455113,
+          0.2222593493097166,
+          0.2770184171699052
+        ],
+        "fractional_change_in_positive_wall_per_step_from_base": 1.5211773618517554e-08
+      }
+    }
+  },
+  "batch_complete": true
+}

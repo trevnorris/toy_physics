@@ -1,0 +1,28 @@
+# Shear force as material loses order at a draining mouth
+
+At 0PN and inward intake 0.25, the same decline from 75% to 25% shear order can give different local forces. The missing observation is whether the contacts carrying shear at exit have survived from entry or formed under the imposed deformation. The calculation uses the existing near and deep order preparations of each held-open throat. It measures one local material traction component per area. The geometry enters through actual paths in the archived, rotationally symmetric four-spatial-dimensional flow. [Order and carrier](mouth_free_order_depth.md) · [Earlier force comparison](mouth_mixed_order_ripple.md)
+
+**Trial material law.** Treat $\chi$ as the fraction of equivalent load-bearing contacts on a material parcel that follows the carrier. Give every contact the same incremental elastic stiffness, let a newly formed contact take its present shear as its relaxed reference, and remove contacts without preference for age or strain. For material strain $\epsilon$, traction $\sigma$, local full-order stiffness $\mu$, and formation and loss rates $B,D$ per total contact site, summing the individual contact extensions gives
+
+$$
+\dot\chi=B-D,\qquad e=\frac{\sigma}{\mu\chi},\qquad
+\dot e=\dot\epsilon-\frac{B}{\chi}\,e.
+$$
+
+Prepare entry contacts with zero reference shear, impose a small strain step at entry and hold it on the parcel. The exit traction divided by the instantaneous exit stiffness $\mu\chi_f$ and the held strain is exactly $F=\exp[-\int (B/\chi)\,dt]$. This is the fraction **of exit contacts** continuously present since entry. With loss alone $F=1$, although two-thirds of the original contacts disappear. With replacement, new contacts form already relaxed and $F$ falls. The existing order balance supplies net conversion. It leaves the number formed while others disappear undetermined. [Order balance](../../../research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md#L79) · [Material reference requirements](../../../research/pde_ledger_v3/directives/O2_input_contract.md#L160)
+
+**Forces at three drive frequencies.** Trace each path backward from the quarter-order probe at $r=0.27R$ to locate the same parcel at three-quarter order. Sample random unbiased breaks and stress-free births for one million contact sites. As an example, take $B=\gamma\chi(1-\chi)$. An unforced synthetic tag count on the near path gave $\gamma=1.00608$ for an input of 1 in model time units. The table gives the resulting predicted exit traction divided by $\mu\chi_f$ and the imposed strain amplitude, with phase in degrees under $e^{-i\Omega t}$. These are finite-traversal responses with the same loaded entrance condition. The rate and the tractions are conditional material predictions.
+
+| Earlier flare | Held strain | $\Omega=1$ | $\Omega=4$ | $\Omega=12$ |
+|---|---:|---:|---:|---:|
+| Near, with replacement | 0.877 | 0.878 ∠ −0.84° | 0.893 ∠ −3.08° | 0.973 ∠ −4.61° |
+| Deep, with replacement | 0.583 | 0.648 ∠ −13.67° | 0.984 ∠ −12.00° | 0.995 ∠ −2.89° |
+| Either path, loss alone | 1 | 1 ∠ 0° | 1 ∠ 0° | 1 ∠ 0° |
+
+Across both flare shapes and all tested drives, the largest absolute difference between the tag-calibrated complex prediction and a separate random sample of contact forces was 0.00258, rounded. A single tag reading predicts the frequency dependence here because the specific law fixes the birth history up to one rate. More general histories require time-resolved tags or independent force readings. [Calculation](../tools/mouth_contact_age.py)
+
+**A prediction without fitting a rate.** Suppose $h=B/\chi$ is any common, nonnegative function of order alone. Write $g_i(\chi)=|dt_i/d\chi|$. Then $-\log F_i=\int h g_i\,d\chi$, so the deep-to-near ratio of log losses lies between the smallest and largest $g_{\rm deep}/g_{\rm near}$. If $F_{\rm near}=90\%$, the fine reconstructed paths give **64.2–66.2%** for the earlier flare and **58.6–59.6%** for the delayed flare (rounded). Each example refers to its own near preparation. On the coarser carrier mesh the corresponding intervals are 64.0–66.3% and 58.4–59.9%. The intervals are sharp for the piecewise-linear inverse paths and unrestricted nonnegative $h$. Their application to actual material requires trajectory and measurement uncertainties. A resolved violation rejects this shared order-only rate or the contact/transport assumptions. Agreement does not identify the rate uniquely. [Path comparison](../tools/mouth_contact_residence.py)
+
+The archived fields contain no contact identities or independent driven traction. An unforced contact-survival reading and a force reading on the same material are the tests to carry forward. Account for drift, local rotations, and actuator and background loads. The example laws also need a separate source of relaxation under steady load in fully ordered brane. A native wave lifetime, supporting pressure and free-mouth acceleration remain open.
+
+Working result on base 49dca23e, uncommitted pending formal review. The independent local reviewer concluded, “Scoped clear for the survival bound on the reconstructed, monotone material paths.” Two guarded Python calculations passed. Wolfram reproduced the cohort identities and two-tone stress on a separate analytic path. Both Wolfram runs exited 1 during a supplemental energy calculation, first on integration bounds and then on its memory limit. Numerical closure of that energy budget with ongoing replacement is unverified. [Guarded evidence and review scopes](../../../research/pde_ledger_v3/_measurements/mouth_contact_age.json)

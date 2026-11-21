@@ -1,0 +1,19 @@
+# Force retained during a one-transit hold of the first bend
+
+**The reference attachment segment kept 56.43% of its early sideways force.** The earlier fixed-position and traveling renewal laws gave 45.93% and 81.32% on the same observable. The independently modeled segment gives a third answer, sensitive to how the brane supports the arriving sites. [Previous calibration](mouth_fixed_station_hold.md) · [Guarded measurements and review](../../../research/pde_ledger_v3/_measurements/mouth_segment_contact_hold.json)
+
+**Like-for-like force reading.** We held only the first bend of the radius-one cubic mouth at inward intake 0.25. Its slope changes between depths 0.55 and 1.15. We integrated signed sideways support from the waist at 0.5 to the middle at 1.175, with the entire active wall coupled to the common exterior brane shear field. In the refined reference run, force per displacement fell from 0.4469172 at time 0.0625 to 0.2521973 at 28.3125, the benchmark sampling times. It also read 0.2521973 at the measured transit time of 28.43103. Reading from the instant of displacement gives a different denominator, 0.4696621, and 53.70% retention. All the incoming site labels supporting the measured segment at the late readings had entered after the hold began. [Segment dynamics and force balance](../tools/mouth_segment_contact_hold.py)
+
+**What supplies the grip.** Nine families of wall tips exchange load with successive moving brane tips. The cross-bond stiffnesses come from the neutral patch's central Morse interaction. We assumed isotropic small-slip response in the three wall tangents, unit tip drags, and one pitch of normal depth per bulk shear cell. The reference coverage uses nine registered pairs per twelve sites. Wall tips stay tethered to the wall. Brane tips enter with zero internal displacement and then respond to forces from all the wall stations they encounter. Overlap weights share load between neighboring partners. These are material hypotheses. Neither archived retention ratio nor its relaxation time enters the force solver.
+
+| Brane-side support and contact strength | One-pitch spacing at waist | One-pitch spacing at middle |
+|---|---:|---:|
+| Unit brane tether, neutral-patch coverage | 56.43% | 42.37% |
+| Held-neighbor brane stiffness, neutral-patch coverage | 66.48% | 66.63% |
+| Held-neighbor brane stiffness, instantaneous grip matched to the benchmark | 47.51% | 47.87% |
+
+The pitch is 0.01 mouth radii. Assigning it at the middle changes the site arrival rate from 51.86 to 4.25 per family per time unit and changes the amount of brane represented by each site. The held-neighbor check independently displaced each of the nine upper sites against its neighbors in the archived patch. The resulting trial brane stiffnesses span 100.10–202.83 in patch units under isotropic averaging. Their persistence during a transit with mobile neighbors is unmeasured. The matched-grip runs rescale the number of equivalent contact families to reproduce the early *instantaneous* stiffness coefficient. The first finite-time reading and the material relaxation rate still differ. [Pitch and resolution check](../tools/mouth_segment_pitch_check.py) · [Neighbor stiffness check](../tools/mouth_segment_cage_check.py)
+
+**Implication for 0PN.** Fresh material can transmit a substantial load under a held bend. The calculation gives no unique retention fraction for a physical mouth. The 47.87% result is close to the fixed-position benchmark even though material sites move in that preparation. To distinguish the laws, measure how the brane-end restoring force decays while its neighbors move, together with the number of active attachments per wall area and the arrival rate at the middle. A single retention fraction cannot identify where the force memory resides.
+
+Working base `49dca23e`. An independent local reviewer checked the force, material supply, and stiffness controls. Formal review and commit are pending.

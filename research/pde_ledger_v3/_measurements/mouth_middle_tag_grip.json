@@ -1,0 +1,284 @@
+{
+  "base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "0PN cubic mouth. Rheology of a released microscopic pair, frozen tangent check and conditional residual wall-force forecasts with a carrier-front area integral.",
+  "micro_preparation": "Fresh neutral 1321 central preparation at depth 1.175. Same-plane binding fixed, cross-plane strength scaled by order/entry order. Carrier assigns station depth, support springs unit strength. Four common-noise histories. Registration = mutual-nearest and bound more deeply than 60% of current cross well at each sample.",
+  "force_convention": "Force on waist-to-middle wall per peak middle push, positive along push. Cohort front marks material that crossed the waist after time 8. Fixed-site and traveling macro laws retain the earlier common relaxation time. The unforced microscopic tap does not fit either force prediction.",
+  "source_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_bend_renewal.py": "8e89119a8f8a43d0a7fb9dbd3827c1960ba5d5e3dd7f2f2b93153d7eb19ba681",
+    "software/stage1_solver/tools/mouth_bend_static_shear.py": "17c706eb42ff1a76a01903ed5051f037a4654aab9ca8d4c1043918a80f547fec",
+    "software/stage1_solver/tools/mouth_carrier_attachment_tension.py": "3ad065608f0abaa864eb68fa9da05fdc67899874eecb9da1a706a28b203c8f24",
+    "software/stage1_solver/tools/mouth_carrier_free_center.py": "ad4fbd4dbc20f92098f66eb054226c145390e26c296168688e13ec70e310e1bb",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "software/stage1_solver/tools/mouth_contact_tracking.py": "fb8351e126e7bc7368b929ac393034263eb2677b9b5338d9e9da26dac9e14cef",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_empty_bend_stiffness.py": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_bend_drive.py": "def4a7b4812929ebfeeac11525af3d652c0b6d9f70b01ef27e68aef622062bb9",
+    "software/stage1_solver/tools/mouth_free_bend_release.py": "7b95f8e53ae9735b75af77ebacc303d5bc7cf64baa81f11724b8ee6c4266961f",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "software/stage1_solver/tools/mouth_middle_replacement_force.py": "cebb3f6606f27f360881475a795117aef584ad83eb792ca1f955679836d0a777",
+    "software/stage1_solver/tools/mouth_middle_tag_grip.py": "d22322f69f8e50060e962e18764a38b9eca502c44e3debec2058e9654c084793",
+    "software/stage1_solver/tools/mouth_order_wave_pulse.py": "d4fc14a69fd269039a58197ee6751107708c67bff9329d414581896401f50433",
+    "software/stage1_solver/tools/mouth_two_depth_load.py": "13d9bd92859b47620b38b3d796c6946b544005eefa1d703dfe60095897ea058e",
+    "software/stage1_solver/tools/mouth_two_depth_renewal.py": "575d8b6d5f245ffdab3280d8fd24fbfb0e8b4742bde3931884c9b4587c028a34",
+    "software/stage1_solver/tools/neutral_patch_conversion.py": "cbb432510cf4f29f9a4cc886f465896dc215c47af8cc8e19bd742db66be1ecea",
+    "software/stage1_solver/tools/neutral_patch_sites.py": "00595a5383311d4e20ed2af851cbd9d8c2bd59255b81c312829843ed8061f827"
+  },
+  "record_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_empty_bend_stiffness.json": "05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794",
+    "research/pde_ledger_v3/_measurements/mouth_free_order_depth.json": "917da8d7812928e1831855037336fc55b8b111977d52fb1eb97d11be4d2c54b9",
+    "research/pde_ledger_v3/_measurements/mouth_two_depth_renewal.json": "ce5c904a9cd85957635444e97ac359c75010e0c24bbcd22219072c410ca84e77",
+    "research/pde_ledger_v3/_measurements/neutral_patch_conversion.json": "5b4073159b150b3513471374c26589e2b4cefa08e93265a23e52bbf5ffe33471",
+    "research/pde_ledger_v3/_measurements/neutral_patch_sites.json": "4fcc2af5e38d654e1db9289dd25ca733616d052e27758852a8bebad4c4cf0340"
+  },
+  "inputs_sha256": {
+    "_scratch/s11c/mouth_flared_cubic_n26/field.npz": "c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2",
+    "_scratch/s11c/mouth_flared_cubic_n34/field.npz": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d",
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz": "fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847",
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/outcome.json": "f2eaf4e4597e7e6fe549cffaf0837f2712ddcaa3dfb778f7a1b4fa02f4b77ce3",
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/stdout": "d53098b42ca1a45fe4e80d62f245ebf060b80c7051da84f2fafddb04de3b7117",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz": "6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/outcome.json": "744fe2753cfd26fbdd8a22b996c8b8394658d13fb1f9a1125fd9713c521d93b0",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/stdout": "546eb29a2c7121fa24974ee8c964a7b578333023f439dab2d87bf8e4daed0392"
+  },
+  "runs": {
+    "middle_tag_grip_n26_r1_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_middle_tag_grip.py",
+        "--mesh",
+        "26",
+        "--refine",
+        "1"
+      ],
+      "start_utc": "2026-11-20T21:04:27.015275+00:00",
+      "outcome_file_utc": "2026-11-20T21:04:33.199643+00:00",
+      "wall_seconds": 6.138949053827673,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_cap": 2147483648,
+      "swap_max": 0,
+      "sampled_peak_bytes": 51097600,
+      "stdout_path": "_scratch/s11c/middle_tag_grip_n26_r1_01/stdout",
+      "stdout_size": 3112,
+      "stdout_sha256": "33bb7068423072634a7de9a4314336d4e1a9304a957949a149f21a1e212ecbdf",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"passage\", \"intake\": 0.24999999999797987, \"mesh\": 26, \"refine\": 1, \"law\": \"central\", \"tag\": [5, 12], \"pairs\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"depth\": [1.175, 1.2518586177224833, 1.2944055303241837, 1.3365266046080329, 1.4277817126663357], \"order\": [0.8753783441173252, 0.5000000000000002, 0.25, 0.09999999999999985, 0.00999999999999999], \"elapsed\": [0.0, 1.5884793352439985, 2.370471341946688, 3.119663989191511, 4.7252826165246455], \"waist_to_middle\": 10.401120980772628, \"seeds\": [8401, 8402, 8403, 8404], \"tap\": 1e-05, \"sustained_half_window\": 0.05}",
+        "{\"test\": \"reading\", \"elapsed\": 0.0, \"depth\": 1.175, \"order\": 0.8753783441173252, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [1.0000000000055411, 1.0000000000055411, 1.0000000000055411, 1.0000000000055411], \"released_over_entry\": [1.0, 1.0, 1.0, 1.0]}",
+        "{\"test\": \"reading\", \"elapsed\": 1.5884793352439985, \"depth\": 1.2518586177224833, \"order\": 0.5000000000000002, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.5714677803887172, 0.5722731285297636, 0.5713569956198158, 0.5707113305397534], \"released_over_entry\": [0.0008606967410760699, 0.0008459965654569502, 0.0008532133086568798, 0.0008420949449540354]}",
+        "{\"test\": \"reading\", \"elapsed\": 2.370471341946688, \"depth\": 1.2944055303241837, \"order\": 0.25, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.28631993482635526, 0.2854184638573897, 0.28557910171423895, 0.28548156864073576], \"released_over_entry\": [-0.00032746681756074745, -0.00032913864983086683, -0.00033565848632862225, -0.00033152198506841506]}",
+        "{\"test\": \"reading\", \"elapsed\": 3.119663989191511, \"depth\": 1.3365266046080329, \"order\": 0.09999999999999985, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.11352683109546957, 0.11445249359200312, 0.11448950220942279, 0.11457000775875084], \"released_over_entry\": [6.94316883367126e-05, 6.934069136322917e-05, 6.771238937549034e-05, 6.753167942110282e-05]}",
+        "{\"test\": \"reading\", \"elapsed\": 4.7252826165246455, \"depth\": 1.4277817126663357, \"order\": 0.00999999999999999, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.011437616817111643, 0.011414123258494745, 0.011463843118679628, 0.011433730555527107], \"released_over_entry\": [3.683922613869729e-06, 3.6206116403791434e-06, 3.459448905014875e-06, 3.4347784958402755e-06]}",
+        "{\"test\": \"memory\", \"half_onset\": [0.0029999609730764843, 0.0029999609730764843, 0.0029999609730764843, 0.0029999609730764843], \"maximum_tap_halving_error_per_initial\": 1.9925129019618237e-10}"
+      ]
+    },
+    "middle_tag_grip_n34_r1_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_middle_tag_grip.py",
+        "--mesh",
+        "34",
+        "--refine",
+        "1"
+      ],
+      "start_utc": "2026-11-20T21:04:27.011431+00:00",
+      "outcome_file_utc": "2026-11-20T21:04:33.231681+00:00",
+      "wall_seconds": 6.201532137114555,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_cap": 2147483648,
+      "swap_max": 0,
+      "sampled_peak_bytes": 53067776,
+      "stdout_path": "_scratch/s11c/middle_tag_grip_n34_r1_01/stdout",
+      "stdout_size": 3134,
+      "stdout_sha256": "559f601d74aafb89a3be1046f4971dbc314f8eea03ef84599f0c80e70fe38ffe",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"passage\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"refine\": 1, \"law\": \"central\", \"tag\": [5, 12], \"pairs\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"depth\": [1.175, 1.252009692977056, 1.2943926986134318, 1.3365603127174168, 1.4274799190177558], \"order\": [0.8752990705872304, 0.4999999999999994, 0.24999999999999953, 0.09999999999999976, 0.009999999999999952], \"elapsed\": [0.0, 1.5916213852938874, 2.3703281044589852, 3.1203719194994437, 4.720096818863073], \"waist_to_middle\": 10.400934903160957, \"seeds\": [8401, 8402, 8403, 8404], \"tap\": 1e-05, \"sustained_half_window\": 0.05}",
+        "{\"test\": \"reading\", \"elapsed\": 0.0, \"depth\": 1.175, \"order\": 0.8752990705872304, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [1.0000000000055411, 1.0000000000055411, 1.0000000000055411, 1.0000000000055411], \"released_over_entry\": [1.0, 1.0, 1.0, 1.0]}",
+        "{\"test\": \"reading\", \"elapsed\": 1.5916213852938874, \"depth\": 1.252009692977056, \"order\": 0.4999999999999994, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.5714414184179241, 0.5724883326700084, 0.571368974996742, 0.5709386405543562], \"released_over_entry\": [0.0008526308597760194, 0.0008374550700148026, 0.0008450317955948598, 0.0008341431545577809]}",
+        "{\"test\": \"reading\", \"elapsed\": 2.3703281044589852, \"depth\": 1.2943926986134318, \"order\": 0.24999999999999953, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.286292111616857, 0.2855378526544699, 0.2855563508757058, 0.285514717063139], \"released_over_entry\": [-0.00032833589545958915, -0.0003302242580906239, -0.0003365858771940462, -0.0003324818135597537]}",
+        "{\"test\": \"reading\", \"elapsed\": 3.1203719194994437, \"depth\": 1.3365603127174168, \"order\": 0.09999999999999976, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.11369657190644289, 0.11445817089532437, 0.11435476885580534, 0.11458338606141388], \"released_over_entry\": [6.937701683911357e-05, 6.925314048630616e-05, 6.742680558101448e-05, 6.738259366790294e-05]}",
+        "{\"test\": \"reading\", \"elapsed\": 4.720096818863073, \"depth\": 1.4274799190177558, \"order\": 0.009999999999999952, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.011444823459576996, 0.011415117416663739, 0.011467636127288216, 0.011435543652089696], \"released_over_entry\": [3.4561040818890455e-06, 3.392602880533009e-06, 3.2289955758439418e-06, 3.2025023961369005e-06]}",
+        "{\"test\": \"memory\", \"half_onset\": [0.0029992865300764206, 0.0029992865300764206, 0.0029992865300764206, 0.0029992865300764206], \"maximum_tap_halving_error_per_initial\": 1.789236922355941e-10}"
+      ]
+    },
+    "middle_tag_grip_n34_r2_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_middle_tag_grip.py",
+        "--mesh",
+        "34",
+        "--refine",
+        "2"
+      ],
+      "start_utc": "2026-11-20T21:04:27.678462+00:00",
+      "outcome_file_utc": "2026-11-20T21:04:39.426481+00:00",
+      "wall_seconds": 11.696238883305341,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_cap": 2147483648,
+      "swap_max": 0,
+      "sampled_peak_bytes": 53395456,
+      "stdout_path": "_scratch/s11c/middle_tag_grip_n34_r2_01/stdout",
+      "stdout_size": 3136,
+      "stdout_sha256": "14362975e25734d37f5c92fce0b2fbc11cc7ff97dd5d864e9d33159cff6497ea",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"passage\", \"intake\": 0.2500000000013136, \"mesh\": 34, \"refine\": 2, \"law\": \"central\", \"tag\": [5, 12], \"pairs\": [[1, 21], [2, 23], [3, 20], [4, 16], [5, 12], [6, 18], [7, 13], [10, 17], [11, 15]], \"depth\": [1.175, 1.252009692977056, 1.2943926986134318, 1.3365603127174168, 1.4274799190177558], \"order\": [0.8752990705872304, 0.4999999999999994, 0.24999999999999953, 0.09999999999999976, 0.009999999999999952], \"elapsed\": [0.0, 1.5916213852938874, 2.3703281044589852, 3.1203719194994437, 4.720096818863073], \"waist_to_middle\": 10.400934903160957, \"seeds\": [8401, 8402, 8403, 8404], \"tap\": 1e-05, \"sustained_half_window\": 0.05}",
+        "{\"test\": \"reading\", \"elapsed\": 0.0, \"depth\": 1.175, \"order\": 0.8752990705872304, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [1.0000000000055411, 1.0000000000055411, 1.0000000000055411, 1.0000000000055411], \"released_over_entry\": [1.0, 1.0, 1.0, 1.0]}",
+        "{\"test\": \"reading\", \"elapsed\": 1.5916213852938874, \"depth\": 1.252009692977056, \"order\": 0.4999999999999994, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.5714166366481016, 0.5724805390757165, 0.5713741178365407, 0.5709349077631286], \"released_over_entry\": [0.0008540485747900176, 0.000838832322230532, 0.000846637093799496, 0.0008355371533311576]}",
+        "{\"test\": \"reading\", \"elapsed\": 2.3703281044589852, \"depth\": 1.2943926986134318, \"order\": 0.24999999999999953, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.2862757188925207, 0.28554072058316493, 0.2855623288465408, 0.2855102071035407], \"released_over_entry\": [-0.0003279933096973595, -0.0003299244655093245, -0.0003362632596366787, -0.00033217360558621394]}",
+        "{\"test\": \"reading\", \"elapsed\": 3.1203719194994437, \"depth\": 1.3365603127174168, \"order\": 0.09999999999999976, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.11371604985490533, 0.11445835466987558, 0.11435666093993252, 0.11458244823196236], \"released_over_entry\": [6.941283202521101e-05, 6.92674383412562e-05, 6.743260667500349e-05, 6.738408951080021e-05]}",
+        "{\"test\": \"reading\", \"elapsed\": 4.720096818863073, \"depth\": 1.4274799190177558, \"order\": 0.009999999999999952, \"survivor_counts\": [9, 9, 9, 9], \"original_tag_survives\": [true, true, true, true], \"tangent_over_entry\": [0.011445125755967156, 0.011415236344233021, 0.011467731645642987, 0.011435830538540154], \"released_over_entry\": [3.471361894528788e-06, 3.4051945342100204e-06, 3.2389692738695637e-06, 3.2140832357624014e-06]}",
+        "{\"test\": \"memory\", \"half_onset\": [0.0029992865300764206, 0.0029992865300764206, 0.0027493459859033857, 0.0029992865300764206], \"maximum_tap_halving_error_per_initial\": 3.0960944038680797e-10}"
+      ]
+    },
+    "middle_replacement_n26_local_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_middle_replacement_force.py",
+        "--mesh",
+        "26",
+        "--reference",
+        "local"
+      ],
+      "start_utc": "2026-11-20T21:06:59.689258+00:00",
+      "outcome_file_utc": "2026-11-20T21:07:05.019709+00:00",
+      "wall_seconds": 5.301854348741472,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_cap": 6442450944,
+      "swap_max": 0,
+      "sampled_peak_bytes": 476590080,
+      "stdout_path": "_scratch/s11c/middle_replacement_n26_local_01/stdout",
+      "stdout_size": 2784,
+      "stdout_sha256": "8c6724fdbe25bf5a2a1799642308fae5f3673768c6b4ea8913d4ccc6902226d0",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n26/field.npz\", \"sha256\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"mesh\": 26, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999797987, \"profile\": \"cubic\"}",
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"material\", \"reference\": \"local\", \"sub\": 2, \"dt\": 0.25, \"clock\": 28.43105755756296, \"field_hash\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"order_hash\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"projected_clock_to_deep_end\": 28.43105755756296, \"to_exit\": 77.28904701718173, \"min_sampled_wall_speed\": 0.03256249193992041, \"active_wall_end\": 1.91734693877551, \"frozen_hold\": [[0.42471855596976316, 0.0011954980181674898], [0.0011954980181674876, 0.0003282174864841251]], \"load_quadrature_error\": 8.151055282647679e-07, \"peak_force\": 1e-09, \"station_depths\": [0.525, 1.175, 2.25]}",
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"middle_force\", \"law\": \"local\", \"mesh\": 26, \"t\": 8.0, \"last_original_parcel_crosses_middle_at\": 18.401120980772628, \"front_clipped_to_middle\": 0.5, \"force_per_peak\": 0.0723629168524714, \"force_on_waist_side_of_carrier_front\": -0.0, \"force_on_deep_side_of_carrier_front\": 0.07236291685247134}",
+        "{\"test\": \"middle_force\", \"law\": \"local\", \"mesh\": 26, \"t\": 16.0, \"last_original_parcel_crosses_middle_at\": 18.401120980772628, \"front_clipped_to_middle\": 1.0862674958888365, \"force_per_peak\": 0.054652568681584496, \"force_on_waist_side_of_carrier_front\": 0.19602175973718233, \"force_on_deep_side_of_carrier_front\": -0.14136919105559795}",
+        "{\"test\": \"middle_force\", \"law\": \"local\", \"mesh\": 26, \"t\": 18.5, \"last_original_parcel_crosses_middle_at\": 18.401120980772628, \"front_clipped_to_middle\": 1.175, \"force_per_peak\": 0.07525010971558073, \"force_on_waist_side_of_carrier_front\": 0.07525010971558076, \"force_on_deep_side_of_carrier_front\": -0.0}",
+        "{\"test\": \"middle_force\", \"law\": \"local\", \"mesh\": 26, \"t\": 28.5, \"last_original_parcel_crosses_middle_at\": 18.401120980772628, \"front_clipped_to_middle\": 1.175, \"force_per_peak\": 0.07555041009286548, \"force_on_waist_side_of_carrier_front\": 0.07555041009286544, \"force_on_deep_side_of_carrier_front\": -0.0}"
+      ]
+    },
+    "middle_replacement_n26_travelling_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_middle_replacement_force.py",
+        "--mesh",
+        "26",
+        "--reference",
+        "travelling"
+      ],
+      "start_utc": "2026-11-20T21:07:00.160763+00:00",
+      "outcome_file_utc": "2026-11-20T21:07:05.466611+00:00",
+      "wall_seconds": 5.256449233740568,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_cap": 6442450944,
+      "swap_max": 0,
+      "sampled_peak_bytes": 453730304,
+      "stdout_path": "_scratch/s11c/middle_replacement_n26_travelling_01/stdout",
+      "stdout_size": 2810,
+      "stdout_sha256": "67508daa0b74b8f5eecb051d258a41daf374903fbbc94f37a9feebae9019783a",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n26/field.npz\", \"sha256\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"mesh\": 26, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999797987, \"profile\": \"cubic\"}",
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"material\", \"reference\": \"travelling\", \"sub\": 2, \"dt\": 0.25, \"clock\": 28.43105755756296, \"field_hash\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"order_hash\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"projected_clock_to_deep_end\": 28.43105755756296, \"to_exit\": 77.28904701718173, \"min_sampled_wall_speed\": 0.03256249193992041, \"active_wall_end\": 1.91734693877551, \"frozen_hold\": [[0.42471855596976316, 0.0011954980181674898], [0.0011954980181674876, 0.0003282174864841251]], \"load_quadrature_error\": 8.151055282647679e-07, \"peak_force\": 1e-09, \"station_depths\": [0.525, 1.175, 2.25]}",
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"middle_force\", \"law\": \"travelling\", \"mesh\": 26, \"t\": 8.0, \"last_original_parcel_crosses_middle_at\": 18.401120980772628, \"front_clipped_to_middle\": 0.5, \"force_per_peak\": 0.05454487347410064, \"force_on_waist_side_of_carrier_front\": -0.0, \"force_on_deep_side_of_carrier_front\": 0.05454487347410063}",
+        "{\"test\": \"middle_force\", \"law\": \"travelling\", \"mesh\": 26, \"t\": 16.0, \"last_original_parcel_crosses_middle_at\": 18.401120980772628, \"front_clipped_to_middle\": 1.0862674958888365, \"force_per_peak\": 0.02544546607662324, \"force_on_waist_side_of_carrier_front\": 0.16291931207237847, \"force_on_deep_side_of_carrier_front\": -0.13747384599575524}",
+        "{\"test\": \"middle_force\", \"law\": \"travelling\", \"mesh\": 26, \"t\": 18.5, \"last_original_parcel_crosses_middle_at\": 18.401120980772628, \"front_clipped_to_middle\": 1.175, \"force_per_peak\": 0.03939434795953792, \"force_on_waist_side_of_carrier_front\": 0.03939434795953795, \"force_on_deep_side_of_carrier_front\": -0.0}",
+        "{\"test\": \"middle_force\", \"law\": \"travelling\", \"mesh\": 26, \"t\": 28.5, \"last_original_parcel_crosses_middle_at\": 18.401120980772628, \"front_clipped_to_middle\": 1.175, \"force_per_peak\": 0.005300200656697144, \"force_on_waist_side_of_carrier_front\": 0.00530020065669717, \"force_on_deep_side_of_carrier_front\": -0.0}"
+      ]
+    },
+    "middle_replacement_n34_local_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_middle_replacement_force.py",
+        "--mesh",
+        "34",
+        "--reference",
+        "local"
+      ],
+      "start_utc": "2026-11-20T21:06:59.659281+00:00",
+      "outcome_file_utc": "2026-11-20T21:07:20.986217+00:00",
+      "wall_seconds": 21.307554982136935,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_cap": 6442450944,
+      "swap_max": 0,
+      "sampled_peak_bytes": 1038589952,
+      "stdout_path": "_scratch/s11c/middle_replacement_n34_local_01/stdout",
+      "stdout_size": 2784,
+      "stdout_sha256": "4c205ae2fe7923d81c6f0e7421d7aa61e5639141ee0aaa21592f3377c254f783",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"material\", \"reference\": \"local\", \"sub\": 3, \"dt\": 0.125, \"clock\": 28.431027677955818, \"field_hash\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"order_hash\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"projected_clock_to_deep_end\": 28.431027677955818, \"to_exit\": 77.31274011331618, \"min_sampled_wall_speed\": 0.03269287931805024, \"active_wall_end\": 1.9243386243386242, \"frozen_hold\": [[0.4250420296055348, 0.001196605838245616], [0.0011966058382456167, 0.00032978706196703324]], \"load_quadrature_error\": 5.4584314519685135e-08, \"peak_force\": 1e-09, \"station_depths\": [0.525, 1.175, 2.25]}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"middle_force\", \"law\": \"local\", \"mesh\": 34, \"t\": 8.0, \"last_original_parcel_crosses_middle_at\": 18.40093490316096, \"front_clipped_to_middle\": 0.5, \"force_per_peak\": 0.07443787394028574, \"force_on_waist_side_of_carrier_front\": -0.0, \"force_on_deep_side_of_carrier_front\": 0.07443787394028567}",
+        "{\"test\": \"middle_force\", \"law\": \"local\", \"mesh\": 34, \"t\": 16.0, \"last_original_parcel_crosses_middle_at\": 18.40093490316096, \"front_clipped_to_middle\": 1.0862357525660822, \"force_per_peak\": 0.05347630717218077, \"force_on_waist_side_of_carrier_front\": 0.19353223202657255, \"force_on_deep_side_of_carrier_front\": -0.14005592485439178}",
+        "{\"test\": \"middle_force\", \"law\": \"local\", \"mesh\": 34, \"t\": 18.5, \"last_original_parcel_crosses_middle_at\": 18.40093490316096, \"front_clipped_to_middle\": 1.175, \"force_per_peak\": 0.07615646107994481, \"force_on_waist_side_of_carrier_front\": 0.07615646107994473, \"force_on_deep_side_of_carrier_front\": -0.0}",
+        "{\"test\": \"middle_force\", \"law\": \"local\", \"mesh\": 34, \"t\": 28.375, \"last_original_parcel_crosses_middle_at\": 18.40093490316096, \"front_clipped_to_middle\": 1.175, \"force_per_peak\": 0.07443992871541776, \"force_on_waist_side_of_carrier_front\": 0.07443992871541774, \"force_on_deep_side_of_carrier_front\": -0.0}"
+      ]
+    },
+    "middle_replacement_n34_travelling_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_middle_replacement_force.py",
+        "--mesh",
+        "34",
+        "--reference",
+        "travelling"
+      ],
+      "start_utc": "2026-11-20T21:07:01.385332+00:00",
+      "outcome_file_utc": "2026-11-20T21:07:22.517730+00:00",
+      "wall_seconds": 21.063500970136374,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_cap": 6442450944,
+      "swap_max": 0,
+      "sampled_peak_bytes": 1032081408,
+      "stdout_path": "_scratch/s11c/middle_replacement_n34_travelling_01/stdout",
+      "stdout_size": 2814,
+      "stdout_sha256": "51fb2d1a0b60821ca28a213b5d63ac0579ef959add4cd1b6eeb69de177575f1b",
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"material\", \"reference\": \"travelling\", \"sub\": 3, \"dt\": 0.125, \"clock\": 28.431027677955818, \"field_hash\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"order_hash\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"projected_clock_to_deep_end\": 28.431027677955818, \"to_exit\": 77.31274011331618, \"min_sampled_wall_speed\": 0.03269287931805024, \"active_wall_end\": 1.9243386243386242, \"frozen_hold\": [[0.4250420296055348, 0.001196605838245616], [0.0011966058382456167, 0.00032978706196703324]], \"load_quadrature_error\": 5.4584314519685135e-08, \"peak_force\": 1e-09, \"station_depths\": [0.525, 1.175, 2.25]}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"middle_force\", \"law\": \"travelling\", \"mesh\": 34, \"t\": 8.0, \"last_original_parcel_crosses_middle_at\": 18.40093490316096, \"front_clipped_to_middle\": 0.5, \"force_per_peak\": 0.05662627266323932, \"force_on_waist_side_of_carrier_front\": -0.0, \"force_on_deep_side_of_carrier_front\": 0.05662627266323932}",
+        "{\"test\": \"middle_force\", \"law\": \"travelling\", \"mesh\": 34, \"t\": 16.0, \"last_original_parcel_crosses_middle_at\": 18.40093490316096, \"front_clipped_to_middle\": 1.0862357525660822, \"force_per_peak\": 0.024007089921002617, \"force_on_waist_side_of_carrier_front\": 0.16002913328333793, \"force_on_deep_side_of_carrier_front\": -0.13602204336233534}",
+        "{\"test\": \"middle_force\", \"law\": \"travelling\", \"mesh\": 34, \"t\": 18.5, \"last_original_parcel_crosses_middle_at\": 18.40093490316096, \"front_clipped_to_middle\": 1.175, \"force_per_peak\": 0.040397183418761626, \"force_on_waist_side_of_carrier_front\": 0.040397183418761584, \"force_on_deep_side_of_carrier_front\": -0.0}",
+        "{\"test\": \"middle_force\", \"law\": \"travelling\", \"mesh\": 34, \"t\": 28.375, \"last_original_parcel_crosses_middle_at\": 18.40093490316096, \"front_clipped_to_middle\": 1.175, \"force_per_peak\": 0.004561899548590985, \"force_on_waist_side_of_carrier_front\": 0.004561899548591133, \"force_on_deep_side_of_carrier_front\": -0.0}"
+      ]
+    }
+  },
+  "local_review": [
+    {
+      "verbatim": "Scoped clear for the signed response of the archived central pair to a released relative displacement and a fresh frozen displacement along the prescribed cubic-wall transit. Wall traction, physical renewal time, and a 0PN free-fall coefficient remain unresolved.",
+      "disposition": "The write-up gives the initially rested patch, direct pair-force readout, prescribed carrier transport, lower support spring, conditional weakening and sampled half threshold."
+    },
+    {
+      "verbatim": "Scoped clear for the signed spatial partition of continuum wall traction by a prescribed carrier crossing under each renewal law. The partition identifies which region bears load after passage. Causal attribution to newly formed microscopic contacts, the microscopic origin of the load, and physical renewal-law selection remain unresolved.",
+      "disposition": "Two scopes from the same independent local reviewer. The spatial integrals and constitutive hypotheses are distinguished from molecular tag survival."
+    }
+  ],
+  "status": "Independent local review within the two quoted scopes. Formal project review and commit pending."
+}

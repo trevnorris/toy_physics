@@ -1,0 +1,19 @@
+# Does conversion do work on the contacts of a draining mouth?
+
+**The existing contacts release energy as the brane loses shear order. A new law that changes their relaxed length can deliver conversion energy locally. Its transfer across the whole mouth fell short of sustaining contact renewal in the cases tested.** The calculation is at 0PN, on the held radius-one mouth with intake 0.25. A weak bend probes internal alignment. [Previous conversion budget](mouth_bend_conversion_power.md)
+
+**Test with the existing law.** We gave the incoming material a hypothetical internal energy supply of \(h\) per converted constituent. Its remaining fraction was \(H(\chi)=3\chi^2-2\chi^3\). A flat, unstrained front with the same radius and intake fixes the reference drive independently of the restoring force. In the curved mouth the order layer found its own position at each drive. Around half the reference drive, 96.15% of each small increase relieved work that conversion was extracting from the prescribed flow. The other 3.85% increased conversion heat in the straight state. At a held deep bend of 0.01, increasing the drive from 0.48 to 0.52 of reference changed the signed order work on straight-prepared contacts from −2.3972 × 10⁻⁷ to −2.1110 × 10⁻⁷ model power at leading order. Both inlet preparations gave outward energy transfer throughout the scan. At the central drive the section from depth 1.173 to 2.067 exerted +2.7493 × 10⁻⁴ sideways force on material and the opposite on the wall. The neutral deep solution turned near \(h=0.0420\), with an unpaid conversion cost of about 0.00243 model power. [Drive calibration](../tools/mouth_conversion_supply.py) · [Turning point](../tools/mouth_conversion_operating_point.py) · [Signed wall work](../tools/mouth_supplied_contact_work.py)
+
+**Test of a work-producing contact.** For extension \(g=s-p\), trial law \(D_t p=g/\tau-\beta g D_t[1-H(\chi)]\) lets conversion move a contact’s relaxed position against its traction. We charged that work back to conversion. At fixed slip, opposite known prestrains and a measurement of the relaxed position at two order fractions can determine \(\beta\) independently. Here it is a trial parameter.
+
+| Stationary patch, order 0.85 to 0.45, supply 1% above flat reference | Passive contact | Trial stroke, β = 1 |
+|---|---:|---:|
+| Signed conversion power into contacts | −1.42015 × 10⁻⁷ | +1.43864 × 10⁻⁷ |
+| Contact renewal loss | 2.39747 × 10⁻⁸ | 3.55763 × 10⁻⁸ |
+| Gain in elastic power carried out | −1.65989 × 10⁻⁷ | +1.08288 × 10⁻⁷ |
+
+The material slip stayed fixed. At this drive, stress work also left the patch, so the supplied conversion energy paid for the gain. At the reference drive mechanical work entered through the cuts in the active case. The two controls distinguish the source of the work. [Reciprocal patch calculation](../tools/mouth_conversion_stroke_coupon.py)
+
+**Whole-mouth result.** In one positive example at 5% of reference drive and \(\beta=5.425\), net transfer covered 2.74%, 1.74% and 1.28% of renewal on successive shear meshes. All three discrete reference dynamics had decaying perturbations. The percentage is resolution-sensitive. The imposed flow can also supply work here. None of the sampled whole-mouth settings sustained renewal through this channel alone. The force on a free mouth remains open. Measure relaxed contact length and traction along a marked material path, then measure the work transmitted to ordered material before the contacts disappear. [Stroke comparison](../tools/mouth_conversion_reference_stroke.py) · [Measurements and independent review scopes](../../../research/pde_ledger_v3/_measurements/mouth_conversion_contact_transfer.json)
+
+Working base `49dca23e`. Two local reviewers checked the scoped results. Formal project review and commit are pending.

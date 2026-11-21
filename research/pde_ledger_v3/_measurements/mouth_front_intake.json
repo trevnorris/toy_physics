@@ -1,0 +1,153 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "status": "Working result with two scoped independent local reviews. Formal review pending.",
+  "report": "software/stage1_solver/reports/mouth_front_intake.md",
+  "report_sha256": "5fcc0bbbcb632d2e81a0cfab90fd83f4d56d7d8f4d6c7e4bebf31fb30b2593a2",
+  "source_and_input_sha256": {
+    "docs/_measurements/rim_curvature_head.txt": "9a5ee08c1d77195ca3f59af57d948eb899fb575e8b8558d9cf4d066d620b30f1",
+    "docs/_measurements/feed_backpressure_current.txt": "936a212d87d40c5cbf8c0ef921ee3c6f0c9bf34abf56145a8d852cd053dbe4bb",
+    "docs/_measurements/far_bulk_pressure_sweep.txt": "1a56622dbcb2538538008f118ad335692765ad15b381b0c43c8b1a38e7d619fd",
+    "docs/_measurements/one_throat_reservoir_head.txt": "45f7d8b7b406dfc43e74b4459636e76756dd54f3da30c861d3b6d91879fae529",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "docs/conversion_work_assessment_and_next_step.md": "b95dc1cd8937d3bb62e6d9e337aa82dd3e24bb2d8c4677e6d0b0408c3a8da242",
+    "software/stage1_solver/reports/mouth_stream_power.md": "7ba94392599b869028edcf5b51f5fb7169e5cfa47a9c971868bf13aefed0e112",
+    "software/stage1_solver/tools/mouth_feed_weak_flow.py": "9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83",
+    "software/stage1_solver/tools/mouth_carrier_momentum.py": "9bfdfe7e441137afc82c7863d21e4a846187cb82316f4381f78fee88fd12d434",
+    "software/stage1_solver/tools/mouth_release_input_check.py": "f341d0ced284b035aaf1450706a0bfa3a35be937b214072fb68c997e03fd8efb",
+    "docs/_measurements/mouth_feed_weak_run.json": "f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_front_intake.py": "4c816c6c629429888d72585561c20614e865bff778fa19ee61337ec2d8e2be96",
+    "software/stage1_solver/tools/mouth_pinned_front_check.py": "3628d54716abe44901687a7a6eaa8c67bf071ba889bf13a7979577fd8e79cd08",
+    "software/stage1_solver/tools/mouth_edge_head_check.wl": "469adebd79d9d6a474b77a4f0c22ad01d8a32e6412992d4a20f99dd05d03866d"
+  },
+  "archive_fields": {
+    "_scratch/s11c/mouth_feed_weak01/fields/n24_restoring_slope_u0.npz": {
+      "sha256": "90dc2e473a5219cdbec5025b1208fa8239746349732954ed28faa4de7877c132",
+      "array_names": [
+        "current.npy",
+        "dx.npy",
+        "dz.npy",
+        "field.npy",
+        "mouth.npy",
+        "speed.npy"
+      ]
+    },
+    "_scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz": {
+      "sha256": "c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4",
+      "array_names": [
+        "current.npy",
+        "dx.npy",
+        "dz.npy",
+        "field.npy",
+        "mouth.npy",
+        "speed.npy"
+      ]
+    }
+  },
+  "conventions": {
+    "normal_front": "Order decreases into the bulk, endpoints 1 and 0. Added hypotheses are an anchored conversion front, constant passive order mobility M, no additional balance source or relative order flux, and corresponding material force mu times gradient chi. The accepted live S12 source is not added to relaxation. Constant near-incompressible density and area, monotone weak inward branch, mechanical pressure drop imposed across the local layer rather than far carrier EOS pressures. No chemical tilt of the equal-depth order wells or stored wave power was prescribed. Homogeneous ordered and disordered phases retain the adopted shear gate.",
+    "distributed_attachment": "Energy density gains kp*w*(chi-chi0)²/2 tied to the normal rim location, w=sech²(z/(2 delta)), chi0=1/(1+exp(z/delta)), delta=sqrt(kappa/(2a)). The stiffness and template are illustrative. a=2, kappa=1, M=.4, kp=1.5, rho=2, area=3. Pressure shooting solves the steady order ODE and u, with zero pressure work from the fixed anchor. Delta p equals integral −mu*chi prime, plus negligible endpoint truncation errors. Normal force from translating the anchoring energy is checked against the pressure. Edge force is not counted a second time. Independent zero-current fixed-velocity material relaxation gives nu=(decay2-decay1)/(k2²-k1²)=M*kappa; sigma=kappa*integral(chi0 prime)². G0=rho² area nu/sigma. Steady nonzero-bias differential conductance is independently measured via two static pressure steps separated by .00005.",
+    "mixed_drives": "New axisymmetric BVP runs at local heads corresponding to four signed drives, using prior ideal single-holder exterior and resting bulk W=0. Two distinct new head values per amplitude. Never imposes the current. Frozen local head is a counterexample to unqualified inference from far heads. This is not a matched brane–bulk moving solution. The translationally uniform flat layer supplies no sideways force. Speed-dependent dissipation, crowding, curvature, head loss in other parts, separate supports, and longitudinal phase matching require additional test data.",
+    "edge_front": "Separate hypothesis: uniform material, thin front in four-dimensional material spanning a three-dimensional ball, only the two-sphere perimeter pinned in depth; small slopes and negligible other force, storage and dissipation in steady local normal balance. For equal density normal fluids, the order-only pressure jump is sigma*(−laplacian h) and u_n≈−nu*laplacian h. The fixed-edge formulas, first decay eigenvalue and compliant-edge control were independently derived analytically. The separate Wolfram checker did not finish, and its partial outputs are excluded as numerical corroboration. A fixed material-velocity relaxation or a quantitatively de-advected response is required. This is diffusive order relaxation, not the propagation speed of light. With a finite edge spring Bi=1, the fixed-edge interpretation of absolute center displacement/decay yields only 3/4 of true rate. For a smooth graph h=0 on edge, projected normal loading yields Fx=integral h*partial_x(dp), so no uniform-pressure lateral reaction. A prescribed gradient around a uniform fixed-edge cap gives Fx=g A(2/5)h0. This is neither a derived gradient from a companion nor full mouth force.",
+    "profile": "Unit-radius archive with a flux proportional to (1−r²)^3, prescribed number current .25 in m=1 solver units. These saved files contain a carrier field and a current, not a measured conversion surface. Forward map archived current through the thin fixed-edge Poisson equation: center Green function (1/r−1)/(4 pi rho nu). The archive is treated as piecewise constant in each source voxel clipped to the unit ball, with two quadrature orders. The archived counts do not calibrate the independent physical mobility or impose a measured head.",
+    "publication_scope": "The Allen–Cahn reference supplies an example of curvature-dependent relaxation in a material order boundary. Its coefficients and microscopic mechanisms are not imported as measurements of this model."
+  },
+  "review": {
+    "edge_verdict": "Scoped clear for the thin-front, fixed-edge pressure–intake relation, its independent sag and fixed-material decay calibration, the elastic-edge and imposed-profile controls, and the normal-traction projection under a prescribed gradient. The physical local pressure, edge coupling, intrinsic relaxation and free-mouth response remain open.",
+    "report_verdict": "Scoped clear for the pressure-driven stationary front, conditional equivalent-head intake response, and small-slope fixed-edge relations in the stated models. A physical reservoir-to-interface head transfer and companion-driven sideways force remain open.",
+    "planar_verdict": "Scoped clear for pressure-driven intake, stationary anchor reaction, order dissipation and independent zero-head conductance calibration in the specified anchored planar front. The physical anchoring, mobility, head transfer, and sideways force of a draining mouth remain open."
+  },
+  "runs": {
+    "mouth_front_intake01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_front_intake.py"
+      ],
+      "source_sha256": "4c816c6c629429888d72585561c20614e865bff778fa19ee61337ec2d8e2be96",
+      "pool": "front-pressure-intake",
+      "log_directory": "_scratch/s11c/mouth_front_intake01",
+      "started_utc": "2026-11-19T23:33:08.283911+00:00",
+      "wall_seconds": 0.9886560803279281,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 119808000,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "8e6310613103324b862ab79ef465fdf8bb137fcf76bbed7f8d7f19a6aa9c07e4",
+      "stdout_lines": [
+        "extent_delta=22 head=0.001975 rate=0.0284412887487 rate/head=14.400652531 anchor_dp=0.00395000000002 imposed_dp=0.00395 power_error=-4.96e-17 half_level=0.00963712119785",
+        "extent_delta=22 head=0.002025 rate=0.0291613891381 rate/head=14.4006859941 anchor_dp=0.00405000000001 imposed_dp=0.00405 power_error=-4.96e-17 half_level=0.00988114618356",
+        "rest_head=0.002 static_dD_dH=14.4020077884",
+        "extent_delta=22 head=0.00185 rate=0.0266410591902 rate/head=14.4005725353 anchor_dp=0.00370000000003 imposed_dp=0.0037 power_error=-4.14e-17 half_level=0.00902707595372",
+        "extent_delta=22 head=0.00225 rate=0.0324019056111 rate/head=14.4008469383 anchor_dp=0.00450000000001 imposed_dp=0.0045 power_error=-6.24e-17 half_level=0.0109793116217",
+        "U=0.01 V=0.02 same_sign_D=0.0266410591902 opposite_sign_D=0.0324019056111 mixed_D_over_UV=-14.4021160522 rest_slope_prediction=-14.4020077884 fixed_local_head_mixed=0",
+        "extent_delta=22 head=0.0019625 rate=0.0282612644309 rate/head=14.400644296 anchor_dp=0.00392500000002 imposed_dp=0.003925 power_error=-4.9e-17 half_level=0.00957611558167",
+        "extent_delta=22 head=0.0020625 rate=0.0297014677592 rate/head=14.4007116408 anchor_dp=0.00412500000001 imposed_dp=0.004125 power_error=-5.15e-17 half_level=0.0100641676268",
+        "U=0.005 V=0.01 same_sign_D=0.0282612644309 opposite_sign_D=0.0297014677592 mixed_D_over_UV=-14.4020332837 rest_slope_prediction=-14.4020077884 fixed_local_head_mixed=0",
+        "radial_profile=uniform center=1/6 true_rate=4*pi/3 center_estimate_over_true=1 edge_estimate_over_true=1",
+        "radial_profile=archived_weight center=187/2520 true_rate=64*pi/315 center_estimate_over_true=187/64 edge_estimate_over_true=1",
+        "normal_load_only Fx/(area*gradient*center_sag) = 2/5",
+        "archived_grid=24 cubature=4 saved_rate=0.25 ball_rate=0.249943045923 uniform_sag_estimate_ratio=2.87658155948",
+        "archived_grid=24 cubature=8 saved_rate=0.25 ball_rate=0.24994512562 uniform_sag_estimate_ratio=2.87527467223",
+        "archived_grid=32 cubature=4 saved_rate=0.25 ball_rate=0.249983071837 uniform_sag_estimate_ratio=2.896642654",
+        "archived_grid=32 cubature=8 saved_rate=0.25 ball_rate=0.249983436172 uniform_sag_estimate_ratio=2.89589643964"
+      ]
+    },
+    "mouth_pinned_front_referee01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_pinned_front_check.py"
+      ],
+      "source_sha256": "3628d54716abe44901687a7a6eaa8c67bf071ba889bf13a7979577fd8e79cd08",
+      "pool": "held-pinned-front-check",
+      "log_directory": "_scratch/s11c/mouth_pinned_front_referee01",
+      "started_utc": "2026-11-19T23:30:15.914488+00:00",
+      "wall_seconds": 0.43303604098036885,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 56213504,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "e487cdfcbe49a2f7637e15162b6776d0bfd82b0b8b4aa68fd36e0222c45d6c33",
+      "stdout_lines": [
+        "wave_rates=0.535771743381,0.795771743381 diffusivity=0.399999999999 normal_ground_eigen=1.17942935845 analytic=1.17944947177 zero_head_conductance=14.4",
+        "extent_delta=16 head=0.002 rate=0.0288013383158 rate/head=14.4006691579 anchor_dp=0.00399999999996 imposed_dp=0.004 power_error=-1.16e-16 half_level=0.0097591824687",
+        "extent_delta=22 head=0.002 rate=0.0288013383158 rate/head=14.4006691579 anchor_dp=0.00400000000001 imposed_dp=0.004 power_error=-4.84e-17 half_level=0.00975913318242",
+        "extent_delta=16 head=0.001 rate=0.0144001672698 rate/head=14.4001672698 anchor_dp=0.00199999999998 imposed_dp=0.002 power_error=-2.54e-17 half_level=0.00487924245819",
+        "extent_delta=22 head=0.001 rate=0.0144001672698 rate/head=14.4001672698 anchor_dp=0.002 imposed_dp=0.002 power_error=-1.13e-17 half_level=0.00487927339245"
+      ]
+    }
+  },
+  "excluded_attempts": [
+    {
+      "name": "_scratch/s11c/mouth_edge_head_referee01",
+      "cap_bytes": 1073741824,
+      "exit_code": 1,
+      "stdout_lines": [
+        "",
+        "No more memory available.",
+        "Mathematica kernel has shut down.",
+        "Try quitting other applications and then retry."
+      ],
+      "scope": "Wolfram startup failed; no scientific result is taken from this invocation."
+    },
+    {
+      "name": "_scratch/s11c/mouth_edge_head_referee02",
+      "cap_bytes": 4294967296,
+      "exit_code": 137,
+      "child_exit_code": -9,
+      "stdout_sha256": "593d3bf3d9a4dbcaf4b3498073e94bab3c5bbf2253f3c1fb3bb8f83658710225",
+      "scope": "Stopped after a confirmed 32-task cgroup refusal and blocked Wolfram threads. Partial stdout excluded. Fixed-edge review is analytic; no numerical success attributed to the Wolfram checker."
+    }
+  ]
+}

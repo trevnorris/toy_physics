@@ -1,0 +1,153 @@
+{
+  "scope": "Fixed-face, held pair minus the same target alone at R=1 and rate 0.25 plus a conditional constant-tension fixed-rim pressure law. Free center and matched bulk pressure open.",
+  "base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "status": "Working result; formal record review pending.",
+  "source_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "docs/_measurements/held_force_incident_flow.json": "ce594e47e8181efb7bc9e173b47d6e3269fb1a2794c5eccbcc62f7fcb32b8763",
+    "software/stage1_solver/reports/mouth_front_pressure_dipole.md": "8ee1a184cf2dbd568526369ab85263128695120a5e38e20e443a81077e3164b4",
+    "software/stage1_solver/reports/mouth_front_intake.md": "5fcc0bbbcb632d2e81a0cfab90fd83f4d56d7d8f4d6c7e4bebf31fb30b2593a2",
+    "software/stage1_solver/reports/mouth_inlet_trace.md": "8bbcb86dedfa333821312111a84381ccee326af186d983e69a0157d4c62c2b27",
+    "software/stage1_solver/reports/held_bulk_two_separations.md": "7174a81544c33f913a87a29bb12b8ea3245dc59c6917404876c9d65920721eca",
+    "software/stage1_solver/tools/mouth_front_pressure_cells.py": "6a1b26d718be0b7274dcee7202e18fc9d87997648695e94d13c552b30adce491",
+    "software/stage1_solver/tools/mouth_front_pressure_dipole.py": "8308c47089b7382f9dd2d07299ec10de361e4e1cf7fd41e5ae24b566e9dcff9d",
+    "software/stage1_solver/tools/mouth_front_pressure_check.py": "f9a21a7e48532376e5b19b78fb6ec230119d0beaf868c53b9358d1de5e1e0c18",
+    "software/stage1_solver/tools/mouth_front_rim_pressure_readout.py": "4b7a2683e7b82f49317199e6c5a79af91a3c736a37d694ecc557a68b6ecb3522",
+    "software/stage1_solver/tools/incident_flow_falloff.py": "f0e289efa985128f3174b59bd1554b2c16a618b13eaf68d79f977c6c3c2572a9",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_target_rate.py": "03b68b5d48bb81e5fb24256adcc5dc8aae6582f2bad428b861755b5aad261a6b",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/mouth_normal_load_return.py": "c09f9dd99c6013b985f46159165d1b7c232105ba8d725192aeecd00edf1e501b"
+  },
+  "raw_fields_sha256": {
+    "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+    "_scratch/s11c/lateral_bath_e48_c4_01/fields/d8.npz": "741fbc19a3e6fab141d6ba218fef3858974d9928fba6a890297051cda1773bd6",
+    "_scratch/s11c/held_force_incident01/L48C4_d16.npz": "43df2709016d342acc53b07641ba3de7fc95e97fa4f35c504a981f2634d181a5",
+    "_scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz": "1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d",
+    "_scratch/s11c/held_force_incident01/L96C4_d8.npz": "2fee906779e8be0cbc8b35d584ff373f178ea960f34da198218a4e9033d38295",
+    "_scratch/s11c/held_force_incident01/L96C4_d16.npz": "e3fb5e8683c0770853ff961423197ca10d3fca9d6594c2746233e21b37f49719",
+    "_scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz": "24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53",
+    "_scratch/s11c/held_force_incident01/L96C6_d8.npz": "4813423c05b73bbec71606fbcca12d88c65b98b0a62db889fea963956ae2b474",
+    "_scratch/s11c/held_force_incident01/L96C6_d16.npz": "d238340bc950f36baff5266654d1985cd5018e7f9d798cbb4f912ff605f237b8"
+  },
+  "runs": {
+    "mouth_front_pressure_dipole02": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-front-pressure-dipole --memory-gib 2 --log-directory _scratch/s11c/mouth_front_pressure_dipole02 -- python3 software/stage1_solver/tools/mouth_front_pressure_dipole.py",
+      "worker_script_sha256": "8308c47089b7382f9dd2d07299ec10de361e4e1cf7fd41e5ae24b566e9dcff9d",
+      "started_utc": "2026-11-19T23:45:12.353398+00:00",
+      "last_resource_sample_utc": "2026-11-19T23:45:14.996183+00:00",
+      "approx_end_utc_from_wall_duration": "2026-11-19T23:45:14.998864+00:00",
+      "wall_seconds": 2.645465752109885,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 185491456,
+      "stdout_path": "_scratch/s11c/mouth_front_pressure_dipole02/stdout",
+      "stdout_bytes": 6036,
+      "stdout_sha256": "04715aa370e465a41770ca61ff8c10389eac0160e14215d0921cac800a2b2800",
+      "stdout_lines": [
+        "{\"grid\": [48, 4, 16], \"d\": 8, \"inputs\": {\"_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz\": \"7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd\", \"_scratch/s11c/lateral_bath_e48_c4_01/fields/d8.npz\": \"741fbc19a3e6fab141d6ba218fef3858974d9928fba6a890297051cda1773bd6\"}, \"moment\": {\"pressure\": 4.888976720048435e-06, \"current\": 2.1692807394053066e-07, \"normal_speed\": 3.801047389453605e-19, \"carriage\": 2.9205446677837195e-08, \"normal_pde\": 1.5594771874785947e-05, \"normal_layers\": 1.4500416784442654e-05}, \"midpoint\": {\"pressure\": 5.30481157441207e-06, \"current\": 2.121752901005201e-07, \"normal_speed\": 3.475974674414764e-19, \"carriage\": 2.8055607749232743e-08, \"normal_pde\": 1.668782880117033e-05, \"normal_layers\": 1.5569632792384982e-05}, \"quadrature_difference\": 1.0341286339624403e-14, \"max_paired_speed_asymmetry\": 2.7755575615628914e-17, \"equivalent_linear_pressure\": 5.835786087426824e-06, \"flat_momentum\": 7.753444614204401e-05, \"pressure_moment_over_flat\": 0.0630555445136188}",
+        "{\"grid\": [48, 4, 16], \"d\": 16, \"inputs\": {\"_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz\": \"7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd\", \"_scratch/s11c/held_force_incident01/L48C4_d16.npz\": \"43df2709016d342acc53b07641ba3de7fc95e97fa4f35c504a981f2634d181a5\"}, \"moment\": {\"pressure\": 1.1972943023413026e-06, \"current\": 5.304115902533333e-08, \"normal_speed\": -6.283197742662346e-19, \"carriage\": 7.1380985768640444e-09, \"normal_pde\": 3.8083943898389045e-06, \"normal_layers\": 3.5416059653393007e-06}, \"midpoint\": {\"pressure\": 1.2987001227578228e-06, \"current\": 5.1886418766633215e-08, \"normal_speed\": -6.50955062433949e-19, \"carriage\": 6.857840155831545e-09, \"normal_pde\": 4.074632667115772e-06, \"normal_layers\": 3.8020567795354646e-06}, \"quadrature_difference\": 2.4459550189296145e-15, \"max_paired_speed_asymmetry\": 2.7755575615628914e-17, \"equivalent_linear_pressure\": 1.4291647991503544e-06, \"flat_momentum\": 1.891527217149206e-05, \"pressure_moment_over_flat\": 0.06329775704447918}",
+        "{\"grid\": [96, 4, 16], \"d\": 8, \"inputs\": {\"_scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz\": \"1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d\", \"_scratch/s11c/held_force_incident01/L96C4_d8.npz\": \"2fee906779e8be0cbc8b35d584ff373f178ea960f34da198218a4e9033d38295\"}, \"moment\": {\"pressure\": 4.903098112343699e-06, \"current\": 2.1755440836686838e-07, \"normal_speed\": 9.224943818772745e-20, \"carriage\": 2.9289759333611347e-08, \"normal_pde\": 1.5639775736123975e-05, \"normal_layers\": 1.4542265363900432e-05}, \"midpoint\": {\"pressure\": 5.320128550219935e-06, \"current\": 2.127880016955549e-07, \"normal_speed\": 8.515305237307944e-20, \"carriage\": 2.8136612384209898e-08, \"normal_pde\": 1.673597717848922e-05, \"normal_layers\": 1.561455741560529e-05}, \"quadrature_difference\": 1.0369956710823067e-14, \"max_paired_speed_asymmetry\": 2.7755575615628914e-17, \"equivalent_linear_pressure\": 5.852642257830307e-06, \"flat_momentum\": 7.775821137022263e-05, \"pressure_moment_over_flat\": 0.0630556956743649}",
+        "{\"grid\": [96, 4, 16], \"d\": 16, \"inputs\": {\"_scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz\": \"1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d\", \"_scratch/s11c/held_force_incident01/L96C4_d16.npz\": \"e3fb5e8683c0770853ff961423197ca10d3fca9d6594c2746233e21b37f49719\"}, \"moment\": {\"pressure\": 1.2260111551889092e-06, \"current\": 5.431335430168326e-08, \"normal_speed\": -5.632164342012957e-19, \"carriage\": 7.309304469930391e-09, \"normal_pde\": 3.899732369283153e-06, \"normal_layers\": 3.626546489285773e-06}, \"midpoint\": {\"pressure\": 1.3298466565274993e-06, \"current\": 5.31309659151316e-08, \"normal_speed\": -5.960712739677313e-19, \"carriage\": 7.022329789662526e-09, \"normal_pde\": 4.172351280196658e-06, \"normal_layers\": 3.893239298667868e-06}, \"quadrature_difference\": 2.504026750760422e-15, \"max_paired_speed_asymmetry\": 2.7755575615628914e-17, \"equivalent_linear_pressure\": 1.4634430172558979e-06, \"flat_momentum\": 1.9368967202700544e-05, \"pressure_moment_over_flat\": 0.0632977041242535}",
+        "{\"grid\": [96, 6, 24], \"d\": 8, \"inputs\": {\"_scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz\": \"24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53\", \"_scratch/s11c/held_force_incident01/L96C6_d8.npz\": \"4813423c05b73bbec71606fbcca12d88c65b98b0a62db889fea963956ae2b474\"}, \"moment\": {\"pressure\": 5.017091116633313e-06, \"current\": 2.1718318379768965e-07, \"normal_speed\": -6.734674908193748e-20, \"carriage\": 2.9001559435071633e-08, \"normal_pde\": 1.6327862464718226e-05, \"normal_layers\": 1.576982400298186e-05}, \"midpoint\": {\"pressure\": 4.96424899307426e-06, \"current\": 2.144621179647866e-07, \"normal_speed\": -7.470582899022012e-20, \"carriage\": 2.842166932924552e-08, \"normal_pde\": 1.630088017213962e-05, \"normal_layers\": 1.574183393793898e-05}, \"quadrature_difference\": 7.948252245173343e-16, \"max_paired_speed_asymmetry\": 5.551115123125783e-17, \"equivalent_linear_pressure\": 5.988711383659714e-06, \"flat_momentum\": 7.771447290892019e-05, \"pressure_moment_over_flat\": 0.06455800224641868}",
+        "{\"grid\": [96, 6, 24], \"d\": 16, \"inputs\": {\"_scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz\": \"24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53\", \"_scratch/s11c/held_force_incident01/L96C6_d16.npz\": \"d238340bc950f36baff5266654d1985cd5018e7f9d798cbb4f912ff605f237b8\"}, \"moment\": {\"pressure\": 1.2550379103587751e-06, \"current\": 5.424603471697703e-08, \"normal_speed\": -1.6260770770345161e-18, \"carriage\": 7.240833625986395e-09, \"normal_pde\": 4.073440564381133e-06, \"normal_layers\": 3.9344400773228775e-06}, \"midpoint\": {\"pressure\": 1.241751147628479e-06, \"current\": 5.357030085110521e-08, \"normal_speed\": -1.6012845153976496e-18, \"carriage\": 7.096525800819309e-09, \"normal_pde\": 4.0668207093022114e-06, \"normal_layers\": 3.9275554587391306e-06}, \"quadrature_difference\": 1.912363225674979e-16, \"max_paired_speed_asymmetry\": 5.551115123125783e-17, \"equivalent_linear_pressure\": 1.498091154009916e-06, \"flat_momentum\": 1.936630067214885e-05, \"pressure_moment_over_flat\": 0.06480524761054009}"
+      ]
+    },
+    "mouth_pressure_review_cut_cells01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-pressure-review-cut-cells --memory-gib 2 --log-directory _scratch/s11c/mouth_pressure_review_cut_cells01 -- python3 _scratch/s11c/review_mouth_pressure_cut_cells.py",
+      "worker_script_sha256": "6a1b26d718be0b7274dcee7202e18fc9d87997648695e94d13c552b30adce491",
+      "started_utc": "2026-11-19T23:46:47.795257+00:00",
+      "last_resource_sample_utc": "2026-11-19T23:46:51.192150+00:00",
+      "approx_end_utc_from_wall_duration": "2026-11-19T23:46:51.196334+00:00",
+      "wall_seconds": 3.401077217888087,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 90513408,
+      "stdout_path": "_scratch/s11c/mouth_pressure_review_cut_cells01/stdout",
+      "stdout_bytes": 885,
+      "stdout_sha256": "caa9b6f92a038dd67efb696abd36258b4d50ef15450a68201a76cbc85858e996",
+      "stdout_lines": [
+        "grid=[48, 4, 16] d=8 cell_pressure=4.951587063347e-06 ratio_to_bilinear=1.012806431 cells_with_negative_contrast=0/15 paired_v_odd_max=1.38778e-16",
+        "grid=[48, 4, 16] d=16 cell_pressure=1.212740976803e-06 ratio_to_bilinear=1.012901318 cells_with_negative_contrast=0/15 paired_v_odd_max=1.11022e-16",
+        "grid=[96, 4, 16] d=8 cell_pressure=4.965891923608e-06 ratio_to_bilinear=1.012806966 cells_with_negative_contrast=0/15 paired_v_odd_max=5.55112e-17",
+        "grid=[96, 4, 16] d=16 cell_pressure=1.241829754345e-06 ratio_to_bilinear=1.012902492 cells_with_negative_contrast=0/15 paired_v_odd_max=8.32667e-17",
+        "grid=[96, 6, 24] d=8 cell_pressure=5.044794832202e-06 ratio_to_bilinear=1.005521868 cells_with_negative_contrast=0/33 paired_v_odd_max=1.66533e-16",
+        "grid=[96, 6, 24] d=16 cell_pressure=1.262023140284e-06 ratio_to_bilinear=1.005565752 cells_with_negative_contrast=0/33 paired_v_odd_max=1.11022e-16"
+      ]
+    },
+    "mouth_front_pressure_check01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-front-pressure-check --memory-gib 1 --log-directory _scratch/s11c/mouth_front_pressure_check01 -- python3 software/stage1_solver/tools/mouth_front_pressure_check.py",
+      "worker_script_sha256": "f9a21a7e48532376e5b19b78fb6ec230119d0beaf868c53b9358d1de5e1e0c18",
+      "started_utc": "2026-11-19T23:45:51.382263+00:00",
+      "last_resource_sample_utc": "2026-11-19T23:45:52.020400+00:00",
+      "approx_end_utc_from_wall_duration": "2026-11-19T23:45:52.022236+00:00",
+      "wall_seconds": 0.6399726141244173,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 54927360,
+      "stdout_path": "_scratch/s11c/mouth_front_pressure_check01/stdout",
+      "stdout_bytes": 268,
+      "stdout_sha256": "dad3359940b0211c9b1c5e8f3bdcf39395ca1a9685307487e2d7394558a4f391",
+      "stdout_lines": [
+        "P0, dP = 20*b*r**2*sigma 10*c*mu*r*sigma",
+        "direct, shape, sum, edge per ball volume = 40*b*c*sigma/7 16*b*c*sigma/7 8*b*c*sigma 8*b*c*sigma",
+        "mean receiver perturbation = 0",
+        "net load per volume; receiver gains 0,1,2 = -8*b*c*sigma*(receiver - 1) 8*b*c*sigma 0 -8*b*c*sigma"
+      ]
+    },
+    "mouth_front_rim_pressure_readout01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-front-rim-readout --memory-gib 1 --log-directory _scratch/s11c/mouth_front_rim_pressure_readout01 -- python3 software/stage1_solver/tools/mouth_front_rim_pressure_readout.py",
+      "worker_script_sha256": "4b7a2683e7b82f49317199e6c5a79af91a3c736a37d694ecc557a68b6ecb3522",
+      "started_utc": "2026-11-19T23:47:01.626819+00:00",
+      "last_resource_sample_utc": "2026-11-19T23:47:02.513838+00:00",
+      "approx_end_utc_from_wall_duration": "2026-11-19T23:47:02.515341+00:00",
+      "wall_seconds": 0.888522426597774,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_bytes": 64438272,
+      "stdout_path": "_scratch/s11c/mouth_front_rim_pressure_readout01/stdout",
+      "stdout_bytes": 203,
+      "stdout_sha256": "0cbe95033e72278a62b242b8b0bff6f5d11bcbc6f5dcd0ec2726fc5dba3fbef8",
+      "stdout_lines": [
+        "angular dipole of inward slope = R*alpha/(5*sigma)",
+        "near-minus-far inward slope / 2 = R*(9*alpha + 5*beta)/(45*sigma)",
+        "pressure first moment, reconstructed from rim = 4*pi*R**4*alpha/15 4*pi*R**4*alpha/15"
+      ]
+    }
+  },
+  "doubling_ratio_from_bilinear_pressure_moments": {
+    "[48, 4, 16]": 0.2448967076139894,
+    "[96, 4, 16]": 0.2500482607317991,
+    "[96, 6, 24]": 0.2501525049441319
+  },
+  "fine_grid_zero_receiving_moment_predicted_tension_times_slope_dipole": {
+    "8": 1.1977422767319428e-06,
+    "16": 2.996182308019832e-07
+  },
+  "independent_numerical_check_source": "software/stage1_solver/tools/mouth_front_pressure_cells.py (byte-identical durable copy of the scratch reviewer source).",
+  "reviews": {
+    "independent_field_review": "Scoped clear for a positive companion-directed, pair-minus-isolated feed-side pressure moment at a held flat mouth in all six archived preparations. The sign and magnitude survive independent exact cut-cell integration. The through-front pressure jump, motion of the front and force on a free mouth remain unresolved.",
+    "independent_force_review": "Scoped clear for the first-order pressure force on a relaxed front with a fixed spherical rim, constant tension, and a radial base state. The receiving-side pressure dipole, total rim reaction, and free-mouth acceleration remain open.",
+    "independent_shape_review": "Scoped clear for the normalized rim-slope dipole as an exact pressure-jump moment in the uniform-tension Dirichlet model."
+  },
+  "preliminary_attempt": {
+    "directory": "_scratch/s11c/mouth_front_pressure_dipole01",
+    "guard_and_child_exit": 1,
+    "source_sha256": "34f1ea9234788cdadbeb7f99d2a534ad4b287ccaff87e029f1a4e44f972c6bee",
+    "reason": "Strict coordinate validation stopped at the six-cells-per-radius baseline. Generated coordinates were divided by six; the solver multiplies by its rounded reciprocal. The accepted readout uses the original solver arithmetic, preserves the exact equality check and validates all six comparisons."
+  }
+}

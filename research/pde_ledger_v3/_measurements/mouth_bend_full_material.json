@@ -1,0 +1,130 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "status": "Working result. Scoped independent local review completed; formal review pending.",
+  "report": "software/stage1_solver/reports/mouth_bend_full_material.md",
+  "report_sha256": "cf724be2a20313fc4f9ae0107e374d48bdc0bbdd229d626e3d797ca645d17957",
+  "source_and_input_sha256": {
+    "software/stage1_solver/tools/mouth_bend_full_material.py": "e7dcd4867cd59948843f8819f3293e3745756ca1269adde5b26d7fc86c1179da",
+    "software/stage1_solver/tools/mouth_bend_full_material.wl": "ab7ccde2ea8ba750978f00955ddf3295a929e33e69809d606ae8fcbd91e9bd55",
+    "software/stage1_solver/tools/mouth_bend_full_material_check.py": "e051b769b8f33912ff257c542b9b38b9716ca0fbc20a52b8239f0edf89b1ace2",
+    "software/stage1_solver/tools/mouth_bend_depth_participation.py": "14a36c80c761b301eef5bfa876d5df41f80b516afd4a77344a52766374cff7a1",
+    "software/stage1_solver/tools/mouth_carrier_bend_budget.py": "5b15e2fbd2e9580863f657b79829337f818497ab1560d75cf09918cedacc5d44",
+    "software/stage1_solver/tools/mouth_projected_bend_spectrum.py": "96a65898d1ffb5c06d197da68be377e8864d56be93243ff884ae33495ca14222",
+    "research/pde_ledger_v3/_measurements/mouth_trapped_wave_spectrum.json": "a53c5edf9cee951de8e8cce20cbc90d27a4e8e5ce55efadb69b5fa52eae274d7",
+    "research/pde_ledger_v3/_measurements/mouth_open_reservoirs.json": "e48a92f2cd50f9ddee9a26f6abc78d47cfe3a6346e55416519aa9c395fb7a7a7",
+    "research/pde_ledger_v3/_measurements/mouth_bend_coefficients.json": "6ec83f27883999e8b33dfb59a081e92f6883921336670a09fb9eaa2fc010f946",
+    "research/pde_ledger_v3/_measurements/mouth_bend_band_momentum.json": "c264a1a61b211769571014c590314b264831660cde48c763bb089a02dad554ba",
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "research/pde_audit/notes/stage_v2_01_parent_wall_action_derivation.md": "610642c63867d921763ee47c3e4936fbaad4672232b783f77b1ab15ad482397d",
+    "research/pde_ledger_v3/directives/O2_input_contract.md": "22fcf0f291f836739af2b724c1d474c24e31a20c99325ae82f97d2ba7cee52bc",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "research/4d_2pn/notes/2pn_family1_softwall_surface_inertia_completion_results.md": "8a5e09d73874e704d1086620017dbfb1741115038b815252334a423380d4beac",
+    "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b"
+  },
+  "conventions": {
+    "wall": "Fixed-intake passive local wall, normal displacement b f cos(theta) in both halves, f=sin²(pi w/H). Mass per angular slice is already integrated over its area. One draining carrier. The field forces and radiation are retained from the archived frequency-dependent response.",
+    "front": "Trial reversible kinetic coefficient I_B for a thin, translated equilibrium order front in a fixed unperturbed material reference. Isotropic kappa_B, negligible curvature corrections on thickness scale and negligible wall-relative advection/loading beyond the archived kernels. Front saturates the side tension and archived radial calibration. The real-scalar inertia is newly posited. Width and tension alone do not set I_B. No independent calibration of c_order on this preparation.",
+    "bound": "Given fixed total positive wall mass on a constant-area cylinder and target t=3 M_fold/M_radial, let g=sin^4(pi u). A=integral of (g−t)_+. For depth contrast C, integral h(g−t)/min(h) <= 3/8−t+(C−1)A. Equality puts the maximal density wherever g>t and the minimum elsewhere. Speed ratio interpretation additionally requires constant tension and the front law. Tested resolved high-mass branch only.",
+    "spectrum": "Same stiffness 0.424660352295, carrier and wave kernels, equal-area 1:3-width selective readout, common shift and zero additional dephasing. Assumes low-frequency wall inertia persists across spectral drive frequencies. The fixed-end bend supplies no calibration of free-body inertia."
+  },
+  "review": {
+    "verdict": "Scoped clear for the conditional thin-front mass projection and the sharp minimum depth contrast at the archived fine spectral fold.",
+    "scope": "Independent source audit, numerical integration with a separate implementation, and three depth-grid linear programs. Peak count checked against previously archived uniform spectrum. The primary Python calculation reevaluated both meshes. Mathematica independently integrated the thin-front norm, laboratory and conjugate momenta and checked the primitive used in the bound.",
+    "qualification": "A convected order variable moves relative to the local material velocity. The reversible trial law is new and needs an independent speed measurement. Positive profiles with smooth depth variation approach the optimum. A large contrast is only necessary unless its placement is known."
+  },
+  "runs": {
+    "bend_full_material01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_full_material.py"
+      ],
+      "started_utc": "2026-11-19T21:57:27.621896+00:00",
+      "source_sha256": "e7dcd4867cd59948843f8819f3293e3745756ca1269adde5b26d7fc86c1179da",
+      "pool": "bend-full-material",
+      "log_directory": "_scratch/s11c/bend_full_material01",
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_memory_bytes": 64020480,
+      "wall_seconds": 0.6366785471327603,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "d6b67908e23081442e537575fa00bc919beee8be0fd9426c6aee2ab6c39d71fc",
+      "stdout_lines": [
+        "preparation intake=0.0373999726942 radius=1.89241000541 H=1.0459197524 M_radial=59.3830741481 tension=0.003",
+        "homogeneous mass_per_area=0.630803335138 c_order=0.0689626016234 both_Px_over_bdot=9.89717902468 both_weighted_P_over_bdot=7.42288426851",
+        "fold cells=48 critical_mass=12.9937355583 target_mean_f2=0.656436320182 center_lo=0.356517938255 center_hi=0.643482061745 min_mass_contrast=5.43772169301 min_speed_ratio=2.33189229876 attained_mass=12.9937355583",
+        "fold cells=64 critical_mass=13.0047915856 target_mean_f2=0.656994864555 center_lo=0.356657855961 center_hi=0.643342144039 min_mass_contrast=5.45778978494 min_speed_ratio=2.33619129887 attained_mass=13.0047915856",
+        "drive omega=0.01 bdot_peak=1e-07 both_homogeneous_Px=9.89717902468e-07 both_homogeneous_weighted_P=7.42288426851e-07 both_weighted_P_at_fold=1.30047915856e-06",
+        "drive omega=0.02 bdot_peak=2e-07 both_homogeneous_Px=1.97943580494e-06 both_homogeneous_weighted_P=1.4845768537e-06 both_weighted_P_at_fold=2.60095831712e-06",
+        "homogeneous_front_spectrum cells=48 shift=0.021546589662 width=0.00706686796816 width_over_gap=1.73939168616 asymmetry=0.945032772779 peaks=1",
+        "homogeneous_front_spectrum cells=64 shift=0.0215096890339 width=0.00707112607455 width_over_gap=1.74043974803 asymmetry=0.94489370905 peaks=1"
+      ]
+    },
+    "bend_full_material_wl01": {
+      "command": [
+        "math",
+        "-script",
+        "software/stage1_solver/tools/mouth_bend_full_material.wl"
+      ],
+      "started_utc": "2026-11-19T21:58:05.324125+00:00",
+      "source_sha256": "ab7ccde2ea8ba750978f00955ddf3295a929e33e69809d606ae8fcbd91e9bd55",
+      "pool": "bend-full-material-wl",
+      "log_directory": "_scratch/s11c/bend_full_material_wl01",
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "peak_memory_bytes": 428740608,
+      "wall_seconds": 60.8688667290844,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "6174bcc8cf462e9b4e5bca2ea1882e95758823395e7b06e71aa4b214e8f0d8fb",
+      "stdout_lines": [
+        "squared normal gradient integrated through one front = 1/(6*delta)",
+        "front mass per area divided by tension = inertia/kappa",
+        "total sideways momentum per peak speed and radial inertia = 1/6",
+        "bend-conjugate momentum per peak speed and radial inertia = 1/8",
+        "primitive differentiated minus squared bend shape = 0"
+      ]
+    },
+    "bend-order-wall-referee01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_full_material_check.py"
+      ],
+      "started_utc": "2026-11-19T21:58:44.132138+00:00",
+      "source_sha256": "e051b769b8f33912ff257c542b9b38b9716ca0fbc20a52b8239f0edf89b1ace2",
+      "pool": "bend-front-review",
+      "log_directory": "_scratch/s11c/bend-order-wall-referee01",
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "peak_memory_bytes": 52191232,
+      "wall_seconds": 0.4913995382376015,
+      "limits_verified": true,
+      "duration_verified": true,
+      "wall_deadline": null,
+      "inactivity_deadline": null,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "child_guard_reason": null,
+      "stdout_sha256": "6ce65a83618458d3a3574f641c17a16e40c1957d92c65f785190375af8bf483b",
+      "stdout_lines": [
+        "homogeneous density=0.630803335139 c_order=0.0689626016233 wall_Px_over_bdot_both=9.89717902468 modal_mass_both=7.42288426851 modal_mass_half=3.71144213426 archived_fine_peaks=1",
+        "fine_fold=13.0047915856 target_mean_f_squared=0.656994864555 high_interval_start=0.356657855961 high_interval_end=0.643342144039 positive_excess=0.0632588969332 density_contrast=5.45778978494 speed_contrast=2.33619129887",
+        "fold_witness low_over_mean=0.438985746263 high_over_mean=2.39589192169 c_slow=0.0445533152033 c_fast=0.104085067314 normalized_total=1 modal_mass=13.0047915856",
+        "cellwise_density_LP n=32 contrast=5.50549458658 excess_above_continuum=0.047705",
+        "cellwise_density_LP n=256 contrast=5.45818783142 excess_above_continuum=0.00039805",
+        "cellwise_density_LP n=2048 contrast=5.45780249303 excess_above_continuum=1.2708e-05"
+      ]
+    }
+  }
+}

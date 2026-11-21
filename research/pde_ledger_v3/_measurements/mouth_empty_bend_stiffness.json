@@ -1,0 +1,660 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "One radius-one cubic mouth, fixed inward intake 0.25, stationary reservoirs, zero trapped-wave occupation. Generalized forces conjugate to two sideways displacement increments between depths 0.55 and 1.15 and between 1.2 and 2. Absolute wall stiffness and free-mouth acceleration remain open.",
+  "conventions": {
+    "holding_stiffness": "F_hold=K q, flow force on the imposed shape is -K q. Fixed current potential for the relaxed carrier is E-Q*delta with delta the reservoir phase difference.",
+    "order": "Separate passive unweighted wall traction at trial interface tension 1/3 and mobility 5. No reciprocal counterforce was applied to the carrier. The conversion surface meets the geometric wall.",
+    "tension": "Uniform, independently supplied area tension in energy per three-dimensional area. Positive two-shape stiffness against the wave-empty carrier alone requires sigma above the largest generalized eigenvalue of (-K_carrier, area Hessian). With wave energy E use -K_carrier-E*sym(K_wave) in the same generalized eigenproblem."
+  },
+  "sources_sha256": {
+    "_scratch/empty_carrier_phase_trial_fixed_baths_referee.py": "faffa47a9079645bbd2425bd047dedc1c7b9e882c5bcb26bfd19be67d4f1314f",
+    "_scratch/empty_order_load_local_review.py": "a271918849c6b7bb2333ab48b796b2b0f3496c796037eec1ae7ca3c6b48e4e9a",
+    "research/pde_ledger_v3/_measurements/mouth_free_order_depth.json": "917da8d7812928e1831855037336fc55b8b111977d52fb1eb97d11be4d2c54b9",
+    "research/pde_ledger_v3/_measurements/mouth_native_wave_bend.json": "6fb1646903a3f0521ca6fff00e08706b76b510f4a6da8c6e4dabc02a7e5997d5",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/figures/mouth_empty_bend_stiffness.png": "825c8a228681e47a0a911ed774dea8231ec45ceebbe05853c6d30848602ee0fc",
+    "software/stage1_solver/tools/mouth_carrier_free_center.py": "ad4fbd4dbc20f92098f66eb054226c145390e26c296168688e13ec70e310e1bb",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "9f5e670743f1c3a00e230e087c62869ba03188a445385bdc614cb24ac8199a02",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_empty_bend_offsets.py": "04fb40e1c05af845acb01a083eb65cad9f75b504b598c49f28f1744fdbe78a0b",
+    "software/stage1_solver/tools/mouth_empty_bend_order_load.py": "a50ab7f2caecb7f95eb065152f610f6ab32296d7fd733df38337363b9e85f898",
+    "software/stage1_solver/tools/mouth_empty_bend_requirement.py": "b1281db158e5993dff142d19b13d590e52103405cb9ae2f79d3985ca3aa85083",
+    "software/stage1_solver/tools/mouth_empty_bend_stiffness.py": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "software/stage1_solver/tools/mouth_free_order_diffuse.py": "b883ef93eaa9134efb5404fae541bfc782ec6de9fd67c4ac51d5dcef38e959d9",
+    "software/stage1_solver/tools/mouth_order_wave_pulse.py": "d4fc14a69fd269039a58197ee6751107708c67bff9329d414581896401f50433"
+  },
+  "input_sha256": {
+    "_scratch/s11c/mouth_flared_cubic_n26/field.npz": "c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2",
+    "_scratch/s11c/mouth_flared_cubic_n34/field.npz": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d",
+    "_scratch/s11c/mouth_flared_cubic_n48/field.npz": "39ed1ac9ae2439f6eff6420a25bda235ee82ed82deeb30520a9bbab6193d031d",
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz": "fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847",
+    "_scratch/s11c/empty_bend_c26_01/tangent.npz": "6070c2a5d04f554464f8ea46fe10dfaafaf5091f74067543463e88ec3db903ca",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz": "6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341",
+    "_scratch/s11c/empty_bend_c34_01/tangent.npz": "8f11b353ccb00a716cb502f7f3fed045d64afe367cf3b7c6bbac34ad8cd6bc5a",
+    "_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz": "760d3ee858203107f386cc498b026228fcbddf0b49e191826927d5aba9f740c7",
+    "_scratch/s11c/empty_bend_c48_01/tangent.npz": "e32c40cf8179fef42b1ee31a21955586a0631af5d8623cce23b851fb7874a6fb",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed0.44.npz": "ee86685622f3a6775e181ee52b9e4cc71b4626e4b03119973c2a6af53a54392a",
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed0.44.npz": "2dfcf9116dbc954520471d9500f37798868c29d1e274f25e6951bf45c7d3bfbb"
+  },
+  "runs": {
+    "_scratch/s11c/empty_bend_c26_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_stiffness.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n26",
+        "--save",
+        "_scratch/s11c/empty_bend_c26_01/tangent.npz"
+      ],
+      "executed_script_sha256": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_c26_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n26/field.npz\", \"sha256\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"mesh\": 26, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999797987, \"profile\": \"cubic\"}",
+        "{\"test\": \"empty_carrier\", \"mesh\": 26, \"extension\": \"compact\", \"far\": 9.0, \"roof\": 10.0, \"frozen\": [[0.0099034818873197, 3.2642030616876934e-06], [3.2642030616876934e-06, 0.0003548289418567304]], \"relaxation\": [[0.030083916330141774, 0.004236510693330941], [0.004236510693330917, 0.00911169216195624]], \"holding_stiffness\": [[-0.020180434442822075, -0.0042332464902692536], [-0.004233246490269229, -0.008756863220099508]], \"surface_only\": [[-0.020180451819794255, -0.004232722976448377], [-0.004233049178470017, -0.008756366700961608]], \"eigenvalues\": [-0.02157814042492446, -0.0073591572379971245], \"dipole_residuals\": [2.0497926273010947e-15, 9.169910924339275e-16], \"reciprocity_error\": 2.42861286636753e-17}"
+      ],
+      "tangent_sha256": "6070c2a5d04f554464f8ea46fe10dfaafaf5091f74067543463e88ec3db903ca"
+    },
+    "_scratch/s11c/empty_bend_c34_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_stiffness.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n34",
+        "--save",
+        "_scratch/s11c/empty_bend_c34_01/tangent.npz"
+      ],
+      "executed_script_sha256": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_c34_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}",
+        "{\"test\": \"empty_carrier\", \"mesh\": 34, \"extension\": \"compact\", \"far\": 9.0, \"roof\": 10.0, \"frozen\": [[0.009903509896568786, 3.264326675185094e-06], [3.264326675185094e-06, 0.00035482627249756166]], \"relaxation\": [[0.030084036716733598, 0.004236509857867333], [0.004236509857867292, 0.009111732269013604]], \"holding_stiffness\": [[-0.020180526820164812, -0.004233245531192148], [-0.004233245531192107, -0.008756905996516042]], \"surface_only\": [[-0.020180254847619317, -0.004232316176124884], [-0.004232881290462182, -0.00875598450626327]], \"eigenvalues\": [-0.021578227355514176, -0.0073592054611666775], \"dipole_residuals\": [5.499940780584467e-15, 1.9918691262360566e-15], \"reciprocity_error\": 4.0766001685454967e-17}"
+      ],
+      "tangent_sha256": "8f11b353ccb00a716cb502f7f3fed045d64afe367cf3b7c6bbac34ad8cd6bc5a"
+    },
+    "_scratch/s11c/empty_bend_c48_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_stiffness.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n48",
+        "--save",
+        "_scratch/s11c/empty_bend_c48_01/tangent.npz"
+      ],
+      "executed_script_sha256": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_c48_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n48/field.npz\", \"sha256\": \"39ed1ac9ae2439f6eff6420a25bda235ee82ed82deeb30520a9bbab6193d031d\", \"mesh\": 48, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999998813904, \"profile\": \"cubic\"}",
+        "{\"test\": \"empty_carrier\", \"mesh\": 48, \"extension\": \"compact\", \"far\": 9.0, \"roof\": 10.0, \"frozen\": [[0.009903523352422118, 3.264434316041359e-06], [3.264434316041359e-06, 0.0003548240650180441]], \"relaxation\": [[0.030084135989732735, 0.004236520302306773], [0.004236520302306764, 0.009111759877314047]], \"holding_stiffness\": [[-0.020180612637310615, -0.004233255867990731], [-0.004233255867990723, -0.008756935812296002]], \"surface_only\": [[-0.020180181619091613, -0.004232131208002463], [-0.004232813639973751, -0.008755817212594925]], \"eigenvalues\": [-0.021578313822728894, -0.007359234626877723], \"dipole_residuals\": [5.4579279464006536e-15, 1.9221278214909265e-15], \"reciprocity_error\": 8.673617379884035e-18}"
+      ],
+      "tangent_sha256": "e32c40cf8179fef42b1ee31a21955586a0631af5d8623cce23b851fb7874a6fb"
+    },
+    "_scratch/s11c/empty_bend_alt34_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_stiffness.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n34",
+        "--extension",
+        "wide"
+      ],
+      "executed_script_sha256": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_alt34_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}",
+        "{\"test\": \"empty_carrier\", \"mesh\": 34, \"extension\": \"wide\", \"far\": 9.0, \"roof\": 10.0, \"frozen\": [[0.009902489589679413, 2.2440197857425892e-06], [2.2440197857425892e-06, 0.00035380596560812363]], \"relaxation\": [[0.030083016398587684, 0.004235489539090777], [0.004235489539090763, 0.009110711949606247]], \"holding_stiffness\": [[-0.02018052680890827, -0.004233245519305034], [-0.00423324551930502, -0.008756905983998123]], \"surface_only\": [[-0.02018025485546927, -0.004232316183974824], [-0.004232881297681312, -0.008755984513482393]], \"eigenvalues\": [-0.021578227337055667, -0.007359205455850727], \"dipole_residuals\": [5.132179403677384e-15, 1.3880769363788792e-15], \"reciprocity_error\": 1.3877787807814457e-17}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_larger_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_stiffness.py",
+        "--mesh",
+        "26",
+        "--far",
+        "14",
+        "--roof",
+        "15"
+      ],
+      "executed_script_sha256": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_larger_01"
+      ],
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"new\", \"mesh\": 26, \"far\": 14.0, \"roof\": 15.0, \"profile\": \"cubic\", \"rate\": 0.25, \"bias\": 0.4510051298782628, \"feed\": 0.2500000000171413, \"bulk\": 0.2499999999936716, \"n_min\": 0.9770131492323377, \"n_max\": 0.9999999999999922, \"residual\": 2.8679860872416567e-12, \"conductance\": 0.5613077630875535}",
+        "{\"test\": \"empty_carrier\", \"mesh\": 26, \"extension\": \"compact\", \"far\": 14.0, \"roof\": 15.0, \"frozen\": [[0.009900819970444811, 6.011088808946674e-07], [6.011088808946674e-07, 0.0003521742694277821]], \"relaxation\": [[0.03008178221598214, 0.004234296241573434], [0.00423429624157343, 0.009109384478886139]], \"holding_stiffness\": [[-0.02018096224553733, -0.004233695132692539], [-0.004233695132692535, -0.008757210209458357]], \"surface_only\": [[-0.02018394480602799, -0.004240689826683301], [-0.004236463004337082, -0.008764231897925846]], \"eigenvalues\": [-0.02157891759835602, -0.0073592548566396646], \"dipole_residuals\": [2.0712598303163077e-15, 1.3164382778318995e-15], \"reciprocity_error\": 4.336808689942018e-18}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_fdnear_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_offsets.py",
+        "--direction",
+        "1,0",
+        "--mesh",
+        "18"
+      ],
+      "executed_script_sha256": "04fb40e1c05af845acb01a083eb65cad9f75b504b598c49f28f1744fdbe78a0b",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_fdnear_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"new\", \"mesh\": 18, \"far\": 9.0, \"roof\": 10.0, \"profile\": \"cubic\", \"rate\": 0.25, \"bias\": 0.4501258130251316, \"feed\": 0.2499999999991826, \"bulk\": 0.25000000000149997, \"n_min\": 0.9770138862778665, \"n_max\": 0.9999999999997042, \"residual\": 3.0888014972995437e-12, \"conductance\": 0.562418104331054}",
+        "{\"test\": \"settings\", \"modes\": 2, \"direction\": [1.0, 0.0], \"differential_conductance\": 0.5411304397063722}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.0, 0.0], \"phase_bias\": 0.45012581302513166, \"feed\": 0.24999999999918168, \"bulk\": 0.2500000000021597, \"energy\": 0.05662316651963753, \"fixed_rate_potential\": -0.055908286736645385, \"holding_force\": [-5.421010862427522e-19, 5.421010862427522e-20], \"residual\": 2.716159811908665e-12, \"iterations\": 0}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.02, 0.0], \"phase_bias\": 0.45015863693075275, \"feed\": 0.24999999999872913, \"bulk\": 0.24999999999889824, \"energy\": 0.05662733656329344, \"fixed_rate_potential\": -0.05591232266939475, \"holding_force\": [-0.00040360930727434646, -8.465939404311547e-05], \"residual\": 2.354370315938248e-12, \"iterations\": 12}",
+        "{\"test\": \"finite_offset\", \"offset\": [-0.02, -0.0], \"phase_bias\": 0.45015863693037883, \"feed\": 0.24999999999852687, \"bulk\": 0.24999999999860162, \"energy\": 0.056627336563199876, \"fixed_rate_potential\": -0.05591232266939483, \"holding_force\": [0.0004036093072736785, 8.465939404297553e-05], \"residual\": 2.3543703159911876e-12, \"iterations\": 12}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.01, 0.0], \"phase_bias\": 0.4501340186030725, \"feed\": 0.24999999991854852, \"bulk\": 0.2499999999185828, \"energy\": 0.05662420896092163, \"fixed_rate_potential\": -0.0559092956898465, \"holding_force\": [-0.00020179263330118039, -4.233120065324505e-05], \"residual\": 2.0674105934313817e-12, \"iterations\": 8}",
+        "{\"test\": \"finite_offset\", \"offset\": [-0.01, -0.0], \"phase_bias\": 0.4501340186030723, \"feed\": 0.24999999991854838, \"bulk\": 0.2499999999184102, \"energy\": 0.05662420896092154, \"fixed_rate_potential\": -0.05590929568984653, \"holding_force\": [0.0002017926333011727, 4.233120065324524e-05], \"residual\": 2.0674105931137443e-12, \"iterations\": 8}",
+        "{\"test\": \"secant\", \"modes\": 2, \"step\": 0.02, \"force_column\": [-0.020180465363700623, -0.004232969702152275], \"directional_virtual_work\": -0.020180465363700623, \"retuned_energy_second_difference\": 0.020850218045639912, \"fixed_rate_second_difference\": -0.020179663747024734, \"mesh\": 18, \"direction\": [1.0, 0.0]}",
+        "{\"test\": \"secant\", \"modes\": 2, \"step\": 0.01, \"force_column\": [-0.020179263330117655, -0.004233120065324514], \"directional_virtual_work\": -0.020179263330117655, \"retuned_energy_second_difference\": 0.020848825681152316, \"fixed_rate_second_difference\": -0.020179064022518567, \"mesh\": 18, \"direction\": [1.0, 0.0]}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_fddeep_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_offsets.py",
+        "--direction",
+        "0,1",
+        "--mesh",
+        "18"
+      ],
+      "executed_script_sha256": "04fb40e1c05af845acb01a083eb65cad9f75b504b598c49f28f1744fdbe78a0b",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_fddeep_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"new\", \"mesh\": 18, \"far\": 9.0, \"roof\": 10.0, \"profile\": \"cubic\", \"rate\": 0.25, \"bias\": 0.4501258130251316, \"feed\": 0.2499999999991826, \"bulk\": 0.25000000000149997, \"n_min\": 0.9770138862778665, \"n_max\": 0.9999999999997042, \"residual\": 3.0888014972995437e-12, \"conductance\": 0.562418104331054}",
+        "{\"test\": \"settings\", \"modes\": 2, \"direction\": [0.0, 1.0], \"differential_conductance\": 0.5411304397063722}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.0, 0.0], \"phase_bias\": 0.45012581302513166, \"feed\": 0.24999999999918168, \"bulk\": 0.2500000000021597, \"energy\": 0.05662316651963753, \"fixed_rate_potential\": -0.055908286736645385, \"holding_force\": [-5.421010862427522e-19, 5.421010862427522e-20], \"residual\": 2.716159811908665e-12, \"iterations\": 0}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.0, 0.02], \"phase_bias\": 0.45013987952287504, \"feed\": 0.25000000000015393, \"bulk\": 0.2499999999997608, \"energy\": 0.05662493180096225, \"fixed_rate_potential\": -0.05591003807975651, \"holding_force\": [-8.46749219215419e-05, -0.0001751339497459818], \"residual\": 1.3175168539903735e-11, \"iterations\": 9}",
+        "{\"test\": \"finite_offset\", \"offset\": [-0.0, -0.02], \"phase_bias\": 0.4501398795228812, \"feed\": 0.2500000000001574, \"bulk\": 0.2499999999995429, \"energy\": 0.056624931800963875, \"fixed_rate_potential\": -0.055910038079756426, \"holding_force\": [8.467492192153734e-05, 0.00017513394974598493], \"residual\": 1.3175204457700589e-11, \"iterations\": 9}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.0, 0.01], \"phase_bias\": 0.45012932962944546, \"feed\": 0.250000000000162, \"bulk\": 0.25000000000564115, \"energy\": 0.05662360783426318, \"fixed_rate_potential\": -0.05590872457309819, \"holding_force\": [-4.23331422426728e-05, -8.756724522167029e-05], \"residual\": 1.2377618216848055e-11, \"iterations\": 6}",
+        "{\"test\": \"finite_offset\", \"offset\": [-0.0, -0.01], \"phase_bias\": 0.4501293296294671, \"feed\": 0.2500000000001738, \"bulk\": 0.25000000000569944, \"energy\": 0.05662360783426854, \"fixed_rate_potential\": -0.055908724573098235, \"holding_force\": [4.233314224268527e-05, 8.756724522167753e-05], \"residual\": 1.2378287549270997e-11, \"iterations\": 6}",
+        "{\"test\": \"secant\", \"modes\": 2, \"step\": 0.02, \"force_column\": [-0.004233746096076981, -0.008756697487299167], \"directional_virtual_work\": -0.008756697487299167, \"retuned_energy_second_difference\": 0.00882640662766554, \"fixed_rate_second_difference\": -0.008756715555412187, \"mesh\": 18, \"direction\": [0.0, 1.0]}",
+        "{\"test\": \"secant\", \"modes\": 2, \"step\": 0.01, \"force_column\": [-0.004233314224267904, -0.008756724522167391], \"directional_virtual_work\": -0.008756724522167391, \"retuned_energy_second_difference\": 0.00882629256654388, \"fixed_rate_second_difference\": -0.008756729056591528, \"mesh\": 18, \"direction\": [0.0, 1.0]}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_fdmixed_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_offsets.py",
+        "--direction",
+        "1,1",
+        "--mesh",
+        "18"
+      ],
+      "executed_script_sha256": "04fb40e1c05af845acb01a083eb65cad9f75b504b598c49f28f1744fdbe78a0b",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_fdmixed_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"new\", \"mesh\": 18, \"far\": 9.0, \"roof\": 10.0, \"profile\": \"cubic\", \"rate\": 0.25, \"bias\": 0.4501258130251316, \"feed\": 0.2499999999991826, \"bulk\": 0.25000000000149997, \"n_min\": 0.9770138862778665, \"n_max\": 0.9999999999997042, \"residual\": 3.0888014972995437e-12, \"conductance\": 0.562418104331054}",
+        "{\"test\": \"settings\", \"modes\": 2, \"direction\": [1.0, 1.0], \"differential_conductance\": 0.5411304397063722}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.0, 0.0], \"phase_bias\": 0.45012581302513166, \"feed\": 0.24999999999918168, \"bulk\": 0.2500000000021597, \"energy\": 0.05662316651963753, \"fixed_rate_potential\": -0.055908286736645385, \"holding_force\": [-5.421010862427522e-19, 5.421010862427522e-20], \"residual\": 2.716159811908665e-12, \"iterations\": 0}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.02, 0.02], \"phase_bias\": 0.4501863363338835, \"feed\": 0.24999999999535116, \"bulk\": 0.24999999999766445, \"energy\": 0.05663081655774809, \"fixed_rate_potential\": -0.05591576752572278, \"holding_force\": [-0.0004882816917524424, -0.0002598373937502686], \"residual\": 1.826066132527232e-12, \"iterations\": 12}",
+        "{\"test\": \"finite_offset\", \"offset\": [-0.02, -0.02], \"phase_bias\": 0.45018633633441413, \"feed\": 0.24999999999563827, \"bulk\": 0.24999999999807893, \"energy\": 0.05663081655788075, \"fixed_rate_potential\": -0.05591576752572278, \"holding_force\": [0.0004882816917535695, 0.00025983739375086976], \"residual\": 1.826066132421353e-12, \"iterations\": 12}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.01, 0.01], \"phase_bias\": 0.45014094323881276, \"feed\": 0.24999999999990308, \"bulk\": 0.24999999999908895, \"energy\": 0.056625078951058304, \"fixed_rate_potential\": -0.05591015685864489, \"holding_force\": [-0.0002441254574068716, -0.000129903952787602], \"residual\": 1.401629066148779e-11, \"iterations\": 9}",
+        "{\"test\": \"finite_offset\", \"offset\": [-0.01, -0.01], \"phase_bias\": 0.45014094323929726, \"feed\": 0.25000000000016526, \"bulk\": 0.25000000000036904, \"energy\": 0.05662507895117932, \"fixed_rate_potential\": -0.055910156858645, \"holding_force\": [0.00024412545740702966, 0.00012990395278773267], \"residual\": 1.3850626141357149e-11, \"iterations\": 9}",
+        "{\"test\": \"secant\", \"modes\": 2, \"step\": 0.02, \"force_column\": [-0.024414084587650296, -0.012991869687528461], \"directional_virtual_work\": -0.03740595427517876, \"retuned_energy_second_difference\": 0.0382501908844507, \"fixed_rate_second_difference\": -0.03740394538698927, \"mesh\": 18, \"direction\": [1.0, 1.0]}",
+        "{\"test\": \"secant\", \"modes\": 2, \"step\": 0.01, \"force_column\": [-0.02441254574069506, -0.012990395278766734], \"directional_virtual_work\": -0.037402941019461795, \"retuned_energy_second_difference\": 0.038248629625620145, \"fixed_rate_second_difference\": -0.03740243999114656, \"mesh\": 18, \"direction\": [1.0, 1.0]}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_fdnear3_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_offsets.py",
+        "--direction",
+        "1,0",
+        "--mesh",
+        "22",
+        "--modes",
+        "3"
+      ],
+      "executed_script_sha256": "04fb40e1c05af845acb01a083eb65cad9f75b504b598c49f28f1744fdbe78a0b",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_fdnear3_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"new\", \"mesh\": 22, \"far\": 9.0, \"roof\": 10.0, \"profile\": \"cubic\", \"rate\": 0.25, \"bias\": 0.4501331887877097, \"feed\": 0.24999999998678715, \"bulk\": 0.2499999999946423, \"n_min\": 0.9770132030175858, \"n_max\": 0.9999999999997853, \"residual\": 2.2805488855974355e-12, \"conductance\": 0.5624088267389419}",
+        "{\"test\": \"settings\", \"modes\": 3, \"direction\": [1.0, 0.0], \"differential_conductance\": 0.5411216907600349}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.0, 0.0], \"phase_bias\": 0.4501331887877097, \"feed\": 0.2499999999867856, \"bulk\": 0.24999999999619996, \"energy\": 0.05662409125525692, \"fixed_rate_potential\": -0.0559092059416705, \"holding_force\": [1.0842021724855044e-19, 2.710505431213761e-20], \"residual\": 2.280549594745902e-12, \"iterations\": 0}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.02, 0.0], \"phase_bias\": 0.4501660246665747, \"feed\": 0.2500000000021755, \"bulk\": 0.25000000000258754, \"energy\": 0.056628262834202275, \"fixed_rate_potential\": -0.055913243332441395, \"holding_force\": [-0.0004038802166874044, -8.465875696994483e-05], \"residual\": 2.217360551851317e-12, \"iterations\": 11}",
+        "{\"test\": \"finite_offset\", \"offset\": [-0.02, -0.0], \"phase_bias\": 0.4501660246661566, \"feed\": 0.2500000000019494, \"bulk\": 0.2500000000024667, \"energy\": 0.0566282628340976, \"fixed_rate_potential\": -0.05591324333244154, \"holding_force\": [0.0004038802166866496, 8.465875696978971e-05], \"residual\": 2.2173605520101358e-12, \"iterations\": 11}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.01, 0.0], \"phase_bias\": 0.45014139545411497, \"feed\": 0.249999999919312, \"bulk\": 0.24999999991935762, \"energy\": 0.056625133838803965, \"fixed_rate_potential\": -0.05591021502472478, \"holding_force\": [-0.00020183425232900976, -4.233138943104292e-05], \"residual\": 2.1428616142368407e-12, \"iterations\": 7}",
+        "{\"test\": \"finite_offset\", \"offset\": [-0.01, -0.0], \"phase_bias\": 0.45014139545411497, \"feed\": 0.24999999991931193, \"bulk\": 0.24999999991936422, \"energy\": 0.05662513383880397, \"fixed_rate_potential\": -0.05591021502472477, \"holding_force\": [0.000201834252329005, 4.2331389431044715e-05], \"residual\": 2.1428616142368407e-12, \"iterations\": 7}",
+        "{\"test\": \"secant\", \"modes\": 3, \"step\": 0.02, \"force_column\": [-0.02019401083435135, -0.004232937848493363], \"directional_virtual_work\": -0.02019401083435135, \"retuned_energy_second_difference\": 0.020857894465105276, \"fixed_rate_second_difference\": -0.020186953854813006, \"mesh\": 22, \"direction\": [1.0, 0.0]}",
+        "{\"test\": \"secant\", \"modes\": 3, \"step\": 0.01, \"force_column\": [-0.020183425232900738, -0.004233138943104382], \"directional_virtual_work\": -0.020183425232900738, \"retuned_energy_second_difference\": 0.02085167094087459, \"fixed_rate_second_difference\": -0.020181661085499902, \"mesh\": 22, \"direction\": [1.0, 0.0]}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_fddeep3_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_offsets.py",
+        "--direction",
+        "0,1",
+        "--mesh",
+        "22",
+        "--modes",
+        "3"
+      ],
+      "executed_script_sha256": "04fb40e1c05af845acb01a083eb65cad9f75b504b598c49f28f1744fdbe78a0b",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_fddeep3_01"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"new\", \"mesh\": 22, \"far\": 9.0, \"roof\": 10.0, \"profile\": \"cubic\", \"rate\": 0.25, \"bias\": 0.4501331887877097, \"feed\": 0.24999999998678715, \"bulk\": 0.2499999999946423, \"n_min\": 0.9770132030175858, \"n_max\": 0.9999999999997853, \"residual\": 2.2805488855974355e-12, \"conductance\": 0.5624088267389419}",
+        "{\"test\": \"settings\", \"modes\": 3, \"direction\": [0.0, 1.0], \"differential_conductance\": 0.5411216907600349}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.0, 0.0], \"phase_bias\": 0.4501331887877097, \"feed\": 0.2499999999867856, \"bulk\": 0.24999999999619996, \"energy\": 0.05662409125525692, \"fixed_rate_potential\": -0.0559092059416705, \"holding_force\": [1.0842021724855044e-19, 2.710505431213761e-20], \"residual\": 2.280549594745902e-12, \"iterations\": 0}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.0, 0.02], \"phase_bias\": 0.4501472561448495, \"feed\": 0.24999999999990324, \"bulk\": 0.24999999999978723, \"energy\": 0.05662585664755477, \"fixed_rate_potential\": -0.05591095738865761, \"holding_force\": [-8.468459725034262e-05, -0.00017515334174691342], \"residual\": 1.1983725904752517e-11, \"iterations\": 9}",
+        "{\"test\": \"finite_offset\", \"offset\": [-0.0, -0.02], \"phase_bias\": 0.4501472561450966, \"feed\": 0.2500000000000369, \"bulk\": 0.2500000000008793, \"energy\": 0.05662585664761662, \"fixed_rate_potential\": -0.05591095738865753, \"holding_force\": [8.468459725038767e-05, 0.0001751533417470045], \"residual\": 1.1983940360789267e-11, \"iterations\": 9}",
+        "{\"test\": \"finite_offset\", \"offset\": [0.0, 0.01], \"phase_bias\": 0.4501367054884787, \"feed\": 0.2500000000004144, \"bulk\": 0.25000000000621087, \"energy\": 0.056624532584920895, \"fixed_rate_potential\": -0.05590964378719877, \"holding_force\": [-4.233462022662244e-05, -8.757018722085051e-05], \"residual\": 1.4450435971078669e-11, \"iterations\": 6}",
+        "{\"test\": \"finite_offset\", \"offset\": [-0.0, -0.01], \"phase_bias\": 0.4501367054884942, \"feed\": 0.25000000000042283, \"bulk\": 0.2500000000064254, \"energy\": 0.056624532584924746, \"fixed_rate_potential\": -0.05590964378719881, \"holding_force\": [4.233462022663361e-05, 8.757018722085717e-05], \"residual\": 1.4450435560921162e-11, \"iterations\": 6}",
+        "{\"test\": \"secant\", \"modes\": 3, \"step\": 0.02, \"force_column\": [-0.004234229862518257, -0.008757667087347949], \"directional_virtual_work\": -0.008757667087347949, \"retuned_energy_second_difference\": 0.008826961643872144, \"fixed_rate_second_difference\": -0.008757234935333202, \"mesh\": 22, \"direction\": [0.0, 1.0]}",
+        "{\"test\": \"secant\", \"modes\": 3, \"step\": 0.01, \"force_column\": [-0.0042334620226628025, -0.008757018722085385], \"directional_virtual_work\": -0.008757018722085385, \"retuned_energy_second_difference\": 0.008826593318050913, \"fixed_rate_second_difference\": -0.008756910565704823, \"mesh\": 22, \"direction\": [0.0, 1.0]}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_order26_15501": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_order_load.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n26",
+        "--tangent",
+        "_scratch/s11c/empty_bend_c26_01",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz"
+      ],
+      "executed_script_sha256": "dd1aa42a41be5834c6dc44d2bf78fefd435d3954a61da1383c91e786bc4c7ad0",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_order26_15501"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n26/field.npz\", \"sha256\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"mesh\": 26, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999797987, \"profile\": \"cubic\"}",
+        "{\"test\": \"order_traction\", \"mesh\": 26, \"order_sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"tangent_sha256\": \"6070c2a5d04f554464f8ea46fe10dfaafaf5091f74067543463e88ec3db903ca\", \"trial_interface_tension\": 0.3333333333333333, \"kappa\": 0.08, \"mobility\": 5.0, \"width\": 0.04, \"order_file\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"direct_wall\": [[-0.004754397334080973, -0.026537654655352818], [-0.012211993559535488, -0.03704574370712726]], \"bare_volume_virtual_work\": [[-0.0001480882644199131, -0.0003045329579862455], [-0.012185901828087143, -0.036823399277578196]], \"conversion_body_term\": [[-0.0046058697153689215, -0.026226690032252597], [-2.2730727838046866e-05, -0.00021663096673017848]], \"reconstructed_wall\": [[-0.004753957979788835, -0.026531222990238842], [-0.01220863255592519, -0.037040030244308374]], \"max_wall_disagreement\": 6.431665113975499e-06, \"dipole_residual\": 1.3058130965415415e-14, \"maximum_order_tangent\": [0.2824238389084305, 0.7455310561643734]}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_order34_15501": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_order_load.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n34",
+        "--tangent",
+        "_scratch/s11c/empty_bend_c34_01",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz"
+      ],
+      "executed_script_sha256": "dd1aa42a41be5834c6dc44d2bf78fefd435d3954a61da1383c91e786bc4c7ad0",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_order34_15501"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}",
+        "{\"test\": \"order_traction\", \"mesh\": 34, \"order_sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"tangent_sha256\": \"8f11b353ccb00a716cb502f7f3fed045d64afe367cf3b7c6bbac34ad8cd6bc5a\", \"trial_interface_tension\": 0.3333333333333333, \"kappa\": 0.08, \"mobility\": 5.0, \"width\": 0.04, \"order_file\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"direct_wall\": [[-0.004750844552155057, -0.026532601628174727], [-0.012205590678860482, -0.0370360510535161]], \"bare_volume_virtual_work\": [[-0.00014800251972362595, -0.00030438105928965673], [-0.012181652334791336, -0.03681734712564491]], \"conversion_body_term\": [[-0.004602688778542501, -0.026225870685031204], [-2.269723938750222e-05, -0.00021656413109893624]], \"reconstructed_wall\": [[-0.004750691298266127, -0.02653025174432086], [-0.012204349574178838, -0.03703391125674385]], \"max_wall_disagreement\": 2.3498838538672795e-06, \"dipole_residual\": 1.0807327255335508e-14, \"maximum_order_tangent\": [0.28255892148626205, 0.7456486898766208]}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_order48_15501": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_order_load.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n48",
+        "--tangent",
+        "_scratch/s11c/empty_bend_c48_01",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz"
+      ],
+      "executed_script_sha256": "dd1aa42a41be5834c6dc44d2bf78fefd435d3954a61da1383c91e786bc4c7ad0",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_order48_15501"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n48/field.npz\", \"sha256\": \"39ed1ac9ae2439f6eff6420a25bda235ee82ed82deeb30520a9bbab6193d031d\", \"mesh\": 48, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999998813904, \"profile\": \"cubic\"}",
+        "{\"test\": \"order_traction\", \"mesh\": 48, \"order_sha256\": \"760d3ee858203107f386cc498b026228fcbddf0b49e191826927d5aba9f740c7\", \"tangent_sha256\": \"e32c40cf8179fef42b1ee31a21955586a0631af5d8623cce23b851fb7874a6fb\", \"trial_interface_tension\": 0.3333333333333333, \"kappa\": 0.08, \"mobility\": 5.0, \"width\": 0.04, \"order_file\": \"_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz\", \"direct_wall\": [[-0.004749515018560508, -0.026531849781705114], [-0.012203415029276821, -0.03703440152607657]], \"bare_volume_virtual_work\": [[-0.00014795487667073958, -0.00030429363940370855], [-0.01218041530745047, -0.03681730081895355]], \"conversion_body_term\": [[-0.004601579262809833, -0.026227024810393577], [-2.268498084116546e-05, -0.0002165494954476904]], \"reconstructed_wall\": [[-0.004749534139480573, -0.026531318449797284], [-0.012203100288291635, -0.03703385031440124]], \"max_wall_disagreement\": 5.512116753342451e-07, \"dipole_residual\": 1.191863448213315e-14, \"maximum_order_tangent\": [0.2820323933073129, 0.7429498128626154]}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_order34_04401": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_order_load.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n34",
+        "--tangent",
+        "_scratch/s11c/empty_bend_c34_01",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed0.44.npz"
+      ],
+      "executed_script_sha256": "dd1aa42a41be5834c6dc44d2bf78fefd435d3954a61da1383c91e786bc4c7ad0",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_order34_04401"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}",
+        "{\"test\": \"order_traction\", \"mesh\": 34, \"order_sha256\": \"ee86685622f3a6775e181ee52b9e4cc71b4626e4b03119973c2a6af53a54392a\", \"tangent_sha256\": \"8f11b353ccb00a716cb502f7f3fed045d64afe367cf3b7c6bbac34ad8cd6bc5a\", \"trial_interface_tension\": 0.3333333333333333, \"kappa\": 0.08, \"mobility\": 5.0, \"width\": 0.04, \"order_file\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed0.44.npz\", \"direct_wall\": [[-0.0006689647333086343, 2.2297819666647266e-05], [-4.97787037891053e-20, -7.514481937589774e-22]], \"bare_volume_virtual_work\": [[-0.0006377419478025316, 2.438635328217477e-05], [-7.397746875550999e-20, 1.1458275755389118e-20]], \"conversion_body_term\": [[-3.159640816938264e-05, -2.0911034512080835e-06], [2.4140126258691014e-20, -1.1766753747115078e-20]], \"reconstructed_wall\": [[-0.0006693383559719143, 2.2295249830966687e-05], [-4.983734249681898e-20, -3.0847799172596025e-22]], \"max_wall_disagreement\": 3.736226632799637e-07, \"dipole_residual\": 3.946495907847236e-16, \"maximum_order_tangent\": [0.06114569914610996, 0.0057658164526539785]}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_order26_04401": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_order_load.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n26",
+        "--tangent",
+        "_scratch/s11c/empty_bend_c26_01",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed0.44.npz"
+      ],
+      "executed_script_sha256": "a50ab7f2caecb7f95eb065152f610f6ab32296d7fd733df38337363b9e85f898",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_order26_04401"
+      ],
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n26/field.npz\", \"sha256\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"mesh\": 26, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999797987, \"profile\": \"cubic\"}",
+        "{\"test\": \"order_traction\", \"mesh\": 26, \"order_sha256\": \"2dfcf9116dbc954520471d9500f37798868c29d1e274f25e6951bf45c7d3bfbb\", \"tangent_sha256\": \"6070c2a5d04f554464f8ea46fe10dfaafaf5091f74067543463e88ec3db903ca\", \"trial_interface_tension\": 0.3333333333333333, \"kappa\": 0.08, \"mobility\": 5.0, \"width\": 0.04, \"order_file\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed0.44.npz\", \"direct_wall\": [[-0.0006687428274253339, 2.230858848155372e-05], [-5.178707896728185e-20, -7.876300637389095e-22]], \"bare_volume_virtual_work\": [[-0.0006380992180697257, 2.440417323273229e-05], [-7.654729602729832e-20, 1.2156042380178052e-20]], \"conversion_body_term\": [[-3.160463131330347e-05, -2.090982096152821e-06], [2.4399879496488134e-20, -1.1847240283272524e-20]], \"reconstructed_wall\": [[-0.0006697038493830292, 2.231319113657947e-05], [-5.214741653081019e-20, 3.0880209690552773e-22]], \"max_wall_disagreement\": 9.610219576952782e-07, \"dipole_residual\": 4.432218481120742e-16, \"maximum_order_tangent\": [0.0612419713836466, 0.0057607583104108675]}"
+      ]
+    },
+    "_scratch/s11c/empty_bend_threshold_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_requirement.py",
+        "--figure",
+        "software/stage1_solver/reports/figures/mouth_empty_bend_stiffness.png"
+      ],
+      "executed_script_sha256": "b1281db158e5993dff142d19b13d590e52103405cb9ae2f79d3985ca3aa85083",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/empty_bend_threshold_01"
+      ],
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"empty_threshold\", \"run\": \"c26\", \"marginal_sigma\": 0.010237789985370449, \"unloaded_eigenvalues\": [-0.02157814042492446, -0.0073591572379971245], \"twice_threshold_eigenvalues\": [0.02055832884906006, 0.14672318123530295], \"area_matrix\": [[1.9965716717309319, 0.0], [0.0, 7.58649303401496]]}",
+        "{\"test\": \"empty_threshold\", \"run\": \"c34\", \"marginal_sigma\": 0.010237835620830086, \"unloaded_eigenvalues\": [-0.021578227355514176, -0.0073592054611666775], \"twice_threshold_eigenvalues\": [0.020558419395951644, 0.14672383018977725], \"area_matrix\": [[1.9965716717309319, 0.0], [0.0, 7.58649303401496]]}",
+        "{\"test\": \"empty_threshold\", \"run\": \"c48\", \"marginal_sigma\": 0.010237878678124177, \"unloaded_eigenvalues\": [-0.021578313822728894, -0.007359234626877723], \"twice_threshold_eigenvalues\": [0.020558505424755204, 0.1467244537697186], \"area_matrix\": [[1.9965716717309319, 0.0], [0.0, 7.58649303401496]]}",
+        "{\"test\": \"empty_threshold\", \"run\": \"alt34\", \"marginal_sigma\": 0.010237835614527391, \"unloaded_eigenvalues\": [-0.021578227337055667, -0.007359205455850727], \"twice_threshold_eigenvalues\": [0.020558419382760325, 0.1467238301059448], \"area_matrix\": [[1.9965716717309319, 0.0], [0.0, 7.58649303401496]]}",
+        "{\"test\": \"empty_threshold\", \"run\": \"larger\", \"marginal_sigma\": 0.010238078467321828, \"unloaded_eigenvalues\": [-0.02157891759835602, -0.0073592548566396646], \"twice_threshold_eigenvalues\": [0.020558926727262575, 0.14672723764743933], \"area_matrix\": [[1.9965716717309319, 0.0], [0.0, 7.58649303401496]]}",
+        "{\"test\": \"occupied_requirement\", \"degree\": 1, \"carrier\": [[-0.020180612637310615, -0.004233255867990731], [-0.004233255867990723, -0.008756935812296002]], \"wave_per_energy\": [[-0.12807555892214254, -0.00024938475628092516], [-0.00024938475628092516, 8.145880133133872e-05]], \"empty_sigma\": 0.010237878678124177, \"wave_only_sigma_per_energy\": 0.06414780321190763}",
+        "{\"test\": \"occupied_requirement\", \"degree\": 2, \"carrier\": [[-0.020180612637310615, -0.004233255867990731], [-0.004233255867990723, -0.008756935812296002]], \"wave_per_energy\": [[-0.13153463078522942, -0.0007406945053371411], [-0.0007406945053371411, -0.00019740060907779677]], \"empty_sigma\": 0.010237878678124177, \"wave_only_sigma_per_energy\": 0.06588079494861085}",
+        "{\"test\": \"occupied_requirement\", \"degree\": 3, \"carrier\": [[-0.020180612637310615, -0.004233255867990731], [-0.004233255867990723, -0.008756935812296002]], \"wave_per_energy\": [[-0.06984560548302711, -0.0006810813135664808], [-0.0006810813135664808, -0.00038230105628625537]], \"empty_sigma\": 0.010237878678124177, \"wave_only_sigma_per_energy\": 0.03498364561288117}",
+        "{\"test\": \"occupied_requirement\", \"degree\": 4, \"carrier\": [[-0.020180612637310615, -0.004233255867990731], [-0.004233255867990723, -0.008756935812296002]], \"wave_per_energy\": [[-0.04245284486005903, -0.000651428868711472], [-0.000651428868711472, -0.0005789617504859133]], \"empty_sigma\": 0.010237878678124177, \"wave_only_sigma_per_energy\": 0.021264192751301578}",
+        "{\"test\": \"figure\", \"path\": \"software/stage1_solver/reports/figures/mouth_empty_bend_stiffness.png\", \"sha256\": \"825c8a228681e47a0a911ed774dea8231ec45ceebbe05853c6d30848602ee0fc\"}"
+      ]
+    },
+    "_scratch/s11c/empty_carrier_phase_trial_fixed_baths_referee01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/empty_carrier_phase_trial_fixed_baths_referee.py"
+      ],
+      "executed_script_sha256": "faffa47a9079645bbd2425bd047dedc1c7b9e882c5bcb26bfd19be67d4f1314f",
+      "guard_arguments": [
+        "--pool",
+        "empty-phase-referee",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/empty_carrier_phase_trial_fixed_baths_referee01"
+      ],
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"mesh\": 26, \"flux\": 0.24999999999797987, \"potential\": 0.45013772087414355, \"compact_extension\": 3.264203048929163e-06, \"trial_basis\": \"phase only, r r^3 r^5, piecewise linear depth, block 2 with traces zero\", \"fixed_profile\": [[0.009903481931894376, 3.264203048929163e-06], [3.264203048929163e-06, 0.00035482894257168727]], \"trial_upper_curvature\": [[-0.01926034392657466, -0.00412907453615453], [-0.004129074536154524, -0.008624267895662296]], \"trial_eigenvalues\": [-0.02067511994827685, -0.007209491873960106]}",
+        "{\"mesh\": 34, \"flux\": 0.2500000000013136, \"potential\": 0.4501427824960679, \"compact_extension\": 3.2643266641912304e-06, \"trial_basis\": \"phase only, r r^3 r^5, piecewise linear depth, block 2 with traces zero\", \"fixed_profile\": [[0.009903509898390197, 3.2643266641912304e-06], [3.2643266641912304e-06, 0.00035482627266780455]], \"trial_upper_curvature\": [[-0.019274689122212033, -0.004128647859662178], [-0.004128647859662179, -0.008626026665902129]], \"trial_eigenvalues\": [-0.020687882378331638, -0.007212833409782526]}"
+      ]
+    },
+    "_scratch/s11c/empty_order_load_cartesian_review01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/empty_order_load_local_review.py"
+      ],
+      "executed_script_sha256": "a271918849c6b7bb2333ab48b796b2b0f3496c796037eec1ae7ca3c6b48e4e9a",
+      "guard_arguments": [
+        "--pool",
+        "empty-bend-review",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/empty_order_load_cartesian_review01"
+      ],
+      "verified_memory_bytes": 1073741824,
+      "verified_zero_swap": true,
+      "verified_limits": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"tested\": [\"weighted_equation\", \"bare_shape_energy\", \"advected_body\", \"wall_holding\"], \"direct\": [25.67297275642391, -0.12793928033808621, -0.014575105673574302, 0.1284368224000002], \"formula\": [25.672972756423896, -0.12793928034698798, -0.0145751056735743, 0.12843682240000004], \"difference\": [1.4210854715202004e-14, 8.901768211444505e-12, -1.734723475976807e-18, 1.6653345369377348e-16]}"
+      ]
+    }
+  },
+  "executed_variants_and_independent_scripts": {
+    "_scratch/s11c/empty_bend_evidence/mouth_empty_bend_order_load_v1.py": "\"\"\"Measure the passive conversion field's separate bare-energy traction on the tilted sidewall.\n\nThe carrier drives order, with no reciprocal update to carrier momentum. The\nintegrating factor is used only to solve the stationary equation. Physical\nwall traction is evaluated from the unweighted order energy and checked against\nvolume stress plus the force on the advected material.\n\"\"\"\nimport argparse\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.sparse.linalg import splu\n\nfrom mouth_curved_phase_stability import weighted_gram\nfrom mouth_empty_bend_stiffness import emit,prepare,quadrature,shapes,trace\nfrom mouth_free_order_diffuse import NU,SIGMA\nfrom mouth_order_wave_pulse import digest\n\n\ndef main(a):\n    dom,psi=prepare(a)\n    archive=json.loads(Path('research/pde_ledger_v3/_measurements/mouth_free_order_depth.json').read_text())\n    if digest(a.order)!=archive['diffuse_orders_sha256'][str(a.order)]:\n        raise ValueError('Order does not match the archived preparation')\n    for p in (a.tangent,a.order.parent):\n        limits=json.loads((p/'limit-validation.json').read_text())\n        o=json.loads((p/'outcome.json').read_text())\n        if not limits['verified'] or o['exitCode'] or o['childOutcome']['exitCode']:\n            raise ValueError('Invalid carrier tangent or stationary order')\n    with np.load(a.tangent/'tangent.npz') as data:\n        np.testing.assert_array_equal(dom.points,data['points'])\n        np.testing.assert_array_equal(psi,data['field'])\n        v=data['tangents']\n    with np.load(a.order) as z: c=z['chi']\n    r,w,gr,gw=quadrature(dom)\n    n=dom.N; q=dom.weight\n    h,sr,sw=shapes(r,w,'compact',dom.far,dom.roof)\n    f=n@psi; fr=gr@(psi-1); fw=gw@(psi-1)\n    vq=n@v\n    phase=np.angle(f); phase1=(vq/f[:,None]).imag\n    pr=(fr/f).imag; pw=(fw/f).imag\n    p1r=((gr@v-vq*(fr/f)[:,None])/f[:,None]).imag\n    p1w=((gw@v-vq*(fw/f)[:,None])/f[:,None]).imag\n    d=a.width\n    kappa=6*SIGMA*d\n    mobility=NU/kappa\n    c0=n@c; rem=n@(1-c); cr=gr@c; cw=gw@c\n    well=c0*rem*(rem-c0)/d**2\n    weight=q*np.exp(-phase/NU)\n    coord=sr*cr[:,None]+sw*cw[:,None]\n    def source(weight,relative_phase):\n        return (gr.T@(weight[:,None]*(coord+relative_phase*cr[:,None]))\n                +gw.T@(weight[:,None]*(sw*cr[:,None]-sr*cw[:,None]+relative_phase*cw[:,None]))\n                +n.T@(weight[:,None]*(2*coord/r[:,None]+(relative_phase-sr)*well[:,None])))\n    rhs=source(weight,phase1/NU)\n    regular=dom.free&(dom.points[:,0]>0)\n    jac=(weighted_gram(gr,weight)+weighted_gram(gw,weight)\n         +weighted_gram(n, weight*((1-6*c0*rem)/d**2+2/r**2)))\n    y=np.zeros_like(v.real)\n    y[regular]=splu(jac[regular][:,regular].tocsc()).solve(rhs[regular])\n    error=np.max(abs((jac@y-rhs)[regular]))\n    # Direct physical sidewall integral with natural n·grad chi=0.\n    pg=dom.blocks[2][0]; x,weights=leggauss(10)\n    hp=np.diff(pg)[:,None]/2; p=(pg[:-1,None]+hp*(1+x)).ravel()\n    rr,ww,_,_,_,_,val,rrgrad,wwgrad=trace(dom,2,p,np.zeros_like(p),np.column_stack([c,y]))\n    hh,srr,sww=shapes(rr,ww,'compact',dom.far,dom.roof)\n    surface=rrgrad[:,0,None]*(rrgrad[:,1:]-srr*rrgrad[:,0,None])+wwgrad[:,0,None]*(wwgrad[:,1:]-sww*rrgrad[:,0,None])\n    surface+=(val[:,0]*(1-val[:,0])*(1-2*val[:,0])/d**2)[:,None]*val[:,1:]\n    wall=kappa/3*hh.T@((4*np.pi*rr**2*(hp*weights).ravel())[:,None]*surface)\n    # Independent shape derivative over volume plus integral of s_i * mu_chi * d_x chi.\n    dd=q*cr**2\n    vol=kappa/3*(sr.T@(dd[:,None]*sr)+sw.T@(dd[:,None]*sw)-source(q,0.).T@y)\n    dq=n@y; dr=gr@y; dw=gw@y\n    mu=-(pr*cr+pw*cw)/mobility\n    m1=-((p1r-sr*pr[:,None])*cr[:,None]+(p1w-sw*pr[:,None])*cw[:,None]+\n         (dr-sr*cr[:,None])*pr[:,None]+(dw-sw*cr[:,None])*pw[:,None])/mobility\n    body=h.T@((q/3)[:,None]*(m1*cr[:,None]+mu[:,None]*(dr+2*dq/r[:,None])))\n    emit(test='order_traction',mesh=len(dom.blocks[2][1])-1,order_sha256=digest(a.order),\n         tangent_sha256=digest(a.tangent/'tangent.npz'),trial_interface_tension=SIGMA,\n         kappa=kappa,mobility=mobility,width=d,order_file=str(a.order),\n         direct_wall=wall.tolist(),bare_volume_virtual_work=vol.tolist(),conversion_body_term=body.tolist(),\n         reconstructed_wall=(vol+body).tolist(),max_wall_disagreement=np.max(abs(wall-vol-body)),\n         dipole_residual=error,maximum_order_tangent=np.max(abs(y),axis=0).tolist())\n    if error>1e-8 or not np.isfinite(wall).all(): raise ArithmeticError('Order tangent failed')\n\n\nif __name__=='__main__':\n    p=argparse.ArgumentParser(description=__doc__)\n    p.add_argument('--source',type=Path,required=True)\n    p.add_argument('--tangent',type=Path,required=True)\n    p.add_argument('--order',type=Path,required=True)\n    p.add_argument('--width',type=float,default=.04)\n    main(p.parse_args())\n",
+    "_scratch/empty_carrier_phase_trial_fixed_baths_referee.py": "\"\"\"Restricted phase-only test of carrier bend curvature from a straight solved field.\nAllow arbitrary continuous linear depth profiles times r and r^3 and r^5 on the rotating dipole.\nThe trial fields leave both reservoirs and the full carrier density unchanged.\n\"\"\"\nimport json\nfrom pathlib import Path\nimport sys\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.linalg import solve\n\nROOT = Path(__file__).resolve().parents[1]\nsys.path.insert(0, str(ROOT/'software/stage1_solver/tools'))\nfrom mouth_flared_receiver import FlaredDomain\nfrom mouth_carrier_lateral_response import trace\n\n\ndef bend_gradient(w,lo,hi):\n    t=np.clip((w-lo)/(hi-lo),0,1)\n    return 30*t*t*(1-t)**2/(hi-lo)\n\n\ndef trial(n):\n    folder=ROOT/f'_scratch/s11c/mouth_flared_cubic_n{n}'\n    row=json.loads((folder/'stdout').read_text().splitlines()[0]); assert row['n']==n\n    dom=FlaredDomain(n,'cubic',row['roof'],row['feed_far'])\n    with np.load(folder/'field.npz') as data:\n        np.testing.assert_array_equal(dom.points,data['points']); psi=data['psi']\n    pg,vg,_=dom.blocks[2]\n    cut=np.unique(np.r_[pg,.55,1.15,1.2,2.])\n    # Physical p(r,w)=sum_a f_a(w)r^(2a+1). Angular factor is mu=x/r.\n    powers=np.array([1,3,5]); size=3*len(cut)\n    metric=np.zeros((size,size)); work=np.zeros((size,2)); direct=np.zeros((2,2))\n    u,wu=leggauss(6); v0=(vg[:-1,None]+.5*np.diff(vg)[:,None]*(1+u)).ravel()\n    vwt=(.5*np.diff(vg)[:,None]*wu).ravel()\n    for edge,(a,b) in enumerate(zip(cut[:-1],cut[1:])):\n        ids=np.arange(3*edge,3*edge+6)\n        for w,wwt in zip(a+(1+u)*(b-a)/2,wu*(b-a)/2):\n            r,_,_,_,_,_,p,dr,dw=trace(dom,2,np.full_like(v0,w),v0,psi[:,None]); p,dr,dw=p[:,0],dr[:,0],dw[:,0]\n            jac=4*np.pi*r**2*dom.radius(w)[0]*wwt*vwt\n            f=r[:,None]**powers\n            df=powers*f/r[:,None]; nz=abs(p)**2\n            jr=np.imag(p.conj()*dr); jz=np.imag(p.conj()*dw)\n            ww=np.array([(b-w)/(b-a),(w-a)/(b-a)])\n            local=lambda y,g: (y[:,None,:]*g[None,:,None]).reshape(len(r),6)\n            val=local(f,ww); rr=local(df,ww); wz=local(f,np.array([-1,1])/(b-a))\n            for y in (rr,wz,np.sqrt(2)*val/r[:,None]):\n                metric[np.ix_(ids,ids)]+=y.T@((jac*nz/3)[:,None]*y)\n            bends=np.array([bend_gradient(w,.55,1.15),bend_gradient(w,1.2,2.)]); gradient=jac[:,None]*(jr[:,None]*wz+jz[:,None]*(rr+2*val/r[:,None]))/3\n            work[ids]+=np.outer(gradient.sum(axis=0),bends)\n            direct+=np.outer(bends,bends)*np.sum(jac*abs(dr)**2)/3\n    # In this control the physical distant reservoirs are fixed. Fade the same\n    # shift out in the chamber; the phase trial has identically zero support there.\n    def gate(q,lo,hi):\n        t=np.clip((q-lo)/(hi-lo),0,1)\n        return 1-10*t**3+15*t**4-6*t**5,-30*t*t*(1-t)**2/(hi-lo)\n    extension_work=0.\n    for block in (3,4):\n        zg,rg,_=dom.blocks[block]\n        h=(np.diff(zg)[:,None]/2)\n        z=(zg[:-1,None]+h*(1+u)).ravel(); wz=(h*wu).ravel()\n        h=(np.diff(rg)[:,None]/2)\n        v=(rg[:-1,None]+h*(1+u)).ravel(); wv=(h*wu).ravel()\n        for depth,ww in zip(z,wz):\n            p=np.full_like(v,depth)\n            r,w,_,rv,_,_,_,rr,_=trace(dom,block,p,v,psi[:,None])\n            gr,dgr=gate(r,2.,dom.far-.35); gw,dgw=gate(w,3.3,dom.roof-.35)\n            extension_work+=ww*np.sum(wv*abs(rv)*4*np.pi*r*r*(abs(rr[:,0])**2/3)*((gr*dgw)**2+(gw*dgr)**2))\n    direct+=extension_work\n    free=slice(3,-3)\n    relaxed=direct-work[free].T@solve(metric[free,free],work[free],assume_a='pos')\n    print(json.dumps(dict(mesh=n,flux=row['bulk'],potential=row['bias'],compact_extension=extension_work,trial_basis='phase only, r r^3 r^5, piecewise linear depth, block 2 with traces zero',fixed_profile=direct.tolist(),trial_upper_curvature=relaxed.tolist(),trial_eigenvalues=np.linalg.eigvalsh(relaxed).tolist())),flush=True)\n\nfor m in (26,34): trial(m)\n",
+    "_scratch/empty_order_load_local_review.py": "\"\"\"Independent finite deformation in the orthonormal meridional/dipole frame.\"\"\"\nimport json\nimport math\nimport numpy as np\n\nradius, nu, delta, sigma = 0.83, 0.4, 0.04, 1/3\nkappa, mobility = 6*sigma*delta, nu/(6*sigma*delta)\nchi, chi_r, chi_w = 0.42, -0.34, 1.11\ntangent, yr, yw = 0.61, 0.13, -0.47\nphi, pr, pw = -0.09, 0.19, 0.32\nzeta, zr, zw = -0.08, 0.54, -0.25\nprobe, br, bw = -0.38, 0.43, 0.78\ntest_shape = np.array([0.34, -0.24, 0.62])\nload_shape = np.array([0.71, 0.29, -0.25])\nvprime = chi*(1-chi)*(1-2*chi)/delta**2\nvsecond = (1-6*chi*(1-chi))/delta**2\nqchi = lambda x: (x*(1-x))**2/(2*delta**2)\nwellprime = lambda x: x*(1-x)*(1-2*x)/delta**2\n\ny_nodes,w_nodes = np.polynomial.legendre.leggauss(12)\n\ndef actual(s,t):\n    out = np.zeros(4, dtype=complex)\n    for y,weight in zip(y_nodes,w_nodes/2):\n        perpendicular = math.sqrt(1-y*y)\n        ex = np.array([y,perpendicular,0])\n        pull = s*test_shape+t*load_shape\n        J = np.eye(3)+np.outer(ex,[pull[1],0,pull[2]])\n        Jacobian = np.linalg.det(J)\n        physical = lambda gr: np.linalg.solve(J.T, gr)\n        value = chi+t*tangent*y\n        p = phi+t*zeta*y\n        grad = physical([chi_r+t*yr*y, t*tangent*perpendicular/radius, chi_w+t*yw*y])\n        field = physical([pr+t*zr*y, t*zeta*perpendicular/radius, pw+t*zw*y])\n        test = physical([br*y,probe*perpendicular/radius,bw*y])\n        f = kappa*(qchi(value)+grad@grad/2)\n        resid = np.exp(-p/nu)*(wellprime(value)*probe*y+grad@test)\n        m = -(field@grad)/mobility\n        out += weight*np.array([Jacobian*resid, Jacobian*f, Jacobian*test_shape[0]*m*(ex@grad), test_shape[0]*y*f])\n    return out\n\nri,wi = test_shape[1:]; rj,wj=load_shape[1:]\ncoord = rj*chi_r+wj*chi_w\nsource=lambda r,w,rel: (br*(r*chi_r+w*chi_w+rel*chi_r)+bw*(w*chi_r-r*chi_w+rel*chi_w)+probe*(2*(r*chi_r+w*chi_w)/radius+(rel-r)*vprime))\nR=np.exp(-phi/nu)/3*(yr*br+yw*bw+2*tangent*probe/radius**2+vsecond*tangent*probe-source(rj,wj,zeta/nu))\nSi = (yr*(ri*chi_r+wi*chi_w)+yw*(wi*chi_r-ri*chi_w)+tangent*(2*(ri*chi_r+wi*chi_w)/radius-ri*vprime))\nV=kappa/3*(chi_r**2*(ri*rj+wi*wj)-Si)\nmu=-(pr*chi_r+pw*chi_w)/mobility\nm1=-((zr-rj*pr)*chi_r+(zw-wj*pr)*chi_w+(yr-rj*chi_r)*pr+(yw-wj*chi_r)*pw)/mobility\nB=test_shape[0]/3*(m1*chi_r+mu*(yr+2*tangent/radius))\nW=kappa*test_shape[0]/3*(chi_r*(yr-rj*chi_r)+chi_w*(yw-wj*chi_r)+vprime*tangent)\ncs,outer=1.e-23,1.e-5\nRfd,_,Bfd,Wfd=actual(0,1j*cs).imag/cs\nVfd=(actual(1j*cs,outer).imag[1]-actual(1j*cs,-outer).imag[1])/(2*cs*outer)\ncalc=np.array([Rfd,Vfd,Bfd,Wfd]); ref=np.array([R,V,B,W]); delta=calc-ref\nprint(json.dumps(dict(tested=['weighted_equation','bare_shape_energy','advected_body','wall_holding'],direct=calc.tolist(),formula=ref.tolist(),difference=delta.tolist())))\nnp.testing.assert_allclose(calc,ref,rtol=1.e-8,atol=5.e-10)\n",
+    "_scratch/s11c/empty_bend_evidence/mouth_empty_bend_order_state_check.py": "\"\"\"Measure the passive conversion field's separate bare-energy traction on the tilted sidewall.\n\nThe carrier drives order, with no reciprocal update to carrier momentum. The\nintegrating factor is used only to solve the stationary equation. Physical\nwall traction is evaluated from the unweighted order energy and checked against\nvolume stress plus the force on the advected material.\n\"\"\"\nimport argparse\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.sparse.linalg import splu\n\nfrom mouth_curved_phase_stability import weighted_gram\nfrom mouth_empty_bend_stiffness import emit,prepare,quadrature,shapes,trace\nfrom mouth_free_order_diffuse import NU,SIGMA,Order,positive_factor\nfrom mouth_order_wave_pulse import digest\n\n\ndef main(a):\n    dom,psi=prepare(a)\n    archive=json.loads(Path('research/pde_ledger_v3/_measurements/mouth_free_order_depth.json').read_text())\n    if digest(a.order)!=archive['diffuse_orders_sha256'][str(a.order)]:\n        raise ValueError('Order does not match the archived preparation')\n    with np.load(a.order) as z: c=z['chi']\n    for p in (a.tangent,a.order.parent):\n        limits=json.loads((p/'limit-validation.json').read_text())\n        o=json.loads((p/'outcome.json').read_text())\n        if not limits['verified'] or not o['limitsVerified']:\n            raise ValueError('Unverified parent guard')\n        if o['exitCode'] or o['childOutcome']['exitCode']:\n            # A multi-seed job can finish one state before another fails.\n            # Certify this specific archived field on its original equations.\n            if p != a.order.parent:\n                raise ValueError('Failed carrier tangent')\n            model=Order(dom,psi,a.width)\n            residual,jac=model.measure(c)\n            factor=positive_factor(jac)\n            correction=np.inf if factor is None else np.max(abs(factor.solve(residual)))\n            err=np.max(abs(residual))\n            emit(test='archived_state_check',original_batch_exit=o['exitCode'],\n                 field=str(a.order),residual=err,newton_step=float(correction) if np.isfinite(correction) else None)\n            if err>1e-9 or correction>1e-8:\n                raise ValueError('Archived individual state failed stationary check')\n    with np.load(a.tangent/'tangent.npz') as data:\n        np.testing.assert_array_equal(dom.points,data['points'])\n        np.testing.assert_array_equal(psi,data['field'])\n        v=data['tangents']\n    r,w,gr,gw=quadrature(dom)\n    n=dom.N; q=dom.weight\n    h,sr,sw=shapes(r,w,'compact',dom.far,dom.roof)\n    f=n@psi; fr=gr@(psi-1); fw=gw@(psi-1)\n    vq=n@v\n    phase=np.angle(f); phase1=(vq/f[:,None]).imag\n    pr=(fr/f).imag; pw=(fw/f).imag\n    p1r=((gr@v-vq*(fr/f)[:,None])/f[:,None]).imag\n    p1w=((gw@v-vq*(fw/f)[:,None])/f[:,None]).imag\n    d=a.width\n    kappa=6*SIGMA*d\n    mobility=NU/kappa\n    c0=n@c; rem=n@(1-c); cr=gr@c; cw=gw@c\n    well=c0*rem*(rem-c0)/d**2\n    weight=q*np.exp(-phase/NU)\n    coord=sr*cr[:,None]+sw*cw[:,None]\n    def source(weight,relative_phase):\n        return (gr.T@(weight[:,None]*(coord+relative_phase*cr[:,None]))\n                +gw.T@(weight[:,None]*(sw*cr[:,None]-sr*cw[:,None]+relative_phase*cw[:,None]))\n                +n.T@(weight[:,None]*(2*coord/r[:,None]+(relative_phase-sr)*well[:,None])))\n    rhs=source(weight,phase1/NU)\n    regular=dom.free&(dom.points[:,0]>0)\n    jac=(weighted_gram(gr,weight)+weighted_gram(gw,weight)\n         +weighted_gram(n, weight*((1-6*c0*rem)/d**2+2/r**2)))\n    y=np.zeros_like(v.real)\n    y[regular]=splu(jac[regular][:,regular].tocsc()).solve(rhs[regular])\n    error=np.max(abs((jac@y-rhs)[regular]))\n    # Direct physical sidewall integral with natural n·grad chi=0.\n    pg=dom.blocks[2][0]; x,weights=leggauss(10)\n    hp=np.diff(pg)[:,None]/2; p=(pg[:-1,None]+hp*(1+x)).ravel()\n    rr,ww,_,_,_,_,val,rrgrad,wwgrad=trace(dom,2,p,np.zeros_like(p),np.column_stack([c,y]))\n    hh,srr,sww=shapes(rr,ww,'compact',dom.far,dom.roof)\n    surface=rrgrad[:,0,None]*(rrgrad[:,1:]-srr*rrgrad[:,0,None])+wwgrad[:,0,None]*(wwgrad[:,1:]-sww*rrgrad[:,0,None])\n    surface+=(val[:,0]*(1-val[:,0])*(1-2*val[:,0])/d**2)[:,None]*val[:,1:]\n    wall=kappa/3*hh.T@((4*np.pi*rr**2*(hp*weights).ravel())[:,None]*surface)\n    # Independent shape derivative over volume plus integral of s_i * mu_chi * d_x chi.\n    dd=q*cr**2\n    vol=kappa/3*(sr.T@(dd[:,None]*sr)+sw.T@(dd[:,None]*sw)-source(q,0.).T@y)\n    dq=n@y; dr=gr@y; dw=gw@y\n    mu=-(pr*cr+pw*cw)/mobility\n    m1=-((p1r-sr*pr[:,None])*cr[:,None]+(p1w-sw*pr[:,None])*cw[:,None]+\n         (dr-sr*cr[:,None])*pr[:,None]+(dw-sw*cr[:,None])*pw[:,None])/mobility\n    body=h.T@((q/3)[:,None]*(m1*cr[:,None]+mu[:,None]*(dr+2*dq/r[:,None])))\n    emit(test='order_traction',mesh=len(dom.blocks[2][1])-1,order_sha256=digest(a.order),\n         tangent_sha256=digest(a.tangent/'tangent.npz'),trial_interface_tension=SIGMA,\n         kappa=kappa,mobility=mobility,width=d,order_file=str(a.order),\n         direct_wall=wall.tolist(),bare_volume_virtual_work=vol.tolist(),conversion_body_term=body.tolist(),\n         reconstructed_wall=(vol+body).tolist(),max_wall_disagreement=np.max(abs(wall-vol-body)),\n         dipole_residual=error,maximum_order_tangent=np.max(abs(y),axis=0).tolist())\n    if error>1e-8 or not np.isfinite(wall).all(): raise ArithmeticError('Order tangent failed')\n\n\nif __name__=='__main__':\n    p=argparse.ArgumentParser(description=__doc__)\n    p.add_argument('--source',type=Path,required=True)\n    p.add_argument('--tangent',type=Path,required=True)\n    p.add_argument('--order',type=Path,required=True)\n    p.add_argument('--width',type=float,default=.04)\n    main(p.parse_args())\n"
+  },
+  "excluded_shallow_refinement": {
+    "_scratch/s11c/empty_bend_order48_04401": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_order_load.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n48",
+        "--tangent",
+        "_scratch/s11c/empty_bend_c48_01",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n48_d04/order_seed0.44.npz"
+      ],
+      "executed_script_sha256": "dd1aa42a41be5834c6dc44d2bf78fefd435d3954a61da1383c91e786bc4c7ad0",
+      "exit_code": 1,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n48/field.npz\", \"sha256\": \"39ed1ac9ae2439f6eff6420a25bda235ee82ed82deeb30520a9bbab6193d031d\", \"mesh\": 48, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999998813904, \"profile\": \"cubic\"}"
+      ],
+      "reason": "ValueError: Invalid carrier tangent or stationary order"
+    },
+    "_scratch/s11c/empty_bend_order48_04402": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_order_load.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n48",
+        "--tangent",
+        "_scratch/s11c/empty_bend_c48_01",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n48_d04/order_seed0.44.npz"
+      ],
+      "executed_script_sha256": "23f40162d030c51d88cdb3403bd47be380aa02e07dcfcbee0c9af006642fe03b",
+      "exit_code": 1,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n48/field.npz\", \"sha256\": \"39ed1ac9ae2439f6eff6420a25bda235ee82ed82deeb30520a9bbab6193d031d\", \"mesh\": 48, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999998813904, \"profile\": \"cubic\"}",
+        "{\"test\": \"archived_state_check\", \"original_batch_exit\": 1, \"field\": \"_scratch/s11c/mouth_free_order_cubic_n48_d04/order_seed0.44.npz\", \"residual\": 1.9894271776829675e-11, \"newton_step\": 1.0489626718065396e-08}"
+      ],
+      "reason": "ValueError: Archived individual state failed stationary check"
+    }
+  },
+  "reviews": [
+    {
+      "scope": "Stationary carrier, phase-only variational test and fixed-current sign",
+      "verdict": "Scoped clear for the stationary carrier’s stiffness in the two tested bends."
+    },
+    {
+      "scope": "Four original matched order preparations and separate Cartesian equations check",
+      "verdict": "Scoped clear for the unweighted passive-order sidewall holding-force derivatives on the four matched archived preparations. The readout distinguishes near and deep conversion and leaves total geometric stiffness and reciprocal drain response open."
+    },
+    {
+      "scope": "Revised material and preparation matching and additional shallow mesh-26 control",
+      "verdict": "Scoped clear for the revised source matching and the shallow-versus-deep entrance comparison on meshes 26 and 34."
+    }
+  ],
+  "formal_review": "Formal project review and commit pending."
+}

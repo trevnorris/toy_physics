@@ -1,0 +1,873 @@
+{
+  "working_base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "scope": "Static incremental two-shape work, spherical sections in four spatial dimensions, radius 1, prescribed inward rate 0.25, two archived geometries and two passive conversion depths. Wave absent. The scalar carrier and fixed-reference shear energies are added. No kinetic/free-release or reciprocal conversion stress.",
+  "material": "Ordered modulus per four-volume mu0, energy density mu0 chi |d u-flat|^2 / 2. Fixed order, stress-free reference. Adjacent bathing surfaces slip, far baths fixed. In finite-contact runs tangential spring per wall area k chi; k has units mu0 per length. Full normal contact alone admits an exact zero-curl extension in this energy. No charge coupling introduced.",
+  "bounds": "Quadrature-evaluated continuum trial energies. The primal residual one-form has zero pullback at the artificial cuts, the complementary scalar vanishes at cuts and on the axis. Frozen rigid-section estimate is only an admissible upper. Source χ uses the archived Q2 field clipped to [0,1]. Positive Bernstein cell floors restrict the complementary support. Primary brackets are numerical estimates. Singular tiny shear stiffnesses on shallow states are used for the sign only.",
+  "calibration": "The published optical ratio determines mu_3D/rho_3D. A projection or matched local units, the static reference/relaxation and the independent tangential contact and chosen order state are needed. Unit ordered modulus was a trial value in the same normalization as the wave runs.",
+  "source_hashes": {
+    "_scratch/curl_bend_complement_witness.py": "cd18a1f842442f2492a820c2c9659413a85fca65ca0eb1b61ac7e1f66cc64edc",
+    "_scratch/curl_bend_delayed_two_witnesses.py": "b97f36f5c66f020404c85eb4fa0bbf9d9d7a47422b4e97c5ef209115517dcc7a",
+    "_scratch/curl_bend_reference_witness.py": "8d50e696ad932ca0d0d77aadec339595d05b5292d798073b55ad8d452ebc1df8",
+    "_scratch/static_shear_trial_review/deep.py": "dcb03495a73f705eba8fbd9d2c0b8c55451c6045479220f9aafc17c4259401bb",
+    "_scratch/static_shear_trial_review/enclose.py": "9d2951eb50a28f23fb679716064879d559e9ae651b563c3cb9b17c79af7c8285",
+    "_scratch/static_shear_trial_review/enclose_subcell.py": "a2bb79905a85f3dfbfff63f0d77abaa3b4e3734d0026b69cfdb5d417ec055f9f",
+    "research/pde_ledger_v3/_measurements/mouth_empty_bend_stiffness.json": "05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794",
+    "research/pde_ledger_v3/_measurements/mouth_free_order_depth.json": "917da8d7812928e1831855037336fc55b8b111977d52fb1eb97d11be4d2c54b9",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_bend_static_shear.py": "17c706eb42ff1a76a01903ed5051f037a4654aab9ca8d4c1043918a80f547fec",
+    "software/stage1_solver/tools/mouth_bend_static_shear_check.wl": "42bc3d594f6fc7859c171c151cbc17b4deddcd272716d69c7edc5bf153c07f95",
+    "software/stage1_solver/tools/mouth_carrier_free_center.py": "ad4fbd4dbc20f92098f66eb054226c145390e26c296168688e13ec70e310e1bb",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "9f5e670743f1c3a00e230e087c62869ba03188a445385bdc614cb24ac8199a02",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_empty_bend_stiffness.py": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "software/stage1_solver/tools/mouth_order_wave_pulse.py": "d4fc14a69fd269039a58197ee6751107708c67bff9329d414581896401f50433"
+  },
+  "input_sha256": {
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz": "fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847",
+    "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed0.44.npz": "2dfcf9116dbc954520471d9500f37798868c29d1e274f25e6951bf45c7d3bfbb",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz": "6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed0.44.npz": "ee86685622f3a6775e181ee52b9e4cc71b4626e4b03119973c2a6af53a54392a",
+    "_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz": "760d3ee858203107f386cc498b026228fcbddf0b49e191826927d5aba9f740c7",
+    "_scratch/s11c/mouth_free_order_delayed_n34_d04/order_seed1.55.npz": "ce030cb3ecd85e16e8ffa285a9b82e023046c5f66cc9b3c84cc88070be73d3e1",
+    "_scratch/s11c/mouth_free_order_delayed_n34_d04/order_seed0.44.npz": "22fb4647f43a561b7e104d1c5ab2db0c8caebf3152573c400c8cc234bbed7ce1",
+    "_scratch/s11c/mouth_free_order_delayed_n48_d04/order_seed1.55.npz": "79d4e6ed817f4ebffa17c3835c5244390ecfe985f89b11df482f2b4244a3cee1",
+    "_scratch/s11c/mouth_free_order_delayed_n48_d04/order_seed0.44.npz": "8381764e277b23e55bb9ae1b8f590d13240b73dcbe7f32a41a6ae85d2ccd9eff",
+    "_scratch/s11c/mouth_flared_delayed_n34/field.npz": "6da396c92c8acf3db352fbb8324fd154828963c2d11db193f26a4be63133d9b4",
+    "_scratch/s11c/mouth_flared_delayed_n48/field.npz": "cff2f00e18dc3113226e71f8269f61c39ad80a28cb872d810a51854b471d54ea"
+  },
+  "runs": {
+    "_scratch/s11c/bend_static_shear_deep26_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz",
+        "--sub",
+        "1",
+        "--quad",
+        "5",
+        "--cutoff",
+        "1e-10"
+      ],
+      "executed_source_sha256": "024768276b945495f6712b92b38eab7a12c77a8121cd1c91bd2dde1abdfd4d1a",
+      "verified_limits": true,
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed1.55.npz\", \"sha256\": \"fa8967163ebac62398afbdfc094f8944f9e7a921c2c9559ad3c490c176e40847\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"static_shear\", \"sub\": 1, \"quadrature\": 5, \"dual_order_floor\": 1e-10, \"lower\": [[1.983048136217984, 0.004803559754609403], [0.004803559754609414, 0.004693903577606113]], \"upper\": [[2.068378833026493, 0.005123699989301752], [0.005123699989301752, 0.0092782880988089]], \"rigid_sections\": [[4.889257413407946, 0.0], [0.0, 0.05224791961349813]], \"carrier\": [[-0.020180434442822075, -0.0042332464902692536], [-0.004233246490269229, -0.008756863220099508]], \"necessary_mu\": 0.9438218655271879, \"sufficient_mu\": 1.8668792060231332, \"rigid_necessary_mu\": 0.1680301469816182, \"unit_modulus_total_lower\": [-0.004063125005308932, 1.9628678671379773], \"unit_modulus_total_upper\": [0.000521037655873866, 2.0481987858065067], \"slip_total\": [-0.02157814042492446, -0.0073591572379971245]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_deep26_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_near26_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed0.44.npz",
+        "--sub",
+        "1",
+        "--quad",
+        "5",
+        "--cutoff",
+        "1e-10"
+      ],
+      "executed_source_sha256": "024768276b945495f6712b92b38eab7a12c77a8121cd1c91bd2dde1abdfd4d1a",
+      "verified_limits": true,
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 26, \"rate\": 0.24999999999797987, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n26_d04/order_seed0.44.npz\", \"sha256\": \"2dfcf9116dbc954520471d9500f37798868c29d1e274f25e6951bf45c7d3bfbb\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"static_shear\", \"sub\": 1, \"quadrature\": 5, \"dual_order_floor\": 1e-10, \"lower\": [[0.0004418149188289649, 1.1130751029480922e-12], [1.1130751029480906e-12, 2.0711883028015218e-14]], \"upper\": [[0.0012151553363842686, 1.4691882336189867e-11], [1.469188233618987e-11, 1.229709477967802e-11]], \"rigid_sections\": [[0.012824663089752168, 0.0], [0.0, 3.6895030184180805e-10]], \"carrier\": [[-0.020180434442822075, -0.0042332464902692536], [-0.004233246490269229, -0.008756863220099508]], \"necessary_mu\": 712108300.5239378, \"sufficient_mu\": 422794217822.6537, \"rigid_necessary_mu\": 23734533.445991613, \"unit_modulus_total_lower\": [-0.021181003138159696, -0.007314479605912207], \"unit_modulus_total_upper\": [-0.020492308938474806, -0.00722983337576541], \"slip_total\": [-0.02157814042492446, -0.0073591572379971245]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_near26_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_deep34sub2_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz",
+        "--sub",
+        "2",
+        "--quad",
+        "5",
+        "--cutoff",
+        "1e-10"
+      ],
+      "executed_source_sha256": "024768276b945495f6712b92b38eab7a12c77a8121cd1c91bd2dde1abdfd4d1a",
+      "verified_limits": true,
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"static_shear\", \"sub\": 2, \"quadrature\": 5, \"dual_order_floor\": 1e-10, \"lower\": [[1.9901159339650545, 0.0048140370914106145], [0.004814037091410606, 0.0047627064859399335]], \"upper\": [[2.0426018789842795, 0.004860297028750987], [0.004860297028750986, 0.005844953145788689]], \"rigid_sections\": [[4.889259159779884, 0.0], [0.0, 0.05224938134604604]], \"carrier\": [[-0.020180526820164812, -0.004233245531192148], [-0.004233245531192107, -0.008756905996516042]], \"necessary_mu\": 1.4987232035256546, \"sufficient_mu\": 1.839873553573073, \"rigid_necessary_mu\": 0.16802627466548364, \"unit_modulus_total_lower\": [-0.003994370397524702, 1.969935578031838], \"unit_modulus_total_upper\": [-0.002912146988424061, 2.0224215463018114], \"slip_total\": [-0.021578227355514176, -0.0073592054611666775]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_deep34sub2_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_near34sub2_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed0.44.npz",
+        "--sub",
+        "2",
+        "--quad",
+        "5",
+        "--cutoff",
+        "1e-10"
+      ],
+      "executed_source_sha256": "024768276b945495f6712b92b38eab7a12c77a8121cd1c91bd2dde1abdfd4d1a",
+      "verified_limits": true,
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed0.44.npz\", \"sha256\": \"ee86685622f3a6775e181ee52b9e4cc71b4626e4b03119973c2a6af53a54392a\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"static_shear\", \"sub\": 2, \"quadrature\": 5, \"dual_order_floor\": 1e-10, \"lower\": [[0.00046029750233514074, 9.70547511914429e-13], [9.70547511914425e-13, 2.1664036691775962e-14]], \"upper\": [[0.0006295472713883458, 1.538009442076403e-11], [1.538009442076403e-11, 1.0534611412976704e-11]], \"rigid_sections\": [[0.012828539470328498, 0.0], [0.0, 3.666178238708738e-10]], \"carrier\": [[-0.020180526820164812, -0.004233245531192148], [-0.004233245531192107, -0.008756905996516042]], \"necessary_mu\": 831250987.1478837, \"sufficient_mu\": 404213994397.30676, \"rigid_necessary_mu\": 23885652.810169175, \"unit_modulus_total_lower\": [-0.021164532014648598, -0.007312603299675453], \"unit_modulus_total_upper\": [-0.021013124469076327, -0.007294761065681567], \"slip_total\": [-0.021578227355514176, -0.0073592054611666775]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_near34sub2_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_deep34sub3_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz",
+        "--sub",
+        "3",
+        "--quad",
+        "6",
+        "--cutoff",
+        "1e-10"
+      ],
+      "executed_source_sha256": "471f4b0bfd2c5c9c2bce3b70c2076bbe3a70d7b6edafa74ba43b1a7fb5262913",
+      "verified_limits": true,
+      "verified_memory_bytes": 8589934592,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"static_shear\", \"sub\": 3, \"quadrature\": 6, \"dual_order_floor\": 1e-10, \"lower\": [[1.9908269063702493, 0.004814834336501053], [0.004814834336501023, 0.004769271428986638]], \"upper\": [[2.0396389961827195, 0.004849125165622604], [0.004849125165622604, 0.005313061072503369]], \"rigid_sections\": [[4.889259159098051, 0.0], [0.0, 0.052249381346045676]], \"carrier\": [[-0.020180526820164812, -0.004233245531192148], [-0.004233245531192107, -0.008756905996516042]], \"necessary_mu\": 1.6489818531243476, \"sufficient_mu\": 1.8373364955623939, \"rigid_necessary_mu\": 0.16802627466554587, \"unit_modulus_total_lower\": [-0.003987805862820937, 1.9706465508453759], \"unit_modulus_total_upper\": [-0.0034440324306887335, 2.019458656869231], \"slip_total\": [-0.021578227355514176, -0.0073592054611666775]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "8",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_deep34sub3_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_deep48sub2_02": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz",
+        "--sub",
+        "2",
+        "--quad",
+        "5",
+        "--cutoff",
+        "1e-10"
+      ],
+      "executed_source_sha256": "471f4b0bfd2c5c9c2bce3b70c2076bbe3a70d7b6edafa74ba43b1a7fb5262913",
+      "verified_limits": true,
+      "verified_memory_bytes": 6442450944,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 48, \"rate\": 0.24999999998813904, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz\", \"sha256\": \"760d3ee858203107f386cc498b026228fcbddf0b49e191826927d5aba9f740c7\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"static_shear\", \"sub\": 2, \"quadrature\": 5, \"dual_order_floor\": 1e-10, \"lower\": [[1.9907660430530427, 0.004814832666661817], [0.004814832666661788, 0.004768667645132668]], \"upper\": [[2.0399438198508664, 0.004849438545834152], [0.004849438545834152, 0.0053721085778845]], \"rigid_sections\": [[4.88926004431933, 0.0], [0.0, 0.052250900412151566]], \"carrier\": [[-0.020180612637310615, -0.004233255867990731], [-0.004233255867990723, -0.008756935812296002]], \"necessary_mu\": 1.6308346955048885, \"sufficient_mu\": 1.83757586490565, \"rigid_necessary_mu\": 0.16802197363121552, \"unit_modulus_total_lower\": [-0.0039884394606144995, 1.9705856017091834], \"unit_modulus_total_upper\": [-0.0033850149028622476, 2.0197633948820064], \"slip_total\": [-0.021578313822728894, -0.007359234626877723]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_deep48sub2_02"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_deep48sub3_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz",
+        "--sub",
+        "3",
+        "--quad",
+        "4",
+        "--cutoff",
+        "1e-10"
+      ],
+      "executed_source_sha256": "471f4b0bfd2c5c9c2bce3b70c2076bbe3a70d7b6edafa74ba43b1a7fb5262913",
+      "verified_limits": true,
+      "verified_memory_bytes": 8589934592,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 48, \"rate\": 0.24999999998813904, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz\", \"sha256\": \"760d3ee858203107f386cc498b026228fcbddf0b49e191826927d5aba9f740c7\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"static_shear\", \"sub\": 3, \"quadrature\": 4, \"dual_order_floor\": 1e-10, \"lower\": [[1.991121007995126, 0.004815216940781246], [0.0048152169407812105, 0.004771944975172348]], \"upper\": [[2.0384138264996947, 0.0048517435141541805], [0.00485174351415418, 0.005066757034855623]], \"rigid_sections\": [[4.889260044338614, 0.0], [0.0, 0.052250900412151136]], \"carrier\": [[-0.020180612637310615, -0.004233255867990731], [-0.004233255867990723, -0.008756935812296002]], \"necessary_mu\": 1.7292847864337513, \"sufficient_mu\": 1.8363116023431658, \"rigid_necessary_mu\": 0.1680219736312152, \"unit_modulus_total_lower\": [-0.00398516232646862, 1.9709405668471605], \"unit_modulus_total_upper\": [-0.003690367967067472, 2.0182334030520113], \"slip_total\": [-0.021578313822728894, -0.007359234626877723]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "8",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_deep48sub3_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_deep48sub6_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz",
+        "--sub",
+        "6",
+        "--quad",
+        "4",
+        "--cutoff",
+        "1e-10"
+      ],
+      "executed_source_sha256": "471f4b0bfd2c5c9c2bce3b70c2076bbe3a70d7b6edafa74ba43b1a7fb5262913",
+      "verified_limits": true,
+      "verified_memory_bytes": 12884901888,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 48, \"rate\": 0.24999999998813904, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz\", \"sha256\": \"760d3ee858203107f386cc498b026228fcbddf0b49e191826927d5aba9f740c7\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"static_shear\", \"sub\": 6, \"quadrature\": 4, \"dual_order_floor\": 1e-10, \"lower\": [[1.9913339801514347, 0.004815443343536141], [0.00481544334353601, 0.004773907103550443]], \"upper\": [[2.0374579114312517, 0.004860303510099238], [0.004860303510099238, 0.0048556795691379225]], \"rigid_sections\": [[4.889260044339315, 0.0], [0.0, 0.05225090041215233]], \"carrier\": [[-0.020180612637310615, -0.004233255867990731], [-0.004233255867990723, -0.008756935812296002]], \"necessary_mu\": 1.8046015307298997, \"sufficient_mu\": 1.8355555207029437, \"rigid_necessary_mu\": 0.1680219736312113, \"unit_modulus_total_lower\": [-0.003983200313211904, 1.9711535391185906], \"unit_modulus_total_upper\": [-0.0039014507775334065, 2.017277493328317], \"slip_total\": [-0.021578313822728894, -0.007359234626877723]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "12",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_deep48sub6_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_deep48quad7_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz",
+        "--sub",
+        "3",
+        "--quad",
+        "7",
+        "--cutoff",
+        "1e-10"
+      ],
+      "executed_source_sha256": "471f4b0bfd2c5c9c2bce3b70c2076bbe3a70d7b6edafa74ba43b1a7fb5262913",
+      "verified_limits": true,
+      "verified_memory_bytes": 8589934592,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 48, \"rate\": 0.24999999998813904, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz\", \"sha256\": \"760d3ee858203107f386cc498b026228fcbddf0b49e191826927d5aba9f740c7\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"static_shear\", \"sub\": 3, \"quadrature\": 7, \"dual_order_floor\": 1e-10, \"lower\": [[1.9911210383126414, 0.004815217263966092], [0.0048152172639660635, 0.0047719449751687845]], \"upper\": [[2.0384138651599613, 0.004851743846320581], [0.004851743846320581, 0.005066757034855663]], \"rigid_sections\": [[4.88926004433775, 0.0], [0.0, 0.05225090041215115]], \"carrier\": [[-0.020180612637310615, -0.004233255867990731], [-0.004233255867990723, -0.008756935812296002]], \"necessary_mu\": 1.7292847866845198, \"sufficient_mu\": 1.8363116026416357, \"rigid_necessary_mu\": 0.16802197363121524, \"unit_modulus_total_lower\": [-0.003985162326660019, 1.9709405971648637], \"unit_modulus_total_upper\": [-0.003690367967267027, 2.0182334417124776], \"slip_total\": [-0.021578313822728894, -0.007359234626877723]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "8",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_deep48quad7_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_near34quad7_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed0.44.npz",
+        "--sub",
+        "2",
+        "--quad",
+        "7",
+        "--cutoff",
+        "1e-10"
+      ],
+      "executed_source_sha256": "471f4b0bfd2c5c9c2bce3b70c2076bbe3a70d7b6edafa74ba43b1a7fb5262913",
+      "verified_limits": true,
+      "verified_memory_bytes": 4294967296,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed0.44.npz\", \"sha256\": \"ee86685622f3a6775e181ee52b9e4cc71b4626e4b03119973c2a6af53a54392a\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"static_shear\", \"sub\": 2, \"quadrature\": 7, \"dual_order_floor\": 1e-10, \"lower\": [[0.00046029812611255995, 9.705477841975685e-13], [9.705477841975693e-13, 2.166403669176841e-14]], \"upper\": [[0.0006295471216140399, 1.5380084305955713e-11], [1.538008430595572e-11, 1.05346124630506e-11]], \"rigid_sections\": [[0.012828539421650149, 0.0], [0.0, 3.666178238708739e-10]], \"carrier\": [[-0.020180526820164812, -0.004233245531192148], [-0.004233245531192107, -0.008756905996516042]], \"necessary_mu\": 831250904.2900437, \"sufficient_mu\": 404213994397.41833, \"rigid_necessary_mu\": 23885652.810169164, \"unit_modulus_total_lower\": [-0.021164531455910744, -0.007312603234635886], \"unit_modulus_total_upper\": [-0.02101312460288724, -0.00729476108164496], \"slip_total\": [-0.021578227355514176, -0.0073592054611666775]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_near34quad7_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_del34_deep_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_delayed_n34_d04/order_seed1.55.npz",
+        "--flow-run",
+        "_scratch/s11c/bend_static_shear_delcarrier34_01",
+        "--sub",
+        "3",
+        "--quad",
+        "4"
+      ],
+      "executed_source_sha256": "699360963a902e4203138092607c630bbc7f9943707831a0bc093e36eb0a5c8e",
+      "verified_limits": true,
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000034167, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_delayed_n34_d04/order_seed1.55.npz\", \"sha256\": \"ce030cb3ecd85e16e8ffa285a9b82e023046c5f66cc9b3c84cc88070be73d3e1\", \"flow_record_sha256\": \"23266c22495bacaecb2941d3e30bd9cc679a3b297c9d5a22bc76e82870bcfaf0\"}",
+        "{\"test\": \"static_shear\", \"sub\": 3, \"quadrature\": 4, \"dual_order_floor\": 1e-10, \"lower\": [[2.2916244022748042, 0.07766105826942318], [0.07766105826942278, 0.18529285422253203]], \"upper\": [[2.3507540679742682, 0.07902603424094427], [0.07902603424094426, 0.18999192639019738]], \"rigid_sections\": [[4.891831205788369, 0.0], [0.0, 1.1535904494833695]], \"carrier\": [[-0.02072391876749971, -0.0052526530747076606], [-0.005252653074707669, -0.010867610418996011]], \"necessary_mu\": 0.057225053760482085, \"sufficient_mu\": 0.05867397998085297, \"rigid_necessary_mu\": 0.010235650003240379, \"unit_modulus_total_lower\": [0.17192736657940283, 2.273398360731438], \"unit_modulus_total_upper\": [0.17659695093704483, 2.332557514240925], \"slip_total\": [-0.02299833829217187, -0.008593190894323853]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_del34_deep_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_del34_near_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_delayed_n34_d04/order_seed0.44.npz",
+        "--flow-run",
+        "_scratch/s11c/bend_static_shear_delcarrier34_01",
+        "--sub",
+        "2",
+        "--quad",
+        "4"
+      ],
+      "executed_source_sha256": "699360963a902e4203138092607c630bbc7f9943707831a0bc093e36eb0a5c8e",
+      "verified_limits": true,
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000034167, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_delayed_n34_d04/order_seed0.44.npz\", \"sha256\": \"22fb4647f43a561b7e104d1c5ab2db0c8caebf3152573c400c8cc234bbed7ce1\", \"flow_record_sha256\": \"23266c22495bacaecb2941d3e30bd9cc679a3b297c9d5a22bc76e82870bcfaf0\"}",
+        "{\"test\": \"static_shear\", \"sub\": 2, \"quadrature\": 4, \"dual_order_floor\": 1e-10, \"lower\": [[0.0004603475763219839, 1.0452900791703804e-12], [1.0452900791703828e-12, 2.3017197030140822e-14]], \"upper\": [[0.0006296132679574567, 1.831247810455606e-11], [1.831247810455606e-11, 1.2039720159199127e-11]], \"rigid_sections\": [[0.012830927055427727, 0.0], [0.0, 3.668386955700844e-10]], \"carrier\": [[-0.02072391876749971, -0.0052526530747076606], [-0.005252653074707669, -0.010867610418996011]], \"necessary_mu\": 902646448.5107517, \"sufficient_mu\": 472151822034.91693, \"rigid_necessary_mu\": 29625038.53278393, \"unit_modulus_total_lower\": [-0.022612674174843125, -0.008518507435307597], \"unit_modulus_total_upper\": [-0.02247190493586509, -0.008490010970633455], \"slip_total\": [-0.02299833829217187, -0.008593190894323853]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_del34_near_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_del48_deep_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_delayed_n48_d04/order_seed1.55.npz",
+        "--flow-run",
+        "_scratch/s11c/bend_static_shear_delcarrier48_01",
+        "--sub",
+        "4",
+        "--quad",
+        "4"
+      ],
+      "executed_source_sha256": "699360963a902e4203138092607c630bbc7f9943707831a0bc093e36eb0a5c8e",
+      "verified_limits": true,
+      "verified_memory_bytes": 8589934592,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 48, \"rate\": 0.24999999999821823, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_delayed_n48_d04/order_seed1.55.npz\", \"sha256\": \"79d4e6ed817f4ebffa17c3835c5244390ecfe985f89b11df482f2b4244a3cee1\", \"flow_record_sha256\": \"2de975765ef35f7cb3a9764bf96554e7b3f08ba823b3bd88de3996f7a02ed0b1\"}",
+        "{\"test\": \"static_shear\", \"sub\": 4, \"quadrature\": 4, \"dual_order_floor\": 1e-10, \"lower\": [[2.2919428207689734, 0.07768892219668892], [0.07768892219668917, 0.18541227334243268]], \"upper\": [[2.3488272996629784, 0.07887606788121981], [0.07887606788121983, 0.18687538720197974]], \"rigid_sections\": [[4.891831228253923, 0.0], [0.0, 1.153597203765241]], \"carrier\": [[-0.020724002226854242, -0.005252656848842653], [-0.005252656848842659, -0.010867627483254434]], \"necessary_mu\": 0.05817476467096286, \"sufficient_mu\": 0.05863638059312319, \"rigid_necessary_mu\": 0.010235613330281326, \"unit_modulus_total_lower\": [0.17204508498260115, 2.273718379418696], \"unit_modulus_total_upper\": [0.17349203600138388, 2.3306190211534656], \"slip_total\": [-0.022998414020859816, -0.00859321568924886]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "8",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_del48_deep_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_del48_near_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_delayed_n48_d04/order_seed0.44.npz",
+        "--flow-run",
+        "_scratch/s11c/bend_static_shear_delcarrier48_01",
+        "--sub",
+        "2",
+        "--quad",
+        "4"
+      ],
+      "executed_source_sha256": "699360963a902e4203138092607c630bbc7f9943707831a0bc093e36eb0a5c8e",
+      "verified_limits": true,
+      "verified_memory_bytes": 5368709120,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 48, \"rate\": 0.24999999999821823, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_delayed_n48_d04/order_seed0.44.npz\", \"sha256\": \"8381764e277b23e55bb9ae1b8f590d13240b73dcbe7f32a41a6ae85d2ccd9eff\", \"flow_record_sha256\": \"2de975765ef35f7cb3a9764bf96554e7b3f08ba823b3bd88de3996f7a02ed0b1\"}",
+        "{\"test\": \"static_shear\", \"sub\": 2, \"quadrature\": 4, \"dual_order_floor\": 1e-10, \"lower\": [[0.0004619806589185645, 1.0397618506419952e-12], [1.0397618506419988e-12, 2.2556777574767763e-14]], \"upper\": [[0.0005550881843377439, 1.8448163187557205e-11], [1.8448163187557205e-11, 1.189242133449013e-11]], \"rigid_sections\": [[0.012832900891798005, 0.0], [0.0, 3.6574706086324805e-10]], \"carrier\": [[-0.020724002226854242, -0.005252656848842653], [-0.005252656848842659, -0.010867627483254434]], \"necessary_mu\": 913828012.2376925, \"sufficient_mu\": 481789943229.8594, \"rigid_necessary_mu\": 29713506.18638221, \"unit_modulus_total_lower\": [-0.0226113885120562, -0.008518260539111356], \"unit_modulus_total_upper\": [-0.022533888103087395, -0.008502653410791117], \"slip_total\": [-0.022998414020859816, -0.00859321568924886]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_del48_near_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_symbolic_01": {
+      "scientific_command": [
+        "math",
+        "-script",
+        "software/stage1_solver/tools/mouth_bend_static_shear_check.wl"
+      ],
+      "executed_source_sha256": "42bc3d594f6fc7859c171c151cbc17b4deddcd272716d69c7edc5bf153c07f95",
+      "verified_limits": true,
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "error in prescribed normal displacement = InputForm[0]",
+        "three curl coefficients of normal-only extension = InputForm[{0, 0, 0}]",
+        "coefficient of dz wedge dY on fully bonded guide = InputForm[a[z]*Derivative[1][h][z]]",
+        "uniform patch traction with opposing tilt = InputForm[modulus*(-backTilt + strain)]"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_symbolic_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_delcarrier34_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_stiffness.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_delayed_n34"
+      ],
+      "executed_source_sha256": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+      "verified_limits": true,
+      "verified_memory_bytes": 6442450944,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_delayed_n34/field.npz\", \"sha256\": \"6da396c92c8acf3db352fbb8324fd154828963c2d11db193f26a4be63133d9b4\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000034167, \"profile\": \"delayed\"}",
+        "{\"test\": \"empty_carrier\", \"mesh\": 34, \"extension\": \"compact\", \"far\": 9.0, \"roof\": 10.0, \"frozen\": [[0.00981654021956053, 3.2715789325383627e-06], [3.2715789325383627e-06, 0.00016335411886396245]], \"relaxation\": [[0.030540458987060242, 0.005255924653640199], [0.005255924653640207, 0.011030964537859974]], \"holding_stiffness\": [[-0.02072391876749971, -0.0052526530747076606], [-0.005252653074707669, -0.010867610418996011]], \"surface_only\": [[-0.02072368378468081, -0.005251812127173857], [-0.005252326398167277, -0.010866778880213921]], \"eigenvalues\": [-0.02299833829217187, -0.008593190894323853], \"dipole_residuals\": [4.620896764187532e-15, 1.9520518014515265e-15], \"reciprocity_error\": 8.673617379884035e-18}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_delcarrier34_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_delcarrier48_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_empty_bend_stiffness.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_delayed_n48"
+      ],
+      "executed_source_sha256": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+      "verified_limits": true,
+      "verified_memory_bytes": 6442450944,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_delayed_n48/field.npz\", \"sha256\": \"cff2f00e18dc3113226e71f8269f61c39ad80a28cb872d810a51854b471d54ea\", \"mesh\": 48, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999821823, \"profile\": \"delayed\"}",
+        "{\"test\": \"empty_carrier\", \"mesh\": 48, \"extension\": \"compact\", \"far\": 9.0, \"roof\": 10.0, \"frozen\": [[0.009816554017297993, 3.2716815587443486e-06], [3.2716815587443486e-06, 0.0001633531988578802]], \"relaxation\": [[0.030540556244152237, 0.005255928530401397], [0.005255928530401403, 0.011030980682112314]], \"holding_stiffness\": [[-0.020724002226854242, -0.005252656848842653], [-0.005252656848842659, -0.010867627483254434]], \"surface_only\": [[-0.020723634396330577, -0.005251688787048447], [-0.005252278462293635, -0.01086666678671222]], \"eigenvalues\": [-0.022998414020859816, -0.00859321568924886], \"dipole_residuals\": [6.2319940874466795e-15, 2.2620387550922882e-15], \"reciprocity_error\": 6.071532165918825e-18}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_delcarrier48_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_contact34_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_delayed_n34_d04/order_seed1.55.npz",
+        "--flow-run",
+        "_scratch/s11c/bend_static_shear_delcarrier34_01",
+        "--sub",
+        "2",
+        "--quad",
+        "5",
+        "--contacts",
+        "0.01",
+        "0.1",
+        "1",
+        "10",
+        "100"
+      ],
+      "executed_source_sha256": "17c706eb42ff1a76a01903ed5051f037a4654aab9ca8d4c1043918a80f547fec",
+      "verified_limits": true,
+      "verified_memory_bytes": 6442450944,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000034167, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_delayed_n34_d04/order_seed1.55.npz\", \"sha256\": \"ce030cb3ecd85e16e8ffa285a9b82e023046c5f66cc9b3c84cc88070be73d3e1\", \"flow_record_sha256\": \"23266c22495bacaecb2941d3e30bd9cc679a3b297c9d5a22bc76e82870bcfaf0\"}",
+        "{\"test\": \"static_shear\", \"sub\": 2, \"quadrature\": 5, \"dual_order_floor\": 1e-10, \"lower\": [[2.2910727826749118, 0.07761271527019574], [0.07761271527019549, 0.18508394885951943]], \"upper\": [[2.3539745229320292, 0.07932374246974816], [0.07932374246974816, 0.19473697951073715]], \"rigid_sections\": [[4.891831206449075, 0.0], [0.0, 1.1535904494833726]], \"carrier\": [[-0.02072391876749971, -0.0052526530747076606], [-0.005252653074707669, -0.010867610418996011]], \"necessary_mu\": 0.05583805182842055, \"sufficient_mu\": 0.05874003060218455, \"rigid_necessary_mu\": 0.010235650003075011, \"unit_modulus_total_lower\": [0.17172138464206851, 2.272843817705867], \"unit_modulus_total_upper\": [0.1813197860670328, 2.335800187189238], \"slip_total\": [-0.02299833829217187, -0.008593190894323853]}",
+        "{\"test\": \"finite_contact\", \"ordered_modulus\": 1.0, \"contact_stiffness\": 0.01, \"lower\": [[0.006500974139434032, 0.0002880777954522506], [0.00028807779545225433, 0.00020175354198786604]], \"gradient_upper\": [[0.02746080519384316, 0.0], [0.0, 0.010196480571143711]], \"total_lower\": [-0.01771794093163623, -0.007170860573437594], \"total_gradient_upper\": [-0.0033944104550791424, 0.009460167033570293]}",
+        "{\"test\": \"finite_contact\", \"ordered_modulus\": 1.0, \"contact_stiffness\": 0.1, \"lower\": [[0.0633700843550773, 0.002798946026214732], [0.0027989460262147384, 0.001993808215759424]], \"gradient_upper\": [[0.27460805193843163, 0.0], [0.0, 0.10196480571143712]], \"total_lower\": [-0.008990399391339284, 0.04276276277568028], \"total_gradient_upper\": [0.0909278838089524, 0.25405344465442065]}",
+        "{\"test\": \"finite_contact\", \"ordered_modulus\": 1.0, \"contact_stiffness\": 1.0, \"lower\": [[0.5062035604699814, 0.021720297465346546], [0.021720297465346337, 0.01788797770236591]], \"gradient_upper\": [[2.746080519384316, 0.0], [0.0, 1.0196480571143711]], \"total_lower\": [0.006454252588951767, 0.48604575639689984], \"total_gradient_upper\": [1.0087643739415235, 2.7253726733706682]}",
+        "{\"test\": \"finite_contact\", \"ordered_modulus\": 1.0, \"contact_stiffness\": 10.0, \"lower\": [[1.687651359698432, 0.06389029868096846], [0.06389029868096836, 0.0924939553867988]], \"gradient_upper\": [[27.46080519384316, 0.0], [0.0, 10.196480571143711]], \"total_lower\": [0.07946039544964889, 1.6690933904490861], \"total_gradient_upper\": [10.185611361697653, 27.44008287410272]}",
+        "{\"test\": \"finite_contact\", \"ordered_modulus\": 1.0, \"contact_stiffness\": 100.0, \"lower\": [[2.210991702918684, 0.07618966616794737], [0.07618966616794735, 0.1673852137681973]], \"gradient_upper\": [[274.60805193843163, 0.0], [0.0, 101.96480571143711]], \"total_lower\": [0.1540463299931943, 2.1927390575071914], \"total_gradient_upper\": [101.95393794119755, 274.5873281794847]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_contact34_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_shear_contact48_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_delayed_n48_d04/order_seed1.55.npz",
+        "--flow-run",
+        "_scratch/s11c/bend_static_shear_delcarrier48_01",
+        "--sub",
+        "2",
+        "--quad",
+        "5",
+        "--contacts",
+        "0.01",
+        "0.1",
+        "1",
+        "10",
+        "100"
+      ],
+      "executed_source_sha256": "17c706eb42ff1a76a01903ed5051f037a4654aab9ca8d4c1043918a80f547fec",
+      "verified_limits": true,
+      "verified_memory_bytes": 6442450944,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 48, \"rate\": 0.24999999999821823, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_delayed_n48_d04/order_seed1.55.npz\", \"sha256\": \"79d4e6ed817f4ebffa17c3835c5244390ecfe985f89b11df482f2b4244a3cee1\", \"flow_record_sha256\": \"2de975765ef35f7cb3a9764bf96554e7b3f08ba823b3bd88de3996f7a02ed0b1\"}",
+        "{\"test\": \"static_shear\", \"sub\": 2, \"quadrature\": 5, \"dual_order_floor\": 1e-10, \"lower\": [[2.291572006925052, 0.07765626447415637], [0.07765626447415735, 0.18527115134102548]], \"upper\": [[2.351075900652586, 0.0790547867113405], [0.0790547867113405, 0.19050795845680196]], \"rigid_sections\": [[4.891831228234355, 0.0], [0.0, 1.1535972037652442]], \"carrier\": [[-0.020724002226854242, -0.005252656848842653], [-0.005252656848842659, -0.010867627483254434]], \"necessary_mu\": 0.05707092916243568, \"sufficient_mu\": 0.05868092584961082, \"rigid_necessary_mu\": 0.0102356133302862, \"unit_modulus_total_lower\": [0.1719059406766915, 2.273345587879277], \"unit_modulus_total_upper\": [0.17711077016368265, 2.3328814592355966], \"slip_total\": [-0.022998414020859816, -0.00859321568924886]}",
+        "{\"test\": \"finite_contact\", \"ordered_modulus\": 1.0, \"contact_stiffness\": 0.01, \"lower\": [[0.00650223642134469, 0.0002882833934736124], [0.000288283393473603, 0.00020207638736923265]], \"gradient_upper\": [[0.027460805466005406, 0.0], [0.0, 0.010196525337172723]], \"total_lower\": [-0.017716861421341504, -0.007170455480053249], \"total_gradient_upper\": [-0.0033944093300249767, 0.009460110423094428]}",
+        "{\"test\": \"finite_contact\", \"ordered_modulus\": 1.0, \"contact_stiffness\": 0.1, \"lower\": [[0.06338239812078823, 0.002800934241107815], [0.00280093424110784, 0.0019969898112446776]], \"gradient_upper\": [[0.27460805466005406, 0.0], [0.0, 0.10196525337172724]], \"total_lower\": [-0.008987026375618476, 0.042774784597542706], \"total_gradient_upper\": [0.09092831363120264, 0.25405336469047]}",
+        "{\"test\": \"finite_contact\", \"ordered_modulus\": 1.0, \"contact_stiffness\": 1.0, \"lower\": [[0.5063027483489749, 0.021735123337272833], [0.021735123337272767, 0.017915800238982437]], \"gradient_upper\": [[2.7460805466005405, 0.0], [0.0, 1.0196525337172724]], \"total_lower\": [0.0064811240186679825, 0.48614579485918075], \"total_gradient_upper\": [1.0087688334147875, 2.725372617192917]}",
+        "{\"test\": \"finite_contact\", \"ordered_modulus\": 1.0, \"contact_stiffness\": 10.0, \"lower\": [[1.6880001673054832, 0.06392843949532875], [0.06392843949532907, 0.09261830948033775]], \"gradient_upper\": [[27.460805466005404, 0.0], [0.0, 10.196525337172723]], \"total_lower\": [0.07958222409703668, 1.6694446229786757], \"total_gradient_upper\": [10.18565611065598, 27.44008306281204]}",
+        "{\"test\": \"finite_contact\", \"ordered_modulus\": 1.0, \"contact_stiffness\": 100.0, \"lower\": [[2.2114697697690517, 0.07623269339869695], [0.07623269339869818, 0.1675665958493886]], \"gradient_upper\": [[274.60805466005405, 0.0], [0.0, 101.96525337172724]], \"total_lower\": [0.15422506001352398, 2.1932196758948077], \"total_gradient_upper\": [101.9543855844228, 274.58733081764836]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-static-shear",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "_scratch/s11c/bend_static_shear_contact48_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_referee_explicit_01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/curl_bend_reference_witness.py"
+      ],
+      "executed_source_sha256": "8d50e696ad932ca0d0d77aadec339595d05b5292d798073b55ad8d452ebc1df8",
+      "verified_limits": true,
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"n\": 34, \"state\": \"deep\", \"seed\": \"1.55\", \"rigid\": 0.0522493813460422, \"exponents\": [2, 3, 4, 5, 6, 7, 8, 10, 12, 16, 20, 24], \"K22_trial\": [0.019171269919754562, 0.013196685632987936, 0.010161762198080635, 0.008383642736195372, 0.007252457302432905, 0.006496107799622598, 0.005975569648007342, 0.005360124861201873, 0.005075529307360201, 0.005000201137044112, 0.0052513923310649685, 0.005664068911719614], \"minimum_trial\": 0.005000201137044112}",
+        "{\"n\": 48, \"state\": \"deep\", \"seed\": \"1.55\", \"rigid\": 0.0522509004121478, \"exponents\": [2, 3, 4, 5, 6, 7, 8, 10, 12, 16, 20, 24], \"K22_trial\": [0.019171829582708244, 0.013197063163098675, 0.010162040506547083, 0.008383858074183174, 0.007252628589209073, 0.006496246099865322, 0.005975681970735246, 0.0053601979657549115, 0.005075573165146268, 0.005000201537151149, 0.005251359340851495, 0.005664007596985732], \"minimum_trial\": 0.005000201537151149}",
+        "{\"n\": 34, \"state\": \"near\", \"seed\": \"0.44\", \"rigid\": 3.6661782387085225e-10, \"exponents\": [2, 3, 4, 5, 6, 7, 8, 10, 12, 16, 20, 24], \"K22_trial\": [6.414320082221644e-11, 2.4880202839161292e-11, 1.2508584782405147e-11, 7.52871518971772e-12, 5.159937190376967e-12, 3.8899154327646865e-12, 3.146891257215232e-12, 2.3817560074743465e-12, 2.0406440809992716e-12, 1.8173721508448638e-12, 1.8260474565505172e-12, 1.9265025375015148e-12], \"minimum_trial\": 1.8173721508448638e-12}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-reference",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/bend_static_referee_explicit_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_referee_complement_01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/curl_bend_complement_witness.py"
+      ],
+      "executed_source_sha256": "cd18a1f842442f2492a820c2c9659413a85fca65ca0eb1b61ac7e1f66cc64edc",
+      "verified_limits": true,
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"n\": 34, \"powers\": [2, 4, 8, 14, 24, 36], \"dual_interval\": [0.5, 1.8166666666666664], \"bernstein_min\": 2.46648342124055e-07, \"K_lower\": [[1.9866974681571783, 0.0048087238369552854], [0.004808723836955338, 0.004731932017933977]], \"sufficient_mu\": 1.8518590601169937, \"stability_mu2\": [0.0006996235613591075, 3.953221743972185]}",
+        "{\"n\": 48, \"powers\": [2, 4, 8, 14, 24, 36], \"dual_interval\": [0.5, 1.8028089887640448], \"bernstein_min\": 3.6134996125277237e-07, \"K_lower\": [[1.9890536459219355, 0.004812343493765069], [0.004812343493765105, 0.00475303718615618]], \"sufficient_mu\": 1.8436288757838581, \"stability_mu2\": [0.0007417930529569208, 3.95793402471362]}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-reference",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/bend_static_referee_complement_01"
+      ]
+    },
+    "_scratch/s11c/bend_static_referee_delayed_two_01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/curl_bend_delayed_two_witnesses.py"
+      ],
+      "executed_source_sha256": "b97f36f5c66f020404c85eb4fa0bbf9d9d7a47422b4e97c5ef209115517dcc7a",
+      "verified_limits": true,
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"n\": 34, \"source\": \"_scratch/s11c/bend_static_shear_delcarrier34_01/stdout\", \"witnesses\": [{\"interval\": [0.58, 1.14], \"power\": 4, \"load\": 0.28608138819755197, \"upper_dual_cost\": 0.31767107787028326, \"min_order\": 0.9994645878187459}, {\"interval\": [1.23, 1.54], \"power\": 6, \"load\": 0.24818193864264093, \"upper_dual_cost\": 4.510238773043273, \"min_order\": 0.056787013493108815}], \"diagonal_lower\": [1.0791706905777734, 0.057204398122787166], \"total_mu1_lower\": [0.04630952819476975, 1.058474031319295], \"sufficient_mu\": 0.19255671935038865}",
+        "{\"n\": 48, \"source\": \"_scratch/s11c/bend_static_shear_delcarrier48_01/stdout\", \"witnesses\": [{\"interval\": [0.58, 1.14], \"power\": 4, \"load\": 0.286081388197552, \"upper_dual_cost\": 0.3176662404592944, \"min_order\": 0.9992080380386453}, {\"interval\": [1.23, 1.54], \"power\": 6, \"load\": 0.24818193864264101, \"upper_dual_cost\": 4.078050512885199, \"min_order\": 0.055427627645781984}], \"diagonal_lower\": [1.0791871241533084, 0.06326687067430686], \"total_mu1_lower\": [0.05237181983105097, 1.0584905452864557], \"sufficient_mu\": 0.17437851040789915}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "bend-reference",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/bend_static_referee_delayed_two_01"
+      ]
+    },
+    "_scratch/s11c/static_shear_bonded_vector_review01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/static_shear_trial_review/deep.py"
+      ],
+      "executed_source_sha256": "dcb03495a73f705eba8fbd9d2c0b8c55451c6045479220f9aafc17c4259401bb",
+      "verified_limits": true,
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"mesh\": 34, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"intake\": 0.2500000000013136, \"flow_file\": \"_scratch/s11c/empty_bend_c34_01/stdout\", \"flow_sha256\": \"cd1adcd5563f84ecd39837e67ff0b1385ab02d9d86329313b9965af2fb34d71a\"}",
+        "{\"mesh\": 34, \"quadrature\": 4, \"powers\": [3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 27, 33], \"trial_stiffness\": [0.013196685645724092, 0.008383642752026115, 0.006496107817823875, 0.005612655586600251, 0.0051878007854565325, 0.0050093511290753255, 0.004978072085641878, 0.005041511942792141, 0.0051694032902928335, 0.005550437429556201, 0.006035797126038712, 0.0068753544342230926], \"locked\": 0.05224938134752119, \"minimum_power\": 15, \"trial_plus_flow\": -0.003778833910874164, \"flow\": -0.008756905996516042}",
+        "{\"mesh\": 34, \"quadrature\": 8, \"powers\": [3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 27, 33], \"trial_stiffness\": [0.013196685646004064, 0.008383642752198417, 0.006496107817931426, 0.005612655586661736, 0.005187800785481633, 0.005009351129069662, 0.0049780720856089505, 0.005041511942734251, 0.005169403290211709, 0.005550437429434296, 0.006035797125896267, 0.006875354434230738], \"locked\": 0.05224938134833344, \"minimum_power\": 15, \"trial_plus_flow\": -0.0037788339109070916, \"flow\": -0.008756905996516042}",
+        "{\"mesh\": 48, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz\", \"sha256\": \"760d3ee858203107f386cc498b026228fcbddf0b49e191826927d5aba9f740c7\", \"intake\": 0.24999999998813904, \"flow_file\": \"_scratch/s11c/empty_bend_c48_01/stdout\", \"flow_sha256\": \"b564a0e975cc92e777f4a516e5db63d41f45f12ebd882a3bf4d64cbdaee7ee11\"}",
+        "{\"mesh\": 48, \"quadrature\": 4, \"powers\": [3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 27, 33], \"trial_stiffness\": [0.0131970631756297, 0.008383858089842617, 0.006496246117882164, 0.005612746642625098, 0.005187858357098453, 0.005009382673875342, 0.004978082093625588, 0.0050415033268862595, 0.005169378048897572, 0.005550382863374157, 0.0060357165536883495, 0.006875238482446772], \"locked\": 0.05225090041274711, \"minimum_power\": 15, \"trial_plus_flow\": -0.0037788537186704135, \"flow\": -0.008756935812296002}",
+        "{\"mesh\": 48, \"quadrature\": 8, \"powers\": [3, 5, 7, 9, 11, 13, 15, 17, 19, 23, 27, 33], \"trial_stiffness\": [0.013197063175647146, 0.008383858089853324, 0.006496246117888779, 0.005612746642628792, 0.005187858357099802, 0.005009382673874727, 0.004978082093623203, 0.005041503326882257, 0.005169378048892068, 0.005550382863365977, 0.00603571655367878, 0.006875238482446567], \"locked\": 0.052250900412797584, \"minimum_power\": 15, \"trial_plus_flow\": -0.0037788537186727988, \"flow\": -0.008756935812296002}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "shear-bond-review",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/static_shear_bonded_vector_review01"
+      ]
+    },
+    "_scratch/s11c/static_shear_bonded_enclosure01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/static_shear_trial_review/enclose.py"
+      ],
+      "executed_source_sha256": "9d2951eb50a28f23fb679716064879d559e9ae651b563c3cb9b17c79af7c8285",
+      "verified_limits": true,
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"mesh\": 34, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"intake\": 0.2500000000013136, \"flow_file\": \"_scratch/s11c/empty_bend_c34_01/stdout\", \"flow_sha256\": \"cd1adcd5563f84ecd39837e67ff0b1385ab02d9d86329313b9965af2fb34d71a\"}",
+        "{\"mesh\": 34, \"trial_power\": 15, \"positive_sum_upper\": \"[0.01017129954076710246374942334969101429614, 0.01017129954076710246374942334969101429614]\", \"total_using_flow_upper\": \"[0.001414393544251060312715025360739773164268, 0.001414393544251060312715025360739773164268]\"}",
+        "{\"mesh\": 48, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz\", \"sha256\": \"760d3ee858203107f386cc498b026228fcbddf0b49e191826927d5aba9f740c7\", \"intake\": 0.24999999998813904, \"flow_file\": \"_scratch/s11c/empty_bend_c48_01/stdout\", \"flow_sha256\": \"b564a0e975cc92e777f4a516e5db63d41f45f12ebd882a3bf4d64cbdaee7ee11\"}",
+        "{\"mesh\": 48, \"trial_power\": 15, \"positive_sum_upper\": \"[0.008910847331540349664858858011734417696052, 0.008910847331540349664858858011734417696052]\", \"total_using_flow_upper\": \"[0.0001539115192443479560711730644239364755683, 0.0001539115192443479560711730644239364755683]\"}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "shear-bond-review",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/static_shear_bonded_enclosure01"
+      ]
+    },
+    "_scratch/s11c/static_shear_bonded_enclosure_subcell01": {
+      "scientific_command": [
+        "python3",
+        "_scratch/static_shear_trial_review/enclose_subcell.py"
+      ],
+      "executed_source_sha256": "a2bb79905a85f3dfbfff63f0d77abaa3b4e3734d0026b69cfdb5d417ec055f9f",
+      "verified_limits": true,
+      "verified_memory_bytes": 2147483648,
+      "verified_zero_swap": true,
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "literal_stdout": [
+        "{\"mesh\": 34, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"intake\": 0.2500000000013136, \"flow_file\": \"_scratch/s11c/empty_bend_c34_01/stdout\", \"flow_sha256\": \"cd1adcd5563f84ecd39837e67ff0b1385ab02d9d86329313b9965af2fb34d71a\"}",
+        "{\"mesh\": 34, \"trial_power\": 15, \"positive_sum_upper\": \"[0.006401249517410225309477206995933256088434, 0.006401249517410225309477206995933256088434]\", \"total_using_flow_upper\": \"[-0.002355656479105816841557190993017985043438, -0.002355656479105816841557190993017985043438]\"}",
+        "{\"mesh\": 48, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz\", \"sha256\": \"760d3ee858203107f386cc498b026228fcbddf0b49e191826927d5aba9f740c7\", \"intake\": 0.24999999998813904, \"flow_file\": \"_scratch/s11c/empty_bend_c48_01/stdout\", \"flow_sha256\": \"b564a0e975cc92e777f4a516e5db63d41f45f12ebd882a3bf4d64cbdaee7ee11\"}",
+        "{\"mesh\": 48, \"trial_power\": 15, \"positive_sum_upper\": \"[0.006183385952079644026558051443519941895996, 0.006183385952079644026558051443519941895996]\", \"total_using_flow_upper\": \"[-0.002573549860216357682229633503790539324488, -0.002573549860216357682229633503790539324488]\"}"
+      ],
+      "guard_arguments": [
+        "--pool",
+        "shear-bond-review",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/static_shear_bonded_enclosure_subcell01"
+      ]
+    }
+  },
+  "unaccepted": {
+    "_scratch/s11c/bend_static_shear_deep48_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz",
+        "--sub",
+        "1",
+        "--quad",
+        "5",
+        "--cutoff",
+        "1e-10"
+      ],
+      "exit_code": 1,
+      "reason": "KeyError: 'roof'",
+      "disposition": "Missing optional roof key in the older recovered order metadata. Both jobs exited before any measurement. Matched geometry subsequently read from the carrier preparation."
+    },
+    "_scratch/s11c/bend_static_shear_deep48sub2_01": {
+      "scientific_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bend_static_shear.py",
+        "--order",
+        "_scratch/s11c/mouth_free_order_cubic_n48_d04_outer_residual/order_seed1.55.npz",
+        "--sub",
+        "2",
+        "--quad",
+        "5",
+        "--cutoff",
+        "1e-10"
+      ],
+      "exit_code": 1,
+      "reason": "KeyError: 'roof'",
+      "disposition": "Missing optional roof key in the older recovered order metadata. Both jobs exited before any measurement. Matched geometry subsequently read from the carrier preparation."
+    }
+  },
+  "independent_scripts_and_executed_variants": {
+    "_scratch/s11c/bend_static_shear_evidence/before_recovery_metadata.py": "\"\"\"Two variational estimates of static curl elasticity for an attached draining mouth.\n\nOn the conduit r=a(z)s, subtract the gradient of the angular displacement\npotential from a dipole displacement one-form. P ds+T dz is its remaining\nmeridional covector, multiplied by the direction cosine Y. The conjugate scalar\nm is the angular dipole of the radial/depth curl multiplied by chi*r^2.\nBoth trial fields extend into the reservoirs with zero curl or zero m.\n\"\"\"\nimport argparse\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy import sparse\nfrom scipy.linalg import eigvalsh\nfrom scipy.sparse.linalg import splu\n\nfrom mouth_carrier_lateral_inertia import taper\nfrom mouth_curved_phase import quadratic, tensor\nfrom mouth_empty_bend_stiffness import INTERVALS\nfrom mouth_order_wave_pulse import ARCHIVE, Geometry, digest, emit\n\nFLOW = Path('research/pde_ledger_v3/_measurements/mouth_empty_bend_stiffness.json')\nANGULAR = 4*np.pi/3\n\n\ndef archive_inputs(order_path):\n    record = json.loads(ARCHIVE.read_text())\n    state = json.loads((order_path.parent/'stdout').read_text().splitlines()[0])\n    if digest(order_path) != record['diffuse_orders_sha256'][str(order_path)]:\n        raise ValueError('Order hash disagrees with the reference record')\n    if json.loads((order_path.parent/'outcome.json').read_text())['exitCode']:\n        raise ValueError('Order source did not complete')\n    prior = json.loads(FLOW.read_text())\n    src = prior['runs'][f\"_scratch/s11c/empty_bend_c{state['n']}_01\"]\n    meta, carrier = [json.loads(line) for line in src['literal_stdout']]\n    if state['source_sha256'] != meta['sha256'] or not src['verified_limits'] or src['worker_exit']:\n        raise ValueError('Unmatched carrier')\n    geo = Geometry(state['n'],state['profile'],state['roof'],meta['far'])\n    with np.load(order_path) as data:\n        order = data['chi']\n    emit(test='preparation',mesh=state['n'],rate=meta['rate'],radius=1.,order=str(order_path),\n         sha256=digest(order_path),flow_record_sha256=digest(FLOW))\n    return geo, order, np.array(carrier['holding_stiffness'])\n\n\ndef stiffness_matrix(local, nodes, count):\n    n = nodes.shape[1]\n    return sparse.coo_matrix((local.ravel(), (np.repeat(nodes,n,axis=1).ravel(),\n                                              np.tile(nodes,(1,n)).ravel())),shape=(count,count)).tocsc()\n\n\ndef stationary_solve(matrix, rhs, active):\n    dofs=np.flatnonzero(active)\n    sub=matrix[dofs][:,dofs]\n    scale=sparse.diags(1/np.sqrt(sub.diagonal()))\n    answer=np.zeros_like(rhs)\n    answer[dofs]=scale@splu((scale@sub@scale).tocsc()).solve(scale@rhs[dofs])\n    return answer\n\n\ndef subdivide(edges,n):\n    return np.r_[(edges[:-1,None]+np.diff(edges)[:,None]*np.arange(n)/n).ravel(),edges[-1]]\n\n\ndef calculate(geo,order,sub,quad,deep_cutoff):\n    zz, vv, parent_nodes = geo.order_blocks[2]\n    zedge, sedge = subdivide(zz,sub),subdivide(1-vv[::-1],sub)\n    nz, ns = len(zedge)-1,len(sedge)-1\n    iz, js = [v.ravel() for v in np.indices((nz,ns))]\n    shape=(nz+1,ns+1)\n    count=(nz+1)*(ns+1)\n    nodes=(iz*(ns+1)+js)[:,None]+np.array([0,1,ns+1,ns+2])\n    vector_nodes=np.column_stack((nodes,nodes+count))\n    dz,ds=np.diff(zedge)[iz,None],np.diff(sedge)[js,None]\n    base_order=order[parent_nodes[(iz//sub)*(len(vv)-1)+len(vv)-2-js//sub]]\n    root,weights=leggauss(quad)\n    unit=(1+root)/2\n    zzq,ssq=[x.ravel() for x in np.meshgrid(unit,unit,indexing='ij')]\n    wz,ws=[x.ravel() for x in np.meshgrid(weights/2,weights/2,indexing='ij')]\n    z=zedge[iz,None]+dz*zzq\n    s=sedge[js,None]+ds*ssq\n    a,ap=geo.radius(z)\n    r=a*s\n    measure=a*dz*ds*wz*ws\n    def chi_at(t,u):\n        # The archive's radial chart runs from wall to axis.\n        qz=quadratic(2*((iz%sub)[:,None]+t)/sub-1)[0]\n        qv=quadratic(1-2*((js%sub)[:,None]+u)/sub)[0]\n        return np.einsum('eqk,ek->eq',tensor(qz,qv),base_order)\n    chi=np.clip(chi_at(zzq,ssq),0,1)\n    # A tensor quadratic is bounded by its Bernstein coefficients. Retain\n    # dual basis supports only on cells with a strictly positive lower bound.\n    grid=np.array([0.,.5,1.])\n    tz,ts=[x.ravel() for x in np.meshgrid(grid,grid,indexing='ij')]\n    transform=np.array([[1,0,0],[-.5,2,-.5],[0,0,1]])\n    bern=transform@chi_at(tz,ts).reshape(-1,3,3)@transform.T\n    dual_cells=bern.min(axis=(1,2))>deep_cutoff\n\n    lin=lambda x:np.stack((1-x,x),axis=-1)\n    deriv=np.tile([-1.,1.],(len(ssq),1))\n    def bilinear(x,y):\n        return (x[..., :,None]*y[...,None,:]).reshape(-1,4)\n    val=bilinear(lin(zzq),lin(ssq))\n    vz=bilinear(deriv,lin(ssq))/dz[:,:,None]\n    vs=bilinear(lin(zzq),deriv)/ds[:,:,None]\n    blank=np.zeros_like(vs)\n    def rows(first,second):\n        return np.concatenate((np.broadcast_to(first,vs.shape),np.broadcast_to(second,vs.shape)),axis=2)\n    curl=rows(-vz,vs)/a[:,:,None]\n    radial=rows(val,blank)/a[:,:,None]\n    axial=rows(-ap[:,:,None]*s[:,:,None]/a[:,:,None]*val,val)\n    slopes=np.stack([-taper(z,*interval)[1] for interval in INTERVALS],axis=-1)\n    # Exact tangential boundary data from the physical section translation:\n    # T(1,z)=-a*h'. The lift P=0, T=-r*h' has curl=-h'.\n    curl_lift=-slopes\n    axial_lift=-r[:,:,None]*slopes\n    wt=measure*chi\n    gram=lambda m,x,y:np.einsum('eq,eqi,eqj->eij',m,x,y,optimize=True)\n    # A tiny positive floor supplies a legal primal trial for the softer\n    # exact material. Evaluate and report its energy with the actual chi.\n    solve_wt=measure*np.maximum(chi,1e-11)\n    def blocks(w):\n        return (gram(w*r*r,curl,curl)+2*(gram(w,radial,radial)+gram(w,axial,axial)),\n                gram(w*r*r,curl,curl_lift)+2*gram(w,axial,axial_lift))\n    kl, force=blocks(solve_wt)\n    rhs=np.zeros((2*count,2))\n    np.add.at(rhs,vector_nodes,-force)\n    # On both ends of the conduit the tangential radial covector P vanishes.\n    # T can jump normally there. On the wall T's correction vanishes.\n    free_p=np.ones(shape,bool); free_p[[0,-1],:]=False; free_p[:,0]=False\n    free_t=np.ones(shape,bool); free_t[:,[0,-1]]=False\n    v=stationary_solve(stiffness_matrix(kl,vector_nodes,2*count),rhs,np.r_[free_p.ravel(),free_t.ravel()])\n    loc=v[vector_nodes]\n    cs=curl@loc+curl_lift\n    ar=radial@loc\n    az=axial@loc+axial_lift\n    summ=lambda w,x:gram(w,x,x).sum(axis=0)*ANGULAR\n    upper=summ(wt*r*r,cs)+2*(summ(wt,ar)+summ(wt,az))\n    locked=summ(wt*r*r,curl_lift)+2*summ(wt,axial_lift)\n    # Conforming complementary field. m=0 at both axial ends and on the axis.\n    active=np.ones(shape,bool)\n    active[[0,-1],:]=False; active[:,0]=False\n    active.ravel()[np.unique(nodes[~dual_cells])]=False\n    dr=vs/a[:,:,None]\n    dw=vz-ap[:,:,None]*s[:,:,None]*dr\n    inv=np.zeros_like(wt)\n    inv[dual_cells]=measure[dual_cells]/chi[dual_cells]\n    dual_local=(gram(inv,dr,dr)+gram(inv,dw,dw))/2+gram(inv/r**2,np.broadcast_to(val,vs.shape),np.broadcast_to(val,vs.shape))\n    side=sedge[-1]\n    assert side==1\n    wzq=zedge[:-1,None]+np.diff(zedge)[:,None]*unit\n    radius,_=geo.radius(wzq)\n    load=np.stack([radius*taper(wzq,*it)[1] for it in INTERVALS],axis=-1)\n    line=np.einsum('eq,qi,eqj->eij',np.diff(zedge)[:,None]*weights/2,lin(unit),load)\n    boundary=np.arange(nz)[:,None]*(ns+1)+ns+np.array([0,ns+1])\n    drhs=np.zeros((count,2)); np.add.at(drhs,boundary,line)\n    dual_matrix=stiffness_matrix(dual_local,nodes,count)\n    m=stationary_solve(dual_matrix,drhs,active.ravel())\n    lower=ANGULAR*(drhs.T@m+m.T@drhs-m.T@(dual_matrix@m))\n    return lower,upper,locked\n\n\ndef run(args):\n    dom,order,k=archive_inputs(args.order)\n    low,high,rigid=calculate(dom,order,args.sub,args.quad,args.cutoff)\n    def marginal(shear):\n        # For a singular shear estimate, a finite sufficient threshold may be unavailable.\n        if np.linalg.eigvalsh(shear)[0]<=0:\n            return None\n        return eigvalsh(-k,shear)[-1]\n    emit(test='static_shear',sub=args.sub,quadrature=args.quad,dual_order_floor=args.cutoff,\n         lower=low.tolist(),upper=high.tolist(),rigid_sections=rigid.tolist(),carrier=k.tolist(),\n         necessary_mu=marginal(high),sufficient_mu=marginal(low),\n         rigid_necessary_mu=marginal(rigid),\n         unit_modulus_total_lower=np.linalg.eigvalsh(k+low).tolist(),\n         unit_modulus_total_upper=np.linalg.eigvalsh(k+high).tolist(),\n         slip_total=np.linalg.eigvalsh(k).tolist())\n    if np.linalg.eigvalsh(high-low)[0]<-1e-8 or np.linalg.eigvalsh(rigid-high)[0]<-1e-8:\n        raise ArithmeticError('Variational ordering failed')\n\n\nif __name__=='__main__':\n    p=argparse.ArgumentParser(description=__doc__)\n    p.add_argument('--order',type=Path,required=True)\n    p.add_argument('--sub',type=int,default=1)\n    p.add_argument('--quad',type=int,default=5)\n    p.add_argument('--cutoff',type=float,default=1e-10)\n    run(p.parse_args())\n",
+    "_scratch/s11c/bend_static_shear_evidence/cubic_calculation.py": "\"\"\"Two variational estimates of static curl elasticity for an attached draining mouth.\n\nOn the conduit r=a(z)s, subtract the gradient of the angular displacement\npotential from a dipole displacement one-form. P ds+T dz is its remaining\nmeridional covector, multiplied by the direction cosine Y. The conjugate scalar\nm is the angular dipole of the radial/depth curl multiplied by chi*r^2.\nBoth trial fields extend into the reservoirs with zero curl or zero m.\n\"\"\"\nimport argparse\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy import sparse\nfrom scipy.linalg import eigvalsh\nfrom scipy.sparse.linalg import splu\n\nfrom mouth_carrier_lateral_inertia import taper\nfrom mouth_curved_phase import quadratic, tensor\nfrom mouth_empty_bend_stiffness import INTERVALS\nfrom mouth_order_wave_pulse import ARCHIVE, Geometry, digest, emit\n\nFLOW = Path('research/pde_ledger_v3/_measurements/mouth_empty_bend_stiffness.json')\nANGULAR = 4*np.pi/3\n\n\ndef archive_inputs(order_path):\n    record = json.loads(ARCHIVE.read_text())\n    state = json.loads((order_path.parent/'stdout').read_text().splitlines()[0])\n    if digest(order_path) != record['diffuse_orders_sha256'][str(order_path)]:\n        raise ValueError('Order hash disagrees with the reference record')\n    if json.loads((order_path.parent/'outcome.json').read_text())['exitCode']:\n        raise ValueError('Order source did not complete')\n    prior = json.loads(FLOW.read_text())\n    src = prior['runs'][f\"_scratch/s11c/empty_bend_c{state['n']}_01\"]\n    meta, carrier = [json.loads(line) for line in src['literal_stdout']]\n    if state['source_sha256'] != meta['sha256'] or not src['verified_limits'] or src['worker_exit']:\n        raise ValueError('Unmatched carrier')\n    geo = Geometry(meta['mesh'],meta['profile'],meta['roof'],meta['far'])\n    with np.load(order_path) as data:\n        order = data['chi']\n    emit(test='preparation',mesh=state['n'],rate=meta['rate'],radius=1.,order=str(order_path),\n         sha256=digest(order_path),flow_record_sha256=digest(FLOW))\n    return geo, order, np.array(carrier['holding_stiffness'])\n\n\ndef stiffness_matrix(local, nodes, count):\n    n = nodes.shape[1]\n    return sparse.coo_matrix((local.ravel(), (np.repeat(nodes,n,axis=1).ravel(),\n                                              np.tile(nodes,(1,n)).ravel())),shape=(count,count)).tocsc()\n\n\ndef stationary_solve(matrix, rhs, active):\n    dofs=np.flatnonzero(active)\n    sub=matrix[dofs][:,dofs]\n    scale=sparse.diags(1/np.sqrt(sub.diagonal()))\n    answer=np.zeros_like(rhs)\n    answer[dofs]=scale@splu((scale@sub@scale).tocsc()).solve(scale@rhs[dofs])\n    return answer\n\n\ndef subdivide(edges,n):\n    return np.r_[(edges[:-1,None]+np.diff(edges)[:,None]*np.arange(n)/n).ravel(),edges[-1]]\n\n\ndef calculate(geo,order,sub,quad,deep_cutoff):\n    zz, vv, parent_nodes = geo.order_blocks[2]\n    zedge, sedge = subdivide(zz,sub),subdivide(1-vv[::-1],sub)\n    nz, ns = len(zedge)-1,len(sedge)-1\n    iz, js = [v.ravel() for v in np.indices((nz,ns))]\n    shape=(nz+1,ns+1)\n    count=(nz+1)*(ns+1)\n    nodes=(iz*(ns+1)+js)[:,None]+np.array([0,1,ns+1,ns+2])\n    vector_nodes=np.column_stack((nodes,nodes+count))\n    dz,ds=np.diff(zedge)[iz,None],np.diff(sedge)[js,None]\n    base_order=order[parent_nodes[(iz//sub)*(len(vv)-1)+len(vv)-2-js//sub]]\n    root,weights=leggauss(quad)\n    unit=(1+root)/2\n    zzq,ssq=[x.ravel() for x in np.meshgrid(unit,unit,indexing='ij')]\n    wz,ws=[x.ravel() for x in np.meshgrid(weights/2,weights/2,indexing='ij')]\n    z=zedge[iz,None]+dz*zzq\n    s=sedge[js,None]+ds*ssq\n    a,ap=geo.radius(z)\n    r=a*s\n    measure=a*dz*ds*wz*ws\n    def chi_at(t,u):\n        # The archive's radial chart runs from wall to axis.\n        qz=quadratic(2*((iz%sub)[:,None]+t)/sub-1)[0]\n        qv=quadratic(1-2*((js%sub)[:,None]+u)/sub)[0]\n        return np.einsum('eqk,ek->eq',tensor(qz,qv),base_order)\n    chi=np.clip(chi_at(zzq,ssq),0,1)\n    # A tensor quadratic is bounded by its Bernstein coefficients. Retain\n    # dual basis supports only on cells with a strictly positive lower bound.\n    grid=np.array([0.,.5,1.])\n    tz,ts=[x.ravel() for x in np.meshgrid(grid,grid,indexing='ij')]\n    transform=np.array([[1,0,0],[-.5,2,-.5],[0,0,1]])\n    bern=transform@chi_at(tz,ts).reshape(-1,3,3)@transform.T\n    dual_cells=bern.min(axis=(1,2))>deep_cutoff\n\n    lin=lambda x:np.stack((1-x,x),axis=-1)\n    deriv=np.tile([-1.,1.],(len(ssq),1))\n    def bilinear(x,y):\n        return (x[..., :,None]*y[...,None,:]).reshape(-1,4)\n    val=bilinear(lin(zzq),lin(ssq))\n    vz=bilinear(deriv,lin(ssq))/dz[:,:,None]\n    vs=bilinear(lin(zzq),deriv)/ds[:,:,None]\n    blank=np.zeros_like(vs)\n    def rows(first,second):\n        return np.concatenate((np.broadcast_to(first,vs.shape),np.broadcast_to(second,vs.shape)),axis=2)\n    curl=rows(-vz,vs)/a[:,:,None]\n    radial=rows(val,blank)/a[:,:,None]\n    axial=rows(-ap[:,:,None]*s[:,:,None]/a[:,:,None]*val,val)\n    slopes=np.stack([-taper(z,*interval)[1] for interval in INTERVALS],axis=-1)\n    # Exact tangential boundary data from the physical section translation:\n    # T(1,z)=-a*h'. The lift P=0, T=-r*h' has curl=-h'.\n    curl_lift=-slopes\n    axial_lift=-r[:,:,None]*slopes\n    wt=measure*chi\n    gram=lambda m,x,y:np.einsum('eq,eqi,eqj->eij',m,x,y,optimize=True)\n    # A tiny positive floor supplies a legal primal trial for the softer\n    # exact material. Evaluate and report its energy with the actual chi.\n    solve_wt=measure*np.maximum(chi,1e-11)\n    def blocks(w):\n        return (gram(w*r*r,curl,curl)+2*(gram(w,radial,radial)+gram(w,axial,axial)),\n                gram(w*r*r,curl,curl_lift)+2*gram(w,axial,axial_lift))\n    kl, force=blocks(solve_wt)\n    rhs=np.zeros((2*count,2))\n    np.add.at(rhs,vector_nodes,-force)\n    # On both ends of the conduit the tangential radial covector P vanishes.\n    # T can jump normally there. On the wall T's correction vanishes.\n    free_p=np.ones(shape,bool); free_p[[0,-1],:]=False; free_p[:,0]=False\n    free_t=np.ones(shape,bool); free_t[:,[0,-1]]=False\n    v=stationary_solve(stiffness_matrix(kl,vector_nodes,2*count),rhs,np.r_[free_p.ravel(),free_t.ravel()])\n    loc=v[vector_nodes]\n    cs=curl@loc+curl_lift\n    ar=radial@loc\n    az=axial@loc+axial_lift\n    summ=lambda w,x:gram(w,x,x).sum(axis=0)*ANGULAR\n    upper=summ(wt*r*r,cs)+2*(summ(wt,ar)+summ(wt,az))\n    locked=summ(wt*r*r,curl_lift)+2*summ(wt,axial_lift)\n    # Conforming complementary field. m=0 at both axial ends and on the axis.\n    active=np.ones(shape,bool)\n    active[[0,-1],:]=False; active[:,0]=False\n    active.ravel()[np.unique(nodes[~dual_cells])]=False\n    dr=vs/a[:,:,None]\n    dw=vz-ap[:,:,None]*s[:,:,None]*dr\n    inv=np.zeros_like(wt)\n    inv[dual_cells]=measure[dual_cells]/chi[dual_cells]\n    dual_local=(gram(inv,dr,dr)+gram(inv,dw,dw))/2+gram(inv/r**2,np.broadcast_to(val,vs.shape),np.broadcast_to(val,vs.shape))\n    side=sedge[-1]\n    assert side==1\n    wzq=zedge[:-1,None]+np.diff(zedge)[:,None]*unit\n    radius,_=geo.radius(wzq)\n    load=np.stack([radius*taper(wzq,*it)[1] for it in INTERVALS],axis=-1)\n    line=np.einsum('eq,qi,eqj->eij',np.diff(zedge)[:,None]*weights/2,lin(unit),load)\n    boundary=np.arange(nz)[:,None]*(ns+1)+ns+np.array([0,ns+1])\n    drhs=np.zeros((count,2)); np.add.at(drhs,boundary,line)\n    dual_matrix=stiffness_matrix(dual_local,nodes,count)\n    m=stationary_solve(dual_matrix,drhs,active.ravel())\n    lower=ANGULAR*(drhs.T@m+m.T@drhs-m.T@(dual_matrix@m))\n    return lower,upper,locked\n\n\ndef run(args):\n    dom,order,k=archive_inputs(args.order)\n    low,high,rigid=calculate(dom,order,args.sub,args.quad,args.cutoff)\n    def marginal(shear):\n        # For a singular shear estimate, a finite sufficient threshold may be unavailable.\n        if np.linalg.eigvalsh(shear)[0]<=0:\n            return None\n        return eigvalsh(-k,shear)[-1]\n    emit(test='static_shear',sub=args.sub,quadrature=args.quad,dual_order_floor=args.cutoff,\n         lower=low.tolist(),upper=high.tolist(),rigid_sections=rigid.tolist(),carrier=k.tolist(),\n         necessary_mu=marginal(high),sufficient_mu=marginal(low),\n         rigid_necessary_mu=marginal(rigid),\n         unit_modulus_total_lower=np.linalg.eigvalsh(k+low).tolist(),\n         unit_modulus_total_upper=np.linalg.eigvalsh(k+high).tolist(),\n         slip_total=np.linalg.eigvalsh(k).tolist())\n    if np.linalg.eigvalsh(high-low)[0]<-1e-8 or np.linalg.eigvalsh(rigid-high)[0]<-1e-8:\n        raise ArithmeticError('Variational ordering failed')\n\n\nif __name__=='__main__':\n    p=argparse.ArgumentParser(description=__doc__)\n    p.add_argument('--order',type=Path,required=True)\n    p.add_argument('--sub',type=int,default=1)\n    p.add_argument('--quad',type=int,default=5)\n    p.add_argument('--cutoff',type=float,default=1e-10)\n    run(p.parse_args())\n",
+    "_scratch/s11c/bend_static_shear_evidence/bonded_calculation.py": "\"\"\"Two variational estimates of static curl elasticity for an attached draining mouth.\n\nOn the conduit r=a(z)s, subtract the gradient of the angular displacement\npotential from a dipole displacement one-form. P ds+T dz is its remaining\nmeridional covector, multiplied by the direction cosine Y. The conjugate scalar\nm is the angular dipole of the radial/depth curl multiplied by chi*r^2.\nBoth trial fields extend into the reservoirs with zero curl or zero m.\n\"\"\"\nimport argparse\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy import sparse\nfrom scipy.linalg import eigvalsh\nfrom scipy.sparse.linalg import splu\n\nfrom mouth_carrier_lateral_inertia import taper\nfrom mouth_curved_phase import quadratic, tensor\nfrom mouth_empty_bend_stiffness import INTERVALS\nfrom mouth_order_wave_pulse import ARCHIVE, Geometry, digest, emit\n\nFLOW = Path('research/pde_ledger_v3/_measurements/mouth_empty_bend_stiffness.json')\nANGULAR = 4*np.pi/3\n\n\ndef archive_inputs(order_path, flow_run):\n    record = json.loads(ARCHIVE.read_text())\n    state = json.loads((order_path.parent/'stdout').read_text().splitlines()[0])\n    if digest(order_path) != record['diffuse_orders_sha256'][str(order_path)]:\n        raise ValueError('Order hash disagrees with the reference record')\n    if json.loads((order_path.parent/'outcome.json').read_text())['exitCode']:\n        raise ValueError('Order source did not complete')\n    if flow_run is None:\n        prior = json.loads(FLOW.read_text())\n        src = prior['runs'][f\"_scratch/s11c/empty_bend_c{state['n']}_01\"]\n        if not src['verified_limits'] or src['worker_exit'] or src['guarded_exit']:\n            raise ValueError('Unverified reference carrier')\n        lines = src['literal_stdout']\n        source_record = FLOW\n    else:\n        outcome=json.loads((flow_run/'outcome.json').read_text())\n        limits=json.loads((flow_run/'limit-validation.json').read_text())\n        if (outcome['exitCode'] or outcome['childOutcome']['exitCode'] or not outcome['limitsVerified']\n                or not limits['verified'] or int(limits['actual']['memory.swap.max'])):\n            raise ValueError('Unverified flow calculation')\n        source_record=flow_run/'stdout'\n        lines=source_record.read_text().splitlines()\n    meta,carrier=[json.loads(line) for line in lines]\n    if (state['source_sha256']!=meta['sha256'] or state['n']!=meta['mesh'] or\n            state['profile']!=meta['profile'] or carrier['extension']!='compact'):\n        raise ValueError('Unmatched carrier or bend geometry')\n    geo = Geometry(meta['mesh'],meta['profile'],meta['roof'],meta['far'])\n    with np.load(order_path) as data:\n        order = data['chi']\n    emit(test='preparation',mesh=state['n'],rate=meta['rate'],radius=1.,order=str(order_path),\n         sha256=digest(order_path),flow_record_sha256=digest(source_record))\n    return geo, order, np.array(carrier['holding_stiffness'])\n\n\ndef stiffness_matrix(local, nodes, count):\n    n = nodes.shape[1]\n    return sparse.coo_matrix((local.ravel(), (np.repeat(nodes,n,axis=1).ravel(),\n                                              np.tile(nodes,(1,n)).ravel())),shape=(count,count)).tocsc()\n\n\ndef stationary_solve(matrix, rhs, active):\n    dofs=np.flatnonzero(active)\n    sub=matrix[dofs][:,dofs]\n    scale=sparse.diags(1/np.sqrt(sub.diagonal()))\n    answer=np.zeros_like(rhs)\n    answer[dofs]=scale@splu((scale@sub@scale).tocsc()).solve(scale@rhs[dofs])\n    return answer\n\n\ndef subdivide(edges,n):\n    return np.r_[(edges[:-1,None]+np.diff(edges)[:,None]*np.arange(n)/n).ravel(),edges[-1]]\n\n\ndef calculate(geo,order,sub,quad,deep_cutoff):\n    zz, vv, parent_nodes = geo.order_blocks[2]\n    zedge, sedge = subdivide(zz,sub),subdivide(1-vv[::-1],sub)\n    nz, ns = len(zedge)-1,len(sedge)-1\n    iz, js = [v.ravel() for v in np.indices((nz,ns))]\n    shape=(nz+1,ns+1)\n    count=(nz+1)*(ns+1)\n    nodes=(iz*(ns+1)+js)[:,None]+np.array([0,1,ns+1,ns+2])\n    vector_nodes=np.column_stack((nodes,nodes+count))\n    dz,ds=np.diff(zedge)[iz,None],np.diff(sedge)[js,None]\n    base_order=order[parent_nodes[(iz//sub)*(len(vv)-1)+len(vv)-2-js//sub]]\n    root,weights=leggauss(quad)\n    unit=(1+root)/2\n    zzq,ssq=[x.ravel() for x in np.meshgrid(unit,unit,indexing='ij')]\n    wz,ws=[x.ravel() for x in np.meshgrid(weights/2,weights/2,indexing='ij')]\n    z=zedge[iz,None]+dz*zzq\n    s=sedge[js,None]+ds*ssq\n    a,ap=geo.radius(z)\n    r=a*s\n    measure=a*dz*ds*wz*ws\n    def chi_at(t,u):\n        # The archive's radial chart runs from wall to axis.\n        qz=quadratic(2*((iz%sub)[:,None]+t)/sub-1)[0]\n        qv=quadratic(1-2*((js%sub)[:,None]+u)/sub)[0]\n        return np.einsum('eqk,ek->eq',tensor(qz,qv),base_order)\n    chi=np.clip(chi_at(zzq,ssq),0,1)\n    # A tensor quadratic is bounded by its Bernstein coefficients. Retain\n    # dual basis supports only on cells with a strictly positive lower bound.\n    grid=np.array([0.,.5,1.])\n    tz,ts=[x.ravel() for x in np.meshgrid(grid,grid,indexing='ij')]\n    transform=np.array([[1,0,0],[-.5,2,-.5],[0,0,1]])\n    bern=transform@chi_at(tz,ts).reshape(-1,3,3)@transform.T\n    dual_cells=bern.min(axis=(1,2))>deep_cutoff\n\n    lin=lambda x:np.stack((1-x,x),axis=-1)\n    deriv=np.tile([-1.,1.],(len(ssq),1))\n    def bilinear(x,y):\n        return (x[..., :,None]*y[...,None,:]).reshape(-1,4)\n    val=bilinear(lin(zzq),lin(ssq))\n    vz=bilinear(deriv,lin(ssq))/dz[:,:,None]\n    vs=bilinear(lin(zzq),deriv)/ds[:,:,None]\n    blank=np.zeros_like(vs)\n    def rows(first,second):\n        return np.concatenate((np.broadcast_to(first,vs.shape),np.broadcast_to(second,vs.shape)),axis=2)\n    curl=rows(-vz,vs)/a[:,:,None]\n    radial=rows(val,blank)/a[:,:,None]\n    axial=rows(-ap[:,:,None]*s[:,:,None]/a[:,:,None]*val,val)\n    slopes=np.stack([-taper(z,*interval)[1] for interval in INTERVALS],axis=-1)\n    # Exact tangential boundary data from the physical section translation:\n    # T(1,z)=-a*h'. The lift P=0, T=-r*h' has curl=-h'.\n    curl_lift=-slopes\n    axial_lift=-r[:,:,None]*slopes\n    wt=measure*chi\n    gram=lambda m,x,y:np.einsum('eq,eqi,eqj->eij',m,x,y,optimize=True)\n    # A tiny positive floor supplies a legal primal trial for the softer\n    # exact material. Evaluate and report its energy with the actual chi.\n    solve_wt=measure*np.maximum(chi,1e-11)\n    def blocks(w):\n        return (gram(w*r*r,curl,curl)+2*(gram(w,radial,radial)+gram(w,axial,axial)),\n                gram(w*r*r,curl,curl_lift)+2*gram(w,axial,axial_lift))\n    kl, force=blocks(solve_wt)\n    rhs=np.zeros((2*count,2))\n    np.add.at(rhs,vector_nodes,-force)\n    # On both ends of the conduit the tangential radial covector P vanishes.\n    # T can jump normally there. On the wall T's correction vanishes.\n    free_p=np.ones(shape,bool); free_p[[0,-1],:]=False; free_p[:,0]=False\n    free_t=np.ones(shape,bool); free_t[:,[0,-1]]=False\n    v=stationary_solve(stiffness_matrix(kl,vector_nodes,2*count),rhs,np.r_[free_p.ravel(),free_t.ravel()])\n    loc=v[vector_nodes]\n    cs=curl@loc+curl_lift\n    ar=radial@loc\n    az=axial@loc+axial_lift\n    summ=lambda w,x:gram(w,x,x).sum(axis=0)*ANGULAR\n    upper=summ(wt*r*r,cs)+2*(summ(wt,ar)+summ(wt,az))\n    locked=summ(wt*r*r,curl_lift)+2*summ(wt,axial_lift)\n    # Conforming complementary field. m=0 at both axial ends and on the axis.\n    active=np.ones(shape,bool)\n    active[[0,-1],:]=False; active[:,0]=False\n    active.ravel()[np.unique(nodes[~dual_cells])]=False\n    dr=vs/a[:,:,None]\n    dw=vz-ap[:,:,None]*s[:,:,None]*dr\n    inv=np.zeros_like(wt)\n    inv[dual_cells]=measure[dual_cells]/chi[dual_cells]\n    dual_local=(gram(inv,dr,dr)+gram(inv,dw,dw))/2+gram(inv/r**2,np.broadcast_to(val,vs.shape),np.broadcast_to(val,vs.shape))\n    side=sedge[-1]\n    assert side==1\n    wzq=zedge[:-1,None]+np.diff(zedge)[:,None]*unit\n    radius,_=geo.radius(wzq)\n    load=np.stack([radius*taper(wzq,*it)[1] for it in INTERVALS],axis=-1)\n    line=np.einsum('eq,qi,eqj->eij',np.diff(zedge)[:,None]*weights/2,lin(unit),load)\n    boundary=np.arange(nz)[:,None]*(ns+1)+ns+np.array([0,ns+1])\n    drhs=np.zeros((count,2)); np.add.at(drhs,boundary,line)\n    dual_matrix=stiffness_matrix(dual_local,nodes,count)\n    m=stationary_solve(dual_matrix,drhs,active.ravel())\n    lower=ANGULAR*(drhs.T@m+m.T@drhs-m.T@(dual_matrix@m))\n    return lower,upper,locked\n\n\ndef run(args):\n    dom,order,k=archive_inputs(args.order,args.flow_run)\n    low,high,rigid=calculate(dom,order,args.sub,args.quad,args.cutoff)\n    def marginal(shear):\n        # For a singular shear estimate, a finite sufficient threshold may be unavailable.\n        if np.linalg.eigvalsh(shear)[0]<=0:\n            return None\n        return eigvalsh(-k,shear)[-1]\n    emit(test='static_shear',sub=args.sub,quadrature=args.quad,dual_order_floor=args.cutoff,\n         lower=low.tolist(),upper=high.tolist(),rigid_sections=rigid.tolist(),carrier=k.tolist(),\n         necessary_mu=marginal(high),sufficient_mu=marginal(low),\n         rigid_necessary_mu=marginal(rigid),\n         unit_modulus_total_lower=np.linalg.eigvalsh(k+low).tolist(),\n         unit_modulus_total_upper=np.linalg.eigvalsh(k+high).tolist(),\n         slip_total=np.linalg.eigvalsh(k).tolist())\n    if np.linalg.eigvalsh(high-low)[0]<-1e-8 or np.linalg.eigvalsh(rigid-high)[0]<-1e-8:\n        raise ArithmeticError('Variational ordering failed')\n\n\nif __name__=='__main__':\n    p=argparse.ArgumentParser(description=__doc__)\n    p.add_argument('--order',type=Path,required=True)\n    p.add_argument('--flow-run',type=Path,help='Guarded carrier bend result for this geometry')\n    p.add_argument('--sub',type=int,default=1)\n    p.add_argument('--quad',type=int,default=5)\n    p.add_argument('--cutoff',type=float,default=1e-10)\n    run(p.parse_args())\n",
+    "_scratch/curl_bend_reference_witness.py": "\"\"\"Single explicit curl-energy displacement; independent of the two-variable FE solve.\"\"\"\nimport json\nimport sys\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial import Polynomial as Polynomial\nfrom numpy.polynomial.legendre import leggauss\n\nsys.path.insert(0, 'software/stage1_solver/tools')\nfrom mouth_order_wave_pulse import Geometry, ARCHIVE, digest\n\n\ndef run(n, name, seed):\n    fit = Path(f'_scratch/s11c/mouth_free_order_cubic_n{n}_d04')\n    if n == 48 and name == 'deep':\n        fit = fit.with_name(fit.name + '_outer_residual')\n    src = fit / f'order_seed{seed}.npz'\n    assert digest(src) == json.loads(ARCHIVE.read_text())['diffuse_orders_sha256'][str(src)]\n    chi = np.load(src)['chi']\n    dom = Geometry(n,'cubic',10.,9.)\n    wz, vv, dofs = dom.order_blocks[2]\n    a0 = Polynomial([1.])\n    t = Polynomial([-1.2/1.85, 1/1.85])\n    radius = a0 + 0.5*t**2*(3-2*t)\n    # For this independent witness only the flare bend is imposed.\n    t = Polynomial([-1.2/0.8,1/0.8])\n    h = t**3*(10-15*t+6*t*t)\n    primitive = (-radius*h.deriv()).integ()\n    root, wt = leggauss(12)\n    basis = np.array([root*(root-1)/2,1-root*root,root*(root+1)/2]).T\n    # Unsplit cells reconstruct the archived tensor order. Load breakpoints\n    # lie inside finitely many cells, so use a separate rule on each segment.\n    powers = np.array([2,3,4,5,6,7,8,10,12,16,20,24])\n    energy = np.zeros(len(powers))\n    rigid = 0.\n    for iz,(l,r) in enumerate(zip(wz[:-1],wz[1:])):\n        if r <= 1.2:\n            continue\n        edges = [l]+[p for p in [1.2,2.,2.35,2.75] if l < p < r]+[r]\n        cell_data=chi[dofs[iz*(len(vv)-1):(iz+1)*(len(vv)-1)]].reshape(-1,3,3)\n        s=1-((vv[1:]+vv[:-1])[:,None]+np.diff(vv)[:,None]*root)/2\n        ds=np.diff(vv)[:,None]*wt/2\n        for left,right in zip(edges[:-1], edges[1:]):\n            z=(left+right+(right-left)*root)/2\n            wzq=(right-left)*wt/2\n            u=2*(z-l)/(r-l)-1\n            axial=np.array([u*(u-1)/2,1-u*u,u*(u+1)/2]).T\n            frac=np.clip(np.einsum('pi,bij,qj->pbq',axial,cell_data,basis),0,1)\n            rad,ap=dom.radius(z)\n            # F integrates the required guide trace F'=-a h'.\n            F = primitive(np.clip(z,1.2,2.))-primitive(1.2)\n            Fp = np.where((z>1.2)&(z<2.),-rad*h.deriv()(z),0.)\n            # C relaxes the radial covector only in the weak tail to ensure\n            # zero tangential trace at the receiving cut.\n            v=np.clip((z-2.35)/.4,0,1)\n            C=1-v*v*(3-2*v)\n            Cp=-6*v*(1-v)/.4\n            weight=4*np.pi/3*(wzq*rad)[:,None,None]*ds*frac\n            rigid += np.sum(weight*3*(Fp[:,None,None]*s)**2)\n            for j,p in enumerate(powers):\n                P=(p*F*C)[:,None,None]*s**(p-1)\n                T=Fp[:,None,None]*s**p\n                B=((Fp*(1-C)-F*Cp)*p/rad)[:,None,None]*s**(p-1)\n                ur=P/rad[:,None,None]\n                uw=T-ap[:,None,None]*s*ur\n                energy[j]+=np.sum(weight*((rad[:,None,None]*s*B)**2+2*(ur**2+uw**2)))\n    print(json.dumps(dict(n=n,state=name,seed=seed,rigid=rigid,exponents=powers.tolist(),\n                          K22_trial=energy.tolist(),minimum_trial=float(np.min(energy)))),flush=True)\n\n\nfor args in [(34,'deep','1.55'),(48,'deep','1.55'),(34,'near','0.44')]:\n    run(*args)\n",
+    "_scratch/curl_bend_complement_witness.py": "\"\"\"Independent complementary potentials with radial monomials and axial hats.\"\"\"\nimport json\nimport sys\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.linalg import eigvalsh\n\nsys.path.insert(0, 'software/stage1_solver/tools')\nfrom mouth_order_wave_pulse import ARCHIVE, Geometry, digest\n\n\ndef run(n):\n    src=Path(f'_scratch/s11c/mouth_free_order_cubic_n{n}_d04')\n    if n==48:\n        src=src.with_name(src.name+'_outer_residual')\n    src=src/'order_seed1.55.npz'\n    assert digest(src)==json.loads(ARCHIVE.read_text())['diffuse_orders_sha256'][str(src)]\n    order=np.load(src)['chi']\n    dom=Geometry(n,'cubic',10.,9.)\n    z, v, dofs=dom.order_blocks[2]\n    # Compact support avoids both reservoir boundaries and tiny downstream order.\n    take=np.flatnonzero((z[:-1]>=.5)&(z[1:]<=1.82))\n    nz=len(take)\n    powers=np.array([2,4,8,14,24,36])\n    nrad=len(powers)\n    count=(nz+1)*nrad\n    matrix=np.zeros((count,count))\n    rhs=np.zeros((count,2))\n    root,weight=leggauss(10)\n    tensor_shape=np.array([root*(root-1)/2,1-root**2,root*(root+1)/2]).T\n    transform=np.array([[1.,0.,0.],[-.5,2.,-.5],[0.,0.,1.]])\n    s=1-((v[1:]+v[:-1])[:,None]+np.diff(v)[:,None]*root)/2\n    ds=(np.diff(v)[:,None]*weight/2).ravel()\n    s=s.ravel()[:,None]\n    radial=s**powers\n    radial_over_s=s**(powers-1)\n    drad=powers*radial_over_s\n    hats=np.array([(1-root)/2,(1+root)/2]).T\n    minimum=1.\n    for i,j in enumerate(take):\n        local=order[dofs[j*(len(v)-1):(j+1)*(len(v)-1)]].reshape(-1,3,3)\n        minimum=min(minimum,float(np.min(transform@local@transform.T)))\n        dz=z[j+1]-z[j]\n        x=z[j]+dz*(root+1)/2\n        a,ap=dom.radius(x)\n        chi=np.clip(np.einsum('ip,bpq,kq->ibk',tensor_shape,local,tensor_shape),0.,1.).reshape(len(root),-1)\n        assert np.min(chi)>0\n        ids=slice(i*nrad,(i+2)*nrad)\n        wd=dz*weight/2\n        for q in range(len(root)):\n            def stack(left,right):\n                return np.hstack((left,right))\n            h0,h1=hats[q]\n            radial_d=stack(h0*drad,h1*drad)/a[q]\n            corn=ap[q]/a[q]*radial*powers\n            depth_d=stack(-radial/dz-h0*corn,radial/dz-h1*corn)\n            inv_r=stack(h0*radial_over_s,h1*radial_over_s)/a[q]\n            wt=(ds*wd[q]*a[q]/chi[q])[:,None]\n            for grad,factor in [(radial_d,.5),(depth_d,.5),(inv_r,1.)]:\n                matrix[ids,ids]+=factor*(grad.T@(wt*grad))\n            for b,(l,r) in enumerate([(.55,1.15),(1.2,2.)]):\n                u=np.clip((x[q]-l)/(r-l),0,1)\n                hp=30*u**2*(1-u)**2/(r-l)\n                rhs[ids,b]+=wd[q]*a[q]*hp*np.repeat(hats[q],nrad)\n    assert minimum>0\n    active=slice(nrad,count-nrad)\n    gram=matrix[active,active]\n    load=rhs[active]\n    coeff=np.linalg.solve(gram,load)\n    K=4*np.pi/3*(2*load.T@coeff-coeff.T@gram@coeff)\n    row=Path(f'_scratch/s11c/empty_bend_c{n}_01/stdout')\n    carrier=np.array(json.loads(row.read_text().splitlines()[-1])['holding_stiffness'])\n    print(json.dumps(dict(n=n,powers=powers.tolist(),dual_interval=[z[take[0]],z[1+take[-1]]],\n                          bernstein_min=minimum,K_lower=K.tolist(),\n                          sufficient_mu=eigvalsh(-carrier,K)[-1],\n                          stability_mu2=np.linalg.eigvalsh(carrier+2*K).tolist())),flush=True)\n\n\nrun(34)\nrun(48)\n",
+    "_scratch/curl_bend_delayed_two_witnesses.py": "\"\"\"Two disjoint polynomial complementary test fields on the delayed flare.\"\"\"\nimport json\nimport sys\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.linalg import eigvalsh\n\nsys.path.insert(0,'software/stage1_solver/tools')\nfrom mouth_order_wave_pulse import ARCHIVE, Geometry, digest\n\n\ndef run(n):\n    geom=Geometry(n,'delayed',10.,9.)\n    wz, v, dofs=geom.order_blocks[2]\n    order=Path(f'_scratch/s11c/mouth_free_order_delayed_n{n}_d04/order_seed1.55.npz')\n    assert digest(order)==json.loads(ARCHIVE.read_text())['diffuse_orders_sha256'][str(order)]\n    cells=np.load(order)['chi'][dofs].reshape(len(wz)-1,len(v)-1,3,3)\n    bernstein=np.array([[1.,0.,0.],[-.5,2.,-.5],[0.,0.,1.]])\n    floor=np.clip((bernstein@cells@bernstein.T).min(axis=(1,2,3)),0.,1.)\n    root, weight=leggauss(72)\n    bounds=[]\n    inputs=[]\n    # Each scalar m=r^p*g(w) has support entirely inside one bend.\n    for a,b,p,lo,hi in [(.58,1.14,4,.55,1.15),(1.23,1.54,6,1.2,2.)]:\n        load=denom=0.\n        minimum=1.\n        for j in np.flatnonzero((wz[:-1]<b)&(wz[1:]>a)):\n            left=max(a,wz[j])\n            right=min(b,wz[j+1])\n            z=(left+right+(right-left)*root)/2\n            quadrature=(right-left)*weight/2\n            r,_=geom.radius(z)\n            shape=4*(z-a)*(b-z)/(b-a)**2\n            derivative=4*(b+a-2*z)/(b-a)**2\n            t=(z-lo)/(hi-lo)\n            bend_slope=30*t**2*(1-t)**2/(hi-lo)\n            load+=quadrature@(r**(p+1)*shape*bend_slope)\n            # Analytic radial integral of dual work. Bound chi from below\n            # on the entire axial cell, including points between Gauss nodes.\n            assert floor[j]>0\n            minimum=min(minimum,floor[j])\n            radial=(p*p/2+1)/(2*p-1)*r**(2*p-1)*shape**2\n            axial=r**(2*p+1)*derivative**2/(2*(2*p+1))\n            denom+=quadrature@(radial+axial)/floor[j]\n        bounds.append(4*np.pi/3*load**2/denom)\n        inputs.append(dict(interval=[a,b],power=p,load=load,upper_dual_cost=denom,min_order=minimum))\n    source=Path(f'_scratch/s11c/bend_static_shear_delcarrier{n}_01/stdout')\n    k=np.array(json.loads(source.read_text().splitlines()[1])['holding_stiffness'])\n    print(json.dumps(dict(n=n,source=str(source),witnesses=inputs,diagonal_lower=bounds,\n                          total_mu1_lower=np.linalg.eigvalsh(k+np.diag(bounds)).tolist(),\n                          sufficient_mu=eigvalsh(-k,np.diag(bounds))[-1])),flush=True)\n\n\nrun(34)\nrun(48)\n",
+    "_scratch/static_shear_trial_review/deep.py": "\"\"\"Full bonded-vector test at ordered-modulus one on the deep bend.\n\nWrite Y=x_1/r and s=r/a(z), x_1=rY. Pick an odd positive k, f=s**k, and\nD(z)=-c(z)*integral(a*h' dz). c gently switches to zero below the bend.\nThe trial Euclidean one-form (metric dual to displacement) is\n\n d[(hr+D[f-k*s*(s*s-1)/2])Y] - D f dY - (a h'+D') f Y dz.\n\nOn s=1 its angular, ds and dz coefficients exactly equal those of h dx_1.\nIt is identically zero above the bend and equals dx_1 after the cutoff.\nProlong dx_1 by an exact compactly supported gradient in the far bath.\nAt the axis fY is smooth and f dY smooth for odd k>=3.\n\nNo production geometry builder, solver, matrices or projection routines.\n\"\"\"\nimport hashlib\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial import Polynomial as P\nfrom numpy.polynomial.legendre import leggauss\n\nROOT = Path('_scratch/s11c')\nMEASURE = Path('research/pde_ledger_v3/_measurements')\nBEND_START, BEND_END = 1.2, 2.\nSWITCH_START, SWITCH_END = 2.15, 2.65\nWIDTH = BEND_END - BEND_START\nt = P([0., 1.])\nh_poly = t**3 * (10 - 15*t + 6*t**2)\nu = t * (WIDTH/1.85)\na_poly = 1 + .5*u**2*(3-2*u)\nintegral = (a_poly*h_poly.deriv()).integ()\n\n\ndef digest(path):\n    return hashlib.sha256(path.read_bytes()).hexdigest()\n\n\ndef emit(**kw):\n    print(json.dumps(kw, allow_nan=False), flush=True)\n\n\ndef q2(x):\n    return np.stack(((1-x)*(1-2*x), 4*x*(1-x), x*(2*x-1)), axis=1)\n\n\ndef radius(z):\n    v = (z - BEND_START)/1.85\n    return 1+.5*v*v*(3-2*v), 3*v*(1-v)/1.85\n\n\ndef inputs(n):\n    folder = f'mouth_free_order_cubic_n{n}_d04'+('_outer_residual' if n==48 else '')\n    order = ROOT/folder/'order_seed1.55.npz'\n    field = ROOT/f'mouth_flared_cubic_n{n}'/'field.npz'\n    references = json.loads((MEASURE/'mouth_free_order_depth.json').read_text())\n    assert digest(order) == references['diffuse_orders_sha256'][str(order)]\n    assert digest(field) == references['input_carriers_sha256'][str(field)]\n    flow = ROOT/f'empty_bend_c{n}_01'/'stdout'\n    pre, carrier = map(json.loads, flow.read_text().splitlines())\n    assert pre['sha256'] == digest(field)\n    assert abs(pre['rate']-.25) < 1e-9 and pre['profile']=='cubic'\n    emit(mesh=n, order=str(order), sha256=digest(order), intake=pre['rate'],\n         flow_file=str(flow), flow_sha256=digest(flow))\n    with np.load(field) as dat:\n        r,z = dat['points'].T\n    with np.load(order) as dat:\n        chi = dat['chi']\n    zlevels = np.unique(z[(z >= 1.2) & (z <= 3.05)])\n    # The mapped Q2 tensor mesh enumerates every midpoint and endpoint. Infer\n    # the chart from the archived physical points alone, apart from a(z).\n    rows=[]\n    s = np.sort(r[z==1.2])\n    assert len(s)==2*n+1 and abs(s[-1]-1.)<1e-11\n    for v in zlevels[:-1]:\n        ids=np.flatnonzero(z==v)\n        ids=ids[np.argsort(r[ids])]\n        assert len(ids)==len(s) and np.max(abs(r[ids]-radius(v)[0]*s))<3e-10\n        rows.append(chi[ids])\n    assert np.max(abs(s[1::2]-(s[:-2:2]+s[2::2])/2))<1e-10\n    return zlevels[:-1],s,np.array(rows),carrier['holding_stiffness'][1][1]\n\n\ndef measure(zlevels,s,nodal,quad,powers):\n    xi,wi=leggauss(quad)\n    q=(1+xi)/2\n    w=wi/2\n    ns=(len(s)-1)//2\n    # Integrate on each archived parent cell, splitting axial polynomial joins.\n    scoord=(s[:-2:2,None]+np.diff(s[::2])[:,None]*q).ravel()\n    ws=(np.diff(s[::2])[:,None]*w).ravel()\n    radial=(scoord[:,None]**powers[None,:])\n    radial_deriv=powers[None,:]*scoord[:,None]**(powers[None,:]-1)\n    total=np.zeros(len(powers))\n    locked=0.\n    for iz in range(0,len(zlevels)-2,2):\n        lo,hi=zlevels[iz],zlevels[iz+2]\n        if lo>SWITCH_END:\n            break\n        cuts=[lo]+[v for v in (BEND_END,SWITCH_START,SWITCH_END) if lo<v<hi]+[hi]\n        vals=nodal[iz:iz+3, (2*np.arange(ns)[:,None]+np.arange(3))]\n        radial_interp=np.einsum('qj,inj->inq',q2(q),vals).reshape(3,-1)\n        for a,b in zip(cuts,cuts[1:]):\n            z=a+(b-a)*q\n            chi=np.clip(q2((z-lo)/(hi-lo))@radial_interp,0,1)\n            for ij,v in enumerate(z):\n                rad,dr=radius(v)\n                bent=np.clip((v-BEND_START)/WIDTH,0,1)\n                slope=(h_poly.deriv()(bent)/WIDTH if v<BEND_END else 0.)\n                fs=np.clip((v-SWITCH_START)/(SWITCH_END-SWITCH_START),0,1)\n                cut=1-h_poly(fs)\n                dc=(-h_poly.deriv()(fs)/(SWITCH_END-SWITCH_START)\n                    if SWITCH_START<v<SWITCH_END else 0.)\n                G=integral(bent)\n                D=-cut*G\n                L=(1-cut)*rad*slope-dc*G\n                # Exterior derivative of the explicitly bonded physical field.\n                # Angular integral Y^2 =4pi/3, |grad_sphere Y|^2=8pi/3.\n                qr=D*radial_deriv/rad\n                qz=-rad*slope*radial-dr*scoord[:,None]*qr\n                mer=L*radial_deriv*scoord[:,None]\n                factor=rad*ws*w[ij]*(b-a)*chi[ij]*4*np.pi/3\n                total+=factor@(mer**2+2*(qr**2+qz**2))\n                locked+=factor@(3*(rad*scoord*slope)**2)\n    return total,locked\n\n\nif __name__=='__main__':\n    for n in [34,48]:\n        zl,s,vals,flow=inputs(n)\n        powers=np.array([3,5,7,9,11,13,15,17,19,23,27,33])\n        for q in (4,8):\n            stiffness,locked=measure(zl,s,vals,q,powers)\n            m=stiffness.argmin()\n            emit(mesh=n,quadrature=q,powers=powers.tolist(),trial_stiffness=stiffness.tolist(),\n                 locked=locked,minimum_power=int(powers[m]),trial_plus_flow=float(stiffness[m]+flow),\n                 flow=flow)\n",
+    "_scratch/static_shear_trial_review/enclose.py": "\"\"\"Positive upper sum for k=15. No differentiation of the order interpolant.\n\nTensor Bernstein coefficients bound clipped Q2 chi on each original radial\nand axial cell. Exact rational arithmetic on archive nodal binary64 numbers\ngives this bound. Power-law radial integrals are exact up to interval rounding.\nDepth intervals bound each remaining factor by its absolute supremum.\nThe 1e-9 padding covers rounding of the coordinate archive to 11 decimals.\n\"\"\"\nfrom fractions import Fraction as F\nfrom mpmath import iv\nfrom deep import inputs, emit\n\niv.dps = 35\nI = iv.mpf\nPAD=I('1e-9')\nK=15\n\n\ndef exact_iv(x):\n    return I(x.numerator)/I(x.denominator)\n\n\ndef bernstein(row):\n    a,b,c=row\n    return a, 2*b-(a+c)/2, c\n\n\ndef upper_chi(nodes):\n    rows=[bernstein(map(F.from_float,row)) for row in nodes]\n    coeffs=[v for col in zip(*rows) for v in bernstein(col)]\n    return exact_iv(min(F(1),max(F(0),max(coeffs))))\n\n\ndef radial_moment(s,p):\n    return [((I(right)+PAD)**(p+1)-max(I(0),I(left)-PAD)**(p+1))/(p+1)\n            for left,right in zip(s[:-2:2],s[2::2])]\n\n\ndef clamp(v):\n    return min(I(1),max(I(0),v))\n\n\ndef integrate(n):\n    zl,s,vals,flow=inputs(n)\n    m0=radial_moment(s,2*K)\n    m1=radial_moment(s,2*K-2)\n    total=I(0)\n    for iz in range(0,len(zl)-2,2):\n        if zl[iz]>2.65:\n            break\n        chi=[upper_chi(vals[iz:iz+3,j:j+3]) for j in range(0,len(s)-2,2)]\n        A=sum(c*m for c,m in zip(chi,m0))\n        B=sum(c*m for c,m in zip(chi,m1))\n        # Cover the true cell with an outward interval in physical depth.\n        lo=max(I('1.2'),I(zl[iz])-PAD)\n        hi=I(zl[iz+2])+PAD\n        dz=(hi-lo)/8\n        for j in range(8):\n            left, right=lo+j*dz,lo+(j+1)*dz\n            t0,t1=(clamp((v-I('1.2'))/I('.8')) for v in (left,right))\n            u0,u1=(clamp((v-I('1.2'))/I('1.85')) for v in (left,right))\n            amin=1+u0**2*(3-2*u0)/2\n            amax=1+u1**2*(3-2*u1)/2\n            ap=3*u1*(1-u0)/I('1.85')\n            # h' >= 0. G=int a dh <= amax h(right). 0 <= switch <= 1.\n            hmax=t1**3*(10-15*t1+6*t1*t1)\n            G=amax*hmax\n            hp=30*t1**2*(1-t0)**2/I('.8')\n            # L can only be nonzero during the downward cutoff, after h'=0.\n            L=I(0) if right<I('2.15') or left>I('2.65') else I('3.75')*G\n            # Pointwise curl amplitudes up to s^k (mer,ax) or s^(k-1) (rad).\n            rad=G*K/amin\n            ax=amax*hp+ap*rad\n            mer=L*K\n            total+=dz*amax*((mer**2+2*ax**2)*A+2*rad**2*B)\n    upper=(4*iv.pi/3*total).b\n    emit(mesh=n,trial_power=K,positive_sum_upper=str(upper),\n         total_using_flow_upper=str((upper+I(flow)).b))\n\n\nif __name__=='__main__':\n    for n in (34,48):\n        integrate(n)\n",
+    "_scratch/static_shear_trial_review/enclose_subcell.py": "\"\"\"Positive upper sum for k=15. No differentiation of the order interpolant.\n\nTensor Bernstein coefficients bound clipped Q2 chi on each original radial\nand axial cell. Exact rational arithmetic on archive nodal binary64 numbers\ngives this bound. Power-law radial integrals are exact up to interval rounding.\nDepth intervals bound each remaining factor by its absolute supremum.\nThe 1e-9 padding covers rounding of the coordinate archive to 11 decimals.\n\"\"\"\nfrom fractions import Fraction as F\nfrom mpmath import iv\nfrom deep import inputs, emit\n\niv.dps = 35\nI = iv.mpf\nPAD=I('1e-9')\nK=15\n\n\ndef exact_iv(x):\n    return I(x.numerator)/I(x.denominator)\n\n\ndef bernstein(row):\n    a,b,c=row\n    return a, 2*b-(a+c)/2, c\n\n\ndef upper_chi_by_depth(nodes):\n    rows=[bernstein(map(F.from_float,row)) for row in nodes]\n    cols=[bernstein(col) for col in zip(*rows)]\n    def split(col):\n        a,b,c=col\n        u,v=(a+b)/2,(b+c)/2\n        center=(u+v)/2\n        return (a,u,center),(center,v,c)\n    ranges=[cols]\n    for _ in range(3):\n        ranges=[half for parent in ranges for half in zip(*(split(col) for col in parent))]\n    return [exact_iv(min(F(1),max(F(0),max(max(col) for col in child)))) for child in ranges]\n\n\ndef radial_moment(s,p):\n    return [((I(right)+PAD)**(p+1)-max(I(0),I(left)-PAD)**(p+1))/(p+1)\n            for left,right in zip(s[:-2:2],s[2::2])]\n\n\ndef clamp(v):\n    return min(I(1),max(I(0),v))\n\n\ndef integrate(n):\n    zl,s,vals,flow=inputs(n)\n    m0=radial_moment(s,2*K)\n    m1=radial_moment(s,2*K-2)\n    total=I(0)\n    for iz in range(0,len(zl)-2,2):\n        if zl[iz]>2.65:\n            break\n        subcells=[upper_chi_by_depth(vals[iz:iz+3,j:j+3]) for j in range(0,len(s)-2,2)]\n        lo=I(zl[iz])\n        step=(I(zl[iz+2])-lo)/8\n        for j,chi in enumerate(zip(*subcells)):\n            A=sum(c*m for c,m in zip(chi,m0))\n            B=sum(c*m for c,m in zip(chi,m1))\n            # Pad each actual subcell to cover its rounded archived edges.\n            left, right=max(I('1.2'),lo+j*step-PAD),lo+(j+1)*step+PAD\n            dz=right-left\n            t0,t1=(clamp((v-I('1.2'))/I('.8')) for v in (left,right))\n            u0,u1=(clamp((v-I('1.2'))/I('1.85')) for v in (left,right))\n            amin=1+u0**2*(3-2*u0)/2\n            amax=1+u1**2*(3-2*u1)/2\n            ap=3*u1*(1-u0)/I('1.85')\n            # h' >= 0. G=int a dh <= amax h(right). 0 <= switch <= 1.\n            hmax=t1**3*(10-15*t1+6*t1*t1)\n            G=amax*hmax\n            hp=30*t1**2*(1-t0)**2/I('.8')\n            # L can only be nonzero during the downward cutoff, after h'=0.\n            L=I(0) if right<I('2.15') or left>I('2.65') else I('3.75')*G\n            # Pointwise curl amplitudes up to s^k (mer,ax) or s^(k-1) (rad).\n            rad=G*K/amin\n            # a h' and a' k |D|/a are nonnegative and occur with opposite signs.\n            ax=max(amax*hp,ap*rad)\n            mer=L*K\n            total+=dz*amax*((mer**2+2*ax**2)*A+2*rad**2*B)\n    upper=(4*iv.pi/3*total).b\n    emit(mesh=n,trial_power=K,positive_sum_upper=str(upper),\n         total_using_flow_upper=str((upper+I(flow)).b))\n\n\nif __name__=='__main__':\n    for n in (34,48):\n        integrate(n)\n"
+  },
+  "reviews": [
+    {
+      "scope": "Normal contact, locked wall, original and later-opening comparison; independent mathematical and numerical trial fields.",
+      "verdict": "Scoped clear for the wave-empty, fixed-intake, two-bend calculation with prescribed normal contact or full guide bonding and the stated slipping adjacent surfaces. Normal contact admits zero curl energy. At common unit ordered modulus, a bonded original deep flare retains an amplifying bend, and a bonded delayed deep flare restores every combination of the two bends. Independent explicit trial fields establish both signs on the two archived mesh resolutions. The calculation leaves the physical bond, modulus, order response and free-mouth acceleration open."
+    },
+    {
+      "scope": "Explicit vector field and conservative integration upper bound on the archived interpolant, using the supplied numerical carrier stiffness.",
+      "verdict": "Scoped clear for the unit-modulus instability of the deeper cubic bend with the stated conduit wall bond and archived flow stiffness."
+    },
+    {
+      "scope": "Independent derivation and source/reading inspection of finite bond, plus separate full-displacement original-flare trial; no independent recomputation of the finite-contact eigenvalues.",
+      "verdict": "Scoped clear for the finite tangential-spring assembly and interpretation of the reported delayed, deep n=48 controls."
+    }
+  ],
+  "next": "Obtain or derive the contact at fixed intake independently from the signed tangential traction and relative slip, and calibrate sustained material shear and conversion depth. A finite-attachment positive geometry can then be tested in a common-translation calculation.",
+  "formal_review": "Pending; no new commit."
+}

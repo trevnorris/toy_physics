@@ -1,0 +1,24 @@
+# What an intact contact can transmit during a draining crossing
+
+**At 0PN, counting surviving contacts is insufficient to predict transmitted shear.** I tracked simulated load-bearing features through the same four archived flow paths at inward intake 0.25. During separate weak shear tests, a material with rigid attachment transmitted the full instantaneous exit response. A material whose attachment points could move transmitted about 80% on the short paths and 54–56% on the long ones. Both had identical unforced contact histories for the same material phases. The native fields provide the four-dimensional flow and the order profile. The contact dynamics and reported forces belong to the trial material. [Previous calculation](mouth_contact_observation.md) · [Source and run measurements](../../../research/pde_ledger_v3/_measurements/mouth_contact_crossing_force.json)
+
+**Experiment.** Follow radial rows with neighbors along depth from 75% to 25% order, ending at radius $0.27R$. Track each partner and every break in an undriven population. On a second population with a different sampling of the same initial row, apply and hold an angular shear displacement of $\pm10^{-4}$ and $\pm5\times10^{-5}$ pitches from entry. In the mobile material a link of stiffness $k$ pulls a feature at displacement $y$ against an elastic support $K$ and drag $\zeta$. With $a$ equal to one while attached and zero while detached,
+$$
+\zeta\dot y=-Ky+a k(h+b-y),\qquad b=y_{\rm birth}-h_{\rm birth}.
+$$
+The opposite-face instrument reads the elastic force $K\langle y\rangle$ plus drag $\zeta\,d\langle y\rangle/dt$. The moving-feature and rigid controls use the same unit link stiffness. We chose $K=k=\zeta=1$ in model units for the mobile attachment. Under held displacement, drag dissipates energy, breaking a link removes its stored elastic energy, and a new link starts unloaded. The saved carrier and order drive the registry independently of this weak shear.
+
+| Where order faded | Travel time | Exit contacts continuously present | Predicted from flat-patch calibration | Measured opposite-face force |
+|---|---:|---:|---:|---:|
+| Earlier flare, near | 0.260 | 100% | 0.7975 | 0.7991 |
+| Earlier flare, deep | 1.059 | 100% | 0.5601 | 0.5608 |
+| Delayed flare, near | 0.260 | 100% | 0.7975 | 0.7988 |
+| Delayed flare, deep | 1.296 | 100% | 0.5375 | 0.5380 |
+
+Force is divided by the **instantaneous force of the contacts present at exit** under that displacement. These fine trials used 8,192 sites and 1,024 time intervals. With registry carried by the flow, exactly 25% were engaged at exit. Both amplitudes and signs gave the same normalized result. The opposite-face reading and direct link force agreed within 0.0017. A separate stationary patch at 75% order gave a long-time fraction of 0.5000 and relaxation time of 0.5002 in model units under a single-exponential fit. These two quantities predict the table using travel time alone once every exit contact is known to survive. A periodic radial binding well allowed the features to move independently along their rows. It also retained all the sampled exit contacts, but left 28.2–29.1% occupied at quarter order. This particular binding law misses the exit count if order denotes the occupied fraction.
+
+**A check with actual breakage.** At fixed quarter order, carry one row out by one pitch and back while holding the same shear. Every original contact broke. The rigid material transmitted zero residual force. The mobile material transmitted 0.06936 of the instantaneous force, with opposite-face discrepancy below 0.000054. A feature can still be displaced when it reconnects. As its support relaxes, the new link picks up load. This prescribed flat return demonstrates how multiplying contact survival by an intact link’s relaxation factor can fail during renewal. [Calculation](../tools/mouth_contact_crossing_force.py)
+
+**Requirement.** Measure how the shear force decays after a small held displacement in a uniform patch of the proposed substrate, together with the feature displacement across detachment and reattachment. The initial stiffness per area, relaxed fraction and relaxation time must come from that independent material response. Repeating the patch measurement across the order range tests the assumed shared parameters. The light-sector stiffness is specified at optical frequencies. Its steady-load value and the resulting reaction on a free mouth at 0PN remain open. [Material contract](../../../research/pde_ledger_v3/directives/O2_input_contract.md#L265)
+
+Working result on base 49dca23e, uncommitted pending formal review. The independent reviewer concluded, “Scoped clear for the prescribed return as a counterexample to survival multiplied by flat relaxation, and for the unit-survival comparison on the four reconstructed flow paths.”

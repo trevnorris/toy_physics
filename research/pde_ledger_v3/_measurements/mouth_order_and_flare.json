@@ -1,0 +1,319 @@
+{
+  "base": "49dca23e92a00a3f8a731ab7237b1556e305eef4",
+  "status": "Uncommitted working result. Scoped independent local checks; formal project review pending.",
+  "scope": "0PN, one held radius-one curved mouth, inward number intake 0.25. Passive diffuse-order force and stationary carrier compatibility. Matched 4D axial geometry controls computed with no order feedback.",
+  "sources_sha256": {
+    "docs/_measurements/rim_curvature_head.txt": "9a5ee08c1d77195ca3f59af57d948eb899fb575e8b8558d9cf4d066d620b30f1",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "research/pde_ledger_v3/_measurements/mouth_curved_phase.json": "5d024fce3089929bccfd20b1c51148a6330532fcbc03eba0ad40dd0f1a36a8e1",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/decisions/07_gate_a_freeze_sheet.md": "06bc000095427cd099fd9e3a14803c62cdf459277e9b81149a5b6982a66896a4",
+    "software/stage1_solver/reports/figures/mouth_order_and_flare.png": "c8a3f81623d4136c1b69815f8b11007b239116c77a39943f8319f3eadc9c09e1",
+    "software/stage1_solver/reports/mouth_curved_phase.md": "bebe08194969a9f69993bcc7331fc8554236dafe1dce5ba602ad8a7c88b08654",
+    "software/stage1_solver/reports/mouth_order_and_flare.md": "93e0f6cf6b914e148d45395b4994cdf2fee9b0bc2c4a765ca8175d461990fc98",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_flare_figure.py": "37dcd96129c8339f4a102f3a80bc1fae59cf8f6ed17f4c13010f5d7c351b236b",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_order_jump_check.py": "8005754b60344c5856da3e7f842b97d51742c241231ea33812dba47a6829d3ff",
+    "software/stage1_solver/tools/mouth_order_phase_work.py": "51502d45b83e7ec22de6c20b8273d1213ea3d299bed1df28ed102910268ca2a7"
+  },
+  "input_field_sha256": {
+    "_scratch/s11c/mouth_curved_phase_size/field.npz": "60fb4fc9ad2c0c48266ed874ba1c12e1e9dde3f5764bead2f3c784b8422f8264",
+    "_scratch/s11c/mouth_curved_phase_n34f9/field.npz": "bd3661506ef32b589a5a714653f4b116ac95ae879f9a333347ff1d7f5d773f1d",
+    "_scratch/s11c/mouth_curved_phase_fine/field.npz": "e071538830041cd37bcf3d90b6b96cf79bb63ef39ee15eb6443b00c4929bedff"
+  },
+  "output_field_sha256": {
+    "_scratch/s11c/mouth_flared_cubic_n26/field.npz": "c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2",
+    "_scratch/s11c/mouth_flared_cubic_n34/field.npz": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d",
+    "_scratch/s11c/mouth_flared_cubic_n48/field.npz": "39ed1ac9ae2439f6eff6420a25bda235ee82ed82deeb30520a9bbab6193d031d",
+    "_scratch/s11c/mouth_flared_delayed_n26/field.npz": "bc6645cb61ddaa97fe4113c21376ef11f59cb730b941bde26228e1bf197dbd79",
+    "_scratch/s11c/mouth_flared_delayed_n34/field.npz": "6da396c92c8acf3db352fbb8324fd154828963c2d11db193f26a4be63133d9b4",
+    "_scratch/s11c/mouth_flared_delayed_n48/field.npz": "cff2f00e18dc3113226e71f8269f61c39ad80a28cb872d810a51854b471d54ea",
+    "_scratch/s11c/mouth_flared_cubic_n34_roof7/field.npz": "20ad991e44455d22772f0af7c83bfe4dac33921e314d0bab5eb378124c47a693",
+    "_scratch/s11c/mouth_flared_delayed_n34_roof7/field.npz": "8131fa003c88011b539ebe5bf87e38e774454311700d24928f66f5aa9eca09af"
+  },
+  "numerical_comparisons": {
+    "bias_pct_open_to_cubic": 7.957387571076624,
+    "bias_pct_open_to_delayed": 10.038143265294064,
+    "bias_pct_cubic_to_delayed": 1.9273861113464852,
+    "center_current_pct_open_to_cubic": -0.3525862171840699,
+    "center_current_pct_open_to_delayed": -0.35133748751157157,
+    "max_section_relative_error_fine": 0.001138944898332439
+  },
+  "runs": {
+    "mouth_order_jump_check01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-order-jump --memory-gib 1 --log-directory _scratch/s11c/mouth_order_jump_check01 -- python3 software/stage1_solver/tools/mouth_order_jump_check.py",
+      "source_sha256": "8005754b60344c5856da3e7f842b97d51742c241231ea33812dba47a6829d3ff",
+      "started_utc": "2026-11-20T00:25:08.258512+00:00",
+      "approximate_end_utc": "2026-11-20T00:25:08.944529+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "peak_observed_bytes": 60432384,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_order_jump_check01/stdout",
+      "stdout_bytes": 1864,
+      "stdout_sha256": "c6d9aa327f2cfcf6c969c7810c47e90ee0a60dea472e3206603e518d9624c6da",
+      "stdout_lines": [
+        "parcel force and normal-tube stress divergence | (-kappa*A(s)*Derivative(chi(s), (s, 2)) - kappa*Derivative(A(s), s)*Derivative(chi(s), s) + A(s)*Derivative(W(chi(s)), chi(s)))*Derivative(chi(s), s)/A(s) | -kappa*Derivative(chi(s), s)*Derivative(chi(s), (s, 2)) - kappa*Derivative(A(s), s)*Derivative(chi(s), s)**2/A(s) + Derivative(W(chi(s)), chi(s))*Derivative(chi(s), s) | difference 0",
+        "kink force density | -kappa*Derivative(A(s), s)*Derivative(chi(s), s)**2/A(s) | -kappa*Derivative(A(s), s)*Derivative(chi(s), s)**2/A(s) | difference 0",
+        "stationary passive crossing speed | M*kappa*Derivative(A(s), s)/A(s) | M*kappa*Derivative(A(s), s)/A(s) | difference 0",
+        "parcel power from the order force | u_N*(S - u_N*Derivative(chi(s), s))*Derivative(chi(s), s)/M | S*(S - u_N*Derivative(chi(s), s))/M - (S - u_N*Derivative(chi(s), s))**2/M | difference 0",
+        "passive heat per volume divided by number flux | u_N*Derivative(chi(s), s)**2/(M*n) | u_N*Derivative(chi(s), s)**2/(M*n) | difference 0",
+        "graph curvature from its area variation | -(r*Derivative(h(r), (r, 2)) + 2*Derivative(h(r), r)**3 + 2*Derivative(h(r), r))/(r*(Derivative(h(r), r)**2 + 1)**(3/2)) | -Derivative(h(r), (r, 2))/(Derivative(h(r), r)**2 + 1)**(3/2) - 2*Derivative(h(r), r)/(r*sqrt(Derivative(h(r), r)**2 + 1)) | difference 0",
+        "rim curvature with zero linear Laplacian | -2*Derivative(h(r), r)**3/(r*(Derivative(h(r), r)**2 + 1)**(3/2)) | -2*Derivative(h(r), r)**3/(r*(Derivative(h(r), r)**2 + 1)**(3/2)) | difference 0",
+        "R=1 projected linear load, geometric axial load, geometric rim curvature | 5/24 0.2080761373022803 0.00024514949276419117",
+        "exact axial load | 5/(24*sqrt(25/(1024*pi**2) + 1)) | 5/(24*sqrt(25/(1024*pi**2) + 1)) | difference 0",
+        "positive work required per projected area in the trial | 5*q**2/(6*n) | 5*q**2/(6*n) | difference 0",
+        "unit-density Cauchy lower bound for trial power | 5/(128*pi)"
+      ]
+    },
+    "mouth_order_phase_work01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-order-and-flare --memory-gib 3 --log-directory _scratch/s11c/mouth_order_phase_work01 -- python3 software/stage1_solver/tools/mouth_order_phase_work.py _scratch/s11c/mouth_curved_phase_n34f9 _scratch/s11c/mouth_curved_phase_fine",
+      "source_sha256": "51502d45b83e7ec22de6c20b8273d1213ea3d299bed1df28ed102910268ca2a7",
+      "started_utc": "2026-11-20T00:25:20.283801+00:00",
+      "approximate_end_utc": "2026-11-20T00:25:21.068116+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "peak_observed_bytes": 209113088,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_order_phase_work01/stdout",
+      "stdout_bytes": 2009,
+      "stdout_sha256": "5468ffdb9051ec878fab0dfdfe8d4bd51ea5878750da00f5879e50967e00d8d7",
+      "stdout_lines": [
+        "{\"mesh\": 34, \"far\": 9.0, \"radii\": [0, 0.25, 0.5, 0.75, 0.99, 1], \"q\": [0.18678796170402318, 0.1778933878931351, 0.13890449398813504, 0.056747736179163365, 0.0009254555589393396, 1.4312881423285753e-05], \"midpoint_mu_per_n\": [0.2397780585101206, 0.22784323731216868, 0.1766742730537263, 0.07149721793823252, 0.0011596722178992647, 1.7933229192989517e-05], \"centered_density\": 0.9867899739475853, \"sampled_min_normal_speed\": 5.739903083222913e-05, \"predicted_thin_layer_heat\": 0.022930908292071374, \"linearized_required_axial_load\": 0.20833333333333331, \"finite_slope_tension_on_same_graph\": 0.2080761373022803, \"loop_tests\": [{\"delta\": 0.02, \"chi_bounds\": [0.45, 0.55], \"radii\": [0.25, 0.75], \"leg_work\": [0.022708652797735894, 0.007126397376259902], \"signed_closed_work\": 0.015582255421475993, \"flat_control\": 0.0}, {\"delta\": 0.04, \"chi_bounds\": [0.45, 0.55], \"radii\": [0.25, 0.75], \"leg_work\": [0.02270948318342197, 0.007128140816002115], \"signed_closed_work\": 0.015581342367419856, \"flat_control\": 0.0}]}",
+        "{\"mesh\": 48, \"far\": 9.0, \"radii\": [0, 0.25, 0.5, 0.75, 0.99, 1], \"q\": [0.1867979759211594, 0.17789386331310156, 0.1388875023027815, 0.05677258792136008, 0.0009186541386777079, 7.073639450349244e-06], \"midpoint_mu_per_n\": [0.23979094055051792, 0.22784384617062953, 0.17665266393932155, 0.07152853267348938, 0.0011511496908036553, 8.8628713389369e-06], \"centered_density\": 0.986789918642851, \"sampled_min_normal_speed\": 5.018168195363351e-05, \"predicted_thin_layer_heat\": 0.022930953594096717, \"linearized_required_axial_load\": 0.20833333333333331, \"finite_slope_tension_on_same_graph\": 0.2080761373022803, \"loop_tests\": [{\"delta\": 0.02, \"chi_bounds\": [0.45, 0.55], \"radii\": [0.25, 0.75], \"leg_work\": [0.022708713532870173, 0.00712816332713132], \"signed_closed_work\": 0.015580550205738853, \"flat_control\": 0.0}, {\"delta\": 0.04, \"chi_bounds\": [0.45, 0.55], \"radii\": [0.25, 0.75], \"leg_work\": [0.022709544043204234, 0.007128539267883625], \"signed_closed_work\": 0.015581004775320609, \"flat_control\": 0.0}]}"
+      ]
+    },
+    "mouth_flared_cubic_n26": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flared-receiver --memory-gib 3 --log-directory _scratch/s11c/mouth_flared_cubic_n26 -- python3 software/stage1_solver/tools/mouth_flared_receiver.py --profile cubic --n 26 --steps 64 --panels 60 --reference _scratch/s11c/mouth_curved_phase_size/field.npz --output _scratch/s11c/mouth_flared_cubic_n26/field.npz",
+      "source_sha256": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+      "started_utc": "2026-11-20T00:26:27.830406+00:00",
+      "approximate_end_utc": "2026-11-20T00:26:32.572541+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "peak_observed_bytes": 262246400,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flared_cubic_n26/stdout",
+      "stdout_bytes": 2632,
+      "stdout_sha256": "b5302622345be694844dab833d93f2323ce1e5af06546a83fc0691691e0e8794",
+      "stdout_lines": [
+        "{\"test\": \"carrier\", \"n\": 26, \"profile\": \"cubic\", \"roof\": 10.0, \"feed_far\": 9.0, \"neck\": 0.5248372593433444, \"neck_w\": 0.5, \"bore\": 1.0, \"flare_start\": 1.2, \"exit_radius\": 1.5, \"exit_w\": 3.05, \"midpoint_radius\": 1.25, \"bias\": 0.45013772087414355, \"feed\": 0.24999999999784914, \"bulk\": 0.24999999999797987, \"n_min\": 0.9770130675695274, \"n_max\": 0.9999999999998381, \"residual\": 2.248702323411706e-12, \"conductance\": 0.5624031152945591, \"q2_cells\": 4914, \"coefficients\": 44226, \"half_plane_lower\": 0.9747787415562257, \"exact_rational_lower\": \"2591406385945048943462040826790162265/2658455991569831745807614120560689152\"}",
+        "{\"test\": \"sections\", \"values\": [{\"w\": 0.638, \"radius\": 0.5611825804168429, \"integrated_jw\": 0.24993799460284105, \"min_sampled_jw\": 0.2910548086224965}, {\"w\": 0.993, \"radius\": 0.9314676226656105, \"integrated_jw\": 0.2505339213926241, \"min_sampled_jw\": 0.034907019733021634}, {\"w\": 1.417, \"radius\": 1.0190241307721162, \"integrated_jw\": 0.2499935683014843, \"min_sampled_jw\": 0.05367538956886567}, {\"w\": 2.083, \"radius\": 1.2329846742344976, \"integrated_jw\": 0.2500112453504941, \"min_sampled_jw\": 0.02863228211334493}, {\"w\": 2.793, \"radius\": 1.4737332229877795, \"integrated_jw\": 0.24999674663268417, \"min_sampled_jw\": 0.017975033370678753}, {\"w\": 2.97, \"radius\": 1.4972758967879494, \"integrated_jw\": 0.24998462885605366, \"min_sampled_jw\": 0.016299043058636442}]}",
+        "{\"test\": \"front\", \"K\": 0.4, \"steps\": 64, \"panels\": 60, \"positive_interior_count\": 2000, \"interior_count\": 2000, \"min_interior_q\": 6.746918857387712e-05, \"positive_shell_count\": 51, \"shell_count\": 51, \"min_shell\": 6.222870091746371e-06, \"last_shell\": 5.5955449688699366e-05, \"cylinder_total\": 0.25000205021810157, \"grazing_qprime_from_slip\": -0.08600739718361457, \"total\": 0.2500072253685517, \"center_q\": 0.18614356258967735, \"q_half\": 0.13894105779485394, \"q_at_09\": 0.01414215015627305, \"q_at_099\": 0.0009352914641196463, \"min_to_099\": 0.0009352914641196463, \"min_to_0999\": 0.00011077607339831687, \"min_all\": 2.4427546374557185e-05, \"raw_lip_q\": 2.4427546374557185e-05, \"lip_jr\": -0.045078345293897114, \"lip_jw\": 0.002266458908712877, \"lip_wall_error\": 2.4445946235688437e-05, \"max_depth\": 0.052187106009378655, \"slope_at_lip\": 0.049736327891384574, \"min_wall_clearance\": 0.0}",
+        "{\"test\": \"reference\", \"reference\": \"_scratch/s11c/mouth_curved_phase_size/field.npz\", \"sha256\": \"60fb4fc9ad2c0c48266ed874ba1c12e1e9dde3f5764bead2f3c784b8422f8264\", \"delta_center_q\": -0.000657851173767543, \"delta_q_at_099\": 6.98716589664708e-08, \"max_abs_delta_q\": 0.0006588135195495781, \"delta_center_depth\": -3.8074923886070866e-05, \"max_abs_delta_depth\": 3.8074923886070866e-05}"
+      ]
+    },
+    "mouth_flared_cubic_n34": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flared-receiver --memory-gib 3 --log-directory _scratch/s11c/mouth_flared_cubic_n34 -- python3 software/stage1_solver/tools/mouth_flared_receiver.py --profile cubic --n 34 --roof 10 --steps 80 --panels 60 --reference _scratch/s11c/mouth_curved_phase_n34f9/field.npz --output _scratch/s11c/mouth_flared_cubic_n34/field.npz",
+      "source_sha256": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+      "started_utc": "2026-11-20T00:26:46.651371+00:00",
+      "approximate_end_utc": "2026-11-20T00:27:09.017029+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "peak_observed_bytes": 451862528,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flared_cubic_n34/stdout",
+      "stdout_bytes": 2599,
+      "stdout_sha256": "adfe72575c9a3579d4e6dd8d44c74cf144b42e8d8989d516c748d6feb1b782db",
+      "stdout_lines": [
+        "{\"test\": \"carrier\", \"n\": 34, \"profile\": \"cubic\", \"roof\": 10.0, \"feed_far\": 9.0, \"neck\": 0.5248372593433444, \"neck_w\": 0.5, \"bore\": 1.0, \"flare_start\": 1.2, \"exit_radius\": 1.5, \"exit_w\": 3.05, \"midpoint_radius\": 1.25, \"bias\": 0.4501427824960679, \"feed\": 0.24999999998599196, \"bulk\": 0.2500000000013136, \"n_min\": 0.9770131974769475, \"n_max\": 0.9999999999998996, \"residual\": 2.1283561209888193e-12, \"conductance\": 0.5623967274539662, \"q2_cells\": 8296, \"coefficients\": 74664, \"half_plane_lower\": 0.9747781767431983, \"exact_rational_lower\": \"1150814947521215730229/1180591620717411303424\"}",
+        "{\"test\": \"sections\", \"values\": [{\"w\": 0.638, \"radius\": 0.5611825804168429, \"integrated_jw\": 0.2499505682805467, \"min_sampled_jw\": 0.2910586354928062}, {\"w\": 0.993, \"radius\": 0.9314676226656105, \"integrated_jw\": 0.24961433909674924, \"min_sampled_jw\": 0.034529395012638645}, {\"w\": 1.417, \"radius\": 1.0190241307721162, \"integrated_jw\": 0.2499873176037688, \"min_sampled_jw\": 0.05367262709988034}, {\"w\": 2.083, \"radius\": 1.2329846742344976, \"integrated_jw\": 0.24998991734303438, \"min_sampled_jw\": 0.028626280029671318}, {\"w\": 2.793, \"radius\": 1.4737332229877795, \"integrated_jw\": 0.2500036242055758, \"min_sampled_jw\": 0.017968209210497518}, {\"w\": 2.97, \"radius\": 1.4972758967879494, \"integrated_jw\": 0.2500048891149954, \"min_sampled_jw\": 0.01630251712832296}]}",
+        "{\"test\": \"front\", \"K\": 0.4, \"steps\": 80, \"panels\": 60, \"positive_interior_count\": 2000, \"interior_count\": 2000, \"min_interior_q\": 5.737180762883454e-05, \"positive_shell_count\": 51, \"shell_count\": 51, \"min_shell\": 6.244520471503953e-06, \"last_shell\": 5.343021832213135e-05, \"cylinder_total\": 0.2500021231047605, \"grazing_qprime_from_slip\": -0.08597289290944865, \"total\": 0.2500036289215938, \"center_q\": 0.18612664747058877, \"q_half\": 0.13894803537991826, \"q_at_09\": 0.014148180700389612, \"q_at_099\": 0.0009255239307802724, \"min_to_099\": 0.0009255239307802724, \"min_to_0999\": 0.0001006944142533518, \"min_all\": 1.4314795062521975e-05, \"raw_lip_q\": 1.4314795062521975e-05, \"lip_jr\": -0.045060260854233786, \"lip_jw\": 0.0022554474461829264, \"lip_wall_error\": 1.4333929944945756e-05, \"max_depth\": 0.05218761572332545, \"slope_at_lip\": 0.04973634436716385, \"min_wall_clearance\": 0.0}",
+        "{\"test\": \"reference\", \"reference\": \"_scratch/s11c/mouth_curved_phase_n34f9/field.npz\", \"sha256\": \"bd3661506ef32b589a5a714653f4b116ac95ae879f9a333347ff1d7f5d773f1d\", \"delta_center_q\": -0.0006613142334344069, \"delta_q_at_099\": 6.837184093281407e-08, \"max_abs_delta_q\": 0.000661324088826104, \"delta_center_depth\": -3.8090525391332175e-05, \"max_abs_delta_depth\": 3.8090525391332175e-05}"
+      ]
+    },
+    "mouth_flared_cubic_n48": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flared-receiver --memory-gib 4 --log-directory _scratch/s11c/mouth_flared_cubic_n48 -- python3 software/stage1_solver/tools/mouth_flared_receiver.py --profile cubic --n 48 --roof 10 --steps 100 --panels 100 --reference _scratch/s11c/mouth_curved_phase_fine/field.npz --output _scratch/s11c/mouth_flared_cubic_n48/field.npz",
+      "source_sha256": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+      "started_utc": "2026-11-20T00:26:47.565749+00:00",
+      "approximate_end_utc": "2026-11-20T00:27:37.631785+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "peak_observed_bytes": 996077568,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flared_cubic_n48/stdout",
+      "stdout_bytes": 2624,
+      "stdout_sha256": "6e9c025f1368b769e4b4e14433aa622dbd9fc4956dfe179ba251b062651168e3",
+      "stdout_lines": [
+        "{\"test\": \"carrier\", \"n\": 48, \"profile\": \"cubic\", \"roof\": 10.0, \"feed_far\": 9.0, \"neck\": 0.5248372593433444, \"neck_w\": 0.5, \"bore\": 1.0, \"flare_start\": 1.2, \"exit_radius\": 1.5, \"exit_w\": 3.05, \"midpoint_radius\": 1.25, \"bias\": 0.450146968600525, \"feed\": 0.2500000000029102, \"bulk\": 0.24999999998813904, \"n_min\": 0.9770130304589528, \"n_max\": 0.9999999999999469, \"residual\": 2.974321664363148e-12, \"conductance\": 0.562391439725505, \"q2_cells\": 16512, \"coefficients\": 148608, \"half_plane_lower\": 0.9747777096221366, \"exact_rational_lower\": \"2591403642593686759817643496027938463/2658455991569831745807614120560689152\"}",
+        "{\"test\": \"sections\", \"values\": [{\"w\": 0.638, \"radius\": 0.5611825804168429, \"integrated_jw\": 0.24996545154597982, \"min_sampled_jw\": 0.2910639758863789}, {\"w\": 0.993, \"radius\": 0.9314676226656105, \"integrated_jw\": 0.2497167320772016, \"min_sampled_jw\": 0.034582997156903064}, {\"w\": 1.417, \"radius\": 1.0190241307721162, \"integrated_jw\": 0.2499928705362968, \"min_sampled_jw\": 0.053674870628404425}, {\"w\": 2.083, \"radius\": 1.2329846742344976, \"integrated_jw\": 0.2500040032561439, \"min_sampled_jw\": 0.02862544798083877}, {\"w\": 2.793, \"radius\": 1.4737332229877795, \"integrated_jw\": 0.2500058968530962, \"min_sampled_jw\": 0.01796112645474281}, {\"w\": 2.97, \"radius\": 1.4972758967879494, \"integrated_jw\": 0.24999769159296512, \"min_sampled_jw\": 0.016306434591808507}]}",
+        "{\"test\": \"front\", \"K\": 0.4, \"steps\": 100, \"panels\": 100, \"positive_interior_count\": 2000, \"interior_count\": 2000, \"min_interior_q\": 5.015753344211459e-05, \"positive_shell_count\": 51, \"shell_count\": 51, \"min_shell\": 6.244701545049761e-06, \"last_shell\": 5.64525662332116e-05, \"cylinder_total\": 0.2500013405252187, \"grazing_qprime_from_slip\": -0.08595045673955534, \"total\": 0.25000158324750976, \"center_q\": 0.18613935200408258, \"q_half\": 0.1389309878155983, \"q_at_09\": 0.014161215521927433, \"q_at_099\": 0.0009187214498109146, \"min_to_099\": 0.0009187214498109146, \"min_to_0999\": 9.350576189333859e-05, \"min_all\": 7.074600159410593e-06, \"raw_lip_q\": 7.074600159410593e-06, \"lip_jr\": -0.04504850157018798, \"lip_jw\": 0.0022476152883716457, \"lip_wall_error\": 7.0866309408875415e-06, \"max_depth\": 0.05218790592691382, \"slope_at_lip\": 0.04973618677907306, \"min_wall_clearance\": 0.0}",
+        "{\"test\": \"reference\", \"reference\": \"_scratch/s11c/mouth_curved_phase_fine/field.npz\", \"sha256\": \"e071538830041cd37bcf3d90b6b96cf79bb63ef39ee15eb6443b00c4929bedff\", \"delta_center_q\": -0.0006586239170768282, \"delta_q_at_099\": 6.731113320673429e-08, \"max_abs_delta_q\": 0.0006644973489417227, \"delta_center_depth\": -3.810062161797162e-05, \"max_abs_delta_depth\": 3.810062161797162e-05}"
+      ]
+    },
+    "mouth_flared_delayed_n26": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flared-receiver --memory-gib 3 --log-directory _scratch/s11c/mouth_flared_delayed_n26 -- python3 software/stage1_solver/tools/mouth_flared_receiver.py --profile delayed --n 26 --roof 10 --steps 64 --panels 60 --reference _scratch/s11c/mouth_curved_phase_size/field.npz --output _scratch/s11c/mouth_flared_delayed_n26/field.npz",
+      "source_sha256": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+      "started_utc": "2026-11-20T00:26:47.165587+00:00",
+      "approximate_end_utc": "2026-11-20T00:26:58.352550+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "peak_observed_bytes": 264982528,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flared_delayed_n26/stdout",
+      "stdout_bytes": 2601,
+      "stdout_sha256": "36e6336994e06d2ff416b28847973f333f143c060bcb6fdf0c89d4787b4ea583",
+      "stdout_lines": [
+        "{\"test\": \"carrier\", \"n\": 26, \"profile\": \"delayed\", \"roof\": 10.0, \"feed_far\": 9.0, \"neck\": 0.5248372593433444, \"neck_w\": 0.5, \"bore\": 1.0, \"flare_start\": 1.2, \"exit_radius\": 1.5, \"exit_w\": 3.05, \"midpoint_radius\": 1.15625, \"bias\": 0.4588145850158697, \"feed\": 0.2500000000015068, \"bulk\": 0.2500000000058457, \"n_min\": 0.9769437167363176, \"n_max\": 0.9999999999998384, \"residual\": 1.9309961729718763e-12, \"conductance\": 0.5517032027349548, \"q2_cells\": 4914, \"coefficients\": 44226, \"half_plane_lower\": 0.9738013479581308, \"exact_rational_lower\": \"574830855821344702701/590295810358705651712\"}",
+        "{\"test\": \"sections\", \"values\": [{\"w\": 0.638, \"radius\": 0.5611825804168429, \"integrated_jw\": 0.24993789230020702, \"min_sampled_jw\": 0.29121634922319894}, {\"w\": 0.993, \"radius\": 0.9314676226656105, \"integrated_jw\": 0.2505365933542004, \"min_sampled_jw\": 0.03439429378089415}, {\"w\": 1.417, \"radius\": 1.0029437553950595, \"integrated_jw\": 0.249996473955523, \"min_sampled_jw\": 0.056231602965057574}, {\"w\": 2.083, \"radius\": 1.1396208352916106, \"integrated_jw\": 0.24999618531346177, \"min_sampled_jw\": 0.03898844578255682}, {\"w\": 2.793, \"radius\": 1.4522696438650469, \"integrated_jw\": 0.24999495087357632, \"min_sampled_jw\": 0.017365719081183017}, {\"w\": 2.97, \"radius\": 1.4947082761833161, \"integrated_jw\": 0.24997098520658467, \"min_sampled_jw\": 0.01679292315492375}]}",
+        "{\"test\": \"front\", \"K\": 0.4, \"steps\": 64, \"panels\": 60, \"positive_interior_count\": 2000, \"interior_count\": 2000, \"min_interior_q\": 6.746915687400653e-05, \"positive_shell_count\": 51, \"shell_count\": 51, \"min_shell\": 6.222946314679218e-06, \"last_shell\": 5.595542736391845e-05, \"cylinder_total\": 0.25000205021356253, \"grazing_qprime_from_slip\": -0.08600736538606062, \"total\": 0.2500072253657709, \"center_q\": 0.18614589269199702, \"q_half\": 0.13894092261720936, \"q_at_09\": 0.014142142091497771, \"q_at_099\": 0.0009352910960182853, \"min_to_099\": 0.0009352910960182853, \"min_to_0999\": 0.00011077602553195669, \"min_all\": 2.442753067108958e-05, \"raw_lip_q\": 2.442753067108958e-05, \"lip_jr\": -0.045078328628108316, \"lip_jw\": 0.0022664580640735566, \"lip_wall_error\": 2.444593048470155e-05, \"max_depth\": 0.05218724005357361, \"slope_at_lip\": 0.04973632789048134, \"min_wall_clearance\": 0.0}",
+        "{\"test\": \"reference\", \"reference\": \"_scratch/s11c/mouth_curved_phase_size/field.npz\", \"sha256\": \"60fb4fc9ad2c0c48266ed874ba1c12e1e9dde3f5764bead2f3c784b8422f8264\", \"delta_center_q\": -0.0006555210714478676, \"delta_q_at_099\": 6.950355760544646e-08, \"max_abs_delta_q\": 0.0006564801096299866, \"delta_center_depth\": -3.7940879691118756e-05, \"max_abs_delta_depth\": 3.7940879691118756e-05}"
+      ]
+    },
+    "mouth_flared_delayed_n34": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flared-receiver --memory-gib 3 --log-directory _scratch/s11c/mouth_flared_delayed_n34 -- python3 software/stage1_solver/tools/mouth_flared_receiver.py --profile delayed --n 34 --roof 10 --steps 80 --panels 60 --reference _scratch/s11c/mouth_curved_phase_n34f9/field.npz --output _scratch/s11c/mouth_flared_delayed_n34/field.npz",
+      "source_sha256": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+      "started_utc": "2026-11-20T00:26:47.260209+00:00",
+      "approximate_end_utc": "2026-11-20T00:27:06.669777+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "peak_observed_bytes": 458784768,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flared_delayed_n34/stdout",
+      "stdout_bytes": 2624,
+      "stdout_sha256": "9b61d4473cc09930bccb68f8238ab3151e4fe24429971c65a1f8a55d05b8b5c7",
+      "stdout_lines": [
+        "{\"test\": \"carrier\", \"n\": 34, \"profile\": \"delayed\", \"roof\": 10.0, \"feed_far\": 9.0, \"neck\": 0.5248372593433444, \"neck_w\": 0.5, \"bore\": 1.0, \"flare_start\": 1.2, \"exit_radius\": 1.5, \"exit_w\": 3.05, \"midpoint_radius\": 1.15625, \"bias\": 0.4588192153157568, \"feed\": 0.24999999999067737, \"bulk\": 0.2500000000034167, \"n_min\": 0.9769436097710128, \"n_max\": 0.9999999999998996, \"residual\": 2.165598772781647e-12, \"conductance\": 0.5516975809249107, \"q2_cells\": 8296, \"coefficients\": 74664, \"half_plane_lower\": 0.9738008214895344, \"exact_rational_lower\": \"20710453027875816884393509127907757251/21267647932558653966460912964485513216\"}",
+        "{\"test\": \"sections\", \"values\": [{\"w\": 0.638, \"radius\": 0.5611825804168429, \"integrated_jw\": 0.2499504873598032, \"min_sampled_jw\": 0.29122015486932046}, {\"w\": 0.993, \"radius\": 0.9314676226656105, \"integrated_jw\": 0.249612324854398, \"min_sampled_jw\": 0.034016121073910575}, {\"w\": 1.417, \"radius\": 1.0029437553950595, \"integrated_jw\": 0.24999314107590498, \"min_sampled_jw\": 0.056229251254087134}, {\"w\": 2.083, \"radius\": 1.1396208352916106, \"integrated_jw\": 0.25000299128371356, \"min_sampled_jw\": 0.03898756431157433}, {\"w\": 2.793, \"radius\": 1.4522696438650469, \"integrated_jw\": 0.25000526734884143, \"min_sampled_jw\": 0.01735818873900153}, {\"w\": 2.97, \"radius\": 1.4947082761833161, \"integrated_jw\": 0.250009437023354, \"min_sampled_jw\": 0.016795805636880327}]}",
+        "{\"test\": \"front\", \"K\": 0.4, \"steps\": 80, \"panels\": 60, \"positive_interior_count\": 2000, \"interior_count\": 2000, \"min_interior_q\": 5.737178249807075e-05, \"positive_shell_count\": 51, \"shell_count\": 51, \"min_shell\": 6.244598907810774e-06, \"last_shell\": 5.343019445383512e-05, \"cylinder_total\": 0.2500021231012882, \"grazing_qprime_from_slip\": -0.0859728611305639, \"total\": 0.25000362892343897, \"center_q\": 0.1861289896876251, \"q_half\": 0.1389479000007514, \"q_at_09\": 0.014148172632903206, \"q_at_099\": 0.000925523569706127, \"min_to_099\": 0.000925523569706127, \"min_to_0999\": 0.00010069437296582892, \"min_all\": 1.43147859169631e-05, \"raw_lip_q\": 1.43147859169631e-05, \"lip_jr\": -0.045060244198229925, \"lip_jw\": 0.002255446608597383, \"lip_wall_error\": 1.433392076107291e-05, \"max_depth\": 0.05218774982666312, \"slope_at_lip\": 0.04973634436647054, \"min_wall_clearance\": 0.0}",
+        "{\"test\": \"reference\", \"reference\": \"_scratch/s11c/mouth_curved_phase_n34f9/field.npz\", \"sha256\": \"bd3661506ef32b589a5a714653f4b116ac95ae879f9a333347ff1d7f5d773f1d\", \"delta_center_q\": -0.000658972016398085, \"delta_q_at_099\": 6.80107667874047e-08, \"max_abs_delta_q\": 0.000658981827665911, \"delta_center_depth\": -3.7956422053661565e-05, \"max_abs_delta_depth\": 3.7956422053661565e-05}"
+      ]
+    },
+    "mouth_flared_delayed_n48": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flared-receiver --memory-gib 4 --log-directory _scratch/s11c/mouth_flared_delayed_n48 -- python3 software/stage1_solver/tools/mouth_flared_receiver.py --profile delayed --n 48 --roof 10 --steps 100 --panels 100 --reference _scratch/s11c/mouth_curved_phase_fine/field.npz --output _scratch/s11c/mouth_flared_delayed_n48/field.npz",
+      "source_sha256": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+      "started_utc": "2026-11-20T00:26:47.682051+00:00",
+      "approximate_end_utc": "2026-11-20T00:27:39.607507+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "peak_observed_bytes": 988352512,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flared_delayed_n48/stdout",
+      "stdout_bytes": 2631,
+      "stdout_sha256": "485f8da2c74d650a11f993f54c28a066916142137b2fd81c23e3760749e45059",
+      "stdout_lines": [
+        "{\"test\": \"carrier\", \"n\": 48, \"profile\": \"delayed\", \"roof\": 10.0, \"feed_far\": 9.0, \"neck\": 0.5248372593433444, \"neck_w\": 0.5, \"bore\": 1.0, \"flare_start\": 1.2, \"exit_radius\": 1.5, \"exit_w\": 3.05, \"midpoint_radius\": 1.15625, \"bias\": 0.45882303875397873, \"feed\": 0.2500000000142997, \"bulk\": 0.24999999999821823, \"n_min\": 0.9769436730472597, \"n_max\": 0.9999999999999469, \"residual\": 2.11447460546793e-12, \"conductance\": 0.5516929341393011, \"q2_cells\": 16512, \"coefficients\": 148608, \"half_plane_lower\": 0.9738003867577848, \"exact_rational_lower\": \"10355221891077009772443076002012414861/10633823966279326983230456482242756608\"}",
+        "{\"test\": \"sections\", \"values\": [{\"w\": 0.638, \"radius\": 0.5611825804168429, \"integrated_jw\": 0.24996539542808277, \"min_sampled_jw\": 0.2912254730326237}, {\"w\": 0.993, \"radius\": 0.9314676226656105, \"integrated_jw\": 0.2497152637754169, \"min_sampled_jw\": 0.0340697486919372}, {\"w\": 1.417, \"radius\": 1.0029437553950595, \"integrated_jw\": 0.24999616030873412, \"min_sampled_jw\": 0.056231254646395265}, {\"w\": 2.083, \"radius\": 1.1396208352916106, \"integrated_jw\": 0.24999861734770817, \"min_sampled_jw\": 0.03898523759773888}, {\"w\": 2.793, \"radius\": 1.4522696438650469, \"integrated_jw\": 0.25000865380714565, \"min_sampled_jw\": 0.017350106635374826}, {\"w\": 2.97, \"radius\": 1.4947082761833161, \"integrated_jw\": 0.24999543254990225, \"min_sampled_jw\": 0.01680136608897848}]}",
+        "{\"test\": \"front\", \"K\": 0.4, \"steps\": 100, \"panels\": 100, \"positive_interior_count\": 2000, \"interior_count\": 2000, \"min_interior_q\": 5.015751281523201e-05, \"positive_shell_count\": 51, \"shell_count\": 51, \"min_shell\": 6.2447803200120945e-06, \"last_shell\": 5.645254649280784e-05, \"cylinder_total\": 0.250001340537097, \"grazing_qprime_from_slip\": -0.08595042496202801, \"total\": 0.25000158325746435, \"center_q\": 0.18614168460583552, \"q_half\": 0.13893085269635516, \"q_at_09\": 0.0141612074388902, \"q_at_099\": 0.0009187210936668854, \"min_to_099\": 0.0009187210936668854, \"min_to_0999\": 9.350572512271818e-05, \"min_all\": 7.074595507458158e-06, \"raw_lip_q\": 7.074595507458158e-06, \"lip_jr\": -0.04504848491489557, \"lip_jw\": 0.0022476144554554062, \"lip_wall_error\": 7.0866263909342454e-06, \"max_depth\": 0.05218804006331102, \"slope_at_lip\": 0.049736186781436, \"min_wall_clearance\": 0.0}",
+        "{\"test\": \"reference\", \"reference\": \"_scratch/s11c/mouth_curved_phase_fine/field.npz\", \"sha256\": \"e071538830041cd37bcf3d90b6b96cf79bb63ef39ee15eb6443b00c4929bedff\", \"delta_center_q\": -0.0006562913153238814, \"delta_q_at_099\": 6.695498917753603e-08, \"max_abs_delta_q\": 0.000662162967659613, \"delta_center_depth\": -3.796648522077367e-05, \"max_abs_delta_depth\": 3.796648522077367e-05}"
+      ]
+    },
+    "mouth_flared_cubic_n34_roof7": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flared-receiver --memory-gib 3 --log-directory _scratch/s11c/mouth_flared_cubic_n34_roof7 -- python3 software/stage1_solver/tools/mouth_flared_receiver.py --profile cubic --n 34 --roof 7 --steps 80 --panels 60 --reference _scratch/s11c/mouth_curved_phase_n34f9/field.npz --output _scratch/s11c/mouth_flared_cubic_n34_roof7/field.npz",
+      "source_sha256": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+      "started_utc": "2026-11-20T00:26:47.432447+00:00",
+      "approximate_end_utc": "2026-11-20T00:27:09.781293+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "peak_observed_bytes": 450732032,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flared_cubic_n34_roof7/stdout",
+      "stdout_bytes": 2627,
+      "stdout_sha256": "392f527abe89fdfe9b614f44f5f032d23343994f097d4bcd1eb92a3c642d229e",
+      "stdout_lines": [
+        "{\"test\": \"carrier\", \"n\": 34, \"profile\": \"cubic\", \"roof\": 7.0, \"feed_far\": 9.0, \"neck\": 0.5248372593433444, \"neck_w\": 0.5, \"bore\": 1.0, \"flare_start\": 1.2, \"exit_radius\": 1.5, \"exit_w\": 3.05, \"midpoint_radius\": 1.25, \"bias\": 0.4499728176695698, \"feed\": 0.25000000001564593, \"bulk\": 0.25000000000582273, \"n_min\": 0.9770131972496978, \"n_max\": 0.9999999999998848, \"residual\": 2.076526403303525e-12, \"conductance\": 0.5626118428921506, \"q2_cells\": 8296, \"coefficients\": 74664, \"half_plane_lower\": 0.9747971392543395, \"exact_rational_lower\": \"647863823853957674512344982341714849/664613997892457936451903530140172288\"}",
+        "{\"test\": \"sections\", \"values\": [{\"w\": 0.638, \"radius\": 0.5611825804168429, \"integrated_jw\": 0.2499505683093079, \"min_sampled_jw\": 0.2910586375318928}, {\"w\": 0.993, \"radius\": 0.9314676226656105, \"integrated_jw\": 0.24961433911045594, \"min_sampled_jw\": 0.03452939114063278}, {\"w\": 1.417, \"radius\": 1.0190241307721162, \"integrated_jw\": 0.2499873176117734, \"min_sampled_jw\": 0.053672611812803216}, {\"w\": 2.083, \"radius\": 1.2329846742344976, \"integrated_jw\": 0.24998991764993425, \"min_sampled_jw\": 0.028625872590939343}, {\"w\": 2.793, \"radius\": 1.4737332229877795, \"integrated_jw\": 0.2500036244385684, \"min_sampled_jw\": 0.01796285863125008}, {\"w\": 2.97, \"radius\": 1.4972758967879494, \"integrated_jw\": 0.25000490384813795, \"min_sampled_jw\": 0.016307021860036654}]}",
+        "{\"test\": \"front\", \"K\": 0.4, \"steps\": 80, \"panels\": 60, \"positive_interior_count\": 2000, \"interior_count\": 2000, \"min_interior_q\": 5.737180736820318e-05, \"positive_shell_count\": 51, \"shell_count\": 51, \"min_shell\": 6.244520473215992e-06, \"last_shell\": 5.3430218294875376e-05, \"cylinder_total\": 0.25000212313442693, \"grazing_qprime_from_slip\": -0.0859728929193992, \"total\": 0.25000362895126843, \"center_q\": 0.1861266475216464, \"q_half\": 0.1389480353960024, \"q_at_09\": 0.014148180701481324, \"q_at_099\": 0.0009255239306004159, \"min_to_099\": 0.0009255239306004159, \"min_to_0999\": 0.00010069441399536763, \"min_all\": 1.4314794795996025e-05, \"raw_lip_q\": 1.4314794795996025e-05, \"lip_jr\": -0.04506026085944909, \"lip_jw\": 0.002255447446441733, \"lip_wall_error\": 1.433392994436419e-05, \"max_depth\": 0.052187615731363254, \"slope_at_lip\": 0.049736344373065774, \"min_wall_clearance\": 0.0}",
+        "{\"test\": \"reference\", \"reference\": \"_scratch/s11c/mouth_curved_phase_n34f9/field.npz\", \"sha256\": \"bd3661506ef32b589a5a714653f4b116ac95ae879f9a333347ff1d7f5d773f1d\", \"delta_center_q\": -0.0006613141823767765, \"delta_q_at_099\": 6.83716610762504e-08, \"max_abs_delta_q\": 0.0006613240377681961, \"delta_center_depth\": -3.8090517353525644e-05, \"max_abs_delta_depth\": 3.8090517353525644e-05}"
+      ]
+    },
+    "mouth_flared_delayed_n34_roof7": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flared-receiver --memory-gib 3 --log-directory _scratch/s11c/mouth_flared_delayed_n34_roof7 -- python3 software/stage1_solver/tools/mouth_flared_receiver.py --profile delayed --n 34 --roof 7 --steps 80 --panels 60 --reference _scratch/s11c/mouth_curved_phase_n34f9/field.npz --output _scratch/s11c/mouth_flared_delayed_n34_roof7/field.npz",
+      "source_sha256": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+      "started_utc": "2026-11-20T00:26:46.725985+00:00",
+      "approximate_end_utc": "2026-11-20T00:27:09.586911+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "peak_observed_bytes": 449597440,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_flared_delayed_n34_roof7/stdout",
+      "stdout_bytes": 2631,
+      "stdout_sha256": "5f4e43dd7a3cbf6e8973f89ea0e6180b64c08d1cdf20ac94859cae3759e2d463",
+      "stdout_lines": [
+        "{\"test\": \"carrier\", \"n\": 34, \"profile\": \"delayed\", \"roof\": 7.0, \"feed_far\": 9.0, \"neck\": 0.5248372593433444, \"neck_w\": 0.5, \"bore\": 1.0, \"flare_start\": 1.2, \"exit_radius\": 1.5, \"exit_w\": 3.05, \"midpoint_radius\": 1.15625, \"bias\": 0.45864881815258746, \"feed\": 0.25000000000922357, \"bulk\": 0.2500000000057491, \"n_min\": 0.976943609568845, \"n_max\": 0.9999999999998852, \"residual\": 2.1606316690675313e-12, \"conductance\": 0.5519051146311272, \"q2_cells\": 8296, \"coefficients\": 74664, \"half_plane_lower\": 0.9738201923374609, \"exact_rational_lower\": \"5177716250062418118924676861184861503/5316911983139663491615228241121378304\"}",
+        "{\"test\": \"sections\", \"values\": [{\"w\": 0.638, \"radius\": 0.5611825804168429, \"integrated_jw\": 0.24995048737770123, \"min_sampled_jw\": 0.29122015631148235}, {\"w\": 0.993, \"radius\": 0.9314676226656105, \"integrated_jw\": 0.2496123248623678, \"min_sampled_jw\": 0.03401611849989349}, {\"w\": 1.417, \"radius\": 1.0029437553950595, \"integrated_jw\": 0.24999314108598197, \"min_sampled_jw\": 0.0562292361130179}, {\"w\": 2.083, \"radius\": 1.1396208352916106, \"integrated_jw\": 0.2500029918012605, \"min_sampled_jw\": 0.03898717198997987}, {\"w\": 2.793, \"radius\": 1.4522696438650469, \"integrated_jw\": 0.2500052677818786, \"min_sampled_jw\": 0.017352830466323094}, {\"w\": 2.97, \"radius\": 1.4947082761833161, \"integrated_jw\": 0.25000946564037596, \"min_sampled_jw\": 0.016798567839649614}]}",
+        "{\"test\": \"front\", \"K\": 0.4, \"steps\": 80, \"panels\": 60, \"positive_interior_count\": 2000, \"interior_count\": 2000, \"min_interior_q\": 5.7371782335910535e-05, \"positive_shell_count\": 51, \"shell_count\": 51, \"min_shell\": 6.244598908953991e-06, \"last_shell\": 5.343019443626584e-05, \"cylinder_total\": 0.2500021231198211, \"grazing_qprime_from_slip\": -0.08597286113674996, \"total\": 0.2500036289419655, \"center_q\": 0.18612898972173392, \"q_half\": 0.13894790001066426, \"q_at_09\": 0.01414817263357638, \"q_at_099\": 0.000925523569591503, \"min_to_099\": 0.000925523569591503, \"min_to_0999\": 0.00010069437280619056, \"min_all\": 1.4314785751394152e-05, \"raw_lip_q\": 1.4314785751394152e-05, \"lip_jr\": -0.04506024420147217, \"lip_jw\": 0.002255446608759214, \"lip_wall_error\": 1.433392076164797e-05, \"max_depth\": 0.05218774983180893, \"slope_at_lip\": 0.049736344370157656, \"min_wall_clearance\": 0.0}",
+        "{\"test\": \"reference\", \"reference\": \"_scratch/s11c/mouth_curved_phase_n34f9/field.npz\", \"sha256\": \"bd3661506ef32b589a5a714653f4b116ac95ae879f9a333347ff1d7f5d773f1d\", \"delta_center_q\": -0.0006589719822892581, \"delta_q_at_099\": 6.801065216338262e-08, \"max_abs_delta_q\": 0.0006589817935586384, \"delta_center_depth\": -3.7956416907847235e-05, \"max_abs_delta_depth\": 3.7956416907847235e-05}"
+      ]
+    },
+    "mouth_order_flare_figure01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-order-and-flare --memory-gib 1 --log-directory _scratch/s11c/mouth_order_flare_figure01 -- python3 software/stage1_solver/tools/mouth_flare_figure.py _scratch/s11c/mouth_flared_cubic_n48 _scratch/s11c/mouth_flared_delayed_n48 software/stage1_solver/reports/figures/mouth_order_and_flare.png",
+      "source_sha256": "37dcd96129c8339f4a102f3a80bc1fae59cf8f6ed17f4c13010f5d7c351b236b",
+      "started_utc": "2026-11-20T00:27:53.730925+00:00",
+      "approximate_end_utc": "2026-11-20T00:27:54.670462+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "peak_observed_bytes": 68734976,
+      "swap_cap_bytes": 0,
+      "no_deadline": true,
+      "stderr_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_order_flare_figure01/stdout",
+      "stdout_bytes": 463,
+      "stdout_sha256": "27281cd605d74296be1ee4b90c1debc82db855dee0725493884a9c4b61ccfb8e",
+      "stdout_lines": [
+        "{\"profile\": \"cubic\", \"neck_radius\": 0.5248372593433444, \"mean_axial_at_neck\": 0.41283586783048526, \"mean_axial_at_bore\": 0.05968310366015552, \"mean_axial_at_exit\": 0.017683882565972007, \"waist_to_bore_current\": 6.917131357330781}",
+        "{\"profile\": \"delayed\", \"neck_radius\": 0.5248372593433444, \"mean_axial_at_neck\": 0.41283586784929316, \"mean_axial_at_bore\": 0.059683103662874555, \"mean_axial_at_exit\": 0.017683882566777644, \"waist_to_bore_current\": 6.917131357330781}"
+      ]
+    }
+  },
+  "independent_checks": [
+    {
+      "role": "Order-stress derivation",
+      "run": "mouth_order_jump_check01",
+      "scope": "Variation of the order energy, dissipated work, exact graph tension, reaction on the carrier. Number-current and velocity laws require their respective density factors."
+    },
+    {
+      "role": "Carrier and phase compatibility review",
+      "verdict": "Scoped verdict on the proposed theorem: valid.",
+      "scope": "Single connected regular order level with tangent limiting material flow, positive nonsingular density and mobility, and no other nongradient specific force. Natural order boundary condition and limits of the theorem recorded."
+    },
+    {
+      "role": "Numerical geometry and loop referee",
+      "verdict": "Scoped clear for the fixed-rate geometry comparison and the passive loop calculation.",
+      "scope": "Coordinates, quadrature, density factors, finite chamber and outlet, closure inputs, convergence of paired differences, trial layer status. Report qualifies absolute center-current resolution and separates phase drive from load."
+    }
+  ]
+}

@@ -1,0 +1,502 @@
+{
+  "question": "Does a prescribed opening create classical scalar wave energy or retain part of an independent initial feed disturbance on the archived radius-one flare?",
+  "working_base": "1dc45d09de9a8ed1d02337cba71a123d090453f7",
+  "assumptions": "Linear real scalar on three brane coordinates and w, l=0, radius and depth scale one, archived intake 0.25 geometry only; no backreaction. Prescribed monotone cubic switch of the potential contrast. No material wall motion or spontaneous source.",
+  "readouts": "Total canonical energy, signed work by the varying potential, bound projection before remote absorption, finite-time sponge loss; energy-norm optimum over initial w<0 data for the [3,6] ramp at the specified start time.",
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_formation_capture.py": "52d3d3e68ab8084fcbed5a18dfdbcea32dbff2f4537d970db409b0469e6c4ac2",
+    "software/stage1_solver/tools/mouth_wave_flare_work.py": "c94de9f7f3a82f791d68a7eff62cf249b65b7ad2019594abcbbf2d338ed996ba",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "software/stage1_solver/tools/mouth_trapped_wave_ports.py": "8a5838daaea498418359858b6ef5ec043296343e91545353478864b927f6b0d3",
+    "_scratch/s11c/formation_capture_wronskian.py": "29b9e05817caa46560525f1fa744631fb526063a46a344e1d2f15f74a62a57eb",
+    "_scratch/s11c/formation_capture_comparison.py": "f65c0ffdbae90f55c413cc56f4c28bedfc535011d191e09a6ebb463e96044630",
+    "_scratch/s11c/formation_wronskian_source/adjoint.py": "eab5b2df6ecc5836d65d1beeaf5cec7bd846032d597a67e542a1f9a6b0a37476",
+    "_scratch/s11c/formation_wronskian_source/saturation.py": "8de62d5db85666a471c43daf990ed040ce8820b7a672a2d4db2d3315442f3950",
+    "_scratch/s11c/formation_wronskian_source/saturation_fine.py": "20d76bc73d91f8c9737af468a40183c0d36045cc267f7cee9791748b46c3b853"
+  },
+  "input_sha256": {
+    "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b",
+    "research/pde_ledger_v3/_measurements/mouth_occupied_companion.json": "f885aff68b24b642f468d1f66cad05e9271ccac2eccde338b2f3d0f5c140142b"
+  },
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "supplemental_sources": {
+    "_scratch/s11c/formation_capture_wronskian.py": "\"\"\"Independent backward ground-quadrature check on the cubic radius-one scalar.\n\nSymplectic Wronskian W(z,q) = <z,qdot>-<zdot,q> is conserved even while\nthe real symmetric KG matrix varies. Back-propagate bound initial data from\nthe instant the well finishes opening using RK4. No forward pulse evolution.\n\"\"\"\nimport argparse\nimport json\n\nimport numpy as np\nfrom scipy import sparse\nfrom scipy.sparse.linalg import eigsh\nfrom scipy.special import expit\n\n\ndef emit(**row):\n    print(json.dumps(row, sort_keys=True), flush=True)\n\n\ndef geometry(h, pad):\n    r = np.arange(1, int(np.ceil((1.5 + pad) / h)))[:, None] * h\n    w = np.arange(1 - int(np.ceil(pad / h)), int(np.ceil((3.05 + pad) / h)))[None, :] * h\n    start, end = 0.5, 3.05\n    slope = 0.25 / (4 * np.pi * 0.4)\n    waist = 0.5 + 0.5 * slope / np.hypot(slope, 1)\n    x = np.clip((w - start) / 0.7, 0, 1)\n    u = np.clip((w - 1.2) / 1.85, 0, 1)\n    collar = waist + (1 - waist) * (10*x**3 - 15*x**4 + 6*x**5) + 0.7**2 * x**2 * (1-x)**3\n    flare = 1 + 0.5 * (3*u**2 - 2*u**3)\n    a = np.where(w <= 1.2, collar, flare)\n    g = expit((a-r) / .025) * expit((w-start)/.025) * expit((end-w)/.025)\n    return r, w, g\n\n\ndef matrix(h, r, w):\n    def grid(n):\n        return sparse.diags([-np.ones(n-1), np.full(n, 2.), -np.ones(n-1)], [-1, 0, 1])\n    return (sparse.kron(grid(r.size), sparse.eye(w.size)) +\n            sparse.kron(sparse.eye(r.size), grid(w.size))).tocsr() / h**2\n\n\ndef backward_reading(r, w, h, delta, phi, omega, u_in, v_in, start, finish, max_dt, switch):\n    # E_ground = |W|^2 / 2, using conjugation on the first argument.\n    z = phi.astype(np.complex128)\n    dz = -1j * omega * z\n    stiffness = 4 / h**2 + 6.25\n\n    def acc(t, unit):\n        out = (delta*switch(t, start, finish) - stiffness)*unit\n        out[1:] += unit[:-1]/h**2\n        out[:-1] += unit[1:]/h**2\n        out[:, 1:] += unit[:, :-1]/h**2\n        out[:, :-1] += unit[:, 1:]/h**2\n        return out\n\n    # Classical Runge--Kutta, backward through the prescribed formation history.\n    n = int(np.ceil(finish/max_dt))\n    dt = -finish/n\n    for i in range(n):\n        t = finish + i*dt\n        k1, a1 = dz, acc(t, z)\n        k2, a2 = dz + .5*dt*a1, acc(t+.5*dt, z+.5*dt*k1)\n        k3, a3 = dz + .5*dt*a2, acc(t+.5*dt, z+.5*dt*k2)\n        k4, a4 = dz + dt*a3, acc(t+dt, z+dt*k3)\n        z = z + dt/6 * (k1 + 2*k2 + 2*k3 + k4)\n        dz = dz + dt/6 * (a1 + 2*a2 + 2*a3 + a4)\n    overlap = np.vdot(z, v_in) - np.vdot(dz, u_in)\n    norm_check = np.vdot(z, dz) - np.vdot(dz, z)\n    return abs(overlap)**2/2, abs(norm_check / (-2j*omega) - 1)\n\n\ndef packet(r, w, free):\n    z = w + 2\n    angle = np.pi*z/2\n    f = np.where(abs(z) < 1, np.cos(angle)**4, 0)\n    df = np.where(abs(z) < 1, -2*np.pi*np.sin(angle)*np.cos(angle)**3, 0)\n    k = 2.\n    omega = np.hypot(2.5, k)\n    radial = r*np.exp(-r*r/2)\n    u = radial*f*np.cos(k*z)\n    v = radial*(-k/omega*df*np.cos(k*z) + omega*f*np.sin(k*z))\n    bare_energy = .5*(np.vdot(v, v) + np.vdot(u, (free@u.ravel()).reshape(u.shape) + 6.25*u))\n    return u/np.sqrt(bare_energy), v/np.sqrt(bare_energy), bare_energy\n\n\ndef smooth(t, start, finish):\n    x = np.clip((t-start)/(finish-start), 0, 1)\n    return x*x*(3-2*x)\n\n\ndef main():\n    p = argparse.ArgumentParser()\n    p.add_argument('--step', type=float, required=True)\n    p.add_argument('--padding', type=float, required=True)\n    p.add_argument('--dt', type=float, default=.018)\n    args = p.parse_args()\n    h = args.step\n    r, w, gate = geometry(h, args.padding)\n    free = matrix(h, r, w)\n    delta = (2.5**2 - .2**2) * gate\n    op = free + sparse.diags((6.25-delta).ravel())\n    # Use shift-invert near the expected well depth, with the absolute minimum\n    # of this positive matrix bounded below by 0.04, so sigma=0 orders from ground.\n    lam, ev = eigsh(op.tocsc(), k=3, sigma=0, which='LM', tol=5.e-12,\n                    v0=(r*np.exp(-.3*r*r-.3*(w-1.65)**2)).ravel())\n    omega = np.sqrt(lam[0])\n    phi = ev[:, 0].reshape(delta.shape)\n    residual = np.linalg.norm(op @ phi.ravel() - lam[0]*phi.ravel())\n    u, v, raw = packet(r, w, free)\n    static = .5*(np.vdot(phi, v)**2 + omega**2*np.vdot(phi, u)**2)\n    emit(grid_step=h, padding=args.padding, three_eigenvalues=lam.tolist(), omega=omega,\n         normalized_packet_energy=(np.vdot(v,v)+np.vdot(u,(free@u.ravel()).reshape(u.shape)+6.25*u))/2,\n         raw_energy=raw, static_projection=static, eigen_residual=residual)\n    for start in (0., 3.):\n        fraction, err = backward_reading(r, w, h, delta, phi, omega, u, v, start,\n                                        start+3, args.dt, smooth)\n        emit(ramp=[start,start+3], max_dt=args.dt, efficiency=fraction,\n             action=fraction/omega, conserved_symplectic_mode_error=err)\n        assert err < 1.e-6\n    assert residual < 1.e-8\n\n\nif __name__ == '__main__':\n    main()\n",
+    "_scratch/s11c/formation_capture_comparison.py": "\"\"\"Compare complementary guarded forward and backward measurements.\"\"\"\nimport json\nfrom pathlib import Path\n\nROOT = Path('_scratch/s11c')\n\ndef rows(run):\n    directory = ROOT / run\n    outcome = json.loads((directory/'outcome.json').read_text())\n    assert outcome['exitCode'] == outcome['childOutcome']['exitCode'] == 0\n    assert outcome['limitsVerified'] and json.loads((directory/'limit-validation.json').read_text())['verified']\n    return [json.loads(s) for s in (directory/'stdout').read_text().splitlines()]\n\ndef emit(**row):\n    print(json.dumps(row, allow_nan=False), flush=True)\n\nforward = {}\nfor label in ('c125','mid','wide','f0625','f040','f_time'):\n    records = rows('formation_capture_'+label+'_01')\n    trajectories = {r['name']:r for r in records if r['test']=='trajectory'}\n    settings = records[0]\n    assert len(trajectories)==6 and settings['bound_modes']==1\n    record = trajectories['opens_during_passage']\n    start, ramp, last = (next(s for s in record['snapshots'] if s['t']==t) for t in (0,6,48))\n    capture = ramp['final_mode_energies'][0]\n    error = max(abs(s['balance_error']) for s in record['snapshots'])\n    def ground(name,t):\n        return next(s for s in trajectories[name]['snapshots'] if s['t']==t)['final_mode_energies'][0]\n    forward[label]=dict(ramp_energy=capture, omega=settings['frequencies'][0])\n    emit(mesh=label, step=settings['step'],dt=settings['dt'], radius_padding=settings['padding'],\n         captured_percent=100*capture, ground_at_t48_percent=100*last['final_mode_energies'][0],\n         quiet=ground('quiet',6), four_times_half=4*ground('half_packet',6),\n         early_percent=100*ground('opens_early',3), static_initial_percent=100*ground('already_open',0),\n         static_at_t3_percent=100*ground('already_open',3), absorbed_percent=100*last['absorbed'],\n         stored_at_t48_percent=100*last['energy'], ramp_work_percent=100*ramp['work'],\n         final_balance_error_percent=100*last['balance_error'], max_sampled_balance_error_percent=100*error,\n         incident_energy_for_earlier_bend_threshold=record['incident_energy_for_conditional_ground_threshold'],\n         conditional_required_stored_energy=settings['frequencies'][0]*settings['earlier_ground_action_threshold'],\n         pure_mode_absorbed_fraction=trajectories['static_ground']['snapshots'][-1]['absorbed'])\n    assert start['t']==0 and ramp['absorbed']==0 and last['absorbed']>=0\nback=rows('formation_capture_wronskian_01')\nb=next(x['efficiency'] for x in back if x.get('ramp')==[3.,6.])\nemit(kind='forward_backward_same_grid', backward=b, forward=forward['c125']['ramp_energy'],\n     relative_difference=forward['c125']['ramp_energy']/b-1)\nfor run in ('formation_wronskian_limit01','formation_wronskian_limit02'):\n    data=rows(run)[0]\n    eta=max(data['feed_eigenvalues'])\n    threshold=records[0]['earlier_ground_action_threshold']\n    emit(kind='optimal_initial_feed',grid_step=data['args']['step'],optimal_percent=100*eta,\n         min_initial_feed_energy_for_earlier_bend_threshold=data['omega']*threshold/eta)\n",
+    "_scratch/s11c/formation_wronskian_source/adjoint.py": "\"\"\"Independent backwards-in-time canonical transfer audit for the scalar flare.\"\"\"\nimport argparse\nimport json\n\nimport numpy as np\nfrom scipy import sparse\nfrom scipy.sparse.linalg import eigsh, spsolve\nfrom scipy.special import expit\n\n\ndef regions(h, padding):\n    radius = h*np.arange(1, int(np.ceil((1.5+padding)/h)))\n    depth = h*np.arange(1-int(np.ceil(padding/h)), int(np.ceil((3.05+padding)/h)))\n    slope = .25/(4*np.pi*.4)\n    neck = .5+.5*np.sin(np.arctan(slope))\n    x = np.clip((depth-.5)/.7, 0., 1.)\n    y = np.clip((depth-1.2)/1.85, 0., 1.)\n    lip = neck+(1-neck)*x**3*(10-15*x+6*x*x)+.49*x*x*(1-x)**3\n    tube = np.where(depth<=1.2, lip, 1+.5*y*y*(3-2*y))\n    gate = expit((tube[None,:]-radius[:,None])/.025)*expit((depth-.5)/.025)*expit((3.05-depth)/.025)\n    return radius, depth, gate\n\n\ndef tri(n):\n    return sparse.diags((-np.ones(n-1),2*np.ones(n),-np.ones(n-1)), (-1,0,1),format='csc')\n\n\ndef propagate(op_free, well, s, dt, steps, vectors):\n    # Fourth-order first-order-system Runge--Kutta backwards from Q/P at T;\n    # both time-dependent coefficients and q,v stages are evaluated together.\n    q = np.zeros((len(vectors),2))\n    p = np.zeros_like(q)\n    p[:,0] = vectors\n    q[:,1] = vectors\n    def acceleration(time, pos):\n        return well*s(time)*pos-op_free@pos\n    for n in reversed(range(1,steps+1)):\n        t = n*dt\n        a1 = acceleration(t,q)\n        v2 = p-.5*dt*a1\n        a2 = acceleration(t-.5*dt,q-.5*dt*p)\n        v3 = p-.5*dt*a2\n        a3 = acceleration(t-.5*dt,q-.5*dt*v2)\n        v4 = p-dt*a3\n        a4 = acceleration(t-dt,q-dt*v3)\n        q -= dt/6*(p+2*v2+2*v3+v4)\n        p -= dt/6*(a1+2*a2+2*a3+a4)\n    return q,p\n\n\ndef ceiling(op, qmap, pmap, mask):\n    # Initial data zero off mask, so their q-energy uses the principal stiffness block.\n    block = op[mask,:][:,mask].tocsc()\n    rq = qmap[mask]\n    rp = pmap[mask]\n    gram = rq.T@spsolve(block,rq) + rp.T@rp\n    return np.linalg.eigvalsh(gram).tolist()\n\n\ndef run(args):\n    r,w,g = regions(args.step,args.pad)\n    op = sparse.kronsum(tri(len(w)),tri(len(r)),format='csc')/args.step**2\n    op += 6.25*sparse.eye(op.shape[0],format='csc')\n    gate = 6.21*g.ravel()\n    final = op-sparse.diags(gate,format='csc')\n    val, vec = eigsh(final,k=3,sigma=0.,which='LM',tol=3e-12,v0=(r[:,None]*np.exp(-r[:,None]**2/2-(w[None,:]-2)**2)).ravel())\n    def s(t):\n        x = np.clip((t-args.start)/(args.end-args.start),0,1)\n        if args.ramp=='cosine':\n            return .5*(1-np.cos(np.pi*x))\n        if args.ramp=='cubic':\n            return x*x*(3-2*x)\n        if args.ramp=='quintic':\n            return x**3*(10-15*x+6*x*x)\n        raise ValueError(args.ramp)\n    steps = int(np.ceil(args.end/args.dt))\n    q,p = propagate(op.tocsr(),gate[:,None],s,args.end/steps,steps,vec[:,0])\n    omega = float(np.sqrt(val[0]))\n    # zQ(T)=(0,e), zP(T)=(e,0); sigma(y,z)=q_y p_z-p_y q_z.\n    qmap = np.column_stack((omega*p[:,0], -p[:,1]))\n    pmap = np.column_stack((-omega*q[:,0], q[:,1]))\n    mask = np.broadcast_to(w<0,g.shape).ravel()\n    all_cells = np.ones_like(mask)\n    norms = dict(feed_eigenvalues=ceiling(op,qmap,pmap,mask),\n                 all_eigenvalues=ceiling(op,qmap,pmap,all_cells))\n    out = dict(args=vars(args), eigenvalues=val.tolist(), omega=omega,\n               eigen_residual=float(np.linalg.norm(final@vec[:,0]-val[0]*vec[:,0])),\n               canonical_pairing=float(p[:,0]@q[:,1]-q[:,0]@p[:,1]), **norms)\n    include_packet(out,op,qmap,pmap,vec[:,0],omega,r,w,args.step)\n    print(json.dumps(out),flush=True)\n    assert abs(out['canonical_pairing']-1)<1e-7 and max(norms['all_eigenvalues'])<1.00001\n    assert max(norms['feed_eigenvalues'])<=max(norms['all_eigenvalues']) and val[0]<6.25<val[1]\n\n\ndef include_packet(out,op,qmap,pmap,ground,omega,r,w,h):\n    pass\n\n\nif __name__=='__main__':\n    parser = argparse.ArgumentParser()\n    for key,default in [('step',.1),('dt',.0125),('pad',9.),('start',0.),('end',4.)]:\n        parser.add_argument('--'+key,type=float,default=default)\n    parser.add_argument('--ramp',choices=('cosine','cubic','quintic'),default='cosine')\n    run(parser.parse_args())\n",
+    "_scratch/s11c/formation_wronskian_source/saturation.py": "\"\"\"Forward check of the optimum initial feed-support packet on a larger box.\"\"\"\nimport json\nimport numpy as np\nfrom scipy import sparse\nfrom scipy.sparse.linalg import eigsh, spsolve\nfrom adjoint import regions, tri, propagate, ceiling\n\nh, pad, dt, duration = .0625,12.,.00625,6.\nr,w,g = regions(h,pad)\nN = g.size\nK = (sparse.kronsum(tri(len(w)),tri(len(r)),format='csr') /h**2\n     + 6.25*sparse.eye(N,format='csr'))\ngate = 6.21*g.ravel()\nLf = K-sparse.diags(gate,format='csr')\nval,vec = eigsh(Lf,k=1,sigma=0,which='LM',v0=(r[:,None]*np.exp(-r[:,None]**2/2-(w[None,:]-2)**2)).ravel(),tol=1e-12)\ne = vec[:,0]\nomega = np.sqrt(val[0])\ndef opening(t):\n    x=np.clip((t-3.)/3.,0.,1.)\n    return x*x*(3.-2*x)\nsteps = round(duration/dt)\nqz,pz=propagate(K,gate[:,None],opening,dt,steps,e)\naq = np.column_stack((omega*pz[:,0],-pz[:,1]))\nap = np.column_stack((-omega*qz[:,0],qz[:,1]))\nmask = np.broadcast_to(w<0.,g.shape).ravel()\nsolved = spsolve(K[mask,:][:,mask].tocsc(),aq[mask])\ngram=aq[mask].T@solved + ap[mask].T@ap[mask]\nl,v=np.linalg.eigh(gram)\nq=np.zeros(N)\np=np.zeros(N)\nq[mask]=solved@v[:,-1]\np[mask]=ap[mask]@v[:,-1]\nE0=.5*(q@(K@q)+p@p)\nq/=np.sqrt(E0)\np/=np.sqrt(E0)\nE0=.5*(q@(K@q)+p@p)\nEproj0=.5*((omega*(e@q))**2+(e@p)**2)\n# Direct forward velocity-Verlet, independent of the backwards integrator.\nwdrive = 0.\nforce= -(K@q)\ns = opening(0.)\nfor i in range(1,steps+1):\n    p+=.5*dt*force\n    q_new=q+dt*p\n    s_next=opening(i*dt)\n    wdrive-=.25*(s_next-s)*np.dot(gate,q*q+q_new*q_new)\n    q=q_new\n    s=s_next\n    force=-(K@q)+(s*gate)*q\n    p+=.5*dt*force\nEout=.5*(q@(Lf@q)+p@p)\nEbound=.5*((omega*(e@q))**2+(e@p)**2)\n# A pre-opened static control has the same energy norm for w<0 to far tails;\n# use Lf exactly to include those exponentially small tails.\nzeros = np.zeros(N)\nstatic_eigs = ceiling(Lf,np.column_stack((omega*e,zeros)),np.column_stack((zeros,e)),mask)\nprint(json.dumps(dict(step=h,pad=pad,dt=dt,omega=omega,largest_gram_eigenvalue=l[-1],\n                      initial_energy=E0,initial_final_mode_projection=Eproj0,\n                      final_bound_energy=Ebound,final_total_energy=Eout,\n                      work_on_field=wdrive,energy_balance_residual=Eout-E0-wdrive,\n                      static_feed_gram_eigenvalues=static_eigs)),flush=True)\nassert abs(Ebound-l[-1])<.00002*l[-1]+1e-6 and abs(Eout-E0-wdrive)<2e-4\n",
+    "_scratch/s11c/formation_wronskian_source/saturation_fine.py": "\"\"\"Forward check of the optimum initial feed-support packet on a larger box.\"\"\"\nimport json\nimport numpy as np\nfrom scipy import sparse\nfrom scipy.sparse.linalg import eigsh, spsolve\nfrom adjoint import regions, tri, propagate, ceiling\n\nh, pad, dt, duration = .0625,12.,.00625,6.\nr,w,g = regions(h,pad)\nN = g.size\nK = (sparse.kronsum(tri(len(w)),tri(len(r)),format='csr') /h**2\n     + 6.25*sparse.eye(N,format='csr'))\ngate = 6.21*g.ravel()\nLf = K-sparse.diags(gate,format='csr')\nval,vec = eigsh(Lf,k=1,sigma=0,which='LM',v0=(r[:,None]*np.exp(-r[:,None]**2/2-(w[None,:]-2)**2)).ravel(),tol=1e-12)\ne = vec[:,0]\nomega = np.sqrt(val[0])\ndef opening(t):\n    x=np.clip((t-3.)/3.,0.,1.)\n    return x*x*(3.-2*x)\nsteps = round(duration/dt)\nqz,pz=propagate(K,gate[:,None],opening,dt,steps,e)\naq = np.column_stack((omega*pz[:,0],-pz[:,1]))\nap = np.column_stack((-omega*qz[:,0],qz[:,1]))\nmask = np.broadcast_to(w<0.,g.shape).ravel()\nsolved = spsolve(K[mask,:][:,mask].tocsc(),aq[mask])\ngram=aq[mask].T@solved + ap[mask].T@ap[mask]\nl,v=np.linalg.eigh(gram)\nq=np.zeros(N)\np=np.zeros(N)\nq[mask]=solved@v[:,-1]\np[mask]=ap[mask]@v[:,-1]\nE0=.5*(q@(K@q)+p@p)\nq/=np.sqrt(E0)\np/=np.sqrt(E0)\nE0=.5*(q@(K@q)+p@p)\nEproj0=.5*((omega*(e@q))**2+(e@p)**2)\n# Direct forward velocity-Verlet, independent of the backwards integrator.\ndt_backward = dt\ndt = dt_backward/4\nsteps = round(duration/dt)\nwdrive = 0.\nforce= -(K@q)\ns = opening(0.)\nfor i in range(1,steps+1):\n    p+=.5*dt*force\n    q_new=q+dt*p\n    s_next=opening(i*dt)\n    wdrive-=.25*(s_next-s)*np.dot(gate,q*q+q_new*q_new)\n    q=q_new\n    s=s_next\n    force=-(K@q)+(s*gate)*q\n    p+=.5*dt*force\nEout=.5*(q@(Lf@q)+p@p)\nEbound=.5*((omega*(e@q))**2+(e@p)**2)\n# A pre-opened static control has the same energy norm for w<0 to far tails;\n# use Lf exactly to include those exponentially small tails.\nzeros = np.zeros(N)\nstatic_eigs = ceiling(Lf,np.column_stack((omega*e,zeros)),np.column_stack((zeros,e)),mask)\nprint(json.dumps(dict(step=h,pad=pad,dt=dt,dt_backward=dt_backward,omega=omega,largest_gram_eigenvalue=l[-1],\n                      initial_energy=E0,initial_final_mode_projection=Eproj0,\n                      final_bound_energy=Ebound,final_total_energy=Eout,\n                      work_on_field=wdrive,energy_balance_residual=Eout-E0-wdrive,\n                      static_feed_gram_eigenvalues=static_eigs)),flush=True)\nassert abs(Ebound-l[-1])<.00002*l[-1]+1e-6 and abs(Eout-E0-wdrive)<2e-4\n"
+  },
+  "guarded_runs": {
+    "formation_capture_c125_01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-capture",
+        "--memory-gib",
+        "3",
+        "--log-directory",
+        "_scratch/s11c/formation_capture_c125_01",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_formation_capture.py",
+        "--step",
+        ".125",
+        "--pad",
+        "10",
+        "--dt",
+        ".02"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "963fe433c2651da6f90f3c0196e063e0971dd4e148354bf6358802359622fb59",
+      "literal_stdout": "{\"test\": \"settings\", \"step\": 0.125, \"padding\": 10.0, \"dt\": 0.02, \"grid\": [91, 184], \"frequencies\": [2.135333060353349, 2.5201019011283083, 2.529253143679482], \"gap\": 2.5, \"eigen_residuals\": [6.138680999671258e-14, 1.2020529734446602e-11, 2.369380766848384e-10], \"bound_modes\": 1, \"bound_sponge_norms\": [8.191134644167435e-09], \"initial_unit_energy\": 0.999999999999998, \"earlier_ground_action_threshold\": 2.7117914812567623}\n{\"test\": \"trajectory\", \"name\": \"opens_early\", \"start\": 0, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.999999999999998, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.7792767052061663e-06]}, {\"t\": 3, \"energy\": 0.9995836252566024, \"work\": -8.295791423969083e-05, \"absorbed\": 0.0, \"balance_error\": -0.00033341682915592915, \"final_mode_energies\": [1.3464002640709585e-06]}, {\"t\": 6, \"energy\": 0.9995427653715746, \"work\": -8.295791423969083e-05, \"absorbed\": 0.0, \"balance_error\": -0.00037427671418370663, \"final_mode_energies\": [1.3464622856989468e-06]}, {\"t\": 8, \"energy\": 0.9995925204868632, \"work\": -8.295791423969083e-05, \"absorbed\": 0.0, \"balance_error\": -0.00032452159889510997, \"final_mode_energies\": [1.3463040996569374e-06]}, {\"t\": 16, \"energy\": 0.731919659047406, \"work\": -8.295791423969083e-05, \"absorbed\": 0.2672438901474425, \"balance_error\": -0.0007534928909098004, \"final_mode_energies\": [1.3457799105655991e-06]}, {\"t\": 32, \"energy\": 0.02394078572591915, \"work\": -8.295791423969083e-05, \"absorbed\": 0.9744612949391935, \"balance_error\": -0.0015149614206455986, \"final_mode_energies\": [1.3463215813899297e-06]}, {\"t\": 48, \"energy\": 0.00887017246431988, \"work\": -8.295791423969083e-05, \"absorbed\": 0.989525334633576, \"balance_error\": -0.001521534987862493, \"final_mode_energies\": [1.3458606189176122e-06]}], \"ground_action_at_ramp_end\": 6.305340787671595e-07, \"incident_energy_for_conditional_ground_threshold\": 4300784.957664681}\n{\"test\": \"trajectory\", \"name\": \"opens_during_passage\", \"start\": 3, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.999999999999998, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.7792767052061663e-06]}, {\"t\": 3, \"energy\": 0.9996650548478292, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.0003349451521688085, \"final_mode_energies\": [1.8754107955932017e-06]}, {\"t\": 6, \"energy\": 0.9754549766654801, \"work\": -0.024221037879521675, \"absorbed\": 0.0, \"balance_error\": -0.00032398545499623746, \"final_mode_energies\": [0.0001822492228049227]}, {\"t\": 8, \"energy\": 0.9754869952283689, \"work\": -0.024221037879521675, \"absorbed\": 0.0, \"balance_error\": -0.0002919668921074238, \"final_mode_energies\": [0.0001822400876720844]}, {\"t\": 16, \"energy\": 0.7267108542060945, \"work\": -0.024221037879521675, \"absorbed\": 0.2483878324203663, \"balance_error\": -0.0006802754940155066, \"final_mode_energies\": [0.00018219627018758756]}, {\"t\": 32, \"energy\": 0.029016181617661223, \"work\": -0.024221037879521675, \"absorbed\": 0.94536788184788, \"balance_error\": -0.001394898654935143, \"final_mode_energies\": [0.00018218905545815125]}, {\"t\": 48, \"energy\": 0.012016491645425509, \"work\": -0.024221037879521675, \"absorbed\": 0.9623599000808338, \"balance_error\": -0.0014025703942169877, \"final_mode_energies\": [0.00018219323350784225]}], \"ground_action_at_ramp_end\": 8.534931912437332e-05, \"incident_energy_for_conditional_ground_threshold\": 31772.854301333813}\n{\"test\": \"trajectory\", \"name\": \"already_open\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.999999999999998, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.7792767052061663e-06]}, {\"t\": 3, \"energy\": 0.9996664012824594, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.0003335987175385746, \"final_mode_energies\": [1.7793654730874001e-06]}, {\"t\": 6, \"energy\": 0.999625487264787, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.0003745127352110522, \"final_mode_energies\": [1.7794404247863476e-06]}, {\"t\": 8, \"energy\": 0.99967525636257, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.00032474363742796, \"final_mode_energies\": [1.7791526881590037e-06]}, {\"t\": 16, \"energy\": 0.7318709847617747, \"work\": 0.0, \"absorbed\": 0.26737501575171574, \"balance_error\": -0.0007539994865075617, \"final_mode_energies\": [1.7786035604509294e-06]}, {\"t\": 32, \"energy\": 0.023967936579871098, \"work\": 0.0, \"absorbed\": 0.9745165791274025, \"balance_error\": -0.0015154842927244117, \"final_mode_energies\": [1.7792064121369278e-06]}, {\"t\": 48, \"energy\": 0.008900416677899885, \"work\": 0.0, \"absorbed\": 0.9895775247209111, \"balance_error\": -0.0015220586011870374, \"final_mode_energies\": [1.778624548380028e-06]}], \"ground_action_at_ramp_end\": 8.332964567096411e-07, \"incident_energy_for_conditional_ground_threshold\": 3254293.78634892}\n{\"test\": \"trajectory\", \"name\": \"half_packet\", \"start\": 3, \"amplitude\": 0.5, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.2499999999999995, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [4.4481917630154157e-07]}, {\"t\": 3, \"energy\": 0.2499162637119573, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -8.373628804220212e-05, \"final_mode_energies\": [4.688526988983004e-07]}, {\"t\": 6, \"energy\": 0.24386374416637002, \"work\": -0.006055259469880419, \"absorbed\": 0.0, \"balance_error\": -8.099636374905936e-05, \"final_mode_energies\": [4.5562305701230675e-05]}, {\"t\": 8, \"energy\": 0.24387174880709223, \"work\": -0.006055259469880419, \"absorbed\": 0.0, \"balance_error\": -7.299172302685595e-05, \"final_mode_energies\": [4.55600219180211e-05]}], \"ground_action_at_ramp_end\": 2.133732978109333e-05, \"incident_energy_for_conditional_ground_threshold\": 31772.854301333813}\n{\"test\": \"trajectory\", \"name\": \"quiet\", \"start\": 3, \"amplitude\": 0.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 3, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 6, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 8, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}], \"ground_action_at_ramp_end\": 0.0, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"trajectory\", \"name\": \"static_ground\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999876, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.9999999999999433]}, {\"t\": 3, \"energy\": 0.9999931029878136, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -6.897012173934236e-06, \"final_mode_energies\": [0.9999931029877497]}, {\"t\": 6, \"energy\": 0.9999728292535323, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -2.717074645530726e-05, \"final_mode_energies\": [0.9999728292535002]}, {\"t\": 8, \"energy\": 0.9995611194506936, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.000438880549293974, \"final_mode_energies\": [0.9995611194506584]}, {\"t\": 16, \"energy\": 0.9999342212418806, \"work\": 0.0, \"absorbed\": 2.4967311263336094e-09, \"balance_error\": -6.577626137582726e-05, \"final_mode_energies\": [0.9999342211327215]}, {\"t\": 32, \"energy\": 0.9997748419506205, \"work\": 0.0, \"absorbed\": 7.840468423120848e-09, \"balance_error\": -0.00022515020889868342, \"final_mode_energies\": [0.9997748418593526]}, {\"t\": 48, \"energy\": 0.9996138285002627, \"work\": 0.0, \"absorbed\": 1.3107340310286584e-08, \"balance_error\": -0.0003861583923845391, \"final_mode_energies\": [0.9996138284122345]}], \"ground_action_at_ramp_end\": 0.46830778839825277, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"controls\", \"early\": 1.3464002640709585e-06, \"passage\": 0.0001822492228049227, \"static\": 1.7793654730874001e-06, \"four_times_half\": 0.0001822492228049227, \"quiet\": 0.0}\n",
+      "literal_stderr": ""
+    },
+    "formation_capture_mid_01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-capture",
+        "--memory-gib",
+        "3",
+        "--log-directory",
+        "_scratch/s11c/formation_capture_mid_01",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_formation_capture.py",
+        "--step",
+        ".10",
+        "--pad",
+        "10",
+        "--dt",
+        ".0125"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "5e5c3161016127f618749d4b1b7823308a1e9023e393680db1c5054e7db92a42",
+      "literal_stdout": "{\"test\": \"settings\", \"step\": 0.1, \"padding\": 10.0, \"dt\": 0.0125, \"grid\": [114, 230], \"frequencies\": [2.137797690674362, 2.520117170834084, 2.5292953348712026], \"gap\": 2.5, \"eigen_residuals\": [9.690971363904804e-14, 2.0996850313259327e-11, 4.529345405456203e-10], \"bound_modes\": 1, \"bound_sponge_norms\": [8.903978471408948e-09], \"initial_unit_energy\": 1.0000000000000058, \"earlier_ground_action_threshold\": 2.7117914812567623}\n{\"test\": \"trajectory\", \"name\": \"opens_early\", \"start\": 0, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 1.0000000000000058, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.8119120097979586e-06]}, {\"t\": 3, \"energy\": 0.9997659107805347, \"work\": -0.00010023038687807108, \"absorbed\": 0.0, \"balance_error\": -0.00013385883259302978, \"final_mode_energies\": [1.3663163837048987e-06]}, {\"t\": 6, \"energy\": 0.9997524392431261, \"work\": -0.00010023038687807108, \"absorbed\": 0.0, \"balance_error\": -0.00014733037000163452, \"final_mode_energies\": [1.3663417144176947e-06]}, {\"t\": 8, \"energy\": 0.9997694083881699, \"work\": -0.00010023038687807108, \"absorbed\": 0.0, \"balance_error\": -0.0001303612249578464, \"final_mode_energies\": [1.366268099201333e-06]}, {\"t\": 16, \"energy\": 0.6771174785746149, \"work\": -0.00010023038687807108, \"absorbed\": 0.3224375512158739, \"balance_error\": -0.00034473982263887726, \"final_mode_energies\": [1.365870056095962e-06]}, {\"t\": 32, \"energy\": 0.024108651421997106, \"work\": -0.00010023038687807108, \"absorbed\": 0.9751906278031398, \"balance_error\": -0.0006004903879907527, \"final_mode_energies\": [1.3665661881742939e-06]}, {\"t\": 48, \"energy\": 0.008914333977517779, \"work\": -0.00010023038687807108, \"absorbed\": 0.9903822023832926, \"balance_error\": -0.0006032332523174185, \"final_mode_energies\": [1.3660274758469385e-06]}], \"ground_action_at_ramp_end\": 6.391233322335091e-07, \"incident_energy_for_conditional_ground_threshold\": 4242986.203899066}\n{\"test\": \"trajectory\", \"name\": \"opens_during_passage\", \"start\": 3, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 1.0000000000000058, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.8119120097979586e-06]}, {\"t\": 3, \"energy\": 0.9998656018025076, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.0001343981974981645, \"final_mode_energies\": [1.7878805220691636e-06]}, {\"t\": 6, \"energy\": 0.97514162896099, \"work\": -0.024732492844736637, \"absorbed\": 0.0, \"balance_error\": -0.00012587819427914426, \"final_mode_energies\": [0.00018272090988852478]}, {\"t\": 8, \"energy\": 0.9751501606618435, \"work\": -0.024732492844736637, \"absorbed\": 0.0, \"balance_error\": -0.0001173464934256796, \"final_mode_energies\": [0.00018271738433089121]}, {\"t\": 16, \"energy\": 0.6763264805556684, \"work\": -0.024732492844736637, \"absorbed\": 0.2986309644303509, \"balance_error\": -0.00031006216924991947, \"final_mode_energies\": [0.00018269831119187922]}, {\"t\": 32, \"energy\": 0.029207562223209298, \"work\": -0.024732492844736637, \"absorbed\": 0.9455078680277187, \"balance_error\": -0.0005520769043411422, \"final_mode_energies\": [0.00018270027252629395]}, {\"t\": 48, \"energy\": 0.012071255138608922, \"work\": -0.024732492844736637, \"absorbed\": 0.9626410539173283, \"balance_error\": -0.0005551980993318273, \"final_mode_energies\": [0.0001826962501196354]}], \"ground_action_at_ramp_end\": 8.547156294798222e-05, \"incident_energy_for_conditional_ground_threshold\": 31727.411875072034}\n{\"test\": \"trajectory\", \"name\": \"already_open\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 1.0000000000000058, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.8119120097979586e-06]}, {\"t\": 3, \"energy\": 0.9998660449769059, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.00013395502309987428, \"final_mode_energies\": [1.8119492273924083e-06]}, {\"t\": 6, \"energy\": 0.9998525575905671, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.00014744240943864728, \"final_mode_energies\": [1.8119801328415644e-06]}, {\"t\": 8, \"energy\": 0.9998695310324432, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.0001304689675625248, \"final_mode_energies\": [1.8118554792397467e-06]}, {\"t\": 16, \"energy\": 0.677068358090197, \"work\": 0.0, \"absorbed\": 0.32258664567197765, \"balance_error\": -0.00034499623783101896, \"final_mode_energies\": [1.8114192365153052e-06]}, {\"t\": 32, \"energy\": 0.02413692609340866, \"work\": 0.0, \"absorbed\": 0.9752623172768111, \"balance_error\": -0.0006007566297859812, \"final_mode_energies\": [1.8122283451743492e-06]}, {\"t\": 48, \"energy\": 0.008944445657187492, \"work\": 0.0, \"absorbed\": 0.9904520542898283, \"balance_error\": -0.0006035000529900358, \"final_mode_energies\": [1.811578391565529e-06]}], \"ground_action_at_ramp_end\": 8.475775024440381e-07, \"incident_energy_for_conditional_ground_threshold\": 3199461.374844392}\n{\"test\": \"trajectory\", \"name\": \"half_packet\", \"start\": 3, \"amplitude\": 0.5, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.25000000000000144, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [4.5297800244948966e-07]}, {\"t\": 3, \"energy\": 0.2499664004506269, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -3.359954937454113e-05, \"final_mode_energies\": [4.469701305172909e-07]}, {\"t\": 6, \"energy\": 0.2437854072402475, \"work\": -0.006183123211184159, \"absorbed\": 0.0, \"balance_error\": -3.1469548569786066e-05, \"final_mode_energies\": [4.5680227472131195e-05]}, {\"t\": 8, \"energy\": 0.24378754016546086, \"work\": -0.006183123211184159, \"absorbed\": 0.0, \"balance_error\": -2.93366233564199e-05, \"final_mode_energies\": [4.5679346082722804e-05]}], \"ground_action_at_ramp_end\": 2.1367890736995556e-05, \"incident_energy_for_conditional_ground_threshold\": 31727.411875072034}\n{\"test\": \"trajectory\", \"name\": \"quiet\", \"start\": 3, \"amplitude\": 0.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 3, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 6, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 8, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}], \"ground_action_at_ramp_end\": 0.0, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"trajectory\", \"name\": \"static_ground\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999721, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.9999999999999065]}, {\"t\": 3, \"energy\": 0.9999969816042984, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -3.0183956737372952e-06, \"final_mode_energies\": [0.99999698160423]}, {\"t\": 6, \"energy\": 0.9999881305530357, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -1.1869446936429995e-05, \"final_mode_energies\": [0.9999881305529721]}, {\"t\": 8, \"energy\": 0.9998269423878509, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.00017305761212127457, \"final_mode_energies\": [0.9998269423877998]}, {\"t\": 16, \"energy\": 0.9999788065500334, \"work\": 0.0, \"absorbed\": 2.621839210419928e-09, \"balance_error\": -2.1190828099593162e-05, \"final_mode_energies\": [0.9999788064339539]}, {\"t\": 32, \"energy\": 0.9999252899257851, \"work\": 0.0, \"absorbed\": 8.259324079195674e-09, \"balance_error\": -7.470181486290972e-05, \"final_mode_energies\": [0.9999252898296405]}, {\"t\": 48, \"energy\": 0.9998648604663836, \"work\": 0.0, \"absorbed\": 1.3821940020322129e-08, \"balance_error\": -0.0001351257116485316, \"final_mode_energies\": [0.9998648603730549]}], \"ground_action_at_ramp_end\": 0.46776969867938434, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"controls\", \"early\": 1.3663163837048987e-06, \"passage\": 0.00018272090988852478, \"static\": 1.8119492273924083e-06, \"four_times_half\": 0.00018272090988852478, \"quiet\": 0.0}\n",
+      "literal_stderr": ""
+    },
+    "formation_capture_wide_01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-capture",
+        "--memory-gib",
+        "3",
+        "--log-directory",
+        "_scratch/s11c/formation_capture_wide_01",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_formation_capture.py",
+        "--step",
+        ".10",
+        "--pad",
+        "14",
+        "--dt",
+        ".0125"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "6a8600dfbb8a29492afb9a8eda00b6f2145d23c9ca45e8f623ef98ee4c2be311",
+      "literal_stdout": "{\"test\": \"settings\", \"step\": 0.1, \"padding\": 14.0, \"dt\": 0.0125, \"grid\": [154, 310], \"frequencies\": [2.1377976906739624, 2.5107296994474537, 2.5162865854560628], \"gap\": 2.5, \"eigen_residuals\": [1.0333266230126043e-13, 3.6601706117433716e-13, 2.5851070434007018e-11], \"bound_modes\": 1, \"bound_sponge_norms\": [8.909086747028087e-09], \"initial_unit_energy\": 1.0000000000000058, \"earlier_ground_action_threshold\": 2.7117914812567623}\n{\"test\": \"trajectory\", \"name\": \"opens_early\", \"start\": 0, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 1.0000000000000058, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.8119120104949435e-06]}, {\"t\": 3, \"energy\": 0.9997659107805347, \"work\": -0.00010023038687807108, \"absorbed\": 0.0, \"balance_error\": -0.00013385883259302978, \"final_mode_energies\": [1.3663163842824928e-06]}, {\"t\": 6, \"energy\": 0.9997524392431261, \"work\": -0.00010023038687807108, \"absorbed\": 0.0, \"balance_error\": -0.00014733037000163452, \"final_mode_energies\": [1.3663417149952216e-06]}, {\"t\": 8, \"energy\": 0.9997694050464496, \"work\": -0.00010023038687807108, \"absorbed\": 0.0, \"balance_error\": -0.00013036456667808027, \"final_mode_energies\": [1.3662680997787917e-06]}, {\"t\": 16, \"energy\": 0.6770431675229884, \"work\": -0.00010023038687807108, \"absorbed\": 0.3225119189577969, \"balance_error\": -0.0003446831323423091, \"final_mode_energies\": [1.3658705111682743e-06]}, {\"t\": 32, \"energy\": 0.022368519496943608, \"work\": -0.00010023038687807108, \"absorbed\": 0.9769296522693579, \"balance_error\": -0.000601597846826167, \"final_mode_energies\": [1.3665721561215867e-06]}, {\"t\": 48, \"energy\": 0.008695011857494706, \"work\": -0.00010023038687807108, \"absorbed\": 0.9906014809052999, \"balance_error\": -0.0006032768503331716, \"final_mode_energies\": [1.3660265005721518e-06]}], \"ground_action_at_ramp_end\": 6.391233325038103e-07, \"incident_energy_for_conditional_ground_threshold\": 4242986.202104601}\n{\"test\": \"trajectory\", \"name\": \"opens_during_passage\", \"start\": 3, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 1.0000000000000058, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.8119120104949435e-06]}, {\"t\": 3, \"energy\": 0.9998656018025076, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.0001343981974981645, \"final_mode_energies\": [1.7878805216788152e-06]}, {\"t\": 6, \"energy\": 0.97514162896099, \"work\": -0.024732492844736637, \"absorbed\": 0.0, \"balance_error\": -0.00012587819427914426, \"final_mode_energies\": [0.0001827209098920109]}, {\"t\": 8, \"energy\": 0.9751501573201233, \"work\": -0.024732492844736637, \"absorbed\": 0.0, \"balance_error\": -0.00011734983514580244, \"final_mode_energies\": [0.00018271738433437297]}, {\"t\": 16, \"energy\": 0.6762515404392584, \"work\": -0.024732492844736637, \"absorbed\": 0.2987059338280688, \"balance_error\": -0.00031003288794187456, \"final_mode_energies\": [0.0001826983162926774]}, {\"t\": 32, \"energy\": 0.027547800051975012, \"work\": -0.024732492844736637, \"absorbed\": 0.94716661463172, \"balance_error\": -0.0005530924715741181, \"final_mode_energies\": [0.00018270034473400192]}, {\"t\": 48, \"energy\": 0.011839850675760056, \"work\": -0.024732492844736637, \"absorbed\": 0.9628724138213617, \"balance_error\": -0.0005552426581473535, \"final_mode_energies\": [0.00018269624182438106]}], \"ground_action_at_ramp_end\": 8.547156294962891e-05, \"incident_energy_for_conditional_ground_threshold\": 31727.411874460777}\n{\"test\": \"trajectory\", \"name\": \"already_open\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 1.0000000000000058, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.8119120104949435e-06]}, {\"t\": 3, \"energy\": 0.9998660449769059, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.00013395502309987428, \"final_mode_energies\": [1.811949228089422e-06]}, {\"t\": 6, \"energy\": 0.9998525575905671, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.00014744240943864728, \"final_mode_energies\": [1.8119801335385395e-06]}, {\"t\": 8, \"energy\": 0.9998695276907248, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.0001304723092809823, \"final_mode_energies\": [1.811855479936583e-06]}, {\"t\": 16, \"energy\": 0.6769940699336106, \"work\": 0.0, \"absorbed\": 0.32266099128329334, \"balance_error\": -0.00034493878310182247, \"final_mode_energies\": [1.8114197724977027e-06]}, {\"t\": 32, \"energy\": 0.022396526938866526, \"work\": 0.0, \"absorbed\": 0.9770016084100546, \"balance_error\": -0.0006018646510846937, \"final_mode_energies\": [1.8122352767637506e-06]}, {\"t\": 48, \"energy\": 0.00872530781124019, \"work\": 0.0, \"absorbed\": 0.9906711485769807, \"balance_error\": -0.0006035436117849402, \"final_mode_energies\": [1.8115771910620535e-06]}], \"ground_action_at_ramp_end\": 8.475775027702395e-07, \"incident_energy_for_conditional_ground_threshold\": 3199461.373613037}\n{\"test\": \"trajectory\", \"name\": \"half_packet\", \"start\": 3, \"amplitude\": 0.5, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.25000000000000144, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [4.529780026237359e-07]}, {\"t\": 3, \"energy\": 0.2499664004506269, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -3.359954937454113e-05, \"final_mode_energies\": [4.469701304197038e-07]}, {\"t\": 6, \"energy\": 0.2437854072402475, \"work\": -0.006183123211184159, \"absorbed\": 0.0, \"balance_error\": -3.1469548569786066e-05, \"final_mode_energies\": [4.5680227473002724e-05]}, {\"t\": 8, \"energy\": 0.24378753933003083, \"work\": -0.006183123211184159, \"absorbed\": 0.0, \"balance_error\": -2.933745878645061e-05, \"final_mode_energies\": [4.567934608359324e-05]}], \"ground_action_at_ramp_end\": 2.1367890737407228e-05, \"incident_energy_for_conditional_ground_threshold\": 31727.411874460777}\n{\"test\": \"trajectory\", \"name\": \"quiet\", \"start\": 3, \"amplitude\": 0.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 3, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 6, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 8, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}], \"ground_action_at_ramp_end\": 0.0, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"trajectory\", \"name\": \"static_ground\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999454, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.9999999999997945]}, {\"t\": 3, \"energy\": 0.9999969816042769, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -3.018395668519247e-06, \"final_mode_energies\": [0.9999969816041568]}, {\"t\": 6, \"energy\": 0.9999881305529998, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -1.1869446945533824e-05, \"final_mode_energies\": [0.9999881305529139]}, {\"t\": 8, \"energy\": 0.9998269423878182, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.00017305761212715876, \"final_mode_energies\": [0.9998269423877186]}, {\"t\": 16, \"energy\": 0.9999788065475498, \"work\": 0.0, \"absorbed\": 2.6243017730470103e-09, \"balance_error\": -2.1190828093820002e-05, \"final_mode_energies\": [0.9999788064283309]}, {\"t\": 32, \"energy\": 0.9999252899262633, \"work\": 0.0, \"absorbed\": 8.258832722823681e-09, \"balance_error\": -7.4701814849365e-05, \"final_mode_energies\": [0.9999252898267832]}, {\"t\": 48, \"energy\": 0.9998648604685829, \"work\": 0.0, \"absorbed\": 1.3819725147581804e-08, \"balance_error\": -0.00013512571163731835, \"final_mode_energies\": [0.9998648603721527]}], \"ground_action_at_ramp_end\": 0.4677696986794376, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"controls\", \"early\": 1.3663163842824928e-06, \"passage\": 0.0001827209098920109, \"static\": 1.811949228089422e-06, \"four_times_half\": 0.0001827209098920109, \"quiet\": 0.0}\n",
+      "literal_stderr": ""
+    },
+    "formation_capture_f0625_01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-capture",
+        "--memory-gib",
+        "3",
+        "--log-directory",
+        "_scratch/s11c/formation_capture_f0625_01",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_formation_capture.py",
+        "--step",
+        ".0625",
+        "--pad",
+        "10",
+        "--dt",
+        ".01"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "53244c0c622b1735a14b2ab0c9d22d5fad5669d2ed8a6ac863193556dfdd43eb",
+      "literal_stdout": "{\"test\": \"settings\", \"step\": 0.0625, \"padding\": 10.0, \"dt\": 0.01, \"grid\": [183, 368], \"frequencies\": [2.139432784413628, 2.5201365133408498, 2.5293509014151243], \"gap\": 2.5, \"eigen_residuals\": [2.533418344492123e-13, 1.5810228394156106e-11, 3.452095844077052e-10], \"bound_modes\": 1, \"bound_sponge_norms\": [9.683334376194121e-09], \"initial_unit_energy\": 0.9999999999999987, \"earlier_ground_action_threshold\": 2.7117914812567623}\n{\"test\": \"trajectory\", \"name\": \"opens_early\", \"start\": 0, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999987, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.822541248220908e-06]}, {\"t\": 3, \"energy\": 0.9997849322599912, \"work\": -0.0001269596209213738, \"absorbed\": 0.0, \"balance_error\": -8.810811908608362e-05, \"final_mode_energies\": [1.367471807443029e-06]}, {\"t\": 6, \"energy\": 0.9997785513940363, \"work\": -0.0001269596209213738, \"absorbed\": 0.0, \"balance_error\": -9.448898504103054e-05, \"final_mode_energies\": [1.3674882601412396e-06]}, {\"t\": 8, \"energy\": 0.9997872301381923, \"work\": -0.0001269596209213738, \"absorbed\": 0.0, \"balance_error\": -8.581024088503175e-05, \"final_mode_energies\": [1.3674358241387747e-06]}, {\"t\": 16, \"energy\": 0.6237033388846618, \"work\": -0.0001269596209213738, \"absorbed\": 0.37591778527535935, \"balance_error\": -0.0002519162190561589, \"final_mode_energies\": [1.3670595016568444e-06]}, {\"t\": 32, \"energy\": 0.024405224780845704, \"work\": -0.0001269596209213738, \"absorbed\": 0.9750773631181103, \"balance_error\": -0.00039045248012123976, \"final_mode_energies\": [1.3678223052085005e-06]}, {\"t\": 48, \"energy\": 0.008927590453511377, \"work\": -0.0001269596209213738, \"absorbed\": 0.990553038575363, \"balance_error\": -0.00039241135020293724, \"final_mode_energies\": [1.367258097312895e-06]}], \"ground_action_at_ramp_end\": 6.391749333774107e-07, \"incident_energy_for_conditional_ground_threshold\": 4242643.663961614}\n{\"test\": \"trajectory\", \"name\": \"opens_during_passage\", \"start\": 3, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999987, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.822541248220908e-06]}, {\"t\": 3, \"energy\": 0.9999116255678318, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -8.837443216691554e-05, \"final_mode_energies\": [1.7369053963634416e-06]}, {\"t\": 6, \"energy\": 0.9747471908140672, \"work\": -0.025172133916424193, \"absorbed\": 0.0, \"balance_error\": -8.06752695072313e-05, \"final_mode_energies\": [0.00018235764694981077]}, {\"t\": 8, \"energy\": 0.9747505198188475, \"work\": -0.025172133916424193, \"absorbed\": 0.0, \"balance_error\": -7.734626472694767e-05, \"final_mode_energies\": [0.000182355618899121]}, {\"t\": 16, \"energy\": 0.6267335572661141, \"work\": -0.025172133916424193, \"absorbed\": 0.34786829887756743, \"balance_error\": -0.00022600993989291968, \"final_mode_energies\": [0.00018234193646582625]}, {\"t\": 32, \"energy\": 0.029508187590287054, \"work\": -0.025172133916424193, \"absorbed\": 0.9449609641599271, \"balance_error\": -0.000358714333360273, \"final_mode_energies\": [0.00018234646185562116]}, {\"t\": 48, \"energy\": 0.012096280244497812, \"work\": -0.025172133916424193, \"absorbed\": 0.9623707112123931, \"balance_error\": -0.00036087462668350084, \"final_mode_energies\": [0.00018234094555409083]}], \"ground_action_at_ramp_end\": 8.52364459768672e-05, \"incident_energy_for_conditional_ground_threshold\": 31814.929050335195}\n{\"test\": \"trajectory\", \"name\": \"already_open\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999987, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.822541248220908e-06]}, {\"t\": 3, \"energy\": 0.9999118067148142, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -8.819328518450131e-05, \"final_mode_energies\": [1.8225660399116947e-06]}, {\"t\": 6, \"energy\": 0.9999054189619221, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -9.458103807657992e-05, \"final_mode_energies\": [1.8225863852965473e-06]}, {\"t\": 8, \"energy\": 0.9999141002533272, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -8.58997466715028e-05, \"final_mode_energies\": [1.822501737994543e-06]}, {\"t\": 16, \"energy\": 0.6236599151333059, \"work\": 0.0, \"absorbed\": 0.37608794566649856, \"balance_error\": -0.0002521392001941791, \"final_mode_energies\": [1.822081385923352e-06]}, {\"t\": 32, \"energy\": 0.0244347592254155, \"work\": 0.0, \"absorbed\": 0.9751745542837742, \"balance_error\": -0.000390686490808978, \"final_mode_energies\": [1.822971910587474e-06]}, {\"t\": 48, \"energy\": 0.00895767933026968, \"work\": 0.0, \"absorbed\": 0.9906496745791624, \"balance_error\": -0.00039264609056655075, \"final_mode_energies\": [1.8222994604547377e-06]}], \"ground_action_at_ramp_end\": 8.518921712285626e-07, \"incident_energy_for_conditional_ground_threshold\": 3183256.722908873}\n{\"test\": \"trajectory\", \"name\": \"half_packet\", \"start\": 3, \"amplitude\": 0.5, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.24999999999999967, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [4.55635312055227e-07]}, {\"t\": 3, \"energy\": 0.24997790639195794, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -2.2093608041728885e-05, \"final_mode_energies\": [4.342263490908604e-07]}, {\"t\": 6, \"energy\": 0.2436867977035168, \"work\": -0.006293033479106048, \"absorbed\": 0.0, \"balance_error\": -2.0168817376807827e-05, \"final_mode_energies\": [4.558941173745269e-05]}, {\"t\": 8, \"energy\": 0.24368762995471188, \"work\": -0.006293033479106048, \"absorbed\": 0.0, \"balance_error\": -1.9336566181736917e-05, \"final_mode_energies\": [4.558890472478025e-05]}], \"ground_action_at_ramp_end\": 2.13091114942168e-05, \"incident_energy_for_conditional_ground_threshold\": 31814.929050335195}\n{\"test\": \"trajectory\", \"name\": \"quiet\", \"start\": 3, \"amplitude\": 0.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 3, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 6, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 8, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}], \"ground_action_at_ramp_end\": 0.0, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"trajectory\", \"name\": \"static_ground\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999294, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.9999999999997847]}, {\"t\": 3, \"energy\": 0.9999979199713745, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -2.080028554840574e-06, \"final_mode_energies\": [0.9999979199712561]}, {\"t\": 6, \"energy\": 0.9999918311238462, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -8.168876083236576e-06, \"final_mode_energies\": [0.9999918311236731]}, {\"t\": 8, \"energy\": 0.9998885830590657, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -0.00011141694086369558, \"final_mode_energies\": [0.9998885830588968]}, {\"t\": 16, \"energy\": 0.9999882649978615, \"work\": 0.0, \"absorbed\": 2.706887921291159e-09, \"balance_error\": -1.173229517992258e-05, \"final_mode_energies\": [0.9999882648770415]}, {\"t\": 32, \"energy\": 0.9999578738648236, \"work\": 0.0, \"absorbed\": 8.545001321981764e-09, \"balance_error\": -4.211759010441796e-05, \"final_mode_energies\": [0.9999578737656197]}, {\"t\": 48, \"energy\": 0.9999212912708229, \"work\": 0.0, \"absorbed\": 1.4310205600760028e-08, \"balance_error\": -7.869441890095974e-05, \"final_mode_energies\": [0.9999212911743605]}], \"ground_action_at_ramp_end\": 0.46741263724503207, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"controls\", \"early\": 1.367471807443029e-06, \"passage\": 0.00018235764694981077, \"static\": 1.8225660399116947e-06, \"four_times_half\": 0.00018235764694981077, \"quiet\": 0.0}\n",
+      "literal_stderr": ""
+    },
+    "formation_capture_f_time_01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-capture",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/formation_capture_f_time_01",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_formation_capture.py",
+        "--step",
+        ".0625",
+        "--pad",
+        "10",
+        "--dt",
+        ".0025"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 4294967296,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "0f22d73670acfa11dd881edd191b4fcf697c232f4f43c2a7bb17bb86f93700dc",
+      "literal_stdout": "{\"test\": \"settings\", \"step\": 0.0625, \"padding\": 10.0, \"dt\": 0.0025, \"grid\": [183, 368], \"frequencies\": [2.139432784413628, 2.5201365133408498, 2.5293509014151243], \"gap\": 2.5, \"eigen_residuals\": [2.533418344492123e-13, 1.5810228394156106e-11, 3.452095844077052e-10], \"bound_modes\": 1, \"bound_sponge_norms\": [9.683334376194121e-09], \"initial_unit_energy\": 0.9999999999999987, \"earlier_ground_action_threshold\": 2.7117914812567623}\n{\"test\": \"trajectory\", \"name\": \"opens_early\", \"start\": 0, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999987, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.822541248220908e-06]}, {\"t\": 3, \"energy\": 0.999868202450718, \"work\": -0.0001262849499284781, \"absorbed\": 0.0, \"balance_error\": -5.5125993522429635e-06, \"final_mode_energies\": [1.36781864685049e-06]}, {\"t\": 6, \"energy\": 0.999867801153631, \"work\": -0.0001262849499284781, \"absorbed\": 0.0, \"balance_error\": -5.913896439136812e-06, \"final_mode_energies\": [1.3678196748419665e-06]}, {\"t\": 8, \"energy\": 0.9998683459174534, \"work\": -0.0001262849499284781, \"absorbed\": 0.0, \"balance_error\": -5.3691326167513704e-06, \"final_mode_energies\": [1.367816401858528e-06]}, {\"t\": 16, \"energy\": 0.6245897041449867, \"work\": -0.0001262849499284781, \"absorbed\": 0.37526828334109835, \"balance_error\": -1.5727563985069414e-05, \"final_mode_energies\": [1.3674714817347662e-06]}, {\"t\": 32, \"energy\": 0.02441070778069159, \"work\": -0.0001262849499284781, \"absorbed\": 0.9754386037568153, \"balance_error\": -2.4403512563298923e-05, \"final_mode_energies\": [1.3682710069129469e-06]}, {\"t\": 48, \"energy\": 0.008929169931787943, \"work\": -0.0001262849499284781, \"absorbed\": 0.9909200191957602, \"balance_error\": -2.4525922522023846e-05, \"final_mode_energies\": [1.3677159013550995e-06]}], \"ground_action_at_ramp_end\": 6.393370508367615e-07, \"incident_energy_for_conditional_ground_threshold\": 4241567.851742015}\n{\"test\": \"trajectory\", \"name\": \"opens_during_passage\", \"start\": 3, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999987, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.822541248220908e-06]}, {\"t\": 3, \"energy\": 0.9999944706170927, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -5.529382905988811e-06, \"final_mode_energies\": [1.7301979155234775e-06]}, {\"t\": 6, \"energy\": 0.9748357231439981, \"work\": -0.025159226440927693, \"absorbed\": 0.0, \"balance_error\": -5.050415072840181e-06, \"final_mode_energies\": [0.00018226030937698584]}, {\"t\": 8, \"energy\": 0.9748359337815837, \"work\": -0.025159226440927693, \"absorbed\": 0.0, \"balance_error\": -4.839777487244262e-06, \"final_mode_energies\": [0.0001822601834770195]}, {\"t\": 16, \"energy\": 0.6275719405034723, \"work\": -0.025159226440927693, \"absorbed\": 0.34725472246723027, \"balance_error\": -1.4110588368445448e-05, \"final_mode_energies\": [0.00018225557284816282]}, {\"t\": 32, \"energy\": 0.0295116402011203, \"work\": -0.025159226440927693, \"absorbed\": 0.945306712707657, \"balance_error\": -2.2420650293699523e-05, \"final_mode_energies\": [0.00018226360758311682]}, {\"t\": 48, \"energy\": 0.012095565145374035, \"work\": -0.025159226440927693, \"absorbed\": 0.9627226527030288, \"balance_error\": -2.255571066813941e-05, \"final_mode_energies\": [0.00018225771405915362]}], \"ground_action_at_ramp_end\": 8.519094907061519e-05, \"incident_energy_for_conditional_ground_threshold\": 31831.92006710644}\n{\"test\": \"trajectory\", \"name\": \"already_open\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999987, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.822541248220908e-06]}, {\"t\": 3, \"energy\": 0.999994482108677, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -5.5178913216380465e-06, \"final_mode_energies\": [1.8225427963940198e-06]}, {\"t\": 6, \"energy\": 0.9999940803785969, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -5.919621401728747e-06, \"final_mode_energies\": [1.8225440672198031e-06]}, {\"t\": 8, \"energy\": 0.9999946253006178, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -5.37469938088897e-06, \"final_mode_energies\": [1.822538782270675e-06]}, {\"t\": 16, \"energy\": 0.624546166294949, \"work\": 0.0, \"absorbed\": 0.3754380922779145, \"balance_error\": -1.5741427135118613e-05, \"final_mode_energies\": [1.8221441026949037e-06]}, {\"t\": 32, \"energy\": 0.024440204418029042, \"work\": 0.0, \"absorbed\": 0.9755353775335728, \"balance_error\": -2.4418048396812608e-05, \"final_mode_energies\": [1.8230865639217531e-06]}, {\"t\": 48, \"energy\": 0.008959239645016125, \"work\": 0.0, \"absorbed\": 0.9910162198511251, \"balance_error\": -2.4540503857473084e-05, \"final_mode_energies\": [1.8224316527900712e-06]}], \"ground_action_at_ramp_end\": 8.518813068920691e-07, \"incident_energy_for_conditional_ground_threshold\": 3183297.3200811585}\n{\"test\": \"trajectory\", \"name\": \"half_packet\", \"start\": 3, \"amplitude\": 0.5, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.24999999999999967, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [4.55635312055227e-07]}, {\"t\": 3, \"energy\": 0.24999861765427317, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -1.3823457264972028e-06, \"final_mode_energies\": [4.325494788808694e-07]}, {\"t\": 6, \"energy\": 0.24370893078599953, \"work\": -0.006289806610231923, \"absorbed\": 0.0, \"balance_error\": -1.2626037682100452e-06, \"final_mode_energies\": [4.556507734424646e-05]}, {\"t\": 8, \"energy\": 0.24370898344539593, \"work\": -0.006289806610231923, \"absorbed\": 0.0, \"balance_error\": -1.2099443718110656e-06, \"final_mode_energies\": [4.5565045869254875e-05]}], \"ground_action_at_ramp_end\": 2.1297737267653798e-05, \"incident_energy_for_conditional_ground_threshold\": 31831.92006710644}\n{\"test\": \"trajectory\", \"name\": \"quiet\", \"start\": 3, \"amplitude\": 0.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 3, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 6, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 8, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}], \"ground_action_at_ramp_end\": 0.0, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"trajectory\", \"name\": \"static_ground\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.9999999999999294, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.9999999999997847]}, {\"t\": 3, \"energy\": 0.9999998702173427, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -1.2978258667750708e-07, \"final_mode_energies\": [0.999999870217215]}, {\"t\": 6, \"energy\": 0.9999994902901331, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -5.097097962591945e-07, \"final_mode_energies\": [0.9999994902899462]}, {\"t\": 8, \"energy\": 0.9999930371425741, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -6.962857355241603e-06, \"final_mode_energies\": [0.9999930371424143]}, {\"t\": 16, \"energy\": 0.9999992613664132, \"work\": 0.0, \"absorbed\": 2.7072472769043167e-09, \"balance_error\": -7.359262689243806e-07, \"final_mode_energies\": [0.9999992612455854]}, {\"t\": 32, \"energy\": 0.9999973506572749, \"work\": 0.0, \"absorbed\": 8.545899286608815e-09, \"balance_error\": -2.6407967551600464e-06, \"final_mode_energies\": [0.9999973505579721]}, {\"t\": 48, \"energy\": 0.99999505512463, \"work\": 0.0, \"absorbed\": 1.4311517137442707e-08, \"balance_error\": -4.930563782257202e-06, \"final_mode_energies\": [0.9999950550281491]}], \"ground_action_at_ramp_end\": 0.46741354881653513, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"controls\", \"early\": 1.36781864685049e-06, \"passage\": 0.00018226030937698584, \"static\": 1.8225427963940198e-06, \"four_times_half\": 0.00018226030937698584, \"quiet\": 0.0}\n",
+      "literal_stderr": ""
+    },
+    "formation_capture_f040_01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-capture",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/formation_capture_f040_01",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_formation_capture.py",
+        "--step",
+        ".04",
+        "--pad",
+        "10",
+        "--dt",
+        ".004"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 4294967296,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "cc9b70757237824f2a42a6b03557aa4bc787cf9b651da5f929b6c94fbf16ec26",
+      "literal_stdout": "{\"test\": \"settings\", \"step\": 0.04, \"padding\": 10.0, \"dt\": 0.004, \"grid\": [287, 576], \"frequencies\": [2.1399069025955733, 2.5200731038848816, 2.5292797864675496], \"gap\": 2.5, \"eigen_residuals\": [6.570636706762905e-13, 1.2627574206190479e-11, 2.751745635484998e-10], \"bound_modes\": 1, \"bound_sponge_norms\": [1.0416244637371564e-08], \"initial_unit_energy\": 1.000000000000001, \"earlier_ground_action_threshold\": 2.7117914812567623}\n{\"test\": \"trajectory\", \"name\": \"opens_early\", \"start\": 0, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 1.000000000000001, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.8252069953494824e-06]}, {\"t\": 3, \"energy\": 0.9998466800805084, \"work\": -0.0001390593541189209, \"absorbed\": 0.0, \"balance_error\": -1.4260565373823918e-05, \"final_mode_energies\": [1.3664779237710124e-06]}, {\"t\": 6, \"energy\": 0.9998457633708233, \"work\": -0.0001390593541189209, \"absorbed\": 0.0, \"balance_error\": -1.5177275058874339e-05, \"final_mode_energies\": [1.366480560683332e-06]}, {\"t\": 8, \"energy\": 0.9998470570273423, \"work\": -0.0001390593541189209, \"absorbed\": 0.0, \"balance_error\": -1.3883618539855202e-05, \"final_mode_energies\": [1.3664719250823029e-06]}, {\"t\": 16, \"energy\": 0.6073839860837807, \"work\": -0.0001390593541189209, \"absorbed\": 0.3924354048495484, \"balance_error\": -4.154971255302309e-05, \"final_mode_energies\": [1.3661212037053043e-06]}, {\"t\": 32, \"energy\": 0.024348499757113305, \"work\": -0.0001390593541189209, \"absorbed\": 0.9754495772513947, \"balance_error\": -6.286363737420997e-05, \"final_mode_energies\": [1.3669295951016195e-06]}, {\"t\": 48, \"energy\": 0.008914472397034898, \"work\": -0.0001390593541189209, \"absorbed\": 0.9908832895746738, \"balance_error\": -6.31786741735243e-05, \"final_mode_energies\": [1.3663687634545071e-06]}], \"ground_action_at_ramp_end\": 6.385688658294247e-07, \"incident_energy_for_conditional_ground_threshold\": 4246670.369270936}\n{\"test\": \"trajectory\", \"name\": \"opens_during_passage\", \"start\": 3, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 1.000000000000001, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.8252069953494824e-06]}, {\"t\": 3, \"energy\": 0.9999857026920178, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -1.4297307983301977e-05, \"final_mode_energies\": [1.7420439804376195e-06]}, {\"t\": 6, \"energy\": 0.9746948010364497, \"work\": -0.02529222161675498, \"absorbed\": 0.0, \"balance_error\": -1.2977346796453487e-05, \"final_mode_energies\": [0.00018217378257751412]}, {\"t\": 8, \"energy\": 0.9746952544099661, \"work\": -0.02529222161675498, \"absorbed\": 0.0, \"balance_error\": -1.2523973280057638e-05, \"final_mode_energies\": [0.00018217347225374606]}, {\"t\": 16, \"energy\": 0.6114279613063065, \"work\": -0.02529222161675498, \"absorbed\": 0.3632424896931053, \"balance_error\": -3.732738383438808e-05, \"final_mode_energies\": [0.0001821678731035355]}, {\"t\": 32, \"energy\": 0.02946294970252831, \"work\": -0.02529222161675498, \"absorbed\": 0.9451870737420335, \"balance_error\": -5.7754938684376894e-05, \"final_mode_energies\": [0.00018217566315146242]}, {\"t\": 48, \"energy\": 0.012089993159695271, \"work\": -0.02529222161675498, \"absorbed\": 0.9625596839718, \"balance_error\": -5.810125175082295e-05, \"final_mode_energies\": [0.00018216974604267662]}], \"ground_action_at_ramp_end\": 8.51316393047514e-05, \"incident_energy_for_conditional_ground_threshold\": 31854.096824673903}\n{\"test\": \"trajectory\", \"name\": \"already_open\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 1.000000000000001, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [1.8252069953494824e-06]}, {\"t\": 3, \"energy\": 0.9999857241653083, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -1.4275834692822897e-05, \"final_mode_energies\": [1.825211004015278e-06]}, {\"t\": 6, \"energy\": 0.9999848064982556, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -1.5193501745502935e-05, \"final_mode_energies\": [1.8252142828719326e-06]}, {\"t\": 8, \"energy\": 0.9999861005623676, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -1.3899437633524414e-05, \"final_mode_energies\": [1.8252005271177522e-06]}, {\"t\": 16, \"energy\": 0.607343835593547, \"work\": 0.0, \"absorbed\": 0.39261457502384767, \"balance_error\": -4.158938260645506e-05, \"final_mode_energies\": [1.8247996898215594e-06]}, {\"t\": 32, \"energy\": 0.02437855005726418, \"work\": 0.0, \"absorbed\": 0.9755585441213249, \"balance_error\": -6.290582141199597e-05, \"final_mode_energies\": [1.8257509549368897e-06]}, {\"t\": 48, \"energy\": 0.008944630255921251, \"work\": 0.0, \"absorbed\": 0.99099214874548, \"balance_error\": -6.322099859978891e-05, \"final_mode_energies\": [1.8250891235590777e-06]}], \"ground_action_at_ramp_end\": 8.529394441418976e-07, \"incident_energy_for_conditional_ground_threshold\": 3179348.1939212834}\n{\"test\": \"trajectory\", \"name\": \"half_packet\", \"start\": 3, \"amplitude\": 0.5, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.2500000000000003, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [4.563017488373706e-07]}, {\"t\": 3, \"energy\": 0.24999642567300445, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -3.574326995825494e-06, \"final_mode_energies\": [4.3551099510940486e-07]}, {\"t\": 6, \"energy\": 0.24367370025911242, \"work\": -0.006323055404188745, \"absorbed\": 0.0, \"balance_error\": -3.244336699113372e-06, \"final_mode_energies\": [4.554344564437853e-05]}, {\"t\": 8, \"energy\": 0.24367381360249152, \"work\": -0.006323055404188745, \"absorbed\": 0.0, \"balance_error\": -3.1309933200144094e-06, \"final_mode_energies\": [4.5543368063436514e-05]}], \"ground_action_at_ramp_end\": 2.128290982618785e-05, \"incident_energy_for_conditional_ground_threshold\": 31854.096824673903}\n{\"test\": \"trajectory\", \"name\": \"quiet\", \"start\": 3, \"amplitude\": 0.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 3, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 6, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}, {\"t\": 8, \"energy\": 0.0, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.0]}], \"ground_action_at_ramp_end\": 0.0, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"trajectory\", \"name\": \"static_ground\", \"start\": null, \"amplitude\": 1.0, \"snapshots\": [{\"t\": 0.0, \"energy\": 0.999999999999802, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": 0.0, \"final_mode_energies\": [0.9999999999993306]}, {\"t\": 3, \"energy\": 0.9999996605591631, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -3.394406389300997e-07, \"final_mode_energies\": [0.9999996605586998]}, {\"t\": 6, \"energy\": 0.9999986673988801, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -1.3326009219438717e-06, \"final_mode_energies\": [0.9999986673984363]}, {\"t\": 8, \"energy\": 0.9999821449644526, \"work\": 0.0, \"absorbed\": 0.0, \"balance_error\": -1.785503534945665e-05, \"final_mode_energies\": [0.9999821449640786]}, {\"t\": 16, \"energy\": 0.999998196750124, \"work\": 0.0, \"absorbed\": 2.731588824856889e-09, \"balance_error\": -1.8005180891789152e-06, \"final_mode_energies\": [0.9999981966277228]}, {\"t\": 32, \"energy\": 0.9999934972538587, \"work\": 0.0, \"absorbed\": 8.627742470693502e-09, \"balance_error\": -6.494118200861543e-06, \"final_mode_energies\": [0.9999934971535651]}, {\"t\": 48, \"energy\": 0.9999877502470635, \"work\": 0.0, \"absorbed\": 1.4451590404652755e-08, \"balance_error\": -1.2235301148133537e-05, \"final_mode_energies\": [0.9999877501495251]}], \"ground_action_at_ramp_end\": 0.46730989060587763, \"incident_energy_for_conditional_ground_threshold\": null}\n{\"test\": \"controls\", \"early\": 1.3664779237710124e-06, \"passage\": 0.00018217378257751412, \"static\": 1.825211004015278e-06, \"four_times_half\": 0.00018217378257751412, \"quiet\": 0.0}\n",
+      "literal_stderr": ""
+    },
+    "formation_capture_wronskian_01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-wave",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/formation_capture_wronskian_01",
+        "--",
+        "python3",
+        "_scratch/s11c/formation_capture_wronskian.py",
+        "--step",
+        "0.125",
+        "--padding",
+        "10",
+        "--dt",
+        "0.018"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "65d2d5a2b87c1fbf045d1f508cde8c3275fed03312cdc3e1c38821cd9ad0b18b",
+      "literal_stdout": "{\"eigen_residual\": 6.709886933227703e-14, \"grid_step\": 0.125, \"normalized_packet_energy\": 0.999999999999998, \"omega\": 2.1353330603533496, \"padding\": 10.0, \"raw_energy\": 143.84890421222684, \"static_projection\": 1.7792767052061913e-06, \"three_eigenvalues\": [4.559647278638002, 6.350913592070483, 6.397121464812511]}\n{\"action\": 6.311734935909317e-07, \"conserved_symplectic_mode_error\": 3.024265771145451e-08, \"efficiency\": 1.3477656276834393e-06, \"max_dt\": 0.018, \"ramp\": [0.0, 3.0]}\n{\"action\": 8.518061908681328e-05, \"conserved_symplectic_mode_error\": 9.09174407981439e-08, \"efficiency\": 0.00018188899203743793, \"max_dt\": 0.018, \"ramp\": [3.0, 6.0]}\n",
+      "literal_stderr": ""
+    },
+    "formation_capture_comparison_01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-comparison",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/formation_capture_comparison_01",
+        "--",
+        "python3",
+        "_scratch/s11c/formation_capture_comparison.py"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 1073741824,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "e9c3a06e1383597f79e15ef26cc31c8ed825648fa68d720f7470ec8633437e00",
+      "literal_stdout": "{\"mesh\": \"c125\", \"step\": 0.125, \"dt\": 0.02, \"radius_padding\": 10.0, \"captured_percent\": 0.01822492228049227, \"ground_at_t48_percent\": 0.018219323350784224, \"quiet\": 0.0, \"four_times_half\": 0.0001822492228049227, \"early_percent\": 0.00013464002640709586, \"static_initial_percent\": 0.00017792767052061663, \"static_at_t3_percent\": 0.00017793654730874, \"absorbed_percent\": 96.23599000808338, \"stored_at_t48_percent\": 1.2016491645425509, \"ramp_work_percent\": -2.4221037879521674, \"final_balance_error_percent\": -0.14025703942169876, \"max_sampled_balance_error_percent\": 0.14025703942169876, \"incident_energy_for_earlier_bend_threshold\": 31772.854301333813, \"conditional_required_stored_energy\": 5.790578002712144, \"pure_mode_absorbed_fraction\": 1.3107340310286584e-08}\n{\"mesh\": \"mid\", \"step\": 0.1, \"dt\": 0.0125, \"radius_padding\": 10.0, \"captured_percent\": 0.018272090988852477, \"ground_at_t48_percent\": 0.018269625011963542, \"quiet\": 0.0, \"four_times_half\": 0.00018272090988852478, \"early_percent\": 0.00013663163837048987, \"static_initial_percent\": 0.00018119120097979586, \"static_at_t3_percent\": 0.00018119492273924084, \"absorbed_percent\": 96.26410539173284, \"stored_at_t48_percent\": 1.2071255138608923, \"ramp_work_percent\": -2.4732492844736638, \"final_balance_error_percent\": -0.05551980993318273, \"max_sampled_balance_error_percent\": 0.05551980993318273, \"incident_energy_for_earlier_bend_threshold\": 31727.411875072034, \"conditional_required_stored_energy\": 5.797261566221114, \"pure_mode_absorbed_fraction\": 1.3821940020322129e-08}\n{\"mesh\": \"wide\", \"step\": 0.1, \"dt\": 0.0125, \"radius_padding\": 14.0, \"captured_percent\": 0.01827209098920109, \"ground_at_t48_percent\": 0.018269624182438108, \"quiet\": 0.0, \"four_times_half\": 0.0001827209098920109, \"early_percent\": 0.00013663163842824927, \"static_initial_percent\": 0.00018119120104949436, \"static_at_t3_percent\": 0.0001811949228089422, \"absorbed_percent\": 96.28724138213617, \"stored_at_t48_percent\": 1.1839850675760055, \"ramp_work_percent\": -2.4732492844736638, \"final_balance_error_percent\": -0.05552426581473535, \"max_sampled_balance_error_percent\": 0.05552426581473535, \"incident_energy_for_earlier_bend_threshold\": 31727.411874460777, \"conditional_required_stored_energy\": 5.797261566220031, \"pure_mode_absorbed_fraction\": 1.3819725147581804e-08}\n{\"mesh\": \"f0625\", \"step\": 0.0625, \"dt\": 0.01, \"radius_padding\": 10.0, \"captured_percent\": 0.018235764694981078, \"ground_at_t48_percent\": 0.018234094555409083, \"quiet\": 0.0, \"four_times_half\": 0.00018235764694981077, \"early_percent\": 0.0001367471807443029, \"static_initial_percent\": 0.00018225412482209078, \"static_at_t3_percent\": 0.00018225660399116947, \"absorbed_percent\": 96.23707112123931, \"stored_at_t48_percent\": 1.2096280244497812, \"ramp_work_percent\": -2.5172133916424193, \"final_balance_error_percent\": -0.036087462668350084, \"max_sampled_balance_error_percent\": 0.036087462668350084, \"incident_energy_for_earlier_bend_threshold\": 31814.929050335195, \"conditional_required_stored_energy\": 5.801695599494312, \"pure_mode_absorbed_fraction\": 1.4310205600760028e-08}\n{\"mesh\": \"f040\", \"step\": 0.04, \"dt\": 0.004, \"radius_padding\": 10.0, \"captured_percent\": 0.018217378257751413, \"ground_at_t48_percent\": 0.01821697460426766, \"quiet\": 0.0, \"four_times_half\": 0.00018217378257751412, \"early_percent\": 0.00013664779237710124, \"static_initial_percent\": 0.00018252069953494823, \"static_at_t3_percent\": 0.0001825211004015278, \"absorbed_percent\": 96.25596839718, \"stored_at_t48_percent\": 1.2089993159695271, \"ramp_work_percent\": -2.529222161675498, \"final_balance_error_percent\": -0.005810125175082295, \"max_sampled_balance_error_percent\": 0.005810125175082295, \"incident_energy_for_earlier_bend_threshold\": 31854.096824673903, \"conditional_required_stored_energy\": 5.80298130914122, \"pure_mode_absorbed_fraction\": 1.4451590404652755e-08}\n{\"mesh\": \"f_time\", \"step\": 0.0625, \"dt\": 0.0025, \"radius_padding\": 10.0, \"captured_percent\": 0.018226030937698583, \"ground_at_t48_percent\": 0.018225771405915362, \"quiet\": 0.0, \"four_times_half\": 0.00018226030937698584, \"early_percent\": 0.000136781864685049, \"static_initial_percent\": 0.00018225412482209078, \"static_at_t3_percent\": 0.000182254279639402, \"absorbed_percent\": 96.27226527030288, \"stored_at_t48_percent\": 1.2095565145374034, \"ramp_work_percent\": -2.5159226440927696, \"final_balance_error_percent\": -0.002255571066813941, \"max_sampled_balance_error_percent\": 0.002255571066813941, \"incident_energy_for_earlier_bend_threshold\": 31831.92006710644, \"conditional_required_stored_energy\": 5.801695599494312, \"pure_mode_absorbed_fraction\": 1.4311517137442707e-08}\n{\"kind\": \"forward_backward_same_grid\", \"backward\": 0.00018188899203743793, \"forward\": 0.0001822492228049227, \"relative_difference\": 0.001980497903966816}\n{\"kind\": \"optimal_initial_feed\", \"grid_step\": 0.125, \"optimal_percent\": 2.410584332606214, \"min_initial_feed_energy_for_earlier_bend_threshold\": 240.2147033143467}\n{\"kind\": \"optimal_initial_feed\", \"grid_step\": 0.0625, \"optimal_percent\": 2.580948404290262, \"min_initial_feed_energy_for_earlier_bend_threshold\": 224.78929024114788}\n",
+      "literal_stderr": ""
+    },
+    "formation_wronskian_limit01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-proof",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/formation_wronskian_limit01",
+        "--",
+        "python3",
+        "_scratch/s11c/formation_wronskian_source/adjoint.py",
+        "--step",
+        "0.125",
+        "--pad",
+        "10",
+        "--start",
+        "3",
+        "--end",
+        "6",
+        "--dt",
+        "0.0125",
+        "--ramp",
+        "cubic"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "022864a22ab17bd85a639f1d16416c8aa94dea3dc0b2e4dabd17b95b321cdddd",
+      "literal_stdout": "{\"args\": {\"step\": 0.125, \"dt\": 0.0125, \"pad\": 10.0, \"start\": 3.0, \"end\": 6.0, \"ramp\": \"cubic\"}, \"eigenvalues\": [4.559647278637995, 6.350913592070494, 6.397121464812523], \"omega\": 2.1353330603533482, \"eigen_residual\": 6.154462595318716e-14, \"canonical_pairing\": 0.9999999851658232, \"feed_eigenvalues\": [0.01826166243039038, 0.02410584332606214], \"all_eigenvalues\": [0.7206319295264795, 0.7474038956081623]}\n",
+      "literal_stderr": ""
+    },
+    "formation_wronskian_limit02": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-proof",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/formation_wronskian_limit02",
+        "--",
+        "python3",
+        "_scratch/s11c/formation_wronskian_source/adjoint.py",
+        "--step",
+        "0.0625",
+        "--pad",
+        "10",
+        "--start",
+        "3",
+        "--end",
+        "6",
+        "--dt",
+        "0.0125",
+        "--ramp",
+        "cubic"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "5a32a3d725679c3379735e005db48588344e58202021505a1dfc9312ed9dae91",
+      "literal_stdout": "{\"args\": {\"step\": 0.0625, \"dt\": 0.0125, \"pad\": 10.0, \"start\": 3.0, \"end\": 6.0, \"ramp\": \"cubic\"}, \"eigenvalues\": [4.57717263902385, 6.351088045873777, 6.3976159824895085], \"omega\": 2.139432784413628, \"eigen_residual\": 2.533632110292734e-13, \"canonical_pairing\": 0.9999999851669978, \"feed_eigenvalues\": [0.019329007766493565, 0.02580948404290262], \"all_eigenvalues\": [0.7224187480182644, 0.7488753498661262]}\n",
+      "literal_stderr": ""
+    },
+    "formation_wronskian_saturation01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-proof",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/formation_wronskian_saturation01",
+        "--",
+        "python3",
+        "_scratch/s11c/formation_wronskian_source/saturation.py"
+      ],
+      "guarded_exit": 1,
+      "worker_exit": 1,
+      "limits_verified": true,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "b33ed37c5cfd5ba1c0ae590a0944114ec716d6d9f0222722f561f2dd7d8f730d",
+      "literal_stdout": "{\"step\": 0.0625, \"pad\": 12.0, \"dt\": 0.00625, \"omega\": 2.1394327844132115, \"largest_gram_eigenvalue\": 0.025809491899537264, \"initial_energy\": 1.0000000000000016, \"initial_final_mode_projection\": 0.0005785167872942268, \"final_bound_energy\": 0.02581406083048735, \"final_total_energy\": 0.9414104527563176, \"work_on_field\": -0.058696087986275715, \"energy_balance_residual\": 0.00010654074259178886, \"static_feed_gram_eigenvalues\": [0.0003183050648047868, 0.0011334546322435918]}\n",
+      "literal_stderr": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/_scratch/s11c/formation_wronskian_source/saturation.py\", line 62, in <module>\n    assert abs(Ebound-l[-1])<.00002*l[-1]+1e-6 and abs(Eout-E0-wdrive)<2e-4\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    "formation_wronskian_saturation_fine01": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "formation-proof",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/formation_wronskian_saturation_fine01",
+        "--",
+        "python3",
+        "_scratch/s11c/formation_wronskian_source/saturation_fine.py"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "duration_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "stdout_sha256": "7d84b4a873e62c757f5aaf04143b13a2e42507347344b0a1e96e493c3ce6078a",
+      "literal_stdout": "{\"step\": 0.0625, \"pad\": 12.0, \"dt\": 0.0015625, \"dt_backward\": 0.00625, \"omega\": 2.1394327844132115, \"largest_gram_eigenvalue\": 0.025809491899537264, \"initial_energy\": 1.0000000000000016, \"initial_final_mode_projection\": 0.0005785167872942268, \"final_bound_energy\": 0.025809777922269725, \"final_total_energy\": 0.9413149836783412, \"work_on_field\": -0.058691513786745086, \"energy_balance_residual\": 6.497465084742693e-06, \"static_feed_gram_eigenvalues\": [0.0003183050648047868, 0.0011334546322435918]}\n",
+      "literal_stderr": ""
+    }
+  },
+  "review_diagnostic": "The first extra forward optimum check failed its error tolerance at time step .00625. Its output is retained separately and is not used as a successful check. The refined forward check kept the tolerance and the target unchanged.",
+  "local_reviews": {
+    "formation_spectrum": {
+      "scope": "Scoped clear for the ramp-end ground-mode projection in the archived scalar model, the quiet and half-amplitude controls, and the finite-time sponge energy ledger. A physical formation energy, support lifetime and free-fall response remain open.",
+      "method": "Independent fourth-order backward integration of one complex mode and a conserved symplectic pairing, independently reconstructed geometry and Laplacian; source review of the forward damping ledger.",
+      "disposition": "Quote the capture before activating the sponge. Report remote removal by the observation time separately from the bound-mode energy. The incident-energy threshold is specific to this pulse and the earlier two-bend benchmark.",
+      "report_review": "Scoped clear for the source-grounded interpretation and finite-time energy ledger with that qualification.",
+      "report_qualification": "Identify the table and energy-budget mesh/time step and distinguish spatial-refinement variation from continuum precision. The report now states both meshes and their observed readings."
+    },
+    "formation_review": {
+      "scope": "Scoped clear for the nonpositive work of the prescribed monotone scalar well, the quiet classical solution and the finite-grid ground-mode capture limit for wave data initially confined to the feeding half-space.",
+      "method": "Two backward canonical solutions, homogeneous energy norm restricted to the feeding half-space, and direct forward propagation of the optimum.",
+      "disposition": "Scope the optimum to the specified ramp, time, discretization and support. Inferring a material lifetime would require its physical radiation channels, and direct drive would require a symmetry-allowed component of formation stress."
+    }
+  },
+  "formal_status": "Independent local research checks complete; formal review and commit pending."
+}

@@ -1,0 +1,251 @@
+{
+  "question": "Does structural preparation alone, at identical fixed gap, density, temperature and bond parameters, yield a cold shear-free endpoint?",
+  "working_base": "1dc45d09de9a8ed1d02337cba71a123d090453f7",
+  "limits": "Finite cold overdamped bilayers, response within each energy minimum at fixed cell shape under in-plane simple shear; no identification with physical bulk.",
+  "source_hashes": {
+    "software/stage1_solver/tools/neutral_patch_sites.py": "00595a5383311d4e20ed2af851cbd9d8c2bd59255b81c312829843ed8061f827",
+    "software/stage1_solver/tools/neutral_patch_zero_load.py": "8a317b01ab4598c9e47e167ab11388323f70e96a6871ac52e884bf0ad5fdbb96",
+    "software/stage1_solver/tools/neutral_patch_structural_endpoints.py": "cbabe19929aafcce9fdd63d8cd70ea6f852d765432798efb038cbeb0dc850b8d",
+    "software/stage1_solver/tools/neutral_patch_endpoint_pulse.py": "2e30c5b766a2bf89976dddf10468f3b2addd58183a047329aa97742505e6e1a2",
+    "research/pde_ledger_v3/_measurements/neutral_patch_zero_load.json": "495e9fc18800c65ef83eb37e92201bf1a56f43520748eb4bb361ee741b55e247"
+  },
+  "earlier_source": {
+    "text": "\"\"\"Cold structural endpoints of the neutral Morse bilayer at matched density.\"\"\"\nimport argparse\nfrom itertools import product\n\nimport numpy as np\nfrom scipy.linalg import eigh\nfrom scipy.optimize import minimize\n\nfrom neutral_patch_sites import BETWEEN, GAP, WITHIN, emit, morse\n\n\nPITCH = .9975140800337228  # independently measured ordered zero-load pitch\nPULSE_TIME = 1.           # native unit-mobility patch time\n\n\nclass Cell:\n    def __init__(self, side, cutoff):\n        self.side = side\n        self.n = 2*side**2\n        self.box = PITCH*side*np.array([1., np.sqrt(3.)/2])\n        self.area = np.prod(self.box)\n        self.cutoff = cutoff\n        # Expand around each pair's actual nearest rectangular image. Truncate\n        # on physical bond radius; preserve self-images with one representative\n        # of each opposite pair. No neighbour list refers to the initial packing.\n        i, j = np.triu_indices(self.n, 1)\n        extent = np.ceil(cutoff/self.box+.6).astype(int)\n        tiles = list(product(range(-extent[0], extent[0]+1), range(-extent[1], extent[1]+1)))\n        pairs, shifts = [], []\n        for a, b in tiles:\n            min_distance = np.maximum(np.abs([a,b])-.5, 0) * self.box\n            if np.linalg.norm(min_distance) > 1.01*cutoff:\n                continue\n            ii, jj = i, j\n            if a > 0 or (a == 0 and b > 0):\n                ii, jj = np.r_[i,np.arange(self.n)], np.r_[j,np.arange(self.n)]\n            pairs.append((ii,jj))\n            shifts.append(np.tile([a,b], (len(ii),1)))\n        self.i, self.j = map(np.concatenate, zip(*pairs))\n        self.shifts = np.concatenate(shifts)*self.box\n\n    def bonds(self, positions, strain):\n        delta = positions[self.j]-positions[self.i]\n        delta += self.shifts - self.box*np.rint(delta/self.box)\n        dy = delta[:,1]\n        dx = delta[:,0] + strain*dy\n        cross = (self.i//(self.n//2) != self.j//(self.n//2))\n        r2 = dx**2+dy**2+cross*GAP**2\n        keep = r2 < self.cutoff**2\n        params = [np.where(cross[keep], b, a) for a,b in zip(WITHIN,BETWEEN)]\n        return self.i[keep], self.j[keep], dx[keep], dy[keep], np.sqrt(r2[keep]), params\n\n    def read(self, positions, strain=0., tangent=False):\n        i,j,x,y,r,params = self.bonds(positions,strain)\n        e,first = morse(r,*params)\n        g = first/r\n        def incidence(values):\n            return np.bincount(j, values, minlength=self.n)-np.bincount(i, values, minlength=self.n)\n        # Variables supplied to the minimizer are coordinates in the unsheared cell.\n        grad = np.column_stack((incidence(g*x),incidence(g*(y+strain*x))))\n        tension = (g*x)@y/self.area\n        if not tangent:\n            return e.sum(), grad, tension\n        if strain != 0.:\n            raise ValueError('Tangent is defined at the unstrained preparation')\n        depth,alpha,length = params\n        z = np.exp(-alpha*(r-length))\n        s = (2*depth*alpha**2*z*(2*z-1)-g)/r**2\n        xx,xy,yy = g+s*x*x,s*x*y,g+s*y*y\n        hess = np.zeros((2*self.n,2*self.n))\n        for a,b,block in ((0,0,xx),(0,1,xy),(1,0,xy),(1,1,yy)):\n            for u,v,sign in ((i,i,1),(j,j,1),(i,j,-1),(j,i,-1)):\n                np.add.at(hess,(2*u+a,2*v+b),sign*block)\n        # In unsheared coordinates there is also incidence(g*x) in the y\n        # component. It vanishes at force balance; retain it for consistency.\n        coupling = np.column_stack((incidence(xx*y),incidence(xy*y+g*x))).ravel()\n        return hess, coupling, xx@(y*y)\n\n    def settle(self, seed, strain=0.):\n        # Remove common translation for this minimization only.\n        def state(flat):\n            return np.vstack((seed[:1], flat.reshape(-1,2)))\n        def objective(flat):\n            energy,grad,_ = self.read(state(flat),strain)\n            return energy, grad[1:].ravel()\n        fit = minimize(objective, seed[1:].ravel(), jac=True, method='L-BFGS-B',\n                       options=dict(ftol=2e-16,gtol=1e-10,maxiter=8000,maxls=70,maxcor=15))\n        pos = state(fit.x)\n        if strain == 0.:\n            for _ in range(3):\n                _,grad,_ = self.read(pos)\n                if np.max(abs(grad)) < 1e-9:\n                    break\n                hess = self.read(pos,tangent=True)[0][2:,2:]\n                pos[1:] -= np.linalg.solve(hess,grad[1:].ravel()).reshape(-1,2)\n        energy,grad,stress = self.read(pos,strain)\n        residual = np.max(abs(grad))\n        if residual > (1e-7 if strain == 0. else 2e-5):\n            raise ArithmeticError(f'Unresolved site forces at shear {strain}: {residual}')\n        return pos,energy,stress,residual\n\n\ndef preparation(cell, seed):\n    if seed == 0:\n        i,j = np.indices((cell.side,cell.side))\n        plane = PITCH*np.column_stack(((i+.5*(j%2)).ravel(),(j*np.sqrt(3.)/2).ravel()))\n        return np.tile(plane,(2,1))\n    rng = np.random.default_rng(seed)\n    planes = []\n    for _ in range(2):\n        plane = []\n        while len(plane) < cell.n//2:\n            candidate = rng.random(2)*cell.box\n            delta = np.asarray(plane).reshape(-1,2)-candidate\n            delta -= cell.box*np.rint(delta/cell.box)\n            if np.all(np.sum(delta**2,axis=1) > .55**2):\n                plane.append(candidate)\n        planes.extend(plane)\n    return np.array(planes)\n\n\ndef structure(cell, positions):\n    moments = []\n    six = []\n    for plane in np.split(positions,2):\n        delta = plane[:,None]-plane\n        delta -= cell.box*np.rint(delta/cell.box)\n        radii = np.linalg.norm(delta,axis=2)\n        near = (radii > 0.) & (radii < 1.35*PITCH)\n        count = near.sum(axis=1)\n        moment = np.sum(near*np.exp(6j*np.arctan2(delta[:,:,1],delta[:,:,0])),axis=1)\n        moments.extend(moment/np.maximum(count,1))\n        six.extend(count==6)\n    return dict(local_sixfold=float(np.mean(np.abs(moments))),\n                coherent_sixfold=float(abs(np.mean(moments))),six_neighbors=float(np.mean(six)))\n\n\ndef run(side, seed):\n    cell = Cell(side,6.)\n    initial = preparation(cell,seed)\n    pos,energy,stress,residual = cell.settle(initial)\n    hess,b,born = cell.read(pos,tangent=True)\n    eig,modes = eigh(hess)\n    if max(abs(eig[:2]))>1e-7 or eig[2]<1e-7:\n        raise ArithmeticError(f'State is not a resolved fixed-cell local minimum: {eig[:3]}')\n    np.testing.assert_allclose(modes[:,:2].T@b,0,atol=2e-7)\n    k = eig[2:]\n    weights = (modes[:,2:].T@b)**2/(k*cell.area)\n    affine = born/cell.area\n    relaxed = affine-weights.sum()\n    # Quasistatic strain controls: start on the linear equilibrium branch, then\n    # independently allow all sites to move again and differentiate actual stress.\n    correction = -(modes[:,2:]@((modes[:,2:].T@b)/k)).reshape(-1,2)\n    correction -= correction[0].copy()\n    checks = []\n    for h in (.0002,.0001):\n        sides = [cell.settle(pos+s*h*correction,s*h) for s in (-1,1)]\n        _,em,sm,_ = sides[0]\n        _,ep,sp,_ = sides[1]\n        checks.append(dict(strain=h,stress_slope=(sp-sm)/(2*h),\n                           energy_curvature=(ep+em-2*energy)/(cell.area*h**2)))\n        np.testing.assert_allclose([checks[-1]['stress_slope'],checks[-1]['energy_curvature']],\n                                   relaxed,atol=.003,rtol=5e-4)\n    large = Cell(side,7.)\n    big_e,big_g,big_s = large.read(pos)\n    np.testing.assert_allclose([big_e,big_s],[energy,stress],rtol=0,atol=2e-8)\n    np.testing.assert_allclose(big_g,0.,rtol=0,atol=2e-7)\n    def held(t):\n        return relaxed + weights@np.exp(-k*t)\n    times = [0.,.5,1.,1.5,2.,4.]\n    pulse = [held(t) if t<PULSE_TIME else\n             weights@(np.exp(-k*t)-np.exp(-k*(t-PULSE_TIME))) for t in times]\n    emit(test='structural_endpoint',side=side,sites=cell.n,seed=seed,pitch=PITCH,\n         initial=structure(cell,initial),resting=structure(cell,pos),\n         energy_per_site=energy/cell.n,baseline_shear=stress,max_site_force=residual,\n         lowest_internal_stiffness=k[0],affine_shear_modulus=affine,\n         relaxed_shear_modulus=relaxed,times=times,held=[held(t) for t in times],\n         pulse_duration=PULSE_TIME,pulse=pulse,checks=checks)\n\n\nif __name__=='__main__':\n    args=argparse.ArgumentParser(description=__doc__)\n    args.add_argument('side',type=int,choices=[4,6])\n    args.add_argument('seed',type=int)\n    pars=args.parse_args()\n    run(pars.side,pars.seed)\n",
+    "sha256": "76523cf7c0947dbb36245dd332c7a3c69662706585fb0764c61e879bd5b924a7"
+  },
+  "runs": {
+    "structural_endpoint_4_0_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_structural_endpoints.py",
+        "4",
+        "0"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "4e37e1559fef3cf5a4c2e0f7055c74c37ce4813843a24a9000839258df144dfe",
+      "literal_stdout": "{\"test\": \"structural_endpoint\", \"side\": 4, \"sites\": 32, \"seed\": 0, \"pitch\": 0.9975140800337228, \"initial\": {\"local_sixfold\": 1.0, \"coherent_sixfold\": 1.0, \"six_neighbors\": 1.0}, \"resting\": {\"local_sixfold\": 1.0, \"coherent_sixfold\": 1.0, \"six_neighbors\": 1.0}, \"energy_per_site\": -3.3123855370866107, \"baseline_shear\": 2.0042207199118215e-17, \"max_site_force\": 7.741694928298763e-14, \"lowest_internal_stiffness\": 3.4714968447936996, \"affine_shear_modulus\": 87.09086570191887, \"relaxed_shear_modulus\": 87.09086570191887, \"times\": [0.0, 0.5, 1.0, 1.5, 2.0, 4.0], \"held\": [87.09086570191887, 87.09086570191887, 87.09086570191887, 87.09086570191887, 87.09086570191887, 87.09086570191887], \"pulse_duration\": 1.0, \"pulse\": [87.09086570191887, 87.09086570191887, -7.4975010283833275e-28, -1.5384684123167754e-30, -2.711831005920001e-31, -2.617934489534969e-34], \"checks\": [{\"strain\": 0.0002, \"stress_slope\": 87.0908603799592, \"energy_curvature\": 87.09086303212334}, {\"strain\": 0.0001, \"stress_slope\": 87.0908643713293, \"energy_curvature\": 87.09086509351972}]}\n",
+      "script_sha256": "76523cf7c0947dbb36245dd332c7a3c69662706585fb0764c61e879bd5b924a7"
+    },
+    "structural_endpoint_4_191_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_structural_endpoints.py",
+        "4",
+        "191"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "5eee24f948dbd3181b327886f6e55b8104403073d0dce46622c58dd10fabc90b",
+      "literal_stdout": "{\"test\": \"structural_endpoint\", \"side\": 4, \"sites\": 32, \"seed\": 191, \"pitch\": 0.9975140800337228, \"initial\": {\"local_sixfold\": 0.3605954484902928, \"coherent_sixfold\": 0.13785100783036788, \"six_neighbors\": 0.3125}, \"resting\": {\"local_sixfold\": 1.0, \"coherent_sixfold\": 1.0, \"six_neighbors\": 1.0}, \"energy_per_site\": -3.3123855370866107, \"baseline_shear\": 9.33441697783823e-17, \"max_site_force\": 7.730271534922648e-14, \"lowest_internal_stiffness\": 3.47149684479416, \"affine_shear_modulus\": 87.09086570191891, \"relaxed_shear_modulus\": 87.09086570191891, \"times\": [0.0, 0.5, 1.0, 1.5, 2.0, 4.0], \"held\": [87.09086570191891, 87.09086570191891, 87.09086570191891, 87.09086570191891, 87.09086570191891, 87.09086570191891], \"pulse_duration\": 1.0, \"pulse\": [87.09086570191891, 87.09086570191891, -5.490562076694933e-28, -1.3011471104427138e-30, -2.2935089528730433e-31, -2.21409674005136e-34], \"checks\": [{\"strain\": 0.0002, \"stress_slope\": 87.09086037996023, \"energy_curvature\": 87.09086298058843}, {\"strain\": 0.0001, \"stress_slope\": 87.09086437133406, \"energy_curvature\": 87.09086509351972}]}\n",
+      "script_sha256": "76523cf7c0947dbb36245dd332c7a3c69662706585fb0764c61e879bd5b924a7"
+    },
+    "structural_endpoint_4_817_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_structural_endpoints.py",
+        "4",
+        "817"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "aaf9946e90d43fb1870c1a869b67d9615ccff95e27209b7242042ee2eb93a92f",
+      "literal_stdout": "{\"test\": \"structural_endpoint\", \"side\": 4, \"sites\": 32, \"seed\": 817, \"pitch\": 0.9975140800337228, \"initial\": {\"local_sixfold\": 0.31837695219287665, \"coherent_sixfold\": 0.0647242774902581, \"six_neighbors\": 0.34375}, \"resting\": {\"local_sixfold\": 1.0, \"coherent_sixfold\": 1.0, \"six_neighbors\": 1.0}, \"energy_per_site\": -3.3123855370866115, \"baseline_shear\": -7.632125407831431e-16, \"max_site_force\": 1.0273205897082249e-13, \"lowest_internal_stiffness\": 3.471496844793503, \"affine_shear_modulus\": 87.09086570191887, \"relaxed_shear_modulus\": 87.09086570191887, \"times\": [0.0, 0.5, 1.0, 1.5, 2.0, 4.0], \"held\": [87.09086570191887, 87.09086570191887, 87.09086570191887, 87.09086570191887, 87.09086570191887, 87.09086570191887], \"pulse_duration\": 1.0, \"pulse\": [87.09086570191887, 87.09086570191887, -9.410662735111466e-28, -3.2942735341634324e-30, -5.806757578126276e-31, -5.605699950688334e-34], \"checks\": [{\"strain\": 0.0002, \"stress_slope\": 87.09086037995323, \"energy_curvature\": 87.09086308365825}, {\"strain\": 0.0001, \"stress_slope\": 87.09086437133199, \"energy_curvature\": 87.090865505799}]}\n",
+      "script_sha256": "76523cf7c0947dbb36245dd332c7a3c69662706585fb0764c61e879bd5b924a7"
+    },
+    "structural_endpoint_4_1321_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_structural_endpoints.py",
+        "4",
+        "1321"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "a2ab5baf5629de4da35d8160260abd123a52be27139fb84ae2f842523d5a8133",
+      "literal_stdout": "{\"test\": \"structural_endpoint\", \"side\": 4, \"sites\": 32, \"seed\": 1321, \"pitch\": 0.9975140800337228, \"initial\": {\"local_sixfold\": 0.39648585067905906, \"coherent_sixfold\": 0.13363938786701346, \"six_neighbors\": 0.375}, \"resting\": {\"local_sixfold\": 1.0, \"coherent_sixfold\": 1.0, \"six_neighbors\": 1.0}, \"energy_per_site\": -3.3123855370866115, \"baseline_shear\": -1.238878185149209e-16, \"max_site_force\": 9.040638211932638e-14, \"lowest_internal_stiffness\": 3.4714968447948586, \"affine_shear_modulus\": 87.09086570191897, \"relaxed_shear_modulus\": 87.09086570191897, \"times\": [0.0, 0.5, 1.0, 1.5, 2.0, 4.0], \"held\": [87.09086570191897, 87.09086570191897, 87.09086570191897, 87.09086570191897, 87.09086570191897, 87.09086570191897], \"pulse_duration\": 1.0, \"pulse\": [87.09086570191897, 87.09086570191897, -6.9106812193664925e-28, -9.867616242437454e-31, -1.739347227835229e-31, -1.6791227355540256e-34], \"checks\": [{\"strain\": 0.0002, \"stress_slope\": 87.09086037995226, \"energy_curvature\": 87.09086303212334}, {\"strain\": 0.0001, \"stress_slope\": 87.09086437133136, \"energy_curvature\": 87.090865505799}]}\n",
+      "script_sha256": "76523cf7c0947dbb36245dd332c7a3c69662706585fb0764c61e879bd5b924a7"
+    },
+    "structural_endpoint_6_0_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_structural_endpoints.py",
+        "6",
+        "0"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "a52aeb99544fea4b16e92cc540e2a307ceb3bd5c49742208538f2abc43e9c964",
+      "literal_stdout": "{\"test\": \"structural_endpoint\", \"side\": 6, \"sites\": 72, \"seed\": 0, \"pitch\": 0.9975140800337228, \"initial\": {\"local_sixfold\": 1.0, \"coherent_sixfold\": 1.0, \"six_neighbors\": 1.0}, \"resting\": {\"local_sixfold\": 1.0, \"coherent_sixfold\": 1.0, \"six_neighbors\": 1.0}, \"energy_per_site\": -3.3123855370866107, \"baseline_shear\": -8.782640750923565e-17, \"max_site_force\": 1.378371615352761e-13, \"lowest_internal_stiffness\": 3.4714968447947268, \"affine_shear_modulus\": 87.09086570191968, \"relaxed_shear_modulus\": 87.09086570191968, \"times\": [0.0, 0.5, 1.0, 1.5, 2.0, 4.0], \"held\": [87.09086570191968, 87.09086570191968, 87.09086570191968, 87.09086570191968, 87.09086570191968, 87.09086570191968], \"pulse_duration\": 1.0, \"pulse\": [87.09086570191968, 87.09086570191968, -2.57055996585696e-27, -4.64274003469008e-32, -8.18366806507885e-33, -7.900310466134706e-36], \"checks\": [{\"strain\": 0.0002, \"stress_slope\": 87.09086037995704, \"energy_curvature\": 87.09086303212332}, {\"strain\": 0.0001, \"stress_slope\": 87.09086437132437, \"energy_curvature\": 87.0908650019021}]}\n",
+      "script_sha256": "76523cf7c0947dbb36245dd332c7a3c69662706585fb0764c61e879bd5b924a7"
+    },
+    "structural_endpoint_6_191_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_structural_endpoints.py",
+        "6",
+        "191"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "f025d6f22764cfb20f4cf2a159813534a41553d6a018385b3eac231039b8037b",
+      "literal_stdout": "{\"test\": \"structural_endpoint\", \"side\": 6, \"sites\": 72, \"seed\": 191, \"pitch\": 0.9975140800337228, \"initial\": {\"local_sixfold\": 0.3725607197041857, \"coherent_sixfold\": 0.09555866223839779, \"six_neighbors\": 0.3333333333333333}, \"resting\": {\"local_sixfold\": 0.9574928138591908, \"coherent_sixfold\": 0.67520438752454, \"six_neighbors\": 0.8611111111111112}, \"energy_per_site\": -3.0597195412097182, \"baseline_shear\": -3.446564785598346, \"max_site_force\": 2.193194640731588e-11, \"lowest_internal_stiffness\": 0.18358111495426874, \"affine_shear_modulus\": 120.633561537483, \"relaxed_shear_modulus\": 75.42606106815225, \"times\": [0.0, 0.5, 1.0, 1.5, 2.0, 4.0], \"held\": [120.63356153748302, 75.42643918083063, 75.42606107266862, 75.42606106815231, 75.42606106815225, 75.42606106815225], \"pulse_duration\": 1.0, \"pulse\": [120.63356153748302, 75.42643918083063, -45.207500464814395, -0.0003781126783252172, -4.516369797648542e-09, -2.008409315213359e-24], \"checks\": [{\"strain\": 0.0002, \"stress_slope\": 75.42560379955376, \"energy_curvature\": 75.4259825076508}, {\"strain\": 0.0001, \"stress_slope\": 75.42600924197895, \"energy_curvature\": 75.42604160101406}]}\n",
+      "script_sha256": "76523cf7c0947dbb36245dd332c7a3c69662706585fb0764c61e879bd5b924a7"
+    },
+    "structural_endpoint_6_817_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_structural_endpoints.py",
+        "6",
+        "817"
+      ],
+      "exit_code": 1,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "literal_stdout": "",
+      "literal_stderr": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/neutral_patch_structural_endpoints.py\", line 186, in <module>\n    run(pars.side,pars.seed)\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/neutral_patch_structural_endpoints.py\", line 162, in run\n    np.testing.assert_allclose([checks[-1]['stress_slope'],checks[-1]['energy_curvature']],\n  File \"/usr/lib/python3/dist-packages/numpy/testing/_private/utils.py\", line 1504, in assert_allclose\n    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),\n  File \"/usr/lib/python3.12/contextlib.py\", line 81, in inner\n    return func(*args, **kwds)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3/dist-packages/numpy/testing/_private/utils.py\", line 797, in assert_array_compare\n    raise AssertionError(msg)\nAssertionError: \nNot equal to tolerance rtol=0.0005, atol=0.003\n\nMismatched elements: 2 / 2 (100%)\nMax absolute difference: 0.04453515\nMax relative difference: 0.00252096\n x: array([17.621378, 17.643831])\n y: array(17.665914)\n",
+      "script_sha256": "76523cf7c0947dbb36245dd332c7a3c69662706585fb0764c61e879bd5b924a7"
+    },
+    "structural_endpoint_6_817_02": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_structural_endpoints.py",
+        "6",
+        "817",
+        "--refine-strain"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "102d2c4b2abcf6ed140f07da5fb8f06d1f88cfb3c6c60cfd89180c365864a035",
+      "literal_stdout": "{\"test\": \"structural_endpoint\", \"side\": 6, \"sites\": 72, \"seed\": 817, \"pitch\": 0.9975140800337228, \"initial\": {\"local_sixfold\": 0.3567157487259685, \"coherent_sixfold\": 0.04470247906382685, \"six_neighbors\": 0.2777777777777778}, \"resting\": {\"local_sixfold\": 0.9037115250207555, \"coherent_sixfold\": 0.7134868341525777, \"six_neighbors\": 0.8611111111111112}, \"energy_per_site\": -2.8172837997408866, \"baseline_shear\": -0.47902460597300067, \"max_site_force\": 1.7288392939462938e-11, \"lowest_internal_stiffness\": 0.8171129330255557, \"affine_shear_modulus\": 114.21138510664925, \"relaxed_shear_modulus\": 17.665913631041917, \"times\": [0.0, 0.5, 1.0, 1.5, 2.0, 4.0], \"held\": [114.21138510664926, 33.096370716764774, 22.87767888023761, 19.900984522693175, 18.825631166603344, 17.84857168595733], \"pulse_duration\": 1.0, \"pulse\": [114.21138510664926, 33.096370716764774, -91.33370622641164, -13.195386194071597, -4.052047713634262, -0.24562133650869145], \"checks\": [{\"strain\": 0.0002, \"stress_slope\": 17.62137848596551, \"energy_curvature\": 17.643831305798752}, {\"strain\": 0.0001, \"stress_slope\": 17.65533840291572, \"energy_curvature\": 17.66040360434059}, {\"strain\": 5e-05, \"stress_slope\": 17.67176966691819, \"energy_curvature\": 17.6645590129978}, {\"strain\": 2.5e-05, \"stress_slope\": 17.66953069548105, \"energy_curvature\": 17.665811609063617}]}\n",
+      "script_sha256": "cbabe19929aafcce9fdd63d8cd70ea6f852d765432798efb038cbeb0dc850b8d"
+    },
+    "structural_endpoint_6_1321_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_structural_endpoints.py",
+        "6",
+        "1321"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "06edf7c67a7ddde542a625a343e9cf57a6755a333457e56042c5c52a265cb8d1",
+      "literal_stdout": "{\"test\": \"structural_endpoint\", \"side\": 6, \"sites\": 72, \"seed\": 1321, \"pitch\": 0.9975140800337228, \"initial\": {\"local_sixfold\": 0.35506905226683816, \"coherent_sixfold\": 0.08520886166578656, \"six_neighbors\": 0.3055555555555556}, \"resting\": {\"local_sixfold\": 0.9654555363530292, \"coherent_sixfold\": 0.7451398911333709, \"six_neighbors\": 0.8333333333333334}, \"energy_per_site\": -3.0355523153850887, \"baseline_shear\": 4.492670862851292, \"max_site_force\": 4.239647521941947e-11, \"lowest_internal_stiffness\": 0.2618886251811488, \"affine_shear_modulus\": 133.28263776421582, \"relaxed_shear_modulus\": 92.08350689281362, \"times\": [0.0, 0.5, 1.0, 1.5, 2.0, 4.0], \"held\": [133.28263776421582, 92.08455478652972, 92.08350693666287, 92.08350689281545, 92.08350689281362, 92.08350689281362], \"pulse_duration\": 1.0, \"pulse\": [133.28263776421582, 92.08455478652972, -41.199130827552935, -0.0010478937142638885, -4.384926140570227e-08, -3.681706549221317e-25], \"checks\": [{\"strain\": 0.0002, \"stress_slope\": 92.08314760881241, \"energy_curvature\": 92.08345469600813}, {\"strain\": 0.0001, \"stress_slope\": 92.08343002423457, \"energy_curvature\": 92.08349432062768}]}\n",
+      "script_sha256": "76523cf7c0947dbb36245dd332c7a3c69662706585fb0764c61e879bd5b924a7"
+    },
+    "structural_endpoint_nonlinear_4_817_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_endpoint_pulse.py",
+        "4",
+        "817"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "11ed36ab8b65234cec8afc364b063c7f32782c8073b3c4a6a4a640a71c5701a3",
+      "literal_stdout": "{\"test\": \"nonlinear_endpoint_drive\", \"side\": 4, \"seed\": 817, \"pulse\": false, \"amplitude\": 0.0001, \"times\": [0.5, 1.0, 1.5, 2.0, 4.0], \"positive\": [0.00870908643713843, 0.00870908643714067, 0.00870908643714135, 0.008709086437142919, 0.008709086437141125], \"negative\": [-0.008709086437143809, -0.008709086437141996, -0.008709086437142063, -0.008709086437143463, -0.00870908643714391], \"incremental_stress_per_strain\": [87.0908643714112, 87.09086437141333, 87.09086437141706, 87.0908643714319, 87.09086437142517]}\n{\"test\": \"nonlinear_endpoint_drive\", \"side\": 4, \"seed\": 817, \"pulse\": true, \"amplitude\": 0.0001, \"times\": [0.5, 1.0, 1.5, 2.0, 4.0], \"positive\": [0.00870908643713843, 5.449407872934959e-16, 1.5179036570861543e-15, 2.31405367759155e-16, -2.101747750502173e-15], \"negative\": [-0.008709086437143809, 4.740513176253858e-16, 1.4839034593655695e-15, -1.530860601399543e-15, 1.4081185688546177e-15], \"incremental_stress_per_strain\": [87.0908643714112, 3.5444734834055044e-13, 1.700009886029238e-13, 8.81132984579349e-12, -1.7549331596783953e-11]}\n",
+      "script_sha256": "2e30c5b766a2bf89976dddf10468f3b2addd58183a047329aa97742505e6e1a2",
+      "endpoint_module_sha256": "76523cf7c0947dbb36245dd332c7a3c69662706585fb0764c61e879bd5b924a7"
+    },
+    "structural_endpoint_nonlinear_6_191_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_endpoint_pulse.py",
+        "6",
+        "191"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "756eb92422d15b0d1a934bfd17cb504efd474b28a8a5632a68754cdbe9e17903",
+      "literal_stdout": "{\"test\": \"nonlinear_endpoint_drive\", \"side\": 6, \"seed\": 191, \"pulse\": false, \"amplitude\": 0.0001, \"times\": [0.5, 1.0, 1.5, 2.0, 4.0], \"positive\": [-3.4390193905129736, -3.439019422540776, -3.439019423664348, -3.4390194229208384, -3.4390194223148103], \"negative\": [-3.4541046663516566, -3.4541046266919935, -3.4541046304467438, -3.4541046261259343, -3.4541046266146065], \"incremental_stress_per_strain\": [75.4263791934151, 75.42602075608639, 75.42603391197832, 75.42601602547937, 75.42602149898103]}\n{\"test\": \"nonlinear_endpoint_drive\", \"side\": 6, \"seed\": 191, \"pulse\": true, \"amplitude\": 0.0001, \"times\": [0.5, 1.0, 1.5, 2.0, 4.0], \"positive\": [-3.4390193905129736, -3.451082905287619, -3.4465648236547826, -3.446564786030562, -3.446564785580018], \"negative\": [-3.4541046663516566, -3.442041399675396, -3.4465647513150666, -3.4465647894854694, -3.4465647854406374], \"incremental_stress_per_strain\": [75.4263791934151, -45.207528061115276, -0.00036169857997592203, 1.7274537356115616e-05, -6.969025356795555e-07]}\n",
+      "script_sha256": "2e30c5b766a2bf89976dddf10468f3b2addd58183a047329aa97742505e6e1a2",
+      "endpoint_module_sha256": "cbabe19929aafcce9fdd63d8cd70ea6f852d765432798efb038cbeb0dc850b8d"
+    },
+    "structural_endpoint_nonlinear_6_817_01": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/neutral_patch_endpoint_pulse.py",
+        "6",
+        "817"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "cap_bytes": 2147483648,
+      "zero_swap": true,
+      "stdout_sha256": "13d6a360f63c49936185d2d649cb5a924fc1313f4c970e5572379ca118d7d52c",
+      "literal_stdout": "{\"test\": \"nonlinear_endpoint_drive\", \"side\": 6, \"seed\": 817, \"pulse\": false, \"amplitude\": 0.0001, \"times\": [0.5, 1.0, 1.5, 2.0, 4.0], \"positive\": [-0.47571000984454054, -0.4767156909690019, -0.4770030098804466, -0.47710603014643294, -0.4772012221528981], \"negative\": [-0.4823291887823382, -0.4812905994432776, -0.48098195162908536, -0.4808694557838664, -0.4807687793905549], \"incremental_stress_per_strain\": [33.09589468898838, 22.874542371378592, 19.894708743193878, 18.81712818716741, 17.83778618828391]}\n{\"test\": \"nonlinear_endpoint_drive\", \"side\": 6, \"seed\": 817, \"pulse\": true, \"amplitude\": 0.0001, \"times\": [0.5, 1.0, 1.5, 2.0, 4.0], \"positive\": [-0.47571000984454054, -0.4881363902623316, -0.48032856302045807, -0.47942498974279796, -0.47904916306342404], \"negative\": [-0.4823291887823382, -0.46986901629785693, -0.47768895456969485, -0.4786143982206305, -0.4790000346806398], \"incremental_stress_per_strain\": [33.09589468898838, -91.3368698223732, -13.1980422538161, -4.052957610837238, -0.24564191392129064]}\n",
+      "script_sha256": "2e30c5b766a2bf89976dddf10468f3b2addd58183a047329aa97742505e6e1a2",
+      "endpoint_module_sha256": "cbabe19929aafcce9fdd63d8cd70ea6f852d765432798efb038cbeb0dc850b8d"
+    }
+  },
+  "direct_drive_max_absolute_modulus_error": {
+    "4_817_held": 1.330507672037129e-06,
+    "4_817_pulse": 1.330507672037129e-06,
+    "6_191_held": 5.99874155255975e-05,
+    "6_191_pulse": 5.99874155255975e-05,
+    "6_817_held": 0.010785497673420963,
+    "6_817_pulse": 0.0031635959615670117
+  },
+  "independent_review": {
+    "verdict": "Scoped clear for the positive incremental static shear stiffness and signed linear pulse response of the eight tested cold, fixed-gap, fixed-shape periodic bilayers. The preparations do not establish a shear-free bulk state, a physical mouth-wall traction, or free fall.",
+    "calculations": {
+      "ordered": {
+        "source": "\"\"\"Independent triangular-lattice sum per primitive two-site cell, fixed gap one.\"\"\"\nfrom math import exp, fsum, hypot, sqrt\nimport json\n\n\ndef energy_and_derivatives(pitch, shear):\n    terms = [[], [], [], []]\n    for i in range(-18, 19):\n        for j in range(-18, 19):\n            yy = j * (sqrt(3) / 2) * pitch\n            xx = (i + j / 2) * pitch + shear * yy\n            for z, depth, inverse_range, rest in ((0, 1, 7, 1), (1, .6, 10, .94)):\n                if z == 0 and i == j == 0:\n                    continue\n                # Two half-weights for the two equal layers; each AB once.\n                radius = hypot(xx, yy, z)\n                a = exp(-inverse_range * (radius - rest))\n                phi = depth * (a * a - 2 * a)\n                first = 2 * depth * inverse_range * (a - a * a)\n                second = 2 * depth * inverse_range**2 * (2 * a * a - a)\n                dr = xx * yy / radius\n                d2r = (yy * yy - dr * dr) / radius\n                for arr, v in zip(terms, (phi, first * dr, second * dr**2 + first * d2r,\n                                          first * (xx * xx + yy * yy) / radius)):\n                    arr.append(v)\n    return tuple(map(fsum, terms))\n\n\nlo, hi = .95, 1.02\nfor _ in range(56):\n    mid = .5 * (lo + hi)\n    if energy_and_derivatives(mid, 0)[-1] > 0:\n        hi = mid\n    else:\n        lo = mid\nfor pitch in (1., .5 * (lo + hi)):\n    e, s, d2, _ = energy_and_derivatives(pitch, 0)\n    h = 1e-4\n    ep, sp, *_ = energy_and_derivatives(pitch, h)\n    em, sm, *_ = energy_and_derivatives(pitch, -h)\n    area = pitch * pitch * sqrt(3) / 2\n    print(json.dumps({\"pitch\": pitch, \"energy_per_pair\": e, \"area_per_pair\": area,\n                      \"zero_shear_stress\": s / area, \"modulus\": d2 / area,\n                      \"virial_finite_shear\": (sp - sm) / (2 * h * area),\n                      \"energy_finite_shear\": (ep + em - 2 * e) / (h * h * area)}))\n",
+        "source_sha256": "f55e5ae5f145a41f29435a418633dd4d59053a0b74087c1a27af307cac8bdeee",
+        "run": {
+          "command": [
+            "/usr/bin/python3",
+            "_scratch/structural_endpoint_review_crystal.py"
+          ],
+          "exit_code": 0,
+          "limits_verified": true,
+          "cap_bytes": 1073741824,
+          "zero_swap": true,
+          "stdout_sha256": "ea143fd0c35d226a628835b1f8d0e2cf643559b683ed0d9502190286de636643",
+          "literal_stdout": "{\"pitch\": 1.0, \"energy_per_pair\": -6.6229388218842375, \"area_per_pair\": 0.8660254037844386, \"zero_shear_stress\": 9.148315907568191e-45, \"modulus\": 83.26488457886659, \"virial_finite_shear\": 83.26488335345476, \"energy_finite_shear\": 83.26488407965046}\n{\"pitch\": 0.9975140800337219, \"energy_per_pair\": -6.624771074173235, \"area_per_pair\": 0.8617250159614214, \"zero_shear_stress\": 1.2227024666444725e-44, \"modulus\": 87.09086570191548, \"virial_finite_shear\": 87.09086437144681, \"energy_finite_shear\": 87.09086488738025}\n"
+        }
+      },
+      "defective": {
+        "source": "\"\"\"Independent tangent by finite-differencing the complete directed image sum.\"\"\"\nfrom itertools import product\nfrom pathlib import Path\nimport json\nimport sys\n\nimport numpy as np\nfrom scipy.linalg import eigh\n\nsys.dont_write_bytecode = True\nsys.path.insert(0, str(Path(\"software/stage1_solver/tools\").resolve()))\nfrom neutral_patch_structural_endpoints import Cell, preparation\n\n# Share only the actual sample; reconstruct all subsequent physics.\nc = Cell(6, 6.)\npos = c.settle(preparation(c, 817))[0] % c.box\npitch = 0.9975140800337228\nbox = np.array([6 * pitch, 3 * np.sqrt(3) * pitch])\narea = np.prod(box)\nlayer = np.repeat([0, 1], 36)\nparts = [[], [], [], [], []]\nfor a, b in product(range(-3, 4), repeat=2):\n    shift = np.array([a, b]) * box\n    d = pos[None, :, :] - pos[:, None, :] + shift\n    cross = layer[:, None] != layer[None, :]\n    r2 = np.sum(d * d, axis=-1) + cross\n    chosen = (r2 > 0) & (r2 < 8**2)\n    i, j = np.where(chosen)\n    for piece, value in zip(parts, (i, j, d[i,j,0], d[i,j,1], cross[i,j])):\n        piece.append(value)\ni, j, x0, y0, cross = map(np.concatenate, parts)\ndepth = np.where(cross, .6, 1.)\nalpha = np.where(cross, 10., 7.)\nrest = np.where(cross, .94, 1.)\n\n\ndef increment(v, s):\n    v = np.asarray(v).reshape(72,2)\n    y = y0 + v[j,1] - v[i,1]\n    x = x0 + v[j,0] - v[i,0] + s*y\n    r = np.sqrt(x*x + y*y + cross)\n    z = np.exp(alpha * (rest - r))\n    first = 2 * depth * alpha * z * (1 - z) / r\n    grad = np.column_stack((-np.bincount(i, first*x, minlength=72),\n                            -np.bincount(i, first*(y+s*x), minlength=72)))\n    stress = np.sum(first * x * y) / (2 * area)\n    return grad.ravel(), stress\n\n\nzero = np.zeros(pos.size)\nfor h in (2e-5, 5e-6):\n    hd = np.empty((pos.size,pos.size))\n    for k in range(pos.size):\n        v = zero.copy()\n        v[k] = h\n        hd[:,k] = (increment(v,0)[0]-increment(-v,0)[0])/(2*h)\n    gp, sp = increment(zero,h)\n    gm, sm = increment(zero,-h)\n    ds = (gp-gm)/(2*h)\n    vals, vec = eigh((hd+hd.T)*.5)\n    weight = (vec[:,2:].T@ds)**2 / (vals[2:]*area)\n    born = (sp-sm)/(2*h)\n    grad, base = increment(zero,0)\n    print(json.dumps({\"seed\":817,\"n\":72,\"finite_difference\":h,\n                      \"max_base_gradient\":max(abs(grad)),\"base_stress\":base,\n                      \"lowest_internal_mode\":vals[2], \"modulus_affine\":born,\n                      \"modulus_relaxed\":born-sum(weight),\n                      \"recoil_after_unit_hold\":-sum(weight*(-np.expm1(-vals[2:])))}))\n",
+        "source_sha256": "2866ff892d8d6c44a3d492b9d930e51a7e71499de13fa10dad7438d5f54306a5",
+        "run": {
+          "command": [
+            "python3",
+            "_scratch/structural_endpoint_review_defect.py"
+          ],
+          "exit_code": 0,
+          "limits_verified": true,
+          "cap_bytes": 1073741824,
+          "zero_swap": true,
+          "stdout_sha256": "d9a76877da3c347308d8d48395fcfbb845111e5afb12bffb16bc764291aa0e84",
+          "literal_stdout": "{\"seed\": 817, \"n\": 72, \"finite_difference\": 2e-05, \"max_base_gradient\": 1.7283411075486925e-11, \"base_stress\": -0.4790246059730033, \"lowest_internal_mode\": 0.8171129585171468, \"modulus_affine\": 114.21138546445913, \"modulus_relaxed\": 17.66591600758524, \"recoil_after_unit_hold\": -91.33370486188741}\n{\"seed\": 817, \"n\": 72, \"finite_difference\": 5e-06, \"max_base_gradient\": 1.7283411075486925e-11, \"base_stress\": -0.4790246059730033, \"lowest_internal_mode\": 0.8171129347578028, \"modulus_affine\": 114.21138512882067, \"modulus_relaxed\": 17.665913780543775, \"recoil_after_unit_hold\": -91.33370614118039}\n"
+        }
+      }
+    },
+    "scope": "Independent primitive-cell sum for the crystal. Independent directed-image derivatives on the settled soft-sample coordinates; shares the primary soft preparation. The reviewer also checked the signs, timing and numeric agreement for the additional nonlinear 72-site seed-817 experiment.",
+    "supplementary_verdict": "Scoped clear for the direct nonlinear signed hold and release of the 72-site seed-817 sample at strain amplitudes ±0.0001."
+  },
+  "formal_review": "pending"
+}

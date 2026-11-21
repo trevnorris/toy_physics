@@ -1,0 +1,19 @@
+# Can a forming wall launch a wave that stays near the mouth?
+
+**Yes, if the brane material moves along the slope as the collar bends into the fourth dimension.** One small depthward stroke launched shear from rest. Purely normal motion produced the same first-order shape change and zero direct shear work. We prescribed a stroke on the existing radius-one, intake-0.25 flare. Shear stiffness and transverse inertia both follow the frozen order profile. [Moving-wall calculation](../tools/mouth_formation_wall_work.py) · [Material energy in the model](../../../research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md)
+
+**Why the material path matters.** For radial and depth displacements \(U,V\), the material stores shear energy in \(C=\partial_r V-\partial_w U\). On a round sloping wall its shear traction points along the wall with signed tangential component \(\mu\chi C\). The power delivered to this polarization is \(4\pi\int r^2\mu\chi C\,v_t\,ds\), where \(ds\) is meridional arc length and \(v_t\) is the local tangential material velocity. A site moving along \(w\) has a tangential component on a slope. A site following the normal has none. Both motions have zero torque on the previously studied twisting modes. The excited displacement lies in the radius–depth plane. Compression, advection and conversion work lie outside this linear shear calculation. [Earlier twisting-mode release](mouth_shear_pattern_release.md)
+
+| Material motion giving the same first-order normal shape change | Net shear work over three time units |
+|---|---:|
+| Purely normal | 0 |
+| Along \(w\), maximum displacement 0.01 | \(5.420\times10^{-8}\) |
+| Radial at fixed depth | \(8.483\times10^{-8}\) |
+
+The driven material follows the prescribed tangential motion. The undriven conduit is held tangentially still. The table uses the twice-subdivided mesh. The wall recovered **98.19%** of its positive shear work during the depthward stroke. Shortening the same displacement to 1.5 time units raised net work to \(5.679\times10^{-6}\). Releasing shear traction on the undriven conduit wall lowered the three-unit result to \(9.898\times10^{-9}\). An opposite half stroke reversed the stress and delivered a quarter of the energy. [Energy ledger and independent triangle-mesh calculation](../../../research/pde_ledger_v3/_measurements/mouth_formation_wall_work.json)
+
+**What persisted.** At times 194–198, two meshes placed **87.35% and 87.75% of the net depthward work** in the ordered throat. On the finer mesh 11.44% had transferred to the feeding brane, including its remote absorber, 0.56% remained in weakly ordered material and 0.25% had crossed the receiving cut. A frequency fitted at times 12–60 predicted the *signed stress* at times 160–200 with relative RMS errors of 4.10% at the driven collar and 6.12% deeper in the throat on the finer mesh. Angular frequencies were 5.41540 and 5.41525. The individual mode energy and physical lifetime remain open. [Work and late stress prediction](figures/mouth_formation_wall_work.png)
+
+**0PN decision.** Keep direct formation work as a candidate source. Measuring the material velocity and traction on the same forming patch would determine which stroke applies. To test if this particular wave braces the mouth, compare the sideways force between the entrance and flare under the same weak relative bend, with and without the excited wave, and record the force at both ends. The earlier two-bend threshold belongs to a different scalar wave. [Earlier support calculation](mouth_occupied_companion.md)
+
+Working base **1dc45d09**. Three local reviewers checked the traction law, energy and ringing. The finest long-run launcher exited 143. Its guarded worker completed with exit 0, the terminal service and limits were independently verified, and the other long run completed normally and reproduced the ringing. Formal review and commit pending.

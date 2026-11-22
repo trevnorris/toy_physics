@@ -1,0 +1,1514 @@
+{
+  "base": "223de658",
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_sealed_shape_relax.py": "4791971472f6f8baef5ee5d7eba30c3a04c91ddb7251b7ac48c08a0ef1ae3a96",
+    "software/stage1_solver/tools/mouth_exchange_shear.py": "c1424bf5eb06f5a30292a86d7cf60898b74ce34fb3b60eaa0f9301325e6bdfb6",
+    "software/stage1_solver/tools/mouth_exchange_carrier.py": "6dd6a6ae17b7f30445a29d5e40627373057637a6cbc67cdc75ce9ed58403fc83",
+    "software/stage1_solver/tools/mouth_exchange_carrier_density.py": "8d5f3cfc7a4ef569be0f8faba81777aaec14bc9e4d44a148f5b2fad4a4957d69",
+    "software/stage1_solver/tools/mouth_exchange_geometry.py": "1cabc9f23319f25df3924b1f1669cd12e89269934a2817da52fc2b47a6757017",
+    "software/stage1_solver/tools/mouth_exchange_interior.py": "41c4578c60f6d8e01af9530edbffe2a8599e8d9d83451b07c7ab8dee5ecfdfac",
+    "software/stage1_solver/tools/mouth_conversion_shape_mode.py": "63ba9d32283deef446de5210e091cbe542af7a6451bfd5ecdfd7ef4b0010720c",
+    "software/stage1_solver/tools/mouth_sealed_shape_readout.py": "0fe7fca22ee8f68ed83e99bdb5960d582ad3a3e4eadab9afbb18cdf3a3c5360a",
+    "software/stage1_solver/tools/mouth_sealed_shape_transfer.py": "27de835c07a6f0b9bf16723a97fc3aa47d2ce7ae105def1e7d5031038099c090",
+    "research/pde_ledger_v3/_measurements/mouth_conversion_shape.json": "5c73eaecc31deb3e98e698ea58d51f765b57b51fbaf248ee8e10c4a3feafe906"
+  },
+  "archived_run_source_versions": {
+    "field_snapshot": {
+      "mouth_exchange_shear.py": "a859fa40724a5b6857be4f789ae99ea50718ffb552d38e211db5363f9149c420",
+      "mouth_sealed_shape_relax.py": "9783a5fbb52252333317bbda52714ca39907ef64f00a1f60089b1bebd37d990e"
+    },
+    "extension_snapshot": {
+      "mouth_exchange_shear.py": "d865850819f2f2fc8ebfb010898a092a4f73ecc9d26c377f8131968558be8aae",
+      "mouth_sealed_shape_relax.py": "73e19c0fffc9054ed7d59755fc79220cf51cfc663de0f9cb9ec86dbe81d6e7cb"
+    }
+  },
+  "protocol": "Fixed R=1 or 2, J=1, sigma=1, cT=1, delta=.04; sharp seams carry no independent energy; final disk surface energy included. Last coordinates within 0.1 use a conventional weak-curvature reporting window. The extension is diagnostic.",
+  "training": {
+    "1": {
+      "states": [
+        {
+          "test": "state",
+          "index": 0,
+          "coordinates": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "depth": 2.76301781542093,
+          "exit_radius": 1.5,
+          "area": 57.9095498757592,
+          "cap": 14.137166941154069,
+          "curvature_energy": -0.020312136608619975,
+          "minimum_radius": 1.0,
+          "maximum_abs_principal_delta": 0.04,
+          "end_slopes": [
+            0.0,
+            3.469446951953614e-17
+          ],
+          "carrier_energy": 0.185330899822789,
+          "current": 0.8196804797658848,
+          "wave_frequency": 4.212319963758532,
+          "wave_rate": 7.699594199850828e-08,
+          "feed_energy_flux_over_stored": 7.699594200574385e-08,
+          "wave_pocket_fraction": 0.9999995757035679,
+          "clamped_overlap": 0.9999994833410779,
+          "total": 76.42405554388596
+        },
+        {
+          "test": "state",
+          "index": 1,
+          "coordinates": [
+            -0.050737453054363085,
+            -0.10672461556375777,
+            -0.05396999242583717,
+            -0.004775689257007024
+          ],
+          "depth": 2.6263263397447614,
+          "exit_radius": 1.348159720574849,
+          "area": 45.180178186746396,
+          "cap": 10.263905660120175,
+          "curvature_energy": -0.023232447253509737,
+          "minimum_radius": 0.9825999954832462,
+          "maximum_abs_principal_delta": 0.04070828575815961,
+          "end_slopes": [
+            -0.13273959401951238,
+            0.03165731769430681
+          ],
+          "carrier_energy": 0.16099565551817166,
+          "current": 0.7119523332344988,
+          "wave_frequency": 4.700794934404206,
+          "wave_rate": 2.3205019579956129e-07,
+          "feed_energy_flux_over_stored": 2.3205019584301588e-07,
+          "wave_pocket_fraction": 0.9999988368184127,
+          "clamped_overlap": 0.9999986385673402,
+          "total": 60.282641989535435
+        },
+        {
+          "test": "state",
+          "index": 2,
+          "coordinates": [
+            -0.1035542126277276,
+            -0.20975635332455808,
+            -0.11293047346216004,
+            -0.00907831614351443
+          ],
+          "depth": 2.4912118557717937,
+          "exit_radius": 1.2161726492827176,
+          "area": 35.17390274739702,
+          "cap": 7.53484470957186,
+          "curvature_energy": -0.02620110866968143,
+          "minimum_radius": 0.9350276208346794,
+          "maximum_abs_principal_delta": 0.042779457776736834,
+          "end_slopes": [
+            -0.2806810582455409,
+            0.08197127323085522
+          ],
+          "carrier_energy": 0.13643432843677158,
+          "current": 0.6031700832951175,
+          "wave_frequency": 5.249049924333172,
+          "wave_rate": 5.714275142232302e-07,
+          "feed_energy_flux_over_stored": 5.714275143840621e-07,
+          "wave_pocket_fraction": 0.9999973527410196,
+          "clamped_overlap": 0.9999969846826146,
+          "total": 48.06803060106914
+        },
+        {
+          "test": "state",
+          "index": 3,
+          "coordinates": [
+            -0.15811537017601632,
+            -0.30916528998883774,
+            -0.1763979978198408,
+            -0.0126583650503387
+          ],
+          "depth": 2.358929993404032,
+          "exit_radius": 1.1010891409854362,
+          "area": 27.34891826090682,
+          "cap": 5.591856889844294,
+          "curvature_energy": -0.02888316147153435,
+          "minimum_radius": 0.8629887955619066,
+          "maximum_abs_principal_delta": 0.04635037891144316,
+          "end_slopes": [
+            -0.44675738281312694,
+            0.15147316514914239
+          ],
+          "carrier_energy": 0.11217457619020223,
+          "current": 0.4956956828481678,
+          "wave_frequency": 5.8633709543617805,
+          "wave_rate": 9.78672202573483e-07,
+          "feed_energy_flux_over_stored": 9.786722028532858e-07,
+          "wave_pocket_fraction": 0.999995732691079,
+          "clamped_overlap": 0.9999952024716056,
+          "total": 38.887437519831565
+        },
+        {
+          "test": "state",
+          "index": 4,
+          "coordinates": [
+            -0.2141283820853177,
+            -0.40498836547949374,
+            -0.2440294524778589,
+            -0.01520140284025685
+          ],
+          "depth": 2.230431605226619,
+          "exit_radius": 1.0004768562884991,
+          "area": 21.278210114729482,
+          "cap": 4.194785415582802,
+          "curvature_energy": -0.030884154960253325,
+          "minimum_radius": 0.7721332832603275,
+          "maximum_abs_principal_delta": 0.05180445005669483,
+          "end_slopes": [
+            -0.6343325385752671,
+            0.2409400388255172
+          ],
+          "carrier_energy": 0.0888077010311081,
+          "current": 0.39218158989587026,
+          "wave_frequency": 6.545971208133155,
+          "wave_rate": 9.540398704323158e-07,
+          "feed_energy_flux_over_stored": 9.540398706017135e-07,
+          "wave_pocket_fraction": 0.9999960216620996,
+          "clamped_overlap": 0.9999955439959533,
+          "total": 32.076890284516296
+        },
+        {
+          "test": "state",
+          "index": 5,
+          "coordinates": [
+            -0.2713188224073076,
+            -0.4970392789412247,
+            -0.3158257441063356,
+            -0.016285549987354413
+          ],
+          "depth": 2.1064512749653557,
+          "exit_radius": 0.912493633229054,
+          "area": 16.615867107347754,
+          "cap": 3.1825712708251004,
+          "curvature_energy": -0.03184544410286567,
+          "minimum_radius": 0.6688116400027548,
+          "maximum_abs_principal_delta": 0.05980735176249775,
+          "end_slopes": [
+            -0.8477134811847188,
+            0.35174742393032576
+          ],
+          "carrier_energy": 0.0669352868160422,
+          "current": 0.2953284132149768,
+          "wave_frequency": 7.292715426893457,
+          "wave_rate": 3.457694309092464e-07,
+          "feed_energy_flux_over_stored": 3.457694309311286e-07,
+          "wave_pocket_fraction": 0.9999985476468507,
+          "clamped_overlap": 0.9999983700805198,
+          "total": 27.12624364777949
+        },
+        {
+          "test": "state",
+          "index": 6,
+          "coordinates": [
+            -0.3294149976620214,
+            -0.584593845417531,
+            -0.39236404000923586,
+            -0.015325565508459068
+          ],
+          "depth": 1.9875614714760084,
+          "exit_radius": 0.835998268301419,
+          "area": 13.077726145148466,
+          "cap": 2.447398800293748,
+          "curvature_energy": -0.031510561510691246,
+          "minimum_radius": 0.5585704564913827,
+          "maximum_abs_principal_delta": 0.0716113749834186,
+          "end_slopes": [
+            -1.0928746913616694,
+            0.4864034165716964
+          ],
+          "carrier_energy": 0.047133638438402195,
+          "current": 0.2077202395677331,
+          "wave_frequency": 8.090931137954408,
+          "wave_rate": 2.0515372920679112e-08,
+          "feed_energy_flux_over_stored": 2.0515372920741296e-08,
+          "wave_pocket_fraction": 0.9999999088023735,
+          "clamped_overlap": 0.9999998970896872,
+          "total": 23.63167916032433
+        },
+        {
+          "test": "state",
+          "index": 7,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "depth": 1.874161406756793,
+          "exit_radius": 0.7708281099613307,
+          "area": 10.432738908821214,
+          "cap": 1.9184975135053006,
+          "curvature_energy": -0.02973543235656596,
+          "minimum_radius": 0.4443625768274492,
+          "maximum_abs_principal_delta": 0.09001636085065629,
+          "end_slopes": [
+            -1.3785910528302296,
+            0.6494502545094161
+          ],
+          "carrier_energy": 0.029956499219789642,
+          "current": 0.1318286566203457,
+          "wave_frequency": 8.912980586296213,
+          "wave_rate": 5.958802366916882e-11,
+          "feed_energy_flux_over_stored": 5.958802366914701e-11,
+          "wave_pocket_fraction": 0.9999999997361089,
+          "clamped_overlap": 0.9999999997013975,
+          "total": 21.264438075485952
+        },
+        {
+          "test": "state",
+          "index": 8,
+          "coordinates": [
+            -0.4472946912778539,
+            -0.7359848657371486,
+            -0.5668013721010683,
+            -0.0034940542605541563
+          ],
+          "depth": 1.7665505485548916,
+          "exit_radius": 0.7185501644278969,
+          "area": 8.504430146433236,
+          "cap": 1.5540317539348927,
+          "curvature_energy": -0.02647571741767236,
+          "minimum_radius": 0.32655775207877136,
+          "maximum_abs_principal_delta": 0.12248966912387149,
+          "end_slopes": [
+            -1.717855800626055,
+            0.8489606318376947
+          ],
+          "carrier_energy": 0.016000080777789652,
+          "current": 0.07028971250972749,
+          "wave_frequency": 9.69775101934086,
+          "wave_rate": 1.3017473383947209e-14,
+          "feed_energy_flux_over_stored": 2.386610603256064e-15,
+          "wave_pocket_fraction": 0.99999999999999,
+          "clamped_overlap": 0.9999999999999889,
+          "total": 19.745737283069108
+        }
+      ],
+      "extension_states": [
+        {
+          "test": "state",
+          "index": 0,
+          "coordinates": [
+            -0.4472946912778539,
+            -0.7359848657371486,
+            -0.5668013721010683,
+            -0.0034940542605541563
+          ],
+          "depth": 1.7665505485548916,
+          "exit_radius": 0.7185501644278969,
+          "area": 8.504430146433236,
+          "cap": 1.5540317539348927,
+          "curvature_energy": -0.02647571741767236,
+          "minimum_radius": 0.32655775207877136,
+          "maximum_abs_principal_delta": 0.12248966912387149,
+          "end_slopes": [
+            -1.717855800626055,
+            0.8489606318376947
+          ],
+          "carrier_energy": 0.016000080777789652,
+          "current": 0.07028971250972749,
+          "wave_frequency": 9.69775101934086,
+          "wave_rate": 1.3017473383947209e-14,
+          "feed_energy_flux_over_stored": 2.386610603256064e-15,
+          "wave_pocket_fraction": 0.99999999999999,
+          "clamped_overlap": 0.9999999999999889,
+          "total": 19.745737283069108
+        },
+        {
+          "test": "state",
+          "index": 1,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "depth": 1.6656431110543743,
+          "exit_radius": 0.6842575010684437,
+          "area": 7.187284174015871,
+          "cap": 1.3419839146027595,
+          "curvature_energy": -0.021846233617414394,
+          "minimum_radius": 0.20519146286513948,
+          "maximum_abs_principal_delta": 0.1949398798755919,
+          "end_slopes": [
+            -2.1260230263201443,
+            1.096750699936318
+          ],
+          "carrier_energy": 0.006062930330415018,
+          "current": 0.02658854707735203,
+          "wave_frequency": 10.30844262177354,
+          "wave_rate": 9.410359861142248e-15,
+          "feed_energy_flux_over_stored": 9.79790236758146e-25,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 1.0000000000000007,
+          "total": 18.82192740710517
+        },
+        {
+          "test": "state",
+          "index": 2,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "depth": 1.5752599023050904,
+          "exit_radius": 0.6781890862987141,
+          "area": 6.46683003269721,
+          "cap": 1.3065950220511422,
+          "curvature_energy": -0.016495858347924046,
+          "minimum_radius": 0.08706233365967331,
+          "maximum_abs_principal_delta": 0.4594247070799022,
+          "end_slopes": [
+            -2.598013346240018,
+            1.3944727372683114
+          ],
+          "carrier_energy": 0.0010478397140905092,
+          "current": 0.004592063469117225,
+          "wave_frequency": 10.50051670373625,
+          "wave_rate": 9.06967643349299e-15,
+          "feed_energy_flux_over_stored": 1.8456222847290007e-39,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 1.0000000000000002,
+          "total": 18.25849373985077
+        }
+      ],
+      "diagnostic_fine_descent_states": [
+        {
+          "test": "state",
+          "index": 0,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "depth": 1.874161406756793,
+          "exit_radius": 0.7708281099613307,
+          "area": 10.432738908821214,
+          "cap": 1.9184975135053006,
+          "curvature_energy": -0.02973543235656596,
+          "minimum_radius": 0.4443625768274492,
+          "maximum_abs_principal_delta": 0.09001636085065629,
+          "end_slopes": [
+            -1.3785910528302296,
+            0.6494502545094161
+          ],
+          "carrier_energy": 0.029677612341601937,
+          "current": 0.13058008631266554,
+          "wave_frequency": 8.90382757310301,
+          "wave_rate": 6.920521257045243e-11,
+          "feed_energy_flux_over_stored": 6.920521257042115e-11,
+          "wave_pocket_fraction": 0.9999999996020259,
+          "clamped_overlap": 0.9999999995615865,
+          "total": 21.255006175414564
+        },
+        {
+          "test": "state",
+          "index": 1,
+          "coordinates": [
+            -0.4472150543695751,
+            -0.7359947187257588,
+            -0.566859056861036,
+            -0.003655648408567625
+          ],
+          "depth": 1.7666912367808099,
+          "exit_radius": 0.7185430845961898,
+          "area": 8.504168792102538,
+          "cap": 1.5539858190422764,
+          "curvature_energy": -0.026475955881072568,
+          "minimum_radius": 0.32649488199238164,
+          "maximum_abs_principal_delta": 0.12251328931980915,
+          "end_slopes": [
+            -1.7174877454775876,
+            0.8493854921751567
+          ],
+          "carrier_energy": 0.015719950757961173,
+          "current": 0.06903232852068025,
+          "wave_frequency": 9.685754743439553,
+          "wave_rate": 4.1068729091411836e-15,
+          "feed_energy_flux_over_stored": 4.106872906853071e-15,
+          "wave_pocket_fraction": 0.9999999999999772,
+          "clamped_overlap": 0.9999999999999748,
+          "total": 19.733153349461254
+        },
+        {
+          "test": "state",
+          "index": 2,
+          "coordinates": [
+            -0.5058489483223519,
+            -0.7849706084465525,
+            -0.6711820455828037,
+            0.00976607764097951
+          ],
+          "depth": 1.6660816388450799,
+          "exit_radius": 0.6841996620738708,
+          "area": 7.186291020662576,
+          "cap": 1.341643637268146,
+          "curvature_energy": -0.02184452387624129,
+          "minimum_radius": 0.20497310103448457,
+          "maximum_abs_principal_delta": 0.195147529060264,
+          "end_slopes": [
+            -2.124501433960278,
+            1.0983036432173998
+          ],
+          "carrier_energy": 0.005802513370282737,
+          "current": 0.02542331703550349,
+          "wave_frequency": 10.292864870300264,
+          "wave_rate": 6.231657731694958e-20,
+          "feed_energy_flux_over_stored": 1.8165366823106664e-23,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 1.0000000000000002,
+          "total": 18.804757517725026
+        },
+        {
+          "test": "state",
+          "index": 3,
+          "coordinates": [
+            -0.5613270052855246,
+            -0.79431892207768,
+            -0.7866425318236565,
+            0.029857626731850394
+          ],
+          "depth": 1.5761678482936723,
+          "exit_radius": 0.6778333525386918,
+          "area": 6.4629158067646575,
+          "cap": 1.3045400367603526,
+          "curvature_energy": -0.016483357530974355,
+          "minimum_radius": 0.08639233968872606,
+          "maximum_abs_principal_delta": 0.4629955450876821,
+          "end_slopes": [
+            -2.5937385324215967,
+            1.3989455344448092
+          ],
+          "carrier_energy": 0.0008549376386779238,
+          "current": 0.0037401242408937607,
+          "wave_frequency": 10.484699689947304,
+          "wave_rate": 1.7798244306485492e-25,
+          "feed_energy_flux_over_stored": 4.24427237308095e-40,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 0.9999999999999996,
+          "total": 18.236527113580017
+        }
+      ],
+      "fine_endpoint_method": "descent",
+      "previous_guarded_stage": [
+        -0.4472946912778539,
+        -0.7359848657371486,
+        -0.5668013721010683,
+        -0.0034940542605541563
+      ],
+      "initial_and_last_fine_forces": [
+        [
+          55.49743979092625,
+          116.7337545172368,
+          59.02848323608604,
+          5.224548034595007,
+          47.47195085342545
+        ],
+        [
+          6.657058645526348,
+          7.918059676118361,
+          10.342961733500763,
+          -0.8817126422092277,
+          9.143216854431794
+        ]
+      ],
+      "maximum_loss_percent_one_slow_cycle": 0.12290798230279085,
+      "maximum_loss_percent_over_200": 0.01957152858348119,
+      "maximum_exterior_kinetic_fraction": 4.267308921002133e-06,
+      "last_fine_log_exit_slope_without_cap": 2.162547710795752,
+      "last_fine_unused_quartic_slope": 9.143216854431794,
+      "energy_at_order_scale": [
+        18.25849373985077,
+        18.236527113580017
+      ],
+      "radius_over_interface_width_at_order_scale": [
+        2.1765583414918326,
+        2.1598084922181515
+      ]
+    },
+    "2": {
+      "states": [
+        {
+          "test": "state",
+          "index": 0,
+          "coordinates": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "depth": 5.52603563084186,
+          "exit_radius": 3.0,
+          "area": 463.2763990060736,
+          "cap": 113.09733552923255,
+          "curvature_energy": -0.04062427321723995,
+          "minimum_radius": 2.0,
+          "maximum_abs_principal_delta": 0.02,
+          "end_slopes": [
+            0.0,
+            3.469446951953614e-17
+          ],
+          "carrier_energy": 0.6668899949315635,
+          "current": 2.9553287174786482,
+          "wave_frequency": 2.106113612772707,
+          "wave_rate": 6.818893417505383e-08,
+          "feed_energy_flux_over_stored": 6.818893425325846e-08,
+          "wave_pocket_fraction": 0.9999996768557745,
+          "clamped_overlap": 0.9999995776485137,
+          "total": 579.1061138697931
+        },
+        {
+          "test": "state",
+          "index": 1,
+          "coordinates": [
+            -0.049815073545216894,
+            -0.10730368205832871,
+            -0.053629086135387624,
+            -0.005319716598928378
+          ],
+          "depth": 5.257499853813225,
+          "exit_radius": 2.6947585448776508,
+          "area": 361.612567208405,
+          "cap": 81.96872549654235,
+          "curvature_energy": -0.04644203290568068,
+          "minimum_radius": 1.9656027136173582,
+          "maximum_abs_principal_delta": 0.020349984213613823,
+          "end_slopes": [
+            -0.13156755694673516,
+            0.031640317903485496
+          ],
+          "carrier_energy": 0.586501119893373,
+          "current": 2.59903370020919,
+          "wave_frequency": 2.351445608845799,
+          "wave_rate": 1.827784558683507e-07,
+          "feed_energy_flux_over_stored": 1.8277845619680602e-07,
+          "wave_pocket_fraction": 0.999999238316415,
+          "clamped_overlap": 0.9999990308492486,
+          "total": 446.4727974007808
+        },
+        {
+          "test": "state",
+          "index": 2,
+          "coordinates": [
+            -0.1012242176585493,
+            -0.21126982283081625,
+            -0.11212229098624385,
+            -0.010485610586003676
+          ],
+          "depth": 4.994046268717552,
+          "exit_radius": 2.4286668024753575,
+          "area": 281.72873379678447,
+          "cap": 60.00568788504092,
+          "curvature_energy": -0.05233283443536806,
+          "minimum_radius": 1.871430891505185,
+          "maximum_abs_principal_delta": 0.0213740010195306,
+          "end_slopes": [
+            -0.27721542137055094,
+            0.08200364854819484
+          ],
+          "carrier_energy": 0.5031308417230853,
+          "current": 2.2294385889933546,
+          "wave_frequency": 2.627815907157241,
+          "wave_rate": 3.8380136417595977e-07,
+          "feed_energy_flux_over_stored": 3.8380136503502683e-07,
+          "wave_pocket_fraction": 0.9999985284849553,
+          "clamped_overlap": 0.9999981578800675,
+          "total": 344.8130355962703
+        },
+        {
+          "test": "state",
+          "index": 3,
+          "coordinates": [
+            -0.1536413478199112,
+            -0.3122149077519102,
+            -0.17487725080427563,
+            -0.015420113008457137
+          ],
+          "depth": 4.739015086768863,
+          "exit_radius": 2.1954727098775173,
+          "area": 219.2838567491246,
+          "cap": 44.32744898354389,
+          "curvature_energy": -0.05762606271090891,
+          "minimum_radius": 1.7284815715161508,
+          "maximum_abs_principal_delta": 0.0231416790966994,
+          "end_slopes": [
+            -0.4389486748621714,
+            0.15147696456666535
+          ],
+          "carrier_energy": 0.4184884520204414,
+          "current": 1.8541360519712171,
+          "wave_frequency": 2.9394532542777925,
+          "wave_rate": 5.613677799957682e-07,
+          "feed_energy_flux_over_stored": 5.613677811056708e-07,
+          "wave_pocket_fraction": 0.9999979413247073,
+          "clamped_overlap": 0.9999974365666322,
+          "total": 266.9116213762558
+        },
+        {
+          "test": "state",
+          "index": 4,
+          "coordinates": [
+            -0.20642541677780632,
+            -0.41061284054843117,
+            -0.24128669261081925,
+            -0.02005421751340892
+          ],
+          "depth": 4.495357769638271,
+          "exit_radius": 1.9897309888570232,
+          "area": 170.85373937577086,
+          "cap": 32.99679061546629,
+          "curvature_energy": -0.06154579642758431,
+          "minimum_radius": 1.5476780720795296,
+          "maximum_abs_principal_delta": 0.02584510739831141,
+          "end_slopes": [
+            -0.6184443940589781,
+            0.2403497842036698
+          ],
+          "carrier_energy": 0.33477788217907056,
+          "current": 1.4829266901693798,
+          "wave_frequency": 3.2894641649549956,
+          "wave_rate": 4.6761008217072105e-07,
+          "feed_energy_flux_over_stored": 4.676100832935077e-07,
+          "wave_pocket_fraction": 0.9999982653934498,
+          "clamped_overlap": 0.9999978197446944,
+          "total": 207.41322624194365
+        },
+        {
+          "test": "state",
+          "index": 5,
+          "coordinates": [
+            -0.2588475490673378,
+            -0.507040091602374,
+            -0.31082585950302055,
+            -0.02429798569007889
+          ],
+          "depth": 4.265771797364121,
+          "exit_radius": 1.8068268714126,
+          "area": 133.65694259302947,
+          "cap": 24.70803636191903,
+          "curvature_energy": -0.06340948855188815,
+          "minimum_radius": 1.341723009005656,
+          "maximum_abs_principal_delta": 0.029812359102344033,
+          "end_slopes": [
+            -0.8170610817120145,
+            0.3487804091809924
+          ],
+          "carrier_energy": 0.25459701218273034,
+          "current": 1.1273711010161827,
+          "wave_frequency": 3.6794573070070706,
+          "wave_rate": 2.0132513925715437e-07,
+          "feed_energy_flux_over_stored": 2.0132513954253613e-07,
+          "wave_pocket_fraction": 0.9999991192587341,
+          "clamped_overlap": 0.9999988571373267,
+          "total": 162.23562378558643
+        },
+        {
+          "test": "state",
+          "index": 6,
+          "coordinates": [
+            -0.31006878115577924,
+            -0.6020992556914646,
+            -0.3831192207401398,
+            -0.028014250893848115
+          ],
+          "depth": 4.052775249275423,
+          "exit_radius": 1.6429822457089749,
+          "area": 105.39323629760523,
+          "cap": 18.577497885539334,
+          "curvature_energy": -0.06278071599908162,
+          "minimum_radius": 1.1229097713888112,
+          "maximum_abs_principal_delta": 0.03562173605522411,
+          "end_slopes": [
+            -1.035798250547418,
+            0.4767227146697318
+          ],
+          "carrier_energy": 0.18081690083748506,
+          "current": 0.8002504730025879,
+          "wave_frequency": 4.110145955921848,
+          "wave_rate": 2.1807272873930044e-08,
+          "feed_energy_flux_over_stored": 2.1807272876103355e-08,
+          "wave_pocket_fraction": 0.9999998957194414,
+          "clamped_overlap": 0.9999998557033902,
+          "total": 128.1989163239048
+        },
+        {
+          "test": "state",
+          "index": 7,
+          "coordinates": [
+            -0.3591577673322186,
+            -0.6963342729998278,
+            -0.45795948233312633,
+            -0.03100894516124473
+          ],
+          "depth": 3.8586327350180176,
+          "exit_radius": 1.4952269714220168,
+          "area": 84.1609107261837,
+          "cap": 14.002641708876043,
+          "curvature_energy": -0.059530859981596865,
+          "minimum_radius": 0.8993250922696868,
+          "maximum_abs_principal_delta": 0.04447777797248996,
+          "end_slopes": [
+            -1.2751608312704734,
+            0.623789449960634
+          ],
+          "carrier_energy": 0.11644320771432776,
+          "current": 0.5149446718023531,
+          "wave_frequency": 4.582117997194074,
+          "wave_rate": 6.02932866830281e-11,
+          "feed_energy_flux_over_stored": 6.029328668286373e-11,
+          "wave_pocket_fraction": 0.9999999997433409,
+          "clamped_overlap": 0.9999999996060855,
+          "total": 102.80258277998655
+        },
+        {
+          "test": "state",
+          "index": 8,
+          "coordinates": [
+            -0.40518408867979383,
+            -0.7901670207181004,
+            -0.535243963440719,
+            -0.03303432877401839
+          ],
+          "depth": 3.685059181624837,
+          "exit_radius": 1.361307000385795,
+          "area": 68.42103095152905,
+          "cap": 10.567124952262455,
+          "curvature_energy": -0.05384997653216705,
+          "minimum_radius": 0.6747981384231775,
+          "maximum_abs_principal_delta": 0.059276506269910656,
+          "end_slopes": [
+            -1.534946875521758,
+            0.7890058733932432
+          ],
+          "carrier_energy": 0.06441253051726627,
+          "current": 0.28451484325320786,
+          "wave_frequency": 5.096242215894651,
+          "wave_rate": 1.2043341017469321e-14,
+          "feed_energy_flux_over_stored": 1.2043341024853227e-14,
+          "wave_pocket_fraction": 0.9999999999999551,
+          "clamped_overlap": 0.9999999999999081,
+          "total": 84.09496067367125
+        },
+        {
+          "test": "state",
+          "index": 9,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "depth": 3.5326033188709225,
+          "exit_radius": 1.2394789478020745,
+          "area": 56.981367398847794,
+          "cap": 7.976384367960718,
+          "curvature_energy": -0.046231481811677244,
+          "minimum_radius": 0.45105619200444796,
+          "maximum_abs_principal_delta": 0.08867935413669609,
+          "end_slopes": [
+            -1.8141085570109565,
+            0.9703318251329609
+          ],
+          "carrier_energy": 0.027225910014533894,
+          "current": 0.12004957451047171,
+          "wave_frequency": 5.654392709824947,
+          "wave_rate": 2.0526821882398175e-21,
+          "feed_energy_flux_over_stored": 2.0575737531477098e-21,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 1.0000000000000002,
+          "total": 70.59313890483632
+        },
+        {
+          "test": "state",
+          "index": 10,
+          "coordinates": [
+            -0.45703612240010877,
+            -0.907455569612499,
+            -0.6350221555029405,
+            -0.033501419904830194
+          ],
+          "depth": 3.498850730766632,
+          "exit_radius": 1.2106491690092254,
+          "area": 54.68619531757283,
+          "cap": 7.432647459125483,
+          "curvature_energy": -0.04410707466197294,
+          "minimum_radius": 0.39521833803549755,
+          "maximum_abs_principal_delta": 0.10120964692124225,
+          "end_slopes": [
+            -1.8867671769264647,
+            1.017144784422288
+          ],
+          "carrier_energy": 0.020421124083332732,
+          "current": 0.0899973863084993,
+          "wave_frequency": 5.8014711024847,
+          "wave_rate": 2.9711476334792764e-14,
+          "feed_energy_flux_over_stored": 3.964434683392884e-24,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 1.0,
+          "total": 67.89662792860437
+        }
+      ],
+      "extension_states": [
+        {
+          "test": "state",
+          "index": 0,
+          "coordinates": [
+            -0.45703612240010877,
+            -0.907455569612499,
+            -0.6350221555029405,
+            -0.033501419904830194
+          ],
+          "depth": 3.498850730766632,
+          "exit_radius": 1.2106491690092254,
+          "area": 54.68619531757283,
+          "cap": 7.432647459125483,
+          "curvature_energy": -0.04410707466197294,
+          "minimum_radius": 0.39521833803549755,
+          "maximum_abs_principal_delta": 0.10120964692124225,
+          "end_slopes": [
+            -1.8867671769264647,
+            1.017144784422288
+          ],
+          "carrier_energy": 0.020421124083332732,
+          "current": 0.0899973863084993,
+          "wave_frequency": 5.8014711024847,
+          "wave_rate": 2.9711476334792764e-14,
+          "feed_energy_flux_over_stored": 3.964434683392884e-24,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 1.0,
+          "total": 67.89662792860437
+        },
+        {
+          "test": "state",
+          "index": 1,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "depth": 3.369832336384419,
+          "exit_radius": 1.1016314799272529,
+          "area": 47.438115247932174,
+          "cap": 5.6001237293431245,
+          "curvature_energy": -0.03514724704667275,
+          "minimum_radius": 0.17510465680486897,
+          "maximum_abs_principal_delta": 0.22843344076232083,
+          "end_slopes": [
+            -2.1878732521243616,
+            1.2123928202191987
+          ],
+          "carrier_energy": 0.003406979245939939,
+          "current": 0.014994318074853852,
+          "wave_frequency": 6.422467678218808,
+          "wave_rate": 3.247326654033586e-33,
+          "feed_energy_flux_over_stored": 4.3840294134892245e-48,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 5.540775308361221e-32,
+          "total": 59.42896638769337
+        },
+        {
+          "test": "state",
+          "index": 2,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "depth": 3.309881224099296,
+          "exit_radius": 1.049663556215624,
+          "area": 44.86623409217515,
+          "cap": 4.84438851951439,
+          "curvature_energy": -0.03064524660209722,
+          "minimum_radius": 0.06879590288311072,
+          "maximum_abs_principal_delta": 0.5814299316934948,
+          "end_slopes": [
+            -2.3448842987221528,
+            1.307969169127763
+          ],
+          "carrier_energy": 0.00044405933304011573,
+          "current": 0.0019610075486419243,
+          "wave_frequency": 6.75946607178811,
+          "wave_rate": 3.506447403569356e-33,
+          "feed_energy_flux_over_stored": 4.420105770935526e-59,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 9.777716218470963e-34,
+          "total": 56.43988749620859
+        }
+      ],
+      "diagnostic_fine_descent_states": [
+        {
+          "test": "state",
+          "index": 0,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "depth": 3.5326033188709225,
+          "exit_radius": 1.2394789478020745,
+          "area": 56.981367398847794,
+          "cap": 7.976384367960718,
+          "curvature_energy": -0.046231481811677244,
+          "minimum_radius": 0.45105619200444796,
+          "maximum_abs_principal_delta": 0.08867935413669609,
+          "end_slopes": [
+            -1.8141085570109565,
+            0.9703318251329609
+          ],
+          "carrier_energy": 0.02641784043785158,
+          "current": 0.11643669712575028,
+          "wave_frequency": 5.648941541083715,
+          "wave_rate": 3.259614192787871e-21,
+          "feed_energy_flux_over_stored": 3.2645202563595264e-21,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 0.9999999999999993,
+          "total": 70.58687966651841
+        },
+        {
+          "test": "state",
+          "index": 1,
+          "coordinates": [
+            -0.4858359109070577,
+            -0.9780556273056306,
+            -0.6957825708841969,
+            -0.032710211204569774
+          ],
+          "depth": 3.399521761775544,
+          "exit_radius": 1.1281246602351658,
+          "area": 48.97649368371154,
+          "cap": 6.013951033142544,
+          "curvature_energy": -0.037425498951106535,
+          "minimum_radius": 0.22982315873602532,
+          "maximum_abs_principal_delta": 0.17404427536574477,
+          "end_slopes": [
+            -2.111018760901723,
+            1.1637127790819248
+          ],
+          "carrier_energy": 0.0057450713222952365,
+          "current": 0.02524290751820718,
+          "wave_frequency": 6.254148822848464,
+          "wave_rate": -3.4889609054466305e-34,
+          "feed_energy_flux_over_stored": 6.385062800075645e-37,
+          "wave_pocket_fraction": 1.0,
+          "clamped_overlap": 1.5784755901756032e-30,
+          "total": 61.212913112073736
+        }
+      ],
+      "fine_endpoint_method": "transfer along accepted coarse shapes",
+      "previous_guarded_stage": [
+        -0.45703612240010877,
+        -0.907455569612499,
+        -0.6350221555029405,
+        -0.033501419904830194
+      ],
+      "initial_and_last_fine_forces": [
+        [
+          445.64984174375394,
+          959.9259681614285,
+          479.75457296846946,
+          47.59086137751941,
+          384.2356570468155
+        ],
+        [
+          25.65493681772087,
+          62.890037110482425,
+          54.123767407688206,
+          -0.7077804629697463,
+          41.96355773155839
+        ]
+      ],
+      "maximum_loss_percent_one_slow_cycle": 0.07051867976680272,
+      "maximum_loss_percent_over_200": 0.011226725378128887,
+      "maximum_exterior_kinetic_fraction": 2.0586752926821106e-06,
+      "last_fine_log_exit_slope_without_cap": 38.96080324562678,
+      "last_fine_unused_quartic_slope": 41.96355773155839,
+      "energy_at_order_scale": [
+        56.43988749620859,
+        56.43030529954595
+      ],
+      "radius_over_interface_width_at_order_scale": [
+        1.7198975720777678,
+        1.7198975720777678
+      ]
+    }
+  },
+  "raw_runs": {
+    "r1m10": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "10"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:18:14.943474+00:00",
+      "wall_seconds": 0.48883631359785795,
+      "last_resource_sample_utc": "2026-11-22T19:18:15.429541+00:00",
+      "guard_exit": 1,
+      "worker_exit": 1,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 63352832,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r1m10/stdout",
+      "stdout_sha256": "71cc2ec91d04a02f5da629dee5b1005c62450adf302b5bcb1d2694e6b3a5d36f",
+      "stdout_size": 403,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 1, \"mesh\": 10, \"port\": 4.2, \"axial_cells\": 28, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n",
+      "stderr_sha256": "650443273c0d0cb59eda580fc98b10d6721f8cd1aa05a2e96ad56c77c008c8c3",
+      "diagnostic": [
+        "ValueError: shape mismatch: value array of shape (10,) could not be broadcast to indexing result of shape (10,1,1)"
+      ]
+    },
+    "r1m10s": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "10"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:18:42.154543+00:00",
+      "wall_seconds": 4.897737235762179,
+      "last_resource_sample_utc": "2026-11-22T19:18:47.056458+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 54878208,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r1m10s/stdout",
+      "stdout_sha256": "22542218fea097f22aa3225b91f857eeecfb8208300bd7f8842565ec858bbadb",
+      "stdout_size": 14972,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 1, \"mesh\": 10, \"port\": 4.2, \"axial_cells\": 28, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"state\", \"index\": 0, \"coordinates\": [0.0, 0.0, 0.0, 0.0], \"depth\": 2.76301781542093, \"exit_radius\": 1.5, \"area\": 57.9095498757592, \"cap\": 14.137166941154069, \"curvature_energy\": -0.020312136608619975, \"minimum_radius\": 1.0, \"maximum_abs_principal_delta\": 0.04, \"end_slopes\": [0.0, 3.469446951953614e-17], \"carrier_energy\": 0.185330899822789, \"current\": 0.8196804797658848, \"wave_frequency\": 4.212319963758532, \"wave_rate\": 7.699594199850828e-08, \"feed_energy_flux_over_stored\": 7.699594200574385e-08, \"wave_pocket_fraction\": 0.9999995757035679, \"clamped_overlap\": 0.9999994833410779, \"total\": 76.42405554388596}\n{\"test\": \"force\", \"index\": 0, \"derivatives\": [{\"total\": 55.49611722723805, \"area\": 55.76737629629491, \"cap\": 0.0, \"curvature_energy\": -0.01798105561212973, \"carrier_energy\": -0.12051266944617296, \"wave_frequency\": -0.13276534399967824}, {\"total\": 116.73431399901327, \"area\": 77.73016317810881, \"cap\": 42.412073381042546, \"curvature_energy\": 0.004998849133918543, \"carrier_energy\": 0.18162325389353695, \"wave_frequency\": -3.5945446631657774}, {\"total\": 59.03183636766821, \"area\": 59.945268887641845, \"cap\": 0.0, \"curvature_energy\": 0.06245614258441947, \"carrier_energy\": 0.20616094851515684, \"wave_frequency\": -1.1820496110754124}, {\"total\": 5.223601006612455, \"area\": 6.017838501052826, \"cap\": 0.0, \"curvature_energy\": -0.008649183903664329, \"carrier_energy\": -0.05117910021326666, \"wave_frequency\": -0.734409210324897}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.999277883251421}\n{\"test\": \"state\", \"index\": 1, \"coordinates\": [-0.050737453054363085, -0.10672461556375777, -0.05396999242583717, -0.004775689257007024], \"depth\": 2.6263263397447614, \"exit_radius\": 1.348159720574849, \"area\": 45.180178186746396, \"cap\": 10.263905660120175, \"curvature_energy\": -0.023232447253509737, \"minimum_radius\": 0.9825999954832462, \"maximum_abs_principal_delta\": 0.04070828575815961, \"end_slopes\": [-0.13273959401951238, 0.03165731769430681], \"carrier_energy\": 0.16099565551817166, \"current\": 0.7119523332344988, \"wave_frequency\": 4.700794934404206, \"wave_rate\": 2.3205019579956129e-07, \"feed_energy_flux_over_stored\": 2.3205019584301588e-07, \"wave_pocket_fraction\": 0.9999988368184127, \"clamped_overlap\": 0.9999986385673402, \"total\": 60.282641989535435}\n{\"test\": \"force\", \"index\": 1, \"derivatives\": [{\"total\": 43.77879878072122, \"area\": 44.049555669885144, \"cap\": 0.0, \"curvature_energy\": -0.013392815289017812, \"carrier_energy\": -0.10965619368216717, \"wave_frequency\": -0.14770788019236036}, {\"total\": 85.40103088287172, \"area\": 58.48232327498455, \"cap\": 30.792132670222294, \"curvature_energy\": 0.0023431035670613137, \"carrier_energy\": 0.17535800048055125, \"wave_frequency\": -4.051126166382997}, {\"total\": 48.87121164103784, \"area\": 50.02084432764183, \"cap\": 0.0, \"curvature_energy\": 0.06146186474963698, \"carrier_energy\": 0.21254926252567882, \"wave_frequency\": -1.4236438138794938}, {\"total\": 3.5663648852081544, \"area\": 4.5154155802495195, \"cap\": 0.0, \"curvature_energy\": -0.007828044490530128, \"carrier_energy\": -0.04297669040687069, \"wave_frequency\": -0.898245960143947}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9982284378735844}\n{\"test\": \"state\", \"index\": 2, \"coordinates\": [-0.1035542126277276, -0.20975635332455808, -0.11293047346216004, -0.00907831614351443], \"depth\": 2.4912118557717937, \"exit_radius\": 1.2161726492827176, \"area\": 35.17390274739702, \"cap\": 7.53484470957186, \"curvature_energy\": -0.02620110866968143, \"minimum_radius\": 0.9350276208346794, \"maximum_abs_principal_delta\": 0.042779457776736834, \"end_slopes\": [-0.2806810582455409, 0.08197127323085522], \"carrier_energy\": 0.13643432843677158, \"current\": 0.6031700832951175, \"wave_frequency\": 5.249049924333172, \"wave_rate\": 5.714275142232302e-07, \"feed_energy_flux_over_stored\": 5.714275143840621e-07, \"wave_pocket_fraction\": 0.9999973527410196, \"clamped_overlap\": 0.9999969846826146, \"total\": 48.06803060106914}\n{\"test\": \"force\", \"index\": 2, \"derivatives\": [{\"total\": 34.133975526646765, \"area\": 34.41059473147116, \"cap\": 0.0, \"curvature_energy\": -0.008560846679374809, \"carrier_energy\": -0.09648670335927571, \"wave_frequency\": -0.17157165478565162}, {\"total\": 62.19116975708161, \"area\": 44.02423538498823, \"cap\": 22.604839291162488, \"curvature_energy\": -0.0011336666612508928, \"carrier_energy\": 0.1646224550608579, \"wave_frequency\": -4.60139370747011}, {\"total\": 39.70588272883665, \"area\": 41.086548610718886, \"cap\": 0.0, \"curvature_energy\": 0.0568561424091647, \"carrier_energy\": 0.2147902708720395, \"wave_frequency\": -1.652312295163938}, {\"total\": 2.2397124119220755, \"area\": 3.3593802657054064, \"cap\": 0.0, \"curvature_energy\": -0.005207855531938245, \"carrier_energy\": -0.03370807045389538, \"wave_frequency\": -1.0807519277970339}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9964985787106859}\n{\"test\": \"state\", \"index\": 3, \"coordinates\": [-0.15811537017601632, -0.30916528998883774, -0.1763979978198408, -0.0126583650503387], \"depth\": 2.358929993404032, \"exit_radius\": 1.1010891409854362, \"area\": 27.34891826090682, \"cap\": 5.591856889844294, \"curvature_energy\": -0.02888316147153435, \"minimum_radius\": 0.8629887955619066, \"maximum_abs_principal_delta\": 0.04635037891144316, \"end_slopes\": [-0.44675738281312694, 0.15147316514914239], \"carrier_energy\": 0.11217457619020223, \"current\": 0.4956956828481678, \"wave_frequency\": 5.8633709543617805, \"wave_rate\": 9.78672202573483e-07, \"feed_energy_flux_over_stored\": 9.786722028532858e-07, \"wave_pocket_fraction\": 0.999995732691079, \"clamped_overlap\": 0.9999952024716056, \"total\": 38.887437519831565}\n{\"test\": \"force\", \"index\": 3, \"derivatives\": [{\"total\": 26.18699286156338, \"area\": 26.48254945954302, \"cap\": 0.0, \"curvature_energy\": -0.004397238412812375, \"carrier_energy\": -0.08168584939430522, \"wave_frequency\": -0.20947351017230886}, {\"total\": 44.79884420266581, \"area\": 33.135198677195866, \"cap\": 16.775797140654063, \"curvature_energy\": -0.005095526026106453, \"carrier_energy\": 0.14964065061764723, \"wave_frequency\": -5.256696739776838}, {\"total\": 31.618803559688047, \"area\": 33.18634436001785, \"cap\": 0.0, \"curvature_energy\": 0.048035536680778035, \"carrier_energy\": 0.21195602844521766, \"wave_frequency\": -1.8275323654555937}, {\"total\": 1.1889114721969445, \"area\": 2.479443896371336, \"cap\": 0.0, \"curvature_energy\": -0.0007373724506508361, \"carrier_energy\": -0.024007540778870257, \"wave_frequency\": -1.2657875109448231}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.994737978299161}\n{\"test\": \"state\", \"index\": 4, \"coordinates\": [-0.2141283820853177, -0.40498836547949374, -0.2440294524778589, -0.01520140284025685], \"depth\": 2.230431605226619, \"exit_radius\": 1.0004768562884991, \"area\": 21.278210114729482, \"cap\": 4.194785415582802, \"curvature_energy\": -0.030884154960253325, \"minimum_radius\": 0.7721332832603275, \"maximum_abs_principal_delta\": 0.05180445005669483, \"end_slopes\": [-0.6343325385752671, 0.2409400388255172], \"carrier_energy\": 0.0888077010311081, \"current\": 0.39218158989587026, \"wave_frequency\": 6.545971208133155, \"wave_rate\": 9.540398704323158e-07, \"feed_energy_flux_over_stored\": 9.540398706017135e-07, \"wave_pocket_fraction\": 0.9999960216620996, \"clamped_overlap\": 0.9999955439959533, \"total\": 32.076890284516296}\n{\"test\": \"force\", \"index\": 4, \"derivatives\": [{\"total\": 19.65051154980439, \"area\": 19.9831950466501, \"cap\": 0.0, \"curvature_energy\": -0.0017030993690487588, \"carrier_energy\": -0.0661021109953086, \"wave_frequency\": -0.26487828648017836}, {\"total\": 31.62849469187042, \"area\": 24.932796431066013, \"cap\": 12.584526136246202, \"curvature_energy\": -0.008968011040565854, \"carrier_energy\": 0.13111932812415414, \"wave_frequency\": -6.0109791925260225}, {\"total\": 24.669050455553787, \"area\": 26.342770789991476, \"cap\": 0.0, \"curvature_energy\": 0.03537009573943243, \"carrier_energy\": 0.20331265099223875, \"wave_frequency\": -1.9124030811688009}, {\"total\": 0.3725106139379856, \"area\": 1.8073694238776028, \"cap\": 0.0, \"curvature_energy\": 0.00457718855207713, \"carrier_energy\": -0.014707824294371563, \"wave_frequency\": -1.42472817419718}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9940668974568279}\n{\"test\": \"state\", \"index\": 5, \"coordinates\": [-0.2713188224073076, -0.4970392789412247, -0.3158257441063356, -0.016285549987354413], \"depth\": 2.1064512749653557, \"exit_radius\": 0.912493633229054, \"area\": 16.615867107347754, \"cap\": 3.1825712708251004, \"curvature_energy\": -0.03184544410286567, \"minimum_radius\": 0.6688116400027548, \"maximum_abs_principal_delta\": 0.05980735176249775, \"end_slopes\": [-0.8477134811847188, 0.35174742393032576], \"carrier_energy\": 0.0669352868160422, \"current\": 0.2953284132149768, \"wave_frequency\": 7.292715426893457, \"wave_rate\": 3.457694309092464e-07, \"feed_energy_flux_over_stored\": 3.457694309311286e-07, \"wave_pocket_fraction\": 0.9999985476468507, \"clamped_overlap\": 0.9999983700805198, \"total\": 27.12624364777949}\n{\"test\": \"force\", \"index\": 5, \"derivatives\": [{\"total\": 14.313298929935195, \"area\": 14.69926211969863, \"cap\": 0.0, \"curvature_energy\": -0.0008289724740886961, \"carrier_energy\": -0.05062709407090832, \"wave_frequency\": -0.33450712321873394}, {\"total\": 21.571035910054565, \"area\": 18.76735673933716, \"cap\": 9.547842707133825, \"curvature_energy\": -0.01215698968226366, \"carrier_energy\": 0.11011750408460724, \"wave_frequency\": -6.842124050818447}, {\"total\": 18.856929979347587, \"area\": 20.542746987337306, \"cap\": 0.0, \"curvature_energy\": 0.02008383920986308, \"carrier_energy\": 0.18838614738155476, \"wave_frequency\": -1.8942869945811993}, {\"total\": -0.23651375937028263, \"area\": 1.2877866949002243, \"cap\": 0.0, \"curvature_energy\": 0.009005028109153324, \"carrier_energy\": -0.006722300151094466, \"wave_frequency\": -1.5265831822278326}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.994626338926399}\n{\"test\": \"state\", \"index\": 6, \"coordinates\": [-0.3294149976620214, -0.584593845417531, -0.39236404000923586, -0.015325565508459068], \"depth\": 1.9875614714760084, \"exit_radius\": 0.835998268301419, \"area\": 13.077726145148466, \"cap\": 2.447398800293748, \"curvature_energy\": -0.031510561510691246, \"minimum_radius\": 0.5585704564913827, \"maximum_abs_principal_delta\": 0.0716113749834186, \"end_slopes\": [-1.0928746913616694, 0.4864034165716964], \"carrier_energy\": 0.047133638438402195, \"current\": 0.2077202395677331, \"wave_frequency\": 8.090931137954408, \"wave_rate\": 2.0515372920679112e-08, \"feed_energy_flux_over_stored\": 2.0515372920741296e-08, \"wave_pocket_fraction\": 0.9999999088023735, \"clamped_overlap\": 0.9999998970896872, \"total\": 23.63167916032433}\n{\"test\": \"force\", \"index\": 6, \"derivatives\": [{\"total\": 10.02144435250448, \"area\": 10.465528341251288, \"cap\": 0.0, \"curvature_energy\": -0.00167429347229404, \"carrier_energy\": -0.03608948707696513, \"wave_frequency\": -0.4063202081973453}, {\"total\": 13.844949339744042, \"area\": 14.152296717485116, \"cap\": 7.342295520933906, \"curvature_energy\": -0.014296697597516079, \"carrier_energy\": 0.08784224971567871, \"wave_frequency\": -7.72318845079282}, {\"total\": 14.115228515934794, \"area\": 15.72529475988323, \"cap\": 0.0, \"curvature_energy\": 0.0037308524129831913, \"carrier_energy\": 0.16693303509618973, \"wave_frequency\": -1.7807301314576307}, {\"total\": -0.656506158887756, \"area\": 0.8837481326728162, \"cap\": 0.0, \"curvature_energy\": 0.011097378177464303, \"carrier_energy\": -0.0008574507281781015, \"wave_frequency\": -1.5504942190093611}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9956317976777407}\n{\"test\": \"state\", \"index\": 7, \"coordinates\": [-0.3881621841279389, -0.6657549826611717, -0.4751095936905695, -0.011477029471578946], \"depth\": 1.874161406756793, \"exit_radius\": 0.7708281099613307, \"area\": 10.432738908821214, \"cap\": 1.9184975135053006, \"curvature_energy\": -0.02973543235656596, \"minimum_radius\": 0.4443625768274492, \"maximum_abs_principal_delta\": 0.09001636085065629, \"end_slopes\": [-1.3785910528302296, 0.6494502545094161], \"carrier_energy\": 0.029956499219789642, \"current\": 0.1318286566203457, \"wave_frequency\": 8.912980586296213, \"wave_rate\": 5.958802366916882e-11, \"feed_energy_flux_over_stored\": 5.958802366914701e-11, \"wave_pocket_fraction\": 0.9999999997361089, \"clamped_overlap\": 0.9999999997013975, \"total\": 21.264438075485952}\n{\"test\": \"force\", \"index\": 7, \"derivatives\": [{\"total\": 6.657424378654279, \"area\": 7.146810158528064, \"cap\": 0.0, \"curvature_energy\": -0.003901142049135206, \"carrier_energy\": -0.023206040475757157, \"wave_frequency\": -0.46227859734848664}, {\"total\": 7.9068207697451, \"area\": 10.722532337199553, \"cap\": 5.755570239979709, \"curvature_energy\": -0.01532986738694668, \"carrier_energy\": 0.06545746387573957, \"wave_frequency\": -8.621409403922678}, {\"total\": 10.323105011675437, \"area\": 11.77830018670356, \"cap\": 0.0, \"curvature_energy\": -0.012134443499336664, \"carrier_energy\": 0.13886730152647708, \"wave_frequency\": -1.5819280330558645}, {\"total\": -0.8987620573795614, \"area\": 0.5743612831142405, \"cap\": 0.0, \"curvature_energy\": 0.010535727471228684, \"carrier_energy\": 0.0023830512053384795, \"wave_frequency\": -1.48604211917025}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9966005663437321}\n{\"test\": \"state\", \"index\": 8, \"coordinates\": [-0.4472946912778539, -0.7359848657371486, -0.5668013721010683, -0.0034940542605541563], \"depth\": 1.7665505485548916, \"exit_radius\": 0.7185501644278969, \"area\": 8.504430146433236, \"cap\": 1.5540317539348927, \"curvature_energy\": -0.02647571741767236, \"minimum_radius\": 0.32655775207877136, \"maximum_abs_principal_delta\": 0.12248966912387149, \"end_slopes\": [-1.717855800626055, 0.8489606318376947], \"carrier_energy\": 0.016000080777789652, \"current\": 0.07028971250972749, \"wave_frequency\": 9.69775101934086, \"wave_rate\": 1.3017473383947209e-14, \"feed_energy_flux_over_stored\": 2.386610603256064e-15, \"wave_pocket_fraction\": 0.99999999999999, \"clamped_overlap\": 0.9999999999999889, \"total\": 19.745737283069108}\n{\"test\": \"limit\", \"reason\": \"thin_front\", \"coordinates\": [-0.4472946912778539, -0.7359848657371486, -0.5668013721010683, -0.0034940542605541563], \"measurements\": {\"depth\": 1.7665505485548916, \"exit_radius\": 0.7185501644278969, \"area\": 8.504430146433236, \"cap\": 1.5540317539348927, \"curvature_energy\": -0.02647571741767236, \"minimum_radius\": 0.32655775207877136, \"maximum_abs_principal_delta\": 0.12248966912387149, \"end_slopes\": [-1.717855800626055, 0.8489606318376947], \"carrier_energy\": 0.016000080777789652, \"current\": 0.07028971250972749, \"wave_frequency\": 9.69775101934086, \"wave_rate\": 1.3017473383947209e-14, \"feed_energy_flux_over_stored\": 2.386610603256064e-15, \"wave_pocket_fraction\": 0.99999999999999, \"clamped_overlap\": 0.9999999999999889, \"total\": 19.745737283069108}}\n",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": []
+    },
+    "r1extension": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "10",
+        "--mode",
+        "extension",
+        "--start",
+        "-0.4472946912778539",
+        "-0.7359848657371486",
+        "-0.5668013721010683",
+        "-0.0034940542605541563"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:21:01.595470+00:00",
+      "wall_seconds": 1.5351341292262077,
+      "last_resource_sample_utc": "2026-11-22T19:21:03.131086+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 54173696,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r1extension/stdout",
+      "stdout_sha256": "1bf7c6293a39bc6b2e400f98c64cb65ea223237ae59883fefd7c4a92c2869c85",
+      "stdout_size": 5217,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 1, \"mesh\": 10, \"port\": 4.2, \"axial_cells\": 28, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"state\", \"index\": 0, \"coordinates\": [-0.4472946912778539, -0.7359848657371486, -0.5668013721010683, -0.0034940542605541563], \"depth\": 1.7665505485548916, \"exit_radius\": 0.7185501644278969, \"area\": 8.504430146433236, \"cap\": 1.5540317539348927, \"curvature_energy\": -0.02647571741767236, \"minimum_radius\": 0.32655775207877136, \"maximum_abs_principal_delta\": 0.12248966912387149, \"end_slopes\": [-1.717855800626055, 0.8489606318376947], \"carrier_energy\": 0.016000080777789652, \"current\": 0.07028971250972749, \"wave_frequency\": 9.69775101934086, \"wave_rate\": 1.3017473383947209e-14, \"feed_energy_flux_over_stored\": 2.386610603256064e-15, \"wave_pocket_fraction\": 0.99999999999999, \"clamped_overlap\": 0.9999999999999889, \"total\": 19.745737283069108}\n{\"test\": \"force\", \"index\": 0, \"derivatives\": [{\"total\": 4.12836270809495, \"area\": 4.630862354621179, \"cap\": 0.0, \"curvature_energy\": -0.007056201548445254, \"carrier_energy\": -0.012605229826909264, \"wave_frequency\": -0.48283821515079}, {\"total\": 3.432344682847107, \"area\": 8.217176980187979, \"cap\": 4.662158200345619, \"curvature_energy\": -0.015413077137933193, \"carrier_energy\": 0.04398338648971383, \"wave_frequency\": -9.475560807037672}, {\"total\": 7.313554728053617, \"area\": 8.547006001062543, \"cap\": 0.0, \"curvature_energy\": -0.025939998341342172, \"carrier_energy\": 0.1042668739308205, \"wave_frequency\": -1.311778148598286}, {\"total\": -0.972717449975254, \"area\": 0.3478718238572043, \"cap\": 0.0, \"curvature_energy\": 0.008207460626738378, \"carrier_energy\": 0.002981392460250342, \"wave_frequency\": -1.3317781269194622}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9975533362930032}\n{\"test\": \"state\", \"index\": 1, \"coordinates\": [-0.5061121920331364, -0.7848860767620173, -0.670998856953264, 0.01036442024712713], \"depth\": 1.6656431110543743, \"exit_radius\": 0.6842575010684437, \"area\": 7.187284174015871, \"cap\": 1.3419839146027595, \"curvature_energy\": -0.021846233617414394, \"minimum_radius\": 0.20519146286513948, \"maximum_abs_principal_delta\": 0.1949398798755919, \"end_slopes\": [-2.1260230263201443, 1.096750699936318], \"carrier_energy\": 0.006062930330415018, \"current\": 0.02658854707735203, \"wave_frequency\": 10.30844262177354, \"wave_rate\": 9.410359861142248e-15, \"feed_energy_flux_over_stored\": 9.79790236758146e-25, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.0000000000000007, \"total\": 18.82192740710517}\n{\"test\": \"force\", \"index\": 1, \"derivatives\": [{\"total\": 2.369017249195101, \"area\": 2.839093002955965, \"cap\": 0.0, \"curvature_energy\": -0.010505817570133474, \"carrier_energy\": -0.004941784895029528, \"wave_frequency\": -0.4546281512955256}, {\"total\": 0.37826182679031223, \"area\": 6.491982490261321, \"cap\": 4.026006094376866, \"curvature_energy\": -0.01477911937851524, \"carrier_energy\": 0.024422917000022863, \"wave_frequency\": -10.14937055546857}, {\"total\": 4.88960364748614, \"area\": 5.8638723669658015, \"cap\": 0.0, \"curvature_energy\": -0.035933806196019234, \"carrier_energy\": 0.06403505956440886, \"wave_frequency\": -1.0023699728476387}, {\"total\": -0.8988855648220568, \"area\": 0.19778736893523904, \"cap\": 0.0, \"curvature_energy\": 0.005636887569165569, \"carrier_energy\": 0.0016716656497589462, \"wave_frequency\": -1.1039814869760651}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9986895870681989}\n{\"test\": \"state\", \"index\": 2, \"coordinates\": [-0.5619032177743122, -0.7937942496858458, -0.7861504047327205, 0.031533429338300945], \"depth\": 1.5752599023050904, \"exit_radius\": 0.6781890862987141, \"area\": 6.46683003269721, \"cap\": 1.3065950220511422, \"curvature_energy\": -0.016495858347924046, \"minimum_radius\": 0.08706233365967331, \"maximum_abs_principal_delta\": 0.4594247070799022, \"end_slopes\": [-2.598013346240018, 1.3944727372683114], \"carrier_energy\": 0.0010478397140905092, \"current\": 0.004592063469117225, \"wave_frequency\": 10.50051670373625, \"wave_rate\": 9.06967643349299e-15, \"feed_energy_flux_over_stored\": 1.8456222847290007e-39, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.0000000000000002, \"total\": 18.25849373985077}\n{\"test\": \"limit\", \"reason\": \"waist comparable to planar half-to-90-percent width\", \"coordinates\": [-0.5619032177743122, -0.7937942496858458, -0.7861504047327205, 0.031533429338300945], \"measurements\": {\"depth\": 1.5752599023050904, \"exit_radius\": 0.6781890862987141, \"area\": 6.46683003269721, \"cap\": 1.3065950220511422, \"curvature_energy\": -0.016495858347924046, \"minimum_radius\": 0.08706233365967331, \"maximum_abs_principal_delta\": 0.4594247070799022, \"end_slopes\": [-2.598013346240018, 1.3944727372683114], \"carrier_energy\": 0.0010478397140905092, \"current\": 0.004592063469117225, \"wave_frequency\": 10.50051670373625, \"wave_rate\": 9.06967643349299e-15, \"feed_energy_flux_over_stored\": 1.8456222847290007e-39, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.0000000000000002, \"total\": 18.25849373985077}}\n",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": []
+    },
+    "r1m16start": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "16",
+        "--port",
+        "5.2",
+        "--mode",
+        "point",
+        "--start",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:20:06.606922+00:00",
+      "wall_seconds": 2.9994951779954135,
+      "last_resource_sample_utc": "2026-11-22T19:20:09.647124+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 63524864,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r1m16start/stdout",
+      "stdout_sha256": "14eb472d84ace17ec4c1bab2421b42afcf370c0b6013de1ee977e2a2cbfeb957",
+      "stdout_size": 2993,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 1, \"mesh\": 16, \"port\": 5.2, \"axial_cells\": 45, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"point\", \"coordinates\": [0.0, 0.0, 0.0, 0.0], \"measurements\": {\"depth\": 2.76301781542093, \"exit_radius\": 1.5, \"area\": 57.9095498757592, \"cap\": 14.137166941154069, \"curvature_energy\": -0.020312136608619975, \"minimum_radius\": 1.0, \"maximum_abs_principal_delta\": 0.04, \"end_slopes\": [0.0, 3.469446951953614e-17], \"carrier_energy\": 0.18385044514440452, \"current\": 0.8131377465740738, \"wave_frequency\": 4.2091564221771005, \"wave_rate\": 7.743859369904174e-08, \"feed_energy_flux_over_stored\": 7.743859370267666e-08, \"wave_pocket_fraction\": 0.9999994858187047, \"clamped_overlap\": 0.9999993888988958, \"total\": 76.41941154762614}, \"signed\": [{\"total\": 55.49750302489542, \"area\": 55.76737629629491, \"cap\": 0.0, \"curvature_energy\": -0.01798105561212973, \"carrier_energy\": -0.11894860813255193, \"wave_frequency\": -0.13294360765492286}, {\"total\": 116.73462119465938, \"area\": 77.73016317810881, \"cap\": 42.412073381042546, \"curvature_energy\": 0.004998849133918543, \"carrier_energy\": 0.17881445426242795, \"wave_frequency\": -3.5914286678869383}, {\"total\": 59.028564884883394, \"area\": 59.945268887641845, \"cap\": 0.0, \"curvature_energy\": 0.06245614258441947, \"carrier_energy\": 0.20222710304129698, \"wave_frequency\": -1.181387248385531}, {\"total\": 5.224549463468027, \"area\": 6.017838501052826, \"cap\": 0.0, \"curvature_energy\": -0.008649183903664329, \"carrier_energy\": -0.050892441860503346, \"wave_frequency\": -0.7337474118204549}, {\"total\": 47.47203152346676, \"area\": 48.01223171893554, \"cap\": 0.0, \"curvature_energy\": -0.0001941775094003543, \"carrier_energy\": 0.14898135926896816, \"wave_frequency\": -0.6889873772291111}], \"half_signed\": [{\"total\": 55.49743979092625, \"area\": 55.767313170280865, \"cap\": 0.0, \"curvature_energy\": -0.01798107697571193, \"carrier_energy\": -0.11894867484707472, \"wave_frequency\": -0.1329436275308756}, {\"total\": 116.7337545172368, \"area\": 77.72972656605977, \"cap\": 42.411643962423064, \"curvature_energy\": 0.004998840582103037, \"carrier_energy\": 0.17881469398847716, \"wave_frequency\": -3.5914295458179994}, {\"total\": 59.02848323608604, \"area\": 59.94518640289688, \"cap\": 0.0, \"curvature_energy\": 0.062456885445159406, \"carrier_energy\": 0.2022275900120755, \"wave_frequency\": -1.1813876422654228}, {\"total\": 5.224548034595007, \"area\": 6.017837877503022, \"cap\": 0.0, \"curvature_energy\": -0.008649218534377556, \"carrier_energy\": -0.0508925352044424, \"wave_frequency\": -0.7337480891725553}, {\"total\": 47.47195085342545, \"area\": 48.01214182234759, \"cap\": 0.0, \"curvature_energy\": -0.0001936560872240848, \"carrier_energy\": 0.1489813983733823, \"wave_frequency\": -0.6889787112083212}]}\n",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": []
+    },
+    "r1m16last": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "16",
+        "--port",
+        "5.2",
+        "--mode",
+        "point",
+        "--start",
+        "-0.3881621841279389",
+        "-0.6657549826611717",
+        "-0.4751095936905695",
+        "-0.011477029471578946"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:20:06.109547+00:00",
+      "wall_seconds": 3.6036611241288483,
+      "last_resource_sample_utc": "2026-11-22T19:20:09.723146+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 66904064,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r1m16last/stdout",
+      "stdout_sha256": "2d87785ee384c2581ff9075220700c61016121ab74832842893e586b30bc2802",
+      "stdout_size": 3124,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 1, \"mesh\": 16, \"port\": 5.2, \"axial_cells\": 45, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"point\", \"coordinates\": [-0.3881621841279389, -0.6657549826611717, -0.4751095936905695, -0.011477029471578946], \"measurements\": {\"depth\": 1.874161406756793, \"exit_radius\": 0.7708281099613307, \"area\": 10.432738908821214, \"cap\": 1.9184975135053006, \"curvature_energy\": -0.02973543235656596, \"minimum_radius\": 0.4443625768274492, \"maximum_abs_principal_delta\": 0.09001636085065629, \"end_slopes\": [-1.3785910528302296, 0.6494502545094161], \"carrier_energy\": 0.029677612341601937, \"current\": 0.13058008631266554, \"wave_frequency\": 8.90382757310301, \"wave_rate\": 6.920521257045243e-11, \"feed_energy_flux_over_stored\": 6.920521257042115e-11, \"wave_pocket_fraction\": 0.9999999996020259, \"clamped_overlap\": 0.9999999995615865, \"total\": 21.255006175414564}, \"signed\": [{\"total\": 6.657069307713333, \"area\": 7.146810158528064, \"cap\": 0.0, \"curvature_energy\": -0.003901142049135206, \"carrier_energy\": -0.02303156607896528, \"wave_frequency\": -0.4628081426870286}, {\"total\": 7.918172126536523, \"area\": 10.722532337199553, \"cap\": 5.755570239979709, \"curvature_energy\": -0.01532986738694668, \"carrier_energy\": 0.06511516955419056, \"wave_frequency\": -8.609715752810073}, {\"total\": 10.342977958088658, \"area\": 11.77830018670356, \"cap\": 0.0, \"curvature_energy\": -0.012134443499336664, \"carrier_energy\": 0.13893500091351324, \"wave_frequency\": -1.5621227860294813}, {\"total\": -0.8817094851719295, \"area\": 0.5743612831142405, \"cap\": 0.0, \"curvature_energy\": 0.010535727471228684, \"carrier_energy\": 0.002221749501661712, \"wave_frequency\": -1.4688282452587724}, {\"total\": 9.143244848518842, \"area\": 9.278507900531826, \"cap\": 0.0, \"curvature_energy\": -0.04300397937649, \"carrier_energy\": 0.12449108374496091, \"wave_frequency\": -0.21675015638145112}], \"half_signed\": [{\"total\": 6.657058645526348, \"area\": 7.146799694664807, \"cap\": 0.0, \"curvature_energy\": -0.0039011373133013743, \"carrier_energy\": -0.02303157583812924, \"wave_frequency\": -0.46280833598721927}, {\"total\": 7.918059676118361, \"area\": 10.722468738254184, \"cap\": 5.755511965322609, \"curvature_energy\": -0.015329860557531752, \"carrier_energy\": 0.0651149761134844, \"wave_frequency\": -8.60970614301415}, {\"total\": 10.342961733500763, \"area\": 11.778261643551483, \"cap\": 0.0, \"curvature_energy\": -0.012134886613890394, \"carrier_energy\": 0.13893572475430377, \"wave_frequency\": -1.5621007481918525}, {\"total\": -0.8817126422092277, \"area\": 0.5743578957631001, \"cap\": 0.0, \"curvature_energy\": 0.010536047127857976, \"carrier_energy\": 0.0022217667320749888, \"wave_frequency\": -1.4688283518330774}, {\"total\": 9.143216854431794, \"area\": 9.27846587059141, \"cap\": 0.0, \"curvature_energy\": -0.04300353066810531, \"carrier_energy\": 0.12449219950879178, \"wave_frequency\": -0.21673768499989401}]}\n",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": []
+    },
+    "r1m16tracked": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "16",
+        "--port",
+        "5.2",
+        "--mode",
+        "continuation",
+        "--start",
+        "-0.3881621841279389",
+        "-0.6657549826611717",
+        "-0.4751095936905695",
+        "-0.011477029471578946"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:22:38.127189+00:00",
+      "wall_seconds": 10.440967116039246,
+      "last_resource_sample_utc": "2026-11-22T19:22:48.565111+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 145465344,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r1m16tracked/stdout",
+      "stdout_sha256": "b33c0844f9f04453033d1a9679b70d84ef582845eb3e81df9e1f6ca5e279af12",
+      "stdout_size": 6888,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 1, \"mesh\": 16, \"port\": 5.2, \"axial_cells\": 45, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"state\", \"index\": 0, \"coordinates\": [-0.3881621841279389, -0.6657549826611717, -0.4751095936905695, -0.011477029471578946], \"depth\": 1.874161406756793, \"exit_radius\": 0.7708281099613307, \"area\": 10.432738908821214, \"cap\": 1.9184975135053006, \"curvature_energy\": -0.02973543235656596, \"minimum_radius\": 0.4443625768274492, \"maximum_abs_principal_delta\": 0.09001636085065629, \"end_slopes\": [-1.3785910528302296, 0.6494502545094161], \"carrier_energy\": 0.029677612341601937, \"current\": 0.13058008631266554, \"wave_frequency\": 8.90382757310301, \"wave_rate\": 6.920521257045243e-11, \"feed_energy_flux_over_stored\": 6.920521257042115e-11, \"wave_pocket_fraction\": 0.9999999996020259, \"clamped_overlap\": 0.9999999995615865, \"total\": 21.255006175414564}\n{\"test\": \"force\", \"index\": 0, \"derivatives\": [{\"total\": 6.657069307713333, \"area\": 7.146810158528064, \"cap\": 0.0, \"curvature_energy\": -0.003901142049135206, \"carrier_energy\": -0.02303156607896528, \"wave_frequency\": -0.46280814268673254}, {\"total\": 7.918172126505141, \"area\": 10.722532337199553, \"cap\": 5.755570239979709, \"curvature_energy\": -0.01532986738694668, \"carrier_energy\": 0.06511516955419056, \"wave_frequency\": -8.609715752841455}, {\"total\": 10.342977958091618, \"area\": 11.77830018670356, \"cap\": 0.0, \"curvature_energy\": -0.012134443499336664, \"carrier_energy\": 0.13893500091351324, \"wave_frequency\": -1.5621227860268168}, {\"total\": -0.8817094851689689, \"area\": 0.5743612831142405, \"cap\": 0.0, \"curvature_energy\": 0.010535727471228684, \"carrier_energy\": 0.002221749501661712, \"wave_frequency\": -1.4688282452566999}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9964609035341155}\n{\"test\": \"state\", \"index\": 1, \"coordinates\": [-0.4472150543695751, -0.7359947187257588, -0.566859056861036, -0.003655648408567625], \"depth\": 1.7666912367808099, \"exit_radius\": 0.7185430845961898, \"area\": 8.504168792102538, \"cap\": 1.5539858190422764, \"curvature_energy\": -0.026475955881072568, \"minimum_radius\": 0.32649488199238164, \"maximum_abs_principal_delta\": 0.12251328931980915, \"end_slopes\": [-1.7174877454775876, 0.8493854921751567], \"carrier_energy\": 0.015719950757961173, \"current\": 0.06903232852068025, \"wave_frequency\": 9.685754743439553, \"wave_rate\": 4.1068729091411836e-15, \"feed_energy_flux_over_stored\": 4.106872906853071e-15, \"wave_pocket_fraction\": 0.9999999999999772, \"clamped_overlap\": 0.9999999999999748, \"total\": 19.733153349461254}\n{\"test\": \"force\", \"index\": 1, \"derivatives\": [{\"total\": 4.128863026102418, \"area\": 4.6304951132600065, \"cap\": 0.0, \"curvature_energy\": -0.007059189726786597, \"carrier_energy\": -0.01243259307372816, \"wave_frequency\": -0.4821403043570408}, {\"total\": 3.4487687343691675, \"area\": 8.216983136548173, \"cap\": 4.662020393807327, \"curvature_energy\": -0.015414253378471613, \"carrier_energy\": 0.04360078494451865, \"wave_frequency\": -9.458421327552221}, {\"total\": 7.3461832716195845, \"area\": 8.546749006113371, \"cap\": 0.0, \"curvature_energy\": -0.025948218607384107, \"carrier_energy\": 0.10425197579705595, \"wave_frequency\": -1.278869491683506}, {\"total\": -0.9451268659912415, \"area\": 0.3469787520338959, \"cap\": 0.0, \"curvature_energy\": 0.008190167425699396, \"carrier_energy\": 0.0028381752509021307, \"wave_frequency\": -1.3031339607018448}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9973794835838813}\n{\"test\": \"state\", \"index\": 2, \"coordinates\": [-0.5058489483223519, -0.7849706084465525, -0.6711820455828037, 0.00976607764097951], \"depth\": 1.6660816388450799, \"exit_radius\": 0.6841996620738708, \"area\": 7.186291020662576, \"cap\": 1.341643637268146, \"curvature_energy\": -0.02184452387624129, \"minimum_radius\": 0.20497310103448457, \"maximum_abs_principal_delta\": 0.195147529060264, \"end_slopes\": [-2.124501433960278, 1.0983036432173998], \"carrier_energy\": 0.005802513370282737, \"current\": 0.02542331703550349, \"wave_frequency\": 10.292864870300264, \"wave_rate\": 6.231657731694958e-20, \"feed_energy_flux_over_stored\": 1.8165366823106664e-23, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.0000000000000002, \"total\": 18.804757517725026}\n{\"test\": \"force\", \"index\": 2, \"derivatives\": [{\"total\": 2.3717927485720955, \"area\": 2.838102759053237, \"cap\": 0.0, \"curvature_energy\": -0.010517311092513257, \"carrier_energy\": -0.004755457055690843, \"wave_frequency\": -0.45103724233275244}, {\"total\": 0.3996582377858715, \"area\": 6.490178611762598, \"cap\": 4.0249852485917765, \"curvature_energy\": -0.014782709139643638, \"carrier_energy\": 0.023925395513378866, \"wave_frequency\": -10.124648308942183}, {\"total\": 4.936156004786696, \"area\": 5.862300718074476, \"cap\": 0.0, \"curvature_energy\": -0.03595051668180369, \"carrier_energy\": 0.06350402159980481, \"wave_frequency\": -0.9536982182056045}, {\"total\": -0.8589520442819539, \"area\": 0.19546142317317106, \"cap\": 0.0, \"curvature_energy\": 0.005583953877652768, \"carrier_energy\": 0.0015441425053780375, \"wave_frequency\": -1.0615415638381975}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9985276163418314}\n{\"test\": \"state\", \"index\": 3, \"coordinates\": [-0.5613270052855246, -0.79431892207768, -0.7866425318236565, 0.029857626731850394], \"depth\": 1.5761678482936723, \"exit_radius\": 0.6778333525386918, \"area\": 6.4629158067646575, \"cap\": 1.3045400367603526, \"curvature_energy\": -0.016483357530974355, \"minimum_radius\": 0.08639233968872606, \"maximum_abs_principal_delta\": 0.4629955450876821, \"end_slopes\": [-2.5937385324215967, 1.3989455344448092], \"carrier_energy\": 0.0008549376386779238, \"current\": 0.0037401242408937607, \"wave_frequency\": 10.484699689947304, \"wave_rate\": 1.7798244306485492e-25, \"feed_energy_flux_over_stored\": 4.24427237308095e-40, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 0.9999999999999996, \"total\": 18.236527113580017}\n{\"test\": \"limit\", \"reason\": \"waist comparable to planar half-to-90-percent width\", \"coordinates\": [-0.5613270052855246, -0.79431892207768, -0.7866425318236565, 0.029857626731850394], \"measurements\": {\"depth\": 1.5761678482936723, \"exit_radius\": 0.6778333525386918, \"area\": 6.4629158067646575, \"cap\": 1.3045400367603526, \"curvature_energy\": -0.016483357530974355, \"minimum_radius\": 0.08639233968872606, \"maximum_abs_principal_delta\": 0.4629955450876821, \"end_slopes\": [-2.5937385324215967, 1.3989455344448092], \"carrier_energy\": 0.0008549376386779238, \"current\": 0.0037401242408937607, \"wave_frequency\": 10.484699689947304, \"wave_rate\": 1.7798244306485492e-25, \"feed_energy_flux_over_stored\": 4.24427237308095e-40, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 0.9999999999999996, \"total\": 18.236527113580017}}\n",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": []
+    },
+    "r2m10": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "10"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:18:13.663156+00:00",
+      "wall_seconds": 0.5682221949100494,
+      "last_resource_sample_utc": "2026-11-22T19:18:14.230074+00:00",
+      "guard_exit": 1,
+      "worker_exit": 1,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 63344640,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r2m10/stdout",
+      "stdout_sha256": "b567f0aa3b17bea895dc328225f415e0008b375ba6c3c1712724f3c5ab93d8b6",
+      "stdout_size": 403,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 2, \"mesh\": 10, \"port\": 4.2, \"axial_cells\": 56, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n",
+      "stderr_sha256": "650443273c0d0cb59eda580fc98b10d6721f8cd1aa05a2e96ad56c77c008c8c3",
+      "diagnostic": [
+        "ValueError: shape mismatch: value array of shape (10,) could not be broadcast to indexing result of shape (10,1,1)"
+      ]
+    },
+    "r2m10s": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "10"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:18:41.363481+00:00",
+      "wall_seconds": 6.5878788232803345,
+      "last_resource_sample_utc": "2026-11-22T19:18:47.950581+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 57655296,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r2m10s/stdout",
+      "stdout_sha256": "c827786da423e6c8ebaa22da9017ebd78a74e0a482fd4853ab89b86a279f01d5",
+      "stdout_size": 18148,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 2, \"mesh\": 10, \"port\": 4.2, \"axial_cells\": 56, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"state\", \"index\": 0, \"coordinates\": [0.0, 0.0, 0.0, 0.0], \"depth\": 5.52603563084186, \"exit_radius\": 3.0, \"area\": 463.2763990060736, \"cap\": 113.09733552923255, \"curvature_energy\": -0.04062427321723995, \"minimum_radius\": 2.0, \"maximum_abs_principal_delta\": 0.02, \"end_slopes\": [0.0, 3.469446951953614e-17], \"carrier_energy\": 0.6668899949315635, \"current\": 2.9553287174786482, \"wave_frequency\": 2.106113612772707, \"wave_rate\": 6.818893417505383e-08, \"feed_energy_flux_over_stored\": 6.818893425325846e-08, \"wave_pocket_fraction\": 0.9999996768557745, \"clamped_overlap\": 0.9999995776485137, \"total\": 579.1061138697931}\n{\"test\": \"force\", \"index\": 0, \"derivatives\": [{\"total\": 445.6461646839405, \"area\": 446.1390103703593, \"cap\": 0.0, \"curvature_energy\": -0.03596211122425946, \"carrier_energy\": -0.3904844630081006, \"wave_frequency\": -0.06639911217594847}, {\"total\": 959.9398527908154, \"area\": 621.8413054248705, \"cap\": 339.29658704834037, \"curvature_energy\": 0.009997698267837085, \"carrier_energy\": 0.5893301739060183, \"wave_frequency\": -1.7973675545684593}, {\"total\": 479.766360879637, \"area\": 479.56215110113476, \"cap\": 0.0, \"curvature_energy\": 0.12491228516883894, \"carrier_energy\": 0.6699598751311134, \"wave_frequency\": -0.590662381786696}, {\"total\": 47.59023987721397, \"area\": 48.14270800842261, \"cap\": 0.0, \"curvature_energy\": -0.017298367807328657, \"carrier_energy\": -0.1680902651331103, \"wave_frequency\": -0.3670794982684929}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.99927371203766}\n{\"test\": \"state\", \"index\": 1, \"coordinates\": [-0.049815073545216894, -0.10730368205832871, -0.053629086135387624, -0.005319716598928378], \"depth\": 5.257499853813225, \"exit_radius\": 2.6947585448776508, \"area\": 361.612567208405, \"cap\": 81.96872549654235, \"curvature_energy\": -0.04644203290568068, \"minimum_radius\": 1.9656027136173582, \"maximum_abs_principal_delta\": 0.020349984213613823, \"end_slopes\": [-0.13156755694673516, 0.031640317903485496], \"carrier_energy\": 0.586501119893373, \"current\": 2.59903370020919, \"wave_frequency\": 2.351445608845799, \"wave_rate\": 1.827784558683507e-07, \"feed_energy_flux_over_stored\": 1.8277845619680602e-07, \"wave_pocket_fraction\": 0.999999238316415, \"clamped_overlap\": 0.9999990308492486, \"total\": 446.4727974007808}\n{\"test\": \"force\", \"index\": 1, \"derivatives\": [{\"total\": 352.1684249278773, \"area\": 352.6333853223207, \"cap\": 0.0, \"curvature_energy\": -0.02695032947766518, \"carrier_energy\": -0.36424351670847716, \"wave_frequency\": -0.0737665482550091}, {\"total\": 712.1999923002326, \"area\": 467.72887160832965, \"cap\": 245.90949623645503, \"curvature_energy\": 0.0046948947115196815, \"carrier_energy\": 0.5833851202559451, \"wave_frequency\": -2.0264555595191545}, {\"total\": 400.6964164954354, \"area\": 400.57820296282404, \"cap\": 0.0, \"curvature_energy\": 0.12288304852257903, \"carrier_energy\": 0.7077651252815342, \"wave_frequency\": -0.7124346411876056}, {\"total\": 35.38796025785018, \"area\": 35.99746814269148, \"cap\": 0.0, \"curvature_energy\": -0.015448865881542474, \"carrier_energy\": -0.1446654326301052, \"wave_frequency\": -0.44939358634491866}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9982012279545732}\n{\"test\": \"state\", \"index\": 2, \"coordinates\": [-0.1012242176585493, -0.21126982283081625, -0.11212229098624385, -0.010485610586003676], \"depth\": 4.994046268717552, \"exit_radius\": 2.4286668024753575, \"area\": 281.72873379678447, \"cap\": 60.00568788504092, \"curvature_energy\": -0.05233283443536806, \"minimum_radius\": 1.871430891505185, \"maximum_abs_principal_delta\": 0.0213740010195306, \"end_slopes\": [-0.27721542137055094, 0.08200364854819484], \"carrier_energy\": 0.5031308417230853, \"current\": 2.2294385889933546, \"wave_frequency\": 2.627815907157241, \"wave_rate\": 3.8380136417595977e-07, \"feed_energy_flux_over_stored\": 3.8380136503502683e-07, \"wave_pocket_fraction\": 0.9999985284849553, \"clamped_overlap\": 0.9999981578800675, \"total\": 344.8130355962703}\n{\"test\": \"force\", \"index\": 2, \"derivatives\": [{\"total\": 275.3233953584792, \"area\": 275.7551481622329, \"cap\": 0.0, \"curvature_energy\": -0.017509529442986022, \"carrier_energy\": -0.32871134817624714, \"wave_frequency\": -0.08553192613317921}, {\"total\": 530.2187174244087, \"area\": 351.94324859764, \"cap\": 180.01949389532138, \"curvature_energy\": -0.0021987328410651616, \"carrier_energy\": 0.5617121089325957, \"wave_frequency\": -2.303538444645777}, {\"total\": 329.6233227476743, \"area\": 329.60531620216216, \"cap\": 0.0, \"curvature_energy\": 0.11371638699941612, \"carrier_energy\": 0.7328874784001497, \"wave_frequency\": -0.828597319883384}, {\"total\": 25.918701713967113, \"area\": 26.586260538437045, \"cap\": 0.0, \"curvature_energy\": -0.010114631029367374, \"carrier_energy\": -0.11594666907501401, \"wave_frequency\": -0.5414975243711595}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9963741477387457}\n{\"test\": \"state\", \"index\": 3, \"coordinates\": [-0.1536413478199112, -0.3122149077519102, -0.17487725080427563, -0.015420113008457137], \"depth\": 4.739015086768863, \"exit_radius\": 2.1954727098775173, \"area\": 219.2838567491246, \"cap\": 44.32744898354389, \"curvature_energy\": -0.05762606271090891, \"minimum_radius\": 1.7284815715161508, \"maximum_abs_principal_delta\": 0.0231416790966994, \"end_slopes\": [-0.4389486748621714, 0.15147696456666535], \"carrier_energy\": 0.4184884520204414, \"current\": 1.8541360519712171, \"wave_frequency\": 2.9394532542777925, \"wave_rate\": 5.613677799957682e-07, \"feed_energy_flux_over_stored\": 5.613677811056708e-07, \"wave_pocket_fraction\": 0.9999979413247073, \"clamped_overlap\": 0.9999974365666322, \"total\": 266.9116213762558}\n{\"test\": \"force\", \"index\": 3, \"derivatives\": [{\"total\": 212.18214594804863, \"area\": 212.58128299894943, \"cap\": 0.0, \"curvature_energy\": -0.00942106627623123, \"carrier_energy\": -0.285389588567192, \"wave_frequency\": -0.10432639605606475}, {\"total\": 395.5414000817541, \"area\": 264.6793621544248, \"cap\": 132.9841422195841, \"curvature_energy\": -0.00997070797003711, \"carrier_energy\": 0.5234886954983883, \"wave_frequency\": -2.635622279774689}, {\"total\": 266.9536121772751, \"area\": 267.03561287814165, \"cap\": 0.0, \"curvature_energy\": 0.09633381589169039, \"carrier_energy\": 0.7405037737229688, \"wave_frequency\": -0.9188382904846322}, {\"total\": 18.628238743635468, \"area\": 19.348807500605858, \"cap\": 0.0, \"curvature_energy\": -0.0013991131544062914, \"carrier_energy\": -0.08361066128378021, \"wave_frequency\": -0.6355589825261335}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9943849650499956}\n{\"test\": \"state\", \"index\": 4, \"coordinates\": [-0.20642541677780632, -0.41061284054843117, -0.24128669261081925, -0.02005421751340892], \"depth\": 4.495357769638271, \"exit_radius\": 1.9897309888570232, \"area\": 170.85373937577086, \"cap\": 32.99679061546629, \"curvature_energy\": -0.06154579642758431, \"minimum_radius\": 1.5476780720795296, \"maximum_abs_principal_delta\": 0.02584510739831141, \"end_slopes\": [-0.6184443940589781, 0.2403497842036698], \"carrier_energy\": 0.33477788217907056, \"current\": 1.4829266901693798, \"wave_frequency\": 3.2894641649549956, \"wave_rate\": 4.6761008217072105e-07, \"feed_energy_flux_over_stored\": 4.676100832935077e-07, \"wave_pocket_fraction\": 0.9999982653934498, \"clamped_overlap\": 0.9999978197446944, \"total\": 207.41322624194365}\n{\"test\": \"force\", \"index\": 4, \"derivatives\": [{\"total\": 160.50993248802095, \"area\": 160.8829451474918, \"cap\": 0.0, \"curvature_energy\": -0.004215623457298062, \"carrier_energy\": -0.23667063009875458, \"wave_frequency\": -0.13212640591545957}, {\"total\": 295.24803514649517, \"area\": 198.8258817472257, \"cap\": 98.99170822183123, \"curvature_energy\": -0.017454402805903296, \"carrier_energy\": 0.4696699518612716, \"wave_frequency\": -3.0217703716284294}, {\"total\": 212.92012544421843, \"area\": 213.08685867271038, \"cap\": 0.0, \"curvature_energy\": 0.07158296451169217, \"carrier_energy\": 0.7260146117140931, \"wave_frequency\": -0.9643308047192118}, {\"total\": 12.993880900722843, \"area\": 13.753134834506872, \"cap\": 0.0, \"curvature_energy\": 0.008497729165386306, \"carrier_energy\": -0.0503718277421461, \"wave_frequency\": -0.717379835208698}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9934160112390236}\n{\"test\": \"state\", \"index\": 5, \"coordinates\": [-0.2588475490673378, -0.507040091602374, -0.31082585950302055, -0.02429798569007889], \"depth\": 4.265771797364121, \"exit_radius\": 1.8068268714126, \"area\": 133.65694259302947, \"cap\": 24.70803636191903, \"curvature_energy\": -0.06340948855188815, \"minimum_radius\": 1.341723009005656, \"maximum_abs_principal_delta\": 0.029812359102344033, \"end_slopes\": [-0.8170610817120145, 0.3487804091809924], \"carrier_energy\": 0.25459701218273034, \"current\": 1.1273711010161827, \"wave_frequency\": 3.6794573070070706, \"wave_rate\": 2.0132513925715437e-07, \"feed_energy_flux_over_stored\": 2.0132513954253613e-07, \"wave_pocket_fraction\": 0.9999991192587341, \"clamped_overlap\": 0.9999988571373267, \"total\": 162.23562378558643}\n{\"test\": \"force\", \"index\": 5, \"derivatives\": [{\"total\": 118.63239387263036, \"area\": 118.98824279021387, \"cap\": 0.0, \"curvature_energy\": -0.0025509514536281586, \"carrier_energy\": -0.18557148483148525, \"wave_frequency\": -0.16772648130218096}, {\"total\": 220.16448522652374, \"area\": 149.11401099802882, \"cap\": 74.12510976528057, \"curvature_energy\": -0.023483235111300866, \"carrier_energy\": 0.40293277772641506, \"wave_frequency\": -3.454085079405367}, {\"total\": 167.43709893291717, \"area\": 167.66872878730985, \"cap\": 0.0, \"curvature_energy\": 0.041984625526953846, \"carrier_energy\": 0.6856947237361503, \"wave_frequency\": -0.9593092036606816}, {\"total\": 8.607161901679206, \"area\": 9.382517470522581, \"cap\": 0.0, \"curvature_energy\": 0.016118244391053842, \"carrier_energy\": -0.019708315911498575, \"wave_frequency\": -0.7717654973198318}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.993737714455711}\n{\"test\": \"state\", \"index\": 6, \"coordinates\": [-0.31006878115577924, -0.6020992556914646, -0.3831192207401398, -0.028014250893848115], \"depth\": 4.052775249275423, \"exit_radius\": 1.6429822457089749, \"area\": 105.39323629760523, \"cap\": 18.577497885539334, \"curvature_energy\": -0.06278071599908162, \"minimum_radius\": 1.1229097713888112, \"maximum_abs_principal_delta\": 0.03562173605522411, \"end_slopes\": [-1.035798250547418, 0.4767227146697318], \"carrier_energy\": 0.18081690083748506, \"current\": 0.8002504730025879, \"wave_frequency\": 4.110145955921848, \"wave_rate\": 2.1807272873930044e-08, \"feed_energy_flux_over_stored\": 2.1807272876103355e-08, \"wave_pocket_fraction\": 0.9999998957194414, \"clamped_overlap\": 0.9999998557033902, \"total\": 128.1989163239048}\n{\"test\": \"force\", \"index\": 6, \"derivatives\": [{\"total\": 85.25503541465203, \"area\": 85.60052995045453, \"cap\": 0.0, \"curvature_energy\": -0.004223964701931722, \"carrier_energy\": -0.13541176492499565, \"wave_frequency\": -0.20585880617470428}, {\"total\": 163.66216464622832, \"area\": 111.55418930622811, \"cap\": 55.73324604832841, \"curvature_energy\": -0.027371321104289564, \"carrier_energy\": 0.3272930503196066, \"wave_frequency\": -3.925192437544596}, {\"total\": 129.97842590634434, \"area\": 130.2607835106547, \"cap\": 0.0, \"curvature_energy\": 0.010769764033984977, \"carrier_energy\": 0.6173062517521819, \"wave_frequency\": -0.9104336200989789}, {\"total\": 5.201019326520395, \"area\": 5.967325855055587, \"cap\": 0.0, \"curvature_energy\": 0.01884380301347734, \"carrier_energy\": 0.004808224514605645, \"wave_frequency\": -0.7899585560654879}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9945761504048988}\n{\"test\": \"state\", \"index\": 7, \"coordinates\": [-0.3591577673322186, -0.6963342729998278, -0.45795948233312633, -0.03100894516124473], \"depth\": 3.8586327350180176, \"exit_radius\": 1.4952269714220168, \"area\": 84.1609107261837, \"cap\": 14.002641708876043, \"curvature_energy\": -0.059530859981596865, \"minimum_radius\": 0.8993250922696868, \"maximum_abs_principal_delta\": 0.04447777797248996, \"end_slopes\": [-1.2751608312704734, 0.623789449960634], \"carrier_energy\": 0.11644320771432776, \"current\": 0.5149446718023531, \"wave_frequency\": 4.582117997194074, \"wave_rate\": 6.02932866830281e-11, \"feed_energy_flux_over_stored\": 6.029328668286373e-11, \"wave_pocket_fraction\": 0.9999999997433409, \"clamped_overlap\": 0.9999999996060855, \"total\": 102.80258277998655}\n{\"test\": \"force\", \"index\": 7, \"derivatives\": [{\"total\": 59.28987872263747, \"area\": 59.62712073433588, \"cap\": 0.0, \"curvature_energy\": -0.008524203532818408, \"carrier_energy\": -0.08952667174227241, \"wave_frequency\": -0.23919113642249337}, {\"total\": 120.87284122525924, \"area\": 83.07800305205622, \"cap\": 42.008492235914, \"curvature_energy\": -0.029036368374964434, \"carrier_energy\": 0.24762111481463112, \"wave_frequency\": -4.43223880914978}, {\"total\": 99.55580584874468, \"area\": 99.88140571429464, \"cap\": 0.0, \"curvature_energy\": -0.018794829285429897, \"carrier_energy\": 0.5207806040321422, \"wave_frequency\": -0.827585640296243}, {\"total\": 2.6090451127155725, \"area\": 3.3429533940558067, \"cap\": 0.0, \"curvature_energy\": 0.016415381125459844, \"carrier_energy\": 0.020373364078294747, \"wave_frequency\": -0.7706970265464186}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9953582297000959}\n{\"test\": \"state\", \"index\": 8, \"coordinates\": [-0.40518408867979383, -0.7901670207181004, -0.535243963440719, -0.03303432877401839], \"depth\": 3.685059181624837, \"exit_radius\": 1.361307000385795, \"area\": 68.42103095152905, \"cap\": 10.567124952262455, \"curvature_energy\": -0.05384997653216705, \"minimum_radius\": 0.6747981384231775, \"maximum_abs_principal_delta\": 0.059276506269910656, \"end_slopes\": [-1.534946875521758, 0.7890058733932432], \"carrier_energy\": 0.06441253051726627, \"current\": 0.28451484325320786, \"wave_frequency\": 5.096242215894651, \"wave_rate\": 1.2043341017469321e-14, \"feed_energy_flux_over_stored\": 1.2043341024853227e-14, \"wave_pocket_fraction\": 0.9999999999999551, \"clamped_overlap\": 0.9999999999999081, \"total\": 84.09496067367125}\n{\"test\": \"force\", \"index\": 8, \"derivatives\": [{\"total\": 39.73982958016838, \"area\": 40.066510911925, \"cap\": 0.0, \"curvature_energy\": -0.014449570234951562, \"carrier_energy\": -0.05100922135602611, \"wave_frequency\": -0.26122254016769375}, {\"total\": 88.18089117673367, \"area\": 61.314080186527065, \"cap\": 31.701802827081238, \"curvature_energy\": -0.02878380678501824, \"carrier_energy\": 0.16924455665954843, \"wave_frequency\": -4.975452586747586}, {\"total\": 74.79874662112944, \"area\": 75.16575391689173, \"cap\": 0.0, \"curvature_energy\": -0.043758502657449454, \"carrier_energy\": 0.3990995332645182, \"wave_frequency\": -0.722348326367861}, {\"total\": 0.6915636994288358, \"area\": 1.3740032602432468, \"cap\": 0.0, \"curvature_energy\": 0.010689399005826133, \"carrier_energy\": 0.025740818532023202, \"wave_frequency\": -0.7188697783502285}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9959792473547066}\n{\"test\": \"state\", \"index\": 9, \"coordinates\": [-0.44743559109771003, -0.8839212007467703, -0.6147702084474889, -0.033769601311098976], \"depth\": 3.5326033188709225, \"exit_radius\": 1.2394789478020745, \"area\": 56.981367398847794, \"cap\": 7.976384367960718, \"curvature_energy\": -0.046231481811677244, \"minimum_radius\": 0.45105619200444796, \"maximum_abs_principal_delta\": 0.08867935413669609, \"end_slopes\": [-1.8141085570109565, 0.9703318251329609], \"carrier_energy\": 0.027225910014533894, \"current\": 0.12004957451047171, \"wave_frequency\": 5.654392709824947, \"wave_rate\": 2.0526821882398175e-21, \"feed_energy_flux_over_stored\": 2.0575737531477098e-21, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.0000000000000002, \"total\": 70.59313890483632}\n{\"test\": \"force\", \"index\": 9, \"derivatives\": [{\"total\": 25.653145698081897, \"area\": 25.965471016203168, \"cap\": 0.0, \"curvature_energy\": -0.020806545471947074, \"carrier_energy\": -0.022431893145680518, \"wave_frequency\": -0.2690868795029999}, {\"total\": 62.88512316751611, \"area\": 44.44215733196799, \"cap\": 23.929476148757328, \"curvature_energy\": -0.027026523212042575, \"carrier_energy\": 0.09776458510800216, \"wave_frequency\": -5.557248375107182}, {\"total\": 54.11431223119223, \"area\": 54.52703517777854, \"cap\": 0.0, \"curvature_energy\": -0.06189973078628748, \"carrier_energy\": 0.259651477688958, \"wave_frequency\": -0.6104746934871841}, {\"total\": -0.7165954124654187, \"area\": -0.09668134689041115, \"cap\": 0.0, \"curvature_energy\": 0.004199039160747431, \"carrier_energy\": 0.021874979093363528, \"wave_frequency\": -0.6459880838298737}]}\n{\"test\": \"accepted\", \"distance\": 0.0325, \"overlap\": 0.9997331471762305}\n{\"test\": \"state\", \"index\": 10, \"coordinates\": [-0.45703612240010877, -0.907455569612499, -0.6350221555029405, -0.033501419904830194], \"depth\": 3.498850730766632, \"exit_radius\": 1.2106491690092254, \"area\": 54.68619531757283, \"cap\": 7.432647459125483, \"curvature_energy\": -0.04410707466197294, \"minimum_radius\": 0.39521833803549755, \"maximum_abs_principal_delta\": 0.10120964692124225, \"end_slopes\": [-1.8867671769264647, 1.017144784422288], \"carrier_energy\": 0.020421124083332732, \"current\": 0.0899973863084993, \"wave_frequency\": 5.8014711024847, \"wave_rate\": 2.9711476334792764e-14, \"feed_energy_flux_over_stored\": 3.964434683392884e-24, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.0, \"total\": 67.89662792860437}\n{\"test\": \"limit\", \"reason\": \"thin_front\", \"coordinates\": [-0.45703612240010877, -0.907455569612499, -0.6350221555029405, -0.033501419904830194], \"measurements\": {\"depth\": 3.498850730766632, \"exit_radius\": 1.2106491690092254, \"area\": 54.68619531757283, \"cap\": 7.432647459125483, \"curvature_energy\": -0.04410707466197294, \"minimum_radius\": 0.39521833803549755, \"maximum_abs_principal_delta\": 0.10120964692124225, \"end_slopes\": [-1.8867671769264647, 1.017144784422288], \"carrier_energy\": 0.020421124083332732, \"current\": 0.0899973863084993, \"wave_frequency\": 5.8014711024847, \"wave_rate\": 2.9711476334792764e-14, \"feed_energy_flux_over_stored\": 3.964434683392884e-24, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.0, \"total\": 67.89662792860437}}\n",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": []
+    },
+    "r2continuation": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "10",
+        "--mode",
+        "continuation",
+        "--start",
+        "-0.45703612240010877",
+        "-0.907455569612499",
+        "-0.6350221555029405",
+        "-0.033501419904830194"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:22:08.208057+00:00",
+      "wall_seconds": 2.4581554010510445,
+      "last_resource_sample_utc": "2026-11-22T19:22:10.676564+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 68272128,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r2continuation/stdout",
+      "stdout_sha256": "9fff449dc25022eb07f4f32f565300c730b7a87446e7d983deb84421ec622da9",
+      "stdout_size": 5204,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 2, \"mesh\": 10, \"port\": 4.2, \"axial_cells\": 56, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"state\", \"index\": 0, \"coordinates\": [-0.45703612240010877, -0.907455569612499, -0.6350221555029405, -0.033501419904830194], \"depth\": 3.498850730766632, \"exit_radius\": 1.2106491690092254, \"area\": 54.68619531757283, \"cap\": 7.432647459125483, \"curvature_energy\": -0.04410707466197294, \"minimum_radius\": 0.39521833803549755, \"maximum_abs_principal_delta\": 0.10120964692124225, \"end_slopes\": [-1.8867671769264647, 1.017144784422288], \"carrier_energy\": 0.020421124083332732, \"current\": 0.0899973863084993, \"wave_frequency\": 5.8014711024847, \"wave_rate\": 2.9711476334792764e-14, \"feed_energy_flux_over_stored\": 3.964434683392884e-24, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.0, \"total\": 67.89662792860437}\n{\"test\": \"force\", \"index\": 0, \"derivatives\": [{\"total\": 22.880103571933336, \"area\": 23.188516665279952, \"cap\": 0.0, \"curvature_energy\": -0.022329270247565397, \"carrier_energy\": -0.017044335870518523, \"wave_frequency\": -0.2690394872293389}, {\"total\": 57.465511516679626, \"area\": 40.82156335173792, \"cap\": 22.298243400818023, \"curvature_energy\": -0.026383235272015026, \"carrier_energy\": 0.08159190506421231, \"wave_frequency\": -5.709503905665751}, {\"total\": 49.40195292312666, \"area\": 49.8277384562987, \"cap\": 0.0, \"curvature_energy\": -0.06518780949528342, \"carrier_energy\": 0.22334397712305346, \"wave_frequency\": -0.5839417008000799}, {\"total\": -1.0082775397393107, \"area\": -0.40418061852420806, \"cap\": 0.0, \"curvature_energy\": 0.002734427916028607, \"carrier_energy\": 0.019808684526731804, \"wave_frequency\": -0.6266400336604564}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.9966374577294929}\n{\"test\": \"state\", \"index\": 1, \"coordinates\": [-0.4946076830226608, -1.0018200440943097, -0.7161454101808857, -0.03184572107507738], \"depth\": 3.369832336384419, \"exit_radius\": 1.1016314799272529, \"area\": 47.438115247932174, \"cap\": 5.6001237293431245, \"curvature_energy\": -0.03514724704667275, \"minimum_radius\": 0.17510465680486897, \"maximum_abs_principal_delta\": 0.22843344076232083, \"end_slopes\": [-2.1878732521243616, 1.2123928202191987], \"carrier_energy\": 0.003406979245939939, \"current\": 0.014994318074853852, \"wave_frequency\": 6.422467678218808, \"wave_rate\": 3.247326654033586e-33, \"feed_energy_flux_over_stored\": 4.3840294134892245e-48, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 5.540775308361221e-32, \"total\": 59.42896638769337}\n{\"test\": \"force\", \"index\": 1, \"derivatives\": [{\"total\": 14.35616135868282, \"area\": 14.649644613507224, \"cap\": 0.0, \"curvature_energy\": -0.027458710953421017, \"carrier_energy\": -0.0030632432443843233, \"wave_frequency\": -0.2629613006267147}, {\"total\": 38.6462315695546, \"area\": 28.190398848109293, \"cap\": 16.80059799395887, \"curvature_energy\": -0.023262718671620646, \"carrier_energy\": 0.027724623095486182, \"wave_frequency\": -6.3492271769363855}, {\"total\": 31.599569047484028, \"area\": 32.07685397093011, \"cap\": 0.0, \"curvature_energy\": -0.07327187566875833, \"carrier_energy\": 0.08457744185273824, \"wave_frequency\": -0.48859048963034724}, {\"total\": -2.0456031786603526, \"area\": -1.5024531220871513, \"cap\": 0.0, \"curvature_energy\": -0.002123326612301727, \"carrier_energy\": 0.01012528007833647, \"wave_frequency\": -0.551152010039265}]}\n{\"test\": \"accepted\", \"distance\": 0.065, \"overlap\": 0.9991997279858772}\n{\"test\": \"state\", \"index\": 2, \"coordinates\": [-0.5125583695473458, -1.050142598496771, -0.7556569442264023, -0.029287935571237076], \"depth\": 3.309881224099296, \"exit_radius\": 1.049663556215624, \"area\": 44.86623409217515, \"cap\": 4.84438851951439, \"curvature_energy\": -0.03064524660209722, \"minimum_radius\": 0.06879590288311072, \"maximum_abs_principal_delta\": 0.5814299316934948, \"end_slopes\": [-2.3448842987221528, 1.307969169127763], \"carrier_energy\": 0.00044405933304011573, \"current\": 0.0019610075486419243, \"wave_frequency\": 6.75946607178811, \"wave_rate\": 3.506447403569356e-33, \"feed_energy_flux_over_stored\": 4.420105770935526e-59, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 9.777716218470963e-34, \"total\": 56.43988749620859}\n{\"test\": \"limit\", \"reason\": \"waist comparable to planar half-to-90-percent width\", \"coordinates\": [-0.5125583695473458, -1.050142598496771, -0.7556569442264023, -0.029287935571237076], \"measurements\": {\"depth\": 3.309881224099296, \"exit_radius\": 1.049663556215624, \"area\": 44.86623409217515, \"cap\": 4.84438851951439, \"curvature_energy\": -0.03064524660209722, \"minimum_radius\": 0.06879590288311072, \"maximum_abs_principal_delta\": 0.5814299316934948, \"end_slopes\": [-2.3448842987221528, 1.307969169127763], \"carrier_energy\": 0.00044405933304011573, \"current\": 0.0019610075486419243, \"wave_frequency\": 6.75946607178811, \"wave_rate\": 3.506447403569356e-33, \"feed_energy_flux_over_stored\": 4.420105770935526e-59, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 9.777716218470963e-34, \"total\": 56.43988749620859}}\n",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": []
+    },
+    "r2m16start": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "16",
+        "--port",
+        "5.2",
+        "--mode",
+        "point",
+        "--start",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:20:06.230264+00:00",
+      "wall_seconds": 3.2988561103120446,
+      "last_resource_sample_utc": "2026-11-22T19:20:09.547550+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 69902336,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r2m16start/stdout",
+      "stdout_sha256": "8bc114fb937a16da1310b7bae5f7a4d61649420a87a1d9b582268222c3981f32",
+      "stdout_size": 2984,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 2, \"mesh\": 16, \"port\": 5.2, \"axial_cells\": 89, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"point\", \"coordinates\": [0.0, 0.0, 0.0, 0.0], \"measurements\": {\"depth\": 5.52603563084186, \"exit_radius\": 3.0, \"area\": 463.2763990060736, \"cap\": 113.09733552923255, \"curvature_energy\": -0.04062427321723995, \"minimum_radius\": 2.0, \"maximum_abs_principal_delta\": 0.02, \"end_slopes\": [0.0, 3.469446951953614e-17], \"carrier_energy\": 0.662156207183117, \"current\": 2.9343582962022157, \"wave_frequency\": 2.10456040247634, \"wave_rate\": 6.83910794251558e-08, \"feed_energy_flux_over_stored\": 6.839107946042063e-08, \"wave_pocket_fraction\": 0.9999995979820842, \"clamped_overlap\": 0.9999994966969872, \"total\": 579.0998268717483}, \"signed\": [{\"total\": 445.65034705137424, \"area\": 446.1390103703593, \"cap\": 0.0, \"curvature_energy\": -0.03596211122425946, \"carrier_energy\": -0.38622313650593654, \"wave_frequency\": -0.06647807124804395}, {\"total\": 959.9328960167288, \"area\": 621.8413054248705, \"cap\": 339.29658704834037, \"curvature_energy\": 0.009997698267837085, \"carrier_energy\": 0.5807568778536942, \"wave_frequency\": -1.7957510325955124}, {\"total\": 479.7552303273278, \"area\": 479.56215110113476, \"cap\": 0.0, \"curvature_energy\": 0.12491228516883894, \"carrier_energy\": 0.6587211064395526, \"wave_frequency\": -0.5905541654465848}, {\"total\": 47.5908670268268, \"area\": 48.14270800842261, \"cap\": 0.0, \"curvature_energy\": -0.017298367807328657, \"carrier_energy\": -0.1677173481779426, \"wave_frequency\": -0.36682526561452694}, {\"total\": 384.236371038052, \"area\": 384.0978537514843, \"cap\": 0.0, \"curvature_energy\": -0.0003883550188007086, \"carrier_energy\": 0.483272710775103, \"wave_frequency\": -0.34436706917258714}], \"half_signed\": [{\"total\": 445.64984174375394, \"area\": 446.1385053622469, \"cap\": 0.0, \"curvature_energy\": -0.03596215395142386, \"carrier_energy\": -0.38622338330725664, \"wave_frequency\": -0.06647808122014116}, {\"total\": 959.9259681614285, \"area\": 621.8378125284781, \"cap\": 339.2931516993845, \"curvature_energy\": 0.009997681164206074, \"carrier_energy\": 0.5807577246236262, \"wave_frequency\": -1.7957514722130399}, {\"total\": 479.75457296846946, \"area\": 479.56149122317504, \"cap\": 0.0, \"curvature_energy\": 0.12491377089031881, \"carrier_energy\": 0.6587223408333805, \"wave_frequency\": -0.5905543663791887}, {\"total\": 47.59086137751941, \"area\": 48.14270302002418, \"cap\": 0.0, \"curvature_energy\": -0.017298437068755113, \"carrier_energy\": -0.1677175983736401, \"wave_frequency\": -0.36682560709063355}, {\"total\": 384.2356570468155, \"area\": 384.0971345787807, \"cap\": 0.0, \"curvature_energy\": -0.0003873121744481696, \"carrier_energy\": 0.48327251168815233, \"wave_frequency\": -0.3443627315130963}]}\n",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": []
+    },
+    "r2m16last": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "16",
+        "--port",
+        "5.2",
+        "--mode",
+        "point",
+        "--start",
+        "-0.44743559109771003",
+        "-0.8839212007467703",
+        "-0.6147702084474889",
+        "-0.033769601311098976"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:20:05.521557+00:00",
+      "wall_seconds": 4.9961142600513995,
+      "last_resource_sample_utc": "2026-11-22T19:20:10.515202+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 82710528,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r2m16last/stdout",
+      "stdout_sha256": "c25ff2b2fe9b84cb8c2ece156c75cc573559943e34899e250276965b03da75e1",
+      "stdout_size": 3120,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 2, \"mesh\": 16, \"port\": 5.2, \"axial_cells\": 89, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"point\", \"coordinates\": [-0.44743559109771003, -0.8839212007467703, -0.6147702084474889, -0.033769601311098976], \"measurements\": {\"depth\": 3.5326033188709225, \"exit_radius\": 1.2394789478020745, \"area\": 56.981367398847794, \"cap\": 7.976384367960718, \"curvature_energy\": -0.046231481811677244, \"minimum_radius\": 0.45105619200444796, \"maximum_abs_principal_delta\": 0.08867935413669609, \"end_slopes\": [-1.8141085570109565, 0.9703318251329609], \"carrier_energy\": 0.02641784043785158, \"current\": 0.11643669712575028, \"wave_frequency\": 5.648941541083715, \"wave_rate\": 3.259614192787871e-21, \"feed_energy_flux_over_stored\": 3.2645202563595264e-21, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 0.9999999999999993, \"total\": 70.58687966651841}, \"signed\": [{\"total\": 25.65498839682334, \"area\": 25.965471016203168, \"cap\": 0.0, \"curvature_energy\": -0.020806545471947074, \"carrier_energy\": -0.021868671429527257, \"wave_frequency\": -0.26780740247763407}, {\"total\": 62.89056010733418, \"area\": 44.44215733196799, \"cap\": 23.929476148757328, \"curvature_energy\": -0.027026523212042575, \"carrier_energy\": 0.09627496463680367, \"wave_frequency\": -5.550321814819033}, {\"total\": 54.123799713958455, \"area\": 54.52703517777854, \"cap\": 0.0, \"curvature_energy\": -0.06189973078628748, \"carrier_energy\": 0.2585914826470891, \"wave_frequency\": -0.5999272156803256}, {\"total\": -0.7077712119472798, \"area\": -0.09668134689041115, \"cap\": 0.0, \"curvature_energy\": 0.004199039160747431, \"carrier_energy\": 0.021387571288998774, \"wave_frequency\": -0.6366764755072474}, {\"total\": 41.96363295629387, \"area\": 41.76902946382081, \"cap\": 0.0, \"curvature_energy\": -0.09313615706497622, \"carrier_energy\": 0.24125405020619775, \"wave_frequency\": 0.04648559933428942}], \"half_signed\": [{\"total\": 25.65493681772087, \"area\": 25.965419637669147, \"cap\": 0.0, \"curvature_energy\": -0.02080653229446135, \"carrier_energy\": -0.021868676720764035, \"wave_frequency\": -0.2678076109360698}, {\"total\": 62.890037110482425, \"area\": 44.44187099495167, \"cap\": 23.929233864855643, \"curvature_energy\": -0.027026493338031903, \"carrier_energy\": 0.09627430830238745, \"wave_frequency\": -5.550315564287978}, {\"total\": 54.123767407688206, \"area\": 54.52699186580645, \"cap\": 0.0, \"curvature_energy\": -0.061900759800996574, \"carrier_energy\": 0.2585925839308512, \"wave_frequency\": -0.5999162822402463}, {\"total\": -0.7077804629697463, \"area\": -0.09669404024018984, \"cap\": 0.0, \"curvature_energy\": 0.004198991622500943, \"carrier_energy\": 0.021387910245388348, \"wave_frequency\": -0.6366733246017849}, {\"total\": 41.96355773155839, \"area\": 41.76894898870387, \"cap\": 0.0, \"curvature_energy\": -0.09313620463989591, \"carrier_energy\": 0.24125755000136787, \"wave_frequency\": 0.046487397487915416}]}\n",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": []
+    },
+    "r2m16tracked": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "16",
+        "--port",
+        "5.2",
+        "--mode",
+        "continuation",
+        "--start",
+        "-0.44743559109771003",
+        "-0.8839212007467703",
+        "-0.6147702084474889",
+        "-0.033769601311098976"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:22:38.456495+00:00",
+      "wall_seconds": 9.647897596936673,
+      "last_resource_sample_utc": "2026-11-22T19:22:48.113393+00:00",
+      "guard_exit": 1,
+      "worker_exit": 1,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 189468672,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r2m16tracked/stdout",
+      "stdout_sha256": "2654303022ea35481e4d06c9baa2592f969a689014b65ce523d042105bba925a",
+      "stdout_size": 3608,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 2, \"mesh\": 16, \"port\": 5.2, \"axial_cells\": 89, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"state\", \"index\": 0, \"coordinates\": [-0.44743559109771003, -0.8839212007467703, -0.6147702084474889, -0.033769601311098976], \"depth\": 3.5326033188709225, \"exit_radius\": 1.2394789478020745, \"area\": 56.981367398847794, \"cap\": 7.976384367960718, \"curvature_energy\": -0.046231481811677244, \"minimum_radius\": 0.45105619200444796, \"maximum_abs_principal_delta\": 0.08867935413669609, \"end_slopes\": [-1.8141085570109565, 0.9703318251329609], \"carrier_energy\": 0.02641784043785158, \"current\": 0.11643669712575028, \"wave_frequency\": 5.648941541083715, \"wave_rate\": 3.259614192787871e-21, \"feed_energy_flux_over_stored\": 3.2645202563595264e-21, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 0.9999999999999993, \"total\": 70.58687966651841}\n{\"test\": \"force\", \"index\": 0, \"derivatives\": [{\"total\": 25.65498839682334, \"area\": 25.965471016203168, \"cap\": 0.0, \"curvature_energy\": -0.020806545471947074, \"carrier_energy\": -0.021868671429527257, \"wave_frequency\": -0.2678074024774861}, {\"total\": 62.89056010729628, \"area\": 44.44215733196799, \"cap\": 23.929476148757328, \"curvature_energy\": -0.027026523212042575, \"carrier_energy\": 0.09627496463680367, \"wave_frequency\": -5.550321814855892}, {\"total\": 54.12379971395609, \"area\": 54.52703517777854, \"cap\": 0.0, \"curvature_energy\": -0.06189973078628748, \"carrier_energy\": 0.2585914826470891, \"wave_frequency\": -0.5999272156800295}, {\"total\": -0.7077712119496482, \"area\": -0.09668134689041115, \"cap\": 0.0, \"curvature_energy\": 0.004199039160747431, \"carrier_energy\": 0.021387571288998774, \"wave_frequency\": -0.6366764755073954}]}\n{\"test\": \"accepted\", \"distance\": 0.13, \"overlap\": 0.99638769632754}\n{\"test\": \"state\", \"index\": 1, \"coordinates\": [-0.4858359109070577, -0.9780556273056306, -0.6957825708841969, -0.032710211204569774], \"depth\": 3.399521761775544, \"exit_radius\": 1.1281246602351658, \"area\": 48.97649368371154, \"cap\": 6.013951033142544, \"curvature_energy\": -0.037425498951106535, \"minimum_radius\": 0.22982315873602532, \"maximum_abs_principal_delta\": 0.17404427536574477, \"end_slopes\": [-2.111018760901723, 1.1637127790819248], \"carrier_energy\": 0.0057450713222952365, \"current\": 0.02524290751820718, \"wave_frequency\": 6.254148822848464, \"wave_rate\": -3.4889609054466305e-34, \"feed_energy_flux_over_stored\": 6.385062800075645e-37, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.5784755901756032e-30, \"total\": 61.212913112073736}\n{\"test\": \"force\", \"index\": 1, \"derivatives\": [{\"total\": 16.12832252992173, \"area\": 16.422018494210988, \"cap\": 0.0, \"curvature_energy\": -0.02633759264209524, \"carrier_energy\": -0.005057471482114931, \"wave_frequency\": -0.26230090016558333}, {\"total\": 42.97864627644543, \"area\": 31.09690036142846, \"cap\": 18.04209666543155, \"curvature_energy\": -0.024135824920855364, \"carrier_energy\": 0.03731074464650508, \"wave_frequency\": -6.173525670140141}, {\"total\": 35.929901772581964, \"area\": 36.38125612832018, \"cap\": 0.0, \"curvature_energy\": -0.07204065337918532, \"carrier_energy\": 0.11371460931925405, \"wave_frequency\": -0.4930283116779677}, {\"total\": -1.7915357479078389, \"area\": -1.2474670567629669, \"cap\": 0.0, \"curvature_energy\": -0.0011270491843106318, \"carrier_energy\": 0.01082900058296665, \"wave_frequency\": -0.5537706425425467}]}\n",
+      "stderr_sha256": "1316243353de6dd4ece55be88dee5e87ef37e9b0cb0a0fd8429e2f6b035a4015",
+      "diagnostic": [
+        "ArithmeticError: Finite-drive current fails two-sided closure"
+      ]
+    },
+    "r2m16transfer": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_transfer.py"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:24:12.522566+00:00",
+      "wall_seconds": 3.846991237718612,
+      "last_resource_sample_utc": "2026-11-22T19:24:16.366898+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 233459712,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r2m16transfer/stdout",
+      "stdout_sha256": "f6eb48682f8c11ec47169869b3b68937c2fadc59c088d08484dc1e2056b54466",
+      "stdout_size": 3437,
+      "literal_stdout": "{\"test\": \"geometry_input\", \"source\": \"_scratch/s11c/route_a_duct_relax01/r2m10s\", \"sha256\": \"c827786da423e6c8ebaa22da9017ebd78a74e0a482fd4853ab89b86a279f01d5\"}\n{\"test\": \"geometry_input\", \"source\": \"_scratch/s11c/route_a_duct_relax01/r2continuation\", \"sha256\": \"9fff449dc25022eb07f4f32f565300c730b7a87446e7d983deb84421ec622da9\"}\n{\"test\": \"independent_mesh\", \"index\": 0, \"coordinates\": [-0.44743559109771003, -0.8839212007467703, -0.6147702084474889, -0.033769601311098976], \"overlap\": 1.0, \"depth\": 3.5326033188709225, \"exit_radius\": 1.2394789478020745, \"area\": 56.981367398847794, \"cap\": 7.976384367960718, \"curvature_energy\": -0.046231481811677244, \"minimum_radius\": 0.45105619200444796, \"maximum_abs_principal_delta\": 0.08867935413669609, \"end_slopes\": [-1.8141085570109565, 0.9703318251329609], \"carrier_energy\": 0.02641784043785158, \"current\": 0.11643669712575028, \"wave_frequency\": 5.648941541083715, \"wave_rate\": 3.259614192787871e-21, \"feed_energy_flux_over_stored\": 3.2645202563595264e-21, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 0.9999999999999993, \"total\": 70.58687966651841}\n{\"test\": \"independent_mesh\", \"index\": 1, \"coordinates\": [-0.45703612240010877, -0.907455569612499, -0.6350221555029405, -0.033501419904830194], \"overlap\": 0.9997257597706886, \"depth\": 3.498850730766632, \"exit_radius\": 1.2106491690092254, \"area\": 54.68619531757283, \"cap\": 7.432647459125483, \"curvature_energy\": -0.04410707466197294, \"minimum_radius\": 0.39521833803549755, \"maximum_abs_principal_delta\": 0.10120964692124225, \"end_slopes\": [-1.8867671769264647, 1.017144784422288], \"carrier_energy\": 0.019671577523572608, \"current\": 0.08664439435941768, \"wave_frequency\": 5.795610188809461, \"wave_rate\": 7.848064039226664e-24, \"feed_energy_flux_over_stored\": 7.84806459358283e-24, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 3.688886617793285e-20, \"total\": 67.89001746836938}\n{\"test\": \"independent_mesh\", \"index\": 2, \"coordinates\": [-0.4946076830226608, -1.0018200440943097, -0.7161454101808857, -0.03184572107507738], \"overlap\": 0.9995779219435157, \"depth\": 3.369832336384419, \"exit_radius\": 1.1016314799272529, \"area\": 47.438115247932174, \"cap\": 5.6001237293431245, \"curvature_energy\": -0.03514724704667275, \"minimum_radius\": 0.17510465680486897, \"maximum_abs_principal_delta\": 0.22843344076232083, \"end_slopes\": [-2.1878732521243616, 1.2123928202191987], \"carrier_energy\": 0.003073454912437624, \"current\": 0.013493156553577024, \"wave_frequency\": 6.4144257953131065, \"wave_rate\": 8.722453034094157e-35, \"feed_energy_flux_over_stored\": 1.109806700251562e-45, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.5898731965957082e-31, \"total\": 59.42059098045417}\n{\"test\": \"independent_mesh\", \"index\": 3, \"coordinates\": [-0.5125583695473458, -1.050142598496771, -0.7556569442264023, -0.029287935571237076], \"overlap\": 0.9997835681517465, \"depth\": 3.309881224099296, \"exit_radius\": 1.049663556215624, \"area\": 44.86623409217515, \"cap\": 4.84438851951439, \"curvature_energy\": -0.03064524660209722, \"minimum_radius\": 0.06879590288311072, \"maximum_abs_principal_delta\": 0.5814299316934948, \"end_slopes\": [-2.3448842987221528, 1.307969169127763], \"carrier_energy\": 0.00035096697881314704, \"current\": 0.0015422433596223306, \"wave_frequency\": 6.749976967479696, \"wave_rate\": 5.856498695726099e-35, \"feed_energy_flux_over_stored\": 1.1321194462964688e-74, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 2.2349635908539937e-32, \"total\": 56.43030529954595}\n",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostic": []
+    },
+    "r2extension": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_shape_relax.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "10",
+        "--mode",
+        "extension",
+        "--start",
+        "-0.45703612240010877",
+        "-0.907455569612499",
+        "-0.6350221555029405",
+        "-0.033501419904830194"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "route-a-duct",
+      "started_utc": "2026-11-22T19:21:02.392616+00:00",
+      "wall_seconds": 0.69275869615376,
+      "last_resource_sample_utc": "2026-11-22T19:21:03.092362+00:00",
+      "guard_exit": 1,
+      "worker_exit": 1,
+      "memory_bytes": 2147483648,
+      "peak_sample_bytes": 64274432,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_path": "_scratch/s11c/route_a_duct_relax01/r2extension/stdout",
+      "stdout_sha256": "ef910712d99ece6170aa404ee60a17c19a55443a0f427b24dc19e8966b319b5b",
+      "stdout_size": 1120,
+      "literal_stdout": "{\"test\": \"preparation\", \"radius\": 2, \"mesh\": 10, \"port\": 4.2, \"axial_cells\": 56, \"coordinates\": [\"log_depth\", \"log_exit_radius\", \"middle\", \"upper_minus_lower\"], \"physical_action\": 1.0, \"sigma\": 1.0, \"delta\": 0.04, \"B\": -0.0013333333333333335, \"m2\": 0.0020637890139143245, \"pressure_jump\": 0.0, \"phase_bias\": 0.4510084282857874, \"side_normal_current\": 0.0, \"terminal_sheet_length\": 0.006666666666666667}\n{\"test\": \"state\", \"index\": 0, \"coordinates\": [-0.45703612240010877, -0.907455569612499, -0.6350221555029405, -0.033501419904830194], \"depth\": 3.498850730766632, \"exit_radius\": 1.2106491690092254, \"area\": 54.68619531757283, \"cap\": 7.432647459125483, \"curvature_energy\": -0.04410707466197294, \"minimum_radius\": 0.39521833803549755, \"maximum_abs_principal_delta\": 0.10120964692124225, \"end_slopes\": [-1.8867671769264647, 1.017144784422288], \"carrier_energy\": 0.020421124083332732, \"current\": 0.0899973863084993, \"wave_frequency\": 5.8014711024847, \"wave_rate\": 2.9711476334792764e-14, \"feed_energy_flux_over_stored\": 3.964434683392884e-24, \"wave_pocket_fraction\": 1.0, \"clamped_overlap\": 1.0, \"total\": 67.89662792860437}\n",
+      "stderr_sha256": "79b43069151dca0e0409be333919e5002f214dd21a36db3f37e45075d3d028e5",
+      "diagnostic": [
+        "ArithmeticError: No consistent wave under signed variation, overlap 1.4050876612554584e-23"
+      ]
+    }
+  },
+  "reduction": {
+    "command": [
+      "python3",
+      "software/stage1_solver/tools/mouth_sealed_shape_readout.py"
+    ],
+    "guard_exit": 0,
+    "worker_exit": 0,
+    "swap_bytes": 0,
+    "wall_deadline": null,
+    "stdout_sha256": "be56cdf6c709f90e96c67a9b3247df49c2007f2b831d953e2e8e0af814101346"
+  }
+}

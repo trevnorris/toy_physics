@@ -1,0 +1,60 @@
+{
+  "base": "223de658",
+  "scope": "Original radius-one meridian at fixed phase, previously transmitting side against impermeable side with exterior present and an identical transmitting terminal disk. Signed constant-volume and constant-length distortion.",
+  "source_and_input_sha256": {
+    "software/stage1_solver/tools/mouth_sealed_side_comparison.py": "1425f921cc67e195d3e306fec229662a1497a9129ce9ff504d658e96121e1ea9",
+    "software/stage1_solver/tools/mouth_exchange_carrier.py": "6dd6a6ae17b7f30445a29d5e40627373057637a6cbc67cdc75ce9ed58403fc83",
+    "software/stage1_solver/tools/mouth_exchange_carrier_density.py": "8d5f3cfc7a4ef569be0f8faba81777aaec14bc9e4d44a148f5b2fad4a4957d69",
+    "software/stage1_solver/tools/mouth_exchange_geometry.py": "1cabc9f23319f25df3924b1f1669cd12e89269934a2817da52fc2b47a6757017",
+    "software/stage1_solver/tools/mouth_exchange_interior.py": "41c4578c60f6d8e01af9530edbffe2a8599e8d9d83451b07c7ab8dee5ecfdfac",
+    "software/stage1_solver/tools/mouth_conversion_shape_mode.py": "63ba9d32283deef446de5210e091cbe542af7a6451bfd5ecdfd7ef4b0010720c",
+    "research/pde_ledger_v3/_measurements/mouth_exchange_carrier.json": "95c2ac0ddd167a9f88e7edede74f0000f4903e4bc39a12c2c5613c7cead6f57f",
+    "research/pde_ledger_v3/_measurements/mouth_conversion_shape.json": "5c73eaecc31deb3e98e698ea58d51f765b57b51fbaf248ee8e10c4a3feafe906"
+  },
+  "runs": {
+    "side40": {
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_side_comparison.py",
+        "--mesh",
+        "40"
+      ],
+      "started_utc": "2026-11-22T19:16:35.303263+00:00",
+      "end_record_utc": "2026-11-22T19:16:37.259553+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "duration_s": 1.9098139870911837,
+      "verified_limits": true,
+      "memory_bytes": 3221225472,
+      "sampled_peak_bytes": 87072768,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "log": "_scratch/s11c/lip_free_profile01/side40/stdout",
+      "stdout_bytes": 3120,
+      "stdout_sha256": "4f595aa835cfa31af02244d44cc318562359d6e02a8a65db8b8639f24f66ab26",
+      "literal_stdout": "{\"state\": {\"step\": -0.005, \"mesh\": 40, \"bias\": 0.4510084282857874, \"energy\": 0.1819200067229544, \"work\": 0.22477579636364842, \"sector_work\": {\"feed_inner\": 0.038953345014053585, \"feed_outer\": 0.03341962387381796, \"core\": 0.1604741930701279, \"bulk_beside\": -0.0008887711802441081, \"bulk_above_inner\": -0.005100203571668821, \"bulk_above_outer\": -0.0018920473162490684, \"cap_layer\": -0.0001903435261890293}, \"sector_energy\": {\"feed_inner\": 0.015806328117396542, \"feed_outer\": 0.02902747715372457, \"core\": 0.12494178547018385, \"bulk_beside\": 0.0017525098488545942, \"bulk_above_inner\": 0.006461048545928097, \"bulk_above_outer\": 0.0037391226117782428, \"cap_layer\": 0.00019173497508851784}, \"current\": 0.8045843444096724, \"current_by_cut\": {\"cap_layer\": 0.8045843437324897}, \"minimum_amplitude\": 0.9948846604717724, \"iterations\": 5, \"density_correction\": 5.142589280355096e-11}}\n{\"state\": {\"step\": 0.0, \"mesh\": 40, \"bias\": 0.4510084282857874, \"energy\": 0.18303768115680666, \"work\": 0.22228927241142157, \"sector_work\": {\"feed_inner\": 0.038728222117646705, \"feed_outer\": 0.03335397237207296, \"core\": 0.15844910178351906, \"bulk_beside\": -0.0009077525374741501, \"bulk_above_inner\": -0.00520724261496924, \"bulk_above_outer\": -0.0019322937054123517, \"cap_layer\": -0.00019473500396142778}, \"sector_energy\": {\"feed_inner\": 0.015834555062034624, \"feed_outer\": 0.029189007641164614, \"core\": 0.1256797392331591, \"bulk_beside\": 0.0017804148007932316, \"bulk_above_inner\": 0.006560879780663686, \"bulk_above_outer\": 0.0037979789522589367, \"cap_layer\": 0.00019510568673243643}, \"current\": 0.8095463023261454, \"current_by_cut\": {\"cap_layer\": 0.8095463055430112}, \"minimum_amplitude\": 0.9949368679876593, \"iterations\": 5, \"density_correction\": 4.9402312912655546e-11}}\n{\"state\": {\"step\": 0.005, \"mesh\": 40, \"bias\": 0.4510084282857874, \"energy\": 0.18414285292413043, \"work\": 0.2197748346238751, \"sector_work\": {\"feed_inner\": 0.038500304123540316, \"feed_outer\": 0.033284629503269735, \"core\": 0.15640453758839398, \"bulk_beside\": -0.0009269563321602883, \"bulk_above_inner\": -0.005315484755993279, \"bulk_above_outer\": -0.0019730054543554026, \"cap_layer\": -0.0001991900488199631}, \"sector_energy\": {\"feed_inner\": 0.01586071438214474, \"feed_outer\": 0.0293469111770746, \"core\": 0.12641032359169793, \"bulk_beside\": 0.0018084136218206547, \"bulk_above_inner\": 0.006660976769233711, \"bulk_above_outer\": 0.0038570144774443824, \"cap_layer\": 0.00019849890471441975}, \"current\": 0.8144527972505284, \"current_by_cut\": {\"cap_layer\": 0.8144527981075669}, \"minimum_amplitude\": 0.9949886608328894, \"iterations\": 5, \"density_correction\": 4.745250324053467e-11}}\n{\"mesh\": 40, \"half_step\": 0.005, \"phase_bias\": 0.4510084282857874, \"open_side_current\": 1.9005979409567426, \"sealed_side_current\": 0.8095463023261454, \"sealed_side_terminal_current\": 0.8095463055430112, \"current_ratio\": 0.4259429545202115, \"open_side_slope\": 0.7677527855652058, \"sealed_side_slope\": 0.22228927241142157, \"sealed_energy_slope\": 0.22228462011760208, \"open_side_stiffness\": 0.19299239623737918, \"sealed_side_stiffness\": -0.500106661138755, \"sealed_stiffness_from_work\": -0.5000961739773324}\n"
+    },
+    "side64": {
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_sealed_side_comparison.py",
+        "--mesh",
+        "64"
+      ],
+      "started_utc": "2026-11-22T19:16:35.082778+00:00",
+      "end_record_utc": "2026-11-22T19:16:42.638429+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "duration_s": 7.534442650154233,
+      "verified_limits": true,
+      "memory_bytes": 3221225472,
+      "sampled_peak_bytes": 154382336,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "log": "_scratch/s11c/lip_free_profile01/side64/stdout",
+      "stdout_bytes": 5362,
+      "stdout_sha256": "77617068d4488c2d11147ffe4e745a1fd6ea5c74f2a02f8255d4e37aef87f8c7",
+      "literal_stdout": "{\"state\": {\"step\": -0.01, \"mesh\": 64, \"bias\": 0.4510084282857874, \"energy\": 0.18069393259686853, \"work\": 0.22723794341438577, \"sector_work\": {\"feed_inner\": 0.039227106675434345, \"feed_outer\": 0.03349110127578444, \"core\": 0.16243704644254717, \"bulk_beside\": -0.0008649312823012747, \"bulk_above_inner\": -0.005007455246375027, \"bulk_above_outer\": -0.0018604645646834205, \"cap_layer\": -0.00018445988602043943}, \"sector_energy\": {\"feed_inner\": 0.01579674098813063, \"feed_outer\": 0.028858364746915176, \"core\": 0.1240685631358432, \"bulk_beside\": 0.0017166543521272984, \"bulk_above_inner\": 0.006374697492178616, \"bulk_above_outer\": 0.0036921000199769106, \"cap_layer\": 0.00018681186169667335}, \"current\": 0.799143178379612, \"current_by_cut\": {\"cap_layer\": 0.7991431703213125}, \"minimum_amplitude\": 0.9948366856927194, \"iterations\": 5, \"density_correction\": 5.3734954502231254e-11}}\n{\"state\": {\"step\": -0.005, \"mesh\": 64, \"bias\": 0.4510084282857874, \"energy\": 0.18182398892262752, \"work\": 0.22477977395130797, \"sector_work\": {\"feed_inner\": 0.039004413849495344, \"feed_outer\": 0.03342936279735321, \"core\": 0.16043240975809697, \"bulk_beside\": -0.0008835852880713259, \"bulk_above_inner\": -0.005113628175258523, \"bulk_above_outer\": -0.001900446156296567, \"cap_layer\": -0.0001887528340111632}, \"sector_energy\": {\"feed_inner\": 0.015827008323961153, \"feed_outer\": 0.02902365994107994, \"core\": 0.12481333213006737, \"bulk_beside\": 0.0017443336858611845, \"bulk_above_inner\": 0.006474525482962432, \"bulk_above_outer\": 0.003750996704059844, \"cap_layer\": 0.0001901326546355818}, \"current\": 0.8041600981770008, \"current_by_cut\": {\"cap_layer\": 0.8041600861198364}, \"minimum_amplitude\": 0.9948902971101279, \"iterations\": 5, \"density_correction\": 5.158737085992632e-11}}\n{\"state\": {\"step\": 0.0, \"mesh\": 64, \"bias\": 0.4510084282857874, \"energy\": 0.1829416827326068, \"work\": 0.22229304215449705, \"sector_work\": {\"feed_inner\": 0.03877882633060077, \"feed_outer\": 0.03336388562093481, \"core\": 0.15840781432758558, \"bulk_beside\": -0.0009024613887706722, \"bulk_above_inner\": -0.00522101581083793, \"bulk_above_outer\": -0.0019408982726425359, \"cap_layer\": -0.0001931086523729468}, \"sector_energy\": {\"feed_inner\": 0.01585519686100479, \"feed_outer\": 0.029185365132451922, \"core\": 0.1255508029987089, \"bulk_beside\": 0.0017721120676985672, \"bulk_above_inner\": 0.006574642683642391, \"bulk_above_outer\": 0.003810086749755681, \"cap_layer\": 0.00019347623934452967}, \"current\": 0.809122167574535, \"current_by_cut\": {\"cap_layer\": 0.8091221593375497}, \"minimum_amplitude\": 0.9949434665939797, \"iterations\": 5, \"density_correction\": 4.9598448138446244e-11}}\n{\"state\": {\"step\": 0.005, \"mesh\": 64, \"bias\": 0.4510084282857874, \"energy\": 0.18404687279068097, \"work\": 0.21977837818708137, \"sector_work\": {\"feed_inner\": 0.03855043998214378, \"feed_outer\": 0.033294710130278335, \"core\": 0.15636374470748288, \"bulk_beside\": -0.0009215586310367267, \"bulk_above_inner\": -0.0053296117568098515, \"bulk_above_outer\": -0.001981818721304665, \"cap_layer\": -0.00019752752367239345}, \"sector_energy\": {\"feed_inner\": 0.015881313888634917, \"feed_outer\": 0.029343440968257535, \"core\": 0.12628090702312642, \"bulk_beside\": 0.0017999836503302727, \"bulk_above_inner\": 0.006675027599478733, \"bulk_above_outer\": 0.0038693575127025787, \"cap_layer\": 0.000196842148150486}, \"current\": 0.8140287603345405, \"current_by_cut\": {\"cap_layer\": 0.8140287581075052}, \"minimum_amplitude\": 0.9949945787984378, \"iterations\": 5, \"density_correction\": 4.765960811546981e-11}}\n{\"state\": {\"step\": 0.01, \"mesh\": 64, \"bias\": 0.4510084282857874, \"energy\": 0.18513942101120748, \"work\": 0.21723641213502545, \"sector_work\": {\"feed_inner\": 0.038319349872457144, \"feed_outer\": 0.03322187747249755, \"core\": 0.1543006848597455, \"bulk_beside\": -0.000940875999625867, \"bulk_above_inner\": -0.005439409273949406, \"bulk_above_outer\": -0.0020232051757779427, \"cap_layer\": -0.0002020096203215146}, \"sector_energy\": {\"feed_inner\": 0.015905367301654857, \"feed_outer\": 0.029497849569955277, \"core\": 0.12700357679575985, \"bulk_beside\": 0.0018279425448730036, \"bulk_above_inner\": 0.006775658624335095, \"bulk_above_outer\": 0.003928796268067214, \"cap_layer\": 0.00020022990656215923}, \"current\": 0.8188792729332605, \"current_by_cut\": {\"cap_layer\": 0.8188792646758956}, \"minimum_amplitude\": 0.9950444365286067, \"iterations\": 5, \"density_correction\": 4.579291318040759e-11}}\n{\"mesh\": 64, \"half_step\": 0.005, \"phase_bias\": 0.4510084282857874, \"open_side_current\": 1.8967371945013243, \"sealed_side_current\": 0.809122167574535, \"sealed_side_terminal_current\": 0.8091221593375497, \"current_ratio\": 0.42658633463834367, \"open_side_slope\": 0.7669600499527722, \"sealed_side_slope\": 0.22229304215449705, \"sealed_energy_slope\": 0.22228838680534435, \"open_side_stiffness\": 0.19344093455275768, \"sealed_side_stiffness\": -0.5001500762036315, \"sealed_stiffness_from_work\": -0.500139576422659}\n{\"mesh\": 64, \"half_step\": 0.01, \"phase_bias\": 0.4510084282857874, \"open_side_current\": 1.8967371945013243, \"sealed_side_current\": 0.809122167574535, \"sealed_side_terminal_current\": 0.8091221593375497, \"current_ratio\": 0.42658633463834367, \"open_side_slope\": 0.7669600499527722, \"sealed_side_slope\": 0.22229304215449705, \"sealed_energy_slope\": 0.22227442071694747, \"open_side_stiffness\": 0.19345279889504408, \"sealed_side_stiffness\": -0.5001185713759959, \"sealed_stiffness_from_work\": -0.500076563968016}\n"
+    }
+  }
+}

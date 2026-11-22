@@ -27,7 +27,10 @@ def mapped_nodes(n, length, outer, roof):
     return radial, axial
 
 
-def assemble(step, n, sheet, outer, roof, geometry=ExchangeShape, return_system=False):
+def assemble(step, n, sheet, outer, roof, geometry=ExchangeShape, return_system=False,
+             sealed_side=False):
+    if sealed_side and sheet <= 0:
+        raise ValueError('A sealed side requires separate traces and a finite terminal sheet')
     shape = geometry(step)
     delta = 2.e-5
     up, down = geometry(step+delta), geometry(step-delta)
@@ -85,7 +88,7 @@ def assemble(step, n, sheet, outer, roof, geometry=ExchangeShape, return_system=
             pieces.append((REGIONS[2*slab+side],corners,K.reshape(-1,4,4),dK.reshape(-1,4,4)))
 
     for cap in (False,True):
-        if not sheet:
+        if not sheet or (sealed_side and not cap):
             continue
         if cap:
             inner,bulk=indices[1,0][-1,:], indices[2,0][0,:]

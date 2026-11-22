@@ -63,12 +63,12 @@ def block_matrices(radial, axial, mapping, fade, length, degree):
     return points,cells,km,mm
 
 
-def assemble(shape, mesh, port_radius, fade):
+def assemble(shape, mesh, port_radius, fade, axial_cells=None):
     neck, span = shape.neck, shape.length
     nx=mesh
     nz=mesh
     ns=int(round(mesh*(port_radius-1.)))
-    nt=int(np.ceil(span*mesh))
+    nt=int(np.ceil(span*mesh)) if axial_cells is None else axial_cells
     lead_w=uniform_grid(-1.,0.,nz)
     throat_w=uniform_grid(0.,span,nt)
     if fade:
@@ -143,15 +143,23 @@ class OutgoingSlab:
         return self.radius**4*(self.project.T*self.traction(omega))@self.project
 
 
-def solve(shape, mesh, port_radius, fade, prior=None):
-    points,stiff,mass,inside=assemble(shape,mesh,port_radius,fade)
+def solve(shape, mesh, port_radius, fade, prior=None, *, axial_cells=None, shape_work=True, incoming_vector=None):
+    points,stiff,mass,inside=assemble(shape,mesh,port_radius,fade,axial_cells)
     port=OutgoingSlab(points,port_radius)
     cavity=points[:,1]>0
     val,vec=eigsh(stiff[cavity][:,cavity],k=1,M=mass[cavity][:,cavity],sigma=0.,
                   which='LM',v0=np.ones(cavity.sum()),tol=1e-11)
     seed=np.zeros(len(points));seed[cavity]=vec[:,0]
     omega=np.sqrt(val[0])-1e-4j if prior is None else prior
-    v=seed.astype(complex); seed_dual=mass@seed
+    pocket_dual=mass@seed
+    if incoming_vector is None:
+        v=seed.astype(complex)
+    else:
+        if prior is None or incoming_vector.shape != seed.shape:
+            raise ValueError('Continuing a pole requires its frequency and matching material coordinates')
+        v=incoming_vector.astype(complex,copy=True)
+        v/=np.sqrt(np.vdot(v,mass@v).real)
+    seed_dual=(mass@v).conj()
     port_ids=port.ids
     edge=(np.repeat(port_ids,len(port_ids)),np.tile(port_ids,len(port_ids)))
     for i in range(28):
@@ -180,15 +188,21 @@ def solve(shape, mesh, port_radius, fade, prior=None):
     kinetic=.25*abs(omega)**2*norm
     strain=.25*np.vdot(v,stiff@v).real
     gamma=-omega.imag
-    if not (0<gamma and trapped>.5 and omega.real>0 and np.sum(powers)>0):
+    positive_or_unresolved = gamma>0 or (not shape_work and abs(gamma)<1e-12*omega.real)
+    if not (positive_or_unresolved and (trapped>.5 or not shape_work) and omega.real>0 and np.sum(powers)>0):
         raise ArithmeticError(f'Wrong outgoing or delocalized branch {omega}, {trapped}')
+    if not shape_work:
+        return dict(frequency=omega.real, amplitude_loss=gamma, confined_kinetic_fraction=trapped,
+                    clamped_seed_overlap=abs(pocket_dual@v)**2/norm, pole_residual=residual,
+                    outward_power_over_interior_energy=powers.sum()/(kinetic+strain),
+                    newton_iterations=i+1),v/np.sqrt(norm),mass
     # Integrate the shape variation of physical curl energy and kinetic energy
     # in comoving trial functions. The real energy work omits exterior storage;
     # the bilinear pole variation additionally accounts for the exact open port.
     delta=1e-4
     form=[]
     for change in (-delta,delta):
-        coords, kshift, mshift, _=assemble(type(shape)(shape.step+change),mesh,port_radius,fade)
+        coords, kshift, mshift, _=assemble(type(shape)(shape.step+change),mesh,port_radius,fade,axial_cells)
         if len(coords)!=len(points):
             raise ArithmeticError('Virtual displacement changed topology')
         form.append((kshift,mshift))
@@ -201,7 +215,7 @@ def solve(shape, mesh, port_radius, fade, prior=None):
                 complex_pole_slope_real=pole_work.real, complex_pole_slope_imag=pole_work.imag,amplitude_loss=gamma,energy_lifetime=1/(2*gamma),
                 period_count_per_energy_efold=omega.real/(4*np.pi*gamma),
                 confined_kinetic_fraction=trapped,
-                clamped_seed_overlap=abs(seed_dual@v)**2/norm,
+                clamped_seed_overlap=abs(pocket_dual@v)**2/norm,
                 outward_power_over_interior_energy=powers.sum()/(kinetic+strain),
                 open_channels=int(sum(port.cutoff<omega.real)),pole_residual=residual,
                 newton_iterations=i+1,nodes=len(v)),v/np.sqrt(norm),mass

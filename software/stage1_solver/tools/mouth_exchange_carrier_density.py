@@ -14,8 +14,9 @@ from mouth_exchange_geometry import ExchangeShape
 from mouth_exchange_interior import InteriorShape
 
 
-def solve(step, n, bias, geometry):
-    pieces,volumes,_,stiff,feed,bulk,free=assemble(step,n,.04/6,28.,22.,geometry,return_system=True)
+def solve(step, n, bias, geometry, sealed_side=False):
+    pieces,volumes,_,stiff,feed,bulk,free=assemble(
+        step,n,.04/6,28.,22.,geometry,return_system=True,sealed_side=sealed_side)
     index=np.arange(stiff.shape[0])
     for name,ids,_,_ in pieces:
         if name.endswith('layer'):

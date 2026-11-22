@@ -1,0 +1,2537 @@
+{
+  "base": "017b95e2",
+  "scope": "R1 turning flare, stationary two-sided thin-layer Route A",
+  "history": {
+    "n40": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier.py",
+        "--mesh",
+        "40"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "62307c34d2ec26f5fae1a12cbc4ce269a3df0eb0b1f645668da18615162f2e52",
+      "logdir": "_scratch/s11c/exchange_carrier01/n40",
+      "pool": "exchange-carrier",
+      "source_sha256": "2f8ce6297194391ab9dd4ee8d5ff1989fd3e161a3c43ac534007280fb57fd450"
+    },
+    "n64": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier.py",
+        "--mesh",
+        "64"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "ae8584a646acdc22210f24dd40506f9b9c0f54c19f6b217a7fb0ec22f00bdfc2",
+      "logdir": "_scratch/s11c/exchange_carrier01/n64",
+      "pool": "exchange-carrier",
+      "source_sha256": "2f8ce6297194391ab9dd4ee8d5ff1989fd3e161a3c43ac534007280fb57fd450"
+    },
+    "n80": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier.py",
+        "--mesh",
+        "80"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "255e9962828db942a8f8e8b273d2057360b8f40627fe0fee290e56876156cc7a",
+      "logdir": "_scratch/s11c/exchange_carrier01/n80",
+      "pool": "exchange-carrier",
+      "source_sha256": "2f8ce6297194391ab9dd4ee8d5ff1989fd3e161a3c43ac534007280fb57fd450"
+    },
+    "widefront_b": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier.py",
+        "--mesh",
+        "64",
+        "--sheet",
+        "0.01666666666666667"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "4e2ea72369e634ce0bbb0c49dbbd4dfad8369c0ff59bb2510c5c304ab074d8fd",
+      "logdir": "_scratch/s11c/exchange_carrier01/widefront_b",
+      "pool": "exchange-carrier",
+      "source_sha256": "2f8ce6297194391ab9dd4ee8d5ff1989fd3e161a3c43ac534007280fb57fd450"
+    },
+    "plain": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier.py",
+        "--mesh",
+        "64",
+        "--sheet",
+        "0"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "4e8d32cc4320d130e19217bbdcc2688a8fe54b4712b7fd069e248f5157e9d3cd",
+      "logdir": "_scratch/s11c/exchange_carrier01/plain",
+      "pool": "exchange-carrier",
+      "source_sha256": "2f8ce6297194391ab9dd4ee8d5ff1989fd3e161a3c43ac534007280fb57fd450"
+    },
+    "box": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier.py",
+        "--mesh",
+        "64",
+        "--outer",
+        "14",
+        "--roof",
+        "11"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "9fa1d85c503011dd67a7a7d88667dc434296f3e8510cda6aa3dab582adaa08b8",
+      "logdir": "_scratch/s11c/exchange_carrier01/box",
+      "pool": "exchange-carrier",
+      "source_sha256": "2f8ce6297194391ab9dd4ee8d5ff1989fd3e161a3c43ac534007280fb57fd450"
+    },
+    "interior": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_interior.py",
+        "--mesh",
+        "80"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "6ead6a350c9a2160f07bf71866eb7d918e50ceddfb2edfe15cd3164a39e217a8",
+      "logdir": "_scratch/s11c/exchange_carrier01/interior",
+      "pool": "exchange-carrier"
+    },
+    "interior_plain": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_interior.py",
+        "--mesh",
+        "80",
+        "--sheet",
+        "0"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "a1cce0451b4cd7adfac7d1a0fd7de5ee977e391d4fb2f8ca7d33fe75412cf804",
+      "logdir": "_scratch/s11c/exchange_carrier01/interior_plain",
+      "pool": "exchange-carrier"
+    },
+    "n24": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier.py",
+        "--mesh",
+        "24"
+      ],
+      "guard_exit": 1,
+      "child_exit": 1,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "777b03a7a92d45a1f810a395a10e4ec09c9e65afed23007d75645664e9ebc4ae",
+      "logdir": "_scratch/s11c/exchange_carrier01/n24",
+      "pool": "exchange-carrier",
+      "failed_check": "ArithmeticError: Port energy and integrated stimulated stress disagree",
+      "raw_full_step": {
+        "half_width": 0.01,
+        "slope": 0.7707616859415845,
+        "direct_work": 0.7707784934461721,
+        "stiffness": 0.18851246485929174,
+        "stiffness_from_work": 0.18852811599009295,
+        "components": {
+          "feed_inner": -0.011136177243548095,
+          "feed_outer": 0.13629100897810387,
+          "core": -0.007592546098827979,
+          "bulk_beside": 0.07739706048217887,
+          "bulk_above_inner": -0.0006264615031365537,
+          "bulk_above_outer": -0.0025147025718406943,
+          "side_layer": -0.0032843265839575895,
+          "cap_layer": -5.739468878865424e-06
+        }
+      },
+      "source_sha256": "561715e40128b032c37b28e8dcd02e933a8fb3d9000881a05840b44de1ba2387"
+    },
+    "widefront": {
+      "outcome": "guard refused admission during cgroup teardown; no worker or scientific output"
+    },
+    "f24_0": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "24",
+        "--step",
+        "0"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "4ff32ebfc7804745274a7f8f62da82d1a1b10f306e7733bafe92c4a335910815",
+      "logdir": "_scratch/s11c/exchange_carrier01/f24_0",
+      "pool": "finite-carrier"
+    },
+    "finite_40_0_0_1": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "40",
+        "--step",
+        "0",
+        "--bias-fraction",
+        "1"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "86816debb772cf46692dd3f0480473ef1c11dac38fd83eafe1d3f5b2fff423b3",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_40_0_0_1",
+      "pool": "finite-carrier"
+    },
+    "finite_40_-0.005_0_1": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "40",
+        "--step",
+        "-0.005",
+        "--bias-fraction",
+        "1"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "a187d12289f33217d4149037a6061c1bc2c8a02b2749157a798c8f794afb72ab",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_40_-0.005_0_1",
+      "pool": "finite-carrier"
+    },
+    "finite_40_0.005_0_1": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "40",
+        "--step",
+        "0.005",
+        "--bias-fraction",
+        "1"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "cdf17734b5e004964f2a66961d5f54153bb6033460982bf5cb0b96d5c1b60aea",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_40_0.005_0_1",
+      "pool": "finite-carrier"
+    },
+    "finite_64_0_0_1": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "64",
+        "--step",
+        "0",
+        "--bias-fraction",
+        "1"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "99752b8b3ce9182d3e0cf2553901fd72ba9d33643279c99e33218b8259f8e7ee",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_64_0_0_1",
+      "pool": "finite-carrier"
+    },
+    "finite_64_-0.005_0_1": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "64",
+        "--step",
+        "-0.005",
+        "--bias-fraction",
+        "1"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "ddce2503c71890a8d2d4a39eb4263fcf56a8fdf2a236bff8ec590234bb7b929f",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_64_-0.005_0_1",
+      "pool": "finite-carrier"
+    },
+    "finite_64_0.005_0_1": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "64",
+        "--step",
+        "0.005",
+        "--bias-fraction",
+        "1"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "555e8380e27bbad36d728e6e780f27ec6a27c253991a37e0ec3138bbd949e02b",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_64_0.005_0_1",
+      "pool": "finite-carrier"
+    },
+    "finite_64_-0.01_0_1": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "64",
+        "--step",
+        "-0.01",
+        "--bias-fraction",
+        "1"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "565bf8bf90f63436fb8e3b5f399233fd923b01f2db1817cbb92cc9652748a306",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_64_-0.01_0_1",
+      "pool": "finite-carrier"
+    },
+    "finite_64_0.01_0_1": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "64",
+        "--step",
+        "0.01",
+        "--bias-fraction",
+        "1"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "40f97e3e2a8323824763218633b5e832635f66d54218439d0053ffaecca193bb",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_64_0.01_0_1",
+      "pool": "finite-carrier"
+    },
+    "finite_64_0_0_0.5": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "64",
+        "--step",
+        "0",
+        "--bias-fraction",
+        "0.5"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "1d03e741655133c2858fafce26f9ed400947c19925c40000a0b22a07500bba30",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_64_0_0_0.5",
+      "pool": "finite-carrier"
+    },
+    "finite_64_-0.005_0_0.5": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "64",
+        "--step",
+        "-0.005",
+        "--bias-fraction",
+        "0.5"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "439ac67f302395d271a2af5178e6f751596ab373e87a7e165793d0cb2a2a40e8",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_64_-0.005_0_0.5",
+      "pool": "finite-carrier"
+    },
+    "finite_64_0.005_0_0.5": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "64",
+        "--step",
+        "0.005",
+        "--bias-fraction",
+        "0.5"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "f2423a7598957aafc2cd125ad42028b4b778816644d7adcc7f0b69a933775df4",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_64_0.005_0_0.5",
+      "pool": "finite-carrier"
+    },
+    "finite_64_-0.005_1_1": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "64",
+        "--step",
+        "-0.005",
+        "--bias-fraction",
+        "1",
+        "--interior"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "c5c0b7b2451f13e2548eac6be521a500abb56917559ff683e981c64ebd00923c",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_64_-0.005_1_1",
+      "pool": "finite-carrier"
+    },
+    "finite_64_0.005_1_1": {
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_carrier_density.py",
+        "--mesh",
+        "64",
+        "--step",
+        "0.005",
+        "--bias-fraction",
+        "1",
+        "--interior"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "mem_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "7b65714060fa846ca1f4efb35659bbdb787aa2394ebcb3e1f8bcfde80565beee",
+      "logdir": "_scratch/s11c/exchange_carrier01/finite_64_0.005_1_1",
+      "pool": "finite-carrier"
+    }
+  },
+  "weak": {
+    "n40": [
+      {
+        "inputs": {
+          "mesh": 40,
+          "sheet": 0.006666666666666667,
+          "outer": 28.0,
+          "roof": 22.0
+        },
+        "states": [
+          {
+            "step": -0.01,
+            "mesh": 40,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4249510543476354,
+            "port_current": 1.8844483947353623,
+            "relative_port_mismatch": 6.968979554602241e-10,
+            "component_energy": {
+              "feed_inner": 0.0712404297960049,
+              "feed_outer": 0.16810247872586523,
+              "core": 0.08477988121889118,
+              "bulk_beside": 0.09555889049053103,
+              "bulk_above_inner": 0.00018832681873588323,
+              "bulk_above_outer": 0.0025170224980485623,
+              "side_layer": 0.0025623836867571205,
+              "cap_layer": 1.641112801515744e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18759120135055513,
+              "feed_outer": 0.2008014608565981,
+              "core": 0.221568444856808,
+              "bulk_beside": 0.15216709946404228,
+              "bulk_above_inner": -0.00017528819657017255,
+              "bulk_above_outer": -0.0005550665880471526,
+              "side_layer": 0.005113195312454961,
+              "cap_layer": -1.6204510653922174e-06
+            },
+            "work": 0.7665094266047757,
+            "outward_current": {
+              "side_layer": 1.801182283923692,
+              "cap_layer": 0.083266110809226
+            }
+          },
+          {
+            "step": -0.005,
+            "mesh": 40,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.42878608082081965,
+            "port_current": 1.9014548462012941,
+            "relative_port_mismatch": 6.114242453785266e-10,
+            "component_energy": {
+              "feed_inner": 0.07175199938201696,
+              "feed_outer": 0.16996880138390727,
+              "core": 0.08535483869369498,
+              "bulk_beside": 0.09638224377218672,
+              "bulk_above_inner": 0.00019058394425296396,
+              "bulk_above_outer": 0.0025625367046846013,
+              "side_layer": 0.002573415966361364,
+              "cap_layer": 1.6609737147780298e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18754268637105936,
+              "feed_outer": 0.20149861077440168,
+              "core": 0.22154287948920873,
+              "bulk_beside": 0.1525612490758086,
+              "bulk_above_inner": -0.00017839249357104946,
+              "bulk_above_outer": -0.0005673369245654598,
+              "side_layer": 0.005098838662822577,
+              "cap_layer": -1.6489197843647555e-06
+            },
+            "work": 0.76749688603538,
+            "outward_current": {
+              "side_layer": 1.8178882474643687,
+              "cap_layer": 0.08356659873991266
+            }
+          },
+          {
+            "step": 0.0,
+            "mesh": 40,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.43262598064050395,
+            "port_current": 1.9184829085560449,
+            "relative_port_mismatch": 9.134635012733138e-10,
+            "component_energy": {
+              "feed_inner": 0.07226251422866435,
+              "feed_outer": 0.1718423440962928,
+              "core": 0.08592684320309885,
+              "bulk_beside": 0.09720683102168455,
+              "bulk_above_inner": 0.00019283528050284733,
+              "bulk_above_outer": 0.0026085115235605495,
+              "side_layer": 0.0025844205020589513,
+              "cap_layer": 1.6807846410035285e-06
+            },
+            "component_work": {
+              "feed_inner": 0.1874875150547188,
+              "feed_outer": 0.20219031359237635,
+              "core": 0.22150710520039832,
+              "bulk_beside": 0.15295232966744512,
+              "bulk_above_inner": -0.00018152009027933718,
+              "bulk_above_outer": -0.0005797899879388465,
+              "side_layer": 0.005084528910485243,
+              "cap_layer": -1.6775913055419642e-06
+            },
+            "work": 0.7684588047559002,
+            "outward_current": {
+              "side_layer": 1.8346231281773573,
+              "cap_layer": 0.08385978037932028
+            }
+          },
+          {
+            "step": 0.005,
+            "mesh": 40,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.43647062669227943,
+            "port_current": 1.935532018109888,
+            "relative_port_mismatch": 1.7737975533475845e-09,
+            "component_energy": {
+              "feed_inner": 0.07277196514072334,
+              "feed_outer": 0.17372303395599958,
+              "core": 0.08649586211807309,
+              "bulk_beside": 0.09803264009050594,
+              "bulk_above_inner": 0.00019508029143463674,
+              "bulk_above_outer": 0.0026549466952808694,
+              "side_layer": 0.002595397859549327,
+              "cap_layer": 1.700540712623871e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18742579413356464,
+              "feed_outer": 0.20287656276588184,
+              "core": 0.22146123338387977,
+              "bulk_beside": 0.15334036490839206,
+              "bulk_above_inner": -0.00018467060356152778,
+              "bulk_above_outer": -0.0005924269679248238,
+              "side_layer": 0.005070266821296525,
+              "cap_layer": -1.7064617462510193e-06
+            },
+            "work": 0.7693954179797823,
+            "outward_current": {
+              "side_layer": 1.8513863875113197,
+              "cap_layer": 0.08414563059765767
+            }
+          },
+          {
+            "step": 0.01,
+            "mesh": 40,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4403198930360932,
+            "port_current": 1.952601616380786,
+            "relative_port_mismatch": 1.424177835515731e-09,
+            "component_energy": {
+              "feed_inner": 0.07328034324915492,
+              "feed_outer": 0.17561079805126933,
+              "core": 0.08706186358085624,
+              "bulk_beside": 0.09885965895496711,
+              "bulk_above_inner": 0.00019731844268079682,
+              "bulk_above_outer": 0.0027018419215044734,
+              "side_layer": 0.0026063485985863295,
+              "cap_layer": 1.7202370740075982e-06
+            },
+            "component_work": {
+              "feed_inner": 0.1873576289407019,
+              "feed_outer": 0.20355735191527566,
+              "core": 0.2214053756079851,
+              "bulk_beside": 0.1537253788938301,
+              "bulk_above_inner": -0.000187843642075693,
+              "bulk_above_outer": -0.0006052490448651304,
+              "side_layer": 0.0050560531370362856,
+              "cap_layer": -1.7355271455185396e-06
+            },
+            "work": 0.7703069602807427,
+            "outward_current": {
+              "side_layer": 1.8681774906788204,
+              "cap_layer": 0.08442412570219869
+            }
+          }
+        ]
+      },
+      {
+        "half_width": 0.01,
+        "slope": 0.7684419344228893,
+        "direct_work": 0.7684588047559002,
+        "stiffness": 0.18986102720663922,
+        "stiffness_from_work": 0.18987668379834702,
+        "components": {
+          "feed_inner": -0.011678620492661107,
+          "feed_outer": 0.13779455293387727,
+          "core": -0.008153462441144732,
+          "bulk_beside": 0.07791397148939061,
+          "bulk_above_inner": -0.0006277722752760222,
+          "bulk_above_outer": -0.002509122840898886,
+          "side_layer": -0.002857108770933786,
+          "cap_layer": -5.753804006316114e-06
+        }
+      },
+      {
+        "half_width": 0.005,
+        "slope": 0.768454587145978,
+        "direct_work": 0.7684588047559002,
+        "stiffness": 0.18984928364496056,
+        "stiffness_from_work": 0.1898531944402171,
+        "components": {
+          "feed_inner": -0.011689223749472566,
+          "feed_outer": 0.1377951991480164,
+          "core": -0.008164610532895855,
+          "bulk_beside": 0.07791158325834713,
+          "bulk_above_inner": -0.000627810999047831,
+          "bulk_above_outer": -0.0025090043359364024,
+          "side_layer": -0.0028571841526051772,
+          "cap_layer": -5.754196188626385e-06
+        }
+      }
+    ],
+    "n64": [
+      {
+        "inputs": {
+          "mesh": 64,
+          "sheet": 0.006666666666666667,
+          "outer": 28.0,
+          "roof": 22.0
+        },
+        "states": [
+          {
+            "step": -0.01,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4240854482806358,
+            "port_current": 1.8806098586339877,
+            "relative_port_mismatch": 1.868961171404341e-09,
+            "component_energy": {
+              "feed_inner": 0.0714999574104054,
+              "feed_outer": 0.16734494241213635,
+              "core": 0.08498955262880217,
+              "bulk_beside": 0.09507700237192854,
+              "bulk_above_inner": 0.00018830768166713447,
+              "bulk_above_outer": 0.002510594614271493,
+              "side_layer": 0.002473450146479329,
+              "cap_layer": 1.641014945383598e-06
+            },
+            "component_work": {
+              "feed_inner": 0.1881189609350589,
+              "feed_outer": 0.1998102926233527,
+              "core": 0.22212779905939675,
+              "bulk_beside": 0.15145296235472672,
+              "bulk_above_inner": -0.00017526681097493219,
+              "bulk_above_outer": -0.000554228151099848,
+              "side_layer": 0.004932853382684591,
+              "cap_layer": -1.6203544412762863e-06
+            },
+            "work": 0.7657117530387036,
+            "outward_current": {
+              "side_layer": 1.7973437515426238,
+              "cap_layer": 0.08326610709567062
+            }
+          },
+          {
+            "step": -0.005,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.42791649208392474,
+            "port_current": 1.897598648922675,
+            "relative_port_mismatch": 5.6919476967155334e-09,
+            "component_energy": {
+              "feed_inner": 0.07201282326986672,
+              "feed_outer": 0.16920736102726694,
+              "core": 0.08556567046065315,
+              "bulk_beside": 0.09589812687429092,
+              "bulk_above_inner": 0.00019056738323169103,
+              "bulk_above_outer": 0.00255603610551356,
+              "side_layer": 0.00248424606202145,
+              "cap_layer": 1.660901080286941e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18806942588651226,
+              "feed_outer": 0.20050992830879505,
+              "core": 0.222101543657515,
+              "bulk_beside": 0.15184783941249944,
+              "bulk_above_inner": -0.00017837336593843356,
+              "bulk_above_outer": -0.0005664894208985952,
+              "side_layer": 0.004919260733702207,
+              "cap_layer": -1.6488476769928464e-06
+            },
+            "work": 0.76670148636451,
+            "outward_current": {
+              "side_layer": 1.8140313783806012,
+              "cap_layer": 0.0835672705451765
+            }
+          },
+          {
+            "step": 0.0,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.431752420523715,
+            "port_current": 1.9146091001657706,
+            "relative_port_mismatch": 1.4258176566088644e-09,
+            "component_energy": {
+              "feed_inner": 0.0725246289837366,
+              "feed_outer": 0.17107701005540346,
+              "core": 0.08613882965764252,
+              "bulk_beside": 0.09672049566797815,
+              "bulk_above_inner": 0.0001928213258736495,
+              "bulk_above_outer": 0.0026019380593485784,
+              "side_layer": 0.002495016036170913,
+              "cap_layer": 1.6807375611082333e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18801322774320653,
+              "feed_outer": 0.20120411632674673,
+              "core": 0.2220650651795911,
+              "bulk_beside": 0.15223964123864112,
+              "bulk_above_inner": -0.00018150327584275008,
+              "bulk_above_outer": -0.0005789334456620268,
+              "side_layer": 0.004905711061141832,
+              "cap_layer": -1.6775443150941153e-06
+            },
+            "work": 0.7676656472835075,
+            "outward_current": {
+              "side_layer": 1.8307479751518003,
+              "cap_layer": 0.08386112501725304
+            }
+          },
+          {
+            "step": 0.005,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.43559310633069254,
+            "port_current": 1.9316406479866193,
+            "relative_port_mismatch": 4.787951508841054e-10,
+            "component_energy": {
+              "feed_inner": 0.07303536533544266,
+              "feed_outer": 0.17295381648620262,
+              "core": 0.0867089975788899,
+              "bulk_beside": 0.09754409659480894,
+              "bulk_above_inner": 0.00019506897278758563,
+              "bulk_above_outer": 0.0026483002266268914,
+              "side_layer": 0.0025057606164197634,
+              "cap_layer": 1.7005195141635874e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18795047330998763,
+              "feed_outer": 0.20189284991645834,
+              "core": 0.22201847583667847,
+              "bulk_beside": 0.15262839207784637,
+              "bulk_above_inner": -0.00018465615753009162,
+              "bulk_above_outer": -0.0005915614176840864,
+              "side_layer": 0.004892205153108195,
+              "cap_layer": -1.7064404739808058e-06
+            },
+            "work": 0.7686044722783908,
+            "outward_current": {
+              "side_layer": 1.8474930026887864,
+              "cap_layer": 0.0841476452960423
+            }
+          },
+          {
+            "step": 0.01,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.439438423409442,
+            "port_current": 1.9486927332142274,
+            "relative_port_mismatch": 5.477955684934412e-10,
+            "component_energy": {
+              "feed_inner": 0.07354502343593486,
+              "feed_outer": 0.17483770731112136,
+              "core": 0.08727614235708939,
+              "bulk_beside": 0.09836891762062637,
+              "bulk_above_inner": 0.00019730978880944146,
+              "bulk_above_outer": 0.0026951223092665086,
+              "side_layer": 0.0025164803445168102,
+              "cap_layer": 1.7202420772714212e-06
+            },
+            "component_work": {
+              "feed_inner": 0.1878812679951822,
+              "feed_outer": 0.20257612249001644,
+              "core": 0.2219618870183008,
+              "bulk_beside": 0.1530141151777298,
+              "bulk_above_inner": -0.00018783161958369109,
+              "bulk_above_outer": -0.0006043745191995146,
+              "side_layer": 0.004878743775025409,
+              "cap_layer": -1.735532193253132e-06
+            },
+            "work": 0.7695181947852782,
+            "outward_current": {
+              "side_layer": 1.864265925616782,
+              "cap_layer": 0.08442680759560997
+            }
+          }
+        ]
+      },
+      {
+        "half_width": 0.01,
+        "slope": 0.7676487564403089,
+        "direct_work": 0.7676656472835075,
+        "stiffness": 0.19030642647854812,
+        "stiffness_from_work": 0.1903220873287304,
+        "components": {
+          "feed_inner": -0.011884646993834402,
+          "feed_outer": 0.1382914933331869,
+          "core": -0.008295602054797513,
+          "bulk_beside": 0.07805764115015462,
+          "bulk_above_inner": -0.000628240430437945,
+          "bulk_above_outer": -0.0025073184049833283,
+          "side_layer": -0.0027054803829590877,
+          "cap_layer": -5.758887598842283e-06
+        }
+      },
+      {
+        "half_width": 0.005,
+        "slope": 0.7676614246767799,
+        "direct_work": 0.7676656472835075,
+        "stiffness": 0.19029468749209855,
+        "stiffness_from_work": 0.1902985913880906,
+        "components": {
+          "feed_inner": -0.011895257652463909,
+          "feed_outer": 0.138292160766329,
+          "core": -0.008306782083652986,
+          "bulk_beside": 0.07805526653469341,
+          "bulk_above_inner": -0.0006282791591658059,
+          "bulk_above_outer": -0.002507199678549127,
+          "side_layer": -0.002705558059401189,
+          "cap_layer": -5.759279698795933e-06
+        }
+      }
+    ],
+    "n80": [
+      {
+        "inputs": {
+          "mesh": 80,
+          "sheet": 0.006666666666666667,
+          "outer": 28.0,
+          "roof": 22.0
+        },
+        "states": [
+          {
+            "step": -0.01,
+            "mesh": 80,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.423887977311973,
+            "port_current": 1.8797341722552943,
+            "relative_port_mismatch": 3.3554359160971056e-09,
+            "component_energy": {
+              "feed_inner": 0.07156134557493252,
+              "feed_outer": 0.16717227356647255,
+              "core": 0.08503304097611546,
+              "bulk_beside": 0.0949680968894608,
+              "bulk_above_inner": 0.00018830496355101727,
+              "bulk_above_outer": 0.0025091383059880545,
+              "side_layer": 0.002454136025770224,
+              "cap_layer": 1.641009682374323e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18824307121709571,
+              "feed_outer": 0.19958408003056755,
+              "core": 0.2222458858561832,
+              "bulk_beside": 0.1512922522959246,
+              "bulk_above_inner": -0.0001752634670203817,
+              "bulk_above_outer": -0.0005540402942792751,
+              "side_layer": 0.0048936878543857695,
+              "cap_layer": -1.6203492445287013e-06
+            },
+            "work": 0.7655280531436127,
+            "outward_current": {
+              "side_layer": 1.796467604631906,
+              "cap_layer": 0.08326656762553994
+            }
+          },
+          {
+            "step": -0.005,
+            "mesh": 80,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.427718103897481,
+            "port_current": 1.8967188951353777,
+            "relative_port_mismatch": 3.205176759090864e-09,
+            "component_energy": {
+              "feed_inner": 0.07207451868370972,
+              "feed_outer": 0.16903379371838517,
+              "core": 0.08560941320922352,
+              "bulk_beside": 0.09578870950641798,
+              "bulk_above_inner": 0.0001905652640152399,
+              "bulk_above_outer": 0.0025545632688121645,
+              "side_layer": 0.0024648793451914077,
+              "cap_layer": 1.6609017258123705e-06
+            },
+            "component_work": {
+              "feed_inner": 0.188193297889316,
+              "feed_outer": 0.20028427099965873,
+              "core": 0.22221951177232518,
+              "bulk_beside": 0.15168727780992294,
+              "bulk_above_inner": -0.00017837055628619377,
+              "bulk_above_outer": -0.0005662995460773769,
+              "side_layer": 0.004880258581511374,
+              "cap_layer": -1.6488483178336014e-06
+            },
+            "work": 0.7665182981020529,
+            "outward_current": {
+              "side_layer": 1.813151009535029,
+              "cap_layer": 0.08356788561013351
+            }
+          },
+          {
+            "step": 0.0,
+            "mesh": 80,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.43155311766054577,
+            "port_current": 1.913725290238197,
+            "relative_port_mismatch": 1.0007928355403935e-09,
+            "component_energy": {
+              "feed_inner": 0.07258663039430588,
+              "feed_outer": 0.17090254658571735,
+              "core": 0.08618282562885687,
+              "bulk_beside": 0.09661056872076339,
+              "bulk_above_inner": 0.00019281981234499834,
+              "bulk_above_outer": 0.0026004486626742926,
+              "side_layer": 0.0024755971116923346,
+              "cap_layer": 1.6807441906435577e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18813685991984672,
+              "feed_outer": 0.20097901426396242,
+              "core": 0.2221829112943014,
+              "bulk_beside": 0.15207922689848602,
+              "bulk_above_inner": -0.00018150101312754434,
+              "bulk_above_outer": -0.000578741559822607,
+              "side_layer": 0.0048668714622330436,
+              "cap_layer": -1.6775509320339335e-06
+            },
+            "work": 0.7674829637149474,
+            "outward_current": {
+              "side_layer": 1.8298633962568571,
+              "cap_layer": 0.08386189398563162
+            }
+          },
+          {
+            "step": 0.005,
+            "mesh": 80,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4353928912960719,
+            "port_current": 1.930752793028424,
+            "relative_port_mismatch": 7.383445951191606e-10,
+            "component_energy": {
+              "feed_inner": 0.0730976714859053,
+              "feed_outer": 0.17277845913640258,
+              "core": 0.08675324559175311,
+              "bulk_beside": 0.09743366237328503,
+              "bulk_above_inner": 0.00019506807156722503,
+              "bulk_above_outer": 0.0026467942360143184,
+              "side_layer": 0.002486289868942632,
+              "cap_layer": 1.7005322017163015e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18807386413175406,
+              "feed_outer": 0.2016683030140511,
+              "core": 0.2221361965654821,
+              "bulk_beside": 0.15246812359597184,
+              "bulk_above_inner": -0.00018465445438579976,
+              "bulk_above_outer": -0.000591367528114654,
+              "side_layer": 0.0048535272896108456,
+              "cap_layer": -1.7064532057097167e-06
+            },
+            "work": 0.7684222861611637,
+            "outward_current": {
+              "side_layer": 1.846604225515282,
+              "cap_layer": 0.08414856751550567
+            }
+          },
+          {
+            "step": 0.01,
+            "mesh": 80,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4392372986737758,
+            "port_current": 1.947800844180443,
+            "relative_port_mismatch": 6.140114309027094e-10,
+            "component_energy": {
+              "feed_inner": 0.0736076330649302,
+              "feed_outer": 0.17466145833697894,
+              "core": 0.08732064122745822,
+              "bulk_beside": 0.0982579784286656,
+              "bulk_above_inner": 0.00019730950633112357,
+              "bulk_above_outer": 0.002693599693635204,
+              "side_layer": 0.0024969581548811427,
+              "cap_layer": 1.720260895358296e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18800441595048734,
+              "feed_outer": 0.20235213061391275,
+              "core": 0.22207947921249302,
+              "bulk_beside": 0.1528539913146601,
+              "bulk_above_inner": -0.00018783048862049744,
+              "bulk_above_outer": -0.0006041786338636771,
+              "side_layer": 0.0048402268335892545,
+              "cap_layer": -1.7355511786017706e-06
+            },
+            "work": 0.7693364992514796,
+            "outward_current": {
+              "side_layer": 1.8633729617926982,
+              "cap_layer": 0.08442788239315208
+            }
+          }
+        ]
+      },
+      {
+        "half_width": 0.01,
+        "slope": 0.7674660680901418,
+        "direct_work": 0.7674829637149474,
+        "stiffness": 0.19040664657299367,
+        "stiffness_from_work": 0.19042230539335073,
+        "components": {
+          "feed_inner": -0.011932763330418927,
+          "feed_outer": 0.13840252916725998,
+          "core": -0.008320332184509616,
+          "bulk_beside": 0.07808695093677459,
+          "bulk_above_inner": -0.0006283510800057871,
+          "bulk_above_outer": -0.0025069169792200983,
+          "side_layer": -0.0026730510398257495,
+          "cap_layer": -5.7600967036534645e-06
+        }
+      },
+      {
+        "half_width": 0.005,
+        "slope": 0.7674787398590899,
+        "direct_work": 0.7674829637149474,
+        "stiffness": 0.19039489845606994,
+        "stiffness_from_work": 0.190398805911096,
+        "components": {
+          "feed_inner": -0.011943375756193197,
+          "feed_outer": 0.13840320143923557,
+          "core": -0.008331520684307092,
+          "bulk_beside": 0.07808457860488949,
+          "bulk_above_inner": -0.000628389809960599,
+          "bulk_above_outer": -0.0025067982037277055,
+          "side_layer": -0.002673129190052838,
+          "cap_layer": -5.760488787611533e-06
+        }
+      }
+    ],
+    "widefront_b": [
+      {
+        "inputs": {
+          "mesh": 64,
+          "sheet": 0.01666666666666667,
+          "outer": 28.0,
+          "roof": 22.0
+        },
+        "states": [
+          {
+            "step": -0.01,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.01666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.42074567706520805,
+            "port_current": 1.8657996200399032,
+            "relative_port_mismatch": 1.945990132233535e-09,
+            "component_energy": {
+              "feed_inner": 0.07099730397863895,
+              "feed_outer": 0.16420040252887022,
+              "core": 0.08662700350940783,
+              "bulk_beside": 0.0911492047410347,
+              "bulk_above_inner": 0.00018566478050614237,
+              "bulk_above_outer": 0.002473882953458571,
+              "side_layer": 0.005108193124850471,
+              "cap_layer": 4.021448441144823e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18628176631936993,
+              "feed_outer": 0.19567611175164984,
+              "core": 0.22701755739762833,
+              "bulk_beside": 0.14427472664863306,
+              "bulk_above_inner": -0.0001728279162988472,
+              "bulk_above_outer": -0.0005466081109736604,
+              "side_layer": 0.010145833449487572,
+              "cap_layer": -3.970818096631913e-06
+            },
+            "work": 0.7626725887213995,
+            "outward_current": {
+              "side_layer": 1.783413271733949,
+              "cap_layer": 0.08238634831248137
+            }
+          },
+          {
+            "step": -0.005,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.01666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4245615407071301,
+            "port_current": 1.8827210937978351,
+            "relative_port_mismatch": 5.55933023794143e-09,
+            "component_energy": {
+              "feed_inner": 0.07151033990203988,
+              "feed_outer": 0.16604278558180707,
+              "core": 0.08721140144148219,
+              "bulk_beside": 0.09195399121606057,
+              "bulk_above_inner": 0.0001879112656469133,
+              "bulk_above_outer": 0.002518850713530427,
+              "side_layer": 0.005132190114387603,
+              "cap_layer": 4.070472175494011e-06
+            },
+            "component_work": {
+              "feed_inner": 0.1862430186575924,
+              "feed_outer": 0.19638051306343562,
+              "core": 0.22698111261580156,
+              "bulk_beside": 0.14468181462661492,
+              "bulk_above_inner": -0.0001759083826777948,
+              "bulk_above_outer": -0.0005587461353753704,
+              "side_layer": 0.010120797732282891,
+              "cap_layer": -4.0409321605521625e-06
+            },
+            "work": 0.7636685612455137,
+            "outward_current": {
+              "side_layer": 1.8000338996659588,
+              "cap_layer": 0.08268719413156543
+            }
+          },
+          {
+            "step": 0.0,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.01666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4283823198095106,
+            "port_current": 1.8996643651992262,
+            "relative_port_mismatch": 1.1245249017417635e-09,
+            "component_energy": {
+              "feed_inner": 0.07202232397522734,
+              "feed_outer": 0.16789240372820638,
+              "core": 0.08779277509415008,
+              "bulk_beside": 0.09276012293118771,
+              "bulk_above_inner": 0.0001901522794248892,
+              "bulk_above_outer": 0.0025642765640453077,
+              "side_layer": 0.005156145862353027,
+              "cap_layer": 4.1193749159088745e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18619751881010854,
+              "feed_outer": 0.19707948344700163,
+              "core": 0.22693431453437857,
+              "bulk_beside": 0.14508585580179167,
+              "bulk_above_inner": -0.00017901226746717762,
+              "bulk_above_outer": -0.0005710658255528253,
+              "side_layer": 0.010095829859484848,
+              "cap_layer": -4.111548484325942e-06
+            },
+            "work": 0.7646388128112609,
+            "outward_current": {
+              "side_layer": 1.816683598991352,
+              "cap_layer": 0.08298076620985204
+            }
+          },
+          {
+            "step": 0.005,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.01666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4322078863642294,
+            "port_current": 1.9166288665911813,
+            "relative_port_mismatch": 2.1982836635980948e-10,
+            "component_energy": {
+              "feed_inner": 0.07253324659326726,
+              "feed_outer": 0.1697491837916065,
+              "core": 0.08837109160538976,
+              "bulk_beside": 0.09356758715953697,
+              "bulk_above_inner": 0.00019238728558952577,
+              "bulk_above_outer": 0.0026101602664667972,
+              "side_layer": 0.005180061517845947,
+              "cap_layer": 4.168144526624749e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18614537392550665,
+              "feed_outer": 0.19777301554724488,
+              "core": 0.22687727745094277,
+              "bulk_beside": 0.14548687283000902,
+              "bulk_above_inner": -0.00018213919110511266,
+              "bulk_above_outer": -0.0005835683726935769,
+              "side_layer": 0.01007093195430012,
+              "cap_layer": -4.182657395221044e-06
+            },
+            "work": 0.7655835814868095,
+            "outward_current": {
+              "side_layer": 1.833361827806554,
+              "cap_layer": 0.08326703878035409
+            }
+          },
+          {
+            "step": 0.01,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.01666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.436038113545077,
+            "port_current": 1.9336140355619948,
+            "relative_port_mismatch": 8.848744754103302e-10,
+            "component_energy": {
+              "feed_inner": 0.07304309848648594,
+              "feed_outer": 0.17161305259439347,
+              "core": 0.08894631889736104,
+              "bulk_beside": 0.09437637129776964,
+              "bulk_above_inner": 0.00019461574943712649,
+              "bulk_above_outer": 0.002656501533293176,
+              "side_layer": 0.005203938217436567,
+              "cap_layer": 4.2167689000419614e-06
+            },
+            "component_work": {
+              "feed_inner": 0.18608668977528803,
+              "feed_outer": 0.19846110219932797,
+              "core": 0.22681011481216837,
+              "bulk_beside": 0.14588488742841063,
+              "bulk_above_inner": -0.00018528876571968046,
+              "bulk_above_outer": -0.0005962549579170808,
+              "side_layer": 0.010046106085981272,
+              "cap_layer": -4.254249023567351e-06
+            },
+            "work": 0.7665031023285159,
+            "outward_current": {
+              "side_layer": 1.8500680480408176,
+              "cap_layer": 0.08354598752175472
+            }
+          }
+        ]
+      },
+      {
+        "half_width": 0.01,
+        "slope": 0.7646218239934471,
+        "direct_work": 0.7646388128112609,
+        "stiffness": 0.19150991263927608,
+        "stiffness_from_work": 0.1915256803558175,
+        "components": {
+          "feed_inner": -0.009753827204095344,
+          "feed_outer": 0.1392495223839066,
+          "core": -0.01037212927299802,
+          "bulk_beside": 0.08050803898887876,
+          "bulk_above_inner": -0.0006230424710416629,
+          "bulk_above_outer": -0.0024823423471710213,
+          "side_layer": -0.004986368175315028,
+          "cap_layer": -1.4171546346771903e-05
+        }
+      },
+      {
+        "half_width": 0.005,
+        "slope": 0.7646345657099318,
+        "direct_work": 0.7646388128112609,
+        "stiffness": 0.19149809353358194,
+        "stiffness_from_work": 0.19150202412958492,
+        "components": {
+          "feed_inner": -0.009764473208576097,
+          "feed_outer": 0.13925024838092603,
+          "core": -0.010383516485878985,
+          "bulk_beside": 0.08050582033941045,
+          "bulk_above_inner": -0.0006230808427317873,
+          "bulk_above_outer": -0.002482223731820651,
+          "side_layer": -0.004986577798277159,
+          "cap_layer": -1.4172523466888128e-05
+        }
+      }
+    ],
+    "plain": [
+      {
+        "inputs": {
+          "mesh": 64,
+          "sheet": 0.0,
+          "outer": 28.0,
+          "roof": 22.0
+        },
+        "states": [
+          {
+            "step": -0.01,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.0,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4271024957203625,
+            "port_current": 1.8939889764087663,
+            "relative_port_mismatch": 1.028923605184358e-09,
+            "component_energy": {
+              "feed_inner": 0.07155279818238079,
+              "feed_outer": 0.1706131314253495,
+              "core": 0.0829145281793256,
+              "bulk_beside": 0.0992868411844083,
+              "bulk_above_inner": 0.00019074896158594794,
+              "bulk_above_outer": 0.0025444477873123625
+            },
+            "component_work": {
+              "feed_inner": 0.18896489046819873,
+              "feed_outer": 0.20437427349816747,
+              "core": 0.2163200532259044,
+              "bulk_beside": 0.1592735784849024,
+              "bulk_above_inner": -0.00017752742547408174,
+              "bulk_above_outer": -0.0005613415290055735
+            },
+            "work": 0.7681939267226934,
+            "outward_current": {}
+          },
+          {
+            "step": -0.005,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.0,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4309459312941835,
+            "port_current": 1.9110327180897335,
+            "relative_port_mismatch": 4.860758191065608e-09,
+            "component_energy": {
+              "feed_inner": 0.07206367058829602,
+              "feed_outer": 0.1724939912099795,
+              "core": 0.08348109457079256,
+              "bulk_beside": 0.10012384091799066,
+              "bulk_above_inner": 0.0001930207487935219,
+              "bulk_above_outer": 0.002590313258331295
+            },
+            "component_work": {
+              "feed_inner": 0.1889074547688185,
+              "feed_outer": 0.20506539987615058,
+              "core": 0.21630725715881555,
+              "bulk_beside": 0.15965030501138325,
+              "bulk_above_inner": -0.00018065806782092777,
+              "bulk_above_outer": -0.0005737160415890171
+            },
+            "work": 0.7691760427057579,
+            "outward_current": {}
+          },
+          {
+            "step": 0.0,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.0,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4347942137438588,
+            "port_current": 1.9280979532752578,
+            "relative_port_mismatch": 1.6699844516464377e-09,
+            "component_energy": {
+              "feed_inner": 0.07257348319409569,
+              "feed_outer": 0.17438205495177586,
+              "core": 0.08404476689641555,
+              "bulk_beside": 0.10096198113417641,
+              "bulk_above_inner": 0.00019528650983785317,
+              "bulk_above_outer": 0.002636641057557493
+            },
+            "component_work": {
+              "feed_inner": 0.18884344221645216,
+              "feed_outer": 0.20575107530113368,
+              "core": 0.21628431328357364,
+              "bulk_beside": 0.16002397196083581,
+              "bulk_above_inner": -0.00018381200415858469,
+              "bulk_above_outer": -0.0005862742672717896
+            },
+            "work": 0.7701327164905649,
+            "outward_current": {}
+          },
+          {
+            "step": 0.005,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.0,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.438647216447833,
+            "port_current": 1.9451841204611742,
+            "relative_port_mismatch": 2.346300336439027e-10,
+            "component_energy": {
+              "feed_inner": 0.07308222706077272,
+              "feed_outer": 0.1762772498345487,
+              "core": 0.0846055125903802,
+              "bulk_beside": 0.10180125033419293,
+              "bulk_above_inner": 0.000197545707147457,
+              "bulk_above_outer": 0.002683430920791019
+            },
+            "component_work": {
+              "feed_inner": 0.18877295899444882,
+              "feed_outer": 0.20643129354381953,
+              "core": 0.2162513322464868,
+              "bulk_beside": 0.160394604701324,
+              "bulk_above_inner": -0.0001869888477323955,
+              "bulk_above_outer": -0.0005990173979292692
+            },
+            "work": 0.7710641832404175,
+            "outward_current": {}
+          },
+          {
+            "step": 0.01,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.0,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4425048139517975,
+            "port_current": 1.9622906633194825,
+            "relative_port_mismatch": 3.3230978111659603e-10,
+            "component_energy": {
+              "feed_inner": 0.07358989357015136,
+              "feed_outer": 0.17817950304572167,
+              "core": 0.08516329985341096,
+              "bulk_beside": 0.10264163714060286,
+              "bulk_above_inner": 0.00019979780489254092,
+              "bulk_above_outer": 0.0027306825370181386
+            },
+            "component_work": {
+              "feed_inner": 0.1886961098804015,
+              "feed_outer": 0.20710604853028522,
+              "core": 0.21620842390166642,
+              "bulk_beside": 0.1607622275577371,
+              "bulk_above_inner": -0.00019018820358330203,
+              "bulk_above_outer": -0.0006119466156277221
+            },
+            "work": 0.7719706750508792,
+            "outward_current": {}
+          }
+        ]
+      },
+      {
+        "half_width": 0.01,
+        "slope": 0.7701159115717504,
+        "direct_work": 0.7701327164905649,
+        "stiffness": 0.1888218444245915,
+        "stiffness_from_work": 0.18883741640929358,
+        "components": {
+          "feed_inner": -0.01343902938986119,
+          "feed_outer": 0.13658875160588724,
+          "core": -0.005581466211898589,
+          "bulk_beside": 0.07443245364173456,
+          "bulk_above_inner": -0.0006330389054610145,
+          "bulk_above_outer": -0.0025302543311074292
+        }
+      },
+      {
+        "half_width": 0.005,
+        "slope": 0.7701285153649484,
+        "direct_work": 0.7701327164905649,
+        "stiffness": 0.188810171954934,
+        "stiffness_from_work": 0.18881405346595376,
+        "components": {
+          "feed_inner": -0.013449577436969173,
+          "feed_outer": 0.13658936676689548,
+          "core": -0.005592491232875307,
+          "bulk_beside": 0.07442996899407472,
+          "bulk_above_inner": -0.0006330779911467739,
+          "bulk_above_outer": -0.0025301356340252045
+        }
+      }
+    ],
+    "box": [
+      {
+        "inputs": {
+          "mesh": 64,
+          "sheet": 0.006666666666666667,
+          "outer": 14.0,
+          "roof": 11.0
+        },
+        "states": [
+          {
+            "step": -0.01,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 14.0,
+            "roof": 11.0,
+            "theta_energy": 0.4293589594331119,
+            "port_current": 1.9039952803766362,
+            "relative_port_mismatch": 7.120463499289974e-10,
+            "component_energy": {
+              "feed_inner": 0.07339163520935667,
+              "feed_outer": 0.1663883813753447,
+              "core": 0.08717615006948483,
+              "bulk_beside": 0.09738657856075475,
+              "bulk_above_inner": 0.0001947832018287161,
+              "bulk_above_outer": 0.002298556241099037,
+              "side_layer": 0.0025211891381761355,
+              "cap_layer": 1.6856370670601765e-06
+            },
+            "component_work": {
+              "feed_inner": 0.1930843007762684,
+              "feed_outer": 0.20482325786866024,
+              "core": 0.22783454409458,
+              "bulk_beside": 0.15518719270315343,
+              "bulk_above_inner": -0.0001814287529683453,
+              "bulk_above_outer": -0.00049877434411368,
+              "side_layer": 0.005027528758712837,
+              "cap_layer": -1.6644147670162897e-06
+            },
+            "work": 0.7852749566895258,
+            "outward_current": {
+              "side_layer": 1.8196035530508334,
+              "cap_layer": 0.08439172732833641
+            }
+          },
+          {
+            "step": -0.005,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 14.0,
+            "roof": 11.0,
+            "theta_energy": 0.4332883377596607,
+            "port_current": 1.9214201357900205,
+            "relative_port_mismatch": 1.4293583970430585e-09,
+            "component_energy": {
+              "feed_inner": 0.0739350007689665,
+              "feed_outer": 0.16824348483831336,
+              "core": 0.08778743487185228,
+              "bulk_beside": 0.09825003588197491,
+              "bulk_above_inner": 0.00019716832951608492,
+              "bulk_above_outer": 0.002340701789875211,
+              "side_layer": 0.00253280481511644,
+              "cap_layer": 1.7064640459209588e-06
+            },
+            "component_work": {
+              "feed_inner": 0.1930777461705143,
+              "feed_outer": 0.20558862382014154,
+              "core": 0.2278604200721182,
+              "bulk_beside": 0.15562671559705243,
+              "bulk_above_inner": -0.0001846887685578537,
+              "bulk_above_outer": -0.0005098944030988295,
+              "side_layer": 0.005014879828203118,
+              "cap_layer": -1.6940799854874475e-06
+            },
+            "work": 0.7864721082363875,
+            "outward_current": {
+              "side_layer": 1.8367132467203366,
+              "cap_layer": 0.08470688907209406
+            }
+          },
+          {
+            "step": 0.0,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 14.0,
+            "roof": 11.0,
+            "theta_energy": 0.4372236380431779,
+            "port_current": 1.9388712521626108,
+            "relative_port_mismatch": 3.8003959686056284e-10,
+            "component_energy": {
+              "feed_inner": 0.07447754815496027,
+              "feed_outer": 0.17010595017534927,
+              "core": 0.08839598953022933,
+              "bulk_beside": 0.09911518521940958,
+              "bulk_above_inner": 0.0001995487078414151,
+              "bulk_above_outer": 0.0023832887787238444,
+              "side_layer": 0.0025444002264762545,
+              "cap_layer": 1.727250187946877e-06
+            },
+            "component_work": {
+              "feed_inner": 0.19306440190426968,
+              "feed_outer": 0.20634880833604102,
+              "core": 0.2278758755919434,
+              "bulk_beside": 0.15606330193857357,
+              "bulk_above_inner": -0.00018797458572873132,
+              "bulk_above_outer": -0.0005211826573223839,
+              "side_layer": 0.005002269781460369,
+              "cap_layer": -1.7239685722409661e-06
+            },
+            "work": 0.7876437763406646,
+            "outward_current": {
+              "side_layer": 1.853856525446567,
+              "cap_layer": 0.08501472671822592
+            }
+          },
+          {
+            "step": 0.005,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 14.0,
+            "roof": 11.0,
+            "theta_energy": 0.44116473341756907,
+            "port_current": 1.9563480669058326,
+            "relative_port_mismatch": 7.41265781196096e-10,
+            "component_energy": {
+              "feed_inner": 0.07501926719411639,
+              "feed_outer": 0.17197570765769468,
+              "core": 0.08900177843646409,
+              "bulk_beside": 0.09998201518081001,
+              "bulk_above_inner": 0.0002019237781889224,
+              "bulk_above_outer": 0.0024263172733859483,
+              "side_layer": 0.00255597590645188,
+              "cap_layer": 1.7479904570914142e-06
+            },
+            "component_work": {
+              "feed_inner": 0.19304437140686298,
+              "feed_outer": 0.20710379985264013,
+              "core": 0.22788101687233214,
+              "bulk_beside": 0.15649697347622415,
+              "bulk_above_inner": -0.00019128582745231402,
+              "bulk_above_outer": -0.0005326402571654621,
+              "side_layer": 0.004989699410104553,
+              "cap_layer": -1.7540767037772679e-06
+            },
+            "work": 0.7887901808568425,
+            "outward_current": {
+              "side_layer": 1.8710328549555553,
+              "cap_layer": 0.08531521194155466
+            }
+          },
+          {
+            "step": 0.01,
+            "mesh": 64,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 14.0,
+            "roof": 11.0,
+            "theta_energy": 0.44511149810773454,
+            "port_current": 1.9738500222691349,
+            "relative_port_mismatch": 1.4450099774564e-10,
+            "component_energy": {
+              "feed_inner": 0.07556014802690235,
+              "feed_outer": 0.17385268753406882,
+              "core": 0.08960476672677906,
+              "bulk_beside": 0.10085051447607102,
+              "bulk_above_inner": 0.00020429298302864502,
+              "bulk_above_outer": 0.002469787297404354,
+              "side_layer": 0.00256753238365614,
+              "cap_layer": 1.7686798241482674e-06
+            },
+            "component_work": {
+              "feed_inner": 0.19301775677186975,
+              "feed_outer": 0.20785358695684228,
+              "core": 0.22787594938585254,
+              "bulk_beside": 0.1569277509529821,
+              "bulk_above_inner": -0.0001946221077272108,
+              "bulk_above_outer": -0.0005442683445623286,
+              "side_layer": 0.004977169483991962,
+              "cap_layer": -1.7844004718425912e-06
+            },
+            "work": 0.7899115386987772,
+            "outward_current": {
+              "side_layer": 1.8882417044090056,
+              "cap_layer": 0.08560831785373052
+            }
+          }
+        ]
+      },
+      {
+        "half_width": 0.01,
+        "slope": 0.7876269337311309,
+        "direct_work": 0.7876437763406646,
+        "stiffness": 0.23181454490650566,
+        "stiffness_from_work": 0.23182910046256835,
+        "components": {
+          "feed_inner": -0.0033272002199324913,
+          "feed_outer": 0.15151645440910216,
+          "core": 0.0020702645636264116,
+          "bulk_beside": 0.08702791249143305,
+          "bulk_above_inner": -0.0006596677379432753,
+          "bulk_above_outer": -0.0022747000224324293,
+          "side_layer": -0.0025179637360437605,
+          "cap_layer": -5.999285241315076e-06
+        }
+      },
+      {
+        "half_width": 0.005,
+        "slope": 0.7876395657908375,
+        "direct_work": 0.7876437763406646,
+        "stiffness": 0.23180363496244638,
+        "stiffness_from_work": 0.231807262045499,
+        "components": {
+          "feed_inner": -0.0033374763651311534,
+          "feed_outer": 0.1515176032498594,
+          "core": 0.0020596800213934507,
+          "bulk_beside": 0.08702578791717208,
+          "bulk_above_inner": -0.0006597058894460331,
+          "bulk_above_outer": -0.0022745854066632642,
+          "side_layer": -0.0025180418098564965,
+          "cap_layer": -5.999671828982038e-06
+        }
+      }
+    ],
+    "interior": [
+      {
+        "states": [
+          {
+            "step": -0.005,
+            "mesh": 80,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.43155002683136756,
+            "port_current": 1.9137115839347916,
+            "relative_port_mismatch": 1.5135914730612359e-09,
+            "component_energy": {
+              "feed_inner": 0.07258545164769609,
+              "feed_outer": 0.17090022318495382,
+              "core": 0.08603310925627866,
+              "bulk_beside": 0.09675776295363567,
+              "bulk_above_inner": 0.00019281593520695554,
+              "bulk_above_outer": 0.002600403600686835,
+              "side_layer": 0.0024785795304474454,
+              "cap_layer": 1.680722462071497e-06
+            },
+            "component_work": {
+              "feed_inner": 0.0,
+              "feed_outer": 0.0,
+              "core": 0.010039302312963516,
+              "bulk_beside": -0.009551680060700792,
+              "bulk_above_inner": 0.0,
+              "bulk_above_outer": 0.0,
+              "side_layer": 0.00013099701003701564,
+              "cap_layer": 0.0
+            },
+            "work": 0.0006186192622997399,
+            "outward_current": {
+              "side_layer": 1.8298501453088005,
+              "cap_layer": 0.08386143862742854
+            }
+          },
+          {
+            "step": 0.005,
+            "mesh": 80,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.006666666666666667,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.4315562036796962,
+            "port_current": 1.9137389752115008,
+            "relative_port_mismatch": 1.9639662953005883e-09,
+            "component_energy": {
+              "feed_inner": 0.07258780799074231,
+              "feed_outer": 0.17090486579016145,
+              "core": 0.08633230788032316,
+              "bulk_beside": 0.09646356402303405,
+              "bulk_above_inner": 0.0001928232178795796,
+              "bulk_above_outer": 0.002600491558447854,
+              "side_layer": 0.002472662458198764,
+              "cap_layer": 1.680760909027082e-06
+            },
+            "component_work": {
+              "feed_inner": 0.0,
+              "feed_outer": 0.0,
+              "core": 0.010017394551954684,
+              "bulk_beside": -0.00953196461076386,
+              "bulk_above_inner": 0.0,
+              "bulk_above_outer": 0.0,
+              "side_layer": 0.00013126760778139974,
+              "cap_layer": 0.0
+            },
+            "work": 0.0006166975489722233,
+            "outward_current": {
+              "side_layer": 1.829876751744704,
+              "cap_layer": 0.08386222346802095
+            }
+          }
+        ],
+        "interior_force_slope": 0.000617684832865395,
+        "average_virtual_work": 0.0006176584056359816
+      }
+    ],
+    "interior_plain": [
+      {
+        "states": [
+          {
+            "step": -0.005,
+            "mesh": 80,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.0,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.43454498679573933,
+            "port_current": 1.9269927546470782,
+            "relative_port_mismatch": 2.7377388498371494e-09,
+            "component_energy": {
+              "feed_inner": 0.07266880132041315,
+              "feed_outer": 0.17412047504557576,
+              "core": 0.08401324874719032,
+              "bulk_beside": 0.1009126628804941,
+              "bulk_above_inner": 0.00019524579060116305,
+              "bulk_above_outer": 0.0026345530114648434
+            },
+            "component_work": {
+              "feed_inner": 0.0,
+              "feed_outer": 0.0,
+              "core": 0.01009890586452377,
+              "bulk_beside": -0.010075617076396643,
+              "bulk_above_inner": 0.0,
+              "bulk_above_outer": 0.0
+            },
+            "work": 2.32887881271276e-05,
+            "outward_current": {}
+          },
+          {
+            "step": 0.005,
+            "mesh": 80,
+            "linear_phase_bias": 0.4510084282857874,
+            "sheet_length": 0.0,
+            "outer": 28.0,
+            "roof": 22.0,
+            "theta_energy": 0.43454530743633846,
+            "port_current": 1.9269941765300365,
+            "relative_port_mismatch": 3.514526627933703e-09,
+            "component_energy": {
+              "feed_inner": 0.07266892541248456,
+              "feed_outer": 0.174120715972908,
+              "core": 0.08430876321854755,
+              "bulk_beside": 0.10061709848209413,
+              "bulk_above_inner": 0.00019524586059248793,
+              "bulk_above_outer": 0.002634558489711731
+            },
+            "component_work": {
+              "feed_inner": 0.0,
+              "feed_outer": 0.0,
+              "core": 0.010095279375902497,
+              "bulk_beside": -0.010054442879676771,
+              "bulk_above_inner": 0.0,
+              "bulk_above_outer": 0.0
+            },
+            "work": 4.083649622572586e-05,
+            "outward_current": {}
+          }
+        ],
+        "interior_force_slope": 3.206405991273975e-05,
+        "average_virtual_work": 3.206264217642673e-05
+      }
+    ]
+  },
+  "finite": {
+    "coarse_center": {
+      "step": 0.0,
+      "mesh": 24,
+      "bias": 0.4510084282857874,
+      "energy": 0.4332150815157529,
+      "work": 0.770071193488871,
+      "sector_work": {
+        "feed_inner": 0.186828381770395,
+        "feed_outer": 0.20380120313948483,
+        "core": 0.22022668578125512,
+        "bulk_beside": 0.15432556898293975,
+        "bulk_above_inner": -0.00017834826052687735,
+        "bulk_above_outer": -0.0005717543287205026,
+        "side_layer": 0.005641104649418601,
+        "cap_layer": -1.6482453750329963e-06
+      },
+      "sector_energy": {
+        "feed_inner": 0.0717910138252658,
+        "feed_outer": 0.17240212131002075,
+        "core": 0.08536784783987186,
+        "bulk_beside": 0.0980203242853365,
+        "bulk_above_inner": 0.0001894580337270829,
+        "bulk_above_outer": 0.0025799881969293848,
+        "side_layer": 0.0028626766417516798,
+        "cap_layer": 1.6513828498089255e-06
+      },
+      "current": 1.9120892150179878,
+      "current_by_cut": {
+        "side_layer": 1.828979160925372,
+        "cap_layer": 0.08311005425390051
+      },
+      "minimum_amplitude": 0.9898921095595864,
+      "iterations": 6,
+      "density_correction": 9.63806061836199e-12
+    },
+    "mesh40_drive1": {
+      "states": [
+        {
+          "step": 0.0,
+          "mesh": 40,
+          "bias": 0.4510084282857874,
+          "energy": 0.4306199774702351,
+          "work": 0.7677527855652058,
+          "sector_work": {
+            "feed_inner": 0.18825408136252442,
+            "feed_outer": 0.20090271374178514,
+            "core": 0.2220491784749542,
+            "bulk_beside": 0.15214725028383952,
+            "bulk_above_inner": -0.00017825545759202142,
+            "bulk_above_outer": -0.0005691358097804876,
+            "side_layer": 0.005148600679659722,
+            "cap_layer": -1.6477101848478266e-06
+          },
+          "sector_energy": {
+            "feed_inner": 0.07249520754401399,
+            "feed_outer": 0.17014112972551543,
+            "core": 0.08606987519751898,
+            "bulk_beside": 0.09654594923654838,
+            "bulk_above_inner": 0.00018937108586153172,
+            "bulk_above_outer": 0.0025603606552174227,
+            "side_layer": 0.0026164331789184816,
+            "cap_layer": 1.6508466408763466e-06
+          },
+          "current": 1.9005979409567426,
+          "current_by_cut": {
+            "side_layer": 1.8174940699262656,
+            "cap_layer": 0.08310387100601761
+          },
+          "minimum_amplitude": 0.9898139210299335,
+          "iterations": 6,
+          "density_correction": 9.97604583772376e-12
+        },
+        {
+          "step": -0.005,
+          "mesh": 40,
+          "bias": 0.4510084282857874,
+          "energy": 0.4267836472415084,
+          "work": 0.766775027405694,
+          "sector_work": {
+            "feed_inner": 0.1883042712619949,
+            "feed_outer": 0.20020766699487638,
+            "core": 0.22208050557947523,
+            "bulk_beside": 0.15175289017833293,
+            "bulk_above_inner": -0.0001751596693770993,
+            "bulk_above_outer": -0.0005568355304895806,
+            "side_layer": 0.0051633079107394845,
+            "cap_layer": -1.6193198582274537e-06
+          },
+          "sector_energy": {
+            "feed_inner": 0.07198110546134005,
+            "feed_outer": 0.1682760678582832,
+            "core": 0.08549467257277728,
+            "bulk_beside": 0.09572273679162796,
+            "bulk_above_inner": 0.0001871340624732965,
+            "bulk_above_outer": 0.002514893042232337,
+            "side_layer": 0.002605406295367012,
+            "cap_layer": 1.6311574073144291e-06
+          },
+          "current": 1.883601592027421,
+          "current_by_cut": {
+            "side_layer": 1.8007940755550105,
+            "cap_layer": 0.08280751651038264
+          },
+          "minimum_amplitude": 0.9897626617494968,
+          "iterations": 6,
+          "density_correction": 1.0229985187762038e-11
+        },
+        {
+          "step": 0.005,
+          "mesh": 40,
+          "bias": 0.4510084282857874,
+          "energy": 0.43446113250886775,
+          "work": 0.7687049908930926,
+          "sector_work": {
+            "feed_inner": 0.18819718783583075,
+            "feed_outer": 0.20159234627665756,
+            "core": 0.22200762639934193,
+            "bulk_beside": 0.1525385569288905,
+            "bulk_above_inner": -0.00018137435127562172,
+            "bulk_above_outer": -0.0005816191613694303,
+            "side_layer": 0.005133943266530727,
+            "cap_layer": -1.6763015137506745e-06
+          },
+          "sector_energy": {
+            "feed_inner": 0.07300822645321722,
+            "feed_outer": 0.17201342531594246,
+            "core": 0.08664207884166507,
+            "bulk_beside": 0.09737040865002507,
+            "bulk_above_inner": 0.00019160224002792774,
+            "bulk_above_outer": 0.0026062887222320233,
+            "side_layer": 0.0026274318006286896,
+            "cap_layer": 1.6704851292615615e-06
+          },
+          "current": 1.9176160426504434,
+          "current_by_cut": {
+            "side_layer": 1.834223100787703,
+            "cap_layer": 0.08339294075007553
+          },
+          "minimum_amplitude": 0.9898647490292841,
+          "iterations": 6,
+          "density_correction": 9.743766381266795e-12
+        }
+      ],
+      "signed": [
+        {
+          "half_width": 0.005,
+          "energy_slope": 0.7677485267359341,
+          "virtual_slope": 0.7677527855652058,
+          "energy_stiffness": 0.19299239623737918,
+          "virtual_stiffness": 0.19299634873986005,
+          "sector_stiffness": {
+            "feed_inner": -0.010708342616413957,
+            "feed_outer": 0.13846792817811815,
+            "core": -0.0072879180133295085,
+            "bulk_beside": 0.07856667505575787,
+            "bulk_above_inner": -0.0006214681898522421,
+            "bulk_above_outer": -0.0024783630879849673,
+            "side_layer": -0.0029364644208757125,
+            "cap_layer": -5.698165552322082e-06
+          }
+        }
+      ]
+    },
+    "mesh64_drive1": {
+      "states": [
+        {
+          "step": 0.0,
+          "mesh": 64,
+          "bias": 0.4510084282857874,
+          "energy": 0.4297479027488344,
+          "work": 0.7669600499527722,
+          "sector_work": {
+            "feed_inner": 0.18877720544181226,
+            "feed_outer": 0.19991800059573453,
+            "core": 0.22260581078155783,
+            "bulk_beside": 0.15143732140601845,
+            "bulk_above_inner": -0.0001782354131584443,
+            "bulk_above_outer": -0.0005682815615217259,
+            "side_layer": 0.00496987633573484,
+            "cap_layer": -1.6476334055438507e-06
+          },
+          "sector_energy": {
+            "feed_inner": 0.0727559484481082,
+            "feed_outer": 0.16937798395304013,
+            "core": 0.08628061091375416,
+            "bulk_beside": 0.09606143246272875,
+            "bulk_above_inner": 0.00018935367626995043,
+            "bulk_above_outer": 0.0025538472215017208,
+            "side_layer": 0.002527075303716106,
+            "cap_layer": 1.6507697154211148e-06
+          },
+          "current": 1.8967371945013243,
+          "current_by_cut": {
+            "side_layer": 1.813632797320184,
+            "cap_layer": 0.08310439663433894
+          },
+          "minimum_amplitude": 0.9897798356464649,
+          "iterations": 6,
+          "density_correction": 1.009995459767552e-11
+        },
+        {
+          "step": -0.005,
+          "mesh": 64,
+          "bias": 0.4510084282857874,
+          "energy": 0.4259155418301061,
+          "work": 0.7659800337875158,
+          "sector_work": {
+            "feed_inner": 0.1888283783104976,
+            "feed_outer": 0.19922050036577033,
+            "core": 0.22263780298869837,
+            "bulk_beside": 0.15104227188746613,
+            "bulk_above_inner": -0.00017513736232714993,
+            "bulk_above_outer": -0.0005559903755428755,
+            "side_layer": 0.0049838271913917485,
+            "cap_layer": -1.6192184384620525e-06
+          },
+          "sector_energy": {
+            "feed_inner": 0.07224054419685687,
+            "feed_outer": 0.1675168250580649,
+            "core": 0.08570424312556711,
+            "bulk_beside": 0.09524044756331079,
+            "bulk_above_inner": 0.00018711408093945617,
+            "bulk_above_outer": 0.0025084522457475686,
+            "side_layer": 0.0025162845043732378,
+            "cap_layer": 1.6310552461504426e-06
+          },
+          "current": 1.8797584456314294,
+          "current_by_cut": {
+            "side_layer": 1.7969510719381465,
+            "cap_layer": 0.08280736520670959
+          },
+          "minimum_amplitude": 0.9897281429885137,
+          "iterations": 6,
+          "density_correction": 1.033568667112724e-11
+        },
+        {
+          "step": 0.005,
+          "mesh": 64,
+          "bias": 0.4510084282857874,
+          "energy": 0.4335850996909265,
+          "work": 0.7679144825869972,
+          "sector_work": {
+            "feed_inner": 0.18871932150937074,
+            "feed_outer": 0.20061008652524395,
+            "core": 0.22256357938417043,
+            "bulk_beside": 0.15182931240500483,
+            "bulk_above_inner": -0.00018135662492312456,
+            "bulk_above_outer": -0.0005807558495021666,
+            "side_layer": 0.004955971487610969,
+            "cap_layer": -1.6762499783627344e-06
+          },
+          "sector_energy": {
+            "feed_inner": 0.07327026402968902,
+            "feed_outer": 0.17124638699443417,
+            "core": 0.08685397393905737,
+            "bulk_beside": 0.09688367470654005,
+            "bulk_above_inner": 0.00019158743272685381,
+            "bulk_above_outer": 0.00259970250943417,
+            "side_layer": 0.0025378396452722133,
+            "cap_layer": 1.6704337726896803e-06
+          },
+          "current": 1.9137377536894769,
+          "current_by_cut": {
+            "side_layer": 1.830343611960032,
+            "cap_layer": 0.08339414060987838
+          },
+          "minimum_amplitude": 0.9898310923780835,
+          "iterations": 6,
+          "density_correction": 9.864662282121748e-12
+        },
+        {
+          "step": -0.01,
+          "mesh": 64,
+          "bias": 0.4510084282857874,
+          "energy": 0.4220881454483373,
+          "work": 0.764974195109676,
+          "sector_work": {
+            "feed_inner": 0.18887273114059402,
+            "feed_outer": 0.19851759357367446,
+            "core": 0.22265944233879004,
+            "bulk_beside": 0.15064413976028926,
+            "bulk_above_inner": -0.00017206284957526784,
+            "bulk_above_outer": -0.0005438810910535267,
+            "side_layer": 0.00499782324585732,
+            "cap_layer": -1.5910089001602559e-06
+          },
+          "sector_energy": {
+            "feed_inner": 0.0717240607715993,
+            "feed_outer": 0.1656629835436795,
+            "core": 0.08512490369260495,
+            "bulk_beside": 0.09442073249188118,
+            "bulk_above_inner": 0.00018486918289517188,
+            "bulk_above_outer": 0.00246351779685112,
+            "side_layer": 0.002505466673595266,
+            "cap_layer": 1.6112952307797707e-06
+          },
+          "current": 1.8628020693519165,
+          "current_by_cut": {
+            "side_layer": 1.780298984946107,
+            "cap_layer": 0.08250307279952022
+          },
+          "minimum_amplitude": 0.9896760104265258,
+          "iterations": 6,
+          "density_correction": 1.0587773820289267e-11
+        },
+        {
+          "step": 0.01,
+          "mesh": 64,
+          "bias": 0.4510084282857874,
+          "energy": 0.437427005329221,
+          "work": 0.768843567646376,
+          "sector_work": {
+            "feed_inner": 0.18865483409018408,
+            "feed_outer": 0.20129675059506652,
+            "core": 0.22251122164863668,
+            "bulk_beside": 0.15221826798743096,
+            "bulk_above_inner": -0.00018450061217141416,
+            "bulk_above_outer": -0.0005934144303274021,
+            "side_layer": 0.004942113431810995,
+            "cap_layer": -1.7050642543262018e-06
+          },
+          "sector_energy": {
+            "feed_inner": 0.07378348178716662,
+            "feed_outer": 0.1731219609267406,
+            "core": 0.0874242998700701,
+            "bulk_beside": 0.09770716194193217,
+            "bulk_above_inner": 0.00019381481567322506,
+            "bulk_above_outer": 0.0026460178484673945,
+            "side_layer": 0.002548578096608703,
+            "cap_layer": 1.6900425622445104e-06
+          },
+          "current": 1.93075954572515,
+          "current_by_cut": {
+            "side_layer": 1.8470829706436374,
+            "cap_layer": 0.08367657210845672
+          },
+          "minimum_amplitude": 0.9898819171341598,
+          "iterations": 6,
+          "density_correction": 9.635733309308862e-12
+        }
+      ],
+      "signed": [
+        {
+          "half_width": 0.005,
+          "energy_slope": 0.7669557860820408,
+          "virtual_slope": 0.7669600499527722,
+          "energy_stiffness": 0.19344093455275768,
+          "virtual_stiffness": 0.19344487994814585,
+          "sector_stiffness": {
+            "feed_inner": -0.010905680112685556,
+            "feed_outer": 0.1389586159473627,
+            "core": -0.007422360452793986,
+            "bulk_beside": 0.07870405175386952,
+            "bulk_above_inner": -0.0006219262595974631,
+            "bulk_above_outer": -0.0024765473959291137,
+            "side_layer": -0.0027855703780779555,
+            "cap_layer": -5.70315399006819e-06
+          }
+        },
+        {
+          "half_width": 0.01,
+          "energy_slope": 0.7669429940441869,
+          "virtual_slope": 0.7669600499527722,
+          "energy_stiffness": 0.19345279889504408,
+          "virtual_stiffness": 0.19346862683499721,
+          "sector_stiffness": {
+            "feed_inner": -0.010894852520497433,
+            "feed_outer": 0.13895785106960296,
+            "core": -0.00741103450766778,
+            "bulk_beside": 0.07870641135708512,
+            "bulk_above_inner": -0.0006218881298073161,
+            "bulk_above_outer": -0.002476666963693771,
+            "side_layer": -0.002785490702316264,
+            "cap_layer": -5.702767708297298e-06
+          }
+        }
+      ]
+    },
+    "mesh64_drive0.5": {
+      "states": [
+        {
+          "step": 0.0,
+          "mesh": 64,
+          "bias": 0.2255042141428937,
+          "energy": 0.10781380456499094,
+          "work": 0.19187241293044852,
+          "sector_work": {
+            "feed_inner": 0.0470505786183425,
+            "feed_outer": 0.05022133699105827,
+            "core": 0.055549703627027915,
+            "bulk_beside": 0.03801008909501014,
+            "bulk_above_inner": -4.517337034690653e-05,
+            "bulk_above_outer": -0.00014407323288182931,
+            "side_layer": 0.0012303687357053752,
+            "cap_layer": -4.1753346692969614e-07
+          },
+          "sector_energy": {
+            "feed_inner": 0.018145487901421196,
+            "feed_outer": 0.042663980796538624,
+            "core": 0.021543476288435566,
+            "bulk_beside": 0.02413922361419648,
+            "bulk_above_inner": 4.799050998585387e-05,
+            "bulk_above_outer": 0.000647503959203504,
+            "side_layer": 0.0006257231669577674,
+            "cap_layer": 4.18328251941953e-07
+          },
+          "current": 0.9550968317167428,
+          "current_by_cut": {
+            "side_layer": 0.9132597044713516,
+            "cap_layer": 0.04183712498878195
+          },
+          "minimum_amplitude": 0.9974702010935786,
+          "iterations": 5,
+          "density_correction": 6.591074245160432e-13
+        },
+        {
+          "step": -0.005,
+          "mesh": 64,
+          "bias": 0.2255042141428937,
+          "energy": 0.10685504488066674,
+          "work": 0.19163039769440424,
+          "sector_work": {
+            "feed_inner": 0.047064322491478405,
+            "feed_outer": 0.0500475836532944,
+            "core": 0.05555854868188477,
+            "bulk_beside": 0.0379119371456544,
+            "bulk_above_inner": -4.4392863442112674e-05,
+            "bulk_above_outer": -0.00014097169035793444,
+            "side_layer": 0.0012337806526120545,
+            "cap_layer": -4.103767197851284e-07
+          },
+          "sector_energy": {
+            "feed_inner": 0.01801731539916076,
+            "feed_outer": 0.04219709304041572,
+            "core": 0.021399988976768307,
+            "bulk_beside": 0.0239337169981203,
+            "bulk_above_inner": 4.742790977069719e-05,
+            "bulk_above_outer": 0.0006360598569651523,
+            "side_layer": 0.0006230293228108863,
+            "cap_layer": 4.133766549368691e-07
+          },
+          "current": 0.9465955541041096,
+          "current_by_cut": {
+            "side_layer": 0.9049057443191223,
+            "cap_layer": 0.041689806442743935
+          },
+          "minimum_amplitude": 0.9974574459070888,
+          "iterations": 5,
+          "density_correction": 6.679276552214442e-13
+        },
+        {
+          "step": 0.005,
+          "mesh": 64,
+          "bias": 0.2255042141428937,
+          "energy": 0.10877375842821109,
+          "work": 0.19210807903773777,
+          "sector_work": {
+            "feed_inner": 0.04703518623101006,
+            "feed_outer": 0.05039372916149155,
+            "core": 0.055538323012828884,
+            "bulk_beside": 0.03810747781686383,
+            "bulk_above_inner": -4.595963182698218e-05,
+            "bulk_above_outer": -0.00014722070958971068,
+            "side_layer": 0.0012269678971828406,
+            "cap_layer": -4.247402226886571e-07
+          },
+          "sector_energy": {
+            "feed_inner": 0.018273391885713898,
+            "feed_outer": 0.04313266322289642,
+            "core": 0.02168621496132121,
+            "bulk_beside": 0.024345039810189126,
+            "bulk_above_inner": 4.8551564439753024e-05,
+            "bulk_above_outer": 0.0006590631191789929,
+            "side_layer": 0.0006284105980008523,
+            "cap_layer": 4.232664708469488e-07
+          },
+          "current": 0.9636087420503989,
+          "current_by_cut": {
+            "side_layer": 0.9216279602955306,
+            "cap_layer": 0.041980782174344436
+          },
+          "minimum_amplitude": 0.9974828481480056,
+          "iterations": 5,
+          "density_correction": 6.407875111984513e-13
+        }
+      ],
+      "signed": [
+        {
+          "half_width": 0.005,
+          "energy_slope": 0.19187135475443456,
+          "virtual_slope": 0.19187241293044852,
+          "energy_stiffness": 0.04776715583798552,
+          "virtual_stiffness": 0.047768134333353585,
+          "sector_stiffness": {
+            "feed_inner": -0.002913626046834733,
+            "feed_outer": 0.03461455081971501,
+            "core": -0.0020225669055885798,
+            "bulk_beside": 0.01955406712094293,
+            "bulk_above_inner": -0.00015667683848695035,
+            "bulk_above_outer": -0.0006249019231776247,
+            "side_layer": -0.0006812755429213896,
+            "cap_layer": -1.4363502903528697e-06
+          }
+        }
+      ]
+    },
+    "held_ends": {
+      "states": [
+        {
+          "step": -0.005,
+          "mesh": 64,
+          "bias": 0.4510084282857874,
+          "energy": 0.429744705874592,
+          "work": 0.000637452781489308,
+          "sector_work": {
+            "feed_inner": 0.0,
+            "feed_outer": 0.0,
+            "core": 0.010094841072963824,
+            "bulk_beside": -0.009588462660781135,
+            "bulk_above_inner": 0.0,
+            "bulk_above_outer": 0.0,
+            "side_layer": 0.00013107436930661896,
+            "cap_layer": 0.0
+          },
+          "sector_energy": {
+            "feed_inner": 0.07275471189679518,
+            "feed_outer": 0.16937556020280337,
+            "core": 0.08613123295092309,
+            "bulk_beside": 0.0962083169635846,
+            "bulk_above_inner": 0.0001893497208432455,
+            "bulk_above_outer": 0.0025538001597997365,
+            "side_layer": 0.0025300832324255357,
+            "cap_layer": 1.650747417268798e-06
+          },
+          "current": 1.89672288387555,
+          "current_by_cut": {
+            "side_layer": 1.813618972927327,
+            "cap_layer": 0.08310391982048163
+          },
+          "minimum_amplitude": 0.9897797510126113,
+          "iterations": 6,
+          "density_correction": 1.0105028238419018e-11
+        },
+        {
+          "step": 0.005,
+          "mesh": 64,
+          "bias": 0.4510084282857874,
+          "energy": 0.4297511185647336,
+          "work": 0.0006450315677601806,
+          "sector_work": {
+            "feed_inner": 0.0,
+            "feed_outer": 0.0,
+            "core": 0.01007468772536724,
+            "bulk_beside": -0.009560994385664079,
+            "bulk_above_inner": 0.0,
+            "bulk_above_outer": 0.0,
+            "side_layer": 0.00013133822805701825,
+            "cap_layer": 0.0
+          },
+          "sector_energy": {
+            "feed_inner": 0.07275719239222933,
+            "feed_outer": 0.16938042147908053,
+            "core": 0.08642975522972997,
+            "bulk_beside": 0.09591473485980384,
+            "bulk_above_inner": 0.00018935704589703123,
+            "bulk_above_outer": 0.0025538915239112243,
+            "side_layer": 0.0025241152481836854,
+            "cap_layer": 1.650785897999031e-06
+          },
+          "current": 1.8967515771303978,
+          "current_by_cut": {
+            "side_layer": 1.8136468573894793,
+            "cap_layer": 0.08310471875961839
+          },
+          "minimum_amplitude": 0.9897799194161311,
+          "iterations": 6,
+          "density_correction": 1.0104983319426595e-11
+        }
+      ],
+      "slope": 0.0006412690141566202,
+      "mean_work": 0.0006412421746247443
+    }
+  },
+  "source_sha256": {
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_carrier.py": "2a52dff9e442232e07c9e8a8c928152d2103e393cdf0781dff1f5e2e649cabd5",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_carrier_density.py": "331bee2b92e96cc23d566a298c23f3427ee8bf3c481a3f1ece0f086c6c0da6d3",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_carrier_interior.py": "fbdf63db5b324e0e1e5f0533c0f4afc089c52ba35b3c124e1800d53ca4e3c136",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_geometry.py": "1cabc9f23319f25df3924b1f1669cd12e89269934a2817da52fc2b47a6757017",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_interior.py": "41c4578c60f6d8e01af9530edbffe2a8599e8d9d83451b07c7ab8dee5ecfdfac",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_conversion_shape_mode.py": "63ba9d32283deef446de5210e091cbe542af7a6451bfd5ecdfd7ef4b0010720c",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_carrier_readout.py": "7ade514975dc38990156c544faa470d8f9649b56487f62d8e7d2058eb5dad685"
+  },
+  "reduction": {
+    "command": [
+      "python3",
+      "software/stage1_solver/tools/mouth_exchange_carrier_readout.py"
+    ],
+    "guard_exit": 0,
+    "worker_exit": 0,
+    "swap_bytes": 0,
+    "wall_deadline": null,
+    "logdir": "_scratch/s11c/exchange_carrier01/readout"
+  }
+}

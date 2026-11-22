@@ -1,0 +1,299 @@
+{
+  "base": "017b95e2",
+  "scope": "Unit radius and stored-action secular work of the degree-four material-rest-frame torsion. No physical action assigned; no radius-3 run.",
+  "source_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_conversion_shape.json": "5c73eaecc31deb3e98e698ea58d51f765b57b51fbaf248ee8e10c4a3feafe906",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_geometry.py": "1cabc9f23319f25df3924b1f1669cd12e89269934a2817da52fc2b47a6757017",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_interior.py": "41c4578c60f6d8e01af9530edbffe2a8599e8d9d83451b07c7ab8dee5ecfdfac",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_conversion_shape_mode.py": "63ba9d32283deef446de5210e091cbe542af7a6451bfd5ecdfd7ef4b0010720c",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_shear.py": "e9e103a97de13788daa9779c1b08b602a27f08a4a822bfe56ab657609b21f1f3",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_shear_interior.py": "faca7e0d7292f7039ef6bfd39843277fcb49d6d9d34f7f23b2bfac6e52640fc8",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_exchange_shear_summary.py": "3cb5410e9d6bcc69a0793301c634047e7457b61c7952ac8cb7d7ffb2ef2966f9"
+  },
+  "runs": {
+    "n16_p3_f0": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "exchange-wave",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/exchange_wave01/n16_p3_f0",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_shear.py",
+        "--mesh",
+        "16",
+        "--port",
+        "3",
+        "--fade",
+        "0"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "9b9d426cba566f8271b8f28a5cb33524da700588360cbd1b65a8986c76e606fa",
+      "literal_stdout": "{\"test\": \"mode\", \"mesh\": 16, \"port\": 3.0, \"fade\": 0.0, \"frequency\": 4.20915642215333, \"stored_energy_slope\": 1.231914589484371, \"complex_pole_slope_real\": 1.2319148452994526, \"complex_pole_slope_imag\": -1.1463908749275636e-06, \"amplitude_loss\": 3.859236052135079e-08, \"energy_lifetime\": 12955932.035392875, \"period_count_per_energy_efold\": 8679283.176550966, \"confined_kinetic_fraction\": 0.9999996725548503, \"clamped_seed_overlap\": 0.9999995756315516, \"outward_power_over_interior_energy\": 7.718472106677987e-08, \"open_channels\": 2, \"pole_residual\": 3.5717042175118215e-15, \"newton_iterations\": 3, \"nodes\": 1536, \"step\": 0.0, \"overlap_with_zero_on_material_nodes\": 1.0000000000000007}\n{\"test\": \"mode\", \"mesh\": 16, \"port\": 3.0, \"fade\": 0.0, \"frequency\": 4.196914105650283, \"stored_energy_slope\": 1.2165716081005857, \"complex_pole_slope_real\": 1.2165717958193292, \"complex_pole_slope_imag\": -8.585866582320711e-07, \"amplitude_loss\": 2.8634937888539065e-08, \"energy_lifetime\": 17461186.818223257, \"period_count_per_energy_efold\": 11663367.810441274, \"confined_kinetic_fraction\": 0.9999997520836355, \"clamped_seed_overlap\": 0.999999677454047, \"outward_power_over_interior_energy\": 5.726987579036837e-08, \"open_channels\": 2, \"pole_residual\": 4.088593230766587e-15, \"newton_iterations\": 4, \"nodes\": 1536, \"step\": -0.01, \"overlap_with_zero_on_material_nodes\": 0.9999975404829313}\n{\"test\": \"mode\", \"mesh\": 16, \"port\": 3.0, \"fade\": 0.0, \"frequency\": 4.2030160850271105, \"stored_energy_slope\": 1.2242255878604997, \"complex_pole_slope_real\": 1.2242258070723333, \"complex_pole_slope_imag\": -9.923721865753445e-07, \"amplitude_loss\": 3.325447658434978e-08, \"energy_lifetime\": 15035569.684332665, \"period_count_per_energy_efold\": 10057755.44429442, \"confined_kinetic_fraction\": 0.9999997150178788, \"clamped_seed_overlap\": 0.9999996299622199, \"outward_power_over_interior_energy\": 6.65089696357184e-08, \"open_channels\": 2, \"pole_residual\": 4.659829835310323e-11, \"newton_iterations\": 3, \"nodes\": 1536, \"step\": -0.005, \"overlap_with_zero_on_material_nodes\": 0.9999993682899387}\n{\"test\": \"mode\", \"mesh\": 16, \"port\": 3.0, \"fade\": 0.0, \"frequency\": 4.215335291358388, \"stored_energy_slope\": 1.2396382796749648, \"complex_pole_slope_real\": 1.2396385780083796, \"complex_pole_slope_imag\": -1.3236458486919662e-06, \"amplitude_loss\": 4.475708947352423e-08, \"energy_lifetime\": 11171414.537483985, \"period_count_per_energy_efold\": 7494806.479834483, \"confined_kinetic_fraction\": 0.999999623922929, \"clamped_seed_overlap\": 0.9999995134902977, \"outward_power_over_interior_energy\": 8.951415651422985e-08, \"open_channels\": 2, \"pole_residual\": 5.503214303331872e-11, \"newton_iterations\": 3, \"nodes\": 1536, \"step\": 0.005, \"overlap_with_zero_on_material_nodes\": 0.9999993326914686}\n{\"test\": \"mode\", \"mesh\": 16, \"port\": 3.0, \"fade\": 0.0, \"frequency\": 4.221552865190575, \"stored_energy_slope\": 1.2473962847663433, \"complex_pole_slope_real\": 1.2473966324696681, \"complex_pole_slope_imag\": -1.5275842740169027e-06, \"amplitude_loss\": 5.187326259503072e-08, \"energy_lifetime\": 9638877.043525277, \"period_count_per_energy_efold\": 6476178.404895604, \"confined_kinetic_fraction\": 0.9999995682409297, \"clamped_seed_overlap\": 0.9999994424288081, \"outward_power_over_interior_energy\": 1.0374652523328907e-07, \"open_channels\": 2, \"pole_residual\": 3.9559063257732406e-15, \"newton_iterations\": 4, \"nodes\": 1536, \"step\": 0.01, \"overlap_with_zero_on_material_nodes\": 0.9999972554451177}\n{\"test\": \"signed\", \"mesh\": 16, \"port\": 3.0, \"fade\": 0.0, \"step\": 0.005, \"frequency_first\": 1.2319206331277144, \"frequency_second\": 1.5412831535144278, \"energy_work_curvature\": 1.541269181446503, \"differentiated_pole_curvature\": 1.5412770936046316}\n{\"test\": \"signed\", \"mesh\": 16, \"port\": 3.0, \"fade\": 0.0, \"step\": 0.01, \"frequency_first\": 1.2319379770146188, \"frequency_second\": 1.5412653419666356, \"energy_work_curvature\": 1.5412338332878806, \"differentiated_pole_curvature\": 1.5412418325169486}\n"
+    },
+    "n24_p3_f0": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "exchange-wave",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/exchange_wave01/n24_p3_f0",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_shear.py",
+        "--mesh",
+        "24",
+        "--port",
+        "3",
+        "--fade",
+        "0"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "921bacfd27de176901c5ba17d4679128eea7c6666506d12994ef2ac1a32090fc",
+      "literal_stdout": "{\"test\": \"mode\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.0, \"frequency\": 4.208023874164491, \"stored_energy_slope\": 1.2314951086722339, \"complex_pole_slope_real\": 1.2314953649162694, \"complex_pole_slope_imag\": -1.14561083871619e-06, \"amplitude_loss\": 3.858905748745651e-08, \"energy_lifetime\": 12957040.999576796, \"period_count_per_energy_efold\": 8677690.566032657, \"confined_kinetic_fraction\": 0.9999996713371665, \"clamped_seed_overlap\": 0.9999995725693185, \"outward_power_over_interior_energy\": 7.717811499895263e-08, \"open_channels\": 2, \"pole_residual\": 7.688802534216444e-15, \"newton_iterations\": 3, \"nodes\": 3408, \"step\": 0.0, \"overlap_with_zero_on_material_nodes\": 1.0}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.0, \"frequency\": 4.1957857235515945, \"stored_energy_slope\": 1.2161579011336776, \"complex_pole_slope_real\": 1.2161580891946657, \"complex_pole_slope_imag\": -8.581095192750464e-07, \"amplitude_loss\": 2.8637830972784475e-08, \"energy_lifetime\": 17459422.8339139, \"period_count_per_energy_efold\": 11659054.04449547, \"confined_kinetic_fraction\": 0.9999997510822806, \"clamped_seed_overlap\": 0.9999996749752069, \"outward_power_over_interior_energy\": 5.7275661958843974e-08, \"open_channels\": 2, \"pole_residual\": 8.064780571538575e-15, \"newton_iterations\": 4, \"nodes\": 3408, \"step\": -0.01, \"overlap_with_zero_on_material_nodes\": 0.9999975378346978}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.0, \"frequency\": 4.201885627200539, \"stored_energy_slope\": 1.223809000710757, \"complex_pole_slope_real\": 1.2238092203058515, \"complex_pole_slope_imag\": -9.917570574898637e-07, \"amplitude_loss\": 3.325464934764564e-08, \"energy_lifetime\": 15035491.57211002, \"period_count_per_energy_efold\": 10054998.037787173, \"confined_kinetic_fraction\": 0.9999997139134166, \"clamped_seed_overlap\": 0.9999996272068576, \"outward_power_over_interior_energy\": 6.650931525169644e-08, \"open_channels\": 2, \"pole_residual\": 5.123308280459638e-11, \"newton_iterations\": 3, \"nodes\": 3408, \"step\": -0.005, \"overlap_with_zero_on_material_nodes\": 0.999999367614792}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.0, \"frequency\": 4.21420063870526, \"stored_energy_slope\": 1.2392158916079083, \"complex_pole_slope_real\": 1.2392161904211618, \"complex_pole_slope_imag\": -1.3226694183918534e-06, \"amplitude_loss\": 4.47494094402727e-08, \"energy_lifetime\": 11173331.810498035, \"period_count_per_energy_efold\": 7494075.019315802, \"confined_kinetic_fraction\": 0.9999996225809596, \"clamped_seed_overlap\": 0.9999995100875003, \"outward_power_over_interior_energy\": 8.949879633173602e-08, \"open_channels\": 2, \"pole_residual\": 6.049854419561357e-11, \"newton_iterations\": 3, \"nodes\": 3408, \"step\": 0.005, \"overlap_with_zero_on_material_nodes\": 0.9999993319887589}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.0, \"frequency\": 4.220416093302956, \"stored_energy_slope\": 1.2469709757287062, \"complex_pole_slope_real\": 1.2469713239684372, \"complex_pole_slope_imag\": -1.5263746484705076e-06, \"amplitude_loss\": 5.186013397246716e-08, \"energy_lifetime\": 9641317.167931978, \"period_count_per_energy_efold\": 6476073.543411599, \"confined_kinetic_fraction\": 0.9999995667625786, \"clamped_seed_overlap\": 0.9999994386480291, \"outward_power_over_interior_energy\": 1.0372026798807166e-07, \"open_channels\": 2, \"pole_residual\": 7.99121420930408e-15, \"newton_iterations\": 4, \"nodes\": 3408, \"step\": 0.01, \"overlap_with_zero_on_material_nodes\": 0.9999972525761879}\n{\"test\": \"signed\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.0, \"step\": 0.005, \"frequency_first\": 1.2315011504720808, \"frequency_second\": 1.5407030727487836, \"energy_work_curvature\": 1.5406890897151415, \"differentiated_pole_curvature\": 1.5406970115310337}\n{\"test\": \"signed\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.0, \"step\": 0.01, \"frequency_first\": 1.2315184875680618, \"frequency_second\": 1.5406852556765216, \"energy_work_curvature\": 1.540653729751429, \"differentiated_pole_curvature\": 1.5406617386885757}\n"
+    },
+    "n24_p4_f0": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "exchange-wave",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/exchange_wave01/n24_p4_f0",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_shear.py",
+        "--mesh",
+        "24",
+        "--port",
+        "4",
+        "--fade",
+        "0"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "e73c501cedf3cf9dae2b42ff15010f64a142699befc1d13df55f7dd7487d8150",
+      "literal_stdout": "{\"test\": \"mode\", \"mesh\": 24, \"port\": 4.0, \"fade\": 0.0, \"frequency\": 4.208023874104201, \"stored_energy_slope\": 1.23149500163649, \"complex_pole_slope_real\": 1.231495363620757, \"complex_pole_slope_imag\": -1.146066401454613e-06, \"amplitude_loss\": 3.858677714583079e-08, \"energy_lifetime\": 12957806.71472906, \"period_count_per_energy_efold\": 8678203.386632843, \"confined_kinetic_fraction\": 0.9999995854475773, \"clamped_seed_overlap\": 0.9999994866682566, \"outward_power_over_interior_energy\": 7.717355430023376e-08, \"open_channels\": 2, \"pole_residual\": 8.556997360798376e-15, \"newton_iterations\": 3, \"nodes\": 4008, \"step\": 0.0, \"overlap_with_zero_on_material_nodes\": 0.9999999999999993}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 4.0, \"fade\": 0.0, \"frequency\": 4.1957857235028255, \"stored_energy_slope\": 1.216157822798918, \"complex_pole_slope_real\": 1.2161580881753336, \"complex_pole_slope_imag\": -8.58324661362035e-07, \"amplitude_loss\": 2.8632289453451664e-08, \"energy_lifetime\": 17462801.946482986, \"period_count_per_energy_efold\": 11661310.548279911, \"confined_kinetic_fraction\": 0.9999996874702775, \"clamped_seed_overlap\": 0.9999996113543994, \"outward_power_over_interior_energy\": 5.726457891160929e-08, \"open_channels\": 2, \"pole_residual\": 7.878860795019729e-15, \"newton_iterations\": 4, \"nodes\": 4008, \"step\": -0.01, \"overlap_with_zero_on_material_nodes\": 0.9999975362040745}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 4.0, \"fade\": 0.0, \"frequency\": 4.20188562714635, \"stored_energy_slope\": 1.2238089091125932, \"complex_pole_slope_real\": 1.2238092191564116, \"complex_pole_slope_imag\": -9.920785659793753e-07, \"amplitude_loss\": 3.325043899718438e-08, \"energy_lifetime\": 15037395.447390623, \"period_count_per_energy_efold\": 10056271.255903713, \"confined_kinetic_fraction\": 0.9999996399719814, \"clamped_seed_overlap\": 0.9999995532553811, \"outward_power_over_interior_energy\": 6.650090867156326e-08, \"open_channels\": 2, \"pole_residual\": 1.272220395206522e-10, \"newton_iterations\": 3, \"nodes\": 4008, \"step\": -0.005, \"overlap_with_zero_on_material_nodes\": 0.9999993671748362}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 4.0, \"fade\": 0.0, \"frequency\": 4.214200638638091, \"stored_energy_slope\": 1.2392157666136885, \"complex_pole_slope_real\": 1.2392161889622064, \"complex_pole_slope_imag\": -1.3232924163720697e-06, \"amplitude_loss\": 4.4749810258295874e-08, \"energy_lifetime\": 11173231.732469933, \"period_count_per_energy_efold\": 7494007.895775777, \"confined_kinetic_fraction\": 0.9999995228777816, \"clamped_seed_overlap\": 0.999999410371195, \"outward_power_over_interior_energy\": 8.949957865612561e-08, \"open_channels\": 2, \"pole_residual\": 1.5039973696239377e-10, \"newton_iterations\": 3, \"nodes\": 4008, \"step\": 0.005, \"overlap_with_zero_on_material_nodes\": 0.9999993314756179}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 4.0, \"fade\": 0.0, \"frequency\": 4.220416093228044, \"stored_energy_slope\": 1.2469708298540927, \"complex_pole_slope_real\": 1.2469713223273686, \"complex_pole_slope_imag\": -1.5272051617820259e-06, \"amplitude_loss\": 5.186415034499139e-08, \"energy_lifetime\": 9640570.541965619, \"period_count_per_energy_efold\": 6475572.03457297, \"confined_kinetic_fraction\": 0.9999994510966769, \"clamped_seed_overlap\": 0.9999993229670837, \"outward_power_over_interior_energy\": 1.0372830070530596e-07, \"open_channels\": 2, \"pole_residual\": 7.819336930590064e-15, \"newton_iterations\": 4, \"nodes\": 4008, \"step\": 0.01, \"overlap_with_zero_on_material_nodes\": 0.9999972503579511}\n{\"test\": \"signed\", \"mesh\": 24, \"port\": 4.0, \"fade\": 0.0, \"step\": 0.005, \"frequency_first\": 1.2315011491740968, \"frequency_second\": 1.5407030414849032, \"energy_work_curvature\": 1.5406857501095272, \"differentiated_pole_curvature\": 1.5406969805794812}\n{\"test\": \"signed\", \"mesh\": 24, \"port\": 4.0, \"fade\": 0.0, \"step\": 0.01, \"frequency_first\": 1.2315184862609296, \"frequency_second\": 1.5406852246613312, \"energy_work_curvature\": 1.5406503527587323, \"differentiated_pole_curvature\": 1.5406617076017537}\n"
+    },
+    "n24_p3_f0.1": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "exchange-wave",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/exchange_wave01/n24_p3_f0.1",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_shear.py",
+        "--mesh",
+        "24",
+        "--port",
+        "3",
+        "--fade",
+        "0.1"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "81432b71c8a71eba163eb0e58ef5dd2bbe9efb189ac0e892e7c43077e839f684",
+      "literal_stdout": "{\"test\": \"mode\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.1, \"frequency\": 4.220852458300252, \"stored_energy_slope\": 1.217677475826445, \"complex_pole_slope_real\": 1.2176777809724735, \"complex_pole_slope_imag\": -1.3773654842007905e-06, \"amplitude_loss\": 4.649650199247171e-08, \"energy_lifetime\": 10753497.114276584, \"period_count_per_energy_efold\": 7223871.732424407, \"confined_kinetic_fraction\": 0.9999996058205415, \"clamped_seed_overlap\": 0.9999994880995984, \"outward_power_over_interior_energy\": 9.299300401942503e-08, \"open_channels\": 2, \"pole_residual\": 8.343015330458083e-15, \"newton_iterations\": 3, \"nodes\": 3408, \"step\": 0.0, \"overlap_with_zero_on_material_nodes\": 1.0000000000000004}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.1, \"frequency\": 4.208750685365023, \"stored_energy_slope\": 1.2026976004250234, \"complex_pole_slope_real\": 1.202697824561884, \"complex_pole_slope_imag\": -1.0324471020804377e-06, \"amplitude_loss\": 3.452803469695294e-08, \"energy_lifetime\": 14480986.3749391, \"period_count_per_energy_efold\": 9699994.246651385, \"confined_kinetic_fraction\": 0.9999997013566123, \"clamped_seed_overlap\": 0.999999610638278, \"outward_power_over_interior_energy\": 6.90560694129757e-08, \"open_channels\": 2, \"pole_residual\": 7.297788447419868e-15, \"newton_iterations\": 4, \"nodes\": 3408, \"step\": -0.01, \"overlap_with_zero_on_material_nodes\": 0.9999972998284754}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.1, \"frequency\": 4.214782846805519, \"stored_energy_slope\": 1.210171769117776, \"complex_pole_slope_real\": 1.2101720307302017, \"complex_pole_slope_imag\": -1.1928207140080428e-06, \"amplitude_loss\": 4.008181396495597e-08, \"energy_lifetime\": 12474485.322374785, \"period_count_per_energy_efold\": 8367928.715932379, \"confined_kinetic_fraction\": 0.9999996568218399, \"clamped_seed_overlap\": 0.9999995534726545, \"outward_power_over_interior_energy\": 8.016364720061996e-08, \"open_channels\": 2, \"pole_residual\": 5.487596621190384e-11, \"newton_iterations\": 3, \"nodes\": 3408, \"step\": -0.005, \"overlap_with_zero_on_material_nodes\": 0.9999993067500401}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.1, \"frequency\": 4.226959676537055, \"stored_energy_slope\": 1.225214295850622, \"complex_pole_slope_real\": 1.2252146515393676, \"complex_pole_slope_imag\": -1.5896552524728643e-06, \"amplitude_loss\": 5.3901683166149804e-08, \"energy_lifetime\": 9276148.176278092, \"period_count_per_energy_efold\": 6240450.086663269, \"confined_kinetic_fraction\": 0.999999547431215, \"clamped_seed_overlap\": 0.9999994133566712, \"outward_power_over_interior_energy\": 1.078033401195372e-07, \"open_channels\": 2, \"pole_residual\": 6.477266561242288e-11, \"newton_iterations\": 3, \"nodes\": 3408, \"step\": 0.005, \"overlap_with_zero_on_material_nodes\": 0.9999992682543155}\n{\"test\": \"mode\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.1, \"frequency\": 4.233104655958049, \"stored_energy_slope\": 1.2327817603431883, \"complex_pole_slope_real\": 1.2327821746881011, \"complex_pole_slope_imag\": -1.8337899919168055e-06, \"amplitude_loss\": 6.244609534076854e-08, \"energy_lifetime\": 8006905.752417319, \"period_count_per_energy_efold\": 5394408.785245505, \"confined_kinetic_fraction\": 0.9999994806020016, \"clamped_seed_overlap\": 0.9999993279170455, \"outward_power_over_interior_energy\": 1.2489219074335723e-07, \"open_channels\": 2, \"pole_residual\": 8.647343071276066e-15, \"newton_iterations\": 4, \"nodes\": 3408, \"step\": 0.01, \"overlap_with_zero_on_material_nodes\": 0.9999969915943716}\n{\"test\": \"signed\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.1, \"step\": 0.005, \"frequency_first\": 1.217682973153611, \"frequency_second\": 1.5042696827549662, \"energy_work_curvature\": 1.5042526732846007, \"differentiated_pole_curvature\": 1.5042620809165852}\n{\"test\": \"signed\", \"mesh\": 24, \"port\": 3.0, \"fade\": 0.1, \"step\": 0.01, \"frequency_first\": 1.217698529651301, \"frequency_second\": 1.5042472256787676, \"energy_work_curvature\": 1.5042079959082466, \"differentiated_pole_curvature\": 1.5042175063108565}\n"
+    },
+    "interior_n16": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "exchange-wave",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/exchange_wave01/interior_n16",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_shear_interior.py",
+        "--mesh",
+        "16",
+        "--base",
+        "_scratch/s11c/exchange_wave01/n16_p3_f0"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "35644583df05d9cb03d8362b6ca4968df17e9a653f252a8472c4a38ecf3abba4",
+      "literal_stdout": "{\"test\": \"reference\", \"mesh\": 16, \"frequency\": 4.20915642215333, \"reference_sha256\": \"9b9d426cba566f8271b8f28a5cb33524da700588360cbd1b65a8986c76e606fa\", \"pocket_seed_frequencies\": [4.209157420507452, 5.002443229679501, 5.716801822049911]}\n{\"test\": \"mode\", \"step\": -0.005, \"mesh\": 16, \"frequency\": 4.206412805833403, \"stored_energy_slope\": 0.5486192356237585, \"complex_pole_slope_real\": 0.5486193497621716, \"complex_pole_slope_imag\": -3.886892443264566e-07, \"amplitude_loss\": 3.661027584637702e-08, \"energy_lifetime\": 13657367.731892694, \"period_count_per_energy_efold\": 9143216.969228143, \"confined_kinetic_fraction\": 0.9999996889827565, \"clamped_seed_overlap\": 0.9999995967521161, \"outward_power_over_interior_energy\": 7.322055332721827e-08, \"open_channels\": 2, \"pole_residual\": 4.3588356754506745e-12, \"newton_iterations\": 3, \"nodes\": 1536}\n{\"test\": \"mode\", \"step\": 0.005, \"mesh\": 16, \"frequency\": 4.211900646014528, \"stored_energy_slope\": 0.548861489050002, \"complex_pole_slope_real\": 0.5488616159034441, \"complex_pole_slope_imag\": -4.199909961237618e-07, \"amplitude_loss\": 4.06527047751371e-08, \"energy_lifetime\": 12299304.628453564, \"period_count_per_energy_efold\": 8244774.9950839365, \"confined_kinetic_fraction\": 0.9999996555026368, \"clamped_seed_overlap\": 0.999999553714972, \"outward_power_over_interior_energy\": 8.13054077861156e-08, \"open_channels\": 2, \"pole_residual\": 4.5956182536954604e-12, \"newton_iterations\": 3, \"nodes\": 1536}\n{\"test\": \"second_direction\", \"mesh\": 16, \"frequency_first\": 0.5487840181125136, \"mean_virtual_energy_work\": 0.5487403623368803}\n"
+    },
+    "interior_n24": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "exchange-wave",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/exchange_wave01/interior_n24",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_shear_interior.py",
+        "--mesh",
+        "24",
+        "--base",
+        "_scratch/s11c/exchange_wave01/n24_p3_f0"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "f3b1a4d5458334519d8aa6b9c6cd3a4acdbf0127f048800292c5c2598c163bc5",
+      "literal_stdout": "{\"test\": \"reference\", \"mesh\": 24, \"frequency\": 4.208023874164491, \"reference_sha256\": \"921bacfd27de176901c5ba17d4679128eea7c6666506d12994ef2ac1a32090fc\", \"pocket_seed_frequencies\": [4.208024890883567, 5.000779854998531, 5.71387331665665]}\n{\"test\": \"mode\", \"step\": -0.005, \"mesh\": 24, \"frequency\": 4.205280912262199, \"stored_energy_slope\": 0.5484912290488627, \"complex_pole_slope_real\": 0.5484913435301945, \"complex_pole_slope_imag\": -3.8771118974124684e-07, \"amplitude_loss\": 3.6612131520211686e-08, \"energy_lifetime\": 13656675.512704732, \"period_count_per_energy_efold\": 9140293.346578887, \"confined_kinetic_fraction\": 0.9999996877795061, \"clamped_seed_overlap\": 0.9999995937793171, \"outward_power_over_interior_energy\": 7.322426468410665e-08, \"open_channels\": 2, \"pole_residual\": 4.794695943541507e-12, \"newton_iterations\": 3, \"nodes\": 3408}\n{\"test\": \"mode\", \"step\": 0.005, \"mesh\": 24, \"frequency\": 4.210767414084697, \"stored_energy_slope\": 0.5487216700463097, \"complex_pole_slope_real\": 0.5487217972480092, \"complex_pole_slope_imag\": -4.1878800063155613e-07, \"amplitude_loss\": 4.064368083912562e-08, \"energy_lifetime\": 12302035.388455154, \"period_count_per_energy_efold\": 8244386.757371688, \"confined_kinetic_fraction\": 0.9999996542731933, \"clamped_seed_overlap\": 0.9999995505641702, \"outward_power_over_interior_energy\": 8.128735990430051e-08, \"open_channels\": 2, \"pole_residual\": 5.052957274659718e-12, \"newton_iterations\": 3, \"nodes\": 3408}\n{\"test\": \"second_direction\", \"mesh\": 24, \"frequency_first\": 0.5486501822497658, \"mean_virtual_energy_work\": 0.5486064495475862}\n"
+    }
+  },
+  "summary": {
+    "n16_p3_f0": {
+      "wave_only_required_action_over_tension": 1.7571772188685477,
+      "first_per_action": 1.2319206331277144,
+      "second_per_action": 1.5412831535144278,
+      "widest_over_reference_loss_rate": 1.344132929270611,
+      "retention": [
+        {
+          "step": 0.0,
+          "energy_decay_rate": 7.718472104270158e-08,
+          "energy_efold": 12955932.035392875,
+          "loss_fraction_at_200": 1.5436825059530166e-05,
+          "loss_fraction_at_400pi": 9.69884773523439e-05
+        },
+        {
+          "step": 0.01,
+          "energy_decay_rate": 1.0374652519006144e-07,
+          "energy_efold": 9638877.043525277,
+          "loss_fraction_at_200": 2.074908977267138e-05,
+          "loss_fraction_at_400pi": 0.00013036323052452846
+        }
+      ]
+    },
+    "n24_p3_f0": {
+      "wave_only_required_action_over_tension": 1.757838803001482,
+      "first_per_action": 1.2315011504720808,
+      "second_per_action": 1.5407030727487836,
+      "widest_over_reference_loss_rate": 1.343907764249605,
+      "retention": [
+        {
+          "step": 0.0,
+          "energy_decay_rate": 7.717811497491303e-08,
+          "energy_efold": 12957040.999576796,
+          "loss_fraction_at_200": 1.5435503866366925e-05,
+          "loss_fraction_at_400pi": 9.698017672783902e-05
+        },
+        {
+          "step": 0.01,
+          "energy_decay_rate": 1.0372026794493432e-07,
+          "energy_efold": 9641317.167931978,
+          "loss_fraction_at_200": 2.0743838432594956e-05,
+          "loss_fraction_at_400pi": 0.00013033023899806887
+        }
+      ]
+    },
+    "n24_p4_f0": {
+      "wave_only_required_action_over_tension": 1.757838838671472,
+      "first_per_action": 1.2315011491740968,
+      "second_per_action": 1.5407030414849032,
+      "widest_over_reference_loss_rate": 1.344091271188094,
+      "retention": [
+        {
+          "step": 0.0,
+          "energy_decay_rate": 7.717355429166158e-08,
+          "energy_efold": 12957806.71472906,
+          "loss_fraction_at_200": 1.543459174379551e-05,
+          "loss_fraction_at_400pi": 9.697444616002873e-05
+        },
+        {
+          "step": 0.01,
+          "energy_decay_rate": 1.0372830068998279e-07,
+          "energy_efold": 9640570.541965619,
+          "loss_fraction_at_200": 2.0745444948277366e-05,
+          "loss_fraction_at_400pi": 0.00013034033192756554
+        }
+      ]
+    },
+    "n24_p3_f0.1": {
+      "wave_only_required_action_over_tension": 1.800413633425988,
+      "first_per_action": 1.217682973153611,
+      "second_per_action": 1.5042696827549662,
+      "widest_over_reference_loss_rate": 1.34302781208959,
+      "retention": [
+        {
+          "step": 0.0,
+          "energy_decay_rate": 9.299300398494343e-08,
+          "energy_efold": 10753497.114276584,
+          "loss_fraction_at_200": 1.859842784408511e-05,
+          "loss_fraction_at_400pi": 0.00011685162757841488
+        },
+        {
+          "step": 0.01,
+          "energy_decay_rate": 1.248921906815371e-07,
+          "energy_efold": 8006905.752417319,
+          "loss_fraction_at_200": 2.497812617771897e-05,
+          "loss_fraction_at_400pi": 0.000156931840404638
+        }
+      ]
+    },
+    "interior_n16": {
+      "test": "second_direction",
+      "mesh": 16,
+      "frequency_first": 0.5487840181125136,
+      "mean_virtual_energy_work": 0.5487403623368803
+    },
+    "interior_n24": {
+      "test": "second_direction",
+      "mesh": 24,
+      "frequency_first": 0.5486501822497658,
+      "mean_virtual_energy_work": 0.5486064495475862
+    }
+  },
+  "exclusion": {
+    "source_sha256": "a1951a521b689ff2391268e2851a5ad2391e7a66b2d4b0ebaef10402f4f24572",
+    "stdout_sha256": "26777897bf61cf5a95781bf017043e3427336f20e15a76112ab8bd439a2fc9ca",
+    "stderr_sha256": "c49edb2285a80afd904918b5bf3145b041cda932bf22b618358e2f276132b5ea",
+    "stage": "Displaced eigenvector overlap used a physical-coordinate ordering which changes under deformation; excluded before readout."
+  },
+  "reduction": {
+    "worker": [
+      "python3",
+      "software/stage1_solver/tools/mouth_exchange_shear_summary.py"
+    ],
+    "guard_exit": 0,
+    "worker_exit": 0,
+    "swap_bytes": 0,
+    "wall_deadline": null,
+    "stdout_sha256": "417dada99afaaa6359a544795b0133df7ff151c4b763113ee17b594422a0c557",
+    "note": "An initial packaging check applied a stricter residual criterion than the solver. Port-shift residuals were within its original 3e-10 tolerance. The archived solutions were reused, and outbound energy and virtual-work checks were applied separately."
+  }
+}

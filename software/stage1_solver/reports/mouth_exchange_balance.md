@@ -1,0 +1,21 @@
+# Does a trapped wave hold the radius-1 neck and flare in equilibrium?
+
+**The wave stiffens the throat, but the tested shape would still move.** The trapped transverse wave and the draining carrier both favor a narrower neck and a wider flare at the starting shape. Increasing the wave action strengthens that force. The original surface-tension equilibrium therefore cannot serve as the freely supported mouth in a free-fall calculation.
+
+We adopted reversible conversion (Route A) and parked the driven dissipative alternative (Route B). We used an entrance of radius \(R=1\), an exit of radius \(1.5R\), and axial depth \(2.76302R\). Both deformations preserve volume and axial depth. The wave was prepared at fixed action \(J\). The carrier density and phase were solved on both sides at the same reservoir phase difference of 0.45100843. Intact slab faces are sealed in this test. [Conversion laws and original shape](mouth_conversion_routes.md)
+
+| Energy contribution | Slope at the starting shape | Stiffness along the same displacement |
+|---|---:|---:|
+| Wall surface tension | 0 | \(-2.70831\,\sigma R^3\) |
+| Trapped wave | \(+1.23150\,Jc_T/R\) | \(+1.54070\,Jc_T/R\) |
+| Two-sided carrier | \(+0.76696\,E_c\) | \(+0.19344\,E_c\) |
+
+The coordinate is the nominal widening of the neck divided by \(R\). Each entry has energy units. Here \(c_T\) is the ordered shear-wave speed, \(\sigma\) the interface energy per unit three-dimensional area, and \(E_c\) the carrier energy unit in this preparation. The force points down the energy slope. The entries in the slope column have the same sign for any positive wave action and any positive conversion between energy units. A second deformation kept **both opening radii fixed** and redistributed width in the interior. The wave and carrier slopes there were \(+0.548650\,Jc_T/R\) and \(+0.00064127\,E_c\), respectively. This also detects an imbalance within the flare.
+
+The wave alone would offset the negative surface stiffness at \(Jc_T/(\sigma R^4)=1.75784\). That corresponds to stored energy equal to **12.77% of the reference lateral wall’s surface energy** in this mode. The carrier reduces the stiffness the wave must supply in this preparation. The action actually stored in a physical mouth is unknown. At the finite drive, 95.62% of the carrier current crossed the side wall under the chosen thin-front permeability. Surface and carrier stresses will need to be evaluated again when the free profile and physical permeability are known. [Carrier work, transmission and controls](mouth_exchange_carrier.md)
+
+Widening the neck by about 1% increased the escape rate into the feeding brane by 34.4%. At fixed shape the energy loss over the reference slow cycle rose from **0.009698%** to **0.013033%**, or **0.015693%** at the widest neck with a smoothly fading outlet. Approximately fixed action is consistent with these times for a slowly deformed prepared mode. The calculation combines a material-rest-frame transverse eigenmode and a steady carrier solution on the same registered shape. Wave advection, conversion into longitudinal modes, and time evolution of the free wall remain unmeasured. [Wave, virtual work and leakage](mouth_exchange_shear.md) · [Shape and leakage figure](figures/mouth_exchange_wave.png)
+
+**Decision for 0PN.** Measure wave action from stored energy and frequency. Independently bend the ordered lip in opposite directions with the wave off to determine its restoring moment and preferred curvature. Use those readings to relax the shape at the training radii, then check stationarity and stability under unused deformations. A different equilibrium may exist under the present loads. The test establishes neither a required bending modulus nor a family of supported mouths. Radius 3 remains reserved for the blind prediction.
+
+The independent review concluded “Scoped clear for the radius-one, fixed-phase, thin-front test, including finite transverse leakage and exclusion of first-order equilibrium for the tested occupied profile.” An independent cavity discretization gave a stiffness coefficient of 1.54067. [Joint measurements and independent checks](../../../research/pde_ledger_v3/_measurements/mouth_exchange_balance.json) · [Free-fall roadmap](../../../docs/zero_pn_free_fall_roadmap.md)

@@ -1,0 +1,231 @@
+{
+  "base": "017b95e2",
+  "design": {
+    "radius": 1,
+    "blind_radius": 3,
+    "geometry": "Ten-cosine archived 1:1.5 turning shape, fixed enclosed volume and axial length. Use zero and signed 0.005,0.01 radius-unit shifts; preserve both end reactions.",
+    "primary_material": "Reversible Route A, ordered feeding slab and coherent bulk. Route B parked.",
+    "checks": [
+      "Compare the fixed-action transverse pole frequency slope and curvature to stored carrier-energy shape derivatives at fixed remote phases. Resolve or qualify energy flux or exponential damping into the brane for each neck width.",
+      "Use the bare reference area stiffness -2.708307645 sigma and zero first derivative. Correctly distinguish the fitted-occupation stationarity condition from independent wave preparation. Local along-mode stationarity is necessary, and insuffices for other free coordinates.",
+      "Keep independent scales, occupation and transmission data explicit; if the material law does not supply enough stiffness flag a conditional missing spatial restoring load; do not tune sigma, J or introduce a bending modulus to pass this test."
+    ]
+  },
+  "joint_result": {
+    "inputs_sha256": {
+      "mouth_conversion_shape.json": "5c73eaecc31deb3e98e698ea58d51f765b57b51fbaf248ee8e10c4a3feafe906",
+      "mouth_exchange_shear.json": "d3f789896c21662329314ea3ce26d7c99f24b0c5de256d644c70a7c66e73ef1e",
+      "mouth_exchange_carrier.json": "95c2ac0ddd167a9f88e7edede74f0000f4903e4bc39a12c2c5613c7cead6f57f"
+    },
+    "coordinate": "nominal neck displacement divided by reference radius; fixed volume and axial length",
+    "units": "each column multiplies sigma R^3, J c_T/R or the carrier energy unit, respectively",
+    "first_energy_derivative": {
+      "surface": 0,
+      "wave": 1.2315011504720808,
+      "carrier": 0.7669600499527722
+    },
+    "second_energy_derivative": {
+      "surface": -2.708307645181427,
+      "wave": 1.5407030727487836,
+      "carrier": 0.19344093455275768
+    },
+    "fixed_end_first_derivative": {
+      "wave": 0.5486501822497658,
+      "carrier": 0.0006412690141566202
+    },
+    "wave_only_action_threshold_Jc_over_sigmaR4": 1.757838803001482,
+    "threshold_stored_wave_energy_over_lateral_surface_energy": 0.1277341589743535,
+    "flow_fraction_through_side": 0.9561856026116525,
+    "energy_loss_fraction_at_widest_neck_over_400pi": 0.00013033023899806887
+  },
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_exchange_checks/carrier.py": "0ecc3718cfa75d9dbbb23c58f76097978fb20e1443cd0f1e9aee6c4887052e36",
+    "software/stage1_solver/tools/mouth_exchange_checks/geometry.py": "46940aa105a676a708f2150e8cb99ee101a74c3f6587a423ccaaf8ff663e7b83",
+    "software/stage1_solver/tools/mouth_exchange_checks/interior_readout.py": "fcd3d5fed95748ed8eba3e7b0fd37be39d21a5ae2799ecf69fc26aa981d59ef9",
+    "software/stage1_solver/tools/mouth_exchange_checks/readout.py": "e1a8d06e71c8baf9d46eb9b9008e4a4f8a27d1ab3653925f0d0f4e95d7c46b6c",
+    "software/stage1_solver/tools/mouth_exchange_checks/wave.py": "b6211473bcae30b160452a5794571905368b2de64168040e3908056ccdcca35a",
+    "software/stage1_solver/tools/mouth_exchange_balance.py": "21f59c0789c88138d16faecd827b4956fc4eafc9a5ceed1dea2ae2268a0d7ad4",
+    "software/stage1_solver/tools/mouth_exchange_wave_figure.py": "b2ce63453c5c6620e49683c5ea8a87f33e759ba3462689df26011371114be10e",
+    "software/stage1_solver/tools/mouth_exchange_geometry.py": "1cabc9f23319f25df3924b1f1669cd12e89269934a2817da52fc2b47a6757017",
+    "software/stage1_solver/tools/mouth_exchange_interior.py": "41c4578c60f6d8e01af9530edbffe2a8599e8d9d83451b07c7ab8dee5ecfdfac"
+  },
+  "primary": {
+    "geometry": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_geometry.py"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "dbc3843ffa082f54f751303a4617a464a1c0c9ff26263ff8a17e5950d8db09e2",
+      "literal_stdout": "{\"step\": -0.01, \"neck\": 0.9899814560144646, \"exit\": 1.5049719564765693, \"length\": 2.76301781542093, \"volume\": 24.90295324978449, \"volume_relative_error\": -6.661338147750939e-16, \"area\": 57.90941063608463, \"area_change\": -0.00013923967057394293, \"speed_error\": 3.6701179340070667e-07}\n{\"step\": -0.005, \"neck\": 0.994995363797691, \"exit\": 1.5024906140287433, \"length\": 2.76301781542093, \"volume\": 24.90295324978449, \"volume_relative_error\": -6.661338147750939e-16, \"area\": 57.90951554343709, \"area_change\": -3.43323181155597e-05, \"speed_error\": 3.6842649797641513e-07}\n{\"step\": 0.0, \"neck\": 1.0, \"exit\": 1.5, \"length\": 2.76301781542093, \"volume\": 24.90295324978448, \"volume_relative_error\": -9.992007221626409e-16, \"area\": 57.9095498757564, \"area_change\": 1.1937117960769683e-12, \"speed_error\": 3.709609639468425e-07}\n{\"step\": 0.005, \"neck\": 1.004995363391777, \"exit\": 1.4975001131607246, \"length\": 2.76301781542093, \"volume\": 24.902953249784506, \"volume_relative_error\": 0.0, \"area\": 57.90951650121047, \"area_change\": -3.337454473495427e-05, \"speed_error\": 3.718905046135035e-07}\n{\"step\": 0.01, \"neck\": 1.0099814527663584, \"exit\": 1.494990952304254, \"length\": 2.76301781542093, \"volume\": 24.9029532497845, \"volume_relative_error\": -3.3306690738754696e-16, \"area\": 57.909418297951376, \"area_change\": -0.0001315778038275539, \"speed_error\": 3.7251673334903757e-07}\n"
+    },
+    "interior": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_interior.py"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "755e004db70b9de1ff64968d8a6a5b18084044bf25b540b8ddfefa1e478b1cba",
+      "literal_stdout": "{\"step\": -0.005, \"second\": 0.002892758844692073, \"area\": 57.910639905331394, \"volume\": 24.902953249784492, \"speed_error\": 1.0720549448173244e-10, \"neck\": 1.0, \"exit\": 1.5}\n{\"step\": 0.0, \"second\": 0.0, \"area\": 57.909549875755204, \"volume\": 24.902953249784495, \"speed_error\": 1.061271660829366e-10, \"neck\": 1.0, \"exit\": 1.5}\n{\"step\": 0.005, \"second\": -0.002920606638785883, \"area\": 57.910654485578824, \"volume\": 24.902953249784492, \"speed_error\": 1.0307208832640614e-10, \"neck\": 1.0, \"exit\": 1.5}\n"
+    },
+    "figure": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_wave_figure.py"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "ec06bedd536a3312fcccc02c345424c4862ff67609c3eb60ca14643a2a7ad139",
+      "literal_stdout": "{\"stored_energy_at_wave_only_threshold_over_sigmaR3\": 7.3970276499629675, \"energy_ratio_to_lateral_surface_energy\": 0.1277341589743535, \"energy_density_over_sigma_per_radius\": 0.29703415397235977, \"image_sha256\": \"06e56339a989c0813c94c8053610b582a368a2f59f455eb7b02dd9eb2217711e\"}\n"
+    },
+    "balance": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_exchange_balance.py"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 1073741824,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "123e01de298f80c7db5892f235740cc1c60fe631c148b41fb4737264985c03f8",
+      "literal_stdout": "{\n  \"inputs_sha256\": {\n    \"mouth_conversion_shape.json\": \"5c73eaecc31deb3e98e698ea58d51f765b57b51fbaf248ee8e10c4a3feafe906\",\n    \"mouth_exchange_shear.json\": \"d3f789896c21662329314ea3ce26d7c99f24b0c5de256d644c70a7c66e73ef1e\",\n    \"mouth_exchange_carrier.json\": \"95c2ac0ddd167a9f88e7edede74f0000f4903e4bc39a12c2c5613c7cead6f57f\"\n  },\n  \"coordinate\": \"nominal neck displacement divided by reference radius; fixed volume and axial length\",\n  \"units\": \"each column multiplies sigma R^3, J c_T/R or the carrier energy unit, respectively\",\n  \"first_energy_derivative\": {\n    \"surface\": 0,\n    \"wave\": 1.2315011504720808,\n    \"carrier\": 0.7669600499527722\n  },\n  \"second_energy_derivative\": {\n    \"surface\": -2.708307645181427,\n    \"wave\": 1.5407030727487836,\n    \"carrier\": 0.19344093455275768\n  },\n  \"fixed_end_first_derivative\": {\n    \"wave\": 0.5486501822497658,\n    \"carrier\": 0.0006412690141566202\n  },\n  \"wave_only_action_threshold_Jc_over_sigmaR4\": 1.757838803001482,\n  \"threshold_stored_wave_energy_over_lateral_surface_energy\": 0.1277341589743535,\n  \"flow_fraction_through_side\": 0.9561856026116525,\n  \"energy_loss_fraction_at_widest_neck_over_400pi\": 0.00013033023899806887\n}\n"
+    }
+  },
+  "independent_checks": {
+    "geometry": {
+      "command": [
+        "python3",
+        "_scratch/s11c/exchange_independent01/geometry.py"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "6704cc2f144e52f71ee2ad232893e194a3231ceeef7b891cb57f1212aed1804f",
+      "literal_stdout": "[\n  {\n    \"step\": 0.0,\n    \"waist\": 1.0,\n    \"flare\": 1.4999999999999334,\n    \"length\": 2.7630178154211773,\n    \"offset\": 0,\n    \"area_change\": 0.0,\n    \"volume_roundoff\": 0.0,\n    \"profile_error\": 9.015010959956271e-14,\n    \"derivative_error\": 3.154432270946472e-11\n  },\n  {\n    \"step\": -0.01,\n    \"waist\": 0.9899814560295284,\n    \"flare\": 1.5049719564915665,\n    \"length\": 2.7630178154211773,\n    \"offset\": -1.8543970471659836e-05,\n    \"area_change\": -0.00013923928680981135,\n    \"volume_roundoff\": -7.133117195836425e-16,\n    \"profile_error\": 1.5761392191393497e-11,\n    \"derivative_error\": 3.396455339199633e-11\n  },\n  {\n    \"step\": -0.005,\n    \"waist\": 0.9949953638051795,\n    \"flare\": 1.5024906140361654,\n    \"length\": 2.7630178154211773,\n    \"offset\": -4.636194820449298e-06,\n    \"area_change\": -3.4332129871472716e-05,\n    \"volume_roundoff\": 5.5638314127524115e-15,\n    \"profile_error\": 7.861045148160883e-12,\n    \"derivative_error\": 3.3170743929389346e-11\n  },\n  {\n    \"step\": 0.005,\n    \"waist\": 1.0049953633843844,\n    \"flare\": 1.4975001131532655,\n    \"length\": 2.7630178154211773,\n    \"offset\": -4.636615615505589e-06,\n    \"area_change\": -3.337472637099381e-05,\n    \"volume_roundoff\": 1.1698312201171737e-14,\n    \"profile_error\": 7.72981678665019e-12,\n    \"derivative_error\": 3.370109746825278e-11\n  },\n  {\n    \"step\": 0.01,\n    \"waist\": 1.0099814527516595,\n    \"flare\": 1.4949909522894882,\n    \"length\": 2.7630178154211773,\n    \"offset\": -1.8547248340568626e-05,\n    \"area_change\": -0.00013157816925257748,\n    \"volume_roundoff\": -3.7092209418349415e-15,\n    \"profile_error\": 1.530864324195136e-11,\n    \"derivative_error\": 3.391420477782958e-11\n  }\n]\n"
+    },
+    "carrier16": {
+      "command": [
+        "python3",
+        "_scratch/s11c/exchange_independent01/carrier.py",
+        "16"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "8cd69dd68580b85b37e777511c4787083f9175f465facae4acbb1718808e9f36",
+      "literal_stdout": "{\"n\": 16, \"beta\": 0.0, \"energies\": {\"-0.01\": 0.4517483115519517, \"-0.005\": 0.4556599625678206, \"0.0\": 0.4595760119237137, \"0.005\": 0.46349633762903975, \"0.01\": 0.4674208183648965}, \"first\": [0.7836253406472399, 0.7836375061219147], \"second\": [0.17106069420846914, 0.17105397731587146]}\n{\"n\": 16, \"beta\": 0.006666666666666667, \"energies\": {\"-0.01\": 0.44697334083845675, \"-0.005\": 0.4508707103226574, \"0.0\": 0.45477254274329576, \"0.005\": 0.45867871531517695, \"0.01\": 0.4625891054083684}, \"first\": [0.7807882284955825, 0.7808004992519546], \"second\": [0.17360760233620098, 0.17360604971372595]}\n"
+    },
+    "carrier32": {
+      "command": [
+        "python3",
+        "_scratch/s11c/exchange_independent01/carrier.py",
+        "32"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "f6f91e0bc43e9cef9be4975c9b5486f5464646ef24eefa7117a8a3b4bcc291d9",
+      "literal_stdout": "{\"n\": 32, \"beta\": 0.0, \"energies\": {\"-0.01\": 0.43823886926320643, \"-0.005\": 0.4421152316507537, \"0.0\": 0.44599623015708173, \"0.005\": 0.44988173996387343, \"0.01\": 0.453771638512655}, \"first\": [0.7766384624724287, 0.7766508313119702], \"second\": [0.18047461697978662, 0.1804520185499925]}\n{\"n\": 32, \"beta\": 0.006666666666666667, \"energies\": {\"-0.01\": 0.43388678206717857, \"-0.005\": 0.4377485343105491, \"0.0\": 0.4416149875549627, \"0.005\": 0.4454860165616045, \"0.01\": 0.44936149673850473}, \"first\": [0.7737357335663081, 0.7737482251055416], \"second\": [0.18303695757837524, 0.18303048912926556]}\n"
+    },
+    "interior": {
+      "command": [
+        "python3",
+        "_scratch/s11c/exchange_independent01/interior_readout.py"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "dbd5218f05eecba98a072483b23dedfd62dc8f4e1b601db187854f0ede0c7560",
+      "literal_stdout": "{\"n\": 16, \"beta\": 0.0, \"minus\": 0.45957383457568846, \"plus\": 0.4595782337435123, \"slope\": 0.00043991678238541887}\n{\"n\": 16, \"beta\": 0.006666666666666667, \"minus\": 0.4547676194602923, \"plus\": 0.4547774621144435, \"slope\": 0.0009842654151159813}\n{\"n\": 32, \"beta\": 0.0, \"minus\": 0.44599571466232923, \"plus\": 0.4459967551590698, \"slope\": 0.00010404967405452936}\n{\"n\": 32, \"beta\": 0.006666666666666667, \"minus\": 0.44161154716579426, \"plus\": 0.4416183883083512, \"slope\": 0.0006841142556945901}\n"
+    },
+    "readout": {
+      "command": [
+        "python3",
+        "_scratch/s11c/exchange_independent01/readout.py"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 1073741824,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "43aeac8b132f2521f86b7886579bf39d38d77d84c19ec7c397b1185587ded140",
+      "literal_stdout": "closed exchange 32 1.2311477974600749 1.5405927766920513 62ecc6030827bb27f81a0fe9105022a1462c5c1a65154113e9644fc102f983e6\nclosed interior 32 0.5488236065961161 0.032798755995600004 62ecc6030827bb27f81a0fe9105022a1462c5c1a65154113e9644fc102f983e6\nclosed exchange 64 1.2311775958838922 1.540669540673889 1444e955640f9c195aed37315792e077bf6996c8e19929a551714f48b5e55331\nclosed interior 64 0.5486185832420887 0.024838922527692375 1444e955640f9c195aed37315792e077bf6996c8e19929a551714f48b5e55331\nchannels 25 port max abs 8.81657121629969e-14\n"
+    },
+    "carrier64": {
+      "command": [
+        "python3",
+        "_scratch/s11c/exchange_independent01/carrier.py",
+        "64"
+      ],
+      "guard_exit": 1,
+      "worker_exit": 1,
+      "limits_verified": true,
+      "memory_bytes": 3221225472,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "literal_stdout": ""
+    },
+    "wave32": {
+      "command": [
+        "python3",
+        "_scratch/s11c/exchange_independent01/wave.py",
+        "32"
+      ],
+      "guard_exit": 1,
+      "worker_exit": 1,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "62ecc6030827bb27f81a0fe9105022a1462c5c1a65154113e9644fc102f983e6",
+      "literal_stdout": "{\"n\": 32, \"kind\": \"exchange\", \"clamped_modes\": [[4.201521908253509, 4.998987737666372], [4.207658389831101, 5.000449282821475], [4.21383338622811, 5.001902240056015]], \"slope\": 1.2311477974600749, \"curvature\": 1.5405927766920513}\n{\"n\": 32, \"kind\": \"interior\", \"clamped_modes\": [[4.204914681782572, 5.000979756584206], [4.207658389831103, 5.000449282821475], [4.210402917848533, 4.999885505031314]], \"slope\": 0.5488236065961161, \"curvature\": 0.032798755995600004}\n"
+    },
+    "wave64": {
+      "command": [
+        "python3",
+        "_scratch/s11c/exchange_independent01/wave.py",
+        "64"
+      ],
+      "guard_exit": 1,
+      "worker_exit": 1,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "1444e955640f9c195aed37315792e077bf6996c8e19929a551714f48b5e55331",
+      "literal_stdout": "{\"n\": 64, \"kind\": \"exchange\", \"clamped_modes\": [[4.201114790868343, 4.998222110604724], [4.207251420478504, 4.999688852836051], [4.213426566827182, 5.001147018554635]], \"slope\": 1.2311775958838922, \"curvature\": 1.540669540673889}\n{\"n\": 64, \"kind\": \"interior\", \"clamped_modes\": [[4.204508638048825, 5.000219548500049], [4.207251420478504, 4.999688852836051], [4.209994823881246, 4.999124600733388]], \"slope\": 0.5486185832420887, \"curvature\": 0.024838922527692375}\n"
+    }
+  },
+  "review_verdict": "Scoped clear for the radius-one, fixed-phase, thin-front test, including finite transverse leakage and exclusion of first-order equilibrium for the tested occupied profile.",
+  "review_scope": "Independent arclength/frusta geometry, weak carrier and closed transverse cavity comparisons. The finite-drive work was checked against the primary energy differences. The 64-mesh independent weak-flow attempt failed its absolute flux tolerance and is excluded. The 32/64 independent wave attempts finished their closed modes before failing a separate unscaled Bessel check. Only their mode tables revalidated by the successful scaled-Hankel readout were used. The primary open mode and finite-drive fields have their own successful guards."
+}

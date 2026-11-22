@@ -1,0 +1,212 @@
+{
+  "scope": "Independent pressure and derivative checks on the five signed shapes. Nonnegative action and tension. Affine backing. No free equilibrium or free release inferred.",
+  "baseline": "772c988e",
+  "shape_measurements": "research/pde_ledger_v3/_measurements/mouth_free_radial_direction.json",
+  "shape_sha256": "3dc5164a79d2d48a974351c63b3ef9242c59d7223051fac74c4d7affa50d977e",
+  "runs": {
+    "bounds": {
+      "label": "bounds",
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "flare-bands",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/free_radial_direction01/band_check",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_free_radial_band_check.py",
+        "_scratch/s11c/free_radial_direction01/n26",
+        "_scratch/s11c/free_radial_direction01/n34"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "deadline": null,
+      "source_sha256": "0289d05a7cfb540035a168f5f849b4124f6d34ad38e041cfcbaa0ba978bc1fd6",
+      "literal_stdout": "{\"source_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"mesh\": 26, \"q\": -0.0002, \"carrier\": \"volume\", \"max_band_surface_volume_difference\": 2.184119439669653e-08, \"optimum\": 9.11799114034332e-05, \"parameters\": [-0.0034628561916274676, 0.002422273069890601, 0.0, 0.05745802928896308], \"residuals\": [9.117991140343258e-05, -8.991317611477235e-05, -9.117991140343367e-05, -3.301234732067224e-05, 6.413647952694095e-05, 9.11799114034328e-05, 4.641042521705816e-05, -9.117991140343367e-05], \"signed_band_weights\": [0.16084591132477644, 0.0, -0.3727019733133988, 0.0, 0.0, 0.3391540886752236, 0.0, -0.12729802668660115], \"projected_columns\": [8.326672684688674e-17, 1.6653345369377348e-16, -0.009567371931274465, -1.734723475976807e-18], \"norm_one\": 1.0, \"lower_bound\": 9.117991140343328e-05}\n{\"source_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"mesh\": 26, \"q\": -0.0002, \"carrier\": \"surface\", \"max_band_surface_volume_difference\": 2.184119439669653e-08, \"optimum\": 9.118003153085553e-05, \"parameters\": [-0.0034628546817701876, 0.002422265251638102, 0.0, 0.057457656985430504], \"residuals\": [9.11800315308547e-05, -8.990447796000775e-05, -9.118003153085557e-05, -3.303474086683851e-05, 6.413622969051857e-05, 9.118003153085578e-05, 4.6417402387670696e-05, -9.118003153085654e-05], \"signed_band_weights\": [0.16084591132477644, 0.0, -0.3727019733133988, 0.0, 0.0, 0.3391540886752236, 0.0, -0.12729802668660115], \"projected_columns\": [8.326672684688674e-17, 1.6653345369377348e-16, -0.009567371931274465, -1.734723475976807e-18], \"norm_one\": 1.0, \"lower_bound\": 9.11800315308555e-05}\n{\"source_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"mesh\": 26, \"q\": -0.0001, \"carrier\": \"volume\", \"max_band_surface_volume_difference\": 1.0886783528927385e-08, \"optimum\": 9.473335015428564e-05, \"parameters\": [-0.0034739661114074265, 0.0024534598745256098, 0.0, 0.05889034934739958], \"residuals\": [9.473335015428561e-05, -9.473335015428583e-05, -8.600250109841749e-05, -1.980918113904319e-05, 6.905595339471533e-05, 9.473335015428518e-05, 4.46689738127289e-05, -9.473335015428583e-05], \"signed_band_weights\": [0.2716409110752929, -0.406199885025839, 0.0, 0.0, 0.0, 0.22835908892470716, 0.0, -0.0938001149741611], \"projected_columns\": [0.0, 5.551115123125783e-17, -0.06883078110487534, -4.336808689942018e-19], \"norm_one\": 1.0000000000000002, \"lower_bound\": 9.473335015428559e-05}\n{\"source_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"mesh\": 26, \"q\": -0.0001, \"carrier\": \"surface\", \"max_band_surface_volume_difference\": 1.0886783528927385e-08, \"optimum\": 9.473160454944934e-05, \"parameters\": [-0.0034739567776490487, 0.0024534412787507033, 0.0, 0.05888958395817222], \"residuals\": [9.473160454945024e-05, -9.473160454944916e-05, -8.600552947499607e-05, -1.9823504287094264e-05, 6.905319299542988e-05, 9.473160454944916e-05, 4.467221570863373e-05, -9.47316045494484e-05], \"signed_band_weights\": [0.2716409110752929, -0.406199885025839, 0.0, 0.0, 0.0, 0.22835908892470716, 0.0, -0.0938001149741611], \"projected_columns\": [0.0, 5.551115123125783e-17, -0.06883078110487534, -4.336808689942018e-19], \"norm_one\": 1.0000000000000002, \"lower_bound\": 9.473160454944929e-05}\n{\"source_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"mesh\": 26, \"q\": 0.0, \"carrier\": \"volume\", \"max_band_surface_volume_difference\": 2.913784437254957e-10, \"optimum\": 9.880436027091031e-05, \"parameters\": [-0.0034875144659640665, 0.002488833864873083, 0.0, 0.0604874646371216], \"residuals\": [9.880436027090976e-05, -9.880436027091062e-05, -7.994870625636181e-05, -5.7722010577104365e-06, 7.473847220843878e-05, 9.880436027090997e-05, 4.3006381296073004e-05, -9.880436027091073e-05], \"signed_band_weights\": [0.2711591048624687, -0.40579839133413753, 0.0, 0.0, 0.0, 0.22884089513753117, 0.0, -0.09420160866586236], \"projected_columns\": [-2.7755575615628914e-17, -5.551115123125783e-17, -0.006880183029666281, 2.168404344971009e-18], \"norm_one\": 0.9999999999999998, \"lower_bound\": 9.88043602709103e-05}\n{\"source_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"mesh\": 26, \"q\": 0.0, \"carrier\": \"surface\", \"max_band_surface_volume_difference\": 2.913784437254957e-10, \"optimum\": 9.880436211107069e-05, \"parameters\": [-0.0034875142987312864, 0.002488833945519272, 0.0, 0.060487469642855285], \"residuals\": [9.880436211107103e-05, -9.880436211106972e-05, -7.994856130939484e-05, -5.772391857807729e-06, 7.473852857292846e-05, 9.880436211107124e-05, 4.300633173488907e-05, -9.880436211106983e-05], \"signed_band_weights\": [0.2711591048624687, -0.40579839133413753, 0.0, 0.0, 0.0, 0.22884089513753117, 0.0, -0.09420160866586236], \"projected_columns\": [-2.7755575615628914e-17, -5.551115123125783e-17, -0.006880183029666281, 2.168404344971009e-18], \"norm_one\": 0.9999999999999998, \"lower_bound\": 9.880436211107073e-05}\n{\"source_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"mesh\": 26, \"q\": 0.0001, \"carrier\": \"volume\", \"max_band_surface_volume_difference\": 1.0676417678536984e-08, \"optimum\": 9.319561173798354e-05, \"parameters\": [-0.0035851144128004053, 0.0023851702053395226, 0.00017637384526793023, 0.0593979433289497], \"residuals\": [9.319561173798396e-05, -9.319561173798396e-05, -9.319561173798353e-05, -3.981569521133805e-05, 6.39696498882028e-05, 9.319561173798375e-05, 5.425071595142265e-05, -9.319561173798385e-05], \"signed_band_weights\": [0.1722490303103377, -0.04213061695557235, -0.33395823160599003, 0.0, 0.0, 0.32775096968966233, 0.0, -0.12391115143843764], \"projected_columns\": [0.0, 1.3877787807814457e-16, -2.7755575615628914e-17, -8.673617379884035e-19], \"norm_one\": 1.0, \"lower_bound\": 9.319561173798357e-05}\n{\"source_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"mesh\": 26, \"q\": 0.0001, \"carrier\": \"surface\", \"max_band_surface_volume_difference\": 1.0676417678536984e-08, \"optimum\": 9.319567157591316e-05, \"parameters\": [-0.0035851384639484273, 0.002385164502172964, 0.0001764051418405831, 0.059398249944541175], \"residuals\": [9.319567157591415e-05, -9.319567157591263e-05, -9.319567157591198e-05, -3.981035300542018e-05, 6.39696445356385e-05, 9.319567157591393e-05, 5.424966380740512e-05, -9.319567157591176e-05], \"signed_band_weights\": [0.1722490303103377, -0.04213061695557235, -0.33395823160599003, 0.0, 0.0, 0.32775096968966233, 0.0, -0.12391115143843764], \"projected_columns\": [0.0, 1.3877787807814457e-16, -2.7755575615628914e-17, -8.673617379884035e-19], \"norm_one\": 1.0, \"lower_bound\": 9.319567157591309e-05}\n{\"source_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"mesh\": 26, \"q\": 0.0002, \"carrier\": \"volume\", \"max_band_surface_volume_difference\": 2.1291722695918405e-08, \"optimum\": 9.300134968430376e-05, \"parameters\": [-0.0035409326702783243, 0.002390808671457701, 0.00011976631560985511, 0.05860198970630488], \"residuals\": [9.300134968430397e-05, -9.30013496843031e-05, -9.300134968430376e-05, -4.246713934153725e-05, 6.34903048794197e-05, 9.300134968430441e-05, 5.659668913467642e-05, -9.300134968430278e-05], \"signed_band_weights\": [0.16558889391218132, -0.01762468235777273, -0.3564670894999581, 0.0, 0.0, 0.33441110608781915, 0.0, -0.12590822814226962], \"projected_columns\": [2.7755575615628914e-17, 3.0531133177191805e-16, 1.1102230246251565e-16, -2.6020852139652106e-18], \"norm_one\": 1.0000000000000009, \"lower_bound\": 9.300134968430414e-05}\n{\"source_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"mesh\": 26, \"q\": 0.0002, \"carrier\": \"surface\", \"max_band_surface_volume_difference\": 2.1291722695918405e-08, \"optimum\": 9.300128949719907e-05, \"parameters\": [-0.0035409581221145445, 0.0023908026742969738, 0.00011979759365133666, 0.05860223340091069], \"residuals\": [9.300128949719932e-05, -9.300128949719867e-05, -9.300128949719889e-05, -4.245616656325642e-05, 6.349021195334987e-05, 9.300128949719954e-05, 5.6594466386418506e-05, -9.300128949719791e-05], \"signed_band_weights\": [0.16558889391218132, -0.01762468235777273, -0.3564670894999581, 0.0, 0.0, 0.33441110608781915, 0.0, -0.12590822814226962], \"projected_columns\": [2.7755575615628914e-17, 3.0531133177191805e-16, 1.1102230246251565e-16, -2.6020852139652106e-18], \"norm_one\": 1.0000000000000009, \"lower_bound\": 9.300128949719945e-05}\n{\"source_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"mesh\": 34, \"q\": -0.0002, \"carrier\": \"volume\", \"max_band_surface_volume_difference\": 5.465373208038762e-09, \"optimum\": 9.119241868430567e-05, \"parameters\": [-0.0034635843240805025, 0.0024228751905202295, 0.0, 0.05746215536057707], \"residuals\": [9.119241868430568e-05, -8.994832632658344e-05, -9.119241868430525e-05, -3.301352503645824e-05, 6.41412791447919e-05, 9.119241868430633e-05, 4.6378983181302237e-05, -9.119241868430525e-05], \"signed_band_weights\": [0.1608727631403361, 0.0, -0.372728543459398, 0.0, 0.0, 0.3391272368596641, 0.0, -0.1272714565406024], \"projected_columns\": [-1.6653345369377348e-16, -3.3306690738754696e-16, -0.009573478408676755, 6.938893903907228e-18], \"norm_one\": 1.0000000000000004, \"lower_bound\": 9.119241868430572e-05}\n{\"source_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"mesh\": 34, \"q\": -0.0002, \"carrier\": \"surface\", \"max_band_surface_volume_difference\": 5.465373208038762e-09, \"optimum\": 9.119241878866654e-05, \"parameters\": [-0.0034635831143211135, 0.0024228704639326255, 0.0, 0.05746193758660807], \"residuals\": [9.119241878866664e-05, -8.994620489936162e-05, -9.119241878866643e-05, -3.301940202003967e-05, 6.414101851747183e-05, 9.1192418788666e-05, 4.638105608780537e-05, -9.119241878866524e-05], \"signed_band_weights\": [0.1608727631403361, 0.0, -0.372728543459398, 0.0, 0.0, 0.3391272368596641, 0.0, -0.1272714565406024], \"projected_columns\": [-1.6653345369377348e-16, -3.3306690738754696e-16, -0.009573478408676755, 6.938893903907228e-18], \"norm_one\": 1.0000000000000004, \"lower_bound\": 9.119241878866647e-05}\n{\"source_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"mesh\": 34, \"q\": -0.0001, \"carrier\": \"volume\", \"max_band_surface_volume_difference\": 2.7536697447001074e-09, \"optimum\": 9.475162061865511e-05, \"parameters\": [-0.0034747333797439605, 0.0024540910637452216, 0.0, 0.058894856259631125], \"residuals\": [9.475162061865533e-05, -9.475162061865511e-05, -8.600799476369517e-05, -1.9806313819912364e-05, 6.90677883034257e-05, 9.475162061865533e-05, 4.4654869389361375e-05, -9.475162061865511e-05], \"signed_band_weights\": [0.27170205248964313, -0.4062508353565179, 0.0, 0.0, 0.0, 0.22829794751035679, 0.0, -0.093749164643482], \"projected_columns\": [1.3877787807814457e-17, 2.7755575615628914e-17, -0.06884609504386058, -4.336808689942018e-19], \"norm_one\": 0.9999999999999998, \"lower_bound\": 9.475162061865528e-05}\n{\"source_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"mesh\": 34, \"q\": -0.0001, \"carrier\": \"surface\", \"max_band_surface_volume_difference\": 2.7536697447001074e-09, \"optimum\": 9.475120067632327e-05, \"parameters\": [-0.0034747306637167704, 0.0024540851983729144, 0.0, 0.05889461095173729], \"residuals\": [9.47512006763229e-05, -9.475120067632399e-05, -8.60085923050449e-05, -1.9810040922704775e-05, 6.906702986778264e-05, 9.475120067632356e-05, 4.4655840565589354e-05, -9.475120067632399e-05], \"signed_band_weights\": [0.27170205248964313, -0.4062508353565179, 0.0, 0.0, 0.0, 0.22829794751035679, 0.0, -0.093749164643482], \"projected_columns\": [1.3877787807814457e-17, 2.7755575615628914e-17, -0.06884609504386058, -4.336808689942018e-19], \"norm_one\": 0.9999999999999998, \"lower_bound\": 9.475120067632346e-05}\n{\"source_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"mesh\": 34, \"q\": 0.0, \"carrier\": \"volume\", \"max_band_surface_volume_difference\": 3.265789147357395e-10, \"optimum\": 9.881880285181128e-05, \"parameters\": [-0.0034882774099838014, 0.0024894153261575433, 0.0, 0.06048916416570933], \"residuals\": [9.881880285181116e-05, -9.881880285181137e-05, -7.996348710245858e-05, -5.78330441328395e-06, 7.474306880680655e-05, 9.881880285181116e-05, 4.300954219761915e-05, -9.881880285181311e-05], \"signed_band_weights\": [0.27119577749835927, -0.40582895135609687, 0.0, 0.0, 0.0, 0.22880422250164048, 0.0, -0.09417104864390287], \"projected_columns\": [1.3877787807814457e-17, 0.0, -0.006882992710263353, -2.168404344971009e-18], \"norm_one\": 0.9999999999999996, \"lower_bound\": 9.881880285181124e-05}\n{\"source_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"mesh\": 34, \"q\": 0.0, \"carrier\": \"surface\", \"max_band_surface_volume_difference\": 3.265789147357395e-10, \"optimum\": 9.881883853857415e-05, \"parameters\": [-0.0034882773093649626, 0.0024894154591619537, 0.0, 0.06048917308758648], \"residuals\": [9.881883853857416e-05, -9.881883853857416e-05, -7.996320828404816e-05, -5.783442193665238e-06, 7.47431034772031e-05, 9.881883853857395e-05, 4.3009517890608756e-05, -9.881883853857568e-05], \"signed_band_weights\": [0.27119577749835927, -0.40582895135609687, 0.0, 0.0, 0.0, 0.22880422250164048, 0.0, -0.09417104864390287], \"projected_columns\": [1.3877787807814457e-17, 0.0, -0.006882992710263353, -2.168404344971009e-18], \"norm_one\": 0.9999999999999996, \"lower_bound\": 9.881883853857408e-05}\n{\"source_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"mesh\": 34, \"q\": 0.0001, \"carrier\": \"volume\", \"max_band_surface_volume_difference\": 2.501432690973568e-09, \"optimum\": 9.321008218220121e-05, \"parameters\": [-0.003585799948985708, 0.002385741236458194, 0.000176291181602588, 0.05939800423286719], \"residuals\": [9.321008218220184e-05, -9.321008218220075e-05, -9.321008218220054e-05, -3.9818076791366726e-05, 6.397444397704703e-05, 9.321008218220205e-05, 5.4265122722746634e-05, -9.321008218220075e-05], \"signed_band_weights\": [0.172278348322874, -0.04213736174777663, -0.3339792330978415, 0.0, 0.0, 0.3277216516771257, 0.0, -0.12388340515438157], \"projected_columns\": [0.0, -1.3877787807814457e-16, -5.551115123125783e-17, -1.734723475976807e-18], \"norm_one\": 0.9999999999999993, \"lower_bound\": 9.321008218220116e-05}\n{\"source_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"mesh\": 34, \"q\": 0.0001, \"carrier\": \"surface\", \"max_band_surface_volume_difference\": 2.501432690973568e-09, \"optimum\": 9.321002497075762e-05, \"parameters\": [-0.003585807402977754, 0.0023857393981638352, 0.00017630141633549962, 0.05939811527141941], \"residuals\": [9.321002497075749e-05, -9.321002497075857e-05, -9.321002497075835e-05, -3.981744893788138e-05, 6.397433622026393e-05, 9.321002497075727e-05, 5.426485100064316e-05, -9.321002497075879e-05], \"signed_band_weights\": [0.172278348322874, -0.04213736174777663, -0.3339792330978415, 0.0, 0.0, 0.3277216516771257, 0.0, -0.12388340515438157], \"projected_columns\": [0.0, -1.3877787807814457e-16, -5.551115123125783e-17, -1.734723475976807e-18], \"norm_one\": 0.9999999999999993, \"lower_bound\": 9.321002497075746e-05}\n{\"source_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"mesh\": 34, \"q\": 0.0002, \"carrier\": \"volume\", \"max_band_surface_volume_difference\": 5.048109418979638e-09, \"optimum\": 9.30164078279889e-05, \"parameters\": [-0.0035416071092695014, 0.00239135739114399, 0.00011968651737417956, 0.05860142314438557], \"residuals\": [9.301640782798928e-05, -9.301640782798885e-05, -9.301640782798885e-05, -4.246150162681792e-05, 6.349542200235147e-05, 9.301640782798885e-05, 5.662256873823922e-05, -9.301640782798863e-05], \"signed_band_weights\": [0.16561696269139337, -0.01762216112239795, -0.35649785764071795, 0.0, 0.0, 0.3343830373086066, 0.0, -0.12587998123688404], \"projected_columns\": [0.0, -8.326672684688674e-17, -1.1102230246251565e-16, 0.0], \"norm_one\": 0.9999999999999998, \"lower_bound\": 9.301640782798872e-05}\n{\"source_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"mesh\": 34, \"q\": 0.0002, \"carrier\": \"surface\", \"max_band_surface_volume_difference\": 5.048109418979638e-09, \"optimum\": 9.301629461632138e-05, \"parameters\": [-0.003541614503469286, 0.0023913565096957377, 0.00011969596457637263, 0.05860155146657539], \"residuals\": [9.301629461632181e-05, -9.301629461632116e-05, -9.301629461632094e-05, -4.245966509037308e-05, 6.349531700415687e-05, 9.301629461632116e-05, 5.6621883900467764e-05, -9.301629461632105e-05], \"signed_band_weights\": [0.16561696269139337, -0.01762216112239795, -0.35649785764071795, 0.0, 0.0, 0.3343830373086066, 0.0, -0.12587998123688404], \"projected_columns\": [0.0, -8.326672684688674e-17, -1.1102230246251565e-16, 0.0], \"norm_one\": 0.9999999999999998, \"lower_bound\": 9.301629461632108e-05}\n",
+      "stdout_sha256": "a4a24169afe5548f30bf21ebdfeddef9759ddde6de9b573b986d8980b77159e1"
+    },
+    "exact_cofactors": {
+      "label": "exact_cofactors",
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "free-flare-referee",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/free_radial_band_ref01/exact",
+        "--",
+        "python3",
+        "_scratch/s11c/free_radial_band_ref01/check.py",
+        "_scratch/s11c/free_radial_direction01/n26",
+        "_scratch/s11c/free_radial_direction01/n34"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "deadline": null,
+      "source_sha256": "cd35875c08f73de4f4d99f5b219fb70095f38b7ef4208bcb51bc2109167b6656",
+      "literal_stdout": "{\"mesh\": 26, \"q\": 0.0, \"carrier_surface\": 9.88043621110707e-05, \"carrier_volume\": 9.88043602709103e-05}\n{\"mesh\": 26, \"q\": 0.0002, \"carrier_surface\": 9.300128949719913e-05, \"carrier_volume\": 9.30013496843038e-05}\n{\"mesh\": 26, \"q\": -0.0002, \"carrier_surface\": 9.118003153085553e-05, \"carrier_volume\": 9.117991140343326e-05}\n{\"mesh\": 26, \"q\": 0.0001, \"carrier_surface\": 9.319567157591314e-05, \"carrier_volume\": 9.319561173798352e-05}\n{\"mesh\": 26, \"q\": -0.0001, \"carrier_surface\": 9.473160454944932e-05, \"carrier_volume\": 9.473335015428564e-05}\n{\"mesh\": 34, \"q\": 0.0, \"carrier_surface\": 9.881883853857431e-05, \"carrier_volume\": 9.881880285181146e-05}\n{\"mesh\": 34, \"q\": 0.0002, \"carrier_surface\": 9.301629461632128e-05, \"carrier_volume\": 9.301640782798889e-05}\n{\"mesh\": 34, \"q\": -0.0002, \"carrier_surface\": 9.11924187886662e-05, \"carrier_volume\": 9.119241868430555e-05}\n{\"mesh\": 34, \"q\": 0.0001, \"carrier_surface\": 9.321002497075773e-05, \"carrier_volume\": 9.321008218220124e-05}\n{\"mesh\": 34, \"q\": -0.0001, \"carrier_surface\": 9.475120067632332e-05, \"carrier_volume\": 9.475162061865517e-05}\n",
+      "stdout_sha256": "f9ab6a96265b2df3185b989e919eb95edd35b1f5f0e00e2bea10dad25706d86c"
+    },
+    "reference": {
+      "label": "reference",
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "equilibrium-geometry",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/shape_independent01/reference",
+        "--",
+        "python3",
+        "_scratch/s11c/shape_independent01/geometry.py"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "deadline": null,
+      "source_sha256": "2b6c1111a75e98dccbade883bc95463e93c9c192d45d2d18bcbc0856c7a4f04e",
+      "literal_stdout": "{\"mesh\": 26, \"coefficients\": [0.35096369360847995, -1.0, 0.0, 0.9380082074007842, 0.0, 0.0, -0.5411696088108164, 0.2801157010438517], \"weighted_volumes\": [0.23627246702033455, -0.5505893829213222, 0.0, 0.48352445329210775, 0.0, 0.0, -0.3783063870060049, 0.20909884961488487], \"geometry\": [\"area\", \"volume\", \"volume_w\"], \"first\": [4.9404924595819466e-15, 1.1102230246251565e-16, 2.220446049250313e-16], \"second\": [1920.336017437182, 1.9621389769708784, 2.9808397396372217], \"fd_second\": [1920.336016717067, 1.9621389770463349, 2.9808397398189967], \"pressure_work\": 3.814468958284934e-05, \"wave_work\": 2.6020852139652106e-18}\n{\"mesh\": 34, \"coefficients\": [0.3512276095854132, -1.0, 0.0, 0.9355896127241875, 0.0, 0.0, -0.535852466144848, 0.2765684872189978], \"weighted_volumes\": [0.23645013804469317, -0.5505893829213222, 0.0, 0.4822777161532322, 0.0, 0.0, -0.3745894210152906, 0.20645094973868744], \"geometry\": [\"area\", \"volume\", \"volume_w\"], \"first\": [-1.2101430968414206e-14, 1.3877787807814457e-16, 4.440892098500626e-16], \"second\": [1910.0451230234141, 1.9516871197922392, 2.9622047117124857], \"fd_second\": [1910.045122306553, 1.9516871199581898, 2.9622047116317773], \"pressure_work\": 3.847012699555665e-05, \"wave_work\": 1.734723475976807e-18}\n{\"mesh\": 48, \"coefficients\": [0.35122586179746884, -1.0, 0.0, 0.9356056299042914, 0.0, 0.0, -0.5358876790007925, 0.27659197869470026], \"weighted_volumes\": [0.2364489614153809, -0.5505893829213222, 0.0, 0.4822859726889341, 0.0, 0.0, -0.37461403667753695, 0.20646848549454416], \"geometry\": [\"area\", \"volume\", \"volume_w\"], \"first\": [2.325917236589703e-14, -8.326672684688674e-17, 0.0], \"second\": [1910.1130157507632, 1.9517560547605193, 2.962327600417133], \"fd_second\": [1910.1130150343538, 1.9517560547743784, 2.9623276006085497], \"pressure_work\": 3.8472833428191566e-05, \"wave_work\": 0.0}\n",
+      "stdout_sha256": "f53df4b93654810ccfdf1f288ca0ed87dbcda3c4a5aa1d1152b2928e704b47d7"
+    },
+    "wave03": {
+      "label": "wave03",
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "equilibrium-geometry",
+        "--memory-gib",
+        "4",
+        "--log-directory",
+        "_scratch/s11c/shape_independent01/wave03",
+        "--",
+        "python3",
+        "_scratch/s11c/shape_independent01/wave.py",
+        "--wave-step",
+        ".03",
+        "--coefficients",
+        "[0.3512276095854132,-1,0,0.9355896127241875,0,0,-0.535852466144848,0.2765684872189978]"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "deadline": null,
+      "source_sha256": "28592343b8210da75d18e10c65a80b2c2d8a6b400f97a1f3c2b7d9510fc819fd",
+      "literal_stdout": "{\"implementation\": \"sampled\", \"coefficients\": [0.3512276095854132, -1.0, 0.0, 0.9355896127241875, 0.0, 0.0, -0.535852466144848, 0.2765684872189978], \"omega\": 2.1400620589380748, \"force_per_action\": -0.0005566014297954658, \"force_slope_per_action\": -0.06118363563022796, \"response_residual\": 5.296972367123641e-15, \"mesh\": 0.03, \"pad\": 5}\n{\"implementation\": \"hat_average\", \"coefficients\": [0.3512276095854132, -1.0, 0.0, 0.9355896127241875, 0.0, 0.0, -0.535852466144848, 0.2765684872189978], \"omega\": 2.1400620589380748, \"force_per_action\": 1.2629845197886868e-16, \"force_slope_per_action\": -0.04702240296290362, \"response_residual\": 4.755187080511005e-15, \"mesh\": 0.03, \"pad\": 5}\n",
+      "stdout_sha256": "f9d832be3cf8a3aac6716692a2fd7bb42e5da7505b184471ca4a67eb897e8737"
+    },
+    "wave02": {
+      "label": "wave02",
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "equilibrium-geometry",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/shape_independent01/wave02",
+        "--",
+        "python3",
+        "_scratch/s11c/shape_independent01/wave.py",
+        "--wave-step",
+        ".02",
+        "--coefficients",
+        "[0.3512276095854132,-1,0,0.9355896127241875,0,0,-0.535852466144848,0.2765684872189978]"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "deadline": null,
+      "source_sha256": "28592343b8210da75d18e10c65a80b2c2d8a6b400f97a1f3c2b7d9510fc819fd",
+      "literal_stdout": "{\"implementation\": \"sampled\", \"coefficients\": [0.3512276095854132, -1.0, 0.0, 0.9355896127241875, 0.0, 0.0, -0.535852466144848, 0.2765684872189978], \"omega\": 2.1401722775564633, \"force_per_action\": 2.796291741290268e-05, \"force_slope_per_action\": -0.06039584595544599, \"response_residual\": 1.0500593871370855e-14, \"mesh\": 0.02, \"pad\": 5}\n{\"implementation\": \"hat_average\", \"coefficients\": [0.3512276095854132, -1.0, 0.0, 0.9355896127241875, 0.0, 0.0, -0.535852466144848, 0.2765684872189978], \"omega\": 2.1401722775564633, \"force_per_action\": 2.403603710053019e-08, \"force_slope_per_action\": -0.05315214699363511, \"response_residual\": 1.0354635541648066e-14, \"mesh\": 0.02, \"pad\": 5}\n",
+      "stdout_sha256": "a9544bf9c4069fd701922c110f02c4783052ffd8f41ad493341e185f3037c02f"
+    },
+    "wave015": {
+      "label": "wave015",
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "equilibrium-geometry",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/shape_independent01/wave015",
+        "--",
+        "python3",
+        "_scratch/s11c/shape_independent01/wave.py",
+        "--wave-step",
+        ".015",
+        "--coefficients",
+        "[0.3512276095854132,-1,0,0.9355896127241875,0,0,-0.535852466144848,0.2765684872189978]"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "deadline": null,
+      "source_sha256": "28592343b8210da75d18e10c65a80b2c2d8a6b400f97a1f3c2b7d9510fc819fd",
+      "literal_stdout": "{\"implementation\": \"sampled\", \"coefficients\": [0.3512276095854132, -1.0, 0.0, 0.9355896127241875, 0.0, 0.0, -0.535852466144848, 0.2765684872189978], \"omega\": 2.140210833758586, \"force_per_action\": 3.887293598140887e-05, \"force_slope_per_action\": -0.06032815620827998, \"response_residual\": 1.5473929103644542e-14, \"mesh\": 0.015, \"pad\": 5}\n{\"implementation\": \"hat_average\", \"coefficients\": [0.3512276095854132, -1.0, 0.0, 0.9355896127241875, 0.0, 0.0, -0.535852466144848, 0.2765684872189978], \"omega\": 2.140210833758586, \"force_per_action\": 2.0848732844867465e-08, \"force_slope_per_action\": -0.05600949179283943, \"response_residual\": 1.7149017853511378e-14, \"mesh\": 0.015, \"pad\": 5}\n",
+      "stdout_sha256": "35f588babb417f6cd08661969a15e3aa856c28810f3b810cf466e48354a0c53b"
+    },
+    "band_bound": {
+      "label": "band_bound",
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "equilibrium-geometry",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/shape_independent01/band_bound",
+        "--",
+        "python3",
+        "_scratch/s11c/shape_independent01/bounds.py",
+        "_scratch/s11c/free_radial_direction01/n26",
+        "_scratch/s11c/free_radial_direction01/n34"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "deadline": null,
+      "source_sha256": "8efcd5379643e41a187ede51e74ba1b4d03b7b026a90eeabc459031a338fe942",
+      "literal_stdout": "{\"stdout_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"n\": 26, \"q\": 0.0, \"volume_lower_bound\": 9.880436027091079e-05, \"wall_lower_bound\": 9.88043621110712e-05}\n{\"stdout_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"n\": 26, \"q\": 0.0002, \"volume_lower_bound\": 9.300134968430396e-05, \"wall_lower_bound\": 9.300128949719936e-05}\n{\"stdout_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"n\": 26, \"q\": -0.0002, \"volume_lower_bound\": 9.117991140343314e-05, \"wall_lower_bound\": 9.118003153085532e-05}\n{\"stdout_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"n\": 26, \"q\": 0.0001, \"volume_lower_bound\": 9.319561173798381e-05, \"wall_lower_bound\": 9.319567157591333e-05}\n{\"stdout_sha256\": \"2db692ddf165b8dcfbc8207bfad0dc41450a17996c7efcd8205121fff2117c14\", \"n\": 26, \"q\": -0.0001, \"volume_lower_bound\": 9.47333501542858e-05, \"wall_lower_bound\": 9.473160454944951e-05}\n{\"stdout_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"n\": 34, \"q\": 0.0, \"volume_lower_bound\": 9.881880285181146e-05, \"wall_lower_bound\": 9.88188385385744e-05}\n{\"stdout_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"n\": 34, \"q\": 0.0002, \"volume_lower_bound\": 9.301640782798906e-05, \"wall_lower_bound\": 9.301629461632154e-05}\n{\"stdout_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"n\": 34, \"q\": -0.0002, \"volume_lower_bound\": 9.119241868430561e-05, \"wall_lower_bound\": 9.11924187886663e-05}\n{\"stdout_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"n\": 34, \"q\": 0.0001, \"volume_lower_bound\": 9.321008218220157e-05, \"wall_lower_bound\": 9.321002497075799e-05}\n{\"stdout_sha256\": \"fdb28165630f334a3cc3e5921a6861a35b9b0fac5a3a3a2ec2dbc0e52e505a27\", \"n\": 34, \"q\": -0.0001, \"volume_lower_bound\": 9.475162061865514e-05, \"wall_lower_bound\": 9.475120067632331e-05}\n",
+      "stdout_sha256": "5a8fb60754bdb46d2cdb14e1d2f4f88d7d5acceb13bd177cdeed4d9785f0737b"
+    }
+  },
+  "standalone_instruments": {
+    "_scratch/s11c/free_radial_band_ref01/check.py": {
+      "contents": "\"\"\"Independent exact dual bounds via all extremal supports of the l1 ball slice.\"\"\"\nfrom fractions import Fraction\nfrom itertools import combinations\nimport json\nfrom pathlib import Path\nimport sys\n\ndef det(matrix):\n    if len(matrix)==1:\n        return matrix[0][0]\n    return sum((-1)**j * value * det([r[:j]+r[j+1:] for r in matrix[1:]])\n               for j,value in enumerate(matrix[0]))\n\ndef certificates(columns):\n    for n_equal in range(3):\n        for extra in combinations((2,3),n_equal):\n            eq=(0,1)+extra\n            for index in combinations(range(len(columns[0])),len(eq)+1):\n                matrix=[[columns[k][i] for i in index] for k in eq]\n                cofs=[(-1)**j*det([row[:j]+row[j+1:] for row in matrix]) for j in range(len(index))]\n                length=sum(map(abs,cofs))\n                if not length:\n                    continue\n                for sign in (1,-1):\n                    w=[sign*v/length for v in cofs]\n                    product=[sum(x*col[i] for x,i in zip(w,index)) for col in columns]\n                    if product[:2] != [0,0] or max(product[2:])>0:\n                        continue\n                    yield index,w\n\ndef check(row):\n    bands=row['bands']\n    columns=[[1]*len(bands),[b['mean_depth'] for b in bands],\n             [b['curvature'] for b in bands],[-b['wave_pressure_per_action'] for b in bands]]\n    bound={'carrier_surface': Fraction(0),'carrier_volume': Fraction(0)}\n    for index,w in certificates(columns):\n        for key,old in list(bound.items()):\n            v=sum(x*bands[i][key] for i,x in zip(index,w))\n            if v>old: bound[key]=v\n    print(json.dumps(dict(mesh=row['mesh'],q=float(row['q']),**{k:float(v) for k,v in bound.items()})),flush=True)\n\nfor folder in sys.argv[1:]:\n    f=Path(folder)\n    outcome=json.loads((f/'outcome.json').read_text())\n    assert outcome['exitCode']==outcome['childOutcome']['exitCode']==0 and outcome['limitsVerified']\n    rows=[json.loads(s,parse_float=Fraction) for s in (f/'stdout').read_text().splitlines()]\n    for row in rows:\n        if row['test']=='force':\n            check(row)\n",
+      "sha256": "cd35875c08f73de4f4d99f5b219fb70095f38b7ef4208bcb51bc2109167b6656"
+    },
+    "_scratch/s11c/shape_independent01/geometry.py": {
+      "contents": "\"\"\"Independent radial-coordinate normalization and analytic geometry Hessians on five-band support.\"\"\"\nfrom pathlib import Path\nimport hashlib,json,math\nimport numpy as np\nfrom scipy.integrate import quad\nroot=Path('research/pde_ledger_v3/_measurements')\narchive=json.loads((root/'mouth_free_equilibrium_inputs.json').read_text())\ntxt=archive['literal_stdout']\nassert hashlib.sha256(txt.encode()).hexdigest()==archive['stdout_sha256']\nrows=[json.loads(s) for s in txt.splitlines()]\ndef geom(z):\n t=(z-1.2)/1.85\n return 1+.5*t*t*(3-2*t), 3*t*(1-t)/1.85\ndef eff(direct, bands, v, pert):\n ans=np.zeros(6)\n for coeff,(lo,hi) in zip(direct,bands):\n  h=hi-lo\n  def integrand(t, k):\n   z=lo+h*t\n   r,p=geom(z)\n   v=coeff*16*t*t*(1-t)**2\n   v1=coeff*32*t*(1-t)*(1-2*t)/h\n   r+=pert*v;p+=pert*v1\n   l=math.hypot(1,p)\n   vals=(2*r*v*l+r*r*p*v1/l,r*r*v,z*r*r*v,2*v*v*l+4*r*v*p*v1/l+r*r*v1*v1/l**3,2*r*v*v,z*2*r*v*v)\n   return vals[k]*4*math.pi*h\n  for k in range(6): ans[k]+=quad(integrand,0,1,args=(k,),epsabs=1e-13,epsrel=4e-14)[0]\n return ans\nfor n in [26,34,48]:\n pre=next(r for r in rows if r['mesh']==n and r['test']=='preparation')\n row=next(r for r in rows if r['mesh']==n and r['test']=='affine_work' and r['method']=='volume')\n bands=pre['bands']\n vols=np.array([4*math.pi*(hi-lo)*quad(lambda t: geom(lo+(hi-lo)*t)[0]**2*16*t*t*(1-t)**2,0,1)[0] for lo,hi in bands])\n c=np.array(row['dual_weights'])/vols\n c/=max(abs(c))\n wave=np.array(pre['design'])[:,3]\n press=np.array(row['carrier_pressure'])\n g=eff(c,bands,vols,0)\n f=1e-6\n df=(eff(c,bands,vols,f)[:3]-eff(c,bands,vols,-f)[:3])/(2*f)\n print(json.dumps(dict(mesh=n, coefficients=c.tolist(),weighted_volumes=(c*vols).tolist(),geometry=['area','volume','volume_w'],first=g[:3].tolist(),second=g[3:].tolist(),fd_second=df.tolist(),pressure_work=c*vols@press,wave_work=-c*vols@wave)))\n np.testing.assert_allclose(g[:3],0,rtol=0,atol=1e-12)\n np.testing.assert_allclose(df,g[3:],rtol=1e-9,atol=3e-9)\n",
+      "sha256": "2b6c1111a75e98dccbade883bc95463e93c9c192d45d2d18bcbc0856c7a4f04e"
+    },
+    "_scratch/s11c/shape_independent01/wave.py": {
+      "contents": "\"\"\"Analytic curvature of the ground frequency using the constrained first-order mode response.\"\"\"\nimport sys\nsys.path.insert(0,'software/stage1_solver/tools')\nfrom pathlib import Path\nimport json,hashlib,math,argparse\nimport numpy as np,yaml\nfrom scipy import sparse\nfrom scipy.integrate import quad\nfrom scipy.special import expit\nfrom scipy.sparse.linalg import splu\nfrom mouth_wave_flare_work import Wave\nfrom mouth_trapped_wave_ports import ARCHIVE\nparser=argparse.ArgumentParser()\nparser.add_argument('--wave-step',type=float,required=True)\nparser.add_argument('--pad',type=float,default=5)\nparser.add_argument('--coefficients',required=True)\nargs=parser.parse_args()\ncoef=np.array(json.loads(args.coefficients))\nd=json.loads(Path('research/pde_ledger_v3/_measurements/mouth_free_equilibrium_inputs.json').read_text())\nassert hashlib.sha256(d['literal_stdout'].encode()).hexdigest()==d['stdout_sha256']\nbands=next(json.loads(l)['bands'] for l in d['literal_stdout'].splitlines() if json.loads(l)['test']=='preparation')\npars=yaml.safe_load(ARCHIVE.read_text())['parameters']\nwave=Wave(1.,1.,args.wave_step,args.pad,pars)\nomega,u,K,_,b=wave.ground(1.)\ngate=wave.gate(1.)[0]; d0=pars['delta_r']/2\nz=wave.w.ravel(); B=np.zeros_like(z); Bp=np.zeros_like(z)\nfor c,(lo,hi) in zip(coef,bands):\n def shape(w):\n  t=(w-lo)/(hi-lo)\n  return 16*t*t*(1-t)**2 if 0<t<1 else 0.\n for j,w in enumerate(z):\n  if w<=lo-args.wave_step or w>=hi+args.wave_step: continue\n  B[j]+=c*shape(w)\n  x0=max(lo,w-args.wave_step);x1=min(hi,w+args.wave_step)\n  parts=np.unique([x0,max(x0,min(x1,w)),x1])\n  Bp[j]+=c*sum(quad(lambda s: shape(s)*(1-abs(s-w)/args.wave_step)/args.wave_step,a,bb,epsabs=1e-14)[0] for a,bb in zip(parts[:-1],parts[1:]))\n# Invert on the complement of the mode without a dense extra row or outer product.\nA=(K-sparse.eye(len(u),format='csc')*omega**2).tocsc()\nk=abs(u).argmax()\nactive=np.arange(len(u))!=k\nfactor=splu(A[active][:,active].tocsc())\nfor shape,label in [(B,'sampled'),(Bp,'hat_average')]:\n K1=(-wave.contrast*gate*(1-b)*shape[None,:]/d0).ravel()\n K2=(K1.reshape(b.shape)*(1-2*b)*shape[None,:]/d0).ravel()\n e1=u@(K1*u)\n rhs=-(K1-e1)*u\n v=np.zeros_like(u);v[active]=factor.solve(rhs[active]);v-=u*(v@u)\n residual=np.linalg.norm(A@v-rhs)\n e2=u@(K2*u)+2*(u*K1)@v\n w1=e1/(2*omega);w2=e2/(2*omega)-e1**2/(4*omega**3)\n print(json.dumps(dict(implementation=label,coefficients=coef.tolist(),omega=omega,force_per_action=-w1,force_slope_per_action=-w2,response_residual=residual,mesh=args.wave_step,pad=args.pad)))\n assert residual<1e-8\n",
+      "sha256": "28592343b8210da75d18e10c65a80b2c2d8a6b400f97a1f3c2b7d9510fc819fd"
+    },
+    "_scratch/s11c/shape_independent01/bounds.py": {
+      "contents": "\"\"\"Independently bound force residuals by enumerating extreme dual band combinations.\"\"\"\nimport itertools\nimport json\nimport numpy as np\nfrom pathlib import Path\nfrom hashlib import sha256\nimport sys\nfor folder in (Path(arg) for arg in sys.argv[1:]):\n run=json.loads((folder/'outcome.json').read_text()); assert run['exitCode']==0 and run['limitsVerified']\n lines=(folder/'stdout').read_bytes()\n for r in map(json.loads, lines.splitlines()):\n  if r.get('test')!='force': continue\n  bs=r['bands']; D=np.array([[1,b['mean_depth'],b['curvature'],-b['wave_pressure_per_action']] for b in bs])\n  estimates=np.array([[b['carrier_volume'],b['carrier_surface']] for b in bs])\n  best=np.zeros(2)\n  for extra in [(),(2,),(3,),(2,3)]:\n   cols=(0,1,*extra)\n   for ix in itertools.combinations(range(len(bs)),len(cols)+1):\n    q=np.array(ix); mat=D[q][:,cols].T; scaled=mat/np.max(abs(mat),axis=1)[:,None]\n    u,sv,vh=np.linalg.svd(scaled,full_matrices=True)\n    if min(sv)<1e-12:continue\n    vec=vh[-1]/sum(abs(vh[-1]))\n    for sig in [-1,1]:\n     v=sig*vec\n     if np.max(v@D[q,2:])>1e-10:continue\n     best=np.maximum(best, v@estimates[q,:])\n  print(json.dumps(dict(stdout_sha256=sha256(lines).hexdigest(),n=r['mesh'],q=r['q'],volume_lower_bound=best[0],wall_lower_bound=best[1])))\n",
+      "sha256": "8efcd5379643e41a187ede51e74ba1b4d03b7b026a90eeabc459031a338fe942"
+    }
+  }
+}

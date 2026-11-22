@@ -26,7 +26,7 @@ def archived_shape(radius, state):
     return np.array(sample["coordinates"])
 
 
-def exterior(shape, mesh, cut=4.6):
+def exterior(shape, mesh, cut=4.6, *, return_side_field=False):
     # Three material blocks meet at the disk rim. The receiver wraps the
     # outside of the duct and occupies the whole domain above the terminal disk.
     t = np.linspace(0, 1, mesh+1)
@@ -58,6 +58,8 @@ def exterior(shape, mesh, cut=4.6):
                 boundary[node] = 0.
             elif i == len(xt)-1 and not inner:
                 boundary[node] = expit(-zt[j]/DELTA)
+        if return_side_field and not above:
+            side_ids = ids
         e = np.stack([ids[:-1, :-1], ids[:-1, 1:], ids[1:, :-1], ids[1:, 1:]], -1)
         dx = np.diff(xt)[None, :]
         dz = np.diff(zt)[:, None]
@@ -126,8 +128,11 @@ def exterior(shape, mesh, cut=4.6):
     else:
         raise ArithmeticError("Exterior order did not settle")
     a_b = 3/DELTA
-    return dict(energy=a_b*energy(chi), minimum_order=min(chi), maximum_order=max(chi),
-                residual=max(abs(residual)), last_step=max(abs(step)), iterations=iteration)
+    result = dict(energy=a_b*energy(chi), minimum_order=min(chi), maximum_order=max(chi),
+                  residual=max(abs(residual)), last_step=max(abs(step)), iterations=iteration)
+    if return_side_field:
+        return result, (wa, xout, chi[side_ids])
+    return result
 
 
 def main():

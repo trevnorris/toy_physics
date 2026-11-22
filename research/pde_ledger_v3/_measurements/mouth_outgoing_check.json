@@ -1,0 +1,198 @@
+{
+  "scope": "Homogeneous acoustic calibrations and leading-monopole stationary truncations on the draining carrier. No harmonic outgoing force on the physical geometry was measured.",
+  "checkpoint": "719b3d31",
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_outgoing_stationary_match.py": "4316a71531b5a758cff22ab5edab8a04ee246248d764b51120593ca3e0f4f25b",
+    "software/stage1_solver/tools/mouth_outgoing_dipole_calibration.py": "4d8f3c9ea99ed1842cebee66aeda0384c59ef13dc07e5cc7f33188421520018f",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "software/stage1_solver/tools/mouth_occupied_push_baths.py": "54b13d121c771baeae844dd175fbd276e1f792f195c5aa7eeedb5dba6ad1d579"
+  },
+  "calibration": {
+    "command": [
+      "python3",
+      "scripts/s11c_guarded_run.py",
+      "--pool",
+      "outgoing-dipole",
+      "--memory-gib",
+      "1",
+      "--log-directory",
+      "_scratch/s11c/outgoing_dipole_calibration02",
+      "--",
+      "python3",
+      "software/stage1_solver/tools/mouth_outgoing_dipole_calibration.py"
+    ],
+    "exit_code": 0,
+    "limits_verified": true,
+    "swap_bytes": 0,
+    "stdout": "{\"test\": \"preparation\", \"rho\": 1, \"sound_speed\": 1, \"sphere_radius\": 1, \"phasor\": \"exp(+i omega t)\", \"power\": \"2*mean outward power/|V|^2\", \"rigid_velocity\": 1, \"translated_static_flux\": 1, \"translated_displacement\": 1, \"probe_radii\": [\"1\", \"18\", \"8/k\"], \"digits\": 70}\n{\"test\": \"ideal_dipole\", \"dimension\": 3, \"omega\": 0.000225, \"specific_impedance\": [6.407226562499996e-16, 0.00011250000284765618], \"integrated_impedance\": [2.6838527864847162e-15, 0.0004712389099667033], \"specific_wronskian\": 6.407226562499996e-16, \"rigid_power\": [2.6838527864847162e-15, 2.6838527864847162e-15, 2.6838527864847162e-15], \"translated_Q1_power_per_speed_squared\": [1.342869832337867e-09, 1.342869832337867e-09, 1.342869832337867e-09], \"translated_wronskian\": 1.342869832337867e-09, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-1.999995899391815, -8.303731574510712e-09], \"resistance\": 2.6838527864847162e-15}, {\"radius\": 13.5, \"radius_dtn\": [-1.9999907736788758, -2.8024950414797337e-08], \"resistance\": 2.6838527864847162e-15}, {\"radius\": 18.0, \"radius_dtn\": [-1.9999835977690377, -6.642903539774689e-08], \"resistance\": 2.6838527864847162e-15}]}\n{\"test\": \"ideal_dipole\", \"dimension\": 3, \"omega\": 0.000637, \"specific_impedance\": [4.1162120340248307e-14, 0.00031850006461870014], \"integrated_impedance\": [1.7241948648947076e-13, 0.0013341299508986438], \"specific_wronskian\": 4.1162120340248307e-14, \"rigid_power\": [1.7241948648947076e-13, 1.7241948648947076e-13, 1.7241948648947076e-13], \"translated_Q1_power_per_speed_squared\": [1.0763357017242547e-08, 1.0763357017242547e-08, 1.0763357017242547e-08], \"translated_wronskian\": 1.0763357017242547e-08, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-1.9999671337912233, -1.8842197491749643e-07], \"resistance\": 1.7241948648947076e-13}, {\"radius\": 13.5, \"radius_dtn\": [-1.9999260540681552, -6.358980408993343e-07], \"resistance\": 1.7241948648947076e-13}, {\"radius\": 18.0, \"radius_dtn\": [-1.999868548125867, -1.507227188809587e-06], \"resistance\": 1.7241948648947076e-13}]}\n{\"test\": \"ideal_dipole\", \"dimension\": 3, \"omega\": 0.002, \"specific_impedance\": [3.999999999984e-12, 0.001000001999996], \"integrated_impedance\": [1.6755160819078543e-11, 0.0041887985823500454], \"specific_wronskian\": 3.999999999984e-12, \"rigid_power\": [1.6755160819078543e-11, 1.6755160819078543e-11, 1.6755160819078543e-11], \"translated_Q1_power_per_speed_squared\": [1.061032953945969e-07, 1.061032953945969e-07, 1.061032953945969e-07], \"translated_wronskian\": 1.061032953945969e-07, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-1.9996761049419989, -5.830111044021737e-06], \"resistance\": 1.6755160819078543e-11}, {\"radius\": 13.5, \"radius_dtn\": [-1.9992715310538618, -1.966866154573316e-05], \"resistance\": 1.6755160819078543e-11}, {\"radius\": 18.0, \"radius_dtn\": [-1.998705677442035, -4.659561208673559e-05], \"resistance\": 1.6755160819078543e-11}]}\n{\"test\": \"ideal_dipole\", \"dimension\": 3, \"omega\": 0.005, \"specific_impedance\": [1.5624999997558595e-10, 0.0025000312496093703], \"integrated_impedance\": [6.544984693956083e-10, 0.01047210641002361], \"specific_wronskian\": 1.5624999997558595e-10, \"rigid_power\": [6.544984693956083e-10, 6.544984693956083e-10, 6.544984693956083e-10], \"translated_Q1_power_per_speed_squared\": [6.631455962162305e-07, 6.631455962162305e-07, 6.631455962162305e-07], \"translated_wronskian\": 6.631455962162305e-07, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-1.9979790923380156, -9.094084478930167e-05], \"resistance\": 6.544984693956083e-10}, {\"radius\": 13.5, \"radius_dtn\": [-1.9954644152579808, -0.00030615197008629434], \"resistance\": 6.544984693956083e-10}, {\"radius\": 18.0, \"radius_dtn\": [-1.9919650828290845, -0.0007231425453824025], \"resistance\": 6.544984693956083e-10}]}\n{\"test\": \"ideal_dipole\", \"dimension\": 3, \"omega\": 0.01, \"specific_impedance\": [2.49999999375e-09, 0.005000249987499375], \"integrated_impedance\": [1.047197548578604e-08, 0.020944998169120654], \"specific_wronskian\": 2.49999999375e-09, \"rigid_power\": [1.047197548578604e-08, 1.047197548578604e-08, 1.047197548578604e-08], \"translated_Q1_power_per_speed_squared\": [2.652582384864922e-06, 2.652582384864922e-06, 2.652582384864922e-06], \"translated_wronskian\": 2.652582384864922e-06, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-1.9919650828290845, -0.0007231425453824025], \"resistance\": 1.047197548578604e-08}, {\"radius\": 13.5, \"radius_dtn\": [-1.9821012055292297, -0.0024163372535539788], \"resistance\": 1.047197548578604e-08}, {\"radius\": 18.0, \"radius_dtn\": [-1.9686168151879118, -0.005648973266175901], \"resistance\": 1.047197548578604e-08}]}\n{\"test\": \"ideal_dipole\", \"dimension\": 3, \"omega\": 0.02, \"specific_impedance\": [3.9999998400000067e-08, 0.010001999599920016], \"integrated_impedance\": [1.6755160148939157e-07, 0.041896277952422366], \"specific_wronskian\": 3.9999998400000067e-08, \"rigid_power\": [1.6755160148939157e-07, 1.6755160148939157e-07, 1.6755160148939157e-07], \"translated_Q1_power_per_speed_squared\": [1.0610329539459689e-05, 1.0610329539459689e-05, 1.0610329539459689e-05], \"translated_wronskian\": 1.0610329539459689e-05, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-1.9686168151879118, -0.005648973266175901], \"resistance\": 1.6755160148939157e-07}, {\"radius\": 13.5, \"radius_dtn\": [-1.9320533134495292, -0.018345605368627085], \"resistance\": 1.6755160148939157e-07}, {\"radius\": 18.0, \"radius_dtn\": [-1.885269121813031, -0.041303116147308784], \"resistance\": 1.6755160148939157e-07}]}\n{\"test\": \"low_frequency\", \"dimension\": 3, \"rigid_slopes\": [3.999999999999961, 3.99999999999654, 3.999999999833841, 3.9999999966186834, 3.9999999458989373], \"translated_slopes\": [2.0, 2.0, 2.0, 2.0, 2.0], \"leading_specific\": 0.25, \"observed_specific\": 0.24999999999999983, \"reactive_mass_per_area\": 0.5000000126562497}\n{\"test\": \"ideal_dipole\", \"dimension\": 4, \"omega\": 0.000225, \"specific_impedance\": [2.5161119660997304e-20, 7.500000063281264e-05], \"integrated_impedance\": [1.241651486712575e-19, 0.00037011016816365617], \"specific_wronskian\": 2.5161119660997304e-20, \"rigid_power\": [1.241651486712575e-19, 1.241651486712575e-19, 1.241651486712575e-19], \"translated_Q1_power_per_speed_squared\": [5.665232105175376e-14, 5.665232105175376e-14, 5.665232105175376e-14], \"translated_wronskian\": 5.665232105175376e-14, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-2.99999794966094, -6.603270760673715e-12], \"resistance\": 1.241651486712575e-19}, {\"radius\": 13.5, \"radius_dtn\": [-2.9999953866710447, -3.342897254926993e-11], \"resistance\": 1.241651486712575e-19}, {\"radius\": 18.0, \"radius_dtn\": [-2.9999917983716653, -1.0565168229247055e-10], \"resistance\": 1.241651486712575e-19}]}\n{\"test\": \"ideal_dipole\", \"dimension\": 4, \"omega\": 0.000637, \"specific_impedance\": [4.576300227754986e-18, 0.00021233334769307012], \"integrated_impedance\": [2.258313643427842e-17, 0.001047823071444781], \"specific_wronskian\": 4.576300227754986e-18, \"rigid_power\": [2.258313643427842e-17, 2.258313643427842e-17, 2.258313643427842e-17], \"translated_Q1_power_per_speed_squared\": [1.2855484537469067e-12, 1.2855484537469067e-12, 1.2855484537469067e-12], \"translated_wronskian\": 1.2855484537469067e-12, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-2.9999835649302735, -4.2420962238751414e-10], \"resistance\": 2.258313643427842e-17}, {\"radius\": 13.5, \"radius_dtn\": [-2.99996301763916, -2.1475170925517464e-09], \"resistance\": 2.258313643427842e-17}, {\"radius\": 18.0, \"radius_dtn\": [-2.9999342456145217, -6.787019277743968e-09], \"resistance\": 2.258313643427842e-17}]}\n{\"test\": \"ideal_dipole\", \"dimension\": 4, \"omega\": 0.002, \"specific_impedance\": [1.3962624707593213e-15, 0.0006666671111170345], \"integrated_impedance\": [6.89027911324105e-15, 0.0032898703269711063], \"specific_wronskian\": 1.3962624707593213e-15, \"rigid_power\": [6.89027911324105e-15, 6.89027911324105e-15, 6.89027911324105e-15], \"translated_Q1_power_per_speed_squared\": [3.978873577297383e-11, 3.978873577297383e-11, 3.978873577297383e-11], \"translated_wronskian\": 3.978873577297383e-11, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-2.99983789154498, -4.1217298686300955e-08], \"resistance\": 6.89027911324105e-15}, {\"radius\": 13.5, \"radius_dtn\": [-2.9996350049216907, -2.086202815910422e-07], \"resistance\": 6.89027911324105e-15}, {\"radius\": 18.0, \"radius_dtn\": [-2.999350556531992, -6.591558786042678e-07], \"resistance\": 6.89027911324105e-15}]}\n{\"test\": \"ideal_dipole\", \"dimension\": 4, \"omega\": 0.005, \"specific_impedance\": [1.3635327969113726e-13, 0.0016666736116100309], \"integrated_impedance\": [6.728764646713082e-13, 0.008224704606162928], \"specific_wronskian\": 1.3635327969113726e-13, \"rigid_power\": [6.728764646713082e-13, 6.728764646713082e-13, 6.728764646713082e-13], \"translated_Q1_power_per_speed_squared\": [6.216989964527162e-10, 6.216989964527162e-10, 6.216989964527162e-10], \"translated_wronskian\": 6.216989964527162e-10, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-2.9989842059060274, -1.6086791997971e-06], \"resistance\": 6.728764646713082e-13}, {\"radius\": 13.5, \"radius_dtn\": [-2.9977073225714226, -8.133587733946699e-06], \"resistance\": 6.728764646713082e-13}, {\"radius\": 18.0, \"radius_dtn\": [-2.995908802895206, -2.5660267627878468e-05], \"resistance\": 6.728764646713082e-13}]}\n{\"test\": \"ideal_dipole\", \"dimension\": 4, \"omega\": 0.01, \"specific_impedance\": [4.3632504169708985e-12, 0.0033333889029287136], \"integrated_impedance\": [2.153177775919548e-11, 0.01644961489344383], \"specific_wronskian\": 4.3632504169708985e-12, \"rigid_power\": [2.153177775919548e-11, 2.153177775919548e-11, 2.153177775919548e-11], \"translated_Q1_power_per_speed_squared\": [4.97359197162173e-09, 4.97359197162173e-09, 4.97359197162173e-09], \"translated_wronskian\": 4.97359197162173e-09, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-2.995908802895206, -2.5660267627878468e-05], \"resistance\": 2.153177775919548e-11}, {\"radius\": 13.5, \"radius_dtn\": [-2.9907135688969673, -0.00012923943481350298], \"resistance\": 2.153177775919548e-11}, {\"radius\": 18.0, \"radius_dtn\": [-2.983329396000596, -0.00040550600520305715], \"resistance\": 2.153177775919548e-11}]}\n{\"test\": \"ideal_dipole\", \"dimension\": 4, \"omega\": 0.02, \"specific_impedance\": [1.3961703571812197e-10, 0.006667111498750365], \"integrated_impedance\": [6.889824550953133e-10, 0.03290087649531003], \"specific_wronskian\": 1.3961703571812197e-10, \"rigid_power\": [6.889824550953133e-10, 6.889824550953133e-10, 6.889824550953133e-10], \"translated_Q1_power_per_speed_squared\": [3.978873577297384e-08, 3.978873577297384e-08, 3.978873577297384e-08], \"translated_wronskian\": 3.978873577297384e-08, \"match\": [{\"radius\": 9.0, \"radius_dtn\": [-2.983329396000596, -0.00040550600520305715], \"resistance\": 6.889824550953133e-10}, {\"radius\": 13.5, \"radius_dtn\": [-2.961747885304406, -0.0020100926524611812], \"resistance\": 6.889824550953133e-10}, {\"radius\": 18.0, \"radius_dtn\": [-2.93085052509318, -0.006164977796373567], \"resistance\": 6.889824550953133e-10}]}\n{\"test\": \"low_frequency\", \"dimension\": 4, \"rigid_slopes\": [4.999999943122547, 4.999999476429323, 4.999996180398624, 4.9999819688994664, 4.999927900393271], \"translated_slopes\": [3.0, 3.0, 3.0, 3.0, 3.0], \"leading_specific\": 0.04363323129985824, \"observed_specific\": 0.04363323093170289, \"reactive_mass_per_area\": 0.33333333614583394}\n",
+    "stdout_sha256": "9e302b3ddfd9bdd25c8465faef522cad3df5e11b6b4057fb4fff0a43295ad26d",
+    "stderr": ""
+  },
+  "stationary": {
+    "r9": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "outgoing-mouth",
+        "--memory-gib",
+        "8",
+        "--log-directory",
+        "_scratch/s11c/outgoing_stationary_match03/r9",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_outgoing_stationary_match.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n34",
+        "--output",
+        "_scratch/s11c/outgoing_stationary_match03/r9/matched.npz"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout": "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}\n{\"test\": \"source\", \"file\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\"}\n{\"test\": \"matched_static\", \"radius\": 9.0, \"roof\": 10.0, \"bias\": 0.4525058154120849, \"boundary_phase_span\": 0.00016425505935059207, \"feed\": 0.2500000001536789, \"bulk\": 0.25000000003487377, \"residual\": 1.956605024357326e-12, \"min_density\": 0.9770131974403182, \"section\": {\"w\": 2.4, \"radius\": 1.3582018834027598, \"integrated_jw\": 0.24999233863250603, \"min_sampled_jw\": 0.020880332717326144}}\n{\"test\": \"inner_hemisphere\", \"state\": \"archived\", \"radius\": 4.0, \"flux\": 0.24997499395654768, \"fractional_rms_from_monopole\": 0.05634982510337818, \"quadrupole_flux_over_monopole\": -0.05569260093172991, \"inferred_far_phase\": 0.45029532692292723}\n{\"test\": \"inner_hemisphere\", \"state\": \"archived\", \"radius\": 6.0, \"flux\": 0.24995615082242933, \"fractional_rms_from_monopole\": 0.0337171971665424, \"quadrupole_flux_over_monopole\": -0.002680679054303476, \"inferred_far_phase\": 0.4502953314702234}\n{\"test\": \"inner_hemisphere\", \"state\": \"matched\", \"radius\": 4.0, \"flux\": 0.24997504251847377, \"fractional_rms_from_monopole\": 0.061137321720361314, \"quadrupole_flux_over_monopole\": -0.060870459099255696, \"inferred_far_phase\": 0.4525054516979194}\n{\"test\": \"inner_hemisphere\", \"state\": \"matched\", \"radius\": 6.0, \"flux\": 0.24995620037947208, \"fractional_rms_from_monopole\": 0.028918330399127466, \"quadrupole_flux_over_monopole\": -0.028897770105069234, \"inferred_far_phase\": 0.4525054562462996}\n{\"test\": \"stored\", \"file\": \"_scratch/s11c/outgoing_stationary_match03/r9/matched.npz\", \"sha256\": \"867655813a10c78b56d0ec53ad0628cb10f7bfa3b34a0c579ac60585cab966e9\"}\n",
+      "stdout_sha256": "4e5090fe27139883e878e289ca0524b9d3f9ec0f99a8a9d24f6e64c67aa987b4",
+      "stderr": ""
+    },
+    "r13": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "outgoing-mouth",
+        "--memory-gib",
+        "8",
+        "--log-directory",
+        "_scratch/s11c/outgoing_stationary_match03/r13",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_outgoing_stationary_match.py",
+        "--bath",
+        "_scratch/s11c/occupied_push_bath13p5_n34_01",
+        "--output",
+        "_scratch/s11c/outgoing_stationary_match03/r13/matched.npz"
+      ],
+      "exit_code": 1,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout": "{\"test\": \"source\", \"file\": \"_scratch/s11c/occupied_push_bath13p5_n34_01/field.npz\", \"sha256\": \"15a00eb08e8dc0cc11bc14f2d50bf65e46d95cef76dcba7b2c932de15e177596\"}\n",
+      "stdout_sha256": "5b1fed46110ce968894245d5026b7a97d308c13bfaa36e9a773229ee028f88c2",
+      "stderr": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 139, in <module>\n    main()\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 125, in main\n    matched, bias = equilibrium(dom, field)\n                    ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 82, in equilibrium\n    raise ArithmeticError(\"Intake calibration did not converge\")\nArithmeticError: Intake calibration did not converge\n"
+    },
+    "r18": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "outgoing-mouth",
+        "--memory-gib",
+        "8",
+        "--log-directory",
+        "_scratch/s11c/outgoing_stationary_match03/r18",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_outgoing_stationary_match.py",
+        "--bath",
+        "_scratch/s11c/occupied_push_bath18_n34_01",
+        "--output",
+        "_scratch/s11c/outgoing_stationary_match03/r18/matched.npz"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout": "{\"test\": \"source\", \"file\": \"_scratch/s11c/occupied_push_bath18_n34_01/field.npz\", \"sha256\": \"54acfe1d0bbb6b494f1b1389f2d5d2036c90acbd7ef5e2ac339ce428c05d32f2\"}\n{\"test\": \"matched_static\", \"radius\": 18.0, \"roof\": 20.0, \"bias\": 0.4525054766256137, \"boundary_phase_span\": 2.3364672656337483e-05, \"feed\": 0.2500000000454849, \"bulk\": 0.25000000006846024, \"residual\": 2.097003800469211e-11, \"min_density\": 0.9770131974611124, \"section\": {\"w\": 2.4, \"radius\": 1.3582018834027598, \"integrated_jw\": 0.2499923385260514, \"min_sampled_jw\": 0.020880329345143524}}\n{\"test\": \"inner_hemisphere\", \"state\": \"archived\", \"radius\": 4.0, \"flux\": 0.2499750402472697, \"fractional_rms_from_monopole\": 0.060829515541197254, \"quadrupole_flux_over_monopole\": -0.06055017894771267, \"inferred_far_phase\": 0.4514002309452584}\n{\"test\": \"inner_hemisphere\", \"state\": \"archived\", \"radius\": 6.0, \"flux\": 0.24995623096722486, \"fractional_rms_from_monopole\": 0.027317197535467626, \"quadrupole_flux_over_monopole\": -0.027276026652841425, \"inferred_far_phase\": 0.4514002354926479}\n{\"test\": \"inner_hemisphere\", \"state\": \"matched\", \"radius\": 4.0, \"flux\": 0.2499750406740411, \"fractional_rms_from_monopole\": 0.06071570583697188, \"quadrupole_flux_over_monopole\": -0.060437641106162836, \"inferred_far_phase\": 0.45250548196843393}\n{\"test\": \"inner_hemisphere\", \"state\": \"matched\", \"radius\": 6.0, \"flux\": 0.24995623380507312, \"fractional_rms_from_monopole\": 0.0267397445314403, \"quadrupole_flux_over_monopole\": -0.026706368067396877, \"inferred_far_phase\": 0.45250548651595834}\n{\"test\": \"stored\", \"file\": \"_scratch/s11c/outgoing_stationary_match03/r18/matched.npz\", \"sha256\": \"d5cc009421d327241e748f463c678c369991183391f3db631aeab0cc04ae4e94\"}\n",
+      "stdout_sha256": "147be8711088e9d4b4841c3e82a748e81dd9ff141c5525142eb3e31cf7e00f3d",
+      "stderr": ""
+    }
+  },
+  "previous_tolerance": {
+    "note": "All three exited on an absolute interior residual threshold of 9e-13. The retained experiment uses the native stationary carrier threshold of 3e-11, keeping the prescribed intake and independent checks. There were no successful fields from these attempts.",
+    "runs": {
+      "r9": {
+        "command": [
+          "python3",
+          "scripts/s11c_guarded_run.py",
+          "--pool",
+          "outgoing-mouth",
+          "--memory-gib",
+          "8",
+          "--log-directory",
+          "_scratch/s11c/outgoing_stationary_match02/r9",
+          "--",
+          "python3",
+          "software/stage1_solver/tools/mouth_outgoing_stationary_match.py",
+          "--source",
+          "_scratch/s11c/mouth_flared_cubic_n34",
+          "--output",
+          "_scratch/s11c/outgoing_stationary_match02/r9/matched.npz"
+        ],
+        "exit_code": 1,
+        "limits_verified": true,
+        "swap_bytes": 0,
+        "stdout": "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}\n{\"test\": \"source\", \"file\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\"}\n",
+        "stdout_sha256": "45fb2f957fe917d2f1feb9f0d2b674e08be7e1b1c06954064cd4556288661395",
+        "stderr": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 138, in <module>\n    main()\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 124, in main\n    matched, bias = equilibrium(dom, field)\n                    ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 65, in equilibrium\n    raise ArithmeticError(f\"Stationary interior residual {error}\")\nArithmeticError: Stationary interior residual 2.830623538572506e-12\n",
+        "script_sha256": "d11d828148e475e8105a112d16658e04d44c272a78e5ac10b1e7d967f77da80b"
+      },
+      "r13": {
+        "command": [
+          "python3",
+          "scripts/s11c_guarded_run.py",
+          "--pool",
+          "outgoing-mouth",
+          "--memory-gib",
+          "8",
+          "--log-directory",
+          "_scratch/s11c/outgoing_stationary_match02/r13",
+          "--",
+          "python3",
+          "software/stage1_solver/tools/mouth_outgoing_stationary_match.py",
+          "--bath",
+          "_scratch/s11c/occupied_push_bath13p5_n34_01",
+          "--output",
+          "_scratch/s11c/outgoing_stationary_match02/r13/matched.npz"
+        ],
+        "exit_code": 1,
+        "limits_verified": true,
+        "swap_bytes": 0,
+        "stdout": "{\"test\": \"source\", \"file\": \"_scratch/s11c/occupied_push_bath13p5_n34_01/field.npz\", \"sha256\": \"15a00eb08e8dc0cc11bc14f2d50bf65e46d95cef76dcba7b2c932de15e177596\"}\n",
+        "stdout_sha256": "5b1fed46110ce968894245d5026b7a97d308c13bfaa36e9a773229ee028f88c2",
+        "stderr": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 138, in <module>\n    main()\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 124, in main\n    matched, bias = equilibrium(dom, field)\n                    ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 65, in equilibrium\n    raise ArithmeticError(f\"Stationary interior residual {error}\")\nArithmeticError: Stationary interior residual 2.5683883932968018e-12\n",
+        "script_sha256": "d11d828148e475e8105a112d16658e04d44c272a78e5ac10b1e7d967f77da80b"
+      },
+      "r18": {
+        "command": [
+          "python3",
+          "scripts/s11c_guarded_run.py",
+          "--pool",
+          "outgoing-mouth",
+          "--memory-gib",
+          "8",
+          "--log-directory",
+          "_scratch/s11c/outgoing_stationary_match02/r18",
+          "--",
+          "python3",
+          "software/stage1_solver/tools/mouth_outgoing_stationary_match.py",
+          "--bath",
+          "_scratch/s11c/occupied_push_bath18_n34_01",
+          "--output",
+          "_scratch/s11c/outgoing_stationary_match02/r18/matched.npz"
+        ],
+        "exit_code": 1,
+        "limits_verified": true,
+        "swap_bytes": 0,
+        "stdout": "{\"test\": \"source\", \"file\": \"_scratch/s11c/occupied_push_bath18_n34_01/field.npz\", \"sha256\": \"54acfe1d0bbb6b494f1b1389f2d5d2036c90acbd7ef5e2ac339ce428c05d32f2\"}\n",
+        "stdout_sha256": "76b2dc19f6945d82c33252b36bcb9bcf71bc2e78734bd7392904481aaf9c726d",
+        "stderr": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 138, in <module>\n    main()\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 124, in main\n    matched, bias = equilibrium(dom, field)\n                    ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/projects/toy_physics/software/stage1_solver/tools/mouth_outgoing_stationary_match.py\", line 65, in equilibrium\n    raise ArithmeticError(f\"Stationary interior residual {error}\")\nArithmeticError: Stationary interior residual 3.5901585439451887e-12\n",
+        "script_sha256": "d11d828148e475e8105a112d16658e04d44c272a78e5ac10b1e7d967f77da80b"
+      }
+    }
+  },
+  "moving_cut": {
+    "record": "research/pde_ledger_v3/_measurements/mouth_translating_open_cut.json",
+    "sha256": "9df6182881f8df9e84c8728ea2b7f0431b84c9d47aab402ec2f73cd1c1765423"
+  }
+}

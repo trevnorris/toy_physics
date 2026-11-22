@@ -1,0 +1,89 @@
+{
+  "scope": "Native weak moving-chart source on freed artificial cuts. Stored carrier fields, no outgoing-mouth solve. Complex pairings use the native equation with unit peak velocity and test g=max(2r/far\u22121,0)^2 interpolated into the existing mesh.",
+  "script": "software/stage1_solver/tools/mouth_translating_open_cut.py",
+  "sha256": "48a8f4709e057e935778b5f83cf8b31e9e88b296d24c491ffc6b03a2fc7033ad",
+  "dependencies": {
+    "software/stage1_solver/tools/mouth_carrier_free_center.py": "40fc4bd97662f18220a36758c0d29b20eb141f1c05d52f5adf6d26efed83af28",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_occupied_push_baths.py": "54b13d121c771baeae844dd175fbd276e1f792f195c5aa7eeedb5dba6ad1d579",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c"
+  },
+  "runs": [
+    {
+      "path": "_scratch/s11c/outgoing_translation01/src9",
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "radiating-carrier",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/outgoing_translation01/src9",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_translating_open_cut.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n34",
+        "--omega",
+        "0.000225"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "b13029fb7523e099c52a4910e90aaf8e9e6ac667eb326a0085717792aec9c6a6",
+      "stdout": "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}\n{\"test\": \"source_field\", \"path\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"nodes\": 33741}\n{\"test\": \"freed_cut_source\", \"background\": \"uniform zero intake\", \"far\": 9.0, \"roof\": 10.0, \"omega\": 0.000225, \"old_source_pairing\": [0.0, 4046.0571785582933], \"artificial_cut_pairing\": [0.0, 4046.057178558294], \"corrected_source_pairing\": [0.0, -4.547473508864641e-13], \"measured_volume_advection\": [0.0, 4.0558457530248405e-13], \"absolute_residual\": 8.603319261889482e-13, \"faces\": {\"feed\": {\"source_face\": [0.0, 508.93800988154635], \"base_fr_rms\": 4.684352605742057e-16, \"base_fr_max\": 1.1044124474538933e-15, \"lab_chart_offset_rms_per_unit_speed\": 2.081934491440914e-12}, \"bulk_side\": {\"source_face\": [0.0, 3537.1191686767474], \"base_fr_rms\": 0.0, \"base_fr_max\": 0.0, \"lab_chart_offset_rms_per_unit_speed\": 0.0}, \"roof_inner\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 2.3500501648746228e-15, \"base_fr_max\": 1.139683868551915e-14, \"lab_chart_offset_rms_per_unit_speed\": 1.0444667399442767e-11}, \"roof_outer\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 2.4343171757168466e-16, \"base_fr_max\": 2.27936773710383e-15, \"lab_chart_offset_rms_per_unit_speed\": 1.081918744763043e-12}}}\n{\"test\": \"freed_cut_source\", \"background\": \"archived drain\", \"far\": 9.0, \"roof\": 10.0, \"omega\": 0.000225, \"old_source_pairing\": [-1539.1148505158683, 3693.822717251125], \"artificial_cut_pairing\": [-1538.9796733715816, 3693.7070090979078], \"corrected_source_pairing\": [-0.13517714428667205, 0.11570815321738337], \"measured_volume_advection\": [-0.13517714428651256, 0.11570815321789092], \"absolute_residual\": 5.320191443603481e-13, \"faces\": {\"feed\": {\"source_face\": [0.0, 508.93800988154635], \"base_fr_rms\": 0.00024510982767740895, \"base_fr_max\": 0.00024510982769500376, \"lab_chart_offset_rms_per_unit_speed\": 1.0893770118995953}, \"bulk_side\": {\"source_face\": [-1538.9796733715816, 3184.7689992163614], \"base_fr_rms\": 2.735066481672401e-05, \"base_fr_max\": 4.0820356825752985e-05, \"lab_chart_offset_rms_per_unit_speed\": 0.12155851029655117}, \"roof_inner\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 5.447041755509034e-15, \"base_fr_max\": 2.290729857021486e-14, \"lab_chart_offset_rms_per_unit_speed\": 2.420907446892904e-11}, \"roof_outer\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 5.064400273551271e-16, \"base_fr_max\": 4.581459714042972e-15, \"lab_chart_offset_rms_per_unit_speed\": 2.250844566022787e-12}}}\n"
+    },
+    {
+      "path": "_scratch/s11c/outgoing_translation01/src13",
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "radiating-carrier",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/outgoing_translation01/src13",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_translating_open_cut.py",
+        "--bath",
+        "_scratch/s11c/occupied_push_bath13p5_n34_01",
+        "--omega",
+        "0.000225"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "b47619e2bafc6e4a95fdfc5986161c30bc54ffa6ae97525da4b14bf991647e9b",
+      "stdout": "{\"test\": \"source_field\", \"path\": \"_scratch/s11c/occupied_push_bath13p5_n34_01/field.npz\", \"sha256\": \"15a00eb08e8dc0cc11bc14f2d50bf65e46d95cef76dcba7b2c932de15e177596\", \"nodes\": 39635}\n{\"test\": \"freed_cut_source\", \"background\": \"uniform zero intake\", \"far\": 13.5, \"roof\": 15.0, \"omega\": 0.000225, \"old_source_pairing\": [0.0, 14829.181262923566], \"artificial_cut_pairing\": [0.0, 14829.181262923556], \"corrected_source_pairing\": [0.0, 1.0913936421275139e-11], \"measured_volume_advection\": [0.0, 2.546993070938764e-12], \"absolute_residual\": 8.366943350336376e-12, \"faces\": {\"feed\": {\"source_face\": [0.0, 1145.1105222334795], \"base_fr_rms\": 5.17989791167423e-16, \"base_fr_max\": 1.2212453270876722e-15, \"lab_chart_offset_rms_per_unit_speed\": 2.302176849632991e-12}, \"bulk_side\": {\"source_face\": [0.0, 13684.070740690076], \"base_fr_rms\": 0.0, \"base_fr_max\": 0.0, \"lab_chart_offset_rms_per_unit_speed\": 0.0}, \"roof_inner\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 2.3500501648746228e-15, \"base_fr_max\": 1.139683868551915e-14, \"lab_chart_offset_rms_per_unit_speed\": 1.0444667399442767e-11}, \"roof_outer\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 1.3644203459348317e-16, \"base_fr_max\": 2.2793677371038307e-15, \"lab_chart_offset_rms_per_unit_speed\": 6.06409042637703e-13}}}\n{\"test\": \"freed_cut_source\", \"background\": \"archived drain\", \"far\": 13.5, \"roof\": 15.0, \"omega\": 0.000225, \"old_source_pairing\": [-5964.2035765972805, 13461.31015707499], \"artificial_cut_pairing\": [-5964.040718479579, 13461.11678824877], \"corrected_source_pairing\": [-0.16285811770194414, 0.19336882621973928], \"measured_volume_advection\": [-0.16285811770078726, 0.19336882622500828], \"absolute_residual\": 5.394516772639534e-12, \"faces\": {\"feed\": {\"source_face\": [0.0, 1145.1105222334795], \"base_fr_rms\": 0.00010908145548131293, \"base_fr_max\": 0.00010908145548131813, \"lab_chart_offset_rms_per_unit_speed\": 0.4848064688058352}, \"bulk_side\": {\"source_face\": [-5964.040718479579, 12316.00626601529], \"base_fr_rms\": 8.058958299727215e-06, \"base_fr_max\": 1.2387302648260411e-05, \"lab_chart_offset_rms_per_unit_speed\": 0.035817592443232064}, \"roof_inner\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 5.567294100182584e-15, \"base_fr_max\": 2.0703795305866378e-14, \"lab_chart_offset_rms_per_unit_speed\": 2.474352933414482e-11}, \"roof_outer\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 3.3352125930040543e-16, \"base_fr_max\": 4.009221658378318e-15, \"lab_chart_offset_rms_per_unit_speed\": 1.482316708001802e-12}}}\n"
+    },
+    {
+      "path": "_scratch/s11c/outgoing_translation01/src18",
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "radiating-carrier",
+        "--memory-gib",
+        "5",
+        "--log-directory",
+        "_scratch/s11c/outgoing_translation01/src18",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_translating_open_cut.py",
+        "--bath",
+        "_scratch/s11c/occupied_push_bath18_n34_01",
+        "--omega",
+        "0.000225"
+      ],
+      "exit_code": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "d0c3e22670cf5b6b8797b5d4decdb3e620a08c529087be5669d45904a20a978c",
+      "stdout": "{\"test\": \"source_field\", \"path\": \"_scratch/s11c/occupied_push_bath18_n34_01/field.npz\", \"sha256\": \"54acfe1d0bbb6b494f1b1389f2d5d2036c90acbd7ef5e2ac339ce428c05d32f2\", \"nodes\": 45837}\n{\"test\": \"freed_cut_source\", \"background\": \"uniform zero intake\", \"far\": 18.0, \"roof\": 20.0, \"omega\": 0.000225, \"old_source_pairing\": [0.0, 36541.74910949504], \"artificial_cut_pairing\": [0.0, 36541.749109495024], \"corrected_source_pairing\": [0.0, 1.4551915228366852e-11], \"measured_volume_advection\": [0.0, 1.9616523511539175e-11], \"absolute_residual\": 5.064608283172323e-12, \"faces\": {\"feed\": {\"source_face\": [0.0, 2035.7520395261854], \"base_fr_rms\": 4.892125805470091e-16, \"base_fr_max\": 1.1533983644716867e-15, \"lab_chart_offset_rms_per_unit_speed\": 2.174278135764485e-12}, \"bulk_side\": {\"source_face\": [0.0, 34505.99706996884], \"base_fr_rms\": 0.0, \"base_fr_max\": 0.0, \"lab_chart_offset_rms_per_unit_speed\": 0.0}, \"roof_inner\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 2.3500501648746228e-15, \"base_fr_max\": 1.139683868551915e-14, \"lab_chart_offset_rms_per_unit_speed\": 1.0444667399442767e-11}, \"roof_outer\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 1.2367266496737672e-16, \"base_fr_max\": 2.2793677371038307e-15, \"lab_chart_offset_rms_per_unit_speed\": 5.496562887438966e-13}}}\n{\"test\": \"freed_cut_source\", \"background\": \"archived drain\", \"far\": 18.0, \"roof\": 20.0, \"omega\": 0.000225, \"old_source_pairing\": [-15051.54362956796, 33086.31461236435], \"artificial_cut_pairing\": [-15051.347893953425, 33086.046085925846], \"corrected_source_pairing\": [-0.19573561453398725, 0.26852643850725144], \"measured_volume_advection\": [-0.1957356145383846, 0.26852643852449337], \"absolute_residual\": 1.7793841196204868e-11, \"faces\": {\"feed\": {\"source_face\": [0.0, 2035.7520395261854], \"base_fr_rms\": 6.137484866608444e-05, \"base_fr_max\": 6.137484866608764e-05, \"lab_chart_offset_rms_per_unit_speed\": 0.2727771051825975}, \"bulk_side\": {\"source_face\": [-15051.347893953425, 31050.29404639966], \"base_fr_rms\": 3.365743663935083e-06, \"base_fr_max\": 5.260532542678829e-06, \"lab_chart_offset_rms_per_unit_speed\": 0.01495886072860037}, \"roof_inner\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 5.722830831132887e-15, \"base_fr_max\": 2.5484106029420168e-14, \"lab_chart_offset_rms_per_unit_speed\": 2.5434803693923942e-11}, \"roof_outer\": {\"source_face\": [0.0, 0.0], \"base_fr_rms\": 2.705683050501075e-16, \"base_fr_max\": 5.1222276783884124e-15, \"lab_chart_offset_rms_per_unit_speed\": 1.2025258002227e-12}}}\n"
+    }
+  ]
+}

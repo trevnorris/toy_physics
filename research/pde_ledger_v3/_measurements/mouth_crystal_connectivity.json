@@ -1,0 +1,59 @@
+{
+  "base": "c8ba327e",
+  "scope": "One crystalline-envelope hypothesis tested on matched local order fronts. A defect is a positive-energy, externally prepared control. No whole-mouth phase selection, physical permeability, intake or force is inferred.",
+  "runs": {
+    "field": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "connectivity-pivot",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/connectivity_pivot01/check",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_crystal_connectivity.py",
+        "--grid",
+        "101",
+        "--tol",
+        "7e-8"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "source_as_run_sha256": "dea3c56eaf86d6caf53aa1ca2e21f72aa42d94278d83b28b74f76a1a2aab3b7c",
+      "stdout_sha256": "3eb9d9ea9741ba4a69784a73e0a4ae0fca46ae648e5c3a6a2b57d08fdeb76078",
+      "literal_stdout": "{\"test\": \"preparation\", \"xi\": 1.0, \"delta\": 1.0, \"curvature_radius\": 100.0, \"patch_radius\": 8.0, \"normal_half_span\": 16.0, \"trial_K\": \"1-4*chi*(1-chi)*f^2\", \"envelope_bulk_constraint\": \"f(patch_radius)=1\", \"smooth_core_radius_at_half_amplitude\": 0.9520295376087865, \"amplitude_at_axis\": 0.0, \"amplitude_at_edge\": 1.0000000000000002, \"rms_residual\": 6.734651758401349e-08, \"reference_transparent_conductance\": 0.02967048}\n{\"test\": \"registry\", \"ensemble\": \"intact_free\", \"winding_measured\": 0.0, \"core_energy_components\": [0.0, 0.0, 0.0], \"energy_per_unit_defect_length\": 0.0, \"mean_amplitude_squared\": 1.0, \"relative_conductance_lower\": 0.0, \"relative_conductance_upper\": 0.0}\n{\"test\": \"registry\", \"ensemble\": \"smooth_exit_free\", \"winding_measured\": 0.0, \"core_energy_components\": [0.0, 0.0, 0.0], \"energy_per_unit_defect_length\": 0.0, \"mean_amplitude_squared\": 1.0, \"relative_conductance_lower\": 0.0, \"relative_conductance_upper\": 0.0}\n{\"test\": \"registry\", \"ensemble\": \"exit_imposed_positive\", \"winding_measured\": 1.0, \"core_energy_components\": [0.8786969133181017, 5.308596628946625, 1.5536986493308482], \"energy_per_unit_defect_length\": 7.740992191595575, \"mean_amplitude_squared\": 0.9106223990786901, \"relative_conductance_lower\": 0.55471478372602, \"relative_conductance_upper\": 0.6755036813615909}\n{\"test\": \"registry\", \"ensemble\": \"exit_imposed_negative\", \"winding_measured\": -1.0, \"core_energy_components\": [0.8786969133181017, 5.308596628946625, 1.5536986493308482], \"energy_per_unit_defect_length\": 7.740992191595575, \"mean_amplitude_squared\": 0.9106223990786901, \"relative_conductance_lower\": 0.55471478372602, \"relative_conductance_upper\": 0.6755036813615909}\n{\"test\": \"registry\", \"ensemble\": \"intact_imposed_positive\", \"winding_measured\": 1.0, \"core_energy_components\": [0.8786969133181017, 5.308596628946625, 1.5536986493308482], \"energy_per_unit_defect_length\": 7.740992191595575, \"mean_amplitude_squared\": 0.9106223990786901, \"relative_conductance_lower\": 0.55471478372602, \"relative_conductance_upper\": 0.6755036813615909}\n"
+    },
+    "reviewer": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "pivot-referee",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/pivot_referee01/registry",
+        "--",
+        "python3",
+        "_scratch/s11c/pivot_referee01/registry.py"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "source_as_run_sha256": "482711ff091606dea49c245122a852f12c40d30637c371ac170b22ad88d86f78",
+      "stdout_sha256": "87710c097bf28c3105882702920de788b6ff179062ed33a2c861af238ca761c4",
+      "literal_stdout": "{'n': 48, 'depth_mesh': 128, 'crystal_energy': 7.741253112490422, 'half_amplitude_radius': 0.9523190216395863, 'reduced_conductance': 0.6317157956527361, 'relative_flux_disagreement': -2.359541095958031e-13, 'parallel_path_bound': 0.5554487166548892}\n{'n': 96, 'depth_mesh': 256, 'crystal_energy': 7.741057417941351, 'half_amplitude_radius': 0.9520376375140198, 'reduced_conductance': 0.6317882434844792, 'relative_flux_disagreement': -7.938428736286607e-14, 'parallel_path_bound': 0.5549906128741617}\n",
+      "independent_source": "\"\"\"Independent P1 crystal amplitude and finite-volume two-coordinate phase conduction.\"\"\"\nimport numpy as np\nfrom scipy.sparse import coo_matrix,diags\nfrom scipy.sparse.linalg import spsolve\nfrom numpy.polynomial.legendre import leggauss\nfrom scipy.interpolate import interp1d\n\ndef c(r):\n    return 100*np.sin(r/100)\ndef jac(r):\n    return c(r)*np.cos(r/100)\n\ndef amplitudes(n):\n    r=np.linspace(0,8,n+1); h=8/n\n    x,w=leggauss(3)\n    t=(x+1)/2; w=w*h/2\n    pts=r[:-1,None]+h*t; N=np.array([1-t,t]); G=np.array([-1/h,1/h])\n    wg=w*jac(pts); f=np.tanh(r*.6); f[-1]=1\n    for it in range(14):\n        fv=np.column_stack([f[:-1],f[1:]])@N\n        dp,d2p=fv/c(pts)**2+fv*(fv**2-1), 1/c(pts)**2+3*fv**2-1\n        deriv=np.diff(f)/h\n        z=np.zeros_like(f); diag=np.zeros_like(f); off=np.zeros(n)\n        for j in [0,1]:\n            sl=slice(j,n+j)\n            z[sl]+=np.sum(wg*(G[j]*deriv[:,None]+N[j]*dp),axis=1)\n            diag[sl]+=np.sum(wg*(G[j]**2+N[j]**2*d2p),axis=1)\n        off[:]=np.sum(wg*(G[0]*G[1]+N[0]*N[1]*d2p),axis=1)\n        err=max(abs(z[1:-1]))\n        if err<2e-12: break\n        mat=diags([off[1:-1],diag[1:-1],off[1:-1]],[-1,0,1],format='csc')\n        f[1:-1]-=spsolve(mat,z[1:-1])\n    assert err<2e-12\n    E=2*np.pi*np.sum(wg*(.5*deriv[:,None]**2+.5*(fv/c(pts))**2+.25*(1-fv**2)**2))\n    return interp1d(r,f),E,np.interp(.5,f,r)\n\ndef phase(nr,ns):\n    f,E,half=amplitudes(nr*2)\n    dr,ds=8/nr,32/ns\n    r=(np.arange(nr)+.5)*dr\n    s=(np.arange(ns)+.5)*ds-16\n    rface=(np.arange(1,nr))*dr\n    area=jac(r)*dr\n    ids=np.arange(nr*ns).reshape(nr,ns)\n    sc=np.r_[-16,s,16]; lo,hi=sc[:-1],sc[1:]\n    x,w=leggauss(8)\n    probe=(lo+hi)[:,None]/2+(hi-lo)[:,None]*x/2\n    ring=f(r)**2\n    normal=np.empty((nr,ns+1))\n    for i,a in enumerate(ring):\n        resist=((1+probe/100)**-3/(1-a/np.cosh(probe/2)**2))@w*(hi-lo)/2\n        normal[i]=area[i]/resist\n    lateral=jac(rface[:,None])*(1+s/100)*ds/dr\n    a=np.r_[ids[:,:-1].ravel(),ids[:-1,:].ravel()]; b=np.r_[ids[:,1:].ravel(),ids[1:,:].ravel()]\n    k=np.r_[normal[:,1:-1].ravel(),lateral.ravel()]\n    bc=np.r_[ids[:,0],ids[:,-1]]\n    M=coo_matrix((np.r_[k,k,-k,-k,normal[:,0],normal[:,-1]],(np.r_[a,b,a,b,bc],np.r_[a,b,b,a,bc])),shape=(ids.size,ids.size)).tocsr()\n    rhs=np.zeros(ids.size);rhs[ids[:,-1]]=normal[:,-1]\n    theta=spsolve(M,rhs).reshape(nr,ns)\n    q0=np.sum(normal[:,0]*theta[:,0]);q1=np.sum(normal[:,-1]*(1-theta[:,-1]))\n    total=np.sum(area); r0=50*((1-16/100)**-2-(1+16/100)**-2)\n    lower=sum(1./np.sum(1/normal,axis=1))/total*r0\n    print(dict(n=nr,depth_mesh=ns,crystal_energy=E,half_amplitude_radius=half,reduced_conductance=q0/total*r0,relative_flux_disagreement=(q0-q1)/q0,parallel_path_bound=lower))\n    assert abs(q0-q1)<2e-10 and q0/total*r0>=lower-1e-7\nfor nr,ns in [(48,128),(96,256)]:\n    phase(nr,ns)\n",
+      "reproduction_source": "software/stage1_solver/tools/mouth_crystal_connectivity_check.py"
+    }
+  },
+  "independent_review": "Scoped clear for the coherent crystalline registration test and parking its microscopic selector."
+}

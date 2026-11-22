@@ -1,0 +1,169 @@
+{
+  "input_checkpoint": "25b20c945e8f3857a3050d5ef39732a3846747f1",
+  "verdict": "Scoped clear for the signed bending moments of the two registered half-order faces under fixed mid-surface area and separation, the reserved-curvature predictions, and the threshold separating the two incremental stiffness signs for the assumed squared-order axial modulus. The physical modulus, mixed-curvature law, rim reaction and free-mouth force remain open.",
+  "independent_method": [
+    "At zero curvature the symmetric strip can be cut at its middle. On the positive half the flat order c is even and its curvature derivative u is odd. With x=s/delta and p=k delta, u=dc/dp solves u_xx=(1-6c+6c^2)u-c_x with zero values at the middle, the pinned face and the outer bath. Integration by parts gives the two-face neutral derivative D/(a delta^3)=-4 integral(c_x u dx) on the positive half.",
+    "The added reference energy is quadratic in axial strain. The relaxed flat axial stiffness distribution contributes the weighted second moment Y integral(s^2 c^2 ds) at first order in curvature. Reflection makes the weighted centroid zero. A general asymmetric laminate under zero axial resultant would instead use the second moment about its stiffness-weighted centroid.",
+    "A separate piecewise-linear finite-element minimum of the full energy used 5, 10 and 20 elements per interface width, three-point exact integration of the element energy, and both signs of each curvature. Independent re-equilibration on either side of each curvature supplied the energy differences. Richardson extrapolation of the two finer grids is compared with the primary moment from the stress profile."
+  ],
+  "interpretation": [
+    "Moments use the external work convention. The internal restoring moment has the opposite sign. Energy per reference three-area has units E/L^3, four-dimensional axial stress has units E/L^4, and its first thickness moment has units E/L^2, the same as end torque per transverse two-area.",
+    "Both faces are held at fixed half-order heights. The fixed cylindrical test can include end tension, including the resting tension of both interfaces. The axial modulus specifies a reduced released-normal-stress response with the other tangential directions held. The single longitudinal invariant supplies no constitutive equation for shear or for independent hoop curvature.",
+    "The neutral action contains only order, its gradient, and the resting carrier. The benchmark adds persistent longitudinal registry. The previous optical curl term cannot fix this wave-off modulus and a zero added modulus does not characterize every sliding multilayer. The complete neutral strip and a single side of a throat carry different interfacial energies."
+  ],
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_ordered_strip_checks/flat_sensitivity.py": "cf0522a7831991a26b33c2be11ef0d1c3084cae2791ab490c4594b41e19aff86",
+    "software/stage1_solver/tools/mouth_ordered_strip_checks/signed_moments.py": "57babf45c7dc9968a75cd9bd9ac13233cc2bb171bce2e75acf2ea1ba68012af4",
+    "software/stage1_solver/tools/mouth_ordered_strip_checks/compare.py": "97f942cf79d7de6b5561a51c1470f2d4a439933d73405f52b4fa93830e3da4c3",
+    "software/stage1_solver/tools/mouth_ordered_strip_bend.py": "49f45cb03e3e4ab82a9e5cff6de94e0865d6d5fbcf6d0e5e20d8a30cb081f05e",
+    "software/stage1_solver/tools/mouth_curved_order_patch.py": "3c5dcabea737e0daebfa5b98456bb540ccb4073735dd70cb0b34aae96511f431",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "primary_data": {
+    "as_run": "_scratch/s11c/ordered_strip_bend01/main.json",
+    "sha256": "f6cf7b57c072186ddcf39fc72075b2c5530dfe61a2b068772272ce49f6f56a56",
+    "committed_result_location": "mouth_ordered_strip_bend.json, runs.main.results",
+    "reproduction": "Use the primary manifest command to regenerate the full JSON as input to compare.py."
+  },
+  "runs": {
+    "linearized_sensitivity": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "lip-strip-review",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/lip_strip_referee_analytic/linear-host",
+        "--",
+        "python3",
+        "_scratch/s11c/lip_strip_referee_analytic/strip_check.py"
+      ],
+      "worker_with_durable_source": [
+        "python3",
+        "software/stage1_solver/tools/mouth_ordered_strip_checks/flat_sensitivity.py"
+      ],
+      "source_sha256": "cf0522a7831991a26b33c2be11ef0d1c3084cae2791ab490c4594b41e19aff86",
+      "input_sha256": {},
+      "cwd": "/var/projects/toy_physics",
+      "start_utc": "2026-11-22T21:23:39.499534+00:00",
+      "outcome_file_utc": "2026-11-22T21:23:39.905841+00:00",
+      "memory_limit_bytes": 1073741824,
+      "swap_limit_bytes": 0,
+      "wall_deadline": null,
+      "limits_verified": true,
+      "sampled_memory_peak_bytes": 57974784,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "stdout_path": "_scratch/s11c/lip_strip_referee_analytic/linear-host/stdout",
+      "stdout_size": 341,
+      "stdout_sha256": "7a1722ecdb732b9e4746363cb4cb51629ef99bca0c27afdcb891364487999b23",
+      "literal_stdout": [
+        "{\"H_over_delta\": 25, \"B_over_a_delta3\": -0.5555555455508112, \"B_over_one_sigma_delta2\": -1.6666666366524336, \"area_weighted_second_moment_delta3\": 1065.2503002688622, \"weighted_moment\": 0.0681760192172072, \"B_neutral_native\": -0.002666666618643894, \"threshold_Y\": 0.03911443714758348, \"homogeneous_threshold_Y_over_a\": 0.000426666658983023}"
+      ]
+    },
+    "finite_element_moments": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "lip-strip-review",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/lip_strip_referee_analytic/fem",
+        "--",
+        "python3",
+        "_scratch/s11c/lip_strip_referee_analytic/strip_fem.py"
+      ],
+      "worker_with_durable_source": [
+        "python3",
+        "software/stage1_solver/tools/mouth_ordered_strip_checks/signed_moments.py"
+      ],
+      "source_sha256": "57babf45c7dc9968a75cd9bd9ac13233cc2bb171bce2e75acf2ea1ba68012af4",
+      "input_sha256": {},
+      "cwd": "/var/projects/toy_physics",
+      "start_utc": "2026-11-22T21:24:24.028347+00:00",
+      "outcome_file_utc": "2026-11-22T21:24:24.379791+00:00",
+      "memory_limit_bytes": 1073741824,
+      "swap_limit_bytes": 0,
+      "wall_deadline": null,
+      "limits_verified": true,
+      "sampled_memory_peak_bytes": 35639296,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "stdout_path": "_scratch/s11c/lip_strip_referee_analytic/fem/stdout",
+      "stdout_size": 3190,
+      "stdout_sha256": "2d0a20938fd779c6513e06d68f64cbe7e8acbf5405cb2ddd35c90a76d18cdfbf",
+      "literal_stdout": [
+        "{\"elements_per_width\": 5, \"Y\": 0.0, \"energy\": {\"0.0\": 2.0006661755062787, \"-0.08\": 2.0006576578292816, \"0.08\": 2.0006576578292816, \"-0.04\": 2.000664048701216, \"0.04\": 2.0006640487012155}, \"energy_difference_moment\": {\"0.0\": 0.0, \"-0.08\": 0.000213290949346856, \"0.08\": -0.000213290949346856, \"-0.04\": 0.00010638376402027916, \"0.04\": -0.00010638376846117126}, \"material_moment\": {\"0.0\": 1.1102230246251565e-16, \"-0.08\": 0.00021329094878796973, \"0.08\": -0.0002132909487878587, \"-0.04\": 0.0001063837648119792, \"0.04\": -0.00010638376481209022}}",
+        "{\"elements_per_width\": 5, \"Y\": 1.0, \"energy\": {\"0.0\": 2.0006661755062787, \"-0.08\": 2.0008758029111036, \"0.08\": 2.0008758029111036, \"-0.04\": 2.000718584011002, \"0.04\": 2.000718584011002}, \"energy_difference_moment\": {\"0.0\": 0.0, \"-0.08\": -0.005240464340250384, \"0.08\": 0.00524046434247083, \"-0.04\": -0.0026203977165906167, \"0.04\": 0.0026203977165906167}, \"material_moment\": {\"0.0\": 1.1102230246251565e-16, \"-0.08\": -0.0052404643435920994, \"0.08\": 0.0052404643435922105, \"-0.04\": -0.002620397715979328, \"0.04\": 0.002620397715979439}}",
+        "{\"elements_per_width\": 10, \"Y\": 0.0, \"energy\": {\"0.0\": 2.0001666357640895, \"-0.08\": 2.000158095846368, \"0.08\": 2.000158095846368, \"-0.04\": 2.0001645034055238, \"0.04\": 2.0001645034055238}, \"energy_difference_moment\": {\"0.0\": 0.0, \"-0.08\": 0.00021384786164091452, \"0.08\": -0.00021384785942046847, \"-0.04\": 0.00010666155292327062, \"0.04\": -0.00010666155070282457}, \"material_moment\": {\"0.0\": -1.1102230246251565e-16, \"-0.08\": 0.00021384785835043552, \"0.08\": -0.00021384785835038, \"-0.04\": 0.00010666155111138664, \"0.04\": -0.00010666155111133113}}",
+        "{\"elements_per_width\": 10, \"Y\": 1.0, \"energy\": {\"0.0\": 2.0001666357640895, \"-0.08\": 2.0003762584102907, \"0.08\": 2.0003762584102907, \"-0.04\": 2.000219043083519, \"0.04\": 2.0002190430835194}, \"energy_difference_moment\": {\"0.0\": 0.0, \"-0.08\": -0.005240344793655538, \"0.08\": 0.005240344793655538, \"-0.04\": -0.0026203383796108426, \"0.04\": 0.0026203383796108426}, \"material_moment\": {\"0.0\": -1.1102230246251565e-16, \"-0.08\": -0.005240344795623242, \"0.08\": 0.005240344795623408, \"-0.04\": -0.0026203383787065104, \"0.04\": 0.002620338378706455}}",
+        "{\"elements_per_width\": 20, \"Y\": 0.0, \"energy\": {\"0.0\": 2.0000416645784957, \"-0.08\": 2.0000331191108165, \"0.08\": 2.0000331191108165, \"-0.04\": 2.0000395308341075, \"0.04\": 2.0000395308341075}, \"energy_difference_moment\": {\"0.0\": 0.0, \"-0.08\": 0.0002139868304773529, \"0.08\": -0.00021398683269779895, \"-0.04\": 0.00010673087080803612, \"0.04\": -0.00010673086858759007}, \"material_moment\": {\"0.0\": 0.0, \"-0.08\": 0.00021398682976864203, \"0.08\": -0.00021398682976869754, \"-0.04\": 0.00010673087000095949, \"0.04\": -0.00010673087000073744}}",
+        "{\"elements_per_width\": 20, \"Y\": 1.0, \"energy\": {\"0.0\": 2.0000416645784957, \"-0.08\": 2.0002512860509816, \"0.08\": 2.0002512860509816, \"-0.04\": 2.0000940716055853, \"0.04\": 2.0000940716055853}, \"energy_difference_moment\": {\"0.0\": 0.0, \"-0.08\": -0.00524031530835245, \"0.08\": 0.005240315306132004, \"-0.04\": -0.00262032374021004, \"0.04\": 0.002620323742430486}, \"material_moment\": {\"0.0\": 0.0, \"-0.08\": -0.005240315307474153, \"0.08\": 0.005240315307474264, \"-0.04\": -0.002620323743567743, \"0.04\": 0.002620323743567632}}"
+      ]
+    },
+    "primary_comparison": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "lip-strip-review",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/lip_strip_referee_analytic/comparison",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_ordered_strip_checks/compare.py",
+        "_scratch/s11c/lip_strip_referee_analytic/linear-host/stdout",
+        "_scratch/s11c/lip_strip_referee_analytic/fem/stdout",
+        "_scratch/s11c/ordered_strip_bend01/main.json"
+      ],
+      "worker_with_durable_source": [
+        "python3",
+        "software/stage1_solver/tools/mouth_ordered_strip_checks/compare.py",
+        "_scratch/s11c/lip_strip_referee_analytic/linear-host/stdout",
+        "_scratch/s11c/lip_strip_referee_analytic/fem/stdout",
+        "_scratch/s11c/ordered_strip_bend01/main.json"
+      ],
+      "source_sha256": "97f942cf79d7de6b5561a51c1470f2d4a439933d73405f52b4fa93830e3da4c3",
+      "input_sha256": {
+        "_scratch/s11c/lip_strip_referee_analytic/linear-host/stdout": "7a1722ecdb732b9e4746363cb4cb51629ef99bca0c27afdcb891364487999b23",
+        "_scratch/s11c/lip_strip_referee_analytic/fem/stdout": "2d0a20938fd779c6513e06d68f64cbe7e8acbf5405cb2ddd35c90a76d18cdfbf",
+        "_scratch/s11c/ordered_strip_bend01/main.json": "f6cf7b57c072186ddcf39fc72075b2c5530dfe61a2b068772272ce49f6f56a56"
+      },
+      "cwd": "/var/projects/toy_physics",
+      "start_utc": "2026-11-22T21:26:01.109681+00:00",
+      "outcome_file_utc": "2026-11-22T21:26:01.231521+00:00",
+      "memory_limit_bytes": 1073741824,
+      "swap_limit_bytes": 0,
+      "wall_deadline": null,
+      "limits_verified": true,
+      "sampled_memory_peak_bytes": 15667200,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "stdout_path": "_scratch/s11c/lip_strip_referee_analytic/comparison/stdout",
+      "stdout_size": 2908,
+      "stdout_sha256": "cd82e5cd3beb25b5c0a97c258684a85ec5c3abf6dbe5dc6dd4edb65395c03e59",
+      "literal_stdout": [
+        "{\"check\": \"weighted_second_moment\", \"independent\": 0.0681760192172072, \"primary\": 0.06817601921708955, \"error\": 1.1765588503465096e-13, \"tolerance\": 1e-09}",
+        "{\"check\": \"neutral_tangent\", \"independent\": -0.002666666618643894, \"primary\": -0.002666666617483678, \"error\": -1.1602160204793321e-12, \"tolerance\": 1e-09}",
+        "{\"check\": \"unit_modulus_tangent\", \"independent\": 0.0655093525985633, \"primary\": 0.06550935259940839, \"error\": -8.450878885568613e-13, \"tolerance\": 1e-09}",
+        "{\"check\": \"critical_modulus\", \"independent\": 0.03911443714758348, \"primary\": 0.03911443713063303, \"error\": 1.6950454928554848e-11, \"tolerance\": 1e-09}",
+        "{\"check\": \"signed_curvature_moment\", \"modulus\": 0.0, \"curvature\": -0.08, \"independent\": 0.0002139868304773529, \"extrapolated\": 0.00021403315342283236, \"primary\": 0.000214033130935265, \"error\": 2.2487567363782546e-11, \"tolerance\": 2e-10}",
+        "{\"check\": \"signed_curvature_moment\", \"modulus\": 0.0, \"curvature\": 0.08, \"independent\": -0.00021398683269779895, \"extrapolated\": -0.00021403315712357576, \"primary\": -0.00021403313093648624, \"error\": -2.618708952483763e-11, \"tolerance\": 2e-10}",
+        "{\"check\": \"signed_curvature_moment\", \"modulus\": 0.0, \"curvature\": -0.04, \"independent\": 0.00010673087080803612, \"extrapolated\": 0.00010675397676962461, \"primary\": 0.0001067539649756144, \"error\": 1.17940102128955e-11, \"tolerance\": 2e-10}",
+        "{\"check\": \"signed_curvature_moment\", \"modulus\": 0.0, \"curvature\": 0.04, \"independent\": -0.00010673086858759007, \"extrapolated\": -0.00010675397454917857, \"primary\": -0.00010675396497500378, \"error\": -9.574174786308731e-12, \"tolerance\": 2e-10}",
+        "{\"check\": \"reserved_curvature_relative_prediction_error\", \"modulus\": 0.0, \"independent\": 0.0024599046628570598, \"primary\": 0.0024598664190707, \"error\": 3.82437863599705e-08, \"tolerance\": 1e-05}",
+        "{\"check\": \"signed_curvature_moment\", \"modulus\": 1.0, \"curvature\": -0.08, \"independent\": -0.00524031530835245, \"extrapolated\": -0.005240305479918088, \"primary\": -0.00524030551341427, \"error\": 3.3496182390291285e-11, \"tolerance\": 2e-10}",
+        "{\"check\": \"signed_curvature_moment\", \"modulus\": 1.0, \"curvature\": 0.08, \"independent\": 0.005240315306132004, \"extrapolated\": 0.005240305476957492, \"primary\": 0.005240305513417769, \"error\": -3.646027663811724e-11, \"tolerance\": 2e-10}",
+        "{\"check\": \"signed_curvature_moment\", \"modulus\": 1.0, \"curvature\": -0.04, \"independent\": -0.00262032374021004, \"extrapolated\": -0.0026203188604097725, \"primary\": -0.0026203188828748097, \"error\": 2.2465037208957428e-11, \"tolerance\": 2e-10}",
+        "{\"check\": \"signed_curvature_moment\", \"modulus\": 1.0, \"curvature\": 0.04, \"independent\": 0.002620323742430486, \"extrapolated\": 0.002620318863370367, \"primary\": 0.002620318882873754, \"error\": -1.9503387186509125e-11, \"tolerance\": 2e-10}",
+        "{\"check\": \"reserved_curvature_relative_prediction_error\", \"modulus\": 1.0, \"independent\": 6.338505498171276e-05, \"primary\": 6.339921643916391e-05, \"error\": -1.4161457451145054e-08, \"tolerance\": 1e-05}"
+      ]
+    }
+  }
+}

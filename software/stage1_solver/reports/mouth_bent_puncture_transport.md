@@ -1,0 +1,26 @@
+# Does a puncture change normal flow at the same bend?
+
+**The current equations gave identical local current, initial face motion and holding traction on matched bent material.** A new barrier in the carrier equation can focus flow through an opening. If the barrier acts wherever crystalline order is lost, it also closes the intended drain downstream.
+
+### Baseline with the written material law
+
+We prepared the same spherical bend (three principal curvatures of 0.01) in a four-dimensional cell with unit carrier density and equal bath pressures. We then removed order inside projected radius 8, leaving a continuous carrier through the hole. Intact and perforated sheets shared the same surface around the probe at radius 14. The bare phase energy gives $\mathbf j=n\nabla\theta$ in these units. The order exerts a reciprocal force $\mu_\chi\nabla\chi$ on momentum, but the number current has no direct dependence on puncture or crystalline order in this neutral preparation. Mixing and throat energies are unspecified. [Material law, P1–P12](../../../research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md) · [Matched sheets and signed controls](../tools/mouth_bent_puncture_baseline.py)
+
+| At the retained material, positive spatial phase difference +0.450143 | Intact | Perforated |
+|---|---:|---:|
+| Normal carrier current per true area, toward bulk | +0.0139284 | +0.0139284 |
+| Initial face speed, original curvature support retained | +0.0139284 | +0.0139284 |
+| Initial face speed, all support removed | −0.0160716 | −0.0160716 |
+| Normal traction required to hold the prepared profile, per true area | +0.00535669 | +0.00535669 |
+
+The zero-flow holding traction was +0.01000129. Reversing and halving the drive checked the signed changes. The central opening and the matching cut through the intact sheet each passed 30.16886 integrated current. An empty opening has no face velocity or holding traction. Holding the *whole* prepared order profile required different integrated forces depending on the rim taper. These are instantaneous responses before carrier back-reaction. The phase bias alone supplies no continuing conversion power. [Independent normal-column and rim-force check](../tools/mouth_bent_order_holder.py)
+
+### Trial barrier in the carrier law
+
+We tested $K_\perp/K_0=1-4\lambda\chi(1-\chi)$ for the normal phase stiffness across surviving material. Tangential stiffness remains $K_0$. The thin-layer reduction assigns a resistance $\int (1/K_\perp-1/K_0)\,ds$ to an intact interface, and continuous phase to an empty opening. We specified the opening and held the sheet geometry. At one-tenth of the baseline bias, the aperture carried **12.5%** of the total current with uniform stiffness, **95.09%** at $\lambda=0.9999$, and **all** current at the singular limit $\lambda=1$. Exact closure admits separate phase traces at intact material. These percentages depend on cell geometry. [Barrier, current and virtual-work calculation](../tools/mouth_puncture_phase_barrier.py)
+
+For a smooth bulge of the surviving annulus, vanishing at both edges, the finite barrier at 0.9999 added about +0.00035 to the intact sheet’s holding force and +0.0014 to the perforated sheet’s. The capillary contribution to the same displacement was about +78.43. This measures the reversible force conjugate to that bulge at fixed phase and fixed coupling per true area. For the fully sealed, unpunctured sheet the phase added zero holding force within numerical precision. Keeping the neutral curvature support is compatible with a stationary sheet in this control. The fixed-shape solve leaves the free rim speed and the origin of mechanical support open. Independent triangular elements reproduced the finest aperture currents within 0.5% and the corresponding modal forces within 2.3%.
+
+**Downstream check.** Ordered brane still has to become disordered bulk after entering a mouth. On any regular crossing of the tested diffuse profile, the critical stiffness vanishes quadratically at half order. Its integrated normal resistance diverges. The same scalar law that seals the intact interface therefore blocks steady current through a smooth downstream conversion layer. Removing the barrier specifically there requires another material property. In a separate acoustic control the simplest fixed, perfectly blocking interface also reflected the longitudinal pressure pulse. A movable impermeable sheet can transmit pressure by displacement. The physical normal stress response remains open. [Through-layer calculation](../tools/mouth_puncture_through_layer.py) · [Pressure-wave control](../tools/mouth_puncture_sound_link.py)
+
+**Next physical input.** At matched curvature and shear order, determine whether a connected crystalline structure persists across a bent face and breaks at the converting mouth. Measure its normal phase stiffness, current relative to the moving material, and pressure transmission without assigning either patch its permeability. A selective barrier needs this distinction and an identified energy supply before it can support the 0PN release calculation. [Energy requirement](mouth_coupled_conversion.md) · [Measurements and independent review](../../../research/pde_ledger_v3/_measurements/mouth_bent_puncture_transport.json)

@@ -1,0 +1,1493 @@
+{
+  "title": "0PN fixed-depth rigid reference. Radius-4 attribution and blind radius 6, 8 controls",
+  "scope": "Fixed reflecting-wall carrier family with a constant reservoir phase bias. Finite-box force and mass. Support is imposed; no physical equilibrium or open-domain claim.",
+  "reducer": {
+    "command": [
+      "python3",
+      "software/stage1_solver/tools/mouth_radius_pivot_summary.py",
+      "--root",
+      "_scratch/s11c/radius_pivot01",
+      "--plot",
+      "software/stage1_solver/reports/figures/mouth_radius_pivot.png"
+    ],
+    "stdout_sha256": "ce2730c5dfb115997803a86012a55dda407241ff731d722105322a2622594831",
+    "zero_swap": true,
+    "cap_bytes": 1073741824,
+    "native_exit": 0,
+    "limits_verified": true
+  },
+  "archive": [
+    {
+      "radius": 1.0,
+      "mesh": 36,
+      "radius_over_depth": 0.3278688524590164,
+      "D": 0.24960711706486904,
+      "C": 0.24961097370685154,
+      "M": 12.242440090627216,
+      "D_over_R3": 0.24960711706486904,
+      "M_over_R3": 12.242440090627216,
+      "C_over_D": 1.0000154508494303,
+      "C_over_M": 0.020388988784838174,
+      "D_over_M": 0.020388673762509784,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "92d3464eb05f36c11a1038d4257e816e21385505e8ce1eaeff446f1ab7061a0c",
+      "stdout_path": "_scratch/s11c/carrier_action_wone_01/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_carrier_matched_bias.py",
+        "--radius",
+        "1",
+        "--depth",
+        "1",
+        "--mesh",
+        "36",
+        "--outer",
+        "28",
+        "--roof",
+        "22",
+        "--bias",
+        "0.4510084282857874"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 7516192768,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "radius": 2.0,
+      "mesh": 36,
+      "radius_over_depth": 0.6557377049180328,
+      "D": 1.3715027142739675,
+      "C": 1.3715402192586035,
+      "M": 67.82590857514012,
+      "D_over_R3": 0.17143783928424594,
+      "M_over_R3": 8.478238571892515,
+      "C_over_D": 1.0000273459062425,
+      "C_over_M": 0.0202214794917072,
+      "D_over_M": 0.020220926532146116,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "c18e642451c98cc2a763ae79292ac43026d85e54e8abaed16504ffb2047d8453",
+      "stdout_path": "_scratch/s11c/carrier_action_wtwo_01/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_carrier_matched_bias.py",
+        "--radius",
+        "2",
+        "--depth",
+        "1",
+        "--mesh",
+        "36",
+        "--outer",
+        "28",
+        "--roof",
+        "22",
+        "--bias",
+        "0.4510084282857874"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 7516192768,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "radius": 4.0,
+      "mesh": 34,
+      "radius_over_depth": 1.3114754098360657,
+      "D": 5.683668906567457,
+      "C": 5.684586317465008,
+      "M": 309.38281922822677,
+      "D_over_R3": 0.08880732666511651,
+      "M_over_R3": 4.834106550441043,
+      "C_over_D": 1.000161411741717,
+      "C_over_M": 0.018373956031707047,
+      "D_over_M": 0.018370990738094947,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "f8f0e98b9ba7aa7b42c436b7589d180c37f8763cfa487a38c3cc2d3483163020",
+      "stdout_path": "_scratch/s11c/carrier_action_wfour_01/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_carrier_matched_bias.py",
+        "--radius",
+        "4",
+        "--depth",
+        "1",
+        "--mesh",
+        "34",
+        "--outer",
+        "28",
+        "--roof",
+        "22",
+        "--bias",
+        "0.4510084282857874"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 7516192768,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    }
+  ],
+  "factors_R4_over_R1": {
+    "D_over_R3": 0.3557884394860298,
+    "M_over_R3": 0.39486462785650256,
+    "C_over_D": 1.0001459586371018,
+    "C_over_M": 0.901170539922531,
+    "D_over_M": 0.9010390254943945
+  },
+  "cases": [
+    {
+      "name": "r1_n30_box28",
+      "radius": 1,
+      "radius_over_depth": 0.3278688524590164,
+      "mesh": 30,
+      "outer": 28,
+      "roof": 22.0,
+      "D": 0.2496177659457473,
+      "C": 0.24944259099687158,
+      "M": 12.235875364530163,
+      "C_over_D": 0.9992982272387062,
+      "C_over_M": 0.020386166380867658,
+      "D_over_M": 0.020400482884072937,
+      "D_over_R3": 0.2496177659457473,
+      "M_over_R3": 12.235875364530163,
+      "alternate_window_C_over_M": 0.020349510645061613,
+      "windows": [
+        {
+          "test": "finite_radius",
+          "window": [
+            1.65,
+            2.55,
+            3.4499999999999997,
+            5.55
+          ],
+          "radius": 1.0,
+          "radius_over_depth": 0.3278688524590164,
+          "intake": 0.2496177659457473,
+          "C": 0.24894379120803922,
+          "B": -0.24977662531633005,
+          "tow": 0.000832834108290827,
+          "M": 12.233404308837889,
+          "normalized_rate": 0.2496177659457473,
+          "normalized_mass": 12.233404308837889,
+          "C_over_D": 0.9972999728799169,
+          "C_over_M": 0.020349510645061613,
+          "D_over_M": 0.020404603628232387,
+          "weak_M_over_finite_M": 1.0024177051887828
+        },
+        {
+          "test": "finite_radius",
+          "window": [
+            1.9,
+            3.25,
+            3.75,
+            6.449999999999999
+          ],
+          "radius": 1.0,
+          "radius_over_depth": 0.3278688524590164,
+          "intake": 0.2496177659457473,
+          "C": 0.24944259099687158,
+          "B": -0.2495252602564675,
+          "tow": 8.266925959602572e-05,
+          "M": 12.235875364530163,
+          "normalized_rate": 0.2496177659457473,
+          "normalized_mass": 12.235875364530163,
+          "C_over_D": 0.9992982272387062,
+          "C_over_M": 0.020386166380867658,
+          "D_over_M": 0.020400482884072937,
+          "weak_M_over_finite_M": 1.0022152652404632
+        }
+      ],
+      "residual_checks": [],
+      "region_names": [
+        "feeding_slab_and_rounded_lip",
+        "conduit",
+        "receiver"
+      ],
+      "scaled_regional_phase_resistances": [
+        0.8537501543363866,
+        0.9057733154216169,
+        0.04727253907982594
+      ],
+      "regional_phase_resistance_share": [
+        0.47252160739802457,
+        0.5013146536693038,
+        0.026163738932671578
+      ],
+      "regional_zero_intake_mass_over_R3": [
+        0.24833601674277886,
+        10.407936370787976,
+        1.6067086863812194
+      ],
+      "zero_mass_over_finite": 1.0022152652404632,
+      "regional_phase_balance": -9.986508653359039e-08,
+      "regional_mass_balance": 8.215650382226158e-15,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "18718fb1072bfba56dbbbd6c7760d5778540f3454b1a4ba0bb1e668de178d6ac",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r1_n30_box28/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "30",
+        "--outer",
+        "28",
+        "--roof",
+        "22"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r2_n30_box28",
+      "radius": 2,
+      "radius_over_depth": 0.6557377049180328,
+      "mesh": 30,
+      "outer": 28,
+      "roof": 22.0,
+      "D": 1.3715190699330997,
+      "C": 1.3713949776041316,
+      "M": 67.79585058655962,
+      "C_over_D": 0.9999095219806357,
+      "C_over_M": 0.020228302554493028,
+      "D_over_M": 0.02023013293685263,
+      "D_over_R3": 0.17143988374163746,
+      "M_over_R3": 8.474481323319953,
+      "alternate_window_C_over_M": 0.020233442904761513,
+      "windows": [
+        {
+          "test": "finite_radius",
+          "window": [
+            3.3,
+            5.1,
+            3.4499999999999997,
+            5.55
+          ],
+          "radius": 2.0,
+          "radius_over_depth": 0.6557377049180328,
+          "intake": 1.3715190699330997,
+          "C": 1.3716806836520525,
+          "B": -1.371691618839988,
+          "tow": 1.0935187934046908e-05,
+          "M": 67.79274738899016,
+          "normalized_rate": 0.17143988374163746,
+          "normalized_mass": 8.47409342362377,
+          "C_over_D": 1.0001178355609455,
+          "C_over_M": 0.020233442904761513,
+          "D_over_M": 0.020231058966579667,
+          "weak_M_over_finite_M": 1.0010905721059402
+        },
+        {
+          "test": "finite_radius",
+          "window": [
+            3.8,
+            6.5,
+            3.75,
+            6.449999999999999
+          ],
+          "radius": 2.0,
+          "radius_over_depth": 0.6557377049180328,
+          "intake": 1.3715190699330997,
+          "C": 1.3713949776041316,
+          "B": -1.3714959549100234,
+          "tow": 0.00010097730588976006,
+          "M": 67.79585058655962,
+          "normalized_rate": 0.17143988374163746,
+          "normalized_mass": 8.474481323319953,
+          "C_over_D": 0.9999095219806357,
+          "C_over_M": 0.020228302554493028,
+          "D_over_M": 0.02023013293685263,
+          "weak_M_over_finite_M": 1.0010447495105559
+        }
+      ],
+      "residual_checks": [],
+      "region_names": [
+        "feeding_slab_and_rounded_lip",
+        "conduit",
+        "receiver"
+      ],
+      "scaled_regional_phase_resistances": [
+        1.3902337156011026,
+        1.1400819124752524,
+        0.10039319765234753
+      ],
+      "regional_phase_resistance_share": [
+        0.5284635464040799,
+        0.4333744203558717,
+        0.03816203324004843
+      ],
+      "regional_zero_intake_mass_over_R3": [
+        0.1923160102819457,
+        6.027618626542722,
+        2.2634003967101433
+      ],
+      "zero_mass_over_finite": 1.0010447495105559,
+      "regional_phase_balance": -2.8923537231939633e-08,
+      "regional_mass_balance": 1.5543122344752192e-15,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "cf86d6404e07bf3bb7dc9e0e8a2f5f63eb42eb86d046dad189bd12b655350da9",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r2_n30_box28/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "30",
+        "--outer",
+        "28",
+        "--roof",
+        "22"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r4_n30_box28",
+      "radius": 4,
+      "radius_over_depth": 1.3114754098360657,
+      "mesh": 30,
+      "outer": 28,
+      "roof": 22.0,
+      "D": 5.6837143071827665,
+      "C": 5.68495464262539,
+      "M": 309.3128582224195,
+      "C_over_D": 1.0002182262118726,
+      "C_over_M": 0.018379302675278614,
+      "D_over_M": 0.018375292704759603,
+      "D_over_R3": 0.08880803604973073,
+      "M_over_R3": 4.833013409725305,
+      "alternate_window_C_over_M": 0.01837918725895654,
+      "windows": [
+        {
+          "test": "finite_radius",
+          "window": [
+            6.6,
+            10.2,
+            3.4499999999999997,
+            5.55
+          ],
+          "radius": 4.0,
+          "radius_over_depth": 1.3114754098360657,
+          "intake": 5.6837143071827665,
+          "C": 5.684967128411936,
+          "B": -5.684389379434455,
+          "tow": -0.0005777489774746458,
+          "M": 309.31547996724066,
+          "normalized_rate": 0.08880803604973073,
+          "normalized_mass": 4.833054374488135,
+          "C_over_D": 1.0002204229772045,
+          "C_over_M": 0.01837918725895654,
+          "D_over_M": 0.01837513695656203,
+          "weak_M_over_finite_M": 0.9995335328396823
+        },
+        {
+          "test": "finite_radius",
+          "window": [
+            7.6,
+            13.0,
+            3.75,
+            6.449999999999999
+          ],
+          "radius": 4.0,
+          "radius_over_depth": 1.3114754098360657,
+          "intake": 5.6837143071827665,
+          "C": 5.68495464262539,
+          "B": -5.684486760381537,
+          "tow": -0.0004678822438495267,
+          "M": 309.3128582224195,
+          "normalized_rate": 0.08880803604973073,
+          "normalized_mass": 4.833013409725305,
+          "C_over_D": 1.0002182262118726,
+          "C_over_M": 0.018379302675278614,
+          "D_over_M": 0.018375292704759603,
+          "weak_M_over_finite_M": 0.9995420049151025
+        }
+      ],
+      "residual_checks": [],
+      "region_names": [
+        "feeding_slab_and_rounded_lip",
+        "conduit",
+        "receiver"
+      ],
+      "scaled_regional_phase_resistances": [
+        3.172989703955135,
+        1.658237290658254,
+        0.24723679194001524
+      ],
+      "regional_phase_resistance_share": [
+        0.6247932125373182,
+        0.32652340557175624,
+        0.04868338189092556
+      ],
+      "regional_zero_intake_mass_over_R3": [
+        0.12497031008605024,
+        2.4888271594264846,
+        2.2170024438260234
+      ],
+      "zero_mass_over_finite": 0.9995420049151025,
+      "regional_phase_balance": -7.372877897093844e-08,
+      "regional_mass_balance": -3.219646771412954e-14,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "d0af23b828f958f44d03b2cfe2c929d11d7fdc43decff82846c695ff23e5b970",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r4_n30_box28/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "4",
+        "--mesh",
+        "30",
+        "--outer",
+        "28",
+        "--roof",
+        "22"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r6_n30_box28",
+      "radius": 6,
+      "radius_over_depth": 1.9672131147540985,
+      "mesh": 30,
+      "outer": 28,
+      "roof": 22.0,
+      "D": 11.522472604376558,
+      "C": 11.530988508563516,
+      "M": 710.2065895975677,
+      "C_over_D": 1.000739069163308,
+      "C_over_M": 0.016236104645406695,
+      "D_over_M": 0.0162241139031189,
+      "D_over_R3": 0.0533447805758174,
+      "M_over_R3": 3.2879934703591096,
+      "alternate_window_C_over_M": 0.016237348301043335,
+      "windows": [
+        {
+          "test": "finite_radius",
+          "window": [
+            9.899999999999999,
+            15.299999999999999,
+            3.4499999999999997,
+            5.55
+          ],
+          "radius": 6.0,
+          "radius_over_depth": 1.9672131147540985,
+          "intake": 11.522472604376558,
+          "C": 11.531818848360603,
+          "B": -11.530003214890323,
+          "tow": -0.0018156334702864596,
+          "M": 710.2033308985324,
+          "normalized_rate": 0.0533447805758174,
+          "normalized_mass": 3.287978383789502,
+          "C_over_D": 1.000811131803472,
+          "C_over_M": 0.016237348301043335,
+          "D_over_M": 0.016224188345890463,
+          "weak_M_over_finite_M": 0.9990087321634187
+        },
+        {
+          "test": "finite_radius",
+          "window": [
+            11.399999999999999,
+            19.5,
+            3.75,
+            6.449999999999999
+          ],
+          "radius": 6.0,
+          "radius_over_depth": 1.9672131147540985,
+          "intake": 11.522472604376558,
+          "C": 11.530988508563516,
+          "B": -11.53019214632894,
+          "tow": -0.0007963622345797035,
+          "M": 710.2065895975677,
+          "normalized_rate": 0.0533447805758174,
+          "normalized_mass": 3.2879934703591096,
+          "C_over_D": 1.000739069163308,
+          "C_over_M": 0.016236104645406695,
+          "D_over_M": 0.0162241139031189,
+          "weak_M_over_finite_M": 0.9990041483298702
+        }
+      ],
+      "residual_checks": [],
+      "region_names": [
+        "feeding_slab_and_rounded_lip",
+        "conduit",
+        "receiver"
+      ],
+      "scaled_regional_phase_resistances": [
+        5.846805675380876,
+        2.142323852822857,
+        0.4654623192998778
+      ],
+      "regional_phase_resistance_share": [
+        0.6915538657383282,
+        0.25339175343578785,
+        0.05505438082588398
+      ],
+      "regional_zero_intake_mass_over_R3": [
+        0.09238089021004858,
+        1.3223047044397498,
+        1.870033521920604
+      ],
+      "zero_mass_over_finite": 0.9990041483298702,
+      "regional_phase_balance": -1.8031284454433916e-07,
+      "regional_mass_balance": -6.072919944699606e-14,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "bbe65bf28c6a0b433934da7e14c7a04dddf91b63d73db52652bfa25ac7701203",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r6_n30_box28/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "6",
+        "--mesh",
+        "30",
+        "--outer",
+        "28",
+        "--roof",
+        "22"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r8_n30_box28",
+      "radius": 8,
+      "radius_over_depth": 2.6229508196721314,
+      "mesh": 30,
+      "outer": 28,
+      "roof": 22.0,
+      "D": 18.33162712649876,
+      "C": 18.369132500915633,
+      "M": 1262.7993380777168,
+      "C_over_D": 1.002045938102388,
+      "C_over_M": 0.014546358987547345,
+      "D_over_M": 0.014516658802184588,
+      "D_over_R3": 0.03580395923144289,
+      "M_over_R3": 2.4664049571830406,
+      "alternate_window_C_over_M": 0.014546349760928905,
+      "windows": [
+        {
+          "test": "finite_radius",
+          "window": [
+            13.2,
+            20.4,
+            3.4499999999999997,
+            5.55
+          ],
+          "radius": 8.0,
+          "radius_over_depth": 2.6229508196721314,
+          "intake": 18.33162712649876,
+          "C": 18.3690830170175,
+          "B": -18.368206450477846,
+          "tow": -0.0008765665396177624,
+          "M": 1262.7967372513172,
+          "normalized_rate": 0.03580395923144289,
+          "normalized_mass": 2.466399877443979,
+          "C_over_D": 1.0020432387294522,
+          "C_over_M": 0.014546349760928905,
+          "D_over_M": 0.014516688700352942,
+          "weak_M_over_finite_M": 0.998856116493727
+        },
+        {
+          "test": "finite_radius",
+          "window": [
+            15.2,
+            26.0,
+            3.75,
+            6.449999999999999
+          ],
+          "radius": 8.0,
+          "radius_over_depth": 2.6229508196721314,
+          "intake": 18.33162712649876,
+          "C": 18.369132500915633,
+          "B": -18.368578455771836,
+          "tow": -0.0005540451438260435,
+          "M": 1262.7993380777168,
+          "normalized_rate": 0.03580395923144289,
+          "normalized_mass": 2.4664049571830406,
+          "C_over_D": 1.002045938102388,
+          "C_over_M": 0.014546358987547345,
+          "D_over_M": 0.014516658802184588,
+          "weak_M_over_finite_M": 0.9988540592774465
+        }
+      ],
+      "residual_checks": [],
+      "region_names": [
+        "feeding_slab_and_rounded_lip",
+        "conduit",
+        "receiver"
+      ],
+      "scaled_regional_phase_resistances": [
+        9.275888329463713,
+        2.576373060850309,
+        0.7443419286104164
+      ],
+      "regional_phase_resistance_share": [
+        0.7363801252301192,
+        0.2045291889901549,
+        0.0590906857797259
+      ],
+      "regional_zero_intake_mass_over_R3": [
+        0.07384657490828028,
+        0.8183684257961591,
+        1.5713636025998403
+      ],
+      "zero_mass_over_finite": 0.9988540592774465,
+      "regional_phase_balance": -3.472226877132556e-07,
+      "regional_mass_balance": -2.219335826225688e-13,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "9af0d89a787e0270499e958e02940d852e20db19a997a0587e2e0bdef3309772",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r8_n30_box28/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "8",
+        "--mesh",
+        "30",
+        "--outer",
+        "28",
+        "--roof",
+        "22"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r6_n40_box28",
+      "radius": 6,
+      "radius_over_depth": 1.9672131147540985,
+      "mesh": 40,
+      "outer": 28,
+      "roof": 22.0,
+      "D": 11.521912210567134,
+      "C": 11.530498446953427,
+      "M": 710.4689712345665,
+      "C_over_D": 1.000745209321975,
+      "C_over_M": 0.016229418755497695,
+      "D_over_M": 0.01621733344743509,
+      "D_over_R3": 0.05334218616003303,
+      "M_over_R3": 3.2892082001600302,
+      "alternate_window_C_over_M": 0.016229337719634557,
+      "windows": [
+        {
+          "test": "finite_radius",
+          "window": [
+            9.899999999999999,
+            15.299999999999999,
+            3.4499999999999997,
+            5.55
+          ],
+          "radius": 6.0,
+          "radius_over_depth": 1.9672131147540985,
+          "intake": 11.521912210567134,
+          "C": 11.530405504916574,
+          "B": -11.529684034379699,
+          "tow": -0.0007214705368797647,
+          "M": 710.4667919361167,
+          "normalized_rate": 0.05334218616003303,
+          "normalized_mass": 3.289198110815355,
+          "C_over_D": 1.0007371427758016,
+          "C_over_M": 0.016229337719634557,
+          "D_over_M": 0.016217383192771596,
+          "weak_M_over_finite_M": 0.9990091482336345
+        },
+        {
+          "test": "finite_radius",
+          "window": [
+            11.399999999999999,
+            19.5,
+            3.75,
+            6.449999999999999
+          ],
+          "radius": 6.0,
+          "radius_over_depth": 1.9672131147540985,
+          "intake": 11.521912210567134,
+          "C": 11.530498446953427,
+          "B": -11.52958866814402,
+          "tow": -0.0009097788094151738,
+          "M": 710.4689712345665,
+          "normalized_rate": 0.05334218616003303,
+          "normalized_mass": 3.2892082001600302,
+          "C_over_D": 1.000745209321975,
+          "C_over_M": 0.016229418755497695,
+          "D_over_M": 0.01621733344743509,
+          "weak_M_over_finite_M": 0.9990060838646384
+        }
+      ],
+      "residual_checks": [],
+      "region_names": [
+        "feeding_slab_and_rounded_lip",
+        "conduit",
+        "receiver"
+      ],
+      "scaled_regional_phase_resistances": [
+        5.846830683994252,
+        2.1426869365757026,
+        0.46548642988458283
+      ],
+      "regional_phase_resistance_share": [
+        0.691523108576149,
+        0.25342234300414235,
+        0.05505454841970874
+      ],
+      "regional_zero_intake_mass_over_R3": [
+        0.09238183706955516,
+        1.3221928626676742,
+        1.8713643033204985
+      ],
+      "zero_mass_over_finite": 0.9990060838646384,
+      "regional_phase_balance": -6.262102081322496e-08,
+      "regional_mass_balance": -5.81756864903582e-14,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "6720a2cfa8898dd02a4f1ff4a96819a2a9538f7d16bbb006e5bab69f75642590",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r6_n40_box28/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "6",
+        "--mesh",
+        "40",
+        "--outer",
+        "28",
+        "--roof",
+        "22"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r8_n40_box28",
+      "radius": 8,
+      "radius_over_depth": 2.6229508196721314,
+      "mesh": 40,
+      "outer": 28,
+      "roof": 22.0,
+      "D": 18.32929334024233,
+      "C": 18.3672204766127,
+      "M": 1263.1930202410877,
+      "C_over_D": 1.0020692088705407,
+      "C_over_M": 0.01454031187815399,
+      "D_over_M": 0.014510287063448212,
+      "D_over_R3": 0.0357994010551608,
+      "M_over_R3": 2.4671738676583743,
+      "alternate_window_C_over_M": 0.01454014915812676,
+      "windows": [
+        {
+          "test": "finite_radius",
+          "window": [
+            13.2,
+            20.4,
+            3.4499999999999997,
+            5.55
+          ],
+          "radius": 8.0,
+          "radius_over_depth": 2.6229508196721314,
+          "intake": 18.32929334024233,
+          "C": 18.366990266157188,
+          "B": -18.36633348116399,
+          "tow": -0.0006567849931979897,
+          "M": 1263.191323996256,
+          "normalized_rate": 0.0357994010551608,
+          "normalized_mass": 2.4671705546801874,
+          "C_over_D": 1.0020566491689067,
+          "C_over_M": 0.01454014915812676,
+          "D_over_M": 0.014510306548223773,
+          "weak_M_over_finite_M": 0.998859701693112
+        },
+        {
+          "test": "finite_radius",
+          "window": [
+            15.2,
+            26.0,
+            3.75,
+            6.449999999999999
+          ],
+          "radius": 8.0,
+          "radius_over_depth": 2.6229508196721314,
+          "intake": 18.32929334024233,
+          "C": 18.3672204766127,
+          "B": -18.366187415276446,
+          "tow": -0.0010330613362654062,
+          "M": 1263.1930202410877,
+          "normalized_rate": 0.0357994010551608,
+          "normalized_mass": 2.4671738676583743,
+          "C_over_D": 1.0020692088705407,
+          "C_over_M": 0.01454031187815399,
+          "D_over_M": 0.014510287063448212,
+          "weak_M_over_finite_M": 0.99885836040118
+        }
+      ],
+      "residual_checks": [],
+      "region_names": [
+        "feeding_slab_and_rounded_lip",
+        "conduit",
+        "receiver"
+      ],
+      "scaled_regional_phase_resistances": [
+        9.276076936194414,
+        2.5777352243251554,
+        0.7443977831381569
+      ],
+      "regional_phase_resistance_share": [
+        0.7363011870479454,
+        0.20461122936142653,
+        0.059087583590628004
+      ],
+      "regional_zero_intake_mass_over_R3": [
+        0.07384750816302306,
+        0.8183251263576196,
+        1.572184609753406
+      ],
+      "zero_mass_over_finite": 0.99885836040118,
+      "regional_phase_balance": -1.284580642968436e-07,
+      "regional_mass_balance": -4.5630166312093934e-14,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "f829844ca6a7a7f802b49e0ba61a149f3c505a9c8690823e4fab590ec4e1c82c",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r8_n40_box28/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "8",
+        "--mesh",
+        "40",
+        "--outer",
+        "28",
+        "--roof",
+        "22"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r6_n34_box42",
+      "radius": 6,
+      "radius_over_depth": 1.9672131147540985,
+      "mesh": 34,
+      "outer": 42,
+      "roof": 33.0,
+      "D": 11.239304170886074,
+      "C": 11.241975543864083,
+      "M": 711.1704470484912,
+      "C_over_D": 1.0002376813490756,
+      "C_over_M": 0.015807709094944365,
+      "D_over_M": 0.01580395279012448,
+      "D_over_R3": 0.05203381560595405,
+      "M_over_R3": 3.292455773372644,
+      "alternate_window_C_over_M": 0.015807373985358104,
+      "windows": [
+        {
+          "test": "finite_radius",
+          "window": [
+            9.899999999999999,
+            15.299999999999999,
+            3.4499999999999997,
+            5.55
+          ],
+          "radius": 6.0,
+          "radius_over_depth": 1.9672131147540985,
+          "intake": 11.239304170886074,
+          "C": 11.24170802788427,
+          "B": -11.242093528851655,
+          "tow": 0.00038550096741776785,
+          "M": 711.1686000658381,
+          "normalized_rate": 0.05203381560595405,
+          "normalized_mass": 3.292447222527028,
+          "C_over_D": 1.0002138795215119,
+          "C_over_M": 0.015807373985358104,
+          "D_over_M": 0.015803993834718758,
+          "weak_M_over_finite_M": 0.9989737149416307
+        },
+        {
+          "test": "finite_radius",
+          "window": [
+            11.399999999999999,
+            19.5,
+            3.75,
+            6.449999999999999
+          ],
+          "radius": 6.0,
+          "radius_over_depth": 1.9672131147540985,
+          "intake": 11.239304170886074,
+          "C": 11.241975543864083,
+          "B": -11.241621370469076,
+          "tow": -0.0003541733949514736,
+          "M": 711.1704470484912,
+          "normalized_rate": 0.05203381560595405,
+          "normalized_mass": 3.292455773372644,
+          "C_over_D": 1.0002376813490756,
+          "C_over_M": 0.015807709094944365,
+          "D_over_M": 0.01580395279012448,
+          "weak_M_over_finite_M": 0.9989711205043477
+        }
+      ],
+      "residual_checks": [
+        {
+          "test": "refined_dipole_residual",
+          "corrections": 2,
+          "errors": [
+            22408.712004322268,
+            5.365609467844479e-08,
+            2.253159436804708e-08
+          ],
+          "checked_vector_type": "float64"
+        },
+        {
+          "test": "refined_dipole_residual",
+          "corrections": 1,
+          "errors": [
+            1265742.4447125387,
+            1.8599592976897839e-09
+          ],
+          "checked_vector_type": "float64"
+        },
+        {
+          "test": "refined_dipole_residual",
+          "corrections": 2,
+          "errors": [
+            1265742.4447125387,
+            7.512608135584742e-08,
+            2.8150680009275675e-08
+          ],
+          "checked_vector_type": "float64"
+        },
+        {
+          "test": "refined_dipole_residual",
+          "corrections": 1,
+          "errors": [
+            51.322958716440624,
+            1.0259938038048588e-10
+          ],
+          "checked_vector_type": "float64"
+        }
+      ],
+      "region_names": [
+        "feeding_slab_and_rounded_lip",
+        "conduit",
+        "receiver"
+      ],
+      "scaled_regional_phase_resistances": [
+        6.051129559991927,
+        2.1424918169026093,
+        0.4739801636707683
+      ],
+      "regional_phase_resistance_share": [
+        0.6981319493832281,
+        0.24718393051128598,
+        0.05468412010548597
+      ],
+      "regional_zero_intake_mass_over_R3": [
+        0.09255942127877165,
+        1.3240970285901004,
+        1.8724117832680112
+      ],
+      "zero_mass_over_finite": 0.9989711205043477,
+      "regional_phase_balance": -1.0637967307047802e-07,
+      "regional_mass_balance": -2.6756374893466273e-14,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "45d21ac5b6a2d4f3922cbcc8886bc86e1312720fc02b8251928bd80f6f38920a",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r6_n34_box42/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "6",
+        "--mesh",
+        "34",
+        "--outer",
+        "42",
+        "--roof",
+        "33",
+        "--refine-dipole"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r8_n34_box42",
+      "radius": 8,
+      "radius_over_depth": 2.6229508196721314,
+      "mesh": 34,
+      "outer": 42,
+      "roof": 33.0,
+      "D": 17.624518550796523,
+      "C": 17.635566329415138,
+      "M": 1270.2161218873161,
+      "C_over_D": 1.0006268414417547,
+      "C_over_M": 0.013883910009905881,
+      "D_over_M": 0.013875212451727986,
+      "D_over_R3": 0.03442288779452446,
+      "M_over_R3": 2.4808908630611644,
+      "alternate_window_C_over_M": 0.01388406094233384,
+      "windows": [
+        {
+          "test": "finite_radius",
+          "window": [
+            13.2,
+            20.4,
+            3.4499999999999997,
+            5.55
+          ],
+          "radius": 8.0,
+          "radius_over_depth": 2.6229508196721314,
+          "intake": 17.624518550796523,
+          "C": 17.635796467229753,
+          "B": -17.634884763791923,
+          "tow": -0.0009117034383202549,
+          "M": 1270.2188891620685,
+          "normalized_rate": 0.03442288779452446,
+          "normalized_mass": 2.480896267894665,
+          "C_over_D": 1.0006398992631047,
+          "C_over_M": 0.01388406094233384,
+          "D_over_M": 0.01387518222345361,
+          "weak_M_over_finite_M": 0.9988386807985431
+        },
+        {
+          "test": "finite_radius",
+          "window": [
+            15.2,
+            26.0,
+            3.75,
+            6.449999999999999
+          ],
+          "radius": 8.0,
+          "radius_over_depth": 2.6229508196721314,
+          "intake": 17.624518550796523,
+          "C": 17.635566329415138,
+          "B": -17.634119630128865,
+          "tow": -0.0014466992865971307,
+          "M": 1270.2161218873161,
+          "normalized_rate": 0.03442288779452446,
+          "normalized_mass": 2.4808908630611644,
+          "C_over_D": 1.0006268414417547,
+          "C_over_M": 0.013883910009905881,
+          "D_over_M": 0.013875212451727986,
+          "weak_M_over_finite_M": 0.9988408568542674
+        }
+      ],
+      "residual_checks": [
+        {
+          "test": "refined_dipole_residual",
+          "corrections": 2,
+          "errors": [
+            23808.020327154984,
+            7.862036000005901e-08,
+            2.054002834483981e-08
+          ],
+          "checked_vector_type": "float64"
+        },
+        {
+          "test": "refined_dipole_residual",
+          "corrections": 1,
+          "errors": [
+            1270510.858373777,
+            2.1994548404791203e-09
+          ],
+          "checked_vector_type": "float64"
+        },
+        {
+          "test": "refined_dipole_residual",
+          "corrections": 2,
+          "errors": [
+            1270510.858373777,
+            7.964990800246596e-08,
+            2.7452188078314066e-08
+          ],
+          "checked_vector_type": "float64"
+        },
+        {
+          "test": "refined_dipole_residual",
+          "corrections": 1,
+          "errors": [
+            91.18680132189535,
+            1.6001041464042132e-10
+          ],
+          "checked_vector_type": "float64"
+        }
+      ],
+      "region_names": [
+        "feeding_slab_and_rounded_lip",
+        "conduit",
+        "receiver"
+      ],
+      "scaled_regional_phase_resistances": [
+        9.760519491626816,
+        2.577300809037977,
+        0.7641699019958909
+      ],
+      "regional_phase_resistance_share": [
+        0.7449646458783568,
+        0.19671063473353784,
+        0.05832471938810542
+      ],
+      "regional_zero_intake_mass_over_R3": [
+        0.07428564169278448,
+        0.8217250774081973,
+        1.5820044363211945
+      ],
+      "zero_mass_over_finite": 0.9988408568542674,
+      "regional_phase_balance": -1.987870609232445e-07,
+      "regional_mass_balance": -1.1324274851176597e-13,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "stdout_sha256": "29bb07466341f30fa34146ae53ef0d5fa368c57729d8d297b002b5c9e9592b85",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r8_n34_box42/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "8",
+        "--mesh",
+        "34",
+        "--outer",
+        "42",
+        "--roof",
+        "33",
+        "--refine-dipole"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    }
+  ],
+  "failed_cases": [
+    {
+      "name": "r4_n30_box42",
+      "error": [
+        "ArithmeticError: Dipole equation residual 8.568167686462402e-08"
+      ],
+      "partial_diagnostics_only": [
+        {
+          "test": "pivot_preparation",
+          "radius": 4.0,
+          "mesh": 30,
+          "outer": 42.0,
+          "roof": 33.0,
+          "axial_depth": 3.05,
+          "thickness": 1.0,
+          "bias": 0.4510084282857874,
+          "material_intake": 5.614185769543828,
+          "action_derivative": 5.614185736715793,
+          "nodes": 26413
+        },
+        {
+          "test": "regional_integrals",
+          "region_names": [
+            "feeding_slab_and_rounded_lip",
+            "conduit",
+            "receiver"
+          ],
+          "finite_flow_resistance": [
+            0.05052251723880768,
+            0.025908952451799545,
+            0.0039022436666371896
+          ],
+          "fixed_phase_drop_over_current": 0.0803337201152917,
+          "zero_intake_added_mass": [
+            8.000009490905153,
+            159.3265422379997,
+            141.61163181615163
+          ],
+          "zero_intake_energy": 308.93818354504145,
+          "zero_intake_wall_work": 308.93818354506857
+        }
+      ],
+      "exit_codes": [
+        1,
+        1
+      ],
+      "stdout_sha256": "f59c4094fe37f414e2903139391a9420c9ac3242ed8caede40e9d541d5167eea",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r4_n30_box42/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "4",
+        "--mesh",
+        "30",
+        "--outer",
+        "42",
+        "--roof",
+        "33"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r6_n30_box42",
+      "error": [
+        "ArithmeticError: Dipole equation residual 9.313225746154785e-08"
+      ],
+      "partial_diagnostics_only": [
+        {
+          "test": "pivot_preparation",
+          "radius": 6.0,
+          "mesh": 30,
+          "outer": 42.0,
+          "roof": 33.0,
+          "axial_depth": 3.05,
+          "thickness": 1.0,
+          "bias": 0.4510084282857874,
+          "material_intake": 11.23961755906997,
+          "action_derivative": 11.239617521051848,
+          "nodes": 26413
+        },
+        {
+          "test": "regional_integrals",
+          "region_names": [
+            "feeding_slab_and_rounded_lip",
+            "conduit",
+            "receiver"
+          ],
+          "finite_flow_resistance": [
+            0.02801441897726969,
+            0.00991797439574817,
+            0.002194270037278799
+          ],
+          "fixed_phase_drop_over_current": 0.04012667031734009,
+          "zero_intake_added_mass": [
+            19.99254164817602,
+            286.0204585862263,
+            404.2203995288282
+          ],
+          "zero_intake_energy": 710.2333997631719,
+          "zero_intake_wall_work": 710.2333997632792
+        }
+      ],
+      "exit_codes": [
+        1,
+        1
+      ],
+      "stdout_sha256": "6dc60c8aba01d09b14986ab377cdde1f58dc71cb6982ca53442ff75625a1b05f",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r6_n30_box42/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "6",
+        "--mesh",
+        "30",
+        "--outer",
+        "42",
+        "--roof",
+        "33"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r8_n30_box42",
+      "error": [
+        "ArithmeticError: Dipole equation residual 6.170012056827545e-08"
+      ],
+      "partial_diagnostics_only": [
+        {
+          "test": "pivot_preparation",
+          "radius": 8.0,
+          "mesh": 30,
+          "outer": 42.0,
+          "roof": 33.0,
+          "axial_depth": 3.05,
+          "thickness": 1.0,
+          "bias": 0.4510084282857874,
+          "material_intake": 17.62574675063518,
+          "action_derivative": 17.625746714708956,
+          "nodes": 26413
+        },
+        {
+          "test": "regional_integrals",
+          "region_names": [
+            "feeding_slab_and_rounded_lip",
+            "conduit",
+            "receiver"
+          ],
+          "finite_flow_resistance": [
+            0.01906330606219901,
+            0.005032279652339992,
+            0.0014924528802306091
+          ],
+          "fixed_phase_drop_over_current": 0.025588046547278025,
+          "zero_intake_added_mass": [
+            38.033799064639915,
+            420.74486128241796,
+            809.6652092764482
+          ],
+          "zero_intake_energy": 1268.443869623665,
+          "zero_intake_wall_work": 1268.4438696237173
+        }
+      ],
+      "exit_codes": [
+        1,
+        1
+      ],
+      "stdout_sha256": "a01f23df7221a07f8cec588885f47e953d466d30bb775792264670f57680186e",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r8_n30_box42/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "8",
+        "--mesh",
+        "30",
+        "--outer",
+        "42",
+        "--roof",
+        "33"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    },
+    {
+      "name": "r4_n34_box42",
+      "error": [
+        "ArithmeticError: Extended accumulation of physical equation residual: [1270113.1703299228, 6.249683792702854e-08, 3.2657226256560534e-08, 3.6612618714571e-08]"
+      ],
+      "partial_diagnostics_only": [
+        {
+          "test": "pivot_preparation",
+          "radius": 4.0,
+          "mesh": 34,
+          "outer": 42.0,
+          "roof": 33.0,
+          "axial_depth": 3.05,
+          "thickness": 1.0,
+          "bias": 0.4510084282857874,
+          "material_intake": 5.614134398386966,
+          "action_derivative": 5.614134327468712,
+          "nodes": 33741
+        },
+        {
+          "test": "regional_integrals",
+          "region_names": [
+            "feeding_slab_and_rounded_lip",
+            "conduit",
+            "receiver"
+          ],
+          "finite_flow_resistance": [
+            0.05052255502543773,
+            0.025909206484485008,
+            0.0039026896218060207
+          ],
+          "fixed_phase_drop_over_current": 0.08033445519497531,
+          "zero_intake_added_mass": [
+            8.000432267506447,
+            159.32529625177153,
+            141.73042421178354
+          ],
+          "zero_intake_energy": 309.0561527310581,
+          "zero_intake_wall_work": 309.0561527310606
+        }
+      ],
+      "exit_codes": [
+        1,
+        1
+      ],
+      "stdout_sha256": "acb1204f03086d507f7ff56daca691780d6e43c40e318dfa5a2dd6452945c926",
+      "stdout_path": "_scratch/s11c/radius_pivot01/r4_n34_box42/stdout",
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_radius_pivot.py",
+        "--radius",
+        "4",
+        "--mesh",
+        "34",
+        "--outer",
+        "42",
+        "--roof",
+        "33",
+        "--refine-dipole"
+      ],
+      "verified_limits": true,
+      "memory_bytes": 6442450944,
+      "swap_bytes": 0,
+      "wall_deadline": null
+    }
+  ],
+  "predeclaration": {
+    "prediction": "On the same fixed axial depth and bias, the measured C/M decreases from R4 to R6 and again to R8, and C/D remains within 1% of unity. Under the exterior-access and bulk-added-mass explanation proposed for this shape family, D/R^3 falls and M/R^3 rises. Test both contributions separately. Compare their factors, not fitted exponents alone.",
+    "held_geometry": "cubic reflecting reference, actual lip-to-exit axial length L = 3.05 (depth unit 1), slab thickness 1, brane and bulk densities 1, constituent mass 1, phase bias 0.4510084282857874. Primary outer radius 28 and roof 22, common to all R.",
+    "controls": "Two absolute-depth and radius-scaled lateral virtual-work windows: r/R 1.65 to 2.55, 1.9 to 3.25. Axial windows retain their published coordinates. At R4 compare to archive. Additional R6 and R8 changed bath extent (42 x 33) to bound finite-reservoir effects. Weak and zero-bias energies partitioned on the same finite geometry. Numerical comparisons use bounded scopes rather than identifying a microscopic law."
+  },
+  "predeclaration_sha256": "2cb2e920ab5bdda808bb6ac517c5b9f4b8dbdc281f658375457fea27d3a564f0",
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_radius_pivot.py": "2c4f0585d6de477fdaf7e683e8ae870213838db5f5bada6103833adf4e2aba04",
+    "software/stage1_solver/tools/mouth_radius_pivot_summary.py": "62235b98cf5a3a9dc309c1c441791fc4f1565b99e10892b22c3768c3f2d09ca0",
+    "software/stage1_solver/tools/mouth_carrier_weak_radius.py": "243b8d0381bd0ca807e209d2d47344c1f431c707c798ff07b6ec807bd4d884a5",
+    "software/stage1_solver/tools/mouth_carrier_matched_bias.py": "499e0d460657446ccde41a373317063706d01900834eeb59377b32907105f8d9",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_radius_family.py": "57eff082861fcc4261a80f64f1c50cc41b18dc0ab39c3ec22f474afe3f5da794",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "_scratch/s11c/radius_pivot01/source_initial.py": "300f29379d2fe0bf153fa96d4a94431bd78b374d5a453657c50851c0ee1872f6",
+    "research/pde_ledger_v3/_measurements/mouth_carrier_0pn.json": "deaab25f18026c01425cf7c58b961a6f03be4eb78300b54f2c709b40777df651",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "figure": {
+    "path": "software/stage1_solver/reports/figures/mouth_radius_pivot.png",
+    "sha256": "63eda0efae964f5c7dc699ca12c7f1ada2feed0007c4a9fe28ed892cdd6072c3"
+  }
+}

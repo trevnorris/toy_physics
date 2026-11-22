@@ -46,7 +46,7 @@ def conductance(dom):
     return float(phase@reaction),float(reaction[dom.bulk].sum()),float(-reaction[dom.feed].sum())
 
 
-def translation(dom):
+def translation(dom, *, return_field=False):
     k=dom.stiff+weighted_gram(dom.N,2*dom.weight/quadrature_radii(dom)**2)
     # Lab potential has zero outer value and normal velocity n_x on the wall.
     load=np.zeros(len(dom.points))
@@ -63,7 +63,8 @@ def translation(dom):
     free=dom.free & (dom.points[:,0]>0)
     phi=np.zeros_like(load)
     phi[free]=spsolve(k[free][:,free],load[free])
-    return float(phi@(k@phi))/3, float(load@phi)/3
+    norm, work = float(phi@(k@phi))/3, float(load@phi)/3
+    return (norm, work, phi) if return_field else (norm, work)
 
 
 def neck_integrals(dom):

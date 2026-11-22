@@ -9,7 +9,7 @@ from scipy.sparse.linalg import spsolve
 from mouth_sealed_shape_relax import DELTA, Meridian
 
 
-def material(mesh, shape, axial_radius):
+def order_grid(mesh, shape):
     # r=x b(w), with the S² integration done exactly. Q1 gradient operator
     # and positive lumped integration of the local double-well energy.
     x = np.linspace(0, 1, mesh+1)
@@ -37,6 +37,11 @@ def material(mesh, shape, axial_radius):
     cols = np.broadcast_to(elements[..., None, :], local.shape)
     stiff = coo_matrix((local.ravel(), (rows.ravel(), cols.ravel())),
                        shape=(rr.size, rr.size)).tocsr()
+    return w, rr, ids, lump, stiff
+
+
+def material(mesh, shape, axial_radius):
+    w, rr, ids, lump, stiff = order_grid(mesh, shape)
     free = np.ones_like(rr, dtype=bool)
     free[[0, -1], :] = False
     free[:, -1] = False

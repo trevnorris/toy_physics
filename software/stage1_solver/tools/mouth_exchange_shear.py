@@ -143,11 +143,16 @@ class OutgoingSlab:
         return self.radius**4*(self.project.T*self.traction(omega))@self.project
 
 
-def solve(shape, mesh, port_radius, fade, prior=None, *, axial_cells=None, shape_work=True, incoming_vector=None):
-    points,stiff,mass,inside=assemble(shape,mesh,port_radius,fade,axial_cells)
+def solve(shape, mesh, port_radius, fade, prior=None, *, axial_cells=None, shape_work=True,
+          incoming_vector=None, supplied_system=None, target_frequency=None):
+    if supplied_system is not None and shape_work:
+        raise ValueError('Shape work requires the matching perturbation operator')
+    points,stiff,mass,inside=(assemble(shape,mesh,port_radius,fade,axial_cells)
+                              if supplied_system is None else supplied_system)
     port=OutgoingSlab(points,port_radius)
     cavity=points[:,1]>0
-    val,vec=eigsh(stiff[cavity][:,cavity],k=1,M=mass[cavity][:,cavity],sigma=0.,
+    shift=0. if target_frequency is None else target_frequency**2
+    val,vec=eigsh(stiff[cavity][:,cavity],k=1,M=mass[cavity][:,cavity],sigma=shift,
                   which='LM',v0=np.ones(cavity.sum()),tol=1e-11)
     seed=np.zeros(len(points));seed[cavity]=vec[:,0]
     omega=np.sqrt(val[0])-1e-4j if prior is None else prior

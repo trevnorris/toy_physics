@@ -1,0 +1,6150 @@
+{
+  "experiment": "fixed absolute J=1, sealed lateral side, reversible terminal, training radii only",
+  "unit_and_sign": "Forces in model units. Positive q widens midprofile; positive L lengthens; F=-dE/dx.",
+  "archived_geometry": "research/pde_ledger_v3/_measurements/mouth_sealed_shape_relax.json",
+  "readings": [
+    {
+      "radius": 1,
+      "state": "broad",
+      "order_mesh": 48,
+      "exterior_mesh": 40,
+      "preparation": "stationary smooth field",
+      "waist": 0.444359858046843,
+      "depth": 1.874161406756793,
+      "axis_order": 0.9996614819806231,
+      "current": 0.13085607785690984,
+      "terminal_current": 0.1308560778890985,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 5.157990794359883,
+            "carrier": 0.029462118371525618,
+            "wave": 9.153776988257565,
+            "exterior_order": 208.58998633298688,
+            "total": 222.93121623397585
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 5.16391049188805,
+            "carrier": 0.02960070249208257,
+            "wave": 9.152291161358038,
+            "exterior_order": 208.59594322816335,
+            "total": 222.9417455839015
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 5.169846949139391,
+            "carrier": 0.02973956508921693,
+            "wave": 9.150792649419094,
+            "exterior_order": 208.60191135772044,
+            "total": 222.95229052136813
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 5.175794301975985,
+            "carrier": 0.029878705096772557,
+            "wave": 9.149287321968398,
+            "exterior_order": 208.60789074120015,
+            "total": 222.9628510702413
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 5.181749637034901,
+            "carrier": 0.0300181213843794,
+            "wave": 9.147778091837584,
+            "exterior_order": 208.61388139823353,
+            "total": 222.9734272484904
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 5.163645541190538,
+            "carrier": 0.029785735454319496,
+            "wave": 9.151718117183497,
+            "exterior_order": 208.59351972185644,
+            "total": 222.9386691156848
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 5.166743884247591,
+            "carrier": 0.029762644986732097,
+            "wave": 9.151255661015666,
+            "exterior_order": 208.59771295677538,
+            "total": 222.94547514702538
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 5.169846949139391,
+            "carrier": 0.02973956508921693,
+            "wave": 9.150792649419094,
+            "exterior_order": 208.60191135772044,
+            "total": 222.95229052136813
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 5.17295335205972,
+            "carrier": 0.029716495799104056,
+            "wave": 9.150330469828532,
+            "exterior_order": 208.6061149301441,
+            "total": 222.95911524783145
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 5.176064482476944,
+            "carrier": 0.02969343709620763,
+            "wave": 9.149867737198237,
+            "exterior_order": 208.61032367949085,
+            "total": 222.96594933626224
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -5.928077389754094,
+            "carrier": -0.13872335884565662,
+            "wave": 1.4921694192358004,
+            "exterior_order": -5.962512366778583,
+            "total": -10.53714369614056
+          },
+          "center_half_step": {
+            "inner_order": -5.941905043967743,
+            "carrier": -0.13900130234499422,
+            "wave": 1.501919694820053,
+            "exterior_order": -5.973756518400819,
+            "total": -10.552743169895962
+          },
+          "center_full_step": {
+            "inner_order": -5.93971066875465,
+            "carrier": -0.13900075321344585,
+            "wave": 1.4997241049954368,
+            "exterior_order": -5.973766311662132,
+            "total": -10.55275362863739
+          },
+          "wider_or_longer": {
+            "inner_order": -5.9513439477552055,
+            "carrier": -0.13927814758123505,
+            "wave": 1.5072787907550733,
+            "exterior_order": -5.985020256545681,
+            "total": -10.56836356113422
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -1.6561037383325616,
+            "carrier": 0.012329928119095316,
+            "wave": 0.24714881474922365,
+            "exterior_order": -2.2410103705029694,
+            "total": -3.637635365961014
+          },
+          "center_half_step": {
+            "inner_order": -1.6565987205880321,
+            "carrier": 0.012311954501392287,
+            "wave": 0.2468280025402679,
+            "exterior_order": -2.2415283811964968,
+            "total": -3.6389871447426967
+          },
+          "center_full_step": {
+            "inner_order": -1.6565986475793952,
+            "carrier": 0.01231194605850122,
+            "wave": 0.24682756044958873,
+            "exterior_order": -2.2415287140148634,
+            "total": -3.6389878550856807
+          },
+          "wider_or_longer": {
+            "inner_order": -1.6570925679968938,
+            "carrier": 0.012293999926088154,
+            "wave": 0.24650694801647252,
+            "exterior_order": -2.2420460218757294,
+            "total": -3.640337641935273
+          }
+        }
+      }
+    },
+    {
+      "radius": 1,
+      "state": "broad",
+      "order_mesh": 72,
+      "exterior_mesh": 70,
+      "preparation": "stationary smooth field",
+      "waist": 0.444359858046843,
+      "depth": 1.874161406756793,
+      "axis_order": 0.9996617982419683,
+      "current": 0.13031289492490786,
+      "terminal_current": 0.13031289445213093,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 5.163685102667682,
+            "carrier": 0.029340679966896436,
+            "wave": 9.154712270258694,
+            "exterior_order": 208.408733442211,
+            "total": 222.75647149510428
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 5.169604542370948,
+            "carrier": 0.029479272325865585,
+            "wave": 9.153243481409998,
+            "exterior_order": 208.41468008818748,
+            "total": 222.7670073842943
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 5.175541385277274,
+            "carrier": 0.029618142359311726,
+            "wave": 9.151761212629625,
+            "exterior_order": 208.4206379352187,
+            "total": 222.77755867548493
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 5.1814892001629715,
+            "carrier": 0.02975728888407817,
+            "wave": 9.150271903085843,
+            "exterior_order": 208.42660700283363,
+            "total": 222.78812539496653
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 5.187444758514019,
+            "carrier": 0.029896710749190765,
+            "wave": 9.148778782290409,
+            "exterior_order": 208.43258731066493,
+            "total": 222.79870756221854
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 5.169335100093567,
+            "carrier": 0.02966415977054094,
+            "wave": 9.152676787652169,
+            "exterior_order": 208.41261664787947,
+            "total": 222.76429269539574
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 5.17243585385307,
+            "carrier": 0.02964114577539996,
+            "wave": 9.152219306359955,
+            "exterior_order": 208.41662480447104,
+            "total": 222.77092111045945
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 5.175541385277274,
+            "carrier": 0.029618142359311726,
+            "wave": 9.151761212629625,
+            "exterior_order": 208.4206379352187,
+            "total": 222.77755867548493
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 5.178650196127151,
+            "carrier": 0.029595149512304353,
+            "wave": 9.151304008273451,
+            "exterior_order": 208.42465604539052,
+            "total": 222.78420539930343
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 5.181763789590782,
+            "carrier": 0.02957216726136885,
+            "wave": 9.15084619467955,
+            "exterior_order": 208.4286791402485,
+            "total": 222.7908612917802
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -5.928141304795798,
+            "carrier": -0.13873119620764518,
+            "wave": 1.4755288145344991,
+            "exterior_order": -5.952246503852621,
+            "total": -10.54359019032347
+          },
+          "center_half_step": {
+            "inner_order": -5.9423288960118725,
+            "carrier": -0.13900827910629313,
+            "wave": 1.4857891620776442,
+            "exterior_order": -5.963457323076682,
+            "total": -10.559005336119753
+          },
+          "center_full_step": {
+            "inner_order": -5.939913961584109,
+            "carrier": -0.13900769557358225,
+            "wave": 1.4833719920712696,
+            "exterior_order": -5.963467113481613,
+            "total": -10.559016778564967
+          },
+          "wider_or_longer": {
+            "inner_order": -5.95168661837242,
+            "carrier": -0.13928419493951932,
+            "wave": 1.49121516960804,
+            "exterior_order": -5.9746877231106055,
+            "total": -10.574443366806463
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -1.6574062178570286,
+            "carrier": 0.012289081349532776,
+            "wave": 0.2445069297271512,
+            "exterior_order": -2.1421077371955874,
+            "total": -3.5427179439814136
+          },
+          "center_half_step": {
+            "inner_order": -1.6578991585125125,
+            "carrier": 0.01227115638592734,
+            "wave": 0.24418866236771178,
+            "exterior_order": -2.1426221754392194,
+            "total": -3.544061515202465
+          },
+          "center_full_step": {
+            "inner_order": -1.657898989731914,
+            "carrier": 0.0122711479801211,
+            "wave": 0.24418811336420937,
+            "exterior_order": -2.1426225087655744,
+            "total": -3.544062237154351
+          },
+          "wider_or_longer": {
+            "inner_order": -1.6583907770479362,
+            "carrier": 0.012253250441605404,
+            "wave": 0.2438699339967855,
+            "exterior_order": -2.1431362518212773,
+            "total": -3.545403844427737
+          }
+        }
+      }
+    },
+    {
+      "radius": 1,
+      "state": "mid",
+      "order_mesh": 48,
+      "exterior_mesh": 40,
+      "preparation": "bounded crystalline fraction, signed held branch",
+      "waist": 0.20519145396147745,
+      "depth": 1.6656431110543743,
+      "axis_order": 0.517834892466349,
+      "current": 0.025660687989393083,
+      "terminal_current": 0.025660688386566946,
+      "zero_wave_cells": 10.0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.7946519627914626,
+            "carrier": 0.005729351772765442,
+            "wave": 8.805209454656817,
+            "exterior_order": 206.5482009982107,
+            "total": 219.15379176743173
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.7971074024834675,
+            "carrier": 0.005792376936974364,
+            "wave": 8.80381085032082,
+            "exterior_order": 206.55121753646614,
+            "total": 219.1579281662074
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.7995817127891387,
+            "carrier": 0.005855767318320392,
+            "wave": 8.802402845942256,
+            "exterior_order": 206.55424147026278,
+            "total": 219.1620817963125
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.8020712796158063,
+            "carrier": 0.0059195220973753656,
+            "wave": 8.800989053603368,
+            "exterior_order": 206.5572728017564,
+            "total": 219.16625265707296
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.804576321087659,
+            "carrier": 0.005983642467324064,
+            "wave": 8.799569260195778,
+            "exterior_order": 206.56031153317537,
+            "total": 219.17044075692613
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.798016416265588,
+            "carrier": 0.005865325397210861,
+            "wave": 8.803544748429607,
+            "exterior_order": 206.55061266977248,
+            "total": 219.15803915986487
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.798796817455311,
+            "carrier": 0.005860544946964948,
+            "wave": 8.802974662027493,
+            "exterior_order": 206.5524257677379,
+            "total": 219.16005779216766
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.7995817127891387,
+            "carrier": 0.005855767318320392,
+            "wave": 8.802402845942256,
+            "exterior_order": 206.55424147026278,
+            "total": 219.1620817963125
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.8003701069374047,
+            "carrier": 0.005850991748175827,
+            "wave": 8.801830295321148,
+            "exterior_order": 206.55605978058506,
+            "total": 219.1641111745918
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.801163933763455,
+            "carrier": 0.0058462186235842635,
+            "wave": 8.801255075012666,
+            "exterior_order": 206.55788070194166,
+            "total": 219.16614592934135
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -2.4648749988380736,
+            "carrier": -0.06320777277747527,
+            "wave": 1.4033043572805326,
+            "exterior_order": -3.0202360260460637,
+            "total": -4.145014440382511
+          },
+          "center_half_step": {
+            "inner_order": -2.481938566169406,
+            "carrier": -0.06357258020050094,
+            "wave": 1.4108983587259871,
+            "exterior_order": -3.0276326451286195,
+            "total": -4.1622454327807645
+          },
+          "center_full_step": {
+            "inner_order": -2.4810895740491334,
+            "carrier": -0.06357267363965557,
+            "wave": 1.4100486152597291,
+            "exterior_order": -3.027633741169211,
+            "total": -4.1622473735998256
+          },
+          "wider_or_longer": {
+            "inner_order": -2.4973041492601933,
+            "carrier": -0.06393757450183588,
+            "wave": 1.4167928732389257,
+            "exterior_order": -3.0350314562923586,
+            "total": -4.1794803068171404
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -0.4703475586820163,
+            "carrier": 0.002872055871959482,
+            "wave": 0.34312415513460665,
+            "exterior_order": -1.09039880040546,
+            "total": -1.2147501480834115
+          },
+          "center_half_step": {
+            "inner_order": -0.472276806909465,
+            "carrier": 0.0028677203218144226,
+            "wave": 0.34352092234607257,
+            "exterior_order": -1.0908736143329056,
+            "total": -1.2167617785789417
+          },
+          "center_full_step": {
+            "inner_order": -0.47241743723998825,
+            "carrier": 0.002867775329833313,
+            "wave": 0.34366183777559944,
+            "exterior_order": -1.0908740407220059,
+            "total": -1.2167618648573943
+          },
+          "wider_or_longer": {
+            "inner_order": -0.47448318017784286,
+            "carrier": 0.002863503340236016,
+            "wave": 0.3441984461259589,
+            "exterior_order": -1.091348331507766,
+            "total": -1.2187695622185817
+          }
+        }
+      }
+    },
+    {
+      "radius": 1,
+      "state": "mid",
+      "order_mesh": 72,
+      "exterior_mesh": 70,
+      "preparation": "bounded crystalline fraction, signed held branch",
+      "waist": 0.20519145396147745,
+      "depth": 1.6656431110543743,
+      "axis_order": 0.5177807639621578,
+      "current": 0.0252100990900172,
+      "terminal_current": 0.025210096957837748,
+      "zero_wave_cells": 20.0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.818398198722766,
+            "carrier": 0.005629450014391007,
+            "wave": 8.75542660788497,
+            "exterior_order": 206.39102506976218,
+            "total": 218.9704793263843
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.8208502651254586,
+            "carrier": 0.005692191010651572,
+            "wave": 8.75408179801125,
+            "exterior_order": 206.39404009873428,
+            "total": 218.97466435288163
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.823319881715177,
+            "carrier": 0.005755300569964251,
+            "wave": 8.752728942985483,
+            "exterior_order": 206.39706249306963,
+            "total": 218.97886661834025
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.825808306223485,
+            "carrier": 0.0058187759269496785,
+            "wave": 8.751366788480228,
+            "exterior_order": 206.4000922549216,
+            "total": 218.98308612555226
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.828311481977818,
+            "carrier": 0.005882619414739948,
+            "wave": 8.749999385799143,
+            "exterior_order": 206.4031293865027,
+            "total": 218.9873228736944
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.8217902429842026,
+            "carrier": 0.005764715374842053,
+            "wave": 8.753865915881564,
+            "exterior_order": 206.39374759054553,
+            "total": 218.97516846478612
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.822549664616826,
+            "carrier": 0.005760006476476757,
+            "wave": 8.753301434649845,
+            "exterior_order": 206.3954038235633,
+            "total": 218.97701492930645
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.823319881715177,
+            "carrier": 0.005755300569964251,
+            "wave": 8.752728942985483,
+            "exterior_order": 206.39706249306963,
+            "total": 218.97886661834025
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.8240967334345504,
+            "carrier": 0.005750596675589595,
+            "wave": 8.752152600426493,
+            "exterior_order": 206.39872360214147,
+            "total": 218.9807235326781
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.824876981843775,
+            "carrier": 0.0057458951112044085,
+            "wave": 8.75157564194042,
+            "exterior_order": 206.4003871538615,
+            "total": 218.9825856727569
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -2.4608414962055125,
+            "carrier": -0.06292527778662196,
+            "wave": 1.3488324497439308,
+            "exterior_order": -3.0187116537234715,
+            "total": -4.193645977977667
+          },
+          "center_half_step": {
+            "inner_order": -2.4790205490132777,
+            "carrier": -0.06329245814905336,
+            "wave": 1.3575047655107753,
+            "exterior_order": -3.026078093654405,
+            "total": -4.210886335314967
+          },
+          "center_full_step": {
+            "inner_order": -2.4783208137629797,
+            "carrier": -0.06329235008723519,
+            "wave": 1.3568055214570052,
+            "exterior_order": -3.0260791851333124,
+            "total": -4.210886827529237
+          },
+          "wider_or_longer": {
+            "inner_order": -2.495800131320447,
+            "carrier": -0.06365942238784841,
+            "wave": 1.3647785931700795,
+            "exterior_order": -3.0334467165431533,
+            "total": -4.228127677080806
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -0.4596329398005658,
+            "carrier": 0.002829004232179959,
+            "wave": 0.34164288868802645,
+            "exterior_order": -0.996077283772691,
+            "total": -1.111238330657283
+          },
+          "center_half_step": {
+            "inner_order": -0.46440577504633773,
+            "carrier": 0.0028246745225349633,
+            "wave": 0.3448620008258397,
+            "exterior_order": -0.9965454192572959,
+            "total": -1.1132645189523964
+          },
+          "center_full_step": {
+            "inner_order": -0.46329504520831055,
+            "carrier": 0.0028247724506384178,
+            "wave": 0.3437519717002191,
+            "exterior_order": -0.9965458454934064,
+            "total": -1.1132641465549091
+          },
+          "wider_or_longer": {
+            "inner_order": -0.46694983372457016,
+            "carrier": 0.0028205491242020357,
+            "wave": 0.34585684076174267,
+            "exterior_order": -0.9970134710271792,
+            "total": -1.1152859148696717
+          }
+        }
+      }
+    },
+    {
+      "radius": 1,
+      "state": "tight",
+      "order_mesh": 48,
+      "exterior_mesh": 40,
+      "preparation": "bounded crystalline fraction, signed held branch",
+      "waist": 0.08704676250538175,
+      "depth": 1.5752599023050904,
+      "axis_order": 0.5003742269315824,
+      "current": 0.00392882243009407,
+      "terminal_current": 0.0039288214491404,
+      "zero_wave_cells": 6.0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.582212100104832,
+            "carrier": 0.0008524786828514339,
+            "wave": 9.029024045954966,
+            "exterior_order": 206.13613395449974,
+            "total": 218.7482225792424
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.5831976825023215,
+            "carrier": 0.0008748944702292277,
+            "wave": 9.027729415990324,
+            "exterior_order": 206.1380906044175,
+            "total": 218.74989259738038
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.5841926815579113,
+            "carrier": 0.0008976492736120054,
+            "wave": 9.026433467703885,
+            "exterior_order": 206.14005418380412,
+            "total": 218.75157798233954
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.585199755463979,
+            "carrier": 0.0009207439375398917,
+            "wave": 9.025133556432456,
+            "exterior_order": 206.14202468668452,
+            "total": 218.7532787425185
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.5862179827814735,
+            "carrier": 0.0009441794253646677,
+            "wave": 9.023830616534797,
+            "exterior_order": 206.1440021071513,
+            "total": 218.75499488589293
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.5841535440836445,
+            "carrier": 0.0008992275200090889,
+            "wave": 9.027499496765286,
+            "exterior_order": 206.13769898579025,
+            "total": 218.7502512541592
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.584171039430948,
+            "carrier": 0.0008984381098016457,
+            "wave": 9.026967254315766,
+            "exterior_order": 206.13887567420375,
+            "total": 218.75091240606025
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.5841926815579113,
+            "carrier": 0.0008976492736120054,
+            "wave": 9.026433467703885,
+            "exterior_order": 206.14005418380412,
+            "total": 218.75157798233954
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.584216967765584,
+            "carrier": 0.0008968609328636995,
+            "wave": 9.025899638074586,
+            "exterior_order": 206.1412345170714,
+            "total": 218.75224798384446
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.584245511174757,
+            "carrier": 0.0008960731361128683,
+            "wave": 9.025364152689303,
+            "exterior_order": 206.14241667650072,
+            "total": 218.7529224135009
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -0.9902907265395555,
+            "carrier": -0.022585295380285756,
+            "wave": 1.2952891255402221,
+            "exterior_order": -1.9601146521921464,
+            "total": -1.6777015485729407
+          },
+          "center_half_step": {
+            "inner_order": -1.001036480828832,
+            "carrier": -0.022924733655331972,
+            "wave": 1.2979297789339483,
+            "exterior_order": -1.9670411335113158,
+            "total": -1.6930725690542658
+          },
+          "center_full_step": {
+            "inner_order": -1.0014706691603426,
+            "carrier": -0.02292518562830846,
+            "wave": 1.2983573550422456,
+            "exterior_order": -1.967038162888457,
+            "total": -1.693076662633075
+          },
+          "wider_or_longer": {
+            "inner_order": -1.0126506117811296,
+            "carrier": -0.023265075876331167,
+            "wave": 1.301425584544269,
+            "exterior_order": -1.9739616735847676,
+            "total": -1.7084517766932095
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -0.012434971755937725,
+            "carrier": 0.0005014490520741805,
+            "wave": 0.3387045668600763,
+            "exterior_order": -0.748306356780682,
+            "total": -0.421535312625161
+          },
+          "center_half_step": {
+            "inner_order": -0.014578015638694989,
+            "carrier": 0.0005006083988983649,
+            "wave": 0.33886981496879376,
+            "exterior_order": -0.7487153297917661,
+            "total": -0.4239229220692553
+          },
+          "center_full_step": {
+            "inner_order": -0.014595532722318467,
+            "carrier": 0.0005006129129363258,
+            "wave": 0.3388873558731638,
+            "exterior_order": -0.7487157450074012,
+            "total": -0.42392330894431035
+          },
+          "wider_or_longer": {
+            "inner_order": -0.016751776885009066,
+            "carrier": 0.0004997784444055827,
+            "wave": 0.3390697796735595,
+            "exterior_order": -0.7491243152758976,
+            "total": -0.4263065340436315
+          }
+        }
+      }
+    },
+    {
+      "radius": 1,
+      "state": "tight",
+      "order_mesh": 72,
+      "exterior_mesh": 70,
+      "preparation": "bounded crystalline fraction, signed held branch",
+      "waist": 0.08704676250538175,
+      "depth": 1.5752599023050904,
+      "axis_order": 0.500396203861379,
+      "current": 0.003680833717698062,
+      "terminal_current": 0.003680832761123701,
+      "zero_wave_cells": 15.0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.604396635336193,
+            "carrier": 0.0007977044437556642,
+            "wave": 8.975495593484409,
+            "exterior_order": 205.98765109235606,
+            "total": 218.5683410256204
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.6053162051586787,
+            "carrier": 0.0008196401613021424,
+            "wave": 8.974317185965825,
+            "exterior_order": 205.98961105405712,
+            "total": 218.57006408534292
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.606259664638457,
+            "carrier": 0.0008419138115187122,
+            "wave": 8.973122758855594,
+            "exterior_order": 205.99157791450017,
+            "total": 218.57180225180574
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.607229315906758,
+            "carrier": 0.0008645262621134834,
+            "wave": 8.971910005296944,
+            "exterior_order": 205.99355166775425,
+            "total": 218.57355551522005
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.6081689653363647,
+            "carrier": 0.0008874787894695207,
+            "wave": 8.970735218770972,
+            "exterior_order": 205.99553230799904,
+            "total": 218.57532397089585
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.606058843734381,
+            "carrier": 0.0008433990851952664,
+            "wave": 8.974365836252531,
+            "exterior_order": 205.98951175944822,
+            "total": 218.57077983852034
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.606155559059469,
+            "carrier": 0.0008426561728834539,
+            "wave": 8.973746745350322,
+            "exterior_order": 205.9905440061985,
+            "total": 218.57128896678117
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.606259664638457,
+            "carrier": 0.0008419138115187122,
+            "wave": 8.973122758855594,
+            "exterior_order": 205.99157791450017,
+            "total": 218.57180225180574
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.6063760033156678,
+            "carrier": 0.0008411718817223983,
+            "wave": 8.972489026429702,
+            "exterior_order": 205.99261348669907,
+            "total": 218.57231968832616
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.6065035086754973,
+            "carrier": 0.0008404304956782311,
+            "wave": 8.971846609769843,
+            "exterior_order": 205.9936507251179,
+            "total": 218.57284127405893
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -0.9315146511319483,
+            "carrier": -0.022104683881524007,
+            "wave": 1.1864173144076062,
+            "exterior_order": -1.963411072054555,
+            "total": -1.730613092661315
+          },
+          "center_half_step": {
+            "inner_order": -0.9565553740396027,
+            "carrier": -0.022443050405670496,
+            "wave": 1.2035903344402854,
+            "exterior_order": -1.9703068485625863,
+            "total": -1.7457149385649018
+          },
+          "center_full_step": {
+            "inner_order": -0.9430825000429355,
+            "carrier": -0.02244358642846414,
+            "wave": 1.1900936783590943,
+            "exterior_order": -1.9703039107454856,
+            "total": -1.7457363188597697
+          },
+          "wider_or_longer": {
+            "inner_order": -0.9546503489539226,
+            "carrier": -0.022782488975404275,
+            "wave": 1.1937700423105824,
+            "exterior_order": -1.9771967494364162,
+            "total": -1.7608595450582243
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -0.0638059127976344,
+            "carrier": 0.0004719092522911345,
+            "wave": 0.39495732954054946,
+            "exterior_order": -0.6564700506541775,
+            "total": -0.3248467246547576
+          },
+          "center_half_step": {
+            "inner_order": -0.06997074550533576,
+            "carrier": 0.0004711257207467166,
+            "wave": 0.39920990471462525,
+            "exterior_order": -0.6568694323516546,
+            "total": -0.32715914741991553
+          },
+          "center_full_step": {
+            "inner_order": -0.07057004434989467,
+            "carrier": 0.0004711266270462148,
+            "wave": 0.39981097714703423,
+            "exterior_order": -0.6568698448294877,
+            "total": -0.32715778540525736
+          },
+          "wider_or_longer": {
+            "inner_order": -0.07732066115829915,
+            "carrier": 0.00047034556548757717,
+            "wave": 0.4046549271591328,
+            "exterior_order": -0.6572688402155026,
+            "total": -0.32946422865329766
+          }
+        }
+      }
+    },
+    {
+      "radius": 2,
+      "state": "broad",
+      "order_mesh": 48,
+      "exterior_mesh": 40,
+      "preparation": "stationary smooth field",
+      "waist": 0.45103203367145256,
+      "depth": 3.5326033188709225,
+      "axis_order": 0.9996984098189855,
+      "current": 0.11713559340526958,
+      "terminal_current": 0.11713559325746968,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 29.199166690076144,
+            "carrier": 0.0263160571204088,
+            "wave": 5.858852205842409,
+            "exterior_order": 221.13773434038865,
+            "total": 256.2220692934276
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 29.212467313169594,
+            "carrier": 0.026445001395581976,
+            "wave": 5.85844697298738,
+            "exterior_order": 221.1516330156157,
+            "total": 256.2489923031682
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 29.225785980811235,
+            "carrier": 0.026574267255510407,
+            "wave": 5.858041769959122,
+            "exterior_order": 221.16554917687063,
+            "total": 256.2759511948965
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 29.2391249345132,
+            "carrier": 0.02670385452369174,
+            "wave": 5.857634351616482,
+            "exterior_order": 221.17948282761205,
+            "total": 256.3029459682654
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 29.25248193442455,
+            "carrier": 0.026833763138800735,
+            "wave": 5.857226960044168,
+            "exterior_order": 221.19343397133616,
+            "total": 256.32997662894365
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 29.203432928715362,
+            "carrier": 0.026618239925630255,
+            "wave": 5.858770463772685,
+            "exterior_order": 221.1371299867782,
+            "total": 256.2259516191919
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 29.214599898393224,
+            "carrier": 0.026596247432643487,
+            "wave": 5.858405764210583,
+            "exterior_order": 221.15132941040198,
+            "total": 256.25093132043844
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 29.225785980811235,
+            "carrier": 0.026574267255510407,
+            "wave": 5.858041769959122,
+            "exterior_order": 221.16554917687063,
+            "total": 256.2759511948965
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 29.23699345494184,
+            "carrier": 0.026552299341153315,
+            "wave": 5.857676215110816,
+            "exterior_order": 221.1797893108705,
+            "total": 256.3010112802643
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 29.248220077822285,
+            "carrier": 0.026530343752192553,
+            "wave": 5.857311361550623,
+            "exterior_order": 221.19404983710808,
+            "total": 256.3261116202332
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -13.309645367545642,
+            "carrier": -0.12910506755080264,
+            "wave": 0.4052179416431656,
+            "exterior_order": -13.907418240989955,
+            "total": -26.940950734456237
+          },
+          "center_half_step": {
+            "inner_order": -13.328810671803026,
+            "carrier": -0.12942656405488112,
+            "wave": 0.40631068544927373,
+            "exterior_order": -13.924905998180748,
+            "total": -26.976832548598395
+          },
+          "center_full_step": {
+            "inner_order": -13.328811087101933,
+            "carrier": -0.12942650459798338,
+            "wave": 0.4063114495600484,
+            "exterior_order": -13.924907736878822,
+            "total": -26.976833879018614
+          },
+          "wider_or_longer": {
+            "inner_order": -13.347976806658224,
+            "carrier": -0.12974794164516412,
+            "wave": 0.4074049574769312,
+            "exterior_order": -13.94239723276769,
+            "total": -27.01271702358099
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -3.166986295837134,
+            "carrier": 0.006230059459604464,
+            "wave": 0.10324153102297427,
+            "exterior_order": -4.026438321508004,
+            "total": -7.083953026859358
+          },
+          "center_half_step": {
+            "inner_order": -3.1695538382034876,
+            "carrier": 0.006220353687990229,
+            "wave": 0.10325939715315442,
+            "exterior_order": -4.028175987544072,
+            "total": -7.088250074902857
+          },
+          "center_full_step": {
+            "inner_order": -3.1695548018078092,
+            "carrier": 0.006220349902488742,
+            "wave": 0.10325963019487659,
+            "exterior_order": -4.028177468955089,
+            "total": -7.088252290663668
+          },
+          "wider_or_longer": {
+            "inner_order": -3.1721181759001307,
+            "carrier": 0.006210659745081074,
+            "wave": 0.10327769320460929,
+            "exterior_order": -4.029913141583256,
+            "total": -7.092542964533165
+          }
+        }
+      }
+    },
+    {
+      "radius": 2,
+      "state": "broad",
+      "order_mesh": 72,
+      "exterior_mesh": 70,
+      "preparation": "stationary smooth field",
+      "waist": 0.45103203367145256,
+      "depth": 3.5326033188709225,
+      "axis_order": 0.9996982062263915,
+      "current": 0.11561261078900559,
+      "terminal_current": 0.11561261123838623,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 29.267706223833883,
+            "carrier": 0.025975690829548554,
+            "wave": 5.862314963612426,
+            "exterior_order": 220.77677428873497,
+            "total": 255.93277116701083
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 29.281056480912955,
+            "carrier": 0.02610436073190461,
+            "wave": 5.861908130747516,
+            "exterior_order": 220.79064677478547,
+            "total": 255.95971574717785
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 29.294424784039563,
+            "carrier": 0.02623335465869008,
+            "wave": 5.861501381685459,
+            "exterior_order": 220.8045367045952,
+            "total": 255.9866962249789
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 29.30781356921117,
+            "carrier": 0.02636267245223711,
+            "wave": 5.861092277017851,
+            "exterior_order": 220.8184440816521,
+            "total": 256.01371260033335
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 29.321220402417982,
+            "carrier": 0.026492314019548966,
+            "wave": 5.860683253248559,
+            "exterior_order": 220.83236890946995,
+            "total": 256.04076487915603
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 29.271961206305257,
+            "carrier": 0.026276856165239757,
+            "wave": 5.86222668562509,
+            "exterior_order": 220.7767896757491,
+            "total": 255.93725442384468
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 29.283183395202727,
+            "carrier": 0.026255099286360092,
+            "wave": 5.861863653957923,
+            "exterior_order": 220.7906532008978,
+            "total": 255.9619553493448
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 29.294424784039563,
+            "carrier": 0.02623335465869008,
+            "wave": 5.861501381685459,
+            "exterior_order": 220.8045367045952,
+            "total": 255.9866962249789
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 29.30568783207724,
+            "carrier": 0.026211622254119386,
+            "wave": 5.861137422757769,
+            "exterior_order": 220.81844021120727,
+            "total": 256.0114770882964
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 29.316970116277048,
+            "carrier": 0.026189902110142896,
+            "wave": 5.860774219325208,
+            "exterior_order": 220.83236374510514,
+            "total": 256.03629798281753
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -13.359280102839932,
+            "carrier": -0.12883191457076226,
+            "wave": 0.4067909634835054,
+            "exterior_order": -13.881207930111827,
+            "total": -26.962528984043388
+          },
+          "center_half_step": {
+            "inner_order": -13.37854414910744,
+            "carrier": -0.12915586016624958,
+            "wave": 0.4079268648324863,
+            "exterior_order": -13.898653433315644,
+            "total": -26.99842657774809
+          },
+          "center_full_step": {
+            "inner_order": -13.378544646024615,
+            "carrier": -0.129155797500103,
+            "wave": 0.40792759096675013,
+            "exterior_order": -13.89865518374478,
+            "total": -26.99842803630048
+          },
+          "wider_or_longer": {
+            "inner_order": -13.397809189209298,
+            "carrier": -0.12947968042944374,
+            "wave": 0.40906421844999485,
+            "exterior_order": -13.916102437377731,
+            "total": -27.034327088557575
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -3.1826455973390604,
+            "carrier": 0.006163304881150247,
+            "wave": 0.10276125279338312,
+            "exterior_order": -3.9312063394708927,
+            "total": -7.004927379135772
+          },
+          "center_half_step": {
+            "inner_order": -3.185247690217144,
+            "carrier": 0.006153680596160383,
+            "wave": 0.10278978610991554,
+            "exterior_order": -3.932936020565508,
+            "total": -7.009240244072252
+          },
+          "center_full_step": {
+            "inner_order": -3.1852486610533877,
+            "carrier": 0.006153676855183262,
+            "wave": 0.10279001068506924,
+            "exterior_order": -3.9329375031878206,
+            "total": -7.009242476699834
+          },
+          "wider_or_longer": {
+            "inner_order": -3.1878465238429436,
+            "carrier": 0.006144068066024988,
+            "wave": 0.1028187111184494,
+            "exterior_order": -3.9346652080373334,
+            "total": -7.013548952693209
+          }
+        }
+      }
+    },
+    {
+      "radius": 2,
+      "state": "mid",
+      "order_mesh": 48,
+      "exterior_mesh": 40,
+      "preparation": "stationary smooth field",
+      "waist": 0.17509758416596435,
+      "depth": 3.369832336384419,
+      "axis_order": 0.7217766745504465,
+      "current": 0.013778450701958211,
+      "terminal_current": 0.01377845067010802,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 24.14471584062389,
+            "carrier": 0.0030562889494931186,
+            "wave": 6.668407963231875,
+            "exterior_order": 214.87898465833698,
+            "total": 245.69516475114222
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 24.151749363308525,
+            "carrier": 0.0030964242678555545,
+            "wave": 6.668130555325943,
+            "exterior_order": 214.8873923701426,
+            "total": 245.71036871304494
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 24.158800278191364,
+            "carrier": 0.003136850606641111,
+            "wave": 6.667854012008166,
+            "exterior_order": 214.89581685611833,
+            "total": 245.7256079969245
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 24.165873994041092,
+            "carrier": 0.003177568273261846,
+            "wave": 6.6675728574693425,
+            "exterior_order": 214.9042581117477,
+            "total": 245.7408825315314
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 24.172964488006563,
+            "carrier": 0.0032185775892236515,
+            "wave": 6.667293058515384,
+            "exterior_order": 214.9127161325495,
+            "total": 245.75619225666065
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 24.148731334237915,
+            "carrier": 0.003142494283511425,
+            "wave": 6.6684911651560315,
+            "exterior_order": 214.87948215901017,
+            "total": 245.69984715268762
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 24.153764015974822,
+            "carrier": 0.00313967138730092,
+            "wave": 6.668167109516598,
+            "exterior_order": 214.88764303335134,
+            "total": 245.71271383023006
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 24.158800278191364,
+            "carrier": 0.003136850606641111,
+            "wave": 6.667854012008166,
+            "exterior_order": 214.89581685611833,
+            "total": 245.7256079969245
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 24.163855274765286,
+            "carrier": 0.0031340319167298953,
+            "wave": 6.667536732216301,
+            "exterior_order": 214.90400364511225,
+            "total": 245.7385296840106
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 24.168932674723735,
+            "carrier": 0.0031312152895990432,
+            "wave": 6.667211605551328,
+            "exterior_order": 214.9122034181573,
+            "total": 245.75147891372197
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -7.042218783738008,
+            "carrier": -0.040280828573996265,
+            "wave": 0.2769756118543576,
+            "exterior_order": -8.416098890677404,
+            "total": -15.221622891147035
+          },
+          "center_half_step": {
+            "inner_order": -7.062315366283656,
+            "carrier": -0.040572002703145656,
+            "wave": 0.2788489283003237,
+            "exterior_order": -8.432870802550951,
+            "total": -15.256909243234418
+          },
+          "center_full_step": {
+            "inner_order": -7.0621618456687685,
+            "carrier": -0.040572159932633224,
+            "wave": 0.2787261791228346,
+            "exterior_order": -8.43286855312897,
+            "total": -15.256876379609707
+          },
+          "wider_or_longer": {
+            "inner_order": -7.082104907599529,
+            "carrier": -0.040863491291270176,
+            "wave": 0.2804767463913116,
+            "exterior_order": -8.449638215580535,
+            "total": -15.29212986807238
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -1.4954774077174213,
+            "carrier": 0.0008382201048125253,
+            "wave": 0.09463238074357917,
+            "exterior_order": -2.4260906208339725,
+            "total": -3.8260974277041284
+          },
+          "center_half_step": {
+            "inner_order": -1.4972936486529624,
+            "carrier": 0.0008367581927182654,
+            "wave": 0.09353242718158356,
+            "exterior_order": -2.427510837483047,
+            "total": -3.830435300764153
+          },
+          "center_full_step": {
+            "inner_order": -1.498689326479943,
+            "carrier": 0.0008367616892445594,
+            "wave": 0.09492747887249538,
+            "exterior_order": -2.4275122666846722,
+            "total": -3.830437352603022
+          },
+          "wider_or_longer": {
+            "inner_order": -1.5018948278244963,
+            "carrier": 0.0008353061875928416,
+            "wave": 0.09522198739495671,
+            "exterior_order": -2.428931072085067,
+            "total": -3.8347686063261834
+          }
+        }
+      }
+    },
+    {
+      "radius": 2,
+      "state": "mid",
+      "order_mesh": 72,
+      "exterior_mesh": 70,
+      "preparation": "stationary smooth field",
+      "waist": 0.17509758416596435,
+      "depth": 3.369832336384419,
+      "axis_order": 0.7221204568042913,
+      "current": 0.013140044140687368,
+      "terminal_current": 0.01314004471417552,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 24.196414759294434,
+            "carrier": 0.002916138295630547,
+            "wave": 6.671272591659305,
+            "exterior_order": 214.54549266583837,
+            "total": 245.41609615508773
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 24.203482186135687,
+            "carrier": 0.002955266504570835,
+            "wave": 6.671000596855199,
+            "exterior_order": 214.55388571272823,
+            "total": 245.43132376222368
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 24.210566945009546,
+            "carrier": 0.0029946888457920043,
+            "wave": 6.670729522459137,
+            "exterior_order": 214.56229548840665,
+            "total": 245.44658664472112
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 24.21767479465251,
+            "carrier": 0.003034405662186037,
+            "wave": 6.670453542773541,
+            "exterior_order": 214.57072198838569,
+            "total": 245.46188473147393
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 24.224799561309492,
+            "carrier": 0.003074417328228224,
+            "wave": 6.670178776208887,
+            "exterior_order": 214.5791652082144,
+            "total": 245.477217963061
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 24.200442305270776,
+            "carrier": 0.003000081551383249,
+            "wave": 6.671349741612814,
+            "exterior_order": 214.54656929492998,
+            "total": 245.42136142336494
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 24.205502750909282,
+            "carrier": 0.0029973841637195736,
+            "wave": 6.671034190390198,
+            "exterior_order": 214.55442608563484,
+            "total": 245.43396041109804
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 24.210566945009546,
+            "carrier": 0.0029946888457920043,
+            "wave": 6.670729522459137,
+            "exterior_order": 214.56229548840665,
+            "total": 245.44658664472112
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 24.215650256116703,
+            "carrier": 0.0029919955265181116,
+            "wave": 6.670420382656473,
+            "exterior_order": 214.57017752075265,
+            "total": 245.45924015505236
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 24.22075577233301,
+            "carrier": 0.002989304132369415,
+            "wave": 6.670103687806008,
+            "exterior_order": 214.57807220019342,
+            "total": 245.4719209644648
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -7.076092857555949,
+            "carrier": -0.039275275080728665,
+            "wave": 0.2715346000838892,
+            "exterior_order": -8.401411284140181,
+            "total": -15.245244816696868
+          },
+          "center_half_step": {
+            "inner_order": -7.0963042584111236,
+            "carrier": -0.03956957880760095,
+            "wave": 0.273527040829169,
+            "exterior_order": -8.418137828726913,
+            "total": -15.280484625122881
+          },
+          "center_full_step": {
+            "inner_order": -7.0962005037644715,
+            "carrier": -0.03956975814941926,
+            "wave": 0.2734538626043559,
+            "exterior_order": -8.41813559400606,
+            "total": -15.280451993319843
+          },
+          "wider_or_longer": {
+            "inner_order": -7.116308149972994,
+            "carrier": -0.03986424121810985,
+            "wave": 0.2753731251248226,
+            "exterior_order": -8.434859903871939,
+            "total": -15.315659169942819
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -1.5037495551280262,
+            "carrier": 0.0008009449069795612,
+            "wave": 0.09211728026750206,
+            "exterior_order": -2.335713373962297,
+            "total": -3.7465447039176634
+          },
+          "center_half_step": {
+            "inner_order": -1.505639228190436,
+            "carrier": 0.0007995407138174587,
+            "wave": 0.09107391260939568,
+            "exterior_order": -2.3371240643781945,
+            "total": -3.750889839247544
+          },
+          "center_full_step": {
+            "inner_order": -1.5070077300732863,
+            "carrier": 0.0007995510423861892,
+            "wave": 0.09244176354490195,
+            "exterior_order": -2.3371254944474824,
+            "total": -3.7508919099339866
+          },
+          "wider_or_longer": {
+            "inner_order": -1.5102593951806633,
+            "carrier": 0.0007981599627361322,
+            "wave": 0.09276559850428116,
+            "exterior_order": -2.338534793514056,
+            "total": -3.7552304302268946
+          }
+        }
+      }
+    },
+    {
+      "radius": 2,
+      "state": "tight",
+      "order_mesh": 48,
+      "exterior_mesh": 40,
+      "preparation": "stationary smooth field",
+      "waist": 0.06879585322249476,
+      "depth": 3.309881224099296,
+      "axis_order": 0.5000007463312229,
+      "current": 0.0015879040384250698,
+      "terminal_current": 0.001587903856325849,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 22.89382135271599,
+            "carrier": 0.0003368102512216648,
+            "wave": 7.010504201178913,
+            "exterior_order": 213.0992048373994,
+            "total": 243.00386720154555
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 22.898298329730345,
+            "carrier": 0.0003486645769124888,
+            "wave": 7.01030292829562,
+            "exterior_order": 213.10557903910075,
+            "total": 243.01452896170363
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 22.902790803254376,
+            "carrier": 0.0003607500403339363,
+            "wave": 7.0101040903531135,
+            "exterior_order": 213.11197035024293,
+            "total": 243.02522599389076
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 22.907308711269568,
+            "carrier": 0.0003730673284863945,
+            "wave": 7.009897804869101,
+            "exterior_order": 213.11837876169795,
+            "total": 243.0359583451651
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 22.911842251263348,
+            "carrier": 0.0003856171191718042,
+            "wave": 7.009693949175583,
+            "exterior_order": 213.1248042644424,
+            "total": 243.04672608200048
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 22.89619529697871,
+            "carrier": 0.00036143964524182776,
+            "wave": 7.01061769369967,
+            "exterior_order": 213.09877839840203,
+            "total": 243.00595282872564
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 22.899491182418338,
+            "carrier": 0.0003610946907635273,
+            "wave": 7.0103561559123975,
+            "exterior_order": 213.1053689565418,
+            "total": 243.0155773895633
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 22.902790803254376,
+            "carrier": 0.0003607500403339363,
+            "wave": 7.0101040903531135,
+            "exterior_order": 213.11197035024293,
+            "total": 243.02522599389076
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 22.906110854633837,
+            "carrier": 0.0003604056945591913,
+            "wave": 7.009844809420723,
+            "exterior_order": 213.1185825951233,
+            "total": 243.03489866487243
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 22.9094481236765,
+            "carrier": 0.00036006165392111865,
+            "wave": 7.009581532262337,
+            "exterior_order": 213.1252057068264,
+            "total": 243.04459542441916
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -4.484725269193746,
+            "carrier": -0.011969894556135757,
+            "wave": 0.20005541289958018,
+            "exterior_order": -6.382756421757563,
+            "total": -10.679396172605493
+          },
+          "center_half_step": {
+            "inner_order": -4.505190769611644,
+            "carrier": -0.012201375786952838,
+            "wave": 0.20256171325971906,
+            "exterior_order": -6.399861298604037,
+            "total": -10.714691730740356
+          },
+          "center_full_step": {
+            "inner_order": -4.5052246368397775,
+            "carrier": -0.012201716987534856,
+            "wave": 0.20256300083243417,
+            "exterior_order": -6.399856760744171,
+            "total": -10.714720113732312
+          },
+          "wider_or_longer": {
+            "inner_order": -4.525724004485809,
+            "carrier": -0.012433539418933952,
+            "wave": 0.20507058876528816,
+            "exterior_order": -6.41695709973078,
+            "total": -10.750044054859131
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -0.9973324620190795,
+            "carrier": 0.00010427787221511188,
+            "wave": 0.07766398343252398,
+            "exterior_order": -1.9948069577098324,
+            "total": -2.914371158427336
+          },
+          "center_half_step": {
+            "inner_order": -0.9999862025294683,
+            "carrier": 0.00010408169400259673,
+            "wave": 0.07724543145646877,
+            "exterior_order": -1.9960892075254775,
+            "total": -2.9187258969043777
+          },
+          "center_full_step": {
+            "inner_order": -1.0010040364955595,
+            "carrier": 0.00010408155978645778,
+            "wave": 0.0782626834925828,
+            "exterior_order": -1.9960905706936631,
+            "total": -2.9187278421383707
+          },
+          "wider_or_longer": {
+            "inner_order": -1.004668275161342,
+            "carrier": 0.00010388563959029773,
+            "wave": 0.07886018734912373,
+            "exterior_order": -1.997371619017041,
+            "total": -2.9230758211895433
+          }
+        }
+      }
+    },
+    {
+      "radius": 2,
+      "state": "tight",
+      "order_mesh": 72,
+      "exterior_mesh": 70,
+      "preparation": "stationary smooth field",
+      "waist": 0.06879585322249476,
+      "depth": 3.309881224099296,
+      "axis_order": 0.500001327760269,
+      "current": 0.0014786266320504227,
+      "terminal_current": 0.0014786271808298424,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 22.94079722200498,
+            "carrier": 0.00031505245375171536,
+            "wave": 7.0119551535384765,
+            "exterior_order": 212.77498090780722,
+            "total": 242.72804833580443
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 22.945304632048277,
+            "carrier": 0.0003260663105495616,
+            "wave": 7.011766976432771,
+            "exterior_order": 212.78134514466723,
+            "total": 242.73874281945882
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 22.949830356934335,
+            "carrier": 0.00033729725630350036,
+            "wave": 7.0115783663464395,
+            "exterior_order": 212.78772643573322,
+            "total": 242.7494724562703
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 22.95437563594325,
+            "carrier": 0.0003487464126318667,
+            "wave": 7.011388149032734,
+            "exterior_order": 212.79412477226097,
+            "total": 242.7602373036496
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 22.9589396608091,
+            "carrier": 0.0003604148915977774,
+            "wave": 7.011197198357754,
+            "exterior_order": 212.80054014559892,
+            "total": 242.77103741965738
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 22.94319425259897,
+            "carrier": 0.0003379387807731208,
+            "wave": 7.012063729270645,
+            "exterior_order": 212.77512205900197,
+            "total": 242.73071797965235
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 22.946508771587943,
+            "carrier": 0.0003376178791267882,
+            "wave": 7.011817944778879,
+            "exterior_order": 212.78141899288588,
+            "total": 242.74008332713183
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 22.949830356934335,
+            "carrier": 0.00033729725630350036,
+            "wave": 7.0115783663464395,
+            "exterior_order": 212.78772643573322,
+            "total": 242.7494724562703
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 22.953166665648915,
+            "carrier": 0.00033697691254734244,
+            "wave": 7.0113373553391485,
+            "exterior_order": 212.79404440288118,
+            "total": 242.7588854007818
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 22.9565229980492,
+            "carrier": 0.000336656848057833,
+            "wave": 7.011089607261703,
+            "exterior_order": 212.80037290967886,
+            "total": 242.7683221718378
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -4.516567464676768,
+            "carrier": -0.011122401275892499,
+            "wave": 0.18839359601852124,
+            "exterior_order": -6.372763963000239,
+            "total": -10.71206023293314
+          },
+          "center_half_step": {
+            "inner_order": -4.535501947486864,
+            "carrier": -0.011340051041152542,
+            "wave": 0.18941370001845925,
+            "exterior_order": -6.38981379687209,
+            "total": -10.74724209539113
+          },
+          "center_full_step": {
+            "inner_order": -4.535609701029841,
+            "carrier": -0.011340609461515513,
+            "wave": 0.18948879518054795,
+            "exterior_order": -6.389809447924222,
+            "total": -10.747270963236133
+          },
+          "wider_or_longer": {
+            "inner_order": -4.554651937382914,
+            "carrier": -0.011558817647138526,
+            "wave": 0.19058399434257467,
+            "exterior_order": -6.406854932848205,
+            "total": -10.782481693539125
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -1.0034714544086736,
+            "carrier": 9.700743991293192e-05,
+            "wave": 0.07339363802241781,
+            "exterior_order": -1.9059574128479466,
+            "total": -2.835938221795442
+          },
+          "center_half_step": {
+            "inner_order": -1.0057601014269806,
+            "carrier": 9.682620451016864e-05,
+            "wave": 0.07259918515096332,
+            "exterior_order": -1.9072297518032002,
+            "total": -2.840293841873914
+          },
+          "center_full_step": {
+            "inner_order": -1.0067382831863,
+            "carrier": 9.6826122591091e-05,
+            "wave": 0.07357676103563074,
+            "exterior_order": -1.9072311159641524,
+            "total": -2.840295811992346
+          },
+          "wider_or_longer": {
+            "inner_order": -1.009998584835675,
+            "carrier": 9.664516754150074e-05,
+            "wave": 0.0737595181688192,
+            "exterior_order": -1.908502274219834,
+            "total": -2.8446446957182285
+          }
+        }
+      }
+    }
+  ],
+  "exterior_refinement": [
+    {
+      "radius": 1,
+      "state": "broad",
+      "order_mesh": 72,
+      "exterior_mesh": 108,
+      "preparation": "stationary smooth field",
+      "waist": 0.444359858046843,
+      "depth": 1.874161406756793,
+      "axis_order": 0.9996617982419683,
+      "current": 0.13031289492490786,
+      "terminal_current": 0.13031289445213093,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 5.163685102667682,
+            "carrier": 0.029340679966896436,
+            "wave": 9.154712270258694,
+            "exterior_order": 208.35738126671674,
+            "total": 222.70511931961002
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 5.169604542370948,
+            "carrier": 0.029479272325865585,
+            "wave": 9.153243481409998,
+            "exterior_order": 208.36332599129682,
+            "total": 222.71565328740363
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 5.175541385277274,
+            "carrier": 0.029618142359311726,
+            "wave": 9.151761212629625,
+            "exterior_order": 208.36928190590731,
+            "total": 222.72620264617353
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 5.1814892001629715,
+            "carrier": 0.02975728888407817,
+            "wave": 9.150271903085843,
+            "exterior_order": 208.3752490300898,
+            "total": 222.7367674222227
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 5.187444758514019,
+            "carrier": 0.029896710749190765,
+            "wave": 9.148778782290409,
+            "exterior_order": 208.38122738344788,
+            "total": 222.7473476350015
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 5.169335100093567,
+            "carrier": 0.02966415977054094,
+            "wave": 9.152676787652169,
+            "exterior_order": 208.36136427111242,
+            "total": 222.71304031862869
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 5.17243585385307,
+            "carrier": 0.02964114577539996,
+            "wave": 9.152219306359955,
+            "exterior_order": 208.36532062866536,
+            "total": 222.71961693465377
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 5.175541385277274,
+            "carrier": 0.029618142359311726,
+            "wave": 9.151761212629625,
+            "exterior_order": 208.36928190590731,
+            "total": 222.72620264617353
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 5.178650196127151,
+            "carrier": 0.029595149512304353,
+            "wave": 9.151304008273451,
+            "exterior_order": 208.37324810802173,
+            "total": 222.73279746193464
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 5.181763789590782,
+            "carrier": 0.02957216726136885,
+            "wave": 9.15084619467955,
+            "exterior_order": 208.37721924025183,
+            "total": 222.73940139178353
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -5.928141304795798,
+            "carrier": -0.13873119620764518,
+            "wave": 1.4755288145344991,
+            "exterior_order": -5.950319595285691,
+            "total": -10.541663281756541
+          },
+          "center_half_step": {
+            "inner_order": -5.9423288960118725,
+            "carrier": -0.13900827910629313,
+            "wave": 1.4857891620776442,
+            "exterior_order": -5.961519396493031,
+            "total": -10.557067409536103
+          },
+          "center_full_step": {
+            "inner_order": -5.939913961584109,
+            "carrier": -0.13900769557358225,
+            "wave": 1.4833719920712696,
+            "exterior_order": -5.96152918278392,
+            "total": -10.557078847867274
+          },
+          "wider_or_longer": {
+            "inner_order": -5.95168661837242,
+            "carrier": -0.13928419493951932,
+            "wave": 1.49121516960804,
+            "exterior_order": -5.972738770282149,
+            "total": -10.572494413978006
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -1.6574062178570286,
+            "carrier": 0.012289081349532776,
+            "wave": 0.2445069297271512,
+            "exterior_order": -2.114427028623541,
+            "total": -3.5150372354093666
+          },
+          "center_half_step": {
+            "inner_order": -1.6578991585125125,
+            "carrier": 0.01227115638592734,
+            "wave": 0.24418866236771178,
+            "exterior_order": -2.1149400490644945,
+            "total": -3.5163793888277404
+          },
+          "center_full_step": {
+            "inner_order": -1.657898989731914,
+            "carrier": 0.0122711479801211,
+            "wave": 0.24418811336420937,
+            "exterior_order": -2.1149403824393236,
+            "total": -3.5163801108281008
+          },
+          "wider_or_longer": {
+            "inner_order": -1.6583907770479362,
+            "carrier": 0.012253250441605404,
+            "wave": 0.2438699339967855,
+            "exterior_order": -2.1154527105734977,
+            "total": -3.5177203031799578
+          }
+        }
+      }
+    },
+    {
+      "radius": 2,
+      "state": "tight",
+      "order_mesh": 72,
+      "exterior_mesh": 108,
+      "preparation": "stationary smooth field",
+      "waist": 0.06879585322249476,
+      "depth": 3.309881224099296,
+      "axis_order": 0.500001327760269,
+      "current": 0.0014786266320504227,
+      "terminal_current": 0.0014786271808298424,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 22.94079722200498,
+            "carrier": 0.00031505245375171536,
+            "wave": 7.0119551535384765,
+            "exterior_order": 212.68232242165038,
+            "total": 242.6353898496476
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 22.945304632048277,
+            "carrier": 0.0003260663105495616,
+            "wave": 7.011766976432771,
+            "exterior_order": 212.68868564248274,
+            "total": 242.64608331727433
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 22.949830356934335,
+            "carrier": 0.00033729725630350036,
+            "wave": 7.0115783663464395,
+            "exterior_order": 212.69506590030647,
+            "total": 242.65681192084355
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 22.95437563594325,
+            "carrier": 0.0003487464126318667,
+            "wave": 7.011388149032734,
+            "exterior_order": 212.70146318648975,
+            "total": 242.66757571787838
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 22.9589396608091,
+            "carrier": 0.0003604148915977774,
+            "wave": 7.011197198357754,
+            "exterior_order": 212.7078774924738,
+            "total": 242.67837476653227
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 22.94319425259897,
+            "carrier": 0.0003379387807731208,
+            "wave": 7.012063729270645,
+            "exterior_order": 212.68262328085197,
+            "total": 242.63821920150235
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 22.946508771587943,
+            "carrier": 0.0003376178791267882,
+            "wave": 7.011817944778879,
+            "exterior_order": 212.68883938371667,
+            "total": 242.64750371796262
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 22.949830356934335,
+            "carrier": 0.00033729725630350036,
+            "wave": 7.0115783663464395,
+            "exterior_order": 212.69506590030647,
+            "total": 242.65681192084355
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 22.953166665648915,
+            "carrier": 0.00033697691254734244,
+            "wave": 7.0113373553391485,
+            "exterior_order": 212.701302845887,
+            "total": 242.6661438437876
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 22.9565229980492,
+            "carrier": 0.000336656848057833,
+            "wave": 7.011089607261703,
+            "exterior_order": 212.70755023573082,
+            "total": 242.67549949788977
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -4.516567464676768,
+            "carrier": -0.011122401275892499,
+            "wave": 0.18839359601852124,
+            "exterior_order": -6.371739328045578,
+            "total": -10.71103559797848
+          },
+          "center_half_step": {
+            "inner_order": -4.535501947486864,
+            "carrier": -0.011340051041152542,
+            "wave": 0.18941370001845925,
+            "exterior_order": -6.388772003504073,
+            "total": -10.746200302023112
+          },
+          "center_full_step": {
+            "inner_order": -4.535609701029841,
+            "carrier": -0.011340609461515513,
+            "wave": 0.18948879518054795,
+            "exterior_order": -6.38876770585739,
+            "total": -10.746229221169301
+          },
+          "wider_or_longer": {
+            "inner_order": -4.554651937382914,
+            "carrier": -0.011558817647138526,
+            "wave": 0.19058399434257467,
+            "exterior_order": -6.405796083669202,
+            "total": -10.781422844360122
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -1.0034714544086736,
+            "carrier": 9.700743991293192e-05,
+            "wave": 0.07339363802241781,
+            "exterior_order": -1.8814974584000586,
+            "total": -2.811478267347554
+          },
+          "center_half_step": {
+            "inner_order": -1.0057601014269806,
+            "carrier": 9.682620451016864e-05,
+            "wave": 0.07259918515096332,
+            "exterior_order": -1.8827654603344506,
+            "total": -2.8158295504051645
+          },
+          "center_full_step": {
+            "inner_order": -1.0067382831863,
+            "carrier": 9.6826122591091e-05,
+            "wave": 0.07357676103563074,
+            "exterior_order": -1.882766825543078,
+            "total": -2.8158315215712717
+          },
+          "wider_or_longer": {
+            "inner_order": -1.009998584835675,
+            "carrier": 9.664516754150074e-05,
+            "wave": 0.0737595181688192,
+            "exterior_order": -1.8840336564888538,
+            "total": -2.8201760779872482
+          }
+        }
+      }
+    }
+  ],
+  "initial_comparison": [
+    {
+      "radius": 1,
+      "state": "mid",
+      "order_mesh": 72,
+      "exterior_mesh": 70,
+      "preparation": "post-wave initial profile",
+      "waist": 0.20519145396147745,
+      "depth": 1.6656431110543743,
+      "axis_order": 0.8978336875748865,
+      "current": 0.02524627416429584,
+      "terminal_current": 0.025246273725588478,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.46169713666268,
+            "carrier": 0.00563719638404498,
+            "wave": 10.665507144027321,
+            "exterior_order": 206.39102506976218,
+            "total": 220.52386654683622
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.4644397504272133,
+            "carrier": 0.00570010107800959,
+            "wave": 10.6647673643803,
+            "exterior_order": 206.39404009873428,
+            "total": 220.5289473146198
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.4672010286090655,
+            "carrier": 0.005763374906928055,
+            "wave": 10.664023470614923,
+            "exterior_order": 206.39706249306963,
+            "total": 220.53405036720054
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.4699810323198195,
+            "carrier": 0.0058270178570866945,
+            "wave": 10.663275443233122,
+            "exterior_order": 206.4000922549216,
+            "total": 220.53917574833162
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.4727798226711313,
+            "carrier": 0.005891029910007966,
+            "wave": 10.662523262668532,
+            "exterior_order": 206.4031293865027,
+            "total": 220.5443235017524
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.4653240225420063,
+            "carrier": 0.005772829087755557,
+            "wave": 10.665050614714357,
+            "exterior_order": 206.39374759054553,
+            "total": 220.52989505688964
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.4662607924449933,
+            "carrier": 0.005768100720493125,
+            "wave": 10.66453717152443,
+            "exterior_order": 206.3954038235633,
+            "total": 220.53196988825323
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.4672010286090655,
+            "carrier": 0.005763374906928055,
+            "wave": 10.664023470614923,
+            "exterior_order": 206.39706249306963,
+            "total": 220.53405036720054
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.468144731974453,
+            "carrier": 0.005758651648361048,
+            "wave": 10.663509512295052,
+            "exterior_order": 206.39872360214147,
+            "total": 220.53613649805934
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.4690919034848475,
+            "carrier": 0.005753930946086726,
+            "wave": 10.662995296874536,
+            "exterior_order": 206.4003871538615,
+            "total": 220.53822828516695
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -2.7519459731928375,
+            "carrier": -0.06308926144153737,
+            "wave": 0.7418367061990949,
+            "exterior_order": -3.0187116537234715,
+            "total": -5.091910182159154
+          },
+          "center_half_step": {
+            "inner_order": -2.7706409463030823,
+            "carrier": -0.06345838953855219,
+            "wave": 0.7459605735888886,
+            "exterior_order": -3.026078093654405,
+            "total": -5.114216855901077
+          },
+          "center_full_step": {
+            "inner_order": -2.7706715021128536,
+            "carrier": -0.06345838149074629,
+            "wave": 0.745970339697255,
+            "exterior_order": -3.0260791851333124,
+            "total": -5.114238729042597
+          },
+          "wider_or_longer": {
+            "inner_order": -2.7893970310328697,
+            "carrier": -0.0638275015399552,
+            "wave": 0.7501039731954151,
+            "exterior_order": -3.0334467165431533,
+            "total": -5.136567275926041
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -0.564011487912784,
+            "carrier": 0.0028408361001572703,
+            "wave": 0.3086410225247221,
+            "exterior_order": -0.996077283772691,
+            "total": -1.2486069130600506
+          },
+          "center_half_step": {
+            "inner_order": -0.5655290749161211,
+            "carrier": 0.0028364631338254013,
+            "wave": 0.3084871696945871,
+            "exterior_order": -0.9965454192572959,
+            "total": -1.2507508613394736
+          },
+          "center_full_step": {
+            "inner_order": -0.5655290749133861,
+            "carrier": 0.0028364613260569685,
+            "wave": 0.3084869225539417,
+            "exterior_order": -0.9965458454934064,
+            "total": -1.2507515365267186
+          },
+          "wider_or_longer": {
+            "inner_order": -0.5670436297731385,
+            "carrier": 0.002832095292761148,
+            "wave": 0.3083331304751082,
+            "exterior_order": -0.9970134710271792,
+            "total": -1.2528918750328417
+          }
+        }
+      }
+    },
+    {
+      "radius": 1,
+      "state": "tight",
+      "order_mesh": 72,
+      "exterior_mesh": 70,
+      "preparation": "post-wave initial profile",
+      "waist": 0.08704676250538175,
+      "depth": 1.5752599023050904,
+      "axis_order": 0.5017517214408065,
+      "current": 0.003681064065745615,
+      "terminal_current": 0.003681063450962946,
+      "zero_wave_cells": 0,
+      "energies": {
+        "radial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.1917033314882524,
+            "carrier": 0.0007977475443578782,
+            "wave": 10.765832935307929,
+            "exterior_order": 205.98765109235606,
+            "total": 219.9459851066966
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.1930164665343037,
+            "carrier": 0.0008196889728860813,
+            "wave": 10.765469511213135,
+            "exterior_order": 205.98961105405712,
+            "total": 219.94891672077745
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.1943445914263635,
+            "carrier": 0.0008419686948498822,
+            "wave": 10.765103798775726,
+            "exterior_order": 205.99157791450017,
+            "total": 219.9518682733971
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.1956877846603255,
+            "carrier": 0.0008645876889588212,
+            "wave": 10.764735784390817,
+            "exterior_order": 205.99355166775425,
+            "total": 219.95483982449434
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.197046124732216,
+            "carrier": 0.0008875469181759128,
+            "wave": 10.764365454387706,
+            "exterior_order": 205.99553230799904,
+            "total": 219.95783143403713
+          }
+        ],
+        "axial": [
+          {
+            "displacement": -0.002,
+            "inner_order": 3.1937970766868,
+            "carrier": 0.0008434542215028844,
+            "wave": 10.765953290312542,
+            "exterior_order": 205.98951175944822,
+            "total": 219.95010558066906
+          },
+          {
+            "displacement": -0.001,
+            "inner_order": 3.194069237021823,
+            "carrier": 0.0008427112025756621,
+            "wave": 10.765528708078651,
+            "exterior_order": 205.9905440061985,
+            "total": 219.95098466250155
+          },
+          {
+            "displacement": 0.0,
+            "inner_order": 3.1943445914263635,
+            "carrier": 0.0008419686948498822,
+            "wave": 10.765103798775726,
+            "exterior_order": 205.99157791450017,
+            "total": 219.9518682733971
+          },
+          {
+            "displacement": 0.001,
+            "inner_order": 3.1946231401757346,
+            "carrier": 0.000841226698295021,
+            "wave": 10.764678562526889,
+            "exterior_order": 205.99261348669907,
+            "total": 219.9527564161
+          },
+          {
+            "displacement": 0.002,
+            "inner_order": 3.1949048835485225,
+            "carrier": 0.0008404852128810729,
+            "wave": 10.764252999456165,
+            "exterior_order": 205.9936507251179,
+            "total": 219.95364909333546
+          }
+        ]
+      },
+      "forces": {
+        "radial": {
+          "tighter_or_shorter": {
+            "inner_order": -1.3206299690555756,
+            "carrier": -0.022110575246001973,
+            "wave": 0.36456826610109516,
+            "exterior_order": -1.963411072054555,
+            "total": -2.9415833502497435
+          },
+          "center_half_step": {
+            "inner_order": -1.3356590630109189,
+            "carrier": -0.022449358036369934,
+            "wave": 0.3668634111591018,
+            "exterior_order": -1.9703068485625863,
+            "total": -2.9615518584478195
+          },
+          "center_full_step": {
+            "inner_order": -1.335698310990896,
+            "carrier": -0.022449843454508643,
+            "wave": 0.36687023005566033,
+            "exterior_order": -1.9703039107454856,
+            "total": -2.961581835130289
+          },
+          "wider_or_longer": {
+            "inner_order": -1.3507666529262163,
+            "carrier": -0.022789111663015314,
+            "wave": 0.3691721940102255,
+            "exterior_order": -1.9771967494364162,
+            "total": -2.981580320010835
+          }
+        },
+        "axial": {
+          "tighter_or_shorter": {
+            "inner_order": -0.1739593688654085,
+            "carrier": 0.00047198962934775617,
+            "wave": 0.2699050836854543,
+            "exterior_order": -0.6564700506541775,
+            "total": -0.5600523462066824
+          },
+          "center_half_step": {
+            "inner_order": -0.17581322954515985,
+            "carrier": 0.0004711933665839604,
+            "wave": 0.26984290301159336,
+            "exterior_order": -0.6568694323516546,
+            "total": -0.5623685655136419
+          },
+          "center_full_step": {
+            "inner_order": -0.17581322954451692,
+            "carrier": 0.000471193140593622,
+            "wave": 0.26984272886684285,
+            "exterior_order": -0.6568698448294877,
+            "total": -0.5623691523651181
+          },
+          "wider_or_longer": {
+            "inner_order": -0.17766338620751781,
+            "carrier": 0.00047039824322507985,
+            "wave": 0.26978049863324205,
+            "exterior_order": -0.6572688402155026,
+            "total": -0.5646813295417613
+          }
+        }
+      }
+    }
+  ],
+  "controls": {
+    "range": [
+      {
+        "phase": "kinetic",
+        "wave_energy_over_well": 0.001,
+        "k": 8.0,
+        "order_period": 0.020520797282589827,
+        "wave_period": 0.7853981633974483,
+        "initial_chi": 1.0,
+        "initial_chi_acceleration": 46.87500000000001,
+        "min_chi_quartic_continuation": 0.9999733640140427,
+        "max_chi_quartic_continuation": 1.0009930663389848,
+        "relative_energy_error": 2.220446049250313e-15,
+        "max_step": 0.00032063745754046605
+      },
+      {
+        "phase": "strain",
+        "wave_energy_over_well": 0.001,
+        "k": 8.0,
+        "order_period": 0.020520797282589827,
+        "wave_period": 0.7853981633974483,
+        "initial_chi": 1.0,
+        "initial_chi_acceleration": -46.87500000000001,
+        "min_chi_quartic_continuation": 0.9990020074346196,
+        "max_chi_quartic_continuation": 1.0000268163806605,
+        "relative_energy_error": 1.5543122344752192e-15,
+        "max_step": 0.00032063745754046605
+      },
+      {
+        "phase": "kinetic",
+        "wave_energy_over_well": 0.002,
+        "k": 8.0,
+        "order_period": 0.020520797282589827,
+        "wave_period": 0.7853981633974483,
+        "initial_chi": 1.0,
+        "initial_chi_acceleration": 93.74999999999997,
+        "min_chi_quartic_continuation": 0.9999471385628868,
+        "max_chi_quartic_continuation": 1.0019802947098067,
+        "relative_energy_error": 1.7763568394002505e-15,
+        "max_step": 0.00032063745754046605
+      },
+      {
+        "phase": "strain",
+        "wave_energy_over_well": 0.002,
+        "k": 8.0,
+        "order_period": 0.020520797282589827,
+        "wave_period": 0.7853981633974483,
+        "initial_chi": 1.0,
+        "initial_chi_acceleration": -93.74999999999997,
+        "min_chi_quartic_continuation": 0.9980000274644699,
+        "max_chi_quartic_continuation": 1.000053613516254,
+        "relative_energy_error": 1.1102230246251565e-15,
+        "max_step": 0.00032063745754046605
+      }
+    ],
+    "figure": [
+      {
+        "case": "r2_tight_72",
+        "radius": 2,
+        "axis_order": 0.500001327760269,
+        "stored_frequency": 7.0115783663464395,
+        "axial_edges": [
+          0.0,
+          0.029818749766660324,
+          0.05963749953332065,
+          0.08945624929998097,
+          0.1192749990666413,
+          0.14909374883330162,
+          0.17891249859996194,
+          0.20873124836662227,
+          0.2385499981332826,
+          0.2683687478999429,
+          0.29818749766660324,
+          0.32800624743326356,
+          0.3578249971999239,
+          0.3876437469665842,
+          0.41746249673324454,
+          0.44728124649990486,
+          0.4770999962665652,
+          0.5069187460332255,
+          0.5367374957998858,
+          0.5665562455665462,
+          0.5963749953332065,
+          0.6261937450998668,
+          0.6560124948665271,
+          0.6858312446331875,
+          0.7156499943998478,
+          0.7454687441665081,
+          0.7752874939331684,
+          0.8051062436998287,
+          0.8349249934664891,
+          0.8647437432331494,
+          0.8945624929998097,
+          0.92438124276647,
+          0.9541999925331304,
+          0.9840187422997907,
+          1.013837492066451,
+          1.0436562418331112,
+          1.0734749915997717,
+          1.103293741366432,
+          1.1331124911330923,
+          1.1629312408997525,
+          1.192749990666413,
+          1.2225687404330734,
+          1.2523874901997336,
+          1.2822062399663938,
+          1.3120249897330543,
+          1.3418437394997147,
+          1.371662489266375,
+          1.4014812390330351,
+          1.4312999887996956,
+          1.461118738566356,
+          1.4909374883330162,
+          1.5207562380996764,
+          1.5505749878663369,
+          1.5803937376329973,
+          1.6102124873996575,
+          1.6400312371663177,
+          1.6698499869329781,
+          1.6996687366996386,
+          1.7294874864662988,
+          1.759306236232959,
+          1.7891249859996194,
+          1.8189437357662799,
+          1.84876248553294,
+          1.8785812352996003,
+          1.9083999850662607,
+          1.9382187348329212,
+          1.9680374845995814,
+          1.9978562343662416,
+          2.027674984132902,
+          2.0574937338995625,
+          2.0873124836662225,
+          2.117131233432883,
+          2.1469499831995433,
+          2.1767687329662038,
+          2.206587482732864,
+          2.236406232499524,
+          2.2662249822661846,
+          2.296043732032845,
+          2.325862481799505,
+          2.3556812315661655,
+          2.385499981332826,
+          2.4153187310994864,
+          2.445137480866147,
+          2.474956230632807,
+          2.504774980399467,
+          2.5345937301661277,
+          2.5644124799327876,
+          2.594231229699448,
+          2.6240499794661085,
+          2.653868729232769,
+          2.6836874789994294,
+          2.7135062287660894,
+          2.74332497853275,
+          2.7731437282994102,
+          2.8029624780660702,
+          2.8327812278327307,
+          2.862599977599391,
+          2.8924187273660515,
+          2.922237477132712,
+          2.952056226899372,
+          2.9818749766660324,
+          3.011693726432693,
+          3.041512476199353,
+          3.0713312259660133,
+          3.1011499757326737,
+          3.130968725499334,
+          3.1607874752659946,
+          3.1906062250326546,
+          3.220424974799315,
+          3.2502437245659754,
+          3.2800624743326354,
+          3.309881224099296
+        ],
+        "cumulative_fraction": [
+          8.851444254473371e-97,
+          1.791742049589149e-96,
+          2.7127685915887726e-96,
+          3.6414575982700135e-96,
+          4.5752949097371135e-96,
+          5.517595654258385e-96,
+          6.476709864228508e-96,
+          7.4635390270348764e-96,
+          8.488734278998407e-96,
+          9.560713910001836e-96,
+          1.0685137327767756e-95,
+          1.1865890668589504e-95,
+          1.310719057854111e-95,
+          1.4416247381503454e-95,
+          1.580608965599058e-95,
+          1.7298508626905783e-95,
+          1.8927493401274104e-95,
+          2.0744082695938176e-95,
+          2.2824235760450098e-95,
+          2.5282314453864853e-95,
+          2.82947282158301e-95,
+          3.214218761492315e-95,
+          3.728693226981937e-95,
+          4.4517711214501323e-95,
+          5.523105961990823e-95,
+          7.200002303398627e-95,
+          9.994801945993737e-95,
+          1.5879110661535345e-94,
+          6.745227487966624e-94,
+          1.5986642843402478e-92,
+          4.901564656184502e-91,
+          1.3815965010104714e-89,
+          3.5595253906911014e-88,
+          8.482172247139737e-87,
+          1.8896545477401233e-85,
+          3.971070559008963e-84,
+          7.931152585764883e-83,
+          1.514984879839617e-81,
+          2.7825350736169985e-80,
+          4.936219983359226e-79,
+          8.490232598658478e-78,
+          1.4203019699243983e-76,
+          2.316797391330486e-75,
+          3.6926717397611455e-74,
+          5.760926774363502e-73,
+          8.811237600958506e-72,
+          1.3234058428704352e-70,
+          1.9555718667696165e-69,
+          2.849287822278754e-68,
+          4.104089809734633e-67,
+          5.861875562673668e-66,
+          8.331034154963965e-65,
+          1.182683340900125e-63,
+          1.6839631405674327e-62,
+          2.4153264724304275e-61,
+          3.505360966649696e-60,
+          5.169934148887979e-59,
+          7.778479133064855e-58,
+          1.197328961667314e-56,
+          1.8887347991010947e-55,
+          3.056557595387055e-54,
+          5.12740660619239e-53,
+          1.40530037516193e-51,
+          3.8255659794341044e-48,
+          6.957770176066353e-41,
+          4.176623663476124e-37,
+          5.046677457952996e-34,
+          2.275903588967196e-31,
+          4.9842877335212075e-29,
+          6.169697212163818e-27,
+          4.777251973344787e-25,
+          2.4917944807492576e-23,
+          9.269753850940565e-22,
+          2.5741584590700293e-20,
+          5.537819363661134e-19,
+          9.514828205466147e-18,
+          1.338728227470896e-16,
+          1.5748223317522936e-15,
+          1.5760308987986723e-14,
+          1.3617419081873122e-13,
+          1.028869398474203e-12,
+          6.873925908140845e-12,
+          4.1012621464436804e-11,
+          2.2045537547121882e-10,
+          1.0760438267591868e-09,
+          4.802942724858857e-09,
+          1.972895054133272e-08,
+          7.500448130904247e-08,
+          2.652595246508622e-07,
+          8.7669272706254e-07,
+          2.718965892170525e-06,
+          7.942207599802176e-06,
+          2.192291064878591e-05,
+          5.735416486115246e-05,
+          0.0001425921821663478,
+          0.0003376919538526352,
+          0.0007634260859387003,
+          0.0016507004056082193,
+          0.0034195319061551994,
+          0.006797226544847531,
+          0.012982840303969085,
+          0.023856301493703536,
+          0.04221314866184937,
+          0.07197649357998565,
+          0.11827760236357891,
+          0.1872168444849331,
+          0.2851008811831085,
+          0.4168848813577731,
+          0.5838449127927345,
+          0.7816477994406293,
+          1.0
+        ],
+        "snapshot_sha256": "4760b927b8744b6abba7cb0f2203b944e41e1a7bbd666ff88b5ecf94485b4acc",
+        "figure_sha256": "6605a89cc2a02531462ae3896f54ef05460f53f358e619f91892148021fd51fd"
+      }
+    ]
+  },
+  "sources": {
+    "r1_broad_48": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r1_broad_48",
+      "stdout_sha256": "3c1ba4805bf87ee618ea62ecdbb63a26f1aad2033b557325fcd6ad3c18b3f50b",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_order.py",
+        "--radius",
+        "1",
+        "--point",
+        "broad",
+        "--mesh",
+        "48",
+        "--field-mesh",
+        "14",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r1_broad_48.npz"
+      ]
+    },
+    "first_r1broad40": {
+      "path": "_scratch/s11c/waist_outer01/first_r1broad40",
+      "stdout_sha256": "ae657597b5691ddd02dd217c77b93b991707b79d3c8e1ee59bb37eee78a8008e",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "1",
+        "--state",
+        "broad",
+        "--mesh",
+        "40"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 40,
+          "energy": 208.60191135772044,
+          "minimum_order": -1.0920641878416773e-19,
+          "maximum_order": 0.5,
+          "residual": 1.576549221032897e-14,
+          "last_step": 1.1171852940575612e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4771095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 40,
+          "energy": 208.58998633298688,
+          "minimum_order": -1.0710805209890365e-19,
+          "maximum_order": 0.5,
+          "residual": 1.1482459948142232e-14,
+          "last_step": 1.1222188636598676e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4761095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 40,
+          "energy": 208.59594322816335,
+          "minimum_order": -1.0816935764196351e-19,
+          "maximum_order": 0.5,
+          "residual": 7.643815051402991e-15,
+          "last_step": 1.1174769126753728e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4741095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 40,
+          "energy": 208.60789074120015,
+          "minimum_order": -1.1021902737928805e-19,
+          "maximum_order": 0.5,
+          "residual": 1.2480711993403948e-14,
+          "last_step": 1.1141523702373026e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4731095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 40,
+          "energy": 208.61388139823353,
+          "minimum_order": -1.1120697697581967e-19,
+          "maximum_order": 0.5,
+          "residual": 8.364430025345482e-15,
+          "last_step": 1.1108046455406696e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 40,
+          "energy": 208.60191135772044,
+          "minimum_order": -1.0920641878416773e-19,
+          "maximum_order": 0.5,
+          "residual": 1.576549221032897e-14,
+          "last_step": 1.1171852940575612e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.3901621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 40,
+          "energy": 208.59351972185644,
+          "minimum_order": -1.0850800726144856e-19,
+          "maximum_order": 0.5,
+          "residual": 1.3878058858357578e-14,
+          "last_step": 1.1224352134755627e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.3891621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 40,
+          "energy": 208.59771295677538,
+          "minimum_order": -1.0887171946262994e-19,
+          "maximum_order": 0.5,
+          "residual": 1.066242363498282e-14,
+          "last_step": 1.1178588117853206e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.3871621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 40,
+          "energy": 208.6061149301441,
+          "minimum_order": -1.0951327849722179e-19,
+          "maximum_order": 0.5,
+          "residual": 1.0177188952686933e-14,
+          "last_step": 1.11519331696096e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.3861621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 40,
+          "energy": 208.61032367949085,
+          "minimum_order": -1.0979342473719079e-19,
+          "maximum_order": 0.5,
+          "residual": 1.0439511668319801e-14,
+          "last_step": 1.1152945518444748e-13,
+          "iterations": 4
+        }
+      ]
+    },
+    "r1_broad_72": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r1_broad_72",
+      "stdout_sha256": "3d39d6cbd2a304bc93ba37bade98eac6369d1dc2aa6071069a0bbe7c81bca325",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_order.py",
+        "--radius",
+        "1",
+        "--point",
+        "broad",
+        "--mesh",
+        "72",
+        "--field-mesh",
+        "20",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r1_broad_72.npz"
+      ]
+    },
+    "r1broad70": {
+      "path": "_scratch/s11c/waist_outer01/r1broad70",
+      "stdout_sha256": "9285d1a3f852b738e4aaeb7fa84626920dc25b01040730c930c774087066a3f9",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "1",
+        "--state",
+        "broad",
+        "--mesh",
+        "70"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 70,
+          "energy": 208.4206379352187,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.9846063269331193e-14,
+          "last_step": 1.0475973826506386e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4771095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 70,
+          "energy": 208.408733442211,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.3513502478639606e-14,
+          "last_step": 1.0494688355912047e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4761095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 70,
+          "energy": 208.41468008818748,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.536251797973863e-14,
+          "last_step": 1.0490001156280673e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4741095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 70,
+          "energy": 208.42660700283363,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.0776229112226714e-14,
+          "last_step": 1.0446314742851923e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4731095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 70,
+          "energy": 208.43258731066493,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.89120940730192e-14,
+          "last_step": 1.042006474211377e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 70,
+          "energy": 208.4206379352187,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.9846063269331193e-14,
+          "last_step": 1.0475973826506386e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.3901621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 70,
+          "energy": 208.41261664787947,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.5870415875571253e-14,
+          "last_step": 1.0518435665650129e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.3891621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 70,
+          "energy": 208.41662480447104,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.946432397924522e-14,
+          "last_step": 1.0424754869242724e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.3871621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 70,
+          "energy": 208.42465604539052,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.8696729345399517e-14,
+          "last_step": 1.0446708217581472e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.3861621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 70,
+          "energy": 208.4286791402485,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.4974585184742333e-14,
+          "last_step": 1.0494817136630334e-13,
+          "iterations": 4
+        }
+      ]
+    },
+    "r1_mid_48_support": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r1_mid_48_support",
+      "stdout_sha256": "b5e0a76f31d0dc830cab8234f68b7ba68caf5b10ec3b9d17d9e23eb91da0754a",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_support.py",
+        "--point",
+        "mid",
+        "--mesh",
+        "48",
+        "--field-mesh",
+        "14",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r1_mid_48_support.npz"
+      ]
+    },
+    "r1mid40": {
+      "path": "_scratch/s11c/waist_outer01/r1mid40",
+      "stdout_sha256": "99f4d5ee329130447acb47e675c064e260c8670bdd1db694c32ee56e94b81bea",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "1",
+        "--state",
+        "mid",
+        "--mesh",
+        "40"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 40,
+          "energy": 206.55424147026278,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 5.682130113648931e-14,
+          "last_step": 3.434579920485999e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.672998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 40,
+          "energy": 206.5482009982107,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 5.838753959486187e-14,
+          "last_step": 3.5302299917738487e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.671998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 40,
+          "energy": 206.55121753646614,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 5.760452878589284e-14,
+          "last_step": 3.4821725699279645e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.669998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 40,
+          "energy": 206.5572728017564,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 5.6050650232286614e-14,
+          "last_step": 3.38724140032121e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.668998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 40,
+          "energy": 206.56031153317537,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 5.529170871154676e-14,
+          "last_step": 3.340782705708569e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 40,
+          "energy": 206.55424147026278,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 5.682130113648931e-14,
+          "last_step": 3.434579920485999e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5081121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 40,
+          "energy": 206.55061266977248,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 5.782353762473491e-14,
+          "last_step": 3.5022573860925415e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5071121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 40,
+          "energy": 206.5524257677379,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 5.732155201887412e-14,
+          "last_step": 3.4682368223733635e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5051121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 40,
+          "energy": 206.55605978058506,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 5.632777230757391e-14,
+          "last_step": 3.40119625914229e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5041121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 40,
+          "energy": 206.55788070194166,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 5.5835110840396496e-14,
+          "last_step": 3.367947302803301e-12,
+          "iterations": 4
+        }
+      ]
+    },
+    "r1_mid_72_support": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r1_mid_72_support",
+      "stdout_sha256": "e2193d7342e40f3f8d766ef12030edc1f300cfaee03e8da01513ac6bed501227",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_support.py",
+        "--point",
+        "mid",
+        "--mesh",
+        "72",
+        "--field-mesh",
+        "20",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r1_mid_72_support.npz"
+      ]
+    },
+    "first_r1mid70": {
+      "path": "_scratch/s11c/waist_outer01/first_r1mid70",
+      "stdout_sha256": "001d867dfa00d40cdd6ccc091de18e36abc667e9d6c2788cdc942609700bf775",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "1",
+        "--state",
+        "mid",
+        "--mesh",
+        "70"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 70,
+          "energy": 206.39706249306963,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.5702875971252842e-14,
+          "last_step": 3.5132042636951213e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.672998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 70,
+          "energy": 206.39102506976218,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 4.8414444924881755e-14,
+          "last_step": 3.610205715400693e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.671998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 70,
+          "energy": 206.39404009873428,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.115909986284692e-14,
+          "last_step": 3.5613146309380208e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.669998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 70,
+          "energy": 206.4000922549216,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.7801330641373696e-14,
+          "last_step": 3.4652259571056372e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.668998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 70,
+          "energy": 206.4031293865027,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.1065883711518284e-14,
+          "last_step": 3.4180538465900794e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5061121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 70,
+          "energy": 206.39706249306963,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.5702875971252842e-14,
+          "last_step": 3.5132042636951213e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5081121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 70,
+          "energy": 206.39374759054553,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.6734082680360434e-14,
+          "last_step": 3.5762531631614032e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5071121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 70,
+          "energy": 206.3954038235633,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.338085524955039e-14,
+          "last_step": 3.544450493686175e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5051121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 70,
+          "energy": 206.39872360214147,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.495896420312907e-14,
+          "last_step": 3.481729283923642e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5041121920331364,
+            -0.7848860767620173,
+            -0.670998856953264,
+            0.01036442024712713
+          ],
+          "mesh": 70,
+          "energy": 206.4003871538615,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.1797681214430426e-14,
+          "last_step": 3.4511113765234932e-12,
+          "iterations": 4
+        }
+      ]
+    },
+    "r1_tight_48_support": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r1_tight_48_support",
+      "stdout_sha256": "8617ea2944227158b3e4c64936e19367cd906cda97863fa7ca157f8e4332116a",
+      "worker_exit": 0,
+      "status": "verified terminal child; final guard receipt absent",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_support.py",
+        "--point",
+        "tight",
+        "--mesh",
+        "48",
+        "--field-mesh",
+        "14",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r1_tight_48_support.npz"
+      ]
+    },
+    "r1tight40": {
+      "path": "_scratch/s11c/waist_outer01/r1tight40",
+      "stdout_sha256": "be76073233915e1227f0d9111000c512ba9adb91ce5a6183045a5b62a05a5140",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "1",
+        "--state",
+        "tight",
+        "--mesh",
+        "40"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 40,
+          "energy": 206.14005418380412,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.7256591041423537e-13,
+          "last_step": 2.4524147316535405e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7881504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 40,
+          "energy": 206.13613395449974,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.794099366280501e-13,
+          "last_step": 2.5001844496637756e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7871504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 40,
+          "energy": 206.1380906044175,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.759780030712645e-13,
+          "last_step": 2.475945334235613e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7851504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 40,
+          "energy": 206.14202468668452,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.691722491941385e-13,
+          "last_step": 2.4290218956287005e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7841504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 40,
+          "energy": 206.1440021071513,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.6580146463988106e-13,
+          "last_step": 2.405810719934888e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 40,
+          "energy": 206.14005418380412,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.7256591041423537e-13,
+          "last_step": 2.4524147316535405e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5639032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 40,
+          "energy": 206.13769898579025,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.7752147328401486e-13,
+          "last_step": 2.4857969862683397e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5629032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 40,
+          "energy": 206.13887567420375,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.750385418888058e-13,
+          "last_step": 2.4682885553255536e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5609032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 40,
+          "energy": 206.1412345170714,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.7010314517943455e-13,
+          "last_step": 2.436588750818374e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5599032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 40,
+          "energy": 206.14241667650072,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.6764710199810313e-13,
+          "last_step": 2.4208382117773907e-11,
+          "iterations": 4
+        }
+      ]
+    },
+    "r1_tight_72_support": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r1_tight_72_support",
+      "stdout_sha256": "c2a197d6639f633eedd58e717478d50bcb42458550025b3bc237c4cee2ca715b",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_support.py",
+        "--point",
+        "tight",
+        "--mesh",
+        "72",
+        "--field-mesh",
+        "20",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r1_tight_72_support.npz"
+      ]
+    },
+    "r1tight70": {
+      "path": "_scratch/s11c/waist_outer01/r1tight70",
+      "stdout_sha256": "0498d7375ab59ec107dafcf9e48641f5ea602bd41409a04c0a315b544a6dd1c6",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "1",
+        "--state",
+        "tight",
+        "--mesh",
+        "70"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 70,
+          "energy": 205.99157791450017,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2360576971681692e-13,
+          "last_step": 2.5486001101297325e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7881504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 70,
+          "energy": 205.98765109235606,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.258091937919592e-13,
+          "last_step": 2.5987403834015922e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7871504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 70,
+          "energy": 205.98961105405712,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2470238600417738e-13,
+          "last_step": 2.5735849718124685e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7851504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 70,
+          "energy": 205.99355166775425,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2251273129662565e-13,
+          "last_step": 2.5238126709045885e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7841504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 70,
+          "energy": 205.99553230799904,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2142565598838306e-13,
+          "last_step": 2.499228914868503e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5619032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 70,
+          "energy": 205.99157791450017,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2360576971681692e-13,
+          "last_step": 2.5486001101297325e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5639032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 70,
+          "energy": 205.98951175944822,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2518577754278004e-13,
+          "last_step": 2.58677978469633e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5629032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 70,
+          "energy": 205.9905440061985,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2439029840882743e-13,
+          "last_step": 2.5676458484956896e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5609032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 70,
+          "energy": 205.99261348669907,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.228192352507873e-13,
+          "last_step": 2.5297008277154274e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5599032177743122,
+            -0.7937942496858458,
+            -0.7861504047327205,
+            0.031533429338300945
+          ],
+          "mesh": 70,
+          "energy": 205.9936507251179,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2203660391257865e-13,
+          "last_step": 2.5108911264561876e-11,
+          "iterations": 4
+        }
+      ]
+    },
+    "r2_broad_48": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r2_broad_48",
+      "stdout_sha256": "594960d51c3e2d4da33c528c32df750113ec8036af2b5acb9ea4fd5bb2d266c6",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_order.py",
+        "--radius",
+        "2",
+        "--point",
+        "broad",
+        "--mesh",
+        "48",
+        "--field-mesh",
+        "14",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r2_broad_48.npz"
+      ]
+    },
+    "first_r2broad40": {
+      "path": "_scratch/s11c/waist_outer01/first_r2broad40",
+      "stdout_sha256": "028f3cf2433a5379789656ee0eab5d8eb1871de443c7d5f88b4ff32dfafa0251",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "2",
+        "--state",
+        "broad",
+        "--mesh",
+        "40"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 40,
+          "energy": 221.16554917687063,
+          "minimum_order": -1.233923638744147e-21,
+          "maximum_order": 0.5,
+          "residual": 5.283282492052344e-13,
+          "last_step": 5.4054278315552305e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6157702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 40,
+          "energy": 221.13773434038865,
+          "minimum_order": -1.2308492962997389e-21,
+          "maximum_order": 0.5,
+          "residual": 5.363071098329897e-13,
+          "last_step": 5.486587593925654e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6152702084474888,
+            -0.033769601311098976
+          ],
+          "mesh": 40,
+          "energy": 221.1516330156157,
+          "minimum_order": -1.2323886740383805e-21,
+          "maximum_order": 0.5,
+          "residual": 5.323051027739112e-13,
+          "last_step": 5.44587565057781e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6142702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 40,
+          "energy": 221.17948282761205,
+          "minimum_order": -1.2354541413258191e-21,
+          "maximum_order": 0.5,
+          "residual": 5.243713449565313e-13,
+          "last_step": 5.364868880312755e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6137702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 40,
+          "energy": 221.19343397133616,
+          "minimum_order": -1.2369801330956614e-21,
+          "maximum_order": 0.5,
+          "residual": 5.204560740712516e-13,
+          "last_step": 5.325013360675223e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 40,
+          "energy": 221.16554917687063,
+          "minimum_order": -1.233923638744147e-21,
+          "maximum_order": 0.5,
+          "residual": 5.283282492052344e-13,
+          "last_step": 5.4054278315552305e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.44943559109771003,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 40,
+          "energy": 221.1371299867782,
+          "minimum_order": -1.2356893505142015e-21,
+          "maximum_order": 0.5,
+          "residual": 5.386949566976718e-13,
+          "last_step": 5.520899157509265e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.44843559109771003,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 40,
+          "energy": 221.15132941040198,
+          "minimum_order": -1.2348077421386248e-21,
+          "maximum_order": 0.5,
+          "residual": 5.334708369497676e-13,
+          "last_step": 5.4628493020781135e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.44643559109771,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 40,
+          "energy": 221.1797893108705,
+          "minimum_order": -1.233037036721144e-21,
+          "maximum_order": 0.5,
+          "residual": 5.232099475893648e-13,
+          "last_step": 5.348287367543702e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.44543559109771,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 40,
+          "energy": 221.19404983710808,
+          "minimum_order": -1.2321479328640504e-21,
+          "maximum_order": 0.5,
+          "residual": 5.181419529542985e-13,
+          "last_step": 5.291796741823286e-12,
+          "iterations": 4
+        }
+      ]
+    },
+    "r2_broad_72": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r2_broad_72",
+      "stdout_sha256": "6d26d2135270daa5cef34feb24de6375fc4927b243906ec42e024e90e2f42474",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_order.py",
+        "--radius",
+        "2",
+        "--point",
+        "broad",
+        "--mesh",
+        "72",
+        "--field-mesh",
+        "20",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r2_broad_72.npz"
+      ]
+    },
+    "r2broad70": {
+      "path": "_scratch/s11c/waist_outer01/r2broad70",
+      "stdout_sha256": "8253f49dca1416be8ece2b70d0dd85f485b96a7c9dbd8c2a898f8d00d4519007",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "2",
+        "--state",
+        "broad",
+        "--mesh",
+        "70"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 70,
+          "energy": 220.8045367045952,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.7552799491671323e-13,
+          "last_step": 5.352714178146928e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6157702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 70,
+          "energy": 220.77677428873497,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.7821724998534627e-13,
+          "last_step": 5.433163007210265e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6152702084474888,
+            -0.033769601311098976
+          ],
+          "mesh": 70,
+          "energy": 220.79064677478547,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.7686243095060838e-13,
+          "last_step": 5.393101900809636e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6142702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 70,
+          "energy": 220.8184440816521,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.7420917139410186e-13,
+          "last_step": 5.313123399590277e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6137702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 70,
+          "energy": 220.83236890946995,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.728756027219447e-13,
+          "last_step": 5.273329039182666e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.44743559109771003,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 70,
+          "energy": 220.8045367045952,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.7552799491671323e-13,
+          "last_step": 5.352714178146928e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.44943559109771003,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 70,
+          "energy": 220.7767896757491,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.792481094109455e-13,
+          "last_step": 5.464440285384086e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.44843559109771003,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 70,
+          "energy": 220.7906532008978,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.7738761848296036e-13,
+          "last_step": 5.40854456343637e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.44643559109771,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 70,
+          "energy": 220.81844021120727,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.73674442882632e-13,
+          "last_step": 5.297672008590137e-12,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.44543559109771,
+            -0.8839212007467703,
+            -0.6147702084474889,
+            -0.033769601311098976
+          ],
+          "mesh": 70,
+          "energy": 220.83236374510514,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.7186729470153317e-13,
+          "last_step": 5.243346010836394e-12,
+          "iterations": 4
+        }
+      ]
+    },
+    "r2_mid_48": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r2_mid_48",
+      "stdout_sha256": "5baf080be65926bfd572c38f3f7715b2cadc624af9ccd14d102c6a84e83869fa",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_order.py",
+        "--radius",
+        "2",
+        "--point",
+        "mid",
+        "--mesh",
+        "48",
+        "--field-mesh",
+        "14",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r2_mid_48.npz"
+      ]
+    },
+    "r2mid40": {
+      "path": "_scratch/s11c/waist_outer01/r2mid40",
+      "stdout_sha256": "cdec57299dd8cefb941c844317193526ff433575266a4814182afe8892bf5c25",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "2",
+        "--state",
+        "mid",
+        "--mesh",
+        "40"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 40,
+          "energy": 214.89581685611833,
+          "minimum_order": -1.1062019695892629e-20,
+          "maximum_order": 0.5,
+          "residual": 3.88518470867405e-12,
+          "last_step": 4.0693503093360984e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7171454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 40,
+          "energy": 214.87898465833698,
+          "minimum_order": -1.1029247799088758e-20,
+          "maximum_order": 0.5,
+          "residual": 3.9258934644847976e-12,
+          "last_step": 4.1139953520716055e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7166454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 40,
+          "energy": 214.8873923701426,
+          "minimum_order": -1.104563857353378e-20,
+          "maximum_order": 0.5,
+          "residual": 3.90550179002469e-12,
+          "last_step": 4.091632780587909e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7156454101808858,
+            -0.03184572107507738
+          ],
+          "mesh": 40,
+          "energy": 214.9042581117477,
+          "minimum_order": -1.1078390888408845e-20,
+          "maximum_order": 0.5,
+          "residual": 3.8649396183476625e-12,
+          "last_step": 4.047153271432134e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7151454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 40,
+          "energy": 214.9127161325495,
+          "minimum_order": -1.1094751867403432e-20,
+          "maximum_order": 0.5,
+          "residual": 3.844762182236838e-12,
+          "last_step": 4.0250714216764904e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 40,
+          "energy": 214.89581685611833,
+          "minimum_order": -1.1062019695892629e-20,
+          "maximum_order": 0.5,
+          "residual": 3.88518470867405e-12,
+          "last_step": 4.0693503093360984e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.4966076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 40,
+          "energy": 214.87948215901017,
+          "minimum_order": -1.1096359610616339e-20,
+          "maximum_order": 0.5,
+          "residual": 3.947620008659669e-12,
+          "last_step": 4.140758017070154e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.4956076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 40,
+          "energy": 214.88764303335134,
+          "minimum_order": -1.1079207664240076e-20,
+          "maximum_order": 0.5,
+          "residual": 3.9163299339617375e-12,
+          "last_step": 4.1049207656283196e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.4936076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 40,
+          "energy": 214.90400364511225,
+          "minimum_order": -1.1044795718833259e-20,
+          "maximum_order": 0.5,
+          "residual": 3.854193006413986e-12,
+          "last_step": 4.0340080605999077e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.4926076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 40,
+          "energy": 214.9122034181573,
+          "minimum_order": -1.1027535747011424e-20,
+          "maximum_order": 0.5,
+          "residual": 3.8234242161205856e-12,
+          "last_step": 3.998924819481534e-11,
+          "iterations": 4
+        }
+      ]
+    },
+    "r2_mid_72": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r2_mid_72",
+      "stdout_sha256": "1304095a8d3e32f047f89d60d3cea0eb46e2a483ca051814355e2df7cfb9eab8",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_order.py",
+        "--radius",
+        "2",
+        "--point",
+        "mid",
+        "--mesh",
+        "72",
+        "--field-mesh",
+        "20",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r2_mid_72.npz"
+      ]
+    },
+    "first_r2mid70": {
+      "path": "_scratch/s11c/waist_outer01/first_r2mid70",
+      "stdout_sha256": "65d33daaa346f4d73cfc1d28f530f89b4abe4d8cc1283fec634487e50edb7e8d",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "2",
+        "--state",
+        "mid",
+        "--mesh",
+        "70"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 70,
+          "energy": 214.56229548840665,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2708926792892594e-12,
+          "last_step": 3.992726041024859e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7171454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 70,
+          "energy": 214.54549266583837,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.284765262926646e-12,
+          "last_step": 4.0353076756954045e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7166454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 70,
+          "energy": 214.55388571272823,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.277809021787979e-12,
+          "last_step": 4.013967610093069e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7156454101808858,
+            -0.03184572107507738
+          ],
+          "mesh": 70,
+          "energy": 214.57072198838569,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2640023576426795e-12,
+          "last_step": 3.971547948478117e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7151454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 70,
+          "energy": 214.5791652082144,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2571111686343617e-12,
+          "last_step": 3.950494068884269e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.4946076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 70,
+          "energy": 214.56229548840665,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2708926792892594e-12,
+          "last_step": 3.992726041024859e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.4966076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 70,
+          "energy": 214.54656929492998,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2926378717414977e-12,
+          "last_step": 4.0603804755169376e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.4956076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 70,
+          "energy": 214.55442608563484,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2817325326097695e-12,
+          "last_step": 4.026475839462271e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.4936076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 70,
+          "energy": 214.57017752075265,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.260083183629579e-12,
+          "last_step": 3.959188748436818e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "mid",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.4926076830226608,
+            -1.0018200440943097,
+            -0.7161454101808857,
+            -0.03184572107507738
+          ],
+          "mesh": 70,
+          "energy": 214.57807220019342,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.2493599904628283e-12,
+          "last_step": 3.9259145378896063e-11,
+          "iterations": 4
+        }
+      ]
+    },
+    "r2_tight_48": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r2_tight_48",
+      "stdout_sha256": "677c907860f19c74da06c0f5342f0472fd54b9ff775ae6f8e40e5f03ff0d97df",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_order.py",
+        "--radius",
+        "2",
+        "--point",
+        "tight",
+        "--mesh",
+        "48",
+        "--field-mesh",
+        "14",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r2_tight_48.npz"
+      ]
+    },
+    "r2tight40": {
+      "path": "_scratch/s11c/waist_outer01/r2tight40",
+      "stdout_sha256": "6e05b104cad9e6d081e2e0466f129559aa0abf00de44154f068a71d3d95e74dc",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "2",
+        "--state",
+        "tight",
+        "--mesh",
+        "40"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 40,
+          "energy": 213.11197035024293,
+          "minimum_order": -2.323926912695826e-20,
+          "maximum_order": 0.5,
+          "residual": 7.123760782656863e-12,
+          "last_step": 7.760479886425743e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7566569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 40,
+          "energy": 213.0992048373994,
+          "minimum_order": -2.3235493810945055e-20,
+          "maximum_order": 0.5,
+          "residual": 7.193919938919269e-12,
+          "last_step": 7.83447807007831e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7561569442264022,
+            -0.029287935571237076
+          ],
+          "mesh": 40,
+          "energy": 213.10557903910075,
+          "minimum_order": -2.3237490205879103e-20,
+          "maximum_order": 0.5,
+          "residual": 7.1587813801898825e-12,
+          "last_step": 7.797405007504685e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7551569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 40,
+          "energy": 213.11837876169795,
+          "minimum_order": -2.3240829118351207e-20,
+          "maximum_order": 0.5,
+          "residual": 7.088871156746279e-12,
+          "last_step": 7.723691162793888e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7546569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 40,
+          "energy": 213.1248042644424,
+          "minimum_order": -2.3242168719853163e-20,
+          "maximum_order": 0.5,
+          "residual": 7.0541445948424375e-12,
+          "last_step": 7.687026665032578e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 40,
+          "energy": 213.11197035024293,
+          "minimum_order": -2.323926912695826e-20,
+          "maximum_order": 0.5,
+          "residual": 7.123760782656863e-12,
+          "last_step": 7.760479886425743e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5145583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 40,
+          "energy": 213.09877839840203,
+          "minimum_order": -2.356231270707196e-20,
+          "maximum_order": 0.5,
+          "residual": 7.2279725607526935e-12,
+          "last_step": 7.883101393888551e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5135583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 40,
+          "energy": 213.1053689565418,
+          "minimum_order": -2.34009486938547e-20,
+          "maximum_order": 0.5,
+          "residual": 7.175740036891032e-12,
+          "last_step": 7.82160110557147e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5115583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 40,
+          "energy": 213.1185825951233,
+          "minimum_order": -2.3077274374819327e-20,
+          "maximum_order": 0.5,
+          "residual": 7.072039134858876e-12,
+          "last_step": 7.699724525039046e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5105583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 40,
+          "energy": 213.1252057068264,
+          "minimum_order": -2.291496481747303e-20,
+          "maximum_order": 0.5,
+          "residual": 7.0205586136240505e-12,
+          "last_step": 7.63935730673001e-11,
+          "iterations": 4
+        }
+      ]
+    },
+    "r2_tight_72": {
+      "path": "_scratch/s11c/live_waist_dynamics01/r2_tight_72",
+      "stdout_sha256": "f2959186db59668895c11f693250b744bfd4690810541090c7bebf54b0ec91f1",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_order.py",
+        "--radius",
+        "2",
+        "--point",
+        "tight",
+        "--mesh",
+        "72",
+        "--field-mesh",
+        "20",
+        "--save",
+        "_scratch/s11c/live_waist_dynamics01/fields/r2_tight_72.npz"
+      ]
+    },
+    "r2tight70": {
+      "path": "_scratch/s11c/waist_outer01/r2tight70",
+      "stdout_sha256": "7d020810dc741ba6a2909e96b5690b8ad5f43525b640717465902e47f87bceaa",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "2",
+        "--state",
+        "tight",
+        "--mesh",
+        "70"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 70,
+          "energy": 212.78772643573322,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.3919317047871314e-12,
+          "last_step": 7.613623723805446e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7566569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 70,
+          "energy": 212.77498090780722,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.4142302740282062e-12,
+          "last_step": 7.685769960051264e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7561569442264022,
+            -0.029287935571237076
+          ],
+          "mesh": 70,
+          "energy": 212.78134514466723,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.4030504149064047e-12,
+          "last_step": 7.64963130436405e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7551569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 70,
+          "energy": 212.79412477226097,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.3808524596269365e-12,
+          "last_step": 7.57767708136728e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7546569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 70,
+          "energy": 212.80054014559892,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.3697831891267285e-12,
+          "last_step": 7.54194274640916e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 70,
+          "energy": 212.78772643573322,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.3919317047871314e-12,
+          "last_step": 7.613623723805446e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5145583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 70,
+          "energy": 212.77512205900197,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.4274453974681975e-12,
+          "last_step": 7.737031729622352e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5135583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 70,
+          "energy": 212.78141899288588,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.4096462672429375e-12,
+          "last_step": 7.675108802910895e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5115583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 70,
+          "energy": 212.79404440288118,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.374320792059015e-12,
+          "last_step": 7.552510768134008e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5105583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 70,
+          "energy": 212.80037290967886,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.356794013419483e-12,
+          "last_step": 7.491761465190342e-11,
+          "iterations": 4
+        }
+      ]
+    },
+    "r1broad108": {
+      "path": "_scratch/s11c/waist_outer01/r1broad108",
+      "stdout_sha256": "caaccacdfd06a2fa3bca4161a9457c59875b95ba03933c9ec566c252b4b21843",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "1",
+        "--state",
+        "broad",
+        "--mesh",
+        "108"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 108,
+          "energy": 208.36928190590731,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 4.4174931309700813e-14,
+          "last_step": 1.0560454928636268e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4771095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 108,
+          "energy": 208.35738126671674,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.571416272154994e-14,
+          "last_step": 1.070534060191326e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4761095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 108,
+          "energy": 208.36332599129682,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.7512921428547764e-14,
+          "last_step": 1.069573554028943e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4741095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 108,
+          "energy": 208.3752490300898,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.8294479999528728e-14,
+          "last_step": 1.0544566614093753e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4731095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 108,
+          "energy": 208.38122738344788,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 2.9285494148256156e-14,
+          "last_step": 1.0387012786564406e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.3881621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 108,
+          "energy": 208.36928190590731,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 4.4174931309700813e-14,
+          "last_step": 1.0560454928636268e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.3901621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 108,
+          "energy": 208.36136427111242,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.6341677551402635e-14,
+          "last_step": 1.06927545486251e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.3891621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 108,
+          "energy": 208.36532062866536,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 4.394585103735765e-14,
+          "last_step": 1.0601291409295994e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.3871621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 108,
+          "energy": 208.37324810802173,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 4.496828650853819e-14,
+          "last_step": 1.0475730620098485e-13,
+          "iterations": 4
+        },
+        {
+          "radius": 1,
+          "state": "broad",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.3861621841279389,
+            -0.6657549826611717,
+            -0.4751095936905695,
+            -0.011477029471578946
+          ],
+          "mesh": 108,
+          "energy": 208.37721924025183,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 3.87992269690725e-14,
+          "last_step": 1.054133113081667e-13,
+          "iterations": 4
+        }
+      ]
+    },
+    "r2tight108": {
+      "path": "_scratch/s11c/waist_outer01/r2tight108",
+      "stdout_sha256": "880517d609bde2bb171a3dafe8fbd9fb2bd73476386bf42a6ab4ec40b22734fd",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_outer_order.py",
+        "--radius",
+        "2",
+        "--state",
+        "tight",
+        "--mesh",
+        "108"
+      ],
+      "exterior_relaxation": [
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 108,
+          "energy": 212.69506590030647,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 9.948878743407108e-13,
+          "last_step": 7.564877696133087e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7566569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 108,
+          "energy": 212.68232242165038,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.0040874381944676e-12,
+          "last_step": 7.63570668138774e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7561569442264022,
+            -0.029287935571237076
+          ],
+          "mesh": 108,
+          "energy": 212.68868564248274,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 9.994749168920625e-13,
+          "last_step": 7.600237690988069e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7551569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 108,
+          "energy": 212.70146318648975,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 9.903267442212815e-13,
+          "last_step": 7.529653201301039e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "radial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7546569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 108,
+          "energy": 212.7078774924738,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 9.857901170709504e-13,
+          "last_step": 7.49455813349318e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.0,
+          "coordinates": [
+            -0.5125583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 108,
+          "energy": 212.69506590030647,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 9.948878743407108e-13,
+          "last_step": 7.564877696133087e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": -0.002,
+          "coordinates": [
+            -0.5145583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 108,
+          "energy": 212.68262328085197,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.0090280390742667e-12,
+          "last_step": 7.684526371425482e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": -0.001,
+          "coordinates": [
+            -0.5135583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 108,
+          "energy": 212.68883938371667,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 1.0019579567074888e-12,
+          "last_step": 7.624497270547772e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.001,
+          "coordinates": [
+            -0.5115583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 108,
+          "energy": 212.701302845887,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 9.87837524453472e-13,
+          "last_step": 7.505327282404898e-11,
+          "iterations": 4
+        },
+        {
+          "radius": 2,
+          "state": "tight",
+          "axis": "axial",
+          "step": 0.002,
+          "coordinates": [
+            -0.5105583695473458,
+            -1.050142598496771,
+            -0.7556569442264023,
+            -0.029287935571237076
+          ],
+          "mesh": 108,
+          "energy": 212.70755023573082,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5,
+          "residual": 9.808251216422703e-13,
+          "last_step": 7.446129949710679e-11,
+          "iterations": 4
+        }
+      ]
+    },
+    "onset_r1mid": {
+      "path": "_scratch/s11c/waist_outer01/onset_r1mid",
+      "stdout_sha256": "d057c4f89c26a21839cedb200e87365a976ac0191697fc30d879d232376e17ca",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_initial_force.py",
+        "--radius",
+        "1",
+        "--point",
+        "mid",
+        "--mesh",
+        "72",
+        "--field-mesh",
+        "20"
+      ]
+    },
+    "onset_r1tight": {
+      "path": "_scratch/s11c/waist_outer01/onset_r1tight",
+      "stdout_sha256": "0e0fb93d86692394c80873b497470788942026168481035a91616ce67d97c0ea",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_initial_force.py",
+        "--radius",
+        "1",
+        "--point",
+        "tight",
+        "--mesh",
+        "72",
+        "--field-mesh",
+        "20"
+      ]
+    },
+    "range": {
+      "path": "_scratch/s11c/waist_outer01/range",
+      "stdout_sha256": "7a47ae802820fd5f5afa94907b854d7dd921cd00196f9105e7e62ad5e3496d51",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 1073741824,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_order_range.py"
+      ]
+    },
+    "figure": {
+      "path": "_scratch/s11c/waist_outer01/figure",
+      "stdout_sha256": "ec6a85e1a824a5612bd509976b2188675e69fba00d8f36c41720da1e1c9f2e3c",
+      "worker_exit": 0,
+      "status": "normal guard exit",
+      "swap_bytes": 0,
+      "memory_limit_bytes": 2147483648,
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_waist_localization_figure.py"
+      ]
+    }
+  },
+  "source_hashes": {
+    "mouth_waist_balance.py": "c71ed4430c44b2134b2e39d000363c214cff518b1025d8ebf972f7fea6be7268",
+    "mouth_waist_initial_force.py": "ba59e3ce4e7389be7beedff96d5c88005b27db6f4c42881457312f344597640e",
+    "mouth_waist_outer_order.py": "c1ea6f5965c3e64662108b7b8fc45ae68e4986519b129e8a75757652438007be",
+    "mouth_waist_localization_figure.py": "6858ef8934a40de73d82e5b901bf33d1fe790ebc22627480eb26262e8ed1fbb1",
+    "mouth_waist_order_range.py": "6c2de0ab02da5653740078b97370e849c9536ab63814bab4cca42cdf182b5cd9",
+    "mouth_sealed_shape_relax.py": "4791971472f6f8baef5ee5d7eba30c3a04c91ddb7251b7ac48c08a0ef1ae3a96"
+  }
+}

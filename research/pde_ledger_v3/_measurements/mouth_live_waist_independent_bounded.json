@@ -1,0 +1,182 @@
+{
+  "base": "bca2e63c",
+  "inputs": {
+    "research/pde_ledger_v3/_measurements/mouth_live_waist_independent.json": "adf4fd6eaf6c26d34a9395e1693554d4e3f0af6b4d133806a9683c7b72d7aae1",
+    "software/stage1_solver/tools/mouth_live_waist_checks/compare.py": "bfd314cc8aa2c331aec0fb55458a349325b5942e5c0852c3412beb42578832f8",
+    "software/stage1_solver/tools/mouth_live_waist_checks/compare_bounded.py": "fe3816204fa10c6d761576b6451711525f2c14dcc44a1b560560cc60b5e1fcfd",
+    "software/stage1_solver/tools/mouth_live_waist_checks/reorder.py": "6b53eadf78c54ef039bc515a4ce6e0e689a80612bd8e5b65f5109f6b63dc2f66",
+    "software/stage1_solver/tools/mouth_live_waist_checks/bounded_shape.py": "d8b5905c72e77b6929fca104cea28a5043e95d96030fc4313b2cb3911552ac94",
+    "software/stage1_solver/tools/mouth_live_waist_fields.py": "96411e9af5538c5e7f0f770807ff993c0f9458cdf6dab68c87f5a5ea0ecfd13a",
+    "software/stage1_solver/tools/mouth_live_waist_order.py": "bd1062a832e2f4257a93378e5712fc2b6b28f9e133e486b99c237c84c6a0e875",
+    "software/stage1_solver/tools/mouth_live_waist_active_wave.py": "f6548ac04e123db74449d291319d651b8ce67aee92e3e3b71007ea19ca5307f5",
+    "software/stage1_solver/tools/mouth_live_waist_wave.py": "da3c942439db4cbfe46682b1975250144ecff014f2542c75c43b665f46299c45",
+    "software/stage1_solver/tools/mouth_exchange_carrier.py": "6dd6a6ae17b7f30445a29d5e40627373057637a6cbc67cdc75ce9ed58403fc83",
+    "software/stage1_solver/tools/mouth_exchange_carrier_density.py": "8d5f3cfc7a4ef569be0f8faba81777aaec14bc9e4d44a148f5b2fad4a4957d69",
+    "software/stage1_solver/tools/mouth_sealed_shape_relax.py": "4791971472f6f8baef5ee5d7eba30c3a04c91ddb7251b7ac48c08a0ef1ae3a96",
+    "software/stage1_solver/tools/mouth_neck_order_check.py": "5e876665bf831d8eae5ec501f569472474c238e94ecbb5bbde98de543568074c"
+  },
+  "original_readout": "research/pde_ledger_v3/_measurements/mouth_live_waist_independent.json",
+  "method": "P1 eigenvectors on independent straight triangles, exact-null mass removal and overlap with the measured Q1 mode. Fixed transported-order quadrature gives the virtual energy derivative, with a separate weak-carrier check. Finite local order reintroduction uses the original outgoing operator in an independent driver, resolving the fields after separate depth and radial releases. Applied steps were 0.00005 and 0.0001.",
+  "scope": "Signed work on the supplied partially empty fields at R1. An upward cost on halved patches and a projected bounded residual are directional tests, insufficient by themselves to certify local material minima.",
+  "cases": {
+    "mid": {
+      "signed": {
+        "waist": {
+          "primary_interior": [
+            1.1848082416516803,
+            1.1848076423932596
+          ],
+          "independent_interior": 1.1795750684369284,
+          "exterior": 3.026078093654405,
+          "primary_total": 4.2108863353060855,
+          "independent_plus_primary_exterior": 4.205653162091334
+        },
+        "depth": {
+          "primary_interior": [
+            0.1944123967421163,
+            0.19441116369822709
+          ],
+          "independent_interior": 0.2122356119331867,
+          "exterior": 1.659889289086891,
+          "primary_total": 1.8543016858290073,
+          "independent_plus_primary_exterior": 1.8721249010200778
+        }
+      },
+      "primary_sha256": "e2193d7342e40f3f8d766ef12030edc1f300cfaee03e8da01513ac6bed501227",
+      "exterior_sha256": "001d867dfa00d40cdd6ccc091de18e36abc667e9d6c2788cdc942609700bf775",
+      "independent_closed_force": {
+        "command": [
+          "python3",
+          "software/stage1_solver/tools/mouth_live_waist_checks/bounded_shape.py",
+          "_scratch/s11c/live_waist_dynamics01/fields/r1_mid_72_support.npz",
+          "mid",
+          "64"
+        ],
+        "start": "2026-11-22T20:48:18.999136+00:00",
+        "worker_exit": 0,
+        "finish_record_utc": "2026-11-22T20:48:20.669122+00:00",
+        "peak_memory_bytes": 106573824,
+        "output": "_scratch/s11c/waist_coupled_ref01/p1mid72/stdout",
+        "output_bytes": 840,
+        "sha256": "e6ea70a5540cd7bfecfcf306c19e6219f175fe4c791d81ab857ab5443ffd7e00",
+        "literal_results": [
+          "{\"source\": \"_scratch/s11c/live_waist_dynamics01/fields/r1_mid_72_support.npz\", \"sha256\": \"7574031dcb3f43ad4a0938afea78857131fb88c7f19652ac637694c6e934f25b\", \"target\": 8.752728942985483, \"closed_nearby\": [8.746215105598258, 12.348675589746797, 12.495896355827647, 13.92052639153991], \"selected\": 8.746215105598258, \"overlap\": [0.9999871537937207, 4.282557507572616e-25, 1.2111652177681535e-23, 1.0151903712367967e-06], \"removed_empty_nodes\": 174}",
+          "{\"coord\": \"radial\", \"wave\": -1.3245441088032273, \"interior_order\": 2.440163740387913, \"weak_carrier\": 0.06395543685224284, \"total\": 1.1795750684369284}",
+          "{\"coord\": \"axial\", \"wave\": -0.33179705707553353, \"interior_order\": 0.5487917253834684, \"weak_carrier\": -0.004759056374748199, \"total\": 0.2122356119331867, \"exact_axial_wave\": -0.33179622169202744, \"analytic_residual\": -8.353835060925796e-07}"
+        ]
+      },
+      "half_patch_reopening": {
+        "command": [
+          "python3",
+          "software/stage1_solver/tools/mouth_live_waist_checks/reorder.py",
+          "_scratch/s11c/live_waist_dynamics01/fields/r1_mid_72_support.npz",
+          "mid",
+          "72",
+          "20"
+        ],
+        "start": "2026-11-22T20:48:19.908118+00:00",
+        "worker_exit": 0,
+        "finish_record_utc": "2026-11-22T20:48:22.689835+00:00",
+        "peak_memory_bytes": 122060800,
+        "output": "_scratch/s11c/waist_coupled_ref01/halves72mid/stdout",
+        "output_bytes": 1729,
+        "sha256": "46aeef65533912918c01f2aab73167f3753f09f2ddd8bc02fb365389cbbeecb6",
+        "literal_results": [
+          "{\"source\": \"_scratch/s11c/live_waist_dynamics01/fields/r1_mid_72_support.npz\", \"sha256\": \"7574031dcb3f43ad4a0938afea78857131fb88c7f19652ac637694c6e934f25b\", \"reference_energy\": 12.581804125270624, \"empty_nodes\": 388, \"zero_cells\": 20, \"inactive\": 4}",
+          "{\"zone\": \"whole\", \"sites\": 388, \"slopes\": [{\"step\": 5e-05, \"energy_slope\": 6.733635522628845, \"overlap\": 0.9999968773933474, \"pole_residual\": 5.814484166193614e-15}, {\"step\": 0.0001, \"energy_slope\": 6.567009955471548, \"overlap\": 0.9999936804884176, \"pole_residual\": 5.666609562811309e-15}]}",
+          "{\"zone\": \"depth_low\", \"sites\": 214, \"slopes\": [{\"step\": 5e-05, \"energy_slope\": 1.285090917626519, \"overlap\": 0.9999993716791535, \"pole_residual\": 2.3312618551619556e-10}, {\"step\": 0.0001, \"energy_slope\": 1.2565350937521202, \"overlap\": 0.9999987382685546, \"pole_residual\": 5.160535283108119e-15}]}",
+          "{\"zone\": \"depth_high\", \"sites\": 174, \"slopes\": [{\"step\": 5e-05, \"energy_slope\": 5.429644362315855, \"overlap\": 0.9999974039762252, \"pole_residual\": 7.122581990066161e-15}, {\"step\": 0.0001, \"energy_slope\": 5.286164143942784, \"overlap\": 0.9999947519465172, \"pole_residual\": 6.558651461664907e-15}]}",
+          "{\"zone\": \"radius_low\", \"sites\": 205, \"slopes\": [{\"step\": 5e-05, \"energy_slope\": 1.4808861973492071, \"overlap\": 0.9999997918061803, \"pole_residual\": 2.1331172043965094e-10}, {\"step\": 0.0001, \"energy_slope\": 1.460531243360208, \"overlap\": 0.9999995666400555, \"pole_residual\": 5.815390323668873e-15}]}",
+          "{\"zone\": \"radius_high\", \"sites\": 183, \"slopes\": [{\"step\": 5e-05, \"energy_slope\": 3.4390613824442084, \"overlap\": 0.9999955989425946, \"pole_residual\": 7.54825729328663e-15}, {\"step\": 0.0001, \"energy_slope\": 3.394281364688112, \"overlap\": 0.9999912776887673, \"pole_residual\": 7.191966730608811e-15}]}"
+        ]
+      }
+    },
+    "tight": {
+      "signed": {
+        "waist": {
+          "primary_interior": [
+            -0.22459190999590817,
+            -0.2245675918874923
+          ],
+          "independent_interior": -0.2356200252174241,
+          "exterior": 1.9703068485625863,
+          "primary_total": 1.7457149385666781,
+          "independent_plus_primary_exterior": 1.7346868233451622
+        },
+        "depth": {
+          "primary_interior": [
+            -0.5193794777902383,
+            -0.5193825327722834
+          ],
+          "independent_interior": -0.4969102639120073,
+          "exterior": 1.034740250290156,
+          "primary_total": 0.5153607724999176,
+          "independent_plus_primary_exterior": 0.5378299863781486
+        }
+      },
+      "primary_sha256": "c2a197d6639f633eedd58e717478d50bcb42458550025b3bc237c4cee2ca715b",
+      "exterior_sha256": "0498d7375ab59ec107dafcf9e48641f5ea602bd41409a04c0a315b544a6dd1c6",
+      "independent_closed_force": {
+        "command": [
+          "python3",
+          "software/stage1_solver/tools/mouth_live_waist_checks/bounded_shape.py",
+          "_scratch/s11c/live_waist_dynamics01/fields/r1_tight_72_support.npz",
+          "tight",
+          "64"
+        ],
+        "start": "2026-11-22T20:48:19.612766+00:00",
+        "worker_exit": 0,
+        "finish_record_utc": "2026-11-22T20:48:21.395844+00:00",
+        "peak_memory_bytes": 106246144,
+        "output": "_scratch/s11c/waist_coupled_ref01/p1tight72/stdout",
+        "output_bytes": 845,
+        "sha256": "9d8bab9baa003d3d750148dfff0e4c86a48092f4f5e40b08ca600b90bc120080",
+        "literal_results": [
+          "{\"source\": \"_scratch/s11c/live_waist_dynamics01/fields/r1_tight_72_support.npz\", \"sha256\": \"308c6596ad98307ea6945c3d344933c5c9f21e125ccc0434e3f405f8bca257b5\", \"target\": 8.973122758855594, \"closed_nearby\": [8.965034668355008, 13.618567926178589, 15.275000756823488, 16.96791561653144], \"selected\": 8.965034668355008, \"overlap\": [0.9999792284759241, 1.3811796804610696e-34, 7.027239656729592e-07, 6.582707808663543e-35], \"removed_empty_nodes\": 123}",
+          "{\"coord\": \"radial\", \"wave\": -1.0871006620365442, \"interior_order\": 0.8292100043859607, \"weak_carrier\": 0.022270632433159406, \"total\": -0.2356200252174241}",
+          "{\"coord\": \"axial\", \"wave\": -0.275998903265684, \"interior_order\": -0.22018925027689207, \"weak_carrier\": -0.0007221103694312432, \"total\": -0.4969102639120073, \"exact_axial_wave\": -0.2759982007377092, \"analytic_residual\": -7.025279747940871e-07}"
+        ]
+      },
+      "half_patch_reopening": {
+        "command": [
+          "python3",
+          "software/stage1_solver/tools/mouth_live_waist_checks/reorder.py",
+          "_scratch/s11c/live_waist_dynamics01/fields/r1_tight_72_support.npz",
+          "tight",
+          "72",
+          "20"
+        ],
+        "start": "2026-11-22T20:48:20.706319+00:00",
+        "worker_exit": 0,
+        "finish_record_utc": "2026-11-22T20:48:23.676478+00:00",
+        "peak_memory_bytes": 121806848,
+        "output": "_scratch/s11c/waist_coupled_ref01/halves72tight/stdout",
+        "output_bytes": 1734,
+        "sha256": "369d5c153a12e08e571b6b5650781b37418463758b1df30bc26ffe09ddfcba46",
+        "literal_results": [
+          "{\"source\": \"_scratch/s11c/live_waist_dynamics01/fields/r1_tight_72_support.npz\", \"sha256\": \"308c6596ad98307ea6945c3d344933c5c9f21e125ccc0434e3f405f8bca257b5\", \"reference_energy\": 12.58022433730557, \"empty_nodes\": 269, \"zero_cells\": 15, \"inactive\": 7}",
+          "{\"zone\": \"whole\", \"sites\": 269, \"slopes\": [{\"step\": 5e-05, \"energy_slope\": 6.379249363561712, \"overlap\": 0.999997876921657, \"pole_residual\": 1.058834200526848e-14}, {\"step\": 0.0001, \"energy_slope\": 6.085201045991084, \"overlap\": 0.9999958153506565, \"pole_residual\": 7.339990062291779e-15}]}",
+          "{\"zone\": \"depth_low\", \"sites\": 153, \"slopes\": [{\"step\": 5e-05, \"energy_slope\": 2.1070366435083088, \"overlap\": 0.9999989766470416, \"pole_residual\": 1.1203727388349594e-14}, {\"step\": 0.0001, \"energy_slope\": 2.0131426577840728, \"overlap\": 0.9999979396166808, \"pole_residual\": 6.5595567643301634e-15}]}",
+          "{\"zone\": \"depth_high\", \"sites\": 116, \"slopes\": [{\"step\": 5e-05, \"energy_slope\": 4.343689636243653, \"overlap\": 0.9999988995994845, \"pole_residual\": 8.453099258660224e-15}, {\"step\": 0.0001, \"energy_slope\": 4.164195685376626, \"overlap\": 0.9999978179591227, \"pole_residual\": 7.885651851154833e-15}]}",
+          "{\"zone\": \"radius_low\", \"sites\": 136, \"slopes\": [{\"step\": 5e-05, \"energy_slope\": 2.3625919526537587, \"overlap\": 0.9999996795459176, \"pole_residual\": 8.325879574632368e-15}, {\"step\": 0.0001, \"energy_slope\": 2.2857884439986265, \"overlap\": 0.9999993320893426, \"pole_residual\": 7.669268024530062e-15}]}",
+          "{\"zone\": \"radius_high\", \"sites\": 133, \"slopes\": [{\"step\": 5e-05, \"energy_slope\": 3.0430314658858038, \"overlap\": 0.9999977379536545, \"pole_residual\": 1.0849407078188339e-14}, {\"step\": 0.0001, \"energy_slope\": 2.964176616444547, \"overlap\": 0.9999956269912924, \"pole_residual\": 1.2343036084370102e-14}]}"
+        ]
+      }
+    }
+  },
+  "readout_run": {
+    "command": [
+      "python3",
+      "software/stage1_solver/tools/mouth_live_waist_checks/compare_bounded.py"
+    ],
+    "start": "2026-11-22T20:49:13.476719+00:00",
+    "end_recorded_utc": "2026-11-22T20:49:13.637586+00:00",
+    "exit_code": 0,
+    "peak_memory_bytes": 15720448,
+    "output_path": "_scratch/s11c/waist_coupled_ref01/bounded_reduction/stdout",
+    "output_size": 13011,
+    "output_sha256": "7cccf82ee6538cf6764c5c49270b6586c2a2e548748fb9e02fe93e3b2b29eefa"
+  },
+  "reviewed_six_row_report_before_verdict_insertion": "f991501c137e2aa7053c1c3986fdd180b7a3ff3fdbf8137144356f28f7bd6a7c",
+  "six_row_verdict": "Scoped clear for the inward radial and shortening axial forces on all six tested held profiles at two entrance radii. Independently computed interior work and the measured exterior order load reproduce all force directions. On the tight radius-one profile the exterior load reverses both interior signs. No tested profile is in force balance, and the calculations leave other shapes and a freely evolving throat open."
+}

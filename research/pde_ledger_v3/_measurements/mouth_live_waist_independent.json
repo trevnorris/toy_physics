@@ -1,0 +1,328 @@
+{
+  "method": "Independent physical P1 triangles with third-order Gaussian product quadrature. Closed shear cavity on saved live order, weak sealed-carrier control and scalar interior virtual work. Mapped-grid comparison uses reoptimized order, density, outgoing shear and resolved carrier. The exterior column is reduced from the main tagged outer half-front run at mesh 70.",
+  "coordinates": "waist means b(t) + 4t(1-t)q at fixed endpoints and length. Axial means log(depth). Positive energy derivatives drive a negative generalized force.",
+  "limitations": "This independently checks force signs at shared input states. It does not solve for those states independently. The nearest of three closed eigenfrequencies is a pole approximation. The deep R2 branch is the second closed pole. The wave and carrier models differ between the two discretizations, so a small shift in magnitudes is expected. A registered shear boundary at half order does not measure radiation through an unmodeled exterior shear tail.",
+  "inputs": {
+    "software/stage1_solver/tools/mouth_live_waist_checks/shape_work.py": "fbfb7dfa356a1ebe8690e35cfe4037592b695d781a168d87a916ccf5e2b7ef76",
+    "software/stage1_solver/tools/mouth_live_waist_checks/closed_wave.py": "079d43c1ce3e91c4bbce4b307105d2ec7e9a3ed17f8b42ff68d5d0f264da4d09",
+    "software/stage1_solver/tools/mouth_lip_checks/shape_check.py": "e09c28374bb3c9b459cf467c58fc24d5fa11c317cff7cc696528b993ac0a4bfd",
+    "software/stage1_solver/tools/mouth_lip_checks/duct.py": "204d9489a25dfd8da1ce7e422e8074b76d3c52f8da8233444d7c4feaac4279d1",
+    "software/stage1_solver/tools/mouth_exchange_geometry.py": "1cabc9f23319f25df3924b1f1669cd12e89269934a2817da52fc2b47a6757017",
+    "software/stage1_solver/tools/mouth_conversion_shape_mode.py": "63ba9d32283deef446de5210e091cbe542af7a6451bfd5ecdfd7ef4b0010720c",
+    "research/pde_ledger_v3/_measurements/mouth_conversion_shape.json": "5c73eaecc31deb3e98e698ea58d51f765b57b51fbaf248ee8e10c4a3feafe906",
+    "research/pde_ledger_v3/_measurements/mouth_sealed_shape_relax.json": "f6a71144dfb16a4db6f9ffe84de5f5d69c5c01073417ed1c9163893e562d1c8a",
+    "software/stage1_solver/tools/mouth_exchange_checks/wave.py": "b6211473bcae30b160452a5794571905368b2de64168040e3908056ccdcca35a",
+    "software/stage1_solver/tools/mouth_exchange_shear.py": "d7aaa11468de702b99beb912f41e7ebc1999943d73dd7201d88c378b20b8c27b",
+    "software/stage1_solver/tools/mouth_exchange_interior.py": "41c4578c60f6d8e01af9530edbffe2a8599e8d9d83451b07c7ab8dee5ecfdfac",
+    "software/stage1_solver/tools/mouth_live_waist_checks/compare.py": "bfd314cc8aa2c331aec0fb55458a349325b5942e5c0852c3412beb42578832f8"
+  },
+  "cases": {
+    "r1_broad_72": {
+      "input_order_sha256": "2f88a2d332d80ad2c6bd4ae61356ad67b6c253a5c721a44e4bc2f700ad77c4c3",
+      "output_sha256": {
+        "triangular": "c055c06ac828b08f49c4c30df38ca1be7530bbfeb4f35067b53114c65b67bbef",
+        "mapped": "3d39d6cbd2a304bc93ba37bade98eac6369d1dc2aa6071069a0bbe7c81bca325",
+        "outer": "9285d1a3f852b738e4aaeb7fa84626920dc25b01040730c930c774087066a3f9"
+      },
+      "closed_frequencies": [
+        9.154225244293757,
+        10.598392529275177,
+        12.366153825768759
+      ],
+      "nearest_closed_index": 0,
+      "open_frequency": 9.151761212629625,
+      "waist": {
+        "signed_step": 0.002,
+        "independent_interior_terms": {
+          "fixed_action_closed_wave": -1.6005135494836509,
+          "resolved_core_order_at_transported_chi": 6.068490191315279,
+          "linear_sealed_carrier": 0.13995531881494816
+        },
+        "independent_interior_sum": 4.607931960646576,
+        "mapped_interior_0.001": 4.595548013040407,
+        "mapped_interior_0.002": 4.595549665086018,
+        "relative_interior_difference": 0.002694770584711126,
+        "mapped_exterior_order_0.001_n70": 5.963457323076682,
+        "mapped_total_0.001_exterior_n70": 10.559005336117089
+      },
+      "axial": {
+        "signed_step": 0.002,
+        "independent_interior_terms": {
+          "fixed_action_closed_wave": -0.51166799638791,
+          "resolved_core_order_at_transported_chi": 3.16992278956274,
+          "linear_sealed_carrier": -0.023297080764923643
+        },
+        "independent_interior_sum": 2.6349577124099066,
+        "mapped_interior_0.001": 2.6265239622409453,
+        "mapped_interior_0.002": 2.6265260038567106,
+        "relative_interior_difference": 0.003210993042593646,
+        "mapped_exterior_order_0.001_n70": 4.015620459739466,
+        "mapped_total_0.001_exterior_n70": 6.6421444219804116,
+        "closed_wave_exact_axial": -0.5116681184586083,
+        "closed_wave_axial_fd_minus_exact": 1.2207069821634775e-07
+      }
+    },
+    "r2_broad_72": {
+      "input_order_sha256": "1269f44bfdb253e52dcea81e85372619ffa92c447da3142f38bbd8084693c88f",
+      "output_sha256": {
+        "triangular": "7cb8b226d6f2bd3d677bc8d2f68125e348f8447042a8e572fbcf61a3c4c4804c",
+        "mapped": "6d26d2135270daa5cef34feb24de6375fc4927b243906ec42e024e90e2f42474",
+        "outer": "8253f49dca1416be8ece2b70d0dd85f485b96a7c9dbd8c2a898f8d00d4519007"
+      },
+      "closed_frequencies": [
+        5.8246899296313215,
+        5.8637314423775395,
+        7.331501067912969
+      ],
+      "nearest_closed_index": 1,
+      "open_frequency": 5.861501381685459,
+      "waist": {
+        "signed_step": 0.002,
+        "independent_interior_terms": {
+          "fixed_action_closed_wave": -0.361710342545285,
+          "resolved_core_order_at_transported_chi": 13.42004870382052,
+          "linear_sealed_carrier": 0.12952100442991613
+        },
+        "independent_interior_sum": 13.187859365705151,
+        "mapped_interior_0.001": 13.099773144443105,
+        "mapped_interior_0.002": 13.099772852557479,
+        "relative_interior_difference": 0.0067242554730355675,
+        "mapped_exterior_order_0.001_n70": 13.898653433315644,
+        "mapped_total_0.001_exterior_n70": 26.99842657775875
+      },
+      "axial": {
+        "signed_step": 0.002,
+        "independent_interior_terms": {
+          "fixed_action_closed_wave": -0.28123166977467307,
+          "resolved_core_order_at_transported_chi": 11.328196464026163,
+          "linear_sealed_carrier": -0.021844003841454095
+        },
+        "independent_interior_sum": 11.025120790410035,
+        "mapped_interior_0.001": 10.867364321057948,
+        "mapped_interior_0.002": 10.867372404202769,
+        "relative_interior_difference": 0.014516534524051883,
+        "mapped_exterior_order_0.001_n70": 13.893505154740637,
+        "mapped_total_0.001_exterior_n70": 24.760869475798586,
+        "closed_wave_exact_axial": -0.2812317900698811,
+        "closed_wave_axial_fd_minus_exact": 1.2029520801704052e-07
+      }
+    },
+    "r2_mid_72": {
+      "input_order_sha256": "86a0faac54268042bbe645af722dbb598ef93b4c1afd7925fe939559aa43ce63",
+      "output_sha256": {
+        "triangular": "2ced080c4fc8bf4afd1d2d940880dc36f947c748fc6affffac8b44eda7fda0af",
+        "mapped": "1304095a8d3e32f047f89d60d3cea0eb46e2a483ca051814355e2df7cfb9eab8",
+        "outer": "65d33daaa346f4d73cfc1d28f530f89b4abe4d8cc1283fec634487e50edb7e8d"
+      },
+      "closed_frequencies": [
+        6.285677886078737,
+        6.6722815775707245,
+        7.9023234461803975
+      ],
+      "nearest_closed_index": 1,
+      "open_frequency": 6.670729522459137,
+      "waist": {
+        "signed_step": 0.002,
+        "independent_interior_terms": {
+          "fixed_action_closed_wave": -0.2573556393965504,
+          "resolved_core_order_at_transported_chi": 7.119165862713217,
+          "linear_sealed_carrier": 0.03918533558304818
+        },
+        "independent_interior_sum": 6.900995558899715,
+        "mapped_interior_0.001": 6.862346796390639,
+        "mapped_interior_0.002": 6.862316399310231,
+        "relative_interior_difference": 0.005632003694334475,
+        "mapped_exterior_order_0.001_n70": 8.418137828726913,
+        "mapped_total_0.001_exterior_n70": 15.280484625117552
+      },
+      "axial": {
+        "signed_step": 0.002,
+        "independent_interior_terms": {
+          "fixed_action_closed_wave": -0.2791976893972148,
+          "resolved_core_order_at_transported_chi": 5.144601773843682,
+          "linear_sealed_carrier": -0.0026381647462344606
+        },
+        "independent_interior_sum": 4.862765919700233,
+        "mapped_interior_0.001": 4.7641544182468465,
+        "mapped_interior_0.002": 4.764158959103426,
+        "relative_interior_difference": 0.020698636693156303,
+        "mapped_exterior_order_0.001_n70": 7.875717558903261,
+        "mapped_total_0.001_exterior_n70": 12.639871977150108,
+        "closed_wave_exact_axial": -0.27919778784368676,
+        "closed_wave_axial_fd_minus_exact": 9.844647197443379e-08
+      }
+    },
+    "r2_tight_72": {
+      "input_order_sha256": "4760b927b8744b6abba7cb0f2203b944e41e1a7bbd666ff88b5ecf94485b4acc",
+      "output_sha256": {
+        "triangular": "fd9fa8f1d8e110af12160ed1c6e0b88533d81a93d3de43ca9597a09427eaf0fa",
+        "mapped": "f2959186db59668895c11f693250b744bfd4690810541090c7bebf54b0ec91f1",
+        "outer": "7d020810dc741ba6a2909e96b5690b8ad5f43525b640717465902e47f87bceaa"
+      },
+      "closed_frequencies": [
+        6.47471739443922,
+        7.012600582256984,
+        8.125381239172727
+      ],
+      "nearest_closed_index": 1,
+      "open_frequency": 7.0115783663464395,
+      "waist": {
+        "signed_step": 0.002,
+        "independent_interior_terms": {
+          "fixed_action_closed_wave": -0.21085719567048855,
+          "resolved_core_order_at_transported_chi": 4.583525435740476,
+          "linear_sealed_carrier": 0.010699036259390862
+        },
+        "independent_interior_sum": 4.383367276329379,
+        "mapped_interior_0.001": 4.357428298510158,
+        "mapped_interior_0.002": 4.357461515310135,
+        "relative_interior_difference": 0.005952818048225783,
+        "mapped_exterior_order_0.001_n70": 6.38981379687209,
+        "mapped_total_0.001_exterior_n70": 10.747242095382248
+      },
+      "axial": {
+        "signed_step": 0.002,
+        "independent_interior_terms": {
+          "fixed_action_closed_wave": -0.27634657728148326,
+          "resolved_core_order_at_transported_chi": 3.444815703598003,
+          "linear_sealed_carrier": -0.00029136976576165773
+        },
+        "independent_interior_sum": 3.168177756550758,
+        "mapped_interior_0.001": 3.0883318273300375,
+        "mapped_interior_0.002": 3.0883353771429256,
+        "relative_interior_difference": 0.025854064163095325,
+        "mapped_exterior_order_0.001_n70": 6.31270499765435,
+        "mapped_total_0.001_exterior_n70": 9.401036824984388,
+        "closed_wave_exact_axial": -0.27634665076684145,
+        "closed_wave_axial_fd_minus_exact": 7.348535818740842e-08
+      }
+    }
+  },
+  "base": "bca2e63c",
+  "runs": {
+    "fine1broad": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_checks/shape_work.py",
+        "--source",
+        "_scratch/s11c/live_waist_dynamics01/fields/r1_broad_72.npz",
+        "--radius",
+        "1",
+        "--state",
+        "broad",
+        "--mesh",
+        "64"
+      ],
+      "start_utc": "2026-11-22T20:39:27.535185+00:00",
+      "finish_record_utc": "2026-11-22T20:39:29.806572+00:00",
+      "exit_code": 0,
+      "peak_memory_bytes": 97132544,
+      "output": "_scratch/s11c/waist_coupled_ref01/fine1broad/stdout",
+      "output_bytes": 895,
+      "output_sha256": "c055c06ac828b08f49c4c30df38ca1be7530bbfeb4f35067b53114c65b67bbef",
+      "literal_results": [
+        "{\"type\": \"basis\", \"radius\": 1, \"state\": \"broad\", \"res\": 64, \"source\": \"_scratch/s11c/live_waist_dynamics01/fields/r1_broad_72.npz\", \"data_sha256\": \"2f88a2d332d80ad2c6bd4ae61356ad67b6c253a5c721a44e4bc2f700ad77c4c3\", \"primary_pole\": 9.151761212629625, \"independent_clamped\": [9.154225244293757, 10.598392529275177, 12.366153825768759], \"nearest\": 0}",
+        "{\"type\": \"work\", \"R\": 1, \"point\": \"broad\", \"direction\": \"waist\", \"n\": 64, \"fixed_action_closed_wave\": -1.6005135494836509, \"resolved_core_order_at_transported_chi\": 6.068490191315279, \"linear_sealed_carrier\": 0.13995531881494816, \"axial_wave_identity\": -0.5116681184586083}",
+        "{\"type\": \"work\", \"R\": 1, \"point\": \"broad\", \"direction\": \"axial\", \"n\": 64, \"fixed_action_closed_wave\": -0.51166799638791, \"resolved_core_order_at_transported_chi\": 3.16992278956274, \"linear_sealed_carrier\": -0.023297080764923643, \"axial_wave_identity\": -0.5116681184586083}"
+      ]
+    },
+    "fine2broad": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_checks/shape_work.py",
+        "--source",
+        "_scratch/s11c/live_waist_dynamics01/fields/r2_broad_72.npz",
+        "--radius",
+        "2",
+        "--state",
+        "broad",
+        "--mesh",
+        "64"
+      ],
+      "start_utc": "2026-11-22T20:39:26.165594+00:00",
+      "finish_record_utc": "2026-11-22T20:39:28.580824+00:00",
+      "exit_code": 0,
+      "peak_memory_bytes": 97013760,
+      "output": "_scratch/s11c/waist_coupled_ref01/fine2broad/stdout",
+      "output_bytes": 899,
+      "output_sha256": "7cb8b226d6f2bd3d677bc8d2f68125e348f8447042a8e572fbcf61a3c4c4804c",
+      "literal_results": [
+        "{\"type\": \"basis\", \"radius\": 2, \"state\": \"broad\", \"res\": 64, \"source\": \"_scratch/s11c/live_waist_dynamics01/fields/r2_broad_72.npz\", \"data_sha256\": \"1269f44bfdb253e52dcea81e85372619ffa92c447da3142f38bbd8084693c88f\", \"primary_pole\": 5.861501381685459, \"independent_clamped\": [5.8246899296313215, 5.8637314423775395, 7.331501067912969], \"nearest\": 1}",
+        "{\"type\": \"work\", \"R\": 2, \"point\": \"broad\", \"direction\": \"waist\", \"n\": 64, \"fixed_action_closed_wave\": -0.361710342545285, \"resolved_core_order_at_transported_chi\": 13.42004870382052, \"linear_sealed_carrier\": 0.12952100442991613, \"axial_wave_identity\": -0.2812317900698811}",
+        "{\"type\": \"work\", \"R\": 2, \"point\": \"broad\", \"direction\": \"axial\", \"n\": 64, \"fixed_action_closed_wave\": -0.28123166977467307, \"resolved_core_order_at_transported_chi\": 11.328196464026163, \"linear_sealed_carrier\": -0.021844003841454095, \"axial_wave_identity\": -0.2812317900698811}"
+      ]
+    },
+    "fine2mid": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_checks/shape_work.py",
+        "--source",
+        "_scratch/s11c/live_waist_dynamics01/fields/r2_mid_72.npz",
+        "--radius",
+        "2",
+        "--state",
+        "mid",
+        "--mesh",
+        "64"
+      ],
+      "start_utc": "2026-11-22T20:39:27.443335+00:00",
+      "finish_record_utc": "2026-11-22T20:39:29.850853+00:00",
+      "exit_code": 0,
+      "peak_memory_bytes": 96808960,
+      "output": "_scratch/s11c/waist_coupled_ref01/fine2mid/stdout",
+      "output_bytes": 893,
+      "output_sha256": "2ced080c4fc8bf4afd1d2d940880dc36f947c748fc6affffac8b44eda7fda0af",
+      "literal_results": [
+        "{\"type\": \"basis\", \"radius\": 2, \"state\": \"mid\", \"res\": 64, \"source\": \"_scratch/s11c/live_waist_dynamics01/fields/r2_mid_72.npz\", \"data_sha256\": \"86a0faac54268042bbe645af722dbb598ef93b4c1afd7925fe939559aa43ce63\", \"primary_pole\": 6.670729522459137, \"independent_clamped\": [6.285677886078737, 6.6722815775707245, 7.9023234461803975], \"nearest\": 1}",
+        "{\"type\": \"work\", \"R\": 2, \"point\": \"mid\", \"direction\": \"waist\", \"n\": 64, \"fixed_action_closed_wave\": -0.2573556393965504, \"resolved_core_order_at_transported_chi\": 7.119165862713217, \"linear_sealed_carrier\": 0.03918533558304818, \"axial_wave_identity\": -0.27919778784368676}",
+        "{\"type\": \"work\", \"R\": 2, \"point\": \"mid\", \"direction\": \"axial\", \"n\": 64, \"fixed_action_closed_wave\": -0.2791976893972148, \"resolved_core_order_at_transported_chi\": 5.144601773843682, \"linear_sealed_carrier\": -0.0026381647462344606, \"axial_wave_identity\": -0.27919778784368676}"
+      ]
+    },
+    "fine2tight": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_checks/shape_work.py",
+        "--source",
+        "_scratch/s11c/live_waist_dynamics01/fields/r2_tight_72.npz",
+        "--radius",
+        "2",
+        "--state",
+        "tight",
+        "--mesh",
+        "64"
+      ],
+      "start_utc": "2026-11-22T20:39:27.352629+00:00",
+      "finish_record_utc": "2026-11-22T20:39:29.584941+00:00",
+      "exit_code": 0,
+      "peak_memory_bytes": 96407552,
+      "output": "_scratch/s11c/waist_coupled_ref01/fine2tight/stdout",
+      "output_bytes": 903,
+      "output_sha256": "fd9fa8f1d8e110af12160ed1c6e0b88533d81a93d3de43ca9597a09427eaf0fa",
+      "literal_results": [
+        "{\"type\": \"basis\", \"radius\": 2, \"state\": \"tight\", \"res\": 64, \"source\": \"_scratch/s11c/live_waist_dynamics01/fields/r2_tight_72.npz\", \"data_sha256\": \"4760b927b8744b6abba7cb0f2203b944e41e1a7bbd666ff88b5ecf94485b4acc\", \"primary_pole\": 7.0115783663464395, \"independent_clamped\": [6.47471739443922, 7.012600582256984, 8.125381239172727], \"nearest\": 1}",
+        "{\"type\": \"work\", \"R\": 2, \"point\": \"tight\", \"direction\": \"waist\", \"n\": 64, \"fixed_action_closed_wave\": -0.21085719567048855, \"resolved_core_order_at_transported_chi\": 4.583525435740476, \"linear_sealed_carrier\": 0.010699036259390862, \"axial_wave_identity\": -0.27634665076684145}",
+        "{\"type\": \"work\", \"R\": 2, \"point\": \"tight\", \"direction\": \"axial\", \"n\": 64, \"fixed_action_closed_wave\": -0.27634657728148326, \"resolved_core_order_at_transported_chi\": 3.444815703598003, \"linear_sealed_carrier\": -0.00029136976576165773, \"axial_wave_identity\": -0.27634665076684145}"
+      ]
+    },
+    "compare": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_live_waist_checks/compare.py",
+        "--primary",
+        "_scratch/s11c/live_waist_dynamics01",
+        "--independent",
+        "_scratch/s11c/waist_coupled_ref01",
+        "--exterior",
+        "_scratch/s11c/waist_outer01"
+      ],
+      "start_utc": "2026-11-22T20:42:36.280475+00:00",
+      "finish_record_utc": "2026-11-22T20:42:36.620936+00:00",
+      "exit_code": 0,
+      "peak_memory_bytes": 15998976,
+      "output": "_scratch/s11c/waist_coupled_ref01/compare/stdout",
+      "output_bytes": 10217,
+      "output_sha256": "b1099c85669329e53cfaea1b9dad0b1d8ac80554a6aa622040c1fa5985130a2e"
+    }
+  },
+  "scope": "Scoped clear for the signs of radial and axial generalized forces on four held, regular preparations. This independent study checks supplied interior fields and the main exterior readout. It leaves unsupported preparations, other deformations, full dynamics, and radius selection open."
+}

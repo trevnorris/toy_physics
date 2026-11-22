@@ -20,7 +20,11 @@ from mouth_order_wave_pulse import ARCHIVE, ROOT, digest, emit, quadratic, tenso
 def profile(radius,mesh):
     dom=domain(radius,mesh)
     if radius==1.:
-        path=ROOT/f'mouth_free_order_cubic_n{mesh}_d04'/'order_seed1.55.npz'
+        folder=ROOT/f'mouth_free_order_cubic_n{mesh}_d04'
+        if mesh==48:
+            # The verified deep state is the residual-checked continuation.
+            folder=folder.with_name(folder.name+'_outer_residual')
+        path=folder/'order_seed1.55.npz'
         expected=json.loads(ARCHIVE.read_text())['diffuse_orders_sha256'][str(path)]
         key='chi'
     else:

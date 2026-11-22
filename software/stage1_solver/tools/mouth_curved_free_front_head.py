@@ -16,8 +16,11 @@ from mouth_free_front_wave_head import bath_head, emit, fraction
 from mouth_flat_phase_control import saved_bath
 
 
-def solve(inner, span, load, action, initial_depth, step, tol, phase_target=None, holder=None):
-    mobility, kappa = .5, 2.
+def solve(inner, span, load, action, initial_depth, step, tol, phase_target=None, holder=None,
+          radial_mobility=None):
+    kappa = 2.
+    def mobility(r):
+        return .5 if radial_mobility is None else radial_mobility(r)
     outer = inner+span
     wave_constant = action*np.pi/2
     n_bulk = (1-5*load)**.2
@@ -33,7 +36,7 @@ def solve(inner, span, load, action, initial_depth, step, tol, phase_target=None
         f,df,q,dq,head,_,_ = y
         n = f**2
         j_local = j/area(r)
-        affinity = -j_local*dq/(mobility*n)
+        affinity = -j_local*dq/(mobility(r)*n)
         wave_affinity = -p*6*q*(1-q)/area(r)
         return np.array([df, 2*f*(bath_head(n,j_local)-head) - 3*df/r,
                          dq, (2*q*(1-q)*(1-2*q)+wave_affinity+holder_affinity(r)-affinity)/kappa-3*dq/r,
@@ -60,7 +63,7 @@ def solve(inner, span, load, action, initial_depth, step, tol, phase_target=None
     # This estimate initializes Newton only. Neither depth nor current occurs
     # as prescribed data at the common internal section.
     mid=inner+initial_depth
-    j=6*mobility*load*area(mid)
+    j=6*mobility(mid)*load*area(mid)
     r=np.r_[inner+initial_depth*tau,mid+(outer-mid)*tau[1:]]
     q=expit(mid-r)
     f=1+(np.sqrt(n_bulk)-1)*(1-q)
@@ -94,7 +97,7 @@ def solve(inner, span, load, action, initial_depth, step, tol, phase_target=None
     W=(q*(1-q))**2
     net_mu=2*q*(1-q)*(1-2*q)-kappa*(ddq+3*dq/r)-p*6*q*(1-q)/a
     net_mu = net_mu + holder_affinity(r)
-    heat=simpson(a*mobility*net_mu**2,x=r)
+    heat=simpson(a*mobility(r)*net_mu**2,x=r)
     bath_power=j*(B[0]-B[-1])
     prr=((j/a)**2/n+n**5/5+(df**2-f*ddf)/2
          +kappa*dq**2/2-W+p*fraction(q)/a)
@@ -106,7 +109,7 @@ def solve(inner, span, load, action, initial_depth, step, tol, phase_target=None
     bare_end=(W-kappa*dq**2/2)[-1]-(W-kappa*dq**2/2)[0]
     curvature=-simpson(3*kappa*dq**2/r,x=r)
     wave_push=-simpson(p/a*6*q*(1-q)*dq,x=r)
-    conversion=-j*simpson(dq**2/(mobility*a*n),x=r)
+    conversion=-j*simpson(dq**2/(mobility(r)*a*n),x=r)
     holder_projection=simpson(holder_force,x=r)
     emit(test='free_spherical_front' if holder is None else 'held_spherical_front', inner=inner, outer=outer, brane_pressure_excess=pressure_drop, phase_target=phase_target,
          bulk_density=far_density,
@@ -136,8 +139,8 @@ def solve(inner, span, load, action, initial_depth, step, tol, phase_target=None
             amp, _, c, slope = state[:4]
             unheld_mu = (2*c*(1-c)*(1-2*c) - kappa*(derivative[3]+3*slope/mid)
                          - p*6*c*(1-c)/area(mid))
-            speeds.append(j/(area(mid)*amp**2)+mobility*unheld_mu/slope)
-        speed_from_removed_force = -mobility*holder_affinity(mid)/z[3,-1]
+            speeds.append(j/(area(mid)*amp**2)+mobility(mid)*unheld_mu/slope)
+        speed_from_removed_force = -mobility(mid)*holder_affinity(mid)/z[3,-1]
         offset = mid-holder.center
         emit(test='initial_release', action=action, strength=holder.strength,
              holder_center=holder.center, width=holder.width, radius=mid, offset=offset,
@@ -147,6 +150,13 @@ def solve(inner, span, load, action, initial_depth, step, tol, phase_target=None
         if max(abs(np.array(speeds)-speed_from_removed_force))>1e-10:
             raise ArithmeticError("Two-sided release velocity and removed force disagree")
         return offset, speeds[0]
+    if radial_mobility is not None:
+        integrated_head = j*simpson(dq**2/(a*n*n*mobility(r)), x=r)
+        emit(test='radial_mobility_balance', minimum_mobility=np.min(mobility(r)),
+             front_mobility=mobility(mid), maximum_mobility=np.max(mobility(r)),
+             independently_integrated_head=integrated_head, bath_head=B[0]-B[-1])
+        if abs(integrated_head-(B[0]-B[-1]))>2e-9:
+            raise ArithmeticError("Integrated diffuse-layer resistance disagrees with the bath head")
 
 
 def main():

@@ -13,7 +13,8 @@ from scipy.integrate import simpson, solve_bvp
 from scipy.special import expit
 
 
-def measure(load, mobility, width, extent, spacing, tolerance):
+def measure(load, mobility, width, extent, spacing, tolerance, *, return_fields=False,
+            endpoint_heads=None):
     # s increases toward the bulk. Projecting out translation holds the front;
     # the local order profile and the carrier density on both sides remain free.
     points = np.linspace(-extent, extent, int(round(2 * extent / spacing)) + 1)
@@ -40,10 +41,13 @@ def measure(load, mobility, width, extent, spacing, tolerance):
 
     def boundary(left, right, params):
         current = params[0]
+        heads = endpoint_heads
+        if heads is None:
+            heads = (bath_head(1.0, current), bath_head(n_bulk, current))
         return np.array([
             left[0] - 1.0, right[0] - np.sqrt(n_bulk),
             left[2] - expit(extent), right[2] - expit(-extent),
-            left[4] - bath_head(1.0, current), right[4] - bath_head(n_bulk, current),
+            left[4] - heads[0], right[4] - heads[1],
             left[5], right[5],
         ])
 
@@ -70,7 +74,7 @@ def measure(load, mobility, width, extent, spacing, tolerance):
     from_baths = total_flux[-1] - total_flux[0]
     work = current * (head[0] - head[-1])
     dissipation = simpson(mobility * affinity**2, x=s)
-    return dict(bulk_pressure_excess=load, mobility=mobility, fixture_width=width,
+    row = dict(bulk_pressure_excess=load, mobility=mobility, fixture_width=width,
                 extent=extent, mesh_step=spacing, tolerance=tolerance,
                 current_to_bulk=float(current), fixture_on_medium=float(force_external),
                 normal_flux_difference=float(from_baths), bath_power=float(work),
@@ -79,6 +83,9 @@ def measure(load, mobility, width, extent, spacing, tolerance):
                 boundary_residual_max=float(max(abs(boundary(result.y[:, 0], result.y[:, -1], result.p)))),
                 order_crossing_position=float(np.interp(0.5, q[::-1], s[::-1])),
                 center_density=float(n[len(s) // 2]))
+    if return_fields:
+        return row, result, fixture
+    return row
 
 
 def main():

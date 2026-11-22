@@ -1,0 +1,349 @@
+{
+  "scope": "Steady linear coherent carrier on rigid prescribed cubic reference, sealed faces, open exit",
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_steady_tow_partition.py": "860f4eed44459d7947d39a21afa9097fab9270ebb583a90268988e95d2e4a41a",
+    "software/stage1_solver/tools/mouth_tow_frame_check.py": "64a863d37d1f49e31d2aee249df8e275eb4e8de1ce4497196a7ddb92cf7bc7ce",
+    "software/stage1_solver/tools/mouth_tow_partition_record.py": "0d0991fe1d8e23be2347e6739b5d925067777abb1d41bbbfd1885e0534a7df40",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_free_center.py": "40fc4bd97662f18220a36758c0d29b20eb141f1c05d52f5adf6d26efed83af28",
+    "software/stage1_solver/tools/mouth_occupied_push_baths.py": "54b13d121c771baeae844dd175fbd276e1f792f195c5aa7eeedb5dba6ad1d579",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "research/pde_ledger_v3/_measurements/mouth_carrier_0pn.json": "deaab25f18026c01425cf7c58b961a6f03be4eb78300b54f2c709b40777df651",
+    "research/pde_ledger_v3/_measurements/mouth_rigid_drag_checks.json": "dd5bc83de4d16d023ba176be818b76197e05ebf14888cf146b94a5eaf32fa0ce"
+  },
+  "runs": {
+    "pair18": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_steady_tow_partition.py"
+      ],
+      "cap_bytes": 8589934592,
+      "swap_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stdout_sha256": "d03df2f7480a5cef4577d746a054ea12061536a9ea462f6ec348f5dc5d271976",
+      "stdout_file": "_scratch/s11c/tow_pivot01/pair18/stdout",
+      "rows": [
+        {
+          "model": "prescribed cubic rigid R=1; native box (18,20); intake 0.25",
+          "base_sha256": "54acfe1d0bbb6b494f1b1389f2d5d2036c90acbd7ef5e2ac339ce428c05d32f2",
+          "tow_stdout_sha256": "de4b2e75792f615e1d3e05ff3cb405e1b17253cc929cef6c22588e4794a5ea28",
+          "drive_amplitude": 0.001,
+          "results": {
+            "brane": {
+              "medium_on_rigid": 0.24988916526228683,
+              "outward": {
+                "feed": -0.24988916509659218,
+                "bulk_side": -1.6569463921936625e-10,
+                "roof_inner": -1.8678442676014458e-26,
+                "roof_outer": -1.9995951446672946e-22
+              },
+              "neck_plus_w": {
+                "0.7": 0.004347635718507675,
+                "1.4": 0.00044134334217517515,
+                "2.4": 3.001520711830503e-05,
+                "3.0": 6.089696970417931e-06
+              },
+              "interior": [
+                0.2500020654702338,
+                0.25000007259929885
+              ],
+              "residual": 1.8189894035458565e-12,
+              "receiving_shells": {
+                "3.0": {
+                  "hemisphere": -2.0335924888544503e-10,
+                  "shelf_raw": 1.777273362422982e-06,
+                  "disk_outward": -1.755403149983637e-06,
+                  "closure": 2.1666853190459674e-08
+                },
+                "6.0": {
+                  "hemisphere": -1.599140626393006e-10,
+                  "shelf_raw": 1.7772758106285764e-06,
+                  "disk_outward": -1.755403149983637e-06,
+                  "closure": 2.171274658230022e-08
+                },
+                "12.0": {
+                  "hemisphere": -1.6559320202115276e-10,
+                  "shelf_raw": 1.7772758213154081e-06,
+                  "disk_outward": -1.755403149983637e-06,
+                  "closure": 2.1707078129749978e-08
+                }
+              }
+            },
+            "bulk": {
+              "medium_on_rigid": -0.24986913903387425,
+              "outward": {
+                "feed": 2.7515356653973732e-09,
+                "bulk_side": 0.2009989787255805,
+                "roof_inner": 0.00011871971725246367,
+                "roof_outer": 0.048751437839505606
+              },
+              "neck_plus_w": {
+                "0.7": 0.009818334887996695,
+                "1.4": 0.02156101800369067,
+                "2.4": 0.08958241353494094,
+                "3.0": 0.18327456014918753
+              },
+              "interior": [
+                -0.25000161354054073,
+                -0.2500019065486998
+              ],
+              "residual": 3.161915174132446e-13
+            },
+            "common_minus": {
+              "medium_on_rigid": -2.0026228415555067e-05,
+              "outward": {
+                "feed": 0.24988916234506015,
+                "bulk_side": -0.20099897855988652,
+                "roof_inner": -0.00011871971725246367,
+                "roof_outer": -0.048751437839505606
+              },
+              "neck_plus_w": {
+                "0.7": -0.014165970606504373,
+                "1.4": -0.022002361345865883,
+                "2.4": -0.08961242874205921,
+                "3.0": -0.18328064984615808
+              },
+              "interior": [
+                -4.5192969306022054e-07,
+                1.833949401052696e-06
+              ],
+              "residual": 1.6324719354088302e-12
+            },
+            "nodal_lab_boost": {
+              "medium_on_rigid": 1.9934448088425078e-05,
+              "outward": {
+                "feed": -0.24988794658050748,
+                "bulk_side": 0.20099785457566097,
+                "roof_inner": 0.00011871971725246368,
+                "roof_outer": 0.04875143783950562
+              },
+              "neck_plus_w": {
+                "0.7": 0.25010758584235493,
+                "1.4": 0.25000272027410536,
+                "2.4": 0.2499926746952834,
+                "3.0": 0.2500055763097971
+              },
+              "interior": [
+                3.6100726069578006e-07,
+                -1.9252879859149065e-06
+              ]
+            },
+            "comparison": {
+              "positive_lab_tow_external": 9.177403708057503e-08,
+              "common_flow_prediction": 2.0026228412572955e-05,
+              "common_dirichlet_linear_error": -2.982111627948536e-15,
+              "separate_frame_difference": -1.993445437549238e-05,
+              "window_prediction": [
+                4.519296930571848e-07,
+                -1.833949400953383e-06
+              ],
+              "archived_tow_windows": [
+                9.092163727379406e-08,
+                9.133820103260264e-08
+              ],
+              "archived_tow_ports": {
+                "feed": [
+                  1.2157581619257598e-06,
+                  0.0
+                ],
+                "bulk_side": [
+                  -1.1239841248438815e-06,
+                  0.0
+                ],
+                "roof_inner": [
+                  -4.12726516174961e-22,
+                  0.0
+                ],
+                "roof_outer": [
+                  -1.3028610224201626e-18,
+                  0.0
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "frame9": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_tow_frame_check.py",
+        "9"
+      ],
+      "cap_bytes": 7516192768,
+      "swap_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stdout_sha256": "970bed429ffaa14f7e1933401ce952584fbc643f05e379af6736b88b94ff655b",
+      "stdout_file": "_scratch/s11c/tow_pivot01/frame9/stdout",
+      "rows": [
+        {
+          "test": "preparation",
+          "source": "_scratch/s11c/mouth_flared_cubic_n34/field.npz",
+          "sha256": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d",
+          "mesh": 34,
+          "far": 9.0,
+          "roof": 10.0,
+          "rate": 0.2500000000013136,
+          "profile": "cubic"
+        },
+        {
+          "far": 9,
+          "field_sha256": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d",
+          "base_outward_mass_traces": {
+            "feed": -0.24949141343224604,
+            "bulk_side": 0.1708066519016571,
+            "roof_inner": 0.0016927167102032713,
+            "roof_outer": 0.07686707463917065
+          },
+          "analytic_product_boost_medium": 0.0001249701812150001,
+          "old_stream_rows": [
+            {
+              "test": "steady_balance",
+              "drive": "feed",
+              "direct_wall": 0.25001118850032444,
+              "outer_cut": 0.24950113619357878,
+              "interior": [
+                0.2500106155398136,
+                0.2500086226006823
+              ]
+            },
+            {
+              "test": "steady_balance",
+              "drive": "bulk",
+              "direct_wall": -0.24946910476085313,
+              "outer_cut": -0.24938252828298363,
+              "interior": [
+                -0.25001668681807027,
+                -0.2500169861998266
+              ]
+            },
+            {
+              "test": "steady_balance",
+              "drive": "tow",
+              "direct_wall": -0.000542083739470945,
+              "outer_cut": -0.00011860791059827166,
+              "interior": [
+                6.071278256770452e-06,
+                8.363599144373276e-06
+              ]
+            }
+          ],
+          "uniform_nodal_boost": {
+            "medium_on_rigid": 0.00012497040438128157,
+            "outward": {
+              "feed": -0.24949141365579214,
+              "bulk_side": 0.17080665190203403,
+              "roof_inner": 0.001692716710203267,
+              "roof_outer": 0.07686707463917355
+            },
+            "neck_plus_w": {
+              "0.7": 0.2501075858938338,
+              "1.4": 0.2500027203256228,
+              "2.4": 0.24999267474776357,
+              "3.0": 0.25000557661218337
+            },
+            "interior": [
+              3.5478094647495816e-07,
+              -1.93786986713769e-06
+            ]
+          },
+          "lab_chart_tow": {
+            "medium_on_rigid": 6.362526641153313e-06,
+            "outward": {
+              "feed": 9.698204968577177e-06,
+              "bulk_side": -1.6060731609731065e-05,
+              "roof_inner": 3.8155927415118583e-19,
+              "roof_outer": 1.936905591014325e-19
+            },
+            "neck_plus_w": {
+              "0.7": 0.2359401206074959,
+              "1.4": 0.22799882066811142,
+              "2.4": 0.1603740004010444,
+              "3.0": 0.06671291761798533
+            },
+            "interior": [
+              6.4260615440714765e-06,
+              6.42573116420936e-06
+            ]
+          },
+          "lab_residual": 7.385758671318854e-14
+        }
+      ]
+    },
+    "frame18": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_tow_frame_check.py",
+        "18"
+      ],
+      "cap_bytes": 7516192768,
+      "swap_bytes": 0,
+      "limits_verified": true,
+      "exit_code": 0,
+      "stdout_sha256": "72920de24b016146e617f1b0bd380905418be19f595c62a317a93996dcc21f45",
+      "stdout_file": "_scratch/s11c/tow_pivot01/frame18/stdout",
+      "rows": [
+        {
+          "far": 18,
+          "field_sha256": "54acfe1d0bbb6b494f1b1389f2d5d2036c90acbd7ef5e2ac339ce428c05d32f2",
+          "base_outward_mass_traces": {
+            "feed": -0.24988794657279972,
+            "bulk_side": 0.20099785457562985,
+            "roof_inner": 0.00011871971725246372,
+            "roof_outer": 0.04875143783950532
+          },
+          "analytic_product_boost_medium": 1.9934440412086306e-05
+        }
+      ]
+    }
+  },
+  "frame_comparison": [
+    {
+      "far": 9,
+      "stream_medium_coefficients": [
+        0.24950113619357878,
+        -0.24938252828298363
+      ],
+      "raw_predicted_tow_external": 0.00011860791059514764,
+      "stationary_common_linear_residual": -3.1240201397997325e-15,
+      "base_trace_outward_mass": -0.0001249701812150001,
+      "prediction_analytic_product": -6.362270619852473e-06,
+      "prediction_nodal_boost": -6.362493786133934e-06,
+      "measured_tow_external": -6.362526641153313e-06,
+      "nodal_prediction_minus_tow": 3.2855019378698824e-11,
+      "window_predictions": [
+        -6.426059203166806e-06,
+        -6.425729277163269e-06
+      ],
+      "measured_tow_windows": [
+        -6.4260615440714765e-06,
+        -6.42573116420936e-06
+      ]
+    },
+    {
+      "far": 18,
+      "stream_medium_coefficients": [
+        0.24988916526228683,
+        -0.24986913903387425
+      ],
+      "raw_predicted_tow_external": 2.0026228412572955e-05,
+      "stationary_common_linear_residual": -2.982111627948536e-15,
+      "base_trace_outward_mass": -1.9934440412086306e-05,
+      "prediction_analytic_product": 9.178800048664944e-08,
+      "prediction_nodal_boost": 9.178032414787745e-08,
+      "measured_tow_external": 9.177403708057503e-08,
+      "nodal_prediction_minus_tow": 6.287067302421295e-12,
+      "window_predictions": [
+        9.092243236140472e-08,
+        9.13385849615235e-08
+      ],
+      "measured_tow_windows": [
+        9.092163727379406e-08,
+        9.133820103260264e-08
+      ]
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "base": "6c09eaae",
+  "design": {
+    "reserved_physical_radius": 3,
+    "training_radii": [
+      1,
+      2
+    ],
+    "local_routes": [
+      "Hamiltonian coherent carrier with convected crystalline order inertia",
+      "finite mobility with an independently specified bulk specific energy advantage; no per-radius tuning"
+    ],
+    "shape_test": "Allow the waist radius, exit radius and axial length to move in a 4D tension interface. Test equal pressure and uniform pressure drive with an ideal localized standing wave whose energy depends only on axial length. Use the archived reference exit/waist ratio 1.5 only to prepare one equilibrium at waist 1. Freeze its pressure, tension and wave action before testing waist 2 allowing any exit radius. Compare the geometric second variation with independently recomputed areas and volumes under signed displacements. Scale a separately retuned equilibrium for diagnosis only.",
+    "physical_gate": "Require energy, current and full two-sided/endpoint traction balance and restoring response for unconstrained physical mouths at radii 1 and 2 under the same law before reporting selected D, M or a radius 3 prediction."
+  },
+  "primary": {
+    "meridian": {
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_conversion_shape_mode.py"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "conversion-shape",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "source_sha256": "63ba9d32283deef446de5210e091cbe542af7a6451bfd5ecdfd7ef4b0010720c",
+      "stdout_sha256": "2c78e6450493541bb3aadc8416dda60481fa3177fa46b4da147188aaf01cc267",
+      "literal_stdout": "{\n  \"equal_pressure_turning_end_condition\": \"b_exit\\u00b2=b_waist\\u00b2\",\n  \"fitted_reference\": {\n    \"waist\": 1.0,\n    \"flare\": 1.5,\n    \"free_length\": 2.76301781542093,\n    \"length_from_first_integral\": 2.7630178154287743,\n    \"sigma\": 1.0,\n    \"required_uniform_pressure\": 1.5789473684210527,\n    \"required_axial_wave_constant\": 45.44291090126663,\n    \"wave_thrust\": 5.9524913436438185,\n    \"axial_stretch_energy_derivative\": -1.7386980744049652e-07,\n    \"normal_stiffness_from_curvature\": -70.78351159933847,\n    \"normal_displacement_controls\": [\n      {\n        \"fraction\": 0.01,\n        \"inward_energy_change\": -0.003519809967542642,\n        \"outward_energy_change\": -0.003558541192461462,\n        \"second_difference\": -70.78351160004104\n      },\n      {\n        \"fraction\": 0.005,\n        \"inward_energy_change\": -0.0008823731934484158,\n        \"outward_energy_change\": -0.0008872145965881373,\n        \"second_difference\": -70.78351160146212\n      }\n    ]\n  },\n  \"frozen_pressure_and_action\": [\n    {\n      \"waist\": 1.0,\n      \"waist_second_derivative\": 0.42105263157894735\n    },\n    {\n      \"waist\": 2.0,\n      \"waist_second_derivative\": -0.5789473684210527\n    }\n  ],\n  \"retuned_for_diagnosis_only\": {\n    \"waist\": 2.0,\n    \"flare\": 3.0,\n    \"free_length\": 5.52603563084186,\n    \"length_from_first_integral\": 5.526035630857549,\n    \"sigma\": 1.0,\n    \"required_uniform_pressure\": 0.7894736842105263,\n    \"required_axial_wave_constant\": 727.0865744202661,\n    \"wave_thrust\": 23.809965374575274,\n    \"axial_stretch_energy_derivative\": -1.3909584595239721e-06,\n    \"normal_stiffness_from_curvature\": -141.56702319867694,\n    \"normal_displacement_controls\": [\n      {\n        \"fraction\": 0.01,\n        \"inward_energy_change\": -0.028158479740341136,\n        \"outward_energy_change\": -0.028468329539691695,\n        \"second_difference\": -141.56702320008208\n      },\n      {\n        \"fraction\": 0.005,\n        \"inward_energy_change\": -0.0070589855475873264,\n        \"outward_energy_change\": -0.007097716772705098,\n        \"second_difference\": -141.56702320292425\n      }\n    ]\n  }\n}\n",
+      "command_as_run": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "conversion-shape",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/conversion_routes_shape01/meridian",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_conversion_shape_mode.py"
+      ]
+    },
+    "exchange": {
+      "worker_command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_conversion_shape_exchange.py"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "conversion-exchange",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "source_sha256": "8b84f7f125ab90e6cdfe4d26735538474d4f0164ecd504e2cd6cc91e4c3b522b",
+      "stdout_sha256": "3e3ffcd13661ef4eb4dd002f48fe9dc391ddfc033184fe24e4e7b41ec2765637",
+      "literal_stdout": "[\n  {\n    \"waist\": 1.0,\n    \"exit_to_waist\": 1.25,\n    \"free_length\": 2.495273534598333,\n    \"area\": 40.505044617558035,\n    \"volume\": 15.343772834523165,\n    \"cosines\": 6,\n    \"quadrature\": 96,\n    \"lowest_Ritz_quotient\": -0.07503333701843751,\n    \"area_stiffness\": -1.024965025441801,\n    \"waist_displacement\": 1.0,\n    \"exit_displacement\": -0.6871695458072755,\n    \"coefficients\": [\n      0.8377194205200321,\n      0.06443230885916554,\n      0.0058171200784833225,\n      0.000535217351574163,\n      4.823230512223308e-05,\n      4.141866865031392e-06\n    ],\n    \"controls\": [\n      {\n        \"fraction\": 0.01,\n        \"volume_errors\": [\n          -1.1577053822143958e-16,\n          1.1577053822143958e-16\n        ],\n        \"offsets\": [\n          -2.9848128474861246e-05,\n          -2.9860849025623354e-05\n        ],\n        \"area_changes\": [\n          -5.466134176401738e-05,\n          -4.7881769020818865e-05\n        ],\n        \"curvature\": -1.0254311078483624\n      },\n      {\n        \"fraction\": 0.005,\n        \"volume_errors\": [\n          1.1577053822143958e-16,\n          1.1577053822143958e-16\n        ],\n        \"offsets\": [\n          -7.462826655950152e-06,\n          -7.464416592145516e-06\n        ],\n        \"area_changes\": [\n          -1.3237275844346641e-05,\n          -1.2389763085707273e-05\n        ],\n        \"curvature\": -1.0250815572021565\n      }\n    ]\n  },\n  {\n    \"waist\": 1.0,\n    \"exit_to_waist\": 1.5,\n    \"free_length\": 2.76301781542093,\n    \"area\": 57.90954987575521,\n    \"volume\": 24.902953249784495,\n    \"cosines\": 6,\n    \"quadrature\": 96,\n    \"lowest_Ritz_quotient\": -0.19908748296174805,\n    \"area_stiffness\": -2.70840369880951,\n    \"waist_displacement\": 1.0,\n    \"exit_displacement\": -0.4990507457462637,\n    \"coefficients\": [\n      0.7305847378126153,\n      0.10909871875045278,\n      0.01842796588072551,\n      0.003122036477843715,\n      0.0005126691797909872,\n      7.783935966264876e-05\n    ],\n    \"controls\": [\n      {\n        \"fraction\": 0.01,\n        \"volume_errors\": [\n          7.133117191293858e-16,\n          -4.279870314776315e-16\n        ],\n        \"offsets\": [\n          -1.854464477609326e-05,\n          -1.8547893075057907e-05\n        ],\n        \"area_changes\": [\n          -0.00013924466857417883,\n          -0.00013158240858501813\n        ],\n        \"curvature\": -2.7082707715919696\n      },\n      {\n        \"fraction\": 0.005,\n        \"volume_errors\": [\n          0.0,\n          0.0\n        ],\n        \"offsets\": [\n          -4.636367131481488e-06,\n          -4.636773070082884e-06\n        ],\n        \"area_changes\": [\n          -3.433354578419312e-05,\n          -3.3375715943861906e-05\n        ],\n        \"curvature\": -2.708370469122201\n      }\n    ]\n  },\n  {\n    \"waist\": 1.0,\n    \"exit_to_waist\": 2.0,\n    \"free_length\": 3.286814087210367,\n    \"area\": 110.68574523271423,\n    \"volume\": 59.97742650126308,\n    \"cosines\": 6,\n    \"quadrature\": 96,\n    \"lowest_Ritz_quotient\": -0.4039049543867424,\n    \"area_stiffness\": -5.445143174942145,\n    \"waist_displacement\": 1.0,\n    \"exit_displacement\": -0.28701981459025483,\n    \"coefficients\": [\n      0.5871978337173598,\n      0.17058089753269082,\n      0.05195319916778531,\n      0.015443463044867349,\n      0.004358874409982267,\n      0.0010675920885779464\n    ],\n    \"controls\": [\n      {\n        \"fraction\": 0.01,\n        \"volume_errors\": [\n          2.3693672009923156e-16,\n          -3.5540508014884734e-16\n        ],\n        \"offsets\": [\n          -7.835069763856532e-06,\n          -7.824526466600952e-06\n        ],\n        \"area_changes\": [\n          -0.00027538743042043734,\n          -0.0002690727252883107\n        ],\n        \"curvature\": -5.444601557087481\n      },\n      {\n        \"fraction\": 0.005,\n        \"volume_errors\": [\n          4.383329321835784e-15,\n          4.501797681885399e-15\n        ],\n        \"offsets\": [\n          -1.9581164062804204e-06,\n          -1.9567984620979955e-06\n        ],\n        \"area_changes\": [\n          -6.845727328652629e-05,\n          -6.766792033374713e-05\n        ],\n        \"curvature\": -5.445007744810937\n      }\n    ]\n  },\n  {\n    \"waist\": 1.0,\n    \"exit_to_waist\": 1.5,\n    \"free_length\": 2.76301781542093,\n    \"area\": 57.909549875755204,\n    \"volume\": 24.902953249784506,\n    \"cosines\": 10,\n    \"quadrature\": 144,\n    \"lowest_Ritz_quotient\": -0.19908750006639453,\n    \"area_stiffness\": -2.708307645181427,\n    \"waist_displacement\": 1.0,\n    \"exit_displacement\": -0.4990500462104646,\n    \"coefficients\": [\n      0.73057175286873,\n      0.10909679106099468,\n      0.018427668165855678,\n      0.0031221129620950853,\n      0.0005133062466468152,\n      8.076278546354431e-05,\n      1.2068248375768857e-05,\n      1.7051963908975477e-06,\n      2.275756239218128e-07,\n      2.8159217599665535e-08\n    ],\n    \"controls\": [\n      {\n        \"fraction\": 0.01,\n        \"volume_errors\": [\n          4.279870314776313e-16,\n          -1.426623438258771e-16\n        ],\n        \"offsets\": [\n          -1.8543985535249077e-05,\n          -1.8547233641353054e-05\n        ],\n        \"area_changes\": [\n          -0.00013923967233608892,\n          -0.00013157779921613155\n        ],\n        \"curvature\": -2.7081747155222047\n      },\n      {\n        \"fraction\": 0.005,\n        \"volume_errors\": [\n          4.279870314776313e-16,\n          0.0\n        ],\n        \"offsets\": [\n          -4.636202308688859e-06,\n          -4.636608223256e-06\n        ],\n        \"area_changes\": [\n          -3.433232093641436e-05,\n          -3.337453943430546e-05\n        ],\n        \"curvature\": -2.708274414828793\n      }\n    ]\n  },\n  {\n    \"waist\": 2.0,\n    \"exit_to_waist\": 1.5,\n    \"free_length\": 5.52603563084186,\n    \"area\": 463.27639900604163,\n    \"volume\": 398.4472519965521,\n    \"cosines\": 10,\n    \"quadrature\": 144,\n    \"lowest_Ritz_quotient\": -0.049771875016598605,\n    \"area_stiffness\": -5.416615290362859,\n    \"waist_displacement\": 1.0,\n    \"exit_displacement\": -0.49905004621046484,\n    \"coefficients\": [\n      0.7305717528687303,\n      0.1090967910609947,\n      0.018427668165855678,\n      0.003122112962095087,\n      0.0005133062466468164,\n      8.076278546354338e-05,\n      1.2068248375767909e-05,\n      1.7051963908975043e-06,\n      2.2757562392194156e-07,\n      2.8159217599813498e-08\n    ],\n    \"controls\": [\n      {\n        \"fraction\": 0.01,\n        \"volume_errors\": [\n          1.426623438258771e-16,\n          -1.426623438258771e-16\n        ],\n        \"offsets\": [\n          -3.708797107068029e-05,\n          -3.709446728270611e-05\n        ],\n        \"area_changes\": [\n          -0.0011139173786887113,\n          -0.0010526223937290524\n        ],\n        \"curvature\": -5.416349431044409\n      },\n      {\n        \"fraction\": 0.005,\n        \"volume_errors\": [\n          4.279870314776313e-16,\n          0.0\n        ],\n        \"offsets\": [\n          -9.272404617377718e-06,\n          -9.273216446512e-06\n        ],\n        \"area_changes\": [\n          -0.0002746585674913149,\n          -0.0002669963154744437\n        ],\n        \"curvature\": -5.416548829657586\n      }\n    ]\n  }\n]\n",
+      "command_as_run": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "conversion-exchange",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/conversion_routes_shape01/exchange",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_conversion_shape_exchange.py"
+      ]
+    }
+  },
+  "review_verdict": "Scoped clear for reversible and downhill conversion on the tested patches, and for the loss of shape stability at fixed volume and length on the tested free turning flares with isotropic tension and wave energy depending only on volume and length.",
+  "independent_checks": {
+    "action": {
+      "worker_command": [
+        "python3",
+        "_scratch/s11c/conversion_route_referee01/action.py"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "comparison-referee",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 1073741824,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "source_sha256": "d093d4dce37c9c1217d96a2dfe6c9fe1e23d8fc1072e2fc99d427d96b24f294b",
+      "stdout_sha256": "a720e80b8e2f91fda5a8579f262ecfe8bc4d2cbf8e6b2bfa7dceedf55102163f",
+      "literal_stdout": "{'cells': 256, 'seed_offset': 0, 'minimum_location': 1.3461454173580023e-15, 'relative_current': 0.014019644677515514, 'lowest_density': 0.9998912743142726, 'order_slope': -0.24960658864483531, 'stationarity': 1.2786754433725896e-08, 'energy': 0.3365817652333583}\n{'cells': 256, 'seed_offset': 1.75, 'minimum_location': 1.7499999999999973, 'relative_current': 0.014019644682488924, 'lowest_density': 0.9998912746644457, 'order_slope': -0.2496065879747016, 'stationarity': 2.191896926115322e-08, 'energy': 0.3365817652341225}\nfree-translation energy change: 7.641665078494952e-13\n{'cells': 512, 'seed_offset': 0, 'minimum_location': -1.332744109036849e-15, 'relative_current': 0.014019630529730603, 'lowest_density': 0.999891278497954, 'order_slope': -0.24991062059786007, 'stationarity': 1.9686955991940173e-08, 'energy': 0.3365166730051835}\n{'cells': 512, 'seed_offset': 1.75, 'minimum_location': 1.750000000000003, 'relative_current': 0.014019630520388019, 'lowest_density': 0.999891277326013, 'order_slope': -0.24991061388229374, 'stationarity': 2.0531174296300446e-08, 'energy': 0.33651667300596616}\nfree-translation energy change: 7.826517212095041e-13\n",
+      "reproduction_source": "software/stage1_solver/tools/mouth_conversion_checks/action.py",
+      "command_as_run": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "comparison-referee",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/conversion_route_referee01/action",
+        "--",
+        "python3",
+        "_scratch/s11c/conversion_route_referee01/action.py"
+      ]
+    },
+    "shape_b": {
+      "worker_command": [
+        "python3",
+        "_scratch/s11c/conversion_route_referee01/shape_b.py"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "comparison-referee",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 1073741824,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "source_sha256": "a28b549695fc9dcc18ca597378fafd744f3852ac234163d6e63a62359e9aae04",
+      "stdout_sha256": "b214095522ca44e011642418faa1854f7a71162e650b8ae7c9ad2886cb187819",
+      "literal_stdout": "arc evolution 1 2.763017815422553 1.4999999999995315 45.442910901320026 -70.78351166697126 -70.78351159937405\narc evolution 2 5.526035630845089 2.999999999999075 727.0865744211159 -141.56702327593905 -141.56702319874742\ndriven B 100 front 122.48078854157232 head 0.023165230606521224 velocities [1.9969790907015117e-06, -1.996979084400996e-06, 9.984895545517292e-07, -9.984895529419058e-07]\ndriven B 200 front 234.44340586674772 head 0.01926614650763111 velocities [1.9986330854621093e-06, -1.9986329381632695e-06, 9.99316992211785e-07, -9.993169556368753e-07]\n",
+      "reproduction_source": "software/stage1_solver/tools/mouth_conversion_checks/shape_b.py",
+      "command_as_run": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "comparison-referee",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/conversion_route_referee01/shape_b",
+        "--",
+        "python3",
+        "_scratch/s11c/conversion_route_referee01/shape_b.py"
+      ]
+    },
+    "volume": {
+      "worker_command": [
+        "python3",
+        "_scratch/s11c/conversion_route_referee01/volume.py"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "comparison-referee",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 1073741824,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "source_sha256": "cb359fd9fa199ff9533956abda755e54f0fc45b06542d06f854882a40faf3ce1",
+      "stdout_sha256": "a91fafb66cdffc4d75e07763561a99ae7481cca49d6b4a226761b8d1c02e7527",
+      "literal_stdout": "arc 1 1 [-0.11209574] 1.3322676295501878e-15\narc 1 2 [-0.19030529  3.75768151] -4.440892098500626e-16\narc 1 4 [-0.19902466  3.66710854] 4.440892098500626e-16\narc 1 8 [-0.1990875   3.66650838] 8.881784197001252e-16\narc 1 12 [-0.1990875   3.66650836] 0.0\naxial 1 [-0.19907206  3.66657248]\narc 2 1 [-0.02802393] 1.7763568394002505e-15\narc 2 2 [-0.04757632  0.93942038] 0.0\narc 2 4 [-0.04975617  0.91677713] 0.0\narc 2 8 [-0.04977187  0.9166271 ] 0.0\narc 2 12 [-0.04977188  0.91662709] 0.0\naxial 2 [-0.04976802  0.91664312]\n",
+      "reproduction_source": "software/stage1_solver/tools/mouth_conversion_checks/volume.py",
+      "command_as_run": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "comparison-referee",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/conversion_route_referee01/volume",
+        "--",
+        "python3",
+        "_scratch/s11c/conversion_route_referee01/volume.py"
+      ]
+    },
+    "finite": {
+      "worker_command": [
+        "python3",
+        "_scratch/s11c/conversion_route_referee01/finite.py"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "pool": "comparison-referee",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_bytes": 1073741824,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "source_sha256": "7c5c84c18f62043e80e6658513b60e1b723d896e8b94fcd2c3868212f3984aed",
+      "stdout_sha256": "d8f6a63e34a4c09c8da0af65b71b71082795ce0f19db38d0aea655d20b898ecf",
+      "literal_stdout": "finite frusta 1.0 1.25 0.01 [-5.466127120001829e-05, -4.7881835129715e-05]\nfinite frusta 1.0 1.25 0.005 [-1.3237241518027076e-05, -1.2389796850698076e-05]\nfinite frusta 1.0 1.5 0.01 [-0.00013924452978386626, -0.00013158254198231134]\nfinite frusta 1.0 1.5 0.005 [-3.433347689707489e-05, -3.337578350226522e-05]\nfinite frusta 1.0 2.0 0.01 [-0.0002753871399931995, -0.0002690730068195535]\nfinite frusta 1.0 2.0 0.005 [-6.845712918845948e-05, -6.766806303915018e-05]\nfinite frusta 2.0 1.5 0.02 [-0.0011139162711515382, -0.00105262345545043]\nfinite frusta 2.0 1.5 0.01 [-0.0002746580202597215, -0.00026699685508901894]\n",
+      "reproduction_source": "software/stage1_solver/tools/mouth_conversion_checks/finite.py",
+      "command_as_run": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "comparison-referee",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/conversion_route_referee01/finite",
+        "--",
+        "python3",
+        "_scratch/s11c/conversion_route_referee01/finite.py"
+      ]
+    }
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "base": "6c09eaae",
+  "scope": "Free half-order position on the coherent planar and four-dimensional spherical calibration patches. Positive/zero/reverse chemical offset and two curved signed-release controls. No physical mouth or radius-3 reading.",
+  "design": {
+    "route": "B",
+    "energy": "add eps*n*H(chi) with H=3chi^2-2chi^3",
+    "material": {
+      "a_B": 1,
+      "kappa": 2,
+      "M_chi": 0.5,
+      "n0": 1,
+      "eps": 0.015
+    },
+    "preparation": "equal homogeneous end densities 1 and their specific Bernoulli heads including fuel and local kinetic energy, shear wave empty, no applied pressure or prescribed spatial phase or intake",
+    "controls": "planar positive, zero and reverse tilt, plus free 4D radial patches at inner radii 100 and 200 order widths with common outer radius 400; these are spherical controls, not imposed/full physical mouths; signed weak holders removed at common bath densities",
+    "blind_radius": 3,
+    "tests": "signed current, reservoir work minus conversion loss, normal stress, end and holder reactions; an initially restoring radial release is necessary for this spherical equilibrium; no R3"
+  },
+  "design_sha256": "fd210e05018d40e09f9e44511d6350f9470121fafd2e4323ac4ce5a0d33981c2",
+  "sources_sha256": {
+    "software/stage1_solver/tools/mouth_downhill_conversion.py": "e11eec6677769c7c88ea41dec2e599c5d3932c8c28d2ce92ed27feb3deded23b",
+    "software/stage1_solver/tools/mouth_free_front_wave_head.py": "d42f78756bc87079d9719d5be2ed991383349b6f8dcc76950c945cdb61140d2b",
+    "software/stage1_solver/tools/mouth_curved_front_release.py": "747ec04318bb73bb970ffac386064df16d516756bee0defb7b3a8a049b780bad",
+    "_scratch/s11c/downhill_front01/as_run_initial.py": "8b01b50324166efec93708928a7e18dd1c93266e6d514c1802572ec45234505d",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "runs": {
+    "planar": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "downhill-conversion",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/downhill_front01/planar",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_downhill_conversion.py",
+        "planar"
+      ],
+      "source_sha256": "8b01b50324166efec93708928a7e18dd1c93266e6d514c1802572ec45234505d",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "8ebc7c2602098690c8802ddadf96bdc531d982a4be62792607cd4b65dc3a39dd",
+      "literal_stdout": "{\"test\": \"planar\", \"epsilon\": 0.0, \"inner\": -24.0, \"outer\": 24.0, \"guess\": 0.0, \"half_order\": 0.0, \"ordered_current\": 2.7448610642245086e-18, \"front_current\": 2.7448610642245086e-18, \"front_density\": 1.0, \"chemical_drop\": 0.0, \"end_kinetic_drop\": 0.0, \"total_drop\": 9.1495368807275e-19, \"phase_difference\": 1.3175333108277797e-16, \"fuel_power\": 0.0, \"net_bath_work\": 2.5114207539595075e-36, \"conversion_loss\": 1.201144503308719e-18, \"max_total_normal_balance\": 1.3846701563124952e-12, \"end_order_stress\": 5.7006594751321476e-21, \"right_head_error\": -9.149536806551043e-19, \"local_order_error\": 6.743715728733529e-10, \"external_holder\": false, \"mesh_nodes\": 1713, \"residual\": 4.991462473130244e-09}\n{\"test\": \"planar\", \"epsilon\": 0.015, \"inner\": -24.0, \"outer\": 24.0, \"guess\": 0.0, \"half_order\": 0.0, \"ordered_current\": 0.045000000000085714, \"front_current\": 0.045000000000085714, \"front_density\": 0.9999999999999996, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.0, \"total_drop\": 0.014999999999999998, \"phase_difference\": 2.160000000004114, \"fuel_power\": 0.0006750000000012857, \"net_bath_work\": 0.0006750000000012856, \"conversion_loss\": 0.0006750000000020259, \"max_total_normal_balance\": 1.3848089341905734e-12, \"end_order_stress\": 5.960074952809534e-21, \"right_head_error\": 2.168404344971009e-18, \"local_order_error\": 6.743812964657425e-10, \"external_holder\": false, \"mesh_nodes\": 1713, \"residual\": 4.991462479785493e-09}\n{\"test\": \"planar\", \"epsilon\": -0.015, \"inner\": -24.0, \"outer\": 24.0, \"guess\": 0.0, \"half_order\": 0.0, \"ordered_current\": -0.04500000000008572, \"front_current\": -0.04500000000008572, \"front_density\": 0.9999999999999996, \"chemical_drop\": -0.015, \"end_kinetic_drop\": 0.0, \"total_drop\": -0.015, \"phase_difference\": -2.1600000000041146, \"fuel_power\": 0.0006750000000012858, \"net_bath_work\": 0.0006750000000012858, \"conversion_loss\": 0.0006750000000020224, \"max_total_normal_balance\": 1.384836689766189e-12, \"end_order_stress\": 5.960075472600998e-21, \"right_head_error\": 2.168404344971009e-19, \"local_order_error\": 6.743809547252178e-10, \"external_holder\": false, \"mesh_nodes\": 1713, \"residual\": 4.991462430922053e-09}\n",
+      "excluded": false
+    },
+    "small": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "downhill-conversion",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/downhill_front01/small",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_downhill_conversion.py",
+        "small"
+      ],
+      "source_sha256": "8b01b50324166efec93708928a7e18dd1c93266e6d514c1802572ec45234505d",
+      "guard_exit": 1,
+      "worker_exit": 1,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "85a7c3eddaad98d20e21ae778dacf0e8501077dd7e70bd88f6e663e77a28b2d1",
+      "literal_stdout": "{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 100.0, \"outer\": 400.0, \"guess\": 122.51529547850885, \"half_order\": 122.48078854083572, \"ordered_current\": 0.1278094901693094, \"front_current\": 0.06955993720799655, \"front_density\": 1.0014676187666793, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.008165638837671187, \"total_drop\": 0.023165638837671185, \"phase_difference\": 5.986797070268378, \"fuel_power\": 0.0019171423525396409, \"net_bath_work\": 0.0029607884892891073, \"conversion_loss\": 0.002960788467520568, \"max_total_normal_balance\": 8.651982186524965e-07, \"end_order_stress\": 6.590224231486707e-20, \"right_head_error\": -4.235164736271502e-22, \"local_order_error\": 6.66127508187897e-09, \"external_holder\": false, \"mesh_nodes\": 1274, \"residual\": 3.996098059915184e-08}\n",
+      "excluded": true
+    },
+    "large": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "downhill-conversion",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/downhill_front01/large",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_downhill_conversion.py",
+        "large"
+      ],
+      "source_sha256": "8b01b50324166efec93708928a7e18dd1c93266e6d514c1802572ec45234505d",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "e73bca009822499f6d16761b6b1ebb8816cde1713beed10c342eecf805503fa7",
+      "literal_stdout": "{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 200.0, \"outer\": 400.0, \"guess\": 234.44206312970016, \"half_order\": 234.44340585808098, \"ordered_current\": 0.09310490463345156, \"front_current\": 0.05780274734576951, \"front_density\": 1.0004472241313591, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.0042665387953801474, \"total_drop\": 0.019266538795380147, \"phase_difference\": 6.981658168854997, \"fuel_power\": 0.0013965735695017733, \"net_bath_work\": 0.0017938092571605632, \"conversion_loss\": 0.0017938091888219684, \"max_total_normal_balance\": 1.4324492492168162e-07, \"end_order_stress\": 2.709946117367232e-30, \"right_head_error\": 0.0, \"local_order_error\": 4.3067017816561526e-09, \"external_holder\": false, \"mesh_nodes\": 1177, \"residual\": 3.9997300064661046e-08}\n{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 200.0, \"outer\": 400.0, \"guess\": 234.44340585808098, \"half_order\": 234.44736207956797, \"ordered_current\": 0.09311346482233773, \"front_current\": 0.05780513538108098, \"front_density\": 1.0004474961951493, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.004267323373960201, \"total_drop\": 0.0192673233739602, \"phase_difference\": 6.982298869443463, \"fuel_power\": 0.001396701972335066, \"net_bath_work\": 0.0017940472372018487, \"conversion_loss\": 0.001794047168861078, \"max_total_normal_balance\": 1.4326062663938544e-07, \"end_order_stress\": 2.6876662304163477e-30, \"right_head_error\": 0.0, \"local_order_error\": 4.306507007771632e-09, \"external_holder\": true, \"mesh_nodes\": 1177, \"residual\": 3.999735598156566e-08, \"probe_offset\": 0.003956221486987488, \"velocity_on_release\": 1.9986330854621093e-06, \"removed_affinity_speed\": 1.9986330854662678e-06}\n{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 200.0, \"outer\": 400.0, \"guess\": 234.44340585808098, \"half_order\": 234.4394480631958, \"ordered_current\": 0.09309634370900605, \"front_current\": 0.05780035967695834, \"front_density\": 1.0004469520437225, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.004265754221524059, \"total_drop\": 0.01926575422152406, \"phase_difference\": 6.981017412967221, \"fuel_power\": 0.0013964451556350906, \"net_bath_work\": 0.0017935712768202378, \"conversion_loss\": 0.0017935712084838674, \"max_total_normal_balance\": 1.4322921207399197e-07, \"end_order_stress\": 2.7332398581838087e-30, \"right_head_error\": 0.0, \"local_order_error\": 4.306899646817908e-09, \"external_holder\": true, \"mesh_nodes\": 1177, \"residual\": 3.99972445560316e-08, \"probe_offset\": -0.003957794885167232, \"velocity_on_release\": -1.9986329381632695e-06, \"removed_affinity_speed\": -1.998632938164819e-06}\n{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 200.0, \"outer\": 400.0, \"guess\": 234.44340585808098, \"half_order\": 234.44538416662192, \"ordered_current\": 0.09310918482234075, \"front_current\": 0.057803941318323046, \"front_density\": 1.000447360166314, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.004266931084310086, \"total_drop\": 0.019266931084310088, \"phase_difference\": 6.981978526248843, \"fuel_power\": 0.0013966377723351113, \"net_bath_work\": 0.00179392824728833, \"conversion_loss\": 0.0017939281789486486, \"max_total_normal_balance\": 1.4325277647442292e-07, \"end_order_stress\": 2.6987151222953604e-30, \"right_head_error\": 1.3552527156068805e-20, \"local_order_error\": 4.306604485353194e-09, \"external_holder\": true, \"mesh_nodes\": 1177, \"residual\": 3.999732829290852e-08, \"probe_offset\": 0.001978308540941498, \"velocity_on_release\": 9.99316992211785e-07, \"removed_affinity_speed\": 9.993169922270905e-07}\n{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 200.0, \"outer\": 400.0, \"guess\": 234.44340585808098, \"half_order\": 234.44142715618963, \"ordered_current\": 0.09310062426067132, \"front_current\": 0.05780155346484081, \"front_density\": 1.0004470880904428, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.004266146507631111, \"total_drop\": 0.01926614650763111, \"phase_difference\": 6.9813377976362325, \"fuel_power\": 0.0013965093639100698, \"net_bath_work\": 0.001793690266958009, \"conversion_loss\": 0.0017936901986205084, \"max_total_normal_balance\": 1.4323707034358257e-07, \"end_order_stress\": 2.721388492616796e-30, \"right_head_error\": -1.3552527156068805e-20, \"local_order_error\": 4.306802489292827e-09, \"external_holder\": true, \"mesh_nodes\": 1177, \"residual\": 3.999727158401636e-08, \"probe_offset\": -0.0019787018913461907, \"velocity_on_release\": -9.993169556368753e-07, \"removed_affinity_speed\": -9.993169555880635e-07}\n",
+      "excluded": false
+    },
+    "small_simpson": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "downhill-conversion",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/downhill_front01/small_simpson",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_downhill_conversion.py",
+        "small"
+      ],
+      "source_sha256": "e11eec6677769c7c88ea41dec2e599c5d3932c8c28d2ce92ed27feb3deded23b",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "4c6ad0a96ac009b215f279b118a16c52913306ba6cfa7cf5fd64eb88063f9e47",
+      "literal_stdout": "{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 100.0, \"outer\": 400.0, \"guess\": 122.51529547850885, \"half_order\": 122.48078854083572, \"ordered_current\": 0.1278094901693094, \"front_current\": 0.06955993720799655, \"front_density\": 1.0014676187666793, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.008165638837671187, \"total_drop\": 0.023165638837671185, \"phase_difference\": 5.986797070268378, \"fuel_power\": 0.0019171423525396409, \"net_bath_work\": 0.0029607884892891073, \"conversion_loss\": 0.002960788467520568, \"max_total_normal_balance\": 3.1971488789750424e-09, \"end_order_stress\": 6.590224231486707e-20, \"right_head_error\": -4.235164736271502e-22, \"local_order_error\": 6.66127508187897e-09, \"external_holder\": false, \"mesh_nodes\": 1274, \"residual\": 3.996098059915184e-08}\n{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 100.0, \"outer\": 400.0, \"guess\": 122.48078854083572, \"half_order\": 122.48137072731696, \"ordered_current\": 0.1278158797180061, \"front_current\": 0.06956242274555166, \"front_density\": 1.0014678561999577, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.008166455303664496, \"total_drop\": 0.023166455303664492, \"phase_difference\": 5.9870956065440835, \"fuel_power\": 0.0019172381957700913, \"net_bath_work\": 0.002961040864585745, \"conversion_loss\": 0.0029610408428148117, \"max_total_normal_balance\": 3.1972443859107358e-09, \"end_order_stress\": 6.581953519142279e-20, \"right_head_error\": -4.235164736271502e-22, \"local_order_error\": 6.6614452842728156e-09, \"external_holder\": true, \"mesh_nodes\": 1274, \"residual\": 3.996374237076264e-08, \"probe_offset\": 0.0005821864812389776, \"velocity_on_release\": 1.9969790907015117e-06, \"removed_affinity_speed\": 1.9969790907033404e-06}\n{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 100.0, \"outer\": 400.0, \"guess\": 122.48078854083572, \"half_order\": 122.48020617167634, \"ordered_current\": 0.12780310033981648, \"front_current\": 0.06955745174853202, \"front_density\": 1.0014673813245856, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.008164822376616379, \"total_drop\": 0.02316482237661638, \"phase_difference\": 5.986498520804432, \"fuel_power\": 0.0019170465050972472, \"net_bath_work\": 0.0029605361185527294, \"conversion_loss\": 0.002960536096786334, \"max_total_normal_balance\": 3.1970524005942025e-09, \"end_order_stress\": 6.598507839504642e-20, \"right_head_error\": 4.235164736271502e-22, \"local_order_error\": 6.661104506519577e-09, \"external_holder\": true, \"mesh_nodes\": 1274, \"residual\": 3.9958218298324855e-08, \"probe_offset\": -0.0005823691593747071, \"velocity_on_release\": -1.996979084400996e-06, \"removed_affinity_speed\": -1.996979084383352e-06}\n{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 100.0, \"outer\": 400.0, \"guess\": 122.48078854083572, \"half_order\": 122.4810796569118, \"ordered_current\": 0.12781268497879567, \"front_current\": 0.06956117996703014, \"front_density\": 1.001467737484421, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.008166047070055771, \"total_drop\": 0.023166047070055772, \"phase_difference\": 5.986946340056554, \"fuel_power\": 0.001917190274681935, \"net_bath_work\": 0.0029609146763689906, \"conversion_loss\": 0.0029609146545993264, \"max_total_normal_balance\": 3.197197506743521e-09, \"end_order_stress\": 6.586087169554776e-20, \"right_head_error\": 0.0, \"local_order_error\": 6.6613597866915786e-09, \"external_holder\": true, \"mesh_nodes\": 1274, \"residual\": 3.9962361737743995e-08, \"probe_offset\": 0.00029111607608456325, \"velocity_on_release\": 9.984895545517292e-07, \"removed_affinity_speed\": 9.984895545079388e-07}\n{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 100.0, \"outer\": 400.0, \"guess\": 122.48078854083572, \"half_order\": 122.48049737909008, \"ordered_current\": 0.12780629528962403, \"front_current\": 0.06955869446848564, \"front_density\": 1.0014675000467324, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.008165230606521223, \"total_drop\": 0.02316523060652122, \"phase_difference\": 5.9866477971831396, \"fuel_power\": 0.0019170944293443605, \"net_bath_work\": 0.0029606623033492877, \"conversion_loss\": 0.002960662281581859, \"max_total_normal_balance\": 3.1971007785625005e-09, \"end_order_stress\": 6.594364256759308e-20, \"right_head_error\": -4.235164736271502e-22, \"local_order_error\": 6.661190182777332e-09, \"external_holder\": true, \"mesh_nodes\": 1274, \"residual\": 3.995959941337548e-08, \"probe_offset\": -0.0002911617456362592, \"velocity_on_release\": -9.984895529419058e-07, \"removed_affinity_speed\": -9.984895529310957e-07}\n",
+      "excluded": false
+    },
+    "small_refined": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "downhill-conversion",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/downhill_front01/small_refined",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_downhill_conversion.py",
+        "small",
+        "--refined"
+      ],
+      "source_sha256": "e11eec6677769c7c88ea41dec2e599c5d3932c8c28d2ce92ed27feb3deded23b",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "4f6bb66d76004871c69630ba417f8f040baaa082c4d338b6dc152bc704a1d8f0",
+      "literal_stdout": "{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 100.0, \"outer\": 400.0, \"guess\": 122.51529547850885, \"half_order\": 122.48078854157232, \"ordered_current\": 0.12780949016745782, \"front_current\": 0.06955993720573385, \"front_density\": 1.001467618766689, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.008165638837434597, \"total_drop\": 0.023165638837434596, \"phase_difference\": 5.9867970701220825, \"fuel_power\": 0.0019171423525118673, \"net_bath_work\": 0.002960788489215976, \"conversion_loss\": 0.0029607884790596416, \"max_total_normal_balance\": 3.209191939967937e-09, \"end_order_stress\": 6.5902169897898e-20, \"right_head_error\": 0.0, \"local_order_error\": 1.373011083299902e-09, \"external_holder\": false, \"mesh_nodes\": 1992, \"residual\": 9.983683741620758e-09}\n",
+      "excluded": false
+    },
+    "large_refined": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "downhill-conversion",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/downhill_front01/large_refined",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_downhill_conversion.py",
+        "large",
+        "--refined"
+      ],
+      "source_sha256": "e11eec6677769c7c88ea41dec2e599c5d3932c8c28d2ce92ed27feb3deded23b",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "44f5df989115b89830ce0441f8afea8a1bf8aef391f2e5c36678c5bcdd2c1931",
+      "literal_stdout": "{\"test\": \"annular\", \"epsilon\": 0.015, \"inner\": 200.0, \"outer\": 400.0, \"guess\": 234.44206312970016, \"half_order\": 234.44340586674772, \"ordered_current\": 0.09310490464898401, \"front_current\": 0.05780274734900214, \"front_density\": 1.0004472241319176, \"chemical_drop\": 0.015, \"end_kinetic_drop\": 0.004266538796803699, \"total_drop\": 0.019266538796803696, \"phase_difference\": 6.981658169983592, \"fuel_power\": 0.0013965735697347601, \"net_bath_work\": 0.0017938092575923595, \"conversion_loss\": 0.0017938092547805538, \"max_total_normal_balance\": 1.8850779270884743e-10, \"end_order_stress\": 2.711244790055034e-30, \"right_head_error\": 1.3552527156068805e-20, \"local_order_error\": 8.857328039416079e-10, \"external_holder\": false, \"mesh_nodes\": 1867, \"residual\": 9.988439794516475e-09}\n",
+      "excluded": false
+    }
+  },
+  "independent_review_record": "research/pde_ledger_v3/_measurements/mouth_conversion_shape.json"
+}

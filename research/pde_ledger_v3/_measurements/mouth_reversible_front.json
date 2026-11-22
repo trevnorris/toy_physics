@@ -1,0 +1,40 @@
+{
+  "base": "6c09eaae",
+  "scope": "Coherent Hamiltonian planar patch, current selected by stationary bath phases; physical radial equilibria are not sampled.",
+  "command": [
+    "python3",
+    "scripts/s11c_guarded_run.py",
+    "--pool",
+    "reversible-front",
+    "--memory-gib",
+    "2",
+    "--log-directory",
+    "_scratch/s11c/conversion_reversible01/patch",
+    "--",
+    "python3",
+    "software/stage1_solver/tools/mouth_reversible_front.py"
+  ],
+  "source_sha256": "463580af0e2831c4df31b7470d80fb7ee23958807fafa8bde3f34888498fcd9a",
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "limits_verified": true,
+  "swap_bytes": 0,
+  "wall_deadline": null,
+  "stdout_sha256": "ef09c906a21613bae7bfbb386c052e043a6d79a8ecfdf92f34d38b63ba7215ce",
+  "literal_stdout": "{\n  \"tests\": [\n    {\n      \"span\": 32.0,\n      \"spatial_phase_bias\": 0.4510084282857874,\n      \"order_inertia\": 1.0,\n      \"current_per_area\": 0.014019625756654532,\n      \"plain_velocity_integral\": 0.4486712135785632,\n      \"entrained_phase_integral\": 0.0023372147072239975,\n      \"phase_error\": -2.220446049250313e-16,\n      \"minimum_density\": 0.9998912729748798,\n      \"center_order_slope\": -0.2500122880553263,\n      \"minimum_effective_order_stiffness\": 1.9998034073460986,\n      \"total_normal_flux_mean\": 9.82797836330455e-05,\n      \"normal_flux_range\": 1.5639399497668904e-13,\n      \"two_stress_max_error\": 5.879198152348563e-11,\n      \"max_bvp_rms_residual\": 9.986716589220748e-11,\n      \"endpoint_order_stress\": 5.058203038996472e-14,\n      \"phase_chemical_frequency\": 0,\n      \"net_steady_energy_input\": 0,\n      \"irreversible_power\": 0,\n      \"static_spectrum\": [\n        {\n          \"elements\": 160,\n          \"static_eigenvalues\": [\n            0.0009510905083134606,\n            1.5018399334266508,\n            2.02947709224651\n          ],\n          \"lowest_mode_overlap_with_order_translation\": 0.9999999822144122\n        },\n        {\n          \"elements\": 320,\n          \"static_eigenvalues\": [\n            0.0002380320168536552,\n            1.5004629415476274,\n            2.0291259819573373\n          ],\n          \"lowest_mode_overlap_with_order_translation\": 0.9999999988329286\n        },\n        {\n          \"elements\": 640,\n          \"static_eigenvalues\": [\n            5.952424474414607e-05,\n            1.5001173648565223,\n            2.0290375190909824\n          ],\n          \"lowest_mode_overlap_with_order_translation\": 0.9999999998744122\n        }\n      ]\n    },\n    {\n      \"span\": 32.0,\n      \"spatial_phase_bias\": -0.4510084282857874,\n      \"order_inertia\": 1.0,\n      \"current_per_area\": -0.014019625756654532,\n      \"plain_velocity_integral\": -0.4486712135785632,\n      \"entrained_phase_integral\": -0.0023372147072239975,\n      \"phase_error\": 2.220446049250313e-16,\n      \"minimum_density\": 0.9998912729748798,\n      \"center_order_slope\": -0.2500122880553263,\n      \"minimum_effective_order_stiffness\": 1.9998034073460986,\n      \"total_normal_flux_mean\": 9.82797836330455e-05,\n      \"normal_flux_range\": 1.5639399497668904e-13,\n      \"two_stress_max_error\": 5.879198152348563e-11,\n      \"max_bvp_rms_residual\": 9.986716589220748e-11,\n      \"endpoint_order_stress\": 5.058203038996472e-14,\n      \"phase_chemical_frequency\": 0,\n      \"net_steady_energy_input\": 0,\n      \"irreversible_power\": 0\n    },\n    {\n      \"span\": 32.0,\n      \"spatial_phase_bias\": 0.0,\n      \"order_inertia\": 1.0,\n      \"current_per_area\": 0.0,\n      \"plain_velocity_integral\": 0.0,\n      \"entrained_phase_integral\": 0.0,\n      \"phase_error\": 0.0,\n      \"minimum_density\": 1.0,\n      \"center_order_slope\": -0.2500000000000644,\n      \"minimum_effective_order_stiffness\": 2.0,\n      \"total_normal_flux_mean\": 4.724368158561426e-14,\n      \"normal_flux_range\": 1.5638705608278514e-13,\n      \"two_stress_max_error\": 0.0,\n      \"max_bvp_rms_residual\": 9.984540981385963e-11,\n      \"endpoint_order_stress\": 5.0657793799111403e-14,\n      \"phase_chemical_frequency\": 0,\n      \"net_steady_energy_input\": 0,\n      \"irreversible_power\": 0\n    },\n    {\n      \"span\": 32.0,\n      \"spatial_phase_bias\": 0.4510084282857874,\n      \"order_inertia\": 0.0,\n      \"current_per_area\": 0.014092657100861704,\n      \"plain_velocity_integral\": 0.4510084282857874,\n      \"entrained_phase_integral\": 0.0,\n      \"phase_error\": 0.0,\n      \"minimum_density\": 0.9999006639760597,\n      \"center_order_slope\": -0.2500000000000644,\n      \"minimum_effective_order_stiffness\": 2.0,\n      \"total_normal_flux_mean\": 9.930642399109626e-05,\n      \"normal_flux_range\": 1.5638358663583318e-13,\n      \"two_stress_max_error\": 5.940581914462648e-11,\n      \"max_bvp_rms_residual\": 9.984540981404147e-11,\n      \"endpoint_order_stress\": 5.065667129654396e-14,\n      \"phase_chemical_frequency\": 0,\n      \"net_steady_energy_input\": 0,\n      \"irreversible_power\": 0\n    },\n    {\n      \"span\": 48.0,\n      \"spatial_phase_bias\": 0.4510084282857874,\n      \"order_inertia\": 1.0,\n      \"current_per_area\": 0.009363089609395392,\n      \"plain_velocity_integral\": 0.44944773157158324,\n      \"entrained_phase_integral\": 0.0015606967142040044,\n      \"phase_error\": -1.6653345369377348e-16,\n      \"minimum_density\": 0.9999515148488598,\n      \"center_order_slope\": -0.2500054799485037,\n      \"minimum_effective_order_stiffness\": 1.9999123240512093,\n      \"total_normal_flux_mean\": 4.383468433851743e-05,\n      \"normal_flux_range\": 1.5692395299859996e-13,\n      \"two_stress_max_error\": 6.075895354602876e-11,\n      \"max_bvp_rms_residual\": 9.985512898379635e-11,\n      \"endpoint_order_stress\": 5.695342399770017e-21,\n      \"phase_chemical_frequency\": 0,\n      \"net_steady_energy_input\": 0,\n      \"irreversible_power\": 0\n    }\n  ]\n}\n",
+  "independent_review": {
+    "verdict": "Scoped clear for the traction-balanced planar Hamiltonian front, its reversible current and unresolved translation.",
+    "worker_command": [
+      "python3",
+      "_scratch/s11c/conversion_route_referee01/action.py"
+    ],
+    "source_sha256": "d093d4dce37c9c1217d96a2dfe6c9fe1e23d8fc1072e2fc99d427d96b24f294b",
+    "guard_exit": 0,
+    "worker_exit": 0,
+    "limits_verified": true,
+    "swap_bytes": 0,
+    "deadline": null,
+    "stdout_sha256": "a720e80b8e2f91fda5a8579f262ecfe8bc4d2cbf8e6b2bfa7dceedf55102163f",
+    "literal_stdout": "{'cells': 256, 'seed_offset': 0, 'minimum_location': 1.3461454173580023e-15, 'relative_current': 0.014019644677515514, 'lowest_density': 0.9998912743142726, 'order_slope': -0.24960658864483531, 'stationarity': 1.2786754433725896e-08, 'energy': 0.3365817652333583}\n{'cells': 256, 'seed_offset': 1.75, 'minimum_location': 1.7499999999999973, 'relative_current': 0.014019644682488924, 'lowest_density': 0.9998912746644457, 'order_slope': -0.2496065879747016, 'stationarity': 2.191896926115322e-08, 'energy': 0.3365817652341225}\nfree-translation energy change: 7.641665078494952e-13\n{'cells': 512, 'seed_offset': 0, 'minimum_location': -1.332744109036849e-15, 'relative_current': 0.014019630529730603, 'lowest_density': 0.999891278497954, 'order_slope': -0.24991062059786007, 'stationarity': 1.9686955991940173e-08, 'energy': 0.3365166730051835}\n{'cells': 512, 'seed_offset': 1.75, 'minimum_location': 1.750000000000003, 'relative_current': 0.014019630520388019, 'lowest_density': 0.999891277326013, 'order_slope': -0.24991061388229374, 'stationarity': 2.0531174296300446e-08, 'energy': 0.33651667300596616}\nfree-translation energy change: 7.826517212095041e-13\n"
+  }
+}

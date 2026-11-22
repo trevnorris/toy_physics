@@ -17,6 +17,29 @@ belt-and-suspenders.
 Guidance for the re-run box: the operators peak ~15–16 GB per engine on the current controls; give it **≥64 GB**
 of headroom to be safe. Watch RSS; a Mathematica kernel can balloon and orphan — `kill -9` by exact pid if so.
 
+## S15 — independent item 4 check
+
+**Deferred by user decision, 2026-11-12.** This covers the Singular item-4 build and its comparison
+with Wolfram. The open question is which power-law profiles, including special exponent branches,
+make each eligible geometric departure vanish for every separation on the stated domain, and what
+the momentum term is under each condition. Conclusions needing that independent check remain open
+at S15 closeout. The SymPy–Wolfram comparison of items 1–3, 5 and 6 proceeds separately.
+[Reading specification](directives/S15_reading_decision_list.md#what-the-build-computes)
+
+Thirteen of fourteen Singular trial objects returned conditions. The stopped both-drain regional
+x-momentum-rate trial (object 125) saved 41 of 115 equations. The 144-object survey never started.
+All trial results retain their trial status. The accepted Wolfram run separately lists six both-drain
+regional momentum or momentum-rate objects whose complete conditions it did not obtain. SymPy
+attempted no item-4 object under the earlier decision.
+[Singular run record](directives/_measurements/S15_separation_departure_singular_run_record.md)
+· [Singular manifest](directives/_measurements/S15_separation_departure_singular_run_manifest.json)
+· [Accepted reading run record](directives/_measurements/S15_separation_departure_run_record.md)
+
+If reopened, use the preserved trial evidence and the accepted construction and trial rules at
+`d4cd6d09` and `d544ef73`. A finished survey and reviewed build precede the independent item-4
+comparison. The stop was a choice of research scope. The run record documents what was measured.
+[Builder directive](directives/S15_item4_singular_engine_directive.md) · [Trial and full-run rules](directives/resume_s15_singular_engine_1.md#what-must-be-true-from-here)
+
 ## Parked (user decision, 2026-10-19)
 
 The user parked every run in this file on 2026-10-19 and closed the light sector for now. The run order of

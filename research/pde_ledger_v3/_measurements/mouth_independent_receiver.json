@@ -1,0 +1,1054 @@
+{
+  "baseline": "a91a633fb3fa42a32fe52108322b26cc1da285db",
+  "report": "software/stage1_solver/reports/mouth_independent_receiver.md",
+  "report_sha256": "c2c8571c11ce71ad0a88c52431b69a5ed957a5c36fd43cd819d05bd3466764cb",
+  "scope": "Independent founding cold geometry, prospective structural precursor, finite native-time shear and normal pressure perturbations, technical controls at one initial geometry.",
+  "design": {
+    "excursions": {
+      "pulse1408": 1.408,
+      "pulse1536": 1.536,
+      "pulse1664": 1.664
+    },
+    "source": "_scratch/s11c/receiver_preparation_transfer01/inputs/history141.txt",
+    "source_sha256": "90ea3ed6e4ff16edea7bc798c406b383529f012cd2617b64209375fa2f66647e",
+    "engine": "_scratch/s11c/receiver_preparation_transfer01/receiver",
+    "engine_sha256": "d73e88b990450367959eb23704f762afd3d062de07c7fea62c2203b9ee2e26e3",
+    "native_duration": 48.88171243122866,
+    "predeclared_state": "Select lowest excursion returning true at T=1.28, Pext=0 in previously held-out seed 41. Require final-quarter number density [.95,1.20], <=10% late drift, connected fraction >=116/128 at last four samples, strongest q<=12 intensity <=.20 before and after observation, at least half the original pairs absent, and nonaffine RMS >=1. Compare with observed sample87 precursor family. The temperatures/ranges select observable state, never a force outcome.",
+    "prediction": "If structurally matched, cool to T=1.088 and predict a dense, mobile, low-order sample under weak forces. Measure all seven zero/shear/pressure arms with two independently seeded paths and repeat at half dt and half controller mobility separately. One seed-41 geometry; path replicas are not independent geometries."
+  },
+  "selected": "pulse1408",
+  "raw": {
+    "_scratch/s11c/receiver_independent_precursor01/pulse1408_hot.json": {
+      "sha256": "1fe133927a18c2349552f26009ec3150d3d147225d945a9b423d2ab998af7f70",
+      "input_sha256": "90ea3ed6e4ff16edea7bc798c406b383529f012cd2617b64209375fa2f66647e",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/pulse1408_hot_guard"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1408_back.json": {
+      "sha256": "3f94feef2552e0aefcea7717488a71570f47f6be38e744b720cf4a588b636310",
+      "input_sha256": "a31a50bddabb09d3975c634fff8a5f599785f878481c6db1fd6bf48786ad3961",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/pulse1408_back_guard"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1536_hot.json": {
+      "sha256": "40a7021bcca14ad8b1de879ed30a1324bac67c410689a25547dbdb5d009c6932",
+      "input_sha256": "90ea3ed6e4ff16edea7bc798c406b383529f012cd2617b64209375fa2f66647e",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/pulse1536_hot_guard"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1536_back.json": {
+      "sha256": "41a8a9e784ac9ca6ba37270873b91043fbf9af40c7fd59d579d14f389e213872",
+      "input_sha256": "6bdaf0bc944ce65b8c3789e3ba048cd47936b616a573de0e596e2653095cef9c",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/pulse1536_back_guard"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1664_hot.json": {
+      "sha256": "c552230a4865a8cff04f9ebfeea62c9bd1d0265dbed57cd46f2690aa6f9d13de",
+      "input_sha256": "90ea3ed6e4ff16edea7bc798c406b383529f012cd2617b64209375fa2f66647e",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/pulse1664_hot_guard"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1664_back.json": {
+      "sha256": "075f12daf4a704b32cebf2129a80187891bba4b69882fa7c4356ce2a6927277c",
+      "input_sha256": "9b5e38a5c109e4b57f980106161326f18e864df926647f3384b96dc1f2549e29",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/pulse1664_back_guard"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardA_zero.json": {
+      "sha256": "5631afe61a531a39484f30831c1d477cd62faaa45e40a4abe9c65041e94eb95b",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardA",
+      "parameters": {
+        "name": "standardA_zero",
+        "history": 4,
+        "label": "zero",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardA_gp.json": {
+      "sha256": "9618d87dc6be71a6cf42a86c3386b719afbb015456a380c9d62b8b29610e1442",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardA",
+      "parameters": {
+        "name": "standardA_gp",
+        "history": 4,
+        "label": "gp",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0.02,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardA_gm.json": {
+      "sha256": "848a5e4fc676b346d8c7f47bba06476479b4ef96e7371756583e34d2d525e2bb",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardA",
+      "parameters": {
+        "name": "standardA_gm",
+        "history": 4,
+        "label": "gm",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": -0.02,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardA_hp.json": {
+      "sha256": "3a6677cb25ff5d056d558bd39bb6c3c0cfb733f8e2a6a130ddc73c28bcf72983",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardA",
+      "parameters": {
+        "name": "standardA_hp",
+        "history": 4,
+        "label": "hp",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0.01,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardA_hm.json": {
+      "sha256": "409998e5427a465a1d9b5f050dc0029465e5a3f9f6a350f8b193d9dcd08853f7",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardA",
+      "parameters": {
+        "name": "standardA_hm",
+        "history": 4,
+        "label": "hm",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": -0.01,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardA_pp.json": {
+      "sha256": "f192a13a558c8f39899a06c1accf25ba13b77998d41b76c66d28696d7537c08a",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardA",
+      "parameters": {
+        "name": "standardA_pp",
+        "history": 4,
+        "label": "pp",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": 0.25,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardA_pm.json": {
+      "sha256": "4e9e4bbdff232c72717251a35008dd5e6a64d5b395b9afc860249334a7853ea5",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardA",
+      "parameters": {
+        "name": "standardA_pm",
+        "history": 4,
+        "label": "pm",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": -0.25,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardB_zero.json": {
+      "sha256": "3351b928541599f1fc6fa57f2d221553371c720c43cdb95b61c7fb69089a0d7f",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardB",
+      "parameters": {
+        "name": "standardB_zero",
+        "history": 4,
+        "label": "zero",
+        "seed": 22441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardB_gp.json": {
+      "sha256": "4dcfd5d19f43347bbe5dd0f5cc6db957d2e7df371defc09ea4ef1396ad45273f",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardB",
+      "parameters": {
+        "name": "standardB_gp",
+        "history": 4,
+        "label": "gp",
+        "seed": 22441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0.02,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardB_gm.json": {
+      "sha256": "0128aa4355b64b896e0f7bba0eed34a2e8d57632e1da8cba68dc634081028ddd",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardB",
+      "parameters": {
+        "name": "standardB_gm",
+        "history": 4,
+        "label": "gm",
+        "seed": 22441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": -0.02,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardB_hp.json": {
+      "sha256": "5142d5289e369f73eaa38066240b5c6336266f3993b9029db391a39ff88d6aae",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardB",
+      "parameters": {
+        "name": "standardB_hp",
+        "history": 4,
+        "label": "hp",
+        "seed": 22441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0.01,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardB_hm.json": {
+      "sha256": "47636b885a57714d0ff4bcad4586ed4d2743a5bd0d98fd009603991423a2d89e",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardB",
+      "parameters": {
+        "name": "standardB_hm",
+        "history": 4,
+        "label": "hm",
+        "seed": 22441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": -0.01,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardB_pp.json": {
+      "sha256": "2afb19388abf551f723d9839b6ab4cae21e6b677c0f0779aff2ea2318fce19c3",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardB",
+      "parameters": {
+        "name": "standardB_pp",
+        "history": 4,
+        "label": "pp",
+        "seed": 22441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": 0.25,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/standardB_pm.json": {
+      "sha256": "162475b819a1171672679646ce52c1c7fc281efa65eea9ab18f65fab1a2d2279",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_standardB",
+      "parameters": {
+        "name": "standardB_pm",
+        "history": 4,
+        "label": "pm",
+        "seed": 22441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": -0.25,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_dt_zero.json": {
+      "sha256": "4a8b578082aea871c70b62ae54c5c3db69b75a079aecd5461223af58633b7960",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_dt",
+      "parameters": {
+        "name": "half_dt_zero",
+        "history": 4,
+        "label": "zero",
+        "seed": 21441,
+        "dt": 0.002,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_dt_gp.json": {
+      "sha256": "118cdf45156a49beffc8d51eb67ac13ca21c6776804c23d678a699e7009665a3",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_dt",
+      "parameters": {
+        "name": "half_dt_gp",
+        "history": 4,
+        "label": "gp",
+        "seed": 21441,
+        "dt": 0.002,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0.02,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_dt_gm.json": {
+      "sha256": "af31f524d802c12eabea76aa6805d8f2dcf17e45f31c39089a4c1f5d2a0a8b85",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_dt",
+      "parameters": {
+        "name": "half_dt_gm",
+        "history": 4,
+        "label": "gm",
+        "seed": 21441,
+        "dt": 0.002,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": -0.02,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_dt_hp.json": {
+      "sha256": "2ef3dabbf321387b58f92d6e550f534cc9e502e819d82bf4501dbd7f6a47814e",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_dt",
+      "parameters": {
+        "name": "half_dt_hp",
+        "history": 4,
+        "label": "hp",
+        "seed": 21441,
+        "dt": 0.002,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0.01,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_dt_hm.json": {
+      "sha256": "f02db402892e345ca3a707d1fdffc874d7ca28e1a1bb7c2a390ed645e0f025bf",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_dt",
+      "parameters": {
+        "name": "half_dt_hm",
+        "history": 4,
+        "label": "hm",
+        "seed": 21441,
+        "dt": 0.002,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": -0.01,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_dt_pp.json": {
+      "sha256": "4a78c188f070cf7363eeb4f65d59d1690bd14ec3fc9b2b2a602727e79f6397c8",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_dt",
+      "parameters": {
+        "name": "half_dt_pp",
+        "history": 4,
+        "label": "pp",
+        "seed": 21441,
+        "dt": 0.002,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": 0.25,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_dt_pm.json": {
+      "sha256": "2d2e620b88a0026b3638d12811845558e87a592a639f1297990cdbdaf69f171d",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_dt",
+      "parameters": {
+        "name": "half_dt_pm",
+        "history": 4,
+        "label": "pm",
+        "seed": 21441,
+        "dt": 0.002,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": -0.25,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 1.0
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_controller_zero.json": {
+      "sha256": "7ad48fa612ead44a86adf379532ea4491ff6453be9f6eaea72df572a5a3b7f5d",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_controller",
+      "parameters": {
+        "name": "half_controller_zero",
+        "history": 4,
+        "label": "zero",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 0.5
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_controller_gp.json": {
+      "sha256": "0b6243502b557dbd0a80e430f57a6e9b6541901eda5717221bf1bd11f6aef0d5",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_controller",
+      "parameters": {
+        "name": "half_controller_gp",
+        "history": 4,
+        "label": "gp",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0.02,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 0.5
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_controller_gm.json": {
+      "sha256": "5b5fdfb73e1aca0281910f57f7f5ae8400e7d5a7584496a1baddda60410b1822",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_controller",
+      "parameters": {
+        "name": "half_controller_gm",
+        "history": 4,
+        "label": "gm",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": -0.02,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 0.5
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_controller_hp.json": {
+      "sha256": "15f06201f56fc8a582a6571d1a896a9775ee01e4c85cea55d4cb286da5e288e7",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_controller",
+      "parameters": {
+        "name": "half_controller_hp",
+        "history": 4,
+        "label": "hp",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0.01,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 0.5
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_controller_hm.json": {
+      "sha256": "4747223822106cc00607c673f013e9b44d6a83892fd58b61b4ccd5a7350f2b97",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_controller",
+      "parameters": {
+        "name": "half_controller_hm",
+        "history": 4,
+        "label": "hm",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": -0.01,
+        "p_ext": 0,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 0.5
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_controller_pp.json": {
+      "sha256": "2e974b4b6ab9c18b0b17348367dfb688467bf5431bf2dedca6a197e570df3508",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_controller",
+      "parameters": {
+        "name": "half_controller_pp",
+        "history": 4,
+        "label": "pp",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": 0.25,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 0.5
+      }
+    },
+    "_scratch/s11c/receiver_independent_precursor01/runs/half_controller_pm.json": {
+      "sha256": "099c3f16718ac66223bac82b9af87ff87b58694a249b183aa1adefe13fecaac4",
+      "input_sha256": "3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4",
+      "guard": "_scratch/s11c/receiver_independent_precursor01/guard_half_controller",
+      "parameters": {
+        "name": "half_controller_pm",
+        "history": 4,
+        "label": "pm",
+        "seed": 21441,
+        "dt": 0.004,
+        "warm": 48.88171243122866,
+        "duration": 48.88171243122866,
+        "strain": 0,
+        "p_ext": -0.25,
+        "axis": 1,
+        "temperature": 1.088,
+        "multiplier": 0.5
+      }
+    }
+  },
+  "verified_commands": {
+    "_scratch/s11c/receiver_independent_precursor01/pulse1408_hot_guard": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1408_hot_guard",
+        "--",
+        "_scratch/s11c/receiver_preparation_transfer01/receiver",
+        "_scratch/s11c/receiver_preparation_transfer01/inputs/history141.txt",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1408_hot.json",
+        "21841",
+        "0.004",
+        "48.88171243122866",
+        "48.88171243122866",
+        "0",
+        "0.08",
+        "1",
+        "0",
+        "1",
+        "1.408"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 554 of 611 log-volume proposals accepted\n",
+      "stdout_sha256": "dfd5105ec691b7cde4a81f876655915744a9cf079fa4f4fe56619ed77661ebd0"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1408_back_guard": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1408_back_guard",
+        "--",
+        "_scratch/s11c/receiver_preparation_transfer01/receiver",
+        "_scratch/s11c/receiver_independent_precursor01/inputs/history10.txt",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1408_back.json",
+        "31741",
+        "0.004",
+        "48.88171243122866",
+        "48.88171243122866",
+        "0",
+        "0.08",
+        "1",
+        "0",
+        "1",
+        "1.28"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 543 of 611 log-volume proposals accepted\n",
+      "stdout_sha256": "0427a279c1daf9f09bb38c0f1fdbbbc244f888b5376d9c0e3d3fad0beeb13d00"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1408_export": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1408_export",
+        "--",
+        "/usr/bin/python3",
+        "_scratch/s11c/receiver_preparation_transfer01/source/mouth_receiver_branches.py",
+        "single",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1408_hot.json",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1408_hot_guard",
+        "10",
+        "_scratch/s11c/receiver_independent_precursor01/inputs",
+        "--expected-sha256",
+        "1fe133927a18c2349552f26009ec3150d3d147225d945a9b423d2ab998af7f70"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"history\": 10, \"source\": \"_scratch/s11c/receiver_independent_precursor01/pulse1408_hot.json\", \"source_sha256\": \"1fe133927a18c2349552f26009ec3150d3d147225d945a9b423d2ab998af7f70\", \"file\": \"_scratch/s11c/receiver_independent_precursor01/inputs/history10.txt\", \"export_sha256\": \"a31a50bddabb09d3975c634fff8a5f599785f878481c6db1fd6bf48786ad3961\", \"source_temperature\": 1.408, \"volume_mobility\": 0.00022797992459479204, \"axis\": \"lab_xw\", \"prior_history\": 141, \"prior_seed\": 21841, \"source_guard\": \"_scratch/s11c/receiver_independent_precursor01/pulse1408_hot_guard\", \"checked_output_sha256\": \"1fe133927a18c2349552f26009ec3150d3d147225d945a9b423d2ab998af7f70\", \"source_input_sha256\": \"90ea3ed6e4ff16edea7bc798c406b383529f012cd2617b64209375fa2f66647e\", \"native_sha256\": \"d73e88b990450367959eb23704f762afd3d062de07c7fea62c2203b9ee2e26e3\", \"prior_strain\": 0, \"prior_pressure\": 0, \"recomputed_energy_per_site\": -4.939955064128445, \"recomputed_pressure\": -0.05144121884898532, \"prior_measured_kinetic_temperature\": 1.3013599510076632, \"coordinate_transfer\": \"exact Cartesian endpoint; velocities resampled on launch\"}\n",
+      "stdout_sha256": "7485641e7b2ef213918dc7c08969ca50be9988325db0d4ba6b3c3d02839e9c10"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1536_hot_guard": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1536_hot_guard",
+        "--",
+        "_scratch/s11c/receiver_preparation_transfer01/receiver",
+        "_scratch/s11c/receiver_preparation_transfer01/inputs/history141.txt",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1536_hot.json",
+        "21841",
+        "0.004",
+        "48.88171243122866",
+        "48.88171243122866",
+        "0",
+        "0.08",
+        "1",
+        "0",
+        "1",
+        "1.536"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 532 of 611 log-volume proposals accepted\n",
+      "stdout_sha256": "b478a9a16e3c435ede5247e6f1e85a411ae28195a255e556809269eac197efea"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1536_back_guard": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1536_back_guard",
+        "--",
+        "_scratch/s11c/receiver_preparation_transfer01/receiver",
+        "_scratch/s11c/receiver_independent_precursor01/inputs/history11.txt",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1536_back.json",
+        "31741",
+        "0.004",
+        "48.88171243122866",
+        "48.88171243122866",
+        "0",
+        "0.08",
+        "1",
+        "0",
+        "1",
+        "1.28"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 566 of 611 log-volume proposals accepted\n",
+      "stdout_sha256": "897638f1aaaf941794ab8e8b896e6d14450c22b3adbac1334b4d236b0b0a53cd"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1536_export": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1536_export",
+        "--",
+        "/usr/bin/python3",
+        "_scratch/s11c/receiver_preparation_transfer01/source/mouth_receiver_branches.py",
+        "single",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1536_hot.json",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1536_hot_guard",
+        "11",
+        "_scratch/s11c/receiver_independent_precursor01/inputs",
+        "--expected-sha256",
+        "40a7021bcca14ad8b1de879ed30a1324bac67c410689a25547dbdb5d009c6932"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"history\": 11, \"source\": \"_scratch/s11c/receiver_independent_precursor01/pulse1536_hot.json\", \"source_sha256\": \"40a7021bcca14ad8b1de879ed30a1324bac67c410689a25547dbdb5d009c6932\", \"file\": \"_scratch/s11c/receiver_independent_precursor01/inputs/history11.txt\", \"export_sha256\": \"6bdaf0bc944ce65b8c3789e3ba048cd47936b616a573de0e596e2653095cef9c\", \"source_temperature\": 1.536, \"volume_mobility\": 0.00022797992459479204, \"axis\": \"lab_xw\", \"prior_history\": 141, \"prior_seed\": 21841, \"source_guard\": \"_scratch/s11c/receiver_independent_precursor01/pulse1536_hot_guard\", \"checked_output_sha256\": \"40a7021bcca14ad8b1de879ed30a1324bac67c410689a25547dbdb5d009c6932\", \"source_input_sha256\": \"90ea3ed6e4ff16edea7bc798c406b383529f012cd2617b64209375fa2f66647e\", \"native_sha256\": \"d73e88b990450367959eb23704f762afd3d062de07c7fea62c2203b9ee2e26e3\", \"prior_strain\": 0, \"prior_pressure\": 0, \"recomputed_energy_per_site\": -3.413050611485963, \"recomputed_pressure\": 0.3984754541093619, \"prior_measured_kinetic_temperature\": 1.6459198654237879, \"coordinate_transfer\": \"exact Cartesian endpoint; velocities resampled on launch\"}\n",
+      "stdout_sha256": "1ed8e7f4c00ff05b95bb63d5d290bf7ae733dc891de8150ea1d1625a20af1528"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1664_hot_guard": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1664_hot_guard",
+        "--",
+        "_scratch/s11c/receiver_preparation_transfer01/receiver",
+        "_scratch/s11c/receiver_preparation_transfer01/inputs/history141.txt",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1664_hot.json",
+        "21841",
+        "0.004",
+        "48.88171243122866",
+        "48.88171243122866",
+        "0",
+        "0.08",
+        "1",
+        "0",
+        "1",
+        "1.664"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 535 of 611 log-volume proposals accepted\n",
+      "stdout_sha256": "d1a1641b33818b08da505407432d66f014ae497690e47309eeb0768307763155"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1664_back_guard": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1664_back_guard",
+        "--",
+        "_scratch/s11c/receiver_preparation_transfer01/receiver",
+        "_scratch/s11c/receiver_independent_precursor01/inputs/history12.txt",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1664_back.json",
+        "31741",
+        "0.004",
+        "48.88171243122866",
+        "48.88171243122866",
+        "0",
+        "0.08",
+        "1",
+        "0",
+        "1",
+        "1.28"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 530 of 611 log-volume proposals accepted\n",
+      "stdout_sha256": "f78c6e2a89560d607483af40fc646e3f9dd0f0c770a6bdb55b86afea4b4002ea"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/pulse1664_export": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1664_export",
+        "--",
+        "/usr/bin/python3",
+        "_scratch/s11c/receiver_preparation_transfer01/source/mouth_receiver_branches.py",
+        "single",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1664_hot.json",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1664_hot_guard",
+        "12",
+        "_scratch/s11c/receiver_independent_precursor01/inputs",
+        "--expected-sha256",
+        "c552230a4865a8cff04f9ebfeea62c9bd1d0265dbed57cd46f2690aa6f9d13de"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"history\": 12, \"source\": \"_scratch/s11c/receiver_independent_precursor01/pulse1664_hot.json\", \"source_sha256\": \"c552230a4865a8cff04f9ebfeea62c9bd1d0265dbed57cd46f2690aa6f9d13de\", \"file\": \"_scratch/s11c/receiver_independent_precursor01/inputs/history12.txt\", \"export_sha256\": \"9b5e38a5c109e4b57f980106161326f18e864df926647f3384b96dc1f2549e29\", \"source_temperature\": 1.664, \"volume_mobility\": 0.00022797992459479204, \"axis\": \"lab_xw\", \"prior_history\": 141, \"prior_seed\": 21841, \"source_guard\": \"_scratch/s11c/receiver_independent_precursor01/pulse1664_hot_guard\", \"checked_output_sha256\": \"c552230a4865a8cff04f9ebfeea62c9bd1d0265dbed57cd46f2690aa6f9d13de\", \"source_input_sha256\": \"90ea3ed6e4ff16edea7bc798c406b383529f012cd2617b64209375fa2f66647e\", \"native_sha256\": \"d73e88b990450367959eb23704f762afd3d062de07c7fea62c2203b9ee2e26e3\", \"prior_strain\": 0, \"prior_pressure\": 0, \"recomputed_energy_per_site\": -2.3389567179779966, \"recomputed_pressure\": 0.669367727807151, \"prior_measured_kinetic_temperature\": 1.7619847176366172, \"coordinate_transfer\": \"exact Cartesian endpoint; velocities resampled on launch\"}\n",
+      "stdout_sha256": "0ad7bb7041319c6613210160c9791288d407c7790048839f208fae3a1e9172dd"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/selected_export": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/selected_export",
+        "--",
+        "/usr/bin/python3",
+        "_scratch/s11c/receiver_preparation_transfer01/source/mouth_receiver_branches.py",
+        "single",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1408_back.json",
+        "_scratch/s11c/receiver_independent_precursor01/pulse1408_back_guard",
+        "4",
+        "_scratch/s11c/receiver_independent_precursor01/inputs",
+        "--expected-sha256",
+        "3f94feef2552e0aefcea7717488a71570f47f6be38e744b720cf4a588b636310"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"history\": 4, \"source\": \"_scratch/s11c/receiver_independent_precursor01/pulse1408_back.json\", \"source_sha256\": \"3f94feef2552e0aefcea7717488a71570f47f6be38e744b720cf4a588b636310\", \"file\": \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"export_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"source_temperature\": 1.28, \"volume_mobility\": 0.00022797992459479204, \"axis\": \"lab_xw\", \"prior_history\": 10, \"prior_seed\": 31741, \"source_guard\": \"_scratch/s11c/receiver_independent_precursor01/pulse1408_back_guard\", \"checked_output_sha256\": \"3f94feef2552e0aefcea7717488a71570f47f6be38e744b720cf4a588b636310\", \"source_input_sha256\": \"a31a50bddabb09d3975c634fff8a5f599785f878481c6db1fd6bf48786ad3961\", \"native_sha256\": \"d73e88b990450367959eb23704f762afd3d062de07c7fea62c2203b9ee2e26e3\", \"prior_strain\": 0, \"prior_pressure\": 0, \"recomputed_energy_per_site\": -5.596800028201332, \"recomputed_pressure\": -1.20801872140022, \"prior_measured_kinetic_temperature\": 1.183224666137835, \"coordinate_transfer\": \"exact Cartesian endpoint; velocities resampled on launch\"}\n",
+      "stdout_sha256": "eee0d9a785f2f4d9bf992472841ff9b75c882b8f1ad1ee474e7fea70dad1bd1a"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/classify": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/classify",
+        "--",
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_receiver_precursor_match.py",
+        "_scratch/s11c/receiver_independent_precursor01"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"condition\": \"pulse1408\", \"excursion\": 1.408, \"density\": 1.0669073662720618, \"relative_density_change\": 0.026706517696119203, \"min_cluster\": 128, \"original_absent\": 0.9283216783216783, \"rms\": 6.143412863470896, \"pre_peak\": 0.08501933434679486, \"end_peak\": 0.07881593707519778, \"matches\": true, \"sha256\": \"3f94feef2552e0aefcea7717488a71570f47f6be38e744b720cf4a588b636310\"}\n{\"condition\": \"pulse1536\", \"excursion\": 1.536, \"density\": 0.5905920302218295, \"relative_density_change\": 0.0001903765224720022, \"min_cluster\": 127, \"original_absent\": 0.9622093023255814, \"rms\": 9.488982950512373, \"pre_peak\": 0.07342292922394918, \"end_peak\": 0.07144730009936208, \"matches\": false, \"sha256\": \"41a8a9e784ac9ca6ba37270873b91043fbf9af40c7fd59d579d14f389e213872\"}\n{\"condition\": \"pulse1664\", \"excursion\": 1.664, \"density\": 0.1768657142644115, \"relative_density_change\": -0.19899571812446593, \"min_cluster\": 43, \"original_absent\": 0.9898477157360406, \"rms\": 12.434373257761994, \"pre_peak\": 0.06809118603618944, \"end_peak\": null, \"matches\": false, \"sha256\": \"075f12daf4a704b32cebf2129a80187891bba4b69882fa7c4356ce2a6927277c\"}\n",
+      "stdout_sha256": "b2f3c50f04d87ce12d71c83087b825a5c26621178d150381f91ce9119dfe2746"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/primary": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/primary",
+        "--",
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_receiver_matched_response.py",
+        "_scratch/s11c/receiver_independent_precursor01",
+        "_scratch/s11c/receiver_independent_precursor01/response.json"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"group\": \"standardA\", \"prepared_peak\": 0.111833619735907, \"force\": {\"full\": {\"prompt\": 33.69267439728573, \"late\": 1.786490962526356, \"fraction\": 0.05302312726680656}, \"half\": {\"prompt\": 33.675545768473185, \"late\": -11.396776150568364, \"fraction\": -0.33842884771411624}}, \"compliance\": 0.1124322436315488, \"number_passing_structure\": 7, \"density_range\": [1.2281618857060563, 1.302548515548712], \"peak_range\": [0.08000259213305595, 0.11368918204541302]}\n{\"group\": \"standardB\", \"prepared_peak\": 0.09237956742151675, \"force\": {\"full\": {\"prompt\": 34.99255588792211, \"late\": 4.543395336098972, \"fraction\": 0.12983891061433303}, \"half\": {\"prompt\": 34.97482778106469, \"late\": -1.5843058805976487, \"fraction\": -0.04529846123946861}}, \"compliance\": 0.09372723454297827, \"number_passing_structure\": 7, \"density_range\": [1.2608806789679359, 1.3283988764906514], \"peak_range\": [0.07331166494389718, 0.09441990142549242]}\n{\"group\": \"half_dt\", \"prepared_peak\": 0.10073671714209688, \"force\": {\"full\": {\"prompt\": 30.478645347751105, \"late\": -0.8922751188247705, \"fraction\": -0.029275419187572517}, \"half\": {\"prompt\": 30.463805056469717, \"late\": -3.8985583260775036, \"fraction\": -0.12797345304865493}}, \"compliance\": 0.1507821425018836, \"number_passing_structure\": 7, \"density_range\": [1.2067036717526791, 1.3040317922182292], \"peak_range\": [0.07680606046021939, 0.09969437670848674]}\n{\"group\": \"half_controller\", \"prepared_peak\": 0.10357787477144209, \"force\": {\"full\": {\"prompt\": 30.863784532003436, \"late\": 1.8449815986571416, \"fraction\": 0.05977820369838423}, \"half\": {\"prompt\": 30.842809371185965, \"late\": 3.341591067392131, \"fraction\": 0.10834262946597593}}, \"compliance\": 0.10799483353918582, \"number_passing_structure\": 7, \"density_range\": [1.213944564793423, 1.2815977985266966], \"peak_range\": [0.08893916252772892, 0.13184974963982724]}\n",
+      "stdout_sha256": "ce87249214de50d86e992e96cf37b47dc0efa511c050a1a17eec2ee97ed981db"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/guard_standardA": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/guard_standardA",
+        "--",
+        "/usr/bin/python3",
+        "_scratch/s11c/receiver_independent_precursor01/history.py",
+        "standardA"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"task\": \"standardA_zero\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardA_zero.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 538 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"5631afe61a531a39484f30831c1d477cd62faaa45e40a4abe9c65041e94eb95b\"}\n{\"task\": \"standardA_gp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardA_gp.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0.02\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 540 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"9618d87dc6be71a6cf42a86c3386b719afbb015456a380c9d62b8b29610e1442\"}\n{\"task\": \"standardA_gm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardA_gm.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"-0.02\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 541 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"848a5e4fc676b346d8c7f47bba06476479b4ef96e7371756583e34d2d525e2bb\"}\n{\"task\": \"standardA_hp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardA_hp.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0.01\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 542 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"3a6677cb25ff5d056d558bd39bb6c3c0cfb733f8e2a6a130ddc73c28bcf72983\"}\n{\"task\": \"standardA_hm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardA_hm.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"-0.01\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 540 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"409998e5427a465a1d9b5f050dc0029465e5a3f9f6a350f8b193d9dcd08853f7\"}\n{\"task\": \"standardA_pp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardA_pp.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"1.0\", \"0.25\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 545 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"f192a13a558c8f39899a06c1accf25ba13b77998d41b76c66d28696d7537c08a\"}\n{\"task\": \"standardA_pm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardA_pm.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"1.0\", \"-0.25\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 529 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"4e9e4bbdff232c72717251a35008dd5e6a64d5b395b9afc860249334a7853ea5\"}\n",
+      "stdout_sha256": "9f029032d309889cf7bb64ab5a12169c7c0e3dbe5d4f1f901e60c67383409383"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/guard_standardB": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/guard_standardB",
+        "--",
+        "/usr/bin/python3",
+        "_scratch/s11c/receiver_independent_precursor01/history.py",
+        "standardB"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"task\": \"standardB_zero\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardB_zero.json\", \"22441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 531 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"3351b928541599f1fc6fa57f2d221553371c720c43cdb95b61c7fb69089a0d7f\"}\n{\"task\": \"standardB_gp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardB_gp.json\", \"22441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0.02\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 540 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"4dcfd5d19f43347bbe5dd0f5cc6db957d2e7df371defc09ea4ef1396ad45273f\"}\n{\"task\": \"standardB_gm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardB_gm.json\", \"22441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"-0.02\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 535 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"0128aa4355b64b896e0f7bba0eed34a2e8d57632e1da8cba68dc634081028ddd\"}\n{\"task\": \"standardB_hp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardB_hp.json\", \"22441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0.01\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 528 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"5142d5289e369f73eaa38066240b5c6336266f3993b9029db391a39ff88d6aae\"}\n{\"task\": \"standardB_hm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardB_hm.json\", \"22441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"-0.01\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 517 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"47636b885a57714d0ff4bcad4586ed4d2743a5bd0d98fd009603991423a2d89e\"}\n{\"task\": \"standardB_pp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardB_pp.json\", \"22441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"1.0\", \"0.25\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 533 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"2afb19388abf551f723d9839b6ab4cae21e6b677c0f0779aff2ea2318fce19c3\"}\n{\"task\": \"standardB_pm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/standardB_pm.json\", \"22441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"1.0\", \"-0.25\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 528 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"162475b819a1171672679646ce52c1c7fc281efa65eea9ab18f65fab1a2d2279\"}\n",
+      "stdout_sha256": "646efd48a7ddfb878f4b87aabfe67ad2b6539b4fa1e778908e2e970f024ef2ee"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/guard_half_dt": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/guard_half_dt",
+        "--",
+        "/usr/bin/python3",
+        "_scratch/s11c/receiver_independent_precursor01/history.py",
+        "half_dt"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"task\": \"half_dt_zero\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_dt_zero.json\", \"21441\", \"0.002\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 24441 zero-pressure equilibration and 24441 measured inertial steps; 545 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"4a8b578082aea871c70b62ae54c5c3db69b75a079aecd5461223af58633b7960\"}\n{\"task\": \"half_dt_gp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_dt_gp.json\", \"21441\", \"0.002\", \"48.88171243122866\", \"48.88171243122866\", \"0.02\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 24441 zero-pressure equilibration and 24441 measured inertial steps; 540 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"118cdf45156a49beffc8d51eb67ac13ca21c6776804c23d678a699e7009665a3\"}\n{\"task\": \"half_dt_gm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_dt_gm.json\", \"21441\", \"0.002\", \"48.88171243122866\", \"48.88171243122866\", \"-0.02\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 24441 zero-pressure equilibration and 24441 measured inertial steps; 540 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"af31f524d802c12eabea76aa6805d8f2dcf17e45f31c39089a4c1f5d2a0a8b85\"}\n{\"task\": \"half_dt_hp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_dt_hp.json\", \"21441\", \"0.002\", \"48.88171243122866\", \"48.88171243122866\", \"0.01\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 24441 zero-pressure equilibration and 24441 measured inertial steps; 530 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"2ef3dabbf321387b58f92d6e550f534cc9e502e819d82bf4501dbd7f6a47814e\"}\n{\"task\": \"half_dt_hm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_dt_hm.json\", \"21441\", \"0.002\", \"48.88171243122866\", \"48.88171243122866\", \"-0.01\", \"0.08\", \"1.0\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 24441 zero-pressure equilibration and 24441 measured inertial steps; 549 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"f02db402892e345ca3a707d1fdffc874d7ca28e1a1bb7c2a390ed645e0f025bf\"}\n{\"task\": \"half_dt_pp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_dt_pp.json\", \"21441\", \"0.002\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"1.0\", \"0.25\", \"1\", \"1.088\"], \"stdout\": \"completed 24441 zero-pressure equilibration and 24441 measured inertial steps; 539 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"4a78c188f070cf7363eeb4f65d59d1690bd14ec3fc9b2b2a602727e79f6397c8\"}\n{\"task\": \"half_dt_pm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_dt_pm.json\", \"21441\", \"0.002\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"1.0\", \"-0.25\", \"1\", \"1.088\"], \"stdout\": \"completed 24441 zero-pressure equilibration and 24441 measured inertial steps; 538 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"2d2e620b88a0026b3638d12811845558e87a592a639f1297990cdbdaf69f171d\"}\n",
+      "stdout_sha256": "f2636ecc87762b96fb4f140a285ac2ddfe42da9aef74b406e91ead6161c94f5c"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/guard_half_controller": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_independent_precursor01/guard_half_controller",
+        "--",
+        "/usr/bin/python3",
+        "_scratch/s11c/receiver_independent_precursor01/history.py",
+        "half_controller"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"task\": \"half_controller_zero\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_controller_zero.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"0.5\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 562 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"7ad48fa612ead44a86adf379532ea4491ff6453be9f6eaea72df572a5a3b7f5d\"}\n{\"task\": \"half_controller_gp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_controller_gp.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0.02\", \"0.08\", \"0.5\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 555 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"0b6243502b557dbd0a80e430f57a6e9b6541901eda5717221bf1bd11f6aef0d5\"}\n{\"task\": \"half_controller_gm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_controller_gm.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"-0.02\", \"0.08\", \"0.5\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 567 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"5b5fdfb73e1aca0281910f57f7f5ae8400e7d5a7584496a1baddda60410b1822\"}\n{\"task\": \"half_controller_hp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_controller_hp.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0.01\", \"0.08\", \"0.5\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 561 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"15f06201f56fc8a582a6571d1a896a9775ee01e4c85cea55d4cb286da5e288e7\"}\n{\"task\": \"half_controller_hm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_controller_hm.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"-0.01\", \"0.08\", \"0.5\", \"0\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 564 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"4747223822106cc00607c673f013e9b44d6a83892fd58b61b4ccd5a7350f2b97\"}\n{\"task\": \"half_controller_pp\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_controller_pp.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"0.5\", \"0.25\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 571 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"2e974b4b6ab9c18b0b17348367dfb688467bf5431bf2dedca6a197e570df3508\"}\n{\"task\": \"half_controller_pm\", \"command\": [\"_scratch/s11c/receiver_preparation_transfer01/receiver\", \"_scratch/s11c/receiver_independent_precursor01/inputs/history4.txt\", \"_scratch/s11c/receiver_independent_precursor01/runs/half_controller_pm.json\", \"21441\", \"0.004\", \"48.88171243122866\", \"48.88171243122866\", \"0\", \"0.08\", \"0.5\", \"-0.25\", \"1\", \"1.088\"], \"stdout\": \"completed 12221 zero-pressure equilibration and 12221 measured inertial steps; 558 of 611 log-volume proposals accepted\\n\", \"input_sha256\": \"3042199b0b46c49cb10070ceff90ee07466363c41331ba47ef64135af8a6d0a4\", \"result_sha256\": \"099c3f16718ac66223bac82b9af87ff87b58694a249b183aa1adefe13fecaac4\"}\n",
+      "stdout_sha256": "6da88b908b476e79ac6f7cd0cecd2898ff4fd8ad8f6605705487133234670936"
+    },
+    "_scratch/s11c/receiver_new_geometry_referee01/verify_guard": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "s11c",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/receiver_new_geometry_referee01/verify_guard",
+        "--",
+        "python3",
+        "_scratch/s11c/receiver_new_geometry_referee01/verify.py",
+        "_scratch/s11c/receiver_independent_precursor01",
+        "_scratch/s11c/receiver_new_geometry_referee01/verify.json"
+      ],
+      "child_exit": 0,
+      "literal_stdout": "{\"classification\": {\"pulse1408\": {\"token\": \"pulse1408\", \"matches\": true, \"rho\": 1.0669073662720618, \"rms\": 6.143412863470896, \"lost\": 0.9283216783216783, \"warm\": 0.08501933434679512, \"end\": 0.07881593707519816, \"drift\": 0.026706517696119203, \"min_cluster\": 128}, \"pulse1536\": {\"token\": \"pulse1536\", \"matches\": false, \"rho\": 0.5905920302218294, \"rms\": 9.488982950512373, \"lost\": 0.9622093023255814, \"warm\": 0.07342292922394934, \"end\": 0.07144730009936225, \"drift\": 0.00019037652247178016, \"min_cluster\": 127}, \"pulse1664\": {\"token\": \"pulse1664\", \"matches\": false, \"rho\": 0.17686571426441147, \"rms\": 12.434373257761994, \"lost\": 0.9898477157360406, \"warm\": 0.06809118603619, \"end\": null, \"drift\": -0.19899571812446604, \"min_cluster\": 43}}, \"selected\": \"pulse1408\", \"precursor_endpoint_checks\": 12, \"max_precursor_tensor_error\": 1.1083800544042788e-11, \"physical_cases\": 28, \"blocks\": 448, \"state_evaluations\": 60, \"max_endpoint_tensor_error\": 2.8422819653428633e-11, \"fractions\": {\"standardA\": {\"full\": 0.05302312726680654, \"half\": -0.3384288477141162}, \"standardB\": {\"full\": 0.12983891061433303, \"half\": -0.04529846123946862}, \"half_dt\": {\"full\": -0.029275419187572524, \"half\": -0.12797345304865493}, \"half_controller\": {\"full\": 0.05977820369838423, \"half\": 0.10834262946597596}}, \"per_group\": {\"standardA\": {\"full_prompt\": 33.69267439728573, \"full_shear\": 1.7864909625263554, \"half_prompt\": 33.675545768473185, \"half_shear\": -11.39677615056836, \"compliance\": 0.1124322436315488, \"pressure_readback\": 0.7071413020385471, \"all_arms_qualified\": true}, \"standardB\": {\"full_prompt\": 34.99255588792211, \"full_shear\": 4.543395336098972, \"half_prompt\": 34.97482778106469, \"half_shear\": -1.584305880597649, \"compliance\": 0.09372723454297827, \"pressure_readback\": 0.44297125073518956, \"all_arms_qualified\": true}, \"half_dt\": {\"full_prompt\": 30.478645347751105, \"full_shear\": -0.8922751188247707, \"half_prompt\": 30.463805056469717, \"half_shear\": -3.8985583260775036, \"compliance\": 0.15078214250188182, \"pressure_readback\": 0.8050067787311768, \"all_arms_qualified\": true}, \"half_controller\": {\"full_prompt\": 30.863784532003436, \"full_shear\": 1.8449815986571416, \"half_prompt\": 30.842809371185965, \"half_shear\": 3.341591067392132, \"compliance\": 0.10799483353918582, \"pressure_readback\": 0.2714714241599013, \"all_arms_qualified\": true}}, \"per_case\": {\"standardA_zero\": {\"density\": 1.302548515548712, \"temperature\": 1.05594714307404, \"pressure\": -0.021156142635718193, \"log_volume\": 4.588395833493331, \"shear\": -0.07000450881709526, \"prompt\": 0.07161258021324693, \"density_ratio\": 1.0457656406096, \"min_cluster\": 128, \"lost\": 0.8748495788206979, \"rms\": 4.245066475540945, \"warm_peak\": 0.1118336197359076, \"post_peak\": 0.08888797528125428, \"post_four\": [0.08888797528125428, 0.06892383729870584, 0.06790981353522176, 0.06565068032174959], \"post_preselected\": [0.02425364014125013, 0.01951656619037003, 0.0010782477691236398, 0.02035046964420404], \"qualifies\": true}, \"standardA_gp\": {\"density\": 1.2688094305674111, \"temperature\": 1.081742040649824, \"pressure\": -0.035320711461206036, \"log_volume\": 4.6147878690352195, \"shear\": 0.1521891448306142, \"prompt\": 0.7465698975096544, \"density_ratio\": 1.0542162091122251, \"min_cluster\": 128, \"lost\": 0.8867699642431466, \"rms\": 4.561148503848812, \"warm_peak\": 0.1118336197359076, \"post_peak\": 0.08534036581426446, \"post_four\": [0.08534036581426446, 0.06560059402230542, 0.06556084874034904, 0.06468595009966151], \"post_preselected\": [0.015397897325792661, 0.021189307479290716, 0.021465034269942115, 0.04978765649240072], \"qualifies\": true}, \"standardA_gm\": {\"density\": 1.2514664475439539, \"temperature\": 1.0903381017954161, \"pressure\": -0.24768640876818224, \"log_volume\": 4.6280690306187715, \"shear\": 0.08072950632955997, \"prompt\": -0.6011370783817749, \"density_ratio\": 1.0361617802415095, \"min_cluster\": 128, \"lost\": 0.9095295536791315, \"rms\": 4.718457288842302, \"warm_peak\": 0.1118336197359076, \"post_peak\": 0.11368918204541316, \"post_four\": [0.11368918204541316, 0.07887535734143084, 0.0681581665535691, 0.0665101243285972], \"post_preselected\": [0.0064403460457723586, 0.0029955799695818614, 0.005934447666529318, 0.031309168069510396], \"qualifies\": true}, \"standardA_hp\": {\"density\": 1.2916129381361259, \"temperature\": 1.0819583902916512, \"pressure\": 0.028800372268017915, \"log_volume\": 4.596580697867221, \"shear\": -0.10864714348987191, \"prompt\": 0.40864433120856825, \"density_ratio\": 1.0467628661329968, \"min_cluster\": 128, \"lost\": 0.8970059880239521, \"rms\": 4.628602028885395, \"warm_peak\": 0.1118336197359076, \"post_peak\": 0.1093148017232537, \"post_four\": [0.1093148017232537, 0.07939650002594519, 0.0677543072730095, 0.06466411923433493], \"post_preselected\": [0.01641227764862503, 0.05526703914365956, 0.001411660150669173, 0.1093148017232537], \"qualifies\": true}, \"standardA_hm\": {\"density\": 1.257094930439424, \"temperature\": 1.1099615685829392, \"pressure\": 0.06527527621257177, \"log_volume\": 4.623526372436092, \"shear\": 0.11928837952149532, \"prompt\": -0.2648665841608955, \"density_ratio\": 1.0250714878709037, \"min_cluster\": 128, \"lost\": 0.8903614457831325, \"rms\": 4.476704756715564, \"warm_peak\": 0.1118336197359076, \"post_peak\": 0.09757933760014083, \"post_four\": [0.09757933760014083, 0.08686082940082882, 0.07077865550005752, 0.07003231683250566], \"post_preselected\": [0.002249925936386, 0.013112504795506089, 0.0010799582947649945, 0.00275899152331298], \"qualifies\": true}, \"standardA_pp\": {\"density\": 1.2991172485766662, \"temperature\": 1.110887516680319, \"pressure\": 0.23783017378678084, \"log_volume\": 4.59087385185892, \"shear\": -0.028425312263121564, \"prompt\": 0.07161258021324693, \"density_ratio\": 1.056545493445923, \"min_cluster\": 128, \"lost\": 0.8989169675090253, \"rms\": 4.275566740239423, \"warm_peak\": 0.1118336197359076, \"post_peak\": 0.09393138631938505, \"post_four\": [0.09393138631938505, 0.07970760439219318, 0.06345487048520553, 0.054331710781652665], \"post_preselected\": [0.039539904959429314, 0.005336224465579382, 0.009092884329945159, 0.004380800066177802], \"qualifies\": true}, \"standardA_pm\": {\"density\": 1.2281618857060566, \"temperature\": 1.0713516387243993, \"pressure\": -0.4693111282517662, \"log_volume\": 4.647089973674694, \"shear\": 0.02924768103042051, \"prompt\": 0.07161258021324693, \"density_ratio\": 1.0547489188252501, \"min_cluster\": 128, \"lost\": 0.8989169675090253, \"rms\": 5.041190768322489, \"warm_peak\": 0.1118336197359076, \"post_peak\": 0.08000259213305588, \"post_four\": [0.08000259213305588, 0.07266126132657293, 0.06723309907389186, 0.06657790724655696], \"post_preselected\": [0.0011574536330741902, 0.012415656310957177, 0.012718799650763562, 0.022090381946280577], \"qualifies\": true}, \"standardB_zero\": {\"density\": 1.265931024588061, \"temperature\": 1.0900281902384035, \"pressure\": -0.011944004704416753, \"log_volume\": 4.616388793390362, \"shear\": -0.09656044739551496, \"prompt\": -0.6101809464898998, \"density_ratio\": 1.0108035638670458, \"min_cluster\": 128, \"lost\": 0.9066834804539723, \"rms\": 4.466182010886325, \"warm_peak\": 0.09237956742151661, \"post_peak\": 0.0800855626115147, \"post_four\": [0.0800855626115147, 0.07649734051876866, 0.06821806619829791, 0.05799431465146743], \"post_preselected\": [0.006896848145458364, 0.013003204435623545, 0.01876398279726738, 0.04636471677521709], \"qualifies\": true}, \"standardB_gp\": {\"density\": 1.2631335618536277, \"temperature\": 1.0835302157381894, \"pressure\": -0.20712634167359226, \"log_volume\": 4.61878311927518, \"shear\": 0.09966829479912075, \"prompt\": 0.08628949672665227, \"density_ratio\": 1.0055312518996018, \"min_cluster\": 128, \"lost\": 0.8921319796954315, \"rms\": 4.723890762039172, \"warm_peak\": 0.09237956742151661, \"post_peak\": 0.08718789232024944, \"post_four\": [0.08718789232024944, 0.07901820539749226, 0.06254038222666639, 0.06211829808020705], \"post_preselected\": [0.001230520546273162, 0.021378828367779948, 0.012658209335946483, 0.015378866185957506], \"qualifies\": true}, \"standardB_gm\": {\"density\": 1.2923602534960466, \"temperature\": 1.090513358961878, \"pressure\": 0.18463386307009153, \"log_volume\": 4.59562465368652, \"shear\": -0.08206751864483816, \"prompt\": -1.3134127387902321, \"density_ratio\": 1.0108780960927606, \"min_cluster\": 128, \"lost\": 0.8918575063613231, \"rms\": 4.649956915923166, \"warm_peak\": 0.09237956742151661, \"post_peak\": 0.0733116649438968, \"post_four\": [0.0733116649438968, 0.0671031876519602, 0.06574861276608848, 0.0641236729209197], \"post_preselected\": [0.019995130556153727, 0.02602158428635109, 0.005962183732698989, 0.024194724279112588], \"qualifies\": true}, \"standardB_hp\": {\"density\": 1.2608806789679359, \"temperature\": 1.097123101566753, \"pressure\": -0.1200620863372794, \"log_volume\": 4.620488945130127, \"shear\": -0.09209714430884987, \"prompt\": -0.26127721781230273, \"density_ratio\": 0.9995391483607481, \"min_cluster\": 128, \"lost\": 0.8866498740554156, \"rms\": 4.668578037329063, \"warm_peak\": 0.09237956742151661, \"post_peak\": 0.07505455942494564, \"post_four\": [0.07505455942494564, 0.06383570576913629, 0.06272670899199867, 0.062404974162796695], \"post_preselected\": [0.007359139971486918, 0.04074292740943314, 0.012420755529576818, 0.03739278174112257], \"qualifies\": true}, \"standardB_hm\": {\"density\": 1.2781452476192705, \"temperature\": 1.1000741050925464, \"pressure\": 0.018524441444326065, \"log_volume\": 4.606881602928039, \"shear\": -0.06041102669689689, \"prompt\": -0.9607737734335966, \"density_ratio\": 1.0019411954783992, \"min_cluster\": 128, \"lost\": 0.9037974683544304, \"rms\": 4.3467337748152755, \"warm_peak\": 0.09237956742151661, \"post_peak\": 0.07845762361111597, \"post_four\": [0.07845762361111597, 0.07086831640216901, 0.07070841735396496, 0.07043612900140782], \"post_preselected\": [0.020913284057385132, 0.002329039603875976, 0.017296550813979947, 0.010021504959819079], \"qualifies\": true}, \"standardB_pp\": {\"density\": 1.3283988764906514, \"temperature\": 1.0846812336135134, \"pressure\": 0.3310500876814734, \"log_volume\": 4.568257034023954, \"shear\": -0.14330946659161056, \"prompt\": -0.6101809464898998, \"density_ratio\": 1.0305694339429512, \"min_cluster\": 128, \"lost\": 0.8965952080706179, \"rms\": 4.175977134569488, \"warm_peak\": 0.09237956742151661, \"post_peak\": 0.09441990142549239, \"post_four\": [0.09441990142549239, 0.08312613255173809, 0.07256624390325948, 0.0692913688649452], \"post_preselected\": [0.0026751536227867276, 0.05319495837441825, 0.0009717193782754128, 0.018499481961758768], \"qualifies\": true}, \"standardB_pm\": {\"density\": 1.26789347860629, \"temperature\": 1.0986566374590283, \"pressure\": -0.11192116305371612, \"log_volume\": 4.6151206512954435, \"shear\": 0.17878677166226592, \"prompt\": -0.6101809464898998, \"density_ratio\": 1.041923730325028, \"min_cluster\": 128, \"lost\": 0.8890290037831021, \"rms\": 4.718329427467877, \"warm_peak\": 0.09237956742151661, \"post_peak\": 0.08141763420647845, \"post_four\": [0.08141763420647845, 0.07511398194755561, 0.06342002946582796, 0.05905710542692872], \"post_preselected\": [0.002840213136284378, 0.01540887350334055, 0.004260652742154784, 0.009749902714133889], \"qualifies\": true}, \"half_dt_zero\": {\"density\": 1.2482807627671593, \"temperature\": 1.1012794747103611, \"pressure\": -0.12793933616732847, \"log_volume\": 4.631410027213979, \"shear\": -0.0303407160092197, \"prompt\": -0.10498029428135996, \"density_ratio\": 1.026158655818476, \"min_cluster\": 128, \"lost\": 0.898989898989899, \"rms\": 4.887176046845364, \"warm_peak\": 0.10073671714209667, \"post_peak\": 0.09791191246125239, \"post_four\": [0.09791191246125239, 0.081353938323243, 0.0772321512680933, 0.07030843004429195], \"post_preselected\": [0.00852883744124183, 0.001750702943443379, 0.012545995456766509, 0.0020703872634792535], \"qualifies\": true}, \"half_dt_gp\": {\"density\": 1.294308126300176, \"temperature\": 1.0925202494170971, \"pressure\": 0.13191359662030516, \"log_volume\": 4.594428788344652, \"shear\": -0.03373582076431489, \"prompt\": 0.5083225072161119, \"density_ratio\": 1.0649981779624833, \"min_cluster\": 128, \"lost\": 0.8845671267252195, \"rms\": 4.404165174056935, \"warm_peak\": 0.10073671714209667, \"post_peak\": 0.08607127847854634, \"post_four\": [0.08607127847854634, 0.07350744565839488, 0.06828455454514366, 0.0657527932024898], \"post_preselected\": [0.013395202385894797, 0.0029812136375717744, 0.01407940446185965, 0.020703436853109193], \"qualifies\": true}, \"half_dt_gm\": {\"density\": 1.2645726559809685, \"temperature\": 1.0656524356334496, \"pressure\": -0.2365243540690787, \"log_volume\": 4.618457094942041, \"shear\": 0.0019551839886759372, \"prompt\": -0.7108233066939322, \"density_ratio\": 1.0370332958542146, \"min_cluster\": 128, \"lost\": 0.8877551020408163, \"rms\": 4.948694499454375, \"warm_peak\": 0.10073671714209667, \"post_peak\": 0.09969437670848699, \"post_four\": [0.09969437670848699, 0.07267571506969994, 0.07164134322995461, 0.0664822066792825], \"post_preselected\": [0.0017542308308346336, 0.003266693251960612, 0.035443735514716565, 0.023480420227538837], \"qualifies\": true}, \"half_dt_hp\": {\"density\": 1.3040317922182292, \"temperature\": 1.0623562841517962, \"pressure\": -0.05353551381731552, \"log_volume\": 4.5875953716643965, \"shear\": -0.0023616851692206523, \"prompt\": 0.2005903277247218, \"density_ratio\": 1.0847979664937917, \"min_cluster\": 128, \"lost\": 0.8890290037831021, \"rms\": 4.655868969636497, \"warm_peak\": 0.10073671714209667, \"post_peak\": 0.0993699364218495, \"post_four\": [0.0993699364218495, 0.0952776297706521, 0.07951570547928712, 0.0738785020548619], \"post_preselected\": [0.002917955202797901, 0.016074987816137233, 0.019247357569449758, 0.07058738154449418], \"qualifies\": true}, \"half_dt_hm\": {\"density\": 1.261785000521934, \"temperature\": 1.0987209572901528, \"pressure\": -0.0313717489552491, \"log_volume\": 4.620471444380613, \"shear\": 0.07560948135232942, \"prompt\": -0.4086857734046725, \"density_ratio\": 1.025201704285216, \"min_cluster\": 128, \"lost\": 0.8895939086294417, \"rms\": 4.856602395894775, \"warm_peak\": 0.10073671714209667, \"post_peak\": 0.07680606046021957, \"post_four\": [0.07680606046021957, 0.07484799336156076, 0.06790949627704436, 0.06361014120299772], \"post_preselected\": [0.01700940754568569, 0.04370058374170481, 0.011208708832286187, 0.013322522463462895], \"qualifies\": true}, \"half_dt_pp\": {\"density\": 1.3006305047240903, \"temperature\": 1.1143586229608897, \"pressure\": 0.3910224928385263, \"log_volume\": 4.58954948252396, \"shear\": -0.028698093708668347, \"prompt\": -0.10498029428135996, \"density_ratio\": 1.0231956009285512, \"min_cluster\": 128, \"lost\": 0.8787878787878788, \"rms\": 4.6116228730611954, \"warm_peak\": 0.10073671714209667, \"post_peak\": 0.08294102887270421, \"post_four\": [0.08294102887270421, 0.07478041127544292, 0.06752890882606534, 0.06231161486765205], \"post_preselected\": [0.014283928070031126, 0.009274169953797965, 0.0016784999169915096, 0.010320619469409782], \"qualifies\": true}, \"half_dt_pm\": {\"density\": 1.2067036717526791, \"temperature\": 1.0892591952574662, \"pressure\": -0.41398428589265046, \"log_volume\": 4.664940553774901, \"shear\": -0.005443435521568378, \"prompt\": -0.10498029428135996, \"density_ratio\": 1.0450577545864117, \"min_cluster\": 128, \"lost\": 0.9040404040404041, \"rms\": 4.694184005996247, \"warm_peak\": 0.10073671714209667, \"post_peak\": 0.0849888022206183, \"post_four\": [0.0849888022206183, 0.07080297790492461, 0.066990196069292, 0.06637064947849623], \"post_preselected\": [0.01011021856362522, 0.025523664774770232, 0.0004976967701882905, 0.004879261224431036], \"qualifies\": true}, \"half_controller_zero\": {\"density\": 1.2546660000072387, \"temperature\": 1.0896307302105346, \"pressure\": -0.1566104489831695, \"log_volume\": 4.625569781341651, \"shear\": 0.1415264260387836, \"prompt\": -0.16587941623251717, \"density_ratio\": 1.0280701631624494, \"min_cluster\": 128, \"lost\": 0.8992443324937027, \"rms\": 4.488417287457061, \"warm_peak\": 0.10357787477144179, \"post_peak\": 0.08893916252772895, \"post_four\": [0.08893916252772895, 0.07271910701275569, 0.06941047471461974, 0.06322839437251025], \"post_preselected\": [0.0129297055097401, 0.00011985998011217431, 8.269315059072318e-05, 0.0016662655833650417], \"qualifies\": true}, \"half_controller_gp\": {\"density\": 1.2454746622101232, \"temperature\": 1.1031060701472393, \"pressure\": -0.1644534010055922, \"log_volume\": 4.6328598178064215, \"shear\": 0.02762378853868706, \"prompt\": 0.4513230848231754, \"density_ratio\": 1.0052749454711818, \"min_cluster\": 128, \"lost\": 0.89937106918239, \"rms\": 4.748027805464519, \"warm_peak\": 0.10357787477144179, \"post_peak\": 0.10176216036246949, \"post_four\": [0.10176216036246949, 0.09738189230233263, 0.07787231085775204, 0.07743178903538954], \"post_preselected\": [0.006620367451052852, 0.002322588031299505, 0.019395826577613552, 0.03881597295559403], \"qualifies\": true}, \"half_controller_gm\": {\"density\": 1.2398456639692446, \"temperature\": 1.082517062467204, \"pressure\": -0.44067997749899607, \"log_volume\": 4.637656400862292, \"shear\": -0.0461754754075986, \"prompt\": -0.783228296456962, \"density_ratio\": 1.0200129465103285, \"min_cluster\": 128, \"lost\": 0.9042821158690176, \"rms\": 4.633122066166076, \"warm_peak\": 0.10357787477144179, \"post_peak\": 0.12021885771297633, \"post_four\": [0.12021885771297633, 0.08523785479139062, 0.06668930528070205, 0.06355359367931804], \"post_preselected\": [0.027853848766813617, 0.0019690275298393546, 0.0010945785164931344, 0.0008797779182725316], \"qualifies\": true}, \"half_controller_hp\": {\"density\": 1.2585344179624982, \"temperature\": 1.1015348527739466, \"pressure\": -0.16784221377553082, \"log_volume\": 4.622484092932769, \"shear\": 0.06681913509446893, \"prompt\": 0.14252908904510847, \"density_ratio\": 1.0253993023314973, \"min_cluster\": 128, \"lost\": 0.879245283018868, \"rms\": 4.755350857310205, \"warm_peak\": 0.10357787477144179, \"post_peak\": 0.10802184228665915, \"post_four\": [0.10802184228665915, 0.06620429479610827, 0.06555166343844993, 0.06193753546048884], \"post_preselected\": [0.011048964084488258, 0.02972085142361571, 0.006500546624118477, 0.0032296718095190004], \"qualifies\": true}, \"half_controller_hm\": {\"density\": 1.2283113429680164, \"temperature\": 1.0863460468711637, \"pressure\": -0.41786462973949634, \"log_volume\": 4.646811517926605, \"shear\": -1.2686253373702446e-05, \"prompt\": -0.47432709837861076, \"density_ratio\": 1.009398423724595, \"min_cluster\": 128, \"lost\": 0.8753148614609572, \"rms\": 4.453362903398702, \"warm_peak\": 0.10357787477144179, \"post_peak\": 0.09268261880405312, \"post_four\": [0.09268261880405312, 0.08238884498296381, 0.07613309556664974, 0.07437093419801763], \"post_preselected\": [0.005172930296682809, 0.0034015049700675494, 0.0019595341813911146, 0.018266924122223305], \"qualifies\": true}, \"half_controller_pp\": {\"density\": 1.2815977985266966, \"temperature\": 1.0745244938981904, \"pressure\": -0.03500342451561541, \"log_volume\": 4.604502576546774, \"shear\": 0.11453103432756327, \"prompt\": -0.16587941623251717, \"density_ratio\": 1.0331957729108394, \"min_cluster\": 128, \"lost\": 0.8853904282115869, \"rms\": 4.619370038548742, \"warm_peak\": 0.10357787477144179, \"post_peak\": 0.1318497496398269, \"post_four\": [0.1318497496398269, 0.10551822275315928, 0.09342378745880012, 0.08079273690556117], \"post_preselected\": [0.018918344836689218, 0.0024479334109143106, 0.015541284380354348, 0.0013619793538301062], \"qualifies\": true}, \"half_controller_pm\": {\"density\": 1.213944564793423, \"temperature\": 1.1094518020123454, \"pressure\": -0.30647484867551666, \"log_volume\": 4.658499993316367, \"shear\": 0.020320543194184852, \"prompt\": -0.16587941623251717, \"density_ratio\": 1.0269048466573292, \"min_cluster\": 128, \"lost\": 0.8866498740554156, \"rms\": 4.781079558715294, \"warm_peak\": 0.10357787477144179, \"post_peak\": 0.10958843773170994, \"post_four\": [0.10958843773170994, 0.06630581946232468, 0.06594590628550097, 0.06379086526603377], \"post_preselected\": [0.04598059827436633, 0.02855158450525433, 0.0012372787316578474, 0.004787810452723961], \"qualifies\": true}}}\n",
+      "stdout_sha256": "5d8bcadb45734ec76d448c8b9ea49cacaaca093b0306bf0823e7f1a2a884cdce"
+    }
+  },
+  "outputs": {
+    "_scratch/s11c/receiver_independent_precursor01/classification.json": "8db63b9d0f2f9a7dee4536fa74ce66552ba3bbbc25d20ff0204ca1634ce96dd4",
+    "_scratch/s11c/receiver_independent_precursor01/response.json": "c0d2803975e42e302b91960ad90330f81b0e7ea452b97997ac3c3bb664fd43d1",
+    "_scratch/s11c/receiver_new_geometry_referee01/verify.json": "6d0b00a7e7b33f316dfdccce7bfa7d75b31152b4e5f555e7ba47071f1558758a"
+  },
+  "sources": {
+    "software/stage1_solver/tools/mouth_receiver_precursor_match.py": {
+      "sha256": "e1adfeeb6f954272f74ab4563dfe213a72888e9db6c22dcef13ea426e8b0dfea"
+    },
+    "software/stage1_solver/tools/mouth_receiver_matched_response.py": {
+      "sha256": "91da947ed7ed18a143f8716a400e3655bba6e7a6e9b2268ee94b86952f4055ae"
+    },
+    "_scratch/s11c/receiver_preparation_transfer01/source/mouth_receiver_branches.py": {
+      "sha256": "bb7db524baa7778055d2f96703d4938f53afed05aae827e08682abffedcfb196",
+      "source": "\"\"\"Export authenticated 4D receiver endpoints, preserving the material positions and cell.\"\"\"\nimport argparse\nfrom hashlib import sha256\nimport json\nfrom pathlib import Path\n\nimport numpy as np\n\nfrom mouth_bulk_relaxed_shape import PeriodicMaterial\n\n\nSCRATCH = Path('_scratch/s11c')\nLEDGER = Path('research/pde_ledger_v3/_measurements')\n\n\ndef read(path):\n    return json.loads(path.read_bytes())\n\n\ndef digest(path):\n    return sha256(path.read_bytes()).hexdigest()\n\n\ndef verify_guard(folder):\n    outcome, child, limits, duration = [read(folder/name) for name in\n        ('outcome.json','child-outcome.json','limit-validation.json','duration-validation.json')]\n    if not (outcome['childOutcome']==child and outcome['exitCode']==child['exitCode']==0 and outcome['limitsVerified']\n            and child['guardReason'] is None and limits['verified'] and int(limits['actual']['memory.swap.max'])==0\n            and duration['verified'] and duration['actual']['RuntimeMaxUSec']=='infinity' and not (folder/'stderr').read_bytes()):\n        raise ValueError(f'Unsuccessful source guard: {folder}')\n\n\ndef write_input(outdir,index,box,pos,temp,mobility,source,**details):\n    n=128\n    box=np.asarray(box,dtype=float);pos=np.asarray(pos,dtype=float)\n    if box.shape!=(4,4) or pos.shape!=(n,4) or not np.isfinite(box).all() or not np.isfinite(pos).all() or not np.linalg.det(box)>0:\n        raise ValueError('Invalid endpoint geometry')\n    if not (0<=temp<np.inf and 0<mobility<np.inf):\n        raise ValueError('Invalid source temperature or volume mobility')\n    axis=np.zeros((4,4));axis[0,3]=axis[3,0]=.5\n    outdir.mkdir(parents=True,exist_ok=True)\n    dest=outdir/f'history{index}.txt'\n    with dest.open('x') as stream:\n        print(n,index,temp,mobility,2.5,digest(source),file=stream)\n        for a in (box,np.linalg.inv(box),axis,pos):\n            np.savetxt(stream,a,fmt='%.17g')\n    # Seventeen significant digits are sufficient for an exact binary64 round trip.\n    saved=np.loadtxt(dest,skiprows=1)\n    np.testing.assert_array_equal(saved[:4],box)\n    np.testing.assert_array_equal(saved[12:],pos)\n    print(json.dumps(dict(history=index,source=str(source),source_sha256=digest(source),file=str(dest),\n        export_sha256=digest(dest),source_temperature=temp,volume_mobility=mobility,axis='lab_xw',**details),allow_nan=False))\n\n\ndef export_endpoint(batch,task,index,outdir,guard=None,expected_temp=None):\n    done=read(batch/'DONE.json')\n    if guard is None:\n        jobs=read(batch/'design.json')['jobs']\n        group,=[k for k,group in jobs.items() if any(c['name']==task for c in group)]\n        guard=batch/('guard_'+group)\n    else:\n        guard=batch/guard\n    verify_guard(guard)\n    entries=[json.loads(line) for line in (guard/'stdout').read_text().splitlines()]\n    matched,=[line for line in entries if line.get('task')==task]\n    command=matched['command']\n    src=Path(command[2]);inp=Path(command[1]);exe=Path(command[0]);record=read(src)\n    if (src.resolve()!=(batch/'runs'/(task+'.json')).resolve() or digest(src)!=done['results'][task] or\n        digest(src)!=matched['result_sha256'] or digest(inp)!=matched['input_sha256'] or digest(exe)!=done['binary_sha256']):\n        raise ValueError(f'Changed trajectory or incorrect source provenance for {task}')\n    if record['n']!=128 or len(record['blocks'])!=16 or record['seed']!=int(command[3]) or record['mass']!=1 or record['gamma']!=1:\n        raise ValueError('Incomplete native endpoint or changed dynamics')\n    if expected_temp is not None and (record['temperature']!=expected_temp or record['pressure_external']!=0 or record['strain']!=0):\n        raise ValueError('This branch requires an undriven zero-pressure precursor at its declared temperature')\n    end=record['final'];last=record['blocks'][-1]['end_reading'];box=np.asarray(end['box']);pos=np.asarray(end['pos']);v=np.asarray(end['vel']);\n    np.testing.assert_allclose(np.linalg.det(box),last['volume'],rtol=4.e-13)\n    np.testing.assert_allclose(np.sum(v*v)/(4*128),last['temperature'],rtol=2.e-13)\n    source_header=inp.read_text().splitlines()[0].split()\n    if source_header[-1]!=record['source_sha256']:\n        raise ValueError('Mismatched ancestral geometry')\n    write_input(outdir,index,box,pos,record['temperature'],float(source_header[3]),src,\n        prior_history=record['history'],prior_seed=record['seed'],source_guard=str(guard),\n        prior_strain=record['strain'],prior_pressure=record['pressure_external'],\n        prior_measured_kinetic_temperature=last['temperature'],coordinate_transfer='exact Cartesian endpoint; velocities resampled on launch')\n    return float(source_header[3])\n\n\ndef export_single(src,guard,index,outdir,expected_sha256):\n    verify_guard(guard)\n    invocation=read(guard/'invocation.json');command=invocation['command'];cwd=Path(invocation['cwd'])\n    if not 8<=len(command)<=13 or (cwd/command[2]).resolve()!=src.resolve():\n        raise ValueError('The guard invocation did not directly run this native output')\n    inp=cwd/command[1];exe=cwd/command[0];head=inp.read_text().splitlines()[0].split()\n    if expected_sha256 is not None and digest(src)!=expected_sha256:\n        raise ValueError('Raw output hash failed supervisor check')\n    r=read(src);n=int(head[0]);source_temp=float(head[2]);base_mobility=float(head[3]);axis_idx=int(command[11]) if len(command)>11 else 0\n    target=float(command[12]) if len(command)>12 else source_temp\n    if not (r['source_sha256']==head[5] and r['history']==int(head[1]) and r['source_temperature']==source_temp\n            and r['temperature']==target and r['n']==n==128 and r['mass']==r['gamma']==1 and r['axis_index']==axis_idx\n            and r['seed']==int(command[3]) and r['requested_dt']==float(command[4]) and r['warm']==float(command[5])\n            and r['measure']==float(command[6]) and r['strain']==float(command[7]) and r['volume_mobility']==base_mobility*(float(command[9]) if len(command)>9 else 1.)\n            and r['pressure_external']==(float(command[10]) if len(command)>10 else 0.) and len(r['blocks'])==16):\n        raise ValueError('Native input, settings or guard command disagree')\n    np.testing.assert_allclose(sum(b['steps'] for b in r['blocks'])*r['dt'],r['measure'],atol=1.e-12)\n    last=r['blocks'][-1]['end_reading'];f=r['final'];box=np.asarray(f['box']);x=np.asarray(f['pos']);v=np.asarray(f['vel']);volume=np.linalg.det(box)\n    energy,_,de=PeriodicMaterial(n,2.5).read(x@np.linalg.inv(box),box)\n    stress=(box.T@de-v.T@v)/volume\n    np.testing.assert_allclose([volume, np.sum(v*v)/(4*n),energy/n,-np.trace(stress)/4,np.sum(stress*np.asarray(r['axis']))],\n        [last['volume'],last['temperature'],last['potential_per_site'],last['pressure'],last['shear']],rtol=2.e-10,atol=2.e-9)\n    np.testing.assert_allclose(stress,last['stress_tensile'],rtol=2.e-10,atol=2.e-9)\n    write_input(outdir,index,box,x,target,base_mobility,src,prior_history=r['history'],prior_seed=r['seed'],source_guard=str(guard),\n        checked_output_sha256=expected_sha256,source_input_sha256=digest(inp),native_sha256=digest(exe),\n        prior_strain=r['strain'],prior_pressure=r['pressure_external'],recomputed_energy_per_site=energy/n,\n        recomputed_pressure=-np.trace(stress)/4,prior_measured_kinetic_temperature=last['temperature'],\n        coordinate_transfer='exact Cartesian endpoint; velocities resampled on launch')\n\n\ndef export_cold(outdir,mobility):\n    g=SCRATCH/'iso4_pressure_glass41_02';p=g/'native/endpoint.npz'\n    verify_guard(g)\n    rec=read(LEDGER/'mouth_bulk_isotropic_4d.json')['runs'][g.name]\n    literal=(g/'stdout').read_text()\n    if literal!=rec['literal_stdout'] or not rec['guard_verified'] or rec['exit_code']!=0 or rec['child_exit']!=0:\n        raise ValueError('Cold source guard or archived transcript differs')\n    rows=list(map(json.loads,literal.splitlines())); origin,=[r for r in rows if r['test']=='input'];meas,=[r for r in rows if r['test']=='zero_load']\n    if not (origin['temperature']==origin['applied_pressure']==0 and digest(Path(origin['source']))==origin['sha256']):\n        raise ValueError('Cold source lineage differs')\n    with np.load(p,allow_pickle=False) as state:\n        assert int(state['seed'])==origin['seed']==meas['seed']==41 and float(state['rc'])==2.5\n        y,box=state['y'],state['cell']\n        n=len(y);x=y@box;v=np.linalg.det(box)\n        np.testing.assert_array_equal(box,meas['cell'])\n        energy,gx,de=PeriodicMaterial(n,2.5).read(y,box)\n        pcheck=-np.trace(box.T@de)/(4*v)\n        np.testing.assert_allclose(energy/n,meas['energy_per_site'],atol=2.e-12,rtol=0)\n        np.testing.assert_allclose([pcheck,np.max(np.abs(gx)),n/v], [meas['pressure'],meas['max_site_force'],meas['density']],atol=3.e-11,rtol=0)\n    write_input(outdir,141,box,x,0.,mobility,p,prior_history=41,prior_seed=41,source_guard=str(g),\n        archived_energy_per_site=meas['energy_per_site'],recomputed_energy_per_site=energy/n,\n        recomputed_pressure=pcheck,source_transcript_sha256=digest(g/'stdout'),cold_parent_sha256=origin['sha256'],\n        coordinate_transfer='Cartesian positions from archived fractional sites and original lattice; velocities sampled on launch')\n\n\ndef branches(outdir):\n    mobilities=[]\n    for batch,offset,temp in [('receiver_temperature_return02',0,1.28),('receiver_temperature_bracket01',40,1.088)]:\n        for h in range(3):\n            mobilities.append(export_endpoint(SCRATCH/batch,f't0h{h}',offset+h,outdir,expected_temp=temp))\n    if len(set(mobilities))!=1:\n        raise ValueError('The original trials used different base volume-controller mobilities')\n    export_cold(outdir,mobilities[0])\n\n\nif __name__=='__main__':\n    p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='mode',required=True)\n    b=sub.add_parser('branches');b.add_argument('outdir',type=Path)\n    e=sub.add_parser('endpoint');e.add_argument('batch',type=Path);e.add_argument('task');e.add_argument('index',type=int);e.add_argument('outdir',type=Path);e.add_argument('--guard')\n    s=sub.add_parser('single');s.add_argument('raw',type=Path);s.add_argument('guard',type=Path);s.add_argument('index',type=int);s.add_argument('outdir',type=Path);s.add_argument('--expected-sha256')\n    args=p.parse_args()\n    if args.mode=='branches': branches(args.outdir)\n    elif args.mode=='single': export_single(args.raw,args.guard,args.index,args.outdir,args.expected_sha256)\n    else: export_endpoint(args.batch,args.task,args.index,args.outdir,args.guard)\n"
+    },
+    "_scratch/s11c/receiver_preparation_transfer01/source/mouth_receiver_relax.cpp": {
+      "sha256": "22fe04ec2efb567aa4d4d853748855f83ccff955f0dc2a2862a09833b4505105",
+      "source": "// Homogeneous four-dimensional material under a fixed-shape, fluctuating-volume hold.\n// Row-vector lattice, unwrapped coordinates, unit constituent mass. Potential and full\n// periodic image enumeration are exactly the same implementations as the archive.\n#include \"mouth_bulk_thermal_cell.cpp\"\n#include <cstdint>\n#include <fstream>\n#include <iomanip>\n#include <iostream>\n#include <numeric>\n#include <random>\n#include <stdexcept>\n#include <string>\n\nnamespace {\nconstexpr double params[] = {1., 7., 1.};\nconstexpr int nblocks = 16;\nusing Sites = std::vector<double>;\nstatic_assert(sizeof(Matrix)==16*sizeof(double));\nMatrix identity() {\n    Matrix m{};\n    for(int k=0;k<4;++k) m[k][k]=1.;\n    return m;\n}\nMatrix product(const Matrix& a,const Matrix& b) {\n    Matrix c{};\n    for(int i=0;i<4;++i) for(int j=0;j<4;++j)\n        for(int k=0;k<4;++k) c[i][j]+=a[i][k]*b[k][j];\n    return c;\n}\nMatrix deformation(const Matrix& axis,double eps) {\n    Matrix s=identity(),t=s;\n    for(int l=1;l<=20;++l) {\n        t=product(t,axis);\n        for(int i=0;i<4;++i) for(int j=0;j<4;++j) {t[i][j]*=eps/l;s[i][j]+=t[i][j];}\n    }\n    return s;\n}\nvoid transform(Sites& x,const Matrix& a) {\n    for(size_t i=0;i<x.size();i+=4) {\n        Vec tmp{};\n        for(int j=0;j<4;++j) for(int k=0;k<4;++k) tmp[j]+=x[i+k]*a[k][j];\n        std::copy(tmp.begin(),tmp.end(),x.begin()+i);\n    }\n}\ndouble determinant(Matrix a) {\n    double result=1.;\n    for(int i=0;i<4;++i) {\n        int p=i;\n        for(int j=i+1;j<4;++j) if(std::abs(a[j][i])>std::abs(a[p][i])) p=j;\n        if(p!=i) {std::swap(a[p],a[i]);result=-result;}\n        result*=a[i][i];\n        if(a[i][i]==0.) return 0.;\n        for(int j=i+1;j<4;++j) {\n            double f=a[j][i]/a[i][i];\n            for(int k=i+1;k<4;++k) a[j][k]-=f*a[i][k];\n        }\n    }\n    return result;\n}\ntemplate<class T> void vec(std::ostream& os,const T& values) {\n    os<<'[';bool first=true;\n    for(const auto& v:values) {if(!first) os<<',';os<<v;first=false;}\n    os<<']';\n}\nvoid matrix(std::ostream& os,const Matrix& a) {\n    os<<'[';for(int i=0;i<4;++i) {if(i) os<<',';vec(os,a[i]);} os<<']';\n}\nvoid sites(std::ostream& os,const Sites& a,double scale) {\n    os<<'[';\n    for(size_t i=0;i<a.size();i+=4) {\n        if(i) os<<',';\n        Vec v;\n        for(int k=0;k<4;++k) v[k]=scale*a[i+k];\n        vec(os,v);\n    }\n    os<<']';\n}\nstruct Input {\n    int n{},history{};\n    double temperature{},mobility{},rc{};\n    std::string sha;\n    Matrix box{},inv{},axis{};\n    Sites x;\n    explicit Input(const std::string& path) {\n        std::ifstream is(path);\n        if(!(is>>n>>history>>temperature>>mobility>>rc>>sha) || n!=128 || !(temperature>=0.) || !std::isfinite(temperature) || rc!=2.5 || !(mobility>0.) || !std::isfinite(mobility) || sha.size()!=64)\n            throw std::runtime_error(\"invalid archived preparation header\");\n        for(auto* m:{&box,&inv,&axis}) for(auto& row:*m) for(auto& a:row)\n            if(!(is>>a) || !std::isfinite(a)) throw std::runtime_error(\"invalid input matrix\");\n        x.resize(4*n);\n        for(auto& a:x) if(!(is>>a)||!std::isfinite(a)) throw std::runtime_error(\"invalid input site\");\n        std::string extra;\n        if(is>>extra) throw std::runtime_error(\"extra input records\");\n        const Matrix unit=product(box,inv);\n        double trace=0.,norm=0.;\n        for(int i=0;i<4;++i) for(int j=0;j<4;++j) {\n            if(std::abs(unit[i][j]-(i==j))>1.e-10||std::abs(axis[i][j]-axis[j][i])>1.e-10) throw std::runtime_error(\"invalid inverse or axis\");\n            if(i==j) trace+=axis[i][j];\n            norm+=axis[i][j]*axis[i][j];\n        }\n        if(std::abs(trace)>1.e-10||std::abs(norm-.5)>1.e-10||determinant(box)<=0.) throw std::runtime_error(\"invalid archived geometry\");\n    }\n};\nstruct Forces {\n    Sites grad;\n    Matrix virial{};\n    double energy=0.;\n    explicit Forces(int n):grad(4*n) {}\n};\n// Fixed reference shape; physical x and box are the reference variables times scale.\n// Retaining this list across log-volume changes is safe while it covers cutoff/scale.\nstruct Interactions {\n    Cell cell;\n    double reach=0., cutoff;\n    std::vector<Vec> self;\n    Interactions(int n,const Matrix& box,const Matrix& inv,double rc):\n        cell(n,&box[0][0],&inv[0][0],rc,params),cutoff(rc) {}\n    void ensure(const Sites& x,double scale) {\n        const double needed=cutoff/scale;\n        if(needed>reach || needed<.85*reach) {\n            reach=1.03*needed;\n            cell.reference.clear();\n            self.clear();\n            cell.each_image(Vec{},reach,[&](const Tile& t,const Vec& v,double){if(t>Tile{}) self.push_back(v);});\n        }\n        // Only the image-search radius is changed. The actual pair evaluation\n        // below uses the physical cutoff, including its original analytic switch.\n        cell.potential.cutoff=reach;\n        cell.rebuild_if_needed(x.data());\n        cell.potential.cutoff=cutoff;\n    }\n    template<bool details> void read(const Sites& x,double scale,Forces& f) {\n        ensure(x,scale);\n        f.energy=0.;f.virial={};std::fill(f.grad.begin(),f.grad.end(),0.);\n        const int n=cell.n;\n        const double max_r2=cutoff*cutoff, ss=scale*scale, ref_cut2=max_r2/ss;\n        for(int i=0;i<n;++i) {\n            Vec gi{};\n            for(int h=cell.first[i];h<cell.first[i+1];++h) {\n                const auto& gp=cell.groups[h];\n                Vec org;\n                for(int k=0;k<4;++k) org[k]=gp.shift[k]-x[4*i+k];\n                for(int b=gp.begin;b<gp.end;++b) {\n                    const int j=cell.neighbors[b];Vec u;double rr=0.;\n                    for(int k=0;k<4;++k) {u[k]=x[4*j+k]+org[k];rr+=u[k]*u[k];}\n                    if(rr>=ref_cut2 || rr*ss>=max_r2) continue;\n                    if(!(rr>0.)) throw std::runtime_error(\"coincident constituent sites\");\n                    double e=0.;\n                    const double g=cell.potential.force_prefactor<details>(rr*ss,e)*scale;\n                    if constexpr(details) f.energy+=e;\n                    for(int k=0;k<4;++k) {\n                        const double du=g*u[k];gi[k]-=du;f.grad[4*j+k]+=du;\n                        if constexpr(details) for(int l=0;l<4;++l) f.virial[k][l]+=du*u[l]*scale;\n                    }\n                }\n            }\n            for(int k=0;k<4;++k) f.grad[4*i+k]+=gi[k];\n        }\n        if constexpr(details) for(const auto& u:self) {\n            double rr=std::inner_product(u.begin(),u.end(),u.begin(),0.)*ss;\n            if(rr>=max_r2) continue;\n            double e;\n            const double g=cell.n*ss*cell.potential.force_prefactor<true>(rr,e);\n            f.energy+=cell.n*e;\n            for(int k=0;k<4;++k) for(int l=0;l<4;++l) f.virial[k][l]+=g*u[k]*u[l];\n        }\n    }\n    std::vector<uint8_t> neighbors(const Sites& x,double scale) {\n        ensure(x,scale);\n        const int n=cell.n;\n        std::vector<uint8_t> out(n*n,0);\n        for(int i=0;i<n;++i) for(int h=cell.first[i];h<cell.first[i+1];++h) {\n            const auto& gp=cell.groups[h];\n            for(int b=gp.begin;b<gp.end;++b) {\n                const int j=cell.neighbors[b];double rr=0.;\n                for(int k=0;k<4;++k) {double d=scale*(x[4*j+k]+gp.shift[k]-x[4*i+k]);rr+=d*d;}\n                const uint8_t level=rr<1.15*1.15 ? 2 : rr<1.30*1.30 ? 1 : 0;\n                out[n*i+j]=std::max(out[n*i+j],level);\n            }\n        }\n        return out;\n    }\n};\nstruct Tracking {\n    Sites ref;\n    double reference_scale;\n    std::vector<uint8_t> original,current;\n    int norig=0;\n    Tracking(const Sites& x,double scale,Interactions& p):ref(x),reference_scale(scale),original(p.neighbors(x,scale)) {\n        for(auto& flag:original) {flag=(flag==2);norig+=flag;}\n        current=original;\n    }\n    void write(std::ostream& os,const Sites& x,double scale,Interactions& p) {\n        int n=p.cell.n,lost=0,gain=0,largest=1;\n        auto edges=p.neighbors(x,scale);\n        std::vector<int> parent(n),size(n,1);std::iota(parent.begin(),parent.end(),0);\n        auto root=[&](int i){while(i!=parent[i]) i=parent[i];return i;};\n        Vec shift{};double square=0.;\n        for(size_t i=0;i<x.size();++i) shift[i%4]+=(x[i]-ref[i])/n;\n        for(size_t i=0;i<x.size();++i) {const double dx=reference_scale*(x[i]-ref[i]-shift[i%4]);square+=dx*dx;}\n        for(int i=0;i<n;++i) for(int j=i+1;j<n;++j) {\n            int id=n*i+j;\n            current[id]=(current[id]&&edges[id]>=1)||edges[id]==2;\n            lost+=original[id]&&!current[id];gain+=!original[id]&&current[id];\n            if(current[id]) {int a=root(i),b=root(j);if(a!=b){parent[b]=a;size[a]+=size[b];largest=std::max(largest,size[a]);}}\n        }\n        os<<\"{\\\"original\\\":\"<<norig<<\",\\\"absent\\\":\"<<lost<<\",\\\"new\\\":\"<<gain<<\",\\\"max_cluster\\\":\"<<largest\n          <<\",\\\"nonaffine_rms\\\":\"<<std::sqrt(square/n)<<'}';\n    }\n};\nstruct Reading {\n    Matrix stress{}; // tensile, including kinetic momentum flux\n    double pressure=0.,shear=0.,kinetic_T=0.,u_site=0.,rho=0.,volume=0.,logv=0.;\n    void add(const Reading& a) {\n        for(int k=0;k<4;++k) for(int l=0;l<4;++l) stress[k][l]+=a.stress[k][l];\n        pressure+=a.pressure;shear+=a.shear;kinetic_T+=a.kinetic_T;u_site+=a.u_site;rho+=a.rho;volume+=a.volume;logv+=a.logv;\n    }\n    void write(std::ostream& os,int samples=1) const {\n        Matrix w=stress;for(auto& row:w) for(double& value:row) value/=samples;\n        os<<\"{\\\"shear\\\":\"<<shear/samples<<\",\\\"pressure\\\":\"<<pressure/samples<<\",\\\"temperature\\\":\"<<kinetic_T/samples\n          <<\",\\\"potential_per_site\\\":\"<<u_site/samples<<\",\\\"density\\\":\"<<rho/samples<<\",\\\"volume\\\":\"<<volume/samples\n          <<\",\\\"log_volume\\\":\"<<logv/samples<<\",\\\"stress_tensile\\\":\";matrix(os,w);os<<'}';\n    }\n};\nReading observe(const Forces& f,const Sites& v,const Matrix& axis,double volume) {\n    Reading r;r.volume=volume;r.logv=std::log(volume);int n=int(v.size())/4;r.rho=n/volume;r.u_site=f.energy/n;\n    for(int k=0;k<4;++k) for(int l=0;l<4;++l) {\n        double kinetic=0.;for(int i=0;i<n;++i) kinetic+=v[4*i+k]*v[4*i+l];\n        r.stress[k][l]=(f.virial[k][l]-kinetic)/volume;\n        r.shear+=r.stress[k][l]*axis[k][l];\n        if(k==l) {r.pressure-=r.stress[k][k]/4;r.kinetic_T+=kinetic/(4*n);}\n    }\n    return r;\n}\nstruct Evolution {\n    Sites x,v;\n    Matrix box,inv,axis;\n    double scale=1.,base_volume,temperature,mobility,cutoff;\n    int count;\n    Forces f,trial;\n    std::mt19937_64 thermal_rng,volume_rng;\n    std::normal_distribution<double> normal_site,normal_volume;\n    std::uniform_real_distribution<double> uniform;\n    int attempts=0,accepts=0;\n    Evolution(const Input& a,uint64_t seed,int direction,double trial_T):x(a.x),v(a.x.size()),box(a.box),inv(a.inv),axis(a.axis),\n        base_volume(determinant(a.box)),temperature(trial_T),mobility(a.mobility),cutoff(a.rc),count(a.n),\n        f(a.n),trial(a.n),thermal_rng(seed),volume_rng(seed^0x2d693923439c104ULL) {\n        if(direction==1) {axis={};axis[0][3]=axis[3][0]=.5;}\n        for(auto& speed:v) speed=std::sqrt(temperature)*normal_site(thermal_rng);\n    }\n    double volume() const {const double ss=scale*scale;return base_volume*ss*ss;}\n    void strain(double eps) {\n        auto a=deformation(axis,eps), b=deformation(axis,-eps);\n        transform(x,a);box=product(box,a);inv=product(b,inv);\n        if(std::abs(determinant(box)/base_volume-1.)>1.e-11) throw std::runtime_error(\"volume-changing shear\");\n    }\n    void volume_move(Interactions& p,double h,double multiplier,double imposed) {\n        // At fixed fractional positions and physical velocities the log-volume measure\n        // is exp((N+1)q - (U+Pext*exp(q))/T). Momenta contribute no extra factor.\n        // Evaluate even rejected branches with independent volume RNG consumption.\n        const double dq=std::sqrt(2*mobility*multiplier*temperature*h)*normal_volume(volume_rng);\n        const double u=uniform(volume_rng), proposed=scale*std::exp(.25*dq);\n        if(!(proposed>0.) || !std::isfinite(proposed)) throw std::runtime_error(\"nonfinite trial scale\");\n        p.read<true>(x,proposed,trial);\n        const double log_ratio=(count+1)*dq - (trial.energy-f.energy+imposed*volume()*std::expm1(dq))/temperature;\n        if(!std::isfinite(log_ratio)) throw std::runtime_error(\"nonfinite pressure move\");\n        ++attempts;\n        if(std::log(u)<log_ratio) {scale=proposed;std::swap(f,trial);++accepts;}\n    }\n    void advance(Interactions& p,double dt,bool details,bool volume_kick,double baro_dt,double multiplier,double imposed) {\n        const double h=.5*dt, drift=h/scale, c=std::exp(-dt),noise=std::sqrt(-std::expm1(-2*dt)*temperature);\n        for(size_t k=0;k<x.size();++k) {\n            v[k]-=h*f.grad[k];x[k]+=drift*v[k];\n            v[k]=c*v[k]+noise*normal_site(thermal_rng);x[k]+=drift*v[k];\n            if(!std::isfinite(x[k])||!std::isfinite(v[k])) throw std::runtime_error(\"nonfinite receiver state\");\n        }\n        if(details||volume_kick) p.read<true>(x,scale,f);else p.read<false>(x,scale,f);\n        for(size_t k=0;k<v.size();++k) v[k]-=h*f.grad[k];\n        if(volume_kick) volume_move(p,baro_dt,multiplier,imposed);\n    }\n    void write_state(std::ostream& os) const {\n        Matrix b=box;for(auto& row:b)for(auto& a:row)a*=scale;\n        os<<\"{\\\"box\\\":\";matrix(os,b);os<<\",\\\"pos\\\":\";sites(os,x,scale);os<<\",\\\"vel\\\":\";sites(os,v,1.);os<<'}';\n    }\n};\nstruct Mesh {\n    int steps,baro_steps;\n    double dt,baro_dt;\n    Mesh(double duration,double target_dt,double baro_interval):steps(int(std::ceil(duration/target_dt))),\n        dt(steps?duration/steps:target_dt) {\n        baro_steps=std::max(1,int(std::lround(baro_interval/dt)));\n        baro_dt=dt*baro_steps;\n    }\n};\nint execute(int argc,char** argv) {\n    if(argc<8||argc>13) throw std::invalid_argument(\"INPUT OUT SEED DT WARM MEASURE STRAIN [BARO_INTERVAL=.08] [MOBILITY_MULT=1] [PEXT=0] [AXIS=0] [TARGET_T=source]\");\n    Input input(argv[1]);const auto seed=std::stoull(argv[3]);\n    const double dt=std::stod(argv[4]),warm=std::stod(argv[5]),measure=std::stod(argv[6]),eps=std::stod(argv[7]);\n    const double baro_interval=argc>8?std::stod(argv[8]):.08,mult=argc>9?std::stod(argv[9]):1.,pext=argc>10?std::stod(argv[10]):0.;\n    const int axis=argc>11?std::stoi(argv[11]):0;\n    const double trial_T=argc>12?std::stod(argv[12]):input.temperature;\n    if(!(trial_T>0.) || !std::isfinite(trial_T)) throw std::invalid_argument(\"invalid target temperature\");\n    if(!(dt>0&&warm>=0&&measure>0&&warm/dt<2.e9&&measure/dt<2.e9&&std::abs(eps)<=.3&&baro_interval>=dt&&baro_interval/dt<2.e9&&mult>0&&std::isfinite(mult)&&std::isfinite(pext)&&(axis==0||axis==1)))\n        throw std::invalid_argument(\"invalid receiver parameters\");\n    Mesh spin(warm,dt,baro_interval),run(measure,dt,baro_interval);\n    if(run.steps<nblocks) throw std::invalid_argument(\"need at least 16 held steps\");\n    Evolution state(input,seed,axis,trial_T);\n    {\n        Interactions p(input.n,state.box,state.inv,input.rc);\n        p.read<true>(state.x,state.scale,state.f);\n        for(int k=1;k<=spin.steps;++k)\n            state.advance(p,spin.dt,k==spin.steps,k%spin.baro_steps==0,spin.baro_dt,mult,0.);\n    }\n    std::ofstream os(argv[2]);os.exceptions(std::ios::badbit|std::ios::failbit);os<<std::setprecision(17);\n    os<<\"{\\\"source_sha256\\\":\\\"\"<<input.sha<<\"\\\",\\\"history\\\":\"<<input.history<<\",\\\"seed\\\":\"<<seed<<\",\\\"source_temperature\\\":\"<<input.temperature\n      <<\",\\\"temperature\\\":\"<<trial_T\n      <<\",\\\"n\\\":\"<<input.n<<\",\\\"mass\\\":1,\\\"gamma\\\":1,\\\"requested_dt\\\":\"<<dt<<\",\\\"dt\\\":\"<<run.dt<<\",\\\"warm_dt\\\":\"<<spin.dt\n      <<\",\\\"warm\\\":\"<<warm<<\",\\\"measure\\\":\"<<measure<<\",\\\"strain\\\":\"<<eps<<\",\\\"axis_index\\\":\"<<axis<<\",\\\"axis\\\":\";matrix(os,state.axis);\n    os<<\",\\\"pressure_external\\\":\"<<pext<<\",\\\"barostat_interval\\\":\"<<run.baro_dt<<\",\\\"warm_barostat_interval\\\":\"<<spin.baro_dt\n      <<\",\\\"volume_mobility\\\":\"<<input.mobility*mult<<\",\\\"warm_attempts\\\":\"<<state.attempts<<\",\\\"warm_accepted\\\":\"<<state.accepts\n      <<\",\\\"prepared_reading\\\":\";observe(state.f,state.v,state.axis,state.volume()).write(os);\n    os<<\",\\\"prepared\\\":\";state.write_state(os);\n    state.strain(eps);\n    Interactions p(input.n,state.box,state.inv,input.rc);\n    p.read<true>(state.x,state.scale,state.f);\n    os<<\",\\\"initial_reading\\\":\";observe(state.f,state.v,state.axis,state.volume()).write(os);\n    Tracking tracking(state.x,state.scale,p);\n    state.attempts=state.accepts=0;\n    os<<\",\\\"blocks\\\":[\";\n    for(int b=0;b<nblocks;++b) {\n        int start=b*int64_t(run.steps)/nblocks, end=(b+1)*int64_t(run.steps)/nblocks;\n        int attempts=state.attempts, accepts=state.accepts;\n        Reading sum,last;\n        for(int k=start+1;k<=end;++k) {\n            state.advance(p,run.dt,true,k%run.baro_steps==0,run.baro_dt,mult,pext);\n            last=observe(state.f,state.v,state.axis,state.volume());sum.add(last);\n        }\n        if(b) os<<',';\n        os<<\"{\\\"steps\\\":\"<<end-start<<\",\\\"initial_t\\\":\"<<start*run.dt<<\",\\\"end_t\\\":\"<<end*run.dt\n          <<\",\\\"attempts\\\":\"<<state.attempts-attempts<<\",\\\"accepted\\\":\"<<state.accepts-accepts<<\",\\\"mean\\\":\";sum.write(os,end-start);\n        os<<\",\\\"end_reading\\\":\";last.write(os);os<<\",\\\"structure\\\":\";tracking.write(os,state.x,state.scale,p);os<<'}';\n    }\n    os<<\"],\\\"final\\\":\";state.write_state(os);os<<\"}\\n\";os.close();\n    std::cout<<\"completed \"<<spin.steps<<\" zero-pressure equilibration and \"<<run.steps<<\" measured inertial steps; \"\n             <<state.accepts<<\" of \"<<state.attempts<<\" log-volume proposals accepted\\n\";\n    return 0;\n}\n} // namespace\nint main(int argc,char** argv) {\n    try {return execute(argc,argv);} catch(const std::exception& e){std::cerr<<e.what()<<'\\n';return 1;}\n}\n"
+    },
+    "_scratch/s11c/receiver_preparation_transfer01/source/mouth_bulk_thermal_cell.cpp": {
+      "sha256": "96c55ab57e112d3cb49a5f102aa1713029b5fdbeb3aacb686149e81c6ded751b"
+    },
+    "software/stage1_solver/tools/mouth_receiver_material_screen.py": {
+      "sha256": "49c2727c45b4515c9e1bfdb6c5f5d2aef87f860d1201f58bbe2960ff61900324"
+    },
+    "software/stage1_solver/tools/mouth_receiver_structure.py": {
+      "sha256": "e6b94314bfcf9a50809f44adbc7627880ef792abbd7165a2baf0dc68f93047d8"
+    },
+    "software/stage1_solver/tools/mouth_receiver_pressure_readout.py": {
+      "sha256": "df25c9d99b59182cfb3150cd09403422500adcfab2377117bd8d31d1f9c4b443"
+    },
+    "_scratch/s11c/receiver_independent_precursor01/history.py": {
+      "sha256": "f169608f99c44d2fdb99bc89b0c2d5ba7d85535a6e4bf725b9523183cb4e2524",
+      "source": "from pathlib import Path\nimport hashlib,json,subprocess,sys\nbase=Path(__file__).resolve().parent.relative_to(Path.cwd());g=json.loads((base/'design.json').read_bytes())['jobs'][sys.argv[1]]\nfor c in g:\n    out=base/'runs'/(c['name']+'.json');inp=base/'inputs'/f\"history{c['history']}.txt\";assert not out.exists()\n    cmd=list(map(str,[base.with_name('receiver_preparation_transfer01')/'receiver',inp,out,c['seed'],c['dt'],c['warm'],c['duration'],c['strain'],.08,c['multiplier'],c['p_ext'],1,1.088]));r=subprocess.run(cmd,stdout=subprocess.PIPE,text=True,check=True);raw=json.loads(out.read_bytes());assert raw['strain']==c['strain'] and raw['temperature']==1.088 and raw['axis_index']==1\n    print(json.dumps(dict(task=c['name'],command=cmd,stdout=r.stdout,input_sha256=hashlib.sha256(inp.read_bytes()).hexdigest(),result_sha256=hashlib.sha256(out.read_bytes()).hexdigest())),flush=True)\n"
+    },
+    "_scratch/s11c/receiver_new_geometry_referee01/endpoint.py": {
+      "sha256": "f97ced916d117652ea962294a2671e753b3389d57ccfa9ac04b61ec6fe2b0298",
+      "source": "\"\"\"Direct all-image virial and kinetic stress for a four-dimensional skew periodic sample.\"\"\"\nfrom itertools import product\nimport numpy as np\n\ndef morse(r):\n    e=np.exp(-7*(r-1)); base=e*(e-2); derivative=14*e*(1-e)\n    t=np.clip((r-2.25)/.25,0,1); switch=1-10*t**3+15*t**4-6*t**5; ds=-120*t*t*(1-t)**2\n    return base*switch, derivative*switch+base*ds\n\ndef direct(x,v,box):\n    x=np.array(x);v=np.array(v);box=np.array(box)\n    n=len(x); centre=x@np.linalg.inv(box);i,j=np.triu_indices(n,1)\n    # Every pair is counted exactly once per image. Unwrap a skew cell in fractional coordinates.\n    delta=centre[j]-centre[i];delta-=np.rint(delta)\n    reciprocal_width=2.5*np.linalg.norm(np.linalg.inv(box),axis=0)\n    extent=np.floor(reciprocal_width+.5+1e-12).astype(int)\n    energy=0.; gradient=np.zeros((4,4))\n    for raw in product(*(range(-s,s+1) for s in extent)):\n        tile=np.array(raw)\n        d=(delta+tile)@box;r2=np.einsum('ij,ij->i',d,d); use=r2<2.5**2\n        r=np.sqrt(r2[use]);sub=d[use];u,du=morse(r);energy+=u.sum();gradient+=sub.T@((du/r)[:,None]*sub)\n        if raw>(0,0,0,0):\n            self_image=tile@box;rs=np.linalg.norm(self_image)\n            if rs<2.5:\n                u,du=morse(rs);energy+=n*u;gradient+=n*(du/rs)*np.outer(self_image,self_image)\n    return float(energy),(gradient-v.T@v)/np.linalg.det(box)\n"
+    },
+    "_scratch/s11c/receiver_new_geometry_referee01/verify.py": {
+      "sha256": "845bed2e1964781e0b3e6547aa6f359f8ee90b483c6699b93d474ca276cb8b33",
+      "source": "\"\"\"Independent reconstruction from inertial pressure-branch coordinates, tensor blocks and controls.\"\"\"\nfrom collections import defaultdict\nfrom hashlib import sha256\nimport json,sys\nfrom pathlib import Path\nimport numpy as np\nfrom scipy.linalg import expm\nfrom scipy.stats import t\nfrom endpoint import direct\n\nbase=Path(sys.argv[1]); dst=Path(sys.argv[2]); load=lambda p:json.loads(p.read_bytes()); sha=lambda p:sha256(p.read_bytes()).hexdigest()\ndef close(a,b): np.testing.assert_allclose(a,b,rtol=2e-9,atol=4e-8)\ndef guard(p):\n    o,c,l,d,i=[load(p/n) for n in ('outcome.json','child-outcome.json','limit-validation.json','duration-validation.json','invocation.json')]\n    assert c['guardReason'] is None and o['exitCode']==o['stderrBytes']==c['exitCode']==0 and o['childOutcome']==c\n    assert l['verified'] and int(l['actual']['memory.max'])==i['memoryMax'] and int(l['actual']['memory.swap.max'])==0 and i['pool']=='s11c'\n    assert d['verified'] and d['actual']['RuntimeMaxUSec']=='infinity' and d['inactivityDeadlineSeconds'] is None and d['wallDeadlineSeconds'] is None\n\ndef stats(x):\n    x=np.asarray(x); a=x.mean();rad=x.std(ddof=1)/np.sqrt(len(x))*t.ppf(.975,len(x)-1)\n    return {'per_preparation':x.tolist(),'mean':float(a),'t95':[float(a-rad),float(a+rad)]}\n\ndef ratios(x,y):\n    # Intersect a family of t confidence intervals with zero for candidate r = mean(late)/mean(initial).\n    x=np.asarray(x); y=np.asarray(y);mx=x.mean();my=y.mean();cov=np.cov(x,y,ddof=1);q=t.ppf(.975,len(x)-1)**2/len(x)\n    a=mx**2-q*cov[0,0];b=mx*my-q*cov[0,1];c=my**2-q*cov[1,1];disc=b*b-a*c\n    if a<=0 or disc<0: return {'mean_ratio':float(my/mx),'bounded_interval':None,'a':a,'discriminant':disc}\n    return {'mean_ratio':float(my/mx),'bounded_interval':[(b-np.sqrt(disc))/a,(b+np.sqrt(disc))/a]}\n\ndef measured_state(s,reading,axis):\n    x,box,v=[np.array(s[k]) for k in ('pos','box','vel')]; en,stress=direct(x,v,box)\n    stored=np.array(reading['stress_tensile']); close(en/len(x),reading['potential_per_site']); close(stress,stored)\n    close(np.sum(axis*stress),reading['shear']);close(-np.trace(stress)/4,reading['pressure']);close(np.linalg.det(box),reading['volume']);close(len(x)/np.linalg.det(box),reading['density']);close(np.mean(v**2),reading['temperature'])\n    return max(abs(stress-stored).flatten())\n\ndef check_reading(value,axis):\n    s=np.array(value['stress_tensile']);close(s,s.T);close(-np.trace(s)/4,value['pressure']);close(np.sum(axis*s),value['shear'])\n    assert np.isfinite(s).all() and value['density']>0 and value['temperature']>0\n\ndef post_waves(state,h):\n    frac=np.array(state['pos'])@np.linalg.inv(state['box']); arg=2*np.pi*np.array(h)@frac.T\n    return (np.cos(arg).mean(axis=1)**2+np.sin(arg).mean(axis=1)**2).tolist()\n\ndef window(b,field):return np.average([t['mean'][field] for t in b[-4:]],weights=[t['steps'] for t in b[-4:]])\n\nfrom itertools import product\n\ndef waves(state,known=None):\n    cell=np.array(state['box']);fraction=np.array(state['pos'])@np.linalg.inv(cell);r=12.*np.linalg.norm(cell,axis=1)/(2*np.pi)\n    extent=np.floor(r).astype(int); idx=np.array([h for h in product(*(range(-k,k+1) for k in extent)) if h>(0,0,0,0)])\n    true=2*np.pi*np.linalg.solve(cell,idx.T).T; idx=idx[np.einsum('ij,ij->i',true,true)<=144.]\n    def powers(h):\n        z=2*np.pi*h@fraction.T\n        return np.cos(z).mean(axis=1)**2 + np.sin(z).mean(axis=1)**2\n    vals=np.concatenate([powers(x) for x in np.array_split(idx,max(1,len(idx)//128))]);chosen=[]\n    for item in np.argsort(-vals):\n        sub=idx[chosen+[item]]\n        if np.linalg.matrix_rank(sub)==len(chosen)+1: chosen.append(item)\n        if len(chosen)==4: break\n    h=idx[chosen];p=vals[chosen];res={'h':h.tolist(),'power':p.tolist(),'peak':float(p[0])}\n    if known is not None:res['fixed']=powers(np.array(known)).tolist()\n    return res\n\ndef verify_precursors():\n    plan=load(base/'plan.json');clf=load(base/'classification.json');pri=base.with_name('receiver_preparation_transfer01');entered=Path(plan['source']);assert sha(entered)==plan['source_sha256'] and entered==pri/'inputs/history141.txt' and plan['engine_sha256']==sha(pri/'receiver')==load(pri/'DONE.json')['binary_sha256'];latest=pri/'source';pins=load(pri/'design.json')['sources'];assert all(sha(latest/n)==v for n,v in pins.items());\n    head=entered.read_text().splitlines()[0].split();assert int(head[1])==141 and float(head[2])==0; origin=base.parent/'iso4_pressure_glass41_02/native/endpoint.npz';assert sha(origin)==head[-1];original=np.load(origin);assert int(original['seed'])==41;table=np.loadtxt(entered,skiprows=1);close(table[:4],original['cell']);close(table[12:],original['y']@original['cell']);\n    guard(base/'classify'); positive=[]; called={};axis=np.zeros((4,4));axis[0,3]=axis[3,0]=.5;endpoint_errors=[]\n    for i,(key,temp) in enumerate(plan['excursions'].items()):\n        stub=clf['cases'][key]; exports=[json.loads(x) for x in (base/(key+'_export')/'stdout').read_text().splitlines()];assert len(exports)==1; exp=exports[0];assert exp['history']==10+i\n        for suffix,src_temp,target,ind,seed,input_file in [('hot',0.,temp,141,21841,entered),('back',temp,1.28,10+i,31741,Path(exp['file']))]:\n            g=base/(key+'_'+suffix+'_guard');guard(g);p=base/(key+'_'+suffix+'.json');d=load(p);header=input_file.read_text().splitlines()[0].split();inv=load(g/'invocation.json')['command'];assert Path(inv[0])==pri/'receiver' and Path(inv[1])==input_file and Path(inv[2])==p and int(inv[3])==seed and int(inv[11])==1 and float(inv[12])==target\n            assert d['source_temperature']==src_temp and d['temperature']==target and int(d['history'])==ind and d['source_sha256']==header[-1] and d['mass']==d['gamma']==1 and d['strain']==d['pressure_external']==0;close(d['axis'],axis);close([d['warm'],d['measure']],[plan['native_duration']]*2)\n            endpoint_errors.extend([measured_state(d['prepared'],d['prepared_reading'],axis),measured_state(d['final'],d['blocks'][-1]['end_reading'],axis)])\n            if suffix=='hot':\n                guard(base/(key+'_export'));assert sha(input_file)==plan['source_sha256'] and sha(p)==exp['source_sha256'] and Path(exp['source'])==p and sha(Path(exp['file']))==exp['export_sha256'];a=np.loadtxt(exp['file'],skiprows=1);np.testing.assert_array_equal(a[:4],d['final']['box']);np.testing.assert_array_equal(a[12:],d['final']['pos']);continue\n            assert sha(p)==stub['sha256'];b=d['blocks'];last=b[-1]['structure'];rho=window(b,'density');drift=rho/window(b[:-4],'density')-1;cluster=min(bb['structure']['max_cluster'] for bb in b[-4:]);lost=last['absent']/last['original']\n            pre=waves(d['prepared'])['peak'] if d['prepared_reading']['density']>.3 else None;final=waves(d['final'])['peak'] if rho>.3 else None\n            match=bool(.95<=rho<=1.20 and abs(drift)<=.10 and cluster>=116 and pre is not None and final is not None and max(pre,final)<=.2 and lost>=.5 and last['nonaffine_rms']>=1)\n            for metric,value in {'density':rho,'relative_density_change':drift,'min_cluster':cluster,'original_absent':lost,'rms':last['nonaffine_rms'],'pre_peak':pre,'end_peak':final}.items():\n                if value is None: assert stub[metric] is None\n                else: close(value,stub[metric]);\n            assert match==stub['matches'];called[key]={'token':key,'matches':match,'rho':rho,'rms':last['nonaffine_rms'],'lost':lost,'warm':pre,'end':final,'drift':drift,'min_cluster':cluster}\n            if match:positive.append(key)\n    chosen=min(positive,key=lambda k:plan['excursions'][k]) if positive else None;assert chosen==clf['selected']\n    guard(base/'selected_export');e,=map(json.loads,(base/'selected_export/stdout').read_text().splitlines());p=Path(e['source']);assert p==base/(chosen+'_back.json') and sha(p)==e['source_sha256'] and sha(Path(e['file']))==e['export_sha256'] and e['history']==4 and e['source_temperature']==1.28;table=np.loadtxt(e['file'],skiprows=1);np.testing.assert_array_equal(table[:4],load(p)['final']['box']);np.testing.assert_array_equal(table[12:],load(p)['final']['pos']);return {4:e},called,chosen,endpoint_errors\n\nexports,classification,chosen,p_errors=verify_precursors();design=load(base/'design.json');done=load(base/'DONE.json');engine=base.with_name('receiver_preparation_transfer01')/'receiver';assert done['binary_sha256']==sha(engine) and done['readout_sha256']==sha(base/'classification.json') and done['selected']==design['selected']==chosen;assert {c['name'] for g in design['jobs'].values() for c in g}==set(done['results']) and len(done['results'])==28\naxis=np.zeros((4,4));axis[0,3]=axis[3,0]=.5;errors=[];cases_out={};summary={};bl=0\nfor group,cases in design['jobs'].items():\n    guard(base/('guard_'+group)); warm=None; pw=None; cmp=None; arms={}; guardrows=[json.loads(s) for s in (base/('guard_'+group)/'stdout').read_text().splitlines()]; assert len(cases)==len(guardrows)==7\n    for c,line in zip(cases,guardrows):\n        h=c['history'];label=c['label'];inp=Path(exports[h]['file']);raw=base/'runs'/(c['name']+'.json');assert sha(raw)==line['result_sha256']==done['results'][c['name']];assert sha(inp)==line['input_sha256'];assert line['command']==list(map(str,[engine,inp,raw,c['seed'],c['dt'],c['warm'],c['duration'],c['strain'],.08,c['multiplier'],c['p_ext'],1,1.088]));r=load(raw)\n        assert (r['history'],r['seed'],r['temperature'],r['mass'],r['gamma'],r['pressure_external'],r['strain'],r['n'],r['axis_index'],r['source_sha256'],r['source_temperature'])==(h,c['seed'],1.088,1,1,c['p_ext'],c['strain'],128,1,exports[h]['source_sha256'],exports[h]['source_temperature']);close(r['axis'],axis);close([r['requested_dt'],r['measure'],r['warm']],[c['dt'],c['duration'],c['warm']]);close(r['volume_mobility'],exports[h]['volume_mobility']*c['multiplier'])\n        if warm is None:\n            warm=r['prepared'];errors.append(measured_state(warm,r['prepared_reading'],axis));pw=waves(warm) if r['prepared_reading']['density']>1. else None\n        else:assert warm==r['prepared']\n        matrix=expm(r['strain']*axis);s={**warm,'box':np.array(warm['box'])@matrix,'pos':np.array(warm['pos'])@matrix};errors.append(measured_state(s,r['initial_reading'],axis));\n        b=r['blocks'];f=r['final'];errors.append(measured_state(f,b[-1]['end_reading'],axis));com=np.sum(f['vel'],axis=0)\n        if cmp is None:cmp=com\n        else:close(com,cmp)\n        endb=0.;assert len(b)==16\n        for block in b:\n            close(block['initial_t'],endb);endb=block['end_t'];close(endb-block['initial_t'],block['steps']*r['dt']);assert 0<=block['accepted']<=block['attempts'];\n            for field in ('mean','end_reading'):check_reading(block[field],axis)\n            bl+=1\n        close(endb,r['measure'])\n        v={k:float(window(b,k)) for k in ('density','temperature','pressure','log_volume','shear')};v['prompt']=r['initial_reading']['shear'];v['density_ratio']=v['density']/window(b[:-4],'density');v['min_cluster']=min(block['structure']['max_cluster'] for block in b[-4:]);st=b[-1]['structure'];v['lost']=st['absent']/st['original'] if st['original'] else None;v['rms']=st['nonaffine_rms'];v['warm_peak']=pw['peak'] if pw else None\n        dense=v['density']>=1.2 and v['min_cluster']>=116 and abs(v['density_ratio']-1)<=.1\n        final=waves(f,pw['h'] if pw else None) if dense else None\n        v['post_peak']=final['peak'] if final else None;v['post_four']=final['power'] if final else None;v['post_preselected']=final.get('fixed') if final else None\n        v['qualifies']=bool(dense and pw and pw['peak']<=.2 and final['peak']<=.2 and v['lost'] is not None and v['lost']>=.5 and v['rms']>=1.)\n        arms[label]=v;cases_out[c['name']]=v\n    g={}\n    for k,plus,minus,amp in [('full','gp','gm',.02),('half','hp','hm',.01)]:\n        for field in ('prompt','shear'):g[k+'_'+field]=(arms[plus][field]-arms[minus][field])/(2*amp)\n    g['compliance']=(arms['pm']['log_volume']-arms['pp']['log_volume'])/.5;g['pressure_readback']=arms['pp']['pressure']-arms['pm']['pressure'];g['all_arms_qualified']=all(a['qualifies'] for a in arms.values());summary[group]=g\nrat={k:{q:s[q+'_shear']/s[q+'_prompt'] for q in ('full','half')} for k,s in summary.items()};out=dict(classification=classification,selected=chosen,precursor_endpoint_checks=len(p_errors),max_precursor_tensor_error=max(p_errors),physical_cases=len(cases_out),blocks=bl,state_evaluations=len(errors),max_endpoint_tensor_error=max(errors),fractions=rat,per_group=summary,per_case=cases_out);dst.write_text(json.dumps(out,indent=2,allow_nan=False)+'\\n');print(json.dumps(out,allow_nan=False))\n"
+    }
+  },
+  "review": [
+    {
+      "reviewer": "receiver_crosscheck",
+      "scope": "Independent short precursor and force audit",
+      "verdict": "Scoped clear for the precursor-based prediction of a dense, rearranging held-out receiver and its finite-window conditional shear and compression responses. The half-strain residual is not yet bounded at the prescribed precision."
+    },
+    {
+      "reviewer": "receiver_strategy",
+      "scope": "Report, raw-reduction table and measurement record for independent short experiment",
+      "verdict": "Scoped clear for the selected precursor, density and order checks, and finite-window signed bulk-stress and compression measurements on the independent geometry. They leave wall traction and free acceleration open."
+    }
+  ],
+  "formal_repository_review": "Pending"
+}

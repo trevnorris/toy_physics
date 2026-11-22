@@ -1,0 +1,58 @@
+// The generated input declares the ring, d, R, h1,h2,h3, F, P,
+// stateVars and stateDelta. Coefficients are Q, never Q(parameters).
+proc lie(poly f)
+{
+  poly ans=P*diff(f,d);
+  int j;
+  for(j=1;j<=size(stateVars);j++)
+  {
+    ans=ans+diff(f,stateVars[j])*stateDelta[j];
+  }
+  return(ans);
+}
+
+print("WORKING_ON: direction coefficients");
+print("PREMISE: A real polynomial restricted to the unit sphere vanishes everywhere iff its remainder modulo h1^2+h2^2+h3^2-1 is zero; the real sphere is Zariski dense in this quadric.");
+ideal sphere=std(ideal(h1^2+h2^2+h3^2-1));
+poly oriented=reduce(F,sphere);
+print("ORIENTATION_REMAINDER: "+string(oriented));
+matrix cm=coef(oriented,h1*h2*h3);
+ideal generators;
+int k;
+for(k=1;k<=ncols(cm);k++) { generators=generators,cm[2,k]; }
+generators=simplify(generators,2);
+print("DIRECTION_GENERATORS: "+string(generators));
+
+print("WORKING_ON: differential ideal");
+print("PREMISE: Polynomial rings over Q are Noetherian. If a finitely generated ideal is closed under a polynomial derivation, the common zeros of its generators persist along every analytic solution of that derivation. Conversely all Lie derivatives of an identically zero analytic output vanish. P(d) is nonzero for d>R>rin>0. These facts make the stabilized ideal evaluated at d=2*R necessary and sufficient.");
+print("PREMISE: All exponents, amplitudes, velocities, radius quantities and lifted analytic constants are polynomial variables; no parameter is inverted in std/reduce. The certificate therefore specializes at every real exponent value, including every value in the printed forming cases.");
+ideal basis=std(generators);
+ideal additions;
+poly remainder;
+int round=0;
+int done=0;
+while(done==0)
+{
+  round++;
+  print("WORKING_ON: differential ideal round "+string(round));
+  additions=ideal(0);
+  for(k=1;k<=size(basis);k++)
+  {
+    remainder=reduce(lie(basis[k]),basis);
+    additions=additions,remainder;
+  }
+  additions=simplify(additions,2);
+  print("CLOSURE_REMAINDERS: "+string(additions));
+  if(size(additions)==0) { done=1; }
+  else { basis=std(basis+additions); }
+}
+print("WORKING_ON: conditions at reference separation");
+print("STABILIZED_GENERATORS: "+string(basis));
+ideal atReference=subst(basis,d,2*R);
+atReference=simplify(atReference,2);
+print("CONDITION_COUNT: "+string(size(atReference)));
+for(k=1;k<=size(atReference);k++)
+{
+  print("CONDITION_POLYNOMIAL: "+string(atReference[k]));
+}
+print("SINGULAR_COMPLETED: 1");

@@ -2,6 +2,58 @@
 
 ## Common-medium research
 
+**Current 0PN development plan, 22 November 2026.** The archive audit separates the stream lag from the push resistance. On the reference rigid mesh the push and steady wall readouts agree near +0.0005421, while two independent momentum estimates of steady actuator resistance give −0.00000607 and −0.00000836. Physical drag remains unresolved. Next measure the cycle-averaged energy current into both reservoirs during the same push. [Drag table and controls](software/stage1_solver/reports/mouth_drag_response_audit.md) In parallel, identify a stationary mouth with independently determined support or a measured opening response. A selected preparation then faces a momentum-return test, independent source and target scaling across radii, and a blind unequal-pair force and energy check. The new plan keeps the measured radius-dependent family as the primary hypothesis. [Development plan and decision criteria](docs/zero_pn_free_fall_roadmap.md) · [Shareable 0PN brief](docs/zero_pn_gravity_reviewer_brief.pdf)
+
+**Receiver material result carried forward.** Three related classical four-dimensional receiver histories retained −0.10% of their prompt signed shear at full strain and +0.06% at half strain over a conditional transit. An independent receiver gave −0.34% and −2.84%, and crystalline controls retained 33.82–54.82%. Eleven of twelve homogeneous preparations met all material criteria after a common-plane fit. All twelve retained their structural order, and neither pair resolved four-component traction compatibility. The force at a mobile opening and bulk shear viscosity remain open. Resume this material branch if it can distinguish a significant unresolved contribution to mouth force or drag. [Transit measurements](software/stage1_solver/reports/mouth_receiver_transit.md) · [Common-plane result](software/stage1_solver/reports/mouth_receiver_common_face.md)
+
+**0PN location of the mouth’s material surface.** Travel times of individual constituents give speed-dependent reflection heights on the cold half-order sheet. Applying its mean potential to a continuous carrier with identical material on both sides allows steady normal current. This candidate lacks the impermeability prescribed on the curved side wall. The independent input is the normal response with the physical material behind the surface, together with its position relative to the carrier. The signed time spent attached and free-mouth acceleration remain open. [Surface position, normal-current test and force diagnostic](software/stage1_solver/reports/mouth_surface_registration.md)
+
+**0PN attachment at the held mouth.** Allowing surface sites to recoil lets passing material bind. At half shear order on the closer surface with mean attraction retained, the sampled companion-facing pole captures more material even though the far pole has more inward crossings. Equal local residence times would make the calibrated order-force contribution point away from the companion. Its physical sign requires a measurement of where captured material goes and how long it stays on each side. The stationary population and free acceleration remain open. [Surface collision, signed capture and residence test](software/stage1_solver/reports/mouth_attachment_impact.md)
+
+**0PN capture of incoming material.** Near the held mouth the companion-facing side contains slightly more carrier but the far side has more inward crossings. In a thin slice with equal mean attachment lifetimes, 32.79%–98.79% of eligible band crossings would have to bind to reverse the order force across the four preparations. On the passive thermal patch, local exchange is too slow in one measured carrier transit. The next input is the sticking fraction of tagged arrivals and their angular residence and loss under matched flows. The complete carrier-plus-mouth momentum balance and free acceleration remain open. [Capture thresholds, thermal clocks and independent checks](software/stage1_solver/reports/mouth_curved_attachment_counts.md)
+
+**0PN force from already-bound material in a companion flow.** At fixed intake the added order force on the held wall and its resident sites pointed away from a distant companion for both adsorption laws and both sampled depths when the site positions stayed fixed. Allowing sites to diffuse in their measured adsorption energy with uniform replacement reversed this contribution at 1.61%–6.41% of the predicted equilibrium population imbalance in the earlier neutral-temperature example. The next independent input is the companion-facing occupancy difference at matched opposite flows, or the angular transport and replacement of the same residents. Carrier and outgoing momentum and the free-mouth inertia remain open. [Force comparison, redistribution thresholds and reviews](software/stage1_solver/reports/mouth_curved_companion_order.md)
+
+**0PN response of the curved conversion layer.** One weak wall site perturbed the half-order surface a full mouth radius away at the axis. For a site at half order, the axis and wall-mean depth shifts per unit coupling were +2.71019 and +2.82456 on the finest mesh. The order pressure exerted a sideways force on the held wall and site. For two equal-mass sites at opposite sides and different depths, the two existing binding laws gave opposite signs. The missing gravity input is the angular change in attachment strength and population under a companion, the change in pressure per attached site, and the carrier momentum response. [Curved front, force balance and opposite-site comparison](software/stage1_solver/reports/mouth_curved_site_front.md)
+
+**0PN force from a disturbance in shear order.** A carrier-transported order disturbance pulls on a surface-bound site under signed stream reversals. For the two measured surface laws the upstream rate ceilings are approximately 0.01706 and 0.01899 per model time in the local weak-response test. In a first inward passage to order 0.80 the two laws would require a site-averaged increase in static order of at least about 0.1170 or 0.1370. The upper bound for the common Gaussian footprint is about 0.05860 on the primary cell. Locally relaxed order drag alone cannot carry the site through that segment. The next discriminator is whether an actual bound site moves a wider region of the converting material and transfers tangential stress to the mouth. [Two independent drives, energy budget and limitations](software/stage1_solver/reports/mouth_order_slip.md)
+
+**0PN surface attraction and stream drag.** As shear order fell from 0.875299 to 0.5, a neutral bilayer with intact pair bonds retained 99.997–100.102% of its mean normal holding force across the warm preparations tested. A kicked constituent recoiled relative to the sheet. The cold homogeneous carrier supplied zero steady linear density-wave drag at the two measured slip speeds (Mach 0.04286 and 0.05352 on mesh 34). The open input for free fall is the tangential momentum transferred from the stream to a surface-bound constituent at the converting mouth. Varying the stream and sheet velocities independently would distinguish this transfer from recoil. [Neutral-patch force, carrier calculation and independent checks](software/stage1_solver/reports/mouth_neutral_face_and_slip.md)
+
+**0PN retention of material under flow.** At radius 1 and intake 0.25, two cold surface models required +0.02053739 and +0.01146821 work per unit mass to transfer a bound constituent from upstream to half order. With the same trial flow coupling of 5.5 per model time, one confined an incoming site between those depths and the other let it pass. An independent fixed-height normal-force measurement would distinguish the surface laws. The physical coupling rate, energy supplied by the carrier and sideways force on a released mouth remain open. [Surface work, confinement test and energy budget](software/stage1_solver/reports/mouth_bound_site_transfer.md)
+
+**0PN passage of an independently tracked material patch.** A cold parcel at radius 1 and intake 0.25 could retain a density peak during prescribed flow while losing contact with the flare. In a separate test that released motion along the fourth coordinate, a constituent launched at the carrier speed turned back at depth 1.191418 in one binding law and reached 1.65 in another. Both laws give the same radial force at every depth. The difference is the work to transfer a bound constituent between shear-order states. Measuring that work independently, and the work supplied by the flow, would distinguish retention from passage before assigning force to the moving mouth. [Patch, axial release and discriminating measurement](software/stage1_solver/reports/mouth_unpinned_feature_passage.md)
+
+**0PN force on an ordered wall feature.** At radius 1 and intake 0.25, moving a held microscopic lining under a fixed supply gave a positive restoring slope in all six numerical settings. Shifting the incoming material with the lining gave zero displacement response by symmetry. When a prescribed bend altered the incoming trajectories upstream, the net force slope on the deep rows changed sign between carrier meshes. Free release still needs an independently identified wall feature, the motion of arriving material relative to it, and the mass flux it engages. [Measurement and roadmap decision](software/stage1_solver/reports/mouth_ordered_feature_traction.md)
+
+**0PN force between passing constituents and the flare.** All 20 fixed-volume runs of the one-transit hold completed. One of three hot preparations gave a late tagged holding slope of 58.465 at both displacements. At the same saved times its tagged and spatial pair-force slopes were 54.169 and 43.450 at full displacement. The other two hot histories failed the amplitude check. Independent forces from the saved coordinates confirmed the scope of these readings. The roadmap stops before step 2 pending the tangential force on an independently identified ordered wall feature during slip and material replacement. [Force comparison, physical roadblock and next measurement](software/stage1_solver/reports/mouth_bulk_to_flare_precision.md)
+
+**0PN temperature and neighbor exchange in sample 87.** All 75 runs completed. At thermal energy 1.024 times the pair well depth, all 128 sites remained connected at every saved undriven frame and 40.14–84.31% of the starting neighbors were absent at the end of one transit. All three histories resisted finite compression. Late signed shear varied in sign and magnitude across histories and strain amplitudes. A tighter bound on this response is needed before using it to calculate the force delivered to the mouth. [Thermal test and independent verification](software/stage1_solver/reports/mouth_bulk_temperature_steps.md)
+
+**0PN bulk with isotropic bonds.** At zero applied pressure a neutral 128-site four-dimensional crystal and two random-start samples retained positive compression and all nine shear stiffnesses. The least ordered sample gave a compression modulus of 128.70311 and a weakest shear modulus of 23.70715. In the original warm mouth-patch geometry, both isotropic comparisons preserved over 85% of their initial common shear response for the final quarter of one transit. In the fixed cubic cell, warm random-start sample 41 retained 24.72% of the tested shear and 98.94% of its compression. The late shear response agreed at both time steps and amplitudes. In the undriven control all 1,334 initial neighbor pairs persisted at every sampled time. The outstanding material requirement is a mechanism that lets neighbors exchange and shear relax while compression remains supported. [Four-dimensional material test and review](software/stage1_solver/reports/mouth_bulk_isotropic_4d.md)
+
+**0PN shear after converted patches meet.** Two finite samples of the same material formed 48 contacts. No constituent was observed crossing into the other half over preparation and hold. A direct relative displacement left 66.58% or 35.22% of the initial contact stiffness in the final quarter of one transit. Both pair laws still distinguish the old slab normal when shear order reaches zero. The open discriminator is whether an isotropic bulk interaction can preserve compression while releasing shear, before using it to predict how much lip load reaches the moving flare. [Contact test, transmitted force and independent checks](software/stage1_solver/reports/mouth_bulk_contact.md)
+
+**0PN interlayer grip during normal release.** With the microscopic pair energies unchanged, two passing neutral material laws squeezed into strongly gripping configurations at 1% local shear order. Once normal bracing was fully removed, the warm closed patches retained 90.53–96.45% of their initial common shear response over the final quarter of one downstream transit. Normal release alone failed to supply a shear-free receiver on that timescale. The open test is relaxation and neighbor exchange in bulk material at matched conditions. [Passing grip, separate bulk-shear hold and independent review](software/stage1_solver/reports/mouth_brace_grip.md)
+
+**0PN material requirement for deep flare support.** The calibrated bilayer could reach the weaker release stiffness if it retained 18.91% of its fully ordered interlayer grip at 1% local shear order with the facing sheet locked, or 21.93% with the neutral wall grip, in a single relaxation-time model. Instantaneous response within the existing bonds’ reach fell short. The stronger target exceeds the two-sheet elastic ceiling. The open input is an independent interlayer force reading during passage through conversion. [Flare calibration, bounds and independent review](software/stage1_solver/reports/mouth_flare_grip_requirement.md)
+
+**0PN release under measured lip pressure.** Removing all three holders in a steady brane stream moved the entrance toward the stream in two wave-supported mouths. At time 16 the flare moved 18.6% and 21.3% as far as the entrance. Changing only the deeper bend’s tension changed the transient even with the bath dimensions doubled. Physical free fall still requires an independent deep restoring force. [Release traces, controls and independent check](software/stage1_solver/reports/mouth_lip_pressure_release.md)
+
+**0PN discharge and held-mouth force.** Pressure on the reflecting mouth gave a force of 0.250010 per unit far-brane stream speed, in agreement with momentum balances extending into the receiver. About 99.7% acted upstream of the tagged-material injection point. The original slipping tags missed the discharge opening. A separate normally retained guide could transmit force through discharge, conditional on added capture and support laws. The physical acceleration still requires the transmission of lip pressure to the moving mouth. [Discharge, ordinary participation and independent review](software/stage1_solver/reports/mouth_discharge_momentum.md)
+
+**0PN upstream force on a held curved mouth.** In a smooth normal-contact hypothesis, the two halves of a displaced bend exerted largely opposed forces. A separate weak sideways stream gave the unbent potential about 32% of the participating sites’ incident lateral momentum by the 1%-order cut. The same physical mouth’s participating mass flow, net reaction through discharge and inertia are still needed for free fall. [Signed bend, stream and independent checks](software/stage1_solver/reports/mouth_upstream_normal_contact.md)
+
+**0PN material crossing on a mobile lining.** In the cold symmetric preparation, sites arrived at depth 1.55 with RMS sideways speed 3.87–3.90 pitches per model time. Switching off the subsequent interaction shifted their outlet positions by less than 0.005 pitch RMS. For the specified contact law the mesh-34 continuous-force bound on a site's sideways velocity change was 0.160 over the recorded deep transit even with arbitrary transverse row motion. The signed recoil failed a common-translation check. Step 2 still needs independent material exchange and traction at the geometric mouth in the more ordered region. [Moving rows, tagged material and independent review](software/stage1_solver/reports/mouth_mobile_lining.md)
+
+**0PN microscopic wall grip during renewal.** A uniform supply gave zero mean response to a constant local wall offset. On the same model wall and at the same temperature the local and inherited thermal preparations gave traction slopes of 6.41 × 10⁻⁸ and 7.56 × 10⁻⁵. Following an almost aligned stream from upstream amplified its initial transverse position error through the conversion region. The physical pattern and the positions and velocities of incoming material relative to it remain unselected; Step 2 is blocked. [Microscopic crossing, independent checks and decision](software/stage1_solver/reports/mouth_renewing_registry_probe.md)
+
+**0PN roadmap stopped at the replacing flare.** Driving only the wall and letting both sheets slip gave coating holding-force slopes of 3.39074 and 7.05941 after four transits at the same trial drag. The two interfaces agree on aligned normal binding and the earlier clamped calibration. The local tangential traction and the reference of newly arriving material must be identified independently before a physical push or two-mouth release. [Force, sheet motion, drag control and independent review](software/stage1_solver/reports/mouth_replacing_flare_slip.md)
+
+**0PN material force at the deeper flare.** One cold, compression-calibrated bilayer restored both tested bends when its material sheets ran along the depth of the wall. The flare holding-force slopes were 0.283529 with persistent bonds, 0.283144 when only cross-sheet bonds weakened, and 0.065036 when the load-bearing fraction followed shear order. The outstanding material reading is the lateral force at the wall with neighboring material free to slip during replacement. [Clamped forces, independent review and gravity implications](software/stage1_solver/reports/mouth_calibrated_flare_coating.md)
+
+**0PN sideways push on a wave-supported mouth.** At fixed radius, intake and wave action, doubling the trial wall tension increased inverse entrance inertia by 8.1893% in the largest bath. The feeding brane and receiving bulk accounted for the exported momentum. The next independent input is the lateral force needed to hold the flare displaced with the entrance and middle fixed. [Slow push, reservoir controls and force predictions](software/stage1_solver/reports/mouth_occupied_slow_push.md)
+
 **0PN density and thinning under particle exchange.** Two neutral candidate materials got thinner and denser under a face squeeze, and thinner and less dense when particles were driven out at zero face pressure. Combining the independently measured loads kept density nearly constant in an open-column test. The relative strength of those loads in a drain and the falloff of the free slab width remain open. [Same-loss comparison and pressure versus patch size](software/stage1_solver/reports/neutral_patch_width_pressure.md)
 
 **0PN neutral-patch test of the first bend.** The written wave law gave zero strain-induced stiffening. Two cold candidate materials softened under layer sliding. Turning each whole sample cost zero bond energy, while symmetric shear with zero wave curl cost energy in both. Layer sliding therefore cannot directly calibrate the mouth’s wave force. The next independent input is torque and phase lag for a relative material turn in the radius–depth plane under prestrain. [Neutral patch, controls and implications for free fall](software/stage1_solver/reports/neutral_patch_ringing_modulus.md)
@@ -88,7 +140,33 @@ The [charge requirements](docs/em_charge_attribute_requirements.md#november-chec
 
 The [scoped comparator](research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_run_record.md) is accepted for items 1–3, 5 and 6. Its [final review](research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_build_review_r2/README.md) verifies the per-object exponent coverage and three later Wolfram time-argument declarations. Item 4 stays deferred. The [S15 record](research/pde_ledger_v3/steps/S15_two_drain_region.md) and its register pass file the conditional shell-crossing test for S21. The free-throat acceleration, physical field response and complete profile classification remain open.
 
-## 2026-11-09: S15, and where the work stands
+## Current S15 scope (2026-11-12)
+
+The user chose “Defer and proceed as you've recommended.” This defers the independent item-4 check
+(the Singular survey and the Wolfram–Singular comparison). The unfinished trial closed no object.
+The single-engine Wolfram results retain their recorded scope. S15 can proceed at this reduced
+scope, with conclusions that require the independent classification of inverse-square conditions open.
+[Deferred runs](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md#s15--independent-item-4-check)
+· [Unfinished trial record](research/pde_ledger_v3/directives/_measurements/S15_separation_departure_singular_run_record.md)
+
+1. Compare the accepted SymPy and Wolfram reading outputs for items 1–3, 5 and 6, including
+   item 1 against the original S15 outputs. The [comparator decision list](research/pde_ledger_v3/directives/S15_reading_comparator_decision_list.md)
+   incorporates the fresh Codex and Grok reviews. The [input inventory](research/pde_ledger_v3/directives/_measurements/S15_reading_comparison_inputs.md)
+   locates all 336 named quantities per engine, including the original operands of the 27 new sums.
+   The original S15 comparator covered the earlier build.
+   [Reading decision list](research/pde_ledger_v3/directives/S15_reading_decision_list.md#for-the-comparator-and-the-record-not-in-the-build-directive)
+2. After the comparator's build and review, write and review the S15 record and requirements register
+   pass. State which named momentum terms the compared evidence covers, under which profile, surface
+   and response assumptions. Check compatibility with a steady mass-conserving sink. Carry supported
+   flow requirements to S21 and keep the item-4 completeness question open. The transfer of regional
+   momentum to a throat and the full force sign remain open.
+   [Record remit](research/pde_ledger_v3/directives/S15_decision_list.md#for-the-record-and-its-register-pass-not-in-the-build-directive)
+3. At closeout, reconcile the scratch-path citations against durable evidence and retain the deferral
+   in the step record. The November 9 inventory reported 76 committed S15 files citing scratch
+   (72 measurement files and 4 directives). The scope of migration is for the user to decide.
+   Preserve inputs needed for the deferred comparison when applying the transcript-cleanup rule.
+
+## Accepted S15 work through 2026-11-09
 
 **S16 is accepted.** Its record and register pass were accepted at `4f907e9d` (round 2 clear, fresh Claude + Grok).
 
@@ -109,7 +187,7 @@ The [scoped comparator](research/pde_ledger_v3/directives/_measurements/S15_read
 - **Item 4 has one engine in the accepted build: Wolfram.** By a user decision, the SymPy engine attempts no item-4
   object (note 4o, `f7068356`). Six objects carry the label `user_decision_2026_11_06` (note 4n, `266f2acf`): the
   two-drain region momentum and rate, for each Cartesian component. Their complete conditions were not obtained, and
-  they are queued for a larger-memory follow-up in each engine.
+  the November 9 plan queued them for a larger-memory follow-up. The current deferral is recorded above.
 - A Singular side test was gated at `07b1e751`. It ran, but its output has not been reviewed, so it is not evidence.
 - **Singular becomes item 4's second engine** (user, 2026-11-09: "Go with your recommendation. Sounds like Singular is
   a solid choice for this"). The engine directive
@@ -118,36 +196,6 @@ The [scoped comparator](research/pde_ledger_v3/directives/_measurements/S15_read
   - it was accepted at `d4cd6d09` after two CLEAR pass-2 legs (Codex and Grok).
   Singular 4.4.1 is installed at `/var/projects/_tools/singular`.
 - Since `de9efa9b` (user, 2026-11-02), each run commits a run manifest and no engine transcript.
-
-**In flight (uncommitted).**
-- A Codex builder (`gpt-6-astra`) is building the Singular engine. Its source and the README's Singular section exist.
-  Its run record and manifest do not exist yet.
-- Its first session ended during its first guarded run. That run kept going, but its guard reservation was left with
-  no live owner. The guard's explicit reconciliation rule must clear that reservation before it admits another job,
-  and the builder is then resumed with an operational note.
-- Before acting on any of this, check the guard's unit, the guard registry and the builder's DONE markers. Do not
-  assume any of it is still running.
-
-**NEXT, in order.**
-1. Finish the Singular build. Its stale guard reservation is reconciled by the guard's rule, and the builder is
-   resumed with an operational note. The builder then finishes its runs, and writes its run record, its manifest and
-   its final report.
-2. Check that the deliverable exists: the run record, the manifest and the final transcript. Then launch the build
-   review. Codex wrote the build, so the legs are a fresh Claude agent and Grok, with one identical prompt, reviewed
-   until clear. The Grok launch must let Grok take the guard's lock. If it cannot, the launch is fixed before the Grok
-   leg runs: `AGENTS.md` forbids any fallback to an unguarded launch.
-3. Adjudicate the findings. Commit the reviewed baseline before any repair, and accept only on clearance.
-4. Build the two comparators: item 4, Wolfram against Singular; and the reading build's items 1–3, 5 and 6. Each needs
-   a decision list (two legs, folded once), a build and a review.
-5. Write the S15 step record and its register pass. The record asks which returned conditions are compatible with a
-   steady sink that conserves mass. Riemann's sink ether and Lagally are oracles for that question, not premises.
-6. Close S15:
-   - If the six labelled objects are still not obtained, they go to
-     [DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md) through the record.
-   - 76 committed S15 files cite paths under the disposable scratch directory: 72 measurement files and 4
-     directives. Most were written before the user's 2026-11-02 rule. The evidence they rely on is moved out or quoted
-     in a manifest. The scope of that move is for the user to decide.
-   - The step's local transcripts and their preserved copies are deleted.
 
 **Also owed.**
 - The Grok launch for guarded review legs. In round 5, Grok's sandbox could not take the guard's lock (recorded in

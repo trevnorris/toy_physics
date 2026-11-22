@@ -1,0 +1,768 @@
+{
+  "archive_only": true,
+  "command": [
+    "python3",
+    "software/stage1_solver/tools/mouth_drag_response_audit.py",
+    "--figure",
+    "software/stage1_solver/reports/figures/mouth_drag_response_audit.png"
+  ],
+  "guard_command": [
+    "python3",
+    "scripts/s11c_guarded_run.py",
+    "--pool",
+    "drag-audit",
+    "--memory-gib",
+    "1",
+    "--log-directory",
+    "_scratch/s11c/carrier_drag_audit01",
+    "--",
+    "python3",
+    "software/stage1_solver/tools/mouth_drag_response_audit.py",
+    "--figure",
+    "software/stage1_solver/reports/figures/mouth_drag_response_audit.png"
+  ],
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "verified": true,
+  "memory_cap_bytes": 1073741824,
+  "swap_cap_bytes": 0,
+  "deadline": null,
+  "source_sha256": "b15bd38cd0c10a968254c62b59ee52caacc56f576b57d1f7c5480534459724df",
+  "figure_sha256": "2f2bf5ea9241dcd4af569dfbbccc709ab2d1066cc0f83bfd175a9d61a6011991",
+  "stdout_sha256": "8d6a8e2e7e05fd5bd80da083760cab34dd714929eb19d8b3d3263ad5c5891e86",
+  "stdout": {
+    "convention": "exp(+i omega t), external actuator force",
+    "rigid": [
+      {
+        "run": "carrier_free_c26_01",
+        "mesh": 26,
+        "far": 9.0,
+        "roof": 10.0,
+        "intake_nominal": 0.25,
+        "intake": 0.24999999999797987,
+        "responses": [
+          {
+            "omega": 0.01,
+            "a_per_F": [
+              0.0815798426864011,
+              0.0003339347267844867
+            ],
+            "a_per_U": [
+              0.02041328567213855,
+              -0.0002079908095834065
+            ],
+            "actuator_resistance": 0.0005017513862984395,
+            "minus_H_per_U": [
+              0.25020999803693483,
+              -0.003573733502249277
+            ],
+            "stream_quadrature_per_omega": -0.35737335022492767
+          },
+          {
+            "omega": 0.02,
+            "a_per_F": [
+              0.08157790832433409,
+              0.00016695455235545519
+            ],
+            "a_per_U": [
+              0.02046109001118782,
+              -0.0005425751501326292
+            ],
+            "actuator_resistance": 0.0005017429867079162,
+            "minus_H_per_U": [
+              0.25080189380769247,
+              -0.007164288470348736
+            ],
+            "stream_quadrature_per_omega": -0.3582144235174368
+          },
+          {
+            "omega": 0.04,
+            "a_per_F": [
+              0.08156632353315921,
+              8.344768309889058e-05
+            ],
+            "a_per_U": [
+              0.020652735017482157,
+              -0.0011586587350912681
+            ],
+            "actuator_resistance": 0.0005017091765536011,
+            "minus_H_per_U": [
+              0.25318694191534336,
+              -0.01446413847873599
+            ],
+            "stream_quadrature_per_omega": -0.3616034619683997
+          }
+        ]
+      },
+      {
+        "run": "carrier_free_c34_01",
+        "mesh": 34,
+        "far": 9.0,
+        "roof": 10.0,
+        "intake_nominal": 0.25,
+        "intake": 0.2500000000013136,
+        "responses": [
+          {
+            "omega": 0.01,
+            "a_per_F": [
+              0.08156009052557185,
+              0.0003606207873418722
+            ],
+            "a_per_U": [
+              0.020408284070442376,
+              -0.00020124305866152674
+            ],
+            "actuator_resistance": 0.0005421093135277132,
+            "minus_H_per_U": [
+              0.2502081003045227,
+              -0.003573724586552182
+            ],
+            "stream_quadrature_per_omega": -0.3573724586552182
+          },
+          {
+            "omega": 0.02,
+            "a_per_F": [
+              0.08155832761825185,
+              0.00018029770065971034
+            ],
+            "a_per_U": [
+              0.020456119644250658,
+              -0.0005390872681013436
+            ],
+            "actuator_resistance": 0.0005421025345377778,
+            "minus_H_per_U": [
+              0.2507999923499427,
+              -0.007164270616024132
+            ],
+            "stream_quadrature_per_omega": -0.3582135308012066
+          }
+        ]
+      },
+      {
+        "run": "carrier_free_rest_01",
+        "mesh": 18,
+        "far": 9.0,
+        "roof": 10.0,
+        "intake_nominal": 0,
+        "intake": 0.0,
+        "responses": [
+          {
+            "omega": 0.01,
+            "a_per_F": [
+              0.08143583773526236,
+              0.0
+            ],
+            "a_per_U": [
+              -0.0,
+              -0.000310549656550373
+            ],
+            "actuator_resistance": 0.0,
+            "minus_H_per_U": [
+              -0.0,
+              -0.0038134274195094644
+            ],
+            "stream_quadrature_per_omega": -0.3813427419509464
+          },
+          {
+            "omega": 0.02,
+            "a_per_F": [
+              0.08143289819523229,
+              0.0
+            ],
+            "a_per_U": [
+              -0.0,
+              -0.0006225352953821649
+            ],
+            "actuator_resistance": 0.0,
+            "minus_H_per_U": [
+              -0.0,
+              -0.007644764084039599
+            ],
+            "stream_quadrature_per_omega": -0.38223820420197996
+          }
+        ]
+      }
+    ],
+    "steady_tow": [
+      {
+        "run": "carrier_inertia_c26_01",
+        "mesh": 26,
+        "far": 9.0,
+        "roof": 10.0,
+        "intake": 0.24999999999797987,
+        "actuator_wall": 0.0005016812541144937,
+        "actuator_outer_cut": 0.00020100383410403015,
+        "actuator_interior": [
+          -1.1719708940347712e-05,
+          -1.0948645633207091e-05
+        ]
+      },
+      {
+        "run": "carrier_inertia_c34_01",
+        "mesh": 34,
+        "far": 9.0,
+        "roof": 10.0,
+        "intake": 0.2500000000013136,
+        "actuator_wall": 0.000542083739470945,
+        "actuator_outer_cut": 0.00011860791059827166,
+        "actuator_interior": [
+          -6.071278256770452e-06,
+          -8.363599144373276e-06
+        ]
+      },
+      {
+        "run": "carrier_inertia_c48_01",
+        "mesh": 48,
+        "far": 9.0,
+        "roof": 10.0,
+        "intake": 0.24999999998813904,
+        "actuator_wall": 0.0005212436593535728,
+        "actuator_outer_cut": 5.8126026114733564e-05,
+        "actuator_interior": [
+          -6.908488189073716e-06,
+          -7.051380246924277e-06
+        ]
+      },
+      {
+        "run": "carrier_inertia_ext14_01",
+        "mesh": 28,
+        "far": 14.0,
+        "roof": 15.0,
+        "intake": 0.25,
+        "actuator_wall": -0.0015159512308551976,
+        "actuator_outer_cut": 0.00022168299715083598,
+        "actuator_interior": [
+          -1.2024228541185344e-06,
+          -4.281417737127952e-06
+        ]
+      },
+      {
+        "run": "carrier_inertia_ext20_01",
+        "mesh": 36,
+        "far": 20.0,
+        "roof": 21.0,
+        "intake": 0.25,
+        "actuator_wall": -0.0024721921638518086,
+        "actuator_outer_cut": 0.00014895158727823557,
+        "actuator_interior": [
+          6.053474444804845e-06,
+          -2.843030289438204e-06
+        ]
+      },
+      {
+        "run": "carrier_inertia_restmatched26_02",
+        "mesh": 26,
+        "far": 9.0,
+        "roof": 10.0,
+        "intake": 0.0,
+        "actuator_wall": -0.0,
+        "actuator_outer_cut": 0.0,
+        "actuator_interior": [
+          -0.0,
+          -0.0
+        ]
+      },
+      {
+        "run": "carrier_inertia_still_01",
+        "mesh": 22,
+        "far": 9.0,
+        "roof": 10.0,
+        "intake": 0.0,
+        "actuator_wall": -0.0,
+        "actuator_outer_cut": 0.0,
+        "actuator_interior": [
+          -0.0,
+          -0.0
+        ]
+      }
+    ],
+    "occupied": [
+      {
+        "run": "occupied_push_base26_01",
+        "mesh": 26,
+        "far": 9.0,
+        "roof": 10.0,
+        "wave_action": 1.0,
+        "responses": [
+          {
+            "tension": 0.02,
+            "omega": 0.005,
+            "a_per_F": [
+              0.05922290023721544,
+              -6.713602059790422e-15
+            ],
+            "actuator_resistance": -9.570756267498855e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.005,
+            "a_per_F": [
+              0.06468045427669199,
+              -3.0353015439620034e-15
+            ],
+            "actuator_resistance": -3.627652882234505e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.0025,
+            "a_per_F": [
+              0.06327065979086131,
+              -1.5106663243302607e-14
+            ],
+            "actuator_resistance": -9.434172873096218e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.0025,
+            "a_per_F": [
+              0.06902879779486983,
+              -6.863937954205088e-15
+            ],
+            "actuator_resistance": -3.601245579586051e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.00125,
+            "a_per_F": [
+              0.08242880792107098,
+              -5.144908851166547e-14
+            ],
+            "actuator_resistance": -9.465197051412593e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.00125,
+            "a_per_F": [
+              0.0922561418150443,
+              -2.4635311552203178e-14
+            ],
+            "actuator_resistance": -3.618074418246051e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.000625,
+            "a_per_F": [
+              -0.41625993673788675,
+              -2.623423816654146e-12
+            ],
+            "actuator_resistance": -9.46279096453897e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.000625,
+            "a_per_F": [
+              -0.27113763093639853,
+              -4.255812120703386e-13
+            ],
+            "actuator_resistance": -3.618119196449712e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.0003125,
+            "a_per_F": [
+              -0.016529292568326564,
+              -8.278322612452865e-15
+            ],
+            "actuator_resistance": -9.46855781604613e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.0003125,
+            "a_per_F": [
+              -0.016185693993593517,
+              -3.035419964260125e-15
+            ],
+            "actuator_resistance": -3.620813510678613e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.00015625,
+            "a_per_F": [
+              -0.00341443802023717,
+              -7.059993063673231e-16
+            ],
+            "actuator_resistance": -9.462062948869126e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.00015625,
+            "a_per_F": [
+              -0.003399530496602704,
+              -2.6760304858463917e-16
+            ],
+            "actuator_resistance": -3.618038631274213e-15
+          }
+        ]
+      },
+      {
+        "run": "occupied_push_base34_01",
+        "mesh": 34,
+        "far": 9.0,
+        "roof": 10.0,
+        "wave_action": 1.0,
+        "responses": [
+          {
+            "tension": 0.02,
+            "omega": 0.005,
+            "a_per_F": [
+              0.0592115642294394,
+              -3.9725488021155534e-15
+            ],
+            "actuator_resistance": -5.6653425855085204e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.005,
+            "a_per_F": [
+              0.06466663047093109,
+              -1.939729551332717e-15
+            ],
+            "actuator_resistance": -2.3192668595205758e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.0025,
+            "a_per_F": [
+              0.06325751025870067,
+              -8.8771229992245e-15
+            ],
+            "actuator_resistance": -5.546104609331466e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.0025,
+            "a_per_F": [
+              0.0690126515326353,
+              -4.3727964864908834e-15
+            ],
+            "actuator_resistance": -2.2953126309828983e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.00125,
+            "a_per_F": [
+              0.08240352598916487,
+              -3.002180063813819e-14
+            ],
+            "actuator_resistance": -5.526563433291348e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.00125,
+            "a_per_F": [
+              0.0922235247908949,
+              -1.5563427206399634e-14
+            ],
+            "actuator_resistance": -2.2873457566050416e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.000625,
+            "a_per_F": [
+              -0.4172192708880378,
+              -1.5375856467875952e-12
+            ],
+            "actuator_resistance": -5.520655078891172e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.000625,
+            "a_per_F": [
+              -0.27155269277489386,
+              -2.6960711819438404e-13
+            ],
+            "actuator_resistance": -2.2850891290495855e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.0003125,
+            "a_per_F": [
+              -0.01653277535845056,
+              -4.852135928016952e-15
+            ],
+            "actuator_resistance": -5.5474251473055355e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.0003125,
+            "a_per_F": [
+              -0.01618906333688736,
+              -1.9259344728387555e-15
+            ],
+            "actuator_resistance": -2.2964028867309082e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.00015625,
+            "a_per_F": [
+              -0.003414923442302995,
+              -4.1348299500341874e-16
+            ],
+            "actuator_resistance": -5.5400761674630105e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.00015625,
+            "a_per_F": [
+              -0.0034000130080776678,
+              -1.6966735249162842e-16
+            ],
+            "actuator_resistance": -2.29328036111413e-15
+          }
+        ]
+      },
+      {
+        "run": "occupied_push_large13p5_01",
+        "mesh": 34,
+        "far": 13.5,
+        "roof": 15.0,
+        "wave_action": 1.0,
+        "responses": [
+          {
+            "tension": 0.02,
+            "omega": 0.005,
+            "a_per_F": [
+              0.058461957709433104,
+              -3.83074514413986e-15
+            ],
+            "actuator_resistance": -5.604108760904288e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.005,
+            "a_per_F": [
+              0.0637754022375899,
+              -1.8742515789972428e-15
+            ],
+            "actuator_resistance": -2.3040477581857888e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.0025,
+            "a_per_F": [
+              0.059984649502454294,
+              -8.018633651626333e-15
+            ],
+            "actuator_resistance": -5.5713459911671955e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.0025,
+            "a_per_F": [
+              0.06513725494233265,
+              -3.907815134020428e-15
+            ],
+            "actuator_resistance": -2.3025820490573176e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.00125,
+            "a_per_F": [
+              0.06417683388706347,
+              -1.8220340850403986e-14
+            ],
+            "actuator_resistance": -5.5298065004666314e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.00125,
+            "a_per_F": [
+              0.06998222870038834,
+              -8.966802442132324e-15
+            ],
+            "actuator_resistance": -2.288611500810773e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.000625,
+            "a_per_F": [
+              0.0878288075735763,
+              -6.815432739570836e-14
+            ],
+            "actuator_resistance": -5.522039139188285e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.000625,
+            "a_per_F": [
+              0.09901299946784839,
+              -3.585250667112329e-14
+            ],
+            "actuator_resistance": -2.2856783173194664e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.0003125,
+            "a_per_F": [
+              -0.1866003594286948,
+              -6.181628272044798e-13
+            ],
+            "actuator_resistance": -5.5478914527708795e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.0003125,
+            "a_per_F": [
+              -0.15052240524932,
+              -1.6651399233029788e-13
+            ],
+            "actuator_resistance": -2.29666925348219e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.00015625,
+            "a_per_F": [
+              -0.013825821666075565,
+              -6.778031458237464e-15
+            ],
+            "actuator_resistance": -5.540407450250682e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.00015625,
+            "a_per_F": [
+              -0.013584644085413872,
+              -2.7089444661059425e-15
+            ],
+            "actuator_resistance": -2.2936312602566913e-15
+          }
+        ]
+      },
+      {
+        "run": "occupied_push_large18_01",
+        "mesh": 34,
+        "far": 18.0,
+        "roof": 20.0,
+        "wave_action": 1.0,
+        "responses": [
+          {
+            "tension": 0.02,
+            "omega": 0.005,
+            "a_per_F": [
+              0.05828720695734678,
+              -3.800243508495181e-15
+            ],
+            "actuator_resistance": -5.592872773406904e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.005,
+            "a_per_F": [
+              0.06356783604933605,
+              -1.854674650786088e-15
+            ],
+            "actuator_resistance": -2.2948953465016874e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.0025,
+            "a_per_F": [
+              0.059258205137043746,
+              -7.818652084457182e-15
+            ],
+            "actuator_resistance": -5.566406400910523e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.0025,
+            "a_per_F": [
+              0.06428187298021311,
+              -3.801486542317579e-15
+            ],
+            "actuator_resistance": -2.299939549752051e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.00125,
+            "a_per_F": [
+              0.06098055450550784,
+              -1.6451496555365878e-14
+            ],
+            "actuator_resistance": -5.53009619151876e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.00125,
+            "a_per_F": [
+              0.06619892405954787,
+              -8.02463403866054e-15
+            ],
+            "actuator_resistance": -2.288934615134111e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.000625,
+            "a_per_F": [
+              0.0682503791195464,
+              -4.1149438695229926e-14
+            ],
+            "actuator_resistance": -5.521204033312307e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.000625,
+            "a_per_F": [
+              0.07481808344590739,
+              -2.046917626152366e-14
+            ],
+            "actuator_resistance": -2.2854263222345144e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.0003125,
+            "a_per_F": [
+              0.12978927484386416,
+              -2.990405480200925e-13
+            ],
+            "actuator_resistance": -5.5475661520368525e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.0003125,
+            "a_per_F": [
+              0.15575741764705164,
+              -1.7829163451630533e-13
+            ],
+            "actuator_resistance": -2.29659022295677e-15
+          },
+          {
+            "tension": 0.02,
+            "omega": 0.00015625,
+            "a_per_F": [
+              -0.04981616783613198,
+              -8.799666739050641e-14
+            ],
+            "actuator_resistance": -5.540457388455269e-15
+          },
+          {
+            "tension": 0.04,
+            "omega": 0.00015625,
+            "a_per_F": [
+              -0.046820956789724505,
+              -3.218059228172345e-14
+            ],
+            "actuator_resistance": -2.2936835000441435e-15
+          }
+        ]
+      }
+    ],
+    "input_stdout_sha256": {
+      "carrier_free_c26_01": "575771d123b11b13df4a5b8255eec4faae349db8df4116201c20a4710c1bcdf7",
+      "carrier_free_c34_01": "b8002964195f9db0482109bbe12f1f415878acfc72e0f9cd088c294375424d56",
+      "carrier_free_rest_01": "170e7f5ac3d06697ac45de8b05a1554a419cff0a75996838d3d1dbd754e2c039",
+      "carrier_inertia_c26_01": "0c800480be711ef6c6bbc49dcb70bf2e34777dcbe0173c399b4c90d1a6c7119c",
+      "carrier_inertia_c34_01": "b163903160f7cf33e0e5d4e400751fe2ceaa25c41f736a6ec2900fd86a89fe3e",
+      "carrier_inertia_c48_01": "d268f8c459c483232f444f0e749a8556699d3217f2daaccade7e4c1d72b37287",
+      "carrier_inertia_ext14_01": "8dbc478d8b9080248b5734bbe8f733f35e73ba47c527ea363f66b9fa6a1f3d67",
+      "carrier_inertia_ext20_01": "529cac1b4d0adb7155cd631b84f9ea5d4b7b492e14b336c5c3c62b3168782774",
+      "carrier_inertia_restmatched26_02": "dc2295afcc8c2b562db1b944b6ac2d682e390a68a58443b08569c14897adaefd",
+      "carrier_inertia_still_01": "f08d5f20f5716036bee3f771936fb05fedd45b7b193f95973c6e10186e517c0e",
+      "occupied_push_base26_01": "a022a8a6bd3913c9fff53c27655ad8f579806bc5417ef84e15eda5e11fea17ba",
+      "occupied_push_base34_01": "72eca9c9b0518f723df7fddaee42c85944b1ce1ecbcb9c011ae69082d16e7f53",
+      "occupied_push_large13p5_01": "b448cd51bdab6c77561cb08e9d643f0bd5c4c1e6bb8d6aede6dbf179d1a33945",
+      "occupied_push_bath13p5_n34_01": "52436357b25936d49f42bb38e3c5ce9aae087b7e82958e707d7fc0603814dc72",
+      "occupied_push_large18_01": "4ac846f15a64e27a974f405752268c46a03f938e180c1ae4e795d6d1e11536e6",
+      "occupied_push_bath18_n34_01": "fc4079da95d09a80f50325c78688d54c92c94ba900e0512e157d2c87ae9db5ce"
+    }
+  }
+}

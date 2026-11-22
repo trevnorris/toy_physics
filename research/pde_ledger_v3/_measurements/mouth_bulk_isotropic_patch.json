@@ -1,0 +1,305 @@
+{
+  "scope": "Two periodic tangents, one free normal, prepared by bringing two separately converted law-1 samples into contact. Each branch uses identical coordinates at first contact, site temperature, projected area, free faces, Brownian increments and durations. The two samples have distinct seeds. All laws receive one undriven contact-formation transit before the 1-transit deformation hold. Directional shear readings are restored from the earlier measurement. Projected-area response and the two isotropic shear responses are new.",
+  "definitions": {
+    "shear": "Derivative of (sigma_xx-sigma_yy) with respect to gamma for e^(+gamma),e^(-gamma).",
+    "area": "For log-area change h, x and y scale by exp(h/2). P=(N*kBT-dU/dh)/A uses the instantaneous projected area. K=-dP/dh. The free-normal height remains dynamical.",
+    "amplitudes": [
+      0.0001,
+      5e-05
+    ],
+    "late": "Arithmetic mean over frames 37 to 48 inclusive."
+  },
+  "files": {
+    "_scratch/s11c/mouth_flared_cubic_n34/field.npz": "66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz": "6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/outcome.json": "744fe2753cfd26fbdd8a22b996c8b8394658d13fb1f9a1125fd9713c521d93b0",
+    "_scratch/s11c/mouth_free_order_cubic_n34_d04/stdout": "546eb29a2c7121fa24974ee8c964a7b578333023f439dab2d87bf8e4daed0392",
+    "research/pde_ledger_v3/_measurements/mouth_bulk_contact.json": "67df8885092864540fc6aef8f8610365d12bb8f03c463e884756d392e38b43fb",
+    "research/pde_ledger_v3/_measurements/mouth_empty_bend_stiffness.json": "05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794",
+    "research/pde_ledger_v3/_measurements/mouth_free_order_depth.json": "917da8d7812928e1831855037336fc55b8b111977d52fb1eb97d11be4d2c54b9",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_bend_static_shear.py": "17c706eb42ff1a76a01903ed5051f037a4654aab9ca8d4c1043918a80f547fec",
+    "software/stage1_solver/tools/mouth_brace_bulk_shear.py": "9bd056500c9113e47486d7ae5a7ba16e5ace75375e8adc642d83713e85fb124c",
+    "software/stage1_solver/tools/mouth_brace_grip.cpp": "6771574400c418d84b3f35eda499ff8944560a579bdd1729af9e52916d136383",
+    "software/stage1_solver/tools/mouth_brace_grip.py": "c538b3cfadb13a74d57306ce2486f2ffc76b7ecd8e521bf974f48b24498e3946",
+    "software/stage1_solver/tools/mouth_bulk_contact.py": "8c877fc6da3b5c9c235dd79ea07eb8d83e25ff62b217daecc4e3c88982d05085",
+    "software/stage1_solver/tools/mouth_bulk_isotropic_patch.py": "4910c360c6fb715e8d6bb8a4d4985cfc67f8b02051eda3f0dd56d90a472ec57f",
+    "software/stage1_solver/tools/mouth_carrier_attachment_tension.py": "3ad065608f0abaa864eb68fa9da05fdc67899874eecb9da1a706a28b203c8f24",
+    "software/stage1_solver/tools/mouth_carrier_free_center.py": "ad4fbd4dbc20f92098f66eb054226c145390e26c296168688e13ec70e310e1bb",
+    "software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "software/stage1_solver/tools/mouth_contact_tracking.py": "fb8351e126e7bc7368b929ac393034263eb2677b9b5338d9e9da26dac9e14cef",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9",
+    "software/stage1_solver/tools/mouth_empty_bend_stiffness.py": "b819b54f464a1995e87777e66a5ee61b32c2d3c8477e913e07102f887fd0ab27",
+    "software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "software/stage1_solver/tools/mouth_free_bend_drive.py": "def4a7b4812929ebfeeac11525af3d652c0b6d9f70b01ef27e68aef622062bb9",
+    "software/stage1_solver/tools/mouth_free_bend_release.py": "7b95f8e53ae9735b75af77ebacc303d5bc7cf64baa81f11724b8ee6c4266961f",
+    "software/stage1_solver/tools/mouth_free_contact.py": "26e8c7c2d70d67e6a50a3ee794ea8b57e96f77dcac665b57a1e74effd5e4c206",
+    "software/stage1_solver/tools/mouth_middle_tag_grip.py": "d22322f69f8e50060e962e18764a38b9eca502c44e3debec2058e9654c084793",
+    "software/stage1_solver/tools/mouth_order_wave_pulse.py": "d4fc14a69fd269039a58197ee6751107708c67bff9329d414581896401f50433",
+    "software/stage1_solver/tools/mouth_two_depth_load.py": "13d9bd92859b47620b38b3d796c6946b544005eefa1d703dfe60095897ea058e",
+    "software/stage1_solver/tools/neutral_patch_conversion.py": "cbb432510cf4f29f9a4cc886f465896dc215c47af8cc8e19bd742db66be1ecea",
+    "software/stage1_solver/tools/neutral_patch_open_w.py": "3fd8d9a02853b9427cfb968741654b15e24516785fa522ba87835ffd056c80b9",
+    "software/stage1_solver/tools/neutral_patch_sites.py": "00595a5383311d4e20ed2af851cbd9d8c2bd59255b81c312829843ed8061f827",
+    "software/stage1_solver/tools/neutral_patch_structural_endpoints.py": "cbabe19929aafcce9fdd63d8cd70ea6f852d765432798efb038cbeb0dc850b8d"
+  },
+  "state": {
+    "path": "_scratch/s11c/isotropic_contact_control_01/converted.npz",
+    "sha256": "9310972a2600d53caff112da82d364a2e60888d764f104469ef3e58fa79788e4"
+  },
+  "runs": {
+    "prepare": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "isotropic-contact",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/isotropic_contact_control_01/prepare",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_bulk_isotropic_patch.py",
+        "prepare",
+        "--work",
+        "_scratch/s11c/isotropic_contact_control_01/prepare/native",
+        "--state",
+        "_scratch/s11c/isotropic_contact_control_01/converted.npz"
+      ],
+      "start_utc": "2026-11-21T20:18:06.946586+00:00",
+      "outcome_written_utc": "2026-11-21T20:18:11.261857+00:00",
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "runtime_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "limits_verified": true,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "peak_memory_bytes": 99127296,
+      "elapsed_seconds": 4.2983400211669505,
+      "stdout": {
+        "path": "_scratch/s11c/isotropic_contact_control_01/prepare/stdout",
+        "bytes": 1229,
+        "sha256": "9af9cbffc99673f14337b229aa21c03176c4c4c04e74eadc2aa90c97073e0a12"
+      },
+      "literal_stdout": [
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"preparation\", \"mesh\": 34, \"rate\": 0.2500000000013136, \"radius\": 1.0, \"order\": \"_scratch/s11c/mouth_free_order_cubic_n34_d04/order_seed1.55.npz\", \"sha256\": \"6ad7b60c36435809c586ea95762261eed48741faf8a5eea2399dd4a2d12d6341\", \"flow_record_sha256\": \"05ea46274fe2018cdae4c360af0c5caf239c3a7d7538b632b96003520186f794\"}",
+        "{\"test\": \"prepare\", \"seeds\": [319, 817], \"registration\": 1, \"mix_power\": 1, \"sites_per_patch\": 32, \"area\": 13.787600255382769, \"T\": 0.008, \"external_normal_traction\": 0.0, \"conversion_intake\": 0.2500000000013136, \"transit\": 48.88171243122866, \"starting_stresses_normal_traction_height\": [-0.3781614345123042, -0.33579017163420893, 3.6617652253528874, 2.5556282763330005], \"directional_energy\": -262.5629824335491, \"within_energy\": -311.97434653879986, \"matched_isotropic_depth\": 0.8416172206034078, \"state_sha256\": \"9310972a2600d53caff112da82d364a2e60888d764f104469ef3e58fa79788e4\"}"
+      ]
+    },
+    "directional": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "isotropic-contact",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/isotropic_contact_control_01/directional",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_bulk_isotropic_patch.py",
+        "directional",
+        "--work",
+        "_scratch/s11c/isotropic_contact_control_01/directional/native",
+        "--state",
+        "_scratch/s11c/isotropic_contact_control_01/converted.npz"
+      ],
+      "start_utc": "2026-11-21T20:18:11.302250+00:00",
+      "outcome_written_utc": "2026-11-21T20:19:28.235596+00:00",
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "runtime_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "limits_verified": true,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "peak_memory_bytes": 98873344,
+      "elapsed_seconds": 76.91839496511966,
+      "stdout": {
+        "path": "_scratch/s11c/isotropic_contact_control_01/directional/stdout",
+        "bytes": 30041,
+        "sha256": "b701a56b0d6325f86bdce03e230b89bf58646c40dcad1d11194c8e69295f8d5c"
+      },
+      "literal_stdout": [
+        "{\"test\": \"law\", \"law\": \"directional\", \"initial_sha256\": \"9310972a2600d53caff112da82d364a2e60888d764f104469ef3e58fa79788e4\", \"wells\": [[1.0, 7.0, 1.0], [0.6, 10.0, 0.94]], \"initial_observables\": [-262.5629824335491, -0.3781614345123067, 0.183690902496757], \"dt\": 0.0009993807742727481, \"noise_seed\": 19110, \"transit\": 48.88171243122866, \"site_mobility\": 1.0, \"temperature\": 0.008, \"area\": 13.787600255382769, \"normal_load\": 0.0, \"brace_order\": 0.0, \"shear_source\": \"archived original at identical state and noise\"}",
+        "{\"test\": \"unstrained_contact\", \"law\": \"directional\", \"observables\": [-287.52705368573857, -0.04276402910045721, 0.4433667120990767], \"original_bonds\": 304, \"lost_original\": 0, \"new_bonds\": 32, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.271529510507414}",
+        "{\"test\": \"hold\", \"law\": \"directional\", \"frame\": 0, \"unstrained_energy_stress_pressure\": [-287.52705368573857, -0.04276402910045721, 0.4433667120990767], \"area_modulus\": 385.36026167984295, \"area_modulus_half\": 385.36022389793476, \"shear\": 769.4369825725508, \"shear_half\": 769.4368844032751, \"original_bonds\": 336, \"lost_original\": 0, \"new_bonds\": 0, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.271529510507414}",
+        "{\"test\": \"hold\", \"law\": \"directional\", \"frame\": 48, \"unstrained_energy_stress_pressure\": [-287.51471082552115, -0.30171708259745356, 0.4035665961488263], \"area_modulus\": 346.94504629861456, \"area_modulus_half\": 346.9450090927628, \"shear\": 669.4241864147319, \"shear_half\": 669.4240903430825, \"original_bonds\": 336, \"lost_original\": 0, \"new_bonds\": 0, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.2712487454358032}",
+        "{\"test\": \"late\", \"law\": \"directional\", \"frames\": [37, 48], \"area_start\": 385.36026167984295, \"area_late\": 346.96701986076187, \"area_late_half\": 346.9669823993502, \"shear_start\": 769.4369825725508, \"shear_late\": 671.7076154971702, \"shear_late_half\": 671.7075207328459, \"area_retained\": 0.9003705217249978, \"shear_retained\": 0.8729858724120195, \"max_full_half_difference\": [3.778190819048177e-05, 9.816927570227563e-05], \"original_bonds\": 336, \"lost_original\": 0, \"new_bonds\": 0, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.2712487454358032}"
+      ],
+      "hold_frames_summary": {
+        "lost_original": [
+          0,
+          0
+        ],
+        "new_bonds": [
+          0,
+          0
+        ],
+        "cross_origin_bonds": [
+          48,
+          48
+        ],
+        "distinct_reaching_other_half": [
+          0,
+          0
+        ]
+      }
+    },
+    "within": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "isotropic-contact",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/isotropic_contact_control_01/within",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_bulk_isotropic_patch.py",
+        "within",
+        "--work",
+        "_scratch/s11c/isotropic_contact_control_01/within/native",
+        "--state",
+        "_scratch/s11c/isotropic_contact_control_01/converted.npz"
+      ],
+      "start_utc": "2026-11-21T20:18:11.302334+00:00",
+      "outcome_written_utc": "2026-11-21T20:20:17.140343+00:00",
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "runtime_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "limits_verified": true,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "peak_memory_bytes": 99131392,
+      "elapsed_seconds": 125.78745433920994,
+      "stdout": {
+        "path": "_scratch/s11c/isotropic_contact_control_01/within/stdout",
+        "bytes": 29759,
+        "sha256": "a8d56bdb34df666e164354e946e228d817726ab13139eb0fb093225b802dc57e"
+      },
+      "literal_stdout": [
+        "{\"test\": \"law\", \"law\": \"within\", \"initial_sha256\": \"9310972a2600d53caff112da82d364a2e60888d764f104469ef3e58fa79788e4\", \"wells\": [[1.0, 7.0, 1.0], [1.0, 7.0, 1.0]], \"initial_observables\": [-311.97434653879986, -0.4802075175821127, 6.551433061206094], \"dt\": 0.0009993807742727481, \"noise_seed\": 19110, \"transit\": 48.88171243122866, \"site_mobility\": 1.0, \"temperature\": 0.008, \"area\": 13.787600255382769, \"normal_load\": 0.0, \"brace_order\": 0.0, \"shear_source\": \"measured\"}",
+        "{\"test\": \"unstrained_contact\", \"law\": \"within\", \"observables\": [-358.74692847384944, -0.10792513657164744, -2.95280476295816], \"original_bonds\": 304, \"lost_original\": 0, \"new_bonds\": 32, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.4568438245797313}",
+        "{\"test\": \"hold\", \"law\": \"within\", \"frame\": 0, \"unstrained_energy_stress_pressure\": [-358.74692847384944, -0.10792513657164744, -2.95280476295816], \"area_modulus\": 366.1735494743645, \"area_modulus_half\": 366.1735123390652, \"shear\": 744.6655875510257, \"shear_half\": 744.6654888641034, \"original_bonds\": 336, \"lost_original\": 0, \"new_bonds\": 0, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.4568438245797313}",
+        "{\"test\": \"hold\", \"law\": \"within\", \"frame\": 48, \"unstrained_energy_stress_pressure\": [-358.76195409060705, -0.3130328752095141, -3.0075133233699503], \"area_modulus\": 337.8649081186702, \"area_modulus_half\": 337.86487095383234, \"shear\": 635.7993826205327, \"shear_half\": 635.7992894566966, \"original_bonds\": 336, \"lost_original\": 0, \"new_bonds\": 0, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.4535759678405444}",
+        "{\"test\": \"late\", \"law\": \"within\", \"frames\": [37, 48], \"area_start\": 366.1735494743645, \"area_late\": 337.8359855579383, \"area_late_half\": 337.83594818503315, \"shear_start\": 744.6655875510257, \"shear_late\": 638.5651072452025, \"shear_late_half\": 638.5650155892843, \"area_retained\": 0.9226116578952677, \"shear_retained\": 0.8575192917739696, \"max_full_half_difference\": [3.78056142267269e-05, 9.868692234249465e-05], \"original_bonds\": 336, \"lost_original\": 0, \"new_bonds\": 0, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.4535759678405444}"
+      ],
+      "hold_frames_summary": {
+        "lost_original": [
+          0,
+          0
+        ],
+        "new_bonds": [
+          0,
+          0
+        ],
+        "cross_origin_bonds": [
+          48,
+          48
+        ],
+        "distinct_reaching_other_half": [
+          0,
+          0
+        ]
+      }
+    },
+    "energy-matched": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "isotropic-contact",
+        "--memory-gib",
+        "2",
+        "--log-directory",
+        "_scratch/s11c/isotropic_contact_control_01/energy-matched",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_bulk_isotropic_patch.py",
+        "energy-matched",
+        "--work",
+        "_scratch/s11c/isotropic_contact_control_01/energy-matched/native",
+        "--state",
+        "_scratch/s11c/isotropic_contact_control_01/converted.npz"
+      ],
+      "start_utc": "2026-11-21T20:18:11.304178+00:00",
+      "outcome_written_utc": "2026-11-21T20:20:16.975946+00:00",
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "runtime_verified": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      },
+      "limits_verified": true,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "peak_memory_bytes": 98873344,
+      "elapsed_seconds": 125.58311891974881,
+      "stdout": {
+        "path": "_scratch/s11c/isotropic_contact_control_01/energy-matched/stdout",
+        "bytes": 30195,
+        "sha256": "5849bf9e28e6d249416bea623039c5356f15f4e7a1436c7ca9719a0d412860aa"
+      },
+      "literal_stdout": [
+        "{\"test\": \"law\", \"law\": \"energy-matched\", \"initial_sha256\": \"9310972a2600d53caff112da82d364a2e60888d764f104469ef3e58fa79788e4\", \"wells\": [[0.8416172206034078, 7.0, 1.0], [0.8416172206034078, 7.0, 1.0]], \"initial_observables\": [-262.56298243354917, -0.4041509162603261, 5.519680399328489], \"dt\": 0.0009993807742727481, \"noise_seed\": 19110, \"transit\": 48.88171243122866, \"site_mobility\": 1.0, \"temperature\": 0.008, \"area\": 13.787600255382769, \"normal_load\": 0.0, \"brace_order\": 0.0, \"shear_source\": \"measured\"}",
+        "{\"test\": \"unstrained_contact\", \"law\": \"energy-matched\", \"observables\": [-301.788770999278, -0.1346168768874941, -2.4450790293230225], \"original_bonds\": 304, \"lost_original\": 0, \"new_bonds\": 32, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.462006987885461}",
+        "{\"test\": \"hold\", \"law\": \"energy-matched\", \"frame\": 0, \"unstrained_energy_stress_pressure\": [-301.788770999278, -0.1346168768874941, -2.4450790293230225], \"area_modulus\": 308.4089334845852, \"area_modulus_half\": 308.4089020679981, \"shear\": 627.0334386745735, \"shear_half\": 627.0333556199595, \"original_bonds\": 336, \"lost_original\": 0, \"new_bonds\": 0, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.462006987885461}",
+        "{\"test\": \"hold\", \"law\": \"energy-matched\", \"frame\": 48, \"unstrained_energy_stress_pressure\": [-301.8274727697805, -0.27545431926243164, -2.496882318141224], \"area_modulus\": 284.217003437297, \"area_modulus_half\": 284.21697212286375, \"shear\": 534.3551212981921, \"shear_half\": 534.3550431757262, \"original_bonds\": 336, \"lost_original\": 0, \"new_bonds\": 0, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.4570601260655742}",
+        "{\"test\": \"late\", \"law\": \"energy-matched\", \"frames\": [37, 48], \"area_start\": 308.4089334845852, \"area_late\": 284.1962200432691, \"area_late_half\": 284.1961886936143, \"shear_start\": 627.0334386745735, \"shear_late\": 537.1320065988858, \"shear_late_half\": 537.1319300047909, \"area_retained\": 0.9214915301974341, \"shear_retained\": 0.8566241821716529, \"max_full_half_difference\": [3.167889951782854e-05, 8.305461403779191e-05], \"original_bonds\": 336, \"lost_original\": 0, \"new_bonds\": 0, \"cross_origin_bonds\": 48, \"outside_starting_half_now\": 0, \"distinct_reaching_other_half\": 0, \"peak_simultaneous\": 0, \"lower_origin_in_upper\": 0, \"upper_origin_in_lower\": 0, \"lower_population\": 32, \"height_span\": 2.4570601260655742}"
+      ],
+      "hold_frames_summary": {
+        "lost_original": [
+          0,
+          0
+        ],
+        "new_bonds": [
+          0,
+          0
+        ],
+        "cross_origin_bonds": [
+          48,
+          48
+        ],
+        "distinct_reaching_other_half": [
+          0,
+          0
+        ]
+      }
+    }
+  }
+}

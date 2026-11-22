@@ -66,6 +66,51 @@ Both use CuPy on GPU if installed; otherwise CPU.
 ## Mathematica Notes
 The `.wl` files in each `research/<paper>/mathematica/` directory are runnable scripts. Each file's output is stored as a final comment block within the file itself, so you can inspect results without re-running.
 
+## Singular Notes
+
+The S15 Singular build is currently **unfinished**. Its
+[run record](research/pde_ledger_v3/directives/_measurements/S15_separation_departure_singular_run_record.md)
+reports trials stopped on the user's 2026-11-10 instruction; no full-run
+transcript or accepted Singular result is available.
+
+Singular 4.4.1 is installed locally at
+`/var/projects/_tools/singular/bin/Singular`; its libraries are in
+`/var/projects/_tools/singular/share/singular/LIB/`. The independent S15 item-4
+engine is `research/pde_ledger_v3/singular/S15_separation_departure_item4.py`.
+Python 3 with SymPy constructs the exact objects. Singular computes the
+conditions using `differential_module.sing`, with no imported S15 engine results.
+The construction and special-function conventions are described in
+[`singular/CONSTRUCTION.md`](research/pde_ledger_v3/singular/CONSTRUCTION.md).
+
+Choose fresh guard-log and engine-work directories in the locations authorized
+by the S15 Singular directive, assigning their absolute names to
+`GUARD_LOG_DIRECTORY` and `ENGINE_WORK_DIRECTORY`. With no other guarded job
+running, set `MEMORY_GIB` to the largest whole-GiB cap admitted by the guard:
+
+```bash
+python3 scripts/s11c_guarded_run.py --pool s15-singular \
+  --memory-gib "$MEMORY_GIB" --log-directory "$GUARD_LOG_DIRECTORY" -- \
+  python3 -B research/pde_ledger_v3/singular/S15_separation_departure_item4.py \
+  --work-directory "$ENGINE_WORK_DIRECTORY" --object-index "$OBJECT_INDEX"
+```
+
+`OBJECT_INDEX` is the zero-based index in the engine's emitted inventory. Repeat
+`--object-index` to select several objects; omitting it selects the whole
+inventory. The accepted resume note requires representative trials before the
+full run, followed by one guarded attempt per object across the available
+cores. Overlapping caps are sized from measured trial peaks. A shared-cap
+out-of-memory attempt must be repeated alone at the largest admitted cap.
+
+No time limit is imposed. Keep the guard launcher in a detached supervisor that
+waits for the guard to finish, even if the initiating terminal or assistant turn
+ends. If a trial is stopped on permitted computed evidence, stop the service
+while its launcher is alive. Retain each attempt's guard logs and generated
+inputs. Assemble the full run's object transcripts, with complete outcome
+accounting, at `research/pde_ledger_v3/singular/out/S15_separation_departure_item4.out`.
+The run record and manifest are in `research/pde_ledger_v3/directives/_measurements/`
+under the `S15_separation_departure_singular_run_` prefix. Do not commit the
+transcript.
+
 ## Large derivation transcripts (`.out` files)
 
 The full stdout transcripts of the `pde_ledger_v3` CAS audit runs

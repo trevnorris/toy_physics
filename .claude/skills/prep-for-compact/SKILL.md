@@ -33,7 +33,7 @@ The point of this step is that **the verify catches real over-claims** — it ha
 claiming something was cleared/resolved/value-free that was not. Do not skip it, and do not accept the first
 FIXES-NEEDED as "good enough" — iterate.
 
-- Render a verify prompt for **codex-sol** (`-m gpt-5.6-sol -c model_reasoning_effort=xhigh -s danger-full-access`,
+- Render a verify prompt for **codex-sol** (`-m gpt-6.1-sol -c model_reasoning_effort=xhigh -s danger-full-access`,
   so it can read `~/.claude`). Ask it to confirm, specifically: **(a)** every cited SHA resolves *and matches*
   its description (`git show --stat`); **(b)** no **over-claim** (nothing said built/cleared/resolved that is
   only in progress); **(c)** no leaked expected **value**; **(d)** no **stale** pointer / NEXT; **(e)** the

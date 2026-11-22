@@ -1,0 +1,24 @@
+# Can material remain with the mouth as brane flows through it?
+
+**A density peak remained identifiable in a 12-site parcel transported to depth 1.65 at the imposed carrier speed.** In a separate experiment we released one constituent along the fourth coordinate. Two conservative laws gave identical radial forces at every depth. From the same starting position and velocity, the constituent turned back under one law and crossed depth 1.65 under the other.
+
+**Following a patch.** We took 12 constituents from a neutral preparation, let a single sheet relax with all its sites free in the plane, then launched it at the equator of the radius-one mouth. The intake was 0.25. We imposed the archived axial speed from depth 1.175 to 1.65. All three visible position coordinates evolved under pair forces and a smooth radial binding well around the curved surface. We followed a local maximum of the density reconstructed from the site positions and applied opposite bends at full and half strength. The independent parcels share a launch preparation and do not interact with successive arrivals. [Patch calculation](../tools/mouth_unpinned_patch_passage.py)
+
+| Assumed cohesion within the passing patch | RMS radial gap from the slice radius at the last cut, unbent, in microscopic length units | Net holding-force slope through the last cut |
+|---|---:|---:|
+| Keeps its entrance strength | 25.50 | −0.017451 |
+| Falls in proportion to local shear order | 0.02420 | −0.001586 |
+
+The force slopes are for this equatorial supply, per participating mass flux and per imposed bend amplitude. They sum the recoil the external holder counters on the prescribed potential over the passage. An actuator reproducing the whole bend weights the force by its local displacement shape and gives −0.003875 and −0.000470 on the same mesh. With persistent cohesion the position of the density peak failed the full/half and common-translation checks downstream, despite a well-defined peak in each run. The force was much more reproducible. With weakening cohesion the peak stayed near the surface. Its displacement per unit imposed bend amplitude was −0.00461230 on mesh 34 and −0.00461370 on mesh 26. At that cut the wall itself moved +0.615973 per unit amplitude. Material in both experiments passed through the final cut under prescribed axial flow. Neither preparation established a wall feature that survives replacement. [Earlier held-lining tests](mouth_ordered_feature_traction.md)
+
+**Releasing the downstream motion.** For a separate cold test site, let \(B=0.0177254062\) be the specific binding energy at full order, \(R(w)\) the wall radius and \(z=\exp[-\alpha(r-R(w))]\) the dimensionless radial Morse factor. We tested the potentials
+
+\[
+U_0=B\chi(w)(z^2-2z),\qquad U_1=U_0+B\chi(w).
+\]
+
+Both give exactly the same radial force, including for a prescribed sideways translation of the slice. The extra term changes the physical force along \(w\) by \(-B\chi'(w)\) even away from the wall. Under \(U_0\) the bound-state energy rises as order falls. The cold site started at the minimum with specific kinetic energy 0.00090317. Reaching half order would require at least another 0.00574916 of work per unit mass. Integrating the radial and axial motion gave a first downstream turning point at **1.191418**, before the half-order depth of 1.252010. Under \(U_1\) the bound-state energy is constant. The site reached **1.65 in 11.35557** model time units. Both carrier meshes gave the same pair of outcomes. These are stationary, unbent, single-site trials with equal inertia per direction and no ongoing work from the carrier. Turning back does not establish a permanent attachment. [Energy bound](../tools/mouth_normal_binding_passage_energy.py) · [Released trajectories](../tools/mouth_normal_binding_release.py)
+
+**Decision for free fall.** An independent discriminator is the reversible work per unit mass to move one equilibrated constituent along the radial binding minimum. From depth 1.175 at shear order 0.875299 to the half-order cut, the two laws predict **+0.00665233 and 0**. Use a common energy reference at both ends and subtract the work of changing the host alone if a test prepares those states separately. Comparing radial detachment energies at each depth removes the difference that matters here. In the draining mouth, work supplied by the carrier must also be measured. Until those inputs identify material retained by the mouth and its share of the reaction, this test cannot assign a free-fall acceleration. [Conversion work and its open coupling](mouth_conversion_contact_transfer.md) · [Measurements and independent reviews](../../../research/pde_ledger_v3/_measurements/mouth_unpinned_feature_passage.json)
+
+Working checkpoint `a91a633f`. Independent local reviews checked the material marker, force balance, released trajectories and report. Formal repository review is pending.

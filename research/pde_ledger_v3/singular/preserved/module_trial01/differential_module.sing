@@ -1,0 +1,134 @@
+// Linear-state differential module. No exponent or amplitude is inverted.
+proc linearVector(poly f)
+{
+  vector v;
+  poly constant=f;
+  int j;
+  for(j=1;j<=stateCount;j++)
+  {
+    v[j+1]=diff(f,stateVars[j]);
+    constant=constant-v[j+1]*stateVars[j];
+  }
+  v[1]=constant;
+  return(v);
+}
+
+proc represented(vector v)
+{
+  poly f=v[1];
+  int j;
+  for(j=1;j<=stateCount;j++) { f=f+v[j+1]*stateVars[j]; }
+  return(f);
+}
+
+proc connection(vector v)
+{
+  vector ans;
+  int j;
+  for(j=1;j<=stateCount+1;j++) { ans[j]=P*diff(v[j],d); }
+  for(j=1;j<=stateCount;j++)
+  {
+    ans=ans+v[j+1]*linearVector(stateDelta[j]);
+  }
+  return(ans);
+}
+
+// Dividing a WHOLE row by a known nonzero geometric factor preserves its
+// vanishing on the domain. No parameter-dependent factor is divided out.
+proc geometricPrimitive(vector v)
+{
+  if(v==0) { return(v); }
+  int i,j,again;
+  vector quotientRow,residualRow;
+  poly divided=1;
+  for(i=1;i<=size(geometricUnits);i++)
+  {
+    again=1;
+    while(again)
+    {
+      quotientRow=0;
+      for(j=1;j<=stateCount+1;j++)
+      {
+        quotientRow[j]=v[j]/geometricUnits[i];
+      }
+      residualRow=v-geometricUnits[i]*quotientRow;
+      if(residualRow==0)
+      {
+        v=quotientRow;
+        divided=divided*geometricUnits[i];
+      }
+      else { again=0; }
+    }
+  }
+  print("GEOMETRIC_DIVISOR: "+string(divided));
+  return(v);
+}
+
+print("WORKING_ON: direction coefficients");
+print("PREMISE: A real polynomial restricted to the unit sphere vanishes everywhere iff its remainder modulo h1^2+h2^2+h3^2-1 is zero; the real sphere is Zariski dense in this quadric.");
+ideal sphere=std(ideal(h1^2+h2^2+h3^2-1));
+poly oriented=reduce(F,sphere);
+print("ORIENTATION_REMAINDER: "+string(oriented));
+matrix cm=coef(oriented,h1*h2*h3);
+module generators;
+int k,j;
+vector row;
+poly residual;
+for(k=1;k<=ncols(cm);k++)
+{
+  row=linearVector(cm[2,k]);
+  print("DIRECTION_ROW: "+string(row));
+  residual=represented(row)-cm[2,k];
+  print("ENCODING_RESIDUAL: "+string(residual));
+  if(residual!=0) { ERROR("linear encoding failed"); }
+  for(j=1;j<=stateCount;j++)
+  {
+    if(diff(row,stateVars[j])!=0) { ERROR("nonlinear state coefficient"); }
+  }
+  generators=generators,geometricPrimitive(row);
+}
+generators=simplify(generators,2);
+
+print("WORKING_ON: differential module");
+print("PREMISE: A finite free module over a polynomial ring over Q is Noetherian. The connection on a coefficient row v represents the derivative of v.(1,y) along delta=P(d)*partial_d and the printed linear state system. Closing a row module under this connection, including divisions of whole rows by geometric factors nonzero on the domain, gives equations equivalent to all derivatives of the original outputs. Analytic uniqueness for the resulting finite homogeneous system makes the stabilized rows evaluated at d=2*R necessary and sufficient for vanishing on the connected domain.");
+print("PREMISE: All exponents, amplitudes, velocities, radius quantities and lifted constants remain polynomial variables over Q. Only the printed geometric factors d,R,rin,d-R,d+R,d-rin,d+rin are divided out; all are nonzero for d>R>rin>0. No exceptional exponent is removed.");
+module basis=std(generators);
+module additions;
+vector remainder;
+int round=0;
+int done=0;
+while(done==0)
+{
+  round++;
+  print("WORKING_ON: differential module round "+string(round));
+  print("BASIS_SIZE: "+string(size(basis)));
+  additions=module(0);
+  for(k=1;k<=size(basis);k++)
+  {
+    row=geometricPrimitive(basis[k]);
+    remainder=reduce(row,basis);
+    print("NORMALIZATION_REMAINDER: "+string(remainder));
+    additions=additions,remainder;
+    remainder=reduce(connection(row),basis);
+    print("CLOSURE_REMAINDER: "+string(remainder));
+    additions=additions,geometricPrimitive(remainder);
+  }
+  additions=simplify(additions,2);
+  print("ADDITION_COUNT: "+string(size(additions)));
+  if(size(additions)==0) { done=1; }
+  else { basis=std(basis+additions); }
+}
+print("WORKING_ON: conditions at reference separation");
+print("STABILIZED_MODULE: "+string(basis));
+ideal atReference;
+for(k=1;k<=size(basis);k++)
+{
+  atReference=atReference,subst(represented(basis[k]),d,2*R);
+}
+atReference=simplify(atReference,2);
+print("CONDITION_COUNT: "+string(size(atReference)));
+for(k=1;k<=size(atReference);k++)
+{
+  print("CONDITION_POLYNOMIAL: "+string(atReference[k]));
+}
+print("SINGULAR_COMPLETED: 1");

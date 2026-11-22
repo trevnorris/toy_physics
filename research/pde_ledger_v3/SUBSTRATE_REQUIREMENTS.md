@@ -2292,6 +2292,8 @@ For S21, identify how the finite-radius projected material velocity relates to t
 
 ## Joint requirements for one brane and bulk medium
 
+**Material class selected by the user, 22 November 2026.** Require a supersolid feeding brane with ordered transverse shear and frictionless coherent flow. On conversion into the fourth dimension require a disordered coherent superfluid with zero static shear modulus and zero shear viscosity. The conversion obeys mass and momentum balance and transmits pressure. Future microscopic laws for the bulk must realize this phase. Record 5 supplies a historical demonstration of shear relaxation in classical thermostatted particles and is retired as a physical receiver. [Model premises and 0PN tests](../../docs/zero_pn_free_fall_roadmap.md#material-assumed-throughout)
+
 **Working synthesis for light, gravity, charge, magnetism and gravitomagnetism.** The ideal draining exterior delivers an inverse-square momentum load toward a companion. The localized Maxwell sector gives a long-range electric field once supplied with a charge. The assumed shear action on a uniform three-dimensional brane supports two transverse polarizations. Moving charge and moving mass test those same mouth and material laws in motion. [0PN calculation](../../docs/zero_pn_gravity.md) · [Electric charge checkpoint](../../docs/em_charge_attribute_requirements.md#november-checkpoint--what-a-charge-law-must-explain) · [Light-sector closeout](#light-closing-pass--the-oracle-comparison-and-the-extra-wave--2026-10-19-accepted-e070c7f3)
 
 ### What the common-medium search has established

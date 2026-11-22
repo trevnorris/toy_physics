@@ -6,7 +6,7 @@ sources:
   - research/4d/paper/4d.tex
   - research/brane_bulk_ontology/paper/brane_bulk_ontology.tex
   - research/pde/paper/pde.tex
-last_updated: 2026-11-19
+last_updated: 2026-11-22
 ---
 
 # Foundations
@@ -14,6 +14,10 @@ last_updated: 2026-11-19
 ## How we use the force requirements
 
 Light, gravity and electromagnetism are observable behaviors to explain through the organization and motion of one underlying material. Their equations tell us what a deeper material law must reproduce. When several microscopic arrangements fit the same observation, propose a physically motivated local rule, say what was assumed, and test a prediction that distinguishes it from the alternatives. Use the same rule across mouths, radii and sectors. A result earns explanatory weight when a second outcome follows without having been supplied as an input. This is the user's standing research direction. [Research instructions](../../AGENTS.md#standing-direction-for-the-common-medium-research)
+
+## Material phases for the force calculations
+
+The user selects one coherent substrate. Its brane phase is a supersolid with frictionless coherent flow and transverse shear for light. Draining into the fourth dimension removes crystalline order and static transverse shear support. The disordered superfluid retains coherence, mass, pressure and momentum and has zero shear viscosity in this model. Record 5 is an archived classical demonstration of shear relaxation. All future physical bulk and interface models must stay in the coherent superfluid class. The five-stage 0PN plan and its current evidence are linked from the project status. [0PN roadmap](../../docs/zero_pn_free_fall_roadmap.md) · [Current result](../../STATUS.md#common-medium-research)
 
 ## Working picture
 

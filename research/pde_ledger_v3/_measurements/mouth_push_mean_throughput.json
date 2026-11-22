@@ -1,0 +1,83 @@
+{
+  "scope": "Zero-frequency angular monopole of the nonlinear periodic carrier at second order. Finite trace quadrature on truncated fields. Both distant reservoir phases held fixed on the translating chart.",
+  "command": [
+    "python3",
+    "scripts/s11c_guarded_run.py",
+    "--pool",
+    "carrier-dc-flow",
+    "--log-directory",
+    "_scratch/s11c/energy_amplitude_check01",
+    "--memory-gib",
+    "8",
+    "--",
+    "python3",
+    "software/stage1_solver/tools/mouth_push_mean_throughput.py",
+    "--source",
+    "_scratch/s11c/mouth_flared_cubic_n34",
+    "--response",
+    "_scratch/s11c/rigid_push_energy_fields01/n34_001.npz"
+  ],
+  "source_sha256": "0c04b2ca5f041574db719010792ac8f689e44d0481fdb12f568e4d3f184f7bb2",
+  "source": "software/stage1_solver/tools/mouth_push_mean_throughput.py",
+  "guarded_exit": 0,
+  "worker_exit": 0,
+  "limits_verified": true,
+  "memory_max": "8589934592",
+  "swap_max": "0",
+  "input_output_sha256": "7194548754ded77852f43a8a436e0541e8ec9cd60bee065991e7656626eba22a",
+  "literal_stdout": "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}\n{\"test\": \"input\", \"response_sha256\": \"fffbac3b8e5830693284c4c3837768cab734b172188c4c60fd2fbfb179fb41fd\", \"speed\": 8.156088777037669e-05, \"omega\": 0.01}\n{\"test\": \"dc\", \"free_residual\": 2.1786073295527484e-15, \"max_mean_field_per_speed2\": 0.11523878763646991, \"feed_out\": -0.0315034140250737, \"bulk_out\": 0.03150341402502623, \"weak_sum\": -4.74724426435813e-14}\n{\"test\": \"cross_section_outward_toward_bulk\", \"values\": [{\"w\": 0.7, \"mean_field\": 0.02558606361560854, \"dipole\": 0.005931356785914664, \"sum\": 0.031517420401523215}, {\"w\": 1.4, \"mean_field\": 0.012101941713834873, \"dipole\": 0.01940186153503608, \"sum\": 0.031503803248870976}, {\"w\": 2.4, \"mean_field\": 0.015524432123471968, \"dipole\": 0.015978903868014892, \"sum\": 0.031503335991486865}, {\"w\": 3.0, \"mean_field\": 0.031146964640939623, \"dipole\": 0.0003557880771600581, \"sum\": 0.03150275271809969}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"feed\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": -2.2370113202693602e-10, \"shifted_energy\": 3.228246082631085e-14}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": -2.2370113210825118e-10, \"shifted_energy\": 3.228246082631731e-14}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": -5.59252835285063e-11, \"shifted_energy\": 8.070615195185803e-15}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": -5.5925283311665866e-11, \"shifted_energy\": 8.070615195183784e-15}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"bulk_side\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": 6.543346008254514e-11, \"shifted_energy\": -5.3457016170205476e-14}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": 6.54334592151834e-11, \"shifted_energy\": -5.345701617020477e-14}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": 1.6358363014862265e-11, \"shifted_energy\": -1.3364254028999041e-14}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": 1.635836279802183e-11, \"shifted_energy\": -1.3364254028998915e-14}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"roof_inner\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": 4.3312997910066406e-12, \"shifted_energy\": 0.0}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": 4.33129979100602e-12, \"shifted_energy\": 0.0}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": 1.0828249477510656e-12, \"shifted_energy\": 0.0}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": 1.082824947751686e-12, \"shifted_energy\": 0.0}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"roof_outer\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": 1.4840287377752105e-10, \"shifted_energy\": 0.0}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": 1.4840287377764017e-10, \"shifted_energy\": 0.0}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": 3.7100718444638344e-11, \"shifted_energy\": 0.0}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": 3.7100718444611874e-11, \"shifted_energy\": 0.0}]}\n",
+  "mesh_controls": {
+    "26": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "carrier-dc-flow",
+        "--log-directory",
+        "_scratch/s11c/energy_amplitude_mesh26_01",
+        "--memory-gib",
+        "6",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_push_mean_throughput.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n26",
+        "--response",
+        "_scratch/s11c/rigid_push_energy_fields01/n26_control01.npz"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": "6442450944",
+      "swap_max": "0",
+      "stdout_sha256": "940990dc93c280096181a833e0d285690e414be29e633898b1b17093f12c4da3",
+      "literal_stdout": "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n26/field.npz\", \"sha256\": \"c73466fb6e002fdf3dfa57868206809f4e9a2309426b3fa80baa601c9c7eeee2\", \"mesh\": 26, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999999797987, \"profile\": \"cubic\"}\n{\"test\": \"input\", \"response_sha256\": \"b80a57541a55f6b9f504e6ab9aff6164f206f57a10bb46612872734a0ce56402\", \"speed\": 8.158052613914597e-05, \"omega\": 0.01}\n{\"test\": \"dc\", \"free_residual\": 2.624881062589828e-15, \"max_mean_field_per_speed2\": 0.11523426792943348, \"feed_out\": -0.03150247318727356, \"bulk_out\": 0.031502473187161324, \"weak_sum\": -1.1222620055484356e-13}\n{\"test\": \"cross_section_outward_toward_bulk\", \"values\": [{\"w\": 0.7, \"mean_field\": 0.025538024271547503, \"dipole\": 0.005923853430264835, \"sum\": 0.03146187770181233}, {\"w\": 1.4, \"mean_field\": 0.012101675946337346, \"dipole\": 0.019398862787742062, \"sum\": 0.031500538734079396}, {\"w\": 2.4, \"mean_field\": 0.015530809125974982, \"dipole\": 0.015971655246844206, \"sum\": 0.03150246437281919}, {\"w\": 3.0, \"mean_field\": 0.031147712417924002, \"dipole\": 0.00035305091837804293, \"sum\": 0.03150076333630204}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"feed\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": -2.2997692389770813e-10, \"shifted_energy\": 3.218502698878296e-14}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": -2.2997692395191824e-10, \"shifted_energy\": 3.218502698877892e-14}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": -5.749422990377739e-11, \"shifted_energy\": 8.0462567359664e-15}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": -5.749423003930266e-11, \"shifted_energy\": 8.04625673596438e-15}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"bulk_side\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": 6.928255105037584e-11, \"shifted_energy\": -5.3249606690166336e-14}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": 6.928255105037584e-11, \"shifted_energy\": -5.324960669016578e-14}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": 1.7320642749923953e-11, \"shifted_energy\": -1.3312401659316249e-14}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": 1.732064209940265e-11, \"shifted_energy\": -1.3312401659316123e-14}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"roof_inner\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": 4.320981705810788e-12, \"shifted_energy\": 0.0}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": 4.320981705809237e-12, \"shifted_energy\": 0.0}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": 1.0802454264558764e-12, \"shifted_energy\": 0.0}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": 1.0802454264571172e-12, \"shifted_energy\": 0.0}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"roof_outer\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": 1.484136195951893e-10, \"shifted_energy\": 0.0}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": 1.4841361959517605e-10, \"shifted_energy\": 0.0}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": 3.710340489885357e-11, \"shifted_energy\": 0.0}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": 3.710340489893298e-11, \"shifted_energy\": 0.0}]}\n"
+    },
+    "48": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "carrier-dc-flow",
+        "--log-directory",
+        "_scratch/s11c/energy_amplitude_mesh48_01",
+        "--memory-gib",
+        "12",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_push_mean_throughput.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n48",
+        "--response",
+        "_scratch/s11c/rigid_push_energy_fields01/n48_control01.npz"
+      ],
+      "guarded_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max": "12884901888",
+      "swap_max": "0",
+      "stdout_sha256": "9ccdaac7e21f0d3184c0af1b4a2a4b41587714d519cd330bd0a0e34ebd67050e",
+      "literal_stdout": "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n48/field.npz\", \"sha256\": \"39ed1ac9ae2439f6eff6420a25bda235ee82ed82deeb30520a9bbab6193d031d\", \"mesh\": 48, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.24999999998813904, \"profile\": \"cubic\"}\n{\"test\": \"input\", \"response_sha256\": \"1a6c7ce6ea4f94bda1e1ad322b6265a32c23fdd8416929605dd83ec4eeb17312\", \"speed\": 8.154408651661683e-05, \"omega\": 0.01}\n{\"test\": \"dc\", \"free_residual\": 4.15395714717737e-15, \"max_mean_field_per_speed2\": 0.11524195689912406, \"feed_out\": -0.031504224260777924, \"bulk_out\": 0.031504224261471654, \"weak_sum\": 6.93729795830933e-13}\n{\"test\": \"cross_section_outward_toward_bulk\", \"values\": [{\"w\": 0.7, \"mean_field\": 0.025568561289271527, \"dipole\": 0.005929159323378542, \"sum\": 0.03149772061265011}, {\"w\": 1.4, \"mean_field\": 0.01210091585259807, \"dipole\": 0.019402352224571054, \"sum\": 0.03150326807716909}, {\"w\": 2.4, \"mean_field\": 0.015520083065942582, \"dipole\": 0.015984160030311046, \"sum\": 0.03150424309625362}, {\"w\": 3.0, \"mean_field\": 0.031144834197774172, \"dipole\": 0.0003586490866324956, \"sum\": 0.03150348328440664}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"feed\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": -2.1790465075778934e-10, \"shifted_energy\": 3.2347909616256095e-14}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": -2.1790465127278537e-10, \"shifted_energy\": 3.2347909616252863e-14}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": -5.447616138840473e-11, \"shifted_energy\": 8.086977392489957e-15}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": -5.4476161307089564e-11, \"shifted_energy\": 8.086977392483495e-15}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"bulk_side\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": 6.188174148449854e-11, \"shifted_energy\": -5.359292910480023e-14}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": 6.188174300238158e-11, \"shifted_energy\": -5.359292910480084e-14}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": 1.5470436238486374e-11, \"shifted_energy\": -1.339823226237616e-14}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": 1.5470434937443767e-11, \"shifted_energy\": -1.3398232262376565e-14}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"roof_inner\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": 4.338384903957765e-12, \"shifted_energy\": 0.0}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": 4.338384903959212e-12, \"shifted_energy\": 0.0}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": 1.084596225986882e-12, \"shifted_energy\": 0.0}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": 1.0845962259864168e-12, \"shifted_energy\": 0.0}]}\n{\"test\": \"truncated_field_finite_ports\", \"side\": \"roof_outer\", \"omega\": 0.01, \"values\": [{\"fraction\": 0, \"force\": 0.0, \"excess_number\": 0.0, \"shifted_energy\": 0.0}, {\"fraction\": 1, \"force\": 1e-05, \"excess_number\": 1.4838386110527014e-10, \"shifted_energy\": 0.0}, {\"fraction\": -1, \"force\": -1e-05, \"excess_number\": 1.483838611052966e-10, \"shifted_energy\": 0.0}, {\"fraction\": 0.5, \"force\": 5e-06, \"excess_number\": 3.709596527624805e-11, \"shifted_energy\": 0.0}, {\"fraction\": -0.5, \"force\": -5e-06, \"excess_number\": 3.70959652762282e-11, \"shifted_energy\": 0.0}]}\n"
+    }
+  }
+}

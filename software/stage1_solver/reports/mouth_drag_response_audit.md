@@ -2,6 +2,8 @@
 
 **Step 1, 22 November 2026.** The saved rigid-mouth runs separate the lag caused by driving the incident stream from the resistance inferred by pushing the mouth through resting material. The resistance depends on where force is measured. The out-of-phase part of the reconstructed stream force grows approximately in proportion to frequency across the sampled band. The sign and size of steady physical drag remain open. All entries below use model units. [Complete complex responses, source hashes and guarded command](../../../research/pde_ledger_v3/_measurements/mouth_drag_response_audit.json)
 
+The subsequent multi-box study completed the independent energy and momentum comparison on a coherent carrier. [Step 1 frequency table and finite-box result](mouth_rigid_drag_table.md)
+
 ### What the two drives measure
 
 The same radius-1 cubic mouth translates rigidly in finite feeding and receiving reservoirs. In the stream drive a phase gradient oscillates on the distant brane while the far bulk rests. In the push drive both baths rest and a known force acts on the center. With the solver’s $e^{+i\omega t}$ convention, $a=i\omega V$. Write $\chi_a=a/F$ for the external push response and $H$ for the force a holder would exert on the stationary mouth in the stream. Eliminating the common linear response gives

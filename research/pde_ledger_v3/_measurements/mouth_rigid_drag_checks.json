@@ -1,0 +1,205 @@
+{
+  "scope": "Independent periodic energy and momentum checks, steady comparison, reference sensitivity, and radial equilibrium cross-check on the finite coherent preparations.",
+  "parent_checkpoint": "72d0c34c",
+  "runs": {
+    "reference": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "energyref",
+        "--memory-gib",
+        "9",
+        "--log-directory",
+        "_scratch/s11c/energyref01/n34",
+        "--",
+        "python3",
+        "_scratch/s11c/energyref01/check.py",
+        "--source",
+        "_scratch/s11c/mouth_flared_cubic_n34",
+        "--omega",
+        "0.01"
+      ],
+      "exit_code": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 9663676416,
+      "swap_cap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "4e362386545b324f4a363eed3d4258b59701ec3a68c953e9900d618dbd23d810",
+      "literal_stdout": "{\"test\": \"preparation\", \"source\": \"_scratch/s11c/mouth_flared_cubic_n34/field.npz\", \"sha256\": \"66359095245978ac382ce4d9803390bd84fbabaef7fe51e75ef8ef78d66eea9d\", \"mesh\": 34, \"far\": 9.0, \"roof\": 10.0, \"rate\": 0.2500000000013136, \"profile\": \"cubic\"}\n{\"omega\": 0.01, \"normalization\": \"unit lab chart speed; force per V; exp(+i omega t)\", \"source_residual\": 6.446537909143525e-14, \"P_direct\": [12.260747077163574, 4.668241211964798e-18], \"P_variational\": [12.260747077163796, -6.32575144291359e-17], \"FoverV_total_stored\": [-4.668241211964798e-20, 0.12260747077163574], \"FoverV_direct_wall\": [0.0005421093135345584, 0.1226065890765174], \"FoverV_two_windows\": [[-6.429947476656033e-06, 0.12260661193633905], [-6.429236761503322e-06, 0.12260658678893929]], \"FoverV_ports\": {\"feed\": [9.705831310218076e-06, -8.187916960060353e-07], \"bulk_side\": [-1.607203318127374e-05, -7.159709101541365e-08], \"roof_inner\": [3.817706451380718e-19, 1.0998662624822815e-21], \"roof_outer\": [1.9384822959900663e-19, -5.026287709762648e-21]}, \"FoverV_wall_via_domain\": [-6.366201871055134e-06, 0.12260658038284872], \"E_shifted_cycle_means_per_V_squared\": {\"direct_wall_external\": 0.0002710546567672792, \"compact_via_momentum\": -3.2149737383280164e-06, \"wide_via_momentum\": -3.214618380751661e-06, \"open_port_outward\": -3.1831009355275437e-06, \"whole_domain_storage_work\": -2.334120605982399e-20}}\n"
+    },
+    "independent_22_rows": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "energyref",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/energyref01/verify_signed_ports",
+        "--",
+        "python3",
+        "_scratch/s11c/energyref01/check_signed_ports.py"
+      ],
+      "exit_code": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "b692e3e848941514385e0bee7acdc55cf46f82222b753cd9802f40c406861b1d",
+      "literal_stdout": "{\"omega_imag_inverse_push\": -0.0005421025345695023, \"feed_FoverV\": 9.72875508721783e-06, \"receiver_FoverV\": -1.6105995409508074e-05, \"M_reactive\": 12.261103705909859, \"case\": \"n34_02\", \"omega\": 0.02, \"real_impedance\": 0.0005421025345695024, \"port_coefficient\": -6.3772403222902435e-06, \"window_coefficients\": [-6.442249116334688e-06, -6.440794303023948e-06], \"readout_sha256\": \"4368f03fe31d2235c72f39e64f7f9eb4c5f021fa54d0d08d8dc2b0260c0276d2\"}\n{\"omega_imag_inverse_push\": -0.0005479541326477017, \"feed_FoverV\": 2.9016094607407014e-06, \"receiver_FoverV\": -3.4809526511419056e-06, \"M_reactive\": 12.26155253140047, \"case\": \"r13p5_02\", \"omega\": 0.02, \"real_impedance\": 0.0005479541326477017, \"port_coefficient\": -5.793431904012042e-07, \"window_coefficients\": [-5.851568471938653e-07, -5.836755651455501e-07], \"readout_sha256\": \"6e4c335482616b5e091d26d33ced9a7538f2a91acdecd578391bdae374c896f7\"}\n{\"omega_imag_inverse_push\": -0.0005486260470944361, \"feed_FoverV\": 1.2315248999730126e-06, \"receiver_FoverV\": -1.1374308542972698e-06, \"M_reactive\": 12.261657760834611, \"case\": \"r18_02\", \"omega\": 0.02, \"real_impedance\": 0.000548626047094436, \"port_coefficient\": 9.409404567574281e-08, \"window_coefficients\": [9.187021460352503e-08, 9.335674568422298e-08], \"readout_sha256\": \"973d542207ee1bf5497d575dc23a64c81e53e8a8f87d7903360c8d21b0f378ce\"}\n{\"omega_imag_inverse_push\": -0.0005421110049707718, \"feed_FoverV\": 9.70011085582097e-06, \"receiver_FoverV\": -1.6063556105143473e-05, \"M_reactive\": 12.260547719547851, \"case\": \"n34_005\", \"omega\": 0.005, \"real_impedance\": 0.0005421110049707717, \"port_coefficient\": -6.3634452493225045e-06, \"window_coefficients\": [-6.428350904162796e-06, -6.4268957206538535e-06], \"readout_sha256\": \"2dc2fc15b6c8b01f174f09cf0bc054cc351a72a6cd8c65ecde99fc3941f06ffc\"}\n{\"omega_imag_inverse_push\": -0.000547950893860491, \"feed_FoverV\": 2.8820926477135478e-06, \"receiver_FoverV\": -3.4595040805410483e-06, \"M_reactive\": 12.26099329233593, \"case\": \"r13p5_005\", \"omega\": 0.005, \"real_impedance\": 0.000547950893860491, \"port_coefficient\": -5.774114328275006e-07, \"window_coefficients\": [-5.832095969234127e-07, -5.81727953869669e-07], \"readout_sha256\": \"2a0d4fc482d1d0e9ba999acb7181c574dc8692bde1ff7600115bcf4bdee1fed9\"}\n{\"omega_imag_inverse_push\": -0.0005486187702992973, \"feed_FoverV\": 1.216736016075781e-06, \"receiver_FoverV\": -1.124818693654264e-06, \"M_reactive\": 12.261096970812359, \"case\": \"r18_005\", \"omega\": 0.005, \"real_impedance\": 0.0005486187702992973, \"port_coefficient\": 9.191732242151691e-08, \"window_coefficients\": [8.969660281516367e-08, 9.118348912037842e-08], \"readout_sha256\": \"a400ac669341c9db5563b30920e0a51eac2fdc28680724cf739c81e40878cb4c\"}\n{\"omega_imag_inverse_push\": -0.0005421114783378117, \"feed_FoverV\": 9.698509879280252e-06, \"receiver_FoverV\": -1.6061183488803193e-05, \"M_reactive\": 12.260516587700039, \"case\": \"n34_002\", \"omega\": 0.002, \"real_impedance\": 0.0005421114783378117, \"port_coefficient\": -6.362673609522942e-06, \"window_coefficients\": [-6.4275734954181854e-06, -6.426118291187347e-06], \"readout_sha256\": \"4115919fb9ef5d63d2d49a74fe85d4589925b05b300ee91e134716d5a6cdf09d\"}\n{\"omega_imag_inverse_push\": -0.000547950712406084, \"feed_FoverV\": 2.88100462914498e-06, \"receiver_FoverV\": -3.4583078113738503e-06, \"M_reactive\": 12.26096197918019, \"case\": \"r13p5_002\", \"omega\": 0.002, \"real_impedance\": 0.000547950712406084, \"port_coefficient\": -5.773031822288704e-07, \"window_coefficients\": [-5.831004814064165e-07, -5.816188182250015e-07], \"readout_sha256\": \"3c13f80a5c02d8aef1cf169970899b7f7e7737dc1cc37ee1a41ea50dc92aab3c\"}\n{\"omega_imag_inverse_push\": -0.0005486183641257024, \"feed_FoverV\": 1.2159145512670195e-06, \"receiver_FoverV\": -1.1241176037686512e-06, \"M_reactive\": 12.261065571627022, \"case\": \"r18_002\", \"omega\": 0.002, \"real_impedance\": 0.0005486183641257025, \"port_coefficient\": 9.179694749836821e-08, \"window_coefficients\": [8.957640035151264e-08, 9.106330655144423e-08], \"readout_sha256\": \"3d5744ecfa5a03bfb7eb768ed8e606b81667b397e88b3c193471fdc42a000ae6\"}\n{\"omega_imag_inverse_push\": -0.0005017540697158374, \"feed_FoverV\": 9.664564977380492e-06, \"receiver_FoverV\": -1.599113852594638e-05, \"M_reactive\": 12.257582314203557, \"case\": \"n26_002\", \"omega\": 0.002, \"real_impedance\": 0.0005017540697158374, \"port_coefficient\": -6.326573548565888e-06, \"window_coefficients\": [-6.439646434480283e-06, -6.435514948513994e-06], \"readout_sha256\": \"d31fb2cc7fbece7980df33f3b35f6217f0788d4a04ad146324ad6f7c9ae2e72b\"}\n{\"omega_imag_inverse_push\": -0.0005212501956082527, \"feed_FoverV\": 9.722190473029186e-06, \"receiver_FoverV\": -1.6108673396674193e-05, \"M_reactive\": 12.263051827191967, \"case\": \"n48_002\", \"omega\": 0.002, \"real_impedance\": 0.0005212501956082527, \"port_coefficient\": -6.386482923645007e-06, \"window_coefficients\": [-6.418456853836613e-06, -6.418098766583689e-06], \"readout_sha256\": \"dd86f563507b1a6e4ac2a5bc412663855f9d01a76ee7f34a670969a4983ca488\"}\n{\"omega_imag_inverse_push\": -0.0005421115593527565, \"feed_FoverV\": 9.698235898866013e-06, \"receiver_FoverV\": -1.6060777448662775e-05, \"M_reactive\": 12.260511259400294, \"case\": \"n34_000637\", \"omega\": 0.000637, \"real_impedance\": 0.0005421115593527565, \"port_coefficient\": -6.3625415497967636e-06, \"window_coefficients\": [-6.427440448373938e-06, -6.425985240593015e-06], \"readout_sha256\": \"b7afca235240a8d239c44272cae40d1ba0110f591181ebe1758a898e2ae13522\"}\n{\"omega_imag_inverse_push\": -0.0005479506813465678, \"feed_FoverV\": 2.8808184626987055e-06, \"receiver_FoverV\": -3.458103116679345e-06, \"M_reactive\": 12.260956619857895, \"case\": \"r13p5_000637\", \"omega\": 0.000637, \"real_impedance\": 0.0005479506813465679, \"port_coefficient\": -5.772846539806396e-07, \"window_coefficients\": [-5.830818051627865e-07, -5.81600138518213e-07], \"readout_sha256\": \"36ec366a106cb8d8f65b07611cc27ffbdf14fd085a74ccc0e067b9f45313de95\"}\n{\"omega_imag_inverse_push\": -0.0005486182946238817, \"feed_FoverV\": 1.2157740252513415e-06, \"receiver_FoverV\": -1.123997664367891e-06, \"M_reactive\": 12.261060197588645, \"case\": \"r18_000637\", \"omega\": 0.000637, \"real_impedance\": 0.0005486182946238816, \"port_coefficient\": 9.17763608834507e-08, \"window_coefficients\": [8.955584331711217e-08, 9.10427528770405e-08], \"readout_sha256\": \"410d5d2cd3615e0891f1bf1872c16f78661fdc0d6f96f917fbf23d4a08ab004b\"}\n{\"omega_imag_inverse_push\": -0.0005421115673612394, \"feed_FoverV\": 9.698208827538625e-06, \"receiver_FoverV\": -1.606073732872944e-05, \"M_reactive\": 12.2605107329142, \"case\": \"n34_000225\", \"omega\": 0.000225, \"real_impedance\": 0.0005421115673612392, \"port_coefficient\": -6.362528501190816e-06, \"window_coefficients\": [-6.42742730225628e-06, -6.425972094101118e-06], \"readout_sha256\": \"86699064071d4c0565a99dab8ea791e3e5b3c46f2fd0324d5c6a9f2a2b696592\"}\n{\"omega_imag_inverse_push\": -0.0005479506782913728, \"feed_FoverV\": 2.8808000685211796e-06, \"receiver_FoverV\": -3.4580828917237205e-06, \"M_reactive\": 12.260956090307252, \"case\": \"r13p5_000225\", \"omega\": 0.000225, \"real_impedance\": 0.0005479506782913729, \"port_coefficient\": -5.77282823202541e-07, \"window_coefficients\": [-5.83079959794717e-07, -5.815982927916114e-07], \"readout_sha256\": \"4f4e04d109ecfa6ef2afc10be930dca19d41b4541c3cb6e310c28ddff7efe6e3\"}\n{\"omega_imag_inverse_push\": -0.0005486182877617873, \"feed_FoverV\": 1.2157601410802782e-06, \"receiver_FoverV\": -1.1239858140910088e-06, \"M_reactive\": 12.261059666583874, \"case\": \"r18_000225\", \"omega\": 0.000225, \"real_impedance\": 0.0005486182877617873, \"port_coefficient\": 9.177432698926952e-08, \"window_coefficients\": [8.955381231267852e-08, 9.104072219388306e-08], \"readout_sha256\": \"6c5bd991f006c184c272886ed92794edfc8e6e17e29a820473925f284bdb9786\"}\n{\"omega_imag_inverse_push\": -0.0005421093135344195, \"feed_FoverV\": 9.70583131021654e-06, \"receiver_FoverV\": -1.6072033181276436e-05, \"M_reactive\": 12.260658907651736, \"case\": \"rigid_push_energy_n34_001\", \"omega\": 0.01, \"real_impedance\": 0.0005421093135344196, \"port_coefficient\": -6.366201871059897e-06, \"window_coefficients\": [-6.431128135385596e-06, -6.429673025801284e-06], \"readout_sha256\": \"c0df5f122563162e457f4038d83e9c764526c8d94fe94d703d210b8feb036f6b\"}\n{\"omega_imag_inverse_push\": -0.0005017513862978634, \"feed_FoverV\": 9.671879313136833e-06, \"receiver_FoverV\": -1.6001967928594075e-05, \"M_reactive\": 12.257724602666693, \"case\": \"rigid_push_energy_n26_control01\", \"omega\": 0.01, \"real_impedance\": 0.0005017513862978634, \"port_coefficient\": -6.330088615457244e-06, \"window_coefficients\": [-6.443206677815913e-06, -6.439075196998731e-06], \"readout_sha256\": \"93e61562b9f2c50fcd76c11cbf3ba5494a8f99e68111c3634e562566bcfa6e4a\"}\n{\"omega_imag_inverse_push\": -0.0005212482563013155, \"feed_FoverV\": 9.729516789646395e-06, \"receiver_FoverV\": -1.6119536316206953e-05, \"M_reactive\": 12.263194174139498, \"case\": \"rigid_push_energy_n48_control01\", \"omega\": 0.01, \"real_impedance\": 0.0005212482563013154, \"port_coefficient\": -6.390019526560556e-06, \"window_coefficients\": [-6.42200666131515e-06, -6.421648628284382e-06], \"readout_sha256\": \"833de794c025bd91bea7fd742636f82afd525d3afe355f99c2cecb97e7032bf6\"}\n{\"omega_imag_inverse_push\": -0.000547951541814487, \"feed_FoverV\": 2.885982678255351e-06, \"receiver_FoverV\": -3.4637806595089173e-06, \"M_reactive\": 12.261105128694023, \"case\": \"rigid_push_energy_r13p5_control01\", \"omega\": 0.01, \"real_impedance\": 0.000547951541814487, \"port_coefficient\": -5.777979812535664e-07, \"window_coefficients\": [-5.835992364884373e-07, -5.821176655372551e-07], \"readout_sha256\": \"25742e8aeaee63bd63dbb63cd18d96f1608a48000ed36992c4be69cbb967fb50\"}\n{\"omega_imag_inverse_push\": -0.0005486202220585654, \"feed_FoverV\": 1.2196756004186977e-06, \"receiver_FoverV\": -1.1273270595649267e-06, \"M_reactive\": 12.26120911513123, \"case\": \"rigid_push_energy_r18_control01\", \"omega\": 0.01, \"real_impedance\": 0.0005486202220585656, \"port_coefficient\": 9.234854085377084e-08, \"window_coefficients\": [9.012720356965241e-08, 9.161401896442655e-08], \"readout_sha256\": \"d6ed3a9f24c82f87d977f16caeb3a8df79e938a34e048d9478f91262986493e9\"}\n"
+    },
+    "steady": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "energyref",
+        "--memory-gib",
+        "9",
+        "--log-directory",
+        "_scratch/s11c/energyref01/r18_zero",
+        "--",
+        "python3",
+        "_scratch/s11c/energyref01/check_nested.py",
+        "--nested-bath",
+        "_scratch/s11c/occupied_push_bath18_n34_01",
+        "--omega",
+        "0"
+      ],
+      "exit_code": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 9663676416,
+      "swap_cap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "de4b2e75792f615e1d3e05ff3cb405e1b17253cc929cef6c22588e4794a5ea28",
+      "literal_stdout": "{\"source\": \"_scratch/s11c/occupied_push_bath18_n34_01/field.npz\", \"sha256\": \"54acfe1d0bbb6b494f1b1389f2d5d2036c90acbd7ef5e2ac339ce428c05d32f2\", \"far\": 18.0, \"roof\": 20.0}\n{\"power_prefactor\": 1.0, \"omega\": 0.0, \"normalization\": \"unit lab chart speed; force per V; exp(+i omega t)\", \"source_residual\": 5.887824949812881e-14, \"P_direct\": [12.261104862941396, 0.0], \"P_variational\": [12.261104862941608, 0.0], \"FoverV_total_stored\": [0.0, 0.0], \"FoverV_direct_wall\": [0.0005486182867746048, -0.0], \"FoverV_two_windows\": [[9.092163727379406e-08, 0.0], [9.133820103260264e-08, 0.0]], \"FoverV_ports\": {\"feed\": [1.2157581619257598e-06, 0.0], \"bulk_side\": [-1.1239841248438815e-06, 0.0], \"roof_inner\": [-4.12726516174961e-22, 0.0], \"roof_outer\": [-1.3028610224201626e-18, 0.0]}, \"FoverV_wall_via_domain\": [9.177403708057503e-08, 0.0], \"E_shifted_power_per_V_squared\": {\"direct_wall_external\": 0.0005486182867746048, \"compact_via_momentum\": 9.092163727379406e-08, \"wide_via_momentum\": 9.133820103260264e-08, \"open_port_outward\": 9.177403708057503e-08, \"whole_domain_storage_work\": 0.0}}\n"
+    },
+    "slow": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "energyref",
+        "--memory-gib",
+        "9",
+        "--log-directory",
+        "_scratch/s11c/energyref01/r18_low",
+        "--",
+        "python3",
+        "_scratch/s11c/energyref01/check_nested.py",
+        "--nested-bath",
+        "_scratch/s11c/occupied_push_bath18_n34_01",
+        "--omega",
+        "0.002"
+      ],
+      "exit_code": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 9663676416,
+      "swap_cap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "2a285b9d7c8adb3eb109a468eb148a8403c058c817800f4cb40cdde891f1a3a9",
+      "literal_stdout": "{\"source\": \"_scratch/s11c/occupied_push_bath18_n34_01/field.npz\", \"sha256\": \"54acfe1d0bbb6b494f1b1389f2d5d2036c90acbd7ef5e2ac339ce428c05d32f2\", \"far\": 18.0, \"roof\": 20.0}\n{\"power_prefactor\": 0.5, \"omega\": 0.002, \"normalization\": \"unit lab chart speed; force per V; exp(+i omega t)\", \"source_residual\": 5.313197824282253e-14, \"P_direct\": [12.26111084672152, -1.282075576118261e-17], \"P_variational\": [12.261110846721287, -1.5327745389671588e-17], \"FoverV_total_stored\": [2.564151152236522e-20, 0.02452222169344304], \"FoverV_direct_wall\": [0.0005486183641257164, 0.024522131143254095], \"FoverV_two_windows\": [[9.093426312228008e-08, 0.024522136050496263], [9.13749547970678e-08, 0.024522130841644247]], \"FoverV_ports\": {\"feed\": [1.2159145512590166e-06, -8.714322631777132e-08], \"bulk_side\": [-1.1241176037396814e-06, -4.452243497582832e-09], \"roof_inner\": [-4.1277449272712133e-22, 1.0684697186636628e-23], \"roof_outer\": [-1.303046122080144e-18, -6.892457457507474e-21]}, \"FoverV_wall_via_domain\": [9.17969475180573e-08, 0.024522130097973223], \"E_shifted_power_per_V_squared\": {\"direct_wall_external\": 0.0002743091820628582, \"compact_via_momentum\": 4.546713156114004e-08, \"wide_via_momentum\": 4.56874773985339e-08, \"open_port_outward\": 4.5898473759015835e-08, \"whole_domain_storage_work\": 1.282075576118261e-20}}\n"
+    },
+    "slower": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "energyref",
+        "--memory-gib",
+        "9",
+        "--log-directory",
+        "_scratch/s11c/energyref01/r18_slower",
+        "--",
+        "python3",
+        "_scratch/s11c/energyref01/check_nested.py",
+        "--nested-bath",
+        "_scratch/s11c/occupied_push_bath18_n34_01",
+        "--omega",
+        "0.00025"
+      ],
+      "exit_code": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 9663676416,
+      "swap_cap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "9a7777533591f135e9513e70ddaf8dc1a022ff8e27d0d5d174b28f311044abf8",
+      "literal_stdout": "{\"source\": \"_scratch/s11c/occupied_push_bath18_n34_01/field.npz\", \"sha256\": \"54acfe1d0bbb6b494f1b1389f2d5d2036c90acbd7ef5e2ac339ce428c05d32f2\", \"far\": 18.0, \"roof\": 20.0}\n{\"power_prefactor\": 0.5, \"omega\": 0.00025, \"normalization\": \"unit lab chart speed; force per V; exp(+i omega t)\", \"source_residual\": 5.167481026769403e-14, \"P_direct\": [12.261104956437961, -1.1078124231754644e-18], \"P_variational\": [12.261104956437816, -4.027463041512896e-18], \"FoverV_total_stored\": [2.769531057938661e-22, 0.0030652762391094905], \"FoverV_direct_wall\": [0.0005486182879860663, 0.0030652649210847335], \"FoverV_two_windows\": [[9.092183443499588e-08, 0.003065265534476601], [9.133877522416269e-08, 0.0030652648833799944]], \"FoverV_ports\": {\"feed\": [1.2157606053153923e-06, -1.0892189063542241e-08], \"bulk_side\": [-1.1239862102989445e-06, -5.56496625556339e-10], \"roof_inner\": [-4.1272726575363037e-22, 1.3354340109244706e-24], \"roof_outer\": [-1.302863914360991e-18, -8.614844145707721e-22]}, \"FoverV_wall_via_domain\": [9.177439501514478e-08, 0.0030652647904238013], \"E_shifted_power_per_V_squared\": {\"direct_wall_external\": 0.00027430914399303313, \"compact_via_momentum\": 4.546091721749794e-08, \"wide_via_momentum\": 4.5669387612081345e-08, \"open_port_outward\": 4.588719750757225e-08, \"whole_domain_storage_work\": 1.3847655289693306e-22}}\n"
+    },
+    "sensitivity": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "drag-sensitivity",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/rigid_drag_sensitivity01/guard",
+        "--",
+        "python3",
+        "_scratch/s11c/rigid_drag_sensitivity01/requirements.py"
+      ],
+      "exit_code": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "4b98dd58efec22fec1800765ea653d9c9e89a7062541e791aaad8370d131cc19",
+      "literal_stdout": "{\"d\": 10, \"C\": 0.2500106155398136, \"M\": 12.26051327056563, \"D\": 0.2500000000013136, \"omega\": 0.0006369274570807375, \"frequency_sample\": 0.000637, \"allowable_resistance\": 7.809057539926004e-05, \"reservoir_value\": 9.17763608834507e-08, \"wall_minus_reservoir\": 0.0005485265182629981}\n{\"d\": 20, \"C\": 0.2500106155398136, \"M\": 12.26051327056563, \"D\": 0.2500000000013136, \"omega\": 0.0002251878620128466, \"frequency_sample\": 0.000225, \"allowable_resistance\": 2.760918770578808e-05, \"reservoir_value\": 9.177432698926952e-08, \"wall_minus_reservoir\": 0.0005485265134347981}\n"
+    },
+    "radial_crosscheck": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "equilib-review",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/equil_independent_20261122/proof01",
+        "--",
+        "python3",
+        "_scratch/s11c/equil_independent_20261122/verify.py"
+      ],
+      "exit_code": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 1073741824,
+      "swap_cap_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "05b920601eaa6ea24d1903be9e6e898109141fdd52cfbf040a883aa911a206f8",
+      "literal_stdout": "mesh 26 drive surface wave step 0.04 wave padding 4.5\n{'rows': [1, 2, 4, 7, 8], 'cofactor_bound': 2.0575031808613752e-05, 'primal': 2.057503180883497e-05, 'coefficients': [0.006016569131243395, 0.0044364595736943865, -0.012912769162211814, -0.10488337686476813], 'max_constraint': 4.440892098500626e-16}\nnonnegative_J_and_sigma_lower_bound 0.0\nmesh 26 drive volume wave step 0.04 wave padding 4.5\n{'rows': [1, 2, 4, 7, 8], 'cofactor_bound': 2.0532276503865932e-05, 'primal': 2.0532276504058554e-05, 'coefficients': [0.006013530701861061, 0.004435602321916658, -0.01290807941746121, -0.10481868747376968], 'max_constraint': 4.440892098500626e-16}\nnonnegative_J_and_sigma_lower_bound 0.0\nmesh 34 drive surface wave step 0.03 wave padding 5.0\n{'rows': [1, 2, 4, 7, 8], 'cofactor_bound': 2.0792180515987263e-05, 'primal': 2.079218051621618e-05, 'coefficients': [0.0060300444349712995, 0.004436253066535786, -0.012927143918796612, -0.10508981273120702], 'max_constraint': 8.326672684688674e-17}\nnonnegative_J_and_sigma_lower_bound 0.0\nmesh 34 drive volume wave step 0.03 wave padding 5.0\n{'rows': [1, 2, 4, 7, 8], 'cofactor_bound': 2.0790644376989222e-05, 'primal': 2.0790644377232043e-05, 'coefficients': [0.006031825634762094, 0.004436792096475847, -0.01292954761158547, -0.10510993156360149], 'max_constraint': 8.326672684688674e-17}\nnonnegative_J_and_sigma_lower_bound 0.0\nmesh 48 drive surface wave step 0.02 wave padding 5.0\n{'rows': [1, 2, 4, 7, 8], 'cofactor_bound': 2.0789217068783514e-05, 'primal': 2.0789217069161047e-05, 'coefficients': [0.006029110492686162, 0.004434801810780977, -0.012924176652099568, -0.10505731793423533], 'max_constraint': 6.938893903907228e-16}\nnonnegative_J_and_sigma_lower_bound 0.0\nmesh 48 drive volume wave step 0.02 wave padding 5.0\n{'rows': [1, 2, 4, 7, 8], 'cofactor_bound': 2.079155384275605e-05, 'primal': 2.0791553843108783e-05, 'coefficients': [0.006029122921642258, 0.004434773579468191, -0.012924209535904757, -0.10506004927780604], 'max_constraint': 6.938893903907228e-16}\nnonnegative_J_and_sigma_lower_bound 0.0\nnormal_work_per_4pi 0.1923219940688557 endpoint_per_4pi 0.013825664077447338 direct_first_variation_per_4pi 0.20614765814630304\n"
+    }
+  },
+  "source_text": {
+    "_scratch/s11c/energyref01/check.py": {
+      "sha256": "56011f95582f4a050ee57b2e6bdea9183f6a2b3f6fdff71f450c75c6c9e072ae",
+      "literal_source": "\"\"\"Independent virtual-translation momentum and harmonic work check.\"\"\"\nimport sys,json,argparse\nfrom pathlib import Path\nsys.path.insert(0,str(Path.cwd()/'software/stage1_solver/tools'))\nimport numpy as np\nfrom scipy import sparse\nfrom scipy.sparse.linalg import splu\nfrom mouth_carrier_lateral_response import Dipole,prepare,surface,weighted_gram\nfrom mouth_empty_bend_stiffness import quadrature\nfrom mouth_carrier_lateral_inertia import taper,WINDOWS\nfrom mouth_carrier_free_center import wall_row\n\np=argparse.ArgumentParser()\np.add_argument('--source',type=Path,required=True)\np.add_argument('--omega',type=float,required=True)\nargs=p.parse_args()\ndom,base=prepare(args)\nr,w,Gr,Gw=quadrature(dom)\nf=dom.N@base; fr=Gr@(base-1); fw=Gw@(base-1)\nwt=dom.weight\nn=np.abs(f)**2\nsrc=.5j*(Gr.T@(wt*f)+dom.N.T@(wt*(2*f/r-fr)))\nb=np.r_[src.real,src.imag]\nmodel=Dipole(dom,base)\nm=weighted_gram(dom.N,wt)\nskew=sparse.bmat([[None,-m],[m,None]],format='csr')\nop=model.operator-1j*args.omega*skew\nmask=model.free\nar=op[mask][:,mask].tocsc()\nfac=splu(ar)\nz=np.zeros(len(b),complex)\nz[mask]=fac.solve(b[mask])\ndel fac\ndef ri(x):\n return [float(np.real(x)),float(np.imag(x))]\ndef window(h):\n fq=dom.N@h; qr=Gr@h; qw=Gw@h\n current=(fq.conj()*fr+f.conj()*(qr+2*fq/r)).imag\n de=(fr.conj()*qr+fw.conj()*qw+.5*(n**4-1)*f.conj()*fq).real\n time=(f.conj()*fq).imag\n Sr=(fr.conj()*qr+(qr+2*fq/r).conj()*fr).real-de\n Sw=(fr.conj()*qw+(qr+2*fq/r).conj()*fw).real\n out=[]\n for a,b in [(s[:2],s[2:]) for s in WINDOWS]:\n  cr,dr=taper(r,*a); cz,dz=taper(w,*b)\n  out.append([wt@(current*cr*cz)/3,wt@(Sr*dr*cz+Sw*cr*dz)/3,wt@(time*dr*cz)/3])\n return wt@current/3,np.array(out)\ndef remote(h):\n fields=np.column_stack([base,h])\n return np.array([surface(dom,fields,*a)[0] for a in ((1,'v',dom.far,(1.,0.)),(4,'p',1.,(1.,0.)),(3,'v',dom.roof,(0.,1.)),(4,'v',dom.roof,(0.,1.)))])\nzr,zi=np.split(z,2)\nc=zr.real+1j*zi.real; s=zr.imag+1j*zi.imag\nP,v=window(c); Pi,vi=window(s)\nv=v+1j*vi; P=P+1j*Pi\nports=remote(c)+1j*remote(s)\nactuator_windows=1j*args.omega*(v[:,0]+v[:,2])-v[:,1]\nwall,time,boost=wall_row(dom,base)\ndirect=-(wall@z+1j*args.omega*(time@z)+boost)\nvariational=(2/3)*np.dot(b,z)\nout=dict(omega=args.omega,normalization='unit lab chart speed; force per V; exp(+i omega t)',source_residual=float(np.max(abs(ar@z[mask]-b[mask]))),P_direct=ri(P),P_variational=ri(variational),FoverV_total_stored=ri(1j*args.omega*P),FoverV_direct_wall=ri(direct),FoverV_two_windows=[ri(x) for x in actuator_windows],FoverV_ports={k:ri(x) for k,x in zip(('feed','bulk_side','roof_inner','roof_outer'),ports)},FoverV_wall_via_domain=ri(1j*args.omega*P+sum(ports)),E_shifted_cycle_means_per_V_squared={'direct_wall_external':float(direct.real/2),'compact_via_momentum':float(actuator_windows[0].real/2),'wide_via_momentum':float(actuator_windows[1].real/2),'open_port_outward':float(sum(ports).real/2),'whole_domain_storage_work':float((1j*args.omega*P).real/2)})\nprint(json.dumps(out),flush=True)\nassert out['source_residual']<1e-8 and abs(P-variational)<2e-8\n"
+    },
+    "_scratch/s11c/energyref01/check_signed_ports.py": {
+      "sha256": "1da37e331d2259b94a815e167e31e22581e1f1be094404037b4496aab31046cf",
+      "literal_source": "\"\"\"Independent guard archive and numerical checks for 22 quadratic power rows.\"\"\"\nimport hashlib,json\nfrom pathlib import Path\nfrom math import isclose\nbase=Path('_scratch/s11c')\ns=base/'rigid_energy_slow01'\ndesign=json.loads((s/'design.json').read_text())\nassert hashlib.sha256((s/'instrument.py').read_bytes()).hexdigest()==design['source_sha256']\ncases={k+'_'+w[1:]:float(w) for k,w in design['cases']}\ndone=json.loads((s/'DONE.json').read_text())\nassert {r['name'] for r in done if r['exit']==0}==set(cases)\nfolders=[(s/k,w) for k,w in cases.items()]\nfolders+= [(base/k,.01) for k in ['rigid_push_energy_n34_001','rigid_push_energy_n26_control01','rigid_push_energy_n48_control01','rigid_push_energy_r13p5_control01','rigid_push_energy_r18_control01']]\nfor d,w in folders:\n read=lambda f:json.loads((d/f).read_text())\n duration=read('duration-validation.json')\n lim=read('limit-validation.json')\n o=read('outcome.json')\n assert lim['verified'] and lim['actual']['memory.swap.max']=='0' and o['exitCode']==0 and o['childOutcome']['guardReason'] is None and read('child-outcome.json')['exitCode']==0\n rows=[json.loads(r) for r in (d/'stdout').read_text().splitlines()]\n h=next(r for r in rows if r['test']=='unit_velocity')\n wall=h['actuator_impedance'][0]; assert h['omega']==w\n assert isclose(wall/2,h['actuator_mean_power_per_speed_squared'])\n b=next(r for r in rows if r['test'].startswith('boundary_outward'))\n remote=sum(p['total'] for p in b['remote'].values())\n assert isclose(remote,b['remote_total'],abs_tol=1e-18)\n win=[r for r in rows if r['test'].startswith('enclosing_outward')]\n assert len(win)==2\n for a in win:\n  assert isclose(sum(sum(p['terms']) for p in a['parts'].values()),a['total'],abs_tol=1e-16)\n signed={r['applied_force']:r for r in rows if r['test']=='linear_response_quadratic_power'}\n A=max(signed)\n for key in ['actuator','remote','windows']:\n  elem=lambda f: signed[f][key] if key!='windows' else sum(signed[f]['windows'])\n  assert elem(0)==0 and isclose(elem(A),elem(-A),rel_tol=3e-11)\n  assert isclose(elem(A/2),elem(A)/4,rel_tol=3e-11)\n chi=1j*w*complex(*signed[A]['velocity'])/A\n signed_inverse=w*(1/chi).imag\n assert isclose(-signed_inverse,wall,abs_tol=1e-15)\n feed=2*b['remote']['feed']['total']\n receiver=2*sum(v['total'] for n,v in b['remote'].items() if n!='feed')\n assert isclose(feed+receiver,2*remote,abs_tol=1e-18)\n print(json.dumps(dict(omega_imag_inverse_push=signed_inverse,feed_FoverV=feed,receiver_FoverV=receiver,M_reactive=(1/chi).real,case=d.name,omega=w,real_impedance=wall,port_coefficient=2*remote,window_coefficients=[2*r['total'] for r in win],readout_sha256=hashlib.sha256((d/'stdout').read_bytes()).hexdigest())),flush=True)\n"
+    },
+    "_scratch/s11c/energyref01/check_nested.py": {
+      "sha256": "01bbbd191803ac5586a42260a9a3d096481090211f70217f7d2863b19c0670c4",
+      "literal_source": "\"\"\"Independent virtual-translation momentum and harmonic work check.\"\"\"\nimport sys,json,argparse\nfrom pathlib import Path\nsys.path.insert(0,str(Path.cwd()/'software/stage1_solver/tools'))\nimport numpy as np\nfrom scipy import sparse\nfrom scipy.sparse.linalg import splu\nfrom mouth_carrier_lateral_response import Dipole,prepare,surface,weighted_gram\nfrom mouth_empty_bend_stiffness import quadrature\nfrom mouth_carrier_lateral_inertia import taper,WINDOWS\nfrom mouth_carrier_free_center import wall_row\n\np=argparse.ArgumentParser()\nsources=p.add_mutually_exclusive_group(required=True)\nsources.add_argument('--source',type=Path)\nsources.add_argument('--nested-bath',type=Path)\np.add_argument('--saved-harmonic',type=Path)\np.add_argument('--omega',type=float,required=True)\nargs=p.parse_args()\nfrom mouth_occupied_push_baths import load_bath, digest\nif args.nested_bath:\n dom,base=load_bath(args.nested_bath)\n print(json.dumps(dict(source=str(args.nested_bath/'field.npz'),sha256=digest(args.nested_bath/'field.npz'),far=dom.far,roof=dom.roof)),flush=True)\nelse:\n dom,base=prepare(args)\nr,w,Gr,Gw=quadrature(dom)\nf=dom.N@base; fr=Gr@(base-1); fw=Gw@(base-1)\nwt=dom.weight\nn=np.abs(f)**2\nsrc=.5j*(Gr.T@(wt*f)+dom.N.T@(wt*(2*f/r-fr)))\nb=np.r_[src.real,src.imag]\nmodel=Dipole(dom,base)\nm=weighted_gram(dom.N,wt)\nskew=sparse.bmat([[None,-m],[m,None]],format='csr')\nop=model.operator-1j*args.omega*skew\nmask=model.free\nar=op[mask][:,mask].tocsc()\nz=np.zeros(len(b),complex)\nif args.saved_harmonic:\n with np.load(args.saved_harmonic) as saved:\n  np.testing.assert_array_equal(saved['points'],dom.points)\n  assert float(saved['omega'])==args.omega and saved['background_sha256'].item()==digest((args.nested_bath or args.source)/'field.npz')\n  z[:]=np.r_[saved['harmonic_real'],saved['harmonic_imag']]\n print(json.dumps(dict(harmonic=str(args.saved_harmonic),sha256=digest(args.saved_harmonic))),flush=True)\nelse:\n fac=splu(ar)\n z[mask]=fac.solve(b[mask])\n del fac\ndef ri(x):\n return [float(np.real(x)),float(np.imag(x))]\ndef window(h):\n fq=dom.N@h; qr=Gr@h; qw=Gw@h\n current=(fq.conj()*fr+f.conj()*(qr+2*fq/r)).imag\n de=(fr.conj()*qr+fw.conj()*qw+.5*(n**4-1)*f.conj()*fq).real\n time=(f.conj()*fq).imag\n Sr=(fr.conj()*qr+(qr+2*fq/r).conj()*fr).real-de\n Sw=(fr.conj()*qw+(qr+2*fq/r).conj()*fw).real\n out=[]\n for a,b in [(s[:2],s[2:]) for s in WINDOWS]:\n  cr,dr=taper(r,*a); cz,dz=taper(w,*b)\n  out.append([wt@(current*cr*cz)/3,wt@(Sr*dr*cz+Sw*cr*dz)/3,wt@(time*dr*cz)/3])\n return wt@current/3,np.array(out)\ndef remote(h):\n fields=np.column_stack([base,h])\n return np.array([surface(dom,fields,*a)[0] for a in ((1,'v',dom.far,(1.,0.)),(4,'p',1.,(1.,0.)),(3,'v',dom.roof,(0.,1.)),(4,'v',dom.roof,(0.,1.)))])\nzr,zi=np.split(z,2)\nc=zr.real+1j*zi.real; s=zr.imag+1j*zi.imag\nP,v=window(c); Pi,vi=window(s)\nv=v+1j*vi; P=P+1j*Pi\nports=remote(c)+1j*remote(s)\nactuator_windows=1j*args.omega*(v[:,0]+v[:,2])-v[:,1]\nwall,time,boost=wall_row(dom,base)\ndirect=-(wall@z+1j*args.omega*(time@z)+boost)\nvariational=(2/3)*np.dot(b,z)\nperiod_factor = 1. if args.omega==0 else .5\nout=dict(power_prefactor=period_factor,omega=args.omega,normalization='unit lab chart speed; force per V; exp(+i omega t)',source_residual=float(np.max(abs(ar@z[mask]-b[mask]))),P_direct=ri(P),P_variational=ri(variational),FoverV_total_stored=ri(1j*args.omega*P),FoverV_direct_wall=ri(direct),FoverV_two_windows=[ri(x) for x in actuator_windows],FoverV_ports={k:ri(x) for k,x in zip(('feed','bulk_side','roof_inner','roof_outer'),ports)},FoverV_wall_via_domain=ri(1j*args.omega*P+sum(ports)),E_shifted_power_per_V_squared={'direct_wall_external':float(direct.real*period_factor),'compact_via_momentum':float(actuator_windows[0].real*period_factor),'wide_via_momentum':float(actuator_windows[1].real*period_factor),'open_port_outward':float(sum(ports).real*period_factor),'whole_domain_storage_work':float((1j*args.omega*P).real*period_factor)})\nprint(json.dumps(out),flush=True)\nassert out['source_residual']<1e-8 and abs(P-variational)<2e-8\n"
+    },
+    "_scratch/s11c/rigid_drag_sensitivity01/requirements.py": {
+      "sha256": "3a24f5cf9e6b1a1b7415ffe34c468a762803083c3d658028ef5e8703dde61b63",
+      "literal_source": "import hashlib,json,math\nfrom pathlib import Path\np=Path('research/pde_ledger_v3/_measurements')\nr=json.loads((p/'mouth_carrier_0pn.json').read_text())['runs']['carrier_inertia_c34_01']\nlines=r['stdout_lines']\nassert hashlib.sha256(('\\n'.join(lines)+'\\n').encode()).hexdigest()==r['stdout_sha256']\nbase=list(map(json.loads,lines)); D=base[0]['rate']\nM=next(a['actuator_mass_volume'] for a in base if a['test']=='slow_acceleration')\nC=next(a['interior'][0] for a in base if a.get('drive')=='feed')\nrows=[json.loads(x) for x in Path('_scratch/s11c/energyref01/verify_signed_ports/stdout').read_text().splitlines()]\nfor d,case in ((10,'r18_000637'),(20,'r18_000225')):\n omega=math.sqrt(C*D/(4*math.pi*M*d**3)); eps=.01*M*omega\n a=next(r for r in rows if r['case']==case)\n print(json.dumps(dict(d=d,C=C,M=M,D=D,omega=omega,frequency_sample=a['omega'],allowable_resistance=eps,reservoir_value=a['port_coefficient'],wall_minus_reservoir=a['real_impedance']-a['port_coefficient'])))\n"
+    },
+    "_scratch/s11c/equil_independent_20261122/verify.py": {
+      "sha256": "cff6e9a6cc45a7ef1b026d72f1fb923d55ed8666d8f25f189ff1d9dd10925bce",
+      "literal_source": "\"\"\"Independent eight-band test, using five-row cofactor bounds and exact polynomial integration.\"\"\"\nimport hashlib\nimport itertools\nimport json\nfrom pathlib import Path\n\nimport numpy as np\nfrom numpy.polynomial import Polynomial as P\nfrom scipy.integrate import quad\n\n\ndef normalized_det_vector(a):\n    cof = np.array([(-1)**k*np.linalg.det(np.delete(a,k,axis=0)) for k in range(a.shape[0])])\n    return cof/np.abs(cof).sum()\n\n\ndef test_matrix(a,y):\n    best = None\n    for inds in itertools.combinations(range(len(y)),a.shape[1]+1):\n        inds = list(inds)\n        av = a[inds]\n        c = normalized_det_vector(av)\n        residual = c@y[inds]\n        if best is None or abs(residual) > best[0]:\n            best = (abs(residual),inds,c*np.sign(residual))\n    bound,inds,c = best\n    fit = np.linalg.solve(a[inds].T @ a[inds], a[inds].T @ (y[inds] - bound*np.sign(c)))\n    primal = np.max(np.abs(y-a@fit))\n    print(dict(rows=[i+1 for i in inds], cofactor_bound=bound, primal=primal, coefficients=fit.tolist(), max_constraint=max(abs(c@a[inds]))))\n    assert abs(primal-bound) < 2e-11 and np.max(np.abs(c@a[inds])) < 1e-12\n    return bound\n\n\ndef physical_lower_bound(a,y):\n    bounds=[0.]\n    for inds in itertools.combinations(range(len(y)),3):\n        av=a[list(inds)]; z=normalized_det_vector(av[:,:2])\n        for c in (z,-z):\n            if np.all(c@av[:,2:]<=0):\n                bounds.append(c@y[list(inds)])\n    return max(bounds)\n\n\ndef derive_moments(lo,hi):\n    t=P([0.,1.])\n    depth=lo+(hi-lo)*t\n    s=(depth-1.2)/1.85\n    # All probes lie in the polynomial flare segment.\n    assert 1.2<lo<hi<3.05\n    radius=1+(.5*s**2)*(3-2*s)\n    weight=radius**2*16*t**2*(1-t)**2\n    return (weight*depth).integ()(1)/weight.integ()(1),4*np.pi*(hi-lo)*weight.integ()(1)\n\n\narch=Path('research/pde_ledger_v3/_measurements/mouth_occupied_radial_balance.json')\nmanifest=json.loads(arch.read_text())['runs']\nfor n in (26,34,48):\n    path=Path('_scratch/s11c')/f'occupied_radial_n{n}_01'\n    raw=(path/'stdout').read_bytes()\n    assert hashlib.sha256(raw).hexdigest()==manifest[path.name]['stdout_sha256']\n    guard=json.loads((path/'outcome.json').read_text())\n    assert guard['exitCode']==guard['childOutcome']['exitCode']==0 and guard['limitsVerified']\n    table={x['test']:x for x in map(json.loads,raw.splitlines())}\n    carr=table['carrier_work']; wave=table['wave_state']; k=carr['curvature']\n    mu,vol=np.transpose([derive_moments(x,y) for x,y in carr['bands']])\n    assert np.max(np.abs(vol-wave['projected_volumes']))<1e-14\n    A=np.column_stack([np.ones(8),mu,k,-np.array(wave['pressure_per_action'])])\n    for reading in ('surface','volume'):\n        print('mesh',n,'drive',reading,'wave step',wave['step'],'wave padding',wave['pad'])\n        y=np.asarray(carr[reading])\n        b=test_matrix(A,y)\n        print('nonnegative_J_and_sigma_lower_bound',physical_lower_bound(A,y))\n        assert b>1e-5\n\n# Continuum endpoint test with nonzero slopes and nonzero radial endpoint shifts.\nR=lambda x: 1+.11*x+.24*x*x\nv=lambda x: .17-.025*x-.11*x*x\nrp=lambda x: .11+.48*x\nvp=lambda x: -.025-.22*x\nS=lambda x: np.sqrt(1+rp(x)**2)\nk=lambda x: 2/(R(x)*S(x))-.48/S(x)**3\nintegral=quad(lambda x:R(x)**2*k(x)*v(x),0,1)[0]\nendpoint=R(1)**2*rp(1)*v(1)/S(1)-R(0)**2*rp(0)*v(0)/S(0)\ndirect=quad(lambda x:2*R(x)*v(x)*S(x)+R(x)**2*rp(x)*vp(x)/S(x),0,1)[0]\nprint('normal_work_per_4pi',integral,'endpoint_per_4pi',endpoint,'direct_first_variation_per_4pi',direct)\nassert abs(integral+endpoint-direct)<1e-13 and abs(endpoint)>1e-3\n"
+    }
+  }
+}

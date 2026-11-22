@@ -12,7 +12,7 @@ from numpy.polynomial.legendre import leggauss
 from scipy import sparse
 from scipy.sparse.linalg import splu
 
-from mouth_carrier_free_center import motion_source, wall_row
+from mouth_carrier_free_center import momentum_force_rows, motion_source, wall_row
 from mouth_carrier_lateral_inertia import WINDOWS, taper
 from mouth_carrier_lateral_response import Dipole, emit, parser, prepare, trace, weighted_gram
 from mouth_flared_receiver import EXIT
@@ -32,10 +32,14 @@ def unit_velocity_response(dom, f, omega):
     h = np.zeros(2 * len(f), complex)
     h[free] = factor.solve(source[free].astype(complex))
     residual = max(abs(operator @ h[free] - source[free]))
-    static, temporal, advective = wall_row(dom, f)
-    impedance = -((static + 1j * omega * temporal) @ h + advective)
+    static, temporal = momentum_force_rows(dom, f, source)
+    impedance = (static + 1j * omega * temporal) @ h
+    trace_static, trace_temporal, trace_boost = wall_row(dom, f)
+    direct = -((trace_static + 1j * omega * trace_temporal) @ h + trace_boost)
     emit(test='unit_velocity', nodes=len(f), omega=omega, dynamic_residual=residual,
          actuator_impedance=[impedance.real, impedance.imag],
+         force_method='volume_momentum_and_remote_stress',
+         direct_trace_impedance=[direct.real, direct.imag],
          actuator_mean_power_per_speed_squared=.5 * impedance.real)
     if residual > 2e-8 or abs(impedance) == 0:
         raise ArithmeticError('Harmonic carrier solve or applied impedance unresolved')

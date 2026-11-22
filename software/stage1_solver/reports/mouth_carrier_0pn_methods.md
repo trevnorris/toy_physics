@@ -1,5 +1,7 @@
 # Carrier force, release and radius checks
 
+**Force correction, 22 November 2026.** The original rigid-wall pressure readout used below was inaccurate at the flare exit. The subsequent audit reports the corrected rigid push and stream response and identifies the limits of the archived values. [Momentum-based rigid force and finite-box comparison](mouth_finite_wall_force_audit.md)
+
 ## Geometry and observable
 
 The model has three brane coordinates and a fourth spatial coordinate \(w\). On the single-mouth chart, \(r\) is the radial distance in those three brane coordinates. The lateral response is proportional to \(Y=x/r\). Integrating this dipole over its two angular directions uses \(\int Y^2 d\Omega=4\pi/3\). This reduction is exact at first order about the spherical baseline. The geometry includes a finite feeding slab, rounded lip, narrow section, flared conduit and receiving reservoir. The same complex carrier crosses the opening smoothly. The reflecting walls have zero normal current in their own frame. The distant baths set the carrier phases and densities. The translating finite container defines the towing preparation. The force acts on whichever portions of the wall mechanically move with the center. Other physical recipients, trapped modes, conversion stresses, extra wall inertia and causal selection of the background flow remain independent questions. [Native curved geometry](../tools/mouth_flared_receiver.py) · [Earlier packet model](mouth_pair_neighbor_impulse.md)

@@ -92,7 +92,10 @@ def collect_case(folder, prep, frequency, expected_hash):
 def collect():
     design = load(SLOW / "design.json")
     done = load(SLOW / "DONE.json")
-    require(design["source_sha256"] == sha(SLOW / "instrument.py") == sha(SOURCE),
+    # This table describes the original direct-wall runs, whose pinned source
+    # remains with the saved batch even as the active force calculation evolves.
+    require(design["source_sha256"] == sha(SLOW / "instrument.py")
+            == "18847c31a68c3b5e7850dffe72cf276c3c915e4b9d8e192d9bef08804376f47f",
             "Pinned instrument differs")
     inputs = [(SLOW / (k + "_" + w[1:]), k, float(w)) for k, w in design["cases"]]
     require(len(inputs) == len(done) == 17 and all(r["exit"] == 0 for r in done)

@@ -1,5 +1,7 @@
 # Step 1. Does a slowly moving mouth lose energy to drag?
 
+**Archived table.** The later finite-box audit identified a pressure-readout error at the flare exit and replaced the push resistance in all 22 rows. The signed reservoir and interior work measurements below still apply. [Corrected forces, stream and full diagnostic plot](mouth_finite_wall_force_audit.md)
+
 **Result.** The wall force inferred from a weak push has a low-frequency plateau at all three reservoir sizes. The cycle-averaged energy carried through the brane and bulk accounts for a much smaller force, with opposite signs in the smallest and largest boxes. The wall plateau therefore fails the independent work check. The steady, unbounded-mouth drag remains unresolved. This measures a coherent carrier and a prescribed rigid mouth. The supersolid brane, its shear waves and the self-supported flare are physical requirements for the full model. [Corrected roadmap](../../../docs/zero_pn_free_fall_roadmap.md)
 
 ### Push in resting reservoirs

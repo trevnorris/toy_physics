@@ -1,0 +1,53 @@
+{
+  "base": "5dbee198",
+  "design": {
+    "calibration_radii": [
+      1,
+      2
+    ],
+    "blind_radius": 3,
+    "ensemble": "Step 4 common stationary brane and bulk reservoir fields, unit density and constituent mass, spatial phase bias 0.4510084282857874, 28 by 22 baths and slab thickness 1. Sealed intact faces, downstream conversion permitted. Preserve stored wave action during a static deformation. No additional energy flux or per-mouth backing.",
+    "necessary_gate": "On a stationary control volume, positive brane-to-bulk intake requires a positive conversion loss for the finite-mobility passive law. Compare with all available net port power. A zero gate stops a physical profile fit, radial-root census and numerical blind read.",
+    "blind_protocol": "If the powered, supported branch exists at both calibration radii, freeze the common constitutive data and wave preparation before predicting depth, flare, D and M for radius 3. Test unused local tractions, moving ends, and free radial stability. The third radius is kept unused if the prerequisite fails.",
+    "geometry_diagnostic": "Test independent signed changes of axial depth and mid-flare radius on the held training charts. These are sensitivities under common supply, separate from material selection. No R3 observation is admitted."
+  },
+  "design_sha256": "9bdf5d45d6a069f1eca039d5d66fcbd21d8ebfc397337b20d3b15698e0179833",
+  "source_sha256": {
+    "software/stage1_solver/tools/mouth_free_shape_power.py": "e7b960fadbec7ca2d85a010c20f3112167c4cef286d4c3d0645e77d62cd0a0c7"
+  },
+  "command": [
+    "python3",
+    "scripts/s11c_guarded_run.py",
+    "--pool",
+    "free-shape-calibration",
+    "--memory-gib",
+    "2",
+    "--log-directory",
+    "_scratch/s11c/free_shape_radius01/energy",
+    "--",
+    "python3",
+    "software/stage1_solver/tools/mouth_free_shape_power.py"
+  ],
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "limits_verified": true,
+  "swap_bytes": 0,
+  "wall_deadline": null,
+  "stdout_sha256": "e31df279865c3ae69e5588f485c154c71396c6649dfe54c6e3ab1b141cdb6552",
+  "literal_stdout": "{\n  \"input_sha256\": {\n    \"research/pde_ledger_v3/_measurements/mouth_radius_pivot.json\": \"6c5f6dc46531b84a6cca099452ccaa1bcbe838f1e17ddc6d1b03c3ce5fa691c2\",\n    \"research/pde_ledger_v3/_measurements/mouth_coupled_conversion.json\": \"74b0118e02c1c5ca371d61d60ec17676caaf42e8bd2bdefa7d3d5cc8f2b4152d\"\n  },\n  \"rigid_reference_ports\": [\n    {\n      \"radius\": 1,\n      \"spatial_phase_bias\": 0.4510084282857874,\n      \"feed\": 0.24961776597519647,\n      \"bulk\": 0.24961776591629814,\n      \"number_current\": 0.2496177659457473,\n      \"native_net_port_power\": 0.0,\n      \"common_unit_energy_offset_current_residual\": 5.889833065708672e-11,\n      \"minimum_power_times_conversion_capacity_at_this_rate\": 0.062309029075745884\n    },\n    {\n      \"radius\": 2,\n      \"spatial_phase_bias\": 0.4510084282857874,\n      \"feed\": 1.3715190698392041,\n      \"bulk\": 1.3715190700269952,\n      \"number_current\": 1.3715190699330997,\n      \"native_net_port_power\": -0.0,\n      \"common_unit_energy_offset_current_residual\": -1.8779111599087628e-10,\n      \"minimum_power_times_conversion_capacity_at_this_rate\": 1.8810645591901547\n    }\n  ],\n  \"known_order_field\": {\n    \"radius\": 1,\n    \"intake\": 0.2500000000029102,\n    \"phase_bias\": 0.450146968600525,\n    \"measured_loss\": 0.012807642774900894,\n    \"capacity\": 5.003089669606523,\n    \"lower_bound\": 0.012492280596356079,\n    \"required_energy_per_constituent\": 0.05123057109900721\n  },\n  \"powered_annulus_controls\": [\n    {\n      \"head\": 0.004636016587504535,\n      \"loss_per_inner_area\": 8.109007237495997e-05,\n      \"power_per_inner_area\": 8.109007236386543e-05,\n      \"relative_balance_error\": -1.3681755728356393e-10\n    },\n    {\n      \"head\": 0.004628974189314543,\n      \"loss_per_inner_area\": 8.096843323367829e-05,\n      \"power_per_inner_area\": 8.096843320291988e-05,\n      \"relative_balance_error\": -3.79881459622311e-10\n    }\n  ]\n}\n",
+  "independent_review": {
+    "verdict": "Scoped clear for the passive-conversion energy exclusion at fixed-phase reservoirs, the conditional depth and flare sensitivities at radii 1 and 2, and preserving the radius-3 prediction.",
+    "command_as_run": [
+      "python3",
+      "_scratch/s11c/free_shape_energy_referee01/audit.py"
+    ],
+    "reproduction_source": "software/stage1_solver/tools/mouth_free_shape_review.py",
+    "source_sha256": "09ed81dd1991512a6af1bdb143a63f288d4daa0ef8e18166fd14201cca5cede6",
+    "guard_exit": 0,
+    "child_exit": 0,
+    "swap_bytes": 0,
+    "wall_deadline": null,
+    "literal_stdout": "1 depth 0.025 [-2.0426203424748453, -2.042363315093845] -0.03684626042624442 41.9038956048567\n1 depth 0.05 [-2.0427356802415697, -2.042478160760026] -0.03686780676987855 41.900782650181654\n1 bulge 0.025 [-1.3281986418119216, -1.3280132230005548] 0.009813949606248124 32.964114421195205\n1 bulge 0.05 [-1.3256942199265724, -1.325509117424961] 0.009862698446490847 33.05130425964329\n2 depth 0.025 [-2.0836368214053977, -2.083578424107461] -0.12274427191296788 148.91953752925417\n2 depth 0.05 [-2.0837386977569032, -2.083680200594284] -0.12275418009896677 148.89832553318115\n2 bulge 0.025 [-1.4288335212194705, -1.428801511542721] 0.03184923574137466 125.97956918097339\n2 bulge 0.05 [-1.4258399782400197, -1.4258080920923035] 0.03215479423854972 127.29467652095309\nmaximum independent wall-area discrepancy 1.908739599709719e-08\nshape and energy checks passed\n",
+    "stdout_sha256": "4cf1239622ae73c1222c743108151749c0dad7634437b014dcbb2330ee35d8ab"
+  }
+}

@@ -1,0 +1,18 @@
+# How depth and flare change intake per carrier inertia
+
+**A deeper throat or a broader middle lowers intake per unit carrier inertia in both reference mouths.** The result tests how the geometry would have to change to restore the acceleration response. Each geometry here was held rigid.
+
+We used the radius-1 and radius-2 reference mouths with the same two coherent reservoirs, phase difference 0.4510084282857874, unit slab thickness, outer radius 28, roof height 22, and mesh parameter 30 as in the fixed-depth comparison. The reference axial depth is 3.05. The depth perturbation stretches the lip and flare along the fourth direction at unchanged radial dimensions. The bulge perturbation keeps depth and both ends fixed and multiplies the local flare radius by $1+q\,64s^3(1-s)^3$, where $s$ runs from 0 at the start of the flare to 1 at its exit. At the midpoint the relative change in radius is $q$. The two reservoir positions stay fixed in both tests. [Solver](../tools/mouth_selected_shape_sensitivity.py) · [Reference radius family](mouth_radius_pivot.md)
+
+| Radius | Dimension increased | Intake $D$ | Carrier inertia $M$ | $D/M$ |
+|---:|---|---:|---:|---:|
+| 1 | Axial depth | −0.647 | +1.396 | −2.042 |
+| 2 | Axial depth | −0.394 | +1.689 | −2.084 |
+| 1 | Mid-flare radius | +0.170 | +1.498 | −1.328 |
+| 2 | Mid-flare radius | +0.102 | +1.530 | −1.429 |
+
+Each entry is a dimensionless logarithmic slope from the signed 2.5% pair. For example, increasing the middle radius by 1% at radius 2 increases intake by approximately 0.10% and inertia by 1.53%. Dividing each by the fixed $R^3$ leaves their slopes unchanged. On doubling the perturbation to 5%, the four outer-window slopes of $D/M$ become −2.0425, −2.0837, −1.3255 and −1.4258, in table order. Both interior momentum windows reproduce all four slopes of $D/M$ within 0.0003 of one another. The slope of the directly measured held-force coefficient divided by inertia agrees with the corresponding $D/M$ slope to within 0.00001 across these pairs. Box size and resolution are fixed in this local sensitivity test.
+
+**What pushes in each direction?** For a unit fractional increase in depth, centered differences of carrier energy give −0.03685 and −0.12274 in model units (radii 1 and 2). The corresponding 3D wall-area derivatives are +41.904 and +148.920. A positive surface tension therefore opposes the carrier's drive on this depth variation. For the outward bulge, carrier-energy derivatives are +0.009814 and +0.03185, and area derivatives are +32.964 and +125.980. Carrier energy and positive surface tension both penalize widening the middle at the two reference shapes. Quantifying the physical restoring force also requires the wave, both sides' material stresses and end reactions on an independently supported state. The surface area here includes the curved lip and conduit wall and excludes the slab faces and exit disk. The outer pressure reference is the uniform unit-density carrier at rest.
+
+The signs give a local geometry diagnostic. A larger self-supported mouth could improve $D/M$ by shortening its effective depth or narrowing its central flare if the other dimensions and material loads were comparable. These partial derivatives do not determine which shape the material chooses. Radius 3 was reserved and never computed. The sixteen accepted rows, two initial pre-solve seam-classification failures and their successful corrected preparations are recorded with the guarded commands and source hashes. [Measurement record](../../../research/pde_ledger_v3/_measurements/mouth_selected_shape_sensitivity.json) · [Signed-pair reduction](../tools/mouth_selected_shape_readout.py)

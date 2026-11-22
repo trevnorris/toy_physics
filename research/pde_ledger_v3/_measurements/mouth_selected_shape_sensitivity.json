@@ -1,0 +1,753 @@
+{
+  "runs": {
+    "r1_depth_-50_corner": {
+      "name": "r1_depth_-50_corner",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "1",
+        "--mode",
+        "depth",
+        "--step",
+        "-.05"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "d2ed1a67162589a82a236f60eb3eff05fb3de62d6bd6f5bec3c152475d6d04f0",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 0.2579359616892889, \"bulk\": 0.2579359617254374, \"energy\": 0.058542714789896075, \"max_correction\": 3.6516543931071924e-14, \"max_volume_normalized_residual\": 2.122488291416146e-11, \"raw_residual\": 1.2575255446836422e-11, \"iterations\": 3, \"min_density\": 0.9765515007828925}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [8752.765036583456, 1.4690158423036337e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381003.8731273598, 6.684217623842414e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381003.8731273598, 1.623391199245816e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [0.2518125157985733, 8.423550485608944e-13], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 1, \"mode\": \"depth\", \"step\": -0.05, \"depth_scale\": 0.9499999998704546, \"physical_depth\": 2.8974999996048862, \"bulge\": 0.0, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 0.25793596170736316, \"finite_phase_energy\": 0.058542714789896075, \"material_wall_area\": 48.5302655201018}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": -0.05, \"radius\": 1, \"window\": [1.65, 2.55, 3.297499999604886, 5.397499999604887], \"D\": 0.25793596170736316, \"M\": 11.382580058979821, \"C\": 0.2572395390908491, \"B\": -0.2581038808054447, \"T\": 0.0008643417145954351, \"D_over_M\": 0.022660588405339185, \"C_over_M\": 0.022599405210237067, \"D_over_R3\": 0.25793596170736316, \"M_over_R3\": 11.382580058979821}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": -0.05, \"radius\": 1, \"window\": [1.9, 3.25, 3.5974999996048864, 6.297499999604886], \"D\": 0.25793596170736316, \"M\": 11.385034663299589, \"C\": 0.2577549416145041, \"B\": -0.2578406992530228, \"T\": 8.575763851868812e-05, \"D_over_M\": 0.02265570280069825, \"C_over_M\": 0.022639802972703644, \"D_over_R3\": 0.25793596170736316, \"M_over_R3\": 11.385034663299589}"
+      ],
+      "as_run_main_sha256": "279ebfeb54217f720e85cb32ff6d6b6b09dbd3086b5586f857960daf78b8dbfd"
+    },
+    "r1_depth_+50": {
+      "name": "r1_depth_+50",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "1",
+        "--mode",
+        "depth",
+        "--step",
+        "0.05"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "74e06454faa394d2c2390dcc4112edac7f941500a1b0952562e8d0dd2c5943bb",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 0.24177417579809507, \"bulk\": 0.24177417607689877, \"energy\": 0.05485593411290822, \"max_correction\": 5.443655172537685e-14, \"max_volume_normalized_residual\": 2.426129858282285e-11, \"raw_residual\": 9.96052091369775e-12, \"iterations\": 3, \"min_density\": 0.9776105254640846}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [8752.765036356504, 1.2049213182763197e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [382744.8666681956, 1.0691785234939744e-09], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [382744.8666681956, 1.4177800267134444e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [0.25223670969539413, 8.96382143858454e-13], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 1, \"mode\": \"depth\", \"step\": 0.05, \"depth_scale\": 1.0500000001193182, \"physical_depth\": 3.20250000036392, \"bulge\": 0.0, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 0.24177417593749692, \"finite_phase_energy\": 0.05485593411290822, \"material_wall_area\": 52.720343785119965}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": 0.05, \"radius\": 1, \"window\": [1.65, 2.55, 3.60250000036392, 5.70250000036392], \"D\": 0.24177417593749692, \"M\": 13.08963850680561, \"C\": 0.2411213684702511, \"B\": -0.24192705202187884, \"T\": 0.0008056835516277484, \"D_over_M\": 0.018470653395950765, \"C_over_M\": 0.018420781318360047, \"D_over_R3\": 0.24177417593749692, \"M_over_R3\": 13.08963850680561}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": 0.05, \"radius\": 1, \"window\": [1.9, 3.25, 3.9025000003639203, 6.60250000036392], \"D\": 0.24177417593749692, \"M\": 13.092123797499475, \"C\": 0.24160451219261184, \"B\": -0.2416839496898434, \"T\": 7.943749723141047e-05, \"D_over_M\": 0.01846714709371099, \"C_over_M\": 0.018454187871241867, \"D_over_R3\": 0.24177417593749692, \"M_over_R3\": 13.092123797499475}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r1_depth_-25": {
+      "name": "r1_depth_-25",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "1",
+        "--mode",
+        "depth",
+        "--step",
+        "-0.025"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "ce95336249a015190e5ea2964d8e1236122f26d9a06fdc96d6440b86eb55b6bb",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 0.2537151611526882, \"bulk\": 0.2537151612659977, \"energy\": 0.05757974351599646, \"max_correction\": 5.76231707508587e-14, \"max_volume_normalized_residual\": 1.9061868460835308e-11, \"raw_residual\": 6.8022994128384314e-12, \"iterations\": 3, \"min_density\": 0.9768210929314104}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [8752.76503652295, 1.4546458260156214e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381427.2680909818, 7.822391623335534e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381427.2680909818, 1.356056600343436e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [0.25201797298381634, 9.218945051792105e-13], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 1, \"mode\": \"depth\", \"step\": -0.025, \"depth_scale\": 0.9750000001772728, \"physical_depth\": 2.973750000540682, \"bulge\": 0.0, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 0.25371516120934295, \"finite_phase_energy\": 0.05757974351599646, \"material_wall_area\": 49.57349382260806}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": -0.025, \"radius\": 1, \"window\": [1.65, 2.55, 3.373750000540682, 5.473750000540682], \"D\": 0.25371516120934295, \"M\": 11.807265396851202, \"C\": 0.2530301289301096, \"B\": -0.2538782339793841, \"T\": 0.0008481050492744995, \"D_over_M\": 0.021488054403943906, \"C_over_M\": 0.02143003654322774, \"D_over_R3\": 0.25371516120934295, \"M_over_R3\": 11.807265396851202}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": -0.025, \"radius\": 1, \"window\": [1.9, 3.25, 3.6737500005406822, 6.3737500005406815], \"D\": 0.25371516120934295, \"M\": 11.809728526057746, \"C\": 0.2535371070134662, \"B\": -0.2536212504447936, \"T\": 8.414343132736452e-05, \"D_over_M\": 0.02148357268751178, \"C_over_M\": 0.02146849577905585, \"D_over_R3\": 0.25371516120934295, \"M_over_R3\": 11.809728526057746}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r1_depth_+25": {
+      "name": "r1_depth_+25",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "1",
+        "--mode",
+        "depth",
+        "--step",
+        "0.025"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "a2d71cef11e16dde04cac4b45e44afc430fa8fcbfda40ffd0eb7599168ade3cd",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 0.24563896928706402, \"bulk\": 0.2456389692161334, \"energy\": 0.055737430494684236, \"max_correction\": 6.140995557210643e-14, \"max_volume_normalized_residual\": 2.7978679415950595e-11, \"raw_residual\": 7.88799397061779e-12, \"iterations\": 3, \"min_density\": 0.9773506990520726}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [8752.765036409473, 9.394597100254032e-09], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [382297.6690839748, 5.221476584438278e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [382297.6690839748, 1.0390067473053932e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [0.2522251952407731, 7.378847966671431e-13], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 1, \"mode\": \"depth\", \"step\": 0.025, \"depth_scale\": 1.0250000001980115, \"physical_depth\": 3.126250000603935, \"bulge\": 0.0, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 0.24563896925159873, \"finite_phase_energy\": 0.055737430494684236, \"material_wall_area\": 51.66868860285089}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": 0.025, \"radius\": 1, \"window\": [1.65, 2.55, 3.526250000603935, 5.626250000603935], \"D\": 0.24563896925159873, \"M\": 12.660893414546056, \"C\": 0.2449757320204017, \"B\": -0.24579450334182207, \"T\": 0.0008187713214206829, \"D_over_M\": 0.019401393030399023, \"C_over_M\": 0.01934900832029357, \"D_over_R3\": 0.24563896925159873, \"M_over_R3\": 12.660893414546056}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": 0.025, \"radius\": 1, \"window\": [1.9, 3.25, 3.826250000603935, 6.526250000603935], \"D\": 0.24563896925159873, \"M\": 12.663371843590769, \"C\": 0.24546659007641575, \"B\": -0.24554774653038092, \"T\": 8.115645396528093e-05, \"D_over_M\": 0.019397595860372877, \"C_over_M\": 0.019383983437290614, \"D_over_R3\": 0.24563896925159873, \"M_over_R3\": 12.663371843590769}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r1_bulge_-50": {
+      "name": "r1_bulge_-50",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "1",
+        "--mode",
+        "bulge",
+        "--step",
+        "-0.05"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "d6cb14e3431f1988f8c271af12bdcc64f8e1cb2c66ea9aac513839b44c7a85c5",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 0.2472700860934376, \"bulk\": 0.24727008602448036, \"energy\": 0.05610342415796836, \"max_correction\": 4.444596209620939e-14, \"max_volume_normalized_residual\": 2.3015059175871067e-11, \"raw_residual\": 1.0555080265807663e-11, \"iterations\": 3, \"min_density\": 0.977504012531103}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [8752.765036432087, 1.7845422917162068e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381858.5017361563, 6.568292576503154e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381858.5017361563, 2.1708729036618024e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [0.2453292878895652, 7.783956313713036e-13], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 1, \"mode\": \"bulge\", \"step\": -0.05, \"depth_scale\": 1.0, \"physical_depth\": 3.05, \"bulge\": -0.05, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 0.24727008605895898, \"finite_phase_energy\": 0.05610342415796836, \"material_wall_area\": 49.10011956313756}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": -0.05, \"radius\": 1, \"window\": [1.65, 2.55, 3.4499999999999997, 5.55], \"D\": 0.24727008605895898, \"M\": 11.357628136441441, \"C\": 0.2466024494208767, \"B\": -0.24742702530982988, \"T\": 0.0008245758889532957, \"D_over_M\": 0.02177127857053025, \"C_over_M\": 0.021712495466341433, \"D_over_R3\": 0.24727008605895898, \"M_over_R3\": 11.357628136441441}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": -0.05, \"radius\": 1, \"window\": [1.9, 3.25, 3.75, 6.449999999999999], \"D\": 0.24727008605895898, \"M\": 11.360026290796114, \"C\": 0.24709655869098227, \"B\": -0.24717842618996352, \"T\": 8.186749898152212e-05, \"D_over_M\": 0.021766682552424817, \"C_over_M\": 0.0217514072913, \"D_over_R3\": 0.24727008605895898, \"M_over_R3\": 11.360026290796114}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r1_bulge_+50": {
+      "name": "r1_bulge_+50",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "1",
+        "--mode",
+        "bulge",
+        "--step",
+        "0.05"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "114947b09d8b524f0638a5e097c3e4ce37005b092585032cd65ff019864ef1c3",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 0.25154423050697705, \"bulk\": 0.2515442304707108, \"energy\": 0.057089694002617444, \"max_correction\": 2.996799147379323e-14, \"max_volume_normalized_residual\": 2.1597017706130002e-11, \"raw_residual\": 7.496484607344672e-12, \"iterations\": 3, \"min_density\": 0.9767430937954908}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [8752.765036491983, 1.4504507817036938e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381858.5017369643, 6.733955615345621e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381858.5017369643, 1.4571241990779527e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [0.25874030963372063, 9.920455299253228e-13], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 1, \"mode\": \"bulge\", \"step\": 0.05, \"depth_scale\": 1.0, \"physical_depth\": 3.05, \"bulge\": 0.05, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 0.2515442304888439, \"finite_phase_energy\": 0.057089694002617444, \"material_wall_area\": 52.40524998910189}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": 0.05, \"radius\": 1, \"window\": [1.65, 2.55, 3.4499999999999997, 5.55], \"D\": 0.2515442304888439, \"M\": 13.193275909163363, \"C\": 0.2508650548392479, \"B\": -0.25170472543429245, \"T\": 0.0008396705950445126, \"D_over_M\": 0.019066093381260554, \"C_over_M\": 0.01901461445712737, \"D_over_R3\": 0.2515442304888439, \"M_over_R3\": 13.193275909163363}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": 0.05, \"radius\": 1, \"window\": [1.9, 3.25, 3.75, 6.449999999999999], \"D\": 0.2515442304888439, \"M\": 13.195817195122821, \"C\": 0.25136770356034244, \"B\": -0.25145103718456613, \"T\": 8.33336242237609e-05, \"D_over_M\": 0.019062421581727787, \"C_over_M\": 0.019049044090520443, \"D_over_R3\": 0.2515442304888439, \"M_over_R3\": 13.195817195122821}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r1_bulge_-25": {
+      "name": "r1_bulge_-25",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "1",
+        "--mode",
+        "bulge",
+        "--step",
+        "-0.025"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "d4927084ee6770df4e934a2908dd9cea91719d79f957f4cd82a35213b7bffa70",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 0.24850202896839635, \"bulk\": 0.24850202886426143, \"energy\": 0.05638758042338278, \"max_correction\": 3.9219325061184056e-14, \"max_volume_normalized_residual\": 1.8213224148362967e-11, \"raw_residual\": 7.2458568771950936e-12, \"iterations\": 3, \"min_density\": 0.9772856686779111}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [8752.7650364492, 1.3109001884004101e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381858.5017363892, 9.09886388456016e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381858.5017363892, 1.4518263924401253e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [0.24876568325383663, 8.564530378299406e-13], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 1, \"mode\": \"bulge\", \"step\": -0.025, \"depth_scale\": 1.0, \"physical_depth\": 3.05, \"bulge\": -0.025, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 0.2485020289163289, \"finite_phase_energy\": 0.05638758042338278, \"material_wall_area\": 49.828841542942584}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": -0.025, \"radius\": 1, \"window\": [1.65, 2.55, 3.4499999999999997, 5.55], \"D\": 0.2485020289163289, \"M\": 11.785328222028951, \"C\": 0.24783106638397961, \"B\": -0.24865996677898164, \"T\": 0.0008289003950022345, \"D_over_M\": 0.021085711338258088, \"C_over_M\": 0.021028779319080624, \"D_over_R3\": 0.2485020289163289, \"M_over_R3\": 11.785328222028951}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": -0.025, \"radius\": 1, \"window\": [1.9, 3.25, 3.75, 6.449999999999999], \"D\": 0.2485020289163289, \"M\": 11.787763102295873, \"C\": 0.24832763700334787, \"B\": -0.2484099243086949, \"T\": 8.228730534703965e-05, \"D_over_M\": 0.021081355873866243, \"C_over_M\": 0.021066561556109125, \"D_over_R3\": 0.2485020289163289, \"M_over_R3\": 11.787763102295873}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r1_bulge_+25": {
+      "name": "r1_bulge_+25",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "1",
+        "--mode",
+        "bulge",
+        "--step",
+        "0.025"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "9abca1533c5b02dd1913d58dd4e2141f5bc77d6e0a599de9c76352ffc399ab1e",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 0.25062844282102215, \"bulk\": 0.250628442733544, \"energy\": 0.056878277903695186, \"max_correction\": 2.942297381355471e-14, \"max_volume_normalized_residual\": 1.8111284062149234e-11, \"raw_residual\": 7.218804968144618e-12, \"iterations\": 3, \"min_density\": 0.976906896393963}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [8752.765036479352, 1.6142621461767703e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381858.50173679116, 5.570299776991305e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [381858.50173679116, 1.4258148439694196e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [0.2554821659811817, 8.193166197573154e-13], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 1, \"mode\": \"bulge\", \"step\": 0.025, \"depth_scale\": 1.0, \"physical_depth\": 3.05, \"bulge\": 0.025, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 0.2506284427772831, \"finite_phase_energy\": 0.056878277903695186, \"material_wall_area\": 51.477047264002344}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": 0.025, \"radius\": 1, \"window\": [1.65, 2.55, 3.4499999999999997, 5.55], \"D\": 0.2506284427772831, \"M\": 12.702510919138687, \"C\": 0.24995173951165495, \"B\": -0.2507881526811479, \"T\": 0.0008364131694930318, \"D_over_M\": 0.019730622108709614, \"C_over_M\": 0.01967734891965779, \"D_over_R3\": 0.2506284427772831, \"M_over_R3\": 12.702510919138687}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": 0.025, \"radius\": 1, \"window\": [1.9, 3.25, 3.75, 6.449999999999999], \"D\": 0.2506284427772831, \"M\": 12.705017479242429, \"C\": 0.25045255856027415, \"B\": -0.25053557550571615, \"T\": 8.301694544188276e-05, \"D_over_M\": 0.019726729474143744, \"C_over_M\": 0.019712885792519827, \"D_over_R3\": 0.2506284427772831, \"M_over_R3\": 12.705017479242429}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r2_depth_-50_corner": {
+      "name": "r2_depth_-50_corner",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "2",
+        "--mode",
+        "depth",
+        "--step",
+        "-.05"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "8fd7504c072ef6c78cba8645dbf1c2ce3b641b4f675d60f059000e8b04948bef",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 1.3989644504719712, \"bulk\": 1.3989644505088037, \"energy\": 0.31662893837112177, \"max_correction\": 2.9589766101789835e-14, \"max_volume_normalized_residual\": 2.3470930652401803e-11, \"raw_residual\": 6.5224888031513175e-12, \"iterations\": 3, \"min_density\": 0.9843150296171349}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [9111.55661713364, 1.0076391276925278e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [377492.1309443311, 6.027489618531945e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [377492.1309443311, 1.2982127373106778e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [1.914489041027723, 4.1567981695633804e-12], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 2, \"mode\": \"depth\", \"step\": -0.05, \"depth_scale\": 0.9499999998704546, \"physical_depth\": 2.8974999996048862, \"bulge\": 0.0, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 1.3989644504903875, \"finite_phase_energy\": 0.31662893837112177, \"material_wall_area\": 237.11053617487727}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": -0.05, \"radius\": 2, \"window\": [3.3, 5.1, 3.297499999604886, 5.397499999604887], \"D\": 1.3989644504903875, \"M\": 62.12998311427538, \"C\": 1.399128775840852, \"B\": -1.3991906553076852, \"T\": 6.187946683290646e-05, \"D_over_M\": 0.022516736370542367, \"C_over_M\": 0.02251938123445875, \"D_over_R3\": 0.17487055631129844, \"M_over_R3\": 7.766247889284423}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": -0.05, \"radius\": 2, \"window\": [3.8, 6.5, 3.5974999996048864, 6.297499999604886], \"D\": 1.3989644504903875, \"M\": 62.133019462745125, \"C\": 1.398837346743664, \"B\": -1.3989353505502653, \"T\": 9.800380660174302e-05, \"D_over_M\": 0.0225156360110457, \"C_over_M\": 0.022513590339552143, \"D_over_R3\": 0.17487055631129844, \"M_over_R3\": 7.766627432843141}"
+      ],
+      "as_run_main_sha256": "279ebfeb54217f720e85cb32ff6d6b6b09dbd3086b5586f857960daf78b8dbfd"
+    },
+    "r2_depth_+50": {
+      "name": "r2_depth_+50",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "2",
+        "--mode",
+        "depth",
+        "--step",
+        "0.05"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "5dba8dedda1b206216c5dc0e21d7ab1167efe8b259dc8a1fe914fa48cbcd97b0",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 1.3448827620810733, \"bulk\": 1.3448827619839772, \"energy\": 0.3043535203612251, \"max_correction\": 2.7172081726285458e-14, \"max_volume_normalized_residual\": 1.5572436573393634e-11, \"raw_residual\": 9.415238639917644e-12, \"iterations\": 3, \"min_density\": 0.9848074023798761}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [9111.556613394234, 2.1280584405758418e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378899.7431713342, 6.841034405624669e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378899.7431713342, 1.5020873433968518e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [1.9603662800572603, 5.329107814755485e-12], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 2, \"mode\": \"depth\", \"step\": 0.05, \"depth_scale\": 1.0500000001193182, \"physical_depth\": 3.20250000036392, \"bulge\": 0.0, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 1.3448827620325252, \"finite_phase_energy\": 0.3043535203612251, \"material_wall_area\": 252.00036872819538}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": 0.05, \"radius\": 2, \"window\": [3.3, 5.1, 3.60250000036392, 5.70250000036392], \"D\": 1.3448827620325252, \"M\": 73.5783648878168, \"C\": 1.3450417322667392, \"B\": -1.3450460888717228, \"T\": 4.3566049847676425e-06, \"D_over_M\": 0.018278236599617786, \"C_over_M\": 0.018280397156385474, \"D_over_R3\": 0.16811034525406565, \"M_over_R3\": 9.1972956109771}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": 0.05, \"radius\": 2, \"window\": [3.8, 6.5, 3.9025000003639203, 6.60250000036392], \"D\": 1.3448827620325252, \"M\": 73.58152993749265, \"C\": 1.3447615812628102, \"B\": -1.3448592938462673, \"T\": 9.771258345581124e-05, \"D_over_M\": 0.0182774503761338, \"C_over_M\": 0.01827580348499389, \"D_over_R3\": 0.16811034525406565, \"M_over_R3\": 9.19769124218658}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r2_depth_-25": {
+      "name": "r2_depth_-25",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "2",
+        "--mode",
+        "depth",
+        "--step",
+        "-0.025"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "1e5b409976667a067b0de165f41fc76c3961367837a63cb22c2adfd1ee0c9e2e",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 1.3851395355115184, \"bulk\": 1.3851395355243465, \"energy\": 0.3134909431105488, \"max_correction\": 1.9823621689981387e-14, \"max_volume_normalized_residual\": 1.682736907170298e-11, \"raw_residual\": 6.90020948021877e-12, \"iterations\": 3, \"min_density\": 0.9844379074366618}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [9111.556616163696, 1.57597241923213e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [377832.77057909244, 5.399556357588153e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [377832.77057909244, 1.3239727536529244e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [1.9273727239514884, 4.882789485238792e-12], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 2, \"mode\": \"depth\", \"step\": -0.025, \"depth_scale\": 0.9750000001772728, \"physical_depth\": 2.973750000540682, \"bulge\": 0.0, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 1.3851395355179323, \"finite_phase_energy\": 0.3134909431105488, \"material_wall_area\": 240.79763836973177}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": -0.025, \"radius\": 2, \"window\": [3.3, 5.1, 3.373750000540682, 5.473750000540682], \"D\": 1.3851395355179323, \"M\": 64.94524491240124, \"C\": 1.3853024965514378, \"B\": -1.3853344187769752, \"T\": 3.192222553760615e-05, \"D_over_M\": 0.021327805251735082, \"C_over_M\": 0.021330314458278616, \"D_over_R3\": 0.17314244193974154, \"M_over_R3\": 8.118155614050155}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": -0.025, \"radius\": 2, \"window\": [3.8, 6.5, 3.6737500005406822, 6.3737500005406815], \"D\": 1.3851395355179323, \"M\": 64.94831533829485, \"C\": 1.3850139502194614, \"B\": -1.3851127005698567, \"T\": 9.875035039602631e-05, \"D_over_M\": 0.02132679698161818, \"C_over_M\": 0.021324863362588698, \"D_over_R3\": 0.17314244193974154, \"M_over_R3\": 8.118539417286856}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r2_depth_+25": {
+      "name": "r2_depth_+25",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "2",
+        "--mode",
+        "depth",
+        "--step",
+        "0.025"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "cf98ea268a25cfc6c82f1d056a521e3b813252e1e56ff30e04b8588acd2017eb",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 1.3581008988664809, \"bulk\": 1.3581008987808787, \"energy\": 0.3073537295149004, \"max_correction\": 2.937402250399396e-14, \"max_volume_normalized_residual\": 1.4250816286910061e-11, \"raw_residual\": 1.0642354807256546e-11, \"iterations\": 3, \"min_density\": 0.9846842895960566}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [9111.556614294503, 1.490502654633019e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378536.4856827145, 5.684412940354377e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378536.4856827145, 1.2751343092531897e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [1.9502638648311932, 4.512349695284801e-12], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 2, \"mode\": \"depth\", \"step\": 0.025, \"depth_scale\": 1.0250000001980115, \"physical_depth\": 3.126250000603935, \"bulge\": 0.0, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 1.3581008988236798, \"finite_phase_energy\": 0.3073537295149004, \"material_wall_area\": 248.24361524619448}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": 0.025, \"radius\": 2, \"window\": [3.3, 5.1, 3.526250000603935, 5.626250000603935], \"D\": 1.3581008988236798, \"M\": 70.67094498658004, \"C\": 1.358261182404804, \"B\": -1.3582640604350504, \"T\": 2.8780302467890095e-06, \"D_over_M\": 0.019217245490088953, \"C_over_M\": 0.019219513516661325, \"D_over_R3\": 0.16976261235295997, \"M_over_R3\": 8.833868123322505}",
+        "{\"test\": \"shape_response\", \"mode\": \"depth\", \"step\": 0.025, \"radius\": 2, \"window\": [3.8, 6.5, 3.826250000603935, 6.526250000603935], \"D\": 1.3581008988236798, \"M\": 70.67407970516456, \"C\": 1.3579782746706512, \"B\": -1.3580798793248432, \"T\": 0.00010160465419251086, \"D_over_M\": 0.01921639311738269, \"C_over_M\": 0.019214658051945117, \"D_over_R3\": 0.16976261235295997, \"M_over_R3\": 8.83425996314557}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r2_bulge_-50": {
+      "name": "r2_bulge_-50",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "2",
+        "--mode",
+        "bulge",
+        "--step",
+        "-0.05"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "6deda00cfd611d24fc9da941f433ec7ed1780a65d1cb5c24d5903ec77cceaeed",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 1.3634999022330228, \"bulk\": 1.36349990248396, \"energy\": 0.30856622953796425, \"max_correction\": 2.4287225848471367e-14, \"max_volume_normalized_residual\": 1.7969475730950912e-11, \"raw_residual\": 1.0419779545473857e-11, \"iterations\": 3, \"min_density\": 0.9847426510561179}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [9111.556614664878, 1.7992988432524726e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378180.85872790334, 6.596705404149361e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378180.85872790334, 1.5474299175366468e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [1.844530368345183, 4.5923239169742835e-12], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 2, \"mode\": \"bulge\", \"step\": -0.05, \"depth_scale\": 1.0, \"physical_depth\": 3.05, \"bulge\": -0.05, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 1.3634999023584915, \"finite_phase_energy\": 0.30856622953796425, \"material_wall_area\": 239.43026396783694}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": -0.05, \"radius\": 2, \"window\": [3.3, 5.1, 3.4499999999999997, 5.55], \"D\": 1.3634999023584915, \"M\": 62.98986157451872, \"C\": 1.3636605790356728, \"B\": -1.3636699627802127, \"T\": 9.38374454127755e-06, \"D_over_M\": 0.021646339081812935, \"C_over_M\": 0.021648889915759306, \"D_over_R3\": 0.17043748779481144, \"M_over_R3\": 7.87373269681484}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": -0.05, \"radius\": 2, \"window\": [3.8, 6.5, 3.75, 6.449999999999999], \"D\": 1.3634999023584915, \"M\": 62.99283304048566, \"C\": 1.3633765447359543, \"B\": -1.363476432090191, \"T\": 9.988735423666073e-05, \"D_over_M\": 0.02164531799168592, \"C_over_M\": 0.021643359711408895, \"D_over_R3\": 0.17043748779481144, \"M_over_R3\": 7.874104130060707}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r2_bulge_+50": {
+      "name": "r2_bulge_+50",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "2",
+        "--mode",
+        "bulge",
+        "--step",
+        "0.05"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "929693a463181ea2a59398e3c6377b40d35d1645cdf282f76ca6eff6867b321d",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 1.3775646587099373, \"bulk\": 1.3775646589445434, \"energy\": 0.3117817089618192, \"max_correction\": 1.4492831500096933e-14, \"max_volume_normalized_residual\": 1.0690512536742173e-11, \"raw_residual\": 9.817490202040755e-12, \"iterations\": 3, \"min_density\": 0.9844231967033149}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [9111.556615636655, 1.376247382722795e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378180.85873017734, 6.603162461260581e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378180.85873017734, 1.1965312296524644e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [2.029703683913164, 4.812910053136887e-12], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 2, \"mode\": \"bulge\", \"step\": 0.05, \"depth_scale\": 1.0, \"physical_depth\": 3.05, \"bulge\": 0.05, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 1.3775646588272403, \"finite_phase_energy\": 0.3117817089618192, \"material_wall_area\": 252.15973161993224}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": 0.05, \"radius\": 2, \"window\": [3.3, 5.1, 3.4499999999999997, 5.55], \"D\": 1.3775646588272403, \"M\": 73.40111534434679, \"C\": 1.3777269788242785, \"B\": -1.377739307905271, \"T\": 1.2329080993800368e-05, \"D_over_M\": 0.018767625701117327, \"C_over_M\": 0.01876983711161534, \"D_over_R3\": 0.17219558235340504, \"M_over_R3\": 9.175139418043349}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": 0.05, \"radius\": 2, \"window\": [3.8, 6.5, 3.75, 6.449999999999999], \"D\": 1.3775646588272403, \"M\": 73.40434369397315, \"C\": 1.377440012406175, \"B\": -1.3775419059240717, \"T\": 0.00010189351789763323, \"D_over_M\": 0.018766800294140427, \"C_over_M\": 0.018765102214506543, \"D_over_R3\": 0.17219558235340504, \"M_over_R3\": 9.175542961746643}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r2_bulge_-25": {
+      "name": "r2_bulge_-25",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "2",
+        "--mode",
+        "bulge",
+        "--step",
+        "-0.025"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "d489e054f65f5612fb6aedf31443227b57b0d9cdcf7032ef149db87e48d4f66d",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 1.3677907845605923, \"bulk\": 1.3677907848399544, \"energy\": 0.309547034712122, \"max_correction\": 2.6795159107240482e-14, \"max_volume_normalized_residual\": 1.589338389248571e-11, \"raw_residual\": 7.824900693265482e-12, \"iterations\": 3, \"min_density\": 0.9846455863863254}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [9111.556614960486, 1.1575139069464058e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378180.8587285965, 1.102695712518198e-09], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378180.8587285965, 1.3332964954315685e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [1.8922938459827525, 4.737018069467247e-12], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 2, \"mode\": \"bulge\", \"step\": -0.025, \"depth_scale\": 1.0, \"physical_depth\": 3.05, \"bulge\": -0.025, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 1.3677907847002735, \"finite_phase_energy\": 0.309547034712122, \"material_wall_area\": 241.6801762442284}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": -0.025, \"radius\": 2, \"window\": [3.3, 5.1, 3.4499999999999997, 5.55], \"D\": 1.3677907847002735, \"M\": 65.29667562340887, \"C\": 1.3679519627467545, \"B\": -1.3679621399608108, \"T\": 1.017721405639771e-05, \"D_over_M\": 0.020947326516113175, \"C_over_M\": 0.02094979491201453, \"D_over_R3\": 0.17097384808753419, \"M_over_R3\": 8.16208445292611}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": -0.025, \"radius\": 2, \"window\": [3.8, 6.5, 3.75, 6.449999999999999], \"D\": 1.3677907847002735, \"M\": 65.29971359543524, \"C\": 1.3676670339433963, \"B\": -1.3677674898704355, \"T\": 0.00010045592703927797, \"D_over_M\": 0.020946351972911083, \"C_over_M\": 0.020944456853467772, \"D_over_R3\": 0.17097384808753419, \"M_over_R3\": 8.162464199429404}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r2_bulge_+25": {
+      "name": "r2_bulge_+25",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "2",
+        "--mode",
+        "bulge",
+        "--step",
+        "0.025"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "stdout_sha256": "437f82e33265d54a8c3413d18aee46347d1ac1e40840414210ffa98a0ea8b642",
+      "literal_stdout": [
+        "{\"test\": \"stationary_action\", \"bias\": 0.4510084282857874, \"feed\": 1.374756139776745, \"bulk\": 1.3747561400383443, \"energy\": 0.31113949649919076, \"max_correction\": 2.0201640339212808e-14, \"max_volume_normalized_residual\": 1.1511381354445697e-11, \"raw_residual\": 7.092756854046627e-12, \"iterations\": 3, \"min_density\": 0.9844872784950014}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [9111.556615441688, 1.3101953300065361e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378180.85872972274, 7.607843244272772e-10], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [378180.85872972274, 1.49756118617006e-08], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"refined_dipole_residual\", \"corrections\": 1, \"errors\": [1.9851801547670092, 5.381997798814542e-12], \"checked_vector_type\": \"float64\"}",
+        "{\"test\": \"shape\", \"radius\": 2, \"mode\": \"bulge\", \"step\": 0.025, \"depth_scale\": 1.0, \"physical_depth\": 3.05, \"bulge\": 0.025, \"phase_bias\": 0.4510084282857874, \"mesh\": 30, \"outer\": 28.0, \"roof\": 22.0, \"slab_thickness\": 1.0, \"D\": 1.3747561399075447, \"finite_phase_energy\": 0.31113949649919076, \"material_wall_area\": 247.97915470327706}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": 0.025, \"radius\": 2, \"window\": [3.3, 5.1, 3.4499999999999997, 5.55], \"D\": 1.3747561399075447, \"M\": 70.49044588519547, \"C\": 1.3749181317966632, \"B\": -1.3749297853365372, \"T\": 1.1653539873146546e-05, \"D_over_M\": 0.01950273008836611, \"C_over_M\": 0.019505028157091372, \"D_over_R3\": 0.1718445174884431, \"M_over_R3\": 8.811305735649434}",
+        "{\"test\": \"shape_response\", \"mode\": \"bulge\", \"step\": 0.025, \"radius\": 2, \"window\": [3.8, 6.5, 3.75, 6.449999999999999], \"D\": 1.3747561399075447, \"M\": 70.4936126534066, \"C\": 1.3746317508946195, \"B\": -1.3747332062527318, \"T\": 0.00010145535811201256, \"D_over_M\": 0.01950185397174576, \"C_over_M\": 0.019500089428714937, \"D_over_R3\": 0.1718445174884431, \"M_over_R3\": 8.811701581675825}"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    }
+  },
+  "signed_pairs": [
+    {
+      "radius": 1,
+      "mode": "depth",
+      "amplitude": 0.05,
+      "log_slopes": [
+        {
+          "D_over_R3": -0.6465325179343311,
+          "M_over_R3": 1.396203167409818,
+          "D_over_M": -2.0427356853441476,
+          "C_over_M": -2.042736571775615
+        },
+        {
+          "D_over_R3": -0.6465325179343311,
+          "M_over_R3": 1.3959456479276302,
+          "D_over_M": -2.042478165861961,
+          "C_over_M": -2.042477588253107
+        }
+      ],
+      "derivatives": {
+        "finite_phase_energy": -0.03686780676987855,
+        "material_wall_area": 41.900782650181654
+      }
+    },
+    {
+      "radius": 1,
+      "mode": "depth",
+      "amplitude": 0.025,
+      "log_slopes": [
+        {
+          "D_over_R3": -0.6468526269950985,
+          "M_over_R3": 1.3957677159438857,
+          "D_over_M": -2.0426203429389824,
+          "C_over_M": -2.0426212173764524
+        },
+        {
+          "D_over_R3": -0.6468526269950985,
+          "M_over_R3": 1.3955106885628252,
+          "D_over_M": -2.0423633155579237,
+          "C_over_M": -2.0423627251328362
+        }
+      ],
+      "derivatives": {
+        "finite_phase_energy": -0.03684626042624442,
+        "material_wall_area": 41.9038956048567
+      }
+    },
+    {
+      "radius": 1,
+      "mode": "bulge",
+      "amplitude": 0.05,
+      "log_slopes": [
+        {
+          "D_over_R3": 0.17123344879935454,
+          "M_over_R3": 1.4969276687259285,
+          "D_over_M": -1.3256942199265724,
+          "C_over_M": -1.3256941678919085
+        },
+        {
+          "D_over_R3": 0.17123344879935454,
+          "M_over_R3": 1.4967425662243163,
+          "D_over_M": -1.325509117424961,
+          "C_over_M": -1.325509120729353
+        }
+      ],
+      "derivatives": {
+        "finite_phase_energy": 0.009862698446490847,
+        "material_wall_area": 33.05130425964329
+      }
+    },
+    {
+      "radius": 1,
+      "mode": "bulge",
+      "amplitude": 0.025,
+      "log_slopes": [
+        {
+          "D_over_R3": 0.17037498343752377,
+          "M_over_R3": 1.4985736252494444,
+          "D_over_M": -1.3281986418119216,
+          "C_over_M": -1.3281985902520197
+        },
+        {
+          "D_over_R3": 0.17037498343752377,
+          "M_over_R3": 1.4983882064380827,
+          "D_over_M": -1.3280132230005548,
+          "C_over_M": -1.3280132265981555
+        }
+      ],
+      "derivatives": {
+        "finite_phase_energy": 0.009813949606248124,
+        "material_wall_area": 32.964114421195205
+      }
+    },
+    {
+      "radius": 2,
+      "mode": "depth",
+      "amplitude": 0.05,
+      "log_slopes": [
+        {
+          "D_over_R3": -0.39392564757475956,
+          "M_over_R3": 1.689813055387143,
+          "D_over_M": -2.083738702961903,
+          "C_over_M": -2.083731293504565
+        },
+        {
+          "D_over_R3": -0.39392564757475956,
+          "M_over_R3": 1.6897545582243796,
+          "D_over_M": -2.083680205799138,
+          "C_over_M": -2.083672706241149
+        }
+      ],
+      "derivatives": {
+        "finite_phase_energy": -0.12275418009896677,
+        "material_wall_area": 148.89832553318115
+      }
+    },
+    {
+      "radius": 2,
+      "mode": "depth",
+      "amplitude": 0.025,
+      "log_slopes": [
+        {
+          "D_over_R3": -0.3941889720664175,
+          "M_over_R3": 1.6894478498124406,
+          "D_over_M": -2.083636821878855,
+          "C_over_M": -2.0836294076049064
+        },
+        {
+          "D_over_R3": -0.3941889720664175,
+          "M_over_R3": 1.689389452514486,
+          "D_over_M": -2.083578424580905,
+          "C_over_M": -2.083570920047378
+        }
+      ],
+      "derivatives": {
+        "finite_phase_energy": -0.12274427191296788,
+        "material_wall_area": 148.91953752925417
+      }
+    },
+    {
+      "radius": 2,
+      "mode": "bulge",
+      "amplitude": 0.05,
+      "log_slopes": [
+        {
+          "D_over_R3": 0.1025379084240212,
+          "M_over_R3": 1.5283778866640412,
+          "D_over_M": -1.4258399782400197,
+          "C_over_M": -1.4258400804254714
+        },
+        {
+          "D_over_R3": 0.1025379084240212,
+          "M_over_R3": 1.5283460005163236,
+          "D_over_M": -1.4258080920923035,
+          "C_over_M": -1.4258082106307246
+        }
+      ],
+      "derivatives": {
+        "finite_phase_energy": 0.03215479423854972,
+        "material_wall_area": 127.29467652095309
+      }
+    },
+    {
+      "radius": 2,
+      "mode": "bulge",
+      "amplitude": 0.025,
+      "log_slopes": [
+        {
+          "D_over_R3": 0.10156863695249338,
+          "M_over_R3": 1.530402158171964,
+          "D_over_M": -1.4288335212194705,
+          "C_over_M": -1.4288336221862348
+        },
+        {
+          "D_over_R3": 0.10156863695249338,
+          "M_over_R3": 1.5303701484952124,
+          "D_over_M": -1.428801511542721,
+          "C_over_M": -1.428801628875047
+        }
+      ],
+      "derivatives": {
+        "finite_phase_energy": 0.03184923574137466,
+        "material_wall_area": 125.97956918097339
+      }
+    }
+  ],
+  "reference": {
+    "r1_n30_box28": {
+      "D": 0.2496177659457473,
+      "M": 12.235875364530163,
+      "D_over_M": 0.020400482884072937,
+      "C_over_M": 0.020386166380867658
+    },
+    "r2_n30_box28": {
+      "D": 1.3715190699330997,
+      "M": 67.79585058655962,
+      "D_over_M": 0.02023013293685263,
+      "C_over_M": 0.020228302554493028
+    }
+  },
+  "excluded": {
+    "r1_depth_-50": {
+      "reason": "Rounded seam failed bath-membership assertion before a field solve",
+      "guard_exit": 1,
+      "traceback_sha256": "9aad9ddf37343d0d80e049f4e7bd2be933308d043b3e169dfd009d9f706c783c",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "1",
+        "--mode",
+        "depth",
+        "--step",
+        "-0.05"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    },
+    "r2_depth_-50": {
+      "reason": "Rounded seam failed bath-membership assertion before a field solve",
+      "guard_exit": 1,
+      "traceback_sha256": "9aad9ddf37343d0d80e049f4e7bd2be933308d043b3e169dfd009d9f706c783c",
+      "worker": [
+        "python3",
+        "software/stage1_solver/tools/mouth_selected_shape_sensitivity.py",
+        "--radius",
+        "2",
+        "--mode",
+        "depth",
+        "--step",
+        "-0.05"
+      ],
+      "as_run_main_sha256": "5b75f9b319abc0c6141da5d7fbdd64abcea787ef4b83d7ebf3fa20c781191af7"
+    }
+  },
+  "sha256": {
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_selected_shape_sensitivity.py": "279ebfeb54217f720e85cb32ff6d6b6b09dbd3086b5586f857960daf78b8dbfd",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_selected_shape_readout.py": "bcf868abdeca8ad53e82f5ffbdff6cd66f8bfdad178e2333ee8f74546ad847df",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_radius_pivot.py": "2c4f0585d6de477fdaf7e683e8ae870213838db5f5bada6103833adf4e2aba04",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_carrier_weak_radius.py": "243b8d0381bd0ca807e209d2d47344c1f431c707c798ff07b6ec807bd4d884a5",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_carrier_radius_family.py": "57eff082861fcc4261a80f64f1c50cc41b18dc0ab39c3ec22f474afe3f5da794",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_flared_receiver.py": "eccab02a48db65b1760c577702d5173d8a2de84a9da739f615cdc33bced9c171",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_carrier_matched_bias.py": "499e0d460657446ccde41a373317063706d01900834eeb59377b32907105f8d9",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_carrier_lateral_inertia.py": "8e7719fea244aa40e4855d3d89b573005b2fbb7d562829fe118e12f62a30c493",
+    "/var/projects/toy_physics/software/stage1_solver/tools/mouth_carrier_lateral_response.py": "155b4930d034cda599c176c6ce80b516c46a94de9b6fe32efa65c9743a5404e8",
+    "research/pde_ledger_v3/_measurements/mouth_radius_pivot.json": "6c5f6dc46531b84a6cca099452ccaa1bcbe838f1e17ddc6d1b03c3ce5fa691c2",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "design": {
+    "purpose": "Conditional fixed-phase carrier sensitivities at R=1,2. No R=3 data.",
+    "ensemble": {
+      "held": [
+        "mouth lateral scale R",
+        "28x22 reservoirs",
+        "phase difference 0.4510084282857874",
+        "unit slab thickness",
+        "resting bath densities 1"
+      ],
+      "changed_separately": [
+        "axial stretch of lip and conduit, evaluated at plus/minus 5% and 2.5%; roof fixed",
+        "multiplicative middle-flare bulge envelope 64 [s(1-s)]^3 leaving entrance and exit fixed, at plus/minus 5% and 2.5%"
+      ]
+    },
+    "observables": [
+      "two interior windows for finite-flow inertia and force",
+      "D/R^3",
+      "M/R^3",
+      "D/M",
+      "finite-bias carrier energy",
+      "geometric wall area"
+    ],
+    "interpretation": "Restricted responses of imposed geometries; deeper support and energy supply are independent."
+  },
+  "reduction": {
+    "worker": [
+      "python3",
+      "software/stage1_solver/tools/mouth_selected_shape_readout.py",
+      "_scratch/s11c/selected_shape_sensitivity01"
+    ],
+    "guard_exit": 0,
+    "child_exit": 0,
+    "limits_verified": true,
+    "swap_bytes": 0,
+    "stdout_sha256": "83619007abd382cb7eee8b829a304d0f14d27b067a45e0820ec97f08092b05d5"
+  }
+}

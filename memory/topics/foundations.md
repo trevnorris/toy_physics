@@ -19,6 +19,8 @@ Light, gravity and electromagnetism are observable behaviors to explain through 
 
 The user selects one coherent substrate. Its brane phase is a supersolid with frictionless coherent flow and transverse shear for light. Draining into the fourth dimension removes crystalline order and static transverse shear support. The disordered superfluid retains coherence, mass, pressure and momentum and has zero shear viscosity in this model. Record 5 is an archived classical demonstration of shear relaxation. All future physical bulk and interface models must stay in the coherent superfluid class. The five-stage 0PN plan and its current evidence are linked from the project status. [0PN roadmap](../../docs/zero_pn_free_fall_roadmap.md) · [Current result](../../STATUS.md#common-medium-research)
 
+For stationary 0PN mouth calculations, the crystalline lattice has zero mean drift relative to the held mouth as coherent material drains through it. This is a choice of preparation. The lattice can deform or oscillate, and the whole mouth may translate when released. Crystal-plane drift is no longer an outstanding calibration. [Finite-strain support test](../../software/stage1_solver/reports/mouth_stationary_finite_support.md)
+
 ## Working picture
 
 The project is a weak-field, slow-motion toy universe built in four spatial

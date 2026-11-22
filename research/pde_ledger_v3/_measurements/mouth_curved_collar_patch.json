@@ -1,0 +1,89 @@
+{
+  "scope": "Finite-element control on S\u00b2 \u00d7 line and independent variational checks of spherical order surface in a quiescent coherent patch. Input surface tension measured only on sphere. Held-out reactions in units of a_B.",
+  "baseline": "b3b4daa5",
+  "input_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_curved_order_patch.json": "6171c6795486017a596e3b77b1bba63789d0458cb15ea98963d07d05ffe3ea40",
+    "research/pde_ledger_v3/_measurements/mouth_curved_patch_backing.json": "f3b5d6dea04d0f21c55e7798c13c930c4cfbae8b722ed33053fc5509feb620bb",
+    "software/stage1_solver/tools/mouth_curved_collar_patch.py": "89e296717739b8c3648619b2a8ed7a6a6b635a920c72be8a00e5886c50143849",
+    "software/stage1_solver/tools/mouth_curved_phase.py": "a4fcce44db09af35bb2ad5348a04f4119df1ab52e725691fc251d7a00264d42c",
+    "software/stage1_solver/tools/mouth_curved_phase_stability.py": "8b595f66561f4944d2bd66494fa72932f4640b317448c22313055cafcc0b70d9"
+  },
+  "runs": {
+    "collar8": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "order-patch",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/curved_order_patch01/collar8",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_curved_collar_patch.py",
+        "--elements-per-width",
+        "8",
+        "--spherical-calibration",
+        "_scratch/s11c/curved_order_patch01/fine/stdout"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "deadline": null,
+      "stdout_sha256": "ffafab9153b1169e12b3c893387c15b653aa911fbbcb6695830d2c5ac4ee0774",
+      "literal_stdout": "{\"test\": \"cylindrical_patch\", \"source_sha256\": \"0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f\", \"mesh\": 8, \"signed_sphere_prediction\": 0.0, \"curvature\": 0.0, \"order_residual\": 2.329492393253474e-14, \"carrier\": {\"bias\": 0.0, \"feed\": -0.0, \"bulk\": 0.0, \"n_min\": 0.9999999999999998, \"n_max\": 1.0, \"residual\": 6.434148751431353e-18, \"conductance\": 0.023809523808612454}, \"carrier_max_deviation\": 0.0, \"half_order\": 0.5, \"hold\": -4.4551543494864364e-15, \"energy_difference\": 1.942890293094024e-12}\n{\"test\": \"cylindrical_patch\", \"source_sha256\": \"0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f\", \"mesh\": 8, \"signed_sphere_prediction\": 0.020000320205322934, \"curvature\": 0.06, \"order_residual\": 2.012973121523487e-14, \"carrier\": {\"bias\": 0.0, \"feed\": -0.0, \"bulk\": 0.0, \"n_min\": 0.9999999999999998, \"n_max\": 1.0, \"residual\": 1.704489765372021e-17, \"conductance\": 0.01435952381148553}, \"carrier_max_deviation\": 0.0, \"half_order\": 0.5, \"hold\": 0.020000035726243804, \"energy_difference\": 0.02000003572588671}\n{\"test\": \"cylindrical_patch\", \"source_sha256\": \"0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f\", \"mesh\": 8, \"signed_sphere_prediction\": -0.020000320205322934, \"curvature\": -0.06, \"order_residual\": 5.300493686736425e-14, \"carrier\": {\"bias\": 0.0, \"feed\": -0.0, \"bulk\": 0.0, \"n_min\": 0.9999999999999998, \"n_max\": 1.0, \"residual\": 1.7066274101910488e-17, \"conductance\": 0.01435952381149086}, \"carrier_max_deviation\": 0.0, \"half_order\": 0.5, \"hold\": -0.020000035726239672, \"energy_difference\": -0.02000003572588671}\n{\"test\": \"cylindrical_patch\", \"source_sha256\": \"0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f\", \"mesh\": 8, \"signed_sphere_prediction\": 0.010000160102661467, \"curvature\": 0.03, \"order_residual\": 1.7409251124034242e-14, \"carrier\": {\"bias\": 0.0, \"feed\": -0.0, \"bulk\": 0.0, \"n_min\": 0.9999999999999998, \"n_max\": 1.0, \"residual\": 1.1105919633208497e-17, \"conductance\": 0.021447023809606947}, \"carrier_max_deviation\": 0.0, \"half_order\": 0.5, \"hold\": 0.010000001163316506, \"energy_difference\": 0.010000001162135952}\n{\"test\": \"cylindrical_patch\", \"source_sha256\": \"0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f\", \"mesh\": 8, \"signed_sphere_prediction\": -0.010000160102661467, \"curvature\": -0.03, \"order_residual\": 3.595078139687213e-14, \"carrier\": {\"bias\": 0.0, \"feed\": -0.0, \"bulk\": 0.0, \"n_min\": 0.9999999999999998, \"n_max\": 1.0, \"residual\": 1.1114546117339026e-17, \"conductance\": 0.021447023809544774}, \"carrier_max_deviation\": 0.0, \"half_order\": 0.5, \"hold\": -0.010000001163317751, \"energy_difference\": -0.01000000116296862}\n"
+    },
+    "collar16": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "order-patch",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/curved_order_patch01/collar16",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_curved_collar_patch.py",
+        "--elements-per-width",
+        "16",
+        "--spherical-calibration",
+        "_scratch/s11c/curved_order_patch01/fine/stdout"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_bytes": 0,
+      "deadline": null,
+      "stdout_sha256": "9846d82538919bbc61b012d28e166d5155018fbe15420bbe3a4f3916bfd834c8",
+      "literal_stdout": "{\"test\": \"cylindrical_patch\", \"source_sha256\": \"0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f\", \"mesh\": 16, \"signed_sphere_prediction\": 0.0, \"curvature\": 0.0, \"order_residual\": 5.088806572186292e-14, \"carrier\": {\"bias\": 0.0, \"feed\": -0.0, \"bulk\": 0.0, \"n_min\": 0.9999999999999998, \"n_max\": 1.0, \"residual\": 3.2170743757156763e-18, \"conductance\": 0.02380952380584489}, \"carrier_max_deviation\": 0.0, \"half_order\": 0.5, \"hold\": -1.773797184768533e-14, \"energy_difference\": 0.0}\n{\"test\": \"cylindrical_patch\", \"source_sha256\": \"0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f\", \"mesh\": 16, \"signed_sphere_prediction\": 0.020000320205322934, \"curvature\": 0.06, \"order_residual\": 2.5962738903206883e-14, \"carrier\": {\"bias\": 0.0, \"feed\": -0.0, \"bulk\": 0.0, \"n_min\": 0.9999999999999998, \"n_max\": 1.0, \"residual\": 8.534942229940066e-18, \"conductance\": 0.014359523809929442}, \"carrier_max_deviation\": 0.0, \"half_order\": 0.5, \"hold\": 0.02000003559668448, \"energy_difference\": 0.020000035598211063}\n{\"test\": \"cylindrical_patch\", \"source_sha256\": \"0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f\", \"mesh\": 16, \"signed_sphere_prediction\": -0.020000320205322934, \"curvature\": -0.06, \"order_residual\": 8.679799640431984e-14, \"carrier\": {\"bias\": 0.0, \"feed\": -0.0, \"bulk\": 0.0, \"n_min\": 0.9999999999999998, \"n_max\": 1.0, \"residual\": 8.54028941921146e-18, \"conductance\": 0.014359523809672758}, \"carrier_max_deviation\": 0.0, \"half_order\": 0.5, \"hold\": -0.020000035596689964, \"energy_difference\": -0.020000035598211063}\n{\"test\": \"cylindrical_patch\", \"source_sha256\": \"0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f\", \"mesh\": 16, \"signed_sphere_prediction\": 0.010000160102661467, \"curvature\": 0.03, \"order_residual\": 5.2452833743110716e-14, \"carrier\": {\"bias\": 0.0, \"feed\": -0.0, \"bulk\": 0.0, \"n_min\": 0.9999999999999998, \"n_max\": 1.0, \"residual\": 5.558001467498225e-18, \"conductance\": 0.021447023809699317}, \"carrier_max_deviation\": 0.0, \"half_order\": 0.5, \"hold\": 0.010000001100560622, \"energy_difference\": 0.010000001102461464}\n{\"test\": \"cylindrical_patch\", \"source_sha256\": \"0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f\", \"mesh\": 16, \"signed_sphere_prediction\": -0.010000160102661467, \"curvature\": -0.03, \"order_residual\": 7.228037838240129e-14, \"carrier\": {\"bias\": 0.0, \"feed\": -0.0, \"bulk\": 0.0, \"n_min\": 0.9999999999999998, \"n_max\": 1.0, \"residual\": 5.560158857836813e-18, \"conductance\": 0.021447023809582078}, \"carrier_max_deviation\": 0.0, \"half_order\": 0.5, \"hold\": -0.01000000110055911, \"energy_difference\": -0.010000001099408351}\n"
+    }
+  },
+  "independent_variational_check": {
+    "command": [
+      "python3",
+      "scripts/s11c_guarded_run.py",
+      "--pool",
+      "patch-ref",
+      "--memory-gib",
+      "2",
+      "--log-directory",
+      "_scratch/s11c/neutral_curvature_ref01/run",
+      "--",
+      "python3",
+      "_scratch/s11c/neutral_curvature_ref01/ref.py"
+    ],
+    "guard_exit": 0,
+    "worker_exit": 0,
+    "limits_verified": true,
+    "swap_bytes": 0,
+    "deadline": null,
+    "stdout_sha256": "309c7721d7d7816832531b1c2fc771c6e751f70f0728e46433ee9e12bae864e5",
+    "literal_stdout": "{\"type\": \"small_curvature\", \"I0\": 0.3333333333333333, \"I2\": 0.039868133696452895, \"definition\": \"P(c)/a = c + I2*c^3 + O(c^5), infinite domain\"}\n{\"type\": \"variational\", \"L\": 16, \"c\": 0, \"values\": [[1.4039571100740028e-18, 0.33334750433510185, 4.454119365004949e-15], [-5.962503143739435e-18, 0.3333368763338992, 1.678934768989393e-12], [5.260213568792114e-18, 0.3333342190991472, 6.843137168033309e-14]], \"extrapolated\": 9.001119139635964e-18}\n{\"type\": \"variational\", \"L\": 16, \"c\": 0.02, \"values\": [[0.020000676608205273, 0.3333637869598737, 1.6792123247455493e-14], [0.020000409330116285, 0.33335286081485416, 1.4988010832439613e-14], [0.02000034248802192, 0.33335012905400585, 1.9817480989559044e-14]], \"extrapolated\": 0.020000320207323796}\n{\"type\": \"variational\", \"L\": 16, \"c\": -0.02, \"values\": [[-0.020000676608205273, 0.3333637869598737, 1.504352198367087e-14], [-0.020000409330116282, 0.3333528608148541, 2.1494897604456414e-14], [-0.020000342488021915, 0.33335012905400585, 4.414463939980375e-14]], \"extrapolated\": -0.020000320207323796}\n{\"type\": \"variational\", \"L\": 16, \"c\": 0.01, \"values\": [[0.01000021575358398, 0.333351586662165, 4.440892098500626e-15], [0.010000083880665901, 0.3333408841255259, 1.0547118733938987e-14], [0.010000050901097015, 0.3333382082593855, 2.2426505097428162e-14]], \"extrapolated\": 0.010000039907907385}\n{\"type\": \"variational\", \"L\": 16, \"c\": -0.01, \"values\": [[-0.010000215753583976, 0.333351586662165, 7.093792830674872e-15], [-0.010000083880665893, 0.333340884125526, 1.635934023338538e-14], [-0.01000005090109702, 0.3333382082593856, 3.1798965316378464e-14]], \"extrapolated\": -0.010000039907907396}\n{\"type\": \"variational\", \"L\": 21, \"c\": 0, \"values\": [[1.6121154568617471e-18, 0.3333577434382674, 3.9968028886505635e-15], [1.3012014256602155e-18, 0.3333394366015221, 6.497719029496807e-12], [-2.9439688873007276e-19, 0.33333485919677347, 2.1321833187926131e-13]], \"extrapolated\": -8.262629935268355e-19}\n{\"type\": \"variational\", \"L\": 21, \"c\": 0.02, \"values\": [[0.020001139839204183, 0.33337431339673773, 2.0233814623793478e-14], [0.020000525178683372, 0.3333554928952053, 1.4682699500667695e-14], [0.02000037145271959, 0.3333507871035211, 1.6819878823071122e-14]], \"extrapolated\": 0.020000320210731663}\n{\"type\": \"variational\", \"L\": 21, \"c\": -0.02, \"values\": [[-0.020001139839204173, 0.33337431339673773, 1.9484414082171497e-14], [-0.020000525178683375, 0.3333554928952053, 2.145588407423416e-14], [-0.020000371452719594, 0.3333507871035211, 4.185613562305265e-14]], \"extrapolated\": -0.020000320210731667}\n{\"type\": \"variational\", \"L\": 21, \"c\": 0.01, \"values\": [[0.010000445410020674, 0.33336189759829404, 3.219646771412954e-15], [0.010000141315311333, 0.3333434623462026, 8.271161533457416e-15], [0.010000065261044098, 0.33333885284495113, 1.4488410471358293e-14]], \"extrapolated\": 0.010000039909621687}\n{\"type\": \"variational\", \"L\": 21, \"c\": -0.01, \"values\": [[-0.010000445410020677, 0.33336189759829404, 6.343181180830828e-15], [-0.010000141315311331, 0.3333434623462026, 1.2308474725722482e-14], [-0.010000065261044092, 0.33333885284495113, 2.8808272437345964e-14]], \"extrapolated\": -0.010000039909621679}\n",
+    "script": "\"\"\"Held order surface: independent piecewise-linear energy minimization.\"\"\"\nimport json\nimport numpy as np\nfrom scipy.linalg import solveh_banded\nfrom scipy.integrate import quad\nfrom scipy.special import expit\nfrom numpy.polynomial.legendre import leggauss\n\ndef read(c,L,n):\n    x=np.linspace(-L,L,2*n+1)\n    # Half-profile crossing fixed; natural forces inferred from optimized energy.\n    free=np.ones(2*n+1,bool)\n    free[[0,n,2*n]]=False\n    q,w=leggauss(5)\n    left,right=(1-q)/2,(1+q)/2\n    h=x[1]-x[0]\n    s=x[:-1,None]+h*right\n    J=(1+c*s)**3\n    Wgt=w*h/2\n    z=expit(-x)\n    z[[0,-1]]=1,0\n    for iteration in range(16):\n        val=z[:-1,None]*left+z[1:,None]*right\n        slope=np.diff(z)[:,None]/h\n        wp=2*val*(val-1)*(2*val-1)\n        wpp=12*val*(val-1)+2\n        g=np.zeros(len(x))\n        g[:-1]+=((wp*left-2*slope/h)*J)@Wgt\n        g[1:]+=((wp*right+2*slope/h)*J)@Wgt\n        err=np.amax(abs(g[free]))\n        if err<2e-11:break\n        d=np.zeros(len(x))\n        d[:-1]+=((wpp*left**2+2/h**2)*J)@Wgt\n        d[1:]+=((wpp*right**2+2/h**2)*J)@Wgt\n        o=((wpp*right*left-2/h**2)*J)@Wgt\n        # Prescribed nodes have zero update. Removing adjacent off-diagonals isolates halves.\n        d[~free]=1\n        o[~(free[:-1]&free[1:])]=0\n        g[~free]=0\n        z-=solveh_banded(np.vstack([np.r_[0.,o],d]),g)\n    else: raise ValueError(err)\n    e=val**2*(1-val)**2+slope**2\n    stress=val**2*(1-val)**2-slope**2\n    # Test displacement field raises only s=0, keeps exterior L faces fixed.\n    v=1-abs(s)/L\n    vp=-np.sign(s)/L\n    d_public=3*c*(1+c*s)**2*v*e+J*vp*stress\n    dE=float(np.sum(d_public@Wgt))\n    return dE,float(np.sum(J*e @ Wgt)),err\n\ndef lower_order():\n    # Expansion about logistic q0(t); v=q0' y with L v =3 q0' and v(0)=0.\n    # For t>0, y' = 3 I/q0'^2, I(t)=integral_t^inf q0'^2.\n    # Then integral_R q0' v = 6 integral_0^inf I^2/q0'^2, via integration by parts.\n    def i2(t):\n        q=expit(-t); p=q*(1-q); I=q*q*(.5-q/3)\n        return 12*t*t*p*p-18*I*I/(p*p)\n    return quad(i2,0,90,epsabs=3e-13)[0]\n\nI2=lower_order()\nprint(json.dumps(dict(type='small_curvature',I0=1/3,I2=I2,definition='P(c)/a = c + I2*c^3 + O(c^5), infinite domain')),flush=True)\nfor L in (16,21):\n for c in (0,.02,-.02,.01,-.01):\n    values=[read(c,L,n) for n in (224,448,896)]\n    extrap=(4*values[-1][0]-values[-2][0])/3\n    print(json.dumps(dict(type='variational',L=L,c=c,values=values,extrapolated=extrap)),flush=True)\n    if c:\n      # Includes neglected higher powers and finite L; this does not select a law.\n      assert abs(extrap-c-I2*c**3)<1e-8\n    else: assert abs(extrap)<5e-12\n",
+    "script_sha256": "362430ca4ca800bddc70c12f7cf9a73f31db6683157a9891875c44350d194536"
+  }
+}

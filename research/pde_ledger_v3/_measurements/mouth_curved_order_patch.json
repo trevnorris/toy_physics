@@ -1,0 +1,68 @@
+{
+  "baseline": "b3b4daa5",
+  "scope": "Pinned half-order surface of the neutral square-gradient order sector with an exactly uniform coherent carrier. Analytic constant solution for carrier, numerical boundary-value solves for order. External holding traction only. No flowing mouth, arbitrary backing or independent wall bending modulus.",
+  "normalization": "Length delta_B=sqrt(kappa_B/(2*a_B)); energy density a_B; interface tension measured in a_B*delta_B. Dimensional planar tension sqrt(2*a_B*kappa_B)/6.",
+  "sources_sha256": {
+    "software/stage1_solver/tools/mouth_curved_order_patch.py": "3c5dcabea737e0daebfa5b98456bb540ccb4073735dd70cb0b34aae96511f431",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "software/stage1_solver/tools/mouth_order_jump_check.py": "8005754b60344c5856da3e7f842b97d51742c241231ea33812dba47a6829d3ff"
+  },
+  "runs": {
+    "short": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "curved-order",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/curved_order_patch01/short",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_curved_order_patch.py",
+        "--extent",
+        "16",
+        "--spacing",
+        ".25",
+        "--tolerance",
+        "1e-8"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "68736ead1fe3a6c52d4e71aefac93c19026e89254eee5cf33967e674171c79da",
+      "literal_stdout": "{\"test\": \"preparation\", \"carrier_density\": 1, \"carrier_phase\": 0, \"carrier_current\": 0, \"shear_displacement\": 0, \"wave_action\": 0, \"carrier_pressure_jump\": 0, \"bare_well_depth_jump\": 0, \"f_mix\": 0, \"f_throat\": 0, \"static_carrier_equation_residual\": 0.0, \"end_conditions\": \"fixed orders one and zero; endpoint slopes measured\", \"delta_B\": 1, \"a_B\": 1, \"kappa_B\": 2.0, \"orientation\": \"ordered to disordered\", \"extent\": 16.0, \"spacing\": 0.25, \"tolerance\": 1e-08, \"training_K\": 0.06, \"held_out_K\": 0.03}\n{\"test\": \"patch\", \"curvature\": 0.0, \"energy\": 0.3333333333311568, \"anisotropy\": 0.3333333332647034, \"integrated_force\": 0.0, \"far_stresses\": [-5.066027983131705e-14, -5.066027983883862e-14], \"left_stress\": 1.062284982200623e-11, \"right_stress\": 1.0622863699794038e-11, \"traction\": -1.3877787807814457e-17, \"left_order_slope\": -0.2499999999787543, \"right_order_slope\": -0.24999999997875427, \"nodes\": [290, 290], \"max_rms_residual\": 9.87799582463856e-09, \"stress_integral\": 7.521574161116127e-24, \"displaced_pins\": [{\"step\": 0.004, \"minus_energy\": 0.333333333331032, \"plus_energy\": 0.333333333331032, \"energy_derivative\": 0.0}, {\"step\": 0.002, \"minus_energy\": 0.3333333333310322, \"plus_energy\": 0.3333333333310322, \"energy_derivative\": 0.0}]}\n{\"test\": \"patch\", \"curvature\": 0.06, \"energy\": 0.33334921844478627, \"anisotropy\": 0.3330894109268077, \"integrated_force\": 0.020000320201311605, \"far_stresses\": [-1.764476531703518e-13, -2.0188921535727225e-14], \"left_stress\": 0.009645642472569112, \"right_stress\": -0.010354677726894398, \"traction\": 0.02000032019946351, \"left_order_slope\": -0.22990075582179126, \"right_order_slope\": -0.2699160568156226, \"nodes\": [290, 288], \"max_rms_residual\": 9.98075494751191e-09, \"stress_integral\": 0.020000320201155344, \"displaced_pins\": [{\"step\": 0.004, \"minus_energy\": 0.3332692235635484, \"plus_energy\": 0.33342922612556036, \"energy_derivative\": 0.020000320251498116}, {\"step\": 0.002, \"minus_energy\": 0.3333092194041081, \"plus_energy\": 0.33338922068500143, \"energy_derivative\": 0.020000320223326207}]}\n{\"test\": \"patch\", \"curvature\": -0.06, \"energy\": 0.3333492184447862, \"anisotropy\": 0.3330894109268077, \"integrated_force\": -0.020000320201311608, \"far_stresses\": [-2.0188921532053595e-14, -1.764476531836074e-13], \"left_stress\": -0.010354677726894398, \"right_stress\": 0.009645642472569112, \"traction\": -0.02000032019946351, \"left_order_slope\": -0.2699160568156226, \"right_order_slope\": -0.22990075582179126, \"nodes\": [288, 290], \"max_rms_residual\": 9.980754939789482e-09, \"stress_integral\": -0.020000320201155348, \"displaced_pins\": [{\"step\": 0.004, \"minus_energy\": 0.33342922612556036, \"plus_energy\": 0.3332692235635483, \"energy_derivative\": -0.020000320251505055}, {\"step\": 0.002, \"minus_energy\": 0.33338922068500143, \"plus_energy\": 0.3333092194041081, \"energy_derivative\": -0.020000320223326207}]}\n{\"test\": \"patch\", \"curvature\": 0.03, \"energy\": 0.3333373162810442, \"anisotropy\": 0.33327270907091744, \"integrated_force\": 0.010000039904839532, \"far_stresses\": [-8.944683737384922e-14, -3.104866002463852e-14], \"left_stress\": 0.004911390527875495, \"right_stress\": -0.00508864937547035, \"traction\": 0.010000039903345845, \"left_order_slope\": -0.2399762685602985, \"right_order_slope\": -0.2599781709595449, \"nodes\": [290, 288], \"max_rms_residual\": 9.98773645458648e-09, \"stress_integral\": 0.010000039904781134, \"displaced_pins\": [{\"step\": 0.004, \"minus_energy\": 0.33329731772151683, \"plus_energy\": 0.33337731804051796, \"energy_derivative\": 0.010000039875140976}, {\"step\": 0.002, \"minus_energy\": 0.3333173166013491, \"plus_energy\": 0.33335731676068603, \"energy_derivative\": 0.010000039834229257}]}\n{\"test\": \"patch\", \"curvature\": -0.03, \"energy\": 0.3333373162810441, \"anisotropy\": 0.33327270907091744, \"integrated_force\": -0.010000039904839532, \"far_stresses\": [-3.1048660027451545e-14, -8.94468373684579e-14], \"left_stress\": -0.00508864937547035, \"right_stress\": 0.004911390527875509, \"traction\": -0.010000039903345859, \"left_order_slope\": -0.2599781709595449, \"right_order_slope\": -0.23997626856029847, \"nodes\": [288, 290], \"max_rms_residual\": 9.98773643637104e-09, \"stress_integral\": -0.010000039904781134, \"displaced_pins\": [{\"step\": 0.004, \"minus_energy\": 0.33337731804051796, \"plus_energy\": 0.33329731772151683, \"energy_derivative\": -0.010000039875140976}, {\"step\": 0.002, \"minus_energy\": 0.33335731676068603, \"plus_energy\": 0.33331731660134917, \"energy_derivative\": -0.01000003983421538}]}\n{\"test\": \"prediction\", \"curvature\": 0.03, \"planar_energy\": 0.3333333333311568, \"planar_anisotropy\": 0.3333333332647034, \"tension_signed_training\": 0.3333386699910585, \"planar_prediction\": 0.009999999999934703, \"signed_pair_prediction\": 0.010000160099731741, \"measured\": 0.010000039903345845, \"fractional_error\": 1.2019590627453329e-05}\n{\"test\": \"prediction\", \"curvature\": -0.03, \"planar_energy\": 0.3333333333311568, \"planar_anisotropy\": 0.3333333332647034, \"tension_signed_training\": 0.3333386699910585, \"planar_prediction\": -0.009999999999934703, \"signed_pair_prediction\": -0.010000160099731769, \"measured\": -0.010000039903345859, \"fractional_error\": 1.2019590628841085e-05}\n"
+    },
+    "fine": {
+      "command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "curved-order",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/curved_order_patch01/fine",
+        "--",
+        "python3",
+        "software/stage1_solver/tools/mouth_curved_order_patch.py",
+        "--extent",
+        "21",
+        "--spacing",
+        ".125",
+        "--tolerance",
+        "1e-10"
+      ],
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "swap_max_bytes": 0,
+      "wall_deadline": null,
+      "stdout_sha256": "0295fac3fa97c698a7a405d0b481bf2383823ebfc2f3cfb50e2363e06117d79f",
+      "literal_stdout": "{\"test\": \"preparation\", \"carrier_density\": 1, \"carrier_phase\": 0, \"carrier_current\": 0, \"shear_displacement\": 0, \"wave_action\": 0, \"carrier_pressure_jump\": 0, \"bare_well_depth_jump\": 0, \"f_mix\": 0, \"f_throat\": 0, \"static_carrier_equation_residual\": 0.0, \"end_conditions\": \"fixed orders one and zero; endpoint slopes measured\", \"delta_B\": 1, \"a_B\": 1, \"kappa_B\": 2.0, \"orientation\": \"ordered to disordered\", \"extent\": 21.0, \"spacing\": 0.125, \"tolerance\": 1e-10, \"training_K\": 0.06, \"held_out_K\": 0.03}\n{\"test\": \"patch\", \"curvature\": 0.0, \"energy\": 0.33333333333332904, \"anisotropy\": 0.33333333333324244, \"integrated_force\": 0.0, \"far_stresses\": [-2.2998231730474034e-18, -2.2998231625347067e-18], \"left_stress\": 1.3447576385772209e-14, \"right_stress\": 1.3447576385772209e-14, \"traction\": 0.0, \"left_order_slope\": -0.2499999999999731, \"right_order_slope\": -0.2499999999999731, \"nodes\": [1460, 1460], \"max_rms_residual\": 9.968867049825546e-11, \"stress_integral\": -1.0512696690343493e-26, \"displaced_pins\": [{\"step\": 0.004, \"minus_energy\": 0.33333333333332893, \"plus_energy\": 0.33333333333332893, \"energy_derivative\": 0.0}, {\"step\": 0.002, \"minus_energy\": 0.3333333333333289, \"plus_energy\": 0.33333333333332893, \"energy_derivative\": 1.3877787807814457e-14}]}\n{\"test\": \"patch\", \"curvature\": 0.06, \"energy\": 0.33334921844702947, \"anisotropy\": 0.3330894109940206, \"integrated_force\": 0.02000032020532049, \"far_stresses\": [-1.2861473281146076e-17, -7.355952326355816e-19], \"left_stress\": 0.009645642465257627, \"right_stress\": -0.010354677740065307, \"traction\": 0.020000320205322934, \"left_order_slope\": -0.22990075583769265, \"right_order_slope\": -0.26991605684002073, \"nodes\": [1451, 1449], \"max_rms_residual\": 9.998326108371488e-11, \"stress_integral\": 0.020000320205320478, \"displaced_pins\": [{\"step\": 0.004, \"minus_energy\": 0.33326922356603694, \"plus_energy\": 0.3334292261280166, \"energy_derivative\": 0.02000032024745968}, {\"step\": 0.002, \"minus_energy\": 0.3333092194065973, \"plus_energy\": 0.3333892206874567, \"energy_derivative\": 0.02000032021484688}]}\n{\"test\": \"patch\", \"curvature\": -0.06, \"energy\": 0.33334921844702947, \"anisotropy\": 0.3330894109940206, \"integrated_force\": -0.02000032020532049, \"far_stresses\": [-7.355952134319245e-19, -1.2861473258295655e-17], \"left_stress\": -0.010354677740065307, \"right_stress\": 0.009645642465257627, \"traction\": -0.020000320205322934, \"left_order_slope\": -0.26991605684002073, \"right_order_slope\": -0.22990075583769265, \"nodes\": [1449, 1451], \"max_rms_residual\": 9.998327703039403e-11, \"stress_integral\": -0.020000320205320478, \"displaced_pins\": [{\"step\": 0.004, \"minus_energy\": 0.3334292261280166, \"plus_energy\": 0.33326922356603694, \"energy_derivative\": -0.02000032024745968}, {\"step\": 0.002, \"minus_energy\": 0.3333892206874567, \"plus_energy\": 0.33330921940659725, \"energy_derivative\": -0.020000320214860756}]}\n{\"test\": \"patch\", \"curvature\": 0.03, \"energy\": 0.33333731628332386, \"anisotropy\": 0.3332727091396755, \"integrated_force\": 0.010000039906899766, \"far_stresses\": [-4.878748162234382e-18, -1.2415587683074576e-18], \"left_stress\": 0.004911390519007651, \"right_stress\": -0.005088649387893121, \"traction\": 0.010000039906900772, \"left_order_slope\": -0.239976268578775, \"right_order_slope\": -0.25997817098343684, \"nodes\": [1462, 1459], \"max_rms_residual\": 9.977485891502266e-11, \"stress_integral\": 0.010000039906899762, \"displaced_pins\": [{\"step\": 0.004, \"minus_energy\": 0.33329731772367477, \"plus_energy\": 0.33337731804297255, \"energy_derivative\": 0.010000039912222425}, {\"step\": 0.002, \"minus_energy\": 0.3333173166035073, \"plus_energy\": 0.33335731676314007, \"energy_derivative\": 0.010000039908197866}]}\n{\"test\": \"patch\", \"curvature\": -0.03, \"energy\": 0.3333373162833238, \"anisotropy\": 0.33327270913967544, \"integrated_force\": -0.010000039906899766, \"far_stresses\": [-1.241558756875376e-18, -4.878748198582008e-18], \"left_stress\": -0.005088649387893121, \"right_stress\": 0.004911390519007651, \"traction\": -0.010000039906900772, \"left_order_slope\": -0.25997817098343684, \"right_order_slope\": -0.239976268578775, \"nodes\": [1459, 1462], \"max_rms_residual\": 9.977485597305743e-11, \"stress_integral\": -0.010000039906899762, \"displaced_pins\": [{\"step\": 0.004, \"minus_energy\": 0.33337731804297255, \"plus_energy\": 0.33329731772367477, \"energy_derivative\": -0.010000039912222425}, {\"step\": 0.002, \"minus_energy\": 0.33335731676314007, \"plus_energy\": 0.33331731660350716, \"energy_derivative\": -0.010000039908225622}]}\n{\"test\": \"prediction\", \"curvature\": 0.03, \"planar_energy\": 0.33333333333332904, \"planar_anisotropy\": 0.33333333333324244, \"tension_signed_training\": 0.3333386700887156, \"planar_prediction\": 0.00999999999999987, \"signed_pair_prediction\": 0.010000160102661467, \"measured\": 0.010000039906900772, \"fractional_error\": 1.2019528103302003e-05}\n{\"test\": \"prediction\", \"curvature\": -0.03, \"planar_energy\": 0.33333333333332904, \"planar_anisotropy\": 0.33333333333324244, \"tension_signed_training\": 0.3333386700887156, \"planar_prediction\": -0.00999999999999987, \"signed_pair_prediction\": -0.010000160102661467, \"measured\": -0.010000039906900772, \"fractional_error\": 1.2019528103302003e-05}\n"
+    }
+  }
+}

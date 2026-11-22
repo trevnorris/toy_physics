@@ -1,0 +1,159 @@
+{
+  "base": "2ab355d1",
+  "material": "Stationary crystal with \u03bc=K=1, flat H=1 collar about the bore S=R. Both ordered and receiver tag weights assigned from the deep preparation. The material planes remain axially registered for the refit at L=1.",
+  "scope": "Normal graph spacing is minimized before releasing one compactly supported axial displacement on the receiving side. Probe has no boundary displacement. Tests either conserve tag weights or keep the full Eulerian exterior order fixed. Kinetic, order-field and carrier/wave energies on the fixed geometry do not change in the Eulerian variation. A full-dimensional free mouth is untested.",
+  "registration_gate": "At the ordered cut S=R+H/2 the inherited annular collar has two non-unity hoop stretches r_cut/S; an unstressed continuation using the same crystalline material metric would require unity at that cut. An SO(3)-equivariant diffeomorphism of an initially perforated reference with S>0 cannot cover the fixed-point axis r=0 of the wave pocket. Separate growth or an independently prepared inner core and its static/acoustic junction law can supply missing labels.",
+  "source_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_live_waist_order.json": "c1a422133074bd603e90835087dae5dacc37136816854683f6a58a9e5af21f2b",
+    "software/stage1_solver/tools/mouth_polycrystal_material.py": "306f63c7fa3905853dc1e30b093f38f7980a618de227f47d1e6ec014debd1fdf",
+    "software/stage1_solver/tools/mouth_polycrystal_receiver_release.py": "d739b8de696aa255918833148c10d5a6fc90ebdfb33547ff3561b28a1c09f651",
+    "software/stage1_solver/tools/mouth_finite_bore_support.py": "68307b0049cb97df2690d49e98b5f5eb56ec0173ade59c3545c12621fc7cd71e",
+    "software/stage1_solver/tools/mouth_waist_outer_order.py": "1bfb2f118a88119a41992e02ba5ebe76c421322bf09fc976a75ada3ec2dc3843",
+    "software/stage1_solver/tools/mouth_sealed_shape_relax.py": "4791971472f6f8baef5ee5d7eba30c3a04c91ddb7251b7ac48c08a0ef1ae3a96",
+    "software/stage1_solver/tools/mouth_unified_puncture.py": "74a69caccce1c3f8803cf40b21420b47cf1bfae4e0d95404259fcb5500985a74"
+  },
+  "runs": {
+    "r1g1": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polycrystal_material.py",
+        "--radius",
+        "1",
+        "--grade",
+        "1",
+        "--save",
+        "_scratch/s11c/polycrystal_material01/r1g1/coeffs.npz"
+      ],
+      "guard_and_child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_bytes": 0,
+      "stdout_sha256": "ecd16320bd52fc7e99905cb414c2b056075fc810daa27aa26705324a281fd712",
+      "literal_stdout": "{\"kind\": \"graph\", \"radius\": 1, \"side\": \"ordered\", \"grade\": 1, \"energy\": 19.485816444173235, \"max_normal_gradient\": 1.0204800861635457e-06, \"min_J\": 0.0092495496692859, \"max_J\": 2.1275452509306807, \"source_order_sha256\": \"2f88a2d332d80ad2c6bd4ae61356ad67b6c253a5c721a44e4bc2f700ad77c4c3\"}\n{\"kind\": \"material_cut\", \"radius\": 1, \"grade\": 1, \"starting_material_radius\": 1.5, \"cut_radius_span\": [0.2882557306845005, 0.3747733432987596], \"entrance_cut_radius\": 0.3424154218315506, \"end_cut_radius\": 0.329359930378284, \"angular_stretch_span\": [0.19217048712300033, 0.24984889553250642], \"slab_to_collar_lip_radial_tangent\": -2.1434611906659087}\n{\"kind\": \"graph\", \"radius\": 1, \"side\": \"receiver\", \"grade\": 1, \"energy\": 0.5607000642907342, \"max_normal_gradient\": 6.953132854203847e-09, \"min_J\": 0.16961890558536907, \"max_J\": 12.11692423376333, \"source_order_sha256\": \"2f88a2d332d80ad2c6bd4ae61356ad67b6c253a5c721a44e4bc2f700ad77c4c3\"}\n{\"kind\": \"released_receiver_mode\", \"radius\": 1, \"grade\": 1, \"actual_order_side\": true, \"rows\": [{\"step\": -0.002, \"reference_weight_energy\": 0.1939387998321916, \"live_order_energy\": 0.14668474594760422, \"min_J\": 0.16961890558536907, \"min_fractional_J\": 0.9849561251095316, \"min_receiver_distance\": 0.022191538018571988, \"max_r\": 0.914998549862197}, {\"step\": -0.001, \"reference_weight_energy\": 0.19387244210975865, \"live_order_energy\": 0.14657139106668116, \"min_J\": 0.16961890558536907, \"min_fractional_J\": 0.9924780625547659, \"min_receiver_distance\": 0.022191544578593403, \"max_r\": 0.914998549862197}, {\"step\": 0.0, \"reference_weight_energy\": 0.19382332434437283, \"live_order_energy\": 0.14646997983118903, \"min_J\": 0.16961890558536907, \"min_fractional_J\": 1.0, \"min_receiver_distance\": 0.022191551138615262, \"max_r\": 0.914998549862197}, {\"step\": 0.001, \"reference_weight_energy\": 0.19379143950754985, \"live_order_energy\": 0.14638087078828954, \"min_J\": 0.16961890558536907, \"min_fractional_J\": 0.9934604786387521, \"min_receiver_distance\": 0.02219155769863701, \"max_r\": 0.914998549862197}, {\"step\": 0.002, \"reference_weight_energy\": 0.19377678114830357, \"live_order_energy\": 0.14630432948815913, \"min_J\": 0.16961890558536907, \"min_fractional_J\": 0.9869209572775042, \"min_receiver_distance\": 0.022191564258658425, \"max_r\": 0.914998549862197}], \"slopes\": {\"reference_weight_energy\": {\"full_slope\": -0.04050467097200389, \"half_slope\": -0.04050130110440364, \"minus_work\": 4.911776538582546e-05, \"plus_work\": -3.188483682298182e-05}, \"live_order_energy\": {\"full_slope\": -0.0951041148612719, \"half_slope\": -0.09526013919580745, \"minus_work\": 0.0001014112354921215, \"plus_work\": -8.91090428994934e-05}}}\n{\"kind\": \"snapshot\", \"file\": \"_scratch/s11c/polycrystal_material01/r1g1/coeffs.npz\", \"sha256\": \"b2e800d70fa4d1cb975393b2169c072d98f7ab5472ce2d8506716a58a5ce5ee8\"}\n"
+    },
+    "r1g2": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polycrystal_material.py",
+        "--radius",
+        "1",
+        "--grade",
+        "2",
+        "--save",
+        "_scratch/s11c/polycrystal_material01/r1g2/coeffs.npz"
+      ],
+      "guard_and_child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_bytes": 0,
+      "stdout_sha256": "4a7d2a22e045fd2412016e2083d06e7379f277f740015d308f42d0a25ffd72d2",
+      "literal_stdout": "{\"kind\": \"graph\", \"radius\": 1, \"side\": \"ordered\", \"grade\": 2, \"energy\": 19.485918481386364, \"max_normal_gradient\": 6.37393994117226e-09, \"min_J\": 0.009239278152136335, \"max_J\": 2.1337759221915458, \"source_order_sha256\": \"2f88a2d332d80ad2c6bd4ae61356ad67b6c253a5c721a44e4bc2f700ad77c4c3\"}\n{\"kind\": \"material_cut\", \"radius\": 1, \"grade\": 2, \"starting_material_radius\": 1.5, \"cut_radius_span\": [0.2882940461206272, 0.3747810242600818], \"entrance_cut_radius\": 0.3424146021095564, \"end_cut_radius\": 0.32935980993838176, \"angular_stretch_span\": [0.1921960307470848, 0.24985401617338787], \"slab_to_collar_lip_radial_tangent\": -2.1434659785517525}\n{\"kind\": \"graph\", \"radius\": 1, \"side\": \"receiver\", \"grade\": 2, \"energy\": 0.5604250534204461, \"max_normal_gradient\": 8.654935614331102e-09, \"min_J\": 0.16860427918424514, \"max_J\": 12.086773118044588, \"source_order_sha256\": \"2f88a2d332d80ad2c6bd4ae61356ad67b6c253a5c721a44e4bc2f700ad77c4c3\"}\n{\"kind\": \"released_receiver_mode\", \"radius\": 1, \"grade\": 2, \"actual_order_side\": true, \"rows\": [{\"step\": -0.002, \"reference_weight_energy\": 0.19445252126488682, \"live_order_energy\": 0.1480227663948122, \"min_J\": 0.16860427918424514, \"min_fractional_J\": 0.9850294025902077, \"min_receiver_distance\": 0.02095870166058944, \"max_r\": 0.8995580404005278}, {\"step\": -0.001, \"reference_weight_energy\": 0.19438624871926505, \"live_order_energy\": 0.1479101698935612, \"min_J\": 0.16860427918424514, \"min_fractional_J\": 0.9925147012951039, \"min_receiver_distance\": 0.020958702203474955, \"max_r\": 0.8995580404005278}, {\"step\": 0.0, \"reference_weight_energy\": 0.19433722533116868, \"live_order_energy\": 0.14780983401153658, \"min_J\": 0.16860427918424514, \"min_fractional_J\": 1.0, \"min_receiver_distance\": 0.02095870274636047, \"max_r\": 0.8995580404005278}, {\"step\": 0.001, \"reference_weight_energy\": 0.1943054439996087, \"live_order_energy\": 0.1477217203145939, \"min_J\": 0.16860427918424514, \"min_fractional_J\": 0.9935371530688752, \"min_receiver_distance\": 0.020958703289246094, \"max_r\": 0.8995580404005278}, {\"step\": 0.002, \"reference_weight_energy\": 0.1942908981944723, \"live_order_energy\": 0.14764583725095073, \"min_J\": 0.16860427918424514, \"min_fractional_J\": 0.9870743061377507, \"min_receiver_distance\": 0.020958703832131498, \"max_r\": 0.8995580404005278}], \"slopes\": {\"reference_weight_energy\": {\"full_slope\": -0.040405767603633735, \"half_slope\": -0.04040235982817608, \"minus_work\": 4.9023388096369747e-05, \"plus_work\": -3.178133155998242e-05}, \"live_order_energy\": {\"full_slope\": -0.09423228596536909, \"half_slope\": -0.09422478948364899, \"minus_work\": 0.00010033588202462695, \"plus_work\": -8.811369694267102e-05}}}\n{\"kind\": \"snapshot\", \"file\": \"_scratch/s11c/polycrystal_material01/r1g2/coeffs.npz\", \"sha256\": \"785c0139b1b2e77c73c88f403a24d7aa47e8da7d64e0a99319618e967148efe8\"}\n"
+    },
+    "r2g1": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polycrystal_material.py",
+        "--radius",
+        "2",
+        "--grade",
+        "1",
+        "--save",
+        "_scratch/s11c/polycrystal_material01/r2g1/coeffs.npz"
+      ],
+      "guard_and_child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_bytes": 0,
+      "stdout_sha256": "73b23a7e4782ad81b4d4b4972559334cfc877b41be9d709a5b787b058a7473b8",
+      "literal_stdout": "{\"kind\": \"graph\", \"radius\": 2, \"side\": \"ordered\", \"grade\": 1, \"energy\": 101.0375817735477, \"max_normal_gradient\": 4.3411833572370995e-09, \"min_J\": 0.00360552744736743, \"max_J\": 6.212462541185634, \"source_order_sha256\": \"1269f44bfdb253e52dcea81e85372619ffa92c447da3142f38bbd8084693c88f\"}\n{\"kind\": \"material_cut\", \"radius\": 2, \"grade\": 1, \"starting_material_radius\": 2.5, \"cut_radius_span\": [0.3262590793321081, 0.5214558715402515], \"entrance_cut_radius\": 0.41723250712928955, \"end_cut_radius\": 0.3551812365756193, \"angular_stretch_span\": [0.13050363173284324, 0.20858234861610062], \"slab_to_collar_lip_radial_tangent\": -6.26903528829925}\n{\"kind\": \"graph\", \"radius\": 2, \"side\": \"receiver\", \"grade\": 1, \"energy\": 9.16949002670166, \"max_normal_gradient\": 2.5480084374704656e-08, \"min_J\": 0.05177327591728076, \"max_J\": 3.80221190413832, \"source_order_sha256\": \"1269f44bfdb253e52dcea81e85372619ffa92c447da3142f38bbd8084693c88f\"}\n{\"kind\": \"released_receiver_mode\", \"radius\": 2, \"grade\": 1, \"actual_order_side\": true, \"rows\": [{\"step\": -0.002, \"reference_weight_energy\": 3.4604380554591136, \"live_order_energy\": 4.3722784399505255, \"min_J\": 0.05177327591728076, \"min_fractional_J\": 0.9702273500233413, \"min_receiver_distance\": 0.0252703492875066, \"max_r\": 1.4750018876679405}, {\"step\": -0.001, \"reference_weight_energy\": 3.4588854225291703, \"live_order_energy\": 4.365236595284171, \"min_J\": 0.05177327591728076, \"min_fractional_J\": 0.9851136750116706, \"min_receiver_distance\": 0.02527033981275706, \"max_r\": 1.4750018876679405}, {\"step\": 0.0, \"reference_weight_energy\": 3.457429937953329, \"live_order_energy\": 4.358347410851468, \"min_J\": 0.05177327591728076, \"min_fractional_J\": 1.0, \"min_receiver_distance\": 0.025270330338007074, \"max_r\": 1.4750018876679405}, {\"step\": 0.001, \"reference_weight_energy\": 3.4560710952441323, \"live_order_energy\": 4.351604715717549, \"min_J\": 0.05177327591728076, \"min_fractional_J\": 0.9915278880629333, \"min_receiver_distance\": 0.025270320863257756, \"max_r\": 1.4750018876679405}, {\"step\": 0.002, \"reference_weight_energy\": 3.454808412203031, \"live_order_energy\": 4.345011424229994, \"min_J\": 0.05177327591728076, \"min_fractional_J\": 0.9830557761258666, \"min_receiver_distance\": 0.02527031138850755, \"max_r\": 1.4750018876679405}], \"slopes\": {\"reference_weight_energy\": {\"full_slope\": -1.4074108140206265, \"half_slope\": -1.407163642519027, \"minus_work\": 0.001455484575841215, \"plus_work\": -0.0013588427091968391}, \"live_order_energy\": {\"full_slope\": -6.816753930132924, \"half_slope\": -6.815939783310743, \"minus_work\": 0.006889184432703033, \"plus_work\": -0.006742695133918453}}}\n{\"kind\": \"snapshot\", \"file\": \"_scratch/s11c/polycrystal_material01/r2g1/coeffs.npz\", \"sha256\": \"b8b6edf83b6e51a07660bc24e65a8152d948caad85db1c87e75426e759a36e9a\"}\n"
+    },
+    "r2g2": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polycrystal_material.py",
+        "--radius",
+        "2",
+        "--grade",
+        "2",
+        "--save",
+        "_scratch/s11c/polycrystal_material01/r2g2/coeffs.npz"
+      ],
+      "guard_and_child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_bytes": 0,
+      "stdout_sha256": "565a7dd60524e461f943391fe9003d3cfe6cc95b73b310bc82e8e0ac13c519a5",
+      "literal_stdout": "{\"kind\": \"graph\", \"radius\": 2, \"side\": \"ordered\", \"grade\": 2, \"energy\": 101.03860054170401, \"max_normal_gradient\": 3.075497586031359e-06, \"min_J\": 0.003604751710217569, \"max_J\": 6.234286963602312, \"source_order_sha256\": \"1269f44bfdb253e52dcea81e85372619ffa92c447da3142f38bbd8084693c88f\"}\n{\"kind\": \"material_cut\", \"radius\": 2, \"grade\": 2, \"starting_material_radius\": 2.5, \"cut_radius_span\": [0.32582155265756746, 0.521532746224225], \"entrance_cut_radius\": 0.41725182362439006, \"end_cut_radius\": 0.3550464987851782, \"angular_stretch_span\": [0.13032862106302698, 0.20861309848968998], \"slab_to_collar_lip_radial_tangent\": -6.268850105719857}\n{\"kind\": \"graph\", \"radius\": 2, \"side\": \"receiver\", \"grade\": 2, \"energy\": 9.145804478167971, \"max_normal_gradient\": 4.733028367148728e-08, \"min_J\": 0.030430605664580244, \"max_J\": 3.706179347573456, \"source_order_sha256\": \"1269f44bfdb253e52dcea81e85372619ffa92c447da3142f38bbd8084693c88f\"}\n{\"kind\": \"released_receiver_mode\", \"radius\": 2, \"grade\": 2, \"actual_order_side\": true, \"rows\": [{\"step\": -0.002, \"reference_weight_energy\": 3.45174384596444, \"live_order_energy\": 4.337651716099135, \"min_J\": 0.030430605664580244, \"min_fractional_J\": 0.9708256846525989, \"min_receiver_distance\": 0.024392619235668045, \"max_r\": 1.4586757007957332}, {\"step\": -0.001, \"reference_weight_energy\": 3.4501955832059785, \"live_order_energy\": 4.330698752485105, \"min_J\": 0.030430605664580244, \"min_fractional_J\": 0.9854128423262992, \"min_receiver_distance\": 0.024392618452740766, \"max_r\": 1.4586757007957332}, {\"step\": 0.0, \"reference_weight_energy\": 3.4487443601231194, \"live_order_energy\": 4.3238865002793805, \"min_J\": 0.030430605664580244, \"min_fractional_J\": 1.0, \"min_receiver_distance\": 0.024392617669813377, \"max_r\": 1.4586757007957332}, {\"step\": 0.001, \"reference_weight_energy\": 3.447389675050261, \"live_order_energy\": 4.31720870901614, \"min_J\": 0.030430605664580244, \"min_fractional_J\": 0.99146461988116, \"min_receiver_distance\": 0.02439261688688621, \"max_r\": 1.4586757007957332}, {\"step\": 0.002, \"reference_weight_energy\": 3.4461310501144693, \"live_order_energy\": 4.310670199500405, \"min_J\": 0.030430605664580244, \"min_fractional_J\": 0.9829292397623205, \"min_receiver_distance\": 0.024392616103959375, \"max_r\": 1.4586757007957332}], \"slopes\": {\"reference_weight_energy\": {\"full_slope\": -1.4031989624926355, \"half_slope\": -1.4029540778588423, \"minus_work\": 0.0014512230828591655, \"plus_work\": -0.0013546850728585191}, \"live_order_energy\": {\"full_slope\": -6.74537914968254, \"half_slope\": -6.745021734482659, \"minus_work\": 0.006812252205724789, \"plus_work\": -0.006677791263240529}}}\n{\"kind\": \"snapshot\", \"file\": \"_scratch/s11c/polycrystal_material01/r2g2/coeffs.npz\", \"sha256\": \"8af5e05ee5f5b4a2f3f9baea2491e23cf983d64bee66999ac3efde6add3b4df9\"}\n"
+    },
+    "release_r1g1": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polycrystal_receiver_release.py",
+        "--radius",
+        "1",
+        "--grade",
+        "1",
+        "--directory",
+        "_scratch/s11c/polycrystal_material01/r1g1"
+      ],
+      "guard_and_child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_bytes": 0,
+      "stdout_sha256": "f9bf90fead93165784f3cd6820fcb136c84e8dc63a7f2eac2f53fa0bead63e44",
+      "literal_stdout": "{\"radius\": 1, \"grade\": 1, \"source_sha256\": \"b2e800d70fa4d1cb975393b2169c072d98f7ab5472ce2d8506716a58a5ce5ee8\", \"trial_interval\": [0.0, 0.11774562043070953], \"initial_frozen_derivative\": -0.04050017796302355, \"checks\": [{\"order\": \"material_order\", \"amplitude\": 0.002351177351494538, \"energy_change\": -4.760498331710106e-05, \"work_to_minus\": 3.4437970117262573e-07, \"work_to_plus\": 3.4436532192483327e-07, \"check_step\": 0.0002, \"min_sampled_J_ratio\": 0.9846244254858194}, {\"order\": \"eulerian_order\", \"amplitude\": 0.007724909949180962, \"energy_change\": -0.0003673678892416321, \"work_to_minus\": 2.4095466805151844e-07, \"work_to_plus\": 2.3493114437167506e-07, \"check_step\": 0.0002, \"min_sampled_J_ratio\": 0.9494827863736155}]}\n"
+    },
+    "release_r1g2": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polycrystal_receiver_release.py",
+        "--radius",
+        "1",
+        "--grade",
+        "2",
+        "--directory",
+        "_scratch/s11c/polycrystal_material01/r1g2"
+      ],
+      "guard_and_child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_bytes": 0,
+      "stdout_sha256": "2ac333d15ee21f8a14ca131d8dacf99ecdb2243639acb77fcb796540a30789de",
+      "literal_stdout": "{\"radius\": 1, \"grade\": 2, \"source_sha256\": \"785c0139b1b2e77c73c88f403a24d7aa47e8da7d64e0a99319618e967148efe8\", \"trial_interval\": [0.0, 0.11914254015389708], \"initial_frozen_derivative\": -0.0404012240513474, \"checks\": [{\"order\": \"material_order\", \"amplitude\": 0.0023442005837705044, \"energy_change\": -4.734768566250214e-05, \"work_to_minus\": 3.445592325623803e-07, \"work_to_plus\": 3.4454459846289254e-07, \"check_step\": 0.0002, \"min_sampled_J_ratio\": 0.9848497904512383}, {\"order\": \"eulerian_order\", \"amplitude\": 0.007700411823767665, \"energy_change\": -0.00036326958765198203, \"work_to_minus\": 2.5181651192029975e-07, \"work_to_plus\": 2.434135235873658e-07, \"check_step\": 0.0002, \"min_sampled_J_ratio\": 0.9502334170763678}]}\n"
+    },
+    "release_r2g1": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polycrystal_receiver_release.py",
+        "--radius",
+        "2",
+        "--grade",
+        "1",
+        "--directory",
+        "_scratch/s11c/polycrystal_material01/r2g1"
+      ],
+      "guard_and_child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_bytes": 0,
+      "stdout_sha256": "89ee8c5ce15231e3358f3df11ed7f8c12e1c2aff67e0e36e437ce07c9e5fd0e6",
+      "literal_stdout": "{\"radius\": 2, \"grade\": 1, \"source_sha256\": \"b8b6edf83b6e51a07660bc24e65a8152d948caad85db1c87e75426e759a36e9a\", \"trial_interval\": [0.0, 0.09088642899430248], \"initial_frozen_derivative\": -1.407081284999995, \"checks\": [{\"order\": \"material_order\", \"amplitude\": 0.015012298885343726, \"energy_change\": -0.010466265569795574, \"work_to_minus\": 1.830714501327435e-06, \"work_to_plus\": 1.8301541118148634e-06, \"check_step\": 0.0002, \"min_sampled_J_ratio\": 0.8728141234106654}, {\"order\": \"eulerian_order\", \"amplitude\": 0.04552320904063656, \"energy_change\": -0.15008379686848716, \"work_to_minus\": 3.5830322158147965e-06, \"work_to_plus\": 4.067099601101631e-06, \"check_step\": 0.0002, \"min_sampled_J_ratio\": 0.6143222772732377}]}\n"
+    },
+    "release_r2g2": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polycrystal_receiver_release.py",
+        "--radius",
+        "2",
+        "--grade",
+        "2",
+        "--directory",
+        "_scratch/s11c/polycrystal_material01/r2g2"
+      ],
+      "guard_and_child_exit": 0,
+      "memory_max_bytes": 2147483648,
+      "swap_bytes": 0,
+      "stdout_sha256": "060eb89e31a517bc3fef46386d41d6f56beb97282bece11acc82f355ad3f1c3b",
+      "literal_stdout": "{\"radius\": 2, \"grade\": 2, \"source_sha256\": \"8af5e05ee5f5b4a2f3f9baea2491e23cf983d64bee66999ac3efde6add3b4df9\", \"trial_interval\": [0.0, 0.09021273678256171], \"initial_frozen_derivative\": -1.4028724814474036, \"checks\": [{\"order\": \"material_order\", \"amplitude\": 0.014980118578397093, \"energy_change\": -0.010413121828817484, \"work_to_minus\": 1.829316652379731e-06, \"work_to_plus\": 1.828754219612705e-06, \"check_step\": 0.0002, \"min_sampled_J_ratio\": 0.8721389937080876}, {\"order\": \"eulerian_order\", \"amplitude\": 0.045529189754473114, \"energy_change\": -0.14659083356938307, \"work_to_minus\": 2.923572166579902e-06, \"work_to_plus\": 2.7572460687963485e-06, \"check_step\": 0.0002, \"min_sampled_J_ratio\": 0.611391058942788}]}\n"
+    }
+  },
+  "source_history": {
+    "initial_graph_exterior_sha256": "72e997bf39018db61b5640f47d71f8a4bf306b93fa3997908240395c1d646141",
+    "finite_release_exterior_sha256": "1bfb2f118a88119a41992e02ba5ebe76c421322bf09fc976a75ada3ec2dc3843",
+    "scope": "The initial four graph runs used the 2ab355d1 exterior solver. The four follow-on mode minima used the backward-compatible optional side_order_work version with that argument omitted. Both calls used the original zero-extra-work energy and Newton evaluator."
+  },
+  "independent_review": "Scoped clear for the fixed-reference-order collar spacing minimization and for the local energy-lowering receiver displacement on the two shallow shapes. The analytic graph derivative includes both the log-J term and log-spacing slope. The compact receiver displacement changes one row of F and J is affine, making the frozen-weight energy strictly convex on its orientation-preserving amplitude interval. The Eulerian-order interpolation supplies a separate finite lowering and a tested directional minimum; neither check certifies a freely relaxed material state or a global Eulerian-order minimum. The no-inversion check is sampled (the runs label it accordingly)."
+}

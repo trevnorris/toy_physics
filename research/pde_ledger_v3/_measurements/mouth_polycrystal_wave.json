@@ -1,0 +1,556 @@
+{
+  "base": "2ab355d1",
+  "scope": "Degree-four torsional angular displacement in the shallow stationary collar, conditional stress-free inner pocket with joined wave displacement and natural traction, undeformed feeding lead and half-order free surface. Coherent flow and slow order are held during each optical derivative. In the wave assembly the chart samples the live scalar order and applies chi/J for participating inertia and modulus. The chosen pocket center is a separate material preparation. Radius 1 begins with previously rejected bounded shape only as an initial optical state. Radius 3 excluded.",
+  "inputs_and_sources": {
+    "software/stage1_solver/tools/mouth_strained_wave.py": "e3e5c2cf6a11a0ef565c2693074c968eaf028fe11be4dcf59e86a26c1603d95a",
+    "software/stage1_solver/tools/mouth_strained_wave_profile.py": "e3e7e2c1618fde2ea6fdda036a80844e6317d5b45b65d0c8fb8222d48cc5a370",
+    "software/stage1_solver/tools/mouth_poly_wave_release.py": "aa6aaffdba5c7eef42e2bca5e3ef1bb8447793d1f5059e220cb95141d23bcf40",
+    "software/stage1_solver/tools/mouth_live_waist_wave.py": "da3c942439db4cbfe46682b1975250144ecff014f2542c75c43b665f46299c45",
+    "software/stage1_solver/tools/mouth_live_waist_active_wave.py": "f6548ac04e123db74449d291319d651b8ce67aee92e3e3b71007ea19ca5307f5",
+    "software/stage1_solver/tools/mouth_exchange_shear.py": "d7aaa11468de702b99beb912f41e7ebc1999943d73dd7201d88c378b20b8c27b",
+    "software/stage1_solver/tools/mouth_shallow_puncture_fields.py": "2d732c61dcd871fd8064e8fa1aab785d699f857d0137aefac32ee82550dfcc84",
+    "software/stage1_solver/tools/mouth_unified_transverse.py": "83b6f304afe36c898b48f072b64fcb1ff7c6d8803fa8e351c01f7cb2cf2830d6",
+    "software/stage1_solver/tools/mouth_polycrystal_material.py": "306f63c7fa3905853dc1e30b093f38f7980a618de227f47d1e6ec014debd1fdf",
+    "research/pde_ledger_v3/_measurements/mouth_finite_bore_support.json": "494f1f1d84d1be80d2b02ef670f087dc7f3a5f7481b5ed8255a575b41588362e",
+    "research/pde_ledger_v3/_measurements/mouth_shallow_puncture_fields.json": "8023ab6e4d8d4caceb5b827c3b8a9eb1b36b242fa651dece54ed88072a607350",
+    "research/pde_ledger_v3/_measurements/mouth_unified_transverse.json": "62bce06d02603f3f4a882b5a794612895d7e15d29e55232f12a0b5e7c7dd424a",
+    "software/stage1_solver/tools/mouth_bonded_wave_check.py": "fb3de116b7a15fb1ccab9b2b3789d861d45010f9b3cd8b4c7ef55c950ac92d48"
+  },
+  "archived_seeds": {
+    "_scratch/s11c/poly_wave01/fields/r1n48q3.npz": "0f2e970b6643303214381de0a8cdc4db267bcea6cac463fc17603794768e0368",
+    "_scratch/s11c/poly_wave01/fields/selected_r1n48q3.npz": "2dd1cfe5628b3906e4a8adca9e51d575fc2f3cfed5cd5e3fee020f5396bd06f4",
+    "_scratch/s11c/poly_wave01/fields/r1n72q3.npz": "b36acdffc1dbfa0db6f60e73887cf1b95da806105087ac9d2eb0b7294374b3a2",
+    "_scratch/s11c/poly_wave01/fields/selected_r1n72q3.npz": "d842a17d014571190ed5ff73775cfac2c680484d390f999c37f4470b0e13908b",
+    "_scratch/s11c/poly_wave01/fields/r1n72q5.npz": "e5670a23ec487e9c061654e9313bd36416af1e90c5410a07e9ea4308acb50f5b",
+    "_scratch/s11c/poly_wave01/fields/selected_r1n72q5.npz": "8f23990d75033061f3f37f34599c3808d8900f9755f4221cf6587516d1185179",
+    "_scratch/s11c/poly_wave01/fields/r2n48q3.npz": "9064b2e09c69b1cd5f03ccbed304cb367803536bc2a9f416130eb9c6fe72f4da",
+    "_scratch/s11c/poly_wave01/fields/selected_r2n48q3.npz": "9f3b67c352fb02d6635f2e465bc569a306ecf8d6fc85ec44c88e0ff4f4bbfe1c",
+    "_scratch/s11c/poly_wave01/fields/r2n72q3.npz": "9d5d2ca2e5f456c899fe6b24792af43d9276d51052a52f84e36b05d5efa05b32",
+    "_scratch/s11c/poly_wave01/fields/selected_r2n72q3.npz": "9c01f707f94c35c9c3bd9a66878e9e1e99fda599ecb9271e55e4fb61b90b18d9",
+    "_scratch/s11c/poly_wave01/fields/r2n72q5.npz": "ed00d27ea4aa1d57b41580e27413899c9f65d37795cf3b9f66afdc4f0dae05be",
+    "_scratch/s11c/poly_wave01/fields/selected_r2n72q5.npz": "80efc0d104a5a2ff49cad3752a6eebb627cbd907a5e8aab8776ab3da53a072ec"
+  },
+  "runs": {
+    "r1n48q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_strained_wave.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "48",
+        "--quadrature",
+        "3"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "aa96c8b8c98aa3f63780822c9e93471d61ddadf71bf038a232a80c039d0c6e24",
+      "literal_stdout": "{\"kind\": \"strained\", \"radius\": 1, \"mesh\": 48, \"quadrature\": 3, \"former_frequency\": 7.009660775616545, \"readout\": {\"wave_frequency\": 4.141683885422834, \"wave_pocket_fraction\": 0.9653562991006386, \"wave_loss_rate\": 0.00536941912796176, \"pole_amplitude_loss\": 0.002684693351491951, \"mode_overlap\": 1.0, \"pole_residual\": 4.551117522576724e-15, \"wave_minimum_cell_order\": 0.0, \"zero_cells\": 8, \"inactive_nodes\": 2, \"wave_components\": 1, \"detached_mode\": false}, \"undeformed_matrix_errors\": [1.4769638933714001e-15, 2.635126370903262e-15], \"continuation\": [[0.08, 6.492202618507302, 0.9814225930950573], [0.132, 6.18570041643577, 0.9863130951420837], [0.1996, 5.834956288948493, 0.9711168499168866], [0.28748, 5.461851474183304, 0.9622309145547012], [0.401724, 5.093770987590917, 0.964981949919432], [0.5502412000000001, 4.748423652483672, 0.9735062570941685], [0.7102412000000001, 4.479019925644021, 0.9860062576587585], [0.8702412000000002, 4.275017921385234, 0.9930026829352323], [1.0, 4.141683885422834, 0.9973187152518374]], \"minimum_overlap\": 0.9622309145547012}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"order\", \"step\": 0.001, \"predicted\": -0.0016429658289202, \"measured\": -0.0016429658131755787}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"order\", \"step\": 0.0005, \"predicted\": -0.0016429658289202, \"measured\": -0.0016429658273864334}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"radial\", \"step\": 0.001, \"predicted\": 0.11117591363889305, \"measured\": 0.11117817460837287}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"radial\", \"step\": 0.0005, \"predicted\": 0.11117584323212142, \"measured\": 0.1111764084775757}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"axial\", \"step\": 0.001, \"predicted\": 0.07217343532489826, \"measured\": 0.07217343775867135}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"axial\", \"step\": 0.0005, \"predicted\": 0.07217343631977982, \"measured\": 0.07217343692911271}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"spacing\", \"step\": 0.001, \"predicted\": 0.042874216232802465, \"measured\": 0.04279994638922702}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"spacing\", \"step\": 0.0005, \"predicted\": 0.04497080145778651, \"measured\": 0.044978815588514465}\n"
+    },
+    "release_r1n48q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "48",
+        "--quadrature",
+        "3",
+        "--adopt"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "5e5b36bbe482e4ffffac91a3c8349db48dc76f5b9a608fe830fe581a9cf1bb8e",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 1, \"n\": 48, \"quad\": 3, \"source_sha256\": \"0f2e970b6643303214381de0a8cdc4db267bcea6cac463fc17603794768e0368\", \"graph_sha256\": \"785c0139b1b2e77c73c88f403a24d7aa47e8da7d64e0a99319618e967148efe8\", \"sha256\": \"2dd1cfe5628b3906e4a8adca9e51d575fc2f3cfed5cd5e3fee020f5396bd06f4\", \"readout\": {\"wave_frequency\": 4.143062344680416, \"wave_pocket_fraction\": 0.9652128123534168, \"wave_loss_rate\": 0.00538707281546831, \"pole_amplitude_loss\": 0.0026935201138640345, \"mode_overlap\": 1.0, \"pole_residual\": 5.121383193747106e-15, \"wave_minimum_cell_order\": 0.0, \"zero_cells\": 8, \"inactive_nodes\": 2, \"wave_components\": 1, \"detached_mode\": false}, \"recovered_relative_residual\": 5.08485132470091e-15}\n{\"kind\": \"axial_label\", \"step\": 0.002, \"measured\": -0.038910155994331674, \"reciprocal\": -0.038910193232197285}\n{\"kind\": \"axial_label\", \"step\": 0.001, \"measured\": -0.03891013873769111, \"reciprocal\": -0.038910148043338165}\n"
+    },
+    "r1n72q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_strained_wave.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "3"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "4984411a9e5f05966273bd669930f6f4eb250a2dd60c005e5261cce55e9d183f",
+      "literal_stdout": "{\"kind\": \"strained\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 3, \"former_frequency\": 7.00283510193281, \"readout\": {\"wave_frequency\": 4.138491575848497, \"wave_pocket_fraction\": 0.9655113371126447, \"wave_loss_rate\": 0.005316614854568104, \"pole_amplitude_loss\": 0.002658291498606257, \"mode_overlap\": 1.0, \"pole_residual\": 9.206203869905183e-15, \"wave_minimum_cell_order\": 0.0, \"zero_cells\": 22, \"inactive_nodes\": 11, \"wave_components\": 1, \"detached_mode\": false}, \"undeformed_matrix_errors\": [1.963439414099336e-15, 4.55847507065952e-15], \"continuation\": [[0.08, 6.489772410670916, 0.9815259122645045], [0.132, 6.184895156460827, 0.9861287155213543], [0.1996, 5.834902815951532, 0.9705030189375471], [0.28748, 5.4615452978551176, 0.9609503361046963], [0.401724, 5.09276139964891, 0.9640790249420059], [0.5502412000000001, 4.746659311671417, 0.9729169538501421], [0.7102412000000001, 4.4766471200142925, 0.98575248129197], [0.8702412000000002, 4.272171473219418, 0.9929553705676158], [1.0, 4.138491575848497, 0.9973137317185733]], \"minimum_overlap\": 0.9609503361046963}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"order\", \"step\": 0.001, \"predicted\": -0.0018015852559525717, \"measured\": -0.0018015852489838835}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"order\", \"step\": 0.0005, \"predicted\": -0.0018015852559525717, \"measured\": -0.0018015852401020993}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"radial\", \"step\": 0.001, \"predicted\": 0.1060936081829064, \"measured\": 0.10609588132881598}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"radial\", \"step\": 0.0005, \"predicted\": 0.10609353366885488, \"measured\": 0.10609410196948943}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"axial\", \"step\": 0.001, \"predicted\": 0.07173838713885165, \"measured\": 0.07173838937779564}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"axial\", \"step\": 0.0005, \"predicted\": 0.0717383880423686, \"measured\": 0.07173838860019544}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"spacing\", \"step\": 0.001, \"predicted\": 0.02437260897468352, \"measured\": 0.024417025947798265}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"spacing\", \"step\": 0.0005, \"predicted\": 0.024367158570378345, \"measured\": 0.024378256650692265}\n"
+    },
+    "release_r1n72q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "3",
+        "--adopt"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "30075c0dacb00e76b30927ad40213c1a0bbaf4970cf654ec814eef1c990b92ef",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 1, \"n\": 72, \"quad\": 3, \"source_sha256\": \"b36acdffc1dbfa0db6f60e73887cf1b95da806105087ac9d2eb0b7294374b3a2\", \"graph_sha256\": \"785c0139b1b2e77c73c88f403a24d7aa47e8da7d64e0a99319618e967148efe8\", \"sha256\": \"d842a17d014571190ed5ff73775cfac2c680484d390f999c37f4470b0e13908b\", \"readout\": {\"wave_frequency\": 4.14144905126385, \"wave_pocket_fraction\": 0.9647851147194829, \"wave_loss_rate\": 0.005429199980343848, \"pole_amplitude_loss\": 0.002714583455890007, \"mode_overlap\": 1.0, \"pole_residual\": 1.2359188664665284e-14, \"wave_minimum_cell_order\": 0.0, \"zero_cells\": 22, \"inactive_nodes\": 11, \"wave_components\": 1, \"detached_mode\": false}, \"recovered_relative_residual\": 1.2237985565507566e-14}\n{\"kind\": \"axial_label\", \"step\": 0.002, \"measured\": -0.03831332473946958, \"reciprocal\": -0.03831330737724754}\n{\"kind\": \"axial_label\", \"step\": 0.001, \"measured\": -0.03831326013292724, \"reciprocal\": -0.038313255795450155}\n"
+    },
+    "r1n72q5": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_strained_wave.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "5"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "17216b9c7c149ca1577e5282d9b96c08db13533daba47a61947769dbc4d24de4",
+      "literal_stdout": "{\"kind\": \"strained\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 5, \"former_frequency\": 7.00283510193281, \"readout\": {\"wave_frequency\": 4.138595537013578, \"wave_pocket_fraction\": 0.9654934711806482, \"wave_loss_rate\": 0.00531964848601197, \"pole_amplitude_loss\": 0.002659808298395149, \"mode_overlap\": 1.0, \"pole_residual\": 9.19373569331515e-15, \"wave_minimum_cell_order\": 0.0, \"zero_cells\": 22, \"inactive_nodes\": 11, \"wave_components\": 1, \"detached_mode\": false}, \"undeformed_matrix_errors\": [1.963439414099336e-15, 4.55847507065952e-15], \"continuation\": [[0.08, 6.489776124681688, 0.9815264375952941], [0.132, 6.184906210577962, 0.9861288228084892], [0.1996, 5.834926601048747, 0.9705015031482745], [0.28748, 5.461585674199756, 0.9609451604939874], [0.401724, 5.092819993166495, 0.9640717195789489], [0.5502412000000001, 4.746736091129479, 0.9729096973196824], [0.7102412000000001, 4.476737656688588, 0.9857477151275519], [0.8702412000000002, 4.272270929624678, 0.9929524400723055], [1.0, 4.138595537013578, 0.9973124031250182]], \"minimum_overlap\": 0.9609451604939874}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"order\", \"step\": 0.001, \"predicted\": -0.0018042791121816858, \"measured\": -0.0018042791030126182}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"order\", \"step\": 0.0005, \"predicted\": -0.0018042791121816858, \"measured\": -0.0018042791065653319}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"radial\", \"step\": 0.001, \"predicted\": 0.105898390092748, \"measured\": 0.10590066784166297}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"radial\", \"step\": 0.0005, \"predicted\": 0.10589831561809254, \"measured\": 0.10589888506107314}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"axial\", \"step\": 0.001, \"predicted\": 0.07175814229210746, \"measured\": 0.07175814455617768}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"axial\", \"step\": 0.0005, \"predicted\": 0.07175814318787836, \"measured\": 0.07175814375415257}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"spacing\", \"step\": 0.001, \"predicted\": 0.03848265688612527, \"measured\": 0.03853202650949683}\n{\"kind\": \"slope\", \"radius\": 1, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"spacing\", \"step\": 0.0005, \"predicted\": 0.03785503339418519, \"measured\": 0.03786941383232545}\n"
+    },
+    "release_r1n72q5": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "5",
+        "--adopt"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "cf460c68c788fa6d514bd95cad97a5d48ac94e11e9cb1b85eb3fb92c0a06752f",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 1, \"n\": 72, \"quad\": 5, \"source_sha256\": \"e5670a23ec487e9c061654e9313bd36416af1e90c5410a07e9ea4308acb50f5b\", \"graph_sha256\": \"785c0139b1b2e77c73c88f403a24d7aa47e8da7d64e0a99319618e967148efe8\", \"sha256\": \"8f23990d75033061f3f37f34599c3808d8900f9755f4221cf6587516d1185179\", \"readout\": {\"wave_frequency\": 4.141370985095261, \"wave_pocket_fraction\": 0.9647712408714291, \"wave_loss_rate\": 0.005431259390103249, \"pole_amplitude_loss\": 0.00271561314776674, \"mode_overlap\": 1.0, \"pole_residual\": 1.7115094748081432e-14, \"wave_minimum_cell_order\": 0.0, \"zero_cells\": 22, \"inactive_nodes\": 11, \"wave_components\": 1, \"detached_mode\": false}, \"recovered_relative_residual\": 1.7118747979486005e-14}\n{\"kind\": \"axial_label\", \"step\": 0.002, \"measured\": -0.03817274093065315, \"reciprocal\": -0.03817272960495583}\n{\"kind\": \"axial_label\", \"step\": 0.001, \"measured\": -0.038172681657844265, \"reciprocal\": -0.038172678828329094}\n"
+    },
+    "profile_r1": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_strained_wave_profile.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "72",
+        "--root",
+        "_scratch/s11c/poly_wave01/r1n72q5",
+        "--source",
+        "_scratch/s11c/poly_wave01/fields/r1n72q5.npz"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "4153e9ea677456aaaf43359c39696b17f5106fe51a1726073fc0595a84f6783f",
+      "literal_stdout": "{\"finite_angular_twist\": [{\"J\": 0.128, \"direct\": 20.429645400005946, \"predicted\": 20.429645400000002}, {\"J\": 4.8601875, \"direct\": 8.26187780126334, \"predicted\": 8.261877801262603}]}\n{\"radius\": 1, \"mesh\": 72, \"quad\": 3, \"source_sha256\": \"e5670a23ec487e9c061654e9313bd36416af1e90c5410a07e9ea4308acb50f5b\", \"cavity\": 0.9654920369535261, \"reference_cavity\": 0.9654934711806482, \"fractions\": [0.22065385395884693, 0.07960920685663249, 0.6997369391845155], \"sum_error\": -5.10702591327572e-15, \"waist\": 0.49368792569387704}\n{\"radius\": 1, \"mesh\": 72, \"quad\": 5, \"source_sha256\": \"e5670a23ec487e9c061654e9313bd36416af1e90c5410a07e9ea4308acb50f5b\", \"cavity\": 0.9654934711806513, \"reference_cavity\": 0.9654934711806482, \"fractions\": [0.22065356993863602, 0.07960908859831652, 0.6997373414630472], \"sum_error\": -2.220446049250313e-16, \"waist\": 0.49368792569387704}\n"
+    },
+    "refitted_profile_r1": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_strained_wave_profile.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "72",
+        "--root",
+        "_scratch/s11c/poly_wave01/release_r1n72q5",
+        "--source",
+        "_scratch/s11c/poly_wave01/fields/selected_r1n72q5.npz",
+        "--check",
+        "selected"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "bc7f3375898bda5b931f6a0d7c3917c7f208d78ffddae10ffeabff3821215eb9",
+      "literal_stdout": "{\"finite_angular_twist\": [{\"J\": 0.128, \"direct\": 20.429645400005946, \"predicted\": 20.429645400000002}, {\"J\": 4.8601875, \"direct\": 8.26187780126334, \"predicted\": 8.261877801262603}]}\n{\"radius\": 1, \"mesh\": 72, \"quad\": 3, \"source_sha256\": \"8f23990d75033061f3f37f34599c3808d8900f9755f4221cf6587516d1185179\", \"cavity\": 0.9647711116341681, \"reference_cavity\": 0.9647712408714291, \"fractions\": [0.23091795493384773, 0.07858333974238839, 0.6904987053237543], \"sum_error\": -9.547918011776346e-15, \"waist\": 0.49368792569387704}\n{\"radius\": 1, \"mesh\": 72, \"quad\": 5, \"source_sha256\": \"8f23990d75033061f3f37f34599c3808d8900f9755f4221cf6587516d1185179\", \"cavity\": 0.9647712408714321, \"reference_cavity\": 0.9647712408714291, \"fractions\": [0.2309180200453647, 0.0785833277160729, 0.6904986522385623], \"sum_error\": 0.0, \"waist\": 0.49368792569387704}\n"
+    },
+    "r2n48q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_strained_wave.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "48",
+        "--quadrature",
+        "3"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "1f6fe3450e2130efba48f29162076332b9864a93016518ef13a04c44162dcf13",
+      "literal_stdout": "{\"kind\": \"strained\", \"radius\": 2, \"mesh\": 48, \"quadrature\": 3, \"former_frequency\": 4.83182576769816, \"readout\": {\"wave_frequency\": 2.5307924363117915, \"wave_pocket_fraction\": 0.9533925148780685, \"wave_loss_rate\": 0.010978112709854904, \"pole_amplitude_loss\": 0.0054886721386970105, \"mode_overlap\": 1.0, \"pole_residual\": 6.000657522374436e-14, \"wave_minimum_cell_order\": 0.49630364854482406, \"zero_cells\": 0, \"inactive_nodes\": 0, \"wave_components\": 1, \"detached_mode\": false}, \"undeformed_matrix_errors\": [1.4976971241839985e-15, 2.707435652477056e-15], \"continuation\": [[0.02, 4.883976793250623, 0.9886106052351898], [0.046, 4.83145373116378, 0.9786587210216452], [0.07980000000000001, 4.639212021653587, 0.969616307283318], [0.12374000000000002, 4.338534676894138, 0.9707817997666403], [0.18086200000000002, 4.001474861485987, 0.9714634716086783], [0.25512060000000003, 3.674017838184311, 0.9778058498089307], [0.35165678000000006, 3.372399834012658, 0.9844702758230406], [0.4771538140000001, 3.1003429105288283, 0.9873540953930129], [0.6371538140000002, 2.861600752832184, 0.9892848548515691], [0.7971538140000002, 2.6910540920785224, 0.9939464703179876], [0.9571538140000002, 2.5609554636846035, 0.9962406737529312], [1.0, 2.5307924363117915, 0.9997786324688313]], \"minimum_overlap\": 0.969616307283318}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"order\", \"step\": 0.001, \"predicted\": 0.0005483617320675212, \"measured\": 0.0005483617349089087}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"order\", \"step\": 0.0005, \"predicted\": 0.0005483617320675212, \"measured\": 0.0005483617071533331}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"radial\", \"step\": 0.001, \"predicted\": 0.48547726485282444, \"measured\": 0.48547876461668693}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"radial\", \"step\": 0.0005, \"predicted\": 0.4854771193064582, \"measured\": 0.48547749421823383}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"axial\", \"step\": 0.001, \"predicted\": 0.052103755617484884, \"measured\": 0.05210375722608518}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"axial\", \"step\": 0.0005, \"predicted\": 0.052103756826611204, \"measured\": 0.05210375721986793}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"spacing\", \"step\": 0.001, \"predicted\": 0.019523640831426867, \"measured\": 0.019553111253900468}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 48, \"quadrature\": 3, \"axis\": \"spacing\", \"step\": 0.0005, \"predicted\": 0.0196204921778043, \"measured\": 0.019627160605661942}\n"
+    },
+    "release_r2n48q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "48",
+        "--quadrature",
+        "3",
+        "--adopt"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "141908897c757d13994a900401e68f6fec34cc94a6ae5bccda09d3bfe1c34ee3",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 2, \"n\": 48, \"quad\": 3, \"source_sha256\": \"9064b2e09c69b1cd5f03ccbed304cb367803536bc2a9f416130eb9c6fe72f4da\", \"graph_sha256\": \"8af5e05ee5f5b4a2f3f9baea2491e23cf983d64bee66999ac3efde6add3b4df9\", \"sha256\": \"9f3b67c352fb02d6635f2e465bc569a306ecf8d6fc85ec44c88e0ff4f4bbfe1c\", \"readout\": {\"wave_frequency\": 2.540421915991544, \"wave_pocket_fraction\": 0.9494501441815845, \"wave_loss_rate\": 0.011944144089653061, \"pole_amplitude_loss\": 0.005971629063040578, \"mode_overlap\": 0.9999999999999996, \"pole_residual\": 1.7249460545127953e-12, \"wave_minimum_cell_order\": 0.49630364854482406, \"zero_cells\": 0, \"inactive_nodes\": 0, \"wave_components\": 1, \"detached_mode\": false}, \"recovered_relative_residual\": 1.7247484554259902e-12}\n{\"kind\": \"axial_label\", \"step\": 0.002, \"measured\": -0.03449501286734158, \"reciprocal\": -0.034496052669476814}\n{\"kind\": \"axial_label\", \"step\": 0.001, \"measured\": -0.034266170470864665, \"reciprocal\": -0.0342662495689991}\n"
+    },
+    "r2n72q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_strained_wave.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "3"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "9e6b10b1f8678f035dd93a0920103138cf205e1ff38e67ae8a618b2227bcd564",
+      "literal_stdout": "{\"kind\": \"strained\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 3, \"former_frequency\": 4.826480077134191, \"readout\": {\"wave_frequency\": 2.5279792599994533, \"wave_pocket_fraction\": 0.9534089574316117, \"wave_loss_rate\": 0.010939187526942501, \"pole_amplitude_loss\": 0.005469210077741155, \"mode_overlap\": 1.0, \"pole_residual\": 7.990249241311199e-14, \"wave_minimum_cell_order\": 0.492608369565419, \"zero_cells\": 0, \"inactive_nodes\": 0, \"wave_components\": 1, \"detached_mode\": false}, \"undeformed_matrix_errors\": [2.614561604373106e-15, 4.8666490407255805e-15], \"continuation\": [[0.02, 4.880255358067848, 0.9885179132964423], [0.046, 4.829263792173506, 0.978387266209805], [0.07980000000000001, 4.637392088804202, 0.9690998998843044], [0.12374000000000002, 4.33593764010314, 0.9705335968860617], [0.18086200000000002, 3.9980691561722295, 0.9714113303687709], [0.25512060000000003, 3.67021437210385, 0.9778036571152587], [0.35165678000000006, 3.368557725510605, 0.9844567963270808], [0.4771538140000001, 3.096678497150267, 0.9872857434383975], [0.6371538140000002, 2.858235311614732, 0.9892619535468331], [0.7971538140000002, 2.687969097513273, 0.9939621899281517], [0.9571538140000002, 2.5580979245567574, 0.996256369402655], [1.0, 2.5279792599994533, 0.999779450340975]], \"minimum_overlap\": 0.9690998998843044}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"order\", \"step\": 0.001, \"predicted\": 0.0005474843340554079, \"measured\": 0.0005474843276509489}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"order\", \"step\": 0.0005, \"predicted\": 0.0005474843340554079, \"measured\": 0.0005474843751684944}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"radial\", \"step\": 0.001, \"predicted\": 0.4815102513253099, \"measured\": 0.4815117657950285}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"radial\", \"step\": 0.0005, \"predicted\": 0.4815101050693204, \"measured\": 0.481510483686165}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"axial\", \"step\": 0.001, \"predicted\": 0.05087442847372695, \"measured\": 0.050874429860181536}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"axial\", \"step\": 0.0005, \"predicted\": 0.05087442959503435, \"measured\": 0.05087442991058566}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"spacing\", \"step\": 0.001, \"predicted\": 0.006006570321062456, \"measured\": 0.0059696334901993}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 3, \"axis\": \"spacing\", \"step\": 0.0005, \"predicted\": 0.006593746930746375, \"measured\": 0.006567731770878993}\n"
+    },
+    "release_r2n72q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "3",
+        "--adopt"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "b144f511dcf8dbc0efe5facba98b8d78f30a7dde7f90e4a2f796cdc28c993edb",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 2, \"n\": 72, \"quad\": 3, \"source_sha256\": \"9d5d2ca2e5f456c899fe6b24792af43d9276d51052a52f84e36b05d5efa05b32\", \"graph_sha256\": \"8af5e05ee5f5b4a2f3f9baea2491e23cf983d64bee66999ac3efde6add3b4df9\", \"sha256\": \"9c01f707f94c35c9c3bd9a66878e9e1e99fda599ecb9271e55e4fb61b90b18d9\", \"readout\": {\"wave_frequency\": 2.537583546094775, \"wave_pocket_fraction\": 0.9495494809943696, \"wave_loss_rate\": 0.011880912594756371, \"pole_amplitude_loss\": 0.005940015368548103, \"mode_overlap\": 1.0, \"pole_residual\": 1.3594653121208877e-12, \"wave_minimum_cell_order\": 0.492608369565419, \"zero_cells\": 0, \"inactive_nodes\": 0, \"wave_components\": 1, \"detached_mode\": false}, \"recovered_relative_residual\": 1.359322549785357e-12}\n{\"kind\": \"axial_label\", \"step\": 0.002, \"measured\": -0.03659974895398044, \"reciprocal\": -0.036599070885820865}\n{\"kind\": \"axial_label\", \"step\": 0.001, \"measured\": -0.03659916211606884, \"reciprocal\": -0.036598992848679276}\n"
+    },
+    "r2n72q5": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_strained_wave.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "5"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "903aebacdd2fb78576f4777cd7123821895c936d18b48853d82d272bd1a7ab86",
+      "literal_stdout": "{\"kind\": \"strained\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 5, \"former_frequency\": 4.826480077134191, \"readout\": {\"wave_frequency\": 2.52798056688324, \"wave_pocket_fraction\": 0.9534091877707316, \"wave_loss_rate\": 0.010939138891858054, \"pole_amplitude_loss\": 0.005469185764424406, \"mode_overlap\": 1.0, \"pole_residual\": 7.761301807763253e-14, \"wave_minimum_cell_order\": 0.492608369565419, \"zero_cells\": 0, \"inactive_nodes\": 0, \"wave_components\": 1, \"detached_mode\": false}, \"undeformed_matrix_errors\": [2.614561604373106e-15, 4.8666490407255805e-15], \"continuation\": [[0.02, 4.8802553456787425, 0.9885179071339575], [0.046, 4.829263719095262, 0.9783873142765858], [0.07980000000000001, 4.6373922977395505, 0.9691002606509341], [0.12374000000000002, 4.335938745452529, 0.9705341343451582], [0.18086200000000002, 3.9980711799082886, 0.9714117960908407], [0.25512060000000003, 3.6702169023011746, 0.9778039077110139], [0.35165678000000006, 3.3685603463438323, 0.9844569244405391], [0.4771538140000001, 3.0966809093847694, 0.9872858239495028], [0.6371538140000002, 2.8582373433847175, 0.9892619885901454], [0.7971538140000002, 2.6879707711426817, 0.9939621957101334], [0.9571538140000002, 2.5580992994561655, 0.9962563680396008], [1.0, 2.52798056688324, 0.9997794501046823]], \"minimum_overlap\": 0.9691002606509341}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"order\", \"step\": 0.001, \"predicted\": 0.0005474824527710823, \"measured\": 0.0005474824305018444}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"order\", \"step\": 0.0005, \"predicted\": 0.0005474824527710823, \"measured\": 0.000547482404300581}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"radial\", \"step\": 0.001, \"predicted\": 0.48152426712676016, \"measured\": 0.4815257815586893}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"radial\", \"step\": 0.0005, \"predicted\": 0.4815241208965154, \"measured\": 0.48152449950489284}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"axial\", \"step\": 0.001, \"predicted\": 0.05087924686065744, \"measured\": 0.05087924824587198}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"axial\", \"step\": 0.0005, \"predicted\": 0.050879247959516954, \"measured\": 0.050879248345125916}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"spacing\", \"step\": 0.001, \"predicted\": 0.007221837536092166, \"measured\": 0.007220334199864453}\n{\"kind\": \"slope\", \"radius\": 2, \"mesh\": 72, \"quadrature\": 5, \"axis\": \"spacing\", \"step\": 0.0005, \"predicted\": 0.008139516096316048, \"measured\": 0.008145668207504286}\n"
+    },
+    "release_r2n72q5": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "5",
+        "--adopt"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "2bd16321869f747b926f9b61bf56e3dca43c73436909015052eab57adb90a63a",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 2, \"n\": 72, \"quad\": 5, \"source_sha256\": \"ed00d27ea4aa1d57b41580e27413899c9f65d37795cf3b9f66afdc4f0dae05be\", \"graph_sha256\": \"8af5e05ee5f5b4a2f3f9baea2491e23cf983d64bee66999ac3efde6add3b4df9\", \"sha256\": \"80efc0d104a5a2ff49cad3752a6eebb627cbd907a5e8aab8776ab3da53a072ec\", \"readout\": {\"wave_frequency\": 2.5375825187558445, \"wave_pocket_fraction\": 0.9495493208022758, \"wave_loss_rate\": 0.011880944878487803, \"pole_amplitude_loss\": 0.005940031507267505, \"mode_overlap\": 1.0, \"pole_residual\": 1.3494388538286853e-12, \"wave_minimum_cell_order\": 0.492608369565419, \"zero_cells\": 0, \"inactive_nodes\": 0, \"wave_components\": 1, \"detached_mode\": false}, \"recovered_relative_residual\": 1.3497701582631618e-12}\n{\"kind\": \"axial_label\", \"step\": 0.002, \"measured\": -0.036501945504308075, \"reciprocal\": -0.03650015078879329}\n{\"kind\": \"axial_label\", \"step\": 0.001, \"measured\": -0.036496976417055293, \"reciprocal\": -0.03649655368744707}\n"
+    },
+    "profile_r2": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_strained_wave_profile.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "72",
+        "--root",
+        "_scratch/s11c/poly_wave01/r2n72q5",
+        "--source",
+        "_scratch/s11c/poly_wave01/fields/r2n72q5.npz"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "4ba1556df6d225c41b196a9de3b6e43993cb1cc9afead0cde62f415b8dbf51ab",
+      "literal_stdout": "{\"finite_angular_twist\": [{\"J\": 0.128, \"direct\": 20.429645400005946, \"predicted\": 20.429645400000002}, {\"J\": 4.8601875, \"direct\": 8.26187780126334, \"predicted\": 8.261877801262603}]}\n{\"radius\": 2, \"mesh\": 72, \"quad\": 3, \"source_sha256\": \"ed00d27ea4aa1d57b41580e27413899c9f65d37795cf3b9f66afdc4f0dae05be\", \"cavity\": 0.9534090672279185, \"reference_cavity\": 0.9534091877707316, \"fractions\": [0.08479949269558543, 0.09225920896908554, 0.8229412983353428], \"sum_error\": 1.3766765505351941e-14, \"waist\": 0.5424435327855883}\n{\"radius\": 2, \"mesh\": 72, \"quad\": 5, \"source_sha256\": \"ed00d27ea4aa1d57b41580e27413899c9f65d37795cf3b9f66afdc4f0dae05be\", \"cavity\": 0.9534091877707352, \"reference_cavity\": 0.9534091877707316, \"fractions\": [0.08479949667435366, 0.09225922940890637, 0.8229412739167401], \"sum_error\": 2.220446049250313e-16, \"waist\": 0.5424435327855883}\n"
+    },
+    "refitted_profile_r2": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_strained_wave_profile.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "72",
+        "--root",
+        "_scratch/s11c/poly_wave01/release_r2n72q5",
+        "--source",
+        "_scratch/s11c/poly_wave01/fields/selected_r2n72q5.npz",
+        "--check",
+        "selected"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "bf591425d056b9ea45f1270eda9d63f89ba26abbd8cb452876dd4d72090c57c9",
+      "literal_stdout": "{\"finite_angular_twist\": [{\"J\": 0.128, \"direct\": 20.429645400005946, \"predicted\": 20.429645400000002}, {\"J\": 4.8601875, \"direct\": 8.26187780126334, \"predicted\": 8.261877801262603}]}\n{\"radius\": 2, \"mesh\": 72, \"quad\": 3, \"source_sha256\": \"80efc0d104a5a2ff49cad3752a6eebb627cbd907a5e8aab8776ab3da53a072ec\", \"cavity\": 0.9495493399850068, \"reference_cavity\": 0.9495493208022758, \"fractions\": [0.08732902295695766, 0.08643100607295136, 0.8262399709700904], \"sum_error\": -5.551115123125783e-16, \"waist\": 0.5424435327855883}\n{\"radius\": 2, \"mesh\": 72, \"quad\": 5, \"source_sha256\": \"80efc0d104a5a2ff49cad3752a6eebb627cbd907a5e8aab8776ab3da53a072ec\", \"cavity\": 0.9495493208022792, \"reference_cavity\": 0.9495493208022758, \"fractions\": [0.08732900672839021, 0.08643100781901158, 0.8262399854525979], \"sum_error\": -2.220446049250313e-16, \"waist\": 0.5424435327855883}\n"
+    },
+    "bonded_r1n48": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_wave_check.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "48"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "19763bbe9015931c6f5fd00671f1242f9ed3263a7b3cf080444ead093e25e248",
+      "literal_stdout": "{\"kind\": \"bonded_center\", \"radius\": 1, \"mesh\": 48, \"equality\": [0.0, 0.0], \"frequency\": 4.143062344680416}\n{\"kind\": \"signed\", \"axis\": \"radial\", \"radius\": 1, \"mesh\": 48, \"step\": 0.002, \"direct\": 0.06430384085964747, \"reciprocal\": 0.06429518247739978, \"cut_and_shear_errors\": [[5.551115123125783e-17, 5.017156828879266e-12], [5.551115123125783e-17, 6.085136301098304e-12]]}\n{\"kind\": \"signed\", \"axis\": \"radial\", \"radius\": 1, \"mesh\": 48, \"step\": 0.001, \"direct\": 0.06429734713986335, \"reciprocal\": 0.0642951824729826, \"cut_and_shear_errors\": [[5.551115123125783e-17, 4.700407489448277e-12], [5.551115123125783e-17, 7.205947644139954e-12]]}\n{\"kind\": \"signed\", \"axis\": \"axial\", \"radius\": 1, \"mesh\": 48, \"step\": 0.002, \"direct\": 0.0, \"reciprocal\": 7.231098574534161e-13, \"cut_and_shear_errors\": [[0.0, 2.775557561562891e-12], [0.0, 2.775557561562891e-12]]}\n{\"kind\": \"signed\", \"axis\": \"axial\", \"radius\": 1, \"mesh\": 48, \"step\": 0.001, \"direct\": 0.0, \"reciprocal\": 2.5515945355314186e-12, \"cut_and_shear_errors\": [[0.0, 2.775557561562891e-12], [0.0, 2.775557561562891e-12]]}\n{\"kind\": \"signed\", \"axis\": \"spacing\", \"radius\": 1, \"mesh\": 48, \"step\": 0.002, \"direct\": 0.04445801080876777, \"reciprocal\": 0.04442749456363891, \"cut_and_shear_errors\": [[5.551115123125783e-17, 6.2855680946563575e-12], [1.1102230246251565e-16, 6.969267394088541e-12]]}\n{\"kind\": \"signed\", \"axis\": \"spacing\", \"radius\": 1, \"mesh\": 48, \"step\": 0.001, \"direct\": 0.04439391105659496, \"reciprocal\": 0.04438738766885841, \"cut_and_shear_errors\": [[1.1102230246251565e-16, 5.147889330526373e-12], [5.551115123125783e-17, 5.279787369837693e-12]]}\n"
+    },
+    "bonded_r1n72": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_wave_check.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "72"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "c791286d8a125518d47146c3df0f1522e3e9d2425429de74a21467aa262b2e64",
+      "literal_stdout": "{\"kind\": \"bonded_center\", \"radius\": 1, \"mesh\": 72, \"equality\": [0.0, 0.0], \"frequency\": 4.14144905126385}\n{\"kind\": \"signed\", \"axis\": \"radial\", \"radius\": 1, \"mesh\": 72, \"step\": 0.002, \"direct\": 0.04622520965824606, \"reciprocal\": 0.04621559406111339, \"cut_and_shear_errors\": [[5.551115123125783e-17, 5.017156828879266e-12], [5.551115123125783e-17, 6.085136301098304e-12]]}\n{\"kind\": \"signed\", \"axis\": \"radial\", \"radius\": 1, \"mesh\": 72, \"step\": 0.001, \"direct\": 0.04621799805049065, \"reciprocal\": 0.04621559406904523, \"cut_and_shear_errors\": [[5.551115123125783e-17, 4.700407489448277e-12], [5.551115123125783e-17, 7.205947644139954e-12]]}\n{\"kind\": \"signed\", \"axis\": \"axial\", \"radius\": 1, \"mesh\": 72, \"step\": 0.002, \"direct\": 0.0, \"reciprocal\": 2.0856189172390974e-12, \"cut_and_shear_errors\": [[0.0, 2.775557561562891e-12], [0.0, 2.775557561562891e-12]]}\n{\"kind\": \"signed\", \"axis\": \"axial\", \"radius\": 1, \"mesh\": 72, \"step\": 0.001, \"direct\": 0.0, \"reciprocal\": -2.2008069373406125e-13, \"cut_and_shear_errors\": [[0.0, 2.775557561562891e-12], [0.0, 2.775557561562891e-12]]}\n{\"kind\": \"signed\", \"axis\": \"spacing\", \"radius\": 1, \"mesh\": 72, \"step\": 0.002, \"direct\": 0.10003052004559088, \"reciprocal\": 0.0998695959454439, \"cut_and_shear_errors\": [[5.551115123125783e-17, 6.2855680946563575e-12], [1.1102230246251565e-16, 6.969267394088541e-12]]}\n{\"kind\": \"signed\", \"axis\": \"spacing\", \"radius\": 1, \"mesh\": 72, \"step\": 0.001, \"direct\": 0.09946162727825225, \"reciprocal\": 0.09942751619390902, \"cut_and_shear_errors\": [[1.1102230246251565e-16, 5.147889330526373e-12], [5.551115123125783e-17, 5.279787369837693e-12]]}\n"
+    },
+    "bonded_r2n48": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_wave_check.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "48"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "432aa32c8d75e2dd8027a46cb9c1b72b4697b12c86db5db71dc80d2163c18e40",
+      "literal_stdout": "{\"kind\": \"bonded_center\", \"radius\": 2, \"mesh\": 48, \"equality\": [0.0, 0.0], \"frequency\": 2.540421915991544}\n{\"kind\": \"signed\", \"axis\": \"radial\", \"radius\": 2, \"mesh\": 48, \"step\": 0.002, \"direct\": 0.45358370961756656, \"reciprocal\": 0.4535770678912497, \"cut_and_shear_errors\": [[1.1102230246251565e-16, 8.428019566963929e-12], [1.1102230246251565e-16, 8.829319003353375e-12]]}\n{\"kind\": \"signed\", \"axis\": \"radial\", \"radius\": 2, \"mesh\": 48, \"step\": 0.001, \"direct\": 0.4535787283690418, \"reciprocal\": 0.4535770679102286, \"cut_and_shear_errors\": [[1.1102230246251565e-16, 7.38149997939544e-12], [1.1102230246251565e-16, 9.92526026644125e-12]]}\n{\"kind\": \"signed\", \"axis\": \"axial\", \"radius\": 2, \"mesh\": 48, \"step\": 0.002, \"direct\": 0.0, \"reciprocal\": -6.006666893667746e-12, \"cut_and_shear_errors\": [[0.0, 2.7755575615628918e-12], [0.0, 2.7755575615628918e-12]]}\n{\"kind\": \"signed\", \"axis\": \"axial\", \"radius\": 2, \"mesh\": 48, \"step\": 0.001, \"direct\": 0.0, \"reciprocal\": 6.542668828428718e-12, \"cut_and_shear_errors\": [[0.0, 2.7755575615628918e-12], [0.0, 2.7755575615628918e-12]]}\n{\"kind\": \"signed\", \"axis\": \"spacing\", \"radius\": 2, \"mesh\": 48, \"step\": 0.002, \"direct\": 0.03682287411177487, \"reciprocal\": 0.03710508363430833, \"cut_and_shear_errors\": [[5.551115123125783e-17, 7.611424945180856e-12], [5.551115123125783e-17, 8.863393526070684e-12]]}\n{\"kind\": \"signed\", \"axis\": \"spacing\", \"radius\": 2, \"mesh\": 48, \"step\": 0.001, \"direct\": 0.03481066627841756, \"reciprocal\": 0.034908402960900094, \"cut_and_shear_errors\": [[1.1102230246251565e-16, 5.34818109937385e-12], [1.1102230246251565e-16, 8.515339258372001e-12]]}\n"
+    },
+    "bonded_r2n72": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_wave_check.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "72"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "5375b1d38a5514b5a0bc5e83c0d0bf0232aee4fcd194a2f50d3b90b30eb2981e",
+      "literal_stdout": "{\"kind\": \"bonded_center\", \"radius\": 2, \"mesh\": 72, \"equality\": [0.0, 0.0], \"frequency\": 2.537583546094775}\n{\"kind\": \"signed\", \"axis\": \"radial\", \"radius\": 2, \"mesh\": 72, \"step\": 0.002, \"direct\": 0.4514705724645296, \"reciprocal\": 0.45146387227248824, \"cut_and_shear_errors\": [[1.1102230246251565e-16, 8.428019566963929e-12], [1.1102230246251565e-16, 8.829319003353375e-12]]}\n{\"kind\": \"signed\", \"axis\": \"radial\", \"radius\": 2, \"mesh\": 72, \"step\": 0.001, \"direct\": 0.45146554730690625, \"reciprocal\": 0.4514638722340547, \"cut_and_shear_errors\": [[1.1102230246251565e-16, 7.38149997939544e-12], [1.1102230246251565e-16, 9.92526026644125e-12]]}\n{\"kind\": \"signed\", \"axis\": \"axial\", \"radius\": 2, \"mesh\": 72, \"step\": 0.002, \"direct\": 0.0, \"reciprocal\": -1.029053744867172e-12, \"cut_and_shear_errors\": [[0.0, 2.7755575615628918e-12], [0.0, 2.7755575615628918e-12]]}\n{\"kind\": \"signed\", \"axis\": \"axial\", \"radius\": 2, \"mesh\": 72, \"step\": 0.001, \"direct\": 0.0, \"reciprocal\": 2.977828392838098e-12, \"cut_and_shear_errors\": [[0.0, 2.7755575615628918e-12], [0.0, 2.7755575615628918e-12]]}\n{\"kind\": \"signed\", \"axis\": \"spacing\", \"radius\": 2, \"mesh\": 72, \"step\": 0.002, \"direct\": 0.03666795353263197, \"reciprocal\": 0.03664448434462393, \"cut_and_shear_errors\": [[5.551115123125783e-17, 7.611424945180856e-12], [5.551115123125783e-17, 8.863393526070684e-12]]}\n{\"kind\": \"signed\", \"axis\": \"spacing\", \"radius\": 2, \"mesh\": 72, \"step\": 0.001, \"direct\": 0.03795282156970892, \"reciprocal\": 0.03787746378332796, \"cut_and_shear_errors\": [[1.1102230246251565e-16, 5.34818109937385e-12], [1.1102230246251565e-16, 8.515339258372001e-12]]}\n"
+    }
+  },
+  "failed_signed_stage": {
+    "selected_r1n48q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "48",
+        "--quadrature",
+        "3"
+      ],
+      "guard_and_worker_exit": 1,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "deb9aaa55f406cac5bab70d02bc8867e2c516789a7644adbe664c839eb4b6803",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 1, \"n\": 48, \"quad\": 3, \"source_sha256\": \"0f2e970b6643303214381de0a8cdc4db267bcea6cac463fc17603794768e0368\", \"graph_sha256\": \"785c0139b1b2e77c73c88f403a24d7aa47e8da7d64e0a99319618e967148efe8\", \"sha256\": \"2dd1cfe5628b3906e4a8adca9e51d575fc2f3cfed5cd5e3fee020f5396bd06f4\", \"readout\": {\"wave_frequency\": 4.143062344680416, \"wave_pocket_fraction\": 0.9652128123534168, \"wave_loss_rate\": 0.00538707281546831, \"pole_amplitude_loss\": 0.0026935201138640345, \"mode_overlap\": 1.0, \"pole_residual\": 5.121383193747106e-15, \"wave_minimum_cell_order\": 0.0, \"zero_cells\": 8, \"inactive_nodes\": 2, \"wave_components\": 1, \"detached_mode\": false}}\n",
+      "terminal_error": "ValueError: operands could not be broadcast together with shapes (546,) (546,4) "
+    },
+    "selected_r1n72q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "3"
+      ],
+      "guard_and_worker_exit": 1,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "c60247ab8dc7e0ec262c066ddb0a99f410f98e1fe2a85eb5e475b0349112d297",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 1, \"n\": 72, \"quad\": 3, \"source_sha256\": \"b36acdffc1dbfa0db6f60e73887cf1b95da806105087ac9d2eb0b7294374b3a2\", \"graph_sha256\": \"785c0139b1b2e77c73c88f403a24d7aa47e8da7d64e0a99319618e967148efe8\", \"sha256\": \"d842a17d014571190ed5ff73775cfac2c680484d390f999c37f4470b0e13908b\", \"readout\": {\"wave_frequency\": 4.14144905126385, \"wave_pocket_fraction\": 0.9647851147194829, \"wave_loss_rate\": 0.005429199980343848, \"pole_amplitude_loss\": 0.002714583455890007, \"mode_overlap\": 1.0, \"pole_residual\": 1.2359188664665284e-14, \"wave_minimum_cell_order\": 0.0, \"zero_cells\": 22, \"inactive_nodes\": 11, \"wave_components\": 1, \"detached_mode\": false}}\n",
+      "terminal_error": "ValueError: operands could not be broadcast together with shapes (1120,) (1120,4) "
+    },
+    "selected_r1n72q5": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "1",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "5"
+      ],
+      "guard_and_worker_exit": 1,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "ec7439e73aeafade2b1d154138e31182a3ad5e1ead85fa73e5698624c1b6b306",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 1, \"n\": 72, \"quad\": 5, \"source_sha256\": \"e5670a23ec487e9c061654e9313bd36416af1e90c5410a07e9ea4308acb50f5b\", \"graph_sha256\": \"785c0139b1b2e77c73c88f403a24d7aa47e8da7d64e0a99319618e967148efe8\", \"sha256\": \"8f23990d75033061f3f37f34599c3808d8900f9755f4221cf6587516d1185179\", \"readout\": {\"wave_frequency\": 4.141370985095261, \"wave_pocket_fraction\": 0.9647712408714291, \"wave_loss_rate\": 0.005431259390103249, \"pole_amplitude_loss\": 0.00271561314776674, \"mode_overlap\": 1.0, \"pole_residual\": 1.7115094748081432e-14, \"wave_minimum_cell_order\": 0.0, \"zero_cells\": 22, \"inactive_nodes\": 11, \"wave_components\": 1, \"detached_mode\": false}}\n",
+      "terminal_error": "ValueError: operands could not be broadcast together with shapes (1120,) (1120,4) "
+    },
+    "selected_r2n48q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "48",
+        "--quadrature",
+        "3"
+      ],
+      "guard_and_worker_exit": 1,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "13626ad0d3d97e700812c46188956bad051db75ade0cd10994adb57cb3c8a26d",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 2, \"n\": 48, \"quad\": 3, \"source_sha256\": \"9064b2e09c69b1cd5f03ccbed304cb367803536bc2a9f416130eb9c6fe72f4da\", \"graph_sha256\": \"8af5e05ee5f5b4a2f3f9baea2491e23cf983d64bee66999ac3efde6add3b4df9\", \"sha256\": \"9f3b67c352fb02d6635f2e465bc569a306ecf8d6fc85ec44c88e0ff4f4bbfe1c\", \"readout\": {\"wave_frequency\": 2.540421915991544, \"wave_pocket_fraction\": 0.9494501441815845, \"wave_loss_rate\": 0.011944144089653061, \"pole_amplitude_loss\": 0.005971629063040578, \"mode_overlap\": 0.9999999999999996, \"pole_residual\": 1.7249460545127953e-12, \"wave_minimum_cell_order\": 0.49630364854482406, \"zero_cells\": 0, \"inactive_nodes\": 0, \"wave_components\": 1, \"detached_mode\": false}}\n",
+      "terminal_error": "ValueError: operands could not be broadcast together with shapes (1092,) (1092,4) "
+    },
+    "selected_r2n72q3": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "3"
+      ],
+      "guard_and_worker_exit": 1,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "e2e1d4ba6ab6e3da6e6b80840e60289676e54841630db2ba6fe7560c924f4fed",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 2, \"n\": 72, \"quad\": 3, \"source_sha256\": \"9d5d2ca2e5f456c899fe6b24792af43d9276d51052a52f84e36b05d5efa05b32\", \"graph_sha256\": \"8af5e05ee5f5b4a2f3f9baea2491e23cf983d64bee66999ac3efde6add3b4df9\", \"sha256\": \"9c01f707f94c35c9c3bd9a66878e9e1e99fda599ecb9271e55e4fb61b90b18d9\", \"readout\": {\"wave_frequency\": 2.537583546094775, \"wave_pocket_fraction\": 0.9495494809943696, \"wave_loss_rate\": 0.011880912594756371, \"pole_amplitude_loss\": 0.005940015368548103, \"mode_overlap\": 1.0, \"pole_residual\": 1.3594653121208877e-12, \"wave_minimum_cell_order\": 0.492608369565419, \"zero_cells\": 0, \"inactive_nodes\": 0, \"wave_components\": 1, \"detached_mode\": false}}\n",
+      "terminal_error": "ValueError: operands could not be broadcast together with shapes (2220,) (2220,4) "
+    },
+    "selected_r2n72q5": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_poly_wave_release.py",
+        "--radius",
+        "2",
+        "--mesh",
+        "72",
+        "--quadrature",
+        "5"
+      ],
+      "guard_and_worker_exit": 1,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "af6ad6dce6ce127d95a5a46035555eb0791755349f9b27f81937dc79ca28571c",
+      "literal_stdout": "{\"kind\": \"selected\", \"radius\": 2, \"n\": 72, \"quad\": 5, \"source_sha256\": \"ed00d27ea4aa1d57b41580e27413899c9f65d37795cf3b9f66afdc4f0dae05be\", \"graph_sha256\": \"8af5e05ee5f5b4a2f3f9baea2491e23cf983d64bee66999ac3efde6add3b4df9\", \"sha256\": \"80efc0d104a5a2ff49cad3752a6eebb627cbd907a5e8aab8776ab3da53a072ec\", \"readout\": {\"wave_frequency\": 2.5375825187558445, \"wave_pocket_fraction\": 0.9495493208022758, \"wave_loss_rate\": 0.011880944878487803, \"pole_amplitude_loss\": 0.005940031507267505, \"mode_overlap\": 1.0, \"pole_residual\": 1.3494388538286853e-12, \"wave_minimum_cell_order\": 0.492608369565419, \"zero_cells\": 0, \"inactive_nodes\": 0, \"wave_components\": 1, \"detached_mode\": false}}\n",
+      "terminal_error": "ValueError: operands could not be broadcast together with shapes (2220,) (2220,4) "
+    }
+  },
+  "review": {
+    "verdict": "Scoped clear for the incremental torsional operator, active-support pole and reciprocal derivative on the stated held reference and coherent joining assumptions.",
+    "qualifications": "Neutral reference, joint displacement and AC transmission are externally chosen for the unresolved ordered-core continuation. The released force is the occupied wave partial derivative. One-sided reopening of missing shear degrees is a separate order stability test. The calculated poles have positive energy loss into the feeding slab.",
+    "guarded_independent_check": {
+      "command": [
+        "python3",
+        "_scratch/s11c/neutral_poly01/wave_review/check.py"
+      ],
+      "guard_and_worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 1073741824,
+      "swap_max_bytes": 0,
+      "stdout_sha256": "c9e6976166e6d22ad23c8690bd8bed3018bab3f86f42a543112b68934ff12488",
+      "literal_stdout": "{\"R\": 1, \"reference_stiff\": 3.1060973902646274, \"cavity_stiff\": 3.1060973902646185, \"reference_mass\": 0.22679664781059503, \"cavity_mass\": 0.22679664781059505, \"relative_stiff\": -2.886579864025407e-15, \"relative_mass\": 2.220446049250313e-16, \"rigid_normalized\": 8.091279850179829e-19}\n{\"R\": 2, \"reference_stiff\": 5.33928601678995, \"cavity_stiff\": 5.339286016789654, \"reference_mass\": 1.2709670815544865, \"cavity_mass\": 1.270967081554483, \"relative_stiff\": -5.551115123125783e-14, \"relative_mass\": -2.7755575615628914e-15, \"rigid_normalized\": 1.661978280971439e-18}\n"
+    },
+    "independent_source": "from pathlib import Path\nimport sys,json\nsys.path.insert(0,'software/stage1_solver/tools')\nimport numpy as np\nfrom numpy.polynomial.legendre import leggauss,legval,legder\nfrom mouth_strained_wave import cell_tangents\nfrom mouth_live_waist_wave import OccupiedWave\nfrom mouth_sealed_shape_relax import Meridian\nfor R in (1,2):\n src=Path(f'_scratch/s11c/finite_bore_graph01/fields/r{R}_unit_g2_ordered.npz')\n with np.load(src) as v:\n  shape=Meridian(R,v['coordinates']);c=v['coeffs']\n m=20;op=OccupiedWave(shape,72,144,m,4.2);L=shape.length\n K,M=cell_tangents(op,shape,c,5,4)\n nz=len(K)//m\n i,j=np.indices((m,nz)).reshape(2,-1)\n X=i[:,None]/m+np.array([0,1,0,1])[None,:]/m\n T=j[:,None]/nz+np.array([0,0,1,1])[None,:]/nz\n def f(x,t): return 1+.12*x+.2*t+.07*x*t\n U=f(X,T)\n k=float(np.einsum('si,sij,sj->',U,K,U));mass=float(np.einsum('si,sij,sj->',U,M,U))\n angles=18.\n def quad(n):\n  q,w=leggauss(n);q=(q+1)/2;w=w/2\n  t=q[:,None];b,sl,_=shape.profile(t)\n  p=np.exp(legval(2*t-1,c));pt=p*2*legval(2*t-1,legder(c))\n  a=q[None,:]/2; S=R+a;x=np.exp(-p*a);r=x*b\n  fS=-(.12+.07*t)*p*x\n  fZ=-(.2+.07*x-(.12+.07*t)*pt*a*x)\n  elastic=r*r*(fS*fS+fZ*fZ)+angles*(r/S)**2*f(x,t)**2\n  wt=(w[:,None]*w[None,:]/2)*S**2\n  kk=np.sum(wt*elastic);mm=np.sum(wt*r*r*f(x,t)**2)\n  cut=np.exp(-.5*p);x=cut*q[None,:];r=x*b;\n  fr=(.12+.07*t)/b;fw=(.2+.07*x)/L-x*sl*fr\n  wt=w[:,None]*w[None,:]*cut*L*b*r**2\n  kk+=np.sum(wt*(r*r*(fr*fr+fw*fw)+angles*f(x,t)**2))\n  mm+=np.sum(wt*r*r*f(x,t)**2)\n  return kk,mm\n kr,mr=quad(160)\n KA,_=cell_tangents(op,shape,c,5,1);rigid=abs(np.sum(KA))/max(abs(KA).sum(),1)\n print(json.dumps(dict(R=R,reference_stiff=kr,cavity_stiff=k,reference_mass=mr,cavity_mass=mass,\n                       relative_stiff=k/kr-1,relative_mass=mass/mr-1,rigid_normalized=rigid)),flush=True)\n assert max(abs(k/kr-1),abs(mass/mr-1),rigid)<3e-5\n"
+  },
+  "as_run_variants": {
+    "initial_operator": {
+      "sha256": "bf63f8ac39791997d8da0daa99e35d8d4ac1990b44af26ff062399b0f87bc973",
+      "scope": "Initial six probes before adding the signed internal axial-coordinate variation (same h=0 physics)."
+    },
+    "first_internal_displacement": {
+      "source_sha256": "dd8a2e20be3d24fd9e6d3f4ba633d83412951063c278bd4dad36f84cad197b19",
+      "import_sha256": "8bf152a38c01a555989b43733894018fe6fac02b52a4d2234eb2349ee2ced0a8",
+      "scope": "Stored all six reference poles. Subsequent optional signed work hit an array-axis mismatch. The separate release runs adopted saved poles by hash, eigenpair residual and norm, then completed the signed probes."
+    },
+    "stress_free_core": {
+      "sha256": "657dda3f2fbebfe4b50d6957dc942affae3818cc396b76f0a30f18dd291da8b9",
+      "scope": "All previous runs and independent energy audit used a locally stress-free central pocket. The optional bonded reference reproduces their starting pencils. Only bonded_r1n48 through bonded_r2n72 keep the same central material reference for both signs of the subsequent shape and collar-spacing displacements."
+    }
+  },
+  "bonded_core": {
+    "scope": "Conditional separately formed central pocket, stress-free in its saved shallow shape, shifts with the inner collar cut. The slow reference shape and the coherent angular displacement are continuous at their join. The axial coordinate is the unreleased plane. Forces at fixed action are minus the frequency derivatives. Holding chi on the chart differs from freely relaxing the order field."
+  }
+}

@@ -26,7 +26,7 @@ def archived_shape(radius, state):
     return np.array(sample["coordinates"])
 
 
-def exterior(shape, mesh, cut=4.6, *, return_side_field=False):
+def exterior(shape, mesh, cut=4.6, *, return_side_field=False, side_order_work=None):
     # Three material blocks meet at the disk rim. The receiver wraps the
     # outside of the duct and occupies the whole domain above the terminal disk.
     t = np.linspace(0, 1, mesh+1)
@@ -58,7 +58,7 @@ def exterior(shape, mesh, cut=4.6, *, return_side_field=False):
                 boundary[node] = 0.
             elif i == len(xt)-1 and not inner:
                 boundary[node] = expit(-zt[j]/DELTA)
-        if return_side_field and not above:
+        if (return_side_field or side_order_work is not None) and not above:
             side_ids = ids
         e = np.stack([ids[:-1, :-1], ids[:-1, 1:], ids[1:, :-1], ids[1:, 1:]], -1)
         dx = np.diff(xt)[None, :]
@@ -107,6 +107,41 @@ def exterior(shape, mesh, cut=4.6, *, return_side_field=False):
 
     def energy(c):
         return c@(stiff@c) + vol@((c*(1-c))**2)
+
+    if side_order_work is not None:
+        from scipy.optimize import minimize
+        # The supplied coefficient multiplies the physical nodal order once.
+        source = np.zeros_like(chi)
+        source[side_ids] = side_order_work(wa, xout)
+        scale = np.sqrt((2*stiff.diagonal()+2*vol)[free])
+        well = 3/DELTA
+
+        def objective(x):
+            c = chi.copy()
+            c[free] = x/scale
+            g = 2*(stiff@c) + vol*2*c*(1-c)*(1-2*c) + source/well
+            return energy(c) + source@c/well, g[free]/scale
+
+        sol = minimize(objective, chi[free]*scale, jac=True, method="L-BFGS-B",
+                       bounds=list(zip(np.zeros_like(scale), scale)),
+                       options=dict(gtol=2e-8, ftol=3e-16, maxiter=2000, maxls=40))
+        chi[free] = sol.x/scale
+        value, gradient = objective(sol.x)
+        projected = sol.x-np.clip(sol.x-gradient, 0, scale)
+        residual = np.max(abs(projected))
+        # A line search can hit objective roundoff at an already stationary
+        # solution. Verify the projected gradient and an actual feasible step.
+        plateau = (sol.status == 2 and residual < 2e-7 and
+                   objective(sol.x-projected)[0] >= value-16*np.spacing(abs(value)))
+        if (not np.isfinite(value + residual) or residual > 7e-6
+                or not (sol.success or plateau)):
+            raise ArithmeticError(f"Receiving order search failed at residual {residual}: {sol.message}")
+        result = dict(energy=well*energy(chi), static_work=source@chi,
+                      residual=residual, iterations=sol.nit,
+                      minimum_order=min(chi), maximum_order=max(chi))
+        if return_side_field:
+            return result, (wa, xout, chi[side_ids])
+        return result
 
     for iteration in range(60):
         residual = (2*(stiff@chi) + vol*(2*chi*(1-chi)*(1-2*chi)))[free]

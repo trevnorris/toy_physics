@@ -1,0 +1,16 @@
+# What happens when the downstream exit is free?
+
+**Both training mouths drain through a finite opening after release, but further narrowing still lowers their energy once the crystal can rearrange locally.** The tests exclude self-support at the sampled states. A smaller stable opening and complete healing both remain possible.
+
+The reversible order equation permits melting. It supplies no rule for choosing which lattice points meet again. We kept the core bonded to its original collar points, skipped the neutral-pocket stretch, and used the same preparation at both radii. We kept the reservoir phase difference, two-sided carrier stress and strain-dependent wave at unit stored action. The entrance radius stayed fixed while the four coordinates below varied together. [Bond audit](mouth_exit_bond_audit.md)
+
+| Entrance radius | Exit radius before → after | Depth after | Inward current after | Cavity share of wave kinetic energy before → after |
+|---:|---:|---:|---:|---:|
+| 1 | 0.73437 → 0.44978 | 0.69226 | 0.28639 | 92.87% → 90.76% |
+| 2 | 1.28925 → 1.03697 | 0.82834 | 1.32343 | 86.69% → 82.81% |
+
+**What supports these shapes?** The table gives the finer of two meshes, in model units. Both meshes found a local energy minimum in exit radius, depth, waist width and one spatial order variation. The coarse exit radii were 0.46202 and 1.01986. At the refined minima the elastic energy slopes per unit increase in log exit radius were −2.84427 and −21.66036, compared with wave slopes of −0.15456 and −0.39925. The stretched crystal supplies most of the outward force. Order and carrier stress oppose it. Radiated power per unit stored wave energy rose from 0.01111 to 0.01485 and from 0.03256 to 0.04439 as the openings narrowed. [Signed work, wave loss and independent checks](../../../research/pde_ledger_v3/_measurements/mouth_exit_release.json)
+
+**What breaks the balance?** Independent changes in wall asymmetry, material spacing and local order lower energy. At radius 1, direct tests confirmed that some previously melted material prefers to reorder. After allowing all free interior order values to move, a simultaneous change in shape and order narrowed the refined exit to 0.44828 and lowered energy by 0.01635 while it still drained. At radius 2 the coarse shear-bearing region split, and the calculation could no longer track the occupied wave unambiguously through further order changes. At the finer radius-2 run’s saved iteration 2325 the region was still connected. Narrowing that exit by about 0.1% lowered energy by 0.01672 with order held and by 0.01681 with a simultaneous local order change. Widening raised energy. This reading comes from an ongoing refinement. [Measured work and scoped review](../../../research/pde_ledger_v3/_measurements/mouth_exit_release.json)
+
+**What would settle the outcome?** Follow the wave energy as shear-bearing regions lose contact, with a downstream interface that can physically close. The current family of shapes enforces a positive exit radius and a half-ordered terminal interface. An unresolved wave or a locally reordered site cannot establish whole-mouth healing. Radius 3 remains reserved. [0PN roadmap](../../../docs/zero_pn_free_fall_roadmap.md)

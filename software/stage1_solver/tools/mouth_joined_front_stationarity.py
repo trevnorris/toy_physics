@@ -5,7 +5,7 @@ import numpy as np
 from mouth_joined_front_audit import run
 from mouth_supercore_joined_front import Joined,check_guard,emit
 
-def solve(self,rest):
+def solve(self,rest,*,tolerance=2e-7):
     base=self.seed.copy()
     if rest:base[1]=0.
     if self.warm_path:
@@ -20,7 +20,7 @@ def solve(self,rest):
     small=0;restarts=0
     for iteration in range(700):
         z=self.norm(g);err=max(abs(z))
-        if err<2e-7:
+        if err<tolerance:
             return self.unpack(x,base),dict(iterations=iteration,energy=E,stationarity=err,
                                              gradient_integral_steps=small,restarts=restarts)
         q=g.copy();coeffs=[]

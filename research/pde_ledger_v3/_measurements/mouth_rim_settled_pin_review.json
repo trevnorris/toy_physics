@@ -1,0 +1,302 @@
+{
+  "method": "Independent subtraction of signed energies within each preparation, direct checks of every saved field and its reported displacement.",
+  "producer": "software/stage1_solver/tools/mouth_rim_settled_pin_review.py",
+  "producer_sha256": "fba803bc32cb356f7abddea69653eded22657ebe0e9c697d2d92504e6442142c",
+  "checked_output_sha256": "f4287934362675f804643513a312351272cf0c7c157363aea9ef49a28ca11179",
+  "grids": {
+    "double": {
+      "result_sha256": "4c636d23b7b6e968b3471b241a4d3998d9ec1c0ddf7e0a9c6341b9c9507b0703",
+      "maximum_residual": 4.830019547332246e-09,
+      "maximum_current_difference": 2.042810365310288e-13,
+      "reactions": {
+        "four": {
+          "plus": {
+            "energy": 0.02880004565941618,
+            "frozen_energy": 0.028555644016048373,
+            "order_pin_relative_to_carried": 0.00229004619711759,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.028783061142045072
+          },
+          "plus_half": {
+            "energy": 0.028791537487471427,
+            "frozen_energy": 0.02866943913382158,
+            "order_pin_relative_to_carried": 0.002289714728931358,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.02878311639162866
+          },
+          "minus": {
+            "energy": 0.028277500885298675,
+            "frozen_energy": 0.028521949457793735,
+            "order_pin_relative_to_carried": 0.0018000006818397194,
+            "crystal_pin_relative_to_fixed_nodal_load": -0.0,
+            "local_prediction": 0.028293970009218742
+          },
+          "minus_half": {
+            "energy": 0.028285671027639122,
+            "frozen_energy": 0.02840795392256012,
+            "order_pin_relative_to_carried": 0.0018000633872361502,
+            "crystal_pin_relative_to_fixed_nodal_load": -0.0,
+            "local_prediction": 0.0282939320100282
+          },
+          "centered": {
+            "energy": 0.028538773272357428,
+            "frozen_energy": 0.028538796736921054,
+            "order_pin_relative_to_carried": 0.002045023439478655,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.028538515575631907
+          },
+          "centered_half": {
+            "energy": 0.028538604257555274,
+            "frozen_energy": 0.02853869652819085,
+            "order_pin_relative_to_carried": 0.002044889058083754,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.028538524200828433
+          }
+        },
+        "eight": {
+          "plus": {
+            "energy": 0.0289199616032576,
+            "frozen_energy": 0.02862734204134298,
+            "order_pin_relative_to_carried": 0.0025657492130903847,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.028902840841197278
+          },
+          "plus_half": {
+            "energy": 0.028911472660375633,
+            "frozen_energy": 0.0287651886754503,
+            "order_pin_relative_to_carried": 0.002565476364679853,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.02890290724041021
+          },
+          "minus": {
+            "energy": 0.02839715187441527,
+            "frozen_energy": 0.028689858699859624,
+            "order_pin_relative_to_carried": 0.0020758479379878736,
+            "crystal_pin_relative_to_fixed_nodal_load": -0.0,
+            "local_prediction": 0.028413794297404302
+          },
+          "minus_half": {
+            "energy": 0.02840532771219983,
+            "frozen_energy": 0.028551803654686122,
+            "order_pin_relative_to_carried": 0.0020758658791919515,
+            "crystal_pin_relative_to_fixed_nodal_load": -0.0,
+            "local_prediction": 0.02841374515353074
+          },
+          "centered": {
+            "energy": 0.028658556738836435,
+            "frozen_energy": 0.028658600370601302,
+            "order_pin_relative_to_carried": 0.002320798575539129,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.02865831756930079
+          },
+          "centered_half": {
+            "energy": 0.028658400186287732,
+            "frozen_energy": 0.02865849616506821,
+            "order_pin_relative_to_carried": 0.002320671121935902,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.028658326196970476
+          }
+        },
+        "four_minus_eight": {
+          "plus": {
+            "energy": 0.0006309608280297141,
+            "frozen_energy": 0.00037783609574404403,
+            "order_pin_relative_to_carried": -5.550759851757902e-06,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00016783764370578147,
+            "local_prediction": 0.0006293943129954758
+          },
+          "plus_half": {
+            "energy": 0.0006312173450595537,
+            "frozen_energy": 0.0005044861861591698,
+            "order_pin_relative_to_carried": -1.7408297026122452e-06,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00016770256285902508,
+            "local_prediction": 0.0006293942819656209
+          },
+          "minus": {
+            "energy": 0.0006313667033630566,
+            "frozen_energy": 0.0008844101451188634,
+            "order_pin_relative_to_carried": 5.5308424506961265e-06,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00016745029979229332,
+            "local_prediction": 0.0006293941888926055
+          },
+          "minus_half": {
+            "energy": 0.0006312412592635042,
+            "frozen_energy": 0.0007577829030935844,
+            "order_pin_relative_to_carried": 1.5777157358343172e-06,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00016759426587524478,
+            "local_prediction": 0.0006293942200398422
+          },
+          "centered": {
+            "energy": 0.0006311637656963853,
+            "frozen_energy": 0.0006311231204314537,
+            "order_pin_relative_to_carried": -9.958700530887654e-09,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0001676439717490374,
+            "local_prediction": 0.0006293942509440406
+          },
+          "centered_half": {
+            "energy": 0.000631229302161529,
+            "frozen_energy": 0.0006311345446263772,
+            "order_pin_relative_to_carried": -8.1556983388964e-08,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00016764841436713493,
+            "local_prediction": 0.0006293942510027315
+          }
+        }
+      },
+      "receiving_four_minus_eight": {
+        "plus": -0.0001199159438414199,
+        "plus_half": -0.00011993517290420641,
+        "minus": -0.00011965098911659311,
+        "minus_half": -0.00011965668456070944,
+        "centered": -0.0001197834664790065,
+        "centered_half": -0.00011979592873245792
+      }
+    },
+    "local": {
+      "result_sha256": "b265e1a2de2d89af5c48d460131254b69704c0cbc1de9dbd5cbbdde249157fdf",
+      "maximum_residual": 4.988118115077945e-09,
+      "maximum_current_difference": 4.369837824924616e-13,
+      "reactions": {
+        "four": {
+          "plus": {
+            "energy": 0.02574484753159467,
+            "frozen_energy": 0.025506404954800384,
+            "order_pin_relative_to_carried": 0.0021116546733424,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.025727794809010395
+          },
+          "plus_half": {
+            "energy": 0.025736503972417776,
+            "frozen_energy": 0.025617184440385184,
+            "order_pin_relative_to_carried": 0.0021113550019435934,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.025727841051108754
+          },
+          "minus": {
+            "energy": 0.02544121193714943,
+            "frozen_energy": 0.02567957189114622,
+            "order_pin_relative_to_carried": 0.0018406488777600314,
+            "crystal_pin_relative_to_fixed_nodal_load": -0.0,
+            "local_prediction": 0.02545795469818246
+          },
+          "minus_half": {
+            "energy": 0.02544956119177044,
+            "frozen_energy": 0.025568732930913992,
+            "order_pin_relative_to_carried": 0.0018408066182473701,
+            "crystal_pin_relative_to_fixed_nodal_load": -0.0,
+            "local_prediction": 0.025457915466866984
+          },
+          "centered": {
+            "energy": 0.02559302973437205,
+            "frozen_energy": 0.025592988422973303,
+            "order_pin_relative_to_carried": 0.001976151775551216,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.02559287475359643
+          },
+          "centered_half": {
+            "energy": 0.025593032582094107,
+            "frozen_energy": 0.025592958685649588,
+            "order_pin_relative_to_carried": 0.001976080810095482,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.02559287825898787
+          }
+        },
+        "eight": {
+          "plus": {
+            "energy": 0.02576648204799525,
+            "frozen_energy": 0.025480508158981504,
+            "order_pin_relative_to_carried": 0.0023526339987256506,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.025749333302919467
+          },
+          "plus_half": {
+            "energy": 0.025758062660585775,
+            "frozen_energy": 0.02561503362752404,
+            "order_pin_relative_to_carried": 0.002352324202092859,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.025749389392534256
+          },
+          "minus": {
+            "energy": 0.025462805564036014,
+            "frozen_energy": 0.02574857749237935,
+            "order_pin_relative_to_carried": 0.0020817694235120143,
+            "crystal_pin_relative_to_fixed_nodal_load": -0.0,
+            "local_prediction": 0.025479532574652047
+          },
+          "minus_half": {
+            "energy": 0.02547113577833215,
+            "frozen_energy": 0.025613998766438325,
+            "order_pin_relative_to_carried": 0.0020818838208924717,
+            "crystal_pin_relative_to_fixed_nodal_load": -0.0,
+            "local_prediction": 0.02547948350059706
+          },
+          "centered": {
+            "energy": 0.025614643806015632,
+            "frozen_energy": 0.025614542825680427,
+            "order_pin_relative_to_carried": 0.0022172017111188325,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.025614432938785757
+          },
+          "centered_half": {
+            "energy": 0.025614599219458963,
+            "frozen_energy": 0.02561451619698118,
+            "order_pin_relative_to_carried": 0.0022171040114926654,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+            "local_prediction": 0.025614436446565657
+          }
+        },
+        "four_minus_eight": {
+          "plus": {
+            "energy": 0.0001758161061182761,
+            "frozen_energy": -7.725795558854998e-05,
+            "order_pin_relative_to_carried": -5.733724606216128e-06,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00018012138636930088,
+            "local_prediction": 0.00017420158352620004
+          },
+          "plus_half": {
+            "energy": 0.00017586709866179714,
+            "frozen_energy": 4.935727382360255e-05,
+            "order_pin_relative_to_carried": -1.923439185702591e-06,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00017999951956533986,
+            "local_prediction": 0.00017420152379731978
+          },
+          "minus": {
+            "energy": 0.00017574797173125487,
+            "frozen_energy": 0.00042893886220696226,
+            "order_pin_relative_to_carried": 5.733891139669821e-06,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00017977752047403618,
+            "local_prediction": 0.00017420134471717193
+          },
+          "minus_half": {
+            "energy": 0.00017573877908461097,
+            "frozen_energy": 0.00030236080306167423,
+            "order_pin_relative_to_carried": 1.8403945034606293e-06,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00017989949501584471,
+            "local_prediction": 0.00017420140436084084
+          },
+          "centered": {
+            "energy": 0.0001757820389247655,
+            "frozen_energy": 0.00017584045330920614,
+            "order_pin_relative_to_carried": 8.326672684688674e-11,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00017994945342166853,
+            "local_prediction": 0.00017420146412168598
+          },
+          "centered_half": {
+            "energy": 0.00017580293887320406,
+            "frozen_energy": 0.0001758590384426384,
+            "order_pin_relative_to_carried": -4.152234112098096e-08,
+            "crystal_pin_relative_to_fixed_nodal_load": 0.00017994950729059229,
+            "local_prediction": 0.0001742014640790803
+          }
+        }
+      },
+      "receiving_four_minus_eight": {
+        "plus": -2.163451640058156e-05,
+        "plus_half": -2.1558688167999662e-05,
+        "minus": -2.1593626886584616e-05,
+        "minus_half": -2.1574586561712294e-05,
+        "centered": -2.1614071643583088e-05,
+        "centered_half": -2.156663736485598e-05
+      }
+    }
+  }
+}

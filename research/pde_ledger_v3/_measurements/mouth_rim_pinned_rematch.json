@@ -1,0 +1,1939 @@
+{
+  "prior_sha256": "b95fceba838a8331a1d2962dac314fe19a55f061642016dfa15b795c2d33d8d3",
+  "pin_work_sha256": "aa47735e49964cf76072cb646a989ddd073bcdd58fc2273c38fc22f1bb45a659",
+  "comparison": {
+    "receiver": {
+      "doubled": -0.00011979592873245792,
+      "rim_refined": -2.156663736485598e-05,
+      "signed_change": 9.822929136760195e-05
+    },
+    "duct_relative": {
+      "doubled": 0.0006312293132637592,
+      "rim_refined": 0.0001758029499754343,
+      "signed_change": -0.00045542636328832486
+    }
+  },
+  "cases": [
+    {
+      "inputs": {
+        "field_sha256": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "wall_sha256": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "load_sha256": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b",
+        "state_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "reference_axes_sha256": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "grid": "double",
+        "terminal_knots": [
+          0.7604687385883343,
+          0.7776115957311914,
+          0.7947544528740486
+        ],
+        "receiver_bounds": [
+          0.007427354427256582,
+          0.032612036280854566
+        ],
+        "duct_bounds": [
+          0.9763313609467456,
+          0.9053254437869822
+        ],
+        "full_step": 2e-05,
+        "stationarity_tolerance": 5e-09
+      },
+      "outcomes": {
+        "four": {
+          "full": {
+            "energy": {
+              "positive": 0.02880004568162064,
+              "negative": 0.028277500874196445,
+              "centered": 0.028538773277908543
+            },
+            "frozen_energy": {
+              "positive": 0.028555644027150603,
+              "negative": 0.028521949446691505,
+              "centered": 0.028538796736921054
+            },
+            "order_pin_relative_to_carried": {
+              "positive": 0.00229004619711759,
+              "negative": 0.0018000006818397194,
+              "centered": 0.002045023439478655
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": -0.0,
+              "negative": 0.0,
+              "centered": 0.0
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 1.698453957556939e-05,
+              "negative": -1.646913502229702e-05,
+              "centered": 2.577022766361847e-07
+            }
+          },
+          "half": {
+            "energy": {
+              "positive": 0.028791537509675887,
+              "negative": 0.02828567100543466,
+              "centered": 0.028538604257555274
+            },
+            "frozen_energy": {
+              "positive": 0.0286694391782305,
+              "negative": 0.02840795390035566,
+              "centered": 0.02853869653929308
+            },
+            "order_pin_relative_to_carried": {
+              "positive": 0.002289714728931358,
+              "negative": 0.0018000633872361502,
+              "centered": 0.002044889058083754
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": -0.0,
+              "negative": 0.0,
+              "centered": 0.0
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 8.421118047226284e-06,
+              "negative": -8.261004593539817e-06,
+              "centered": 8.005672684149867e-08
+            }
+          }
+        },
+        "eight": {
+          "full": {
+            "energy": {
+              "positive": 0.02891996162546206,
+              "negative": 0.02839715187441527,
+              "centered": 0.028658556749938665
+            },
+            "frozen_energy": {
+              "positive": 0.02862734205244521,
+              "negative": 0.028689858688757394,
+              "centered": 0.028658600370601302
+            },
+            "order_pin_relative_to_carried": {
+              "positive": 0.0025657492130903847,
+              "negative": 0.0020758479379878736,
+              "centered": 0.002320798575539129
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": -0.0,
+              "negative": 0.0,
+              "centered": 0.0
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 1.7120784264784e-05,
+              "negative": -1.664242298903343e-05,
+              "centered": 2.3918063787528587e-07
+            }
+          },
+          "half": {
+            "energy": {
+              "positive": 0.028911472682580094,
+              "negative": 0.02840532768999537,
+              "centered": 0.028658400186287732
+            },
+            "frozen_energy": {
+              "positive": 0.02876518871985922,
+              "negative": 0.02855180363248166,
+              "centered": 0.02865849617617044
+            },
+            "order_pin_relative_to_carried": {
+              "positive": 0.002565476364679853,
+              "negative": 0.0020758658791919515,
+              "centered": 0.002320671121935902
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": -0.0,
+              "negative": 0.0,
+              "centered": 0.0
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 8.565442169882614e-06,
+              "negative": -8.417463535369957e-06,
+              "centered": 7.398931725632885e-08
+            }
+          }
+        },
+        "four_minus_eight": {
+          "full": {
+            "energy": {
+              "positive": 0.0006309608391319443,
+              "negative": 0.0006313666922608263,
+              "centered": 0.0006311637656963853
+            },
+            "frozen_energy": {
+              "positive": 0.0003778361179485045,
+              "negative": 0.0008844101451188634,
+              "centered": 0.000631123131533684
+            },
+            "order_pin_relative_to_carried": {
+              "positive": -5.550759851757902e-06,
+              "negative": 5.5308424506961265e-06,
+              "centered": -9.958700530887654e-09
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": 0.00016783764370578147,
+              "negative": 0.00016745029979229332,
+              "centered": 0.0001676439717490374
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 1.5665261364685313e-06,
+              "negative": 1.972503368220845e-06,
+              "centered": 1.769514752344688e-06
+            }
+          },
+          "half": {
+            "energy": {
+              "positive": 0.0006312173894684747,
+              "negative": 0.0006312412370590437,
+              "centered": 0.0006312293132637592
+            },
+            "frozen_energy": {
+              "positive": 0.0005044862305680908,
+              "negative": 0.0007577829030935844,
+              "centered": 0.0006311345668308377
+            },
+            "order_pin_relative_to_carried": {
+              "positive": -1.7408297026122452e-06,
+              "negative": 1.5777157358343172e-06,
+              "centered": -8.155698338896399e-08
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": 0.00016770256285902508,
+              "negative": 0.00016759426587524478,
+              "centered": 0.00016764841436713493
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 1.8231075028538133e-06,
+              "negative": 1.8470170192015026e-06,
+              "centered": 1.835062261027658e-06
+            }
+          }
+        }
+      },
+      "four_minus_eight": {
+        "receiver": {
+          "full": {
+            "centered": -0.00011978347203012163,
+            "positive": -0.0001199159438414199,
+            "negative": -0.00011965100021882336
+          },
+          "half": {
+            "centered": -0.00011979592873245792,
+            "positive": -0.00011993517290420641,
+            "negative": -0.00011965668456070944
+          }
+        },
+        "duct_relative": {
+          "full": {
+            "positive": 0.0006309608391319443,
+            "negative": 0.0006313666922608263,
+            "centered": 0.0006311637656963853
+          },
+          "half": {
+            "positive": 0.0006312173894684747,
+            "negative": 0.0006312412370590437,
+            "centered": 0.0006312293132637592
+          }
+        }
+      },
+      "previous_convected_gaps": {
+        "duct": -0.0009532544136504478,
+        "outside": 0.00015594964208887063
+      },
+      "max_stationarity": 4.830019547332246e-09,
+      "max_current_imbalance": 2.042810365310288e-13,
+      "result_sha256": "4c636d23b7b6e968b3471b241a4d3998d9ec1c0ddf7e0a9c6341b9c9507b0703",
+      "zero_state_sha256": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+      "zero": [
+        {
+          "iterations": 31,
+          "energy": -0.748137195825475,
+          "stationarity": 4.802540325895217e-09,
+          "gradient_integral_steps": 31,
+          "restarts": 0,
+          "rechecked_energy": -0.748137195825475,
+          "residual_metric_energy": 9.416500149216082e-19,
+          "feed": 11.531526544853339,
+          "bulk": 11.531526544853335,
+          "port_error": 3.552713678800501e-15
+        },
+        {
+          "iterations": 14,
+          "energy": -3.3518213145874363,
+          "stationarity": 4.614461444721735e-09,
+          "gradient_integral_steps": 14,
+          "restarts": 0,
+          "rechecked_energy": -3.3518213145874363,
+          "residual_metric_energy": 6.836052630282184e-15,
+          "feed": -0.0,
+          "bulk": 0.0,
+          "port_error": 0.0
+        }
+      ],
+      "signed": [
+        {
+          "name": "four",
+          "side": 1,
+          "step": 2e-05,
+          "pin_info": {
+            "max_reference_order_change": 4.018505398442618e-05,
+            "minimum_axial_jacobian": 0.9988269272599941
+          },
+          "pair": [
+            {
+              "iterations": 29,
+              "energy": -0.7481381195236965,
+              "stationarity": 4.4035395744322416e-09,
+              "gradient_integral_steps": 28,
+              "restarts": 0,
+              "rechecked_energy": -0.7481381195236965,
+              "residual_metric_energy": 5.63225712402679e-21,
+              "feed": 11.531523989424535,
+              "bulk": 11.531523989424437,
+              "port_error": 9.769962616701378e-14,
+              "order_pin_relative_to_carried": -4.58009239423518e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7481381106536094,
+              "response_max": [
+                1.6753780929690265e-05,
+                7.063283798902642e-06,
+                4.8450125300636415e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.3518216622847445,
+              "stationarity": 3.780493882409881e-09,
+              "gradient_integral_steps": 1,
+              "restarts": 0,
+              "rechecked_energy": -3.3518216622847445,
+              "residual_metric_energy": 2.2281102976185565e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.3518216583026903,
+              "response_max": [
+                1.649244311274778e-05,
+                0.0,
+                8.79836275363699e-09
+              ]
+            }
+          ],
+          "file": "four_plus.npz",
+          "sha256": "998ceb3f1f1b60275b1b85962b11bad5303ba2fbe99072681e56a8bbd45bc35a"
+        },
+        {
+          "name": "four",
+          "side": 1,
+          "step": -2e-05,
+          "pin_info": {
+            "max_reference_order_change": 4.0188641670130254e-05,
+            "minimum_axial_jacobian": 0.998849910083474
+          },
+          "pair": [
+            {
+              "iterations": 29,
+              "energy": -0.7481362829891687,
+              "stationarity": 4.799915605545396e-09,
+              "gradient_integral_steps": 28,
+              "restarts": 0,
+              "rechecked_energy": -0.7481362829891687,
+              "residual_metric_energy": 5.162998149174427e-21,
+              "feed": 11.5315290538275,
+              "bulk": 11.531529053827295,
+              "port_error": 2.042810365310288e-13,
+              "order_pin_relative_to_carried": 3.600001363679439e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7481362741223196,
+              "response_max": [
+                1.6736790326543627e-05,
+                8.3618876747793e-06,
+                4.731131944546441e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.3518209673011476,
+              "stationarity": 3.7805151136237046e-09,
+              "gradient_integral_steps": 1,
+              "restarts": 0,
+              "rechecked_energy": -3.3518209673011476,
+              "residual_metric_energy": 2.2296178198105102e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.35182096332327,
+              "response_max": [
+                1.6477663494329775e-05,
+                0.0,
+                8.798142159260891e-09
+              ]
+            }
+          ],
+          "file": "four_minus.npz",
+          "sha256": "8ab22a7d27ee98e42161cac16425a9ccf37d064841fff8d0a370c4af24bb492b"
+        },
+        {
+          "name": "four",
+          "side": 1,
+          "step": 1e-05,
+          "pin_info": {
+            "max_reference_order_change": 2.0092975551583292e-05,
+            "minimum_axial_jacobian": 0.9994134636299971
+          },
+          "pair": [
+            {
+              "iterations": 28,
+              "energy": -0.7481376575382797,
+              "stationarity": 3.727126926395076e-09,
+              "gradient_integral_steps": 27,
+              "restarts": 0,
+              "rechecked_energy": -0.7481376575382797,
+              "residual_metric_energy": 5.986265154268082e-21,
+              "feed": 11.531525267511654,
+              "bulk": 11.53152526751176,
+              "port_error": 1.0658141036401503e-13,
+              "order_pin_relative_to_carried": -2.289714728931358e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7481376553215033,
+              "response_max": [
+                8.375064538101995e-06,
+                3.5310115625852845e-06,
+                2.417388483832994e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.351821488384866,
+              "stationarity": 3.780496208215226e-09,
+              "gradient_integral_steps": 2,
+              "restarts": 0,
+              "rechecked_energy": -3.351821488384866,
+              "residual_metric_energy": 2.2277273764709827e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.3518214873890733,
+              "response_max": [
+                8.244394666512278e-06,
+                0.0,
+                8.79833916833661e-09
+              ]
+            }
+          ],
+          "file": "four_plus_half.npz",
+          "sha256": "9e817f07aec437c7cb16cc725d3d266a0e2e69b1adf7c651c540a54c74991a68"
+        },
+        {
+          "name": "four",
+          "side": 1,
+          "step": -1e-05,
+          "pin_info": {
+            "max_reference_order_change": 2.009387246862393e-05,
+            "minimum_axial_jacobian": 0.999424955041737
+          },
+          "pair": [
+            {
+              "iterations": 28,
+              "energy": -0.7481367392749689,
+              "stationarity": 4.084304418925217e-09,
+              "gradient_integral_steps": 27,
+              "restarts": 0,
+              "rechecked_energy": -0.7481367392749689,
+              "residual_metric_energy": 5.176644840804905e-21,
+              "feed": 11.531527799700296,
+              "bulk": 11.531527799700271,
+              "port_error": 2.4868995751603507e-14,
+              "order_pin_relative_to_carried": 1.8000633872361504e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7481367370570342,
+              "response_max": [
+                8.370168620874807e-06,
+                4.181696424132575e-06,
+                2.3708319613069406e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.3518211408936405,
+              "stationarity": 3.7805068369488676e-09,
+              "gradient_integral_steps": 2,
+              "restarts": 0,
+              "rechecked_energy": -3.3518211408936405,
+              "residual_metric_energy": 2.2279346385043006e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.3518211398985347,
+              "response_max": [
+                8.240699761241643e-06,
+                0.0,
+                8.798228881556902e-09
+              ]
+            }
+          ],
+          "file": "four_minus_half.npz",
+          "sha256": "6c831abe95721eb4dbb9cbedd1e1adf2c4d986e861a309c9c6f2427541a78121"
+        },
+        {
+          "name": "eight",
+          "side": 1,
+          "step": 2e-05,
+          "pin_info": {
+            "max_reference_order_change": 5.0209924007671436e-05,
+            "minimum_axial_jacobian": 0.9988318743573661
+          },
+          "pair": [
+            {
+              "iterations": 29,
+              "energy": -0.7481381219427197,
+              "stationarity": 4.318654534428544e-09,
+              "gradient_integral_steps": 28,
+              "restarts": 0,
+              "rechecked_energy": -0.7481381219427197,
+              "residual_metric_energy": 5.59999170592541e-21,
+              "feed": 11.531523978727753,
+              "bulk": 11.531523978727728,
+              "port_error": 2.4868995751603507e-14,
+              "order_pin_relative_to_carried": -5.1314984261807695e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7481381105510354,
+              "response_max": [
+                1.681058465741181e-05,
+                7.105778435212429e-06,
+                4.844581930063541e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.351821662305449,
+              "stationarity": 3.780570374068062e-09,
+              "gradient_integral_steps": 1,
+              "restarts": 0,
+              "rechecked_energy": -3.351821662305449,
+              "residual_metric_energy": 2.228241148923473e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.351821656766156,
+              "response_max": [
+                1.6548287175677245e-05,
+                0.0,
+                8.7975649404326e-09
+              ]
+            }
+          ],
+          "file": "eight_plus.npz",
+          "sha256": "44a6a8ddc813d80c373b7470b269f0865434712ebc4b7ba63ef26a09cc69d945"
+        },
+        {
+          "name": "eight",
+          "side": 1,
+          "step": -2e-05,
+          "pin_info": {
+            "max_reference_order_change": 5.0215525123381566e-05,
+            "minimum_axial_jacobian": 0.9988371086694542
+          },
+          "pair": [
+            {
+              "iterations": 29,
+              "energy": -0.748136280581009,
+              "stationarity": 4.688717695724542e-09,
+              "gradient_integral_steps": 28,
+              "restarts": 0,
+              "rechecked_energy": -0.748136280581009,
+              "residual_metric_energy": 5.0979582086827645e-21,
+              "feed": 11.53152906450174,
+              "bulk": 11.531529064501903,
+              "port_error": 1.6342482922482304e-13,
+              "order_pin_relative_to_carried": 4.151695875975747e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7481362691917499,
+              "response_max": [
+                1.679351176719912e-05,
+                8.410489201193805e-06,
+                4.730323105439638e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.3518209672860078,
+              "stationarity": 3.780592552987902e-09,
+              "gradient_integral_steps": 1,
+              "restarts": 0,
+              "rechecked_energy": -3.3518209672860078,
+              "residual_metric_energy": 2.2302393997865175e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.351820961750885,
+              "response_max": [
+                1.6533224817871783e-05,
+                0.0,
+                8.797333840571131e-09
+              ]
+            }
+          ],
+          "file": "eight_minus.npz",
+          "sha256": "c7fb8c28861f41c3d3f9fb51a696b01b5f767bed11fc20df41906cbb069b7630"
+        },
+        {
+          "name": "eight",
+          "side": 1,
+          "step": 1e-05,
+          "pin_info": {
+            "max_reference_order_change": 2.5105662334379275e-05,
+            "minimum_axial_jacobian": 0.999415937178683
+          },
+          "pair": [
+            {
+              "iterations": 28,
+              "energy": -0.7481376587464763,
+              "stationarity": 3.680974935391324e-09,
+              "gradient_integral_steps": 27,
+              "restarts": 0,
+              "rechecked_energy": -0.7481376587464763,
+              "residual_metric_energy": 6.0131135701704964e-21,
+              "feed": 11.531525262166415,
+              "bulk": 11.531525262166328,
+              "port_error": 8.704148513061227e-14,
+              "order_pin_relative_to_carried": -2.565476364679853e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7481376558995085,
+              "response_max": [
+                8.403456208894156e-06,
+                3.5522440463564564e-06,
+                2.4171713103315895e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.351821488393711,
+              "stationarity": 3.780573506219556e-09,
+              "gradient_integral_steps": 2,
+              "restarts": 0,
+              "rechecked_energy": -3.351821488393711,
+              "residual_metric_energy": 2.2278871045475604e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.351821487009583,
+              "response_max": [
+                8.272274861775841e-06,
+                0.0,
+                8.797532313753464e-09
+              ]
+            }
+          ],
+          "file": "eight_plus_half.npz",
+          "sha256": "1f06a8de8ed5fffcecc1891d826b4f9c2d86774ae59b99137e2c930d8b688ce4"
+        },
+        {
+          "name": "eight",
+          "side": 1,
+          "step": -1e-05,
+          "pin_info": {
+            "max_reference_order_change": 2.5107062614687647e-05,
+            "minimum_axial_jacobian": 0.9994185543347271
+          },
+          "pair": [
+            {
+              "iterations": 28,
+              "energy": -0.7481367380698032,
+              "stationarity": 4.088977392366266e-09,
+              "gradient_integral_steps": 27,
+              "restarts": 0,
+              "rechecked_energy": -0.7481367380698032,
+              "residual_metric_energy": 5.159439850466618e-21,
+              "feed": 11.531527805039909,
+              "bulk": 11.531527805040092,
+              "port_error": 1.829647544582258e-13,
+              "order_pin_relative_to_carried": 2.0758658791919515e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7481367352208923,
+              "response_max": [
+                8.39853965217685e-06,
+                4.205995159656251e-06,
+                2.3704307683392045e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.3518211408850416,
+              "stationarity": 3.780584498499594e-09,
+              "gradient_integral_steps": 2,
+              "restarts": 0,
+              "rechecked_energy": -3.3518211408850416,
+              "residual_metric_energy": 2.228156546928782e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.35182113950089,
+              "response_max": [
+                8.268509269937496e-06,
+                0.0,
+                8.79741677423107e-09
+              ]
+            }
+          ],
+          "file": "eight_minus_half.npz",
+          "sha256": "68a7012e3548783b49d830a3998e62915449cf57e22176386493921d0857bd50"
+        },
+        {
+          "name": "four_minus_eight",
+          "side": 0,
+          "step": 2e-05,
+          "pin_info": {
+            "max_reference_order_change": 6.246854163904914e-05,
+            "site_count": 124605,
+            "mass_moment_error": -7.233796894823286e-16,
+            "inverse_map_error": 1.1102230246251565e-16,
+            "minimum_axial_jacobian": 0.9991478227592637
+          },
+          "pair": [
+            {
+              "iterations": 26,
+              "energy": -0.7481266804239644,
+              "stationarity": 4.500440521024087e-09,
+              "gradient_integral_steps": 25,
+              "restarts": 0,
+              "rechecked_energy": -0.7481266804239644,
+              "residual_metric_energy": 2.2919732955623635e-18,
+              "feed": 11.531526488905289,
+              "bulk": 11.531526488905293,
+              "port_error": 3.552713678800501e-15,
+              "order_pin_relative_to_carried": -0.00014289402854217315,
+              "crystal_pin_relative_to_fixed_nodal_load": -1.6421595132045072e-05,
+              "frozen_energy": -0.7481265549286895,
+              "response_max": [
+                4.133234231873395e-06,
+                6.480299374223009e-06,
+                2.4238144017529883e-05
+              ]
+            },
+            {
+              "iterations": 12,
+              "energy": -3.351810786566709,
+              "stationarity": 4.655989503650589e-09,
+              "gradient_integral_steps": 11,
+              "restarts": 0,
+              "rechecked_energy": -3.351810786566709,
+              "residual_metric_energy": 5.851512989191199e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": -0.00014289413955737018,
+              "crystal_pin_relative_to_fixed_nodal_load": -1.6418238379170957e-05,
+              "frozen_energy": -3.351810666133929,
+              "response_max": [
+                4.0094806477153355e-06,
+                0.0,
+                2.4232397444173825e-05
+              ]
+            }
+          ],
+          "file": "four_minus_eight_plus.npz",
+          "sha256": "ac15bbc30eff1fa06c2610cd4e226c0fd1020f984b25ffee1ecf25bab27a1114"
+        },
+        {
+          "name": "four_minus_eight",
+          "side": 0,
+          "step": -2e-05,
+          "pin_info": {
+            "max_reference_order_change": 6.246577665336428e-05,
+            "site_count": 124605,
+            "mass_moment_error": -1.4181364416110398e-15,
+            "inverse_map_error": 1.1102230246251565e-16,
+            "minimum_axial_jacobian": 0.9991600956440388
+          },
+          "pair": [
+            {
+              "iterations": 26,
+              "energy": -0.7481477785180086,
+              "stationarity": 4.465189915264356e-09,
+              "gradient_integral_steps": 25,
+              "restarts": 0,
+              "rechecked_energy": -0.7481477785180086,
+              "residual_metric_energy": 2.2619847264157727e-18,
+              "feed": 11.53152660083656,
+              "bulk": 11.531526600836672,
+              "port_error": 1.1191048088221578e-13,
+              "order_pin_relative_to_carried": 0.00014309299535142372,
+              "crystal_pin_relative_to_fixed_nodal_load": 1.6407159950376993e-05,
+              "frozen_energy": -0.7481476529785389,
+              "response_max": [
+                4.1331215614448524e-06,
+                6.47847137980051e-06,
+                2.423480911042941e-05
+              ]
+            },
+            {
+              "iterations": 12,
+              "energy": -3.351831909907304,
+              "stationarity": 4.830019547332246e-09,
+              "gradient_integral_steps": 11,
+              "restarts": 0,
+              "rechecked_energy": -3.351831909907304,
+              "residual_metric_energy": 6.50492150138849e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0001430928847345747,
+              "crystal_pin_relative_to_fixed_nodal_load": 1.6403810944381147e-05,
+              "frozen_energy": -3.351831789428703,
+              "response_max": [
+                4.009361847967519e-06,
+                0.0,
+                2.4233083111613318e-05
+              ]
+            }
+          ],
+          "file": "four_minus_eight_minus.npz",
+          "sha256": "457fd1c69ad2c029174dddb026ab7b4996fa3789d746b4ca3acfb69146ec0a58"
+        },
+        {
+          "name": "four_minus_eight",
+          "side": 0,
+          "step": 1e-05,
+          "pin_info": {
+            "max_reference_order_change": 3.123392514292611e-05,
+            "site_count": 124605,
+            "mass_moment_error": -1.3535179921309037e-15,
+            "inverse_map_error": 1.1102230246251565e-16,
+            "minimum_axial_jacobian": 0.9995739113796318
+          },
+          "pair": [
+            {
+              "iterations": 23,
+              "energy": -0.7481319298410416,
+              "stationarity": 4.501370370438786e-09,
+              "gradient_integral_steps": 22,
+              "restarts": 0,
+              "rechecked_energy": -0.7481319298410416,
+              "residual_metric_energy": 2.731557372138765e-18,
+              "feed": 11.531526516867533,
+              "bulk": 11.531526516867437,
+              "port_error": 9.592326932761353e-14,
+              "order_pin_relative_to_carried": -7.147185673872514e-05,
+              "crystal_pin_relative_to_fixed_nodal_load": -8.209110743069702e-06,
+              "frozen_energy": -0.7481318984633256,
+              "response_max": [
+                2.0666048770046075e-06,
+                3.2392360416189092e-06,
+                1.211847953944134e-05
+              ]
+            },
+            {
+              "iterations": 10,
+              "energy": -3.3518160422908294,
+              "stationarity": 4.537198429745398e-09,
+              "gradient_integral_steps": 9,
+              "restarts": 0,
+              "rechecked_energy": -3.3518160422908294,
+              "residual_metric_energy": 5.418945968600534e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": -7.147187414702216e-05,
+              "crystal_pin_relative_to_fixed_nodal_load": -8.207433717441112e-06,
+              "frozen_energy": -3.351816012180425,
+              "response_max": [
+                2.004743002714804e-06,
+                0.0,
+                1.2111956688043435e-05
+              ]
+            }
+          ],
+          "file": "four_minus_eight_plus_half.npz",
+          "sha256": "4871bc10baad4ba832ee70144305f7f27e3efce36338cdf8496d5ac57067d552"
+        },
+        {
+          "name": "four_minus_eight",
+          "side": 0,
+          "step": -1e-05,
+          "pin_info": {
+            "max_reference_order_change": 3.123323389697674e-05,
+            "site_count": 124605,
+            "mass_moment_error": 1.9168694409543718e-16,
+            "inverse_map_error": 1.1102230246251565e-16,
+            "minimum_axial_jacobian": 0.9995800478220195
+          },
+          "pair": [
+            {
+              "iterations": 23,
+              "energy": -0.7481424788978384,
+              "stationarity": 4.477561794858394e-09,
+              "gradient_integral_steps": 22,
+              "restarts": 0,
+              "rechecked_energy": -0.7481424788978384,
+              "residual_metric_energy": 2.684795645389366e-18,
+              "feed": 11.531526572845237,
+              "bulk": 11.531526572845285,
+              "port_error": 4.796163466380676e-14,
+              "order_pin_relative_to_carried": 7.152159874124209e-05,
+              "crystal_pin_relative_to_fixed_nodal_load": 8.205238311951016e-06,
+              "frozen_energy": -0.7481424475150338,
+              "response_max": [
+                2.066576745951565e-06,
+                3.2388086028123375e-06,
+                1.21179430523366e-05
+              ]
+            },
+            {
+              "iterations": 10,
+              "energy": -3.351826603972212,
+              "stationarity": 4.810706267622854e-09,
+              "gradient_integral_steps": 9,
+              "restarts": 0,
+              "rechecked_energy": -3.351826603972212,
+              "residual_metric_energy": 6.483252319320288e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 7.152158296408473e-05,
+              "crystal_pin_relative_to_fixed_nodal_load": 8.203562369292264e-06,
+              "frozen_energy": -3.351826573854824,
+              "response_max": [
+                2.0047144557722163e-06,
+                0.0,
+                1.211566690667576e-05
+              ]
+            }
+          ],
+          "file": "four_minus_eight_minus_half.npz",
+          "sha256": "9cf4062766607c849320b8ad86b3865a6fb61acba3387f6e34d935ba92bb067f"
+        }
+      ]
+    },
+    {
+      "inputs": {
+        "field_sha256": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+        "wall_sha256": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "load_sha256": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679",
+        "state_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "reference_axes_sha256": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "grid": "local",
+        "terminal_knots": [
+          0.7604687385883343,
+          0.7776115957311914,
+          0.7947544528740486
+        ],
+        "receiver_bounds": [
+          0.007427354427256582,
+          0.032612036280854566
+        ],
+        "duct_bounds": [
+          0.9763313609467456,
+          0.9053254437869822
+        ],
+        "full_step": 2e-05,
+        "stationarity_tolerance": 5e-09
+      },
+      "outcomes": {
+        "four": {
+          "full": {
+            "energy": {
+              "positive": 0.0257448475426969,
+              "negative": 0.02544121193714943,
+              "centered": 0.025593029739923164
+            },
+            "frozen_energy": {
+              "positive": 0.025506404943698154,
+              "negative": 0.02567957189114622,
+              "centered": 0.025592988417422188
+            },
+            "order_pin_relative_to_carried": {
+              "positive": 0.0021116546733424,
+              "negative": 0.0018406488777600314,
+              "centered": 0.001976151775551216
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": -0.0,
+              "negative": 0.0,
+              "centered": 0.0
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 1.705273368650395e-05,
+              "negative": -1.6742761033031878e-05,
+              "centered": 1.5498632673430213e-07
+            }
+          },
+          "half": {
+            "energy": {
+              "positive": 0.025736503950213315,
+              "negative": 0.0254495612139749,
+              "centered": 0.025593032582094107
+            },
+            "frozen_energy": {
+              "positive": 0.025617184462589645,
+              "negative": 0.02556873290870953,
+              "centered": 0.025592958685649588
+            },
+            "order_pin_relative_to_carried": {
+              "positive": 0.0021113550019435934,
+              "negative": 0.0018408066182473701,
+              "centered": 0.001976080810095482
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": -0.0,
+              "negative": 0.0,
+              "centered": 0.0
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 8.662899104561195e-06,
+              "negative": -8.354252892084357e-06,
+              "centered": 1.5432310623841872e-07
+            }
+          }
+        },
+        "eight": {
+          "full": {
+            "energy": {
+              "positive": 0.02576648205909748,
+              "negative": 0.025462805552933784,
+              "centered": 0.025614643806015632
+            },
+            "frozen_energy": {
+              "positive": 0.025480508147879274,
+              "negative": 0.02574857749237935,
+              "centered": 0.025614542820129312
+            },
+            "order_pin_relative_to_carried": {
+              "positive": 0.0023526339987256506,
+              "negative": 0.0020817694235120143,
+              "centered": 0.0022172017111188325
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": -0.0,
+              "negative": 0.0,
+              "centered": 0.0
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 1.714875617801412e-05,
+              "negative": -1.6727021718263707e-05,
+              "centered": 2.1086722987520568e-07
+            }
+          },
+          "half": {
+            "energy": {
+              "positive": 0.025758062660585775,
+              "negative": 0.02547113577833215,
+              "centered": 0.025614599219458963
+            },
+            "frozen_energy": {
+              "positive": 0.0256150336497285,
+              "negative": 0.025613998744233864,
+              "centered": 0.02561451619698118
+            },
+            "order_pin_relative_to_carried": {
+              "positive": 0.002352324202092859,
+              "negative": 0.0020818838208924717,
+              "centered": 0.0022171040114926654
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": -0.0,
+              "negative": 0.0,
+              "centered": 0.0
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 8.67326805151919e-06,
+              "negative": -8.347722264909901e-06,
+              "centered": 1.6277289330637879e-07
+            }
+          }
+        },
+        "four_minus_eight": {
+          "full": {
+            "energy": {
+              "positive": 0.00017581611722050636,
+              "negative": 0.00017574797173125487,
+              "centered": 0.0001757820444758806
+            },
+            "frozen_energy": {
+              "positive": -7.725795558854998e-05,
+              "negative": 0.00042893886220696226,
+              "centered": 0.00017584045330920614
+            },
+            "order_pin_relative_to_carried": {
+              "positive": -5.733724606216128e-06,
+              "negative": 5.733891139669821e-06,
+              "centered": 8.326672684688673e-11
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": 0.00018012138636930088,
+              "negative": 0.00017977752047403618,
+              "centered": 0.00017994945342166853
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 1.6145336943063201e-06,
+              "negative": 1.546627014082936e-06,
+              "centered": 1.580580354194628e-06
+            }
+          },
+          "half": {
+            "energy": {
+              "positive": 0.00017586709866179714,
+              "negative": 0.00017573880128907146,
+              "centered": 0.0001758029499754343
+            },
+            "frozen_energy": {
+              "positive": 4.935727382360255e-05,
+              "negative": 0.00030236080306167423,
+              "centered": 0.00017585903844263837
+            },
+            "order_pin_relative_to_carried": {
+              "positive": -1.923439185702591e-06,
+              "negative": 1.8403945034606293e-06,
+              "centered": -4.152234112098085e-08
+            },
+            "crystal_pin_relative_to_fixed_nodal_load": {
+              "positive": 0.00017999951956533986,
+              "negative": 0.00017989949501584471,
+              "centered": 0.00017994950729059229
+            },
+            "settled_minus_fixed_state_prediction": {
+              "positive": 1.6655748644773692e-06,
+              "negative": 1.5373969282306223e-06,
+              "centered": 1.6014858963539957e-06
+            }
+          }
+        }
+      },
+      "four_minus_eight": {
+        "receiver": {
+          "full": {
+            "centered": -2.1614066092467965e-05,
+            "positive": -2.163451640058156e-05,
+            "negative": -2.159361578435437e-05
+          },
+          "half": {
+            "centered": -2.156663736485598e-05,
+            "positive": -2.1558710372460155e-05,
+            "negative": -2.1574564357251802e-05
+          }
+        },
+        "duct_relative": {
+          "full": {
+            "positive": 0.00017581611722050636,
+            "negative": 0.00017574797173125487,
+            "centered": 0.0001757820444758806
+          },
+          "half": {
+            "positive": 0.00017586709866179714,
+            "negative": 0.00017573880128907146,
+            "centered": 0.0001758029499754343
+          }
+        }
+      },
+      "previous_convected_gaps": {
+        "duct": -0.0014211228697506087,
+        "outside": 0.0002194755488460487
+      },
+      "max_stationarity": 4.988118115077945e-09,
+      "max_current_imbalance": 4.369837824924616e-13,
+      "result_sha256": "b265e1a2de2d89af5c48d460131254b69704c0cbc1de9dbd5cbbdde249157fdf",
+      "zero_state_sha256": "5a2e33ebbee08fd795f4b7cac3f3fd8e4a18fddadf13cc8f126180996a54f9cc",
+      "zero": [
+        {
+          "iterations": 39,
+          "energy": -0.74467805978257,
+          "stationarity": 4.988118115077945e-09,
+          "gradient_integral_steps": 39,
+          "restarts": 0,
+          "rechecked_energy": -0.74467805978257,
+          "residual_metric_energy": 2.2781391603101516e-19,
+          "feed": 11.526259594793082,
+          "bulk": 11.526259594792892,
+          "port_error": 1.900701818158268e-13
+        },
+        {
+          "iterations": 15,
+          "energy": -3.3471762398569536,
+          "stationarity": 4.3934265981569534e-09,
+          "gradient_integral_steps": 15,
+          "restarts": 0,
+          "rechecked_energy": -3.3471762398569536,
+          "residual_metric_energy": 4.3461444981045156e-15,
+          "feed": -0.0,
+          "bulk": 0.0,
+          "port_error": 0.0
+        }
+      ],
+      "signed": [
+        {
+          "name": "four",
+          "side": 1,
+          "step": 2e-05,
+          "pin_info": {
+            "max_reference_order_change": 4.018505398442618e-05,
+            "minimum_axial_jacobian": 0.9988186383835583
+          },
+          "pair": [
+            {
+              "iterations": 35,
+              "energy": -0.7446788888874101,
+              "stationarity": 4.472228371348563e-09,
+              "gradient_integral_steps": 34,
+              "restarts": 0,
+              "rechecked_energy": -0.7446788888874101,
+              "residual_metric_energy": 7.314454269686567e-21,
+              "feed": 11.526257310457451,
+              "bulk": 11.526257310457407,
+              "port_error": 4.440892098500626e-14,
+              "order_pin_relative_to_carried": -4.2233093466848004e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.744678880199084,
+              "response_max": [
+                1.6697202622761864e-05,
+                9.814788847484213e-06,
+                6.315160248904217e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.347176554064843,
+              "stationarity": 3.434123517544936e-09,
+              "gradient_integral_steps": 1,
+              "restarts": 0,
+              "rechecked_energy": -3.347176554064843,
+              "residual_metric_energy": 1.6891855741191912e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.3471765501453685,
+              "response_max": [
+                1.643377036653071e-05,
+                0.0,
+                8.272361164129993e-09
+              ]
+            }
+          ],
+          "file": "four_plus.npz",
+          "sha256": "034364b0ee976993eaaf286b3629697f8b73c39f5ce9ab522954760e31b5823f"
+        },
+        {
+          "name": "four",
+          "side": 1,
+          "step": -2e-05,
+          "pin_info": {
+            "max_reference_order_change": 4.0188641670130254e-05,
+            "minimum_axial_jacobian": 0.998842429476779
+          },
+          "pair": [
+            {
+              "iterations": 33,
+              "energy": -0.7446772371712527,
+              "stationarity": 4.76548947137645e-09,
+              "gradient_integral_steps": 32,
+              "restarts": 0,
+              "rechecked_energy": -0.7446772371712527,
+              "residual_metric_energy": 1.6922283071025644e-20,
+              "feed": 11.52626185212475,
+              "bulk": 11.526261852124755,
+              "port_error": 5.329070518200751e-15,
+              "order_pin_relative_to_carried": 3.681297755520063e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7446772284879444,
+              "response_max": [
+                1.6681132974483148e-05,
+                9.947537750687463e-06,
+                6.1720958829947214e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.347175926069875,
+              "stationarity": 3.4341461598357323e-09,
+              "gradient_integral_steps": 1,
+              "restarts": 0,
+              "rechecked_energy": -3.347175926069875,
+              "residual_metric_energy": 1.690709489230467e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.347175922153766,
+              "response_max": [
+                1.6419656527766335e-05,
+                0.0,
+                8.272161025613123e-09
+              ]
+            }
+          ],
+          "file": "four_minus.npz",
+          "sha256": "802d5cc47bd4164bd770e560b9fac281bd951677be34a42b71ac73a691ef6a35"
+        },
+        {
+          "name": "four",
+          "side": 1,
+          "step": 1e-05,
+          "pin_info": {
+            "max_reference_order_change": 2.0092975551583292e-05,
+            "minimum_axial_jacobian": 0.9994093191917791
+          },
+          "pair": [
+            {
+              "iterations": 33,
+              "energy": -0.7446784741977115,
+              "stationarity": 4.299478780817176e-09,
+              "gradient_integral_steps": 32,
+              "restarts": 0,
+              "rechecked_energy": -0.7446784741977115,
+              "residual_metric_energy": 6.844137307323305e-21,
+              "feed": 11.52625845300293,
+              "bulk": 11.526258453002907,
+              "port_error": 2.3092638912203256e-14,
+              "order_pin_relative_to_carried": -2.1113550019435934e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7446784720259207,
+              "response_max": [
+                8.346883193510735e-06,
+                4.9110482192027405e-06,
+                3.157128836139833e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.3471763969070554,
+              "stationarity": 3.4341265399793328e-09,
+              "gradient_integral_steps": 2,
+              "restarts": 0,
+              "rechecked_energy": -3.3471763969070554,
+              "residual_metric_energy": 1.688745503047386e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.34717639592846,
+              "response_max": [
+                8.215136099165576e-06,
+                0.0,
+                8.272333623660089e-09
+              ]
+            }
+          ],
+          "file": "four_plus_half.npz",
+          "sha256": "5f9a6653bed61bbdea400b0aee72e40acede40ce96376926341e09d87b09d22a"
+        },
+        {
+          "name": "four",
+          "side": 1,
+          "step": -1e-05,
+          "pin_info": {
+            "max_reference_order_change": 2.009387246862393e-05,
+            "minimum_axial_jacobian": 0.9994212147383895
+          },
+          "pair": [
+            {
+              "iterations": 32,
+              "energy": -0.744677648341834,
+              "stationarity": 4.081984450599408e-09,
+              "gradient_integral_steps": 31,
+              "restarts": 0,
+              "rechecked_energy": -0.744677648341834,
+              "residual_metric_energy": 1.11080684805934e-20,
+              "feed": 11.526260723829502,
+              "bulk": 11.526260723829536,
+              "port_error": 3.375077994860476e-14,
+              "order_pin_relative_to_carried": 1.8408066182473704e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7446776461698537,
+              "response_max": [
+                8.342279324224933e-06,
+                4.992325733366165e-06,
+                3.0863742950248962e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.3471760829118296,
+              "stationarity": 3.434138012052553e-09,
+              "gradient_integral_steps": 2,
+              "restarts": 0,
+              "rechecked_energy": -3.3471760829118296,
+              "residual_metric_energy": 1.688949029496897e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.3471760819315666,
+              "response_max": [
+                8.21160764075124e-06,
+                0.0,
+                8.272233564809994e-09
+              ]
+            }
+          ],
+          "file": "four_minus_half.npz",
+          "sha256": "2cb143b3bddecdb38b30fa12ceb855451db5eaeed897b069cadc9d39d5c0dbfa"
+        },
+        {
+          "name": "eight",
+          "side": 1,
+          "step": 2e-05,
+          "pin_info": {
+            "max_reference_order_change": 5.0209924007671436e-05,
+            "minimum_axial_jacobian": 0.9988299865751202
+          },
+          "pair": [
+            {
+              "iterations": 35,
+              "energy": -0.7446788891827583,
+              "stationarity": 4.4399641115803264e-09,
+              "gradient_integral_steps": 34,
+              "restarts": 0,
+              "rechecked_energy": -0.7446788891827583,
+              "residual_metric_energy": 7.206134972947071e-21,
+              "feed": 11.526257308529114,
+              "bulk": 11.526257308528935,
+              "port_error": 1.794120407794253e-13,
+              "order_pin_relative_to_carried": -4.705267997451301e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7446788779956057,
+              "response_max": [
+                1.6715088233087982e-05,
+                9.830409856137479e-06,
+                6.3074772418958425e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.347176553927501,
+              "stationarity": 3.434209351913969e-09,
+              "gradient_integral_steps": 1,
+              "restarts": 0,
+              "rechecked_energy": -3.347176553927501,
+              "residual_metric_energy": 1.689236311804379e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.347176548459826,
+              "response_max": [
+                1.6451398504813142e-05,
+                0.0,
+                8.271607544740878e-09
+              ]
+            }
+          ],
+          "file": "eight_plus.npz",
+          "sha256": "a51752bd658fc263df45de3628127d3405b457ae2e1e49bd42cc7a8d8c15d3f6"
+        },
+        {
+          "name": "eight",
+          "side": 1,
+          "step": -2e-05,
+          "pin_info": {
+            "max_reference_order_change": 5.0215525123381566e-05,
+            "minimum_axial_jacobian": 0.9988354049697289
+          },
+          "pair": [
+            {
+              "iterations": 33,
+              "energy": -0.7446772368767822,
+              "stationarity": 4.768536632237241e-09,
+              "gradient_integral_steps": 32,
+              "restarts": 0,
+              "rechecked_energy": -0.7446772368767822,
+              "residual_metric_energy": 1.6684059857038606e-20,
+              "feed": 11.526261854052692,
+              "bulk": 11.526261854052546,
+              "port_error": 1.4566126083082054e-13,
+              "order_pin_relative_to_carried": 4.1635388470240287e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7446772256964067,
+              "response_max": [
+                1.669898866940578e-05,
+                9.973736793067456e-06,
+                6.164431222421829e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.347175926207277,
+              "stationarity": 3.4342330870049775e-09,
+              "gradient_integral_steps": 1,
+              "restarts": 0,
+              "rechecked_energy": -3.347175926207277,
+              "residual_metric_energy": 1.6912959798108456e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.34717592074234,
+              "response_max": [
+                1.6437054628282155e-05,
+                0.0,
+                8.271399246084776e-09
+              ]
+            }
+          ],
+          "file": "eight_minus.npz",
+          "sha256": "375757931a3d16e6e0a330f3feb9fb0db7bf02df1f6f7553b2049c9f5232d887"
+        },
+        {
+          "name": "eight",
+          "side": 1,
+          "step": 1e-05,
+          "pin_info": {
+            "max_reference_order_change": 2.5105662334379275e-05,
+            "minimum_axial_jacobian": 0.9994149932875601
+          },
+          "pair": [
+            {
+              "iterations": 33,
+              "energy": -0.7446784743453181,
+              "stationarity": 4.24741083058016e-09,
+              "gradient_integral_steps": 32,
+              "restarts": 0,
+              "rechecked_energy": -0.7446784743453181,
+              "residual_metric_energy": 6.726634083519216e-21,
+              "feed": 11.526258452038903,
+              "bulk": 11.52625845203886,
+              "port_error": 4.263256414560601e-14,
+              "order_pin_relative_to_carried": -2.3523242020928592e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.744678471548635,
+              "response_max": [
+                8.355822000316593e-06,
+                4.9184364603882536e-06,
+                3.153287610191402e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.347176396839075,
+              "stationarity": 3.4342132541717627e-09,
+              "gradient_integral_steps": 2,
+              "restarts": 0,
+              "rechecked_energy": -3.347176396839075,
+              "residual_metric_energy": 1.6888507345147487e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.3471763954726823,
+              "response_max": [
+                8.223916431626677e-06,
+                0.0,
+                8.271573842533186e-09
+              ]
+            }
+          ],
+          "file": "eight_plus_half.npz",
+          "sha256": "0390fb91be9028acf9864565e5bc2f9ad6a718182bc5f91d24ec8d6f647fa9db"
+        },
+        {
+          "name": "eight",
+          "side": 1,
+          "step": -1e-05,
+          "pin_info": {
+            "max_reference_order_change": 2.5107062614687647e-05,
+            "minimum_axial_jacobian": 0.9994177024848644
+          },
+          "pair": [
+            {
+              "iterations": 32,
+              "energy": -0.7446776481938633,
+              "stationarity": 4.011774995938433e-09,
+              "gradient_integral_steps": 31,
+              "restarts": 0,
+              "rechecked_energy": -0.7446776481938633,
+              "residual_metric_energy": 1.0880887992085363e-20,
+              "feed": 11.526260724793435,
+              "bulk": 11.52626072479355,
+              "port_error": 1.1546319456101628e-13,
+              "order_pin_relative_to_carried": 2.0818838208924717e-08,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -0.7446776453983677,
+              "response_max": [
+                8.351210584622848e-06,
+                5.00474069209389e-06,
+                3.0825377250742747e-09
+              ]
+            },
+            {
+              "iterations": 2,
+              "energy": -3.3471760829796047,
+              "stationarity": 3.4342250676746268e-09,
+              "gradient_integral_steps": 2,
+              "restarts": 0,
+              "rechecked_energy": -3.3471760829796047,
+              "residual_metric_energy": 1.689121699635395e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.0,
+              "crystal_pin_relative_to_fixed_nodal_load": 0.0,
+              "frozen_energy": -3.347176081612739,
+              "response_max": [
+                8.22033046299353e-06,
+                0.0,
+                8.271469696674583e-09
+              ]
+            }
+          ],
+          "file": "eight_minus_half.npz",
+          "sha256": "288190cb8d5af6b0e98dc2f2afeca642108ad2874538b3be52b3e122a0d93ad2"
+        },
+        {
+          "name": "four_minus_eight",
+          "side": 0,
+          "step": 2e-05,
+          "pin_info": {
+            "max_reference_order_change": 6.26718767681167e-05,
+            "site_count": 147165,
+            "mass_moment_error": 4.762900143728821e-16,
+            "inverse_map_error": 1.1102230246251565e-16,
+            "minimum_axial_jacobian": 0.9991302516381654
+          },
+          "pair": [
+            {
+              "iterations": 28,
+              "energy": -0.7446713695714451,
+              "stationarity": 4.861906914163104e-09,
+              "gradient_integral_steps": 27,
+              "restarts": 0,
+              "rechecked_energy": -0.7446713695714451,
+              "residual_metric_energy": 6.771106939955032e-19,
+              "feed": 11.526259579201819,
+              "bulk": 11.526259579201819,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": -0.0001505920923889903,
+              "crystal_pin_relative_to_fixed_nodal_load": -1.6221735472007975e-05,
+              "frozen_energy": -0.7446711974559443,
+              "response_max": [
+                4.1732561585350325e-06,
+                6.540674419741599e-06,
+                2.4531576515163245e-05
+              ]
+            },
+            {
+              "iterations": 12,
+              "energy": -3.3471695461295066,
+              "stationarity": 4.6760401267796e-09,
+              "gradient_integral_steps": 11,
+              "restarts": 0,
+              "rechecked_energy": -3.3471695461295066,
+              "residual_metric_energy": 5.111659678453587e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": -0.00015059220706348242,
+              "crystal_pin_relative_to_fixed_nodal_load": -1.621813304428059e-05,
+              "frozen_energy": -3.347169379075487,
+              "response_max": [
+                4.049305187825425e-06,
+                0.0,
+                2.4525534481012468e-05
+              ]
+            }
+          ],
+          "file": "four_minus_eight_plus.npz",
+          "sha256": "9d349181131b6a8f13f218ff25003514b7147248f96cba0c21f094f304b30c51"
+        },
+        {
+          "name": "four_minus_eight",
+          "side": 0,
+          "step": -2e-05,
+          "pin_info": {
+            "max_reference_order_change": 6.266961735323928e-05,
+            "site_count": 147165,
+            "mass_moment_error": 1.2175590397012215e-16,
+            "inverse_map_error": 1.1102230246251565e-16,
+            "minimum_axial_jacobian": 0.9991297810536017
+          },
+          "pair": [
+            {
+              "iterations": 28,
+              "energy": -0.7446848875596155,
+              "stationarity": 4.8434159108565794e-09,
+              "gradient_integral_steps": 27,
+              "restarts": 0,
+              "rechecked_energy": -0.7446848875596155,
+              "residual_metric_energy": 6.772854362443792e-19,
+              "feed": 11.526259610391072,
+              "bulk": 11.526259610391211,
+              "port_error": 1.3855583347321954e-13,
+              "order_pin_relative_to_carried": 0.0001506612674491148,
+              "crystal_pin_relative_to_fixed_nodal_load": 1.6207934423788796e-05,
+              "frozen_energy": -0.7446847153458789,
+              "response_max": [
+                4.173143083985309e-06,
+                6.5387450834397676e-06,
+                2.452840412858759e-05
+              ]
+            },
+            {
+              "iterations": 12,
+              "energy": -3.3471830711489585,
+              "stationarity": 4.763005567329027e-09,
+              "gradient_integral_steps": 11,
+              "restarts": 0,
+              "rechecked_energy": -3.3471830711489585,
+              "residual_metric_energy": 5.421468902213838e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 0.000150661152771292,
+              "crystal_pin_relative_to_fixed_nodal_load": 1.6204338873379315e-05,
+              "frozen_energy": -3.3471829039990397,
+              "response_max": [
+                4.0491874134795935e-06,
+                0.0,
+                2.4526018489207102e-05
+              ]
+            }
+          ],
+          "file": "four_minus_eight_minus.npz",
+          "sha256": "c2e64d9dcde49685b2981714901e6f3e20471faaaf62ae36bade0215e6c980df"
+        },
+        {
+          "name": "four_minus_eight",
+          "side": 0,
+          "step": 1e-05,
+          "pin_info": {
+            "max_reference_order_change": 3.1335655915953886e-05,
+            "site_count": 147165,
+            "mass_moment_error": 5.191160001860595e-16,
+            "inverse_map_error": 1.1102230246251565e-16,
+            "minimum_axial_jacobian": 0.9995651258190826
+          },
+          "pair": [
+            {
+              "iterations": 23,
+              "energy": -0.744674697611897,
+              "stationarity": 4.554561374771238e-09,
+              "gradient_integral_steps": 22,
+              "restarts": 0,
+              "rechecked_energy": -0.744674697611897,
+              "residual_metric_energy": 2.2227029166493687e-18,
+              "feed": 11.52625958699534,
+              "bulk": 11.526259586995778,
+              "port_error": 4.369837824924616e-13,
+              "order_pin_relative_to_carried": -7.530468511918187e-05,
+              "crystal_pin_relative_to_fixed_nodal_load": -8.109256493621127e-06,
+              "frozen_energy": -0.7446746545784273,
+              "response_max": [
+                2.0866137273589658e-06,
+                3.269333088695703e-06,
+                1.2265247286730174e-05
+              ]
+            },
+            {
+              "iterations": 10,
+              "energy": -3.3471728759276096,
+              "stationarity": 4.623797478532657e-09,
+              "gradient_integral_steps": 9,
+              "restarts": 0,
+              "rechecked_energy": -3.3471728759276096,
+              "residual_metric_energy": 4.966091297457716e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": -7.530470435357373e-05,
+              "crystal_pin_relative_to_fixed_nodal_load": -8.107456498425473e-06,
+              "frozen_energy": -3.347172834159238,
+              "response_max": [
+                2.0246456370331956e-06,
+                0.0,
+                1.2259461215774481e-05
+              ]
+            }
+          ],
+          "file": "four_minus_eight_plus_half.npz",
+          "sha256": "10848505c26eb67cfa7547621f2b2ce78fda86d8fdf095dc0ed3cb1c813bab96"
+        },
+        {
+          "name": "four_minus_eight",
+          "side": 0,
+          "step": -1e-05,
+          "pin_info": {
+            "max_reference_order_change": 3.133509106201249e-05,
+            "site_count": 147165,
+            "mass_moment_error": -1.8984380040221183e-16,
+            "inverse_map_error": 1.1102230246251565e-16,
+            "minimum_axial_jacobian": 0.9995648905268009
+          },
+          "pair": [
+            {
+              "iterations": 23,
+              "energy": -0.7446814567604865,
+              "stationarity": 4.519621822654904e-09,
+              "gradient_integral_steps": 22,
+              "restarts": 0,
+              "rechecked_energy": -0.7446814567604865,
+              "residual_metric_energy": 2.232171984058307e-18,
+              "feed": 11.526259602592589,
+              "bulk": 11.526259602592457,
+              "port_error": 1.3145040611561853e-13,
+              "order_pin_relative_to_carried": 7.532197930260054e-05,
+              "crystal_pin_relative_to_fixed_nodal_load": 8.105389535745216e-06,
+              "frozen_energy": -0.7446814137131179,
+              "response_max": [
+                2.0865854833962416e-06,
+                3.2688697011451495e-06,
+                1.2264639589060211e-05
+              ]
+            },
+            {
+              "iterations": 10,
+              "energy": -3.347179638592258,
+              "stationarity": 4.808459808428102e-09,
+              "gradient_integral_steps": 9,
+              "restarts": 0,
+              "rechecked_energy": -3.347179638592258,
+              "residual_metric_energy": 5.627942033939092e-15,
+              "feed": -0.0,
+              "bulk": 0.0,
+              "port_error": 0.0,
+              "order_pin_relative_to_carried": 7.53219608986555e-05,
+              "crystal_pin_relative_to_fixed_nodal_load": 8.103590540795057e-06,
+              "frozen_energy": -3.3471795968111095,
+              "response_max": [
+                2.0246166035908786e-06,
+                0.0,
+                1.226262460174432e-05
+              ]
+            }
+          ],
+          "file": "four_minus_eight_minus_half.npz",
+          "sha256": "4ec0a42748d5dba9501d46a54f314f7cb4ffcc9ecd9b0c1e1f17dcdd33bb4329"
+        }
+      ]
+    }
+  ],
+  "basis": "c5f44440",
+  "producer_sha256": {
+    "software/stage1_solver/tools/mouth_rim_pinned_comparison.py": "e9d2bda29ada58b90f5620a665f7b74a580609234deee5f2c36fdb59691b9065",
+    "software/stage1_solver/tools/mouth_rim_pinned_rematch.py": "01a527d45a0d32288272b133bcb0a9101a8a2f2cc5efd1fd18152bfe2cbc91e3",
+    "software/stage1_solver/tools/mouth_rim_pinned_sources.py": "47c31cfed5d2f5ecb5abe956bfcb3ef7a0d239defb54b86854cc6ac2059ef37b",
+    "software/stage1_solver/tools/mouth_joined_front_stationarity.py": "041aee7267087dd43c36cf041ccfbc7299ba3c86db03a18420776aa179c7d221",
+    "software/stage1_solver/tools/mouth_rim_stationary_duct_work.py": "2e24ff6e71a1fa80f35710c7ee5ede4ddd72def094a11fc8bbf93093d55da8d2"
+  },
+  "quantity": "Solver axial reaction, minus derivative of draining-minus-resting energy at winding one. Finite steps in both signs. The duct signal uses a single zero-boundary interior map. The corrected minus carried constraint terms compare FE energies at identical settled fields; the fixed supports have zero physical displacement work.",
+  "supplementary_duct_zero_state": {
+    "double": {
+      "grid": "double",
+      "zero_sha256": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+      "carrier": [
+        0.0004635874392699968,
+        0.0004635828249055507
+      ],
+      "order_static_and_phase": [
+        [
+          0.003120943909324936,
+          -0.0031210324021329035
+        ],
+        [
+          0.0031209941062382285,
+          -0.0031210826013323596
+        ]
+      ],
+      "crystal": 0.00016763016096459784,
+      "predicted": 0.0006311244919190991,
+      "settled": 0.0006312293132637592,
+      "settled_minus_predicted": 1.0482134466004763e-07
+    },
+    "local": {
+      "grid": "local",
+      "zero_sha256": "5a2e33ebbee08fd795f4b7cac3f3fd8e4a18fddadf13cc8f126180996a54f9cc",
+      "carrier": [
+        -4.344517801069259e-06,
+        -4.3466272248160465e-06
+      ],
+      "order_static_and_phase": [
+        [
+          0.0030901592363941077,
+          -0.0030898820719031618
+        ],
+        [
+          0.0030902033036657173,
+          -0.003089926143395407
+        ]
+      ],
+      "crystal": 0.00017990208447909916,
+      "predicted": 0.00017583261963491129,
+      "settled": 0.0001758029499754343,
+      "settled_minus_predicted": -2.96696594769821e-08
+    }
+  },
+  "commands": {
+    "signed": {
+      "double": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_pinned_rematch01/src/mouth_rim_pinned_rematch.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_crystal01/double/load.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_pinned_rematch01/double"
+      ],
+      "local": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_pinned_rematch01/src/mouth_rim_pinned_rematch.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_crystal01/local/load.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_pinned_rematch01/local"
+      ]
+    },
+    "reduction": [
+      "python3",
+      "software/stage1_solver/tools/mouth_rim_pinned_comparison.py",
+      "research/pde_ledger_v3/_measurements/mouth_terminal_element_recovery.json",
+      "research/pde_ledger_v3/_measurements/mouth_rim_pinned_constraint_work.json",
+      "_scratch/s11c/r4_pinned_rematch01/double",
+      "_scratch/s11c/r4_pinned_rematch01/local"
+    ],
+    "zero_state": {
+      "double": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_stationary_duct_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "_scratch/s11c/r4_pinned_rematch01/double",
+        "_scratch/s11c/r4_pinned_outcome01/measure/stdout"
+      ],
+      "local": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_stationary_duct_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "_scratch/s11c/r4_pinned_rematch01/local",
+        "_scratch/s11c/r4_pinned_outcome01/measure/stdout"
+      ]
+    }
+  }
+}

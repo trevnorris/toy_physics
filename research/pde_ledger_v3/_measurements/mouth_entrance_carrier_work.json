@@ -1,0 +1,76 @@
+{
+  "observable": "External derivative of excess coherent energy for the prescribed inlet disk and adjacent lateral-wall displacement; positive opens the rim. The force the carrier exerts on that displacement has the opposite sign.",
+  "reference": "Original R4 endpoints, original material labels and identical held crystal and neutral order for driven and wound-rest states. Fixed terminal disk and distant baths. The prepared order baseline moves with its spatial chart in this local virtual work.",
+  "displacement": "At depth zero the radial displacement per unit rim motion is r/4 inside and (28-r)/24 outside. In the shaft it tapers linearly to zero at the first axial carrier node. In the feed it uses either 1+w or (1+w)^2. All other bank volumes and faces have zero work on the probe. The two lifts agree on all physical boundary displacements within a given endpoint.",
+  "scope": "The signed loads include work on the adjoining wall taper. The full mechanical attachment of the ordered feeding slab to the lip, the absolute work of neutral order and crystal, and the total isolated fixture reaction lie outside this carrier-only integral.",
+  "pinned_dependencies": "See mouth_whole_r4_endpoints.json for endpoint solver fingerprints.",
+  "readback_sha256": {
+    "software/stage1_solver/tools/mouth_entrance_carrier_work.py": "386e7a2f68b12a2f4f5896163c9df5b5e507b36308606e5586eba60f410968fd"
+  },
+  "runs": {
+    "coarse": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "r4_entrance_coarse",
+        "--memory-gib",
+        "12",
+        "--log-directory",
+        "_scratch/s11c/r4_entrance_carrier_work03/coarse",
+        "--",
+        "/usr/bin/python3",
+        "-u",
+        "software/stage1_solver/tools/mouth_entrance_carrier_work.py",
+        "_scratch/s11c/r4_whole_mouth01/coarse"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "limits_verified": true,
+      "memory_max": "12884901888",
+      "swap_max": "0",
+      "wall_deadline_seconds": null,
+      "inactivity_deadline_seconds": null,
+      "literal_stdout": [
+        "{\"kind\": \"inputs\", \"mesh\": \"coarse\", \"saved\": \"e69eec4f10e24bef4074aa704eb063427e2ced06aaf75c901d82c34cd4fe849c\", \"controls\": \"3362dd16a39e0f9788cb70a209f4a8e8b757f24b9b32e871842091c4173dcc58\", \"wall_taper_height\": 0.025873130099949734, \"bank_order\": [\"feed_inner\", \"feed_outer\", \"shaft\", \"receiving_beside_shaft\", \"inner_sealed_wall\", \"outer_sealed_wall\"]}",
+        "{\"kind\": \"native_energy_check\", \"step\": 0.0001, \"signed_change\": [1.0039153587770855e-05, 3.7267793384643255e-06], \"local_change\": [1.0039153422834214e-05, 3.726779359789715e-06], \"error\": [1.6493664073413683e-13, -2.1325389371051884e-14]}",
+        "{\"kind\": \"signed_work\", \"feed_extension_power\": 1, \"step\": 0.0001, \"minus\": [-9.809415190754987e-06, -3.6813802896725357e-06], \"plus\": [1.0039153422834214e-05, 3.726779359789715e-06], \"driven_rest_by_term\": [[0.30865376713901105, 0.27421872459298946, -0.48716484304749813, 0.003945514115064313, -0.0001322095145297672, -0.0002781102170909197], [0.014525202600545323, 0.009507375785065136, 0.00959192245795484, 0.003853323398084413, -0.00016025776438093747, -0.00027676822995752193]], \"driven_rest\": [0.09924284306794601, 0.037040798247311255], \"driven_minus_rest\": 0.06220204482063477}",
+        "{\"kind\": \"signed_work\", \"feed_extension_power\": 1, \"step\": 5e-05, \"minus\": [-4.933423009282484e-06, -1.846364719914435e-06], \"plus\": [4.990857593518191e-06, 1.8577144874178716e-06], \"driven_rest_by_term\": [[0.30865376681454837, 0.2742187229642923, -0.4871648706119419, 0.003945506592477159, -0.00013220951440399975, -0.00027811021696515226], [0.01452520259303397, 0.009507375758922854, 0.00959192200446126, 0.0038533177110135902, -0.00016025776427251726, -0.0002767682298360913]], \"driven_rest\": [0.09924280602800675, 0.037040792073323066], \"driven_minus_rest\": 0.0622020139546837}",
+        "{\"kind\": \"signed_work\", \"feed_extension_power\": 2, \"step\": 0.0001, \"minus\": [-9.806313259432074e-06, -3.6813277676181217e-06], \"plus\": [1.0045401617906659e-05, 3.726960742257788e-06], \"driven_rest_by_term\": [[0.35877175406762163, 0.22411646898312654, -0.48716484304749813, 0.003945514115064313, -0.0001322095145297672, -0.0002781102170909197], [0.013299585318767015, 0.010733637368911739, 0.00959192245795484, 0.003853323398084413, -0.00016025776438093747, -0.00027676822995752193]], \"driven_rest\": [0.09925857438669367, 0.03704144254937955], \"driven_minus_rest\": 0.06221713183731418}",
+        "{\"kind\": \"signed_work\", \"feed_extension_power\": 2, \"step\": 5e-05, \"minus\": [-4.9330407834204115e-06, -1.8463676943667167e-06], \"plus\": [4.992812872068372e-06, 1.8577759378442162e-06], \"driven_rest_by_term\": [[0.3587717535896706, 0.22411646671605112, -0.4871648706119419, 0.003945506592477159, -0.00013220951440399975, -0.00027811021696515226], [0.013299585300552419, 0.010733637300190668, 0.00959192200446126, 0.0038533177110135902, -0.00016025776427251726, -0.0002767682298360913]], \"driven_rest\": [0.09925853655488784, 0.03704143632210933], \"driven_minus_rest\": 0.06221710023277847}"
+      ]
+    },
+    "fine": {
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "r4_entrance_fine",
+        "--memory-gib",
+        "12",
+        "--log-directory",
+        "_scratch/s11c/r4_entrance_carrier_work03/fine",
+        "--",
+        "/usr/bin/python3",
+        "-u",
+        "software/stage1_solver/tools/mouth_entrance_carrier_work.py",
+        "_scratch/s11c/r4_whole_mouth01/fine"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "limits_verified": true,
+      "memory_max": "12884901888",
+      "swap_max": "0",
+      "wall_deadline_seconds": null,
+      "inactivity_deadline_seconds": null,
+      "literal_stdout": [
+        "{\"kind\": \"inputs\", \"mesh\": \"fine\", \"saved\": \"50eb4fddf48b08dd03e1670bf9881a3e5d2fa8d24bdaa56b68d1a38c66675aa3\", \"controls\": \"672498b51095498584efdd50264e12b4b66ebaf232d578c200b756569427c21a\", \"wall_taper_height\": 0.025856899185859965, \"bank_order\": [\"feed_inner\", \"feed_outer\", \"shaft\", \"receiving_beside_shaft\", \"inner_sealed_wall\", \"outer_sealed_wall\"]}",
+        "{\"kind\": \"native_energy_check\", \"step\": 0.0001, \"signed_change\": [1.004693182671268e-05, 3.7283758935746647e-06], \"local_change\": [1.0046931829009453e-05, 3.728376048473111e-06], \"error\": [-2.2967738821932926e-15, -1.5489844649996254e-13]}",
+        "{\"kind\": \"signed_work\", \"feed_extension_power\": 1, \"step\": 0.0001, \"minus\": [-9.817071141371946e-06, -3.6829626347230967e-06], \"plus\": [1.0046931829009453e-05, 3.728376048473111e-06], \"driven_rest_by_term\": [[0.3086817250252949, 0.2742802957844681, -0.48717470199766477, 0.003942670021802631, -0.0001321155349573791, -0.0002778584470364623], [0.014510620067031271, 0.009503990548330107, 0.009628145516676206, 0.0038506019758486297, -0.00016015016082813333, -0.000276514531077042]], \"driven_rest\": [0.09932001485190703, 0.03705669341598104], \"driven_minus_rest\": 0.06226332143592597}",
+        "{\"kind\": \"signed_work\", \"feed_extension_power\": 1, \"step\": 5e-05, \"minus\": [-4.9372662874460835e-06, -1.8471576852538765e-06], \"plus\": [4.994731506899244e-06, 1.858511038360048e-06], \"driven_rest_by_term\": [[0.30868172470222, 0.27428029435450085, -0.48717472962592906, 0.003942662494438483, -0.00013211553484895888, -0.00027785844692804207], [0.014510620057230084, 0.009503990520721983, 0.009628145063210816, 0.0038505962866646967, -0.00016015016072838673, -0.00027651453095994816]], \"driven_rest\": [0.09931997794345326, 0.037056687236139245], \"driven_minus_rest\": 0.06226329070731404}",
+        "{\"kind\": \"signed_work\", \"feed_extension_power\": 2, \"step\": 0.0001, \"minus\": [-9.813969972050605e-06, -3.682910462694247e-06], \"plus\": [1.0053182530687932e-05, 3.728557685092051e-06], \"driven_rest_by_term\": [[0.35880683953742887, 0.22417092893411983, -0.48717470199766477, 0.003942670021802631, -0.0001321155349573791, -0.0002778584470364623], [0.013284643908678673, 0.010730614029633156, 0.009628145516676206, 0.0038506019758486297, -0.00016015016082813333, -0.000276514531077042]], \"driven_rest\": [0.09933576251369272, 0.037057340738931493], \"driven_minus_rest\": 0.0622784217747612}",
+        "{\"kind\": \"signed_work\", \"feed_extension_power\": 2, \"step\": 5e-05, \"minus\": [-4.936884636735049e-06, -1.8471608230407818e-06], \"plus\": [4.996687788313883e-06, 1.8585726281696892e-06], \"driven_rest_by_term\": [[0.3588068390308896, 0.22417092633286728, -0.48717472962592906, 0.003942662494438483, -0.00013211553484895888, -0.00027785844692804207], [0.013284643894800885, 0.010730613959116647, 0.009628145063210816, 0.0038505962866646967, -0.00016015016072838673, -0.00027651453095994816]], \"driven_rest\": [0.09933572425048931, 0.03705733451210471], \"driven_minus_rest\": 0.06227838973838459}"
+      ]
+    }
+  }
+}

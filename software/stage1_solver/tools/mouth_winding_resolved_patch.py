@@ -26,16 +26,23 @@ BITS = [(i, j, k) for i in (0, 1) for j in (0, 1) for k in (0, 1)]
 
 
 class Patch:
-    def __init__(self, path, radius, exit_radius, mesh, halfwidth):
-        if radius not in (1, 2):
+    def __init__(self, path, radius, exit_radius, mesh, halfwidth, *, material_state=None, shape_extra=0.):
+        allowed = (1, 2) if material_state is None else (4,)
+        if radius not in allowed:
             raise ValueError('Reserved radius')
         guard = json.loads((path.parent/'outcome.json').read_bytes())
         limits = json.loads((path.parent/'limit-validation.json').read_bytes())
         if guard['exitCode'] or guard['childOutcome']['exitCode'] or not limits['verified'] or int(limits['actual']['memory.swap.max']):
             raise ValueError('Cannot adopt an unvalidated carrier')
-        config, source_order, digest = prepared(radius)
-        config[1] = np.log(exit_radius / (1.5 * radius))
-        self.shape = Meridian(radius, config)
+        if material_state is None:
+            config, source_order, digest = prepared(radius)
+            config[1] = np.log(exit_radius / (1.5 * radius))
+        else:
+            config, source_order, digest = material_state
+        self.shape = Meridian(radius, config, extra=shape_extra)
+        if (not np.isclose(self.shape.exit, exit_radius, rtol=1.e-13, atol=0.)
+                or not 0 < halfwidth < self.shape.length):
+            raise ValueError('Layer cuts must fit inside the measured geometry')
         self.b = exit_radius
         self.h = halfwidth
         with np.load(path, allow_pickle=False) as fields:
@@ -44,9 +51,10 @@ class Patch:
             if abs(np.max(fields['disk'][:,3])/exit_radius-1) > .008:
                 raise ValueError('Exit size differs from field geometry')
             winding = int(fields['winding']) if 'winding' in fields else 1
-            if winding != 1:
+            if winding not in ((1,) if material_state is None else (0, 1)):
                 raise ValueError('Wrong circulation')
-            model = Wound(self.shape, source_order, 1, int(fields['mesh']), int(fields['polar']),
+            self.winding = winding
+            model = Wound(self.shape, source_order, winding, int(fields['mesh']), int(fields['polar']),
                           float(fields['outer']), float(fields['roof']))
             self.make_grid(mesh)
             radial, angle, height = np.meshgrid(self.x, self.a, self.y,indexing='ij')
@@ -102,7 +110,8 @@ class Patch:
         masks[:,ids[-1,:,self.mid+1:]] = False
         masks[2,ids[-1,:,:self.mid+1]] = False
         # Regularity of a one-quantum amplitude on the circulation axis.
-        masks[0,ids[:,0,:]] = False
+        if self.winding:
+            masks[0,ids[:,0,:]] = False
         self.masks = masks
         self.slices = np.cumsum([0]+[int(sum(m)) for m in masks])
 
@@ -152,7 +161,7 @@ class Patch:
                 S+=grad.T@grad.multiply((w*weights)[:,None])
             return S
         self.solvers=[factorized(M[m][:,m].tocsc()) for m,M in zip(self.masks,
-                         (metric(1.,1/self.D[:,3]**2+1.),metric(n,0.),metric(KAPPA,2*WELL)))]
+                         (metric(1.,(self.winding/self.D[:,3])**2+1.),metric(n,0.),metric(KAPPA,2*WELL)))]
         self.Nq=len(w)
 
     def unpack(self,x,seed):
@@ -182,7 +191,7 @@ class Patch:
         curr=n[:,None]*vel
         u0=(n**5-5*n+4)/20
         pot=WELL*(chi*(1-chi))**2
-        E=.5*(square(gf)+n/s**2+KAPPA*gg+
+        E=.5*(square(gf)+n*(self.winding/s)**2+KAPPA*gg+
               np.einsum('ij,ij->i',gp,curr))+u0+pot
         if read:
             t=n*vel[:,2]**2+gf[:,2]**2+KAPPA*gc[:,2]**2-E
@@ -193,7 +202,7 @@ class Patch:
         # (|u|²+2 pi u.grad(chi)/n)/2.
         gp2=square(gp)
         dep=gp2-ORDER_INERTIA**2*gg*proj**2/(n+ORDER_INERTIA*gg)**2
-        gf0=f*(1/s**2 + (n**4-1)/2 + dep)
+        gf0=f*((self.winding/s)**2 + (n**4-1)/2 + dep)
         gr=np.array([self.V.T@(w*gf0),np.zeros(self.size),
                      self.V.T@(w*(2*WELL*chi*(1-chi)*(1-2*chi)))])
         for i,G in enumerate(self.G):
@@ -280,7 +289,7 @@ class Patch:
             area=w[choose]/dy
             jz=j[choose,2]
             m=abs(vel[choose,2])/n[choose]**2
-            mt=np.sqrt(np.sum(vel[choose]**2,axis=1)+1/s[choose]**2)/n[choose]**2
+            mt=np.sqrt(np.sum(vel[choose]**2,axis=1)+(self.winding/s[choose])**2)/n[choose]**2
             parts=[]
             for label,indices in [('all',np.ones_like(m,bool)),('normal_subsonic',m<1),
                                   ('total_subsonic',mt<1),('straight_core_interior',core[choose].astype(bool)),
@@ -332,7 +341,7 @@ class Patch:
         for sign in (-1,1):
             take=(y*sign>0)&(abs(y)<dy)
             ma=abs(vel[:,2])/n**2
-            mt=np.sqrt(np.sum(vel**2,axis=1)+1/s**2)/n**2
+            mt=np.sqrt(np.sum(vel**2,axis=1)+(self.winding/s)**2)/n**2
             row={}
             for key,choose in [('all',take),('normal_subsonic',take&(ma<1)),('total_subsonic',take&(mt<1)),
                                ('straight_core_interior',take&core.astype(bool)),('density_above_half',take&(n>.5)),

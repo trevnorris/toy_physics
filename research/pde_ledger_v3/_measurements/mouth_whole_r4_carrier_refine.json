@@ -1,0 +1,156 @@
+{
+  "command": [
+    "software/stage1_solver/tools/mouth_whole_r4_carrier_refine.py",
+    "_scratch/s11c/r4_whole_mouth01",
+    "research/pde_ledger_v3/_measurements/mouth_whole_r4_order_edges.json",
+    "_scratch/s11c/r4_endpoint_carrier_refine01/fields",
+    "research/pde_ledger_v3/_measurements/mouth_whole_r4_carrier_refine.json"
+  ],
+  "script_sha256": "70cb5d466d55d1990a03972f6a6f05576ed5d3ff7453e70f9f1461f037911b38",
+  "source_manifest_sha256": "a9e40da1aaaf3f4759fbcc47755535f83de2141e37d87d92bca54f3f08f43e6b",
+  "edge_readback_sha256": "20090ad7a341777149075b7abd839d6c437cf7acfdefe15197115b6f6aa1d79e",
+  "original_sha256": "50eb4fddf48b08dd03e1670bf9881a3e5d2fa8d24bdaa56b68d1a38c66675aa3",
+  "controls_sha256": "672498b51095498584efdd50264e12b4b66ebaf232d578c200b756569427c21a",
+  "state_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+  "solid_discretization": {
+    "n": 11,
+    "k": 32,
+    "angles": 10,
+    "degree": 3,
+    "subdivisions": 2
+  },
+  "coordinates": [
+    -0.0013078814589434918,
+    0.008395930677221842,
+    -0.016653756621241998,
+    -0.04454993444236932,
+    0.0006970736391678057,
+    0.00023576056020379324
+  ],
+  "solid_reference_energy": 54.00298899152113,
+  "deposition_sum": 63.44275495499354,
+  "deposition_l1": 63.44275495499354,
+  "solid": {
+    "transfer_energy": 0.0,
+    "unit_order_energy": 63.44275495497827,
+    "reference_volume": 298.9464198225125,
+    "quadrature_points": 55273698
+  },
+  "grid": [
+    32,
+    20,
+    34
+  ],
+  "comparisons": {
+    "wound": {
+      "sha256": "9c1140184d382917a474c77a32a1db2b2e3dd99c6dd3afd210b24a85561a05a7",
+      "original": {
+        "excess_energy": -0.7592743371082877,
+        "feed_current": 11.539177974789405,
+        "bulk_current": 11.539177974796445,
+        "port_error": 7.0397021545431926e-12,
+        "weak_disk_current": 11.539178120799713,
+        "incident_slice_current": 11.539178120799715,
+        "receiving_slice_current": 10.932706205626197,
+        "positive_slice_current": 11.539178121437327,
+        "dense_total_subsonic_share": 0.7212538968997815,
+        "minimum_total_mach": 0.3876552220849226,
+        "total_axial_stress": -93.90336054599297,
+        "crystalline_range_in_band": [
+          0.02897326029201052,
+          0.9490502781414932
+        ],
+        "nodal_order_range_in_band": [
+          0.02796863844286023,
+          0.9504162875441522
+        ],
+        "disk_minus_feed_current": 1.4601030784433533e-07
+      },
+      "rematched": {
+        "excess_energy": -0.7559656045645435,
+        "feed_current": 11.533945682965529,
+        "bulk_current": 11.533945682965673,
+        "port_error": 1.438849039914203e-13,
+        "weak_disk_current": 11.533945684267236,
+        "incident_slice_current": 11.53394568426724,
+        "receiving_slice_current": 11.11835082317669,
+        "positive_slice_current": 11.53394568491183,
+        "dense_total_subsonic_share": 0.7253647257245707,
+        "minimum_total_mach": 0.38729954104923675,
+        "total_axial_stress": -95.612508159607,
+        "crystalline_range_in_band": [
+          0.02885370202905359,
+          0.9490499659503193
+        ],
+        "nodal_order_range_in_band": [
+          0.02796863844286023,
+          0.9504162875441522
+        ],
+        "disk_minus_feed_current": 1.301707186485146e-09
+      },
+      "solver": {
+        "iterations": 38,
+        "energy": -0.7559656045645435,
+        "stationarity": 1.457979346335893e-07,
+        "gradient_integral_steps": 18,
+        "restarts": 0,
+        "independent_residual": 1.457979346335893e-07
+      }
+    },
+    "rest": {
+      "sha256": "d86752b78ca31fb3ce40bebe8417828b8719ceb3c0463861505cfac8a425204c",
+      "original": {
+        "excess_energy": -3.364683241664107,
+        "feed_current": -0.0,
+        "bulk_current": 0.0,
+        "port_error": 0.0,
+        "weak_disk_current": 0.0,
+        "incident_slice_current": 0.0,
+        "receiving_slice_current": 0.0,
+        "positive_slice_current": 0.0,
+        "dense_total_subsonic_share": null,
+        "minimum_total_mach": 0.3250764847736569,
+        "total_axial_stress": -94.79819573636246,
+        "crystalline_range_in_band": [
+          0.02897326535717063,
+          0.9490502676965957
+        ],
+        "nodal_order_range_in_band": [
+          0.02796863844286023,
+          0.9504162875441522
+        ],
+        "disk_minus_feed_current": 0.0
+      },
+      "rematched": {
+        "excess_energy": -3.360196374005917,
+        "feed_current": -0.0,
+        "bulk_current": 0.0,
+        "port_error": 0.0,
+        "weak_disk_current": 0.0,
+        "incident_slice_current": 0.0,
+        "receiving_slice_current": 0.0,
+        "positive_slice_current": 0.0,
+        "dense_total_subsonic_share": null,
+        "minimum_total_mach": 0.3248993999733599,
+        "total_axial_stress": -96.51161032156458,
+        "crystalline_range_in_band": [
+          0.028853704589037632,
+          0.9490499855651308
+        ],
+        "nodal_order_range_in_band": [
+          0.02796863844286023,
+          0.9504162875441522
+        ],
+        "disk_minus_feed_current": 0.0
+      },
+      "solver": {
+        "iterations": 25,
+        "energy": -3.360196374005917,
+        "stationarity": 1.7126187781823824e-07,
+        "gradient_integral_steps": 7,
+        "restarts": 0,
+        "independent_residual": 1.7126187781823824e-07
+      }
+    }
+  }
+}

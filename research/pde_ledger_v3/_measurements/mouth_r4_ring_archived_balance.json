@@ -1,0 +1,53 @@
+{
+  "source": "research/pde_ledger_v3/_measurements/mouth_whole_r4_wider_order.json",
+  "source_sha256": "2df68297b4516ad10dc31cc2855ca3b771a87bdb7702114e076271f5696b057d",
+  "origin": "Algebraic reduction of the archived fixed-q field rematches at the same fine endpoint.",
+  "coordinate": "Spatial radial force at fixed spatial axial and polar coordinates, summed over the angular nodes of the last free radial and depth ring. Positive outward.",
+  "landed_depth_fraction": [
+    0.9776521877879469,
+    0.9776556469669683
+  ],
+  "cases": {
+    "wound": {
+      "narrow_force_radial_axial": [
+        -1.0728183235511677e-05,
+        -4.349653453825776e-06
+      ],
+      "wider_force_radial_axial": [
+        -1.7466289682549945,
+        -0.29964963186276855
+      ],
+      "wider_minus_narrow_force_radial_axial": [
+        -1.746618240071759,
+        -0.2996452822093148
+      ],
+      "wider_minus_narrow_energy": {
+        "chi_W": -4.319569551993908,
+        "all_other_fields": 0.2395518157546661,
+        "total": -4.080017736239242
+      }
+    },
+    "rest": {
+      "narrow_force_radial_axial": [
+        0.0003454844617970141,
+        -0.0006738999352788598
+      ],
+      "wider_force_radial_axial": [
+        -1.7462910406375547,
+        -0.3001021609410002
+      ],
+      "wider_minus_narrow_force_radial_axial": [
+        -1.7466365250993519,
+        -0.2994282610057213
+      ],
+      "wider_minus_narrow_energy": {
+        "chi_W": -4.319518768064789,
+        "all_other_fields": 0.23962216370652367,
+        "total": -4.079896604358265
+      }
+    }
+  },
+  "drive_minus_rest_wider_radial_force": -0.0003379276174397816,
+  "energy_formula": "chi_W = solid_energy_change; all_other_fields = field_energy_change - solid_energy_change",
+  "direct_force_provenance": "Native analytic solid residual in the archived readback. The fixed-chart intrinsic field energy has no solid-coordinate argument."
+}

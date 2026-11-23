@@ -1,0 +1,420 @@
+{
+  "native": {
+    "command": [
+      "software/stage1_solver/tools/mouth_r4_flat_order_mesh.py",
+      "_scratch/s11c/r4_whole_mouth01/coarse/endpoint.json",
+      "_scratch/s11c/r4_whole_mouth01/fine/endpoint.json"
+    ],
+    "source_and_inputs": {
+      "software/stage1_solver/tools/mouth_r4_flat_order_mesh.py": "6b7b60574b48e7325341abbc16ca52e1b2a2efbac74f5f966e7b435e462793c1",
+      "_scratch/s11c/r4_whole_mouth01/coarse/endpoint.json": "c96d269556664836d1cf84e8bf78ac5914b0ac26ef0eb6b6e84b61731b4d26b9",
+      "_scratch/s11c/r4_whole_mouth01/fine/endpoint.json": "cc7e7eebd59ae5cd4b7fb7854757788abd45ab49d1ceb775325df0e137aba61d"
+    },
+    "reading": {
+      "scope": "Nodal interpolation of the same neutral planar profile; carrier and lattice absent. Uniformly subdivided native axial mesh. Exact radial/angular volume. No-mouth continuum force on this change of mesh is zero.",
+      "coarse": {
+        "depth": 0.792701382598693,
+        "gd_terms_at_original": [
+          45725.18286440271,
+          46479.28409628727
+        ],
+        "trials": [
+          {
+            "axial_subdivision": 1,
+            "log_depth_step": 0.0001,
+            "gradient_force": 370.3766270700726,
+            "double_well_force": -740.8292857871857,
+            "total_force": -370.4526587171131
+          },
+          {
+            "axial_subdivision": 1,
+            "log_depth_step": 5e-05,
+            "gradient_force": 370.37662506918423,
+            "double_well_force": -740.829281785409,
+            "total_force": -370.45265671622474
+          },
+          {
+            "axial_subdivision": 2,
+            "log_depth_step": 0.0001,
+            "gradient_force": 93.97810572409071,
+            "double_well_force": -187.95743115333607,
+            "total_force": -93.97932542924536
+          },
+          {
+            "axial_subdivision": 2,
+            "log_depth_step": 5e-05,
+            "gradient_force": 93.9781051420141,
+            "double_well_force": -187.9574304621201,
+            "total_force": -93.979325320106
+          },
+          {
+            "axial_subdivision": 4,
+            "log_depth_step": 0.0001,
+            "gradient_force": 23.582299218105618,
+            "double_well_force": -47.16461771749891,
+            "total_force": -23.582318499393295
+          },
+          {
+            "axial_subdivision": 4,
+            "log_depth_step": 5e-05,
+            "gradient_force": 23.582299108966254,
+            "double_well_force": -47.16461757197976,
+            "total_force": -23.582318463013507
+          }
+        ]
+      },
+      "fine": {
+        "depth": 0.7922793788323591,
+        "gd_terms_at_original": [
+          45725.37997927835,
+          46478.8898261219
+        ],
+        "trials": [
+          {
+            "axial_subdivision": 1,
+            "log_depth_step": 0.0001,
+            "gradient_force": 369.9563669215422,
+            "double_well_force": -739.9884914048016,
+            "total_force": -370.0321244832594
+          },
+          {
+            "axial_subdivision": 1,
+            "log_depth_step": 5e-05,
+            "gradient_force": 369.95636495703366,
+            "double_well_force": -739.9884873302653,
+            "total_force": -370.0321223732317
+          },
+          {
+            "axial_subdivision": 2,
+            "log_depth_step": 0.0001,
+            "gradient_force": 93.86973648361163,
+            "double_well_force": -187.74068819766399,
+            "total_force": -93.87095171405235
+          },
+          {
+            "axial_subdivision": 2,
+            "log_depth_step": 5e-05,
+            "gradient_force": 93.86973601067439,
+            "double_well_force": -187.7406875428278,
+            "total_force": -93.87095153215341
+          },
+          {
+            "axial_subdivision": 4,
+            "log_depth_step": 0.0001,
+            "gradient_force": 23.55499571422115,
+            "double_well_force": -47.11001045507146,
+            "total_force": -23.55501474085031
+          },
+          {
+            "axial_subdivision": 4,
+            "log_depth_step": 5e-05,
+            "gradient_force": 23.554995641461574,
+            "double_well_force": -47.110009982134216,
+            "total_force": -23.555014340672642
+          }
+        ]
+      }
+    }
+  },
+  "anchored": {
+    "command": [
+      "software/stage1_solver/tools/mouth_continuous_depth_mesh.py",
+      "_scratch/s11c/r4_whole_mouth01/coarse/endpoint.json"
+    ],
+    "source_and_inputs": {
+      "software/stage1_solver/tools/mouth_continuous_depth_mesh.py": "ddade788a3d0fd898e26d91702bfd8dc24d9cf39f0028002652666168a7ff014",
+      "_scratch/s11c/r4_whole_mouth01/coarse/endpoint.json": "c96d269556664836d1cf84e8bf78ac5914b0ac26ef0eb6b6e84b61731b4d26b9"
+    },
+    "reading": [
+      {
+        "length": 0.792701382598693,
+        "reference": 0.792701382598693,
+        "exponent": 16,
+        "step": 0.0001,
+        "transported": {
+          "gradient": 2.3772780062343626e-05,
+          "well": -2.6264906278318885e-05,
+          "total": -2.4921262159752586e-06
+        },
+        "resampled": {
+          "gradient": 1.5748257889355897e-06,
+          "well": -3.2824216818908816e-06,
+          "total": -1.707595892955292e-06
+        }
+      },
+      {
+        "length": 0.792701382598693,
+        "reference": 0.792701382598693,
+        "exponent": 16,
+        "step": 5e-05,
+        "transported": {
+          "gradient": 2.3772222799643225e-05,
+          "well": -2.6264778569669396e-05,
+          "total": -2.4925557700261707e-06
+        },
+        "resampled": {
+          "gradient": 1.5744765331586103e-06,
+          "well": -3.2813131463605145e-06,
+          "total": -1.7068366132019041e-06
+        }
+      },
+      {
+        "length": 0.792701382598693,
+        "reference": 0.792701382598693,
+        "exponent": 24,
+        "step": 0.0001,
+        "transported": {
+          "gradient": 6.043945936661814e-07,
+          "well": -6.680286554310124e-07,
+          "total": -6.363406176483095e-08
+        },
+        "resampled": {
+          "gradient": 4.060605459360923e-08,
+          "well": -8.463751233551909e-08,
+          "total": -4.403145774190986e-08
+        }
+      },
+      {
+        "length": 0.792701382598693,
+        "reference": 0.792701382598693,
+        "exponent": 24,
+        "step": 5e-05,
+        "transported": {
+          "gradient": 6.043637289193593e-07,
+          "well": -6.680006792555682e-07,
+          "total": -6.363695033620888e-08
+        },
+        "resampled": {
+          "gradient": 4.059856796823525e-08,
+          "well": -8.46281263551045e-08,
+          "total": -4.4029558386869245e-08
+        }
+      },
+      {
+        "length": 0.792701382598693,
+        "reference": 0.792701382598693,
+        "exponent": 32,
+        "step": 0.0001,
+        "transported": {
+          "gradient": 1.2517183433258885e-07,
+          "well": -1.3835402189177518e-07,
+          "total": -1.3182187559186332e-08
+        },
+        "resampled": {
+          "gradient": 8.759180651889472e-09,
+          "well": -1.824121597167026e-08,
+          "total": -9.482035319780787e-09
+        }
+      },
+      {
+        "length": 0.792701382598693,
+        "reference": 0.792701382598693,
+        "exponent": 32,
+        "step": 5e-05,
+        "transported": {
+          "gradient": 1.2517121392533062e-07,
+          "well": -1.383536908773548e-07,
+          "total": -1.3182476952024188e-08
+        },
+        "resampled": {
+          "gradient": 8.757834554590441e-09,
+          "well": -1.8239757762381204e-08,
+          "total": -9.481923207790763e-09
+        }
+      },
+      {
+        "length": 0.7530663134687584,
+        "reference": 0.792701382598693,
+        "exponent": 16,
+        "step": 0.0001,
+        "transported": {
+          "gradient": 6.332735160223208e-05,
+          "well": -6.99264268931682e-05,
+          "total": -6.59907529093612e-06
+        },
+        "resampled": {
+          "gradient": 4.177651888171275e-06,
+          "well": -8.706175765103824e-06,
+          "total": -4.528523876932549e-06
+        }
+      },
+      {
+        "length": 0.7530663134687584,
+        "reference": 0.792701382598693,
+        "exponent": 16,
+        "step": 5e-05,
+        "transported": {
+          "gradient": 6.33316313023204e-05,
+          "well": -6.993185904156364e-05,
+          "total": -6.600227739243233e-06
+        },
+        "resampled": {
+          "gradient": 4.1765960488014186e-06,
+          "well": -8.706462285388974e-06,
+          "total": -4.529866236587556e-06
+        }
+      },
+      {
+        "length": 0.7530663134687584,
+        "reference": 0.792701382598693,
+        "exponent": 24,
+        "step": 0.0001,
+        "transported": {
+          "gradient": 2.485028008366276e-06,
+          "well": -2.7285166652120234e-06,
+          "total": -2.434886568457474e-07
+        },
+        "resampled": {
+          "gradient": 1.5808483229755661e-07,
+          "well": -3.289053527272186e-07,
+          "total": -1.7082052042966196e-07
+        }
+      },
+      {
+        "length": 0.7530663134687584,
+        "reference": 0.792701382598693,
+        "exponent": 24,
+        "step": 5e-05,
+        "transported": {
+          "gradient": 2.484982424698994e-06,
+          "well": -2.728455002913799e-06,
+          "total": -2.4347257821480473e-07
+        },
+        "resampled": {
+          "gradient": 1.580621121767528e-07,
+          "well": -3.2884478034731495e-07,
+          "total": -1.7078266817056214e-07
+        }
+      },
+      {
+        "length": 0.7530663134687584,
+        "reference": 0.792701382598693,
+        "exponent": 32,
+        "step": 0.0001,
+        "transported": {
+          "gradient": 6.568866240436359e-07,
+          "well": -7.123102969277439e-07,
+          "total": -5.542367288410793e-08
+        },
+        "resampled": {
+          "gradient": 3.791195955145236e-08,
+          "well": -7.859539414539189e-08,
+          "total": -4.068343459393953e-08
+        }
+      },
+      {
+        "length": 0.7530663134687584,
+        "reference": 0.792701382598693,
+        "exponent": 32,
+        "step": 5e-05,
+        "transported": {
+          "gradient": 6.568602736370825e-07,
+          "well": -7.122814303403948e-07,
+          "total": -5.542115670331233e-08
+        },
+        "resampled": {
+          "gradient": 3.7901832302029605e-08,
+          "well": -7.858272001782722e-08,
+          "total": -4.068088771579762e-08
+        }
+      },
+      {
+        "length": 0.8323364517286277,
+        "reference": 0.792701382598693,
+        "exponent": 16,
+        "step": 0.0001,
+        "transported": {
+          "gradient": 9.436249521467081e-06,
+          "well": -1.0430818072027761e-05,
+          "total": -9.945685505606801e-07
+        },
+        "resampled": {
+          "gradient": 6.256279827803276e-07,
+          "well": -1.305908729075065e-06,
+          "total": -6.802807462947374e-07
+        }
+      },
+      {
+        "length": 0.8323364517286277,
+        "reference": 0.792701382598693,
+        "exponent": 16,
+        "step": 5e-05,
+        "transported": {
+          "gradient": 9.438142563250396e-06,
+          "well": -1.0433156693431245e-05,
+          "total": -9.950141301808492e-07
+        },
+        "resampled": {
+          "gradient": 6.243490583031343e-07,
+          "well": -1.305999295917715e-06,
+          "total": -6.816502376145807e-07
+        }
+      },
+      {
+        "length": 0.8323364517286277,
+        "reference": 0.792701382598693,
+        "exponent": 24,
+        "step": 0.0001,
+        "transported": {
+          "gradient": 1.5779412241465938e-07,
+          "well": -1.783413347367389e-07,
+          "total": -2.054721232207952e-08
+        },
+        "resampled": {
+          "gradient": 1.2268261506895614e-08,
+          "well": -2.6329294205739775e-08,
+          "total": -1.406103269884416e-08
+        }
+      },
+      {
+        "length": 0.8323364517286277,
+        "reference": 0.792701382598693,
+        "exponent": 24,
+        "step": 5e-05,
+        "transported": {
+          "gradient": 1.5775233419412022e-07,
+          "well": -1.7828551002154368e-07,
+          "total": -2.0533175827423462e-08
+        },
+        "resampled": {
+          "gradient": 1.2293292788704594e-08,
+          "well": -2.633357878149716e-08,
+          "total": -1.4040285992792564e-08
+        }
+      },
+      {
+        "length": 0.8323364517286277,
+        "reference": 0.792701382598693,
+        "exponent": 32,
+        "step": 0.0001,
+        "transported": {
+          "gradient": 2.7567304680926443e-08,
+          "well": -3.536906972820452e-08,
+          "total": -7.801765047278074e-09
+        },
+        "resampled": {
+          "gradient": 4.2485423225952145e-09,
+          "well": -1.0005806043215373e-08,
+          "total": -5.757263720620158e-09
+        }
+      },
+      {
+        "length": 0.8323364517286277,
+        "reference": 0.792701382598693,
+        "exponent": 32,
+        "step": 5e-05,
+        "transported": {
+          "gradient": 2.7569469686663234e-08,
+          "well": -3.5371399286142153e-08,
+          "total": -7.80192959947892e-09
+        },
+        "resampled": {
+          "gradient": 4.247918798569706e-09,
+          "well": -1.0005074725478936e-08,
+          "total": -5.75715592690923e-09
+        }
+      }
+    ]
+  },
+  "scope": "Neutral planar profile under signed log-depth steps in a field-free mesh movement test. All forces are generalized log-depth forces. The analytic physical force is zero."
+}

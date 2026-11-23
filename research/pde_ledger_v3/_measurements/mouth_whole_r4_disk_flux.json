@@ -1,0 +1,730 @@
+{
+  "command": [
+    "software/stage1_solver/tools/mouth_whole_r4_disk_flux.py",
+    "_scratch/s11c/r4_whole_mouth01",
+    "research/pde_ledger_v3/_measurements/mouth_whole_r4_order_edges.json",
+    "research/pde_ledger_v3/_measurements/mouth_whole_r4_disk_flux.json"
+  ],
+  "script_sha256": "1ad684907c5fa8ef9fd389dcd91150888d5a19cf032466ee2d0017c83a8b876f",
+  "input_reader_sha256": "70cb5d466d55d1990a03972f6a6f05576ed5d3ff7453e70f9f1461f037911b38",
+  "source_manifest_sha256": "a9e40da1aaaf3f4759fbcc47755535f83de2141e37d87d92bca54f3f08f43e6b",
+  "edge_readback_sha256": "20090ad7a341777149075b7abd839d6c437cf7acfdefe15197115b6f6aa1d79e",
+  "results": {
+    "coarse": {
+      "depth": 0.792701382598693,
+      "radius": 3.501792516704783,
+      "incident_radius_slope": -0.10676828474111334,
+      "carrier_sizes": [
+        26,
+        20,
+        54,
+        54
+      ],
+      "port_current": 11.537929710704683,
+      "raw": [
+        {
+          "degree": 2,
+          "disk_area": 179.87045458070133,
+          "banks": {
+            "incident": {
+              "signed_current": 11.552454276050225,
+              "rest_current": 0.0,
+              "positive_current": 11.552454276662909,
+              "axial_phase_term_without_order": 12.254755276698301,
+              "order_momentum_correction": -0.702301000648086,
+              "axial_momentum": -83.29720697182887,
+              "drive_minus_rest_axial_momentum": 0.7904155678683523
+            },
+            "receiving": {
+              "signed_current": 10.947852577849059,
+              "rest_current": 0.0,
+              "positive_current": 10.947852578510332,
+              "axial_phase_term_without_order": 11.560811054126102,
+              "order_momentum_correction": -0.6129584762770436,
+              "axial_momentum": -107.56364990951852,
+              "drive_minus_rest_axial_momentum": 0.4068549187207169
+            }
+          },
+          "max_pointwise_jump": {
+            "density": 0.0,
+            "order": 0.0,
+            "tangential_phase_gradient": 0.0,
+            "tangential_order_gradient": 0.0
+          },
+          "receiving_minus_incident": -0.6046016982011797,
+          "contributions": {
+            "phase_chart_normal": -0.34787487535926975,
+            "phase_chart_to_physical": -0.3118514517236436,
+            "order_normal_coefficient": -0.010131607440194427,
+            "tangential_projection": 0.06525623632192813
+          },
+          "radial_partition": [
+            {
+              "fraction": [
+                0.0,
+                0.9053254437869822
+              ],
+              "receiving_minus_incident": -0.00556805849087977,
+              "absolute_pointwise_difference_integral": 0.0056065514899478605
+            },
+            {
+              "fraction": [
+                0.9053254437869822,
+                0.9763313609467456
+              ],
+              "receiving_minus_incident": -0.02131537507599148,
+              "absolute_pointwise_difference_integral": 0.021315620435592063
+            },
+            {
+              "fraction": [
+                0.9763313609467456,
+                1.0
+              ],
+              "receiving_minus_incident": -0.5777182646343084,
+              "absolute_pointwise_difference_integral": 0.5777182646377661
+            }
+          ]
+        },
+        {
+          "degree": 6,
+          "disk_area": 179.8704578828188,
+          "banks": {
+            "incident": {
+              "signed_current": 11.552452235143239,
+              "rest_current": 0.0,
+              "positive_current": 11.552452235776528,
+              "axial_phase_term_without_order": 12.254752344390363,
+              "order_momentum_correction": -0.7023001092470849,
+              "axial_momentum": -83.2974076527788,
+              "drive_minus_rest_axial_momentum": 0.7902993753682468
+            },
+            "receiving": {
+              "signed_current": 10.947844087518535,
+              "rest_current": 0.0,
+              "positive_current": 10.947844088256101,
+              "axial_phase_term_without_order": 11.560808158555288,
+              "order_momentum_correction": -0.6129640710367364,
+              "axial_momentum": -107.56375127779494,
+              "drive_minus_rest_axial_momentum": 0.4068384986079914
+            }
+          },
+          "max_pointwise_jump": {
+            "density": 0.0,
+            "order": 0.0,
+            "tangential_phase_gradient": 0.0,
+            "tangential_order_gradient": 0.0
+          },
+          "receiving_minus_incident": -0.6046081476246611,
+          "contributions": {
+            "phase_chart_normal": -0.3478876947074932,
+            "phase_chart_to_physical": -0.31185164640796004,
+            "order_normal_coefficient": -0.010126630019040798,
+            "tangential_projection": 0.0652578235098331
+          },
+          "radial_partition": [
+            {
+              "fraction": [
+                0.0,
+                0.9053254437869822
+              ],
+              "receiving_minus_incident": -0.005567980213715127,
+              "absolute_pointwise_difference_integral": 0.005615648155290812
+            },
+            {
+              "fraction": [
+                0.9053254437869822,
+                0.9763313609467456
+              ],
+              "receiving_minus_incident": -0.02131532067476681,
+              "absolute_pointwise_difference_integral": 0.021315551467757245
+            },
+            {
+              "fraction": [
+                0.9763313609467456,
+                1.0
+              ],
+              "receiving_minus_incident": -0.5777248467361794,
+              "absolute_pointwise_difference_integral": 0.5777253093227465
+            }
+          ]
+        },
+        {
+          "degree": 12,
+          "disk_area": 179.8704578828188,
+          "banks": {
+            "incident": {
+              "signed_current": 11.5524522350471,
+              "rest_current": 0.0,
+              "positive_current": 11.552452235589332,
+              "axial_phase_term_without_order": 12.254752344294188,
+              "order_momentum_correction": -0.7023001092470457,
+              "axial_momentum": -83.29740765281011,
+              "drive_minus_rest_axial_momentum": 0.7902993753476198
+            },
+            "receiving": {
+              "signed_current": 10.94784408748681,
+              "rest_current": 0.0,
+              "positive_current": 10.947844088130603,
+              "axial_phase_term_without_order": 11.560808158526118,
+              "order_momentum_correction": -0.6129640710391738,
+              "axial_momentum": -107.56375127771432,
+              "drive_minus_rest_axial_momentum": 0.40683849863740335
+            }
+          },
+          "max_pointwise_jump": {
+            "density": 0.0,
+            "order": 0.0,
+            "tangential_phase_gradient": 0.0,
+            "tangential_order_gradient": 0.0
+          },
+          "receiving_minus_incident": -0.604608147560074,
+          "contributions": {
+            "phase_chart_normal": -0.3478876946484381,
+            "phase_chart_to_physical": -0.31185164640119056,
+            "order_normal_coefficient": -0.01012663001732587,
+            "tangential_projection": 0.06525782350687785
+          },
+          "radial_partition": [
+            {
+              "fraction": [
+                0.0,
+                0.9053254437869822
+              ],
+              "receiving_minus_incident": -0.005567980213534691,
+              "absolute_pointwise_difference_integral": 0.0056158365267976506
+            },
+            {
+              "fraction": [
+                0.9053254437869822,
+                0.9763313609467456
+              ],
+              "receiving_minus_incident": -0.021315320674133307,
+              "absolute_pointwise_difference_integral": 0.021315552244495363
+            },
+            {
+              "fraction": [
+                0.9763313609467456,
+                1.0
+              ],
+              "receiving_minus_incident": -0.5777248466724064,
+              "absolute_pointwise_difference_integral": 0.5777254203028878
+            }
+          ]
+        },
+        {
+          "degree": 18,
+          "disk_area": 179.8704578828188,
+          "banks": {
+            "incident": {
+              "signed_current": 11.552452235048902,
+              "rest_current": 0.0,
+              "positive_current": 11.552452235573371,
+              "axial_phase_term_without_order": 12.254752344295605,
+              "order_momentum_correction": -0.702300109247063,
+              "axial_momentum": -83.29740765282136,
+              "drive_minus_rest_axial_momentum": 0.7902993753478451
+            },
+            "receiving": {
+              "signed_current": 10.947844087488749,
+              "rest_current": 0.0,
+              "positive_current": 10.9478440881113,
+              "axial_phase_term_without_order": 11.560808158527983,
+              "order_momentum_correction": -0.6129640710391981,
+              "axial_momentum": -107.56375127772733,
+              "drive_minus_rest_axial_momentum": 0.40683849863771476
+            }
+          },
+          "max_pointwise_jump": {
+            "density": 0.0,
+            "order": 0.0,
+            "tangential_phase_gradient": 0.0,
+            "tangential_order_gradient": 0.0
+          },
+          "receiving_minus_incident": -0.6046081475599138,
+          "contributions": {
+            "phase_chart_normal": -0.3478876946482864,
+            "phase_chart_to_physical": -0.31185164640117413,
+            "order_normal_coefficient": -0.010126630017318899,
+            "tangential_projection": 0.06525782350686597
+          },
+          "radial_partition": [
+            {
+              "fraction": [
+                0.0,
+                0.9053254437869822
+              ],
+              "receiving_minus_incident": -0.00556798021352811,
+              "absolute_pointwise_difference_integral": 0.005615747324149354
+            },
+            {
+              "fraction": [
+                0.9053254437869822,
+                0.9763313609467456
+              ],
+              "receiving_minus_incident": -0.02131532067412252,
+              "absolute_pointwise_difference_integral": 0.02131555208588118
+            },
+            {
+              "fraction": [
+                0.9763313609467456,
+                1.0
+              ],
+              "receiving_minus_incident": -0.5777248466722631,
+              "absolute_pointwise_difference_integral": 0.5777254176453536
+            }
+          ]
+        }
+      ],
+      "weak": {
+        "whole_disk": {
+          "current": {
+            "elemental_outward_work": {
+              "1_0": 11.537929769736877,
+              "1_1": -0.5198199650741275,
+              "2_0": -10.93073245457046,
+              "2_1": -0.08737627218364351
+            },
+            "incident": 11.537929769736877,
+            "receiving": 11.537928691828231,
+            "receiving_minus_incident": -1.0779086458967413e-06
+          },
+          "rest_current": {
+            "elemental_outward_work": {
+              "1_0": 0.0,
+              "1_1": 0.0,
+              "2_0": 0.0,
+              "2_1": 0.0
+            },
+            "incident": 0.0,
+            "receiving": -0.0,
+            "receiving_minus_incident": -0.0
+          },
+          "drive_minus_rest_fluid_axial_work": {
+            "elemental_outward_work": {
+              "1_0": 0.8965862940016933,
+              "1_1": 0.13739671847703683,
+              "2_0": -0.4466007194532864,
+              "2_1": 0.108937637789289
+            },
+            "incident": 0.8965862940016933,
+            "receiving": 0.20026636318696056,
+            "receiving_minus_incident": -0.6963199308147328
+          }
+        },
+        "open_interior_lift": {
+          "current": {
+            "elemental_outward_work": {
+              "1_0": 11.024784631882719,
+              "1_1": 0.0,
+              "2_0": -11.024784376373885,
+              "2_1": 0.0
+            },
+            "incident": 11.024784631882719,
+            "receiving": 11.024784376373885,
+            "receiving_minus_incident": -2.5550883364644505e-07
+          },
+          "rest_current": {
+            "elemental_outward_work": {
+              "1_0": 0.0,
+              "1_1": 0.0,
+              "2_0": 0.0,
+              "2_1": 0.0
+            },
+            "incident": 0.0,
+            "receiving": -0.0,
+            "receiving_minus_incident": -0.0
+          },
+          "drive_minus_rest_fluid_axial_work": {
+            "elemental_outward_work": {
+              "1_0": 0.5860948022624086,
+              "1_1": 0.0,
+              "2_0": -0.564424391743529,
+              "2_1": 0.0
+            },
+            "incident": 0.5860948022624086,
+            "receiving": 0.564424391743529,
+            "receiving_minus_incident": -0.021670410518879635
+          }
+        }
+      },
+      "raw_rim_sides": {
+        "sealed_duct_wall": {
+          "axial_width": 0.004285714285714226,
+          "signed_outward_current": 0.2751959807802102,
+          "drive_minus_rest_outward_axial_momentum": 0.3385656993877854
+        },
+        "receiving_cylinder": {
+          "axial_width": 0.004285714285714337,
+          "signed_outward_current": 0.32014226854813704,
+          "drive_minus_rest_outward_axial_momentum": 0.03313858135731892
+        }
+      },
+      "finest_relative_gap": -0.052401788078061284,
+      "checks": {
+        "weak_ports": true,
+        "common_traces": true,
+        "face_quadrature": true,
+        "original_face_reader": true
+      },
+      "original_endpoint_sha256": "c96d269556664836d1cf84e8bf78ac5914b0ac26ef0eb6b6e84b61731b4d26b9"
+    },
+    "fine": {
+      "depth": 0.7922793788323591,
+      "radius": 3.502069242691393,
+      "incident_radius_slope": -0.10166041154343411,
+      "carrier_sizes": [
+        26,
+        20,
+        54,
+        54
+      ],
+      "port_current": 11.539177974789405,
+      "raw": [
+        {
+          "degree": 2,
+          "disk_area": 179.91310025055424,
+          "banks": {
+            "incident": {
+              "signed_current": 11.552068154751534,
+              "rest_current": 0.0,
+              "positive_current": 11.552068155380933,
+              "axial_phase_term_without_order": 12.250775823930537,
+              "order_momentum_correction": -0.6987076691790167,
+              "axial_momentum": -83.05085178445661,
+              "drive_minus_rest_axial_momentum": 0.7870893207058955
+            },
+            "receiving": {
+              "signed_current": 10.94991553436047,
+              "rest_current": 0.0,
+              "positive_current": 10.94991553504167,
+              "axial_phase_term_without_order": 11.558236095960607,
+              "order_momentum_correction": -0.6083205616001268,
+              "axial_momentum": -108.09745795324181,
+              "drive_minus_rest_axial_momentum": 0.4060870839319008
+            }
+          },
+          "max_pointwise_jump": {
+            "density": 0.0,
+            "order": 0.0,
+            "tangential_phase_gradient": 0.0,
+            "tangential_order_gradient": 0.0
+          },
+          "receiving_minus_incident": -0.602152620391057,
+          "contributions": {
+            "phase_chart_normal": -0.36077392026974153,
+            "phase_chart_to_physical": -0.2976185989225125,
+            "order_normal_coefficient": -0.008856490341730125,
+            "tangential_projection": 0.06509638914292724
+          },
+          "radial_partition": [
+            {
+              "fraction": [
+                0.0,
+                0.9053254437869822
+              ],
+              "receiving_minus_incident": -0.005499427694559784,
+              "absolute_pointwise_difference_integral": 0.005537822269160287
+            },
+            {
+              "fraction": [
+                0.9053254437869822,
+                0.9763313609467456
+              ],
+              "receiving_minus_incident": -0.02114086121448997,
+              "absolute_pointwise_difference_integral": 0.021141122389375672
+            },
+            {
+              "fraction": [
+                0.9763313609467456,
+                1.0
+              ],
+              "receiving_minus_incident": -0.5755123314820072,
+              "absolute_pointwise_difference_integral": 0.5755123314875564
+            }
+          ]
+        },
+        {
+          "degree": 6,
+          "disk_area": 179.91310355345462,
+          "banks": {
+            "incident": {
+              "signed_current": 11.552065969605492,
+              "rest_current": 0.0,
+              "positive_current": 11.552065970276097,
+              "axial_phase_term_without_order": 12.25077290283706,
+              "order_momentum_correction": -0.6987069332315874,
+              "axial_momentum": -83.05105537129124,
+              "drive_minus_rest_axial_momentum": 0.7869741414005883
+            },
+            "receiving": {
+              "signed_current": 10.949907044890956,
+              "rest_current": 0.0,
+              "positive_current": 10.949907045673214,
+              "axial_phase_term_without_order": 11.558233215978763,
+              "order_momentum_correction": -0.6083261710878176,
+              "axial_momentum": -108.09756327676988,
+              "drive_minus_rest_axial_momentum": 0.4060706057551251
+            }
+          },
+          "max_pointwise_jump": {
+            "density": 0.0,
+            "order": 0.0,
+            "tangential_phase_gradient": 0.0,
+            "tangential_order_gradient": 0.0
+          },
+          "receiving_minus_incident": -0.6021589247145361,
+          "contributions": {
+            "phase_chart_normal": -0.360786636823296,
+            "phase_chart_to_physical": -0.2976187814567109,
+            "order_normal_coefficient": -0.008851477260014775,
+            "tangential_projection": 0.06509797082548636
+          },
+          "radial_partition": [
+            {
+              "fraction": [
+                0.0,
+                0.9053254437869822
+              ],
+              "receiving_minus_incident": -0.005499347591056996,
+              "absolute_pointwise_difference_integral": 0.005541122834108535
+            },
+            {
+              "fraction": [
+                0.9053254437869822,
+                0.9763313609467456
+              ],
+              "receiving_minus_incident": -0.02114080532164771,
+              "absolute_pointwise_difference_integral": 0.02114104910996757
+            },
+            {
+              "fraction": [
+                0.9763313609467456,
+                1.0
+              ],
+              "receiving_minus_incident": -0.5755187718018312,
+              "absolute_pointwise_difference_integral": 0.5755193007079797
+            }
+          ]
+        },
+        {
+          "degree": 12,
+          "disk_area": 179.91310355345462,
+          "banks": {
+            "incident": {
+              "signed_current": 11.55206596950764,
+              "rest_current": 0.0,
+              "positive_current": 11.55206597008744,
+              "axial_phase_term_without_order": 12.250772902739175,
+              "order_momentum_correction": -0.6987069332315583,
+              "axial_momentum": -83.0510553713163,
+              "drive_minus_rest_axial_momentum": 0.7869741413803236
+            },
+            "receiving": {
+              "signed_current": 10.949907044857731,
+              "rest_current": 0.0,
+              "positive_current": 10.94990704554651,
+              "axial_phase_term_without_order": 11.55823321594791,
+              "order_momentum_correction": -0.6083261710902759,
+              "axial_momentum": -108.09756327668285,
+              "drive_minus_rest_axial_momentum": 0.4060706057846531
+            }
+          },
+          "max_pointwise_jump": {
+            "density": 0.0,
+            "order": 0.0,
+            "tangential_phase_gradient": 0.0,
+            "tangential_order_gradient": 0.0
+          },
+          "receiving_minus_incident": -0.6021589246499054,
+          "contributions": {
+            "phase_chart_normal": -0.36078663676401584,
+            "phase_chart_to_physical": -0.29761878145010806,
+            "order_normal_coefficient": -0.008851477258291067,
+            "tangential_projection": 0.06509797082250998
+          },
+          "radial_partition": [
+            {
+              "fraction": [
+                0.0,
+                0.9053254437869822
+              ],
+              "receiving_minus_incident": -0.0054993475908543185,
+              "absolute_pointwise_difference_integral": 0.0055415696647518175
+            },
+            {
+              "fraction": [
+                0.9053254437869822,
+                0.9763313609467456
+              ],
+              "receiving_minus_incident": -0.021140805321000232,
+              "absolute_pointwise_difference_integral": 0.02114105023210224
+            },
+            {
+              "fraction": [
+                0.9763313609467456,
+                1.0
+              ],
+              "receiving_minus_incident": -0.5755187717380509,
+              "absolute_pointwise_difference_integral": 0.5755194221232333
+            }
+          ]
+        },
+        {
+          "degree": 18,
+          "disk_area": 179.91310355345465,
+          "banks": {
+            "incident": {
+              "signed_current": 11.552065969509407,
+              "rest_current": 0.0,
+              "positive_current": 11.552065970069535,
+              "axial_phase_term_without_order": 12.250772902740945,
+              "order_momentum_correction": -0.6987069332315836,
+              "axial_momentum": -83.05105537132827,
+              "drive_minus_rest_axial_momentum": 0.7869741413805527
+            },
+            "receiving": {
+              "signed_current": 10.949907044859732,
+              "rest_current": 0.0,
+              "positive_current": 10.949907045527516,
+              "axial_phase_term_without_order": 11.558233215950034,
+              "order_momentum_correction": -0.6083261710903153,
+              "axial_momentum": -108.0975632766957,
+              "drive_minus_rest_axial_momentum": 0.4060706057849274
+            }
+          },
+          "max_pointwise_jump": {
+            "density": 0.0,
+            "order": 0.0,
+            "tangential_phase_gradient": 0.0,
+            "tangential_order_gradient": 0.0
+          },
+          "receiving_minus_incident": -0.6021589246498218,
+          "contributions": {
+            "phase_chart_normal": -0.3607866367639399,
+            "phase_chart_to_physical": -0.2976187814500951,
+            "order_normal_coefficient": -0.008851477258285384,
+            "tangential_projection": 0.06509797082250095
+          },
+          "radial_partition": [
+            {
+              "fraction": [
+                0.0,
+                0.9053254437869822
+              ],
+              "receiving_minus_incident": -0.005499347590858274,
+              "absolute_pointwise_difference_integral": 0.005541816143782963
+            },
+            {
+              "fraction": [
+                0.9053254437869822,
+                0.9763313609467456
+              ],
+              "receiving_minus_incident": -0.021140805320987704,
+              "absolute_pointwise_difference_integral": 0.02114105003631212
+            },
+            {
+              "fraction": [
+                0.9763313609467456,
+                1.0
+              ],
+              "receiving_minus_incident": -0.575518771737977,
+              "absolute_pointwise_difference_integral": 0.5755194168590626
+            }
+          ]
+        }
+      ],
+      "weak": {
+        "whole_disk": {
+          "current": {
+            "elemental_outward_work": {
+              "1_0": 11.539178120799713,
+              "1_1": -0.52039554117471,
+              "2_0": -10.932706205626197,
+              "2_1": -0.08607653608173825
+            },
+            "incident": 11.539178120799713,
+            "receiving": 11.539178282882643,
+            "receiving_minus_incident": 1.6208293018848963e-07
+          },
+          "rest_current": {
+            "elemental_outward_work": {
+              "1_0": 0.0,
+              "1_1": 0.0,
+              "2_0": 0.0,
+              "2_1": 0.0
+            },
+            "incident": 0.0,
+            "receiving": -0.0,
+            "receiving_minus_incident": -0.0
+          },
+          "drive_minus_rest_fluid_axial_work": {
+            "elemental_outward_work": {
+              "1_0": 0.8948351903695482,
+              "1_1": 0.13799668161384382,
+              "2_0": -0.44618374609218847,
+              "2_1": 0.10854611024036576
+            },
+            "incident": 0.8948351903695482,
+            "receiving": 0.1996409542379789,
+            "receiving_minus_incident": -0.6951942361315693
+          }
+        },
+        "open_interior_lift": {
+          "current": {
+            "elemental_outward_work": {
+              "1_0": 11.027381582796183,
+              "1_1": 0.0,
+              "2_0": -11.027381594854479,
+              "2_1": 0.0
+            },
+            "incident": 11.027381582796183,
+            "receiving": 11.027381594854479,
+            "receiving_minus_incident": 1.205829569528305e-08
+          },
+          "rest_current": {
+            "elemental_outward_work": {
+              "1_0": 0.0,
+              "1_1": 0.0,
+              "2_0": 0.0,
+              "2_1": 0.0
+            },
+            "incident": 0.0,
+            "receiving": -0.0,
+            "receiving_minus_incident": -0.0
+          },
+          "drive_minus_rest_fluid_axial_work": {
+            "elemental_outward_work": {
+              "1_0": 0.5858003634322273,
+              "1_1": 0.0,
+              "2_0": -0.5642288366396997,
+              "2_1": 0.0
+            },
+            "incident": 0.5858003634322273,
+            "receiving": 0.5642288366396997,
+            "receiving_minus_incident": -0.021571526792527607
+          }
+        }
+      },
+      "raw_rim_sides": {
+        "sealed_duct_wall": {
+          "axial_width": 0.004285714285714337,
+          "signed_outward_current": 0.2729027110184762,
+          "drive_minus_rest_outward_axial_momentum": 0.33756637423925456
+        },
+        "receiving_cylinder": {
+          "axial_width": 0.004285714285714337,
+          "signed_outward_current": 0.3204055370449544,
+          "drive_minus_rest_outward_axial_momentum": 0.032534654709294675
+        }
+      },
+      "finest_relative_gap": -0.05218386664677572,
+      "checks": {
+        "weak_ports": true,
+        "common_traces": true,
+        "face_quadrature": true,
+        "original_face_reader": true
+      },
+      "original_endpoint_sha256": "cc7e7eebd59ae5cd4b7fb7854757788abd45ab49d1ceb775325df0e137aba61d"
+    }
+  }
+}

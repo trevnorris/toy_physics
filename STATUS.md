@@ -2,7 +2,7 @@
 
 ## Common-medium research
 
-**Current 0PN result.** Matching the bonded-crystal force and the load on the conversion field changes the grid-to-grid axial force drift by only 0.30% on the fixed radius-four wall. The disk has a measurable clamped reaction. On both sides of the final 0.03429 of sloping wall, the energetic reaction differs from the stress recovered at the face. Whole-mouth relaxation and free fall still require a converged terminal reaction. [Disk and wall audit](software/stage1_solver/reports/mouth_terminal_force_balance.md) · [0PN roadmap](docs/zero_pn_free_fall_roadmap.md)
+**Current 0PN result.** On the held radius-four lip, the same terminal wall displacement does different work when it moves different amounts of the adjacent material. Most of the difference from the directly sampled wall traction comes from the coherent carrier in the final 0.03429 of depth. Independently conserving momentum in every cell still leaves a grid-dependent axial force. The next test must measure the work carried by the material supports separately before releasing this shape. [Element momentum and force comparison](software/stage1_solver/reports/mouth_terminal_element_recovery.md) · [0PN roadmap](docs/zero_pn_free_fall_roadmap.md)
 
 **Record 5 retired as a bulk candidate.** The classical Langevin particle runs are preserved as a proof of concept for relaxation of held shear. They supply no physical bulk transport coefficients for the coherent model. [Historical transit measurements](software/stage1_solver/reports/mouth_receiver_transit.md) · [Historical common-face test](software/stage1_solver/reports/mouth_receiver_common_face.md)
 

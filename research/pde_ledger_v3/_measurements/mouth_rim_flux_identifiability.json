@@ -1,0 +1,291 @@
+{
+  "wall_work_sha256": "bdc5e957598763d5fe576128e70ea95a763f0d3f88152c88c6c1632017e4e6fc",
+  "levels": {
+    "double": {
+      "field_sha256": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+      "same_trace": [
+        {
+          "strip": "middle",
+          "bank": "duct",
+          "quadrature": 2,
+          "four_minus_eight": -0.0005493370638398748,
+          "face_only_minimax_bound": 0.0002746685319199374,
+          "signed_step_spread": 1.304512053934559e-09
+        },
+        {
+          "strip": "middle",
+          "bank": "duct",
+          "quadrature": 4,
+          "four_minus_eight": -0.0005491968634885463,
+          "face_only_minimax_bound": 0.0002745984317442732,
+          "signed_step_spread": 5.440092820663267e-09
+        },
+        {
+          "strip": "middle",
+          "bank": "outside",
+          "quadrature": 2,
+          "four_minus_eight": 6.643663397198907e-05,
+          "face_only_minimax_bound": 3.3218316985994534e-05,
+          "signed_step_spread": 9.783840404509192e-10
+        },
+        {
+          "strip": "middle",
+          "bank": "outside",
+          "quadrature": 4,
+          "four_minus_eight": 6.684221232067245e-05,
+          "face_only_minimax_bound": 3.342110616033622e-05,
+          "signed_step_spread": 4.2847669856627135e-09
+        },
+        {
+          "strip": "near",
+          "bank": "duct",
+          "quadrature": 2,
+          "four_minus_eight": -0.0009532544136504478,
+          "face_only_minimax_bound": 0.0004766272068252239,
+          "signed_step_spread": 7.494005416219807e-10
+        },
+        {
+          "strip": "near",
+          "bank": "duct",
+          "quadrature": 4,
+          "four_minus_eight": -0.0009510240866162784,
+          "face_only_minimax_bound": 0.0004755120433081392,
+          "signed_step_spread": 2.6575963651964685e-09
+        },
+        {
+          "strip": "near",
+          "bank": "outside",
+          "quadrature": 2,
+          "four_minus_eight": 0.00015594964208887063,
+          "face_only_minimax_bound": 7.797482104443532e-05,
+          "signed_step_spread": 6.591949208711867e-10
+        },
+        {
+          "strip": "near",
+          "bank": "outside",
+          "quadrature": 4,
+          "four_minus_eight": 0.00015624220667254107,
+          "face_only_minimax_bound": 7.812110333627054e-05,
+          "signed_step_spread": 4.53109771925142e-09
+        },
+        {
+          "strip": "upstream",
+          "bank": "duct",
+          "quadrature": 2,
+          "four_minus_eight": -0.0002691199485482798,
+          "face_only_minimax_bound": 0.0001345599742741399,
+          "signed_step_spread": 6.161737786669619e-09
+        },
+        {
+          "strip": "upstream",
+          "bank": "duct",
+          "quadrature": 4,
+          "four_minus_eight": -0.00026904062311317034,
+          "face_only_minimax_bound": 0.00013452031155658517,
+          "signed_step_spread": 5.689893001203927e-09
+        },
+        {
+          "strip": "upstream",
+          "bank": "outside",
+          "quadrature": 2,
+          "four_minus_eight": 3.9082292957459686e-05,
+          "face_only_minimax_bound": 1.9541146478729843e-05,
+          "signed_step_spread": 9.547918011776346e-09
+        },
+        {
+          "strip": "upstream",
+          "bank": "outside",
+          "quadrature": 4,
+          "four_minus_eight": 3.904632173146183e-05,
+          "face_only_minimax_bound": 1.9523160865730915e-05,
+          "signed_step_spread": 4.218847493575595e-09
+        }
+      ],
+      "conservation_null_control": {
+        "cell_balance_max": 0.0,
+        "end_and_axis_flux_max": 0.0,
+        "depth_packets": [
+          [
+            0.02595209434130956,
+            0.05190418868261912,
+            -1.0
+          ],
+          [
+            0.78618302430262,
+            0.7904687385883342,
+            -0.5
+          ],
+          [
+            0.7904687385883342,
+            0.7947544528740486,
+            1.5
+          ]
+        ],
+        "wall_tents": {
+          "near": 1.6375789613221059e-15,
+          "middle": 0.0,
+          "upstream": 0.0
+        },
+        "closed_surfaces": [
+          {
+            "axial_band": 2,
+            "bank_duct": 0.9999999999999998,
+            "bank_receiving": 0,
+            "enclosing_flux": -0.9999999999999998,
+            "net": 0.0
+          },
+          {
+            "axial_band": 3,
+            "bank_duct": 0.9999999999999998,
+            "bank_receiving": 0,
+            "enclosing_flux": -0.9999999999999998,
+            "net": 0.0
+          }
+        ]
+      }
+    },
+    "local": {
+      "field_sha256": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+      "same_trace": [
+        {
+          "strip": "middle",
+          "bank": "duct",
+          "quadrature": 2,
+          "four_minus_eight": -0.0008804131445142235,
+          "face_only_minimax_bound": 0.00044020657225711177,
+          "signed_step_spread": 4.690692279041286e-09
+        },
+        {
+          "strip": "middle",
+          "bank": "duct",
+          "quadrature": 4,
+          "four_minus_eight": -0.0008804119614328129,
+          "face_only_minimax_bound": 0.00044020598071640646,
+          "signed_step_spread": 1.1986939218999737e-09
+        },
+        {
+          "strip": "middle",
+          "bank": "outside",
+          "quadrature": 2,
+          "four_minus_eight": 7.135904367405743e-05,
+          "face_only_minimax_bound": 3.5679521837028716e-05,
+          "signed_step_spread": 1.8388068845354155e-09
+        },
+        {
+          "strip": "middle",
+          "bank": "outside",
+          "quadrature": 4,
+          "four_minus_eight": 7.142029329054722e-05,
+          "face_only_minimax_bound": 3.571014664527361e-05,
+          "signed_step_spread": 4.055783486833775e-09
+        },
+        {
+          "strip": "near",
+          "bank": "duct",
+          "quadrature": 2,
+          "four_minus_eight": -0.0014211228697506087,
+          "face_only_minimax_bound": 0.0007105614348753043,
+          "signed_step_spread": 3.4555691641457997e-09
+        },
+        {
+          "strip": "near",
+          "bank": "duct",
+          "quadrature": 4,
+          "four_minus_eight": -0.0014203930715842653,
+          "face_only_minimax_bound": 0.0007101965357921326,
+          "signed_step_spread": 9.731798700229888e-09
+        },
+        {
+          "strip": "near",
+          "bank": "outside",
+          "quadrature": 2,
+          "four_minus_eight": 0.0002194755488460487,
+          "face_only_minimax_bound": 0.00010973777442302435,
+          "signed_step_spread": 2.2273849431542203e-09
+        },
+        {
+          "strip": "near",
+          "bank": "outside",
+          "quadrature": 4,
+          "four_minus_eight": 0.00021956079662710515,
+          "face_only_minimax_bound": 0.00010978039831355257,
+          "signed_step_spread": 4.661201979949681e-09
+        },
+        {
+          "strip": "upstream",
+          "bank": "duct",
+          "quadrature": 2,
+          "four_minus_eight": -0.0003027884054596086,
+          "face_only_minimax_bound": 0.0001513942027298043,
+          "signed_step_spread": 1.734723475976807e-09
+        },
+        {
+          "strip": "upstream",
+          "bank": "duct",
+          "quadrature": 4,
+          "four_minus_eight": -0.00030276754714453347,
+          "face_only_minimax_bound": 0.00015138377357226673,
+          "signed_step_spread": 5.891120924417237e-09
+        },
+        {
+          "strip": "upstream",
+          "bank": "outside",
+          "quadrature": 2,
+          "four_minus_eight": 2.6535884600775717e-05,
+          "face_only_minimax_bound": 1.3267942300387858e-05,
+          "signed_step_spread": 2.220446049250313e-09
+        },
+        {
+          "strip": "upstream",
+          "bank": "outside",
+          "quadrature": 4,
+          "four_minus_eight": 2.6509724970757986e-05,
+          "face_only_minimax_bound": 1.3254862485378993e-05,
+          "signed_step_spread": 3.5735303605122226e-09
+        }
+      ],
+      "conservation_null_control": {
+        "cell_balance_max": 0.0,
+        "end_and_axis_flux_max": 0.0,
+        "depth_packets": [
+          [
+            0.02595209434130956,
+            0.05190418868261912,
+            -1.0
+          ],
+          [
+            0.78618302430262,
+            0.7904687385883342,
+            -0.5
+          ],
+          [
+            0.7904687385883342,
+            0.7947544528740486,
+            1.5
+          ]
+        ],
+        "wall_tents": {
+          "near": 1.6583956430338276e-15,
+          "middle": 0.0,
+          "upstream": 0.0
+        },
+        "closed_surfaces": [
+          {
+            "axial_band": 2,
+            "bank_duct": 0.9999999999999998,
+            "bank_receiving": 0,
+            "enclosing_flux": -0.9999999999999998,
+            "net": 0.0
+          },
+          {
+            "axial_band": 3,
+            "bank_duct": 0.9999999999999998,
+            "bank_receiving": 0,
+            "enclosing_flux": -0.9999999999999998,
+            "net": 0.0
+          }
+        ]
+      }
+    }
+  }
+}

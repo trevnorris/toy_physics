@@ -1,0 +1,781 @@
+{
+  "scope": "Locked radius-four wall. Moment recovery from two fixed guarded paired fields, before comparison to signed work from separate sloping-wall displacements. All forces here are paired drive minus rest. Sources are the supported/discrete axial coordinate defects, not measured microscopic tractions.",
+  "quadrature": "Q1 Gauss 2 on field elements in the meridional strip, including polar integration. Solid uses shared TerminalQuadrature(64), and the factorized vortex uses its explicit bank energy. A single native sheet/receiver cap trace is shared above the sealed slit.",
+  "method": "For each cell project the angle-integrated Piola axial momentum row to RT0 face currents. Minimize the volume-weighted squared error of the mapped radial and axial moments with shared normals, subject to one divergence balance per cell and zero radial flux on the symmetry axis. The source at each internal node is minus the assembled axial configurational work divided by its lumped volume. The first closure sets its density to zero on free-boundary nodes; the second extrapolates adjacent interior-node densities; the third uses that same source and weights the axial least-squares misfit fourfold. These are recovery choices. The native solve does not independently supply the axial constraint traction or its split from sources at the held endpoints.",
+  "readout": "Bank trace integrates face currents against the identical depth hat for both radial extensions. Target is the independently archived total native work including any interior extension work. Fully recovered smooth enclosure plus slit satisfies its integrated source by construction. The archived outer flux plus reconstructed slit leaves the archived outer readout unchanged and is also reported.",
+  "producer": "software/stage1_solver/tools/mouth_rim_conservative_faces.py",
+  "inputs": {
+    "double": {
+      "field": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+      "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+      "load": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b",
+      "bank_stdout_sha256": "51735a753b8d228ff6d5b46b22092a4cabb01c6e39594ef8b97f758d15d0704c",
+      "raw_face_record_sha256": "3a8c3f35f2dda0ec8a96011f77456fca8ec1887fcd318693a93a8879189f026c"
+    },
+    "local": {
+      "field": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+      "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+      "load": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679",
+      "bank_stdout_sha256": "69f8e2a52321cfeb4845ae6b9298b624865d35d2c8764f45829dac41d7a60b88",
+      "raw_face_record_sha256": "7370af4d738dcf43632de1e352f9b5713acafc50477c7bbf76dcec46303e411f"
+    }
+  },
+  "meshes": {
+    "double": {
+      "grid_cells": 3640,
+      "faces": 7437,
+      "results": [
+        {
+          "closure": "volume_only",
+          "cell_balance_max": 1.1162877805274973e-16,
+          "probes": [
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": 0.012881455184890485,
+              "target": -0.04684687681878814,
+              "difference": 0.05972833200367862
+            },
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": 0.012881455184890485,
+              "target": -0.04589362240513769,
+              "difference": 0.058775077590028174
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.07188884767938378,
+              "target": 0.026493760551566697,
+              "difference": 0.04539508712781708
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.07188884767938378,
+              "target": 0.026337810909477826,
+              "difference": 0.04555103676990595
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.05599977272584316,
+              "target": -0.059952759975748005,
+              "difference": 0.003952987249904845
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.05599977272584316,
+              "target": -0.05940342291190813,
+              "difference": 0.00340365018606497
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.015435908583688231,
+              "target": 0.011867972469687085,
+              "difference": 0.003567936114001146
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.015435908583688231,
+              "target": 0.011801535835715096,
+              "difference": 0.003634372747973135
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.044981851726527175,
+              "target": -0.04604611483546778,
+              "difference": 0.0010642631089406024
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.044981851726527175,
+              "target": -0.0457769948869195,
+              "difference": 0.0007951431603923226
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.007031968977970626,
+              "target": 0.00652191723832056,
+              "difference": 0.0005100517396500661
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.007031968977970626,
+              "target": 0.0064828349453631,
+              "difference": 0.0005491340326075258
+            }
+          ],
+          "surfaces": [
+            {
+              "axial_band": 2,
+              "wall_recovered": 0.4541285544385562,
+              "exterior_recovered": -0.47716762257118867,
+              "recovered_total": -0.023039068132632456,
+              "source": -0.02303906813263195,
+              "identity_error": -5.065392549852277e-16,
+              "wall_plus_archived_exterior": -0.04603321793049081,
+              "archived_exterior": -0.500161772369047
+            },
+            {
+              "axial_band": 3,
+              "wall_recovered": 0.40908498405055654,
+              "exterior_recovered": -0.43256107371535124,
+              "recovered_total": -0.023476089664794697,
+              "source": -0.023476089664794295,
+              "identity_error": -4.0245584642661925e-16,
+              "wall_plus_archived_exterior": -0.045038535705649585,
+              "archived_exterior": -0.45412351975620613
+            }
+          ]
+        },
+        {
+          "closure": "extrapolated",
+          "cell_balance_max": 1.9160562893250077e-16,
+          "probes": [
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": 0.012191697532326191,
+              "target": -0.04684687681878814,
+              "difference": 0.05903857435111433
+            },
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": 0.012191697532326191,
+              "target": -0.04589362240513769,
+              "difference": 0.05808531993746388
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.07074562200666532,
+              "target": 0.026493760551566697,
+              "difference": 0.044251861455098615
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.07074562200666532,
+              "target": 0.026337810909477826,
+              "difference": 0.044407811097187486
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.05619549133506208,
+              "target": -0.059952759975748005,
+              "difference": 0.003757268640685922
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.05619549133506208,
+              "target": -0.05940342291190813,
+              "difference": 0.0032079315768460473
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.01514254281696373,
+              "target": 0.011867972469687085,
+              "difference": 0.003274570347276644
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.01514254281696373,
+              "target": 0.011801535835715096,
+              "difference": 0.0033410069812486332
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.04500840233813372,
+              "target": -0.04604611483546778,
+              "difference": 0.001037712497334059
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.04500840233813372,
+              "target": -0.0457769948869195,
+              "difference": 0.0007685925487857792
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.0069907362834630785,
+              "target": 0.00652191723832056,
+              "difference": 0.0004688190451425187
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.0069907362834630785,
+              "target": 0.0064828349453631,
+              "difference": 0.0005079013380999784
+            }
+          ],
+          "surfaces": [
+            {
+              "axial_band": 2,
+              "wall_recovered": 0.4462038309755653,
+              "exterior_recovered": -0.47851161358020167,
+              "recovered_total": -0.03230778260463635,
+              "source": -0.03230778260463653,
+              "identity_error": 1.8041124150158794e-16,
+              "wall_plus_archived_exterior": -0.0539579413934817,
+              "archived_exterior": -0.500161772369047
+            },
+            {
+              "axial_band": 3,
+              "wall_recovered": 0.40110403792508265,
+              "exterior_recovered": -0.4338496008836004,
+              "recovered_total": -0.03274556295851777,
+              "source": -0.032745562958518215,
+              "identity_error": 4.440892098500626e-16,
+              "wall_plus_archived_exterior": -0.05301948183112348,
+              "archived_exterior": -0.45412351975620613
+            }
+          ]
+        },
+        {
+          "closure": "axial_weight_4",
+          "cell_balance_max": 9.486938415837615e-17,
+          "probes": [
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": 0.006341751477044362,
+              "target": -0.04684687681878814,
+              "difference": 0.0531886282958325
+            },
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": 0.006341751477044362,
+              "target": -0.04589362240513769,
+              "difference": 0.05223537388218205
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.06785217637191007,
+              "target": 0.026493760551566697,
+              "difference": 0.04135841582034337
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.06785217637191007,
+              "target": 0.026337810909477826,
+              "difference": 0.04151436546243224
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.056692506692746954,
+              "target": -0.059952759975748005,
+              "difference": 0.003260253283001051
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.056692506692746954,
+              "target": -0.05940342291190813,
+              "difference": 0.002710916219161176
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.015294138770779578,
+              "target": 0.011867972469687085,
+              "difference": 0.0034261663010924925
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.015294138770779578,
+              "target": 0.011801535835715096,
+              "difference": 0.0034926029350644816
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.045155719078889565,
+              "target": -0.04604611483546778,
+              "difference": 0.000890395756578212
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.045155719078889565,
+              "target": -0.0457769948869195,
+              "difference": 0.0006212758080299322
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.007051304184442771,
+              "target": 0.00652191723832056,
+              "difference": 0.0005293869461222116
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.007051304184442771,
+              "target": 0.0064828349453631,
+              "difference": 0.0005684692390796713
+            }
+          ],
+          "surfaces": [
+            {
+              "axial_band": 2,
+              "wall_recovered": 0.4457177692679835,
+              "exterior_recovered": -0.4780255518726204,
+              "recovered_total": -0.0323077826046369,
+              "source": -0.03230778260463653,
+              "identity_error": -3.7470027081099033e-16,
+              "wall_plus_archived_exterior": -0.05444400310106351,
+              "archived_exterior": -0.500161772369047
+            },
+            {
+              "axial_band": 3,
+              "wall_recovered": 0.40069669211761916,
+              "exterior_recovered": -0.4334422550761376,
+              "recovered_total": -0.03274556295851844,
+              "source": -0.032745562958518215,
+              "identity_error": -2.220446049250313e-16,
+              "wall_plus_archived_exterior": -0.05342682763858697,
+              "archived_exterior": -0.45412351975620613
+            }
+          ]
+        }
+      ]
+    },
+    "local": {
+      "grid_cells": 6016,
+      "faces": 12237,
+      "results": [
+        {
+          "closure": "volume_only",
+          "cell_balance_max": 1.789475685687325e-16,
+          "probes": [
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.013793552836245442,
+              "target": -0.04767748851189299,
+              "difference": 0.03388393567564755
+            },
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.013793552836245442,
+              "target": -0.04625636564214238,
+              "difference": 0.03246281280589694
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.0522293788533298,
+              "target": 0.023616893440176565,
+              "difference": 0.028612485413153237
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.0522293788533298,
+              "target": 0.023397417891330517,
+              "difference": 0.028831960961999286
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.0574447959501825,
+              "target": -0.0598476270076885,
+              "difference": 0.002402831057506001
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.0574447959501825,
+              "target": -0.05896721386317428,
+              "difference": 0.0015224179129917775
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.013945502884942593,
+              "target": 0.01162298203649401,
+              "difference": 0.0023225208484485838
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.013945502884942593,
+              "target": 0.011551622992819952,
+              "difference": 0.002393879892122641
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.045368649588888525,
+              "target": -0.04588626765809248,
+              "difference": 0.0005176180692039525
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.045368649588888525,
+              "target": -0.04558347925263287,
+              "difference": 0.00021482966374434392
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.006819688160827385,
+              "target": 0.00647512868692546,
+              "difference": 0.000344559473901925
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.006819688160827385,
+              "target": 0.0064485928023246845,
+              "difference": 0.0003710953585027007
+            }
+          ],
+          "surfaces": [
+            {
+              "axial_band": 2,
+              "wall_recovered": 0.44241262358532557,
+              "exterior_recovered": -0.48287714722786335,
+              "recovered_total": -0.040464523642537775,
+              "source": -0.040464523642537775,
+              "identity_error": 0.0,
+              "wall_plus_archived_exterior": -0.05654569441270896,
+              "archived_exterior": -0.49895831799803453
+            },
+            {
+              "axial_band": 3,
+              "wall_recovered": 0.3968598366260334,
+              "exterior_recovered": -0.4376945705940902,
+              "recovered_total": -0.04083473396805681,
+              "source": -0.04083473396805685,
+              "identity_error": 3.469446951953614e-17,
+              "wall_plus_archived_exterior": -0.056170272760133644,
+              "archived_exterior": -0.45303010938616706
+            }
+          ]
+        },
+        {
+          "closure": "extrapolated",
+          "cell_balance_max": 1.621502699499693e-16,
+          "probes": [
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.014544158204069266,
+              "target": -0.04767748851189299,
+              "difference": 0.03313333030782373
+            },
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.014544158204069266,
+              "target": -0.04625636564214238,
+              "difference": 0.03171220743807311
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.05070120736958009,
+              "target": 0.023616893440176565,
+              "difference": 0.02708431392940352
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.05070120736958009,
+              "target": 0.023397417891330517,
+              "difference": 0.02730378947824957
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.057640709165548774,
+              "target": -0.0598476270076885,
+              "difference": 0.0022069178421397287
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.057640709165548774,
+              "target": -0.05896721386317428,
+              "difference": 0.0013265046976255052
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.013675414717363782,
+              "target": 0.01162298203649401,
+              "difference": 0.002052432680869772
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.013675414717363782,
+              "target": 0.011551622992819952,
+              "difference": 0.0021237917245438293
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.04540114933994433,
+              "target": -0.04588626765809248,
+              "difference": 0.0004851183181481464
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.04540114933994433,
+              "target": -0.04558347925263287,
+              "difference": 0.00018232991268853777
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.0067781959094348945,
+              "target": 0.00647512868692546,
+              "difference": 0.00030306722250943424
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.0067781959094348945,
+              "target": 0.0064485928023246845,
+              "difference": 0.00032960310711020995
+            }
+          ],
+          "surfaces": [
+            {
+              "axial_band": 2,
+              "wall_recovered": 0.43015273382082003,
+              "exterior_recovered": -0.4843756327387717,
+              "recovered_total": -0.05422289891795168,
+              "source": -0.054222898917951734,
+              "identity_error": 5.551115123125783e-17,
+              "wall_plus_archived_exterior": -0.0688055841772145,
+              "archived_exterior": -0.49895831799803453
+            },
+            {
+              "axial_band": 3,
+              "wall_recovered": 0.3845401910335247,
+              "exterior_recovered": -0.4391335358193631,
+              "recovered_total": -0.05459334478583838,
+              "source": -0.05459334478583831,
+              "identity_error": -6.938893903907228e-17,
+              "wall_plus_archived_exterior": -0.06848991835264234,
+              "archived_exterior": -0.45303010938616706
+            }
+          ]
+        },
+        {
+          "closure": "axial_weight_4",
+          "cell_balance_max": 3.757031578205394e-16,
+          "probes": [
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.017564582121972143,
+              "target": -0.04767748851189299,
+              "difference": 0.030112906389920847
+            },
+            {
+              "strip": "near",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.017564582121972143,
+              "target": -0.04625636564214238,
+              "difference": 0.02869178352017024
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.050176246600263784,
+              "target": 0.023616893440176565,
+              "difference": 0.02655935316008722
+            },
+            {
+              "strip": "near",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.050176246600263784,
+              "target": 0.023397417891330517,
+              "difference": 0.026778828708933267
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.05783123039784791,
+              "target": -0.0598476270076885,
+              "difference": 0.0020163966098405914
+            },
+            {
+              "strip": "middle",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.05783123039784791,
+              "target": -0.05896721386317428,
+              "difference": 0.0011359834653263678
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.013851890650514127,
+              "target": 0.01162298203649401,
+              "difference": 0.0022289086140201177
+            },
+            {
+              "strip": "middle",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.013851890650514127,
+              "target": 0.011551622992819952,
+              "difference": 0.002300267657694175
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 4,
+              "trace": -0.0454209563005537,
+              "target": -0.04588626765809248,
+              "difference": 0.00046531135753877934
+            },
+            {
+              "strip": "upstream",
+              "bank": "duct",
+              "radial_cells": 8,
+              "trace": -0.0454209563005537,
+              "target": -0.04558347925263287,
+              "difference": 0.00016252295207917072
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 4,
+              "trace": 0.006812441501566215,
+              "target": 0.00647512868692546,
+              "difference": 0.00033731281464075436
+            },
+            {
+              "strip": "upstream",
+              "bank": "outside",
+              "radial_cells": 8,
+              "trace": 0.006812441501566215,
+              "target": 0.0064485928023246845,
+              "difference": 0.0003638486992415301
+            }
+          ],
+          "surfaces": [
+            {
+              "axial_band": 2,
+              "wall_recovered": 0.4300017210420521,
+              "exterior_recovered": -0.48422461996000316,
+              "recovered_total": -0.05422289891795107,
+              "source": -0.054222898917951734,
+              "identity_error": 6.661338147750939e-16,
+              "wall_plus_archived_exterior": -0.06895659695598244,
+              "archived_exterior": -0.49895831799803453
+            },
+            {
+              "axial_band": 3,
+              "wall_recovered": 0.384435879495027,
+              "exterior_recovered": -0.43902922428086455,
+              "recovered_total": -0.05459334478583755,
+              "source": -0.05459334478583831,
+              "identity_error": 7.632783294297951e-16,
+              "wall_plus_archived_exterior": -0.06859422989114006,
+              "archived_exterior": -0.45303010938616706
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

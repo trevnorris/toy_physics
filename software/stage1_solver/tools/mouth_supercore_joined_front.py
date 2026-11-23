@@ -194,7 +194,12 @@ class Joined(Patch):
         # Subtract the neutral vortex and the reference phase-field energy once.
         y=t*t
         interaction=F**10*(y-1)**2*(y**3+2*y*y+3*y+4)/20
-        E=wt@(.5*F**2*square(gv)+interaction+.5*np.einsum('ij,ij->i',gp,curr)+order)+.5*((v-1)@(self.B@(v+1)))
+        energy_density=.5*F**2*square(gv)+interaction+.5*np.einsum('ij,ij->i',gp,curr)+order
+        if getattr(self, 'extended_energy_sum', False):
+            volume_energy=float(np.sum(np.multiply(wt,energy_density,dtype=np.longdouble),dtype=np.longdouble))
+        else:
+            volume_energy=wt@energy_density
+        E=volume_energy+.5*((v-1)@(self.B@(v+1)))
         if read:
             gf=F[:,None]*gv+t[:,None]*Fp[:,None]*np.column_stack((np.sin(a),np.cos(a),np.zeros_like(a)))
             physical=.5*(square(gf)+n*(self.winding/s)**2+KAPPA*square(gc)+np.einsum('ij,ij->i',gp,curr))+(n**5-5*n+4)/20+WELL*(chi*(1-chi))**2

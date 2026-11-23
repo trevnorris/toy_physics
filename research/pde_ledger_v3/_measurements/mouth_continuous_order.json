@@ -1,0 +1,1016 @@
+{
+  "guard": "43b67c7d4f506a79086280832fde84ce3f17bcebed359f2a50ee4e06c9f97775",
+  "receipt_type": "terminal_worker_verification.json",
+  "held": {
+    "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+    "fine": "50eb4fddf48b08dd03e1670bf9881a3e5d2fa8d24bdaa56b68d1a38c66675aa3",
+    "controls": "672498b51095498584efdd50264e12b4b66ebaf232d578c200b756569427c21a",
+    "saved_original_pin": "a9e40da1aaaf3f4759fbcc47755535f83de2141e37d87d92bca54f3f08f43e6b",
+    "code": "73358ff96f1a504cccc50e4e94e49c555ee740e0bcf72e7613fa475a33b55520",
+    "model": "cc7b383e4867e5d73fec3668d54aa6a6adf6d6cc757efe7b8c5f6ba5d9536ab5",
+    "generated_by": [
+      "_scratch/s11c/r4_continuous_order01/pin/mouth_held_continuous_order.py",
+      "_scratch/s11c/r4_whole_mouth01",
+      "research/pde_ledger_v3/_measurements/mouth_whole_r4_order_edges.json",
+      "_scratch/s11c/r4_continuous_order01/saved"
+    ],
+    "solid": {
+      "n": 11,
+      "k": 32,
+      "angles": 10,
+      "degree": 3,
+      "subdivisions": 2
+    },
+    "coordinates": [
+      -0.0013078814589434918,
+      0.008395930677221842,
+      -0.016653756621241998,
+      -0.04454993444236932,
+      0.0006970736391678057,
+      0.00023576056020379324
+    ],
+    "field_grid": [
+      26,
+      20,
+      28
+    ],
+    "carrier_nodes": 149235,
+    "absolute_order_nodes": 147555,
+    "free_order_nodes": 143648,
+    "far_dirichlet_nodes": 3907,
+    "exterior_crystal_unit_order": 71.6576742954874,
+    "solutions": {
+      "rest": {
+        "sha256": "6bd529495e9c8a83ad69e374a23c7f6634ee5d31997f6ddf0d2349d6208419d7",
+        "meta": {
+          "field": {
+            "stationarity": 2.819610631891599e-09,
+            "carrier_metric_residual": 2.819610631891599e-09,
+            "order_projected_residual": 7.104761223786227e-12,
+            "order_steps": [
+              60
+            ],
+            "carrier_steps": [
+              0
+            ]
+          },
+          "solid_energy": 0.3919726460288673,
+          "exchange_error": -1.1468603844377867e-13,
+          "energy": 92183.28802607235
+        },
+        "energy": 92183.28802607235,
+        "solid": {
+          "material_force_max": 0.19956209739419362,
+          "material_force_site": [
+            1,
+            21,
+            9,
+            1
+          ],
+          "angular_sum_force_max": 1.2889304624748497,
+          "angular_sum_force_site": [
+            1,
+            21,
+            1
+          ],
+          "bond_force_max": 0.18395720933352397,
+          "last_free_ring_angular_sum": [
+            0.0,
+            0.0
+          ],
+          "last_free_ring_peak_per_direction": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "last_free_ring_reference": [
+            0.96875,
+            0.9893179002349632
+          ],
+          "last_free_ring_landed_depth_fraction": [
+            0.9776521877879469,
+            0.9776556469669683
+          ]
+        },
+        "current": {
+          "excess_energy": 92183.28802607235,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.3250764847736569,
+          "total_axial_stress": -30.666964211707548,
+          "crystalline_range_in_band": [
+            0.0,
+            3.6505540668862704e-23
+          ]
+        },
+        "order_range": [
+          0.0,
+          1.0
+        ],
+        "in_shaft_axis": [
+          0.09955245660166763,
+          0.0,
+          0.0
+        ],
+        "prior_high_order_nodes": 14322,
+        "now_low_among_prior_high": 13860,
+        "absolute_trace_max": 0.0,
+        "lower_obstacle_count": 50318,
+        "upper_obstacle_count": 105
+      },
+      "wound": {
+        "sha256": "ad779b0825913616d531d1a13579a6fe93b5aad3bb3fac44f5ed8678ee9c7ee8",
+        "meta": {
+          "field": {
+            "stationarity": 7.042244372027727e-09,
+            "carrier_metric_residual": 7.042244372027727e-09,
+            "order_projected_residual": 6.2676053236288e-10,
+            "order_steps": [
+              2,
+              1
+            ],
+            "carrier_steps": [
+              2,
+              1
+            ]
+          },
+          "solid_energy": 0.39213020465613385,
+          "exchange_error": 2.3037127760971998e-14,
+          "energy": 92185.89606290871
+        },
+        "energy": 92185.89606290871,
+        "solid": {
+          "material_force_max": 0.199626120205676,
+          "material_force_site": [
+            1,
+            21,
+            9,
+            1
+          ],
+          "angular_sum_force_max": 1.2893825435305228,
+          "angular_sum_force_site": [
+            1,
+            21,
+            1
+          ],
+          "bond_force_max": 0.1840221380666894,
+          "last_free_ring_angular_sum": [
+            0.0,
+            0.0
+          ],
+          "last_free_ring_peak_per_direction": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "last_free_ring_reference": [
+            0.96875,
+            0.9893179002349632
+          ],
+          "last_free_ring_landed_depth_fraction": [
+            0.9776521877879469,
+            0.9776556469669683
+          ]
+        },
+        "current": {
+          "excess_energy": 92185.89606290871,
+          "feed_current": 11.550911414526338,
+          "bulk_current": 11.550911414526329,
+          "port_error": 8.881784197001252e-15,
+          "weak_disk_current": 11.550911414526313,
+          "incident_slice_current": 11.550911414526311,
+          "receiving_slice_current": 10.892367994524776,
+          "positive_slice_current": 11.550911414526311,
+          "dense_total_subsonic_share": 0.7213985422465329,
+          "minimum_total_mach": 0.38775126198788357,
+          "total_axial_stress": -29.767430911253065,
+          "crystalline_range_in_band": [
+            0.0,
+            3.6545422253920096e-23
+          ]
+        },
+        "order_range": [
+          0.0,
+          1.0
+        ],
+        "in_shaft_axis": [
+          0.09956410624280816,
+          0.0,
+          0.0
+        ],
+        "prior_high_order_nodes": 14322,
+        "now_low_among_prior_high": 13860,
+        "absolute_trace_max": 0.0,
+        "lower_obstacle_count": 50433,
+        "upper_obstacle_count": 105
+      }
+    }
+  },
+  "generator": [
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_order01/adopted_readback_sources/mouth_continuous_order_flux.py",
+    "/var/projects/toy_physics/_scratch/s11c/r4_whole_mouth01",
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_order01",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/mouth_continuous_order.json"
+  ],
+  "reader": "7e97862c81af7419ffeea4f88a0b1e19bb4b81debf8f5d11dbeec575b64e487a",
+  "transmission": {
+    "rest": {
+      "weak": {
+        "raw_gradient_reconstruction_max": 6.586528197849439e-16,
+        "split_material_load_error": 5.724587470723463e-17,
+        "surfaces": {
+          "former_lower_edge": {
+            "interior": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "lower_obstacle": {
+              "nodes": 526,
+              "lower_or_inner_outward_sum": 1.0182137156871205,
+              "upper_or_outer_outward_sum": 0.1783152838413818,
+              "signed_mismatch": 1.196528999528502,
+              "nodal_mismatch_L1": 1.196528999528502,
+              "nodal_mismatch_max": 0.013137435392660511,
+              "both_sides_L1": 1.1965289995285022
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              0.0
+            ]
+          },
+          "former_upper_edge": {
+            "interior": {
+              "nodes": 505,
+              "lower_or_inner_outward_sum": 3.587249287723304e-22,
+              "upper_or_outer_outward_sum": -3.587249287723307e-22,
+              "signed_mismatch": -3.1538312957186684e-37,
+              "nodal_mismatch_L1": 2.2670960538715032e-36,
+              "nodal_mismatch_max": 2.027727755168446e-37,
+              "both_sides_L1": 7.174498575993125e-22
+            },
+            "lower_obstacle": {
+              "nodes": 21,
+              "lower_or_inner_outward_sum": 2.251420686594494e-28,
+              "upper_or_outer_outward_sum": -2.205335286754227e-28,
+              "signed_mismatch": 4.6085399840267464e-30,
+              "nodal_mismatch_L1": 4.6085399840267464e-30,
+              "nodal_mismatch_max": 4.808492450627692e-31,
+              "both_sides_L1": 4.456755973348721e-28
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              3.320497172939423e-23
+            ]
+          },
+          "terminal_disk": {
+            "interior": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "lower_obstacle": {
+              "nodes": 526,
+              "lower_or_inner_outward_sum": 0.8298754711975846,
+              "upper_or_outer_outward_sum": -4.47578001164414e-22,
+              "signed_mismatch": 0.8298754711975846,
+              "nodal_mismatch_L1": 0.8298754711975846,
+              "nodal_mismatch_max": 0.01058887254232685,
+              "both_sides_L1": 0.8298754711975846
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              0.0
+            ]
+          },
+          "entrance_open_disk": {
+            "interior": {
+              "nodes": 526,
+              "lower_or_inner_outward_sum": -204.53750214994182,
+              "upper_or_outer_outward_sum": 204.5375021499153,
+              "signed_mismatch": -2.6506803604944883e-11,
+              "nodal_mismatch_L1": 2.6790612280290548e-11,
+              "nodal_mismatch_max": 5.734024366432777e-13,
+              "both_sides_L1": 409.07500429985714
+            },
+            "lower_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.09955245660166763,
+              0.236961464347526
+            ]
+          },
+          "intact_slab": {
+            "interior": {
+              "nodes": 525,
+              "lower_or_inner_outward_sum": -103131.42940304267,
+              "upper_or_outer_outward_sum": 103131.42940304289,
+              "signed_mismatch": 2.1091909056976388e-10,
+              "nodal_mismatch_L1": 9.422954185597104e-10,
+              "nodal_mismatch_max": 5.4569682106375694e-11,
+              "both_sides_L1": 206262.85880608554
+            },
+            "lower_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.2400036605506681,
+              0.6771640727352282
+            ]
+          },
+          "lateral_two_banks": {
+            "interior": {
+              "nodes": 189,
+              "lower_or_inner_outward_sum": -4.482273162545558,
+              "upper_or_outer_outward_sum": 4.482273162545548,
+              "signed_mismatch": -1.0298235784201085e-14,
+              "nodal_mismatch_L1": 1.6995533868694758e-14,
+              "nodal_mismatch_max": 2.1371793224034263e-15,
+              "both_sides_L1": 8.979687234287635
+            },
+            "lower_obstacle": {
+              "nodes": 924,
+              "lower_or_inner_outward_sum": 0.33199601083812313,
+              "upper_or_outer_outward_sum": 0.08063026574789268,
+              "signed_mismatch": 0.4126262765860158,
+              "nodal_mismatch_L1": 0.4126262765860158,
+              "nodal_mismatch_max": 0.0031016225488194544,
+              "both_sides_L1": 0.4126737123894197
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              0.13826210596468555
+            ]
+          },
+          "post_disk_radial_join": {
+            "interior": {
+              "nodes": 1050,
+              "lower_or_inner_outward_sum": 2.3329761549088454e-20,
+              "upper_or_outer_outward_sum": -2.332976154908846e-20,
+              "signed_mismatch": -9.215490149528899e-36,
+              "nodal_mismatch_L1": 4.7954000312020994e-35,
+              "nodal_mismatch_max": 2.068870057447226e-36,
+              "both_sides_L1": 4.6659523098969115e-20
+            },
+            "lower_obstacle": {
+              "nodes": 63,
+              "lower_or_inner_outward_sum": 2.5177473289672157e-25,
+              "upper_or_outer_outward_sum": -3.023210509559369e-26,
+              "signed_mismatch": 2.215426278011278e-25,
+              "nodal_mismatch_L1": 2.215426278011278e-25,
+              "nodal_mismatch_max": 2.3114577302509546e-26,
+              "both_sides_L1": 2.8200684134653136e-25
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              6.884713556641902e-23
+            ]
+          },
+          "feed_radial_join": {
+            "interior": {
+              "nodes": 546,
+              "lower_or_inner_outward_sum": 1.4934200545561294,
+              "upper_or_outer_outward_sum": -1.4934200545563123,
+              "signed_mismatch": -1.8308033395836899e-13,
+              "nodal_mismatch_L1": 1.4502160754231154e-12,
+              "nodal_mismatch_max": 2.9182637382371515e-14,
+              "both_sides_L1": 2.9868401091124417
+            },
+            "lower_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.24481614966082524,
+              0.9999999999943743
+            ]
+          },
+          "outer_terminal_plane": {
+            "interior": {
+              "nodes": 378,
+              "lower_or_inner_outward_sum": -0.0016335504766210773,
+              "upper_or_outer_outward_sum": 0.0016335504766210767,
+              "signed_mismatch": -2.69704137037797e-19,
+              "nodal_mismatch_L1": 3.755518860738819e-18,
+              "nodal_mismatch_max": 2.303929616531697e-19,
+              "both_sides_L1": 0.003267100953242154
+            },
+            "lower_obstacle": {
+              "nodes": 147,
+              "lower_or_inner_outward_sum": 0.27620348881979234,
+              "upper_or_outer_outward_sum": 4.19800900261541e-09,
+              "signed_mismatch": 0.27620349301780134,
+              "nodal_mismatch_L1": 0.27620349301780134,
+              "nodal_mismatch_max": 0.013736868293670688,
+              "both_sides_L1": 0.2762034930346229
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              4.173717236790807e-09
+            ]
+          }
+        }
+      },
+      "direct": {
+        "former_lower_edge": {
+          "positive_axis_integrals": [
+            0.0,
+            0.0
+          ],
+          "cellwise_unsigned_difference": 0.0,
+          "integrated_jump": 0.0,
+          "quadrature_change": 0.0
+        },
+        "former_upper_edge": {
+          "positive_axis_integrals": [
+            3.676829325783539e-22,
+            3.915171517748913e-22
+          ],
+          "cellwise_unsigned_difference": 2.55955813619053e-23,
+          "integrated_jump": 2.383421919653732e-23,
+          "quadrature_change": 3.7780879276692475e-37
+        },
+        "terminal_disk": {
+          "positive_axis_integrals": [
+            0.0,
+            4.765131721807097e-22
+          ],
+          "cellwise_unsigned_difference": 4.765131721807097e-22,
+          "integrated_jump": 4.765131721807097e-22,
+          "quadrature_change": 1.7173215790021597e-37
+        },
+        "entrance_open_disk": {
+          "positive_axis_integrals": [
+            -207.7391375022787,
+            -162.92013140190383
+          ],
+          "cellwise_unsigned_difference": 44.819006100374864,
+          "integrated_jump": 44.819006100374864,
+          "quadrature_change": 2.020797740839679e-13
+        },
+        "intact_slab": {
+          "positive_axis_integrals": [
+            -126211.45435793872,
+            -133118.61312475725
+          ],
+          "cellwise_unsigned_difference": 6991.636981368065,
+          "integrated_jump": -6907.158766818507,
+          "quadrature_change": 1.9260795887897364e-10
+        },
+        "lateral_two_banks": {
+          "positive_axis_integrals": [
+            -5.351192100970353,
+            -5.3572984945676865
+          ],
+          "cellwise_unsigned_difference": 0.015764920344702348,
+          "integrated_jump": -0.006106393597333314,
+          "quadrature_change": 5.5583470326542035e-06
+        }
+      }
+    },
+    "wound": {
+      "weak": {
+        "raw_gradient_reconstruction_max": 7.268491364342822e-16,
+        "split_material_load_error": 5.724587470723463e-17,
+        "surfaces": {
+          "former_lower_edge": {
+            "interior": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "lower_obstacle": {
+              "nodes": 526,
+              "lower_or_inner_outward_sum": 1.0182137156871205,
+              "upper_or_outer_outward_sum": 0.1783152838413818,
+              "signed_mismatch": 1.196528999528502,
+              "nodal_mismatch_L1": 1.196528999528502,
+              "nodal_mismatch_max": 0.013137435392660511,
+              "both_sides_L1": 1.1965289995285022
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              0.0
+            ]
+          },
+          "former_upper_edge": {
+            "interior": {
+              "nodes": 505,
+              "lower_or_inner_outward_sum": 3.591268197780974e-22,
+              "upper_or_outer_outward_sum": -3.591268180951852e-22,
+              "signed_mismatch": 1.6829121553192727e-30,
+              "nodal_mismatch_L1": 1.6829130246299858e-30,
+              "nodal_mismatch_max": 3.713597508546785e-32,
+              "both_sides_L1": 7.182536379278871e-22
+            },
+            "lower_obstacle": {
+              "nodes": 21,
+              "lower_or_inner_outward_sum": 2.2537613643746338e-28,
+              "upper_or_outer_outward_sum": -2.2076275774915085e-28,
+              "signed_mismatch": 4.613378688312517e-30,
+              "nodal_mismatch_L1": 4.613378688312517e-30,
+              "nodal_mismatch_max": 4.8131156226444355e-31,
+              "both_sides_L1": 4.461388941866143e-28
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              3.3241186809913454e-23
+            ]
+          },
+          "terminal_disk": {
+            "interior": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "lower_obstacle": {
+              "nodes": 526,
+              "lower_or_inner_outward_sum": 0.8298754711975846,
+              "upper_or_outer_outward_sum": -4.478289784020577e-22,
+              "signed_mismatch": 0.8298754711975846,
+              "nodal_mismatch_L1": 0.8298754711975846,
+              "nodal_mismatch_max": 0.01058887254232685,
+              "both_sides_L1": 0.8298754711975846
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              0.0
+            ]
+          },
+          "entrance_open_disk": {
+            "interior": {
+              "nodes": 526,
+              "lower_or_inner_outward_sum": -204.59418418167922,
+              "upper_or_outer_outward_sum": 204.59418417534835,
+              "signed_mismatch": -6.330901860785815e-09,
+              "nodal_mismatch_L1": 1.5366522945460076e-08,
+              "nodal_mismatch_max": 2.1481941225864887e-10,
+              "both_sides_L1": 409.18836835702757
+            },
+            "lower_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.09956410624280816,
+              0.23713221102297816
+            ]
+          },
+          "intact_slab": {
+            "interior": {
+              "nodes": 525,
+              "lower_or_inner_outward_sum": -103131.43656146372,
+              "upper_or_outer_outward_sum": 103131.436561392,
+              "signed_mismatch": -7.173699787031782e-08,
+              "nodal_mismatch_L1": 8.195575107504492e-08,
+              "nodal_mismatch_max": 1.0097529479224931e-09,
+              "both_sides_L1": 206262.87312285573
+            },
+            "lower_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.24014461009807309,
+              0.6771640727797693
+            ]
+          },
+          "lateral_two_banks": {
+            "interior": {
+              "nodes": 189,
+              "lower_or_inner_outward_sum": -4.484669899948688,
+              "upper_or_outer_outward_sum": 4.484669900811781,
+              "signed_mismatch": 8.630930942648333e-10,
+              "nodal_mismatch_L1": 1.2224127733969535e-09,
+              "nodal_mismatch_max": 4.880676418572705e-11,
+              "both_sides_L1": 8.984502556079125
+            },
+            "lower_obstacle": {
+              "nodes": 924,
+              "lower_or_inner_outward_sum": 0.3320000452641371,
+              "upper_or_outer_outward_sum": 0.08062910255280259,
+              "signed_mismatch": 0.4126291478169397,
+              "nodal_mismatch_L1": 0.4126291478169397,
+              "nodal_mismatch_max": 0.0031016225488194544,
+              "both_sides_L1": 0.4126789100105238
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              0.13837173523968488
+            ]
+          },
+          "post_disk_radial_join": {
+            "interior": {
+              "nodes": 1050,
+              "lower_or_inner_outward_sum": 2.3359202850053563e-20,
+              "upper_or_outer_outward_sum": -2.3359202840986763e-20,
+              "signed_mismatch": 9.066801819439373e-30,
+              "nodal_mismatch_L1": 2.6920729905381394e-29,
+              "nodal_mismatch_max": 3.312319437278134e-31,
+              "both_sides_L1": 4.671840569183363e-20
+            },
+            "lower_obstacle": {
+              "nodes": 63,
+              "lower_or_inner_outward_sum": 2.521398184906473e-25,
+              "upper_or_outer_outward_sum": -3.0289132690408876e-26,
+              "signed_mismatch": 2.218506858002384e-25,
+              "nodal_mismatch_L1": 2.218506858002384e-25,
+              "nodal_mismatch_max": 2.3144333369914837e-26,
+              "both_sides_L1": 2.8242895453990545e-25
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              6.89270303885077e-23
+            ]
+          },
+          "feed_radial_join": {
+            "interior": {
+              "nodes": 546,
+              "lower_or_inner_outward_sum": 1.492037303335709,
+              "upper_or_outer_outward_sum": -1.4920373174534145,
+              "signed_mismatch": -1.4117705627764102e-08,
+              "nodal_mismatch_L1": 2.4935105129636608e-08,
+              "nodal_mismatch_max": 4.456012997824943e-10,
+              "both_sides_L1": 2.9840746207891238
+            },
+            "lower_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.24495845295889931,
+              0.9999999999943794
+            ]
+          },
+          "outer_terminal_plane": {
+            "interior": {
+              "nodes": 378,
+              "lower_or_inner_outward_sum": -0.001633555033711242,
+              "upper_or_outer_outward_sum": 0.0016335550337112418,
+              "signed_mismatch": -1.6113775600565615e-20,
+              "nodal_mismatch_L1": 4.0984332673566494e-18,
+              "nodal_mismatch_max": 2.236166980751353e-19,
+              "both_sides_L1": 0.0032671100674224835
+            },
+            "lower_obstacle": {
+              "nodes": 147,
+              "lower_or_inner_outward_sum": 0.27620348881650697,
+              "upper_or_outer_outward_sum": 4.201191921017762e-09,
+              "signed_mismatch": 0.276203493017699,
+              "nodal_mismatch_L1": 0.276203493017699,
+              "nodal_mismatch_max": 0.013736868293670688,
+              "both_sides_L1": 0.2762034930345517
+            },
+            "upper_obstacle": {
+              "nodes": 0,
+              "lower_or_inner_outward_sum": 0.0,
+              "upper_or_outer_outward_sum": 0.0,
+              "signed_mismatch": 0.0,
+              "nodal_mismatch_L1": 0.0,
+              "nodal_mismatch_max": 0.0,
+              "both_sides_L1": 0.0
+            },
+            "wrong_sign_lower_max": 0.0,
+            "wrong_sign_upper_max": 0.0,
+            "order_range": [
+              0.0,
+              4.173717237599674e-09
+            ]
+          }
+        }
+      },
+      "direct": {
+        "former_lower_edge": {
+          "positive_axis_integrals": [
+            0.0,
+            0.0
+          ],
+          "cellwise_unsigned_difference": 0.0,
+          "integrated_jump": 0.0,
+          "quadrature_change": 0.0
+        },
+        "former_upper_edge": {
+          "positive_axis_integrals": [
+            3.680928783882918e-22,
+            3.919627302180933e-22
+          ],
+          "cellwise_unsigned_difference": 2.563120055730308e-23,
+          "integrated_jump": 2.3869851829801516e-23,
+          "quadrature_change": 4.836808835636409e-37
+        },
+        "terminal_disk": {
+          "positive_axis_integrals": [
+            0.0,
+            4.768388257295401e-22
+          ],
+          "cellwise_unsigned_difference": 4.768388257295401e-22,
+          "integrated_jump": 4.768388257295401e-22,
+          "quadrature_change": 1.975031356274014e-37
+        },
+        "entrance_open_disk": {
+          "positive_axis_integrals": [
+            -207.7962735728586,
+            -162.97023628697184
+          ],
+          "cellwise_unsigned_difference": 44.82603728588676,
+          "integrated_jump": 44.82603728588676,
+          "quadrature_change": 3.818237325164779e-11
+        },
+        "intact_slab": {
+          "positive_axis_integrals": [
+            -126211.45810262416,
+            -133118.68481951815
+          ],
+          "cellwise_unsigned_difference": 6991.643783637766,
+          "integrated_jump": -6907.226716893992,
+          "quadrature_change": 2.0335880028532483e-10
+        },
+        "lateral_two_banks": {
+          "positive_axis_integrals": [
+            -5.354110188942658,
+            -5.360141916086857
+          ],
+          "cellwise_unsigned_difference": 0.015828578671294582,
+          "integrated_jump": -0.006031727144197575,
+          "quadrature_change": 5.5614949469864615e-06
+        }
+      }
+    }
+  },
+  "manufactured_axial_order_flux": {
+    "feed_0": {
+      "expected": 0.0,
+      "measured": 0.0
+    },
+    "feed_1": {
+      "expected": 0.0,
+      "measured": 0.0
+    },
+    "duct_entrance_0": {
+      "expected": 4.259481798088276,
+      "measured": 4.2594817980882755
+    },
+    "duct_entrance_1": {
+      "expected": 93.70859955794208,
+      "measured": 93.70859955794208
+    },
+    "duct_exit_0": {
+      "expected": 0.9400748525303316,
+      "measured": 0.9400748525303315
+    },
+    "duct_exit_1": {
+      "expected": 25.982082732510634,
+      "measured": 25.982082732510644
+    },
+    "receiver_0": {
+      "expected": 0.0,
+      "measured": 0.0
+    },
+    "receiver_1": {
+      "expected": 0.0,
+      "measured": 0.0
+    }
+  }
+}

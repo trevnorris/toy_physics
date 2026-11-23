@@ -1,0 +1,359 @@
+{
+  "command": [
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_order01/adopted_readback_sources/mouth_continuous_ring_readback.py",
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_order01/held",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/mouth_continuous_ring_work.json",
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_order01/material_build"
+  ],
+  "inputs": {
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_order01/adopted_readback_sources/mouth_continuous_ring_readback.py": "2fc618c98d14374df3f2c781d3c31147a1a2e6f105d4edb0b13fa17061adbf28",
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_order01/adopted_readback_sources/mouth_r4_ring_work.py": "9cdbae190c020f3e3ea4efc63c29cb65545ed59c1c0467208ccf7c742266f8d3",
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_order01/adopted_readback_sources/mouth_r4_ring_work.cpp": "0bbf6008094acc81f8f94992a0ff0972da994ccee972652f981cf95afaf10735",
+    "_scratch/s11c/r4_whole_mouth01/pin/software/stage1_solver/tools/mouth_free_shape_solid.cpp": "73344acb71f2a27156eb109a6e42a0f5868dfb67e597ad5da2cd5ac5eab76098",
+    "_scratch/s11c/r4_whole_mouth01/sources.json": "a9e40da1aaaf3f4759fbcc47755535f83de2141e37d87d92bca54f3f08f43e6b",
+    "_scratch/s11c/r4_whole_mouth01/fine/state_00015.npz": "50eb4fddf48b08dd03e1670bf9881a3e5d2fa8d24bdaa56b68d1a38c66675aa3",
+    "_scratch/s11c/r4_whole_mouth01/fine/endpoint_controls.npz": "672498b51095498584efdd50264e12b4b66ebaf232d578c200b756569427c21a",
+    "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+    "_scratch/s11c/r4_continuous_order01/pin/mouth_held_continuous_order.py": "73358ff96f1a504cccc50e4e94e49c555ee740e0bcf72e7613fa475a33b55520",
+    "_scratch/s11c/r4_continuous_order01/pin/mouth_continuous_order.py": "cc7b383e4867e5d73fec3668d54aa6a6adf6d6cc757efe7b8c5f6ba5d9536ab5",
+    "_scratch/s11c/r4_continuous_order01/saved/record.json": "939dad5ed78bced788ea7f0feabd9974385ba1880ea30bcd7f2eed3c815ae688",
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_order01/held/terminal_worker_verification.json": "43b67c7d4f506a79086280832fde84ce3f17bcebed359f2a50ee4e06c9f97775",
+    "_scratch/s11c/r4_continuous_order01/saved/rest.npz": "6bd529495e9c8a83ad69e374a23c7f6634ee5d31997f6ddf0d2349d6208419d7",
+    "_scratch/s11c/r4_continuous_order01/saved/wound.npz": "ad779b0825913616d531d1a13579a6fe93b5aad3bb3fac44f5ed8678ee9c7ee8"
+  },
+  "sign": "negative derivative with respect to physical outward ring displacement",
+  "functional": "absolute merged order; reference-subtracted coherent vortex; frozen external crystal and material labels",
+  "cases": {
+    "rest": {
+      "ring": {
+        "physical_sign": "positive outward",
+        "mesh_reference": [
+          0.96875,
+          0.9893179002349632
+        ],
+        "landed_depth_fraction": [
+          0.9776521877879469,
+          0.9776556469669683
+        ],
+        "angular_sites": 11,
+        "probe_energy_columns": [
+          "chi_W_entire_affected_star",
+          "field_argument_times_W_affected_star"
+        ],
+        "full_domain_chi_W": 0.3919726460288673,
+        "full_domain_argument_times_W": 0.3919726460288672,
+        "full_domain_radial_force": -0.0,
+        "full_domain_radial_axial": [
+          0.0,
+          0.0
+        ],
+        "constitutive_radial_forces": {
+          "stretch_squared": -0.0,
+          "minus_log_J": -0.0,
+          "quadratic_compression": -0.0,
+          "sampling_native_order": -0.0,
+          "sampling_order_argument": -0.0,
+          "quadrature_point_and_weight_motion": -0.0
+        },
+        "constitutive_sum": 0.0,
+        "signed_probes": [
+          {
+            "outward_step": 2e-05,
+            "inward_energy": [
+              0.0,
+              0.0
+            ],
+            "outward_energy": [
+              0.0,
+              0.0
+            ],
+            "radial_force": 0.0,
+            "argument_weighted_force": 0.0,
+            "native_weighted_force": 0.0
+          },
+          {
+            "outward_step": 1e-05,
+            "inward_energy": [
+              0.0,
+              0.0
+            ],
+            "outward_energy": [
+              0.0,
+              0.0
+            ],
+            "radial_force": 0.0,
+            "argument_weighted_force": 0.0,
+            "native_weighted_force": 0.0
+          },
+          {
+            "outward_step": 5e-06,
+            "inward_energy": [
+              0.0,
+              0.0
+            ],
+            "outward_energy": [
+              0.0,
+              0.0
+            ],
+            "radial_force": 0.0,
+            "argument_weighted_force": 0.0,
+            "native_weighted_force": 0.0
+          },
+          {
+            "outward_step": 2.5e-06,
+            "inward_energy": [
+              0.0,
+              0.0
+            ],
+            "outward_energy": [
+              0.0,
+              0.0
+            ],
+            "radial_force": 0.0,
+            "argument_weighted_force": 0.0,
+            "native_weighted_force": 0.0
+          }
+        ],
+        "direct_ring_force": {
+          "chi_W": -0.0,
+          "order_gradient": 0.0,
+          "double_well": 0.0,
+          "carrier": 0.0,
+          "phase": 0.0
+        },
+        "direct_field_terms_basis": "Exact at fixed Eulerian field coefficients and chart: no solid coordinate enters these terms.",
+        "checks": {
+          "full_vs_solver_radial": true,
+          "work_terms_vs_full": true,
+          "smallest_probe_vs_full": true,
+          "last_halving": true
+        }
+      },
+      "energy_terms": {
+        "order_gradient": 45836.18481084325,
+        "double_well": 46346.67631485093,
+        "density_amplitude_gradient": 0.15912022663935493,
+        "density_potential": 0.02525874304250356,
+        "meridional_phase": 0.0,
+        "phase_order_coupling": -0.0,
+        "vortex_boundary": -0.36953681117575005,
+        "chi_W_inner": 0.3919726460288673,
+        "chi_W_exterior": 0.22008563784819432
+      },
+      "total_energy": 92183.28802613656,
+      "signed_joint": [
+        {
+          "physical_displacement": -1e-05,
+          "native_plus_coupled_field": 92183.28802607235,
+          "field_without_deposition": 92182.67596778847,
+          "explicit_field_terms": {
+            "order_gradient": 45836.18481084325,
+            "double_well": 46346.67631485093,
+            "density_amplitude_gradient": 0.15912022663935493,
+            "density_potential": 0.02525874304250356,
+            "meridional_phase": 0.0,
+            "phase_order_coupling": -0.0,
+            "vortex_boundary": -0.36953681117575005
+          }
+        },
+        {
+          "physical_displacement": 1e-05,
+          "native_plus_coupled_field": 92183.28802607235,
+          "field_without_deposition": 92182.67596778847,
+          "explicit_field_terms": {
+            "order_gradient": 45836.18481084325,
+            "double_well": 46346.67631485093,
+            "density_amplitude_gradient": 0.15912022663935493,
+            "density_potential": 0.02525874304250356,
+            "meridional_phase": 0.0,
+            "phase_order_coupling": -0.0,
+            "vortex_boundary": -0.36953681117575005
+          }
+        }
+      ],
+      "full_joint_probe_force": 0.0,
+      "signed_direct_field_forces": {
+        "order_gradient": 0.0,
+        "double_well": 0.0,
+        "density_amplitude_gradient": 0.0,
+        "density_potential": 0.0,
+        "meridional_phase": 0.0,
+        "phase_order_coupling": 0.0,
+        "vortex_boundary": 0.0
+      },
+      "checks": {
+        "ring_matches_saved": true,
+        "energy_matches_saved": false,
+        "signed_joint_force": true,
+        "direct_field_forces": true,
+        "stationary": true
+      }
+    },
+    "wound": {
+      "ring": {
+        "physical_sign": "positive outward",
+        "mesh_reference": [
+          0.96875,
+          0.9893179002349632
+        ],
+        "landed_depth_fraction": [
+          0.9776521877879469,
+          0.9776556469669683
+        ],
+        "angular_sites": 11,
+        "probe_energy_columns": [
+          "chi_W_entire_affected_star",
+          "field_argument_times_W_affected_star"
+        ],
+        "full_domain_chi_W": 0.39213020465613385,
+        "full_domain_argument_times_W": 0.3921302046561338,
+        "full_domain_radial_force": -0.0,
+        "full_domain_radial_axial": [
+          0.0,
+          0.0
+        ],
+        "constitutive_radial_forces": {
+          "stretch_squared": -0.0,
+          "minus_log_J": -0.0,
+          "quadratic_compression": -0.0,
+          "sampling_native_order": -0.0,
+          "sampling_order_argument": -0.0,
+          "quadrature_point_and_weight_motion": -0.0
+        },
+        "constitutive_sum": 0.0,
+        "signed_probes": [
+          {
+            "outward_step": 2e-05,
+            "inward_energy": [
+              0.0,
+              0.0
+            ],
+            "outward_energy": [
+              0.0,
+              0.0
+            ],
+            "radial_force": 0.0,
+            "argument_weighted_force": 0.0,
+            "native_weighted_force": 0.0
+          },
+          {
+            "outward_step": 1e-05,
+            "inward_energy": [
+              0.0,
+              0.0
+            ],
+            "outward_energy": [
+              0.0,
+              0.0
+            ],
+            "radial_force": 0.0,
+            "argument_weighted_force": 0.0,
+            "native_weighted_force": 0.0
+          },
+          {
+            "outward_step": 5e-06,
+            "inward_energy": [
+              0.0,
+              0.0
+            ],
+            "outward_energy": [
+              0.0,
+              0.0
+            ],
+            "radial_force": 0.0,
+            "argument_weighted_force": 0.0,
+            "native_weighted_force": 0.0
+          },
+          {
+            "outward_step": 2.5e-06,
+            "inward_energy": [
+              0.0,
+              0.0
+            ],
+            "outward_energy": [
+              0.0,
+              0.0
+            ],
+            "radial_force": 0.0,
+            "argument_weighted_force": 0.0,
+            "native_weighted_force": 0.0
+          }
+        ],
+        "direct_ring_force": {
+          "chi_W": -0.0,
+          "order_gradient": 0.0,
+          "double_well": 0.0,
+          "carrier": 0.0,
+          "phase": 0.0
+        },
+        "direct_field_terms_basis": "Exact at fixed Eulerian field coefficients and chart: no solid coordinate enters these terms.",
+        "checks": {
+          "full_vs_solver_radial": true,
+          "work_terms_vs_full": true,
+          "smallest_probe_vs_full": true,
+          "last_halving": true
+        }
+      },
+      "energy_terms": {
+        "order_gradient": 45836.186233383116,
+        "double_well": 46346.67459932745,
+        "density_amplitude_gradient": 0.16840030523716074,
+        "density_potential": 0.03373087334981849,
+        "meridional_phase": 2.607851137050795,
+        "phase_order_coupling": -0.003071935884134674,
+        "vortex_boundary": -0.3840315903496584,
+        "chi_W_inner": 0.39213020465613385,
+        "chi_W_exterior": 0.22022123800015647
+      },
+      "total_energy": 92185.89606294263,
+      "signed_joint": [
+        {
+          "physical_displacement": -1e-05,
+          "native_plus_coupled_field": 92185.89606290871,
+          "field_without_deposition": 92185.28371146605,
+          "explicit_field_terms": {
+            "order_gradient": 45836.186233383116,
+            "double_well": 46346.67459932745,
+            "density_amplitude_gradient": 0.16840030523716074,
+            "density_potential": 0.03373087334981849,
+            "meridional_phase": 2.607851137050795,
+            "phase_order_coupling": -0.003071935884134674,
+            "vortex_boundary": -0.3840315903496584
+          }
+        },
+        {
+          "physical_displacement": 1e-05,
+          "native_plus_coupled_field": 92185.89606290871,
+          "field_without_deposition": 92185.28371146605,
+          "explicit_field_terms": {
+            "order_gradient": 45836.186233383116,
+            "double_well": 46346.67459932745,
+            "density_amplitude_gradient": 0.16840030523716074,
+            "density_potential": 0.03373087334981849,
+            "meridional_phase": 2.607851137050795,
+            "phase_order_coupling": -0.003071935884134674,
+            "vortex_boundary": -0.3840315903496584
+          }
+        }
+      ],
+      "full_joint_probe_force": 0.0,
+      "signed_direct_field_forces": {
+        "order_gradient": 0.0,
+        "double_well": 0.0,
+        "density_amplitude_gradient": 0.0,
+        "density_potential": 0.0,
+        "meridional_phase": 0.0,
+        "phase_order_coupling": 0.0,
+        "vortex_boundary": 0.0
+      },
+      "checks": {
+        "ring_matches_saved": true,
+        "energy_matches_saved": false,
+        "signed_joint_force": true,
+        "direct_field_forces": true,
+        "stationary": true
+      }
+    }
+  },
+  "accepted": false
+}

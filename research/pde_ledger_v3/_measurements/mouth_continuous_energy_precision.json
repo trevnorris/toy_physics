@@ -1,0 +1,30 @@
+{
+  "source": "8ba2fbd50e89ba1954fe58e5904bad97f2444c19742f2ad276286e25ba9e771f",
+  "ring_readout": "f26a9f3db0fb97de90d71ae49f6f841d630454c4be31339a3b21906058cc56cc",
+  "held_receipt": "43b67c7d4f506a79086280832fde84ce3f17bcebed359f2a50ee4e06c9f97775",
+  "longdouble_mantissa": 63,
+  "cases": {
+    "rest": {
+      "native_grouped": 92183.28802607235,
+      "precise_grouped": 92183.2880261447,
+      "precise_components": 92183.2880261447,
+      "max_local_phase_identity": 0.0,
+      "saved": 92183.28802607235,
+      "separate": 92183.28802613656,
+      "field_sha256": "6bd529495e9c8a83ad69e374a23c7f6634ee5d31997f6ddf0d2349d6208419d7",
+      "precise_difference": 0.0,
+      "saved_minus_native": 0.0
+    },
+    "wound": {
+      "native_grouped": 92185.89606290871,
+      "precise_grouped": 92185.89606295014,
+      "precise_components": 92185.89606295014,
+      "max_local_phase_identity": 2.220446049250313e-16,
+      "saved": 92185.89606290871,
+      "separate": 92185.89606294263,
+      "field_sha256": "ad779b0825913616d531d1a13579a6fe93b5aad3bb3fac44f5ed8678ee9c7ee8",
+      "precise_difference": 0.0,
+      "saved_minus_native": 0.0
+    }
+  }
+}

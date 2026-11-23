@@ -1,0 +1,1137 @@
+{
+  "scope": "First variation of the mixed coherent phase and material order term for separate coordinate maps, with signed finite-step strip quadrature on the archived stationary R4 fields. Derivatives of the driven-minus-rest energy are reported with a minus sign.",
+  "sources": {
+    "mouth_rim_mixed_face_work.py": "da4cf6af93393b4eba510e5e7680c9ce28c59d9ee275a25651d020abdb47e119",
+    "mouth_rim_swept_cells.py": "23323bc2bfb63c1fd68c8d3b8654fe21821a64b86f93aff3248f99d68daf9673",
+    "mouth_rim_swept_check.py": "5944aafdf543df582ed4ca5d81f0f04824cf7c34e372f2ad9dea11d4da83d13c",
+    "mouth_rim_overlap_check.py": "30a13923d3e3a5958430008eab5e9770ccd8207504819dd46744d5c926a6d65f"
+  },
+  "cases": {
+    "double": {
+      "trace": {
+        "field": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+        "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "heights": [
+          0.7604687385883343,
+          0.7776115957311914,
+          0.7947544528740486,
+          0.8118973100169057,
+          0.8290401671597628
+        ],
+        "bounds": [
+          [
+            0.9763313609467456,
+            0.9053254437869822
+          ],
+          [
+            0.007427354427256582,
+            0.032612036280854566
+          ]
+        ],
+        "exterior": [
+          0.032612036280854566,
+          0.054586157228861815
+        ],
+        "readings": [
+          {
+            "gauss": 2,
+            "cases": {
+              "fixed_wall_difference": {
+                "negative": 0.0021216834497630355,
+                "positive": 0.002072971569623749,
+                "centered": 0.0020973275096933925,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        0.00012563513835345358,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.001996048311409582,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        0.00013043372265905836,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.0019425378469646905,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ]
+                  ]
+                ]
+              },
+              "rim_four": {
+                "negative": 0.012210317958224196,
+                "positive": 0.011911474169944746,
+                "centered": 0.012060896064084472,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        0.0001666901770028298,
+                        6.0394844764024484e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.004530899665495076,
+                        5.7476386379067816e-05
+                      ],
+                      [
+                        0.007418249856591207,
+                        -2.3392972008007336e-05
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        0.00017303418866503054,
+                        2.240046186547327e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.004414367134284138,
+                        5.626723165890784e-05
+                      ],
+                      [
+                        0.007257450163345814,
+                        -1.2045009874618891e-05
+                      ]
+                    ]
+                  ]
+                ]
+              },
+              "rim_eight": {
+                "negative": 0.0085613174784962,
+                "positive": 0.0083756337008885,
+                "centered": 0.00846847558969235,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        4.1055038649376315e-05,
+                        1.3757955056311743e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.002534851354085498,
+                        1.3086238978441717e-05
+                      ],
+                      [
+                        0.0059638932576191375,
+                        -5.3263658925660474e-06
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        4.26004660059722e-05,
+                        5.103293667924414e-06
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.002471829287319445,
+                        1.2811117182732295e-05
+                      ],
+                      [
+                        0.005846031475548486,
+                        -2.741938836059121e-06
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "gauss": 4,
+            "cases": {
+              "fixed_wall_difference": {
+                "negative": 0.0021216286600032252,
+                "positive": 0.002073113926177252,
+                "centered": 0.0020973712930902385,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        0.00012563538584120648,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.0019959932741620188,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        0.00013055973621991693,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.0019425541899573352,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ]
+                  ]
+                ]
+              },
+              "rim_four": {
+                "negative": 0.012210572055029824,
+                "positive": 0.011911834962805314,
+                "centered": 0.012061203508917569,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        0.0001666905040327908,
+                        6.039514227971418e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.00453082638078496,
+                        5.74706168564406e-05
+                      ],
+                      [
+                        0.007418880893173513,
+                        -2.369148209759452e-05
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        0.00017320220080004064,
+                        2.240046953476732e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.004414388459812256,
+                        5.623361927013673e-05
+                      ],
+                      [
+                        0.007257671738243058,
+                        -1.2061524854944098e-05
+                      ]
+                    ]
+                  ]
+                ]
+              },
+              "rim_eight": {
+                "negative": 0.008561395424533802,
+                "positive": 0.008375730834043736,
+                "centered": 0.008468563129288769,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        4.1055118191584414e-05,
+                        1.3758022817065765e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.00253483310662294,
+                        1.3084882454945643e-05
+                      ],
+                      [
+                        0.00596405868068646,
+                        -5.394386239193315e-06
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        4.2642464580123696e-05,
+                        5.103295415809682e-06
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.0024718342698549205,
+                        1.280342329244744e-05
+                      ],
+                      [
+                        0.005846093113174644,
+                        -2.745732274208495e-06
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "energy_and_transpose": {
+        "field_sha256": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+        "grid": "double",
+        "records": [
+          {
+            "case": "fixed_wall_difference",
+            "step": -2e-05,
+            "points": 9040,
+            "correction": 0.002121683449763199,
+            "independent_mismatch": 1.6349768761081407e-16,
+            "normalized_gradient_errors": [
+              5.601596439199993e-10,
+              4.294272284364716e-12,
+              4.439389619803613e-10,
+              1.7938977217753227e-09,
+              4.0802887457669357e-10,
+              1.5507348165993973e-09
+            ]
+          },
+          {
+            "case": "fixed_wall_difference",
+            "step": 2e-05,
+            "points": 9040,
+            "correction": 0.002072971569623723,
+            "independent_mismatch": -2.6020852139652106e-17,
+            "normalized_gradient_errors": [
+              8.870624918302498e-11,
+              2.0246132643564076e-10,
+              3.793371198754225e-10,
+              7.853331821655596e-10,
+              8.617043432967986e-10,
+              6.761095502905157e-11
+            ]
+          },
+          {
+            "case": "rim_four",
+            "step": -2e-05,
+            "points": 62360,
+            "correction": 0.012210317958224562,
+            "independent_mismatch": 3.660266534311063e-16,
+            "normalized_gradient_errors": [
+              1.6656466835350282e-08,
+              3.402064225406344e-08,
+              3.0595317061093974e-08,
+              4.563015187572517e-08,
+              2.2559547924183576e-08,
+              4.393253842660538e-08
+            ]
+          },
+          {
+            "case": "rim_four",
+            "step": 2e-05,
+            "points": 62360,
+            "correction": 0.011911474169942163,
+            "independent_mismatch": -2.5830032557294658e-15,
+            "normalized_gradient_errors": [
+              3.3130413092947303e-09,
+              7.742842419404601e-08,
+              1.971892205077097e-09,
+              3.0215359825280785e-08,
+              3.737802581338379e-09,
+              6.106021788188087e-08
+            ]
+          },
+          {
+            "case": "rim_eight",
+            "step": -2e-05,
+            "points": 62360,
+            "correction": 0.008561317478496937,
+            "independent_mismatch": 7.37257477290143e-16,
+            "normalized_gradient_errors": [
+              1.8825216104093706e-09,
+              3.301098242200491e-08,
+              2.378014429815778e-08,
+              1.4853646090884354e-10,
+              1.626849911035011e-08,
+              5.542599282315486e-09
+            ]
+          },
+          {
+            "case": "rim_eight",
+            "step": 2e-05,
+            "points": 62360,
+            "correction": 0.00837563370088704,
+            "independent_mismatch": -1.4606371667724716e-15,
+            "normalized_gradient_errors": [
+              1.08338483222732e-08,
+              2.3259227804712388e-08,
+              4.024899857846265e-11,
+              1.734314913903745e-09,
+              3.811523145713647e-09,
+              3.5575508899876596e-08
+            ]
+          }
+        ]
+      },
+      "finite_strip": {
+        "grid": "double",
+        "zero": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+        "measurements": [
+          {
+            "case": "fixed_wall_difference",
+            "step": -2e-05,
+            "exact_layer": 0.002121625263871117,
+            "linear_limit": 0.0021216834497630355,
+            "difference": -5.8185891918440674e-08
+          },
+          {
+            "case": "fixed_wall_difference",
+            "step": -1e-05,
+            "exact_layer": 0.0021216535522875133,
+            "linear_limit": 0.0021216834497630355,
+            "difference": -2.989747552219896e-08
+          },
+          {
+            "case": "fixed_wall_difference",
+            "step": 2e-05,
+            "exact_layer": 0.002071700089897528,
+            "linear_limit": 0.002072971569623749,
+            "difference": -1.2714797262211586e-06
+          },
+          {
+            "case": "fixed_wall_difference",
+            "step": 1e-05,
+            "exact_layer": 0.0020723350750742856,
+            "linear_limit": 0.002072971569623749,
+            "difference": -6.364945494634865e-07
+          },
+          {
+            "case": "rim_four",
+            "step": -2e-05,
+            "exact_layer": 0.012207776019845164,
+            "linear_limit": 0.012210317958224196,
+            "difference": -2.5419383790324657e-06
+          },
+          {
+            "case": "rim_four",
+            "step": -1e-05,
+            "exact_layer": 0.012209034661698339,
+            "linear_limit": 0.012210317958224196,
+            "difference": -1.2832965258571805e-06
+          },
+          {
+            "case": "rim_four",
+            "step": 2e-05,
+            "exact_layer": 0.011900205724475567,
+            "linear_limit": 0.011911474169944746,
+            "difference": -1.1268445469178948e-05
+          },
+          {
+            "case": "rim_four",
+            "step": 1e-05,
+            "exact_layer": 0.011905827962222271,
+            "linear_limit": 0.011911474169944746,
+            "difference": -5.646207722474414e-06
+          },
+          {
+            "case": "rim_eight",
+            "step": -2e-05,
+            "exact_layer": 0.008560670350953497,
+            "linear_limit": 0.0085613174784962,
+            "difference": -6.471275427032824e-07
+          },
+          {
+            "case": "rim_eight",
+            "step": -1e-05,
+            "exact_layer": 0.008560987630602826,
+            "linear_limit": 0.0085613174784962,
+            "difference": -3.298478933738691e-07
+          },
+          {
+            "case": "rim_eight",
+            "step": 2e-05,
+            "exact_layer": 0.008368162517682198,
+            "linear_limit": 0.0083756337008885,
+            "difference": -7.471183206302773e-06
+          },
+          {
+            "case": "rim_eight",
+            "step": 1e-05,
+            "exact_layer": 0.008371891924443745,
+            "linear_limit": 0.0083756337008885,
+            "difference": -3.7417764447555263e-06
+          }
+        ]
+      },
+      "commands": {
+        "trace": [
+          "python3",
+          "software/stage1_solver/tools/mouth_rim_mixed_face_work.py",
+          "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+          "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+          "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+          "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+          "_scratch/s11c/r4_pinned_rematch01/double/zero.npz",
+          "research/pde_ledger_v3/_measurements/mouth_rim_pinned_rematch.json"
+        ],
+        "energy_and_transpose": [
+          "python3",
+          "software/stage1_solver/tools/mouth_rim_swept_check.py",
+          "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+          "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+          "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+          "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+          "_scratch/s11c/r4_pinned_rematch01/double/zero.npz",
+          "_scratch/s11c/r4_mixed_faces01/double/stdout"
+        ],
+        "finite_strip": [
+          "python3",
+          "software/stage1_solver/tools/mouth_rim_overlap_check.py",
+          "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+          "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+          "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+          "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+          "_scratch/s11c/r4_pinned_rematch01/double/zero.npz",
+          "_scratch/s11c/r4_mixed_faces01/double/stdout"
+        ]
+      }
+    },
+    "local": {
+      "trace": {
+        "field": "5a2e33ebbee08fd795f4b7cac3f3fd8e4a18fddadf13cc8f126180996a54f9cc",
+        "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "heights": [
+          0.7604687385883343,
+          0.7776115957311914,
+          0.7947544528740486,
+          0.8118973100169057,
+          0.8290401671597628
+        ],
+        "bounds": [
+          [
+            0.9763313609467456,
+            0.9053254437869822
+          ],
+          [
+            0.007427354427256582,
+            0.032612036280854566
+          ]
+        ],
+        "exterior": [
+          0.032612036280854566,
+          0.054586157228861815
+        ],
+        "readings": [
+          {
+            "gauss": 2,
+            "cases": {
+              "fixed_wall_difference": {
+                "negative": 0.002144355739846895,
+                "positive": 0.00211402934747596,
+                "centered": 0.0021291925436614277,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        0.0001288119749818448,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.00201554376486505,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        0.00013138058061830878,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.001982648766857651,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ]
+                  ]
+                ]
+              },
+              "rim_four": {
+                "negative": 0.012247745885350393,
+                "positive": 0.012072402758834104,
+                "centered": 0.012160074322092249,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        0.00017136437383332372,
+                        4.7019374889250914e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.004532695652865279,
+                        5.6239197066814556e-05
+                      ],
+                      [
+                        0.007465768590615729,
+                        -2.5341303920005482e-05
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        0.00017448413618253154,
+                        2.672934868155506e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.004464626658849301,
+                        5.577203778659951e-05
+                      ],
+                      [
+                        0.007370728533935439,
+                        -1.9937956601321528e-05
+                      ]
+                    ]
+                  ]
+                ]
+              },
+              "rim_eight": {
+                "negative": 0.008553350950008,
+                "positive": 0.008448112836562936,
+                "centered": 0.008500731893285467,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        4.25523988514789e-05,
+                        1.0715353689085416e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.002517151888000251,
+                        1.2805562207177746e-05
+                      ],
+                      [
+                        0.005975894409545592,
+                        -5.768662285584323e-06
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        4.3103555564222716e-05,
+                        6.092411673988746e-06
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.002481977891991624,
+                        1.2699277985945073e-05
+                      ],
+                      [
+                        0.005908777818186503,
+                        -4.538118839348523e-06
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "gauss": 4,
+            "cases": {
+              "fixed_wall_difference": {
+                "negative": 0.0021443709062570365,
+                "positive": 0.0021141726927224437,
+                "centered": 0.0021292717994897403,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        0.00012881222700972041,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.002015558679247316,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        0.00013142350081958164,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.0019827491919028623,
+                        0.0
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ]
+                  ]
+                ]
+              },
+              "rim_four": {
+                "negative": 0.012247795500675018,
+                "positive": 0.012072607133611045,
+                "centered": 0.012160201317143031,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        0.00017136470732404116,
+                        4.701949311090234e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.004532709021672088,
+                        5.6240520471508763e-05
+                      ],
+                      [
+                        0.0074658187545866206,
+                        -2.5356996490142812e-05
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        0.00017454135837858517,
+                        2.6729344896276155e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.004464754044812138,
+                        5.577161953205289e-05
+                      ],
+                      [
+                        0.007370759114496199,
+                        -1.9948348504207646e-05
+                      ]
+                    ]
+                  ]
+                ]
+              },
+              "rim_eight": {
+                "negative": 0.00855336278408112,
+                "positive": 0.008448162742115815,
+                "centered": 0.008500762763098467,
+                "breakdown": [
+                  [
+                    [
+                      [
+                        4.255248031432073e-05,
+                        1.0715380640199115e-05
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.0025171503424247766,
+                        1.2805856926668732e-05
+                      ],
+                      [
+                        0.005975910969446924,
+                        -5.7722456717692005e-06
+                      ]
+                    ]
+                  ],
+                  [
+                    [
+                      [
+                        4.311785755900349e-05,
+                        6.092410830293565e-06
+                      ],
+                      [
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      [
+                        0.0024820048529092752,
+                        1.2699176414501463e-05
+                      ],
+                      [
+                        0.005908788938918493,
+                        -4.540494515751974e-06
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "energy_and_transpose": {
+        "field_sha256": "5a2e33ebbee08fd795f4b7cac3f3fd8e4a18fddadf13cc8f126180996a54f9cc",
+        "grid": "local",
+        "records": [
+          {
+            "case": "fixed_wall_difference",
+            "step": -2e-05,
+            "points": 29200,
+            "correction": 0.0021443557398467218,
+            "independent_mismatch": -1.730386667286865e-16,
+            "normalized_gradient_errors": [
+              4.021411593498346e-10,
+              3.2506884256843356e-09,
+              4.368887474015537e-10,
+              9.250683552508576e-11,
+              5.4322235945591935e-11,
+              4.289486972217094e-09
+            ]
+          },
+          {
+            "case": "fixed_wall_difference",
+            "step": 2e-05,
+            "points": 29200,
+            "correction": 0.0021140293474757035,
+            "independent_mismatch": -2.5630539357557325e-16,
+            "normalized_gradient_errors": [
+              1.3071806031743761e-09,
+              2.4189113464456453e-09,
+              1.7066505639262708e-09,
+              6.682969129478966e-09,
+              5.301350875647204e-09,
+              1.1692247628425356e-08
+            ]
+          },
+          {
+            "case": "rim_four",
+            "step": -2e-05,
+            "points": 151880,
+            "correction": 0.012247745885349015,
+            "independent_mismatch": -1.3773704399255848e-15,
+            "normalized_gradient_errors": [
+              3.004045503335746e-08,
+              1.0421426710644914e-07,
+              6.288568726864341e-08,
+              5.358134297361872e-08,
+              7.260214859167169e-08,
+              1.005542358510636e-07
+            ]
+          },
+          {
+            "case": "rim_four",
+            "step": 2e-05,
+            "points": 151880,
+            "correction": 0.012072402758832153,
+            "independent_mismatch": -1.951563910473908e-15,
+            "normalized_gradient_errors": [
+              2.1071230292821544e-08,
+              1.619821938636767e-08,
+              2.6347066341136927e-08,
+              1.0498866866159862e-08,
+              1.5176754023654704e-08,
+              1.1865445164252475e-07
+            ]
+          },
+          {
+            "case": "rim_eight",
+            "step": -2e-05,
+            "points": 151880,
+            "correction": 0.008553350950006089,
+            "independent_mismatch": -1.9116652705264414e-15,
+            "normalized_gradient_errors": [
+              3.5110223512882066e-08,
+              2.926428047844476e-08,
+              4.143816460799865e-08,
+              3.0426736283284406e-08,
+              1.0389140769895278e-08,
+              1.996750301491712e-07
+            ]
+          },
+          {
+            "case": "rim_eight",
+            "step": 2e-05,
+            "points": 151880,
+            "correction": 0.008448112836552005,
+            "independent_mismatch": -1.0930492622129862e-14,
+            "normalized_gradient_errors": [
+              1.6903078854865614e-08,
+              1.3590107246289198e-08,
+              3.1608952726080997e-08,
+              1.3134708226614222e-07,
+              3.645929584281116e-08,
+              1.3082971124164788e-07
+            ]
+          }
+        ]
+      },
+      "finite_strip": {
+        "grid": "local",
+        "zero": "5a2e33ebbee08fd795f4b7cac3f3fd8e4a18fddadf13cc8f126180996a54f9cc",
+        "measurements": [
+          {
+            "case": "fixed_wall_difference",
+            "step": -2e-05,
+            "exact_layer": 0.0021446898567333674,
+            "linear_limit": 0.002144355739846895,
+            "difference": 3.341168864725609e-07
+          },
+          {
+            "case": "fixed_wall_difference",
+            "step": -1e-05,
+            "exact_layer": 0.0021445219996833534,
+            "linear_limit": 0.002144355739846895,
+            "difference": 1.6625983645856754e-07
+          },
+          {
+            "case": "fixed_wall_difference",
+            "step": 2e-05,
+            "exact_layer": 0.002113033025820058,
+            "linear_limit": 0.00211402934747596,
+            "difference": -9.963216559016365e-07
+          },
+          {
+            "case": "fixed_wall_difference",
+            "step": 1e-05,
+            "exact_layer": 0.002113530414076801,
+            "linear_limit": 0.00211402934747596,
+            "difference": -4.989333991589975e-07
+          },
+          {
+            "case": "rim_four",
+            "step": -2e-05,
+            "exact_layer": 0.012249051505907951,
+            "linear_limit": 0.012247745885350393,
+            "difference": 1.3056205575585206e-06
+          },
+          {
+            "case": "rim_four",
+            "step": -1e-05,
+            "exact_layer": 0.01224838638104304,
+            "linear_limit": 0.012247745885350393,
+            "difference": 6.404956926480548e-07
+          },
+          {
+            "case": "rim_four",
+            "step": 2e-05,
+            "exact_layer": 0.012064234963698276,
+            "linear_limit": 0.012072402758834104,
+            "difference": -8.167795135828604e-06
+          },
+          {
+            "case": "rim_four",
+            "step": 1e-05,
+            "exact_layer": 0.01206830673841561,
+            "linear_limit": 0.012072402758834104,
+            "difference": -4.096020418493593e-06
+          },
+          {
+            "case": "rim_eight",
+            "step": -2e-05,
+            "exact_layer": 0.008554995327861964,
+            "linear_limit": 0.008553350950008,
+            "difference": 1.6443778539636938e-06
+          },
+          {
+            "case": "rim_eight",
+            "step": -1e-05,
+            "exact_layer": 0.008554166866399046,
+            "linear_limit": 0.008553350950008,
+            "difference": 8.159163910458761e-07
+          },
+          {
+            "case": "rim_eight",
+            "step": 2e-05,
+            "exact_layer": 0.008442443865278423,
+            "linear_limit": 0.008448112836562936,
+            "difference": -5.668971284513227e-06
+          },
+          {
+            "case": "rim_eight",
+            "step": 1e-05,
+            "exact_layer": 0.008445272139757133,
+            "linear_limit": 0.008448112836562936,
+            "difference": -2.8406968058027754e-06
+          }
+        ]
+      },
+      "commands": {
+        "trace": [
+          "python3",
+          "software/stage1_solver/tools/mouth_rim_mixed_face_work.py",
+          "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+          "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+          "_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+          "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+          "_scratch/s11c/r4_pinned_rematch01/local/zero.npz",
+          "research/pde_ledger_v3/_measurements/mouth_rim_pinned_rematch.json"
+        ],
+        "energy_and_transpose": [
+          "python3",
+          "software/stage1_solver/tools/mouth_rim_swept_check.py",
+          "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+          "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+          "_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+          "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+          "_scratch/s11c/r4_pinned_rematch01/local/zero.npz",
+          "_scratch/s11c/r4_mixed_faces01/local/stdout"
+        ],
+        "finite_strip": [
+          "python3",
+          "software/stage1_solver/tools/mouth_rim_overlap_check.py",
+          "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+          "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+          "_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+          "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+          "_scratch/s11c/r4_pinned_rematch01/local/zero.npz",
+          "_scratch/s11c/r4_mixed_faces01/local/stdout"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# Independent review of the signed radius-four rim reactions
+
+**Verdict.** Scoped clear for the signed held-radius-four transfer comparison. I checked the five pinned solver hashes, the recorded run inputs and all 24 signed field archives, then formed the forces independently from the saved draining and resting energies. I used each signed step with its own sign and subtracted the zero-shift energy difference before dividing. Both grids share the physical motion of the disk, bonded rim and lip. [Signed measurements and hashes](../../../research/pde_ledger_v3/_measurements/mouth_shared_rim_settled.json) · [Motion and forecast](../../../research/pde_ledger_v3/_measurements/mouth_shared_rim_absolute_work.json)
+
+| Rim-refined grid, signed step | Fixed wall | Bonded rim, four cells | Bonded rim, eight cells |
+|---|---:|---:|---:|
+| −0.000020 | +0.00019786 | +0.49935463 | +0.49901665 |
+| −0.000010 | +0.00019805 | +0.49935898 | +0.49902088 |
+| +0.000010 | +0.00016844 | +0.49919536 | +0.49892629 |
+| +0.000020 | +0.00016889 | +0.49920314 | +0.49893291 |
+
+The four-minus-eight centered reaction on the rim-refined grid is +0.00030411 at full step and +0.00030359 at half step. On the doubled grid it is +0.00080559 and +0.00080429. On both grids the negative- and positive-displacement readings approach distinct forecasts. Linear extrapolation in step magnitude from each side gives agreement within 0.00000040 for both motions and the fixed-wall control. Two step sizes establish this comparison at the tested resolution. A single carrier-independent force must miss at least one of the two refined half-step readings by 0.00015179. The corresponding continuum error remains open. [Signed reactions](../../../research/pde_ledger_v3/_measurements/mouth_shared_rim_settled.json) · [Fixed-wall and bonded-rim forecasts](../../../research/pde_ledger_v3/_measurements/mouth_material_order_transfer.json)
+
+The common reference crystal has a centered axial reaction of +132.71218 at half step. Its strain work cancels between the two preparations, and the direct crystal strain increments on their variable order fields are zero. The residual also survives when the wall stays fixed. This rules out carrier sampling of the fixed crystal sites as the sole source. At native quadrature, the refined four-cell and eight-cell half-step forces exceed the near exterior prediction by +0.00031885 and +0.00001527. Transferring the far measurement to the near displacement with the intervening material work gives the same offsets within 0.000000007. The historical near-surface drift changed sign when its physical width was held fixed. That evidence leaves physical rounding, a corner instability and a free-mouth equilibrium undetermined. [Enclosure and historical widths](../../../research/pde_ledger_v3/_measurements/mouth_shared_rim_surface.json) · [Crystal and settled forces](../../../research/pde_ledger_v3/_measurements/mouth_shared_rim_settled.json)
+
+The proposed next comparison should hold the physical carrier approximation space fixed across both mesh motions and integrate it independently in each chart. The fixed-wall control tests mesh work with all physical displacements zero. The bonded-rim test then measures a nonzero physical reaction using the same transfer. Reserve radius three for the blind prediction.

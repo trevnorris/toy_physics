@@ -1,0 +1,830 @@
+{
+  "observable": "Axial reaction is minus the derivative of draining-minus-resting energy. All signed shifts carry the same bonded disk and rim except the fixed-wall control.",
+  "command": [
+    "/usr/bin/python3",
+    "software/stage1_solver/tools/mouth_shared_rim_review.py",
+    "_scratch/s11c/r4_shared_rim_shift01",
+    "_scratch/s11c/r4_pinned_rematch01",
+    "research/pde_ledger_v3/_measurements/mouth_rim_pinned_rematch.json",
+    "research/pde_ledger_v3/_measurements/mouth_shared_rim_surface.json"
+  ],
+  "prediction_sha256": "c29124b4102f282fdab5b2733034ae4c1b5cc63ee5ecc82739ea2a345768715b",
+  "validated_readings": {
+    "cases": [
+      {
+        "grid": "double",
+        "references": {
+          "near": 0.5001617728770795,
+          "far": 0.45412352001957185,
+          "complementary_material_work": 0.046038259381073365,
+          "far_on_near": 0.5001617794006452
+        },
+        "steps": {
+          "four": {
+            "full": {
+              "rechecked_energy": {
+                "positive": 0.5009172806158535,
+                "negative": 0.5011951111577595,
+                "centered": 0.5010561958868065
+              },
+              "frozen_energy": {
+                "positive": 0.498244966962158,
+                "negative": 0.5038535667689636,
+                "centered": 0.5010492668655608
+              },
+              "swept_layer_energy": {
+                "positive": 0.011923768247254501,
+                "negative": 0.012211897593337732,
+                "centered": 0.012067832920296118
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              },
+              "minus_near_surface": 0.0008944230097269745,
+              "minus_far_surface_on_near_motion": 0.0008944164861612869
+            },
+            "half": {
+              "rechecked_energy": {
+                "positive": 0.5009086913698724,
+                "negative": 0.5011969960055929,
+                "centered": 0.5010528436877326
+              },
+              "frozen_energy": {
+                "positive": 0.49957236816222655,
+                "negative": 0.5025261403890369,
+                "centered": 0.5010492542756317
+              },
+              "swept_layer_energy": {
+                "positive": 0.011917616960354687,
+                "negative": 0.012211103772696028,
+                "centered": 0.012064360366525357
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              },
+              "minus_near_surface": 0.000891070810653094,
+              "minus_far_surface_on_near_motion": 0.0008910642870874064
+            }
+          },
+          "eight": {
+            "full": {
+              "rechecked_energy": {
+                "positive": 0.5001677331695209,
+                "negative": 0.5003334769604351,
+                "centered": 0.500250605064978
+              },
+              "frozen_energy": {
+                "positive": 0.49853340406968977,
+                "negative": 0.5019598248445778,
+                "centered": 0.5002466144571338
+              },
+              "swept_layer_energy": {
+                "positive": 0.008383509518392503,
+                "negative": 0.008561601154565843,
+                "centered": 0.008472555336479174
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              },
+              "minus_near_surface": 8.88321878984577e-05,
+              "minus_far_surface_on_near_motion": 8.882566433277006e-05
+            },
+            "half": {
+              "rechecked_energy": {
+                "positive": 0.5001607876864433,
+                "negative": 0.5003363179656439,
+                "centered": 0.5002485528260436
+              },
+              "frozen_energy": {
+                "positive": 0.49934352295277756,
+                "negative": 0.5011496344908828,
+                "centered": 0.5002465787218302
+              },
+              "swept_layer_energy": {
+                "positive": 0.008379569427677584,
+                "negative": 0.008561457284970448,
+                "centered": 0.008470513356324016
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              },
+              "minus_near_surface": 8.677994896411079e-05,
+              "minus_far_surface_on_near_motion": 8.677342539842314e-05
+            }
+          },
+          "stationary": {
+            "full": {
+              "rechecked_energy": {
+                "positive": 0.0006431391308403533,
+                "negative": 0.0006908620620027505,
+                "centered": 0.0006670005964215519
+              },
+              "frozen_energy": {
+                "positive": 0.0003778979240642854,
+                "negative": 0.0009547684864941174,
+                "centered": 0.0006663332052792014
+              },
+              "swept_layer_energy": {
+                "positive": 0.0020744303699020772,
+                "negative": 0.002121547148978638,
+                "centered": 0.0020979887594403577
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              }
+            },
+            "half": {
+              "rechecked_energy": {
+                "positive": 0.0006426620124955207,
+                "negative": 0.0006906624827607287,
+                "centered": 0.0006666622476281247
+              },
+              "frozen_energy": {
+                "positive": 0.0005099221489501815,
+                "negative": 0.0008227408088146148,
+                "centered": 0.0006663314788823981
+              },
+              "swept_layer_energy": {
+                "positive": 0.0020737006886498545,
+                "negative": 0.0021216150290319044,
+                "centered": 0.0020976578588408792
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              }
+            }
+          }
+        },
+        "four_minus_eight": {
+          "full": {
+            "positive": 0.0007495474463325991,
+            "negative": 0.0008616341973244346,
+            "centered": 0.0008055908218285168
+          },
+          "half": {
+            "positive": 0.0007479036834290298,
+            "negative": 0.0008606780399489367,
+            "centered": 0.0008042908616889832
+          }
+        },
+        "versus_old_fixed_gap": {
+          "old": 0.0006312293132637592,
+          "new": 0.0006666622476281247
+        },
+        "max_stationarity": 4.9855323411157044e-09,
+        "max_current_error": 3.126388037344441e-13,
+        "energy_representation_scale": 5.551115123125782e-11,
+        "signed_state_sha256": [
+          "f12d974a199aedad1598a5928e509c8e454b18db10c64ffd5520322f53cfa5c1",
+          "12dc0c532bb4bfc60c15bbc0faed46708691875a62f23326cbdc909b322006f7",
+          "fcff4d5dce6189a350fa085363fe50807fe8a198a36fa34378af75a35048b55a",
+          "0d7b9cffb431c97000697c25d89d103895e776a993da95add58919b481193f9f",
+          "1d2c7011349675bbfee37ae33280af8946d61f04c1ec7b84d4490d5d2a0344d7",
+          "58d1729e2334504897edda15999a57eeb8498c92f5f2ef2ba368dfce73339fa2",
+          "62eee6bbda103a25d9c88bf7c520b59a32eab30696412d80783987a8f83d7a59",
+          "d12c23327d5ce0f60c53677837c580a031777e389cac4f346e1c403385ff81c4",
+          "abbc386ce3dae670268d9cb0aad172f45c114fb7eea08f9617963f6b7f910029",
+          "2fa60b25161fc84b54fe0ac3f855f467b34260876d7172c9ad0be792559bd7eb",
+          "e42c3a3d4bae089e3bb42bcece6e6676e43342c2be963c2800b4de155e620ec1",
+          "905bf0c2daf1b2c965e3f6697bd055f08783d0bf2432a99b842854857d85f619"
+        ],
+        "result_sha256": "9b2c613e93e49dc3652c59c5f3d9a72ccac9c0e0d5f2eda24aa5d09866acb7f5",
+        "zero_sha256": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43"
+      },
+      {
+        "grid": "local",
+        "references": {
+          "near": 0.49895831826019893,
+          "far": 0.4530301094683061,
+          "complementary_material_work": 0.045928215369949066,
+          "far_on_near": 0.49895832483825514
+        },
+        "steps": {
+          "four": {
+            "full": {
+              "rechecked_energy": {
+                "positive": 0.49920313816009804,
+                "negative": 0.49935463345418535,
+                "centered": 0.4992788858071417
+              },
+              "frozen_energy": {
+                "positive": 0.4965249819188777,
+                "negative": 0.5020257350718538,
+                "centered": 0.4992753584953657
+              },
+              "swept_layer_energy": {
+                "positive": 0.01208160266452596,
+                "negative": 0.01224549391743848,
+                "centered": 0.01216354829098222
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              },
+              "minus_near_surface": 0.0003205675469427627,
+              "minus_far_surface_on_near_motion": 0.00032056096888655183
+            },
+            "half": {
+              "rechecked_energy": {
+                "positive": 0.4991953626465317,
+                "negative": 0.4993589831081557,
+                "centered": 0.4992771728773437
+              },
+              "frozen_energy": {
+                "positive": 0.49785631992538265,
+                "negative": 0.5006943678109721,
+                "centered": 0.49927534386817735
+              },
+              "swept_layer_energy": {
+                "positive": 0.012076998507950297,
+                "negative": 0.012246615807122566,
+                "centered": 0.012161807157536432
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              },
+              "minus_near_surface": 0.00031885461714475927,
+              "minus_far_surface_on_near_motion": 0.0003188480390885484
+            }
+          },
+          "eight": {
+            "full": {
+              "rechecked_energy": {
+                "positive": 0.4989329067728309,
+                "negative": 0.49901664537221885,
+                "centered": 0.4989747760725249
+              },
+              "frozen_energy": {
+                "positive": 0.49729601132586504,
+                "negative": 0.5006494545267692,
+                "centered": 0.4989727329263171
+              },
+              "swept_layer_energy": {
+                "positive": 0.008454188694543011,
+                "negative": 0.008551342918905582,
+                "centered": 0.008502765806724296
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              },
+              "minus_near_surface": 1.6457812325954002e-05,
+              "minus_far_surface_on_near_motion": 1.6451234269743154e-05
+            },
+            "half": {
+              "rechecked_energy": {
+                "positive": 0.4989262892829415,
+                "negative": 0.49902088431474917,
+                "centered": 0.49897358679884535
+              },
+              "frozen_energy": {
+                "positive": 0.4981079501309437,
+                "negative": 0.4998373942188827,
+                "centered": 0.4989726721749132
+              },
+              "swept_layer_energy": {
+                "positive": 0.008451148621534938,
+                "negative": 0.008552344854493927,
+                "centered": 0.008501746738014434
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              },
+              "minus_near_surface": 1.5268538646417973e-05,
+              "minus_far_surface_on_near_motion": 1.5261960590207124e-05
+            }
+          },
+          "stationary": {
+            "full": {
+              "rechecked_energy": {
+                "positive": 0.0001688894579743305,
+                "negative": 0.0001978589125872787,
+                "centered": 0.0001833741852808046
+              },
+              "frozen_energy": {
+                "positive": -9.655954369414131e-05,
+                "negative": 0.0004625033134253442,
+                "centered": 0.00018297188486560143
+              },
+              "swept_layer_energy": {
+                "positive": 0.0021152140299553657,
+                "negative": 0.002143835954955025,
+                "centered": 0.0021295249924551955
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              }
+            },
+            "half": {
+              "rechecked_energy": {
+                "positive": 0.00016844032835194864,
+                "negative": 0.00019804521356192592,
+                "centered": 0.00018324277095693728
+              },
+              "frozen_energy": {
+                "positive": 3.5664993180972715e-05,
+                "negative": 0.00033026258394741603,
+                "centered": 0.00018296378856419435
+              },
+              "swept_layer_energy": {
+                "positive": 0.002114621407954034,
+                "negative": 0.0021440955723878836,
+                "centered": 0.002129358490170959
+              },
+              "crystal_strain_increment": {
+                "positive": 0.0,
+                "negative": 0.0,
+                "centered": 0.0
+              }
+            }
+          }
+        },
+        "four_minus_eight": {
+          "full": {
+            "positive": 0.00027023138726711693,
+            "negative": 0.00033798808196650043,
+            "centered": 0.0003041097346168087
+          },
+          "half": {
+            "positive": 0.00026907336359016654,
+            "negative": 0.00033809879340651605,
+            "centered": 0.0003035860784983413
+          }
+        },
+        "versus_old_fixed_gap": {
+          "old": 0.0001758029499754343,
+          "new": 0.00018324277095693728
+        },
+        "max_stationarity": 4.952380837978392e-09,
+        "max_current_error": 4.0678571622265736e-13,
+        "energy_representation_scale": 5.551115123125782e-11,
+        "signed_state_sha256": [
+          "ba99132d47431b80fec03cc5ce2cba50ae20652e9770f7857d956422ea81a6a3",
+          "201901f798f02c5d19a7ff60c6297ac500a4c7d125d00c454650578a23080599",
+          "b7f004148042eaca2d17a3cb49f737f29a8b388ccbb5d839bed314c0de67c2dd",
+          "bd4213b7bed88ec15f7d300842367506bcf365609b4ed1024bc3d1d2c26023c5",
+          "a319488eef29bb875792045014874720714faa1a4d059933ae3b98cdd78f1ef4",
+          "8f9f6ac6fad56b2c84a0fb0cb48d17896ec458fdcd9da253b136c8a90cb8e8a5",
+          "7bf1bac11adce7a2c63fb8e2f5c34bea574547c1c54536d974672da995ee009f",
+          "ef133a9ca956db291c3d936e63cdf4d12bca2db5bd4f2a5bcdd89048dad26b9b",
+          "f24ae15116272a4f3c3d7ed34270ada0d8bb64733af13f1f01b03dc22579a871",
+          "2670e18e747f9654e5e0a3a42fd717926bdea8102766bcbceb5c8d96dab1f7d8",
+          "57d2617140038981582a863fb7abe9e3cb601aa3a21a61337695fa124c894d50",
+          "2793848ab69aa34db6f6fbb492f7a11a723c485e7ba3da2e3dda3c9c180914ad"
+        ],
+        "result_sha256": "070ab004d42a390d7b311c782a1532b1050328df52be0708e066a69dcffa15dc",
+        "zero_sha256": "5a2e33ebbee08fd795f4b7cac3f3fd8e4a18fddadf13cc8f126180996a54f9cc"
+      }
+    ],
+    "fine_minus_doubled": {
+      "stationary": {
+        "full": -0.00048362641114074723,
+        "half": -0.00048341947667118735
+      },
+      "four": {
+        "full": -0.0017773100796648067,
+        "half": -0.0017756708103889296
+      },
+      "eight": {
+        "full": -0.0012758289924530986,
+        "half": -0.0012749660271982877
+      }
+    },
+    "surface_sha256": "0e1a3bca82869a2a03f5b6341a6b84e312bfde80c7329389054b712f25a6e41f",
+    "source_sha256": {
+      "mouth_shared_rim_shift.py": "ef5cfd82d32dc763840259d138edbd929c51922cf9c8d61f86112f20b5465dc1",
+      "mouth_material_order_transfer.py": "8294d3a3fecbb56a69bf0ab21c68b8ba493731061c650c5da7ad375d34c078c4",
+      "mouth_rim_swept_cells.py": "23323bc2bfb63c1fd68c8d3b8654fe21821a64b86f93aff3248f99d68daf9673",
+      "mouth_rim_pinned_rematch.py": "01a527d45a0d32288272b133bcb0a9101a8a2f2cc5efd1fd18152bfe2cbc91e3",
+      "mouth_joined_front_stationarity.py": "041aee7267087dd43c36cf041ccfbc7299ba3c86db03a18420776aa179c7d221"
+    }
+  },
+  "comparison": [
+    {
+      "grid": "double",
+      "input": {
+        "grid": "double",
+        "fields": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "zero_sha": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+        "state_sha": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "load_sha": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b",
+        "wall_sha": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "axes_sha": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "window": [
+          0.5709460755088103,
+          0.6228502641914294,
+          0.9529941070206577,
+          1.0713620447382866
+        ],
+        "tents": [
+          0.7604687385883343,
+          0.7776115957311914,
+          0.7947544528740486,
+          0.8118973100169057,
+          0.8290401671597628
+        ],
+        "radial_taper": [
+          0.032612036280854566,
+          0.054586157228861815
+        ],
+        "edges": {
+          "4": [
+            0.9763313609467456,
+            0.007427354427256582
+          ],
+          "8": [
+            0.9053254437869822,
+            0.032612036280854566
+          ]
+        },
+        "step": 2e-05,
+        "tolerance": 5e-09,
+        "zero": [
+          {
+            "energy": -0.748137195825475,
+            "stationarity": 4.802540325895217e-09
+          },
+          {
+            "energy": -3.3518213145874363,
+            "stationarity": 4.614461444721735e-09
+          }
+        ]
+      },
+      "work": {
+        "full": {
+          "measured_minus_forecast": {
+            "four": {
+              "negative": -3.5990618173498135e-06,
+              "positive": 1.741418455614152e-05,
+              "centered": 6.907561369340343e-06
+            },
+            "eight": {
+              "negative": -5.932035785805034e-06,
+              "positive": 1.400795090777951e-05,
+              "centered": 4.0379575609872376e-06
+            }
+          },
+          "extension_gap_minus_forecast": 2.8696038084157313e-06,
+          "common_crystal_reference_energy_plus_minus": [
+            -0.00265183058561839,
+            0.002656657088819003
+          ],
+          "common_reference_crystal_reaction": 132.71219186093484
+        },
+        "half": {
+          "measured_minus_forecast": {
+            "four": {
+              "negative": -1.7142139839831927e-06,
+              "positive": 8.824938575013874e-06,
+              "centered": 3.5553622954598296e-06
+            },
+            "eight": {
+              "negative": -3.09103057694049e-06,
+              "positive": 7.062467830221131e-06,
+              "centered": 1.9857186266403204e-06
+            }
+          },
+          "extension_gap_minus_forecast": 1.5696436688821355e-06,
+          "common_crystal_reference_energy_plus_minus": [
+            -0.0013265184821285051,
+            0.0013277251078929494
+          ],
+          "common_reference_crystal_reaction": 132.7121795010727
+        }
+      },
+      "signed_energies": [
+        {
+          "case": "stationary",
+          "step": 2e-05,
+          "sha256": "f12d974a199aedad1598a5928e509c8e454b18db10c64ffd5520322f53cfa5c1",
+          "rechecked_energy": [
+            -0.7481372179488401,
+            -3.351821323848019
+          ]
+        },
+        {
+          "case": "stationary",
+          "step": -2e-05,
+          "sha256": "12dc0c532bb4bfc60c15bbc0faed46708691875a62f23326cbdc909b322006f7",
+          "rechecked_energy": [
+            -0.7481371727431682,
+            -3.3518213053223707
+          ]
+        },
+        {
+          "case": "stationary",
+          "step": 1e-05,
+          "sha256": "fcff4d5dce6189a350fa085363fe50807fe8a198a36fa34378af75a35048b55a",
+          "rechecked_energy": [
+            -0.7481372068830046,
+            -3.3518213192183457
+          ]
+        },
+        {
+          "case": "stationary",
+          "step": -1e-05,
+          "sha256": "0d7b9cffb431c97000697c25d89d103895e776a993da95add58919b481193f9f",
+          "rechecked_energy": [
+            -0.748137184286763,
+            -3.351821309955349
+          ]
+        },
+        {
+          "case": "four",
+          "step": 2e-05,
+          "sha256": "1d2c7011349675bbfee37ae33280af8946d61f04c1ec7b84d4490d5d2a0344d7",
+          "rechecked_energy": [
+            -0.7481556529510697,
+            -3.3518297533674186
+          ]
+        },
+        {
+          "case": "four",
+          "step": -2e-05,
+          "sha256": "58d1729e2334504897edda15999a57eeb8498c92f5f2ef2ba368dfce73339fa2",
+          "rechecked_energy": [
+            -0.7481187333607133,
+            -3.3518128760248977
+          ]
+        },
+        {
+          "case": "four",
+          "step": 1e-05,
+          "sha256": "62eee6bbda103a25d9c88bf7c520b59a32eab30696412d80783987a8f83d7a59",
+          "rechecked_energy": [
+            -0.7481464242746207,
+            -3.3518255339496683
+          ]
+        },
+        {
+          "case": "four",
+          "step": -1e-05,
+          "sha256": "d12c23327d5ce0f60c53677837c580a031777e389cac4f346e1c403385ff81c4",
+          "rechecked_energy": [
+            -0.748127964548167,
+            -3.3518170952800883
+          ]
+        },
+        {
+          "case": "eight",
+          "step": 2e-05,
+          "sha256": "abbc386ce3dae670268d9cb0aad172f45c114fb7eea08f9617963f6b7f910029",
+          "rechecked_energy": [
+            -0.7481556292239658,
+            -3.3518297446312637
+          ]
+        },
+        {
+          "case": "eight",
+          "step": -2e-05,
+          "sha256": "2fa60b25161fc84b54fe0ac3f855f467b34260876d7172c9ad0be792559bd7eb",
+          "rechecked_energy": [
+            -0.7481187593419849,
+            -3.3518128847734854
+          ]
+        },
+        {
+          "case": "eight",
+          "step": 1e-05,
+          "sha256": "e42c3a3d4bae089e3bb42bcece6e6676e43342c2be963c2800b4de155e620ec1",
+          "rechecked_energy": [
+            -0.7481464124252185,
+            -3.351825529579303
+          ]
+        },
+        {
+          "case": "eight",
+          "step": -1e-05,
+          "sha256": "905bf0c2daf1b2c965e3f6697bd055f08783d0bf2432a99b842854857d85f619",
+          "rechecked_energy": [
+            -0.748127977526773,
+            -3.351817099651914
+          ]
+        }
+      ]
+    },
+    {
+      "grid": "local",
+      "input": {
+        "grid": "local",
+        "fields": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+        "zero_sha": "5a2e33ebbee08fd795f4b7cac3f3fd8e4a18fddadf13cc8f126180996a54f9cc",
+        "state_sha": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "load_sha": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679",
+        "wall_sha": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "axes_sha": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "window": [
+          0.5709460755088103,
+          0.6228502641914294,
+          0.9529941070206577,
+          1.0713620447382866
+        ],
+        "tents": [
+          0.7604687385883343,
+          0.7776115957311914,
+          0.7947544528740486,
+          0.8118973100169057,
+          0.8290401671597628
+        ],
+        "radial_taper": [
+          0.032612036280854566,
+          0.054586157228861815
+        ],
+        "edges": {
+          "4": [
+            0.9763313609467456,
+            0.007427354427256582
+          ],
+          "8": [
+            0.9053254437869822,
+            0.032612036280854566
+          ]
+        },
+        "step": 2e-05,
+        "tolerance": 5e-09,
+        "zero": [
+          {
+            "energy": -0.74467805978257,
+            "stationarity": 4.988118115077945e-09
+          },
+          {
+            "energy": -3.3471762398569536,
+            "stationarity": 4.3934265981569534e-09
+          }
+        ]
+      },
+      "work": {
+        "full": {
+          "measured_minus_forecast": {
+            "four": {
+              "negative": -8.405585525450565e-06,
+              "positive": 1.54422469035298e-05,
+              "centered": 3.5183306890673727e-06
+            },
+            "eight": {
+              "negative": -8.660371795643496e-06,
+              "positive": 1.2839142261467096e-05,
+              "centered": 2.0893852329395557e-06
+            }
+          },
+          "extension_gap_minus_forecast": 1.428945456141068e-06,
+          "common_crystal_reference_energy_plus_minus": [
+            -0.0026518305856183923,
+            0.002656657088819003
+          ],
+          "common_reference_crystal_reaction": 132.71219186093487
+        },
+        "half": {
+          "measured_minus_forecast": {
+            "four": {
+              "negative": -4.055931555113634e-06,
+              "positive": 7.666733337186038e-06,
+              "centered": 1.8054008910639574e-06
+            },
+            "eight": {
+              "negative": -4.421429265322185e-06,
+              "positive": 6.221652372073727e-06,
+              "centered": 9.001115534035264e-07
+            }
+          },
+          "extension_gap_minus_forecast": 9.052893376736819e-07,
+          "common_crystal_reference_energy_plus_minus": [
+            -0.0013265184821285067,
+            0.0013277251078929494
+          ],
+          "common_reference_crystal_reaction": 132.7121795010728
+        }
+      },
+      "signed_energies": [
+        {
+          "case": "stationary",
+          "step": 2e-05,
+          "sha256": "ba99132d47431b80fec03cc5ce2cba50ae20652e9770f7857d956422ea81a6a3",
+          "rechecked_energy": [
+            -0.7446780655277183,
+            -3.3471762422243128
+          ]
+        },
+        {
+          "case": "stationary",
+          "step": -2e-05,
+          "sha256": "201901f798f02c5d19a7ff60c6297ac500a4c7d125d00c454650578a23080599",
+          "rechecked_energy": [
+            -0.7446780534567993,
+            -3.347176237488361
+          ]
+        },
+        {
+          "case": "stationary",
+          "step": 1e-05,
+          "sha256": "b7f004148042eaca2d17a3cb49f737f29a8b388ccbb5d839bed314c0de67c2dd",
+          "rechecked_energy": [
+            -0.7446780626502858,
+            -3.347176241040266
+          ]
+        },
+        {
+          "case": "stationary",
+          "step": -1e-05,
+          "sha256": "bd4213b7bed88ec15f7d300842367506bcf365609b4ed1024bc3d1d2c26023c5",
+          "rechecked_energy": [
+            -0.7446780566179659,
+            -3.3471762386728017
+          ]
+        },
+        {
+          "case": "four",
+          "step": 2e-05,
+          "sha256": "a319488eef29bb875792045014874720714faa1a4d059933ae3b98cdd78f1ef4",
+          "rechecked_energy": [
+            -0.7446964957006212,
+            -3.3471846917122416
+          ]
+        },
+        {
+          "case": "four",
+          "step": -2e-05,
+          "sha256": "8f9f6ac6fad56b2c84a0fb0cb48d17896ec458fdcd9da253b136c8a90cb8e8a5",
+          "rechecked_energy": [
+            -0.7446596210664407,
+            -3.3471677882334934
+          ]
+        },
+        {
+          "case": "four",
+          "step": 1e-05,
+          "sha256": "7bf1bac11adce7a2c63fb8e2f5c34bea574547c1c54536d974672da995ee009f",
+          "rechecked_energy": [
+            -0.7446872776353715,
+            -3.3471804657561286
+          ]
+        },
+        {
+          "case": "four",
+          "step": -1e-05,
+          "sha256": "ef133a9ca956db291c3d936e63cdf4d12bca2db5bd4f2a5bcdd89048dad26b9b",
+          "rechecked_energy": [
+            -0.744668840352133,
+            -3.3471720140163477
+          ]
+        },
+        {
+          "case": "eight",
+          "step": 2e-05,
+          "sha256": "f24ae15116272a4f3c3d7ed34270ada0d8bb64733af13f1f01b03dc22579a871",
+          "rechecked_energy": [
+            -0.744696487336583,
+            -3.347184688752831
+          ]
+        },
+        {
+          "case": "eight",
+          "step": -2e-05,
+          "sha256": "2670e18e747f9654e5e0a3a42fd717926bdea8102766bcbceb5c8d96dab1f7d8",
+          "rechecked_energy": [
+            -0.7446596307881104,
+            -3.3471677911954014
+          ]
+        },
+        {
+          "case": "eight",
+          "step": 1e-05,
+          "sha256": "57d2617140038981582a863fb7abe9e3cb601aa3a21a61337695fa124c894d50",
+          "rechecked_energy": [
+            -0.7446872734650534,
+            -3.347180464276544
+          ]
+        },
+        {
+          "case": "eight",
+          "step": -1e-05,
+          "sha256": "2793848ab69aa34db6f6fbb492f7a11a723c485e7ba3da2e3dda3c9c180914ad",
+          "rechecked_energy": [
+            -0.7446688452139986,
+            -3.3471720154972253
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1480 @@
+{
+  "source_revision": "fa5bed3d",
+  "readback": "Read-only extraction of the saved endpoint and guarded work records. Each mesh used the same doubled carrier grid.",
+  "preparation": {
+    "entrance_radius": 4,
+    "azimuthal_winding": 1,
+    "driven_phase_bias": 0.4510084282857874,
+    "rest_phase_bias": 0,
+    "fluid_potential": "(n**5-5*n+4)/20"
+  },
+  "source_sha256": {
+    "research/pde_ledger_v3/_measurements/mouth_conversion_shape.json": "5c73eaecc31deb3e98e698ea58d51f765b57b51fbaf248ee8e10c4a3feafe906",
+    "software/stage1_solver/tools/mouth_bonded_front_adjoint.py": "99c62d9c4d683ab36fc4d1d51a4890bddf5c2eb08cb80aea2a30cbb3438b18c2",
+    "software/stage1_solver/tools/mouth_bonded_front_feedback.py": "268ff750c5fe266c744ed2a213221da2c92d684e5a13968b6f76074fe2cad90c",
+    "software/stage1_solver/tools/mouth_bonded_material_motion.py": "abfe40bfaa82777f10202ce3a7600f4cbac147c7d7171e2a882646428669662f",
+    "software/stage1_solver/tools/mouth_bonded_material_residual.py": "1be69afac8dc9b19be113fa539b87d9f9235cc55a6e506f9f35cb611cbec7a2d",
+    "software/stage1_solver/tools/mouth_breathing_mobile_patch.py": "8a6e3e556d25d8bbfa09889fe5308161c65c743c8ce8c5940c3e767c9a41dca1",
+    "software/stage1_solver/tools/mouth_circulation_material.py": "5859590cdbcf3ce095770410a9d6d2a4e3b7996c45e953aa4775eb943cdea56a",
+    "software/stage1_solver/tools/mouth_closed_rim_endpoint.py": "8c050fe3ba57768879cdfaf8fc80401413f4ce6b410b0c926525c8cc4c1b42b0",
+    "software/stage1_solver/tools/mouth_closed_rim_surface_review.py": "3319b06f268254327cbb27af66d39d9ced3166e0ea83cda0a5c87d71ba03b1f4",
+    "software/stage1_solver/tools/mouth_closed_rim_work.py": "d9a824f5bd8ee85149b9ccb08033ca979f0b5dbfcb99e0763232e371212987d2",
+    "software/stage1_solver/tools/mouth_conversion_shape_mode.py": "63ba9d32283deef446de5210e091cbe542af7a6451bfd5ecdfd7ef4b0010720c",
+    "software/stage1_solver/tools/mouth_curved_steady.py": "3878e2914f925d01207718c0d67f0770ca1eed41497e345a72a2b8e3a348a7a5",
+    "software/stage1_solver/tools/mouth_disk_boundary_work.py": "4ccddc4326fc3c1d7bf859ea0ce6ea505f9e201c99a718dafa429b4c01ca87d1",
+    "software/stage1_solver/tools/mouth_disk_independent_review.py": "8c773ee8208089f5ec862a42ea96b2f28716e8e6ffd37e909629cead4421202b",
+    "software/stage1_solver/tools/mouth_disk_mesh_rematch.py": "28d062c38e71f7b0f73ba673b685b3e61d3138241e02547ad5090d782fe3d40c",
+    "software/stage1_solver/tools/mouth_disk_pillbox.py": "47d13fc5cce3a60d7aa4b6cdd4bf858018859d43815002d98b52a8c3d77efc68",
+    "software/stage1_solver/tools/mouth_exchange_carrier.py": "6dd6a6ae17b7f30445a29d5e40627373057637a6cbc67cdc75ce9ed58403fc83",
+    "software/stage1_solver/tools/mouth_exchange_carrier_density.py": "8d5f3cfc7a4ef569be0f8faba81777aaec14bc9e4d44a148f5b2fad4a4957d69",
+    "software/stage1_solver/tools/mouth_exchange_geometry.py": "1cabc9f23319f25df3924b1f1669cd12e89269934a2817da52fc2b47a6757017",
+    "software/stage1_solver/tools/mouth_exchange_interior.py": "41c4578c60f6d8e01af9530edbffe2a8599e8d9d83451b07c7ab8dee5ecfdfac",
+    "software/stage1_solver/tools/mouth_exchange_shear.py": "d7aaa11468de702b99beb912f41e7ebc1999943d73dd7201d88c378b20b8c27b",
+    "software/stage1_solver/tools/mouth_exit_witness.py": "d90d4dda95e190bcc1935c6575d7fffb816d172080cf70f7f269651024df4826",
+    "software/stage1_solver/tools/mouth_finite_bore_support.py": "68307b0049cb97df2690d49e98b5f5eb56ec0173ade59c3545c12621fc7cd71e",
+    "software/stage1_solver/tools/mouth_fixed_wall_angular.py": "ba653a2a7219255e6f6bc9541f0c2de08d4d3551d5ae947b086460f6488ef81b",
+    "software/stage1_solver/tools/mouth_free_shape_solid.cpp": "73344acb71f2a27156eb109a6e42a0f5868dfb67e597ad5da2cd5ac5eab76098",
+    "software/stage1_solver/tools/mouth_free_shape_solid.py": "ac19ded515cc6e5763e354dd55190aafbc4f957b29ed1a49846197ba45c1da87",
+    "software/stage1_solver/tools/mouth_internal_collar.py": "af0b22ce0ef10ecd3103ee47f6737e24b134afbc3e271110ffc53f68fea6e916",
+    "software/stage1_solver/tools/mouth_internal_collar_check.py": "b4ca4a698fe1b2444826080acba686e7d041293bdbc36a68f6712155358985fb",
+    "software/stage1_solver/tools/mouth_joined_angular_work.py": "15875cd778eeaaeb72aba8229b9dd59164ebc2dc9eac1aa5c196a5a60accd887",
+    "software/stage1_solver/tools/mouth_joined_front_audit.py": "08b6906b19d6c069a5ee65bdb97316f4797d104aca2717fafbf757d2e9aa392e",
+    "software/stage1_solver/tools/mouth_joined_front_stationarity.py": "041aee7267087dd43c36cf041ccfbc7299ba3c86db03a18420776aa179c7d221",
+    "software/stage1_solver/tools/mouth_joined_front_trace.py": "396abf8ac60018813e82e21e9cf4215fae8b8fb0df35dfaed7d0199199692265",
+    "software/stage1_solver/tools/mouth_joint_collar_release.py": "38f2dec937e5c635512fd27373c935d8955be7dcffb983d42fe8e42bd9154270",
+    "software/stage1_solver/tools/mouth_joint_endpoint_audit.py": "8416a68aa9038475f44fb0fdb1d90023d7ce0fe0277fd69c77aa16af10e77039",
+    "software/stage1_solver/tools/mouth_joint_polar_shape.py": "1bf3c4b39cdabb7af2683049f868d408f503c6e11f4f0119bf497b0f654eb5cd",
+    "software/stage1_solver/tools/mouth_last_ring_solid.py": "8118551daa17fe5260370082d0234a756e976040cfea004bd80f6496426268b1",
+    "software/stage1_solver/tools/mouth_last_rings_fluid.py": "bca5036ed8c6dcc760012345673fc8d29bfa8496981373aee9dcd733d917bb59",
+    "software/stage1_solver/tools/mouth_live_waist_active_wave.py": "f6548ac04e123db74449d291319d651b8ce67aee92e3e3b71007ea19ca5307f5",
+    "software/stage1_solver/tools/mouth_live_waist_fields.py": "96411e9af5538c5e7f0f770807ff993c0f9458cdf6dab68c87f5a5ea0ecfd13a",
+    "software/stage1_solver/tools/mouth_live_waist_order.py": "bd1062a832e2f4257a93378e5712fc2b6b28f9e133e486b99c237c84c6a0e875",
+    "software/stage1_solver/tools/mouth_live_waist_reopen.py": "5042d23940692680c6d46ef78e4f2bfa9d6ca98ddc3b238b1a94d911876e5492",
+    "software/stage1_solver/tools/mouth_live_waist_wave.py": "da3c942439db4cbfe46682b1975250144ecff014f2542c75c43b665f46299c45",
+    "software/stage1_solver/tools/mouth_live_waist_wave_location.py": "8bba123960546c43ff6f703cc1a227f4d33cfc0bb22daad4973b54149233c432",
+    "software/stage1_solver/tools/mouth_mobile_joined_fields.py": "4e721ccee2ecba3e71075ff293b5750bdf9521d1ece29aba7b5aecb18d3f29fc",
+    "software/stage1_solver/tools/mouth_neck_order_check.py": "5e876665bf831d8eae5ec501f569472474c238e94ecbb5bbde98de543568074c",
+    "software/stage1_solver/tools/mouth_polar_bonded.py": "38b484edee2d95f2f9115fcf3a3bd2f4016c68c928f8ea968596a6c27a629356",
+    "software/stage1_solver/tools/mouth_polar_exit_readout.py": "2b423c071a124e1f9183cd9407c447e1d4b0bdbc96fc78093f60221b573ec571",
+    "software/stage1_solver/tools/mouth_polar_joined.py": "e8263eb26e5993d06ad24f406cff0073cc8ae7f613359968fffc8e43d291b24d",
+    "software/stage1_solver/tools/mouth_polar_shape_endpoint_review.py": "088c768d81c114bafcdbc8b80f02665eadf97146a82aaa244e49a1610db5aaad",
+    "software/stage1_solver/tools/mouth_poly_bonded_core.py": "7f884fecfc302f32203dacf6905628bb80f8db2e31c43533eea1789633d79ac0",
+    "software/stage1_solver/tools/mouth_poly_shallow_release.py": "b10f4d9404f31c955772762ab7b00ee2b4cd2291042c46c86a15f97dda54dd31",
+    "software/stage1_solver/tools/mouth_polycrystal_material.py": "306f63c7fa3905853dc1e30b093f38f7980a618de227f47d1e6ec014debd1fdf",
+    "software/stage1_solver/tools/mouth_receiver_order_control.py": "0729ea9871c408a2cf1261d8134d8c328c4d96a43b0f5a8dd7d6052c11367b0d",
+    "software/stage1_solver/tools/mouth_receiver_order_equilibrium.py": "803f062b7094b2b5bc82ae1fcb3be9e55978c144b2d1ee1df89e6deaea2d1665",
+    "software/stage1_solver/tools/mouth_rim_pinned_comparison.py": "e9d2bda29ada58b90f5620a665f7b74a580609234deee5f2c36fdb59691b9065",
+    "software/stage1_solver/tools/mouth_sealed_shape_relax.py": "4791971472f6f8baef5ee5d7eba30c3a04c91ddb7251b7ac48c08a0ef1ae3a96",
+    "software/stage1_solver/tools/mouth_shallow_puncture_fields.py": "2d732c61dcd871fd8064e8fa1aab785d699f857d0137aefac32ee82550dfcc84",
+    "software/stage1_solver/tools/mouth_strained_wave.py": "e3e5c2cf6a11a0ef565c2693074c968eaf028fe11be4dcf59e86a26c1603d95a",
+    "software/stage1_solver/tools/mouth_supercore_front.py": "f35d283712acb983d188edfe217f944d1634897b8bf2b3cf3edf0b5cab807496",
+    "software/stage1_solver/tools/mouth_supercore_joined_front.py": "c83f5240d6539e9cb47c8f876b9f8b846921ada936e1b4e9d44a27f6c57a2304",
+    "software/stage1_solver/tools/mouth_supercore_shape.py": "c4f3183fdbecabedd74f96f847cf136b1df73cd244f16312f9d07edc0cc43497",
+    "software/stage1_solver/tools/mouth_supercore_terminal_order.py": "e8bfd9b7fb058c9e446996f224b212cab3359cdfdd455c8e48aab02ca9d9836f",
+    "software/stage1_solver/tools/mouth_unified_puncture.py": "74a69caccce1c3f8803cf40b21420b47cf1bfae4e0d95404259fcb5500985a74",
+    "software/stage1_solver/tools/mouth_unified_transverse.py": "83b6f304afe36c898b48f072b64fcb1ff7c6d8803fa8e351c01f7cb2cf2830d6",
+    "software/stage1_solver/tools/mouth_waist_outer_order.py": "cc9c3ae474145babc837c8d95e617f593eec969710a33ef9bf09a8ec130df981",
+    "software/stage1_solver/tools/mouth_whole_r4_relax.py": "8c351b2df2b11c21f34ffeb959e68340853e198f78ff21ee16e8f93a5fe44018",
+    "software/stage1_solver/tools/mouth_wider_wound_carrier.py": "057c72903d6a4c13d5988912b76e9e04cb599b30af9d12ca3eb1bfb7157bff0e",
+    "software/stage1_solver/tools/mouth_winding_resolved_patch.py": "a938462c0aa93eeabb222db53bd9faf8e81280ff56819f8b5d49b048243f1597",
+    "software/stage1_solver/tools/mouth_wound_carrier.py": "d347c7ba79388585dd1d075abefb98f3fb4804612b6a1a786c62ebb941783175"
+  },
+  "meshes": {
+    "coarse": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/_scratch/s11c/r4_whole_mouth01/pin/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/r4_whole_mouth01/pin/software/stage1_solver/tools/mouth_whole_r4_relax.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_pinned_rematch01/double/zero.npz",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/mouth_shared_rim_settled.json",
+        "/var/projects/toy_physics/_scratch/s11c/r4_whole_mouth01/coarse",
+        "--n",
+        "8",
+        "--k",
+        "24",
+        "--angles",
+        "6",
+        "--degree",
+        "3",
+        "--subdivisions",
+        "2"
+      ],
+      "started_utc": "2026-11-23T09:24:44.663142+00:00",
+      "elapsed_seconds": 23196.795870167203,
+      "exit_code": 0,
+      "recorded_peak_bytes": 17168187392,
+      "stdout": {
+        "path": "_scratch/s11c/r4_whole_mouth01/coarse/stdout",
+        "sha256": "54ed4846c050110364a3411dc8d619b49d498ca9e4d79ce12105112bfc36ce18",
+        "bytes": 62903
+      },
+      "physical_inputs": {
+        "state.npz": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "latest.npz": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "zero.npz": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+        "mouth_shared_rim_settled.json": "6fcb53021b93ca156e894863c1fd7dc8620c2c8f155476d0405564fbfbc67ce4"
+      },
+      "preparation_line": {
+        "kind": "input",
+        "radius": 4,
+        "winding": 1,
+        "coordinates": [
+          "log_depth",
+          "scaled_log_exit",
+          "mean_width",
+          "depth_asymmetry",
+          "waist_profile",
+          "polar_equatorial"
+        ],
+        "carrier": "double",
+        "solid": [
+          24,
+          24,
+          6
+        ],
+        "solid_degree": 3,
+        "subdivisions": 2,
+        "held_sha": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "field_sha": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+        "state_sha": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "start": [
+          0.0018112405142513234,
+          0.0070049766549258536,
+          -0.010243985902256364,
+          -0.0449984825466709,
+          -0.0072945374469613545,
+          0.00017039866857071828
+        ]
+      },
+      "accepted_states": 15,
+      "energy_initial": 3882.1896432980266,
+      "energy_final": 3882.163268699435,
+      "endpoint_sha256": "c96d269556664836d1cf84e8bf78ac5914b0ac26ef0eb6b6e84b61731b4d26b9",
+      "field_and_solid_state_sha256": "e69eec4f10e24bef4074aa704eb063427e2ced06aaf75c901d82c34cd4fe849c",
+      "rest_and_unwound_state_sha256": "3362dd16a39e0f9788cb70a209f4a8e8b757f24b9b32e871842091c4173dcc58",
+      "geometry": {
+        "depth": 0.792701382598693,
+        "exit_radius": 3.501792516704783,
+        "wall_polar_amplitude": 0.00023465828765953763,
+        "extrema": {
+          "pole": {
+            "minimum": 3.501792516704783,
+            "maximum": 4.0,
+            "narrowest_depth": 0.792701382598693,
+            "widest_depth": 0.0
+          },
+          "equator": {
+            "minimum": 3.501792516704783,
+            "maximum": 4.0,
+            "narrowest_depth": 0.792701382598693,
+            "widest_depth": 0.0
+          }
+        },
+        "depth_samples": [
+          0.0,
+          0.19817534564967326,
+          0.2695184700835557,
+          0.3963506912993465,
+          0.5945260369490197,
+          0.792701382598693
+        ],
+        "pole_radius": [
+          4.0,
+          3.8805889370279822,
+          3.8375744082976517,
+          3.755307830466976,
+          3.599748593883776,
+          3.501792516704783
+        ],
+        "equator_radius": [
+          4.0,
+          3.880305924486774,
+          3.8372224208661625,
+          3.7551481826898447,
+          3.599748593883776,
+          3.501792516704783
+        ],
+        "minimum_radius": 3.501792516704783
+      },
+      "shape_force": [
+        -6.872141966596246e-05,
+        -3.0454430088866502e-05,
+        -0.00037548716136370786,
+        2.884689820348285e-05,
+        -0.0001344596967101097,
+        1.8014816305367276e-05
+      ],
+      "half_shape_force": [
+        -6.643404049100354e-05,
+        -3.0058799893595278e-05,
+        -0.00037521203921642154,
+        2.909928298322484e-05,
+        -0.00013385943020693958,
+        1.7917045624926686e-05
+      ],
+      "half_force_disagreement": 2.2873791749589145e-06,
+      "material": {
+        "material_force_max": 6.139944880150819e-06,
+        "material_force_site": [
+          22,
+          22,
+          4,
+          1
+        ],
+        "angular_sum_force_max": 2.5005877702943496e-05,
+        "angular_sum_force_site": [
+          23,
+          21,
+          1
+        ],
+        "bond_force_max": 5.06277900758601e-06,
+        "last_free_ring_angular_sum": [
+          -1.6808160736967287e-05,
+          -9.741699803061958e-06
+        ],
+        "last_free_ring_peak_per_direction": [
+          4.470354305525587e-06,
+          2.2755330600563045e-06,
+          4.378262407927617e-08
+        ],
+        "last_free_ring_reference": [
+          0.9583333333333333,
+          0.9853121128230744
+        ],
+        "last_free_ring_landed_depth_fraction": [
+          0.9717142567743352,
+          0.9717184697225854
+        ]
+      },
+      "field": {
+        "field": {
+          "iterations": 2,
+          "energy": -0.6723967327017197,
+          "stationarity": 1.741967727258025e-07,
+          "gradient_integral_steps": 2,
+          "restarts": 0
+        },
+        "exchange": 8.743228363528033e-12,
+        "receiver": 5.006899104882092e-10
+      },
+      "all_prism_chart_determinants": [
+        0.5413285970347912,
+        1.1442722215420134
+      ],
+      "sampled_strains": {
+        "sites": 13932,
+        "minimum_stretch": 0.34553887035966063,
+        "maximum_stretch": 1.5837140364709472,
+        "minimum_J": 0.14708490519672304,
+        "maximum_J": 1.5247060375438664,
+        "minimum_stretch_site": {
+          "material_t_x_angle": [
+            0.9695833333333332,
+            0.9737086819533032,
+            1.3665928043115598
+          ],
+          "physical_r_z_angle": [
+            3.412948473421674,
+            0.7779978143479693,
+            1.36659277708078
+          ]
+        },
+        "maximum_stretch_site": {
+          "material_t_x_angle": [
+            0.03375,
+            0.9964749070775378,
+            1.5132004614790837
+          ],
+          "physical_r_z_angle": [
+            3.974707211853758,
+            0.026476213068810806,
+            1.5132004613679657
+          ]
+        },
+        "minimum_J_site": {
+          "material_t_x_angle": [
+            0.9920833333333333,
+            0.9817870199006122,
+            0.46600291028248597
+          ],
+          "physical_r_z_angle": [
+            3.4384693024162685,
+            0.7884418083668163,
+            0.46600290208562256
+          ]
+        },
+        "maximum_J_site": {
+          "material_t_x_angle": [
+            0.03375,
+            0.9964749070775378,
+            1.5132004614790837
+          ],
+          "physical_r_z_angle": [
+            3.974707211853758,
+            0.026476213068810806,
+            1.5132004613679657
+          ]
+        }
+      },
+      "sampled_edge_sites": [
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.997,
+          "angle": 0.09,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.39003755089744585,
+          "J": 0.1514879589238212
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.997,
+          "angle": 0.48,
+          "placement_error": 0.0,
+          "min_stretch": 0.39000052480304603,
+          "J": 0.1514764705732172
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.997,
+          "angle": 1.12,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.39000956490416694,
+          "J": 0.1514803516703654
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.997,
+          "angle": 1.53,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.390012306053427,
+          "J": 0.15148164525794172
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9989,
+          "angle": 0.09,
+          "placement_error": 0.0,
+          "min_stretch": 0.3909184089782355,
+          "J": 0.15147146347150195
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9989,
+          "angle": 0.48,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.3908811809825124,
+          "J": 0.15145996623792335
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9989,
+          "angle": 1.12,
+          "placement_error": 0.0,
+          "min_stretch": 0.39089018910459766,
+          "J": 0.15146384029736965
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9989,
+          "angle": 1.53,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.3908929169511386,
+          "J": 0.1514651291855959
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9995,
+          "angle": 0.09,
+          "placement_error": 0.0,
+          "min_stretch": 0.5170960937204855,
+          "J": 0.2219368015225655
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9995,
+          "angle": 0.48,
+          "placement_error": 0.0,
+          "min_stretch": 0.5170960937204855,
+          "J": 0.22193680152256554
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9995,
+          "angle": 1.12,
+          "placement_error": 0.0,
+          "min_stretch": 0.5170960937204855,
+          "J": 0.2219368015225655
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9995,
+          "angle": 1.53,
+          "placement_error": 0.0,
+          "min_stretch": 0.5170960937204855,
+          "J": 0.2219368015225655
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.997,
+          "angle": 0.09,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.4085402845361832,
+          "J": 0.2108288273622076
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.997,
+          "angle": 0.48,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.4084990700530646,
+          "J": 0.21080821159355256
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.997,
+          "angle": 1.12,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.40850461898786455,
+          "J": 0.21081137054144516
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.997,
+          "angle": 1.53,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.408505819741933,
+          "J": 0.21081212678578168
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9989,
+          "angle": 0.09,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.4082914696472847,
+          "J": 0.21079774558585215
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9989,
+          "angle": 0.48,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.40825027043828765,
+          "J": 0.21077712111864547
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9989,
+          "angle": 1.12,
+          "placement_error": 1.3322676295501878e-15,
+          "min_stretch": 0.40825579232845566,
+          "J": 0.21078027060522062
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9989,
+          "angle": 1.53,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.40825698101435887,
+          "J": 0.21078102263671708
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9995,
+          "angle": 0.09,
+          "placement_error": 1.887379141862766e-15,
+          "min_stretch": 0.40821086366687115,
+          "J": 0.2107876185039743
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9995,
+          "angle": 0.48,
+          "placement_error": 1.1102230246251565e-16,
+          "min_stretch": 0.4081696688140846,
+          "J": 0.21076699108095248
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9995,
+          "angle": 1.12,
+          "placement_error": 1.1102230246251565e-15,
+          "min_stretch": 0.40817518203941894,
+          "J": 0.21077013633330702
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9995,
+          "angle": 1.53,
+          "placement_error": 0.0,
+          "min_stretch": 0.40817636566961973,
+          "J": 0.2107708870896738
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.997,
+          "angle": 0.09,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.4167450924225046,
+          "J": 0.20460923009206058
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.997,
+          "angle": 0.48,
+          "placement_error": 1.3322676295501878e-15,
+          "min_stretch": 0.41670302103058526,
+          "J": 0.20458922390955425
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.997,
+          "angle": 1.12,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.4167086612310304,
+          "J": 0.2045922898081891
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.997,
+          "angle": 1.53,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.4167098775938208,
+          "J": 0.2045930225327207
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9989,
+          "angle": 0.09,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.4164837481672984,
+          "J": 0.20457256462318404
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9989,
+          "angle": 0.48,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.41644168870577813,
+          "J": 0.20455254933582506
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9989,
+          "angle": 1.12,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.4164472996613974,
+          "J": 0.20455560661084862
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9989,
+          "angle": 1.53,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.416448500591751,
+          "J": 0.20455633746282728
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9995,
+          "angle": 0.09,
+          "placement_error": 0.0,
+          "min_stretch": 0.416398888635455,
+          "J": 0.20456067951609527
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9995,
+          "angle": 0.48,
+          "placement_error": 1.7763568394002505e-15,
+          "min_stretch": 0.4163568328672512,
+          "J": 0.20454066135793536
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9995,
+          "angle": 1.12,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.4163624317221906,
+          "J": 0.2045437150806934
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9995,
+          "angle": 1.53,
+          "placement_error": 1.1102230246251565e-16,
+          "min_stretch": 0.41636363015449995,
+          "J": 0.20454444429434795
+        }
+      ],
+      "minimum_stretch_at_0p0722_before": 0.4278606807245662,
+      "minimum_stretch_at_0p0722_after": 0.4081696688140846,
+      "current": {
+        "excess_energy": -0.6723967327017197,
+        "feed_current": 11.537929710704683,
+        "bulk_current": 11.53792971067906,
+        "port_error": 2.5622171051509213e-11,
+        "weak_disk_current": 11.537929769736877,
+        "incident_slice_current": 11.537929769736879,
+        "receiving_slice_current": 10.930732454570462,
+        "positive_slice_current": 11.537929770356989,
+        "dense_total_subsonic_share": 0.7211906751391894,
+        "minimum_total_mach": 0.3876859401609579,
+        "total_axial_stress": -94.01677324848819,
+        "crystalline_range_in_band": [
+          0.028984876172006492,
+          0.9489889250720761
+        ],
+        "nodal_order_range_in_band": [
+          0.027979939599750342,
+          0.9503502670252695
+        ],
+        "disk_minus_feed_current": 5.903219424396866e-08
+      },
+      "controls": {
+        "wound": {
+          "feed": 11.53792971070477,
+          "bulk": 11.537929710679073,
+          "imbalance": 2.5696778038764023e-11,
+          "phase_at_ports": [
+            0.0,
+            0.4510084282857873
+          ],
+          "stationarity": 1.741967727258025e-07
+        },
+        "rest": {
+          "feed": -0.0,
+          "bulk": 0.0,
+          "imbalance": -0.0,
+          "phase_at_ports": [
+            0.0,
+            0.0
+          ],
+          "stationarity": 1.6062966377753418e-07
+        },
+        "unwound": {
+          "feed": 13.698539821705406,
+          "bulk": 13.698539822154498,
+          "imbalance": -4.490914307098137e-10,
+          "phase_at_ports": [
+            0.0,
+            0.4510084282857873
+          ],
+          "stationarity": 1.5325755522181006e-07
+        }
+      },
+      "wound_fraction_of_unwound_intake": 0.8422744220097723,
+      "physical_disk": [
+        {
+          "side": -1,
+          "degree": 12,
+          "signed_current": 11.552452235046921,
+          "positive_current": 11.552452235589264,
+          "dense_subsonic_current": 8.241582868616787,
+          "dense_subsonic_fraction": 0.7134054917991532
+        },
+        {
+          "side": 1,
+          "degree": 12,
+          "signed_current": 10.947844087487002,
+          "positive_current": 10.947844088130756,
+          "dense_subsonic_current": 8.182741672595016,
+          "dense_subsonic_fraction": 0.747429503628613
+        }
+      ],
+      "physical_disk_jump_fraction_of_weak_feed": 0.052401788078061326,
+      "matched_enclosure": {
+        "near_half_heights": [
+          0.145,
+          0.17
+        ],
+        "far_half_heights": [
+          0.195,
+          0.22
+        ],
+        "physical_radial_taper": [
+          4.45,
+          5.05
+        ],
+        "convention": "wound drive minus wound rest; force is minus outward axial momentum",
+        "degree_four": {
+          "degree": 4,
+          "near": {
+            "faces": {
+              "lower_cap": [
+                -9.579578014198484,
+                -0.5754250706173706
+              ],
+              "lower_side": [
+                0.530253828754905,
+                0.00010011517126218758
+              ],
+              "upper_cap": [
+                8.48585353178998,
+                0.03184825643444121
+              ],
+              "upper_side": [
+                0.5420732335162963,
+                0.0005109769792112667
+              ]
+            },
+            "outward_mass": -0.021397420137303058,
+            "negative_outward_axial": 0.5429657220324559,
+            "slit_mass_axial": [
+              0.04834845085800003,
+              0.4859341901989191
+            ],
+            "outward_plus_slit_mass_axial": [
+              0.026951030720696975,
+              -0.057031531833536764
+            ]
+          },
+          "far": {
+            "faces": {
+              "lower_cap": [
+                -9.745273409534706,
+                -0.5227196017351609
+              ],
+              "lower_side": [
+                0.6946282017501385,
+                6.91697759706711e-05
+              ],
+              "upper_cap": [
+                8.307713925735627,
+                0.032129991846427376
+              ],
+              "upper_side": [
+                0.7149983791736828,
+                0.0007756816264269769
+              ]
+            },
+            "outward_mass": -0.027932902875258292,
+            "negative_outward_axial": 0.48974475848633575,
+            "slit_mass_axial": [
+              0.05023984614671574,
+              0.43417166315234845
+            ],
+            "outward_plus_slit_mass_axial": [
+              0.02230694327145745,
+              -0.0555730953339873
+            ]
+          },
+          "work_radial_axial": [
+            0.0002337592519031024,
+            0.05298720429419831
+          ],
+          "far_plus_shell": 0.5429657220324372,
+          "closure": 1.8693380177126073e-14,
+          "native_vortex_volume_wall": [
+            0.001430790497741134,
+            -0.0014307905315646752
+          ],
+          "differential_crystal_shell_work": 0.0,
+          "far_plus_native_shell": 0.5429657219986136,
+          "near_minus_far_plus_native_shell": 3.3842234570258256e-11
+        }
+      }
+    },
+    "fine": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/_scratch/s11c/r4_whole_mouth01/pin/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/r4_whole_mouth01/pin/software/stage1_solver/tools/mouth_whole_r4_relax.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_pinned_rematch01/double/zero.npz",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/mouth_shared_rim_settled.json",
+        "/var/projects/toy_physics/_scratch/s11c/r4_whole_mouth01/fine",
+        "--n",
+        "11",
+        "--k",
+        "32",
+        "--angles",
+        "10",
+        "--degree",
+        "3",
+        "--subdivisions",
+        "2"
+      ],
+      "started_utc": "2026-11-23T09:24:44.663165+00:00",
+      "elapsed_seconds": 42913.73262528796,
+      "exit_code": 0,
+      "recorded_peak_bytes": 17161887744,
+      "stdout": {
+        "path": "_scratch/s11c/r4_whole_mouth01/fine/stdout",
+        "sha256": "40dd9382f42444f020f63642a177dd7cc5faff93ccf23feb4e7140b8b6bc8976",
+        "bytes": 66893
+      },
+      "physical_inputs": {
+        "state.npz": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "latest.npz": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "zero.npz": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+        "mouth_shared_rim_settled.json": "6fcb53021b93ca156e894863c1fd7dc8620c2c8f155476d0405564fbfbc67ce4"
+      },
+      "preparation_line": {
+        "kind": "input",
+        "radius": 4,
+        "winding": 1,
+        "coordinates": [
+          "log_depth",
+          "scaled_log_exit",
+          "mean_width",
+          "depth_asymmetry",
+          "waist_profile",
+          "polar_equatorial"
+        ],
+        "carrier": "double",
+        "solid": [
+          33,
+          32,
+          10
+        ],
+        "solid_degree": 3,
+        "subdivisions": 2,
+        "held_sha": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "field_sha": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+        "state_sha": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "start": [
+          0.0018112405142513234,
+          0.0070049766549258536,
+          -0.010243985902256364,
+          -0.0449984825466709,
+          -0.0072945374469613545,
+          0.00017039866857071828
+        ]
+      },
+      "accepted_states": 16,
+      "energy_initial": 3882.074912537562,
+      "energy_final": 3882.0592560685,
+      "endpoint_sha256": "cc7e7eebd59ae5cd4b7fb7854757788abd45ab49d1ceb775325df0e137aba61d",
+      "field_and_solid_state_sha256": "50eb4fddf48b08dd03e1670bf9881a3e5d2fa8d24bdaa56b68d1a38c66675aa3",
+      "rest_and_unwound_state_sha256": "672498b51095498584efdd50264e12b4b66ebaf232d578c200b756569427c21a",
+      "geometry": {
+        "depth": 0.7922793788323591,
+        "exit_radius": 3.502069242691393,
+        "wall_polar_amplitude": 0.00023576056020379324,
+        "extrema": {
+          "pole": {
+            "minimum": 3.502069242691393,
+            "maximum": 4.0,
+            "narrowest_depth": 0.7922793788323591,
+            "widest_depth": 0.0
+          },
+          "equator": {
+            "minimum": 3.502069242691393,
+            "maximum": 4.0,
+            "narrowest_depth": 0.7922793788323591,
+            "widest_depth": 0.0
+          }
+        },
+        "depth_samples": [
+          0.0,
+          0.19806984470808978,
+          0.2693749888030021,
+          0.39613968941617955,
+          0.5942095341242694,
+          0.7922793788323591
+        ],
+        "pole_radius": [
+          4.0,
+          3.8807714436182312,
+          3.837752155988015,
+          3.7553854920547183,
+          3.5996343081745588,
+          3.502069242691393
+        ],
+        "equator_radius": [
+          4.0,
+          3.8804871016675357,
+          3.8373985151477092,
+          3.7552250943558043,
+          3.5996343081745588,
+          3.502069242691393
+        ],
+        "minimum_radius": 3.502069242691393
+      },
+      "shape_force": [
+        6.264144758461043e-05,
+        -5.170477379579097e-06,
+        1.7923866835189983e-05,
+        0.00014200168152456172,
+        9.333689376944676e-06,
+        2.7116584533359855e-05
+      ],
+      "half_shape_force": [
+        6.903064786456525e-05,
+        -4.597495717462152e-06,
+        1.737134880386293e-05,
+        0.00014218585420167074,
+        9.881659934762865e-06,
+        2.7098394639324397e-05
+      ],
+      "half_force_disagreement": 6.389200279954821e-06,
+      "material": {
+        "material_force_max": 2.4143314407083978e-05,
+        "material_force_site": [
+          31,
+          25,
+          9,
+          1
+        ],
+        "angular_sum_force_max": 2.545845312229752e-05,
+        "angular_sum_force_site": [
+          19,
+          23,
+          1
+        ],
+        "bond_force_max": 2.094884197072508e-06,
+        "last_free_ring_angular_sum": [
+          -1.0728183235511677e-05,
+          -4.349653453825776e-06
+        ],
+        "last_free_ring_peak_per_direction": [
+          1.5152775549623044e-06,
+          9.012382040722164e-07,
+          3.9966934492138856e-08
+        ],
+        "last_free_ring_reference": [
+          0.96875,
+          0.9893179002349632
+        ],
+        "last_free_ring_landed_depth_fraction": [
+          0.9776521877879469,
+          0.9776556469669683
+        ]
+      },
+      "field": {
+        "field": {
+          "iterations": 0,
+          "energy": -0.7592743371082877,
+          "stationarity": 1.4475283822620464e-07,
+          "gradient_integral_steps": 0,
+          "restarts": 0
+        },
+        "exchange": -2.6467272817853882e-11,
+        "receiver": 9.856110102074499e-09
+      },
+      "all_prism_chart_determinants": [
+        0.4486677091926532,
+        1.1538091610028212
+      ],
+      "sampled_strains": {
+        "sites": 42396,
+        "minimum_stretch": 0.31987180127701154,
+        "maximum_stretch": 1.6074347821197588,
+        "minimum_J": 0.12708563347999188,
+        "maximum_J": 1.5194651185385215,
+        "minimum_stretch_site": {
+          "material_t_x_angle": [
+            0.9771875,
+            0.9701969416555475,
+            1.379159174925919
+          ],
+          "physical_r_z_angle": [
+            3.399690002588834,
+            0.7827470837470438,
+            1.3791591527574203
+          ]
+        },
+        "maximum_stretch_site": {
+          "material_t_x_angle": [
+            0.0253125,
+            0.9867541962913544,
+            1.5362388076054088
+          ],
+          "physical_r_z_angle": [
+            3.9404580034965786,
+            0.019030530214416648,
+            1.5362388073891247
+          ]
+        },
+        "minimum_J_site": {
+          "material_t_x_angle": [
+            0.9771875,
+            0.9808790414205842,
+            0.4366813788489812
+          ],
+          "physical_r_z_angle": [
+            3.435146975069028,
+            0.7815641738530009,
+            0.4366813455247577
+          ]
+        },
+        "maximum_J_site": {
+          "material_t_x_angle": [
+            0.0565625,
+            0.9974362960563912,
+            1.5362388076054088
+          ],
+          "physical_r_z_angle": [
+            3.9688665074465397,
+            0.044431459034631714,
+            1.5362388074389737
+          ]
+        }
+      },
+      "sampled_edge_sites": [
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.997,
+          "angle": 0.09,
+          "placement_error": 0.0,
+          "min_stretch": 0.43010222475266274,
+          "J": 0.15868043745722565
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.997,
+          "angle": 0.48,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.43006278283796534,
+          "J": 0.15866666662080875
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.997,
+          "angle": 1.12,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.4300708970678549,
+          "J": 0.1586697506739198
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.997,
+          "angle": 1.53,
+          "placement_error": 0.0,
+          "min_stretch": 0.43007361000791255,
+          "J": 0.15867084403376558
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9989,
+          "angle": 0.09,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.42965807687200347,
+          "J": 0.15866574500110903
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9989,
+          "angle": 0.48,
+          "placement_error": 1.1102230246251565e-16,
+          "min_stretch": 0.42961856359373435,
+          "J": 0.1586519662888063
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9989,
+          "angle": 1.12,
+          "placement_error": 1.1102230246251565e-16,
+          "min_stretch": 0.4296266100497328,
+          "J": 0.15865504791085838
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9989,
+          "angle": 1.53,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.42962928463143785,
+          "J": 0.15865613974613507
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9995,
+          "angle": 0.09,
+          "placement_error": 1.7763568394002505e-15,
+          "min_stretch": 0.4295077076561061,
+          "J": 0.1586607528940549
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9995,
+          "angle": 0.48,
+          "placement_error": 7.771561172376096e-16,
+          "min_stretch": 0.42946818368523737,
+          "J": 0.15864697359499846
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9995,
+          "angle": 1.12,
+          "placement_error": 2.220446049250313e-15,
+          "min_stretch": 0.4294762108437893,
+          "J": 0.15865005447118072
+        },
+        {
+          "edge_minus_radius": 0.05,
+          "z_over_depth": 0.9995,
+          "angle": 1.53,
+          "placement_error": 2.6645352591003757e-15,
+          "min_stretch": 0.4294788708105025,
+          "J": 0.1586511458824957
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.997,
+          "angle": 0.09,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.32581994804715,
+          "J": 0.18302802238052718
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.997,
+          "angle": 0.48,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.3257703188569448,
+          "J": 0.18300104046162508
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.997,
+          "angle": 1.12,
+          "placement_error": 0.0,
+          "min_stretch": 0.3257746419343974,
+          "J": 0.18300625974312437
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.997,
+          "angle": 1.53,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.32577654393306116,
+          "J": 0.1830083181406779
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9989,
+          "angle": 0.09,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.4297952605497134,
+          "J": 0.22199213744737153
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9989,
+          "angle": 0.48,
+          "placement_error": 1.1102230246251565e-16,
+          "min_stretch": 0.4297563533643128,
+          "J": 0.22197285750583842
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9989,
+          "angle": 1.12,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.42976455681357945,
+          "J": 0.22197717169665818
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9989,
+          "angle": 1.53,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.4297673505214605,
+          "J": 0.221978696602206
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9995,
+          "angle": 0.09,
+          "placement_error": 1.7763568394002505e-15,
+          "min_stretch": 0.4297021188216741,
+          "J": 0.22198224003626899
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9995,
+          "angle": 0.48,
+          "placement_error": 7.771561172376096e-16,
+          "min_stretch": 0.4296632143358472,
+          "J": 0.22196295903986402
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9995,
+          "angle": 1.12,
+          "placement_error": 2.6645352591003757e-15,
+          "min_stretch": 0.42967141151771976,
+          "J": 0.22196726779567638
+        },
+        {
+          "edge_minus_radius": 0.0722,
+          "z_over_depth": 0.9995,
+          "angle": 1.53,
+          "placement_error": 1.7763568394002505e-15,
+          "min_stretch": 0.42967420037047854,
+          "J": 0.22196879509451603
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.997,
+          "angle": 0.09,
+          "placement_error": 0.0,
+          "min_stretch": 0.3282229750209893,
+          "J": 0.16389002081173007
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.997,
+          "angle": 0.48,
+          "placement_error": 5.551115123125783e-17,
+          "min_stretch": 0.32817027010409017,
+          "J": 0.16386452009797706
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.997,
+          "angle": 1.12,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.3281727502964461,
+          "J": 0.16386648991798952
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.997,
+          "angle": 1.53,
+          "placement_error": 0.0,
+          "min_stretch": 0.32817385832693147,
+          "J": 0.1638673585311235
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9989,
+          "angle": 0.09,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.32796126729416164,
+          "J": 0.1638071617731833
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9989,
+          "angle": 0.48,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.32790862681607935,
+          "J": 0.1637816595129726
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9989,
+          "angle": 1.12,
+          "placement_error": 4.440892098500626e-16,
+          "min_stretch": 0.32791108391370155,
+          "J": 0.16378361551426185
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9989,
+          "angle": 1.53,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.32791217890978613,
+          "J": 0.16378447804488963
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9995,
+          "angle": 0.09,
+          "placement_error": 1.4099832412739488e-14,
+          "min_stretch": 0.32787759485501733,
+          "J": 0.16378075527965202
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9995,
+          "angle": 0.48,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.3278249796814815,
+          "J": 0.1637552545043742
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9995,
+          "angle": 1.12,
+          "placement_error": 0.0,
+          "min_stretch": 0.3278274216837983,
+          "J": 0.1637572035694554
+        },
+        {
+          "edge_minus_radius": 0.09,
+          "z_over_depth": 0.9995,
+          "angle": 1.53,
+          "placement_error": 8.881784197001252e-16,
+          "min_stretch": 0.3278285151516989,
+          "J": 0.1637580679276095
+        }
+      ],
+      "minimum_stretch_at_0p0722_before": 0.3259380323127131,
+      "minimum_stretch_at_0p0722_after": 0.3257703188569448,
+      "current": {
+        "excess_energy": -0.7592743371082877,
+        "feed_current": 11.539177974789405,
+        "bulk_current": 11.539177974796445,
+        "port_error": 7.0397021545431926e-12,
+        "weak_disk_current": 11.539178120799713,
+        "incident_slice_current": 11.539178120799715,
+        "receiving_slice_current": 10.932706205626197,
+        "positive_slice_current": 11.539178121437327,
+        "dense_total_subsonic_share": 0.7212538968997815,
+        "minimum_total_mach": 0.3876552220849226,
+        "total_axial_stress": -93.90336054599297,
+        "crystalline_range_in_band": [
+          0.02897326029201052,
+          0.9490502781414932
+        ],
+        "nodal_order_range_in_band": [
+          0.02796863844286023,
+          0.9504162875441522
+        ],
+        "disk_minus_feed_current": 1.4601030784433533e-07
+      },
+      "controls": {
+        "wound": {
+          "feed": 11.539177974789443,
+          "bulk": 11.539177974796438,
+          "imbalance": -6.995293233558186e-12,
+          "phase_at_ports": [
+            0.0,
+            0.4510084282857873
+          ],
+          "stationarity": 1.4475283822620464e-07
+        },
+        "rest": {
+          "feed": -0.0,
+          "bulk": 0.0,
+          "imbalance": -0.0,
+          "phase_at_ports": [
+            0.0,
+            0.0
+          ],
+          "stationarity": 1.9771568734761692e-07
+        },
+        "unwound": {
+          "feed": 13.699664452659254,
+          "bulk": 13.699664453331032,
+          "imbalance": -6.717773004538685e-10,
+          "phase_at_ports": [
+            0.0,
+            0.4510084282857873
+          ],
+          "stationarity": 1.6712674224646496e-07
+        }
+      },
+      "wound_fraction_of_unwound_intake": 0.8422963945331933,
+      "physical_disk": [
+        {
+          "side": -1,
+          "degree": 12,
+          "signed_current": 11.552065969507609,
+          "positive_current": 11.552065970087382,
+          "dense_subsonic_current": 8.244026356867964,
+          "dense_subsonic_fraction": 0.7136408654707159
+        },
+        {
+          "side": 1,
+          "degree": 12,
+          "signed_current": 10.94990704485781,
+          "positive_current": 10.949907045546492,
+          "dense_subsonic_current": 8.184244443754071,
+          "dense_subsonic_fraction": 0.7474259287966045
+        }
+      ],
+      "physical_disk_jump_fraction_of_weak_feed": 0.05218386664677362,
+      "matched_enclosure": {
+        "near_half_heights": [
+          0.145,
+          0.17
+        ],
+        "far_half_heights": [
+          0.195,
+          0.22
+        ],
+        "physical_radial_taper": [
+          4.45,
+          5.05
+        ],
+        "convention": "wound drive minus wound rest; force is minus outward axial momentum",
+        "degree_four": {
+          "degree": 4,
+          "near": {
+            "faces": {
+              "lower_cap": [
+                -9.58121505426643,
+                -0.5757118809099878
+              ],
+              "lower_side": [
+                0.5304132939507836,
+                0.00010079240178078827
+              ],
+              "upper_cap": [
+                8.487244385042757,
+                0.031864654724405306
+              ],
+              "upper_side": [
+                0.5422242780256799,
+                0.0005119886494395374
+              ]
+            },
+            "outward_mass": -0.021333097247209665,
+            "negative_outward_axial": 0.5432344451343623,
+            "slit_mass_axial": [
+              0.04342790633727151,
+              0.48563192335287547
+            ],
+            "outward_plus_slit_mass_axial": [
+              0.022094809090061847,
+              -0.05760252178148678
+            ]
+          },
+          "far": {
+            "faces": {
+              "lower_cap": [
+                -9.747005621273187,
+                -0.5228098643641304
+              ],
+              "lower_side": [
+                0.6948400851755048,
+                7.008662715267065e-05
+              ],
+              "upper_cap": [
+                8.309064879331208,
+                0.03214694264190437
+              ],
+              "upper_side": [
+                0.7151951018029562,
+                0.0007770615820855665
+              ]
+            },
+            "outward_mass": -0.027905554963517987,
+            "negative_outward_axial": 0.4898157735129877,
+            "slit_mass_axial": [
+              0.04535574258884638,
+              0.4336788664529429
+            ],
+            "outward_plus_slit_mass_axial": [
+              0.017450187625328392,
+              -0.056136907060044816
+            ]
+          },
+          "work_radial_axial": [
+            0.0002343671579475429,
+            0.053184304463356216
+          ],
+          "far_plus_shell": 0.5432344451342914,
+          "closure": 7.077671781985373e-14,
+          "native_vortex_volume_wall": [
+            0.0014298823726724538,
+            -0.0014298824064214867
+          ],
+          "differential_crystal_shell_work": 0.0,
+          "far_plus_native_shell": 0.5432344451005424,
+          "near_minus_far_plus_native_shell": 3.381980806516083e-11
+        }
+      }
+    }
+  }
+}

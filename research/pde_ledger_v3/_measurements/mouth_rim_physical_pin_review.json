@@ -1,0 +1,253 @@
+{
+  "scope": "Independent geometry and held-field receiver coefficient controls. Native Q1 coefficients coincide at original quadrature. Compare nodal sampling versus fixing that baseline Q1 field at moved physical quadrature points. No relaxed signed solution is claimed for the latter control. Reported force is minus driven-minus-resting energy derivative.",
+  "archived_bank_work_sha256": "bdc5e957598763d5fe576128e70ea95a763f0d3f88152c88c6c1632017e4e6fc",
+  "runs": {
+    "bond": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_terminal_bonded_pin_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "research/pde_ledger_v3/_measurements/mouth_rim_bank_work.json"
+      ],
+      "script_sha256": "629d49a9c3b0c79f99b01a59b1e2d9a402814adff3086bce7c9605aacdcec610",
+      "stdout_sha256": "1d1d9c1890ea10faa6ec0287859b90655d685b539d75a748ff72e455e7b86bc2",
+      "output": {
+        "state_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "wall_sha256": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "bank_work_sha256": "bdc5e957598763d5fe576128e70ea95a763f0d3f88152c88c6c1632017e4e6fc",
+        "depth_knots": [
+          0.7604687385883343,
+          0.7776115957311914,
+          0.7947544528740486
+        ],
+        "fixed_ring_ids": [
+          31
+        ],
+        "imposed_marker_shift_per_unit": [
+          0.5512288619483474
+        ],
+        "old_marker_motion_max": 0.0,
+        "both_wall_normals": [
+          0.20475660115512592,
+          -0.20475660115512592
+        ],
+        "signed_normal_offset_per_step": [
+          [
+            -1e-05,
+            0.20477788365308675
+          ],
+          [
+            1e-05,
+            0.20473531819750465
+          ],
+          [
+            -5e-06,
+            0.2047672424630633
+          ],
+          [
+            5e-06,
+            0.20474595982220833
+          ]
+        ],
+        "inside_enclosure_tent_at_tip": 0.0
+      }
+    },
+    "double": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_receiver_pin_quadrature_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "_scratch/s11c/r4_consistent_fields02/double/fields.npz"
+      ],
+      "script_sha256": "76685c548b859285ef3663ec7ed7d037ffb1293c1abc32ee12b4685bf6f5d300",
+      "stdout_sha256": "b82d5523cc317cdcdaaf89a79161dd9ed421c9c53992ff3c10f8cf5c5c09d309",
+      "output": {
+        "mesh": "double",
+        "source": {
+          "field": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+          "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "load": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b"
+        },
+        "by_width": {
+          "4": {
+            "steps": [
+              -2e-05,
+              2e-05,
+              -1e-05,
+              1e-05
+            ],
+            "baseline_gradient_error": 3.375077994860476e-14,
+            "reaction_per_step": [
+              [
+                0.0018001777407400097,
+                0.0026093727502614133
+              ],
+              [
+                0.0022901017546596045,
+                0.002610842673306974
+              ],
+              [
+                0.001800155484156097,
+                0.0026097400887034805
+              ],
+              [
+                0.0022897563877324703,
+                0.0026104750569758135
+              ]
+            ],
+            "columns": [
+              "resampled_to_moved_nodes",
+              "archived_Q1_fixed_at_physical_quadrature"
+            ]
+          },
+          "8": {
+            "steps": [
+              -2e-05,
+              2e-05,
+              -1e-05,
+              1e-05
+            ],
+            "baseline_gradient_error": 3.375077994860476e-14,
+            "reaction_per_step": [
+              [
+                0.002075648724649074,
+                0.0029309617666806033
+              ],
+              [
+                0.0025661479713884605,
+                0.0029330898403538527
+              ],
+              [
+                0.0020757666510586134,
+                0.002931493043289546
+              ],
+              [
+                0.0025656551253654646,
+                0.0029325570892017785
+              ]
+            ],
+            "columns": [
+              "resampled_to_moved_nodes",
+              "archived_Q1_fixed_at_physical_quadrature"
+            ]
+          }
+        }
+      },
+      "half_centered_envelope_by_width": {
+        "4": [
+          0.02853871648751098,
+          0.029103868124406344
+        ],
+        "8": [
+          0.028658521797689865,
+          0.02926983597572349
+        ]
+      },
+      "half_centered_four_minus_eight": [
+        -0.00011980531017888318,
+        -0.00016596785131714475
+      ]
+    },
+    "local": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_receiver_pin_quadrature_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "_scratch/s11c/r4_consistent_fields02/double/fields.npz"
+      ],
+      "script_sha256": "76685c548b859285ef3663ec7ed7d037ffb1293c1abc32ee12b4685bf6f5d300",
+      "stdout_sha256": "5bba45693c6d87f2e527d140c39e73cf95e31afd187384c3f5270d89df6b70ae",
+      "output": {
+        "mesh": "local",
+        "source": {
+          "field": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+          "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "load": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679"
+        },
+        "by_width": {
+          "4": {
+            "steps": [
+              -2e-05,
+              2e-05,
+              -1e-05,
+              1e-05
+            ],
+            "baseline_gradient_error": 6.616929226765933e-14,
+            "reaction_per_step": [
+              [
+                0.001840805850988807,
+                0.0024140053054125324
+              ],
+              [
+                0.0021115881614547603,
+                0.002415261172232875
+              ],
+              [
+                0.0018408941859499465,
+                0.0024143191682356934
+              ],
+              [
+                0.0021112909816340336,
+                0.0024149471081248808
+              ]
+            ],
+            "columns": [
+              "resampled_to_moved_nodes",
+              "archived_Q1_fixed_at_physical_quadrature"
+            ]
+          },
+          "8": {
+            "steps": [
+              -2e-05,
+              2e-05,
+              -1e-05,
+              1e-05
+            ],
+            "baseline_gradient_error": 6.616929226765933e-14,
+            "reaction_per_step": [
+              [
+                0.0020815729619306322,
+                0.0027114884898412567
+              ],
+              [
+                0.0023528862756283507,
+                0.002713353632430231
+              ],
+              [
+                0.002081794457678641,
+                0.00271195411136755
+              ],
+              [
+                0.0023524567272548516,
+                0.00271288669157128
+              ]
+            ],
+            "columns": [
+              "resampled_to_moved_nodes",
+              "archived_Q1_fixed_at_physical_quadrature"
+            ]
+          }
+        }
+      },
+      "half_centered_envelope_by_width": {
+        "4": [
+          0.025592986023968554,
+          0.02603152657835685
+        ],
+        "8": [
+          0.025614543483797263,
+          0.026109838292799933
+        ]
+      },
+      "half_centered_four_minus_eight": [
+        -2.155745982870827e-05,
+        -7.831171444308213e-05
+      ]
+    }
+  }
+}

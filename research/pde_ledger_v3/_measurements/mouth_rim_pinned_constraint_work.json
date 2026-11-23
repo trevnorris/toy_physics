@@ -1,0 +1,359 @@
+{
+  "method": "Constraint work on independently stationary R4 matching fields. Native integration. Axial signed unit forces for laboratory-pinned sources; crystal sites unstrained by the zero-wall-trace chart, prescribed profile sampled at actual displaced positions. Predicted reactions use the envelope derivative; rematching required to verify stationarity for signed steps. Bond incompatibility measured as the volume between the original face and its signed axial translation.",
+  "scripts_sha256": {
+    "mouth_rim_pinned_sources.py": "47c31cfed5d2f5ecb5abe956bfcb3ef7a0d239defb54b86854cc6ac2059ef37b",
+    "mouth_rim_pinned_work.py": "0504eeed1f44096e91f5055ce71b0b231a39ecd9f51bcf228bd86cf429d551dc"
+  },
+  "measurements": {
+    "double": {
+      "source": {
+        "field": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "load": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b"
+      },
+      "signed_steps": [
+        -2e-05,
+        2e-05,
+        -1e-05,
+        1e-05
+      ],
+      "depth_knots": [
+        0.7604687385883343,
+        0.7776115957311914,
+        0.7947544528740486
+      ],
+      "bond_sweep": [
+        {
+          "step": -2e-05,
+          "exposed_volume": 0.0,
+          "excluded_volume": 1.1050710763349541e-05,
+          "sampled_normal_motion_min": -4.094295199441536e-06,
+          "sampled_normal_motion_max": -8.17436255214745e-10,
+          "common_bond_axial_mismatch": 2e-05
+        },
+        {
+          "step": 2e-05,
+          "exposed_volume": 1.1050710763232825e-05,
+          "excluded_volume": 0.0,
+          "sampled_normal_motion_min": 8.17436255214745e-10,
+          "sampled_normal_motion_max": 4.094295199441536e-06,
+          "common_bond_axial_mismatch": 2e-05
+        },
+        {
+          "step": -1e-05,
+          "exposed_volume": 0.0,
+          "excluded_volume": 5.525355381626026e-06,
+          "sampled_normal_motion_min": -2.047147599720768e-06,
+          "sampled_normal_motion_max": -4.087181276073725e-10,
+          "common_bond_axial_mismatch": 1e-05
+        },
+        {
+          "step": 1e-05,
+          "exposed_volume": 5.5253553817470105e-06,
+          "excluded_volume": 0.0,
+          "sampled_normal_motion_min": 4.087181276073725e-10,
+          "sampled_normal_motion_max": 2.047147599720768e-06,
+          "common_bond_axial_mismatch": 1e-05
+        }
+      ],
+      "banks": [
+        {
+          "bank": "duct",
+          "widths": [
+            4,
+            8
+          ],
+          "signed_steps": [
+            -2e-05,
+            2e-05,
+            -1e-05,
+            1e-05
+          ],
+          "frozen_carrier_reaction": 0.0004557103722158118,
+          "convected_crystal": -0.0014089647858662574,
+          "fixed_site_crystal": 0.00016808495965736436,
+          "signed_crystal_check": [
+            0.00016806669020152262,
+            0.00016810119286498202,
+            0.00016807255684891852,
+            0.00016809495737719543
+          ],
+          "prescribed_order_static": [
+            0.003126607959343275,
+            0.0031267084819806,
+            0.0031266330869179626,
+            0.0031266833480838585
+          ],
+          "prescribed_order_carrier": [
+            -0.0031210091023238457,
+            -0.0031211095008583005,
+            -0.0031210341987512966,
+            -0.003121084397991414
+          ],
+          "predicted_pin_corrected_reaction": [
+            0.0006293941888926055,
+            0.0006293943129954758,
+            0.0006293942200398422,
+            0.0006293942819656209
+          ]
+        },
+        {
+          "bank": "outside",
+          "widths": [
+            4
+          ],
+          "signed_steps": [
+            -2e-05,
+            2e-05,
+            -1e-05,
+            1e-05
+          ],
+          "frozen_carrier_reaction": 0.026493760551566697,
+          "convected_crystal": 0.0,
+          "fixed_site_crystal": 0.0,
+          "signed_crystal_check": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "prescribed_order_static": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "prescribed_order_carrier": [
+            0.001800209457652045,
+            0.0022893005904783747,
+            0.0018001714584615057,
+            0.0022893558400619656
+          ],
+          "predicted_pin_corrected_reaction": [
+            0.028293970009218742,
+            0.028783061142045072,
+            0.0282939320100282,
+            0.02878311639162866
+          ]
+        },
+        {
+          "bank": "outside",
+          "widths": [
+            8
+          ],
+          "signed_steps": [
+            -2e-05,
+            2e-05,
+            -1e-05,
+            1e-05
+          ],
+          "frozen_carrier_reaction": 0.026337810909477826,
+          "convected_crystal": 0.0,
+          "fixed_site_crystal": 0.0,
+          "signed_crystal_check": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "prescribed_order_static": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "prescribed_order_carrier": [
+            0.0020759833879264757,
+            0.0025650299317194506,
+            0.002075934244052916,
+            0.0025650963309323837
+          ],
+          "predicted_pin_corrected_reaction": [
+            0.028413794297404302,
+            0.028902840841197278,
+            0.02841374515353074,
+            0.02890290724041021
+          ]
+        }
+      ],
+      "work_sha": "bdc5e957598763d5fe576128e70ea95a763f0d3f88152c88c6c1632017e4e6fc",
+      "state_sha": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+      "reference_sha": "02078533996e99c945c8004a8d32b898c9f2ed436c829eaf2b9a2c18baee6e41"
+    },
+    "local": {
+      "source": {
+        "field": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+        "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "load": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679"
+      },
+      "signed_steps": [
+        -2e-05,
+        2e-05,
+        -1e-05,
+        1e-05
+      ],
+      "depth_knots": [
+        0.7604687385883343,
+        0.7776115957311914,
+        0.7947544528740486
+      ],
+      "bond_sweep": [
+        {
+          "step": -2e-05,
+          "exposed_volume": 0.0,
+          "excluded_volume": 1.1050710763349541e-05,
+          "sampled_normal_motion_min": -4.094295199441536e-06,
+          "sampled_normal_motion_max": -8.17436255214745e-10,
+          "common_bond_axial_mismatch": 2e-05
+        },
+        {
+          "step": 2e-05,
+          "exposed_volume": 1.1050710763232825e-05,
+          "excluded_volume": 0.0,
+          "sampled_normal_motion_min": 8.17436255214745e-10,
+          "sampled_normal_motion_max": 4.094295199441536e-06,
+          "common_bond_axial_mismatch": 2e-05
+        },
+        {
+          "step": -1e-05,
+          "exposed_volume": 0.0,
+          "excluded_volume": 5.525355381626026e-06,
+          "sampled_normal_motion_min": -2.047147599720768e-06,
+          "sampled_normal_motion_max": -4.087181276073725e-10,
+          "common_bond_axial_mismatch": 1e-05
+        },
+        {
+          "step": 1e-05,
+          "exposed_volume": 5.5253553817470105e-06,
+          "excluded_volume": 0.0,
+          "sampled_normal_motion_min": 4.087181276073725e-10,
+          "sampled_normal_motion_max": 2.047147599720768e-06,
+          "common_bond_axial_mismatch": 1e-05
+        }
+      ],
+      "banks": [
+        {
+          "bank": "duct",
+          "widths": [
+            4,
+            8
+          ],
+          "signed_steps": [
+            -2e-05,
+            2e-05,
+            -1e-05,
+            1e-05
+          ],
+          "frozen_carrier_reaction": -1.7139990815540074e-05,
+          "convected_crystal": -0.0014039828789350652,
+          "fixed_site_crystal": 0.00018038912693477854,
+          "signed_crystal_check": [
+            0.00018039768055718347,
+            0.00018040135997456362,
+            0.00018039335772516085,
+            0.0001803996888834073
+          ],
+          "prescribed_order_static": [
+            0.0031008124794036362,
+            0.0031009008611180278,
+            0.003100834572028255,
+            0.0031008787629609458
+          ],
+          "prescribed_order_carrier": [
+            -0.0030898602708057028,
+            -0.003089948413711066,
+            -0.0030898823037866525,
+            -0.0030899263752828645
+          ],
+          "predicted_pin_corrected_reaction": [
+            0.00017420134471717193,
+            0.00017420158352620004,
+            0.00017420140436084084,
+            0.00017420152379731978
+          ]
+        },
+        {
+          "bank": "outside",
+          "widths": [
+            4
+          ],
+          "signed_steps": [
+            -2e-05,
+            2e-05,
+            -1e-05,
+            1e-05
+          ],
+          "frozen_carrier_reaction": 0.023616893440176565,
+          "convected_crystal": 0.0,
+          "fixed_site_crystal": 0.0,
+          "signed_crystal_check": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "prescribed_order_static": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "prescribed_order_carrier": [
+            0.001841061258005895,
+            0.00211090136883383,
+            0.0018410220266904182,
+            0.002110947610932189
+          ],
+          "predicted_pin_corrected_reaction": [
+            0.02545795469818246,
+            0.025727794809010395,
+            0.025457915466866984,
+            0.025727841051108754
+          ]
+        },
+        {
+          "bank": "outside",
+          "widths": [
+            8
+          ],
+          "signed_steps": [
+            -2e-05,
+            2e-05,
+            -1e-05,
+            1e-05
+          ],
+          "frozen_carrier_reaction": 0.023397417891330517,
+          "convected_crystal": 0.0,
+          "fixed_site_crystal": 0.0,
+          "signed_crystal_check": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "prescribed_order_static": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "prescribed_order_carrier": [
+            0.0020821146833215295,
+            0.0023519154115889513,
+            0.0020820656092665445,
+            0.00235197150120374
+          ],
+          "predicted_pin_corrected_reaction": [
+            0.025479532574652047,
+            0.025749333302919467,
+            0.02547948350059706,
+            0.025749389392534256
+          ]
+        }
+      ],
+      "work_sha": "bdc5e957598763d5fe576128e70ea95a763f0d3f88152c88c6c1632017e4e6fc",
+      "state_sha": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+      "reference_sha": "02078533996e99c945c8004a8d32b898c9f2ed436c829eaf2b9a2c18baee6e41"
+    }
+  }
+}

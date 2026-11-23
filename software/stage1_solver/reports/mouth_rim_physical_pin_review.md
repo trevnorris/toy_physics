@@ -1,0 +1,16 @@
+# Independent review of the fixed-constraint test at radius four
+
+**Verdict on the saved fields and constraints.** “Scoped clear for the zero-displacement work predictions and the fixed-bond control. A physical axial force on the moving, permanently bonded duct wall is unresolved.” Signed field rematches require a separate convergence check.
+
+**What can move.** The crystal's exterior material row is clamped to the duct wall in both displacement components. On the measured terminal strip, the proposed signed wall motion moves crystal ring 31 axially by 0.55122886 per unit wall shift. At the peak of the motion the wall moves normally through the original crystal by 0.20475660 per unit shift. A stationary crystal at those locations and a moving welded wall give incompatible boundary conditions. Subtracting the four- and eight-cell mesh displacements gives a valid diagnostic with zero displacement on the entire boundary. It measures first-order sensitivity to changing interior mesh coordinates. It does not determine either absolute duct-wall force. The receiving bank admits the two separate motions under the archived prescription for exterior order. [Guarded geometry and coefficient measurements](../../../research/pde_ledger_v3/_measurements/mouth_rim_physical_pin_review.json)
+
+**How the receiving order is kept fixed.** I compared direct paired carrier energies for two specifications that have the same receiving-order gradient at the original quadrature points to within 6.62 × 10⁻¹⁴. One samples the underlying material-order table on the displaced nodes and interpolates between them. The other fixes the archived piecewise-bilinear order profile in physical space and samples its gradient at the displaced quadrature points. The latter gives an independent test of the interpolation step.
+
+| Receiving-side centered four-cell minus eight-cell work, per unit wall shift | Doubled grid | Rim-refined grid |
+|---|---:|---:|
+| Material-order table sampled on displaced nodes | −0.0001198053 | −0.0000215575 |
+| Archived order gradient held fixed at physical quadrature points | −0.0001659679 | −0.0000783117 |
+
+The table uses opposite 0.000010 shifts, native two-point integration, and the archived stationary driven and resting fields. Sampled force changes from moving the order nodes reproduce the independent constraint-work calculation. Both estimates shrink under refinement. Their difference measures sensitivity to the representation of the prescribed coefficient. The residual on these grids cannot be attributed exclusively to the coherent carrier's unknown fields. [Separate constraint work](../../../research/pde_ledger_v3/_measurements/mouth_rim_pinned_constraint_work.json)
+
+At stationary field coefficients the first derivative of the minimized energy equals its partial derivative along the prescribed chart, provided the spatial constraints remain the same and the stationary branch persists. The reduced signed energies must still be checked against the fixed-state prediction at both amplitudes, including each direction where the order table has one-sided slopes. Both tested wall displacements vanish on the shared disk rim, whereas each enclosing surface gives it unit weight. A converged terminal-strip result alone would leave the full axial-force drift open.

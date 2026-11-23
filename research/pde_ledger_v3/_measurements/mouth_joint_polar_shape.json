@@ -1,0 +1,1637 @@
+{
+  "radius": 4,
+  "winding": 1,
+  "coordinates": [
+    "log depth",
+    ".25 log exit",
+    ".25 middle",
+    ".25 depth asymmetry",
+    ".25 waist",
+    "polar P2 displacement"
+  ],
+  "material": "Stationary ordered supersolid with a mobile core\u2013collar bond, disordered superfluid receiver.",
+  "assumptions": [
+    "Prescribed reference crystalline profile in the shaft outside the mobile order band.",
+    "Two meridional displacements per free material node plus one depth-localized wall quadrupole.",
+    "Exterior lattice labels retained. Common cap rim and terminal-order pins retained."
+  ],
+  "source_state_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+  "shape_source_sha256": {
+    "mouth_bonded_front_adjoint.py": "99c62d9c4d683ab36fc4d1d51a4890bddf5c2eb08cb80aea2a30cbb3438b18c2",
+    "mouth_bonded_material_motion.py": "abfe40bfaa82777f10202ce3a7600f4cbac147c7d7171e2a882646428669662f",
+    "mouth_joined_front_stationarity.py": "15933b1cfe35b9510e586294e7fa33bea5b8e419522ecdd0c813e27f3f769e2f",
+    "mouth_joint_polar_shape.py": "02eff182d4deda3a105a246adbe91f9fd28291082935822e999dba1abf91b1d9",
+    "mouth_polar_bonded.py": "38b484edee2d95f2f9115fcf3a3bd2f4016c68c928f8ea968596a6c27a629356",
+    "mouth_polar_joined.py": "e8263eb26e5993d06ad24f406cff0073cc8ae7f613359968fffc8e43d291b24d",
+    "mouth_receiver_order_control.py": "0729ea9871c408a2cf1261d8134d8c328c4d96a43b0f5a8dd7d6052c11367b0d",
+    "mouth_receiver_order_equilibrium.py": "803f062b7094b2b5bc82ae1fcb3be9e55978c144b2d1ee1df89e6deaea2d1665"
+  },
+  "controls": {
+    "receiving_meridian": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_receiver_order_control.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "stdout_sha256": "952f9b23d359376a4db4d3461f83ba8aa025acbaaced8a26a48400ddbb9b0860",
+      "readout": [
+        {
+          "kind": "input",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101"
+        },
+        {
+          "kind": "signed_control",
+          "shape_shift": 0.0,
+          "old_energy": 3663.4483572935455,
+          "new_energy": 3663.4483572934864,
+          "energy": 3662.2248854069803,
+          "static_work": 1.2234718865062715,
+          "residual": 6.1167679501118625e-12,
+          "before_newton": 1.0933317895478467e-07,
+          "newton_steps": 2,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5
+        },
+        {
+          "kind": "side_virtual_work",
+          "work": 1.2234718690251611,
+          "native_work": 1.2234718865062715
+        },
+        {
+          "kind": "signed_control",
+          "shape_shift": -0.005,
+          "old_energy": 3663.2660526035684,
+          "new_energy": 3663.266052603552,
+          "energy": 3662.0691845814677,
+          "static_work": 1.196868022084222,
+          "residual": 3.137653009175625e-10,
+          "before_newton": 3.403240333987867e-08,
+          "newton_steps": 1,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5
+        },
+        {
+          "kind": "signed_control",
+          "shape_shift": 0.005,
+          "old_energy": 3663.717923947463,
+          "new_energy": 3663.717923947443,
+          "energy": 3662.4444198567635,
+          "static_work": 1.2735040906796227,
+          "residual": 3.552713678800501e-15,
+          "before_newton": 4.3293741623824655e-08,
+          "newton_steps": 4,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5
+        },
+        {
+          "kind": "signed_control",
+          "shape_shift": -0.05,
+          "old_energy": 3665.6542667314725,
+          "new_energy": 3665.6542667314393,
+          "energy": 3663.5789411620954,
+          "static_work": 2.075325569343996,
+          "residual": 3.145126260346421e-09,
+          "before_newton": 5.3146757661437505e-08,
+          "newton_steps": 1,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5
+        },
+        {
+          "kind": "signed_control",
+          "shape_shift": 0.05,
+          "old_energy": 3670.0199075199316,
+          "new_energy": 3670.0199075199125,
+          "energy": 3667.250114332802,
+          "static_work": 2.769793187110656,
+          "residual": 3.012208294193218e-09,
+          "before_newton": 4.2357122156944094e-08,
+          "newton_steps": 1,
+          "minimum_order": 0.0,
+          "maximum_order": 0.5
+        }
+      ]
+    },
+    "polar_joined_field": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polar_joined.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound/coupled.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "stdout_sha256": "996ca32b2dfacc13b2a0e4ade20d1426966d735e4e78719c17ac1f9ee36c2cc9",
+      "readout": [
+        {
+          "kind": "zero_baseline",
+          "state_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "joint_sha256": "c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226",
+          "grid": [
+            13,
+            10,
+            14
+          ],
+          "energy": 0.01580445514370088,
+          "difference": 0.0,
+          "gradient_error": 0.0,
+          "stationarity": 1.8212743287007233e-07
+        },
+        {
+          "kind": "signed_mapping",
+          "shift": -0.01,
+          "field_energy_change": 0.000895258563528456,
+          "wall_energy_change": 0.0009445159287328307,
+          "independent": [
+            -4.9257365047378644e-05,
+            0.0009445159287328257
+          ],
+          "differences": [
+            -1.569910651130768e-13,
+            4.9873299934333204e-18
+          ]
+        },
+        {
+          "kind": "signed_mapping",
+          "shift": -0.0002,
+          "field_energy_change": 1.683379918793193e-05,
+          "wall_energy_change": 1.8892876363387157e-05,
+          "independent": [
+            -2.059077234041994e-06,
+            1.8892876363378518e-05
+          ],
+          "differences": [
+            5.859540825638165e-14,
+            8.639736061993863e-18
+          ]
+        },
+        {
+          "kind": "signed_mapping",
+          "shift": 0.0002,
+          "field_energy_change": -1.678999490373201e-05,
+          "wall_energy_change": -1.8892979065558906e-05,
+          "independent": [
+            2.1029839225911082e-06,
+            -1.889297906556905e-05
+          ],
+          "differences": [
+            2.3924593317743714e-13,
+            1.0144066576317501e-17
+          ]
+        },
+        {
+          "kind": "signed_mapping",
+          "shift": 0.01,
+          "field_energy_change": -0.0007857486426945393,
+          "wall_energy_change": -0.0009447726857174525,
+          "independent": [
+            0.0001590240427660151,
+            -0.0009447726857174622
+          ],
+          "differences": [
+            2.569077763026062e-13,
+            9.64939933512099e-18
+          ]
+        },
+        {
+          "kind": "finite_field_derivative",
+          "field": 0,
+          "shift": 0.01,
+          "step": 1e-05,
+          "analytic": -0.00012511230673207917,
+          "signed": -0.00012508912794473304
+        },
+        {
+          "kind": "finite_field_derivative",
+          "field": 1,
+          "shift": 0.01,
+          "step": 1e-05,
+          "analytic": -0.0014753786129167064,
+          "signed": -0.0014753870791750499
+        },
+        {
+          "kind": "finite_field_derivative",
+          "field": 2,
+          "shift": 0.01,
+          "step": 1e-05,
+          "analytic": -4.2051676534458187e-07,
+          "signed": -4.146682996974959e-07
+        },
+        {
+          "kind": "rematched",
+          "shift": 0.01,
+          "iterations": 26,
+          "energy": 0.014950944501733288,
+          "stationarity": 1.6342443939736264e-07,
+          "gradient_integral_steps": 23,
+          "restarts": 0,
+          "excess_energy": 0.014950944501733288,
+          "feed_current": 11.64292771691941,
+          "bulk_current": 11.642927716917594,
+          "port_error": 1.815436689867056e-12,
+          "weak_disk_current": 11.642927716621628,
+          "incident_slice_current": 11.642927716621628,
+          "receiving_slice_current": 10.487289440807933,
+          "positive_slice_current": 11.642927716621628,
+          "dense_total_subsonic_share": 0.6895374909392548,
+          "minimum_total_mach": 0.38798988501006015,
+          "total_axial_stress": -84.98645037880685,
+          "crystalline_range_in_band": [
+            0.0313702695311274,
+            0.9474895674348762
+          ]
+        },
+        {
+          "kind": "return_to_zero",
+          "energy": 0.01580445514370088,
+          "difference": 0.0
+        }
+      ]
+    },
+    "polar_material": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polar_bonded_check.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "stdout_sha256": "9d3276bd01815bd30be289eec17a032df7e4732b958c6606318562cd0d3fdd8a",
+      "readout": [
+        {
+          "kind": "baseline",
+          "source_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "body": 54.17508864006968,
+          "spherical": 54.17508864006968,
+          "gradient_error": 0.0,
+          "static_delta": {
+            "inner_order": 0.0,
+            "outer_order": 0.0,
+            "outer_crystal": 0.0
+          },
+          "direct_inner_order": 166.092407368129,
+          "native_inner_order": 166.09240736812882
+        },
+        {
+          "kind": "composition",
+          "epsilon": -0.025,
+          "body": 54.2359390793837,
+          "direct_body": 54.235939079383634,
+          "terms": {
+            "inner_order": 0.03488200260097571,
+            "outer_order": 0.053984543000192356,
+            "outer_crystal": 0.005146066814339096
+          },
+          "direct_outer_crystal": 0.0051460668143406,
+          "direct_inner_order": 0.03488200260062513,
+          "direct_outer_order": 0.05398454299932803,
+          "flat_continuation": -1.9792509706680755e-05,
+          "min_J": 0.21887622867992523,
+          "core_delta": 0.0173098272614694,
+          "inner_collar_delta": 0.0435406120525458
+        },
+        {
+          "kind": "material_derivative",
+          "epsilon": -0.025,
+          "step": 1e-05,
+          "finite_difference": 0.01937018474507113,
+          "gradient": 0.01937017328589576
+        },
+        {
+          "kind": "material_derivative",
+          "epsilon": -0.025,
+          "step": 5e-06,
+          "finite_difference": 0.01937017088948778,
+          "gradient": 0.01937017328589576
+        },
+        {
+          "kind": "composition",
+          "epsilon": 0.025,
+          "body": 54.23593701635538,
+          "direct_body": 54.23593701635534,
+          "terms": {
+            "inner_order": 0.034821368976120363,
+            "outer_order": 0.054198358079130704,
+            "outer_crystal": 0.0051460716114450685
+          },
+          "direct_outer_crystal": 0.005146071611446645,
+          "direct_inner_order": 0.03482136897579835,
+          "direct_outer_order": 0.054198358084334326,
+          "flat_continuation": -1.979455819949537e-05,
+          "min_J": 0.21887622867992523,
+          "core_delta": 0.017309530544917733,
+          "inner_collar_delta": 0.04353884574077875
+        },
+        {
+          "kind": "material_derivative",
+          "epsilon": 0.025,
+          "step": 1e-05,
+          "finite_difference": 0.019370123638395853,
+          "gradient": 0.01937011256620547
+        },
+        {
+          "kind": "material_derivative",
+          "epsilon": 0.025,
+          "step": 5e-06,
+          "finite_difference": 0.019370109782812506,
+          "gradient": 0.01937011256620547
+        },
+        {
+          "kind": "shape_stiffness",
+          "step": 0.002,
+          "minus": {
+            "body": 0.00038943638737265474,
+            "inner_order": 0.00022306179073174756,
+            "outer_order": 0.00034612798985208924,
+            "outer_crystal": 3.2934841441182085e-05
+          },
+          "plus": {
+            "body": 0.0003894353313711463,
+            "inner_order": 0.00022303075208341511,
+            "outer_order": 0.0003462374629931217,
+            "outer_crystal": 3.293484389747359e-05
+          },
+          "derivative": {
+            "body": -2.640003771148258e-07,
+            "inner_order": -7.759662083111458e-06,
+            "outer_order": 2.7368285258116336e-05,
+            "outer_crystal": 6.140728760716235e-10
+          },
+          "curvature": {
+            "body": 194.71792968595025,
+            "inner_order": 111.52313570379067,
+            "outer_order": 173.09136321130273,
+            "outer_crystal": 16.467421334663918
+          },
+          "total": 495.7998499357076
+        },
+        {
+          "kind": "shape_stiffness",
+          "step": 0.001,
+          "minus": {
+            "body": 9.735903041985239e-05,
+            "inner_order": 5.5763502310215417e-05,
+            "outer_order": 8.653883644618845e-05,
+            "outer_crystal": 8.233710513459646e-06
+          },
+          "plus": {
+            "body": 9.735889842232837e-05,
+            "inner_order": 5.575962248265766e-05,
+            "outer_order": 8.655252058871174e-05,
+            "outer_crystal": 8.233710820496121e-06
+          },
+          "derivative": {
+            "body": -6.59987620110769e-08,
+            "inner_order": -1.9399137788766313e-06,
+            "outer_order": 6.842071261643735e-06,
+            "outer_crystal": 1.535182376526307e-10
+          },
+          "curvature": {
+            "body": 194.71792884218075,
+            "inner_order": 111.52312479287309,
+            "outer_order": 173.0913570349002,
+            "outer_crystal": 16.467421333955766
+          },
+          "total": 495.7998320039098
+        }
+      ]
+    },
+    "polar_receiver": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polar_bonded_check.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "--receiver"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "stdout_sha256": "3140efbe504230ea39e829830c9eb0cca79110a09aa9b7bf437065408f2b8fd2",
+      "readout": [
+        {
+          "kind": "relaxed_receiver_envelope",
+          "epsilon": -0.025,
+          "step": 0.0001,
+          "reduced_energy": 3663.5074541454755,
+          "residual": 7.906339713177448e-09,
+          "relaxed_slope": -4.720813349194941,
+          "frozen_slope": -4.720813516241144,
+          "deposited_crystal_change": 0.005150695869610333,
+          "crystal_change": 0.00515069586961033,
+          "flat_continuation": -1.9792509711592784e-05
+        },
+        {
+          "kind": "relaxed_receiver_envelope",
+          "epsilon": 0.025,
+          "step": 0.0001,
+          "reduced_energy": 3663.507667687238,
+          "residual": 4.483173484736166e-10,
+          "relaxed_slope": 4.746416384477925,
+          "frozen_slope": 4.74641649883669,
+          "deposited_crystal_change": 0.005150720843444758,
+          "crystal_change": 0.005150720843444759,
+          "flat_continuation": -1.9794558187914297e-05
+        }
+      ]
+    },
+    "receiver_variation": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_receiver_variation_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound/coupled.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "stdout_sha256": "e5a2b220e2e4ac75509a738dbf78371b21f914cecd285a8a068a1e4c7325999b",
+      "readout": [
+        {
+          "kind": "input",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "joint": "c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226",
+          "receiver_residual": 6.1167679501118625e-12,
+          "native_peak": 1.0,
+          "carrier_grid_peak": 0.9313560090747952
+        },
+        {
+          "kind": "exterior_reference_variation",
+          "step": 0.0002,
+          "minus": [
+            3570.234043611717,
+            1.7947636646934928
+          ],
+          "plus": [
+            3570.2340436090803,
+            1.7947636657943153
+          ],
+          "native_and_crystal": -6.591562851099297e-06,
+          "carrier_and_front": 2.752056360577626e-06,
+          "total": -3.839506490521671e-06
+        },
+        {
+          "kind": "exterior_reference_variation",
+          "step": 0.0001,
+          "minus": [
+            3570.2340312351334,
+            1.7947636649693575
+          ],
+          "plus": [
+            3570.2340312347915,
+            1.7947636655197794
+          ],
+          "native_and_crystal": -1.709850039333105e-06,
+          "carrier_and_front": 2.752109651282808e-06,
+          "total": 1.042259611949703e-06
+        }
+      ]
+    },
+    "coarse_endpoint1_review": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polar_shape_endpoint_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound_mesh8/coupled.npz",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_001.npz",
+        "--controls",
+        "_scratch/s11c/r4_disk_balance01/polar1/controls.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "stdout_sha256": "84cf613329caac39b6d896ae79e167a61d982495466cd60a4dba9cad8f1ff1a4",
+      "readout": [
+        {
+          "kind": "wall_geometry",
+          "checkpoint": "e84b35ef064e788c71c35d8d382424d8fecc35f2293ade5b5f5702b27d21492e",
+          "angle": "pole",
+          "depth": 0.7956813342620276,
+          "exit": 3.4912273815709165,
+          "minimum_difference": -4.440892098500626e-16,
+          "widest_depth_difference": 0.0,
+          "minimum": 3.491227381570916,
+          "maximum": 4.0,
+          "narrowest_depth": 0.7956813342620276,
+          "widest_depth": 0.0
+        },
+        {
+          "kind": "wall_geometry",
+          "checkpoint": "e84b35ef064e788c71c35d8d382424d8fecc35f2293ade5b5f5702b27d21492e",
+          "angle": "equator",
+          "depth": 0.7956813342620276,
+          "exit": 3.4912273815709165,
+          "minimum_difference": -4.440892098500626e-16,
+          "widest_depth_difference": 0.0,
+          "minimum": 3.491227381570916,
+          "maximum": 4.0,
+          "narrowest_depth": 0.7956813342620276,
+          "widest_depth": 0.0
+        },
+        {
+          "kind": "maximum_polar_split",
+          "radii": [
+            3.829560200884833,
+            3.8293057417809657
+          ],
+          "quadrupole": 0.00016963940257820912,
+          "depth": 0.2705316536490894,
+          "polar_minus_equatorial": 0.00025445910386734383
+        },
+        {
+          "kind": "held_energy",
+          "recorded": 3882.501123772692,
+          "reconstructed": 3882.501123772692,
+          "difference": 0.0
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "h": 5e-05,
+          "slope": -0.926974948924908,
+          "recorded_projection": -0.9266202164326387,
+          "difference": -0.00035473249226924963
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "h": 2.5e-05,
+          "slope": -0.927263017729274,
+          "recorded_projection": -0.9266202164326387,
+          "difference": -0.0006428012966352981
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "h": 5e-05,
+          "slope": -0.00048414221964776516,
+          "recorded_projection": -0.00048434458221890964,
+          "difference": 2.0236257114447653e-07
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "h": 2.5e-05,
+          "slope": -0.0004843786882702261,
+          "recorded_projection": -0.00048434458221890964,
+          "difference": -3.410605131648481e-08
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.6,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.8
+          ],
+          "h": 5e-05,
+          "slope": -0.5559130795518286,
+          "recorded_projection": -0.5555846541938081,
+          "difference": -0.0003284253580204677
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.6,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.8
+          ],
+          "h": 2.5e-05,
+          "slope": -0.5559984128922224,
+          "recorded_projection": -0.5555846541938081,
+          "difference": -0.0004137586984143127
+        },
+        {
+          "kind": "released_cap_comparison",
+          "side": -1,
+          "fluid_and_order": 0.9774103696614092,
+          "total": 0.968671702865955,
+          "difference": 2.849331881549233e-11
+        },
+        {
+          "kind": "released_cap_comparison",
+          "side": 1,
+          "fluid_and_order": 0.410817500470577,
+          "total": 0.410817500470577,
+          "difference": -6.325440171650598e-12
+        },
+        {
+          "kind": "retention_comparison",
+          "ratio": 0.8419913097312561,
+          "difference": 0.0
+        }
+      ]
+    },
+    "coarse_endpoint3_review": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polar_shape_endpoint_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound_mesh8/coupled.npz",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "stdout_sha256": "88e1f5b859dc77b284f69e763ba1402f1a43abc18d190c4a0a80181d02bbf8b6",
+      "readout": [
+        {
+          "kind": "wall_geometry",
+          "checkpoint": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "angle": "pole",
+          "depth": 0.79590446234903,
+          "exit": 3.5012263217004334,
+          "minimum_difference": 4.440892098500626e-16,
+          "widest_depth_difference": 0.0,
+          "minimum": 3.501226321700434,
+          "maximum": 4.0,
+          "narrowest_depth": 0.79590446234903,
+          "widest_depth": 0.0
+        },
+        {
+          "kind": "wall_geometry",
+          "checkpoint": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "angle": "equator",
+          "depth": 0.79590446234903,
+          "exit": 3.5012263217004334,
+          "minimum_difference": 4.440892098500626e-16,
+          "widest_depth_difference": 0.0,
+          "minimum": 3.501226321700434,
+          "maximum": 4.0,
+          "narrowest_depth": 0.79590446234903,
+          "widest_depth": 0.0
+        },
+        {
+          "kind": "maximum_polar_split",
+          "radii": [
+            3.837412740837405,
+            3.837151149420313
+          ],
+          "quadrupole": 0.0001743942780611947,
+          "depth": 0.2706075171986702,
+          "polar_minus_equatorial": 0.000261591417091811
+        },
+        {
+          "kind": "held_energy",
+          "recorded": 3882.3626227598334,
+          "reconstructed": 3882.3626227598334,
+          "difference": 0.0
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "h": 5e-05,
+          "slope": 0.47734499275975395,
+          "recorded_projection": 0.4773494970322645,
+          "difference": -4.504272510530427e-06
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "h": 2.5e-05,
+          "slope": 0.4773426189785823,
+          "recorded_projection": 0.4773494970322645,
+          "difference": -6.87805368215777e-06
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "h": 5e-05,
+          "slope": 0.0020294737623771653,
+          "recorded_projection": 0.0020294601199566387,
+          "difference": 1.3642420526593924e-08
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "h": 2.5e-05,
+          "slope": 0.0020292918634368107,
+          "recorded_projection": 0.0020294601199566387,
+          "difference": -1.6825651982799172e-07
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.6,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.8
+          ],
+          "h": 5e-05,
+          "slope": 0.28478300919232424,
+          "recorded_projection": 0.2847861301233934,
+          "difference": -3.1209310691338032e-06
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.6,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.8
+          ],
+          "h": 2.5e-05,
+          "slope": 0.2847836003638804,
+          "recorded_projection": 0.2847861301233934,
+          "difference": -2.5297595129814e-06
+        }
+      ]
+    },
+    "coarse_final_disk_review": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polar_shape_endpoint_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound_mesh8/coupled.npz",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "--flow-only",
+        "--controls",
+        "_scratch/s11c/r4_disk_balance01/polar_final/controls.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "stdout_sha256": "f16b6b8f58d697454849935a2f7e14681137227cad50ff7b012d10a9108d9da0",
+      "readout": [
+        {
+          "kind": "wall_geometry",
+          "checkpoint": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "angle": "pole",
+          "depth": 0.79590446234903,
+          "exit": 3.5012263217004334,
+          "minimum_difference": 4.440892098500626e-16,
+          "widest_depth_difference": 0.0,
+          "minimum": 3.501226321700434,
+          "maximum": 4.0,
+          "narrowest_depth": 0.79590446234903,
+          "widest_depth": 0.0
+        },
+        {
+          "kind": "wall_geometry",
+          "checkpoint": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "angle": "equator",
+          "depth": 0.79590446234903,
+          "exit": 3.5012263217004334,
+          "minimum_difference": 4.440892098500626e-16,
+          "widest_depth_difference": 0.0,
+          "minimum": 3.501226321700434,
+          "maximum": 4.0,
+          "narrowest_depth": 0.79590446234903,
+          "widest_depth": 0.0
+        },
+        {
+          "kind": "maximum_polar_split",
+          "radii": [
+            3.837412740837405,
+            3.837151149420313
+          ],
+          "quadrupole": 0.0001743942780611947,
+          "depth": 0.2706075171986702,
+          "polar_minus_equatorial": 0.000261591417091811
+        },
+        {
+          "kind": "held_energy",
+          "recorded": 3882.3626227598334,
+          "reconstructed": 3882.3626227598334,
+          "difference": 0.0
+        },
+        {
+          "kind": "released_cap_comparison",
+          "side": -1,
+          "fluid_and_order": 0.8611297911891012,
+          "total": 0.8518494749375605,
+          "difference": -1.3174683566319345e-11
+        },
+        {
+          "kind": "released_cap_comparison",
+          "side": 1,
+          "fluid_and_order": 0.37637343049965366,
+          "total": 0.37637343049965366,
+          "difference": 1.1793510612534419e-11
+        },
+        {
+          "kind": "retention_comparison",
+          "ratio": 0.84242721839215,
+          "difference": 0.0
+        }
+      ]
+    },
+    "transfer/independent": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_polar_shape_endpoint_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound/coupled.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "--transfer-from",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "--controls",
+        "_scratch/s11c/r4_disk_balance01/polar_transfer/controls.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "stdout_sha256": "576d6580d42cf2b7ceb819ce2fe1b688997cf288e5a1a489b4bb9e059e1a4ee6",
+      "readout": [
+        {
+          "kind": "transfer_source",
+          "coarse_sha256": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "fine_sha256": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "source_material_mesh": [
+            24,
+            24
+          ],
+          "target_material_mesh": [
+            33,
+            32
+          ]
+        },
+        {
+          "kind": "wall_geometry",
+          "checkpoint": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "angle": "pole",
+          "depth": 0.79590446234903,
+          "exit": 3.5012263217004334,
+          "minimum_difference": 4.440892098500626e-16,
+          "widest_depth_difference": 0.0,
+          "minimum": 3.501226321700434,
+          "maximum": 4.0,
+          "narrowest_depth": 0.79590446234903,
+          "widest_depth": 0.0
+        },
+        {
+          "kind": "wall_geometry",
+          "checkpoint": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "angle": "equator",
+          "depth": 0.79590446234903,
+          "exit": 3.5012263217004334,
+          "minimum_difference": 4.440892098500626e-16,
+          "widest_depth_difference": 0.0,
+          "minimum": 3.501226321700434,
+          "maximum": 4.0,
+          "narrowest_depth": 0.79590446234903,
+          "widest_depth": 0.0
+        },
+        {
+          "kind": "maximum_polar_split",
+          "radii": [
+            3.837412740837405,
+            3.837151149420313
+          ],
+          "quadrupole": 0.0001743942780611947,
+          "depth": 0.2706075171986702,
+          "polar_minus_equatorial": 0.000261591417091811
+        },
+        {
+          "kind": "held_energy",
+          "recorded": 3881.917094104389,
+          "reconstructed": 3881.917094104389,
+          "difference": 0.0
+        },
+        {
+          "kind": "independent_strain_and_flow",
+          "maximum_difference": 1.2434497875801753e-14,
+          "min_J": 0.12705383960275263,
+          "max_J": 1.602681538109276,
+          "min_stretch": 0.3042993416156594,
+          "max_stretch": 1.7358052557740427,
+          "feed_current": 11.616844147137483,
+          "bulk_current": 11.616844147137524,
+          "dense_total_subsonic_share": 0.7047685257139757
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "h": 5e-05,
+          "slope": 0.9188796229864238,
+          "recorded_projection": 0.918872176498553,
+          "difference": 7.44648787076585e-06
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "h": 2.5e-05,
+          "slope": 0.9189008233079221,
+          "recorded_projection": 0.918872176498553,
+          "difference": 2.8646809369092807e-05
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "h": 5e-05,
+          "slope": 0.0019587469068937935,
+          "recorded_projection": 0.0019587309907365125,
+          "difference": 1.5916157281026244e-08
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "h": 2.5e-05,
+          "slope": 0.00195856046047993,
+          "recorded_projection": 0.0019587309907365125,
+          "difference": -1.7053025658242404e-07
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.6,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.8
+          ],
+          "h": 5e-05,
+          "slope": 0.5497744223248446,
+          "recorded_projection": 0.5497563211065426,
+          "difference": 1.8101218302035704e-05
+        },
+        {
+          "kind": "signed_endpoint_work",
+          "direction": [
+            0.6,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.8
+          ],
+          "h": 2.5e-05,
+          "slope": 0.5497752135852352,
+          "recorded_projection": 0.5497563211065426,
+          "difference": 1.8892478692578152e-05
+        },
+        {
+          "kind": "released_cap_comparison",
+          "side": -1,
+          "fluid_and_order": 0.8613221104864935,
+          "total": 0.8508818195581649,
+          "difference": -1.3110734720100936e-11
+        },
+        {
+          "kind": "released_cap_comparison",
+          "side": 1,
+          "fluid_and_order": 0.3766740659979545,
+          "total": 0.3766740659979545,
+          "difference": 1.1781020603507386e-11
+        },
+        {
+          "kind": "retention_comparison",
+          "ratio": 0.842426447292734,
+          "difference": 0.0
+        }
+      ]
+    }
+  },
+  "shape": {
+    "coarse": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/src/mouth_joint_polar_shape.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound_mesh8/coupled.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/coarse"
+      ],
+      "native_exit": 1,
+      "guard_exit": 1,
+      "stdout_sha256": "d177d64c077b88f537ad575871dc7e370fbe894fbab2452465f0469066aa4479",
+      "rows": [
+        {
+          "kind": "preparation",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "joint": "2a0159cb0e925c04f7120b14f3b23c6e19763a42d5dbb402c88c499ecce98d66",
+          "material_cells": [
+            24,
+            24
+          ],
+          "field_grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 1
+        },
+        {
+          "kind": "accepted_shape",
+          "iteration": 0,
+          "coordinates": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "depth": 0.7933162642560434,
+          "exit": 3.494726169232207,
+          "pole_minimum": 3.494726169232207,
+          "equator_minimum": 3.494726169232207,
+          "widest_depth_pole": 0.0,
+          "widest_depth_equator": 0.0,
+          "energy": 3882.8821366106495,
+          "global_forces": [
+            1.874342297014664,
+            -1.2388525487949664,
+            -10.73352903176783,
+            -19.002214608008217,
+            -11.521007420469687,
+            0.08405937705902033
+          ],
+          "internal": {
+            "material_residual": 3.658155153629661e-06,
+            "field_residual": 1.7963375868347245e-07,
+            "exchange_error": -3.115285807098189e-13,
+            "order_step": 0.0,
+            "sweeps": 1,
+            "receiver_residual": 6.1167679501118625e-12,
+            "receiver_newton_steps": 2
+          },
+          "crystal": {
+            "energy": 51.55928949268567,
+            "min_J": 0.1386594924757554,
+            "max_J": 1.5275901088651658,
+            "min_stretch": 0.343516225246009,
+            "max_stretch": 1.6836780308366635,
+            "minimum_order": 0.27910610852279305,
+            "peak_join_radial": 0.015427970839404226,
+            "peak_join_axial": 0.014162188511854712,
+            "middle_join_motion": [
+              -0.00777092663689401,
+              -0.013961439762387881
+            ]
+          },
+          "flow": {
+            "excess_energy": 0.050264876445494044,
+            "feed_current": 11.643698952199268,
+            "bulk_current": 11.643698952199198,
+            "port_error": 6.927791673660977e-14,
+            "weak_disk_current": 11.643699479726326,
+            "incident_slice_current": 11.643699479726326,
+            "receiving_slice_current": 10.488003769896347,
+            "positive_slice_current": 11.643699479726326,
+            "dense_total_subsonic_share": 0.6896469423350224,
+            "minimum_total_mach": 0.3880057449993585,
+            "total_axial_stress": -85.88068297241519,
+            "crystalline_range_in_band": [
+              0.03137049627764485,
+              0.9475018412535452
+            ]
+          },
+          "sha256": "e4976499d38b17fe46856cffac9fd70fd3d261a9b424f9185c2f93e96297737c"
+        },
+        {
+          "kind": "accepted_shape",
+          "iteration": 1,
+          "coordinates": [
+            0.0029768097254202733,
+            -0.004006654700330267,
+            -0.006754447773854511,
+            -0.020773686444259067,
+            -0.007365525755683397,
+            0.00016963940257820912
+          ],
+          "depth": 0.7956813342620276,
+          "exit": 3.4912273815709165,
+          "pole_minimum": 3.4912273815709165,
+          "equator_minimum": 3.4912273815709165,
+          "widest_depth_pole": 0.0,
+          "widest_depth_equator": 0.0,
+          "energy": 3882.501123772692,
+          "global_forces": [
+            0.9266202164326387,
+            2.2312595842777228,
+            0.2352440174036019,
+            -10.280939625317842,
+            0.845047782149777,
+            0.00048434458221890964
+          ],
+          "internal": {
+            "material_residual": 1.390645524473183e-05,
+            "field_residual": 1.748821631247983e-07,
+            "exchange_error": -2.5002222514558525e-13,
+            "order_step": 3.787256886711443e-07,
+            "sweeps": 7,
+            "receiver_residual": 5.116675543565367e-09,
+            "receiver_newton_steps": 1
+          },
+          "crystal": {
+            "energy": 52.36054040235915,
+            "min_J": 0.12768173438718483,
+            "max_J": 1.573011410376518,
+            "min_stretch": 0.3382647405134343,
+            "max_stretch": 1.7072557784230826,
+            "minimum_order": 0.26125333007918683,
+            "peak_join_radial": 0.01893966540895262,
+            "peak_join_axial": 0.014746681762290407,
+            "middle_join_motion": [
+              -0.0006207015589934969,
+              -0.01469329292918192
+            ],
+            "core_polar_change": 7.814593142567539e-07,
+            "inner_collar_polar_change": 2.004391686802131e-06
+          },
+          "flow": {
+            "excess_energy": -0.33291693688777513,
+            "feed_current": 11.588874963722986,
+            "bulk_current": 11.588874963723224,
+            "port_error": 2.3803181647963356e-13,
+            "weak_disk_current": 11.588875529761943,
+            "incident_slice_current": 11.588875529761944,
+            "receiving_slice_current": 10.471432571382506,
+            "positive_slice_current": 11.588875529761944,
+            "dense_total_subsonic_share": 0.6966216923387203,
+            "minimum_total_mach": 0.3893595075206323,
+            "total_axial_stress": -89.06499455814304,
+            "crystalline_range_in_band": [
+              0.03090399845067407,
+              0.9471317232685595
+            ]
+          },
+          "sha256": "e84b35ef064e788c71c35d8d382424d8fecc35f2293ade5b5f5702b27d21492e"
+        },
+        {
+          "kind": "accepted_shape",
+          "iteration": 2,
+          "coordinates": [
+            0.006054224219821517,
+            0.006103726716559526,
+            -0.008333074620051575,
+            -0.04375180984909177,
+            -0.00849992053928346,
+            0.00021656330343211387
+          ],
+          "depth": 0.7981337471430229,
+          "exit": 3.5000629533521894,
+          "pole_minimum": 3.5000629533521894,
+          "equator_minimum": 3.5000629533521894,
+          "widest_depth_pole": 0.0,
+          "widest_depth_equator": 0.0,
+          "energy": 3882.368167112601,
+          "global_forces": [
+            -1.7976446474676777,
+            0.34745729635687894,
+            -1.0843075619959563,
+            -0.28963976774321054,
+            1.3159580794308567,
+            -0.022146255105326418
+          ],
+          "internal": {
+            "material_residual": 4.19634104247002e-06,
+            "field_residual": 1.787168091232199e-07,
+            "exchange_error": 2.4513724383723456e-13,
+            "order_step": 2.188690807480853e-07,
+            "sweeps": 7,
+            "receiver_residual": 7.54120468685857e-10,
+            "receiver_newton_steps": 1
+          },
+          "crystal": {
+            "energy": 51.42143115587602,
+            "min_J": 0.12064163837565343,
+            "max_J": 1.6390572056595762,
+            "min_stretch": 0.33404156705742566,
+            "max_stretch": 1.7046710743767706,
+            "minimum_order": 0.2466402430482929,
+            "peak_join_radial": 0.024604694853532796,
+            "peak_join_axial": 0.014642841977038834,
+            "middle_join_motion": [
+              0.00019641961020228785,
+              -0.014635660774545235
+            ],
+            "core_polar_change": 1.2647713218554954e-06,
+            "inner_collar_polar_change": 3.2560848566677137e-06
+          },
+          "flow": {
+            "excess_energy": -0.6854703043368127,
+            "feed_current": 11.609086767631657,
+            "bulk_current": 11.60908676763183,
+            "port_error": 1.723066134218243e-13,
+            "weak_disk_current": 11.609087029918161,
+            "incident_slice_current": 11.609087029918163,
+            "receiving_slice_current": 10.524729306884986,
+            "positive_slice_current": 11.609087029918163,
+            "dense_total_subsonic_share": 0.7001628891994972,
+            "minimum_total_mach": 0.3884047419831,
+            "total_axial_stress": -92.11497993765784,
+            "crystalline_range_in_band": [
+              0.03052576691390576,
+              0.9467594036715435
+            ]
+          },
+          "sha256": "139445804cf1c0b41eff9e4bff0284dd2261ea5823e3e757be437503198a947c"
+        },
+        {
+          "kind": "accepted_shape",
+          "iteration": 3,
+          "coordinates": [
+            0.0032571943442568606,
+            0.007433045718528487,
+            -0.009155877092292944,
+            -0.04489291946549316,
+            -0.007767850292079181,
+            0.0001743942780611947
+          ],
+          "depth": 0.79590446234903,
+          "exit": 3.5012263217004334,
+          "pole_minimum": 3.5012263217004334,
+          "equator_minimum": 3.5012263217004334,
+          "widest_depth_pole": 0.0,
+          "widest_depth_equator": 0.0,
+          "energy": 3882.3626227598334,
+          "global_forces": [
+            -0.4773494970322645,
+            0.31612150678483886,
+            -1.099953165066836,
+            0.10421478918942739,
+            1.2183865305814834,
+            -0.0020294601199566387
+          ],
+          "internal": {
+            "material_residual": 1.1218360803789962e-05,
+            "field_residual": 1.958094479298004e-07,
+            "exchange_error": 1.438849039914203e-13,
+            "order_step": 2.5621239138629015e-07,
+            "sweeps": 6,
+            "receiver_residual": 9.886685253118877e-09,
+            "receiver_newton_steps": 1
+          },
+          "crystal": {
+            "energy": 51.66016911279205,
+            "min_J": 0.11846009071328849,
+            "max_J": 1.6359383771842941,
+            "min_stretch": 0.3291984368890666,
+            "max_stretch": 1.7034314739212886,
+            "minimum_order": 0.24509575968530445,
+            "peak_join_radial": 0.02495897310710679,
+            "peak_join_axial": 0.01439157793844108,
+            "middle_join_motion": [
+              0.0002038190563933578,
+              -0.01439157793844108
+            ],
+            "core_polar_change": 8.202897436641272e-07,
+            "inner_collar_polar_change": 2.1119241227277556e-06
+          },
+          "flow": {
+            "excess_energy": -0.7222667849555402,
+            "feed_current": 11.616869345010437,
+            "bulk_current": 11.616869345010599,
+            "port_error": 1.616484723854228e-13,
+            "weak_disk_current": 11.61686978887392,
+            "incident_slice_current": 11.61686978887392,
+            "receiving_slice_current": 10.534442311667892,
+            "positive_slice_current": 11.61686978887392,
+            "dense_total_subsonic_share": 0.7047734854049023,
+            "minimum_total_mach": 0.38823476552373193,
+            "total_axial_stress": -92.20732408247088,
+            "crystalline_range_in_band": [
+              0.03050132733566073,
+              0.9471042136254983
+            ]
+          },
+          "sha256": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34"
+        }
+      ],
+      "branch_kind": "unresolved",
+      "literal_error": "ArithmeticError: Bonded solid and front did not settle: {'material_residual': 0.0006830708042412943, 'field_residual': 1.985675685200875e-07, 'exchange_error': -2.8421709430404007e-13, 'order_step': 0.0, 'sweeps': 70, 'receiver_residual': 6.783093216956012e-09, 'receiver_newton_steps': 2}"
+    },
+    "refined": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/src/mouth_joint_polar_shape.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound/coupled.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/refined"
+      ],
+      "native_exit": 1,
+      "guard_exit": 1,
+      "stdout_sha256": "5152e69f71b00b09e8acb134263daa3f542cb029ebb0d41390801dd56c8378e2",
+      "rows": [
+        {
+          "kind": "preparation",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "joint": "c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226",
+          "material_cells": [
+            33,
+            32
+          ],
+          "field_grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 1
+        },
+        {
+          "kind": "accepted_shape",
+          "iteration": 0,
+          "coordinates": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "depth": 0.7933162642560434,
+          "exit": 3.494726169232207,
+          "pole_minimum": 3.494726169232207,
+          "equator_minimum": 3.494726169232207,
+          "widest_depth_pole": 0.0,
+          "widest_depth_equator": 0.0,
+          "energy": 3882.4477393748602,
+          "global_forces": [
+            1.4395119410437474,
+            -1.6868720967977424,
+            -11.290413335700578,
+            -19.109013014713128,
+            -11.87877077882149,
+            0.08405947937717428
+          ],
+          "internal": {
+            "material_residual": 5.069699165940328e-06,
+            "field_residual": 1.8246446848996945e-07,
+            "exchange_error": 2.5979218776228663e-14,
+            "order_step": 0.0,
+            "sweeps": 1,
+            "receiver_residual": 6.1167679501118625e-12,
+            "receiver_newton_steps": 2
+          },
+          "crystal": {
+            "energy": 51.11221104800028,
+            "min_J": 0.1455387515195517,
+            "max_J": 1.5467035870547565,
+            "min_stretch": 0.3327223557790085,
+            "max_stretch": 1.749817778124354,
+            "minimum_order": 0.27967436310756977,
+            "peak_join_radial": 0.015263949866733052,
+            "peak_join_axial": 0.013598728809430825,
+            "middle_join_motion": [
+              -0.007037846878978957,
+              -0.013236666345629155
+            ]
+          },
+          "flow": {
+            "excess_energy": 0.015805278349191765,
+            "feed_current": 11.643672317825471,
+            "bulk_current": 11.643672317825006,
+            "port_error": 4.654054919228656e-13,
+            "weak_disk_current": 11.643672451442683,
+            "incident_slice_current": 11.643672451442683,
+            "receiving_slice_current": 10.487924391643782,
+            "positive_slice_current": 11.643672451442683,
+            "dense_total_subsonic_share": 0.6896419179328013,
+            "minimum_total_mach": 0.38800400555969466,
+            "total_axial_stress": -84.98626187006779,
+            "crystalline_range_in_band": [
+              0.031370283154964144,
+              0.9474895676737903
+            ]
+          },
+          "sha256": "d42e9571aaa4f86f28f487fd7959a2a9071fb6ec481d3607144fb57779ef661c"
+        }
+      ],
+      "branch_kind": "unresolved",
+      "literal_error": "ArithmeticError: Bonded solid and front did not settle: {'material_residual': 3.406225349307859e-05, 'field_residual': 1.4380974562368665e-07, 'exchange_error': -8.126832540256146e-14, 'order_step': 0.0, 'sweeps': 70, 'receiver_residual': 8.006883960331134e-09, 'receiver_newton_steps': 1}"
+    },
+    "transfer/refined": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/transfer/src/mouth_joint_polar_shape.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound/coupled.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/transfer/refined",
+        "--from-accepted",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz"
+      ],
+      "native_exit": 1,
+      "guard_exit": 1,
+      "stdout_sha256": "ea232d53779a636038558235b024cf6becdffc1d0e728faa4952d861e0af3f49",
+      "source_sha256": {
+        "mouth_bonded_front_adjoint.py": "99c62d9c4d683ab36fc4d1d51a4890bddf5c2eb08cb80aea2a30cbb3438b18c2",
+        "mouth_joint_polar_shape.py": "bcdcd7639d4eb13eacafca6d20bef8d33f690dbff4259b6993d0af9fef449eb6",
+        "mouth_joined_front_stationarity.py": "15933b1cfe35b9510e586294e7fa33bea5b8e419522ecdd0c813e27f3f769e2f",
+        "mouth_polar_joined.py": "e8263eb26e5993d06ad24f406cff0073cc8ae7f613359968fffc8e43d291b24d",
+        "mouth_receiver_order_equilibrium.py": "803f062b7094b2b5bc82ae1fcb3be9e55978c144b2d1ee1df89e6deaea2d1665",
+        "mouth_receiver_order_control.py": "0729ea9871c408a2cf1261d8134d8c328c4d96a43b0f5a8dd7d6052c11367b0d",
+        "mouth_bonded_material_motion.py": "abfe40bfaa82777f10202ce3a7600f4cbac147c7d7171e2a882646428669662f",
+        "mouth_polar_bonded.py": "38b484edee2d95f2f9115fcf3a3bd2f4016c68c928f8ea968596a6c27a629356",
+        "mouth_bonded_material_residual.py": "93a5434ac83f21eb53b6c71446ad0bf2ac442a8ba097d271693ac5b71de332d8"
+      },
+      "rows": [
+        {
+          "kind": "preparation",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "joint": "c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226",
+          "material_cells": [
+            33,
+            32
+          ],
+          "field_grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 1
+        },
+        {
+          "kind": "mesh_transfer",
+          "state": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "coordinates": [
+            0.0032571943442568606,
+            0.007433045718528487,
+            -0.009155877092292944,
+            -0.04489291946549316,
+            -0.007767850292079181,
+            0.0001743942780611947
+          ],
+          "source_material_mesh": [
+            24,
+            24
+          ],
+          "target_material_mesh": [
+            33,
+            32
+          ]
+        },
+        {
+          "kind": "accepted_shape",
+          "iteration": 0,
+          "coordinates": [
+            0.0032571943442568606,
+            0.007433045718528487,
+            -0.009155877092292944,
+            -0.04489291946549316,
+            -0.007767850292079181,
+            0.0001743942780611947
+          ],
+          "depth": 0.79590446234903,
+          "exit": 3.5012263217004334,
+          "pole_minimum": 3.5012263217004334,
+          "equator_minimum": 3.5012263217004334,
+          "widest_depth_pole": 0.0,
+          "widest_depth_equator": 0.0,
+          "energy": 3881.917094104389,
+          "global_forces": [
+            -0.918872176498553,
+            -0.13183422197471373,
+            -1.7574550793142407,
+            -0.09787224371393677,
+            0.7352303714469599,
+            -0.0019587309907365125
+          ],
+          "internal": {
+            "material_residual": 4.709288860968228e-06,
+            "field_residual": 1.9708210652348392e-07,
+            "exchange_error": -3.730349362740526e-14,
+            "order_step": 0.0,
+            "sweeps": 6,
+            "receiver_residual": 9.886685253118877e-09,
+            "receiver_newton_steps": 1
+          },
+          "crystal": {
+            "energy": 51.203342722152705,
+            "min_J": 0.1270538396027526,
+            "max_J": 1.6026815381092758,
+            "min_stretch": 0.30429934161565936,
+            "max_stretch": 1.7358052557740427,
+            "minimum_order": 0.24542772975570654,
+            "peak_join_radial": 0.026621764890388207,
+            "peak_join_axial": 0.01376700154005424,
+            "middle_join_motion": [
+              0.000983736314398024,
+              -0.013637821213835225
+            ],
+            "core_polar_change": 8.228904958338324e-07,
+            "inner_collar_polar_change": 2.1031636566471865e-06
+          },
+          "flow": {
+            "excess_energy": -0.7585020933806326,
+            "feed_current": 11.616844147137495,
+            "bulk_current": 11.616844147137526,
+            "port_error": 3.019806626980426e-14,
+            "weak_disk_current": 11.616844337058208,
+            "incident_slice_current": 11.616844337058208,
+            "receiving_slice_current": 10.534369793417357,
+            "positive_slice_current": 11.616844337058208,
+            "dense_total_subsonic_share": 0.7047685257139757,
+            "minimum_total_mach": 0.38823340048254423,
+            "total_axial_stress": -91.24466243988533,
+            "crystalline_range_in_band": [
+              0.03050113934483648,
+              0.9470922813394023
+            ]
+          },
+          "sha256": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb"
+        }
+      ],
+      "branch_kind": "unresolved",
+      "literal_error": "ArithmeticError: No verified smooth material equilibrium at residual 0.0008128832206617774"
+    }
+  },
+  "independent_review": {
+    "shape": "scoped clear for projected motion and the two solid meshes compared at the same transferred geometry; an equilibrium shape and whole-disk force closure remain unresolved.",
+    "receiver": "scoped clear for the reduced stationary receiving order under those shape and load tests.",
+    "disk": "scoped clear for the two solid meshes compared on the same transferred geometry and for the measured thickness-dependent stress; whole-disk force closure remains unresolved.",
+    "disk_and_material_supplements": [
+      "mouth_disk_pillbox.json",
+      "mouth_polar_material_work.json"
+    ]
+  },
+  "reproduction": {
+    "coarse_and_original_refined": "Use --lbfgs-only with their recorded starting fields and solid mesh.",
+    "fine_transfer": "Use --from-accepted on coarse accepted_003 and --polish-target 1e-5. The later force was 0.0008128832206617774. Final source also accepts a sufficiently small last-iteration polishing residual and validates input provenance.",
+    "controls": "The ordered shaft is carried as a reference field. The terminal-band order and the native exterior meridional order are independently re-equilibrated. Neither checks all angular solid and order variations."
+  }
+}

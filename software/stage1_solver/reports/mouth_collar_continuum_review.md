@@ -1,0 +1,16 @@
+# Independent review of the radius-four collar release
+
+**The held mouth drains, but the wall is still driven to change shape.** I reviewed the saved state in which the same quadrature transfers work between the bonded crystal and the finite conversion layer (SHA-256 `c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226`). Internal material and field residuals reached 0.00000507 and 0.000000182. The shape, background order and exterior crystal registration were held for that solve. The sampled material Jacobian stayed positive, with minimum 0.14554 and principal stretches of 0.33272–1.74982. [Material and front energy transfer](../tools/mouth_bonded_front_adjoint.py)
+
+**Shape work.** Recomputing minus the centered derivative from all four recorded energy terms gives the following forces. The coordinates are the shape solver’s scaled amplitudes. Both the reference crystal energy and the work modifying the front enter once. The trial along the combined force lowered energy by 0.00750777. Halving the step lowered it by 0.00377214. [Signed shape variation](../tools/mouth_bonded_shape_work.py)
+
+| Shape step | Depth | Exit | Middle | Upper minus lower | Waist |
+|---:|---:|---:|---:|---:|---:|
+| 0.00030 | +1.4400 | −1.6869 | −11.2909 | −19.1094 | −11.8790 |
+| 0.00015 | +1.4413 | −1.6862 | −11.2875 | −19.1078 | −11.8797 |
+
+**Polar work.** A straight vortex picks out an axis. Moving the poles outward and the equator inward tests a shape change with zero angular mean at each depth. Restricting this motion to 6%–62% of depth gave force +0.08405949 with winding and −0.00000021 without it. Independently restricting it to 10%–70% of depth gave +0.10094573 and −0.00000021. The entrance, exit and conversion band were fixed for both variations. The persisting polar force prevents a round meridian alone from certifying equilibrium. The sign demonstrates a direction of deformation and leaves the eventual shape open. [Matched controls](../tools/mouth_bonded_front_controls.py) · [Independent angular calculation](../tools/mouth_joined_angular_witness.py)
+
+**Drainage and stress.** The wound intake was 11.64367 against 13.81320 without winding on the same lattice. Dense, subsonic material carried 68.96% of positive current in the last inside cell layer. The conserved weak disk current was 11.64367. Gradients evaluated directly at the same disk gave currents 11.77861 and 10.50136 from opposite sides. Flow-induced axial stress relative to zero bias was +1.08657 and +0.44241 for the coherent carrier and order fields. Skeletal elastic stress is separate. The remaining gap between the traces limits the precision of a unique disk traction. [Disk gradients](../tools/mouth_joined_front_trace.py)
+
+Earlier whole-depth releases lowered crystal energy by 1.67279 and 1.73287 on two grids with the measured angular order correction imposed on the original material order. Those tests established that a permanent bond accommodates internal motion. A free-release test now requires self-consistent balance of the meridional and angular shape forces as well as the internal elastic response. [Bonded material calculation](../tools/mouth_bonded_material_motion.py) · [Reviewed measurements](../../../research/pde_ledger_v3/_measurements/mouth_collar_continuum_review.json)

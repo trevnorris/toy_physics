@@ -1,0 +1,698 @@
+{
+  "source_sha256": {
+    "mouth_bonded_material_motion.py": "09865061d9f2d5c7e90db56d5589cb98b804ee8b11804ee47aa8a044f68621cb",
+    "mouth_bonded_front_feedback.py": "268ff750c5fe266c744ed2a213221da2c92d684e5a13968b6f76074fe2cad90c",
+    "mouth_bonded_front_transfer_review.py": "d83d6b02a9d905b10b5fc6a3d2b8c47a2b6fa9a0cceed74ac9d42d3c60bf70cf",
+    "mouth_bonded_front_adjoint.py": "99c62d9c4d683ab36fc4d1d51a4890bddf5c2eb08cb80aea2a30cbb3438b18c2",
+    "mouth_bonded_front_adjoint_review.py": "ded2b79674d5463cd44cfb3ca672b3419e4217fe89dadf625210071a92e6e5e6",
+    "mouth_bonded_final_gradient_review.py": "40f01f42025f87eee50fa4189c5c5dfd5be79bf72304be419825b602e87070d6"
+  },
+  "field_sha256": {
+    "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+    "wound": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486",
+    "unwound": "21de867d4781a0380dd57bd8dc600036c00349e03f88df08656a7bcc2ad241dc",
+    "motion": "513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae",
+    "held_conjugate_state": "c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226"
+  },
+  "runs": {
+    "material": {
+      "sha256": "80936f39cfde38d738eeb3dc18d9831289163b54c0f9b728da23012de32c1504",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_material_motion.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "--n",
+        "11",
+        "--k",
+        "32",
+        "--joined",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "--save",
+        "_scratch/s11c/joint_collar4_01/bond309_11/displacement.npz"
+      ],
+      "exit": 0,
+      "memory_cap": 2147483648,
+      "swap": 0,
+      "rows": [
+        {
+          "kind": "directional_check",
+          "step": 0.0001,
+          "analytic": -0.01393612908679882,
+          "signed": -0.01393613189293319
+        },
+        {
+          "kind": "directional_check",
+          "step": 5e-05,
+          "analytic": -0.01393612908679882,
+          "signed": -0.013936126563862672
+        },
+        {
+          "kind": "initial",
+          "sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "depth_span": [
+            0.0,
+            1.0
+          ],
+          "resolved_order_sha256": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486",
+          "radial_cells": 33,
+          "axial_cells": 32,
+          "energy": 53.09981776735655,
+          "min_J": 0.21588756055655262,
+          "max_J": 1.5858488489995597,
+          "min_stretch": 0.43620292765732577,
+          "max_stretch": 1.729706570015294,
+          "minimum_order": 0.3010463337105789,
+          "peak_join_radial": 0.0,
+          "peak_join_axial": 0.0,
+          "middle_join_motion": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "kind": "bonded_release",
+          "displacement_sha256": "513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae",
+          "energy": 51.364089554490704,
+          "min_J": 0.15475203696954504,
+          "max_J": 1.545993836703858,
+          "min_stretch": 0.360636458747673,
+          "max_stretch": 1.749226506825268,
+          "minimum_order": 0.2992437577204813,
+          "peak_join_radial": 0.015208231919830303,
+          "peak_join_axial": 0.015266190625539734,
+          "middle_join_motion": [
+            -0.007202116376644322,
+            -0.014665173055827325
+          ],
+          "energy_change": -1.735728212865844,
+          "native_free_residual": 3.596843082638232e-06,
+          "scaled_residual": 7.376333548465298e-08,
+          "iterations": 273,
+          "optimizer": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "scope": "Both bonded pieces mobile inside the indicated window, all its boundary coordinates held except radial symmetry axis."
+        }
+      ]
+    },
+    "returned_wound": {
+      "sha256": "e577e8cb8729700f5579ba4c145411956ea952b2c515bcab88aa297e648b3777",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_feedback.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/bond309_11/displacement.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "_scratch/s11c/joint_collar4_01/reciprocal309_wound/live.npz"
+      ],
+      "exit": 0,
+      "memory_cap": 2147483648,
+      "swap": 0,
+      "rows": [
+        {
+          "kind": "preparation",
+          "grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 1,
+          "source_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "flow_sha256": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486",
+          "displacement_sha256": "513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae",
+          "original_order_sha256": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486",
+          "zero_motion_error": 3.1086244689504383e-15
+        },
+        {
+          "kind": "rematched",
+          "rest": false,
+          "excess_energy": 0.07635511022020247,
+          "feed_current": 11.643709450727224,
+          "bulk_current": 11.643709450727151,
+          "port_error": 7.283063041541027e-14,
+          "weak_disk_current": 11.643709489905588,
+          "incident_slice_current": 11.643709489905588,
+          "receiving_slice_current": 10.488150090943732,
+          "positive_slice_current": 11.643709489905588,
+          "dense_total_subsonic_share": 0.6896472478734277,
+          "minimum_total_mach": 0.38801365200441157,
+          "total_axial_stress": -85.87094413498075,
+          "crystalline_range_in_band": [
+            0.031370343450081044,
+            0.9474862401614477
+          ],
+          "stationarity": 1.3811499484128807e-07,
+          "max_additional_order_change": 0.026088413461502785
+        },
+        {
+          "kind": "rematched",
+          "rest": true,
+          "excess_energy": -2.5526444203342193,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.3273747596628238,
+          "total_axial_stress": -86.9465890182913,
+          "crystalline_range_in_band": [
+            0.03137038661163048,
+            0.9474862318490299
+          ],
+          "stationarity": 1.293655070196623e-07,
+          "max_additional_order_change": 0.026085463533552206
+        },
+        {
+          "kind": "state",
+          "field_sha256": "762dc8ed43791b141fa99be57ab72b0e8702f29d85a0fe77118365472740c0b4"
+        }
+      ]
+    },
+    "returned_unwound": {
+      "sha256": "bc2c2f86c3505a0d03a4baa2b68754b20b924a60b3a3e3b84225cebe56610a39",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_feedback.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/bond309_11/displacement.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_zero/live.npz",
+        "_scratch/s11c/joint_collar4_01/reciprocal309_zero/live.npz"
+      ],
+      "exit": 0,
+      "memory_cap": 2147483648,
+      "swap": 0,
+      "rows": [
+        {
+          "kind": "preparation",
+          "grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 0,
+          "source_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "flow_sha256": "21de867d4781a0380dd57bd8dc600036c00349e03f88df08656a7bcc2ad241dc",
+          "displacement_sha256": "513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae",
+          "original_order_sha256": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486",
+          "zero_motion_error": 3.1086244689504383e-15
+        },
+        {
+          "kind": "rematched",
+          "rest": false,
+          "excess_energy": 0.748929813848082,
+          "feed_current": 13.8132257334357,
+          "bulk_current": 13.813225733435772,
+          "port_error": 7.105427357601002e-14,
+          "weak_disk_current": 13.813225671708045,
+          "incident_slice_current": 13.813225671708047,
+          "receiving_slice_current": 12.562578084239298,
+          "positive_slice_current": 13.813225671708047,
+          "dense_total_subsonic_share": 1.0,
+          "minimum_total_mach": 0.027477694804003767,
+          "total_axial_stress": -55.443759033879786,
+          "crystalline_range_in_band": [
+            0.0313703608387955,
+            0.9474862432245726
+          ],
+          "stationarity": 1.29430003779094e-07,
+          "max_additional_order_change": 0.026087509152236815
+        },
+        {
+          "kind": "rematched",
+          "rest": true,
+          "excess_energy": -2.3676401013908306,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.0,
+          "total_axial_stress": -56.41436651107669,
+          "crystalline_range_in_band": [
+            0.03137038661163049,
+            0.9474862318490289
+          ],
+          "stationarity": 1.2936551365439164e-07,
+          "max_additional_order_change": 0.026085463540545528
+        },
+        {
+          "kind": "state",
+          "field_sha256": "14d3db734af7c9eedbf07edaa0d7ee5be3d4deba4ef709cfea3bc0441ed95831"
+        }
+      ]
+    },
+    "pointwise_and_work": {
+      "sha256": "0041cb057b9e95c3e3de37f71e13e172f893766772ded5dc3b9b0aa81dab00d9",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_transfer_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/bond309_11/displacement.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz"
+      ],
+      "exit": 0,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "rows": [
+        {
+          "kind": "independent_pointwise_W_over_J",
+          "eps": 4e-07,
+          "count": 3200,
+          "max_absolute": 9.246850396493755e-09,
+          "max_relative_to_one": 2.6144895828332085e-09,
+          "min_displacement_J": 0.6445450158131162,
+          "native_range": [
+            0.025432211634381988,
+            6.422057411052531
+          ]
+        },
+        {
+          "kind": "independent_pointwise_W_over_J",
+          "eps": 2e-07,
+          "count": 3200,
+          "max_absolute": 1.367897795034878e-08,
+          "max_relative_to_one": 5.838898511823326e-09,
+          "min_displacement_J": 0.6445450162396995,
+          "native_range": [
+            0.025432211634381988,
+            6.422057411052531
+          ]
+        },
+        {
+          "kind": "reciprocal_work",
+          "step": 0.0004,
+          "coordinates": "scale all solved displacements, hold outer geometry and joined order fixed",
+          "d_material_with_front": -9.08109143438196e-07,
+          "d_material_without_front": 0.49290530218293327,
+          "d_delta_order_material_quadrature": -0.4929062102920767,
+          "d_delta_order_joined_quadrature": -0.7757396944935158,
+          "source_work_defect": -0.28283348420143906,
+          "native_energies": [
+            51.364089554490704,
+            52.76491796512045,
+            -1.4008284106297495,
+            -1.466668573784468
+          ]
+        },
+        {
+          "kind": "reciprocal_work",
+          "step": 0.0002,
+          "coordinates": "scale all solved displacements, hold outer geometry and joined order fixed",
+          "d_material_with_front": 5.314433337844093e-06,
+          "d_material_without_front": 0.49291569517606604,
+          "d_delta_order_material_quadrature": -0.4929103807427282,
+          "d_delta_order_joined_quadrature": -0.7757396651897341,
+          "source_work_defect": -0.28282928444700595,
+          "native_energies": [
+            51.364089554490704,
+            52.76491796512045,
+            -1.4008284106297495,
+            -1.466668573784468
+          ]
+        },
+        {
+          "kind": "provenance",
+          "source_sha": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "flow_sha": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486",
+          "motion_sha": "513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae"
+        }
+      ]
+    },
+    "conjugate_source_review": {
+      "sha256": "56c959b394ff9eaf5ae145e1c398647d2904c1e471f00640946923b42541bb0e",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_adjoint_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "_scratch/s11c/joint_collar4_01/bond309_11/displacement.npz"
+      ],
+      "exit": 0,
+      "memory_cap": 4294967296,
+      "swap": 0,
+      "rows": [
+        {
+          "kind": "value",
+          "field": "measured",
+          "independent": -1.4008284106303412,
+          "deposited": -1.4008284106303435,
+          "error": -2.220446049250313e-15
+        },
+        {
+          "kind": "slope",
+          "field": "measured",
+          "step": 0.0004,
+          "independent": -0.4929062104169768,
+          "deposited": -0.4929062104158666,
+          "error": 1.1102230246251565e-12
+        },
+        {
+          "kind": "slope",
+          "field": "measured",
+          "step": 0.0002,
+          "independent": -0.4929103815665137,
+          "deposited": -0.4929103815670688,
+          "error": -5.551115123125783e-13
+        },
+        {
+          "kind": "value",
+          "field": "signed_angular",
+          "independent": 0.0028264243534625276,
+          "deposited": 0.0028264243534626018,
+          "error": 7.41594285980085e-17
+        },
+        {
+          "kind": "slope",
+          "field": "signed_angular",
+          "step": 0.0004,
+          "independent": 0.02953794258375199,
+          "deposited": 0.029537942583784515,
+          "error": 3.252606517456513e-14
+        },
+        {
+          "kind": "slope",
+          "field": "signed_angular",
+          "step": 0.0002,
+          "independent": 0.029549908208280525,
+          "deposited": 0.029549908208478932,
+          "error": 1.9840726284137133e-13
+        },
+        {
+          "kind": "provenance",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "flow": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486",
+          "motion": "513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae"
+        }
+      ]
+    },
+    "conjugate_held_state": {
+      "sha256": "1b55180309a12f4607285c60129215d220aec6a9ceee4681d96489909ae30df3",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_adjoint.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/bond309_11/displacement.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound"
+      ],
+      "exit": 0,
+      "memory_cap": 2147483648,
+      "swap": 0,
+      "rows": [
+        {
+          "kind": "preparation",
+          "source_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "displacement_sha256": "513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae",
+          "flow_sha256": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486",
+          "winding": 1,
+          "grid": [
+            13,
+            10,
+            14
+          ],
+          "rest": false,
+          "material_mesh": [
+            33,
+            32
+          ],
+          "geometry": [
+            0.7933162642560434,
+            3.494726169232207
+          ]
+        },
+        {
+          "kind": "joint_sweep",
+          "iteration": 1,
+          "material_nodal_residual": 0.23179851106766167,
+          "field_stationarity": 8.385832518536049e-08,
+          "peak_step": 1.0306637893235604e-08,
+          "order_change": 0.023792015547573098,
+          "energy_varying_terms": 52.914317045091245,
+          "transfer_work": [
+            -1.4008284106297495,
+            -1.4008284106303435
+          ],
+          "signed_transfer_derivative": [
+            -0.49291603772871895,
+            -0.49291603830825537
+          ]
+        },
+        {
+          "kind": "joint_sweep",
+          "iteration": 2,
+          "material_nodal_residual": 0.05161094069264047,
+          "field_stationarity": 1.4397503759638731e-07,
+          "peak_step": 0.002386612833438414,
+          "order_change": 0.00526933106978264,
+          "energy_varying_terms": 52.9073816555433,
+          "transfer_work": [
+            -1.5867213528584543,
+            -1.586721352858486
+          ],
+          "signed_transfer_derivative": [
+            -0.5536883988810359,
+            -0.553688398796659
+          ]
+        },
+        {
+          "kind": "joint_sweep",
+          "iteration": 3,
+          "material_nodal_residual": 0.012331435256384013,
+          "field_stationarity": 1.7189085155296966e-07,
+          "peak_step": 0.000564793173454704,
+          "order_change": 0.001272851013665116,
+          "energy_varying_terms": 52.90699711477663,
+          "transfer_work": [
+            -1.731701527396794,
+            -1.7317015273967802
+          ],
+          "signed_transfer_derivative": [
+            -0.706394639280461,
+            -0.7063946378216279
+          ]
+        },
+        {
+          "kind": "joint_sweep",
+          "iteration": 4,
+          "material_nodal_residual": 0.0029378672699081343,
+          "field_stationarity": 1.7111951384931834e-07,
+          "peak_step": 0.00012836531774647244,
+          "order_change": 0.0002966964603592359,
+          "energy_varying_terms": 52.90697537231065,
+          "transfer_work": [
+            -1.7675929332738178,
+            -1.7675929332741325
+          ],
+          "signed_transfer_derivative": [
+            -0.7457151466638834,
+            -0.7457151473500012
+          ]
+        },
+        {
+          "kind": "joint_sweep",
+          "iteration": 5,
+          "material_nodal_residual": 0.0017607394550082853,
+          "field_stationarity": 1.34247150779831e-07,
+          "peak_step": 3.484043671704427e-05,
+          "order_change": 7.697192214994875e-05,
+          "energy_varying_terms": 52.90697398817096,
+          "transfer_work": [
+            -1.7760623873799943,
+            -1.7760623873798898
+          ],
+          "signed_transfer_derivative": [
+            -0.7550439011083654,
+            -0.755043899682839
+          ]
+        },
+        {
+          "kind": "joint_sweep",
+          "iteration": 6,
+          "material_nodal_residual": 0.00020525665450370212,
+          "field_stationarity": 1.9282344086605584e-07,
+          "peak_step": 1.7361230840667e-05,
+          "order_change": 2.2612151412138015e-05,
+          "energy_varying_terms": 52.90697389571876,
+          "transfer_work": [
+            -1.7782245260614076,
+            -1.778224526061268
+          ],
+          "signed_transfer_derivative": [
+            -0.7574627895934327,
+            -0.7574627923889743
+          ]
+        },
+        {
+          "kind": "joint_sweep",
+          "iteration": 7,
+          "material_nodal_residual": 4.2494712368421755e-05,
+          "field_stationarity": 1.5858529380892903e-07,
+          "peak_step": 2.0615717365957346e-06,
+          "order_change": 5.3685696529692795e-06,
+          "energy_varying_terms": 52.90697389023725,
+          "transfer_work": [
+            -1.7788117838106743,
+            -1.7788117838108417
+          ],
+          "signed_transfer_derivative": [
+            -0.758056185645728,
+            -0.7580561844555689
+          ]
+        },
+        {
+          "kind": "joint_sweep",
+          "iteration": 8,
+          "material_nodal_residual": 5.069699165940328e-06,
+          "field_stationarity": 1.8212743287007233e-07,
+          "peak_step": 4.5689234875480393e-07,
+          "order_change": 0.0,
+          "energy_varying_terms": 52.906973890039495,
+          "transfer_work": [
+            -1.778939593581633,
+            -1.7789395935815713
+          ],
+          "signed_transfer_derivative": [
+            -0.7582010795914584,
+            -0.758201080783838
+          ]
+        },
+        {
+          "kind": "held_equilibrium",
+          "sha256": "c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226",
+          "material_nodal_residual": 5.069699165940328e-06,
+          "field_stationarity": 1.8212743287007233e-07,
+          "energy": 51.11221104800028,
+          "min_J": 0.1455387515195517,
+          "max_J": 1.5467035870547565,
+          "min_stretch": 0.3327223557790085,
+          "max_stretch": 1.749817778124354,
+          "minimum_order": 0.27967436310756977,
+          "peak_join_radial": 0.015263949866733052,
+          "peak_join_axial": 0.013598728809430825,
+          "middle_join_motion": [
+            -0.007037846878978957,
+            -0.013236666345629155
+          ],
+          "excess_energy": 0.01580445514370088,
+          "feed_current": 11.643672317825471,
+          "bulk_current": 11.643672317825006,
+          "port_error": 4.654054919228656e-13,
+          "weak_disk_current": 11.643672451442683,
+          "incident_slice_current": 11.643672451442683,
+          "receiving_slice_current": 10.4879241168999,
+          "positive_slice_current": 11.643672451442683,
+          "dense_total_subsonic_share": 0.6896419179328013,
+          "minimum_total_mach": 0.38800400555969466,
+          "total_axial_stress": -84.98626187006779,
+          "crystalline_range_in_band": [
+            0.031370269641978865,
+            0.9474895676737903
+          ]
+        }
+      ]
+    },
+    "conjugate_final_gradients_review": {
+      "sha256": "c3afacdeb4f4bfde646c89a8e7e6cb0dfb187826f8d18f5d9a9734a0ffe0ddba",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_final_gradient_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound/coupled.npz"
+      ],
+      "exit": 0,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "rows": [
+        {
+          "kind": "reconstructed_final_residual",
+          "native_material": 5.069699165940328e-06,
+          "field_metric": 1.8212743287007233e-07
+        },
+        {
+          "kind": "gradient_check",
+          "perturbation": 0.0,
+          "axis": "material",
+          "step": 2e-06,
+          "analytic": -2.842346457119487e-06,
+          "direct": -1.1967316027039487e-05,
+          "error": -9.12496956992e-06
+        },
+        {
+          "kind": "gradient_check",
+          "perturbation": 0.0,
+          "axis": "material",
+          "step": 1e-06,
+          "analytic": -2.842346457119487e-06,
+          "direct": -5.428546501207165e-06,
+          "error": -2.5862000440876786e-06
+        },
+        {
+          "kind": "gradient_check",
+          "perturbation": 0.0,
+          "axis": "order",
+          "step": 2e-06,
+          "analytic": 3.8165253277324055e-06,
+          "direct": 3.8049563499953365e-06,
+          "error": -1.156897773706905e-08
+        },
+        {
+          "kind": "gradient_check",
+          "perturbation": 0.0,
+          "axis": "order",
+          "step": 1e-06,
+          "analytic": 3.8165253277324055e-06,
+          "direct": 3.858247055177344e-06,
+          "error": 4.172172744493846e-08
+        },
+        {
+          "kind": "gradient_check",
+          "perturbation": 0.0004,
+          "axis": "material",
+          "step": 2e-06,
+          "analytic": 1086.0844128218578,
+          "direct": 1086.0843822513289,
+          "error": -3.057052890653722e-05
+        },
+        {
+          "kind": "gradient_check",
+          "perturbation": 0.0004,
+          "axis": "material",
+          "step": 1e-06,
+          "analytic": 1086.0844128218578,
+          "direct": 1086.0845438571687,
+          "error": 0.00013103531091473997
+        },
+        {
+          "kind": "gradient_check",
+          "perturbation": 0.0004,
+          "axis": "order",
+          "step": 2e-06,
+          "analytic": 3.1435959093973045,
+          "direct": 3.1435958316450296,
+          "error": -7.775227484074776e-08
+        },
+        {
+          "kind": "gradient_check",
+          "perturbation": 0.0004,
+          "axis": "order",
+          "step": 1e-06,
+          "analytic": 3.1435959093973045,
+          "direct": 3.1435959861880747,
+          "error": 7.679077018707403e-08
+        },
+        {
+          "kind": "sources",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "flow": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486",
+          "coupled": "c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226"
+        }
+      ]
+    }
+  },
+  "scope": "Pointwise deformed W/J and virtual work of scaling the saved material displacement at a fixed shape and front order. Wound and conditional N0 readouts after one two-direction material/order exchange. Corrected common quadrature and independent material and order gradient tests on the final held-shape state."
+}

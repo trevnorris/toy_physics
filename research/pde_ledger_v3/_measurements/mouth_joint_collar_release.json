@@ -1,0 +1,431 @@
+{
+  "radius": 4,
+  "winding": 1,
+  "baseline": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+  "scope": "Two meridional material labels, a bonded core with prescribed deformation, five free shape coordinates and an ordered conducting interior. The finite front and polar variations independently test the resulting state.",
+  "pinned_source_hashes": {
+    "mouth_joint_collar_descent.py": "76e5e94220bfb106784ebde9ee7460e614825070d3e35a87eb0815ad1e2c084e",
+    "bonded_before_geometry.py": "09865061d9f2d5c7e90db56d5589cb98b804ee8b11804ee47aa8a044f68621cb",
+    "mouth_internal_collar.py": "ac394f3164809fb75e6bc992283972da06fbe762ffaf013575b9b937b87bb41d",
+    "mouth_joint_collar_release.py": "aa6ec7b497bebc390dd4db72841e4e3c148e1f9650d9ee1327ed0ea8fd0eee16"
+  },
+  "sources": {
+    "software/stage1_solver/tools/mouth_internal_collar.py": "af0b22ce0ef10ecd3103ee47f6737e24b134afbc3e271110ffc53f68fea6e916",
+    "software/stage1_solver/tools/mouth_joint_collar_release.py": "38f2dec937e5c635512fd27373c935d8955be7dcffb983d42fe8e42bd9154270",
+    "software/stage1_solver/tools/mouth_joint_collar_descent.py": "76e5e94220bfb106784ebde9ee7460e614825070d3e35a87eb0815ad1e2c084e",
+    "software/stage1_solver/tools/mouth_joined_angular_work.py": "15875cd778eeaaeb72aba8229b9dd59164ebc2dc9eac1aa5c196a5a60accd887",
+    "software/stage1_solver/tools/mouth_bonded_front_readout.py": "52fecfeb39fee10352e8c66fe8e32b3c42b7410640be28556a84bdb8cc839fe1",
+    "software/stage1_solver/tools/mouth_bonded_front_feedback.py": "268ff750c5fe266c744ed2a213221da2c92d684e5a13968b6f76074fe2cad90c",
+    "software/stage1_solver/tools/mouth_bonded_material_motion.py": "abfe40bfaa82777f10202ce3a7600f4cbac147c7d7171e2a882646428669662f",
+    "software/stage1_solver/tools/mouth_bonded_front_adjoint.py": "99c62d9c4d683ab36fc4d1d51a4890bddf5c2eb08cb80aea2a30cbb3438b18c2",
+    "software/stage1_solver/tools/mouth_bonded_front_controls.py": "52c4100438b1b5866f22bd43c22a8d7e2b4b7bb90ab233ac2ae914b3bac4f806",
+    "software/stage1_solver/tools/mouth_bonded_shape_work.py": "a9a216cca829e955b21d299f471cc6bea81ae9aa9e02071120b064b378d9af8f",
+    "software/stage1_solver/tools/mouth_poly_bonded_core.py": "7f884fecfc302f32203dacf6905628bb80f8db2e31c43533eea1789633d79ac0",
+    "software/stage1_solver/tools/mouth_live_waist_order.py": "bd1062a832e2f4257a93378e5712fc2b6b28f9e133e486b99c237c84c6a0e875",
+    "software/stage1_solver/tools/mouth_supercore_shape.py": "c4f3183fdbecabedd74f96f847cf136b1df73cd244f16312f9d07edc0cc43497",
+    "software/stage1_solver/tools/mouth_wound_carrier.py": "d347c7ba79388585dd1d075abefb98f3fb4804612b6a1a786c62ebb941783175",
+    "software/stage1_solver/tools/mouth_waist_outer_order.py": "cc9c3ae474145babc837c8d95e617f593eec969710a33ef9bf09a8ec130df981"
+  },
+  "runs": {
+    "coarse": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "python3",
+        "/var/projects/toy_physics/_scratch/s11c/joint_collar4_01/src/mouth_joint_collar_descent.py",
+        "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/joint_collar4_01/coarse",
+        "--order",
+        "16",
+        "--na",
+        "4",
+        "--nt",
+        "8",
+        "--flow",
+        "5",
+        "--polar",
+        "5"
+      ],
+      "guard_exit": 0,
+      "native_exit": 0,
+      "stdout_sha256": "8793776c587c5b087de1f14210218674b674368202dadea4ac30b998e7e70c8b",
+      "literal_readouts": [
+        "{\"kind\": \"preparation\", \"sha256\": \"3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e\", \"order_mesh\": 16, \"carrier_mesh\": 5, \"polar_mesh\": 5, \"half_collar_radial_cells\": 4, \"collar_depth_cells\": 8, \"registration\": [-1.3862943611198906], \"entrance\": 4, \"winding\": 1, \"disk\": \"sharp reversible\"}",
+        "{\"kind\": \"accepted\", \"iteration\": 1, \"energy\": 3910.8293731671743, \"state_sha256\": \"7216ed4566c74ca0de7d655c595cfdf24ee3d00e33cf01ac242a27e0cdcdb80b\", \"shape_force\": [-42.35551042635659, -24.05688671387907, -24.746983758632272, -0.8317762603837765, -18.62731649377262], \"lattice_nodal_residual\": 8.386075723877006, \"min_corner_inverse_J\": 1.0, \"min_J\": 0.32213507566123695, \"max_J\": 1.518204866745737, \"min_stretch\": 0.6163633483798718, \"max_stretch\": 1.2979022476886333, \"order_projected_residual\": 0.9954163207649024, \"bath_order_residual\": 4.898670269426475e-08, \"carrier_residual\": 3.532859585566534e-10, \"sharp_current\": 12.605389325184579, \"depth\": 0.8158284938933271, \"exit\": 3.573103420256027, \"waist\": 3.573103420256027, \"seam_work\": -35.51372490913984, \"receiver_edge_work\": 1.1321955847475413}",
+        "{\"kind\": \"accepted\", \"iteration\": 1133, \"energy\": 3901.83338981513, \"state_sha256\": \"61ce9cc6744c320181a0d7fc1f7f342546b61e0fff84bc6b735e4350e99896ea\", \"shape_force\": [-6.356761635591587e-05, -3.589396631772009e-05, -6.520470681910714e-05, 9.654134676869339e-05, 3.433115125517361e-05], \"lattice_nodal_residual\": 5.639114693370417e-05, \"min_corner_inverse_J\": 0.3737157807652053, \"min_J\": 0.11258056396557464, \"max_J\": 2.7889264800755056, \"min_stretch\": 0.21190837048934638, \"max_stretch\": 3.8141240537906036, \"order_projected_residual\": 2.2735619413905006e-05, \"bath_order_residual\": 2.8056319156810616e-08, \"carrier_residual\": 3.973358097345954e-10, \"sharp_current\": 12.235229252645349, \"depth\": 0.7606260459382733, \"exit\": 3.471099604179575, \"waist\": 3.471099604179575, \"seam_work\": -120.95880891178278, \"receiver_edge_work\": 1.4871988363518194}",
+        "{\"kind\": \"endpoint\", \"stationary_in_released_space\": true, \"active_shape_bound\": false, \"optimizer\": \"CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH\", \"accepted_count\": 1133, \"shape_force\": [-6.356761635591587e-05, -3.589396631772009e-05, -6.520470681910714e-05, 9.654134676869339e-05, 3.433115125517361e-05], \"lattice_nodal_residual\": 5.639114693370417e-05, \"min_corner_inverse_J\": 0.3737157807652053, \"min_J\": 0.11258056396557464, \"max_J\": 2.7889264800755056, \"min_stretch\": 0.21190837048934638, \"max_stretch\": 3.8141240537906036, \"order_projected_residual\": 2.2735619413905006e-05, \"bath_order_residual\": 2.8056319156810616e-08, \"carrier_residual\": 3.973358097345954e-10, \"sharp_current\": 12.235229252645349, \"depth\": 0.7606260459382733, \"exit\": 3.471099604179575, \"waist\": 3.471099604179575, \"seam_work\": -120.95880891178278, \"receiver_edge_work\": 1.4871988363518194}"
+      ]
+    },
+    "refined": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "python3",
+        "/var/projects/toy_physics/_scratch/s11c/joint_collar4_01/src/mouth_joint_collar_descent.py",
+        "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/joint_collar4_01/refined",
+        "--order",
+        "24",
+        "--na",
+        "6",
+        "--nt",
+        "12",
+        "--flow",
+        "7",
+        "--polar",
+        "6"
+      ],
+      "native_exit": 1,
+      "guard_exit": 1,
+      "outcome": "Last accepted field; later exterior order trial failed",
+      "stderr_last": "ArithmeticError: Receiving order search failed at residual 2.362278355723613e-07: ABNORMAL: ",
+      "stdout_sha256": "ca2d75ed84fd11977e9a2529edf315220339695db13704b0b6721bbab9f3c608",
+      "literal_readouts": [
+        "{\"kind\": \"preparation\", \"sha256\": \"3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e\", \"order_mesh\": 24, \"carrier_mesh\": 7, \"polar_mesh\": 6, \"half_collar_radial_cells\": 6, \"collar_depth_cells\": 12, \"registration\": [-1.3862943611198906], \"entrance\": 4, \"winding\": 1, \"disk\": \"sharp reversible\"}",
+        "{\"kind\": \"accepted\", \"iteration\": 1, \"energy\": 3893.000500191256, \"state_sha256\": \"cdd629235c84dc8df4a440042245a842e7c783f8046e9836cac15e14d9f10ee7\", \"shape_force\": [-15.662240123219819, -11.519029396064678, -11.204441211702944, -1.304010590198838, -8.065559107611383], \"lattice_nodal_residual\": 5.149134039878529, \"min_corner_inverse_J\": 0.9999999999999982, \"min_J\": 0.31999683809971907, \"max_J\": 1.5289338801249028, \"min_stretch\": 0.6161386303973472, \"max_stretch\": 1.2992467193020132, \"order_projected_residual\": 0.9790829367825143, \"bath_order_residual\": 3.4525434037631416e-08, \"carrier_residual\": 3.5296340156266943e-10, \"sharp_current\": 12.236461925615682, \"depth\": 0.8158284938933271, \"exit\": 3.573103420256027, \"waist\": 3.573103420256027, \"seam_work\": -28.200886824167167, \"receiver_edge_work\": 1.2894216950085562}",
+        "{\"kind\": \"accepted\", \"iteration\": 203, \"energy\": 3886.344579463536, \"state_sha256\": \"41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8\", \"shape_force\": [-0.03789137584438625, 0.32518794493322883, 0.05011793897817067, 0.04005620288201802, -0.09857371196630994], \"lattice_nodal_residual\": 0.2601344251729636, \"min_corner_inverse_J\": 0.2581863966385847, \"min_J\": 0.20294301382163127, \"max_J\": 4.027002066414947, \"min_stretch\": 0.2635988725658842, \"max_stretch\": 3.424126921957872, \"order_projected_residual\": 0.024863377870414705, \"bath_order_residual\": 1.4147834166729005e-07, \"carrier_residual\": 3.8851895138990165e-10, \"sharp_current\": 11.926301879491419, \"depth\": 0.793683178559631, \"exit\": 3.494302989168281, \"waist\": 3.494302989168281, \"seam_work\": -118.24007113128422, \"receiver_edge_work\": 1.5335964065688936}",
+        "{\"kind\": \"accepted\", \"iteration\": 309, \"energy\": 3886.304269417343, \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"shape_force\": [-0.05931409229257649, 0.05113007243077543, 0.0793753959745421, 0.07712674384189692, 0.03395037310838234], \"lattice_nodal_residual\": 0.10063912989979779, \"min_corner_inverse_J\": 0.2544116380204346, \"min_J\": 0.15181717000078884, \"max_J\": 3.9769935030523738, \"min_stretch\": 0.21494223986220365, \"max_stretch\": 6.728879029556052, \"order_projected_residual\": 0.02505832908056349, \"bath_order_residual\": 1.0933317895478467e-07, \"carrier_residual\": 7.15431214152767e-09, \"sharp_current\": 11.929297954858862, \"depth\": 0.7933162642560434, \"exit\": 3.494726169232207, \"waist\": 3.494726169232207, \"seam_work\": -118.24765545068813, \"receiver_edge_work\": 1.5148400738620644}"
+      ]
+    },
+    "bond5": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_material_motion.py",
+        "_scratch/s11c/full_collar4_elastic01/candidate/state.npz",
+        "--n",
+        "5",
+        "--k",
+        "14"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "ee5fbe7d1da4058e53236333950a4c96d29cef1e445fcb145aeeab1cc81ca763",
+      "literal_stdout": "{\"kind\": \"directional_check\", \"step\": 0.0001, \"analytic\": 0.0004910650497225477, \"signed\": 0.0004910648065958867}\n{\"kind\": \"directional_check\", \"step\": 5e-05, \"analytic\": 0.0004910650497225477, \"signed\": 0.0004910649664680022}\n{\"kind\": \"initial\", \"sha256\": \"41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8\", \"depth_span\": [0.1, 0.65], \"radial_cells\": 15, \"axial_cells\": 14, \"energy\": 27.604527381130715, \"min_J\": 0.387444206203652, \"max_J\": 1.034463677209015, \"min_stretch\": 0.5624369598655917, \"max_stretch\": 1.3847230724035342, \"minimum_order\": 0.5172859161178145, \"peak_join_radial\": 0.0, \"peak_join_axial\": 0.0, \"middle_join_motion\": [0.0, 0.0]}\n{\"kind\": \"bonded_release\", \"energy\": 27.22365979323308, \"min_J\": 0.40308433554246265, \"max_J\": 1.0347123487062846, \"min_stretch\": 0.5624369598655917, \"max_stretch\": 1.377008185013396, \"minimum_order\": 0.5172859161178145, \"peak_join_radial\": 0.005854840496527807, \"peak_join_axial\": 0.0060015601069561214, \"middle_join_motion\": [-0.005558320835203686, -0.005925579011108678], \"energy_change\": -0.38086758789763664, \"native_free_residual\": 3.2493950579415287e-06, \"scaled_residual\": 6.123974482024178e-08, \"iterations\": 120, \"optimizer\": \"CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH\", \"scope\": \"Both bonded pieces mobile inside the indicated window, all its boundary coordinates held except radial symmetry axis.\"}\n"
+    },
+    "bond8": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_material_motion.py",
+        "_scratch/s11c/full_collar4_elastic01/candidate/state.npz",
+        "--n",
+        "8",
+        "--k",
+        "22"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "f250c6e8a536042b24a13c2020f5ce6514a861b64bec863b81bb5217c54a18c8",
+      "literal_stdout": "{\"kind\": \"directional_check\", \"step\": 0.0001, \"analytic\": -0.001071537740855238, \"signed\": -0.001071536583907573}\n{\"kind\": \"directional_check\", \"step\": 5e-05, \"analytic\": -0.001071537740855238, \"signed\": -0.0010715370635239196}\n{\"kind\": \"initial\", \"sha256\": \"41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8\", \"depth_span\": [0.1, 0.65], \"radial_cells\": 24, \"axial_cells\": 22, \"energy\": 27.716992593330847, \"min_J\": 0.3862097166837481, \"max_J\": 1.0375853207689512, \"min_stretch\": 0.561508611640328, \"max_stretch\": 1.3852906105455078, \"minimum_order\": 0.5108028429382618, \"peak_join_radial\": 0.0, \"peak_join_axial\": 0.0, \"middle_join_motion\": [0.0, 0.0]}\n{\"kind\": \"bonded_release\", \"energy\": 27.302175095059702, \"min_J\": 0.40676261650029577, \"max_J\": 1.0253526309967766, \"min_stretch\": 0.546431805502752, \"max_stretch\": 1.3678534330208736, \"minimum_order\": 0.5106653905072478, \"peak_join_radial\": 0.00744959459455587, \"peak_join_axial\": 0.00573427806166735, \"middle_join_motion\": [-0.006912137721453104, -0.005489221333208285], \"energy_change\": -0.41481749827114456, \"native_free_residual\": 5.278362429424199e-06, \"scaled_residual\": 1.0008998439994253e-07, \"iterations\": 184, \"optimizer\": \"CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH\", \"scope\": \"Both bonded pieces mobile inside the indicated window, all its boundary coordinates held except radial symmetry axis.\"}\n"
+    },
+    "bondfront8": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_material_motion.py",
+        "_scratch/s11c/r4_collar_audit01/iter203_state/state.npz",
+        "--n",
+        "8",
+        "--k",
+        "24",
+        "--joined",
+        "_scratch/s11c/supercore_joined_front01/iter203_wound/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "9a8bb27a548f8198bda4867bae5d322d44715077fc62ffed11fa479f21301698",
+      "literal_stdout": "{\"kind\": \"directional_check\", \"step\": 0.0001, \"analytic\": 0.01194037662277616, \"signed\": 0.01194037761109712}\n{\"kind\": \"directional_check\", \"step\": 5e-05, \"analytic\": 0.01194037662277616, \"signed\": 0.011940374591290492}\n{\"kind\": \"initial\", \"sha256\": \"41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8\", \"depth_span\": [0.0, 1.0], \"resolved_order_sha256\": \"cf14cbbe473ec966c1a0786ab2ecb7d482b0fbb8b0b3cd3291c9112dacec6235\", \"radial_cells\": 24, \"axial_cells\": 24, \"energy\": 53.484892578849205, \"min_J\": 0.2135816061936265, \"max_J\": 1.5798945548203003, \"min_stretch\": 0.43192500890372604, \"max_stretch\": 1.727130119316992, \"minimum_order\": 0.29914263803685187, \"peak_join_radial\": 0.0, \"peak_join_axial\": 0.0, \"middle_join_motion\": [0.0, 0.0]}\n{\"kind\": \"bonded_release\", \"energy\": 51.812100489469, \"min_J\": 0.14950523413850322, \"max_J\": 1.522519639110193, \"min_stretch\": 0.3616334660036511, \"max_stretch\": 1.6831377257165068, \"minimum_order\": 0.29836231912083055, \"peak_join_radial\": 0.01526387399765842, \"peak_join_axial\": 0.01572151897429078, \"middle_join_motion\": [-0.007688222846327272, -0.01536548911984069], \"energy_change\": -1.6727920893802022, \"native_free_residual\": 3.5987428715373443e-06, \"scaled_residual\": 7.531793502900457e-08, \"iterations\": 197, \"optimizer\": \"CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH\", \"scope\": \"Both bonded pieces mobile inside the indicated window, all its boundary coordinates held except radial symmetry axis.\"}\n"
+    },
+    "bondfront11": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_material_motion.py",
+        "_scratch/s11c/r4_collar_audit01/iter203_state/state.npz",
+        "--n",
+        "11",
+        "--k",
+        "32",
+        "--joined",
+        "_scratch/s11c/supercore_joined_front01/iter203_wound/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "ed03b8e475ec54c268ca7a62b8a8e605c047d5191b6d7231fb1ae9796f96833a",
+      "literal_stdout": "{\"kind\": \"directional_check\", \"step\": 0.0001, \"analytic\": -0.014209799382734471, \"signed\": -0.014209799417130853}\n{\"kind\": \"directional_check\", \"step\": 5e-05, \"analytic\": -0.014209799382734471, \"signed\": -0.014209800127673589}\n{\"kind\": \"initial\", \"sha256\": \"41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8\", \"depth_span\": [0.0, 1.0], \"resolved_order_sha256\": \"cf14cbbe473ec966c1a0786ab2ecb7d482b0fbb8b0b3cd3291c9112dacec6235\", \"radial_cells\": 33, \"axial_cells\": 32, \"energy\": 53.11288934097258, \"min_J\": 0.2157972571897129, \"max_J\": 1.581844942685899, \"min_stretch\": 0.43570684449888697, \"max_stretch\": 1.7291590519854523, \"minimum_order\": 0.3013836215512318, \"peak_join_radial\": 0.0, \"peak_join_axial\": 0.0, \"middle_join_motion\": [0.0, 0.0]}\n{\"kind\": \"bonded_release\", \"energy\": 51.38002380070565, \"min_J\": 0.15547186496073198, \"max_J\": 1.543401744137834, \"min_stretch\": 0.3614441304162154, \"max_stretch\": 1.7499670510500656, \"minimum_order\": 0.2995994135427943, \"peak_join_radial\": 0.015119881003783558, \"peak_join_axial\": 0.015387102968824442, \"middle_join_motion\": [-0.006962254860622043, -0.014767659795032423], \"energy_change\": -1.7328655402669284, \"native_free_residual\": 3.22623777018749e-06, \"scaled_residual\": 6.733426662263813e-08, \"iterations\": 267, \"optimizer\": \"CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH\", \"scope\": \"Both bonded pieces mobile inside the indicated window, all its boundary coordinates held except radial symmetry axis.\"}\n"
+    },
+    "bond309_8": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_material_motion.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "--n",
+        "8",
+        "--k",
+        "24",
+        "--joined",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "--save",
+        "_scratch/s11c/joint_collar4_01/bond309_8/displacement.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "459f8e370aa10b9a4b16d7e6b40efd0326abb729a301cf44fb13dfbe89f855b9",
+      "literal_stdout": "{\"kind\": \"directional_check\", \"step\": 0.0001, \"analytic\": 0.012003500113127827, \"signed\": 0.012003500629020891}\n{\"kind\": \"directional_check\", \"step\": 5e-05, \"analytic\": 0.012003500113127827, \"signed\": 0.012003503897517476}\n{\"kind\": \"initial\", \"sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"depth_span\": [0.0, 1.0], \"resolved_order_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"radial_cells\": 24, \"axial_cells\": 24, \"energy\": 53.471426612841206, \"min_J\": 0.21367162489370897, \"max_J\": 1.583893720070131, \"min_stretch\": 0.43239743323098345, \"max_stretch\": 1.7276414243276312, \"minimum_order\": 0.2988085407756017, \"peak_join_radial\": 0.0, \"peak_join_axial\": 0.0, \"middle_join_motion\": [0.0, 0.0]}\n{\"kind\": \"bonded_release\", \"displacement_sha256\": \"16423d0c78c32e9b0b41aad0a219893d56f15c7d7bb9d102b4528ff69ab6320b\", \"energy\": 51.795447279203245, \"min_J\": 0.14892855267267235, \"max_J\": 1.5272745321908228, \"min_stretch\": 0.36064239692840266, \"max_stretch\": 1.6831636552363074, \"minimum_order\": 0.2980173672068078, \"peak_join_radial\": 0.015374867725868916, \"peak_join_axial\": 0.01561180685449587, \"middle_join_motion\": [-0.00792997913934721, -0.015270986499532669], \"energy_change\": -1.6759793336379616, \"native_free_residual\": 3.6748152850082927e-06, \"scaled_residual\": 8.562364511680006e-08, \"iterations\": 214, \"optimizer\": \"CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH\", \"scope\": \"Both bonded pieces mobile inside the indicated window, all its boundary coordinates held except radial symmetry axis.\"}\n",
+      "displacement.npz_sha256": "16423d0c78c32e9b0b41aad0a219893d56f15c7d7bb9d102b4528ff69ab6320b"
+    },
+    "bond309_11": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_material_motion.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "--n",
+        "11",
+        "--k",
+        "32",
+        "--joined",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "--save",
+        "_scratch/s11c/joint_collar4_01/bond309_11/displacement.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "80936f39cfde38d738eeb3dc18d9831289163b54c0f9b728da23012de32c1504",
+      "literal_stdout": "{\"kind\": \"directional_check\", \"step\": 0.0001, \"analytic\": -0.01393612908679882, \"signed\": -0.01393613189293319}\n{\"kind\": \"directional_check\", \"step\": 5e-05, \"analytic\": -0.01393612908679882, \"signed\": -0.013936126563862672}\n{\"kind\": \"initial\", \"sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"depth_span\": [0.0, 1.0], \"resolved_order_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"radial_cells\": 33, \"axial_cells\": 32, \"energy\": 53.09981776735655, \"min_J\": 0.21588756055655262, \"max_J\": 1.5858488489995597, \"min_stretch\": 0.43620292765732577, \"max_stretch\": 1.729706570015294, \"minimum_order\": 0.3010463337105789, \"peak_join_radial\": 0.0, \"peak_join_axial\": 0.0, \"middle_join_motion\": [0.0, 0.0]}\n{\"kind\": \"bonded_release\", \"displacement_sha256\": \"513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae\", \"energy\": 51.364089554490704, \"min_J\": 0.15475203696954504, \"max_J\": 1.545993836703858, \"min_stretch\": 0.360636458747673, \"max_stretch\": 1.749226506825268, \"minimum_order\": 0.2992437577204813, \"peak_join_radial\": 0.015208231919830303, \"peak_join_axial\": 0.015266190625539734, \"middle_join_motion\": [-0.007202116376644322, -0.014665173055827325], \"energy_change\": -1.735728212865844, \"native_free_residual\": 3.596843082638232e-06, \"scaled_residual\": 7.376333548465298e-08, \"iterations\": 273, \"optimizer\": \"CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH\", \"scope\": \"Both bonded pieces mobile inside the indicated window, all its boundary coordinates held except radial symmetry axis.\"}\n",
+      "displacement.npz_sha256": "513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae"
+    },
+    "angle_initial_material_fine": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_angular_work.py",
+        "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+        "_scratch/s11c/supercore_joined_front01/material_fine/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "6d0ef9dffbe2a5830f42897c96d134c24639b3782555ba5de05c6a36f9d8ef72",
+      "literal_stdout": "{\"kind\": \"joined_angular_work\", \"state_sha256\": \"3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e\", \"fields_sha256\": \"9270ca8103b91c131dd1040aaf36b997cc38a6311daac652933a21aff88e3af8\", \"grid\": [13, 10, 14], \"winding\": 1, \"state\": \"fields\", \"h\": 0.0004, \"depth_support\": [0.06, 0.62], \"volume_force\": -0.00794240166631191, \"wall_force\": 0.09840692062694611, \"net_force\": 0.0904645189606342, \"signed_minus\": [-3.089182846768829e-06, 3.936257554685294e-05], \"signed_plus\": [3.2647384862807e-06, -3.936296095470396e-05]}\n{\"kind\": \"joined_angular_work\", \"state_sha256\": \"3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e\", \"fields_sha256\": \"9270ca8103b91c131dd1040aaf36b997cc38a6311daac652933a21aff88e3af8\", \"grid\": [13, 10, 14], \"winding\": 1, \"state\": \"fields\", \"h\": 0.0002, \"depth_support\": [0.06, 0.62], \"volume_force\": -0.00794239048887948, \"wall_force\": 0.09840692088555933, \"net_force\": 0.09046453039667984, \"signed_minus\": [-1.5665336428133158e-06, 1.9681336001129203e-05], \"signed_plus\": [1.6104225527384765e-06, -1.968143235309453e-05]}\n{\"kind\": \"joined_angular_work\", \"state_sha256\": \"3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e\", \"fields_sha256\": \"9270ca8103b91c131dd1040aaf36b997cc38a6311daac652933a21aff88e3af8\", \"grid\": [13, 10, 14], \"winding\": 1, \"state\": \"rest\", \"h\": 0.0004, \"depth_support\": [0.06, 0.62], \"volume_force\": -0.02196775967938418, \"wall_force\": 0.0955785270299448, \"net_force\": 0.07361076735056062, \"signed_minus\": [-8.726415418791198e-06, 3.8231213447631207e-05], \"signed_plus\": [8.847792324716147e-06, -3.8231608176324636e-05]}\n{\"kind\": \"joined_angular_work\", \"state_sha256\": \"3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e\", \"fields_sha256\": \"9270ca8103b91c131dd1040aaf36b997cc38a6311daac652933a21aff88e3af8\", \"grid\": [13, 10, 14], \"winding\": 1, \"state\": \"rest\", \"h\": 0.0002, \"depth_support\": [0.06, 0.62], \"volume_force\": -0.021967748923654613, \"wall_force\": 0.09557852728269468, \"net_force\": 0.07361077835904006, \"signed_minus\": [-4.37837767156407e-06, 1.9115656115450933e-05], \"signed_plus\": [4.408721897897775e-06, -1.911575479762694e-05]}\n"
+    },
+    "angle309_wound": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_angular_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "042595c06379797c1a392d38b56c3ac10260e5ddc453ceb2e8f32720181f5d5f",
+      "literal_stdout": "{\"kind\": \"joined_angular_work\", \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"fields_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"grid\": [13, 10, 14], \"winding\": 1, \"state\": \"fields\", \"h\": 0.0004, \"depth_support\": [0.06, 0.62], \"volume_force\": -0.010406550648988893, \"wall_force\": 0.09446437537075944, \"net_force\": 0.08405782472177055, \"signed_minus\": [-4.074801860506418e-06, 3.778554474347489e-05], \"signed_plus\": [4.250438658684695e-06, -3.778595555313267e-05]}\n{\"kind\": \"joined_angular_work\", \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"fields_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"grid\": [13, 10, 14], \"winding\": 1, \"state\": \"fields\", \"h\": 0.0002, \"depth_support\": [0.06, 0.62], \"volume_force\": -0.010406539943478786, \"wall_force\": 0.09446437562031593, \"net_force\": 0.08405783567683714, \"signed_minus\": [-2.0593533889101806e-06, 1.8892823772848968e-05], \"signed_plus\": [2.1032625884813337e-06, -1.8892926475277405e-05]}\n{\"kind\": \"joined_angular_work\", \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"fields_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"grid\": [13, 10, 14], \"winding\": 1, \"state\": \"rest\", \"h\": 0.0004, \"depth_support\": [0.06, 0.62], \"volume_force\": -0.023453773783134426, \"wall_force\": 0.09170600966544552, \"net_force\": 0.0682522358823111, \"signed_minus\": [-9.324959985147611e-06, 3.668219474493987e-05], \"signed_plus\": [9.43805904135993e-06, -3.668261298741655e-05]}\n{\"kind\": \"joined_angular_work\", \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"fields_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"grid\": [13, 10, 14], \"winding\": 1, \"state\": \"rest\", \"h\": 0.0002, \"depth_support\": [0.06, 0.62], \"volume_force\": -0.023453763644539497, \"wall_force\": 0.09170600990922387, \"net_force\": 0.06825224626468437, \"signed_minus\": [-4.676615346948856e-06, 1.8341149701528388e-05], \"signed_plus\": [4.704890110866943e-06, -1.834125426216116e-05]}\n"
+    },
+    "angle309_zero": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_angular_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_zero/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "036c749ad124d78f63af457f1aae6de1485600711f5a5108a8276bbd16bceffe",
+      "literal_stdout": "{\"kind\": \"joined_angular_work\", \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"fields_sha256\": \"21de867d4781a0380dd57bd8dc600036c00349e03f88df08656a7bcc2ad241dc\", \"grid\": [13, 10, 14], \"winding\": 0, \"state\": \"fields\", \"h\": 0.0004, \"depth_support\": [0.06, 0.62], \"volume_force\": -2.09000055288291e-07, \"wall_force\": 0.0, \"net_force\": -2.09000055288291e-07, \"signed_minus\": [4.353707309625584e-08, 0.0], \"signed_plus\": [4.370427314048647e-08, 0.0]}\n{\"kind\": \"joined_angular_work\", \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"fields_sha256\": \"21de867d4781a0380dd57bd8dc600036c00349e03f88df08656a7bcc2ad241dc\", \"grid\": [13, 10, 14], \"winding\": 0, \"state\": \"fields\", \"h\": 0.0002, \"depth_support\": [0.06, 0.62], \"volume_force\": -2.0895110696530465e-07, \"wall_force\": 0.0, \"net_force\": -2.0895110696530465e-07, \"signed_minus\": [1.0863378096599658e-08, 0.0], \"signed_plus\": [1.094695853938578e-08, 0.0]}\n{\"kind\": \"joined_angular_work\", \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"fields_sha256\": \"21de867d4781a0380dd57bd8dc600036c00349e03f88df08656a7bcc2ad241dc\", \"grid\": [13, 10, 14], \"winding\": 0, \"state\": \"rest\", \"h\": 0.0004, \"depth_support\": [0.06, 0.62], \"volume_force\": -6.283794468823311e-29, \"wall_force\": 0.0, \"net_force\": -6.283794468823311e-29, \"signed_minus\": [-2.501638325891134e-32, 0.0], \"signed_plus\": [2.5253972491675157e-32, 0.0]}\n{\"kind\": \"joined_angular_work\", \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"fields_sha256\": \"21de867d4781a0380dd57bd8dc600036c00349e03f88df08656a7bcc2ad241dc\", \"grid\": [13, 10, 14], \"winding\": 0, \"state\": \"rest\", \"h\": 0.0002, \"depth_support\": [0.06, 0.62], \"volume_force\": -6.283794248203512e-29, \"wall_force\": 0.0, \"net_force\": -6.283794248203512e-29, \"signed_minus\": [-1.253788984245043e-32, 0.0], \"signed_plus\": [1.2597287150363618e-32, 0.0]}\n"
+    },
+    "reciprocal309_wound": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_feedback.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/bond309_11/displacement.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "_scratch/s11c/joint_collar4_01/reciprocal309_wound/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "e577e8cb8729700f5579ba4c145411956ea952b2c515bcab88aa297e648b3777",
+      "literal_stdout": "{\"kind\": \"preparation\", \"grid\": [13, 10, 14], \"winding\": 1, \"source_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"flow_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"displacement_sha256\": \"513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae\", \"original_order_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"zero_motion_error\": 3.1086244689504383e-15}\n{\"kind\": \"rematched\", \"rest\": false, \"excess_energy\": 0.07635511022020247, \"feed_current\": 11.643709450727224, \"bulk_current\": 11.643709450727151, \"port_error\": 7.283063041541027e-14, \"weak_disk_current\": 11.643709489905588, \"incident_slice_current\": 11.643709489905588, \"receiving_slice_current\": 10.488150090943732, \"positive_slice_current\": 11.643709489905588, \"dense_total_subsonic_share\": 0.6896472478734277, \"minimum_total_mach\": 0.38801365200441157, \"total_axial_stress\": -85.87094413498075, \"crystalline_range_in_band\": [0.031370343450081044, 0.9474862401614477], \"stationarity\": 1.3811499484128807e-07, \"max_additional_order_change\": 0.026088413461502785}\n{\"kind\": \"rematched\", \"rest\": true, \"excess_energy\": -2.5526444203342193, \"feed_current\": -0.0, \"bulk_current\": 0.0, \"port_error\": 0.0, \"weak_disk_current\": 0.0, \"incident_slice_current\": 0.0, \"receiving_slice_current\": 0.0, \"positive_slice_current\": 0.0, \"dense_total_subsonic_share\": null, \"minimum_total_mach\": 0.3273747596628238, \"total_axial_stress\": -86.9465890182913, \"crystalline_range_in_band\": [0.03137038661163048, 0.9474862318490299], \"stationarity\": 1.293655070196623e-07, \"max_additional_order_change\": 0.026085463533552206}\n{\"kind\": \"state\", \"field_sha256\": \"762dc8ed43791b141fa99be57ab72b0e8702f29d85a0fe77118365472740c0b4\"}\n",
+      "live.npz_sha256": "762dc8ed43791b141fa99be57ab72b0e8702f29d85a0fe77118365472740c0b4"
+    },
+    "reciprocal309_zero": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_feedback.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/bond309_11/displacement.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_zero/live.npz",
+        "_scratch/s11c/joint_collar4_01/reciprocal309_zero/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "bc2c2f86c3505a0d03a4baa2b68754b20b924a60b3a3e3b84225cebe56610a39",
+      "literal_stdout": "{\"kind\": \"preparation\", \"grid\": [13, 10, 14], \"winding\": 0, \"source_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"flow_sha256\": \"21de867d4781a0380dd57bd8dc600036c00349e03f88df08656a7bcc2ad241dc\", \"displacement_sha256\": \"513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae\", \"original_order_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"zero_motion_error\": 3.1086244689504383e-15}\n{\"kind\": \"rematched\", \"rest\": false, \"excess_energy\": 0.748929813848082, \"feed_current\": 13.8132257334357, \"bulk_current\": 13.813225733435772, \"port_error\": 7.105427357601002e-14, \"weak_disk_current\": 13.813225671708045, \"incident_slice_current\": 13.813225671708047, \"receiving_slice_current\": 12.562578084239298, \"positive_slice_current\": 13.813225671708047, \"dense_total_subsonic_share\": 1.0, \"minimum_total_mach\": 0.027477694804003767, \"total_axial_stress\": -55.443759033879786, \"crystalline_range_in_band\": [0.0313703608387955, 0.9474862432245726], \"stationarity\": 1.29430003779094e-07, \"max_additional_order_change\": 0.026087509152236815}\n{\"kind\": \"rematched\", \"rest\": true, \"excess_energy\": -2.3676401013908306, \"feed_current\": -0.0, \"bulk_current\": 0.0, \"port_error\": 0.0, \"weak_disk_current\": 0.0, \"incident_slice_current\": 0.0, \"receiving_slice_current\": 0.0, \"positive_slice_current\": 0.0, \"dense_total_subsonic_share\": null, \"minimum_total_mach\": 0.0, \"total_axial_stress\": -56.41436651107669, \"crystalline_range_in_band\": [0.03137038661163049, 0.9474862318490289], \"stationarity\": 1.2936551365439164e-07, \"max_additional_order_change\": 0.026085463540545528}\n{\"kind\": \"state\", \"field_sha256\": \"14d3db734af7c9eedbf07edaa0d7ee5be3d4deba4ef709cfea3bc0441ed95831\"}\n",
+      "live.npz_sha256": "14d3db734af7c9eedbf07edaa0d7ee5be3d4deba4ef709cfea3bc0441ed95831"
+    },
+    "read309_wound": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_readout.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/reciprocal309_wound/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "7aa9c739dccdb938061ff832587174b9077d8c568ce8f5b50ff1dd30ed618960",
+      "literal_stdout": "{\"kind\": \"source\", \"grid\": [13, 10, 14], \"field_sha256\": \"762dc8ed43791b141fa99be57ab72b0e8702f29d85a0fe77118365472740c0b4\", \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"winding\": 1}\n{\"kind\": \"disk\", \"side\": -1, \"signed\": 11.778572899891785, \"dense_share\": 0.6798289900748349, \"drive_stress\": 1.0869884184599827, \"dense_drive_stress\": 0.47482267882325985}\n{\"kind\": \"disk\", \"side\": 1, \"signed\": 10.501603504359867, \"dense_share\": 0.7541943598068678, \"drive_stress\": 0.4420447043412048, \"dense_drive_stress\": 0.31202018109024326}\n{\"kind\": \"polar_residual\", \"step\": 0.0004, \"depth_span\": [0.06, 0.62], \"force\": 0.08405932802490959}\n{\"kind\": \"polar_residual\", \"step\": 0.0002, \"depth_span\": [0.06, 0.62], \"force\": 0.0840593389796997}\n"
+    },
+    "read309_zero": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_readout.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/reciprocal309_zero/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "26e44614c091a8b22a57e526c868c917642437b180c6c6692742d1859e428d19",
+      "literal_stdout": "{\"kind\": \"source\", \"grid\": [13, 10, 14], \"field_sha256\": \"14d3db734af7c9eedbf07edaa0d7ee5be3d4deba4ef709cfea3bc0441ed95831\", \"state_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"winding\": 0}\n{\"kind\": \"disk\", \"side\": -1, \"signed\": 13.958224427386051, \"dense_share\": 1.0, \"drive_stress\": 0.9786415018671742, \"dense_drive_stress\": 0.9786415018671742}\n{\"kind\": \"disk\", \"side\": 1, \"signed\": 12.577026846681282, \"dense_share\": 1.0, \"drive_stress\": 0.4044896939578686, \"dense_drive_stress\": 0.4044896939578686}\n{\"kind\": \"polar_residual\", \"step\": 0.0004, \"depth_span\": [0.06, 0.62], \"force\": -2.089885041168184e-07}\n{\"kind\": \"polar_residual\", \"step\": 0.0002, \"depth_span\": [0.06, 0.62], \"force\": -2.0893958237568639e-07}\n"
+    },
+    "adj_wound": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_adjoint.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/bond309_11/displacement.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "1b55180309a12f4607285c60129215d220aec6a9ceee4681d96489909ae30df3",
+      "literal_stdout": "{\"kind\": \"preparation\", \"source_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"displacement_sha256\": \"513d16e16fa6e43f76ffb7122d93362a01464a0d818a881edaa4282f0afe2fae\", \"flow_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"winding\": 1, \"grid\": [13, 10, 14], \"rest\": false, \"material_mesh\": [33, 32], \"geometry\": [0.7933162642560434, 3.494726169232207]}\n{\"kind\": \"joint_sweep\", \"iteration\": 1, \"material_nodal_residual\": 0.23179851106766167, \"field_stationarity\": 8.385832518536049e-08, \"peak_step\": 1.0306637893235604e-08, \"order_change\": 0.023792015547573098, \"energy_varying_terms\": 52.914317045091245, \"transfer_work\": [-1.4008284106297495, -1.4008284106303435], \"signed_transfer_derivative\": [-0.49291603772871895, -0.49291603830825537]}\n{\"kind\": \"joint_sweep\", \"iteration\": 2, \"material_nodal_residual\": 0.05161094069264047, \"field_stationarity\": 1.4397503759638731e-07, \"peak_step\": 0.002386612833438414, \"order_change\": 0.00526933106978264, \"energy_varying_terms\": 52.9073816555433, \"transfer_work\": [-1.5867213528584543, -1.586721352858486], \"signed_transfer_derivative\": [-0.5536883988810359, -0.553688398796659]}\n{\"kind\": \"joint_sweep\", \"iteration\": 3, \"material_nodal_residual\": 0.012331435256384013, \"field_stationarity\": 1.7189085155296966e-07, \"peak_step\": 0.000564793173454704, \"order_change\": 0.001272851013665116, \"energy_varying_terms\": 52.90699711477663, \"transfer_work\": [-1.731701527396794, -1.7317015273967802], \"signed_transfer_derivative\": [-0.706394639280461, -0.7063946378216279]}\n{\"kind\": \"joint_sweep\", \"iteration\": 4, \"material_nodal_residual\": 0.0029378672699081343, \"field_stationarity\": 1.7111951384931834e-07, \"peak_step\": 0.00012836531774647244, \"order_change\": 0.0002966964603592359, \"energy_varying_terms\": 52.90697537231065, \"transfer_work\": [-1.7675929332738178, -1.7675929332741325], \"signed_transfer_derivative\": [-0.7457151466638834, -0.7457151473500012]}\n{\"kind\": \"joint_sweep\", \"iteration\": 5, \"material_nodal_residual\": 0.0017607394550082853, \"field_stationarity\": 1.34247150779831e-07, \"peak_step\": 3.484043671704427e-05, \"order_change\": 7.697192214994875e-05, \"energy_varying_terms\": 52.90697398817096, \"transfer_work\": [-1.7760623873799943, -1.7760623873798898], \"signed_transfer_derivative\": [-0.7550439011083654, -0.755043899682839]}\n{\"kind\": \"joint_sweep\", \"iteration\": 6, \"material_nodal_residual\": 0.00020525665450370212, \"field_stationarity\": 1.9282344086605584e-07, \"peak_step\": 1.7361230840667e-05, \"order_change\": 2.2612151412138015e-05, \"energy_varying_terms\": 52.90697389571876, \"transfer_work\": [-1.7782245260614076, -1.778224526061268], \"signed_transfer_derivative\": [-0.7574627895934327, -0.7574627923889743]}\n{\"kind\": \"joint_sweep\", \"iteration\": 7, \"material_nodal_residual\": 4.2494712368421755e-05, \"field_stationarity\": 1.5858529380892903e-07, \"peak_step\": 2.0615717365957346e-06, \"order_change\": 5.3685696529692795e-06, \"energy_varying_terms\": 52.90697389023725, \"transfer_work\": [-1.7788117838106743, -1.7788117838108417], \"signed_transfer_derivative\": [-0.758056185645728, -0.7580561844555689]}\n{\"kind\": \"joint_sweep\", \"iteration\": 8, \"material_nodal_residual\": 5.069699165940328e-06, \"field_stationarity\": 1.8212743287007233e-07, \"peak_step\": 4.5689234875480393e-07, \"order_change\": 0.0, \"energy_varying_terms\": 52.906973890039495, \"transfer_work\": [-1.778939593581633, -1.7789395935815713], \"signed_transfer_derivative\": [-0.7582010795914584, -0.758201080783838]}\n{\"kind\": \"held_equilibrium\", \"sha256\": \"c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226\", \"material_nodal_residual\": 5.069699165940328e-06, \"field_stationarity\": 1.8212743287007233e-07, \"energy\": 51.11221104800028, \"min_J\": 0.1455387515195517, \"max_J\": 1.5467035870547565, \"min_stretch\": 0.3327223557790085, \"max_stretch\": 1.749817778124354, \"minimum_order\": 0.27967436310756977, \"peak_join_radial\": 0.015263949866733052, \"peak_join_axial\": 0.013598728809430825, \"middle_join_motion\": [-0.007037846878978957, -0.013236666345629155], \"excess_energy\": 0.01580445514370088, \"feed_current\": 11.643672317825471, \"bulk_current\": 11.643672317825006, \"port_error\": 4.654054919228656e-13, \"weak_disk_current\": 11.643672451442683, \"incident_slice_current\": 11.643672451442683, \"receiving_slice_current\": 10.4879241168999, \"positive_slice_current\": 11.643672451442683, \"dense_total_subsonic_share\": 0.6896419179328013, \"minimum_total_mach\": 0.38800400555969466, \"total_axial_stress\": -84.98626187006779, \"crystalline_range_in_band\": [0.031370269641978865, 0.9474895676737903]}\n",
+      "coupled.npz_sha256": "c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226"
+    },
+    "adj_wound_mesh8": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_adjoint.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/bond309_8/displacement.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound_mesh8"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "193f84a0acebf82996cf1ed91e2ab3caa7349bb68630ff6e359eea68b3050a83",
+      "literal_stdout": "{\"kind\": \"preparation\", \"source_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"displacement_sha256\": \"16423d0c78c32e9b0b41aad0a219893d56f15c7d7bb9d102b4528ff69ab6320b\", \"flow_sha256\": \"cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486\", \"winding\": 1, \"grid\": [13, 10, 14], \"rest\": false, \"material_mesh\": [24, 24], \"geometry\": [0.7933162642560434, 3.494726169232207]}\n{\"kind\": \"joint_sweep\", \"iteration\": 1, \"material_nodal_residual\": 0.33182765467104186, \"field_stationarity\": 1.6409672368043728e-07, \"peak_step\": 0.0, \"order_change\": 0.023053620271896585, \"energy_varying_terms\": 53.34788561051758, \"transfer_work\": [-1.3841270096323157, -1.3841270096322842], \"signed_transfer_derivative\": [-0.4341451780476291, -0.43414517671980235]}\n{\"kind\": \"joint_sweep\", \"iteration\": 2, \"material_nodal_residual\": 0.07210891010620796, \"field_stationarity\": 1.4611186280711237e-07, \"peak_step\": 0.0022852769813578636, \"order_change\": 0.004984095989760601, \"energy_varying_terms\": 53.34167519037093, \"transfer_work\": [-1.561614416284705, -1.5616144162845138], \"signed_transfer_derivative\": [-0.48640023599944016, -0.486400233947748]}\n{\"kind\": \"joint_sweep\", \"iteration\": 3, \"material_nodal_residual\": 0.016341156739824836, \"field_stationarity\": 1.3519587363454844e-07, \"peak_step\": 0.0004723268136472296, \"order_change\": 0.0010530147257881428, \"energy_varying_terms\": 53.34138605473722, \"transfer_work\": [-1.694742455060144, -1.69474245505999], \"signed_transfer_derivative\": [-0.6217888466863997, -0.6217888480963829]}\n{\"kind\": \"joint_sweep\", \"iteration\": 4, \"material_nodal_residual\": 0.003723378170403892, \"field_stationarity\": 1.772099910673181e-07, \"peak_step\": 0.00010067403820756872, \"order_change\": 0.0002291153911498367, \"energy_varying_terms\": 53.34137167269811, \"transfer_work\": [-1.7240328531401303, -1.7240328531402902], \"signed_transfer_derivative\": [-0.652080107670372, -0.6520801039999746]}\n{\"kind\": \"joint_sweep\", \"iteration\": 5, \"material_nodal_residual\": 0.0007392430976971079, \"field_stationarity\": 1.5979497570370184e-07, \"peak_step\": 1.8343910057460838e-05, \"order_change\": 4.063335232065701e-05, \"energy_varying_terms\": 53.3413711487828, \"transfer_work\": [-1.7304770376164669, -1.7304770376163474], \"signed_transfer_derivative\": [-0.6587400422830569, -0.6587400407709332]}\n{\"kind\": \"joint_sweep\", \"iteration\": 6, \"material_nodal_residual\": 0.00012375475020857257, \"field_stationarity\": 1.388868303023455e-07, \"peak_step\": 3.439698571784122e-06, \"order_change\": 9.167992520736634e-06, \"energy_varying_terms\": 53.34137112970166, \"transfer_work\": [-1.7315521805571379, -1.7315521805573295], \"signed_transfer_derivative\": [-0.6596792444213406, -0.6596792432489451]}\n{\"kind\": \"joint_sweep\", \"iteration\": 7, \"material_nodal_residual\": 1.0857208372537508e-05, \"field_stationarity\": 1.8875387070357095e-07, \"peak_step\": 7.494549311063756e-07, \"order_change\": 3.388608884602462e-07, \"energy_varying_terms\": 53.341371128969854, \"transfer_work\": [-1.7317823468901352, -1.7317823468901372], \"signed_transfer_derivative\": [-0.6599228883175101, -0.6599228866277507]}\n{\"kind\": \"held_equilibrium\", \"sha256\": \"2a0159cb0e925c04f7120b14f3b23c6e19763a42d5dbb402c88c499ecce98d66\", \"material_nodal_residual\": 1.0857208372537508e-05, \"field_stationarity\": 1.8875387070357095e-07, \"energy\": 51.559289492686695, \"min_J\": 0.13865960301597796, \"max_J\": 1.5275901485526535, \"min_stretch\": 0.34351646493067906, \"max_stretch\": 1.6836780147559356, \"minimum_order\": 0.2791061086666582, \"peak_join_radial\": 0.01542797211101895, \"peak_join_axial\": 0.014162188034715669, \"middle_join_motion\": [-0.007770926004385313, -0.013961439106557639], \"excess_energy\": 0.05026450397936255, \"feed_current\": 11.643698952199268, \"bulk_current\": 11.643698952199198, \"port_error\": 6.927791673660977e-14, \"weak_disk_current\": 11.643699479726326, \"incident_slice_current\": 11.643699479726326, \"receiving_slice_current\": 10.48800349449546, \"positive_slice_current\": 11.643699479726326, \"dense_total_subsonic_share\": 0.6896469423350224, \"minimum_total_mach\": 0.3880057449993585, \"total_axial_stress\": -85.88068297241519, \"crystalline_range_in_band\": [0.03137048276465957, 0.9475018412535452]}\n",
+      "coupled.npz_sha256": "2a0159cb0e925c04f7120b14f3b23c6e19763a42d5dbb402c88c499ecce98d66"
+    },
+    "adj_control_wound": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_controls.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound/coupled.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "_scratch/s11c/joint_collar4_01/adj_control_wound/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "4cae6edbadfcc528d8a911e4a2a5c6d54ff56117be863b980136415f676caa67",
+      "literal_stdout": "{\"kind\": \"same_lattice\", \"source_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"joint_sha256\": \"c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226\", \"winding\": 1, \"drive_residual\": 1.8212743287007233e-07, \"rest_residual\": 1.5253600776748012e-07, \"excess_energy\": 0.01580445514370088, \"feed_current\": 11.643672317825471, \"bulk_current\": 11.643672317825006, \"port_error\": 4.654054919228656e-13, \"weak_disk_current\": 11.643672451442683, \"incident_slice_current\": 11.643672451442683, \"receiving_slice_current\": 10.4879241168999, \"positive_slice_current\": 11.643672451442683, \"dense_total_subsonic_share\": 0.6896419179328013, \"minimum_total_mach\": 0.38800400555969466, \"total_axial_stress\": -84.98626187006779, \"crystalline_range_in_band\": [0.031370269641978865, 0.9474895676737903]}\n{\"kind\": \"disk\", \"side\": -1, \"dense_share\": 0.6798215914146822, \"signed\": 11.77860992187684, \"drive_stress\": 1.0865660573554854, \"dense_drive_stress\": 0.4744901460860119}\n{\"kind\": \"disk\", \"side\": 1, \"dense_share\": 0.7541938871996046, \"signed\": 10.501362485654731, \"drive_stress\": 0.4424147112484934, \"dense_drive_stress\": 0.3122492160958121}\n{\"kind\": \"polar\", \"state\": \"drive\", \"h\": 0.0004, \"depth_span\": [0.06, 0.62], \"force\": 0.08405947472601796}\n{\"kind\": \"polar\", \"state\": \"drive\", \"h\": 0.0002, \"depth_span\": [0.06, 0.62], \"force\": 0.08405948568078617}\n{\"kind\": \"polar\", \"state\": \"rest\", \"h\": 0.0004, \"depth_span\": [0.06, 0.62], \"force\": 0.06825223836311256}\n{\"kind\": \"polar\", \"state\": \"rest\", \"h\": 0.0002, \"depth_span\": [0.06, 0.62], \"force\": 0.06825224874548655}\n{\"kind\": \"fields\", \"sha256\": \"2493d3c2fc429479585da2283b1e612f371abbdb27ec863c388fbca845acd916\"}\n",
+      "live.npz_sha256": "2493d3c2fc429479585da2283b1e612f371abbdb27ec863c388fbca845acd916"
+    },
+    "adj_control_zero": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_front_controls.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound/coupled.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_zero/live.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "_scratch/s11c/joint_collar4_01/adj_control_zero/live.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "e9ae8158f577704fc9508ad7fc3eaa5e86ecdc2c14150627360c89cbe1abe5a9",
+      "literal_stdout": "{\"kind\": \"same_lattice\", \"source_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"joint_sha256\": \"c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226\", \"winding\": 0, \"drive_residual\": 1.5238018130133532e-07, \"rest_residual\": 1.5253605756326437e-07, \"excess_energy\": 0.6883819443273425, \"feed_current\": 13.813201167385046, \"bulk_current\": 13.81320116738508, \"port_error\": 3.375077994860476e-14, \"weak_disk_current\": 13.81320123698085, \"incident_slice_current\": 13.81320123698085, \"receiving_slice_current\": 12.562388902304061, \"positive_slice_current\": 13.81320123698085, \"dense_total_subsonic_share\": 1.0, \"minimum_total_mach\": 0.027477828026208805, \"total_axial_stress\": -54.558860668147695, \"crystalline_range_in_band\": [0.03137028642123811, 0.9474895970182441]}\n{\"kind\": \"disk\", \"side\": -1, \"dense_share\": 1.0, \"signed\": 13.958263343381441, \"drive_stress\": 0.9787898300218395, \"dense_drive_stress\": 0.9787898300218395}\n{\"kind\": \"disk\", \"side\": 1, \"dense_share\": 1.0, \"signed\": 12.576821552475762, \"drive_stress\": 0.4046002898621955, \"dense_drive_stress\": 0.4046002898621955}\n{\"kind\": \"polar\", \"state\": \"drive\", \"h\": 0.0004, \"depth_span\": [0.06, 0.62], \"force\": -2.08961507497133e-07}\n{\"kind\": \"polar\", \"state\": \"drive\", \"h\": 0.0002, \"depth_span\": [0.06, 0.62], \"force\": -2.0891258085127076e-07}\n{\"kind\": \"polar\", \"state\": \"rest\", \"h\": 0.0004, \"depth_span\": [0.06, 0.62], \"force\": -1.5425398343466106e-28}\n{\"kind\": \"polar\", \"state\": \"rest\", \"h\": 0.0002, \"depth_span\": [0.06, 0.62], \"force\": -1.5425398112412666e-28}\n{\"kind\": \"fields\", \"sha256\": \"81207d7d968e63ae3a87aa5110e21b6bdd3e442064793edcddbfe9763d460074\"}\n",
+      "live.npz_sha256": "81207d7d968e63ae3a87aa5110e21b6bdd3e442064793edcddbfe9763d460074"
+    },
+    "adj_shape309": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_shape_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound/coupled.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "ce399371d1cbfa7ca324776e5ccb685853dadf432e2f8841fa37105a7bc03283",
+      "literal_stdout": "{\"kind\": \"base\", \"source_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"energies\": [166.09240736812882, 3663.4483572935455, 52.891169434895794, 0.01580445514370088], \"coordinates\": [\"log_depth\", \".25 log_exit\", \".25 middle\", \".25 upper_minus_lower\", \".25 waist\"]}\n{\"kind\": \"shape_work\", \"coordinate\": 0, \"h\": 0.0003, \"force\": 1.440014435705184, \"terms\": [-66.79278235642036, -64.08548205096547, 128.35418943367927, 3.964089409411731], \"values_minus\": [166.07237700758054, 3663.429136238259, 52.92969249439427, 0.01699404683734529], \"values_plus\": [166.1124526769944, 3663.4675875274897, 52.85267998073406, 0.01461559319169825]}\n{\"kind\": \"shape_work\", \"coordinate\": 1, \"h\": 0.0003, \"force\": -1.6868860654632258, \"terms\": [-52.14528709065765, -40.530117425987555, 90.1700778598998, 0.8184405912821843], \"values_minus\": [166.07676760730385, 3663.4362021153042, 52.918226902846065, 0.016050199651052477], \"values_plus\": [166.10805477955824, 3663.46052018576, 52.864124856130125, 0.015559135296283166]}\n{\"kind\": \"shape_work\", \"coordinate\": 2, \"h\": 0.0003, \"force\": -11.290877253500684, \"terms\": [-41.282743995575785, -12.83410427807515, 51.388095329916915, -8.562124309766661], \"values_minus\": [166.08003601009904, 3663.4445239164684, 52.90662791129016, 0.013234809645281453], \"values_plus\": [166.10480565649638, 3663.452224379035, 52.87579505409221, 0.01837208423114145]}\n{\"kind\": \"shape_work\", \"coordinate\": 3, \"h\": 0.0003, \"force\": -19.109358096780866, \"terms\": [-8.939582352193536, -11.303316752370545, 7.181372104838602, -6.047831097055386], \"values_minus\": [166.0897331360471, 3663.4449761125693, 52.89334793224128, 0.013989594540261718], \"values_plus\": [166.09509688545842, 3663.4517581026207, 52.88903910897837, 0.01761829319849495]}\n{\"kind\": \"shape_work\", \"coordinate\": 4, \"h\": 0.0003, \"force\": -11.879040864901656, \"terms\": [-32.63629846514959, -17.82483251569526, 42.36541608808154, -3.783325972138337], \"values_minus\": [166.08263051940907, 3663.4430260292293, 52.90391933959178, 0.014669590189435366], \"values_plus\": [166.10221229848815, 3663.4537209287387, 52.87850008993893, 0.01693958577271837]}\n{\"kind\": \"joint_descent\", \"h\": 0.0003, \"direction\": [0.056980256604945455, -0.06674877590816043, -0.4467712734312658, -0.7561425086528013, -0.4700444522774952], \"energy_change\": -0.007507771201960889}\n{\"kind\": \"shape_work\", \"coordinate\": 0, \"h\": 0.00015, \"force\": 1.4413159379104612, \"terms\": [-66.79278160580301, -64.08548105810041, 128.35419875417625, 3.9653798476376365], \"values_minus\": [166.0823903194276, 3663.438745618693, 52.910426765376165, 0.016399703808342325], \"values_plus\": [166.10242815390933, 3663.45797126301, 52.87192050574991, 0.015210089854051034]}\n{\"kind\": \"shape_work\", \"coordinate\": 1, \"h\": 0.00015, \"force\": -1.686246794788302, \"terms\": [-52.145286209300444, -40.53011685149007, 90.17007920945731, 0.8190770565448998], \"values_minus\": [166.08458653152297, 3663.442278743475, 52.90469655792536, 0.015927451204078125], \"values_plus\": [166.10023011738576, 3663.4544377785305, 52.877645534162525, 0.015681728087114655]}\n{\"kind\": \"shape_work\", \"coordinate\": 2, \"h\": 0.00015, \"force\": -11.28745474325991, \"terms\": [-41.28274283364893, -12.834109769149412, 51.38809527233927, -8.558697412800836], \"values_minus\": [166.0862183229965, 3663.446436398653, 52.89888816113569, 0.01452082622588291], \"values_plus\": [166.0986031458466, 3663.450286631584, 52.883471732553986, 0.01708843544972316]}\n{\"kind\": \"shape_work\", \"coordinate\": 3, \"h\": 0.00015, \"force\": -19.10778305015774, \"terms\": [-8.939582410789626, -11.303316831193419, 7.181372073337874, -6.046255881512567], \"values_minus\": [166.0910683414233, 3663.4466642495568, 52.892252662135675, 0.014898159195818161], \"values_plus\": [166.09375021614653, 3663.450055244606, 52.890098250513674, 0.01671203596027193]}\n{\"kind\": \"shape_work\", \"coordinate\": 4, \"h\": 0.00015, \"force\": -11.879729582002048, \"terms\": [-32.63629709673903, -17.82483079296071, 42.36541603132101, -3.7840177236233195], \"values_minus\": [166.0875154337694, 3663.4456876232803, 52.897534317267684, 0.015237185536670195], \"values_plus\": [166.09730632289842, 3663.451035072518, 52.88482469245829, 0.01637239085375719]}\n{\"kind\": \"joint_descent\", \"h\": 0.00015, \"direction\": [0.05703709273936935, -0.06672972405705792, -0.4466776409314534, -0.7561509348572135, -0.4701156908523507], \"energy_change\": -0.0037721376469781465}\n"
+    },
+    "adj_shape_mesh8": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_bonded_shape_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/joint_collar4_01/adj_wound_mesh8/coupled.npz"
+      ],
+      "native_exit": 0,
+      "guard_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "9074c4a756d2833319d9a8a0c6b993ce3523a84c33ff18793e6d8ed5822f0af9",
+      "literal_stdout": "{\"kind\": \"base\", \"source_sha256\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"energies\": [166.09240736812882, 3663.4483572935455, 53.29110662499049, 0.05026450397936255], \"coordinates\": [\"log_depth\", \".25 log_exit\", \".25 middle\", \".25 upper_minus_lower\", \".25 waist\"]}\n{\"kind\": \"shape_work\", \"coordinate\": 0, \"h\": 0.0003, \"force\": 1.8749809015472523, \"terms\": [-66.79278235642036, -64.08548205096547, 128.75418420026818, 3.9990611086648813], \"values_minus\": [166.07237700758054, 3663.429136238259, 53.329749704001436, 0.05146471962691268], \"values_plus\": [166.1124526769944, 3663.4675875274897, 53.252497193481275, 0.04906528296171375]}\n{\"kind\": \"shape_work\", \"coordinate\": 1, \"h\": 0.0003, \"force\": -1.238867228800321, \"terms\": [-52.14528709065765, -40.530117425987555, 90.56609261428152, 0.8704446735633791], \"values_minus\": [166.07676760730385, 3663.4362021153042, 53.31828291092636, 0.05052584699000673], \"values_plus\": [166.10805477955824, 3663.46052018576, 53.26394325535779, 0.0500035801858687]}\n{\"kind\": \"shape_work\", \"coordinate\": 2, \"h\": 0.0003, \"force\": -10.733990339769258, \"terms\": [-41.282743995575785, -12.83410427807515, 52.07602418991542, -8.693166256033743], \"values_minus\": [166.08003601009904, 3663.4445239164684, 53.306771580765314, 0.047655559698781325], \"values_plus\": [166.10480565649638, 3663.452224379035, 53.275525966251365, 0.05287145945240157]}\n{\"kind\": \"shape_work\", \"coordinate\": 3, \"h\": 0.0003, \"force\": -19.002555781277486, \"terms\": [-8.939582352193536, -11.303316752370545, 7.38903939060028, -6.148696067313683], \"values_minus\": [166.0897331360471, 3663.4449761125693, 53.29334747462089, 0.04841939048365873], \"values_plus\": [166.09509688545842, 3663.4517581026207, 53.28891405098653, 0.05210860812404694]}\n{\"kind\": \"shape_work\", \"coordinate\": 4, \"h\": 0.0003, \"force\": -11.521277125298155, \"terms\": [-32.63629846514959, -17.82483251569526, 42.775050282699574, -3.8351964271528725], \"values_minus\": [166.08263051940907, 3663.4430260292293, 53.30397953738707, 0.04911408053280386], \"values_plus\": [166.10221229848815, 3663.4537209287387, 53.27831450721745, 0.051415198389095584]}\n{\"kind\": \"joint_descent\", \"h\": 0.0003, \"direction\": [0.07566154969752278, -0.04999230356061607, -0.4331512619008476, -0.7668146472524705, -0.4649208325670566], \"energy_change\": -0.007362003225228175}\n{\"kind\": \"shape_work\", \"coordinate\": 0, \"h\": 0.00015, \"force\": 1.8762125876829279, \"terms\": [-66.79278160580301, -64.08548105810041, 128.7541935329036, 4.000281718682756], \"values_minus\": [166.0823903194276, 3663.438745618693, 53.31042395995843, 0.05086501570468327], \"values_plus\": [166.10242815390933, 3663.45797126301, 53.27179770189856, 0.04966493118907844]}\n{\"kind\": \"shape_work\", \"coordinate\": 1, \"h\": 0.00015, \"force\": -1.2382276216708388, \"terms\": [-52.145286209300444, -40.53011685149007, 90.56609396471535, 0.8710814744043265], \"values_minus\": [166.08458653152297, 3663.442278743475, 53.30469315362322, 0.05039529836777046], \"values_plus\": [166.10023011738576, 3663.4544377785305, 53.277523325433805, 0.05013397392544916]}\n{\"kind\": \"shape_work\", \"coordinate\": 2, \"h\": 0.00015, \"force\": -10.730575367478384, \"terms\": [-41.28274283364893, -12.834109769149412, 52.076024133735174, -8.689746898415212], \"values_minus\": [166.0862183229965, 3663.446436398653, 53.29892856573999, 0.04896121870520931], \"values_plus\": [166.0986031458466, 3663.450286631584, 53.28330575849987, 0.05156814277473387]}\n{\"kind\": \"shape_work\", \"coordinate\": 3, \"h\": 0.00015, \"force\": -19.0009867573715, \"terms\": [-8.939582410789626, -11.303316831193419, 7.3890393599166755, -6.147126875305128], \"values_minus\": [166.0910683414233, 3663.4466642495568, 53.292221015347835, 0.049343075658409674], \"values_plus\": [166.09375021614653, 3663.450055244606, 53.29000430353986, 0.05118721372100121]}\n{\"kind\": \"shape_work\", \"coordinate\": 4, \"h\": 0.00015, \"force\": -11.521965522763484, \"terms\": [-32.63629709673903, -17.82483079296071, 42.77505021967443, -3.8358878527381775], \"values_minus\": [166.0875154337694, 3663.4456876232803, 53.297532981851326, 0.049689452045792004], \"values_plus\": [166.09730632289842, 3663.451035072518, 53.284700466785424, 0.05084021840161346]}\n{\"kind\": \"joint_descent\", \"h\": 0.00015, \"direction\": [0.0757182824392644, -0.0499711330140674, -0.4330536644645147, -0.7668225292615486, -0.464991784745188], \"energy_change\": -0.0036984951081875383}\n"
+    }
+  },
+  "superseded_pointwise_transfer": {
+    "source_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+    "wound_current": 11.643709450727224,
+    "matched_zero_current": 13.8132257334357,
+    "retained_percent": 84.2939200113335,
+    "dense_current_share": 0.6896472478734277,
+    "largest_drive_order_update": 0.026088413461502785,
+    "polar": 0.0840593389796997,
+    "zero_polar": -2.0893958237568639e-07
+  },
+  "post_feedback": {
+    "scope": "Work-conjugate held geometry; no physical release",
+    "radius": 4,
+    "source_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+    "coupled_sha256": "c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226",
+    "wound_current": 11.643672317825471,
+    "matched_zero_current": 13.813201167385046,
+    "retained_percent": 84.29380110178846,
+    "dense_current_share": 0.6896419179328013,
+    "drive_polar": 0.08405948568078617,
+    "zero_polar": -2.0891258085127076e-07
+  }
+}

@@ -1,0 +1,3159 @@
+{
+  "question": "Is the radius-four wound collar in internal material equilibrium, including its bonded inner join?",
+  "conditions": "Stationary permanently bonded supersolid, winding one on both sides, ordered draining core, absent breathing mode. The original five-coordinate wall shape is held for the local mesh and continuation controls. Signed radial/axial virtuals compose one smooth physical deformation across the join. They leave the wet exterior shape and all carrier fields in place.",
+  "reference": "8a7c9b7a",
+  "source": "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+  "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+  "tools": [
+    "software/stage1_solver/tools/mouth_internal_collar.py",
+    "software/stage1_solver/tools/mouth_internal_collar_check.py",
+    "software/stage1_solver/tools/mouth_internal_join_work.py"
+  ],
+  "native_force_convention": "Positive energy derivative is energy-lowering force in the negative coordinate direction. Core minus collar trace uses a common increasing-radius normal, weighted by sin(pi w/L)^2. Series with finite virtual width also include work in the interior of each side.",
+  "datasets": {
+    "armijo": {
+      "state_digests": {
+        "stdout": "937139ddb3ca725d2185bd694ecd540d39c4b977c7a0809d8a11ae0f9e5a2b17",
+        "labels_8.npz": "f2c176bd583af1a73fe8e97443e78776b3c02f789129997af08db13ea4b9914c",
+        "labels_12.npz": "417973b23422f368eca40d7d2e6059d07ba79df460d78bf7b8aa53349a9b43ff",
+        "labels_4.npz": "97e5298f5dbc4374ef4bffd4385a45431d37473461b85a9022dcec744b30eab6"
+      },
+      "rows": [
+        {
+          "kind": "collar",
+          "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "na": 4,
+          "nt": 8,
+          "quad": 3,
+          "before": {
+            "energy": 28.658812840639715,
+            "residual": 8.237645315560147,
+            "min_J": 0.32213507566123695,
+            "max_J": 1.518204866745737,
+            "min_stretch": 0.6163633483798718,
+            "max_stretch": 1.2979022476886333,
+            "min_inverse_corner_det": 1.0,
+            "zero_order_quadrature_sites": 95,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.1301453536219268,
+            "seam_label_work_sum": -45.77944868208756,
+            "core_join_label_work_sum": [
+              181.68436876185413,
+              -77.74941200702385
+            ],
+            "max_free_radial": 8.237645315560147,
+            "max_free_depth": 5.973095010028203
+          },
+          "after": {
+            "energy": 24.094196581806635,
+            "residual": 1.1490999686503134e-07,
+            "min_J": 0.18616632419431295,
+            "max_J": 3.2225389452035484,
+            "min_stretch": 0.28092216816357585,
+            "max_stretch": 2.9942233349662417,
+            "min_inverse_corner_det": 0.34518912460303014,
+            "zero_order_quadrature_sites": 95,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5228448376928414,
+            "seam_label_work_sum": -110.78088720878668,
+            "core_join_label_work_sum": [
+              139.75968900120628,
+              -65.0110246342953
+            ],
+            "max_free_radial": 1.1490999686503134e-07,
+            "max_free_depth": 1.1210013231566229e-07,
+            "iterations": 81,
+            "optimizer_status": "native weak residual converged",
+            "scaled_residual": 6.057627275580438e-09,
+            "active_dofs": 107
+          }
+        },
+        {
+          "kind": "collar",
+          "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "na": 8,
+          "nt": 16,
+          "quad": 3,
+          "before": {
+            "energy": 28.665526331342477,
+            "residual": 3.742967475020082,
+            "min_J": 0.31893571533101395,
+            "max_J": 1.534300077241056,
+            "min_stretch": 0.6160391472232043,
+            "max_stretch": 1.2998947990477785,
+            "min_inverse_corner_det": 1.0,
+            "zero_order_quadrature_sites": 386,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.3667229314232106,
+            "seam_label_work_sum": -25.316307009392574,
+            "core_join_label_work_sum": [
+              187.9018147113289,
+              -77.66832336621147
+            ],
+            "max_free_radial": 3.742967475020082,
+            "max_free_depth": 2.0524782381577364
+          },
+          "after": {
+            "energy": 23.641601098244806,
+            "residual": 0.4589825474548412,
+            "min_J": 0.10461872393500087,
+            "max_J": 22662714033299.516,
+            "min_stretch": 0.23889125441934098,
+            "max_stretch": 30657931813541.71,
+            "min_inverse_corner_det": 5.2735593669694936e-14,
+            "zero_order_quadrature_sites": 386,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5852694828783407,
+            "seam_label_work_sum": -106.268860493969,
+            "core_join_label_work_sum": [
+              140.05975561179542,
+              -62.82247336714658
+            ],
+            "max_free_radial": 0.4589825474548412,
+            "max_free_depth": 0.30147644127007106,
+            "iterations": 42,
+            "optimizer_status": "orientation or precision limited before stationarity",
+            "scaled_residual": 0.04013415797391464,
+            "active_dofs": 460
+          }
+        },
+        {
+          "kind": "collar",
+          "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "na": 12,
+          "nt": 24,
+          "quad": 3,
+          "before": {
+            "energy": 28.667506481304613,
+            "residual": 2.351811701511022,
+            "min_J": 0.3178798911778296,
+            "max_J": 1.5396665825406732,
+            "min_stretch": 0.6158454385966435,
+            "max_stretch": 1.300552112137783,
+            "min_inverse_corner_det": 0.9999999999999982,
+            "zero_order_quadrature_sites": 867,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.4486224807076382,
+            "seam_label_work_sum": -17.233357539672465,
+            "core_join_label_work_sum": [
+              190.03348657144136,
+              -77.64863913411992
+            ],
+            "max_free_radial": 2.351811701511022,
+            "max_free_depth": 1.2147559253856555
+          },
+          "after": {
+            "energy": 23.59579354302408,
+            "residual": 1.7370336923844552,
+            "min_J": 0.10420375612855942,
+            "max_J": 286320444265.017,
+            "min_stretch": 0.2403579658527137,
+            "max_stretch": 389292903264.4323,
+            "min_inverse_corner_det": 4.090283667324002e-12,
+            "zero_order_quadrature_sites": 867,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.9992815055399331,
+            "seam_label_work_sum": -97.78933565194998,
+            "core_join_label_work_sum": [
+              139.7515439435364,
+              -63.1402688792762
+            ],
+            "max_free_radial": 1.7370336923844552,
+            "max_free_depth": 1.1912266454055371,
+            "iterations": 15,
+            "optimizer_status": "orientation or precision limited before stationarity",
+            "scaled_residual": 0.06546688702081138,
+            "active_dofs": 1050
+          }
+        }
+      ]
+    },
+    "gauge6": {
+      "state_digests": {
+        "stdout": "db41fa8b1bbef0682eea5802bd8ff93496e35a677fcc5e998a62fa8168a4169c",
+        "labels_8.npz": "1cce137b92931baa95b5e0b18187e87d8ad5834d29a4e3c05cd3790dd43c3b19",
+        "labels_12.npz": "40a6366bb0b1bd98d0343eb619276638726b02bb6b11531d080f547c6c3e236b",
+        "labels_4.npz": "e6e37d9b9e9fc6b36b34ea9f37a759f8ca693d83f4c6ca7ca684077b432a1954"
+      },
+      "rows": [
+        {
+          "kind": "collar",
+          "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "na": 4,
+          "nt": 8,
+          "quad": 3,
+          "before": {
+            "energy": 28.658812840639715,
+            "residual": 8.237645315560147,
+            "min_J": 0.32213507566123695,
+            "max_J": 1.518204866745737,
+            "min_stretch": 0.6163633483798718,
+            "max_stretch": 1.2979022476886333,
+            "min_inverse_corner_det": 1.0,
+            "zero_order_quadrature_sites": 95,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.1301453536219268,
+            "seam_label_work_sum": -45.77944868208756,
+            "core_join_label_work_sum": [
+              181.68436876185413,
+              -77.74941200702385
+            ],
+            "max_free_radial": 8.237645315560147,
+            "max_free_depth": 5.973095010028203
+          },
+          "after": {
+            "energy": 24.094196686783917,
+            "residual": 4.78702860710941e-05,
+            "min_J": 0.18616395609482195,
+            "max_J": 3.2212641076839166,
+            "min_stretch": 0.2938773091716014,
+            "max_stretch": 2.726646338800103,
+            "min_inverse_corner_det": 0.34532731850363235,
+            "zero_order_quadrature_sites": 95,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5228525113203084,
+            "seam_label_work_sum": -110.7808018629507,
+            "core_join_label_work_sum": [
+              139.75968007232234,
+              -65.01103422303704
+            ],
+            "max_free_radial": 4.78702860710941e-05,
+            "max_free_depth": 4.5000403705303544e-05,
+            "iterations": 149,
+            "optimizer_status": "native weak residual converged",
+            "scaled_residual": 9.64020182889067e-09,
+            "active_dofs": 110,
+            "gauge": 1e-06,
+            "empty_triangles": 7
+          }
+        },
+        {
+          "kind": "collar",
+          "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "na": 8,
+          "nt": 16,
+          "quad": 3,
+          "before": {
+            "energy": 28.665526331342477,
+            "residual": 3.742967475020082,
+            "min_J": 0.31893571533101395,
+            "max_J": 1.534300077241056,
+            "min_stretch": 0.6160391472232043,
+            "max_stretch": 1.2998947990477785,
+            "min_inverse_corner_det": 1.0,
+            "zero_order_quadrature_sites": 386,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.3667229314232106,
+            "seam_label_work_sum": -25.316307009392574,
+            "core_join_label_work_sum": [
+              187.9018147113289,
+              -77.66832336621147
+            ],
+            "max_free_radial": 3.742967475020082,
+            "max_free_depth": 2.0524782381577364
+          },
+          "after": {
+            "energy": 23.62629322025692,
+            "residual": 0.00018809374755898777,
+            "min_J": 0.08275520884034394,
+            "max_J": 9.10791877603677,
+            "min_stretch": 0.2183384427670979,
+            "max_stretch": 14.050182742308824,
+            "min_inverse_corner_det": 0.14412435356579917,
+            "zero_order_quadrature_sites": 386,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5515438485148019,
+            "seam_label_work_sum": -108.9536525940319,
+            "core_join_label_work_sum": [
+              137.5859271240313,
+              -62.01131254445246
+            ],
+            "max_free_radial": 0.00010316957993620755,
+            "max_free_depth": 0.00018809374755898777,
+            "iterations": 755,
+            "optimizer_status": "native weak residual converged",
+            "scaled_residual": 1.802352866295721e-08,
+            "active_dofs": 478,
+            "gauge": 1e-06,
+            "empty_triangles": 30
+          }
+        },
+        {
+          "kind": "collar",
+          "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "na": 12,
+          "nt": 24,
+          "quad": 3,
+          "before": {
+            "energy": 28.667506481304613,
+            "residual": 2.351811701511022,
+            "min_J": 0.3178798911778296,
+            "max_J": 1.5396665825406732,
+            "min_stretch": 0.6158454385966435,
+            "max_stretch": 1.300552112137783,
+            "min_inverse_corner_det": 0.9999999999999982,
+            "zero_order_quadrature_sites": 867,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.4486224807076382,
+            "seam_label_work_sum": -17.233357539672465,
+            "core_join_label_work_sum": [
+              190.03348657144136,
+              -77.64863913411992
+            ],
+            "max_free_radial": 2.351811701511022,
+            "max_free_depth": 1.2147559253856555
+          },
+          "after": {
+            "energy": 23.519197947322727,
+            "residual": 0.00034138133812452824,
+            "min_J": 0.02769334797776464,
+            "max_J": 70.03546337414848,
+            "min_stretch": 0.10318546013401413,
+            "max_stretch": 96.19160770134422,
+            "min_inverse_corner_det": 0.016543803625964193,
+            "zero_order_quadrature_sites": 867,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5618529309546312,
+            "seam_label_work_sum": -108.51785592886688,
+            "core_join_label_work_sum": [
+              137.0660801065949,
+              -60.65971331328299
+            ],
+            "max_free_radial": 0.00024674777381422793,
+            "max_free_depth": 0.00034138133812452824,
+            "iterations": 2267,
+            "optimizer_status": "native weak residual converged",
+            "scaled_residual": 1.7975719109829734e-08,
+            "active_dofs": 1102,
+            "gauge": 1e-06,
+            "empty_triangles": 75
+          }
+        }
+      ]
+    },
+    "gauge_sensitivity": {
+      "state_digests": {
+        "stdout": "679752cf057de646d6fa22dbb2338c794e4bb97ded0e76aabf7126595ef9b312"
+      },
+      "rows": [
+        {
+          "source_sha256": "1cce137b92931baa95b5e0b18187e87d8ad5834d29a4e3c05cd3790dd43c3b19",
+          "mesh": [
+            8,
+            16
+          ],
+          "gauge": null,
+          "native": {
+            "energy": 23.62629322025692,
+            "residual": 0.00018809374755898777,
+            "min_J": 0.08275520884034394,
+            "max_J": 9.10791877603677,
+            "min_stretch": 0.2183384427670979,
+            "max_stretch": 14.050182742308824,
+            "min_inverse_corner_det": 0.14412435356579917,
+            "zero_order_quadrature_sites": 386,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5515438485148019,
+            "seam_label_work_sum": -108.9536525940319,
+            "core_join_label_work_sum": [
+              137.5859271240313,
+              -62.01131254445246
+            ],
+            "max_free_radial": 0.00010316957993620755,
+            "max_free_depth": 0.00018809374755898777
+          },
+          "spatial_energy": 23.626293220256912,
+          "density_minus_native": -7.105427357601002e-15,
+          "area": {
+            "empty": {
+              "count": 30,
+              "det_min": 0.18876501145859195,
+              "e": -0.40625000000000006,
+              "t": 0.484375,
+              "order": [
+                0.0,
+                0.0
+              ],
+              "energy": 0.0
+            },
+            "weak": {
+              "count": 10,
+              "det_min": 0.14412435356579917,
+              "e": -0.46875,
+              "t": 0.515625,
+              "order": [
+                0.0,
+                4.541843766725519e-08
+              ],
+              "energy": 3.0616555887255856e-05
+            },
+            "present": {
+              "count": 472,
+              "det_min": 0.1637844929518257,
+              "e": -0.34374999999999994,
+              "t": 0.453125,
+              "order": [
+                0.0,
+                0.000407262818886366
+              ],
+              "energy": 23.626262603701058
+            },
+            "ordered": {
+              "count": 256,
+              "det_min": 0.5437507387359973,
+              "e": 0.03125,
+              "t": 0.015625000000000003,
+              "order": [
+                0.5313770851672455,
+                0.756973767589256
+              ],
+              "energy": 22.661352687289714
+            }
+          }
+        },
+        {
+          "source_sha256": "1cce137b92931baa95b5e0b18187e87d8ad5834d29a4e3c05cd3790dd43c3b19",
+          "mesh": [
+            8,
+            16
+          ],
+          "gauge": 1e-05,
+          "optimizer": "native weak residual converged",
+          "iterations": 228,
+          "native": {
+            "energy": 23.62630888096427,
+            "residual": 0.0008714107224969751,
+            "min_J": 0.058393530714364525,
+            "max_J": 30.628087081193314,
+            "min_stretch": 0.15842608025261948,
+            "max_stretch": 43.69068186453744,
+            "min_inverse_corner_det": 0.042875166637856225,
+            "zero_order_quadrature_sites": 386,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5518609210172722,
+            "seam_label_work_sum": -108.95301260082594,
+            "core_join_label_work_sum": [
+              137.58578862870644,
+              -62.01143962586772
+            ],
+            "max_free_radial": 0.00038968171481519034,
+            "max_free_depth": 0.0008714107224969751
+          },
+          "spatial_energy": 23.626308880964277,
+          "density_minus_native": 7.105427357601002e-15,
+          "area": {
+            "empty": {
+              "count": 30,
+              "det_min": 0.2966923543137273,
+              "e": -0.40625,
+              "t": 0.453125,
+              "order": [
+                0.0,
+                0.0
+              ],
+              "energy": 0.0
+            },
+            "weak": {
+              "count": 10,
+              "det_min": 0.042875166637856225,
+              "e": -0.46875,
+              "t": 0.515625,
+              "order": [
+                0.0,
+                4.541843766725519e-08
+              ],
+              "energy": 3.9580987409937936e-05
+            },
+            "present": {
+              "count": 472,
+              "det_min": 0.19695666563734346,
+              "e": -0.34374999999999994,
+              "t": 0.453125,
+              "order": [
+                0.0,
+                0.000407262818886366
+              ],
+              "energy": 23.62626929997684
+            },
+            "ordered": {
+              "count": 256,
+              "det_min": 0.5437539436963265,
+              "e": 0.03125,
+              "t": 0.015625000000000003,
+              "order": [
+                0.5313770851672455,
+                0.756973767589256
+              ],
+              "energy": 22.661364294669724
+            }
+          }
+        },
+        {
+          "source_sha256": "1cce137b92931baa95b5e0b18187e87d8ad5834d29a4e3c05cd3790dd43c3b19",
+          "mesh": [
+            8,
+            16
+          ],
+          "gauge": 1e-07,
+          "optimizer": "native weak residual converged",
+          "iterations": 254,
+          "native": {
+            "energy": 23.62628871041547,
+            "residual": 4.293533918529069e-05,
+            "min_J": 0.17730506825704173,
+            "max_J": 9.343770623551837,
+            "min_stretch": 0.2020156541210498,
+            "max_stretch": 10.22852211948797,
+            "min_inverse_corner_det": 0.1256960423064627,
+            "zero_order_quadrature_sites": 386,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5514924025343633,
+            "seam_label_work_sum": -108.95373808408765,
+            "core_join_label_work_sum": [
+              137.58596052745438,
+              -62.011284345442704
+            ],
+            "max_free_radial": 2.9001341263667508e-05,
+            "max_free_depth": 4.293533918529069e-05
+          },
+          "spatial_energy": 23.626288710415462,
+          "density_minus_native": -7.105427357601002e-15,
+          "area": {
+            "empty": {
+              "count": 30,
+              "det_min": 0.1256960423064627,
+              "e": -0.40625000000000006,
+              "t": 0.484375,
+              "order": [
+                0.0,
+                0.0
+              ],
+              "energy": 0.0
+            },
+            "weak": {
+              "count": 10,
+              "det_min": 0.22422966338054173,
+              "e": -0.40625000000000006,
+              "t": 0.421875,
+              "order": [
+                0.0,
+                3.376234007979113e-05
+              ],
+              "energy": 2.6557754698066597e-05
+            },
+            "present": {
+              "count": 472,
+              "det_min": 0.15664454446533033,
+              "e": -0.34374999999999994,
+              "t": 0.453125,
+              "order": [
+                0.0,
+                0.000407262818886366
+              ],
+              "energy": 23.626262152660797
+            },
+            "ordered": {
+              "count": 256,
+              "det_min": 0.5437501073729396,
+              "e": 0.03125,
+              "t": 0.015625000000000003,
+              "order": [
+                0.5313770851672455,
+                0.756973767589256
+              ],
+              "energy": 22.661350175385515
+            }
+          }
+        },
+        {
+          "source_sha256": "40a6366bb0b1bd98d0343eb619276638726b02bb6b11531d080f547c6c3e236b",
+          "mesh": [
+            12,
+            24
+          ],
+          "gauge": null,
+          "native": {
+            "energy": 23.519197947322727,
+            "residual": 0.00034138133812452824,
+            "min_J": 0.02769334797776464,
+            "max_J": 70.03546337414848,
+            "min_stretch": 0.10318546013401413,
+            "max_stretch": 96.19160770134422,
+            "min_inverse_corner_det": 0.016543803625964193,
+            "zero_order_quadrature_sites": 867,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5618529309546312,
+            "seam_label_work_sum": -108.51785592886688,
+            "core_join_label_work_sum": [
+              137.0660801065949,
+              -60.65971331328299
+            ],
+            "max_free_radial": 0.00024674777381422793,
+            "max_free_depth": 0.00034138133812452824
+          },
+          "spatial_energy": 23.51919794732273,
+          "density_minus_native": 3.552713678800501e-15,
+          "area": {
+            "empty": {
+              "count": 75,
+              "det_min": 0.142690244042224,
+              "e": -0.3958333333333333,
+              "t": 0.4479166666666667,
+              "order": [
+                0.0,
+                0.0
+              ],
+              "energy": 0.0
+            },
+            "weak": {
+              "count": 20,
+              "det_min": 0.016543803625964193,
+              "e": -0.39583333333333337,
+              "t": 0.4270833333333333,
+              "order": [
+                0.0,
+                9.608180122332941e-07
+              ],
+              "energy": 6.43496628550311e-05
+            },
+            "present": {
+              "count": 1057,
+              "det_min": 0.13231540621590182,
+              "e": -0.35416666666666674,
+              "t": 0.40624999999999994,
+              "order": [
+                2.283934060803193e-06,
+                0.00013041208660506472
+              ],
+              "energy": 23.51913359765991
+            },
+            "ordered": {
+              "count": 576,
+              "det_min": 0.49983330285035427,
+              "e": 0.020833333333333315,
+              "t": 0.010416666666666666,
+              "order": [
+                0.5211312824543021,
+                0.6717758776644239
+              ],
+              "energy": 22.57025970842225
+            }
+          }
+        },
+        {
+          "source_sha256": "40a6366bb0b1bd98d0343eb619276638726b02bb6b11531d080f547c6c3e236b",
+          "mesh": [
+            12,
+            24
+          ],
+          "gauge": 1e-05,
+          "optimizer": "native weak residual converged",
+          "iterations": 601,
+          "native": {
+            "energy": 23.519224159354717,
+            "residual": 0.0004680063588347776,
+            "min_J": 0.026679476220706492,
+            "max_J": 59.48643631037261,
+            "min_stretch": 0.1032304848910359,
+            "max_stretch": 102.0028113382338,
+            "min_inverse_corner_det": 0.01972244102265419,
+            "zero_order_quadrature_sites": 867,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5622169723441142,
+            "seam_label_work_sum": -108.51738226855792,
+            "core_join_label_work_sum": [
+              137.06591737342933,
+              -60.659853154897675
+            ],
+            "max_free_radial": 0.00030958331559265725,
+            "max_free_depth": 0.0004680063588347776
+          },
+          "spatial_energy": 23.51922415935472,
+          "density_minus_native": 3.552713678800501e-15,
+          "area": {
+            "empty": {
+              "count": 75,
+              "det_min": 0.3457612577861204,
+              "e": -0.4375,
+              "t": 0.4270833333333333,
+              "order": [
+                0.0,
+                0.0
+              ],
+              "energy": 0.0
+            },
+            "weak": {
+              "count": 20,
+              "det_min": 0.01972244102265419,
+              "e": -0.39583333333333337,
+              "t": 0.4270833333333333,
+              "order": [
+                0.0,
+                9.608180122332941e-07
+              ],
+              "energy": 7.817874732706699e-05
+            },
+            "present": {
+              "count": 1057,
+              "det_min": 0.14563304079356357,
+              "e": -0.35416666666666674,
+              "t": 0.40624999999999994,
+              "order": [
+                2.283934060803193e-06,
+                0.00013041208660506472
+              ],
+              "energy": 23.519145980607462
+            },
+            "ordered": {
+              "count": 576,
+              "det_min": 0.49983695480554813,
+              "e": 0.020833333333333315,
+              "t": 0.010416666666666666,
+              "order": [
+                0.5211312824543021,
+                0.6717758776644239
+              ],
+              "energy": 22.570273108573424
+            }
+          }
+        },
+        {
+          "source_sha256": "40a6366bb0b1bd98d0343eb619276638726b02bb6b11531d080f547c6c3e236b",
+          "mesh": [
+            12,
+            24
+          ],
+          "gauge": 1e-07,
+          "optimizer": "native weak residual converged",
+          "iterations": 1929,
+          "native": {
+            "energy": 23.519191838956555,
+            "residual": 0.0003011066911840007,
+            "min_J": 0.032565947838563536,
+            "max_J": 86.87207770113699,
+            "min_stretch": 0.10813422819358383,
+            "max_stretch": 90.27727327930737,
+            "min_inverse_corner_det": 0.013255840054776175,
+            "zero_order_quadrature_sites": 867,
+            "min_order": 0.0,
+            "receiver_edge_label_work_sum": 1.5617437184190701,
+            "seam_label_work_sum": -108.51789432927455,
+            "core_join_label_work_sum": [
+              137.06612767343955,
+              -60.65967222803691
+            ],
+            "max_free_radial": 0.00024200261803230999,
+            "max_free_depth": 0.0003011066911840007
+          },
+          "spatial_energy": 23.519191838956562,
+          "density_minus_native": 7.105427357601002e-15,
+          "area": {
+            "empty": {
+              "count": 75,
+              "det_min": 0.04117439810635426,
+              "e": -0.3958333333333333,
+              "t": 0.4895833333333333,
+              "order": [
+                0.0,
+                0.0
+              ],
+              "energy": 0.0
+            },
+            "weak": {
+              "count": 20,
+              "det_min": 0.013255840054776175,
+              "e": -0.39583333333333337,
+              "t": 0.4270833333333333,
+              "order": [
+                0.0,
+                9.608180122332941e-07
+              ],
+              "energy": 6.071108165609921e-05
+            },
+            "present": {
+              "count": 1057,
+              "det_min": 0.12510613088138664,
+              "e": -0.35416666666666674,
+              "t": 0.40624999999999994,
+              "order": [
+                2.283934060803193e-06,
+                0.00013041208660506472
+              ],
+              "energy": 23.519131127874964
+            },
+            "ordered": {
+              "count": 576,
+              "det_min": 0.4998322898312305,
+              "e": 0.020833333333333315,
+              "t": 0.010416666666666666,
+              "order": [
+                0.5211312824543021,
+                0.6717758776644239
+              ],
+              "energy": 22.570255833558257
+            }
+          }
+        }
+      ]
+    },
+    "traction": {
+      "state_digests": {
+        "stdout": "743196e680f250108199c8229a2c2e0c2a071cf1ecbf7ee8ccd4b9b17cbf2c0b"
+      },
+      "rows": [
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/gauge6/labels_8.npz",
+          "sha256": "1cce137b92931baa95b5e0b18187e87d8ad5834d29a4e3c05cd3790dd43c3b19",
+          "width": 0.15,
+          "quad": 6,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 34.009409724991,
+                "core": -19.079395883523365,
+                "sum": 14.930013841467638
+              },
+              "w": {
+                "collar": 55.38711870668678,
+                "core": -41.04234557579023,
+                "sum": 14.344773130896549
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 34.00939214657228,
+                "core": -19.07938526547248,
+                "sum": 14.9300068810998
+              },
+              "w": {
+                "collar": 55.38711521431594,
+                "core": -41.04234396933748,
+                "sum": 14.34477124497846
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -36.24260077431755,
+                -56.534497443892
+              ],
+              "core": [
+                -16.775383115536865,
+                -43.57455248235794
+              ],
+              "core_minus_collar": [
+                19.467217658780687,
+                12.959944961534063
+              ],
+              "order": [
+                0.5103659850303487,
+                0.9998970304467798
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.05123654468844461,
+                -0.07907032553259073
+              ],
+              "order": [
+                0.0,
+                0.4892027374206148
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/gauge6/labels_12.npz",
+          "sha256": "40a6366bb0b1bd98d0343eb619276638726b02bb6b11531d080f547c6c3e236b",
+          "width": 0.15,
+          "quad": 6,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 33.75565895789023,
+                "core": -19.079412535634166,
+                "sum": 14.676246422256067
+              },
+              "w": {
+                "collar": 55.08160811769969,
+                "core": -41.042296783713184,
+                "sum": 14.039311333986504
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 33.755641406258974,
+                "core": -19.079401917605487,
+                "sum": 14.676239488653486
+              },
+              "w": {
+                "collar": 55.08160454539279,
+                "core": -41.04229517738478,
+                "sum": 14.039309368008013
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -35.29109262668612,
+                -55.849879902800986
+              ],
+              "core": [
+                -16.77523758091488,
+                -43.57431968497669
+              ],
+              "core_minus_collar": [
+                18.515855045771243,
+                12.275560217824292
+              ],
+              "order": [
+                0.5069106566868993,
+                0.9999269684834315
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.0009996427705353116,
+                -0.07805997434039648
+              ],
+              "order": [
+                0.0,
+                0.49280135667104846
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "join": {
+      "state_digests": {
+        "stdout": "f7610cc9d490991d68d9b3ffe77d2ad05440fb3d277b209f26ae9bd33a2314b0"
+      },
+      "rows": [
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/gauge6/labels_8.npz",
+          "sha256": "1cce137b92931baa95b5e0b18187e87d8ad5834d29a4e3c05cd3790dd43c3b19",
+          "width": 0.15,
+          "quad": 5,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 34.005297987054206,
+                "core": -19.076201336241105,
+                "sum": 14.9290966508131
+              },
+              "w": {
+                "collar": 55.38362716702494,
+                "core": -41.04089327046534,
+                "sum": 14.3427338965596
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 34.005280412365835,
+                "core": -19.07619068108435,
+                "sum": 14.929089731281486
+              },
+              "w": {
+                "collar": 55.38362375514083,
+                "core": -41.04089159955304,
+                "sum": 14.34273215558779
+              }
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/gauge6/labels_8.npz",
+          "sha256": "1cce137b92931baa95b5e0b18187e87d8ad5834d29a4e3c05cd3790dd43c3b19",
+          "width": 0.15,
+          "quad": 8,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 34.00708551797749,
+                "core": -19.07718454490226,
+                "sum": 14.929900973075227
+              },
+              "w": {
+                "collar": 55.384990291393876,
+                "core": -41.04126944931563,
+                "sum": 14.343720842078248
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 34.00706794078445,
+                "core": -19.0771739285589,
+                "sum": 14.929894012225553
+              },
+              "w": {
+                "collar": 55.38498339355158,
+                "core": -41.04126784355788,
+                "sum": 14.343715549993696
+              }
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/gauge6/labels_8.npz",
+          "sha256": "1cce137b92931baa95b5e0b18187e87d8ad5834d29a4e3c05cd3790dd43c3b19",
+          "width": 0.22,
+          "quad": 5,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 33.99100261679777,
+                "core": -20.083856701882397,
+                "sum": 13.907145914915375
+              },
+              "w": {
+                "collar": 55.437603038335226,
+                "core": -39.88325843817808,
+                "sum": 15.554344600157144
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 33.99099452735754,
+                "core": -20.08385190068296,
+                "sum": 13.907142626674585
+              },
+              "w": {
+                "collar": 55.437600800409825,
+                "core": -39.88325701953066,
+                "sum": 15.554343780879165
+              }
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/gauge6/labels_8.npz",
+          "sha256": "1cce137b92931baa95b5e0b18187e87d8ad5834d29a4e3c05cd3790dd43c3b19",
+          "width": 0.22,
+          "quad": 8,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 33.995642885287225,
+                "core": -20.08651904468195,
+                "sum": 13.909123840605275
+              },
+              "w": {
+                "collar": 55.440052038626675,
+                "core": -39.883607983983715,
+                "sum": 15.55644405464296
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 33.99563479085543,
+                "core": -20.086514256343335,
+                "sum": 13.909120534512098
+              },
+              "w": {
+                "collar": 55.44004299704142,
+                "core": -39.88360692179782,
+                "sum": 15.556436075243596
+              }
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/gauge6/labels_12.npz",
+          "sha256": "40a6366bb0b1bd98d0343eb619276638726b02bb6b11531d080f547c6c3e236b",
+          "width": 0.15,
+          "quad": 5,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 33.757762607837805,
+                "core": -19.076184204513957,
+                "sum": 14.681578403323847
+              },
+              "w": {
+                "collar": 55.08115713418249,
+                "core": -41.04093512699025,
+                "sum": 14.040222007192241
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 33.75774505332885,
+                "core": -19.076173549441577,
+                "sum": 14.68157150388727
+              },
+              "w": {
+                "collar": 55.081154199960736,
+                "core": -41.040933456280015,
+                "sum": 14.04022074368072
+              }
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/gauge6/labels_12.npz",
+          "sha256": "40a6366bb0b1bd98d0343eb619276638726b02bb6b11531d080f547c6c3e236b",
+          "width": 0.15,
+          "quad": 8,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 33.75561334209465,
+                "core": -19.077170789352227,
+                "sum": 14.678442552742421
+              },
+              "w": {
+                "collar": 55.08096959113473,
+                "core": -41.04130139821027,
+                "sum": 14.03966819292446
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 33.75559579207987,
+                "core": -19.077160173037733,
+                "sum": 14.67843561904214
+              },
+              "w": {
+                "collar": 55.08096567918841,
+                "core": -41.041299792405894,
+                "sum": 14.039665886782515
+              }
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/gauge6/labels_12.npz",
+          "sha256": "40a6366bb0b1bd98d0343eb619276638726b02bb6b11531d080f547c6c3e236b",
+          "width": 0.22,
+          "quad": 5,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 33.75672937565355,
+                "core": -20.08375938785889,
+                "sum": 13.672969987794659
+              },
+              "w": {
+                "collar": 55.10735230380703,
+                "core": -39.88320559116243,
+                "sum": 15.224146712644604
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 33.756721294651015,
+                "core": -20.083752680122302,
+                "sum": 13.672968614528713
+              },
+              "w": {
+                "collar": 55.10735066483363,
+                "core": -39.88320273692558,
+                "sum": 15.22414792790805
+              }
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/gauge6/labels_12.npz",
+          "sha256": "40a6366bb0b1bd98d0343eb619276638726b02bb6b11531d080f547c6c3e236b",
+          "width": 0.22,
+          "quad": 8,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 33.75432288208913,
+                "core": -20.08644784019964,
+                "sum": 13.667875041889488
+              },
+              "w": {
+                "collar": 55.10681444464538,
+                "core": -39.88357095440431,
+                "sum": 15.223243490241067
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 33.75431480066027,
+                "core": -20.086443051869907,
+                "sum": 13.667871748790361
+              },
+              "w": {
+                "collar": 55.1068117142961,
+                "core": -39.88356989227171,
+                "sum": 15.223241822024391
+              }
+            }
+          }
+        }
+      ]
+    },
+    "join_candidate": {
+      "state_digests": {
+        "stdout": "7678077899172f3d8d835cba30797db5242a8748cdb2b6645878b091140c1d1c"
+      },
+      "rows": [
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/candidate/state.npz",
+          "sha256": "41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8",
+          "width": 0.15,
+          "quad": 8,
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 34.96851844834836,
+                "core": -21.264524312578637,
+                "sum": 13.703994135769726,
+                "plus_energy": 0.0013850872390683833,
+                "minus_energy": -0.001355711588085562,
+                "plus_parts": [
+                  0.003505758457272634,
+                  -0.002120671218204251
+                ],
+                "minus_parts": [
+                  -0.0034879452323970384,
+                  0.0021322336443114764
+                ]
+              },
+              "w": {
+                "collar": 65.20714033660724,
+                "core": -49.7170657300261,
+                "sum": 15.490074606581139,
+                "plus_energy": 0.0015591797740697189,
+                "minus_energy": -0.001538835147246509,
+                "plus_parts": [
+                  0.0065270736794467155,
+                  -0.004967893905376997
+                ],
+                "minus_parts": [
+                  -0.006514354387874732,
+                  0.004975519240628223
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 34.96850100685123,
+                "core": -21.264513588699074,
+                "sum": 13.703987418152153,
+                "plus_energy": 0.0006888713268224933,
+                "minus_energy": -0.000681527414992722,
+                "plus_parts": [
+                  0.0017506517031762314,
+                  -0.0010617803763537381
+                ],
+                "minus_parts": [
+                  -0.0017461983975088913,
+                  0.0010646709825161693
+                ]
+              },
+              "w": {
+                "collar": 65.20713479375218,
+                "core": -49.71706331385661,
+                "sum": 15.490071479895562,
+                "plus_energy": 0.0007770466596657144,
+                "minus_energy": -0.0007719604883238418,
+                "plus_parts": [
+                  0.003261946658469128,
+                  -0.0024848999988034137
+                ],
+                "minus_parts": [
+                  -0.0032587668209060894,
+                  0.0024868063325822476
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -37.222752202054,
+                -66.72826206832329
+              ],
+              "core": [
+                -19.2310072509075,
+                -52.71749444223179
+              ],
+              "core_minus_collar": [
+                17.991744951146497,
+                14.0107676260915
+              ],
+              "order": [
+                0.5079003113829328,
+                0.999879593195312
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.07987457983558686,
+                -0.1045167613407877
+              ],
+              "order": [
+                0.0,
+                0.491753088061114
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "below_candidate": {
+      "state_digests": {
+        "stdout": "076eff8876b4b736eb47dc042807596849a02dff3fb1b8d76a76749768ab22bf"
+      },
+      "rows": [
+        {
+          "path": "_scratch/s11c/full_collar4_elastic01/candidate/state.npz",
+          "sha256": "41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8",
+          "width": 0.15,
+          "quad": 8,
+          "depth_span": [
+            0.1,
+            0.65
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 16.84033650491301,
+                "core": -7.732234161874629,
+                "sum": 9.108102343038382,
+                "plus_energy": 0.0009196391944001903,
+                "minus_energy": -0.0009019812742074862,
+                "plus_parts": [
+                  0.001689372418255175,
+                  -0.0007697332238549848
+                ],
+                "minus_parts": [
+                  -0.0016786948827274273,
+                  0.0007767136085199411
+                ]
+              },
+              "w": {
+                "collar": 31.437262392337573,
+                "core": -27.490204851070565,
+                "sum": 3.9470575412670073,
+                "plus_energy": 0.0004019393449032904,
+                "minus_energy": -0.00038747216335011103,
+                "plus_parts": [
+                  0.0031481717485206673,
+                  -0.002746232403617377
+                ],
+                "minus_parts": [
+                  -0.0031392807299468473,
+                  0.0027518085665967362
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 16.840327155307477,
+                "core": -7.732228385499695,
+                "sum": 9.108098769807782,
+                "plus_energy": 0.0004576121782591258,
+                "minus_energy": -0.0004531976987216524,
+                "plus_parts": [
+                  0.0008433510495464702,
+                  -0.0003857388712873444
+                ],
+                "minus_parts": [
+                  -0.0008406816659842775,
+                  0.00038748396726262513
+                ]
+              },
+              "w": {
+                "collar": 31.43725883582249,
+                "core": -27.490202902304972,
+                "sum": 3.947055933517518,
+                "plus_energy": 0.00019916119456286907,
+                "minus_energy": -0.00019554439878888275,
+                "plus_parts": [
+                  0.0015729743193375612,
+                  -0.001373813124774692
+                ],
+                "minus_parts": [
+                  -0.0015707515642446879,
+                  0.0013752071654558051
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -20.113175694293396,
+                -31.50430184284936
+              ],
+              "core": [
+                -6.212345440010079,
+                -29.65304501515512
+              ],
+              "core_minus_collar": [
+                13.900830254283317,
+                1.8512568276942432
+              ],
+              "order": [
+                0.5079003113829328,
+                0.999879593195312
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                -0.030446668226935907,
+                -0.05947399293004323
+              ],
+              "order": [
+                0.0,
+                0.491753088061114
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "join_retained_refined": {
+      "state_digests": {
+        "stdout": "277660a9409a1c3a3f79457e40a334760aa585ac5ceabfc811e92d6a0e0c5582"
+      },
+      "rows": [
+        {
+          "path": "_scratch/s11c/joint_collar4_01/refined/state.npz",
+          "sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "width": 0.15,
+          "quad": 5,
+          "depth_span": [
+            0.0,
+            1.0
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 35.070190342239016,
+                "core": -21.241368258668736,
+                "sum": 13.82882208357028,
+                "plus_energy": 0.0013975678546076509,
+                "minus_energy": -0.0013681965621064052,
+                "plus_parts": [
+                  0.0035159240332838237,
+                  -0.002118356178676173
+                ],
+                "minus_parts": [
+                  -0.0034981140351639795,
+                  0.0021299174730575743
+                ]
+              },
+              "w": {
+                "collar": 65.29697556675984,
+                "core": -49.73937776641346,
+                "sum": 15.557597800346379,
+                "plus_energy": 0.0015650221489362792,
+                "minus_energy": -0.0015464974111329965,
+                "plus_parts": [
+                  0.006535663035730721,
+                  -0.004970640886794442
+                ],
+                "minus_parts": [
+                  -0.006523732077621247,
+                  0.0049772346664882505
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 35.07017289972936,
+                "core": -21.241357496410984,
+                "sum": 13.828815403318373,
+                "plus_energy": 0.0006951121812734939,
+                "minus_energy": -0.0006877693590583434,
+                "plus_parts": [
+                  0.0017557348944841067,
+                  -0.0010606227132106127
+                ],
+                "minus_parts": [
+                  -0.001751282395488829,
+                  0.0010635130364304857
+                ]
+              },
+              "w": {
+                "collar": 65.29697163212944,
+                "core": -49.73937538495399,
+                "sum": 15.557596247175454,
+                "plus_energy": 0.0007799669667480913,
+                "minus_energy": -0.0007757926579694541,
+                "plus_parts": [
+                  0.0032662407685606354,
+                  -0.002486273801812544
+                ],
+                "minus_parts": [
+                  -0.0032634563946523087,
+                  0.0024876637366828547
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -37.402378947668154,
+                -66.83552349539437
+              ],
+              "core": [
+                -19.217345863307372,
+                -52.7401051933899
+              ],
+              "core_minus_collar": [
+                18.185033084360782,
+                14.095418302004468
+              ],
+              "order": [
+                0.5186454419499608,
+                0.9997816133381131
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.07262314936397482,
+                -0.11325366849564474
+              ],
+              "order": [
+                0.0,
+                0.4805284047227073
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/refined/state.npz",
+          "sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "width": 0.15,
+          "quad": 5,
+          "depth_span": [
+            0.1,
+            0.65
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 16.892918589608286,
+                "core": -7.712094375786904,
+                "sum": 9.180824213821381,
+                "plus_energy": 0.0009269082783802673,
+                "minus_energy": -0.0009092565643840089,
+                "plus_parts": [
+                  0.0016946278498757295,
+                  -0.0007677195714954621
+                ],
+                "minus_parts": [
+                  -0.0016839558680459277,
+                  0.0007746993036619187
+                ]
+              },
+              "w": {
+                "collar": 31.4551944934216,
+                "core": -27.489977966408397,
+                "sum": 3.9652165270132045,
+                "plus_energy": 0.00040375666840830604,
+                "minus_energy": -0.00038928663699433486,
+                "plus_parts": [
+                  0.0031499601252846787,
+                  -0.0027462034568763727
+                ],
+                "minus_parts": [
+                  -0.0031410787733996415,
+                  0.0027517921364053066
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 16.892909244212717,
+                "core": -7.712088578424314,
+                "sum": 9.180820665788403,
+                "plus_energy": 0.00046124749727560754,
+                "minus_energy": -0.00045683456930323274,
+                "plus_parts": [
+                  0.0008459794597754922,
+                  -0.0003847319624998846
+                ],
+                "minus_parts": [
+                  -0.0008433114646457796,
+                  0.0003864768953425468
+                ]
+              },
+              "w": {
+                "collar": 31.455190968543434,
+                "core": -27.489975961492163,
+                "sum": 3.9652150070512704,
+                "plus_energy": 0.00020006976820408084,
+                "minus_energy": -0.0001964517325010462,
+                "plus_parts": [
+                  0.0015738683720414315,
+                  -0.0013737986038373506
+                ],
+                "minus_parts": [
+                  -0.001571650724812912,
+                  0.0013751989923118657
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -20.129326600913068,
+                -31.52288555413407
+              ],
+              "core": [
+                -6.204202831880195,
+                -29.652229288770844
+              ],
+              "core_minus_collar": [
+                13.925123769032872,
+                1.8706562653632268
+              ],
+              "order": [
+                0.5186454419499608,
+                0.9997816133381131
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                -0.03733217462301893,
+                -0.06738555281223453
+              ],
+              "order": [
+                0.0,
+                0.4805284047227073
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/refined/state.npz",
+          "sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "width": 0.15,
+          "quad": 8,
+          "depth_span": [
+            0.0,
+            1.0
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 35.064590928861605,
+                "core": -21.243134008970266,
+                "sum": 13.82145691989134,
+                "plus_energy": 0.001396831535201315,
+                "minus_energy": -0.001367459848776953,
+                "plus_parts": [
+                  0.00351536411264064,
+                  -0.002118532577439325
+                ],
+                "minus_parts": [
+                  -0.003497554073131681,
+                  0.0021300942243547283
+                ]
+              },
+              "w": {
+                "collar": 65.29135633915217,
+                "core": -49.73965088898691,
+                "sum": 15.551705450165265,
+                "plus_energy": 0.0015653469051724045,
+                "minus_energy": -0.0015449941848606485,
+                "plus_parts": [
+                  0.00653549791959307,
+                  -0.004970151014420665
+                ],
+                "minus_parts": [
+                  -0.006522773348237365,
+                  0.0049777791633767166
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 35.064573485996675,
+                "core": -21.243123285303867,
+                "sum": 13.821450200692809,
+                "plus_energy": 0.0006947439703823832,
+                "minus_energy": -0.0006874010496868976,
+                "plus_parts": [
+                  0.0017554549289684473,
+                  -0.0010607109585860641
+                ],
+                "minus_parts": [
+                  -0.0017510024196312202,
+                  0.0010636013699443225
+                ]
+              },
+              "w": {
+                "collar": 65.29135077407489,
+                "core": -49.73964846836765,
+                "sum": 15.551702305707238,
+                "plus_energy": 0.0007801292127291859,
+                "minus_energy": -0.0007750410178415379,
+                "plus_parts": [
+                  0.003266158117554596,
+                  -0.0024860289048254103
+                ],
+                "minus_parts": [
+                  -0.0032629769598528924,
+                  0.0024879359420113545
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -37.40222060142533,
+                -66.83401395784743
+              ],
+              "core": [
+                -19.216649787482435,
+                -52.73886967944104
+              ],
+              "core_minus_collar": [
+                18.185570813942892,
+                14.095144278406394
+              ],
+              "order": [
+                0.5078918349997138,
+                0.9998808661700915
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.07299973436321108,
+                -0.11339521106370379
+              ],
+              "order": [
+                0.0,
+                0.4917571423305702
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/refined/state.npz",
+          "sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "width": 0.15,
+          "quad": 8,
+          "depth_span": [
+            0.1,
+            0.65
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 16.89394349220663,
+                "core": -7.713650631138158,
+                "sum": 9.180292861068473,
+                "plus_energy": 0.0009268552743710856,
+                "minus_energy": -0.000909203297842609,
+                "plus_parts": [
+                  0.0016947303705521222,
+                  -0.0007678750961810366
+                ],
+                "minus_parts": [
+                  -0.001684058327889204,
+                  0.0007748550300465951
+                ]
+              },
+              "w": {
+                "collar": 31.45684457056319,
+                "core": -27.489573285301994,
+                "sum": 3.967271285261198,
+                "plus_energy": 0.00040396124932673416,
+                "minus_energy": -0.00038949300772550544,
+                "plus_parts": [
+                  0.0031501305306491645,
+                  -0.0027461692813224303
+                ],
+                "minus_parts": [
+                  -0.003141238383463474,
+                  0.0027517453757379684
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 16.893934146615663,
+                "core": -7.713644854598911,
+                "sum": 9.180289292016752,
+                "plus_energy": 0.000461220961446962,
+                "minus_energy": -0.0004568079677547132,
+                "plus_parts": [
+                  0.0008460307125410793,
+                  -0.0003848097510941173
+                ],
+                "minus_parts": [
+                  -0.000843362702120487,
+                  0.0003865547343657738
+                ]
+              },
+              "w": {
+                "collar": 31.45684100523738,
+                "core": -27.489571337264707,
+                "sum": 3.9672696679726727,
+                "plus_energy": 0.0002001720136828311,
+                "minus_energy": -0.00019655495311443616,
+                "plus_parts": [
+                  0.0015739535687764317,
+                  -0.0013737815550936006
+                ],
+                "minus_parts": [
+                  -0.0015717305317473063,
+                  0.00137517557863287
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -20.129497946259754,
+                -31.523244449530367
+              ],
+              "core": [
+                -6.204296888680981,
+                -29.652451371556182
+              ],
+              "core_minus_collar": [
+                13.925201057578773,
+                1.8707930779741844
+              ],
+              "order": [
+                0.5078918349997138,
+                0.9998808661700915
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                -0.03712351637069035,
+                -0.06725242062128893
+              ],
+              "order": [
+                0.0,
+                0.4917571423305702
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/refined/state.npz",
+          "sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "width": 0.22,
+          "quad": 5,
+          "depth_span": [
+            0.0,
+            1.0
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 35.0984170811941,
+                "core": -22.130147322982907,
+                "sum": 12.968269758211193,
+                "plus_energy": 0.0013070805083668091,
+                "minus_energy": -0.0012865734432754294,
+                "plus_parts": [
+                  0.003516099595827882,
+                  -0.0022090190874610727
+                ],
+                "minus_parts": [
+                  -0.003503583820410938,
+                  0.0022170103771355087
+                ]
+              },
+              "w": {
+                "collar": 65.45632529633139,
+                "core": -48.37415225219743,
+                "sum": 17.082173044133953,
+                "plus_energy": 0.001714840205755408,
+                "minus_energy": -0.0017015944030713825,
+                "plus_parts": [
+                  0.00655006136750913,
+                  -0.004835221161753722
+                ],
+                "minus_parts": [
+                  -0.006541203691757147,
+                  0.0048396092886857645
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 35.09840909664774,
+                "core": -22.13014246509104,
+                "sum": 12.968266631556702,
+                "plus_energy": 0.0006509767145930212,
+                "minus_energy": -0.000645849948562649,
+                "plus_parts": [
+                  0.001756484926694668,
+                  -0.0011055082121016468
+                ],
+                "minus_parts": [
+                  -0.0017533559829701062,
+                  0.0011075060344074572
+                ]
+              },
+              "w": {
+                "collar": 65.45632358893272,
+                "core": -48.37415013636104,
+                "sum": 17.08217345257168,
+                "plus_energy": 0.0008554318508835479,
+                "minus_energy": -0.0008527854943736202,
+                "plus_parts": [
+                  0.0032737781355578477,
+                  -0.0024183462846743
+                ],
+                "minus_parts": [
+                  -0.003271854223335424,
+                  0.002419068728961804
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -37.402378947668154,
+                -66.83552349539437
+              ],
+              "core": [
+                -19.217345863307372,
+                -52.7401051933899
+              ],
+              "core_minus_collar": [
+                18.185033084360782,
+                14.095418302004468
+              ],
+              "order": [
+                0.5186454419499608,
+                0.9997816133381131
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.07262314936397482,
+                -0.11325366849564474
+              ],
+              "order": [
+                0.0,
+                0.4805284047227073
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/refined/state.npz",
+          "sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "width": 0.22,
+          "quad": 5,
+          "depth_span": [
+            0.1,
+            0.65
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 16.86028953931995,
+                "core": -8.376619154617515,
+                "sum": 8.483670384702435,
+                "plus_energy": 0.0008550465276675467,
+                "minus_energy": -0.0008416875492729403,
+                "plus_parts": [
+                  0.0016900917553464012,
+                  -0.0008350452276788545
+                ],
+                "minus_parts": [
+                  -0.0016819661525175889,
+                  0.0008402786032446485
+                ]
+              },
+              "w": {
+                "collar": 31.57451356576857,
+                "core": -26.509733989183992,
+                "sum": 5.064779576584577,
+                "plus_energy": 0.0005134719154744616,
+                "minus_energy": -0.0004994839998424538,
+                "plus_parts": [
+                  0.003161731309187843,
+                  -0.0026482593937133814
+                ],
+                "minus_parts": [
+                  -0.003153171403965871,
+                  0.002653687404123417
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 16.860285263504693,
+                "core": -8.376616539154114,
+                "sum": 8.48366872435058,
+                "plus_energy": 0.0004258533084389171,
+                "minus_energy": -0.0004225135639961408,
+                "plus_parts": [
+                  0.0008440299634813186,
+                  -0.00041817665504240153
+                ],
+                "minus_parts": [
+                  -0.0008419985628691506,
+                  0.00041948499887300983
+                ]
+              },
+              "w": {
+                "collar": 31.574510630143493,
+                "core": -26.50973233352616,
+                "sum": 5.064778296617334,
+                "plus_energy": 0.0002549872831556499,
+                "minus_energy": -0.0002514905465060835,
+                "plus_parts": [
+                  0.0015797934416177384,
+                  -0.0013248061584620885
+                ],
+                "minus_parts": [
+                  -0.001577657621396611,
+                  0.0013261670748905274
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -20.129326600913068,
+                -31.52288555413407
+              ],
+              "core": [
+                -6.204202831880195,
+                -29.652229288770844
+              ],
+              "core_minus_collar": [
+                13.925123769032872,
+                1.8706562653632268
+              ],
+              "order": [
+                0.5186454419499608,
+                0.9997816133381131
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                -0.03733217462301893,
+                -0.06738555281223453
+              ],
+              "order": [
+                0.0,
+                0.4805284047227073
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/refined/state.npz",
+          "sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "width": 0.22,
+          "quad": 8,
+          "depth_span": [
+            0.0,
+            1.0
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 35.090410246478854,
+                "core": -22.133176208734007,
+                "sum": 12.957234037744847,
+                "plus_energy": 0.0013059766107899051,
+                "minus_energy": -0.0012854701967590643,
+                "plus_parts": [
+                  0.0035152984403801213,
+                  -0.002209321829590216
+                ],
+                "minus_parts": [
+                  -0.0035027836089156494,
+                  0.002217313412156585
+                ]
+              },
+              "w": {
+                "collar": 65.45329983717707,
+                "core": -48.375415256489696,
+                "sum": 17.077884580687375,
+                "plus_energy": 0.0017157412073798284,
+                "minus_energy": -0.0016998357087576466,
+                "plus_parts": [
+                  0.006550339361570678,
+                  -0.00483459815419085
+                ],
+                "minus_parts": [
+                  -0.006540320605864736,
+                  0.004840484897107089
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 35.09040226752802,
+                "core": -22.13317136762427,
+                "sum": 12.957230899903749,
+                "plus_energy": 0.0006504248466496776,
+                "minus_energy": -0.0006452982433406973,
+                "plus_parts": [
+                  0.0017560844672708242,
+                  -0.0011056596206211466
+                ],
+                "minus_parts": [
+                  -0.0017529557594819778,
+                  0.0011076575161412805
+                ]
+              },
+              "w": {
+                "collar": 65.45329623193652,
+                "core": -48.37541376057075,
+                "sum": 17.07788247136577,
+                "plus_energy": 0.0008558823245916614,
+                "minus_energy": -0.0008519059225449155,
+                "plus_parts": [
+                  0.0032739171697677705,
+                  -0.002418034845176109
+                ],
+                "minus_parts": [
+                  -0.0032714124534258815,
+                  0.002419506530880966
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -37.40222060142533,
+                -66.83401395784743
+              ],
+              "core": [
+                -19.216649787482435,
+                -52.73886967944104
+              ],
+              "core_minus_collar": [
+                18.185570813942892,
+                14.095144278406394
+              ],
+              "order": [
+                0.5078918349997138,
+                0.9998808661700915
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.07299973436321108,
+                -0.11339521106370379
+              ],
+              "order": [
+                0.0,
+                0.4917571423305702
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/refined/state.npz",
+          "sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "width": 0.22,
+          "quad": 8,
+          "depth_span": [
+            0.1,
+            0.65
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 16.85913448731924,
+                "core": -8.378828784190162,
+                "sum": 8.480305703129076,
+                "plus_energy": 0.0008547099798841273,
+                "minus_energy": -0.0008413511607416879,
+                "plus_parts": [
+                  0.0016899760823427812,
+                  -0.0008352661024586538
+                ],
+                "minus_parts": [
+                  -0.0016818508151210665,
+                  0.0008404996543793786
+                ]
+              },
+              "w": {
+                "collar": 31.575281042641734,
+                "core": -26.509102203196022,
+                "sum": 5.066178839445712,
+                "plus_energy": 0.0005136123309981144,
+                "minus_energy": -0.000499623436891028,
+                "plus_parts": [
+                  0.003161816198439027,
+                  -0.0026482038674409125
+                ],
+                "minus_parts": [
+                  -0.00315324001008932,
+                  0.002653616573198292
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 16.85913021518104,
+                "core": -8.37882617773289,
+                "sum": 8.48030403744815,
+                "plus_energy": 0.00042568505422302394,
+                "minus_energy": -0.00042234534952179104,
+                "plus_parts": [
+                  0.0008439721691466673,
+                  -0.00041828711492364334
+                ],
+                "minus_parts": [
+                  -0.0008419408523714367,
+                  0.00041959550284964564
+                ]
+              },
+              "w": {
+                "collar": 31.575278060458345,
+                "core": -26.509100595495383,
+                "sum": 5.066177464962962,
+                "plus_energy": 0.00025505748506837733,
+                "minus_energy": -0.0002515602614279189,
+                "plus_parts": [
+                  0.0015798359266554485,
+                  -0.0013247784415870711
+                ],
+                "minus_parts": [
+                  -0.001577691879390386,
+                  0.0013261316179624671
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -20.129497946259754,
+                -31.523244449530367
+              ],
+              "core": [
+                -6.204296888680981,
+                -29.652451371556182
+              ],
+              "core_minus_collar": [
+                13.925201057578773,
+                1.8707930779741844
+              ],
+              "order": [
+                0.5078918349997138,
+                0.9998808661700915
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                -0.03712351637069035,
+                -0.06725242062128893
+              ],
+              "order": [
+                0.0,
+                0.4917571423305702
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "join_coarse": {
+      "state_digests": {
+        "stdout": "5a2be06556f5eafb933e6584cfc9ed47c5afb21961c09d89b89ebd82cf29e289"
+      },
+      "rows": [
+        {
+          "path": "_scratch/s11c/joint_collar4_01/coarse/state.npz",
+          "sha256": "61ce9cc6744c320181a0d7fc1f7f342546b61e0fff84bc6b735e4350e99896ea",
+          "width": 0.15,
+          "quad": 5,
+          "depth_span": [
+            0.0,
+            1.0
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 31.27254662979695,
+                "core": -22.5260903144342,
+                "sum": 8.74645631536275,
+                "plus_energy": 0.0008891590165562846,
+                "minus_energy": -0.0008601322465162653,
+                "plus_parts": [
+                  0.0031360555662161005,
+                  -0.002246896549659816
+                ],
+                "minus_parts": [
+                  -0.0031184537597432893,
+                  0.002258321513227024
+                ]
+              },
+              "w": {
+                "collar": 68.83830287948811,
+                "core": -54.92684463500375,
+                "sum": 13.911458244484365,
+                "plus_energy": 0.0014001950533106822,
+                "minus_energy": -0.0013820965955861908,
+                "plus_parts": [
+                  0.006889802206764273,
+                  -0.005489607153453591
+                ],
+                "minus_parts": [
+                  -0.0068778583691333495,
+                  0.005495761773547159
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 31.272529902111046,
+                "core": -22.526079492335427,
+                "sum": 8.746450409775619,
+                "plus_energy": 0.000440950866298806,
+                "minus_energy": -0.00043369417467875593,
+                "plus_parts": [
+                  0.0015658267206504206,
+                  -0.0011248758543516146
+                ],
+                "minus_parts": [
+                  -0.001561426269560684,
+                  0.001127732094881928
+                ]
+              },
+              "w": {
+                "collar": 68.83829923612694,
+                "core": -54.926841601092846,
+                "sum": 13.911457635034097,
+                "plus_energy": 0.000697428244866849,
+                "minus_energy": -0.0006937175186365607,
+                "plus_parts": [
+                  0.0034432344790360503,
+                  -0.0027458062341692013
+                ],
+                "minus_parts": [
+                  -0.003440595444576644,
+                  0.0027468779259400833
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -34.580664131299166,
+                -71.61444638634359
+              ],
+              "core": [
+                -20.236887495248396,
+                -57.97970921156941
+              ],
+              "core_minus_collar": [
+                14.34377663605077,
+                13.63473717477418
+              ],
+              "order": [
+                0.5259475911320272,
+                0.9993728379049107
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.16503227282128566,
+                -0.11837772867088271
+              ],
+              "order": [
+                0.0,
+                0.47207588789782085
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/coarse/state.npz",
+          "sha256": "61ce9cc6744c320181a0d7fc1f7f342546b61e0fff84bc6b735e4350e99896ea",
+          "width": 0.15,
+          "quad": 5,
+          "depth_span": [
+            0.1,
+            0.65
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 14.801692459940341,
+                "core": -8.24586620700618,
+                "sum": 6.55582625293416,
+                "plus_energy": 0.0006643095645078034,
+                "minus_energy": -0.0006468556860790287,
+                "plus_parts": [
+                  0.001485444511647671,
+                  -0.0008211349471398677
+                ],
+                "minus_parts": [
+                  -0.001474893980340397,
+                  0.0008280382942613684
+                ]
+              },
+              "w": {
+                "collar": 33.316783112216086,
+                "core": -30.097460694200606,
+                "sum": 3.21932241801548,
+                "plus_energy": 0.0003294973875345164,
+                "minus_energy": -0.0003143670960685796,
+                "plus_parts": [
+                  0.0033363068277836305,
+                  -0.003006809440249114
+                ],
+                "minus_parts": [
+                  -0.0033270497946595867,
+                  0.003012682698591007
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 14.801683504224172,
+                "core": -8.245860377966707,
+                "sum": 6.555823126257465,
+                "plus_energy": 0.0003299728908929822,
+                "minus_energy": -0.0003256094217327643,
+                "plus_parts": [
+                  0.0007414029915011611,
+                  -0.00041143010060817886
+                ],
+                "minus_parts": [
+                  -0.0007387653589212562,
+                  0.00041315593718849186
+                ]
+              },
+              "w": {
+                "collar": 33.31677895459961,
+                "core": -30.097458089928253,
+                "sum": 3.21932086467136,
+                "plus_energy": 0.00016285725270659412,
+                "minus_energy": -0.00015907483376054188,
+                "plus_parts": [
+                  0.0016669927046351063,
+                  -0.0015041354519285122
+                ],
+                "minus_parts": [
+                  -0.001664685190824855,
+                  0.0015056103570643131
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -19.27831434368283,
+                -33.80069993744205
+              ],
+              "core": [
+                -6.625017475081002,
+                -32.35642068168399
+              ],
+              "core_minus_collar": [
+                12.653296868601828,
+                1.4442792557580546
+              ],
+              "order": [
+                0.5259475911320272,
+                0.9993728379049107
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                -0.0021436275751501796,
+                -0.07716473579899392
+              ],
+              "order": [
+                0.0,
+                0.47207588789782085
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/coarse/state.npz",
+          "sha256": "61ce9cc6744c320181a0d7fc1f7f342546b61e0fff84bc6b735e4350e99896ea",
+          "width": 0.15,
+          "quad": 8,
+          "depth_span": [
+            0.0,
+            1.0
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 31.17052322267,
+                "core": -22.535138089483375,
+                "sum": 8.635385133186624,
+                "plus_energy": 0.000878056969740193,
+                "minus_energy": -0.0008490200568971318,
+                "plus_parts": [
+                  0.003125857815533095,
+                  -0.002247800845792902
+                ],
+                "minus_parts": [
+                  -0.0031082468290009047,
+                  0.002259226772103773
+                ]
+              },
+              "w": {
+                "collar": 68.6531858981354,
+                "core": -54.93044122344859,
+                "sum": 13.722744674686815,
+                "plus_energy": 0.0013829552600475026,
+                "minus_energy": -0.0013615936748898605,
+                "plus_parts": [
+                  0.0068719875404532615,
+                  -0.005489032280405759
+                ],
+                "minus_parts": [
+                  -0.006858649639173819,
+                  0.005497055964283959
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 31.170506491449146,
+                "core": -22.5351273003227,
+                "sum": 8.635379191126447,
+                "plus_energy": 0.00043539857322549835,
+                "minus_energy": -0.0004281393458871463,
+                "plus_parts": [
+                  0.0015607266976367384,
+                  -0.00112532812441124
+                ],
+                "minus_parts": [
+                  -0.0015563239515081762,
+                  0.0011281846056210298
+                ]
+              },
+              "w": {
+                "collar": 68.65317898565593,
+                "core": -54.93043808157516,
+                "sum": 13.722740904080766,
+                "plus_energy": 0.0006888072584860794,
+                "minus_energy": -0.0006834668319219972,
+                "plus_parts": [
+                  0.0034343262021145904,
+                  -0.002745518943628511
+                ],
+                "minus_parts": [
+                  -0.0034309916964510023,
+                  0.002747524864529005
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -34.58040552683351,
+                -71.61056357900651
+              ],
+              "core": [
+                -20.235272833391818,
+                -57.97672520465785
+              ],
+              "core_minus_collar": [
+                14.345132693441691,
+                13.633838374348656
+              ],
+              "order": [
+                0.5109825290493815,
+                0.999599364688472
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.1648981650504796,
+                -0.11944746717718324
+              ],
+              "order": [
+                0.0,
+                0.48816279575155386
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/coarse/state.npz",
+          "sha256": "61ce9cc6744c320181a0d7fc1f7f342546b61e0fff84bc6b735e4350e99896ea",
+          "width": 0.15,
+          "quad": 8,
+          "depth_span": [
+            0.1,
+            0.65
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 14.751622118112095,
+                "core": -8.252084260504944,
+                "sum": 6.499537857607152,
+                "plus_energy": 0.0006586844584584028,
+                "minus_energy": -0.0006412231130630275,
+                "plus_parts": [
+                  0.001480441099246832,
+                  -0.0008217566407884291
+                ],
+                "minus_parts": [
+                  -0.001469883324375587,
+                  0.0008286602113125596
+                ]
+              },
+              "w": {
+                "collar": 33.221820183122475,
+                "core": -30.096507907444447,
+                "sum": 3.125312275678027,
+                "plus_energy": 0.0003200990741571985,
+                "minus_energy": -0.0003049633809784069,
+                "plus_parts": [
+                  0.0033268262587604625,
+                  -0.003006727184603264
+                ],
+                "minus_parts": [
+                  -0.0033175377778640325,
+                  0.0030125743968856256
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 14.751613162182764,
+                "core": -8.252078448824918,
+                "sum": 6.499534713357846,
+                "plus_energy": 0.0003271594035867409,
+                "minus_energy": -0.00032279406774904373,
+                "plus_parts": [
+                  0.0007389003798117244,
+                  -0.0004117409762249835
+                ],
+                "minus_parts": [
+                  -0.000736260936406552,
+                  0.00041346686865750826
+                ]
+              },
+              "w": {
+                "collar": 33.221815913115904,
+                "core": -30.096505423937714,
+                "sum": 3.12531048917819,
+                "plus_energy": 0.00015815748627545645,
+                "minus_energy": -0.00015437356264236257,
+                "plus_parts": [
+                  0.0016622518559792354,
+                  -0.001504094369703779
+                ],
+                "minus_parts": [
+                  -0.001659929735332355,
+                  0.0015055561726899924
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -19.277779117651885,
+                -33.79946406442148
+              ],
+              "core": [
+                -6.624733599212263,
+                -32.35554614547544
+              ],
+              "core_minus_collar": [
+                12.653045518439622,
+                1.4439179189460418
+              ],
+              "order": [
+                0.5109825290493815,
+                0.999599364688472
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                -0.002134919778013671,
+                -0.07814052900717518
+              ],
+              "order": [
+                0.0,
+                0.48816279575155386
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/coarse/state.npz",
+          "sha256": "61ce9cc6744c320181a0d7fc1f7f342546b61e0fff84bc6b735e4350e99896ea",
+          "width": 0.22,
+          "quad": 5,
+          "depth_span": [
+            0.0,
+            1.0
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 31.375037363456926,
+                "core": -23.515820472712612,
+                "sum": 7.859216890744314,
+                "plus_energy": 0.0007960491811092041,
+                "minus_energy": -0.0007757941970396587,
+                "plus_parts": [
+                  0.003143682434664896,
+                  -0.002347633253555692
+                ],
+                "minus_parts": [
+                  -0.003131325038026489,
+                  0.0023555308409868303
+                ]
+              },
+              "w": {
+                "collar": 68.9816081028205,
+                "core": -53.49129350088688,
+                "sum": 15.490314601933619,
+                "plus_energy": 0.0015550106878547965,
+                "minus_energy": -0.0015430522325319274,
+                "plus_parts": [
+                  0.006902398689675238,
+                  -0.005347388001820441
+                ],
+                "minus_parts": [
+                  -0.006893922930888863,
+                  0.005350870698356935
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 31.375029714126867,
+                "core": -23.515815580212873,
+                "sum": 7.859214133913994,
+                "plus_energy": 0.0003954925795959241,
+                "minus_energy": -0.00039042883379547533,
+                "plus_parts": [
+                  0.0015702961602315213,
+                  -0.0011748035806355972
+                ],
+                "minus_parts": [
+                  -0.0015672068111811654,
+                  0.0011767779773856901
+                ]
+              },
+              "w": {
+                "collar": 68.98160692493605,
+                "core": -53.49129048579648,
+                "sum": 15.490316439139562,
+                "plus_energy": 0.0007754253957141799,
+                "minus_energy": -0.0007736062481997763,
+                "plus_parts": [
+                  0.0034498933730731096,
+                  -0.0026744679773589297
+                ],
+                "minus_parts": [
+                  -0.003448267319420495,
+                  0.0026746610712207186
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -34.580664131299166,
+                -71.61444638634359
+              ],
+              "core": [
+                -20.236887495248396,
+                -57.97970921156941
+              ],
+              "core_minus_collar": [
+                14.34377663605077,
+                13.63473717477418
+              ],
+              "order": [
+                0.5259475911320272,
+                0.9993728379049107
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.16503227282128566,
+                -0.11837772867088271
+              ],
+              "order": [
+                0.0,
+                0.47207588789782085
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/coarse/state.npz",
+          "sha256": "61ce9cc6744c320181a0d7fc1f7f342546b61e0fff84bc6b735e4350e99896ea",
+          "width": 0.22,
+          "quad": 5,
+          "depth_span": [
+            0.1,
+            0.65
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 14.851502182136045,
+                "core": -8.955085908404214,
+                "sum": 5.89641627373183,
+                "plus_energy": 0.0005962467395645987,
+                "minus_energy": -0.0005830365151817674,
+                "plus_parts": [
+                  0.0014891645589827363,
+                  -0.0008929178194181375
+                ],
+                "minus_parts": [
+                  -0.0014811358774444727,
+                  0.0008980993622627054
+                ]
+              },
+              "w": {
+                "collar": 33.45432297631845,
+                "core": -29.048381476801666,
+                "sum": 4.405941499516786,
+                "plus_energy": 0.00044788133443596223,
+                "minus_energy": -0.0004333069654673949,
+                "plus_parts": [
+                  0.0033498641616311886,
+                  -0.0029019828271952264
+                ],
+                "minus_parts": [
+                  -0.0033410004336325017,
+                  0.0029076934681651068
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 14.851498093548798,
+                "core": -8.955083272148556,
+                "sum": 5.896414821400242,
+                "plus_energy": 0.00029647201904126064,
+                "minus_energy": -0.00029316946309876357,
+                "plus_parts": [
+                  0.0007435784898248698,
+                  -0.0004471064707836092
+                ],
+                "minus_parts": [
+                  -0.00074157131953001,
+                  0.0004484018564312464
+                ]
+              },
+              "w": {
+                "collar": 33.45431956851996,
+                "core": -29.048379342260233,
+                "sum": 4.40594022625973,
+                "plus_energy": 0.00022211823220263938,
+                "minus_energy": -0.00021847579042333365,
+                "plus_parts": [
+                  0.0016738190385545693,
+                  -0.0014517008063519299
+                ],
+                "minus_parts": [
+                  -0.001671612918297427,
+                  0.0014531371278740934
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -19.27831434368283,
+                -33.80069993744205
+              ],
+              "core": [
+                -6.625017475081002,
+                -32.35642068168399
+              ],
+              "core_minus_collar": [
+                12.653296868601828,
+                1.4442792557580546
+              ],
+              "order": [
+                0.5259475911320272,
+                0.9993728379049107
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                -0.0021436275751501796,
+                -0.07716473579899392
+              ],
+              "order": [
+                0.0,
+                0.47207588789782085
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/coarse/state.npz",
+          "sha256": "61ce9cc6744c320181a0d7fc1f7f342546b61e0fff84bc6b735e4350e99896ea",
+          "width": 0.22,
+          "quad": 8,
+          "depth_span": [
+            0.0,
+            1.0
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 31.374647169766234,
+                "core": -23.53098347151139,
+                "sum": 7.8436636982548436,
+                "plus_energy": 0.0007944944622728656,
+                "minus_energy": -0.0007742382773781031,
+                "plus_parts": [
+                  0.003143643425385534,
+                  -0.0023491489631126683
+                ],
+                "minus_parts": [
+                  -0.003131286008567713,
+                  0.00235704773118961
+                ]
+              },
+              "w": {
+                "collar": 68.98794493579885,
+                "core": -53.50041026868979,
+                "sum": 15.48753466710906,
+                "plus_energy": 0.0015570744477821918,
+                "minus_energy": -0.00154043248563962,
+                "plus_parts": [
+                  0.0069040183663346966,
+                  -0.005346943918552505
+                ],
+                "minus_parts": [
+                  -0.0068935706208250735,
+                  0.0053531381351854535
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 31.374639520471703,
+                "core": -23.530978591628227,
+                "sum": 7.843660928843477,
+                "plus_energy": 0.0003947150694623147,
+                "minus_energy": -0.00038965102342203295,
+                "plus_parts": [
+                  0.001570276653087177,
+                  -0.0011755615836248623
+                ],
+                "minus_parts": [
+                  -0.0015671872989599933,
+                  0.0011775362755379604
+                ]
+              },
+              "w": {
+                "collar": 68.98794042974998,
+                "core": -53.500408358937435,
+                "sum": 15.487532070812549,
+                "plus_energy": 0.0007764568641608349,
+                "minus_energy": -0.0007722963429204199,
+                "plus_parts": [
+                  0.0034507030050399123,
+                  -0.0026742461408790774
+                ],
+                "minus_parts": [
+                  -0.003448091037935086,
+                  0.002675794695014666
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -34.58040552683351,
+                -71.61056357900651
+              ],
+              "core": [
+                -20.235272833391818,
+                -57.97672520465785
+              ],
+              "core_minus_collar": [
+                14.345132693441691,
+                13.633838374348656
+              ],
+              "order": [
+                0.5109825290493815,
+                0.999599364688472
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                0.1648981650504796,
+                -0.11944746717718324
+              ],
+              "order": [
+                0.0,
+                0.48816279575155386
+              ]
+            }
+          }
+        },
+        {
+          "path": "_scratch/s11c/joint_collar4_01/coarse/state.npz",
+          "sha256": "61ce9cc6744c320181a0d7fc1f7f342546b61e0fff84bc6b735e4350e99896ea",
+          "width": 0.22,
+          "quad": 8,
+          "depth_span": [
+            0.1,
+            0.65
+          ],
+          "signed": {
+            "0.0001": {
+              "r": {
+                "collar": 14.849284409397256,
+                "core": -8.964477003323701,
+                "sum": 5.884807406073556,
+                "plus_energy": 0.0005950860104357858,
+                "minus_energy": -0.0005818754707789253,
+                "plus_parts": [
+                  0.0014889427804192223,
+                  -0.0008938567699834365
+                ],
+                "minus_parts": [
+                  -0.001480914101460229,
+                  0.0008990386306813036
+                ]
+              },
+              "w": {
+                "collar": 33.44991950386955,
+                "core": -29.048140399083877,
+                "sum": 4.401779104785675,
+                "plus_energy": 0.00044746761333680496,
+                "minus_energy": -0.00043288820762033,
+                "plus_parts": [
+                  0.00334944343705601,
+                  -0.002901975823719205
+                ],
+                "minus_parts": [
+                  -0.0033405404637179004,
+                  0.0029076522560975704
+                ]
+              }
+            },
+            "5e-05": {
+              "r": {
+                "collar": 14.849280320952118,
+                "core": -8.964474372969988,
+                "sum": 5.88480594798213,
+                "plus_energy": 0.00029589161475396253,
+                "minus_energy": -0.0002925889800442505,
+                "plus_parts": [
+                  0.0007434676008450936,
+                  -0.00044757598609113103
+                ],
+                "minus_parts": [
+                  -0.0007414604312501183,
+                  0.0004488714512058678
+                ]
+              },
+              "w": {
+                "collar": 33.44991600929603,
+                "core": -29.04813838438436,
+                "sum": 4.401777624911674,
+                "plus_energy": 0.0002219113074009016,
+                "minus_energy": -0.00021826645509026577,
+                "plus_parts": [
+                  0.0016736086726112376,
+                  -0.001451697365210336
+                ],
+                "minus_parts": [
+                  -0.0016713829283183657,
+                  0.0014531164732281
+                ]
+              }
+            }
+          },
+          "traction": {
+            "bonded_join": {
+              "collar": [
+                -19.277779117651885,
+                -33.79946406442148
+              ],
+              "core": [
+                -6.624733599212263,
+                -32.35554614547544
+              ],
+              "core_minus_collar": [
+                12.653045518439622,
+                1.4439179189460418
+              ],
+              "order": [
+                0.5109825290493815,
+                0.999599364688472
+              ]
+            },
+            "receiver_edge": {
+              "collar": [
+                -0.002134919778013671,
+                -0.07814052900717518
+              ],
+              "order": [
+                0.0,
+                0.48816279575155386
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "refined_source_status": {
+    "accepted": {
+      "kind": "accepted",
+      "iteration": 309,
+      "energy": 3886.304269417343,
+      "state_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+      "shape_force": [
+        -0.05931409229257649,
+        0.05113007243077543,
+        0.0793753959745421,
+        0.07712674384189692,
+        0.03395037310838234
+      ],
+      "lattice_nodal_residual": 0.10063912989979779,
+      "min_corner_inverse_J": 0.2544116380204346,
+      "min_J": 0.15181717000078884,
+      "max_J": 3.9769935030523738,
+      "min_stretch": 0.21494223986220365,
+      "max_stretch": 6.728879029556052,
+      "order_projected_residual": 0.02505832908056349,
+      "bath_order_residual": 1.0933317895478467e-07,
+      "carrier_residual": 7.15431214152767e-09,
+      "sharp_current": 11.929297954858862,
+      "depth": 0.7933162642560434,
+      "exit": 3.494726169232207,
+      "waist": 3.494726169232207,
+      "seam_work": -118.24765545068813,
+      "receiver_edge_work": 1.5148400738620644
+    },
+    "exit": 1,
+    "issue": "ArithmeticError: Receiving order search failed at residual 2.362278355723613e-07: ABNORMAL: ",
+    "scope": "Retained checksum-verified state from an unconverged descent. Independent witness has its own successful guard."
+  }
+}

@@ -1,0 +1,2045 @@
+{
+  "scope": "Global feed-to-receiving coherent carrier with the finite terminal order band at entrance 4, matched winding 1/0 and phase biases 0.4510084282857874/0.",
+  "method": "Shared amplitude and phase on a conforming terminal disk. Energy replaces complete sharp backed carrier and contact energy; subtract the neutral vortex. Add the change in native order gradient/well and order-weighted W/J in the band. Intact faces and lateral duct are sealed, order on the rim and finite-band cuts is registered. Numerical directional traction and weak flux are distinct diagnostics.",
+  "source_sha256": {
+    "mouth_supercore_joined_front.py": "c83f5240d6539e9cb47c8f876b9f8b846921ada936e1b4e9d44a27f6c57a2304",
+    "mouth_joined_front_stationarity.py": "15933b1cfe35b9510e586294e7fa33bea5b8e419522ecdd0c813e27f3f769e2f",
+    "mouth_supercore_terminal_order.py": "e8bfd9b7fb058c9e446996f224b212cab3359cdfdd455c8e48aab02ca9d9836f",
+    "mouth_joined_front_audit.py": "08b6906b19d6c069a5ee65bdb97316f4797d104aca2717fafbf757d2e9aa392e",
+    "mouth_joined_front_trace.py": "396abf8ac60018813e82e21e9cf4215fae8b8fb0df35dfaed7d0199199692265",
+    "mouth_supercore_front.py": "f35d283712acb983d188edfe217f944d1634897b8bf2b3cf3edf0b5cab807496",
+    "mouth_wound_carrier.py": "d347c7ba79388585dd1d075abefb98f3fb4804612b6a1a786c62ebb941783175",
+    "mouth_winding_resolved_patch.py": "a938462c0aa93eeabb222db53bd9faf8e81280ff56819f8b5d49b048243f1597",
+    "mouth_waist_outer_order.py": "cc9c3ae474145babc837c8d95e617f593eec969710a33ef9bf09a8ec130df981",
+    "mouth_joint_collar_release.py": "38f2dec937e5c635512fd27373c935d8955be7dcffb983d42fe8e42bd9154270",
+    "mouth_internal_collar.py": "af0b22ce0ef10ecd3103ee47f6737e24b134afbc3e271110ffc53f68fea6e916"
+  },
+  "runs": {
+    "material_medium": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_audit.py",
+        "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+        "--grid",
+        "9",
+        "7",
+        "8",
+        "--winding",
+        "1",
+        "--work",
+        "--save",
+        "_scratch/s11c/supercore_joined_front01/material_medium/live.npz"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 4294967296,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "6cc7badfb3d1586fd707288546c2e956c4ed14adbd963be3a95f812b70e9cce4",
+      "rows": [
+        {
+          "kind": "preparation",
+          "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "grid": [
+            9,
+            7,
+            8
+          ],
+          "winding": 1,
+          "state": "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+          "shape": [
+            -2.606168980055539,
+            -0.5183249456697631,
+            0.0017372780232794913,
+            -0.13564621211511452
+          ],
+          "depth": 0.8158284938933271,
+          "exit_radius": 3.573103420256027,
+          "released_archive_labels": false
+        },
+        {
+          "kind": "joined",
+          "winding": 1,
+          "rest": false,
+          "excess_energy": 1.1578607134873427,
+          "feed_current": 12.074439831088867,
+          "bulk_current": 12.074439860687407,
+          "port_error": 2.9598540507436155e-08,
+          "weak_disk_current": 12.074439843717231,
+          "incident_slice_current": 12.074439843717231,
+          "receiving_slice_current": 10.409539636345778,
+          "positive_slice_current": 12.074439843717231,
+          "dense_total_subsonic_share": 0.7604702772183328,
+          "minimum_total_mach": 0.3747415048752468,
+          "total_axial_stress": -82.46973662285541,
+          "crystalline_range_in_band": [
+            0.03357476498620602,
+            0.9462036843615429
+          ],
+          "iterations": 68,
+          "stationarity": 1.907638931477061e-07,
+          "energy": 1.1578607134873427
+        },
+        {
+          "kind": "joined",
+          "winding": 1,
+          "rest": true,
+          "excess_energy": -1.5682386647573667,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.3183103065397055,
+          "total_axial_stress": -83.46438105285651,
+          "crystalline_range_in_band": [
+            0.03357491846699184,
+            0.9462037116541349
+          ],
+          "iterations": 50,
+          "stationarity": 5.344316128437513e-08,
+          "energy": -1.5682386647573667
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": -1,
+          "axial": 0.9946444300011863,
+          "dense": 0.7179539267843714
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": 1,
+          "axial": 0.3722680038003095,
+          "dense": 0.2586514713774004
+        },
+        {
+          "kind": "coupled_difference",
+          "joined_minus_sharp": -1.3845335384754385,
+          "joined_current": 12.074439831088867,
+          "sharp_current": 12.078717543999414,
+          "sharp_energy": 2.542394251962781
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 0,
+          "step": 0.0004,
+          "joined": 4.391796566434181,
+          "sharp": 0.6791646745812896,
+          "correction": 3.712631891852891,
+          "signed_energies": [
+            [
+              1.159616718998045,
+              2.542665942532249
+            ],
+            [
+              1.1561032817448977,
+              2.542122610792584
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 1,
+          "step": 0.0004,
+          "joined": 1.03036933677636,
+          "sharp": -0.8707694596699067,
+          "correction": 1.9011387964462667,
+          "signed_energies": [
+            [
+              1.1582723271765534,
+              2.542046025935864
+            ],
+            [
+              1.1574480317071323,
+              2.5427426415036
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 1,
+          "step": 0.0002,
+          "joined": 1.031856602835557,
+          "sharp": -0.8707694391407728,
+          "correction": 1.9026260419763297,
+          "signed_energies": [
+            [
+              1.158066263736139,
+              2.5422201185141904
+            ],
+            [
+              1.1576535210950047,
+              2.5425684262898467
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 2,
+          "step": 0.0004,
+          "joined": -7.4162349546760815,
+          "sharp": -0.5888270415210783,
+          "correction": -6.827407913155003,
+          "signed_energies": [
+            [
+              1.154892069185601,
+              2.5421589805243436
+            ],
+            [
+              1.160825057149342,
+              2.5426300421575605
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 3,
+          "step": 0.0004,
+          "joined": -5.206291924449713,
+          "sharp": 0.0016358232957092156,
+          "correction": -5.207927747745422,
+          "signed_energies": [
+            [
+              1.155777393015352,
+              2.542395059771323
+            ],
+            [
+              1.1599424265549119,
+              2.5423937511126864
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 4,
+          "step": 0.0004,
+          "joined": -3.1990531578190984,
+          "sharp": -0.4133803509270839,
+          "correction": -2.7856728068920145,
+          "signed_energies": [
+            [
+              1.15658043666473,
+              2.5422291035580558
+            ],
+            [
+              1.1591396791909854,
+              2.5425598078387974
+            ]
+          ]
+        }
+      ],
+      "saved_fields_sha256": "ed807d26f297645afdf50a7a3a30e9906dca0415b6ac46ae2f869d6dfc30b714"
+    },
+    "material_fine": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_audit.py",
+        "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "1",
+        "--work",
+        "--save",
+        "_scratch/s11c/supercore_joined_front01/material_fine/live.npz"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "1576a06be1432b88f389428ebeb91984ca703e0e5d98962eeeeee5a44208104e",
+      "rows": [
+        {
+          "kind": "preparation",
+          "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 1,
+          "state": "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+          "shape": [
+            -2.606168980055539,
+            -0.5183249456697631,
+            0.0017372780232794913,
+            -0.13564621211511452
+          ],
+          "depth": 0.8158284938933271,
+          "exit_radius": 3.573103420256027,
+          "released_archive_labels": false
+        },
+        {
+          "kind": "joined",
+          "winding": 1,
+          "rest": false,
+          "excess_energy": 1.1923943584725376,
+          "feed_current": 11.951307657218978,
+          "bulk_current": 11.95130749201796,
+          "port_error": 1.6520101731032355e-07,
+          "weak_disk_current": 11.951307641405533,
+          "incident_slice_current": 11.951307641405535,
+          "receiving_slice_current": 10.797681203909413,
+          "positive_slice_current": 11.951307641405535,
+          "dense_total_subsonic_share": 0.7254895843609227,
+          "minimum_total_mach": 0.3740218711902663,
+          "total_axial_stress": -79.23961237429404,
+          "crystalline_range_in_band": [
+            0.031474662752285165,
+            0.9484420145000715
+          ],
+          "iterations": 66,
+          "stationarity": 9.995415333163714e-08,
+          "energy": 1.1923943584725376
+        },
+        {
+          "kind": "joined",
+          "winding": 1,
+          "rest": true,
+          "excess_energy": -1.5058932779509793,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.31726282735020966,
+          "total_axial_stress": -80.22443613934634,
+          "crystalline_range_in_band": [
+            0.03147470576536713,
+            0.9484420427760744
+          ],
+          "iterations": 52,
+          "stationarity": 1.3056102257962864e-07,
+          "energy": -1.5058932779509793
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": -1,
+          "axial": 0.9848237650524503,
+          "dense": 0.5554533728083633
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": 1,
+          "axial": 0.4162741012094,
+          "dense": 0.2919835267005587
+        },
+        {
+          "kind": "coupled_difference",
+          "joined_minus_sharp": -1.31430357006133,
+          "joined_current": 11.951307657218978,
+          "sharp_current": 11.948794898126376,
+          "sharp_energy": 2.5066979285338675
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 0,
+          "step": 0.0004,
+          "joined": 3.5990910137670418,
+          "sharp": 0.6771983052800135,
+          "correction": 2.9218927084870283,
+          "signed_energies": [
+            [
+              1.1938328270079142,
+              2.5069688326653377
+            ],
+            [
+              1.1909535541969005,
+              2.5064270740211136
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 1,
+          "step": 0.0004,
+          "joined": 0.5698383738181323,
+          "sharp": -0.8703056262771014,
+          "correction": 1.4401440000952337,
+          "signed_energies": [
+            [
+              1.1926216014712927,
+              2.506349888538441
+            ],
+            [
+              1.1921657307722382,
+              2.507046133039463
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 1,
+          "step": 0.0002,
+          "joined": 0.5713620485781057,
+          "sharp": -0.8703056056746927,
+          "correction": 1.4416676542527984,
+          "signed_energies": [
+            [
+              1.1925075970780372,
+              2.506523887976503
+            ],
+            [
+              1.192279052258606,
+              2.506872010218773
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 2,
+          "step": 0.0004,
+          "joined": -6.289064646043396,
+          "sharp": -0.5513406008705868,
+          "correction": -5.7377240451728095,
+          "signed_energies": [
+            [
+              1.189876003917417,
+              2.50647764796463
+            ],
+            [
+              1.1949072556342517,
+              2.5069187204453263
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 3,
+          "step": 0.0004,
+          "joined": -4.407986245000273,
+          "sharp": 0.01591419231228297,
+          "correction": -4.423900437312556,
+          "signed_energies": [
+            [
+              1.190629971475176,
+              2.5067044456463266
+            ],
+            [
+              1.1941563604711762,
+              2.5066917142924767
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 4,
+          "step": 0.0004,
+          "joined": -2.6599543803931813,
+          "sharp": -0.39159117474985017,
+          "correction": -2.268363205643331,
+          "signed_energies": [
+            [
+              1.191329254320342,
+              2.5065414956708025
+            ],
+            [
+              1.1934572178246565,
+              2.5068547686106024
+            ]
+          ]
+        }
+      ],
+      "saved_fields_sha256": "9270ca8103b91c131dd1040aaf36b997cc38a6311daac652933a21aff88e3af8"
+    },
+    "material_zero": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_audit.py",
+        "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "0",
+        "--save",
+        "_scratch/s11c/supercore_joined_front01/material_zero/live.npz"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "357412a055125d010c411468998b71fdd361761c4de72543c1573f4caaebfd84",
+      "rows": [
+        {
+          "kind": "preparation",
+          "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 0,
+          "state": "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+          "shape": [
+            -2.606168980055539,
+            -0.5183249456697631,
+            0.0017372780232794913,
+            -0.13564621211511452
+          ],
+          "depth": 0.8158284938933271,
+          "exit_radius": 3.573103420256027,
+          "released_archive_labels": false
+        },
+        {
+          "kind": "joined",
+          "winding": 0,
+          "rest": false,
+          "excess_energy": 1.8669898369146318,
+          "feed_current": 14.09377117681941,
+          "bulk_current": 14.093771798392195,
+          "port_error": 6.215727861302867e-07,
+          "weak_disk_current": 14.093771237158451,
+          "incident_slice_current": 14.093771237158451,
+          "receiving_slice_current": 12.850869359264687,
+          "positive_slice_current": 14.093771237158451,
+          "dense_total_subsonic_share": 1.0,
+          "minimum_total_mach": 0.02661058831049466,
+          "total_axial_stress": -47.61820567394841,
+          "crystalline_range_in_band": [
+            0.031474680095935875,
+            0.9484420613436262
+          ],
+          "iterations": 53,
+          "stationarity": 1.3246457135619646e-07,
+          "energy": 1.8669898369146318
+        },
+        {
+          "kind": "joined",
+          "winding": 0,
+          "rest": true,
+          "excess_energy": -1.3128411601255856,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.0,
+          "total_axial_stress": -48.5095305960128,
+          "crystalline_range_in_band": [
+            0.03147470576937474,
+            0.9484420438718422
+          ],
+          "iterations": 52,
+          "stationarity": 1.285153040884322e-07,
+          "energy": -1.3128411601255856
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": -1,
+          "axial": 0.8913249220643924,
+          "dense": 0.8913249220643924
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": 1,
+          "axial": 0.38305502079258397,
+          "dense": 0.38305502079258397
+        },
+        {
+          "kind": "coupled_difference",
+          "joined_minus_sharp": -1.3125747032651913,
+          "joined_current": 14.09377117681941,
+          "sharp_current": 14.092566928346729,
+          "sharp_energy": 3.179564540179823
+        }
+      ],
+      "saved_fields_sha256": "bfc07991ea47077b9652a66950831bf9660a35bae576260c9f92c662eb9796c2"
+    },
+    "trace_fine": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_trace.py",
+        "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+        "_scratch/s11c/supercore_joined_front01/material_fine/live.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "1",
+        "--static-work"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 4294967296,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "a0a20bc3d39427ff089aa0dbbdfa6a8de4e715be4a17ebf53ce06411be500dd2",
+      "rows": [
+        {
+          "kind": "sources",
+          "state_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "field_sha256": "9270ca8103b91c131dd1040aaf36b997cc38a6311daac652933a21aff88e3af8",
+          "grid": [
+            13,
+            10,
+            14
+          ]
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 8,
+          "signed": 12.065685042736817,
+          "positive": 12.065685042870326,
+          "neg": -1.33511577330632e-10,
+          "minimum_mach": 0.37078683683508856,
+          "dense_subsonic": 0.7072555344842717,
+          "raw_axial": -64.73221901336802,
+          "drive_axial": 0.9739128645133083,
+          "drive_dense": 0.47600326388958153
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 16,
+          "signed": 12.065685042708964,
+          "positive": 12.06568504277428,
+          "neg": -6.533694134446401e-11,
+          "minimum_mach": 0.37055837198879327,
+          "dense_subsonic": 0.7107517931626155,
+          "raw_axial": -64.7322190140924,
+          "drive_axial": 0.973912864422525,
+          "drive_dense": 0.48656609492731073
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 8,
+          "signed": 10.815319565517559,
+          "positive": 10.815319565702646,
+          "neg": -1.8508865935579053e-10,
+          "minimum_mach": 0.37190144724961177,
+          "dense_subsonic": 0.7668269772395989,
+          "raw_axial": -91.18628583166877,
+          "drive_axial": 0.39907503526745275,
+          "drive_dense": 0.28188325179571483
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 16,
+          "signed": 10.815319565746854,
+          "positive": 10.815319565844943,
+          "neg": -9.809846294738463e-11,
+          "minimum_mach": 0.37171194638716476,
+          "dense_subsonic": 0.7676120506951146,
+          "raw_axial": -91.18628583203967,
+          "drive_axial": 0.39907503531572197,
+          "drive_dense": 0.2823495878182512
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 0,
+          "static_correction": 2.9189623988579507,
+          "bias_induced_correction": 0.002930309629077532,
+          "total_correction": 2.9218927084870283
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 1,
+          "static_correction": 1.4385112115750456,
+          "bias_induced_correction": 0.001632788520188111,
+          "total_correction": 1.4401440000952337
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 2,
+          "static_correction": -5.730125389676738,
+          "bias_induced_correction": -0.007598655496071638,
+          "total_correction": -5.7377240451728095
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 3,
+          "static_correction": -4.4186620068224425,
+          "bias_induced_correction": -0.005238430490113466,
+          "total_correction": -4.423900437312556
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 4,
+          "static_correction": -2.2691371643337663,
+          "bias_induced_correction": 0.000773958690435117,
+          "total_correction": -2.268363205643331
+        }
+      ],
+      "saved_fields_sha256": null
+    },
+    "held_convergence": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_audit.py",
+        "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+        "--grid",
+        "18",
+        "13",
+        "24",
+        "--winding",
+        "1",
+        "--save",
+        "_scratch/s11c/supercore_joined_front01/held_convergence/live.npz"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 6442450944,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "79c8f4fd83075889b7aa0ec17e9d533c9ba059c12664cfb69731c43e61ba501c",
+      "rows": [
+        {
+          "kind": "preparation",
+          "source_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "grid": [
+            18,
+            13,
+            24
+          ],
+          "winding": 1,
+          "state": "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+          "shape": [
+            -2.606168980055539,
+            -0.5183249456697631,
+            0.0017372780232794913,
+            -0.13564621211511452
+          ],
+          "depth": 0.8158284938933271,
+          "exit_radius": 3.573103420256027,
+          "released_archive_labels": false
+        },
+        {
+          "kind": "joined",
+          "winding": 1,
+          "rest": false,
+          "excess_energy": 1.212393808463075,
+          "feed_current": 11.896052549625274,
+          "bulk_current": 11.896053216062446,
+          "port_error": 6.664371721143425e-07,
+          "weak_disk_current": 11.896052564128825,
+          "incident_slice_current": 11.896052564128825,
+          "receiving_slice_current": 11.068134345442015,
+          "positive_slice_current": 11.896052564128825,
+          "dense_total_subsonic_share": 0.71567885193142,
+          "minimum_total_mach": 0.3731789959065993,
+          "total_axial_stress": -79.12011874554136,
+          "crystalline_range_in_band": [
+            0.0304373726947776,
+            0.9495723165119238
+          ],
+          "iterations": 60,
+          "stationarity": 1.6978630619586034e-07,
+          "energy": 1.212393808463075
+        },
+        {
+          "kind": "joined",
+          "winding": 1,
+          "rest": true,
+          "excess_energy": -1.4734136043658685,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.31678340511092795,
+          "total_axial_stress": -80.10903120064867,
+          "crystalline_range_in_band": [
+            0.030437386315895737,
+            0.9495722968149682
+          ],
+          "iterations": 52,
+          "stationarity": 1.7565468129793587e-07,
+          "energy": -1.4734136043658685
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": -1,
+          "axial": 0.9889124551073883,
+          "dense": 0.46627274536848085
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": 1,
+          "axial": 0.45633728719574285,
+          "dense": 0.33092807850637224
+        },
+        {
+          "kind": "coupled_difference",
+          "joined_minus_sharp": -1.278084005977582,
+          "joined_current": 11.896052549625274,
+          "sharp_current": 11.890233086337458,
+          "sharp_energy": 2.490477814440657
+        }
+      ],
+      "saved_fields_sha256": "6cc0f69eaf21f6c5be2965669478b449925a164463b1c2f00017d551a426a204"
+    },
+    "trace_convergence": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_trace.py",
+        "_scratch/s11c/supercore4_shape01/fine_waist/state.npz",
+        "_scratch/s11c/supercore_joined_front01/held_convergence/live.npz",
+        "--grid",
+        "18",
+        "13",
+        "24",
+        "--winding",
+        "1"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "3a87fc6f0c31180c5129d970475fe3325e91c1f1cbb07d306f43e9e5aaec2295",
+      "rows": [
+        {
+          "kind": "sources",
+          "state_sha256": "3533e1e14bad72c6821434ed6b4f38536e7a55f38e077da249b844b79787d27e",
+          "field_sha256": "6cc0f69eaf21f6c5be2965669478b449925a164463b1c2f00017d551a426a204",
+          "grid": [
+            18,
+            13,
+            24
+          ]
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 8,
+          "signed": 11.988786939211792,
+          "positive": 11.988786939305337,
+          "neg": -9.354658861364441e-11,
+          "minimum_mach": 0.3714992406966589,
+          "dense_subsonic": 0.7035542243494197,
+          "raw_axial": -70.77217413129961,
+          "drive_axial": 0.9744201510107662,
+          "drive_dense": 0.43055285015369626
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 16,
+          "signed": 11.988786939205283,
+          "positive": 11.988786939295604,
+          "neg": -9.032566273293035e-11,
+          "minimum_mach": 0.37137969373371366,
+          "dense_subsonic": 0.7028352708803887,
+          "raw_axial": -70.7721741318582,
+          "drive_axial": 0.9744201509971574,
+          "drive_dense": 0.4297972916952495
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 8,
+          "signed": 11.085477352444688,
+          "positive": 11.085477352544654,
+          "neg": -9.996895338861051e-11,
+          "minimum_mach": 0.3715191568134352,
+          "dense_subsonic": 0.7677007356718539,
+          "raw_axial": -83.45936524877986,
+          "drive_axial": 0.44248383400819774,
+          "drive_dense": 0.3239661221255186
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 16,
+          "signed": 11.085477352466372,
+          "positive": 11.085477352573724,
+          "neg": -1.0735535300554063e-10,
+          "minimum_mach": 0.37141310254346055,
+          "dense_subsonic": 0.767356510473195,
+          "raw_axial": -83.45936524927569,
+          "drive_axial": 0.44248383401587527,
+          "drive_dense": 0.3238861539620282
+        }
+      ],
+      "saved_fields_sha256": null
+    },
+    "adopt309": {
+      "command": [
+        "python3",
+        "_scratch/s11c/supercore_joined_front01/adopt309.py"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 1073741824,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "6d4d617ec0d3ed6eff3f5d9576e4346e52734c6790af1b2e6b5e3836097ef0d7",
+      "rows": [
+        {
+          "kind": "accepted_pre_failure_iterate",
+          "sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "source": "_scratch/s11c/joint_collar4_01/refined",
+          "source_guard": {
+            "exitCode": 1,
+            "wallSeconds": 794.3261701092124,
+            "unit": "s11c-guard-0bb3265492d0",
+            "stderrBytes": 2844,
+            "limitsVerified": true,
+            "childOutcome": {
+              "exitCode": 1,
+              "guardReason": null,
+              "wallSeconds": 794.2471608929336,
+              "childPid": 2261504
+            }
+          },
+          "accepted": {
+            "kind": "accepted",
+            "iteration": 309,
+            "energy": 3886.304269417343,
+            "state_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+            "shape_force": [
+              -0.05931409229257649,
+              0.05113007243077543,
+              0.0793753959745421,
+              0.07712674384189692,
+              0.03395037310838234
+            ],
+            "lattice_nodal_residual": 0.10063912989979779,
+            "min_corner_inverse_J": 0.2544116380204346,
+            "min_J": 0.15181717000078884,
+            "max_J": 3.9769935030523738,
+            "min_stretch": 0.21494223986220365,
+            "max_stretch": 6.728879029556052,
+            "order_projected_residual": 0.02505832908056349,
+            "bath_order_residual": 1.0933317895478467e-07,
+            "carrier_residual": 7.15431214152767e-09,
+            "sharp_current": 11.929297954858862,
+            "depth": 0.7933162642560434,
+            "exit": 3.494726169232207,
+            "waist": 3.494726169232207,
+            "seam_work": -118.24765545068813,
+            "receiver_edge_work": 1.5148400738620644
+          }
+        }
+      ],
+      "saved_fields_sha256": null
+    },
+    "iter309_wound": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_stationarity.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "1",
+        "--work",
+        "--warm",
+        "_scratch/s11c/supercore_joined_front01/iter203_wound/live.npz",
+        "--save",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "5c3f19ebe02abea1fbd477876d87f20fb81010a7e671f666e117c93479215a42",
+      "rows": [
+        {
+          "kind": "method",
+          "name": "directional gradient work for small energy differences",
+          "warm": "_scratch/s11c/supercore_joined_front01/iter203_wound/live.npz"
+        },
+        {
+          "kind": "preparation",
+          "source_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 1,
+          "state": "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+          "shape": [
+            -2.6341511717543353,
+            -0.5405044459015309,
+            -0.0020614420636964927,
+            -0.13372434202034647
+          ],
+          "depth": 0.7933162642560434,
+          "exit_radius": 3.494726169232207,
+          "released_archive_labels": true
+        },
+        {
+          "kind": "joined",
+          "winding": 1,
+          "rest": false,
+          "excess_energy": 0.5572406192157984,
+          "feed_current": 11.644111255139551,
+          "bulk_current": 11.644111256723875,
+          "port_error": 1.5843237832768864e-09,
+          "weak_disk_current": 11.644111673087002,
+          "incident_slice_current": 11.644111673087005,
+          "receiving_slice_current": 10.486106661392705,
+          "positive_slice_current": 11.644111673087005,
+          "dense_total_subsonic_share": 0.6896364414093578,
+          "minimum_total_mach": 0.38802828770158776,
+          "total_axial_stress": -85.00662634196941,
+          "crystalline_range_in_band": [
+            0.031378541572824194,
+            0.9474331871577812
+          ],
+          "iterations": 27,
+          "energy": 0.5572406192157984,
+          "stationarity": 1.7478786007186837e-07,
+          "gradient_integral_steps": 6,
+          "restarts": 0
+        },
+        {
+          "kind": "joined",
+          "winding": 1,
+          "rest": true,
+          "excess_energy": -2.0718487901153857,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.32737475971254515,
+          "total_axial_stress": -86.08222784894812,
+          "crystalline_range_in_band": [
+            0.03137858625312392,
+            0.9474331901169668
+          ],
+          "iterations": 27,
+          "energy": -2.0718487901153857,
+          "stationarity": 1.6093583274590288e-07,
+          "gradient_integral_steps": 9,
+          "restarts": 0
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": -1,
+          "axial": 1.0756015069786562,
+          "dense": 0.5042309018303754
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": 1,
+          "axial": 0.45651228382523645,
+          "dense": 0.319409079389136
+        },
+        {
+          "kind": "coupled_difference",
+          "joined_minus_sharp": -1.8882443566921214,
+          "joined_current": 11.644111255139551,
+          "sharp_current": 11.641401130662667,
+          "sharp_energy": 2.44548497590792
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 0,
+          "step": 0.0004,
+          "joined": 4.358101584213819,
+          "sharp": 0.6361861860376683,
+          "correction": 3.721915398176151,
+          "signed_energies": [
+            [
+              0.5589830850916754,
+              2.4457394754062243
+            ],
+            [
+              0.5554966038243043,
+              2.445230526457394
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 1,
+          "step": 0.0004,
+          "joined": 1.1789016257396367,
+          "sharp": -0.8984955585122911,
+          "correction": 2.077397184251928,
+          "signed_energies": [
+            [
+              0.5577120790512001,
+              2.445125664598072
+            ],
+            [
+              0.5567689577506084,
+              2.445844461044882
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 1,
+          "step": 0.0002,
+          "joined": 1.1800010148674267,
+          "sharp": -0.8984955365198832,
+          "correction": 2.07849655138731,
+          "signed_energies": [
+            [
+              0.5574767852297436,
+              2.4453052985290054
+            ],
+            [
+              0.5570047848237967,
+              2.4456646967436133
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 2,
+          "step": 0.0004,
+          "joined": -8.532068620276528,
+          "sharp": -0.5128370989654352,
+          "correction": -8.019231521311092,
+          "signed_energies": [
+            [
+              0.553827116672338,
+              2.4452801192265015
+            ],
+            [
+              0.5606527715685592,
+              2.445690388905674
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 3,
+          "step": 0.0004,
+          "joined": -6.100197730730117,
+          "sharp": 0.017701653639567994,
+          "correction": -6.117899384369685,
+          "signed_energies": [
+            [
+              0.55479969845536,
+              2.4454922220061466
+            ],
+            [
+              0.5596798566399441,
+              2.445478060683235
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 4,
+          "step": 0.0004,
+          "joined": -3.654689619399104,
+          "sharp": -0.36109816016260954,
+          "correction": -3.2935914592364943,
+          "signed_energies": [
+            [
+              0.5557787317573876,
+              2.445340757974812
+            ],
+            [
+              0.5587024834529069,
+              2.445629636502942
+            ]
+          ]
+        }
+      ],
+      "saved_fields_sha256": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486"
+    },
+    "iter309_zero": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_stationarity.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "0",
+        "--warm",
+        "_scratch/s11c/supercore_joined_front01/iter203_zero/live.npz",
+        "--save",
+        "_scratch/s11c/supercore_joined_front01/iter309_zero/live.npz"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "d6a3730d9d33a84a72856e907cd0438f27af9dda7cbcc79a6857afa5d7de34e7",
+      "rows": [
+        {
+          "kind": "method",
+          "name": "directional gradient work for small energy differences",
+          "warm": "_scratch/s11c/supercore_joined_front01/iter203_zero/live.npz"
+        },
+        {
+          "kind": "preparation",
+          "source_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 0,
+          "state": "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+          "shape": [
+            -2.6341511717543353,
+            -0.5405044459015309,
+            -0.0020614420636964927,
+            -0.13372434202034647
+          ],
+          "depth": 0.7933162642560434,
+          "exit_radius": 3.494726169232207,
+          "released_archive_labels": true
+        },
+        {
+          "kind": "joined",
+          "winding": 0,
+          "rest": false,
+          "excess_energy": 1.2297868561414842,
+          "feed_current": 13.813498917143304,
+          "bulk_current": 13.813498919041098,
+          "port_error": 1.8977939220121698e-09,
+          "weak_disk_current": 13.813499296231283,
+          "incident_slice_current": 13.813499296231283,
+          "receiving_slice_current": 12.5606852016836,
+          "positive_slice_current": 13.813499296231283,
+          "dense_total_subsonic_share": 1.0,
+          "minimum_total_mach": 0.02747630265334773,
+          "total_axial_stress": -54.57932018083224,
+          "crystalline_range_in_band": [
+            0.03137855967677914,
+            0.9474332010004068
+          ],
+          "iterations": 27,
+          "energy": 1.2297868561414842,
+          "stationarity": 1.606927300651839e-07,
+          "gradient_integral_steps": 7,
+          "restarts": 0
+        },
+        {
+          "kind": "joined",
+          "winding": 0,
+          "rest": true,
+          "excess_energy": -1.8868444711709063,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.0,
+          "total_axial_stress": -55.5500046428068,
+          "crystalline_range_in_band": [
+            0.0313785862531932,
+            0.9474331902885567
+          ],
+          "iterations": 27,
+          "energy": -1.8868444711709063,
+          "stationarity": 1.6127353958391258e-07,
+          "gradient_integral_steps": 9,
+          "restarts": 0
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": -1,
+          "axial": 0.9706844619745424,
+          "dense": 0.9706844619745424
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": 1,
+          "axial": 0.4176246132183389,
+          "dense": 0.4176246132183389
+        },
+        {
+          "kind": "coupled_difference",
+          "joined_minus_sharp": -1.886609187792327,
+          "joined_current": 13.813498917143304,
+          "sharp_current": 13.812433476281644,
+          "sharp_energy": 3.116396043933811
+        }
+      ],
+      "saved_fields_sha256": "21de867d4781a0380dd57bd8dc600036c00349e03f88df08656a7bcc2ad241dc"
+    },
+    "iter309_wound_trace": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_trace.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_wound/live.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "1",
+        "--static-work"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "3382be179cddb8d4829272be21ceb2a7f4e249e15300bb8faaa40f88fb139dd9",
+      "rows": [
+        {
+          "kind": "sources",
+          "state_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "field_sha256": "cfee049aad8d697b3621579ce9d1500bdd208b675c5972433708642f8b7ab486",
+          "grid": [
+            13,
+            10,
+            14
+          ]
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 8,
+          "signed": 11.779950220626489,
+          "positive": 11.779950220941611,
+          "neg": -3.151208388611197e-10,
+          "minimum_mach": 0.38472808983944723,
+          "dense_subsonic": 0.6807835982552141,
+          "raw_axial": -66.83586696764213,
+          "drive_axial": 1.0876481382124585,
+          "drive_dense": 0.4754993143210444
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 16,
+          "signed": 11.779950220453848,
+          "positive": 11.779950220677454,
+          "neg": -2.2361565959265672e-10,
+          "minimum_mach": 0.38449042917401244,
+          "dense_subsonic": 0.6795534826872803,
+          "raw_axial": -66.8358669673879,
+          "drive_axial": 1.087648138131026,
+          "drive_dense": 0.47365337902667703
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 8,
+          "signed": 10.49935962792372,
+          "positive": 10.499359628313533,
+          "neg": -3.898107877999869e-10,
+          "minimum_mach": 0.3859794830629188,
+          "dense_subsonic": 0.7551367376351847,
+          "raw_axial": -105.2292200474075,
+          "drive_axial": 0.4405362005402521,
+          "drive_dense": 0.31125179826552496
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 16,
+          "signed": 10.499359627898816,
+          "positive": 10.499359628203504,
+          "neg": -3.0469480924991146e-10,
+          "minimum_mach": 0.38578585582423536,
+          "dense_subsonic": 0.7541943232354926,
+          "raw_axial": -105.22922004693423,
+          "drive_axial": 0.44053620054962633,
+          "drive_dense": 0.31092357064059495
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 0,
+          "static_correction": 3.7189644219566205,
+          "bias_induced_correction": 0.002950976219530166,
+          "total_correction": 3.721915398176151
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 1,
+          "static_correction": 2.075738285351493,
+          "bias_induced_correction": 0.001658898900434913,
+          "total_correction": 2.077397184251928
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 2,
+          "static_correction": -8.012120641498685,
+          "bias_induced_correction": -0.0071108798124074335,
+          "total_correction": -8.019231521311092
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 3,
+          "static_correction": -6.112040059773824,
+          "bias_induced_correction": -0.005859324595861026,
+          "total_correction": -6.117899384369685
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 4,
+          "static_correction": -3.2951285491260656,
+          "bias_induced_correction": 0.001537089889571075,
+          "total_correction": -3.2935914592364943
+        }
+      ],
+      "saved_fields_sha256": null
+    },
+    "iter309_zero_trace": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_trace.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/supercore_joined_front01/iter309_zero/live.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "0"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "2fcce1584cb6a753d9fe2ab93dbd464da383f0099b92a2667b62179f714a1fea",
+      "rows": [
+        {
+          "kind": "sources",
+          "state_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "field_sha256": "21de867d4781a0380dd57bd8dc600036c00349e03f88df08656a7bcc2ad241dc",
+          "grid": [
+            13,
+            10,
+            14
+          ]
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 8,
+          "signed": 13.959386142782286,
+          "positive": 13.959386142782286,
+          "neg": 0.0,
+          "minimum_mach": 0.027294059788978812,
+          "dense_subsonic": 1.0,
+          "raw_axial": -36.42441624194022,
+          "drive_axial": 0.9792408966012641,
+          "drive_dense": 0.9792408966012641
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 16,
+          "signed": 13.959386142782233,
+          "positive": 13.959386142782233,
+          "neg": 0.0,
+          "minimum_mach": 0.02728018561709833,
+          "dense_subsonic": 1.0,
+          "raw_axial": -36.42441624194032,
+          "drive_axial": 0.9792408966012018,
+          "drive_dense": 0.9792408966012018
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 8,
+          "signed": 12.574929148931883,
+          "positive": 12.574929148931883,
+          "neg": 0.0,
+          "minimum_mach": 0.027360894536779822,
+          "dense_subsonic": 1.0,
+          "raw_axial": -74.52136668727128,
+          "drive_axial": 0.40348396956763655,
+          "drive_dense": 0.40348396956763655
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 16,
+          "signed": 12.574929148931934,
+          "positive": 12.574929148931934,
+          "neg": 0.0,
+          "minimum_mach": 0.02734768574643668,
+          "dense_subsonic": 1.0,
+          "raw_axial": -74.52136668727104,
+          "drive_axial": 0.40348396956763816,
+          "drive_dense": 0.40348396956763816
+        }
+      ],
+      "saved_fields_sha256": null
+    },
+    "iter203_wound": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_stationarity.py",
+        "_scratch/s11c/r4_collar_audit01/iter203_state/state.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "1",
+        "--work",
+        "--warm",
+        "_scratch/s11c/supercore_joined_front01/material_fine/live.npz",
+        "--save",
+        "_scratch/s11c/supercore_joined_front01/iter203_wound/live.npz"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "683409366076a83a63eb50e73ba7df8e47f94e6ab72b7846ada8bcfd0071f88b",
+      "rows": [
+        {
+          "kind": "method",
+          "name": "directional gradient work for small energy differences",
+          "warm": "_scratch/s11c/supercore_joined_front01/material_fine/live.npz"
+        },
+        {
+          "kind": "preparation",
+          "source_sha256": "41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8",
+          "grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 1,
+          "state": "_scratch/s11c/r4_collar_audit01/iter203_state/state.npz",
+          "shape": [
+            -2.6336887717052537,
+            -0.5406255442843969,
+            -0.002104905071112103,
+            -0.13363051433761913
+          ],
+          "depth": 0.793683178559631,
+          "exit_radius": 3.494302989168281,
+          "released_archive_labels": true
+        },
+        {
+          "kind": "joined",
+          "winding": 1,
+          "rest": false,
+          "excess_energy": 0.5642767392566563,
+          "feed_current": 11.641201014091251,
+          "bulk_current": 11.641201014066151,
+          "port_error": 2.509992214072554e-11,
+          "weak_disk_current": 11.641201016860148,
+          "incident_slice_current": 11.64120101686015,
+          "receiving_slice_current": 10.483141164926261,
+          "positive_slice_current": 11.64120101686015,
+          "dense_total_subsonic_share": 0.6896337551542278,
+          "minimum_total_mach": 0.38810262109175897,
+          "total_axial_stress": -84.86595748536156,
+          "crystalline_range_in_band": [
+            0.03138542045049316,
+            0.9474852382246428
+          ],
+          "iterations": 60,
+          "energy": 0.5642767392566563,
+          "stationarity": 6.869808484094303e-08,
+          "gradient_integral_steps": 25,
+          "restarts": 0
+        },
+        {
+          "kind": "joined",
+          "winding": 1,
+          "rest": true,
+          "excess_energy": -2.064156837879688,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.32743426466849396,
+          "total_axial_stress": -85.94179734990237,
+          "crystalline_range_in_band": [
+            0.031385464948201394,
+            0.9474852415008139
+          ],
+          "iterations": 43,
+          "energy": -2.064156837879688,
+          "stationarity": 1.7473747570828216e-07,
+          "gradient_integral_steps": 10,
+          "restarts": 0
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": -1,
+          "axial": 1.075839864540784,
+          "dense": 0.504243367314065
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": 1,
+          "axial": 0.4565740245461202,
+          "dense": 0.3194697651489889
+        },
+        {
+          "kind": "coupled_difference",
+          "joined_minus_sharp": -1.8803734647259058,
+          "joined_current": 11.641201014091251,
+          "sharp_current": 11.638479073726735,
+          "sharp_energy": 2.444650203982562
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 0,
+          "step": 0.0004,
+          "joined": 4.348254973001453,
+          "sharp": 0.6365622266074622,
+          "correction": 3.7116927463939904,
+          "signed_energies": [
+            [
+              0.5660154285947239,
+              2.4449048538878766
+            ],
+            [
+              0.5625368246163227,
+              2.4443956041065906
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 1,
+          "step": 0.0004,
+          "joined": 1.1726136202390436,
+          "sharp": -0.8984504757542089,
+          "correction": 2.0710640959932523,
+          "signed_energies": [
+            [
+              0.5647456826399949,
+              2.444290910679009
+            ],
+            [
+              0.5638075917438037,
+              2.4450096710596125
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 1,
+          "step": 0.0002,
+          "joined": 1.1728526965620878,
+          "sharp": -0.8984504537778992,
+          "correction": 2.071303150339987,
+          "signed_energies": [
+            [
+              0.5645114036259231,
+              2.444470535613494
+            ],
+            [
+              0.5640422625472983,
+              2.444829915795005
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 2,
+          "step": 0.0004,
+          "joined": -8.505177194906011,
+          "sharp": -0.5129986891033722,
+          "correction": -7.992178505802639,
+          "signed_energies": [
+            [
+              0.5608734131486565,
+              2.4444452826029863
+            ],
+            [
+              0.5676775549045813,
+              2.444855681554269
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 3,
+          "step": 0.0004,
+          "joined": -6.081817662419719,
+          "sharp": 0.017998472677249744,
+          "correction": -6.099816135096969,
+          "signed_energies": [
+            [
+              0.5618432840802032,
+              2.4446575687522847
+            ],
+            [
+              0.566708738210139,
+              2.444643169974143
+            ]
+          ]
+        },
+        {
+          "kind": "shape_force",
+          "coordinate": 4,
+          "step": 0.0004,
+          "joined": -3.64016340310927,
+          "sharp": -0.36132929470800157,
+          "correction": -3.278834108401268,
+          "signed_energies": [
+            [
+              0.5628204939719559,
+              2.4445058935088495
+            ],
+            [
+              0.5657326246944433,
+              2.444794956944616
+            ]
+          ]
+        }
+      ],
+      "saved_fields_sha256": "cf14cbbe473ec966c1a0786ab2ecb7d482b0fbb8b0b3cd3291c9112dacec6235"
+    },
+    "iter203_zero": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_audit.py",
+        "_scratch/s11c/r4_collar_audit01/iter203_state/state.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "0",
+        "--save",
+        "_scratch/s11c/supercore_joined_front01/iter203_zero/live.npz"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "6b7ba95fd68d20691b8d3f6b18ba1924b3c153c7d7c99619add8658e91ade6c8",
+      "rows": [
+        {
+          "kind": "preparation",
+          "source_sha256": "41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8",
+          "grid": [
+            13,
+            10,
+            14
+          ],
+          "winding": 0,
+          "state": "_scratch/s11c/r4_collar_audit01/iter203_state/state.npz",
+          "shape": [
+            -2.6336887717052537,
+            -0.5406255442843969,
+            -0.002104905071112103,
+            -0.13363051433761913
+          ],
+          "depth": 0.793683178559631,
+          "exit_radius": 3.494302989168281,
+          "released_archive_labels": true
+        },
+        {
+          "kind": "joined",
+          "winding": 0,
+          "rest": false,
+          "excess_energy": 1.2370617699679012,
+          "feed_current": 13.810857758138408,
+          "bulk_current": 13.810852570271786,
+          "port_error": 5.187866621625403e-06,
+          "weak_disk_current": 13.810857545308677,
+          "incident_slice_current": 13.810857545308679,
+          "receiving_slice_current": 12.557955856839065,
+          "positive_slice_current": 13.810857545308679,
+          "dense_total_subsonic_share": 1.0,
+          "minimum_total_mach": 0.027487156854916435,
+          "total_axial_stress": -54.4454086878492,
+          "crystalline_range_in_band": [
+            0.03138543867412927,
+            0.9474853103585197
+          ],
+          "iterations": 52,
+          "stationarity": 1.7556575866316485e-07,
+          "energy": 1.2370617699679012
+        },
+        {
+          "kind": "joined",
+          "winding": 0,
+          "rest": true,
+          "excess_energy": -1.8789738149318311,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.0,
+          "total_axial_stress": -55.416230715658465,
+          "crystalline_range_in_band": [
+            0.03138546518303851,
+            0.947485245052466
+          ],
+          "iterations": 58,
+          "stationarity": 3.7828075068828356e-08,
+          "energy": -1.8789738149318311
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": -1,
+          "axial": 0.9708220278091564,
+          "dense": 0.9708220278091564
+        },
+        {
+          "kind": "drive_minus_rest",
+          "sign": 1,
+          "axial": 0.4176111622024559,
+          "dense": 0.4176111622024559
+        },
+        {
+          "kind": "coupled_difference",
+          "joined_minus_sharp": -1.8787368856874131,
+          "joined_current": 13.810857758138408,
+          "sharp_current": 13.809784951527085,
+          "sharp_energy": 3.1157986556553143
+        }
+      ],
+      "saved_fields_sha256": "41c2bce5c57a2c820167b9b7f9965d283a686ef919c4edaa982caabf834be2a1"
+    },
+    "iter203_wound_trace": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_trace.py",
+        "_scratch/s11c/r4_collar_audit01/iter203_state/state.npz",
+        "_scratch/s11c/supercore_joined_front01/iter203_wound/live.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "1",
+        "--static-work"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "806954b61a166dc6f8c4b91a3650c0f9c3d4794618687a04938497ed050aa7c4",
+      "rows": [
+        {
+          "kind": "sources",
+          "state_sha256": "41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8",
+          "field_sha256": "cf14cbbe473ec966c1a0786ab2ecb7d482b0fbb8b0b3cd3291c9112dacec6235",
+          "grid": [
+            13,
+            10,
+            14
+          ]
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 8,
+          "signed": 11.777671088761075,
+          "positive": 11.777671089076557,
+          "neg": -3.1548442465202584e-10,
+          "minimum_mach": 0.3848024177545318,
+          "dense_subsonic": 0.6804084653370418,
+          "raw_axial": -66.82189627582193,
+          "drive_axial": 1.088354162738707,
+          "drive_dense": 0.47555224739581303
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 16,
+          "signed": 11.777671088584366,
+          "positive": 11.777671088808503,
+          "neg": -2.2414524906555857e-10,
+          "minimum_mach": 0.3845645678421276,
+          "dense_subsonic": 0.6794056074346139,
+          "raw_axial": -66.82189627558033,
+          "drive_axial": 1.0883541626563775,
+          "drive_dense": 0.47375580128090533
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 8,
+          "signed": 10.496364970604775,
+          "positive": 10.496364970994948,
+          "neg": -3.901726226864786e-10,
+          "minimum_mach": 0.38605395669935216,
+          "dense_subsonic": 0.7545677312560772,
+          "raw_axial": -104.98777138202685,
+          "drive_axial": 0.44066586598139923,
+          "drive_dense": 0.311179471302799
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 16,
+          "signed": 10.496364970577913,
+          "positive": 10.496364970883143,
+          "neg": -3.0523714160884453e-10,
+          "minimum_mach": 0.3858601926668817,
+          "dense_subsonic": 0.7540296092861012,
+          "raw_axial": -104.98777138156063,
+          "drive_axial": 0.44066586599114566,
+          "drive_dense": 0.3109258664483317
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 0,
+          "static_correction": 3.708736560246659,
+          "bias_induced_correction": 0.0029561861473316187,
+          "total_correction": 3.7116927463939904
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 1,
+          "static_correction": 2.0694085145473924,
+          "bias_induced_correction": 0.001655581445859866,
+          "total_correction": 2.0710640959932523
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 2,
+          "static_correction": -7.985104217456997,
+          "bias_induced_correction": -0.007074288345642277,
+          "total_correction": -7.992178505802639
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 3,
+          "static_correction": -6.0939906704819,
+          "bias_induced_correction": -0.005825464615069165,
+          "total_correction": -6.099816135096969
+        },
+        {
+          "kind": "static_dynamic_work",
+          "coordinate": 4,
+          "static_correction": -3.2803706724733943,
+          "bias_induced_correction": 0.0015365640721259344,
+          "total_correction": -3.278834108401268
+        }
+      ],
+      "saved_fields_sha256": null
+    },
+    "iter203_zero_trace": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_joined_front_trace.py",
+        "_scratch/s11c/r4_collar_audit01/iter203_state/state.npz",
+        "_scratch/s11c/supercore_joined_front01/iter203_zero/live.npz",
+        "--grid",
+        "13",
+        "10",
+        "14",
+        "--winding",
+        "0"
+      ],
+      "wall_deadline": null,
+      "memory_cap": 5368709120,
+      "swap": 0,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "stdout_sha256": "7fe14d7aad5c2a81cafb412bcd68ad11cc0f8155d0b7ca0036bc26172018ccab",
+      "rows": [
+        {
+          "kind": "sources",
+          "state_sha256": "41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8",
+          "field_sha256": "41c2bce5c57a2c820167b9b7f9965d283a686ef919c4edaa982caabf834be2a1",
+          "grid": [
+            13,
+            10,
+            14
+          ]
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 8,
+          "signed": 13.957441911963716,
+          "positive": 13.957441911963716,
+          "neg": 0.0,
+          "minimum_mach": 0.027304898751626467,
+          "dense_subsonic": 1.0,
+          "raw_axial": -36.417464257017706,
+          "drive_axial": 0.9798619538695028,
+          "drive_dense": 0.9798619538695028
+        },
+        {
+          "kind": "physical_disk",
+          "side": -1,
+          "quadrature": 16,
+          "signed": 13.957441911963704,
+          "positive": 13.957441911963704,
+          "neg": 0.0,
+          "minimum_mach": 0.027291023493905466,
+          "dense_subsonic": 1.0,
+          "raw_axial": -36.41746425701751,
+          "drive_axial": 0.9798619538695282,
+          "drive_dense": 0.9798619538695282
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 8,
+          "signed": 12.572173269351397,
+          "positive": 12.572173269351397,
+          "neg": 0.0,
+          "minimum_mach": 0.027371770785186978,
+          "dense_subsonic": 1.0,
+          "raw_axial": -74.28662729193638,
+          "drive_axial": 0.4034785096544355,
+          "drive_dense": 0.4034785096544355
+        },
+        {
+          "kind": "physical_disk",
+          "side": 1,
+          "quadrature": 16,
+          "signed": 12.57217326935128,
+          "positive": 12.57217326935128,
+          "neg": 0.0,
+          "minimum_mach": 0.027358562306044644,
+          "dense_subsonic": 1.0,
+          "raw_axial": -74.28662729193672,
+          "drive_axial": 0.4034785096543779,
+          "drive_dense": 0.4034785096543779
+        }
+      ],
+      "saved_fields_sha256": null
+    }
+  },
+  "excluded_native_wound_attempt": {
+    "guard_exit": 1,
+    "reason": "ArithmeticError: Stationarity line search failed at 82 1.1197625725296328e-06",
+    "same_state_recovery": "Replaced subtraction of indistinguishable total energies in small line-search steps with a directional-gradient work integral and used an independently verified winding seed. Applied unchanged 2e-7 stationarity and conservation checks; retained the successful unwound result."
+  },
+  "mechanical_endpoint_gate": "The later native mechanical path ended with an unaccepted step. This record uses the independently adopted accepted iteration 203 with material SHA 41bf873ffef33096824aada2ed89505d0398e6092e997abd9ba07f4793018fa8, common to the direct internal virtual work test. A separate comparison uses last accepted #309 with SHA 173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101. Both are held, unconverged mechanical intermediates."
+}

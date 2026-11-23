@@ -1,0 +1,1128 @@
+{
+  "solid_signed": {
+    "source_sha256": "dc15a130723e8780248bd76bc658a1312c0d4193b5631fcab3496e42c4319670",
+    "readings": [
+      {
+        "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "fields": "wound order on the held native six-domain mesh",
+        "model_size": 19956
+      },
+      {
+        "kind": "state",
+        "degree": 2,
+        "grid": [
+          4,
+          10,
+          3
+        ],
+        "active": 999,
+        "energy": 52.23093348261342,
+        "forward_reverse_error": -5.211386877590485e-13,
+        "deposited": -1.9105761597973487,
+        "seconds": 0.4203560999594629,
+        "transfer_energy": -1.910576159797364,
+        "unit_order_energy": 62.88494042488591,
+        "reference_volume": 298.9463498783497,
+        "quadrature_points": 583360,
+        "min_J": 0.14570812613297499,
+        "min_J_site": [
+          0.9794052941780641,
+          0.9699675458030048,
+          0.014827587243426548
+        ],
+        "max_J": 1.6528243010760812,
+        "max_J_site": [
+          0.9997160090242663,
+          0.004405499537884466,
+          1.5267852678111022
+        ],
+        "minimum_order": 0.24945215843727753,
+        "minimum_order_site": [
+          0.9752667864670606,
+          0.9977208608487351,
+          0.3402049746612757
+        ],
+        "min_stretch": 0.3339961106261231,
+        "min_stretch_site": [
+          0.9945044721335162,
+          0.9184140087083974,
+          0.014827587615786026
+        ],
+        "max_stretch": 1.730991778972244,
+        "max_stretch_site": [
+          0.9997909924676731,
+          0.07952636216943654,
+          1.5267852666116746
+        ],
+        "maximum_order": 0.9999699860740839,
+        "maximum_order_site": [
+          0.032861463941450536,
+          0.003975607285902958,
+          0.34020694337362123
+        ],
+        "twist_coefficient": 17.944291318150796,
+        "material_force_max": 2.212003011437436,
+        "material_force_site": [
+          1,
+          8,
+          2,
+          1
+        ],
+        "angular_sum_force_max": 5.006322400616064,
+        "angular_sum_force_site": [
+          1,
+          8,
+          1
+        ],
+        "bond_force_max": 2.212003011437436,
+        "last_free_ring_angular_sum": [
+          -1.1956752879071875,
+          -3.1339989542907016
+        ],
+        "last_free_ring_peak_per_direction": [
+          0.5305102704455997,
+          1.3898634079797774,
+          0.005893363730769705
+        ],
+        "last_free_ring_reference": [
+          0.9,
+          0.9706242256461488
+        ],
+        "last_free_ring_landed_depth_fraction": [
+          0.9209741201959963,
+          0.9209830635023453
+        ],
+        "orientation": {
+          "prism_chart_determinant_range": [
+            0.6778339243220266,
+            1.1426113288206567
+          ],
+          "extremizers": {
+            "min": {
+              "cell_t_x_angle": [
+                9,
+                11,
+                0
+              ],
+              "triangle": 0,
+              "vertex": 1,
+              "angular_fraction": 0.0
+            },
+            "max": {
+              "cell_t_x_angle": [
+                8,
+                7,
+                2
+              ],
+              "triangle": 1,
+              "vertex": 0,
+              "angular_fraction": 1.0
+            }
+          },
+          "placement_node_ranges": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.5707963267948966
+            ]
+          ],
+          "meridian_minimum": 3.5008516500807114,
+          "physical_radial_chart_derivative_lower_bound": 3.500596052077855,
+          "max_parameter_box_overshoot": 0.0,
+          "all_open_cells_oriented": true
+        }
+      },
+      {
+        "kind": "conversion",
+        "degree": 2,
+        "analytic": 0.46725731060357856,
+        "signed": 0.46725728175545095,
+        "error": -2.884812760894917e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 2,
+        "mode": "mixed",
+        "step": 2e-06,
+        "derivative": -5.18723307884314,
+        "signed": -5.187233693249027,
+        "difference": -6.144058870560798e-07
+      },
+      {
+        "kind": "same_energy",
+        "degree": 2,
+        "mode": "mixed",
+        "step": 1e-06,
+        "derivative": -5.18723307884314,
+        "signed": -5.1872330466551375,
+        "difference": 3.218800248561138e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 2,
+        "mode": "bond_radial",
+        "step": 2e-06,
+        "derivative": -1.0236710415049093,
+        "signed": -1.0236710075162136,
+        "difference": 3.3988695635756017e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 2,
+        "mode": "bond_radial",
+        "step": 1e-06,
+        "derivative": -1.0236710415049093,
+        "signed": -1.0236710537014915,
+        "difference": -1.2196582188650495e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 2,
+        "mode": "last_axial",
+        "step": 2e-06,
+        "derivative": 0.5427220423923558,
+        "signed": 0.5427221214659994,
+        "difference": 7.907364363290981e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 2,
+        "mode": "last_axial",
+        "step": 1e-06,
+        "derivative": 0.5427220423923558,
+        "signed": 0.5427216791531464,
+        "difference": -3.6323920937775256e-07
+      },
+      {
+        "kind": "same_energy",
+        "degree": 2,
+        "mode": "angular",
+        "step": 2e-06,
+        "derivative": 0.2964279991044642,
+        "signed": 0.2964279826045413,
+        "difference": -1.6499922927959432e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 2,
+        "mode": "angular",
+        "step": 1e-06,
+        "derivative": 0.2964279991044642,
+        "signed": 0.2964279737227571,
+        "difference": -2.5381707124960684e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 2,
+        "mode": "pole_radial",
+        "step": 2e-06,
+        "derivative": -0.16472317728299346,
+        "signed": -0.16472316843874069,
+        "difference": 8.844252774586892e-09
+      },
+      {
+        "kind": "same_energy",
+        "degree": 2,
+        "mode": "pole_radial",
+        "step": 1e-06,
+        "derivative": -0.16472317728299346,
+        "signed": -0.1647232323875869,
+        "difference": -5.5104593443822125e-08
+      },
+      {
+        "kind": "mesh_only_remap",
+        "degree": 2,
+        "same_material_coordinates": true,
+        "reference_volume_change": 6.484218425839572e-05,
+        "total_energy_change": -0.00021471177656451346,
+        "transfer_work_change": -4.0951279103307314e-05,
+        "peak_native_gradient_change": 0.036642412828562065
+      },
+      {
+        "kind": "state",
+        "degree": 3,
+        "grid": [
+          4,
+          10,
+          3
+        ],
+        "active": 999,
+        "energy": 52.23088634273389,
+        "forward_reverse_error": -3.3173463975799677e-13,
+        "deposited": -1.9106840704823775,
+        "seconds": 1.0788721228018403,
+        "transfer_energy": -1.9106840704823558,
+        "unit_order_energy": 62.88500708086989,
+        "reference_volume": 298.9464198283985,
+        "quadrature_points": 1968504,
+        "min_J": 0.14577714176802017,
+        "min_J_site": [
+          0.9794649059345231,
+          0.9691073560817778,
+          0.00790770150238548
+        ],
+        "max_J": 1.654953994342257,
+        "max_J_site": [
+          0.999919227311296,
+          0.0023487754277279433,
+          1.5473247869009852
+        ],
+        "minimum_order": 0.24555758322806737,
+        "minimum_order_site": [
+          0.9757283984297312,
+          0.9987845122840319,
+          0.3257332981313771
+        ],
+        "min_stretch": 0.3336831055366955,
+        "min_stretch_site": [
+          0.994758690316981,
+          0.9176191362610314,
+          0.00790770075902785
+        ],
+        "max_stretch": 1.732959628757983,
+        "max_stretch_site": [
+          0.9999405408865049,
+          0.08130250660792536,
+          1.5473247867191642
+        ],
+        "maximum_order": 0.9999840815998473,
+        "maximum_order_site": [
+          0.036970763942530904,
+          0.0021202311481712584,
+          0.007907724874808389
+        ],
+        "twist_coefficient": 17.944002990594228,
+        "material_force_max": 2.2008777410650375,
+        "material_force_site": [
+          1,
+          8,
+          2,
+          1
+        ],
+        "angular_sum_force_max": 4.981223457052941,
+        "angular_sum_force_site": [
+          1,
+          8,
+          1
+        ],
+        "bond_force_max": 2.2008777410650375,
+        "last_free_ring_angular_sum": [
+          -1.1952224904218263,
+          -3.1778987616721848
+        ],
+        "last_free_ring_peak_per_direction": [
+          0.5303098788130292,
+          1.4093418504358914,
+          0.005892489453021429
+        ],
+        "last_free_ring_reference": [
+          0.9,
+          0.9706242256461488
+        ],
+        "last_free_ring_landed_depth_fraction": [
+          0.9209741201959963,
+          0.9209830635023453
+        ],
+        "orientation": {
+          "prism_chart_determinant_range": [
+            0.6778339243220266,
+            1.1426113288206567
+          ],
+          "extremizers": {
+            "min": {
+              "cell_t_x_angle": [
+                9,
+                11,
+                0
+              ],
+              "triangle": 0,
+              "vertex": 1,
+              "angular_fraction": 0.0
+            },
+            "max": {
+              "cell_t_x_angle": [
+                8,
+                7,
+                2
+              ],
+              "triangle": 1,
+              "vertex": 0,
+              "angular_fraction": 1.0
+            }
+          },
+          "placement_node_ranges": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.5707963267948966
+            ]
+          ],
+          "meridian_minimum": 3.5008516500807114,
+          "physical_radial_chart_derivative_lower_bound": 3.500596052077855,
+          "max_parameter_box_overshoot": 0.0,
+          "all_open_cells_oriented": true
+        }
+      },
+      {
+        "kind": "conversion",
+        "degree": 3,
+        "analytic": 0.46256425824574854,
+        "signed": 0.4625642443301103,
+        "error": -1.3915638252814944e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 3,
+        "mode": "mixed",
+        "step": 2e-06,
+        "derivative": -5.21131708181427,
+        "signed": -5.211317461117915,
+        "difference": -3.7930364449323406e-07
+      },
+      {
+        "kind": "same_energy",
+        "degree": 3,
+        "mode": "mixed",
+        "step": 1e-06,
+        "derivative": -5.21131708181427,
+        "signed": -5.211316874920158,
+        "difference": 2.068941125088486e-07
+      },
+      {
+        "kind": "same_energy",
+        "degree": 3,
+        "mode": "bond_radial",
+        "step": 2e-06,
+        "derivative": -1.0242804259633003,
+        "signed": -1.0242804453497456,
+        "difference": -1.9386445337943314e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 3,
+        "mode": "bond_radial",
+        "step": 1e-06,
+        "derivative": -1.0242804259633003,
+        "signed": -1.0242802659377048,
+        "difference": 1.6002559544148198e-07
+      },
+      {
+        "kind": "same_energy",
+        "degree": 3,
+        "mode": "last_axial",
+        "step": 2e-06,
+        "derivative": 0.5516439193916534,
+        "signed": 0.5516441010655626,
+        "difference": 1.8167390924972437e-07
+      },
+      {
+        "kind": "same_energy",
+        "degree": 3,
+        "mode": "last_axial",
+        "step": 1e-06,
+        "derivative": 0.5516439193916534,
+        "signed": 0.5516444829822831,
+        "difference": 5.635906297207782e-07
+      },
+      {
+        "kind": "same_energy",
+        "degree": 3,
+        "mode": "angular",
+        "step": 2e-06,
+        "derivative": 0.2964282981354431,
+        "signed": 0.2964283130069134,
+        "difference": 1.4871470332966652e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 3,
+        "mode": "angular",
+        "step": 1e-06,
+        "derivative": 0.2964282981354431,
+        "signed": 0.29642824728171036,
+        "difference": -5.0853732724842615e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 3,
+        "mode": "pole_radial",
+        "step": 2e-06,
+        "derivative": -0.16483104721172126,
+        "signed": -0.16483096842989653,
+        "difference": 7.878182473053386e-08
+      },
+      {
+        "kind": "same_energy",
+        "degree": 3,
+        "mode": "pole_radial",
+        "step": 1e-06,
+        "derivative": -0.16483104721172126,
+        "signed": -0.164831206461713,
+        "difference": -1.592499917490997e-07
+      },
+      {
+        "kind": "mesh_only_remap",
+        "degree": 3,
+        "same_material_coordinates": true,
+        "reference_volume_change": -5.604817943094531e-09,
+        "total_energy_change": 6.385183064594457e-05,
+        "transfer_work_change": 2.665283341984903e-05,
+        "peak_native_gradient_change": 0.015419652084904811
+      }
+    ]
+  },
+  "common_material_partition": {
+    "source_sha256": "f3d00152d87e5b93e05af74292919c66633119814e80208bbb821ba30451af3c",
+    "readings": [
+      {
+        "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "fields": "wound order on the held native six-domain mesh",
+        "model_size": 19956
+      },
+      {
+        "kind": "common_crystal_partition",
+        "degree": 3,
+        "energy": 0.0,
+        "field_work": 2.220446049250313e-16,
+        "volume": 0.0,
+        "native_gradient_max": 2.886579864025407e-15
+      }
+    ]
+  },
+  "initial_solid_quadrature": {
+    "source_sha256": "25d96ac3a7707aa8ff4577354a92249b72fdaf292a0a8a8d536670db2ad8f105",
+    "readings": [
+      {
+        "kind": "timing",
+        "grid": [
+          24,
+          24,
+          6
+        ],
+        "degree": 2,
+        "subdivisions": 1,
+        "nodes": 10074,
+        "energy": 51.68600287067296,
+        "transfer_energy": -2.1361330390877447,
+        "unit_order_energy": 63.188149481443936,
+        "reference_volume": 298.9464153943731,
+        "quadrature_points": 2269600,
+        "material_force_max": 0.3851888267290656,
+        "material_force_site": [
+          23,
+          23,
+          5,
+          1
+        ],
+        "angular_sum_force_max": 1.5319970896571267,
+        "angular_sum_force_site": [
+          23,
+          23,
+          1
+        ],
+        "bond_force_max": 0.23512490360088742,
+        "last_free_ring_angular_sum": [
+          0.18082469636944962,
+          1.5319970896571267
+        ],
+        "last_free_ring_peak_per_direction": [
+          0.04547617182154337,
+          0.3851888267290656,
+          9.61217442498094e-07
+        ],
+        "last_free_ring_reference": [
+          0.9583333333333333,
+          0.9853121128230744
+        ],
+        "last_free_ring_landed_depth_fraction": [
+          0.9705046644997424,
+          0.9705046644997424
+        ]
+      },
+      {
+        "kind": "timing",
+        "grid": [
+          24,
+          24,
+          6
+        ],
+        "degree": 3,
+        "subdivisions": 2,
+        "nodes": 10074,
+        "energy": 51.68584606287707,
+        "transfer_energy": -2.1361098841024644,
+        "unit_order_energy": 63.187908736414286,
+        "reference_volume": 298.9464198227468,
+        "quadrature_points": 30654000,
+        "material_force_max": 0.3846742309734722,
+        "material_force_site": [
+          23,
+          23,
+          5,
+          1
+        ],
+        "angular_sum_force_max": 1.5299505591367133,
+        "angular_sum_force_site": [
+          23,
+          23,
+          1
+        ],
+        "bond_force_max": 0.23035437535452652,
+        "last_free_ring_angular_sum": [
+          0.1796219237164622,
+          1.5299505591367133
+        ],
+        "last_free_ring_peak_per_direction": [
+          0.04517374474881925,
+          0.3846742309734722,
+          9.60825115065242e-07
+        ],
+        "last_free_ring_reference": [
+          0.9583333333333333,
+          0.9853121128230744
+        ],
+        "last_free_ring_landed_depth_fraction": [
+          0.9705046644997424,
+          0.9705046644997424
+        ]
+      },
+      {
+        "kind": "timing",
+        "grid": [
+          33,
+          32,
+          10
+        ],
+        "degree": 2,
+        "subdivisions": 1,
+        "nodes": 30783,
+        "energy": 51.568070440024485,
+        "transfer_energy": -2.198726536686099,
+        "unit_order_energy": 63.29635313037774,
+        "reference_volume": 298.94641623567446,
+        "quadrature_points": 3540900,
+        "material_force_max": 0.08655391964531953,
+        "material_force_site": [
+          3,
+          24,
+          9,
+          0
+        ],
+        "angular_sum_force_max": 0.5583078959950937,
+        "angular_sum_force_site": [
+          3,
+          24,
+          0
+        ],
+        "bond_force_max": 0.020625583966848604,
+        "last_free_ring_angular_sum": [
+          0.21723079245104243,
+          -0.027826627019371594
+        ],
+        "last_free_ring_peak_per_direction": [
+          0.033638607892159444,
+          0.004313795424144802,
+          6.34756241143106e-07
+        ],
+        "last_free_ring_reference": [
+          0.96875,
+          0.9893179002349632
+        ],
+        "last_free_ring_landed_depth_fraction": [
+          0.977568812524941,
+          0.977568812524941
+        ]
+      },
+      {
+        "kind": "timing",
+        "grid": [
+          33,
+          32,
+          10
+        ],
+        "degree": 3,
+        "subdivisions": 2,
+        "nodes": 30783,
+        "energy": 51.568338339030795,
+        "transfer_energy": -2.1987398428627394,
+        "unit_order_energy": 63.296638667951605,
+        "reference_volume": 298.94641982264096,
+        "quadrature_points": 47821464,
+        "material_force_max": 0.07380097113063064,
+        "material_force_site": [
+          3,
+          24,
+          9,
+          0
+        ],
+        "angular_sum_force_max": 0.47594403187062745,
+        "angular_sum_force_site": [
+          3,
+          24,
+          0
+        ],
+        "bond_force_max": 0.020636265928395982,
+        "last_free_ring_angular_sum": [
+          0.2140943312906565,
+          -0.028382534401081076
+        ],
+        "last_free_ring_peak_per_direction": [
+          0.03315299181751921,
+          0.004399795650585177,
+          6.346109045071007e-07
+        ],
+        "last_free_ring_reference": [
+          0.96875,
+          0.9893179002349632
+        ],
+        "last_free_ring_landed_depth_fraction": [
+          0.977568812524941,
+          0.977568812524941
+        ]
+      }
+    ]
+  },
+  "field_virtual_work": {
+    "source_sha256": "55972f3ab91cf12ff5e0ba5e4601f46b9afa1bc4d347700382f2d4214e72eab3",
+    "readings": [
+      {
+        "grid": [
+          5,
+          5,
+          6
+        ],
+        "shape": [
+          0.0022112405142513235,
+          0.006504976654925854,
+          -0.009643985902256364,
+          -0.045298482546670904,
+          -0.007094537446961355,
+          0.0012703986685707184
+        ],
+        "wound": 2.9140715996688993e-08,
+        "rest": 2.0988855772613827e-08,
+        "unwound": 2.3335272050647833e-08,
+        "port_error": [
+          1.0058247568167644e-09,
+          0.0,
+          4.389981711483415e-10
+        ],
+        "order_secant": 0.7953596777854344,
+        "gradient": 0.795359677788307,
+        "energy_increment": -0.00012014213831057496,
+        "deposited": -0.00012014213831059627,
+        "retained_fraction": 0.8437611032075675,
+        "dense_subsonic": 0.7628149807452237
+      }
+    ]
+  },
+  "held_field_grid": {
+    "source_sha256": "5315f03a506aa7fcf46ab6ff0da0f3b2bdada07ca0e72e57cfa63206e3aa31e8",
+    "readings": [
+      {
+        "axes": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "pinned_sha": "78346185122b08966354f98a8d1876afaa35e6c6720bd397716b7b2c39b30f43",
+        "shape": [
+          3,
+          149235
+        ],
+        "size": 149235,
+        "receiver": 4.373165403669109e-09,
+        "wound": {
+          "excess_energy": -0.748137195825475,
+          "feed_current": 11.531526544853339,
+          "bulk_current": 11.531526544853335,
+          "port_error": 3.552713678800501e-15,
+          "weak_disk_current": 11.531526544877067,
+          "incident_slice_current": 11.531526544877066,
+          "receiving_slice_current": 10.922411754990232,
+          "positive_slice_current": 11.531526545504056,
+          "dense_total_subsonic_share": 0.7200016528324779,
+          "minimum_total_mach": 0.3877801474615507,
+          "total_axial_stress": -93.94911958094606,
+          "crystalline_range_in_band": [
+            0.02902471780443784,
+            0.948664369180034
+          ],
+          "nodal_order_range_in_band": [
+            0.0280192455734455,
+            0.9500300740467366
+          ],
+          "disk_minus_feed_current": 2.3728574660708546e-11
+        },
+        "rest": {
+          "excess_energy": -3.3518213145874363,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.3252881180308835,
+          "total_axial_stress": -94.85636721058493,
+          "crystalline_range_in_band": [
+            0.029024722911299324,
+            0.9486643722421871
+          ],
+          "nodal_order_range_in_band": [
+            0.0280192455734455,
+            0.9500300740467366
+          ],
+          "disk_minus_feed_current": 0.0
+        }
+      }
+    ]
+  },
+  "independent_signed_traction": {
+    "source_sha256": "57fd01a2152e312af422b980234383ce45ee5a48af09cc356add5ce696821c68",
+    "readings": [
+      {
+        "tag": "native_energy",
+        "points": [
+          0.32,
+          0.6,
+          0.95
+        ],
+        "signed": [
+          -0.0017594737698051197,
+          -0.013866984324185925,
+          -0.031989857340875005
+        ],
+        "assembled": [
+          -0.0017594737699155544,
+          -0.013866984324255554,
+          -0.03198985733988875
+        ],
+        "max_difference": 9.8625274613795e-13,
+        "factorized_volume_wall": [
+          -0.03488335341814834,
+          0.03488333980599729
+        ],
+        "physical_closure": -3.3306690738754696e-14,
+        "native_closure": 1.3612117655270595e-08
+      }
+    ]
+  },
+  "independent_synthetic_field": {
+    "source_sha256": "49cc2c12177358a7eb21b6807160c6e1594ed2ac059eb9cae9fe96414d821cb3",
+    "readings": [
+      {
+        "tag": "zero",
+        "orientation": {
+          "prism_chart_determinant_range": [
+            1.0,
+            1.0
+          ],
+          "extremizers": {
+            "min": {
+              "cell_t_x_angle": [
+                0,
+                0,
+                0
+              ],
+              "triangle": 0,
+              "vertex": 0,
+              "angular_fraction": 0.0
+            },
+            "max": {
+              "cell_t_x_angle": [
+                0,
+                0,
+                0
+              ],
+              "triangle": 0,
+              "vertex": 0,
+              "angular_fraction": 0.0
+            }
+          },
+          "placement_node_ranges": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.5707963267948966
+            ]
+          ],
+          "meridian_minimum": 3.4999721920195155,
+          "physical_radial_chart_derivative_lower_bound": 3.4990271920195153,
+          "max_parameter_box_overshoot": 0.0,
+          "all_open_cells_oriented": true
+        }
+      },
+      {
+        "tag": "smooth",
+        "orientation": {
+          "prism_chart_determinant_range": [
+            0.9997458872786936,
+            1.0005430395951072
+          ],
+          "extremizers": {
+            "min": {
+              "cell_t_x_angle": [
+                3,
+                11,
+                2
+              ],
+              "triangle": 0,
+              "vertex": 0,
+              "angular_fraction": 0.0
+            },
+            "max": {
+              "cell_t_x_angle": [
+                3,
+                0,
+                0
+              ],
+              "triangle": 0,
+              "vertex": 0,
+              "angular_fraction": 0.0
+            }
+          },
+          "placement_node_ranges": [
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              1.5707963267948966
+            ]
+          ],
+          "meridian_minimum": 3.4999721920195155,
+          "physical_radial_chart_derivative_lower_bound": 3.4990271920195153,
+          "max_parameter_box_overshoot": 0.0,
+          "all_open_cells_oriented": true
+        }
+      },
+      {
+        "tag": "one_vertex_fold",
+        "det_min": -8.066705424920823
+      },
+      {
+        "tag": "physical_sites",
+        "all_min": 0.2198419179864465,
+        "neighborhood": {
+          "sites": 36,
+          "minimum_stretch": 0.4679939165175091,
+          "maximum_stretch": 0.8422283767340528,
+          "minimum_J": 0.2198419179864465,
+          "maximum_J": 0.30775525677876125,
+          "minimum_stretch_site": {
+            "material_t_x_angle": [
+              0.997,
+              0.985438389041414,
+              0.4799992984042948
+            ],
+            "physical_r_z_angle": [
+              3.449972192019516,
+              0.7846340675432024,
+              0.48
+            ]
+          },
+          "maximum_stretch_site": {
+            "material_t_x_angle": [
+              0.9995,
+              0.9856685545979357,
+              0.47999988306728103
+            ],
+            "physical_r_z_angle": [
+              3.449972192019516,
+              0.7866015551749557,
+              0.48
+            ]
+          },
+          "minimum_J_site": {
+            "material_t_x_angle": [
+              0.997,
+              0.985438389041414,
+              1.5299999313037405
+            ],
+            "physical_r_z_angle": [
+              3.449972192019516,
+              0.7846340675432024,
+              1.5300000000000038
+            ]
+          },
+          "maximum_J_site": {
+            "material_t_x_angle": [
+              0.9995,
+              0.9793259406015993,
+              0.0899999747418035
+            ],
+            "physical_r_z_angle": [
+              3.427772192019516,
+              0.7866015551749557,
+              0.09000000000000707
+            ]
+          }
+        }
+      },
+      {
+        "tag": "manufactured_flux",
+        "enclosure": {
+          "near_half_heights": [
+            0.145,
+            0.17
+          ],
+          "far_half_heights": [
+            0.195,
+            0.22
+          ],
+          "physical_radial_taper": [
+            4.45,
+            5.05
+          ],
+          "order_halfwidth": 0.12,
+          "wall_polar_support_end": 0.4879369326748099,
+          "resolved": true,
+          "maximum_off_band_order_change": 0.0,
+          "measurements": [
+            {
+              "degree": 2,
+              "near": {
+                "faces": {
+                  "lower_cap": [
+                    -248.9923906761523,
+                    -88.47664576507356
+                  ],
+                  "lower_side": [
+                    0.3939950199477928,
+                    0.28671427907515984
+                  ],
+                  "upper_cap": [
+                    176.99633265356508,
+                    44.48837332872648
+                  ],
+                  "upper_side": [
+                    0.3927028828681429,
+                    0.2627922265953423
+                  ]
+                },
+                "outward_mass": -71.20936011977128,
+                "negative_outward_axial": 43.438765930676574
+              },
+              "far": {
+                "faces": {
+                  "lower_cap": [
+                    -248.4553894079512,
+                    -88.17833445926114
+                  ],
+                  "lower_side": [
+                    0.5193651863593617,
+                    0.37821597389003264
+                  ],
+                  "upper_cap": [
+                    176.87297822674168,
+                    44.456912847176234
+                  ],
+                  "upper_side": [
+                    0.5170486677892225,
+                    0.32574963312185495
+                  ]
+                },
+                "outward_mass": -70.54599732706095,
+                "negative_outward_axial": 43.017456005073015
+              },
+              "work_radial_axial": [
+                0.15445910852154385,
+                0.2668508242620753
+              ],
+              "far_plus_shell": 43.43876593785664,
+              "closure": -7.180060102029984e-09
+            },
+            {
+              "degree": 4,
+              "near": {
+                "faces": {
+                  "lower_cap": [
+                    -248.99811171772703,
+                    -88.47871709013917
+                  ],
+                  "lower_side": [
+                    0.39399732226048517,
+                    0.28671545035522006
+                  ],
+                  "upper_cap": [
+                    177.00003591145085,
+                    44.48925451370762
+                  ],
+                  "upper_side": [
+                    0.39270518713606956,
+                    0.2627937685854557
+                  ]
+                },
+                "outward_mass": -71.21137329687963,
+                "negative_outward_axial": 43.43995335749088
+              },
+              "far": {
+                "faces": {
+                  "lower_cap": [
+                    -248.4612433811956,
+                    -88.18045849679021
+                  ],
+                  "lower_side": [
+                    0.5193682151020347,
+                    0.3782174786008153
+                  ],
+                  "upper_cap": [
+                    176.87668917742423,
+                    44.457795950798264
+                  ],
+                  "upper_side": [
+                    0.5170517016743814,
+                    0.3257515445238364
+                  ]
+                },
+                "outward_mass": -70.54813428699495,
+                "negative_outward_axial": 43.01869352286729
+              },
+              "work_radial_axial": [
+                0.15445980418395394,
+                0.26680003043962586
+              ],
+              "far_plus_shell": 43.439953357490865,
+              "closure": 1.0935696792557792e-14
+            }
+          ],
+          "convention": "wound drive minus wound rest; force is minus outward axial momentum"
+        }
+      }
+    ]
+  },
+  "scope": "Field, solid, and endpoint validation. The production-sized solid comparisons use the interpolated earlier wound order and initial displacement. These readings precede whole-mouth equilibration."
+}

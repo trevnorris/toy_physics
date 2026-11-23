@@ -237,7 +237,12 @@ def fluxes(model, u):
         currents[key]=float(sign*sum((wt*(m@test))@current[:,i] for i,m in enumerate(model.G)))
     currents['imbalance']=currents['feed']-currents['bulk']
     currents['phase_at_ports']=[float(u[1,model.feed].mean()),float(u[1,model.bulk].mean())]
-    currents['stationarity']=float(np.max(abs(model.norm(model.vars(model.evaluate(u)[1])))))
+    gradient = model.evaluate(u)[1]
+    currents['stationarity'] = float(np.max(abs(model.norm(model.vars(gradient)))))
+    currents['raw_free_gradient_max'] = {
+        name: float(np.max(abs(row[free])))
+        for name, row, free in zip(('amplitude', 'phase', 'order'), gradient, model.masks)
+    }
     return currents
 
 

@@ -1124,5 +1124,34 @@
       }
     ]
   },
-  "scope": "Field, solid, and endpoint validation. The production-sized solid comparisons use the interpolated earlier wound order and initial displacement. These readings precede whole-mouth equilibration."
+  "scope": "Field, solid, and endpoint validation. The production-sized solid comparisons use the interpolated earlier wound order and initial displacement. The coarse_endpoint_field_readback entry uses the settled coarse fields.",
+  "coarse_endpoint_field_readback": {
+    "scope": "Saved coarse-solid R4 endpoint, doubled carrier mesh. Raw maxima of the discrete energy gradient on free amplitude-ratio, meridional-phase and order-correction nodes, with the accepted bonded solid held fixed. Both controls carry one winding quantum.",
+    "iteration": 14,
+    "endpoint_sha256": "c96d269556664836d1cf84e8bf78ac5914b0ac26ef0eb6b6e84b61731b4d26b9",
+    "rest_and_unwound_archive_sha256": "3362dd16a39e0f9788cb70a209f4a8e8b757f24b9b32e871842091c4173dcc58",
+    "readback_stdout_sha256": "5c37293547f788ab1a8fd115d9831063a6fcb2f0725b4c028b13fa91b812d3f4",
+    "readings": [
+      {
+        "control": "wound",
+        "free_raw_max": {
+          "amplitude": 1.3601890776898662e-09,
+          "phase": 8.822013412325413e-08,
+          "order": 4.80410546135901e-07
+        },
+        "scaled_max": 1.741967727258025e-07,
+        "state_sha": "e69eec4f10e24bef4074aa704eb063427e2ced06aaf75c901d82c34cd4fe849c"
+      },
+      {
+        "control": "rest",
+        "free_raw_max": {
+          "amplitude": 6.284246770421435e-09,
+          "phase": 0.0,
+          "order": 1.5153144743498825e-07
+        },
+        "scaled_max": 1.6062966377753418e-07,
+        "state_sha": "e69eec4f10e24bef4074aa704eb063427e2ced06aaf75c901d82c34cd4fe849c"
+      }
+    ]
+  }
 }

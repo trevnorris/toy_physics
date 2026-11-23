@@ -2,7 +2,7 @@
 
 ## Common-medium research
 
-**Current 0PN result.** At fixed radius-four wall, the interior crystal settles into a small polar–equatorial displacement on both solid meshes with positive sampled volumes and subsonic drainage. The dominant global shape force persists. At the previously rejected wall, releasing the same angular mode still leaves a material residual above tolerance, and the largest force in the last saved sweep lies near the downstream exit. Free translation remains gated on local support there and a resolved rim momentum balance. [Fixed-wall result](software/stage1_solver/reports/mouth_fixed_wall_support.md) · [0PN roadmap](docs/zero_pn_free_fall_roadmap.md)
+**Current 0PN result.** The last rings of the rejected radius-four wall resist small radial and axial displacements. Resolving the material registration changes the signed radial load from inward to outward. Local material release concentrates compression near the held downstream disk. The enclosing axial residual changes from −0.008921 to −0.053197 to −0.077587 with carrier refinement. Translating the mouth requires a converged force balance there. [Exit-rim diagnostic](software/stage1_solver/reports/mouth_downstream_exit_rim.md) · [0PN roadmap](docs/zero_pn_free_fall_roadmap.md)
 
 **Record 5 retired as a bulk candidate.** The classical Langevin particle runs are preserved as a proof of concept for relaxation of held shear. They supply no physical bulk transport coefficients for the coherent model. [Historical transit measurements](software/stage1_solver/reports/mouth_receiver_transit.md) · [Historical common-face test](software/stage1_solver/reports/mouth_receiver_common_face.md)
 

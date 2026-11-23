@@ -1,0 +1,15 @@
+# Axial force around the downstream rim at radius four
+
+**The axial force still changes when only the fluid and conversion layer near the sharp rim are better resolved.** The two axial enclosures agree closely on each refined mesh. The common value moves from about −0.0531 to −0.0776 when the rim cells are halved again. This uncertainty blocks the use of the measured traction for free release. [Measurements and reproducible commands](../../../research/pde_ledger_v3/_measurements/mouth_last_rings_fluid.json)
+
+We used the last saved material state on the rejected wall, with depth 0.79475445 and exit radius 3.50085165. The bonded 33 × 32 solid, its displacement, its original material-load quadrature, the static reference order field, the ordered interior and one quantum of circulation were held fixed. We solved the driven and resting carrier and mobile order fields separately on each mesh and subtracted their fluxes. The third mesh subdivides the doubled mesh radially and in depth near the junction, retaining its angular resolution and all its original nodes. Rotation and motion of the mouth remain outside this test.
+
+| Carrier grid | Inward current | Dense and subsonic share | Near external axial flux | Near axial traction on both sealed faces | Near sum | Far sum |
+|---|---:|---:|---:|---:|---:|---:|
+| 13 × 10 × 14 | 11.61514 | 70.49% | −0.510411 | +0.501490 | −0.008921 | −0.007276 |
+| 26 × 20 × 28 | 11.53154 | 72.00% | −0.500162 | +0.446965 | −0.053197 | −0.053081 |
+| 32 × 20 × 34, rim refined | 11.52627 | 72.37% | −0.498958 | +0.421371 | −0.077587 | −0.077681 |
+
+Each grid used the same four physical enclosures, combining two depths and two lateral radii. On the last grid their axial sums span 0.000183. Their weak mass imbalance is below 5.82 × 10⁻¹⁰. Signed translations of the native energy reproduce the exterior momentum flux to within 3.22 × 10⁻⁷ across all three grids. The sealed-face traction uses one-sided field derivatives. On the finest near enclosure these yield apparent normal mass fluxes of +0.33618 and −0.31166 on the two nominally sealed banks. Finite-element impermeability is imposed weakly, so these face traces remain a source of error. [Carrier and closed-surface calculation](../tools/mouth_last_rings_fluid.py)
+
+The final 0.0075 units of axial wall length carry +0.37105, +0.58458 and +0.61080 of axial traction on the three meshes. The next 0.0225 units carry +0.23892, +0.04838 and +0.00939. This local redistribution helps explain how a narrow control-volume comparison can look stable while the overall force still shifts. The two refinement steps differ in radial, axial and angular coverage, so they cannot determine a convergence exponent. Both a finite, slowly converging traction and a sharp-corner concentration remain possible. A wall reaction derived from a specified displacement of the bonded junction and the discrete field work would distinguish a trace-recovery error from sensitivity to the idealized corner. [Strip-by-strip calculation](../tools/mouth_last_ring_slit.py)

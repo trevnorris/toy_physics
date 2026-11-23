@@ -1,0 +1,713 @@
+{
+  "scope": "Fixed shape and fixed exterior solid perimeter; the filled, coherently draining, one-quantum R4 mouth on its last saved fixed-wall sweep before rejection.",
+  "measurement": {
+    "coherent_tangent": {
+      "result": {
+        "source_sha": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "checkpoint_sha": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "grid": [
+          33,
+          32
+        ],
+        "local_nodes": [
+          [
+            29,
+            30,
+            0
+          ],
+          [
+            29,
+            31,
+            0
+          ],
+          [
+            29,
+            32,
+            0
+          ],
+          [
+            30,
+            30,
+            0
+          ],
+          [
+            30,
+            31,
+            0
+          ],
+          [
+            30,
+            32,
+            0
+          ],
+          [
+            31,
+            30,
+            0
+          ],
+          [
+            31,
+            31,
+            0
+          ],
+          [
+            31,
+            32,
+            0
+          ]
+        ],
+        "active_min_actual_depth": 0.8758465939960842,
+        "field_preconditioned_residual": 1.6954997356079284e-07,
+        "signed_peak_force": [
+          -0.0018658717522196423,
+          0.00010570739569246146
+        ],
+        "field_tangent_checks": {
+          "columns": 41433,
+          "colors": 146,
+          "action_relative": 6.399811650588115e-16,
+          "skew_relative": 5.976429528454298e-17
+        },
+        "steps": [
+          {
+            "step": 2e-07,
+            "field_solve_relative": 6.280933599207238e-15,
+            "material_skew_absolute": 9.34322770262952e-08,
+            "one_sided_max_difference": 0.015081572136976806,
+            "patch_spectrum_min": 180.65344874553983,
+            "field_correction_max_abs": 8.704527711981843,
+            "readings": {
+              "held_field_held_neighbors": {
+                "matrix": [
+                  [
+                    849.3877396360556,
+                    626.3995309446248
+                  ],
+                  [
+                    626.3995309446248,
+                    1885.0815169929592
+                  ]
+                ],
+                "eigenvalues": [
+                  554.4974183372609,
+                  2179.971838291754
+                ]
+              },
+              "held_field_responsive_neighbors": {
+                "matrix": [
+                  [
+                    678.3779068573785,
+                    402.959380332539
+                  ],
+                  [
+                    402.959380332539,
+                    1319.6368389991667
+                  ]
+                ],
+                "eigenvalues": [
+                  484.05153335473165,
+                  1513.9632125018136
+                ]
+              },
+              "responsive_field_held_neighbors": {
+                "matrix": [
+                  [
+                    846.2383776947202,
+                    624.5735582695112
+                  ],
+                  [
+                    624.5735582695112,
+                    1876.3769892809773
+                  ]
+                ],
+                "eigenvalues": [
+                  551.7469881353297,
+                  2170.8683788403678
+                ]
+              },
+              "responsive_field_responsive_neighbors": {
+                "matrix": [
+                  [
+                    671.7030314615822,
+                    399.34929068107147
+                  ],
+                  [
+                    399.34929068107147,
+                    1307.492170282705
+                  ]
+                ],
+                "eigenvalues": [
+                  479.16953225894406,
+                  1500.025669485343
+                ]
+              }
+            }
+          },
+          {
+            "step": 1e-07,
+            "field_solve_relative": 6.438519748850605e-15,
+            "material_skew_absolute": 6.383788786479272e-08,
+            "one_sided_max_difference": 0.0075407453198339525,
+            "patch_spectrum_min": 180.6534487414371,
+            "field_correction_max_abs": 8.704527704870678,
+            "readings": {
+              "held_field_held_neighbors": {
+                "matrix": [
+                  [
+                    849.3877395935463,
+                    626.3995308997648
+                  ],
+                  [
+                    626.3995308997648,
+                    1885.0815167412509
+                  ]
+                ],
+                "eigenvalues": [
+                  554.497418291374,
+                  2179.9718380434233
+                ]
+              },
+              "held_field_responsive_neighbors": {
+                "matrix": [
+                  [
+                    678.3779068300109,
+                    402.95938029366334
+                  ],
+                  [
+                    402.95938029366334,
+                    1319.6368387339057
+                  ]
+                ],
+                "eigenvalues": [
+                  484.0515333128984,
+                  1513.9632122510184
+                ]
+              },
+              "responsive_field_held_neighbors": {
+                "matrix": [
+                  [
+                    846.2383776528487,
+                    624.5735582276221
+                  ],
+                  [
+                    624.5735582276221,
+                    1876.37698903638
+                  ]
+                ],
+                "eigenvalues": [
+                  551.7469880889031,
+                  2170.8683786003257
+                ]
+              },
+              "responsive_field_responsive_neighbors": {
+                "matrix": [
+                  [
+                    671.703031434585,
+                    399.34929064667483
+                  ],
+                  [
+                    399.3492906466749,
+                    1307.4921700231403
+                  ]
+                ],
+                "eigenvalues": [
+                  479.16953221499585,
+                  1500.0256692427295
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "output": "_scratch/s11c/r4_last_rings_support01/readout.json",
+      "hash": "a0fca2c58c82bef5220c7a1ceabbe9d3e48ecd6fcdb360ca6fd876a2b9c529e3",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_last_rings_response.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_support01/readout.json"
+      ],
+      "guard_exit": 0,
+      "cap_gib": 6.0
+    },
+    "local_mesh": {
+      "result": {
+        "checkpoint": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "material": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "results": [
+          {
+            "subdivisions": 1,
+            "integration": 8,
+            "free_dofs": 2,
+            "tangent_min": 556.167069178958,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 0.20232038891402104,
+              "original_probe_force": [
+                0.20232038891402104,
+                0.010092650654864754
+              ],
+              "min_stretch": 0.32366311712456947,
+              "min_volume_ratio": 0.12434877793735713,
+              "max_displacement": 0.0
+            },
+            "final": {
+              "energy_change": -3.078642694740827e-05,
+              "max_force": 9.769509805579446e-07,
+              "original_probe_force": [
+                -9.769509805579446e-07,
+                3.349837747190776e-07
+              ],
+              "min_stretch": 0.3235595936508306,
+              "min_volume_ratio": 0.12528563707353135,
+              "max_displacement": 0.0003090922738101739
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 2
+          },
+          {
+            "subdivisions": 2,
+            "integration": 8,
+            "free_dofs": 14,
+            "tangent_min": 212.22084487852146,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 3.059994079391493,
+              "original_probe_force": [
+                0.20232038891404244,
+                0.01009265065485837
+              ],
+              "min_stretch": 0.32366311712456947,
+              "min_volume_ratio": 0.12434877793735713,
+              "max_displacement": 0.0
+            },
+            "final": {
+              "energy_change": -0.005187018776013547,
+              "max_force": 8.088734791689145e-07,
+              "original_probe_force": [
+                1.4205847754383827e-07,
+                1.2054527825933192e-07
+              ],
+              "min_stretch": 0.32133340425309226,
+              "min_volume_ratio": 0.11713951547716397,
+              "max_displacement": 0.0014021391652258366
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 6
+          },
+          {
+            "subdivisions": 4,
+            "integration": 8,
+            "free_dofs": 74,
+            "tangent_min": 58.2453769517735,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 1.6911343787284934,
+              "original_probe_force": [
+                0.2023203889140425,
+                0.010092650654859703
+              ],
+              "min_stretch": 0.32366311712456947,
+              "min_volume_ratio": 0.12434877793735713,
+              "max_displacement": 0.0
+            },
+            "final": {
+              "energy_change": -0.006860174588275579,
+              "max_force": 8.003331880140907e-07,
+              "original_probe_force": [
+                -2.0556868756608886e-08,
+                -1.4556340040397303e-07
+              ],
+              "min_stretch": 0.30249546122398696,
+              "min_volume_ratio": 0.11031575536045041,
+              "max_displacement": 0.0013791370643340868
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 9
+          },
+          {
+            "subdivisions": 1,
+            "integration": 16,
+            "free_dofs": 2,
+            "tangent_min": 394.8984790676185,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 0.18399462403458333,
+              "original_probe_force": [
+                0.18399462403458333,
+                0.010376405623255702
+              ],
+              "min_stretch": 0.32366077326968135,
+              "min_volume_ratio": 0.12434350448418957,
+              "max_displacement": 0.0
+            },
+            "final": {
+              "energy_change": -2.530668751031427e-05,
+              "max_force": 4.559615307542231e-08,
+              "original_probe_force": [
+                2.3890062150755398e-08,
+                4.559615307542231e-08
+              ],
+              "min_stretch": 0.3235680554904514,
+              "min_volume_ratio": 0.1251913552994593,
+              "max_displacement": 0.00027967858829889533
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 6
+          },
+          {
+            "subdivisions": 2,
+            "integration": 16,
+            "free_dofs": 14,
+            "tangent_min": 121.482829739939,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 3.057849892568809,
+              "original_probe_force": [
+                0.18399462403459976,
+                0.010376405623257645
+              ],
+              "min_stretch": 0.32366077326968135,
+              "min_volume_ratio": 0.12434350448418957,
+              "max_displacement": 0.0
+            },
+            "final": {
+              "energy_change": -0.005212410478565831,
+              "max_force": 2.8066737139953446e-07,
+              "original_probe_force": [
+                -6.549686785983777e-09,
+                -9.44569812505458e-08
+              ],
+              "min_stretch": 0.32135006160651497,
+              "min_volume_ratio": 0.11676481885383669,
+              "max_displacement": 0.0014151780368382087
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 8
+          },
+          {
+            "subdivisions": 4,
+            "integration": 16,
+            "free_dofs": 74,
+            "tangent_min": 5.6732529211848455,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 1.6911999599669116,
+              "original_probe_force": [
+                0.18399462403458772,
+                0.0103764056232626
+              ],
+              "min_stretch": 0.32366077326968135,
+              "min_volume_ratio": 0.12434350448418957,
+              "max_displacement": 0.0
+            },
+            "final": {
+              "energy_change": -0.006921115565400447,
+              "max_force": 4.7020566323885404e-07,
+              "original_probe_force": [
+                -9.884018512072018e-09,
+                4.4376712566337583e-07
+              ],
+              "min_stretch": 0.29958438999981923,
+              "min_volume_ratio": 0.10935926918306546,
+              "max_displacement": 0.0013819484814137353
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 11
+          }
+        ]
+      },
+      "output": "_scratch/s11c/r4_last_rings_enriched02/readout.json",
+      "hash": "347cce70ea8df594a975914b692e3bb110cc22824e2d1d323f3ca1610bba7b3a",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_last_rings_enriched.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_enriched02/readout.json"
+      ],
+      "guard_exit": 0,
+      "cap_gib": 4.0
+    },
+    "fine_local_mesh": {
+      "result": {
+        "checkpoint": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "material": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "results": [
+          {
+            "subdivisions": 4,
+            "integration": 24,
+            "free_dofs": 74,
+            "tangent_min": 58.21192408049944,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 1.691185934502305,
+              "original_probe_force": [
+                0.1789173094130293,
+                0.01035337594938713
+              ],
+              "min_stretch": 0.3236599917655115,
+              "min_volume_ratio": 0.12431515723268712,
+              "max_displacement": 0.0,
+              "min_stretch_site": [
+                3.46616098435453,
+                0.9775880205416672
+              ]
+            },
+            "final": {
+              "energy_change": -0.006937736544209896,
+              "max_force": 8.438309510166997e-07,
+              "original_probe_force": [
+                -5.507341575069092e-08,
+                -1.973489732502655e-07
+              ],
+              "min_stretch": 0.2988361697296674,
+              "min_volume_ratio": 0.10909604319449442,
+              "max_displacement": 0.0013827447848887898,
+              "min_stretch_site": [
+                3.429282578083612,
+                0.9999966829216211
+              ]
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 9
+          },
+          {
+            "subdivisions": 8,
+            "integration": 24,
+            "free_dofs": 338,
+            "tangent_min": 14.767570705392298,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 0.9394085112679377,
+              "original_probe_force": [
+                0.1789173094130197,
+                0.01035337594939863
+              ],
+              "min_stretch": 0.3236599917655115,
+              "min_volume_ratio": 0.12431515723268712,
+              "max_displacement": 0.0,
+              "min_stretch_site": [
+                3.46616098435453,
+                0.9775880205416672
+              ]
+            },
+            "final": {
+              "energy_change": -0.0077117100944477926,
+              "max_force": 4.462784067259251e-07,
+              "original_probe_force": [
+                6.271764863805289e-08,
+                1.5117097145776813e-07
+              ],
+              "min_stretch": 0.2569855379102778,
+              "min_volume_ratio": 0.09715960794486192,
+              "max_displacement": 0.0013925305376750825,
+              "min_stretch_site": [
+                3.429282004394913,
+                0.9999970018497647
+              ]
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 12
+          },
+          {
+            "subdivisions": 4,
+            "integration": 32,
+            "free_dofs": 74,
+            "tangent_min": 58.20204642803698,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 1.6912203591132335,
+              "original_probe_force": [
+                0.19596756727846887,
+                0.010883857685099384
+              ],
+              "min_stretch": 0.3236596009723305,
+              "min_volume_ratio": 0.12425205369484267,
+              "max_displacement": 0.0,
+              "min_stretch_site": [
+                3.466190219401642,
+                0.9775832185374856
+              ]
+            },
+            "final": {
+              "energy_change": -0.006889092567635995,
+              "max_force": 6.062535697487492e-07,
+              "original_probe_force": [
+                6.240092153109817e-07,
+                1.790981462313759e-07
+              ],
+              "min_stretch": 0.3010436771196183,
+              "min_volume_ratio": 0.10975853977089493,
+              "max_displacement": 0.0013802209147360791,
+              "min_stretch_site": [
+                3.42877923284963,
+                0.9999881348701768
+              ]
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 11
+          },
+          {
+            "subdivisions": 8,
+            "integration": 32,
+            "free_dofs": 338,
+            "tangent_min": 14.77121223440784,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 0.9394189755936867,
+              "original_probe_force": [
+                0.19596756727846615,
+                0.010883857685119834
+              ],
+              "min_stretch": 0.3236596009723305,
+              "min_volume_ratio": 0.12425205369484267,
+              "max_displacement": 0.0,
+              "min_stretch_site": [
+                3.466190219401642,
+                0.9775832185374856
+              ]
+            },
+            "final": {
+              "energy_change": -0.007603475451838873,
+              "max_force": 3.981245276507561e-07,
+              "original_probe_force": [
+                6.973953878515254e-08,
+                1.9665730054594478e-07
+              ],
+              "min_stretch": 0.26146401686079074,
+              "min_volume_ratio": 0.09902512721137585,
+              "max_displacement": 0.001389634843677273,
+              "min_stretch_site": [
+                3.4287773691720087,
+                0.999989228327032
+              ]
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 12
+          }
+        ]
+      },
+      "output": "_scratch/s11c/r4_last_rings_enriched_fine01/readout.json",
+      "hash": "04c500404be6ac487816fa06dd572fe981579740b5425eb1f6824714903a28c5",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_last_rings_enriched.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_enriched_fine01/readout.json",
+        "--divisions",
+        "4",
+        "8",
+        "--integration",
+        "24",
+        "32"
+      ],
+      "guard_exit": 0,
+      "cap_gib": 4.0
+    },
+    "perimeter_control": {
+      "result": {
+        "checkpoint": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "material": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "results": [
+          {
+            "subdivisions": 4,
+            "integration": 32,
+            "free_dofs": 218,
+            "tangent_min": 22.479957548998772,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 1.6912203591132335,
+              "original_probe_force": [
+                0.19596756727846887,
+                0.010883857685099384
+              ],
+              "min_stretch": 0.3018975605435472,
+              "min_volume_ratio": 0.12425205369484267,
+              "max_displacement": 0.0,
+              "min_stretch_site": [
+                3.425873314956707,
+                0.9830348588116457
+              ]
+            },
+            "final": {
+              "energy_change": -0.015554475314057637,
+              "max_force": 1.1040567026388004e-05,
+              "original_probe_force": [
+                5.890152532384008e-10,
+                9.551572354663668e-09
+              ],
+              "min_stretch": 0.24310518047444946,
+              "min_volume_ratio": 0.10194505491090931,
+              "max_displacement": 0.002390852055837595,
+              "min_stretch_site": [
+                3.428307960654049,
+                0.9987986474233043
+              ]
+            },
+            "optimizer": "no resolved feasible energy decrease",
+            "iterations": 18
+          },
+          {
+            "subdivisions": 8,
+            "integration": 32,
+            "free_dofs": 946,
+            "tangent_min": 5.614952120889362,
+            "initial": {
+              "energy_change": 0.0,
+              "max_force": 0.9394189755936867,
+              "original_probe_force": [
+                0.19596756727846615,
+                0.010883857685119834
+              ],
+              "min_stretch": 0.3018975605435472,
+              "min_volume_ratio": 0.12425205369484267,
+              "max_displacement": 0.0,
+              "min_stretch_site": [
+                3.425873314956707,
+                0.9830348588116457
+              ]
+            },
+            "final": {
+              "energy_change": -0.01767086587019379,
+              "max_force": 5.520046417011037e-07,
+              "original_probe_force": [
+                1.7841076396297485e-08,
+                1.78210998437117e-07
+              ],
+              "min_stretch": 0.21943598587911828,
+              "min_volume_ratio": 0.09073417951309115,
+              "max_displacement": 0.0027046084585462355,
+              "min_stretch_site": [
+                3.427999816235005,
+                0.9989026298133269
+              ]
+            },
+            "optimizer": "material force below 1e-6",
+            "iterations": 13
+          }
+        ]
+      },
+      "output": "_scratch/s11c/r4_last_rings_extent01/readout.json",
+      "hash": "f190e251144823c2a38f92dd1ffdd3bad0d312d7858c7a5f09e05bd7acc5117f",
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_last_rings_enriched.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_extent01/readout.json",
+        "--divisions",
+        "4",
+        "8",
+        "--integration",
+        "32",
+        "--extend-perimeter"
+      ],
+      "guard_exit": 0,
+      "cap_gib": 4.0
+    }
+  },
+  "trial_exclusion": "First local optimizer tried an out-of-domain line-search step and exited before producing a solved measurement. All reported local material solutions backtrack on the full energy, chart and Jacobian. Older component-wise and graph-colored tangent measurements use the same physical energy and tolerances."
+}

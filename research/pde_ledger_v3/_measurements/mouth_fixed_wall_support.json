@@ -1,0 +1,657 @@
+{
+  "model": "Ordered fixed radius-four supersolid collar, one winding into the superfluid bulk; same displaced meridian and fixed-wall P2 displacement as the accepted comparison.",
+  "baseline_commit": "3644771d",
+  "free_shape_coordinates": [
+    "log depth",
+    ".25 log exit",
+    ".25 mean width",
+    ".25 width asymmetry",
+    ".25 waist",
+    "polar wall displacement"
+  ],
+  "wall_source": {
+    "coarse": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+    "fine": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+    "material": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101"
+  },
+  "shape_assumptions": "Frozen global coordinates. Signed sensitivities use paired material and field states. Loading is in solver units. A small free-node residual on the accepted shape alone does not establish stability after a change of shape.",
+  "scripts": {
+    "mouth_fixed_wall_angular.py": "ba653a2a7219255e6f6bc9541f0c2de08d4d3551d5ae947b086460f6488ef81b",
+    "mouth_fixed_wall_angular_controls.py": "5d24d45e6c04df76d0612d2b0c80d9ff53cee3cb3e0f6c71fd4cbb291945baf7",
+    "mouth_fixed_wall_load_review.py": "edaa1d98b6aad2ddb74ae51153d4d2d38c16646b33cadafcbc6e5088efeb37cd",
+    "mouth_fixed_wall_residual_sites.py": "4eef9403ce358b73ef8c2f6aa4474f5712f495106a6451a03a1c79891b27c924",
+    "mouth_fixed_wall_shape_work.py": "dcd28e35f0c33f5463938573de933c44d23f95435dd61c64dd80b99427bec6a6",
+    "mouth_fixed_wall_stall_check.py": "5f3429d054802eac4c20645d5acdef1d20741e3c8a01ba2f64a4fdaaca270b87",
+    "mouth_fixed_wall_trial_target.py": "329e22759b1cb063f0043850492bbdf304732ea94ee43099956965e222ef9150"
+  },
+  "runs": {
+    "target": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_fixed_wall_trial_target.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz"
+      ],
+      "guard_exit": 0,
+      "native_exit": 0,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "stdout_sha256": "f9c76a56d74b15d59b7e19350c043f3324e243928e5f35f67039d685b43800c5",
+      "readings": [
+        {
+          "kind": "reconstructed_fixed_wall",
+          "accepted_sha256": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "source_sha256": "bcdcd7639d4eb13eacafca6d20bef8d33f690dbff4259b6993d0af9fef449eb6",
+          "x": [
+            0.0018112405142513234,
+            0.0070049766549258536,
+            -0.010243985902256364,
+            -0.0449984825466709,
+            -0.0072945374469613545,
+            0.00017039866857071828
+          ],
+          "original_x": [
+            0.0032571943442568606,
+            0.007433045718528487,
+            -0.009155877092292944,
+            -0.04489291946549316,
+            -0.007767850292079181,
+            0.0001743942780611947
+          ],
+          "signed_curvatures": [
+            635.4782271955628,
+            307.9741873079911,
+            1615.1464478753041,
+            927.1446288039442,
+            1553.3708392467815,
+            490.2208274870645
+          ],
+          "start_energy": 3881.917094104389,
+          "fixed_energy": 3881.914710924552,
+          "old_armijo_ceiling": 3881.917093738817,
+          "trial_halvings": 0,
+          "gradient_disagreement": 0.0,
+          "prior_attempt_residual": 0.0008128832206617774
+        }
+      ]
+    },
+    "work_coarse": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_fixed_wall_shape_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "_scratch/s11c/fixed_wall_angular01/coarse/equilibrium.npz"
+      ],
+      "guard_exit": 0,
+      "native_exit": 0,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "stdout_sha256": "cdcc2f17bc9a6fc65d8466caa8ba9e8f6e93bea5f7eccd9aae6ef318a7789e8d",
+      "readings": [
+        {
+          "kind": "input",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "before": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "after": "8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66",
+          "material_cells": [
+            24,
+            24
+          ],
+          "angular_coordinate": -0.0008702114041155159
+        },
+        {
+          "kind": "center",
+          "original_energy": 3882.3626227598334,
+          "meridional_and_field_delta": -1.4725998198628076e-12,
+          "internal_mode_delta": -1.3142180961267513e-06,
+          "total_drop": 1.3142195687265712e-06
+        },
+        {
+          "kind": "six_coordinate_work",
+          "h": 0.0001,
+          "before": [
+            -0.4773494970322645,
+            0.31612150678483886,
+            -1.099953165066836,
+            0.10421478918942739,
+            1.2183865305814834,
+            -0.0020294601199566387
+          ],
+          "after": [
+            -0.47735138100746255,
+            0.3161205017399027,
+            -1.099957287631348,
+            0.10421668410698359,
+            1.2183834302703644,
+            0.013042329634060934
+          ],
+          "meridional_and_field_change": [
+            -1.8394596956738951e-06,
+            -1.0196465893841378e-06,
+            -4.0920111743503185e-06,
+            1.8273804691659734e-06,
+            -3.0656366334369523e-06,
+            -1.0658141036401503e-10
+          ],
+          "internal_mode_change": [
+            -4.4515502395370277e-08,
+            1.4601653219870059e-08,
+            -3.055333763768431e-08,
+            6.753708703399752e-08,
+            -3.467448550509289e-08,
+            0.015071789860598983
+          ],
+          "paired_change": [
+            -1.8839751980692654e-06,
+            -1.0050449361642677e-06,
+            -4.122564511988003e-06,
+            1.894917556199971e-06,
+            -3.100311118942045e-06,
+            0.015071789754017573
+          ],
+          "peak_coordinate": 4,
+          "peak_before": 1.2183865305814834,
+          "peak_after": 1.2183834302703644,
+          "peak_relieved": 3.100311118942045e-06,
+          "paired_step_difference": null
+        },
+        {
+          "kind": "six_coordinate_work",
+          "h": 5e-05,
+          "before": [
+            -0.47734499275975395,
+            0.3161221047776053,
+            -1.099953460652614,
+            0.10421482784295222,
+            1.2183866510895314,
+            -0.0020294737623771653
+          ],
+          "after": [
+            -0.4773469200403113,
+            0.3161211056523783,
+            -1.0999575870940248,
+            0.10421672319793629,
+            1.218383551040425,
+            0.01304231595611327
+          ],
+          "meridional_and_field_change": [
+            -1.882729527835636e-06,
+            -1.0136913530800484e-06,
+            -4.0958880731523095e-06,
+            1.8277823699008877e-06,
+            -3.0654456750767167e-06,
+            -1.4210854715202004e-10
+          ],
+          "internal_mode_change": [
+            -4.455102953215828e-08,
+            1.4566126083082054e-08,
+            -3.055333763768431e-08,
+            6.757261417078553e-08,
+            -3.460343123151688e-08,
+            0.015071789860598983
+          ],
+          "paired_change": [
+            -1.9272805573677942e-06,
+            -9.991252269969664e-07,
+            -4.126441410789994e-06,
+            1.8953549840716732e-06,
+            -3.1000491063082336e-06,
+            0.015071789718490436
+          ],
+          "peak_coordinate": 4,
+          "peak_before": 1.2183866510895314,
+          "peak_after": 1.218383551040425,
+          "peak_relieved": 3.1000491063082336e-06,
+          "paired_step_difference": [
+            4.3305359298528856e-08,
+            5.919709167301335e-09,
+            3.876898801991047e-09,
+            4.374278717023117e-10,
+            2.6201263381153694e-10,
+            3.552713678800501e-11
+          ]
+        },
+        {
+          "kind": "six_coordinate_work",
+          "h": 2.5e-05,
+          "before": [
+            -0.4773426189785823,
+            0.3161221229674993,
+            -1.0999541609635344,
+            0.1042154326569289,
+            1.2183870421722531,
+            -0.0020292918634368107
+          ],
+          "after": [
+            -0.47734454948766825,
+            0.3161211131263997,
+            -1.0999582845183653,
+            0.10421733719567783,
+            1.218383943388801,
+            0.013042497783999352
+          ],
+          "meridional_and_field_change": [
+            -1.88588700211767e-06,
+            -1.0244782799873065e-06,
+            -4.093001493288284e-06,
+            1.837037189034163e-06,
+            -3.06425107510222e-06,
+            -1.4210854715202004e-10
+          ],
+          "internal_mode_change": [
+            -4.462208380573429e-08,
+            1.4637180356658064e-08,
+            -3.055333763768431e-08,
+            6.750155989720952e-08,
+            -3.453237695794087e-08,
+            0.01507178978954471
+          ],
+          "paired_change": [
+            -1.930509085923404e-06,
+            -1.0098410996306484e-06,
+            -4.123554830925968e-06,
+            1.9045387489313725e-06,
+            -3.098783452060161e-06,
+            0.015071789647436162
+          ],
+          "peak_coordinate": 4,
+          "peak_before": 1.2183870421722531,
+          "peak_after": 1.218383943388801,
+          "peak_relieved": 3.098783452060161e-06,
+          "paired_step_difference": [
+            3.2285285556099552e-09,
+            1.0715872633682011e-08,
+            2.886579864025407e-09,
+            9.183764859699295e-09,
+            1.2656542480726785e-09,
+            7.105427357601002e-11
+          ]
+        }
+      ]
+    },
+    "work_fine": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_fixed_wall_shape_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz"
+      ],
+      "guard_exit": 0,
+      "native_exit": 0,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "stdout_sha256": "b9a904da14b884c6e2d8f7d9d1571ba19afac1368c1a725d248b6a5226aabf25",
+      "readings": [
+        {
+          "kind": "input",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "before": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "after": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "material_cells": [
+            33,
+            32
+          ],
+          "angular_coordinate": -0.0008702349530303411
+        },
+        {
+          "kind": "center",
+          "original_energy": 3881.917094104389,
+          "meridional_and_field_delta": 0.0,
+          "internal_mode_delta": -1.3139849244225843e-06,
+          "total_drop": 1.3139849244225843e-06
+        },
+        {
+          "kind": "six_coordinate_work",
+          "h": 0.0001,
+          "before": [
+            -0.918872176498553,
+            -0.13183422197471373,
+            -1.7574550793142407,
+            -0.09787224371393677,
+            0.7352303714469599,
+            -0.0019587309907365125
+          ],
+          "after": [
+            -0.9188722221864509,
+            -0.13183421071261137,
+            -1.7574551174703856,
+            -0.09787217727819097,
+            0.7352303269314575,
+            0.013110386731796098
+          ],
+          "meridional_and_field_change": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "internal_mode_change": [
+            -4.568789790937444e-08,
+            1.1262102361797588e-08,
+            -3.815614491031738e-08,
+            6.643574579356937e-08,
+            -4.4515502395370277e-08,
+            0.01506911772253261
+          ],
+          "paired_change": [
+            -4.568789790937444e-08,
+            1.1262102361797588e-08,
+            -3.815614491031738e-08,
+            6.643574579356937e-08,
+            -4.4515502395370277e-08,
+            0.01506911772253261
+          ],
+          "peak_coordinate": 2,
+          "peak_before": 1.7574550793142407,
+          "peak_after": 1.7574551174703856,
+          "peak_relieved": -3.815614491031738e-08,
+          "paired_step_difference": null
+        },
+        {
+          "kind": "six_coordinate_work",
+          "h": 5e-05,
+          "before": [
+            -0.9188796229864238,
+            -0.13183361716073705,
+            -1.7574553703525453,
+            -0.09787219369172817,
+            0.7352304692176403,
+            -0.0019587469068937935
+          ],
+          "after": [
+            -0.9188796686743217,
+            -0.13183360593416182,
+            -1.7574554085086902,
+            -0.09787212725598238,
+            0.7352304246666108,
+            0.013110370815638817
+          ],
+          "meridional_and_field_change": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "internal_mode_change": [
+            -4.568789790937444e-08,
+            1.1226575225009583e-08,
+            -3.815614491031738e-08,
+            6.643574579356937e-08,
+            -4.455102953215828e-08,
+            0.01506911772253261
+          ],
+          "paired_change": [
+            -4.568789790937444e-08,
+            1.1226575225009583e-08,
+            -3.815614491031738e-08,
+            6.643574579356937e-08,
+            -4.455102953215828e-08,
+            0.01506911772253261
+          ],
+          "peak_coordinate": 2,
+          "peak_before": 1.7574553703525453,
+          "peak_after": 1.7574554085086902,
+          "peak_relieved": -3.815614491031738e-08,
+          "paired_step_difference": [
+            0.0,
+            3.552713678800501e-11,
+            0.0,
+            0.0,
+            3.552713678800501e-11,
+            0.0
+          ]
+        },
+        {
+          "kind": "six_coordinate_work",
+          "h": 2.5e-05,
+          "before": [
+            -0.9189008233079221,
+            -0.1318335853284225,
+            -1.7574560570210451,
+            -0.09787160706764553,
+            0.7352308603003621,
+            -0.00195856046047993
+          ],
+          "after": [
+            -0.9189008690668743,
+            -0.13183357410184726,
+            -1.7574560951061358,
+            -0.09787154056084546,
+            0.7352308158203869,
+            0.013110557404161227
+          ],
+          "meridional_and_field_change": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "internal_mode_change": [
+            -4.575895218295045e-08,
+            1.1226575225009583e-08,
+            -3.808509063674137e-08,
+            6.650680006714538e-08,
+            -4.447997525858227e-08,
+            0.015069117864641157
+          ],
+          "paired_change": [
+            -4.575895218295045e-08,
+            1.1226575225009583e-08,
+            -3.808509063674137e-08,
+            6.650680006714538e-08,
+            -4.447997525858227e-08,
+            0.015069117864641157
+          ],
+          "peak_coordinate": 2,
+          "peak_before": 1.7574560570210451,
+          "peak_after": 1.7574560951061358,
+          "peak_relieved": -3.808509063674137e-08,
+          "paired_step_difference": [
+            7.105427357601002e-11,
+            0.0,
+            7.105427357601002e-11,
+            7.105427357601002e-11,
+            7.105427357601002e-11,
+            1.4210854715202004e-10
+          ]
+        }
+      ]
+    },
+    "stall": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_fixed_wall_stall_check.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "_scratch/s11c/r4_fixed_wall01/target/stdout",
+        "_scratch/s11c/r4_fixed_wall01/stall"
+      ],
+      "guard_exit": 1,
+      "native_exit": 1,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "stdout_sha256": "c5aa08fc0949f6934d8ed8750a0f7bc893e6e64340738b104a7f3c91b055e0a8",
+      "readings": [
+        {
+          "kind": "preparation",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "snapshot": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "coordinates": [
+            0.0018112405142513234,
+            0.0070049766549258536,
+            -0.010243985902256364,
+            -0.0449984825466709,
+            -0.0072945374469613545,
+            0.00017039866857071828
+          ],
+          "target": "f9c76a56d74b15d59b7e19350c043f3324e243928e5f35f67039d685b43800c5",
+          "old_residual": 0.0008128832206617774
+        },
+        {
+          "kind": "initial_angular",
+          "energy": 3881.914710924552,
+          "material_residual": 0.016973212463149038,
+          "angular_slope": 0.0029507158663880312,
+          "crystal": {
+            "energy": 51.46149478157187,
+            "min_J": 0.12668256988215185,
+            "max_J": 1.6002734043418745,
+            "min_stretch": 0.30367323501451277,
+            "max_stretch": 1.737961596037142,
+            "minimum_order": 0.245424746074142,
+            "peak_join_radial": 0.026621764890388207,
+            "peak_join_axial": 0.01376700154005424,
+            "middle_join_motion": [
+              0.000983736314398024,
+              -0.013637821213835225
+            ],
+            "node_site": [
+              0.9773456613509157,
+              0.9830811135374983,
+              -0.49940866418863017
+            ],
+            "regions": {
+              "all": {
+                "min_stretch": 0.30367323501451277,
+                "max_stretch": 1.737961596037142,
+                "min_J": 0.12668256988215185,
+                "max_J": 1.6002734043418745,
+                "node_site": [
+                  0.9773456613509157,
+                  0.9830811135374983,
+                  -0.49940866418863017
+                ]
+              },
+              "terminal_collar": {
+                "min_stretch": 0.30367323501451277,
+                "max_stretch": 1.3437924956699536,
+                "min_J": 0.12668256988215185,
+                "max_J": 0.6657941111499885,
+                "node_site": [
+                  0.9773456613509157,
+                  0.9830811135374983,
+                  -0.49940866418863017
+                ]
+              },
+              "near_tip": {
+                "min_stretch": 0.30367323501451277,
+                "max_stretch": 1.314176092160352,
+                "min_J": 0.12668256988215185,
+                "max_J": 0.39730471967403486,
+                "node_site": [
+                  0.9773456613509157,
+                  0.9830811135374983,
+                  -0.49940866418863017
+                ]
+              }
+            }
+          },
+          "grid": [
+            33,
+            32
+          ],
+          "receiver": {
+            "energy": 3662.125158920384,
+            "static_work": 1.2442362748893117,
+            "residual": 4.373165403669109e-09,
+            "before_newton": 3.0729293942766134e-08,
+            "newton_steps": 1,
+            "minimum_order": 0.0,
+            "maximum_order": 0.5
+          }
+        },
+        {
+          "kind": "fixed_wall_sweep",
+          "sweep": 1,
+          "internal_amplitude": -0.0008509805795086482,
+          "shape_fixed": true,
+          "angular_slope": -4.087225349835855e-15,
+          "native_meridional_residual": 0.009838066970780376,
+          "field_residual": 1.765893333619318e-07,
+          "order_step": 0.00097074791059093,
+          "exchange_error": 1.674216321134736e-13,
+          "weak_receiver_residual": 4.373165403669109e-09,
+          "energy": 3881.9143899579226,
+          "energy_change": -0.00032096662926051067,
+          "meridional_step": 0.0004099798924722541
+        },
+        {
+          "kind": "fixed_wall_sweep",
+          "sweep": 2,
+          "internal_amplitude": -0.000850694032942122,
+          "shape_fixed": true,
+          "angular_slope": -6.1555578342864514e-15,
+          "native_meridional_residual": 0.0018658717522196423,
+          "field_residual": 1.6954997356079284e-07,
+          "order_step": 0.00017947753753416729,
+          "exchange_error": 2.1538326677728037e-13,
+          "weak_receiver_residual": 4.373165403669109e-09,
+          "energy": 3881.9143818591297,
+          "energy_change": -0.000329065422192798,
+          "meridional_step": 9.728743599254249e-05
+        }
+      ],
+      "literal_error": "ArithmeticError: No verified smooth material equilibrium at residual 0.0015371259462997958",
+      "latest.npz": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8"
+    },
+    "sites": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_fixed_wall_residual_sites.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz"
+      ],
+      "guard_exit": 0,
+      "native_exit": 0,
+      "memory_max": 2147483648,
+      "swap_max": 0,
+      "stdout_sha256": "7b9962caacded10e54e283fabd467cb5533728be5a961fbd063b19ee3d23c758",
+      "readings": [
+        {
+          "kind": "saved_peak",
+          "snapshot": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "source": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "path_exit": 1,
+          "last_complete_sweep": 2,
+          "grid": [
+            33,
+            32
+          ],
+          "angular_amplitude": -0.000850694032942122,
+          "native_force_signed": -0.0018658717522196423,
+          "peak": 0.0018658717522196423,
+          "angular_frozen_zero_force": -0.0018658717522196423,
+          "component": "radial",
+          "depth_fraction": 0.96875,
+          "radius_fraction": 0.9893179002349632,
+          "deformed_meridional_site": [
+            3.466277924610256,
+            0.7769271667449928
+          ],
+          "actual_depth_fraction": 0.977568812524941,
+          "angular_depth_band": [
+            0.06,
+            0.62
+          ],
+          "radial_max": 0.0018658717522196423,
+          "axial_max": 0.0018617977004875517
+        }
+      ]
+    }
+  },
+  "angular_source_used": "dd1857080e6c7d3c2f1f88bafb9eed949de502632a7329ac939b0d3f3a54683a",
+  "supplemental_measurements": [
+    "mouth_fixed_wall_angular.json",
+    "mouth_closed_rim_work.json",
+    "mouth_closed_rim_review.json"
+  ],
+  "independent_verdict": "Scoped clear for the fixed-wall angular minimum, persistence of the terminal material residual on the rejected wall, and improved thickness agreement of the closed-rim audit. The axial reaction has no mesh-converged value, and the whole-mouth release gate remains closed."
+}

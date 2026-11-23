@@ -1,0 +1,108 @@
+{
+  "parent_commit": "3644771d",
+  "radius": 4,
+  "winding": 1,
+  "shape": "Common meridian of coarse accepted_003 and refined transfer accepted_000",
+  "scope": "One material P2 angular amplitude post-composed on the independently mobile meridional displacement. Static shape parameters and absolute material labels outside the mobile body are held.",
+  "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+  "source_at_run": {
+    "coarse and fine": "dd1857080e6c7d3c2f1f88bafb9eed949de502632a7329ac939b0d3f3a54683a",
+    "energy partition controls": "ce34a096d4306faaf357d12e1a97bb652dd687272e0a67f7f2d8857392e3ccf9",
+    "shorter meridional differences": "5d24d45e6c04df76d0612d2b0c80d9ff53cee3cb3e0f6c71fd4cbb291945baf7"
+  },
+  "source_update": "The durable solver additionally accepts a clamped angular control; the measured releases use the free default.",
+  "runs": {
+    "coarse": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "python3",
+        "/var/projects/toy_physics/_scratch/s11c/fixed_wall_angular01/src/mouth_fixed_wall_angular.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "/var/projects/toy_physics/_scratch/s11c/fixed_wall_angular01/coarse"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "stdout_sha256": "1ab4c4a984961b5bc4075c88f3116ff21c5bec7d94dd78580fe543a150b0a63e",
+      "literal_stdout": [
+        "{\"kind\": \"preparation\", \"state\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"snapshot\": \"d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34\", \"source\": \"2a0159cb0e925c04f7120b14f3b23c6e19763a42d5dbb402c88c499ecce98d66\", \"coordinates\": [0.0032571943442568606, 0.007433045718528487, -0.009155877092292944, -0.04489291946549316, -0.007767850292079181, 0.0001743942780611947], \"material_cells\": [24, 24], \"initial_iteration\": 3, \"field_grid\": [13, 10, 14]}",
+        "{\"kind\": \"initial_angular\", \"energy\": 3882.3626227598334, \"material_residual\": 1.1218360803789962e-05, \"angular_slope\": 0.003020456884207078, \"crystal\": {\"energy\": 51.66016911279205, \"min_J\": 0.11846009071328849, \"max_J\": 1.6359383771842941, \"min_stretch\": 0.3291984368890666, \"max_stretch\": 1.7034314739212886, \"minimum_order\": 0.24509575968530445, \"peak_join_radial\": 0.02495897310710679, \"peak_join_axial\": 0.01439157793844108, \"middle_join_motion\": [0.0002038190563933578, -0.01439157793844108], \"node_site\": [0.984245033259741, 0.9720610351023782, -0.49940866418863017], \"regions\": {\"all\": {\"min_stretch\": 0.3291984368890666, \"max_stretch\": 1.7034314739212886, \"min_J\": 0.11846009071328849, \"max_J\": 1.6359383771842941, \"node_site\": [0.984245033259741, 0.9720610351023782, -0.49940866418863017]}, \"terminal_collar\": {\"min_stretch\": 0.3291984368890666, \"max_stretch\": 1.3306183869849946, \"min_J\": 0.11846009071328849, \"max_J\": 0.6577241191115211, \"node_site\": [0.984245033259741, 0.9720610351023782, -0.49940866418863017]}, \"near_tip\": {\"min_stretch\": 0.3291984368890666, \"max_stretch\": 1.1378831445279294, \"min_J\": 0.11846009071328849, \"max_J\": 0.39306143154146905, \"node_site\": [0.984245033259741, 0.9720610351023782, -0.49940866418863017]}}}, \"grid\": [24, 24], \"receiver\": {\"energy\": 3662.2401599058853, \"static_work\": 1.2405248645690894, \"residual\": 9.886685253118877e-09, \"before_newton\": 4.0999240780159596e-08, \"newton_steps\": 1, \"minimum_order\": 0.0, \"maximum_order\": 0.5}}",
+        "{\"kind\": \"fixed_wall_sweep\", \"sweep\": 1, \"internal_amplitude\": -0.0008702114041155159, \"shape_fixed\": true, \"angular_slope\": -1.340772512545968e-11, \"native_meridional_residual\": 8.043508780267251e-06, \"field_residual\": 1.9819821046705802e-07, \"order_step\": 0.0, \"exchange_error\": 3.907985046680551e-14, \"weak_receiver_residual\": 9.886685253118877e-09, \"energy\": 3882.362621445614, \"energy_change\": -1.3142193893145304e-06, \"meridional_step\": 1.8686831870463784e-08}",
+        "{\"kind\": \"fixed_wall_equilibrium\", \"sweep\": 1, \"internal_amplitude\": -0.0008702114041155159, \"shape_fixed\": true, \"angular_slope\": -1.340772512545968e-11, \"native_meridional_residual\": 8.043508780267251e-06, \"field_residual\": 1.9819821046705802e-07, \"order_step\": 0.0, \"exchange_error\": 3.907985046680551e-14, \"weak_receiver_residual\": 9.886685253118877e-09, \"energy\": 3882.362621445614, \"energy_change\": -1.3142193893145304e-06, \"meridional_step\": 1.8686831870463784e-08, \"crystal\": {\"energy\": 51.660167798572374, \"min_J\": 0.11845997774306857, \"max_J\": 1.6359384265142893, \"min_stretch\": 0.3291981772051308, \"max_stretch\": 1.7034305792463467, \"minimum_order\": 0.24509575872447015, \"peak_join_radial\": 0.024958976914284225, \"peak_join_axial\": 0.014391574823466566, \"middle_join_motion\": [0.00020381494217057766, -0.014391574823466566], \"node_site\": [0.984245030619895, 0.9720610487736049, -0.49940866418863017], \"regions\": {\"all\": {\"min_stretch\": 0.3291981772051308, \"max_stretch\": 1.7034305792463467, \"min_J\": 0.11845997774306857, \"max_J\": 1.6359384265142893, \"node_site\": [0.984245030619895, 0.9720610487736049, -0.49940866418863017]}, \"terminal_collar\": {\"min_stretch\": 0.3291981772051308, \"max_stretch\": 1.3306184072673999, \"min_J\": 0.11845997774306857, \"max_J\": 0.6577241629132868, \"node_site\": [0.984245030619895, 0.9720610487736049, -0.49940866418863017]}, \"near_tip\": {\"min_stretch\": 0.3291981772051308, \"max_stretch\": 1.1378831597537733, \"min_J\": 0.11845997774306857, \"max_J\": 0.3930614037102909, \"node_site\": [0.984245030619895, 0.9720610487736049, -0.49940866418863017]}}}, \"flow\": {\"excess_energy\": -0.7222677505651716, \"feed_current\": 11.616869345010437, \"bulk_current\": 11.616869345010599, \"port_error\": 1.616484723854228e-13, \"weak_disk_current\": 11.61686978887392, \"incident_slice_current\": 11.61686978887392, \"receiving_slice_current\": 10.534442311667892, \"positive_slice_current\": 11.61686978887392, \"dense_total_subsonic_share\": 0.7047734854049023, \"minimum_total_mach\": 0.38823476552373193, \"total_axial_stress\": -92.20732408247088, \"crystalline_range_in_band\": [0.03050132733566073, 0.9471042136254983]}, \"signed_angular_steps\": [[-0.0002, 6.941888841538457e-08, -0.0006941899423714673], [-0.0001, 1.7354722103846143e-08, -0.0003470943714709941], [0.0001, 1.7354743420128216e-08, 0.0003470951312364869], [0.0002, 6.941897368051286e-08, 0.0006941895584892066]], \"physical_material_change\": 1.868683187009057e-08}",
+        "{\"kind\": \"saved\", \"sha256\": \"8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66\"}"
+      ]
+    },
+    "fine": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "python3",
+        "/var/projects/toy_physics/_scratch/s11c/fixed_wall_angular01/src/mouth_fixed_wall_angular.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "/var/projects/toy_physics/_scratch/s11c/fixed_wall_angular01/fine"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "stdout_sha256": "74f1bfb0721ce7fcc8abef2daad7a7578e5389fc85d6f77487e63ec15403826a",
+      "literal_stdout": [
+        "{\"kind\": \"preparation\", \"state\": \"173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101\", \"snapshot\": \"1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb\", \"source\": \"c525e0f9a1579a63e5acb434172871ca40fd275b1969a3e6a84e301f7e7d6226\", \"coordinates\": [0.0032571943442568606, 0.007433045718528487, -0.009155877092292944, -0.04489291946549316, -0.007767850292079181, 0.0001743942780611947], \"material_cells\": [33, 32], \"initial_iteration\": 0, \"field_grid\": [13, 10, 14]}",
+        "{\"kind\": \"initial_angular\", \"energy\": 3881.917094104389, \"material_residual\": 4.7092888608387445e-06, \"angular_slope\": 0.003019839931936736, \"crystal\": {\"energy\": 51.203342722152705, \"min_J\": 0.1270538396027526, \"max_J\": 1.6026815381092758, \"min_stretch\": 0.30429934161565936, \"max_stretch\": 1.7358052557740427, \"minimum_order\": 0.24542772975570654, \"peak_join_radial\": 0.026621764890388207, \"peak_join_axial\": 0.01376700154005424, \"middle_join_motion\": [0.000983736314398024, -0.013637821213835225], \"node_site\": [0.9773598503797307, 0.9830606240580666, -0.49940866418863017], \"regions\": {\"all\": {\"min_stretch\": 0.30429934161565936, \"max_stretch\": 1.7358052557740427, \"min_J\": 0.1270538396027526, \"max_J\": 1.6026815381092758, \"node_site\": [0.9773598503797307, 0.9830606240580666, -0.49940866418863017]}, \"terminal_collar\": {\"min_stretch\": 0.30429934161565936, \"max_stretch\": 1.3452887226516599, \"min_J\": 0.1270538396027526, \"max_J\": 0.6671018310724603, \"node_site\": [0.9773598503797307, 0.9830606240580666, -0.49940866418863017]}, \"near_tip\": {\"min_stretch\": 0.30429934161565936, \"max_stretch\": 1.3155204639683458, \"min_J\": 0.1270538396027526, \"max_J\": 0.39806506476027725, \"node_site\": [0.9773598503797307, 0.9830606240580666, -0.49940866418863017]}}}, \"grid\": [33, 32], \"receiver\": {\"energy\": 3662.2401599058853, \"static_work\": 1.2405248645690894, \"residual\": 9.886685253118877e-09, \"before_newton\": 4.0999240780159596e-08, \"newton_steps\": 1, \"minimum_order\": 0.0, \"maximum_order\": 0.5}}",
+        "{\"kind\": \"fixed_wall_sweep\", \"sweep\": 1, \"internal_amplitude\": -0.0008702349530303411, \"shape_fixed\": true, \"angular_slope\": -7.944491418887534e-15, \"native_meridional_residual\": 4.893200505138713e-06, \"field_residual\": 1.9708210652348392e-07, \"order_step\": 0.0, \"exchange_error\": -3.730349362740526e-14, \"weak_receiver_residual\": 9.886685253118877e-09, \"energy\": 3881.917092790404, \"energy_change\": -1.3139851944288239e-06, \"meridional_step\": 0.0}",
+        "{\"kind\": \"fixed_wall_equilibrium\", \"sweep\": 1, \"internal_amplitude\": -0.0008702349530303411, \"shape_fixed\": true, \"angular_slope\": -7.944491418887534e-15, \"native_meridional_residual\": 4.893200505138713e-06, \"field_residual\": 1.9708210652348392e-07, \"order_step\": 0.0, \"exchange_error\": -3.730349362740526e-14, \"weak_receiver_residual\": 9.886685253118877e-09, \"energy\": 3881.917092790404, \"energy_change\": -1.3139851944288239e-06, \"meridional_step\": 0.0, \"crystal\": {\"energy\": 51.20334140816778, \"min_J\": 0.1270538396027526, \"max_J\": 1.602682292149759, \"min_stretch\": 0.30429934161565936, \"max_stretch\": 1.7358052557740427, \"minimum_order\": 0.24542772975570654, \"peak_join_radial\": 0.026621764890388207, \"peak_join_axial\": 0.01376700154005424, \"middle_join_motion\": [0.000983736314398024, -0.013637821213835225], \"node_site\": [0.9773598503797307, 0.9830606240580666, -0.49940866418863017], \"regions\": {\"all\": {\"min_stretch\": 0.30429934161565936, \"max_stretch\": 1.7358052557740427, \"min_J\": 0.1270538396027526, \"max_J\": 1.602682292149759, \"node_site\": [0.9773598503797307, 0.9830606240580666, -0.49940866418863017]}, \"terminal_collar\": {\"min_stretch\": 0.30429934161565936, \"max_stretch\": 1.3452887226516599, \"min_J\": 0.1270538396027526, \"max_J\": 0.6671018310724603, \"node_site\": [0.9773598503797307, 0.9830606240580666, -0.49940866418863017]}, \"near_tip\": {\"min_stretch\": 0.30429934161565936, \"max_stretch\": 1.3155204639683458, \"min_J\": 0.1270538396027526, \"max_J\": 0.39806506476027725, \"node_site\": [0.9773598503797307, 0.9830606240580666, -0.49940866418863017]}}}, \"flow\": {\"excess_energy\": -0.7585020933806326, \"feed_current\": 11.616844147137495, \"bulk_current\": 11.616844147137526, \"port_error\": 3.019806626980426e-14, \"weak_disk_current\": 11.616844337058208, \"incident_slice_current\": 11.616844337058208, \"receiving_slice_current\": 10.534369793417357, \"positive_slice_current\": 11.616844337058208, \"dense_total_subsonic_share\": 0.7047685257139757, \"minimum_total_mach\": 0.38823340048254423, \"total_axial_stress\": -91.24466243988533, \"crystalline_range_in_band\": [0.03050113934483648, 0.9470922813394023]}, \"signed_angular_steps\": [[-0.0002, 6.93102393256595e-08, -0.0006918825378394098], [-0.0001, 1.73507075373891e-08, -0.00034701404446032386], [0.0001, 1.7350714642816456e-08, 0.0003470142015952534], [0.0002, 6.940283725498375e-08, 0.0006940283625632452]], \"physical_material_change\": 0.0}",
+        "{\"kind\": \"saved\", \"sha256\": \"a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70\"}"
+      ]
+    },
+    "controls": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_fixed_wall_angular_controls.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "_scratch/s11c/fixed_wall_angular01/coarse/equilibrium.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "stdout_sha256": "1ad3b8cfed19d2f9eb4d9e38d98202ab494eae5467701beff26978676ff9c752",
+      "literal_stdout": [
+        "{\"kind\": \"energy_partition\", \"input_sha\": \"d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34\", \"end_sha\": \"8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66\", \"grid\": [24, 24], \"scalar_minimum_at_original_d_and_f\": -0.0008702114041155159, \"fixed_d_f_angular_drop\": -1.3142180956575086e-06, \"final_angular_drop_at_final_d\": -1.3142180921170193e-06, \"baseline_material_field_energy_shift\": -1.3642420526593924e-12, \"all_terms_change\": -1.314219456359072e-06, \"correction_to_frozen_meridian\": -1.3607015633600866e-12, \"peak_internal_radial_motion\": 9.178010902780831e-05, \"peak_pole_minus_equator\": 0.00013767016354171248, \"peak_field_change\": 0.0, \"peak_material_nodal_change\": 1.868683187009057e-08}",
+        "{\"kind\": \"physical_order\", \"mobile_terminal_node_range\": [0.037926845619122206, 0.9372475071034506], \"mobile_terminal_incident_and_receiving_trace_samples\": 4004, \"shaft_reference_node_range\": [0.5, 1.0], \"deep_unperturbed_axis_order\": 0.9989973619947843, \"receiver_native_range\": [0.0, 0.5]}",
+        "{\"kind\": \"correction_meridional_work\", \"s\": 0.002, \"h\": 2e-05, \"signed\": -4.897139180173697e-06, \"analytic\": -4.897129187845334e-06, \"difference\": -9.992328363156932e-12}",
+        "{\"kind\": \"correction_meridional_work\", \"s\": 0.002, \"h\": 1e-05, \"signed\": -4.8971221758178744e-06, \"analytic\": -4.897129187845334e-06, \"difference\": 7.012027459562598e-12}",
+        "{\"kind\": \"energy_partition\", \"input_sha\": \"1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb\", \"end_sha\": \"a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70\", \"grid\": [33, 32], \"scalar_minimum_at_original_d_and_f\": -0.0008702349530303411, \"fixed_d_f_angular_drop\": -1.313984923852294e-06, \"final_angular_drop_at_final_d\": -1.313984923852294e-06, \"baseline_material_field_energy_shift\": 0.0, \"all_terms_change\": -1.313984923852294e-06, \"correction_to_frozen_meridian\": 0.0, \"peak_internal_radial_motion\": 9.178259270241878e-05, \"peak_pole_minus_equator\": 0.00013767388905362818, \"peak_field_change\": 0.0, \"peak_material_nodal_change\": 0.0}",
+        "{\"kind\": \"physical_order\", \"mobile_terminal_node_range\": [0.037922636088002316, 0.9371823766392268], \"mobile_terminal_incident_and_receiving_trace_samples\": 4004, \"shaft_reference_node_range\": [0.5, 1.0], \"deep_unperturbed_axis_order\": 0.9989973619947843, \"receiver_native_range\": [0.0, 0.5]}",
+        "{\"kind\": \"correction_meridional_work\", \"s\": 0.002, \"h\": 2e-05, \"signed\": -1.6057390118083546e-06, \"analytic\": -1.0089401173748618e-06, \"difference\": -5.967988944334928e-07}",
+        "{\"kind\": \"correction_meridional_work\", \"s\": 0.002, \"h\": 1e-05, \"signed\": -1.277420439663602e-06, \"analytic\": -1.0089401173748618e-06, \"difference\": -2.6848032228874023e-07}"
+      ]
+    },
+    "short_step": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_fixed_wall_angular_controls.py",
+        "--short-steps",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz"
+      ],
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_max": 3221225472,
+      "swap_max": 0,
+      "stdout_sha256": "99de0ae9a5015fa02765b984e622c04acac3c13dbd1f0a42b319daa5b53476f6",
+      "literal_stdout": [
+        "{\"kind\": \"correction_meridional_work\", \"s\": 0.002, \"h\": 4e-06, \"signed\": -1.0101982659128754e-06, \"analytic\": -1.0089401173748618e-06, \"difference\": -1.2581485380136275e-09}",
+        "{\"kind\": \"correction_meridional_work\", \"s\": 0.002, \"h\": 1e-06, \"signed\": -1.0094480318908333e-06, \"analytic\": -1.0089401173748618e-06, \"difference\": -5.079145159715486e-10}",
+        "{\"kind\": \"correction_meridional_work\", \"s\": 0.002, \"h\": 2.5e-07, \"signed\": -1.0085019299700682e-06, \"analytic\": -1.0089401173748618e-06, \"difference\": 4.3818740479361475e-10}"
+      ]
+    }
+  }
+}

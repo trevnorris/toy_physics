@@ -1,0 +1,2195 @@
+{
+  "radius": 4,
+  "winding": 1,
+  "scope": "Independent on saved pre/post states, raw strong closed surfaces, energy and principal stretches, signed change of the two selected shape loads, local terminal-node force. The weak native solution is flux-conserving in the FE test space. Raw flux from its Q1 derivative need not be. Three sharp surfaces include top/bottom disks on both radial charts; the outer cylinder has both height banks. The direct slit calculation shares the Q1 trace reader with the weak audit.",
+  "runs": {
+    "coarse": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_closed_rim_surface_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "_scratch/s11c/r4_disk_balance01/polar_final/controls.npz"
+      ],
+      "stdout_sha256": "afcbc6f6b287427abdba358597f108630e166586e8990c0e39eac31ddac6d6b2",
+      "results": [
+        {
+          "kind": "sources",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "snapshot": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "controls": "b2355ab0124f5a41345d0e2764a1af671909cfe28e8325d67291280d64bb4eed",
+          "relaxed": null,
+          "face_model": "physical Q1 strong form and signed affine energy"
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.15,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.597512500555945,
+              -0.6432823716511766
+            ],
+            "cap_1_1": [
+              2.013112094902237,
+              0.03799262569676501
+            ],
+            "cap_2_0": [
+              7.8244136118824095,
+              0.21697121259885857
+            ],
+            "cap_2_1": [
+              0.7000770949588311,
+              -0.16149060397158965
+            ],
+            "side_1": [
+              0.5105841943397795,
+              -0.000742257353750553
+            ],
+            "side_2": [
+              0.536671695569379,
+              0.00020342509016095541
+            ]
+          },
+          "net": [
+            -0.01265380890330936,
+            -0.5503479695907324
+          ],
+          "degree4_to_8": [
+            6.153110132522954e-09,
+            3.009744675708248e-10
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.22,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.554790585910837,
+              -0.5552011214518949
+            ],
+            "cap_1_1": [
+              1.8983928409379416,
+              0.022555642489988776
+            ],
+            "cap_2_0": [
+              7.046649559690816,
+              0.17391609879308123
+            ],
+            "cap_2_1": [
+              1.176353587327878,
+              -0.1285074580012068
+            ],
+            "side_1": [
+              0.7313149141080367,
+              -0.001271661919410658
+            ],
+            "side_2": [
+              0.7892033602488746,
+              0.0006181276674267044
+            ]
+          },
+          "net": [
+            0.08712367640270935,
+            -0.48789037242201566
+          ],
+          "degree4_to_8": [
+            1.189585652205949e-09,
+            3.0970226383431054e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.27,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.63765387615017,
+              -0.5141886152929659
+            ],
+            "cap_1_1": [
+              1.7552940380674942,
+              0.017165060201658196
+            ],
+            "cap_2_0": [
+              7.05146211893734,
+              0.18190929267904155
+            ],
+            "cap_2_1": [
+              1.1757130779012486,
+              -0.1100681535598811
+            ],
+            "side_1": [
+              0.8818019884048134,
+              -0.0016939339724894402
+            ],
+            "side_2": [
+              0.9694831345838811,
+              0.0009304002873096658
+            ]
+          },
+          "net": [
+            0.19610048174460848,
+            -0.425945949657327
+          ],
+          "degree4_to_8": [
+            -1.8059063133790687e-09,
+            -5.927264234983909e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.15,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.597512500555945,
+              -0.6432823716511766
+            ],
+            "cap_1_1": [
+              1.8437797903250128,
+              0.05793437334483479
+            ],
+            "cap_2_0": [
+              7.8244136118824095,
+              0.21697121259885857
+            ],
+            "cap_2_1": [
+              1.0780826595548794,
+              -0.18339509566183426
+            ],
+            "side_1": [
+              0.5036459799864038,
+              0.0007413808802988238
+            ],
+            "side_2": [
+              0.510384409429733,
+              0.0005780397236271484
+            ]
+          },
+          "net": [
+            0.16279395062249258,
+            -0.5504524607653916
+          ],
+          "degree4_to_8": [
+            6.349781478398597e-09,
+            3.039928309078732e-10
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.22,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.554790585910837,
+              -0.5552011214518949
+            ],
+            "cap_1_1": [
+              1.7661793107842279,
+              0.04154271626232884
+            ],
+            "cap_2_0": [
+              7.046649559690816,
+              0.17391609879308123
+            ],
+            "cap_2_1": [
+              1.6332653093428748,
+              -0.15024586472449591
+            ],
+            "side_1": [
+              0.7304005334034293,
+              0.0010981448151788631
+            ],
+            "side_2": [
+              0.7475212042482573,
+              0.0008974433561236313
+            ]
+          },
+          "net": [
+            0.36922533155876824,
+            -0.4879925829496783
+          ],
+          "degree4_to_8": [
+            1.4745102916435826e-09,
+            3.646732915640882e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.27,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.63765387615017,
+              -0.5141886152929659
+            ],
+            "cap_1_1": [
+              1.7270562459943695,
+              0.03550323500660422
+            ],
+            "cap_2_0": [
+              7.05146211893734,
+              0.18190929267904155
+            ],
+            "cap_2_1": [
+              1.6325721179333306,
+              -0.1317553136940577
+            ],
+            "side_1": [
+              0.8884122885423124,
+              0.0013033906064881468
+            ],
+            "side_2": [
+              0.916257196211385,
+              0.001127292590712927
+            ]
+          },
+          "net": [
+            0.5781060914685673,
+            -0.4261007181041767
+          ],
+          "degree4_to_8": [
+            -1.4456361663306438e-09,
+            -5.622446952457949e-11
+          ]
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    },
+    "fine": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_closed_rim_surface_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "_scratch/s11c/r4_disk_balance01/polar_transfer/controls.npz"
+      ],
+      "stdout_sha256": "aea11548e26d4d6187ad74522c91b421e333ba699df3156d166a35996b1d72a9",
+      "results": [
+        {
+          "kind": "sources",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "snapshot": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "controls": "b86af9217291d5d6e3cd8845060543cd81d37a2a27217b76ef6308d835fa2aa0",
+          "relaxed": null,
+          "face_model": "physical Q1 strong form and signed affine energy"
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.15,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.597487812684694,
+              -0.6432776400781048
+            ],
+            "cap_1_1": [
+              2.013108622339744,
+              0.03799268285916387
+            ],
+            "cap_2_0": [
+              7.824382659282269,
+              0.2169696701048212
+            ],
+            "cap_2_1": [
+              0.7000885032706493,
+              -0.16148946810942347
+            ],
+            "side_1": [
+              0.5105831825181836,
+              -0.000742252577933127
+            ],
+            "side_2": [
+              0.5366705704506308,
+              0.00020342844795442195
+            ]
+          },
+          "net": [
+            -0.012654274823218348,
+            -0.550343579353522
+          ],
+          "degree4_to_8": [
+            6.212219627599325e-09,
+            3.063013176429763e-10
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.22,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.554766420508823,
+              -0.5551976860146782
+            ],
+            "cap_1_1": [
+              1.8983899301804728,
+              0.022555637163689635
+            ],
+            "cap_2_0": [
+              7.046625417054961,
+              0.17391500222399872
+            ],
+            "cap_2_1": [
+              1.1763588681669712,
+              -0.12850656188282164
+            ],
+            "side_1": [
+              0.7313134774107145,
+              -0.0012716548596776703
+            ],
+            "side_2": [
+              0.7892016809105976,
+              0.0006181314820254797
+            ]
+          },
+          "net": [
+            0.08712295321489405,
+            -0.48788713188746374
+          ],
+          "degree4_to_8": [
+            1.186940656872082e-09,
+            3.066774612037193e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.27,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.637629575698492,
+              -0.5141854664546338
+            ],
+            "cap_1_1": [
+              1.7552913111917983,
+              0.017165049145653363
+            ],
+            "cap_2_0": [
+              7.051437959851949,
+              0.18190788176580308
+            ],
+            "cap_2_1": [
+              1.1757183568440384,
+              -0.11006735352487111
+            ],
+            "side_1": [
+              0.8818002647730282,
+              -0.001693925347897376
+            ],
+            "side_2": [
+              0.969481050417989,
+              0.0009304043590020267
+            ]
+          },
+          "net": [
+            0.19609936738031175,
+            -0.4259434100569438
+          ],
+          "degree4_to_8": [
+            -1.8066359519508524e-09,
+            -5.940309355523254e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.15,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.597487812684694,
+              -0.6432776400781048
+            ],
+            "cap_1_1": [
+              1.8437759901604251,
+              0.057934369457029906
+            ],
+            "cap_2_0": [
+              7.824382659282269,
+              0.2169696701048212
+            ],
+            "cap_2_1": [
+              1.0780940568160569,
+              -0.1833938856464258
+            ],
+            "side_1": [
+              0.5036449195626067,
+              0.0007413785239461398
+            ],
+            "side_2": [
+              0.5103833130771057,
+              0.0005780378535345171
+            ]
+          },
+          "net": [
+            0.16279312621376973,
+            -0.5504480697851989
+          ],
+          "degree4_to_8": [
+            6.408944153157847e-09,
+            3.0932167938146904e-10
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.22,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.554766420508823,
+              -0.5551976860146782
+            ],
+            "cap_1_1": [
+              1.7661760190770457,
+              0.041542653563831564
+            ],
+            "cap_2_0": [
+              7.046625417054961,
+              0.17391500222399872
+            ],
+            "cap_2_1": [
+              1.6332703993517437,
+              -0.15024489302940514
+            ],
+            "side_1": [
+              0.7303990011034037,
+              0.001098141339711749
+            ],
+            "side_2": [
+              0.7475195908983131,
+              0.0008974404031220353
+            ]
+          },
+          "net": [
+            0.3692240069766437,
+            -0.4879893415134193
+          ],
+          "degree4_to_8": [
+            1.471821220455638e-09,
+            3.6163794181476305e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.27,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.637629575698492,
+              -0.5141854664546338
+            ],
+            "cap_1_1": [
+              1.7270529899675353,
+              0.0355031690197983
+            ],
+            "cap_2_0": [
+              7.051437959851949,
+              0.18190788176580308
+            ],
+            "cap_2_1": [
+              1.6325772060635666,
+              -0.13175443694197103
+            ],
+            "side_1": [
+              0.8884104289621929,
+              0.0013033865047361246
+            ],
+            "side_2": [
+              0.9162552119721622,
+              0.0011272888531497
+            ]
+          },
+          "net": [
+            0.5781042211189147,
+            -0.4260981772531176
+          ],
+          "degree4_to_8": [
+            -1.4463840125600314e-09,
+            -5.63543101073094e-11
+          ]
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    },
+    "angular_coarse": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_angular_energy_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "_scratch/s11c/fixed_wall_angular01/coarse/equilibrium.npz"
+      ],
+      "stdout_sha256": "d67d5b5f8c6f2e5acb19f4a3d7369a6e2ea8975bb7ababea2e45573b1d537805",
+      "results": [
+        {
+          "kind": "material_review",
+          "shape": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "source": "8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66",
+          "state": "initial",
+          "s": 0.0,
+          "solid": 53.768318575128454,
+          "total": 3882.3626227598334,
+          "minimum": 0.3291984368890666,
+          "maximum": 1.7034314739212884,
+          "minimum_tip": 0.3291984368890666,
+          "Jmin": 0.11846009071328854
+        },
+        {
+          "kind": "signed_angular",
+          "state": "initial",
+          "step": 4e-05,
+          "gradient": 0.00302045650713012,
+          "curvature": 3.471010145972286
+        },
+        {
+          "kind": "signed_angular",
+          "state": "initial",
+          "step": 2e-05,
+          "gradient": 0.003020456595947962,
+          "curvature": 3.471321008419181
+        },
+        {
+          "kind": "material_review",
+          "shape": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "source": "8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66",
+          "state": "relaxed",
+          "s": -0.0008702114041155159,
+          "solid": 53.76831822651858,
+          "total": 3882.362621445614,
+          "minimum": 0.3291981772051308,
+          "maximum": 1.7034305792463467,
+          "minimum_tip": 0.3291981772051308,
+          "Jmin": 0.11845997774306856
+        },
+        {
+          "kind": "signed_angular",
+          "state": "relaxed",
+          "step": 4e-05,
+          "gradient": 3.5527136788005004e-10,
+          "curvature": 3.470921328130316
+        },
+        {
+          "kind": "signed_angular",
+          "state": "relaxed",
+          "step": 2e-05,
+          "gradient": 7.105427357601001e-10,
+          "curvature": 3.471143372735241
+        },
+        {
+          "kind": "energy_drop",
+          "value": 1.3142195030013681e-06,
+          "native": {
+            "sweep": 1,
+            "internal_amplitude": -0.0008702114041155159,
+            "shape_fixed": true,
+            "angular_slope": -1.340772512545968e-11,
+            "native_meridional_residual": 8.043508780267251e-06,
+            "field_residual": 1.9819821046705802e-07,
+            "order_step": 0.0,
+            "exchange_error": 3.907985046680551e-14,
+            "weak_receiver_residual": 9.886685253118877e-09,
+            "energy": 3882.362621445614,
+            "energy_change": -1.3142193893145304e-06,
+            "meridional_step": 1.8686831870463784e-08,
+            "crystal": {
+              "energy": 51.660167798572374,
+              "min_J": 0.11845997774306857,
+              "max_J": 1.6359384265142893,
+              "min_stretch": 0.3291981772051308,
+              "max_stretch": 1.7034305792463467,
+              "minimum_order": 0.24509575872447015,
+              "peak_join_radial": 0.024958976914284225,
+              "peak_join_axial": 0.014391574823466566,
+              "middle_join_motion": [
+                0.00020381494217057766,
+                -0.014391574823466566
+              ],
+              "node_site": [
+                0.984245030619895,
+                0.9720610487736049,
+                -0.49940866418863017
+              ],
+              "regions": {
+                "all": {
+                  "min_stretch": 0.3291981772051308,
+                  "max_stretch": 1.7034305792463467,
+                  "min_J": 0.11845997774306857,
+                  "max_J": 1.6359384265142893,
+                  "node_site": [
+                    0.984245030619895,
+                    0.9720610487736049,
+                    -0.49940866418863017
+                  ]
+                },
+                "terminal_collar": {
+                  "min_stretch": 0.3291981772051308,
+                  "max_stretch": 1.3306184072673999,
+                  "min_J": 0.11845997774306857,
+                  "max_J": 0.6577241629132868,
+                  "node_site": [
+                    0.984245030619895,
+                    0.9720610487736049,
+                    -0.49940866418863017
+                  ]
+                },
+                "near_tip": {
+                  "min_stretch": 0.3291981772051308,
+                  "max_stretch": 1.1378831597537733,
+                  "min_J": 0.11845997774306857,
+                  "max_J": 0.3930614037102909,
+                  "node_site": [
+                    0.984245030619895,
+                    0.9720610487736049,
+                    -0.49940866418863017
+                  ]
+                }
+              }
+            },
+            "flow": {
+              "excess_energy": -0.7222677505651716,
+              "feed_current": 11.616869345010437,
+              "bulk_current": 11.616869345010599,
+              "port_error": 1.616484723854228e-13,
+              "weak_disk_current": 11.61686978887392,
+              "incident_slice_current": 11.61686978887392,
+              "receiving_slice_current": 10.534442311667892,
+              "positive_slice_current": 11.61686978887392,
+              "dense_total_subsonic_share": 0.7047734854049023,
+              "minimum_total_mach": 0.38823476552373193,
+              "total_axial_stress": -92.20732408247088,
+              "crystalline_range_in_band": [
+                0.03050132733566073,
+                0.9471042136254983
+              ]
+            },
+            "signed_angular_steps": [
+              [
+                -0.0002,
+                6.941888841538457e-08,
+                -0.0006941899423714673
+              ],
+              [
+                -0.0001,
+                1.7354722103846143e-08,
+                -0.0003470943714709941
+              ],
+              [
+                0.0001,
+                1.7354743420128216e-08,
+                0.0003470951312364869
+              ],
+              [
+                0.0002,
+                6.941897368051286e-08,
+                0.0006941895584892066
+              ]
+            ],
+            "physical_material_change": 1.868683187009057e-08
+          }
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    },
+    "angular_fine": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_angular_energy_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz"
+      ],
+      "stdout_sha256": "340ad973ba8be64819238ea28e28a62864688d2383f82b2701b5d438b012ca35",
+      "results": [
+        {
+          "kind": "material_review",
+          "shape": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "source": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "state": "initial",
+          "s": 0.0,
+          "solid": 53.35902522810913,
+          "total": 3881.917094104389,
+          "minimum": 0.30429934161565936,
+          "maximum": 1.7358052557740422,
+          "minimum_tip": 0.30429934161565936,
+          "Jmin": 0.12705383960275257
+        },
+        {
+          "kind": "signed_angular",
+          "state": "initial",
+          "step": 4e-05,
+          "gradient": 0.0030198387790392185,
+          "curvature": 3.470113085768389
+        },
+        {
+          "kind": "signed_angular",
+          "state": "initial",
+          "step": 2e-05,
+          "gradient": 0.00301984020012469,
+          "curvature": 3.470361775725905
+        },
+        {
+          "kind": "material_review",
+          "shape": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "source": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "state": "relaxed",
+          "s": -0.0008702349530303411,
+          "solid": 53.359023914124236,
+          "total": 3881.9170927904042,
+          "minimum": 0.30429934161565936,
+          "maximum": 1.7358052557740422,
+          "minimum_tip": 0.30429934161565936,
+          "Jmin": 0.12705383960275257
+        },
+        {
+          "kind": "signed_angular",
+          "state": "relaxed",
+          "step": 4e-05,
+          "gradient": 7.105427357601001e-10,
+          "curvature": 3.470086440415798
+        },
+        {
+          "kind": "signed_angular",
+          "state": "relaxed",
+          "step": 2e-05,
+          "gradient": -8.881784197001251e-10,
+          "curvature": 3.470077558631601
+        },
+        {
+          "kind": "energy_drop",
+          "value": 1.3139848960008749e-06,
+          "native": {
+            "sweep": 1,
+            "internal_amplitude": -0.0008702349530303411,
+            "shape_fixed": true,
+            "angular_slope": -7.944491418887534e-15,
+            "native_meridional_residual": 4.893200505138713e-06,
+            "field_residual": 1.9708210652348392e-07,
+            "order_step": 0.0,
+            "exchange_error": -3.730349362740526e-14,
+            "weak_receiver_residual": 9.886685253118877e-09,
+            "energy": 3881.917092790404,
+            "energy_change": -1.3139851944288239e-06,
+            "meridional_step": 0.0,
+            "crystal": {
+              "energy": 51.20334140816778,
+              "min_J": 0.1270538396027526,
+              "max_J": 1.602682292149759,
+              "min_stretch": 0.30429934161565936,
+              "max_stretch": 1.7358052557740427,
+              "minimum_order": 0.24542772975570654,
+              "peak_join_radial": 0.026621764890388207,
+              "peak_join_axial": 0.01376700154005424,
+              "middle_join_motion": [
+                0.000983736314398024,
+                -0.013637821213835225
+              ],
+              "node_site": [
+                0.9773598503797307,
+                0.9830606240580666,
+                -0.49940866418863017
+              ],
+              "regions": {
+                "all": {
+                  "min_stretch": 0.30429934161565936,
+                  "max_stretch": 1.7358052557740427,
+                  "min_J": 0.1270538396027526,
+                  "max_J": 1.602682292149759,
+                  "node_site": [
+                    0.9773598503797307,
+                    0.9830606240580666,
+                    -0.49940866418863017
+                  ]
+                },
+                "terminal_collar": {
+                  "min_stretch": 0.30429934161565936,
+                  "max_stretch": 1.3452887226516599,
+                  "min_J": 0.1270538396027526,
+                  "max_J": 0.6671018310724603,
+                  "node_site": [
+                    0.9773598503797307,
+                    0.9830606240580666,
+                    -0.49940866418863017
+                  ]
+                },
+                "near_tip": {
+                  "min_stretch": 0.30429934161565936,
+                  "max_stretch": 1.3155204639683458,
+                  "min_J": 0.1270538396027526,
+                  "max_J": 0.39806506476027725,
+                  "node_site": [
+                    0.9773598503797307,
+                    0.9830606240580666,
+                    -0.49940866418863017
+                  ]
+                }
+              }
+            },
+            "flow": {
+              "excess_energy": -0.7585020933806326,
+              "feed_current": 11.616844147137495,
+              "bulk_current": 11.616844147137526,
+              "port_error": 3.019806626980426e-14,
+              "weak_disk_current": 11.616844337058208,
+              "incident_slice_current": 11.616844337058208,
+              "receiving_slice_current": 10.534369793417357,
+              "positive_slice_current": 11.616844337058208,
+              "dense_total_subsonic_share": 0.7047685257139757,
+              "minimum_total_mach": 0.38823340048254423,
+              "total_axial_stress": -91.24466243988533,
+              "crystalline_range_in_band": [
+                0.03050113934483648,
+                0.9470922813394023
+              ]
+            },
+            "signed_angular_steps": [
+              [
+                -0.0002,
+                6.93102393256595e-08,
+                -0.0006918825378394098
+              ],
+              [
+                -0.0001,
+                1.73507075373891e-08,
+                -0.00034701404446032386
+              ],
+              [
+                0.0001,
+                1.7350714642816456e-08,
+                0.0003470142015952534
+              ],
+              [
+                0.0002,
+                6.940283725498375e-08,
+                0.0006940283625632452
+              ]
+            ],
+            "physical_material_change": 0.0
+          }
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    },
+    "relaxed_coarse": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_closed_rim_surface_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "_scratch/s11c/closedrim4_weak01/relaxed_coarse/controls.npz",
+        "--relaxed",
+        "_scratch/s11c/fixed_wall_angular01/coarse/equilibrium.npz"
+      ],
+      "stdout_sha256": "4b508e2b56e9efbad810a4b16cc3965c77e6129519d38e03f3182964683de187",
+      "results": [
+        {
+          "kind": "sources",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "snapshot": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "controls": "a22d256eeef7cf8000bedf4fb6c85eb011900ef0771b730a2898343b707b8fd7",
+          "relaxed": "8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66",
+          "face_model": "physical Q1 strong form and signed affine energy"
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.15,
+          "h1": 0.22,
+          "inner_out_minus_outer_in": [
+            0.033223260090119125,
+            -0.066558555920236
+          ]
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.22,
+          "h1": 0.27,
+          "inner_out_minus_outer_in": [
+            0.002994931165693145,
+            -0.0404939885373919
+          ]
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.15,
+          "h1": 0.27,
+          "inner_out_minus_outer_in": [
+            0.0362181912558219,
+            -0.10705254445766027
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.15,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.597512500555945,
+              -0.6432823716511766
+            ],
+            "cap_1_1": [
+              2.013112094902237,
+              0.03799262569676501
+            ],
+            "cap_2_0": [
+              7.8244136118824095,
+              0.21697121259885857
+            ],
+            "cap_2_1": [
+              0.7000770949588311,
+              -0.16149060397158965
+            ],
+            "side_1": [
+              0.5105841943397795,
+              -0.000742257353750553
+            ],
+            "side_2": [
+              0.536671695569379,
+              0.00020342509016095541
+            ]
+          },
+          "net": [
+            -0.01265380890330936,
+            -0.5503479695907324
+          ],
+          "degree4_to_8": [
+            6.153110132522954e-09,
+            3.009744675708248e-10
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.22,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.554790585910837,
+              -0.5552011214518949
+            ],
+            "cap_1_1": [
+              1.8983928409379416,
+              0.022555642489988776
+            ],
+            "cap_2_0": [
+              7.046649559690816,
+              0.17391609879308123
+            ],
+            "cap_2_1": [
+              1.176353587327878,
+              -0.1285074580012068
+            ],
+            "side_1": [
+              0.7313149141080367,
+              -0.001271661919410658
+            ],
+            "side_2": [
+              0.7892033602488746,
+              0.0006181276674267044
+            ]
+          },
+          "net": [
+            0.08712367640270935,
+            -0.48789037242201566
+          ],
+          "degree4_to_8": [
+            1.189585652205949e-09,
+            3.0970226383431054e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.27,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.63765387615017,
+              -0.5141886152929659
+            ],
+            "cap_1_1": [
+              1.7552940380674942,
+              0.017165060201658196
+            ],
+            "cap_2_0": [
+              7.05146211893734,
+              0.18190929267904155
+            ],
+            "cap_2_1": [
+              1.1757130779012486,
+              -0.1100681535598811
+            ],
+            "side_1": [
+              0.8818019884048134,
+              -0.0016939339724894402
+            ],
+            "side_2": [
+              0.9694831345838811,
+              0.0009304002873096658
+            ]
+          },
+          "net": [
+            0.19610048174460848,
+            -0.425945949657327
+          ],
+          "degree4_to_8": [
+            -1.8059063133790687e-09,
+            -5.927264234983909e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.15,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.597512500555945,
+              -0.6432823716511766
+            ],
+            "cap_1_1": [
+              1.8437797903250128,
+              0.05793437334483479
+            ],
+            "cap_2_0": [
+              7.8244136118824095,
+              0.21697121259885857
+            ],
+            "cap_2_1": [
+              1.0780826595548794,
+              -0.18339509566183426
+            ],
+            "side_1": [
+              0.5036459799864038,
+              0.0007413808802988238
+            ],
+            "side_2": [
+              0.510384409429733,
+              0.0005780397236271484
+            ]
+          },
+          "net": [
+            0.16279395062249258,
+            -0.5504524607653916
+          ],
+          "degree4_to_8": [
+            6.349781478398597e-09,
+            3.039928309078732e-10
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.22,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.554790585910837,
+              -0.5552011214518949
+            ],
+            "cap_1_1": [
+              1.7661793107842279,
+              0.04154271626232884
+            ],
+            "cap_2_0": [
+              7.046649559690816,
+              0.17391609879308123
+            ],
+            "cap_2_1": [
+              1.6332653093428748,
+              -0.15024586472449591
+            ],
+            "side_1": [
+              0.7304005334034293,
+              0.0010981448151788631
+            ],
+            "side_2": [
+              0.7475212042482573,
+              0.0008974433561236313
+            ]
+          },
+          "net": [
+            0.36922533155876824,
+            -0.4879925829496783
+          ],
+          "degree4_to_8": [
+            1.4745102916435826e-09,
+            3.646732915640882e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.27,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.63765387615017,
+              -0.5141886152929659
+            ],
+            "cap_1_1": [
+              1.7270562459943695,
+              0.03550323500660422
+            ],
+            "cap_2_0": [
+              7.05146211893734,
+              0.18190929267904155
+            ],
+            "cap_2_1": [
+              1.6325721179333306,
+              -0.1317553136940577
+            ],
+            "side_1": [
+              0.8884122885423124,
+              0.0013033906064881468
+            ],
+            "side_2": [
+              0.916257196211385,
+              0.001127292590712927
+            ]
+          },
+          "net": [
+            0.5781060914685673,
+            -0.4261007181041767
+          ],
+          "degree4_to_8": [
+            -1.4456361663306438e-09,
+            -5.622446952457949e-11
+          ]
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    },
+    "relaxed_fine": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_closed_rim_surface_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "_scratch/s11c/closedrim4_weak01/relaxed_fine/controls.npz",
+        "--relaxed",
+        "_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz"
+      ],
+      "stdout_sha256": "edd079d09c9efd3cd2fc6c2817be0dcfc636dae626c333777d75380a5caf4a18",
+      "results": [
+        {
+          "kind": "sources",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "snapshot": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "controls": "82dba66e1a2fb75387cfe041b3f9b7e8d5b243ee32e7b2186cb1b0dd6df5073c",
+          "relaxed": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "face_model": "physical Q1 strong form and signed affine energy"
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.15,
+          "h1": 0.22,
+          "inner_out_minus_outer_in": [
+            0.03322147912647651,
+            -0.06655742225055754
+          ]
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.22,
+          "h1": 0.27,
+          "inner_out_minus_outer_in": [
+            0.0029944707599418464,
+            -0.040493650452156436
+          ]
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.15,
+          "h1": 0.27,
+          "inner_out_minus_outer_in": [
+            0.036215949886430905,
+            -0.10705107270274582
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.15,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.597487812684694,
+              -0.6432776400781048
+            ],
+            "cap_1_1": [
+              2.013108622339744,
+              0.03799268285916387
+            ],
+            "cap_2_0": [
+              7.824382659282269,
+              0.2169696701048212
+            ],
+            "cap_2_1": [
+              0.7000885032706493,
+              -0.16148946810942347
+            ],
+            "side_1": [
+              0.5105831825181836,
+              -0.000742252577933127
+            ],
+            "side_2": [
+              0.5366705704506308,
+              0.00020342844795442195
+            ]
+          },
+          "net": [
+            -0.012654274823218348,
+            -0.550343579353522
+          ],
+          "degree4_to_8": [
+            6.212219627599325e-09,
+            3.063013176429763e-10
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.22,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.554766420508823,
+              -0.5551976860146782
+            ],
+            "cap_1_1": [
+              1.8983899301804728,
+              0.022555637163689635
+            ],
+            "cap_2_0": [
+              7.046625417054961,
+              0.17391500222399872
+            ],
+            "cap_2_1": [
+              1.1763588681669712,
+              -0.12850656188282164
+            ],
+            "side_1": [
+              0.7313134774107145,
+              -0.0012716548596776703
+            ],
+            "side_2": [
+              0.7892016809105976,
+              0.0006181314820254797
+            ]
+          },
+          "net": [
+            0.08712295321489405,
+            -0.48788713188746374
+          ],
+          "degree4_to_8": [
+            1.186940656872082e-09,
+            3.066774612037193e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.27,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.637629575698492,
+              -0.5141854664546338
+            ],
+            "cap_1_1": [
+              1.7552913111917983,
+              0.017165049145653363
+            ],
+            "cap_2_0": [
+              7.051437959851949,
+              0.18190788176580308
+            ],
+            "cap_2_1": [
+              1.1757183568440384,
+              -0.11006735352487111
+            ],
+            "side_1": [
+              0.8818002647730282,
+              -0.001693925347897376
+            ],
+            "side_2": [
+              0.969481050417989,
+              0.0009304043590020267
+            ]
+          },
+          "net": [
+            0.19609936738031175,
+            -0.4259434100569438
+          ],
+          "degree4_to_8": [
+            -1.8066359519508524e-09,
+            -5.940309355523254e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.15,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.597487812684694,
+              -0.6432776400781048
+            ],
+            "cap_1_1": [
+              1.8437759901604251,
+              0.057934369457029906
+            ],
+            "cap_2_0": [
+              7.824382659282269,
+              0.2169696701048212
+            ],
+            "cap_2_1": [
+              1.0780940568160569,
+              -0.1833938856464258
+            ],
+            "side_1": [
+              0.5036449195626067,
+              0.0007413785239461398
+            ],
+            "side_2": [
+              0.5103833130771057,
+              0.0005780378535345171
+            ]
+          },
+          "net": [
+            0.16279312621376973,
+            -0.5504480697851989
+          ],
+          "degree4_to_8": [
+            6.408944153157847e-09,
+            3.0932167938146904e-10
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.22,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.554766420508823,
+              -0.5551976860146782
+            ],
+            "cap_1_1": [
+              1.7661760190770457,
+              0.041542653563831564
+            ],
+            "cap_2_0": [
+              7.046625417054961,
+              0.17391500222399872
+            ],
+            "cap_2_1": [
+              1.6332703993517437,
+              -0.15024489302940514
+            ],
+            "side_1": [
+              0.7303990011034037,
+              0.001098141339711749
+            ],
+            "side_2": [
+              0.7475195908983131,
+              0.0008974404031220353
+            ]
+          },
+          "net": [
+            0.3692240069766437,
+            -0.4879893415134193
+          ],
+          "degree4_to_8": [
+            1.471821220455638e-09,
+            3.6163794181476305e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.27,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.637629575698492,
+              -0.5141854664546338
+            ],
+            "cap_1_1": [
+              1.7270529899675353,
+              0.0355031690197983
+            ],
+            "cap_2_0": [
+              7.051437959851949,
+              0.18190788176580308
+            ],
+            "cap_2_1": [
+              1.6325772060635666,
+              -0.13175443694197103
+            ],
+            "side_1": [
+              0.8884104289621929,
+              0.0013033865047361246
+            ],
+            "side_2": [
+              0.9162552119721622,
+              0.0011272888531497
+            ]
+          },
+          "net": [
+            0.5781042211189147,
+            -0.4260981772531176
+          ],
+          "degree4_to_8": [
+            -1.4463840125600314e-09,
+            -5.63543101073094e-11
+          ]
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    },
+    "slit_review": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_closed_rim_surface_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "_scratch/s11c/closedrim4_weak01/relaxed_fine/controls.npz",
+        "--relaxed",
+        "_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz",
+        "--slit-only"
+      ],
+      "stdout_sha256": "10826620279778621a738d5fe888eb21e09b5bd4cec5cb37b02e52c5965c9b58",
+      "results": [
+        {
+          "kind": "sources",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "snapshot": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "controls": "82dba66e1a2fb75387cfe041b3f9b7e8d5b243ee32e7b2186cb1b0dd6df5073c",
+          "relaxed": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "face_model": "physical Q1 strong form and signed affine energy"
+        },
+        {
+          "kind": "sharp_slit",
+          "h": 0.15,
+          "quadrature": 7,
+          "outward_into_slit": [
+            0.3615138498347167,
+            0.5488987744962076
+          ]
+        },
+        {
+          "kind": "sharp_slit",
+          "h": 0.22,
+          "quadrature": 7,
+          "outward_into_slit": [
+            0.39473532896012453,
+            0.4823413522465729
+          ]
+        },
+        {
+          "kind": "sharp_slit",
+          "h": 0.27,
+          "quadrature": 7,
+          "outward_into_slit": [
+            0.3977297997288416,
+            0.4418477017988932
+          ]
+        },
+        {
+          "kind": "weak_slit",
+          "k": 2,
+          "quadrature": 7,
+          "bottom_ramp": [
+            0.5719191604491792,
+            0.6239118113991046
+          ],
+          "outward_into_slit": [
+            0.383298396716766,
+            0.502439741225299
+          ]
+        },
+        {
+          "kind": "weak_slit",
+          "k": 3,
+          "quadrature": 7,
+          "bottom_ramp": [
+            0.5199265094992538,
+            0.5719191604491792
+          ],
+          "outward_into_slit": [
+            0.391120288652937,
+            0.45760392057124377
+          ]
+        },
+        {
+          "kind": "sharp_slit",
+          "h": 0.15,
+          "quadrature": 10,
+          "outward_into_slit": [
+            0.36151384980645596,
+            0.5488987744353797
+          ]
+        },
+        {
+          "kind": "sharp_slit",
+          "h": 0.22,
+          "quadrature": 10,
+          "outward_into_slit": [
+            0.3947353289013693,
+            0.48234135218771923
+          ]
+        },
+        {
+          "kind": "sharp_slit",
+          "h": 0.27,
+          "quadrature": 10,
+          "outward_into_slit": [
+            0.39772979966881683,
+            0.44184770173311627
+          ]
+        },
+        {
+          "kind": "weak_slit",
+          "k": 2,
+          "quadrature": 10,
+          "bottom_ramp": [
+            0.5719191604491792,
+            0.6239118113991046
+          ],
+          "outward_into_slit": [
+            0.3832983966525082,
+            0.5024397411679702
+          ]
+        },
+        {
+          "kind": "weak_slit",
+          "k": 3,
+          "quadrature": 10,
+          "bottom_ramp": [
+            0.5199265094992538,
+            0.5719191604491792
+          ],
+          "outward_into_slit": [
+            0.3911202885948373,
+            0.45760392050726706
+          ]
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    },
+    "loads_coarse": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_fixed_wall_load_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "--endpoint",
+        "_scratch/s11c/fixed_wall_angular01/coarse/equilibrium.npz",
+        "--peak-coordinate",
+        "4"
+      ],
+      "stdout_sha256": "5801de8afcc1f7bf24c6e5e84e2ce091e3c45e2dcd437b0ed47762926b300907",
+      "results": [
+        {
+          "kind": "signed_load_change",
+          "checkpoint": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "equilibrium": "8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66",
+          "axis": 4,
+          "step": 0.0001,
+          "delta": -3.100382173215621e-06,
+          "energy_diff_minus": -1.3145297126371247e-06,
+          "energy_diff_plus": -1.3139096362024816e-06
+        },
+        {
+          "kind": "signed_load_change",
+          "checkpoint": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "equilibrium": "8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66",
+          "axis": 4,
+          "step": 5e-05,
+          "delta": -3.0996227806667775e-06,
+          "energy_diff_minus": -1.3143746433463832e-06,
+          "energy_diff_plus": -1.3140646810683165e-06
+        },
+        {
+          "kind": "signed_load_change",
+          "checkpoint": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "equilibrium": "8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66",
+          "axis": 5,
+          "step": 0.0001,
+          "delta": 0.015071789540854752,
+          "energy_diff_minus": 1.9296147790726081e-07,
+          "energy_diff_plus": -2.8213964302636896e-06
+        },
+        {
+          "kind": "signed_load_change",
+          "checkpoint": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "equilibrium": "8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66",
+          "axis": 5,
+          "step": 5e-05,
+          "delta": 0.0150717890079477,
+          "energy_diff_minus": -5.60629588974848e-07,
+          "energy_diff_plus": -2.067808489769618e-06
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    },
+    "loads_fine": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_fixed_wall_load_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "--endpoint",
+        "_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz",
+        "--peak-coordinate",
+        "2"
+      ],
+      "stdout_sha256": "0d7d8bc3cc4a3f234d77afb8ff77d4833f859ee3755cda19cb60fc72d0c77b13",
+      "results": [
+        {
+          "kind": "signed_load_change",
+          "checkpoint": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "equilibrium": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "axis": 2,
+          "step": 0.0001,
+          "delta": -3.75877107217093e-08,
+          "energy_diff_minus": -1.313988711615366e-06,
+          "energy_diff_plus": -1.3139811940732216e-06
+        },
+        {
+          "kind": "signed_load_change",
+          "checkpoint": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "equilibrium": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "axis": 2,
+          "step": 5e-05,
+          "delta": -3.723243935382925e-08,
+          "energy_diff_minus": -1.3139867576228426e-06,
+          "energy_diff_plus": -1.3139830343789072e-06
+        },
+        {
+          "kind": "signed_load_change",
+          "checkpoint": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "equilibrium": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "axis": 5,
+          "step": 0.0001,
+          "delta": 0.0150691176159512,
+          "energy_diff_minus": 1.9292901498602077e-07,
+          "energy_diff_plus": -2.820894508204219e-06
+        },
+        {
+          "kind": "signed_load_change",
+          "checkpoint": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "equilibrium": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "axis": 5,
+          "step": 5e-05,
+          "delta": 0.015069117580424063,
+          "energy_diff_minus": -5.605284627563378e-07,
+          "energy_diff_plus": -2.067440220798744e-06
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    },
+    "stalled_node": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_fixed_wall_load_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz"
+      ],
+      "stdout_sha256": "64c478507a556eceaf39ee5d36130b1fdb2c2a0d7fca09371a7dcfc119b54d97",
+      "results": [
+        {
+          "kind": "failed_step_site",
+          "checkpoint": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "native_sweep": 2,
+          "position": [
+            3.466277924610256,
+            0.7769271667449928
+          ],
+          "fraction": 0.977568812524941,
+          "node": [
+            31,
+            32
+          ]
+        },
+        {
+          "kind": "local_signed_force",
+          "step": 1e-05,
+          "saved_material_amplitude": -0.000850694032942122,
+          "radial_force": -0.0018660394122675182,
+          "left_radial_force": 0.0023808994081810095,
+          "right_radial_force": -0.006112978232716046
+        },
+        {
+          "kind": "local_signed_force",
+          "step": 1e-06,
+          "saved_material_amplitude": -0.000850694032942122,
+          "radial_force": -0.0018658734756162403,
+          "left_radial_force": -0.0014411794912267393,
+          "right_radial_force": -0.0022905674600057413
+        },
+        {
+          "kind": "local_signed_force",
+          "step": 1e-07,
+          "saved_material_amplitude": -0.000850694032942122,
+          "radial_force": -0.001865871291429462,
+          "left_radial_force": -0.0018234025447530944,
+          "right_radial_force": -0.0019083400381058296
+        },
+        {
+          "kind": "local_signed_force",
+          "step": 1e-08,
+          "saved_material_amplitude": -0.000850694032942122,
+          "radial_force": -0.0018658706977984717,
+          "left_radial_force": -0.0018616179733344088,
+          "right_radial_force": -0.0018701234222625346
+        },
+        {
+          "kind": "local_signed_force",
+          "step": 1e-09,
+          "saved_material_amplitude": -0.000850694032942122,
+          "radial_force": -0.0018658081492938198,
+          "left_radial_force": -0.001865373835269599,
+          "right_radial_force": -0.0018662424633180406
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    },
+    "nested": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_closed_rim_surface_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "_scratch/s11c/closedrim4_weak01/double/controls.npz",
+        "--relaxed",
+        "_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz"
+      ],
+      "stdout_sha256": "d432fe2238ba74b47d1c12dca709cb26042c7052bb14d935d3808c3c77e3c618",
+      "results": [
+        {
+          "kind": "sources",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "snapshot": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "controls": "918b5b41b9f1376f2e3b7640c552347cef282974bffee24279f2e0d3b1d0c8e0",
+          "relaxed": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "face_model": "physical Q1 strong form and signed affine energy"
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.0,
+          "h1": 0.15,
+          "inner_out_minus_outer_in": [
+            0.07693308927704245,
+            0.4968193048762337
+          ]
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.0,
+          "h1": 0.22,
+          "inner_out_minus_outer_in": [
+            0.07874938973225243,
+            0.426400385897001
+          ]
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.0,
+          "h1": 0.27,
+          "inner_out_minus_outer_in": [
+            0.078390332656881,
+            0.3856081982383068
+          ]
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.15,
+          "h1": 0.22,
+          "inner_out_minus_outer_in": [
+            0.0018163004532627458,
+            -0.07041891897929729
+          ]
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.22,
+          "h1": 0.27,
+          "inner_out_minus_outer_in": [
+            -0.0003590570678027086,
+            -0.0407921876584451
+          ]
+        },
+        {
+          "kind": "incremental_sealed_wall",
+          "h0": 0.15,
+          "h1": 0.27,
+          "inner_out_minus_outer_in": [
+            0.0014572433778914182,
+            -0.11121110663799022
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.15,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.578149292436382,
+              -0.6323212484799767
+            ],
+            "cap_1_1": [
+              1.9718394697430575,
+              0.039593206053238954
+            ],
+            "cap_2_0": [
+              7.77390907182503,
+              0.21164587808115035
+            ],
+            "cap_2_1": [
+              0.6865041723879958,
+              -0.1648606034784846
+            ],
+            "side_1": [
+              0.573108967501255,
+              -0.00023350466797693163
+            ],
+            "side_2": [
+              0.6118962147474672,
+              0.00028424966630018433
+            ]
+          },
+          "net": [
+            0.0391086037684234,
+            -0.5458920228257489
+          ],
+          "degree4_to_8": [
+            -1.2018541717395692e-10,
+            -6.423528375876231e-12
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.22,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.515045014353003,
+              -0.5459397211177656
+            ],
+            "cap_1_1": [
+              1.802937688700099,
+              0.02489079178062837
+            ],
+            "cap_2_0": [
+              6.827550668502238,
+              0.1590352274264989
+            ],
+            "cap_2_1": [
+              1.2578715243539833,
+              -0.12951094764468618
+            ],
+            "side_1": [
+              0.8161884245670153,
+              -0.000584461805053135
+            ],
+            "side_2": [
+              0.9011927498532342,
+              0.0007078946559423813
+            ]
+          },
+          "net": [
+            0.09069604162356748,
+            -0.4914012167044352
+          ],
+          "degree4_to_8": [
+            -1.8251611333397477e-10,
+            -1.0141720796497111e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 4.5,
+          "h": 0.27,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.546806345680338,
+              -0.5011971831882772
+            ],
+            "cap_1_1": [
+              1.6323846225484726,
+              0.019207702419324752
+            ],
+            "cap_2_0": [
+              6.831899413475034,
+              0.16668690351189921
+            ],
+            "cap_2_1": [
+              1.2572139985509787,
+              -0.1122265313886841
+            ],
+            "side_1": [
+              0.9801945135381224,
+              -0.0009099860689061677
+            ],
+            "side_2": [
+              1.1076909822825023,
+              0.0011095880420247768
+            ]
+          },
+          "net": [
+            0.26257718471477254,
+            -0.42732950667261876
+          ],
+          "degree4_to_8": [
+            -1.737264776480174e-10,
+            1.1205480987541705e-12
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.15,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.578149292436382,
+              -0.6323212484799767
+            ],
+            "cap_1_1": [
+              1.8911000335305115,
+              0.059271595691101096
+            ],
+            "cap_2_0": [
+              7.77390907182503,
+              0.21164587808115035
+            ],
+            "cap_2_1": [
+              1.068379547516156,
+              -0.1854685272047206
+            ],
+            "side_1": [
+              0.4508386794988078,
+              0.00047033459023606433
+            ],
+            "side_2": [
+              0.4549995298482295,
+              0.0005085144225201922
+            ]
+          },
+          "net": [
+            0.06107756978235235,
+            -0.5458934528996897
+          ],
+          "degree4_to_8": [
+            3.5973501955055553e-11,
+            -6.5892846734527666e-12
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.22,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.515045014353003,
+              -0.5459397211177656
+            ],
+            "cap_1_1": [
+              1.699494804924129,
+              0.04400947343125518
+            ],
+            "cap_2_0": [
+              6.827550668502238,
+              0.1590352274264989
+            ],
+            "cap_2_1": [
+              1.736794250282144,
+              -0.14994344083346953
+            ],
+            "side_1": [
+              0.6546391332030408,
+              0.000636397709892583
+            ],
+            "side_2": [
+              0.6660448962248655,
+              0.0007843091939968125
+            ]
+          },
+          "net": [
+            0.06947873878341415,
+            -0.49141775418959166
+          ],
+          "degree4_to_8": [
+            4.4813708299784594e-11,
+            -1.0825396135061283e-11
+          ]
+        },
+        {
+          "kind": "closed_cylinder",
+          "radius": 5.5,
+          "h": 0.27,
+          "columns": [
+            "outward_mass",
+            "outward_axial_momentum"
+          ],
+          "all_faces": {
+            "cap_1_0": [
+              -11.546806345680338,
+              -0.5011971831882772
+            ],
+            "cap_1_1": [
+              1.5823196288920687,
+              0.0379007122642025
+            ],
+            "cap_2_0": [
+              6.831899413475034,
+              0.16668690351189921
+            ],
+            "cap_2_1": [
+              1.7360836804489126,
+              -0.13256949968821355
+            ],
+            "side_1": [
+              0.7969208410328879,
+              0.0007206129609725335
+            ],
+            "side_2": [
+              0.8160916097745173,
+              0.000993826869532578
+            ]
+          },
+          "net": [
+            0.2165088279430828,
+            -0.4274646272698839
+          ],
+          "degree4_to_8": [
+            1.0833922647890404e-10,
+            1.1785017406396037e-12
+          ]
+        }
+      ],
+      "guard_exit": 0,
+      "native_exit": 0
+    }
+  },
+  "review_verdict": "Scoped clear for the fixed-wall angular minimum, persistence of the terminal material residual on the rejected wall, and improved thickness agreement of the closed-rim audit. The axial reaction has no mesh-converged value, and the whole-mouth release gate remains closed.",
+  "interpretation": "The last complete rejected-wall sweep identifies a radial nodal force. The final unsaved polish was unresolved. Strong raw Q1 mass flux is not conservative; the conservative weak sums and the independent energy-variation check carry the closure test. Constrained-order work associated with a particular slope continuation cannot be added to common signed work as an independently measured axial traction."
+}

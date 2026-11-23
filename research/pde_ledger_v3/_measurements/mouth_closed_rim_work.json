@@ -1,0 +1,1501 @@
+{
+  "radius": 4,
+  "winding": 1,
+  "branch": "Stationary ordered bonded supersolid, angularly mobile at fixed wall, wound drive minus wound rest on the identical solid and baths.",
+  "baseline": "3644771d",
+  "direction": "Outward axial momentum delivered through the bottom, top and side of one closed surface. Slit tractions use the outward normal of each of the two fluid domains.",
+  "support": "The axial and lateral weights equal one across the entire outlet and terminal order band. Each weight falls to zero in the specified exterior cell or pair of nested cells. The drive-minus-rest crystalline stress on the outer shell is zero because the order correction vanishes there on the same displacement. The physical sealed duct side is traversed below the disk and its two tractions are measured separately.",
+  "constraints": "One common material translation convects the reference profile, order pins, material and both sides of the sealed wall. The native energy derivative includes those geometric loads. The separate solid force at fixed Eulerian order and the four alternate assignments of an Eulerian slope at the prescribed rim describe different variations. They cannot be added again to that translation work as independent forces.",
+  "science_runs": {
+    "coarse": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_closed_rim_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "_scratch/s11c/r4_disk_balance01/polar_final/controls.npz"
+      ],
+      "guard_exit": 0,
+      "native_exit": 0,
+      "stdout_sha256": "2fbdd0e8a32a4ec5eeac3547dbde958d0ac09f6fa28886d14179715307105342",
+      "lines": [
+        {
+          "kind": "preparation",
+          "checkpoint_sha256": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+          "controls_sha256": "b2355ab0124f5a41345d0e2764a1af671909cfe28e8325d67291280d64bb4eed",
+          "active_halfwidth": 0.12,
+          "solid_mesh": [
+            25,
+            25
+          ],
+          "joint_geometry": [
+            0.79590446234903,
+            3.5012263217004334
+          ],
+          "drive_current": 11.616869345010437,
+          "rest_current": -0.0
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.17199265094992544,
+            0.22398530189985077
+          ],
+          "upper_half_thickness": [
+            0.15823756851926885,
+            0.27659905033627263
+          ],
+          "lateral_radius_at_disk": [
+            4.300181217733583,
+            4.838520233618395
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.754217423579325,
+            8.253098106855823,
+            1.501119317196742
+          ],
+          "outward_mass": 4.732403358076454e-10,
+          "momentum": [
+            -0.5486780465974835,
+            0.04066985941271705,
+            -0.002148307111214723
+          ],
+          "outward_momentum": -0.5101564942959812,
+          "signed_common_translation_work": {
+            "2e-05": -0.5101565799359165,
+            "1e-05": -0.510156515298732
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5101563470111259,
+            "1e-05": -0.5101562824183503
+          },
+          "sealed_vortex_boundary_term": -0.018657166727834157,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.009467867706159216,
+          "free_solid_axial_work_fixed_eulerian_order": -0.012442251882138135,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.025767568845594724,
+            "duct_rim": -0.010219054829690322,
+            "upper_disk_rim": -0.04655603075860881,
+            "outer_bank_rim": -0.02456238991084092
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.17199265094992544,
+            0.22398530189985077
+          ],
+          "upper_half_thickness": [
+            0.15823756851926885,
+            0.27659905033627263
+          ],
+          "lateral_radius_at_disk": [
+            4.838520233618395,
+            5.593329672492339
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.82825274117958,
+            8.545648366968813,
+            1.2826043746704106
+          ],
+          "outward_mass": 4.5964232420203643e-10,
+          "momentum": [
+            -0.5363176472829363,
+            0.02585610755207794,
+            -2.0403751712498744e-05
+          ],
+          "outward_momentum": -0.5104819434825709,
+          "signed_common_translation_work": {
+            "2e-05": -0.5104820294365986,
+            "1e-05": -0.5104819650325609
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5104817977996667,
+            "1e-05": -0.510481733440038
+          },
+          "sealed_vortex_boundary_term": -0.018657166727834157,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.009467867706159216,
+          "free_solid_axial_work_fixed_eulerian_order": -0.012442251882138135,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.02576756884570841,
+            "duct_rim": -0.010219054829690322,
+            "upper_disk_rim": -0.04655603075855197,
+            "outer_bank_rim": -0.024562389910784077
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.22398530189985077,
+            0.2759779528497762
+          ],
+          "upper_half_thickness": [
+            0.27659905033627263,
+            0.48637895453151525
+          ],
+          "lateral_radius_at_disk": [
+            4.300181217733583,
+            4.838520233618395
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.925795278617699,
+            7.64461457979005,
+            2.28118069931657
+          ],
+          "outward_mass": 4.889217919412658e-10,
+          "momentum": [
+            -0.5001156001055292,
+            0.03801664086901886,
+            -0.0015924883229214207
+          ],
+          "outward_momentum": -0.4636914475594318,
+          "signed_common_translation_work": {
+            "2e-05": -0.46369153146041947,
+            "1e-05": -0.46369146817770707
+          },
+          "native_factored_translation": {
+            "2e-05": -0.46369119082179105,
+            "1e-05": -0.4636911275168742
+          },
+          "sealed_vortex_boundary_term": -0.01975958971459034,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.009467867706159216,
+          "free_solid_axial_work_fixed_eulerian_order": -0.012442251882138135,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.026134693466929093,
+            "duct_rim": -0.01058617945099627,
+            "upper_disk_rim": -0.04692315537988634,
+            "outer_bank_rim": -0.024929514532061603
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.22398530189985077,
+            0.2759779528497762
+          ],
+          "upper_half_thickness": [
+            0.27659905033627263,
+            0.48637895453151525
+          ],
+          "lateral_radius_at_disk": [
+            4.838520233618395,
+            5.593329672492339
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.992412480162512,
+            8.05409011813104,
+            1.9383223625011432
+          ],
+          "outward_mass": 4.696705246942656e-10,
+          "momentum": [
+            -0.4883768346229322,
+            0.023880976290971537,
+            0.00044307547974022164
+          ],
+          "outward_momentum": -0.46405278285222046,
+          "signed_common_translation_work": {
+            "2e-05": -0.46405286691086894,
+            "1e-05": -0.46405280402783683
+          },
+          "native_factored_translation": {
+            "2e-05": -0.46405252360770527,
+            "1e-05": -0.4640524607024687
+          },
+          "sealed_vortex_boundary_term": -0.01975958971459034,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.009467867706159216,
+          "free_solid_axial_work_fixed_eulerian_order": -0.012442251882138135,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.02613469346704278,
+            "duct_rim": -0.01058617945099627,
+            "upper_disk_rim": -0.04692315537994318,
+            "outer_bank_rim": -0.024929514532118446
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0
+        }
+      ],
+      "initial_grid_label": "The first readout stored solid node shape (25,25), i.e. 24 radial and 24 axial cells."
+    },
+    "fine": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_closed_rim_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "_scratch/s11c/r4_disk_balance01/polar_transfer/controls.npz"
+      ],
+      "guard_exit": 0,
+      "native_exit": 0,
+      "stdout_sha256": "285dfa9924ecffd98a56881321c3412be8082027329762eb9afd683ac2205044",
+      "lines": [
+        {
+          "kind": "preparation",
+          "checkpoint_sha256": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+          "controls_sha256": "b86af9217291d5d6e3cd8845060543cd81d37a2a27217b76ef6308d835fa2aa0",
+          "active_halfwidth": 0.12,
+          "solid_mesh": [
+            33,
+            34
+          ],
+          "joint_geometry": [
+            0.79590446234903,
+            3.5012263217004334
+          ],
+          "drive_current": 11.616844147137495,
+          "rest_current": -0.0
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.17199265094992544,
+            0.22398530189985077
+          ],
+          "upper_half_thickness": [
+            0.15823756851926885,
+            0.27659905033627263
+          ],
+          "lateral_radius_at_disk": [
+            4.300181217733583,
+            4.838520233618395
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.754195597203328,
+            8.25307926831563,
+            1.5011163309207618
+          ],
+          "outward_mass": 2.0330646055555235e-09,
+          "momentum": [
+            -0.5486743228895401,
+            0.04066971260663681,
+            -0.002148293974926699
+          ],
+          "outward_momentum": -0.51015290425783,
+          "signed_common_translation_work": {
+            "2e-05": -0.5101529902296065,
+            "1e-05": -0.5101529240825187
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5101527572826114,
+            "1e-05": -0.5101526911355236
+          },
+          "sealed_vortex_boundary_term": -0.018657224376755665,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010879405661397671,
+          "free_solid_axial_work_fixed_eulerian_order": -0.01377964379035389,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.025601767037642276,
+            "duct_rim": -0.01010506666841593,
+            "upper_disk_rim": -0.0463799119826831,
+            "outer_bank_rim": -0.024387029360411816
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.17199265094992544,
+            0.22398530189985077
+          ],
+          "upper_half_thickness": [
+            0.15823756851926885,
+            0.27659905033627263
+          ],
+          "lateral_radius_at_disk": [
+            4.838520233618395,
+            5.593329672492339
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.828231158293745,
+            8.545629469755212,
+            1.282601690550587
+          ],
+          "outward_mass": 2.012054522992912e-09,
+          "momentum": [
+            -0.5363139611747172,
+            0.025856011615604014,
+            -2.040235264321448e-05
+          ],
+          "outward_momentum": -0.5104783519117564,
+          "signed_common_translation_work": {
+            "2e-05": -0.510478437143469,
+            "1e-05": -0.5104783733278495
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5104782054732304,
+            "1e-05": -0.5104781416687132
+          },
+          "sealed_vortex_boundary_term": -0.018657224376755665,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010879405661397671,
+          "free_solid_axial_work_fixed_eulerian_order": -0.01377964379035389,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.025601767037585432,
+            "duct_rim": -0.010105066668387508,
+            "upper_disk_rim": -0.046379911982626254,
+            "outer_bank_rim": -0.024387029360411816
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.22398530189985077,
+            0.2759779528497762
+          ],
+          "upper_half_thickness": [
+            0.27659905033627263,
+            0.48637895453151525
+          ],
+          "lateral_radius_at_disk": [
+            4.300181217733583,
+            4.838520233618395
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.92577315668288,
+            7.6445971389998055,
+            2.281176019661888
+          ],
+          "outward_mass": 1.978814001546425e-09,
+          "momentum": [
+            -0.50011234143624,
+            0.038016509331027605,
+            -0.0015924741500742468
+          ],
+          "outward_momentum": -0.46368830625528656,
+          "signed_common_translation_work": {
+            "2e-05": -0.4636883908504252,
+            "1e-05": -0.4636883261133206
+          },
+          "native_factored_translation": {
+            "2e-05": -0.4636880501562856,
+            "1e-05": -0.46368798538587436
+          },
+          "sealed_vortex_boundary_term": -0.019759631638914654,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010879405661397671,
+          "free_solid_axial_work_fixed_eulerian_order": -0.01377964379035389,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.02596888013511034,
+            "duct_rim": -0.010472179765912415,
+            "upper_disk_rim": -0.04674702508015116,
+            "outer_bank_rim": -0.024754142457936723
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.22398530189985077,
+            0.2759779528497762
+          ],
+          "upper_half_thickness": [
+            0.27659905033627263,
+            0.48637895453151525
+          ],
+          "lateral_radius_at_disk": [
+            4.838520233618395,
+            5.593329672492339
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.99239057048584,
+            8.054072306250317,
+            1.9383182661850962
+          ],
+          "outward_mass": 1.9495731695684526e-09,
+          "momentum": [
+            -0.4883736117761576,
+            0.023880896303257407,
+            0.0004430757597719793
+          ],
+          "outward_momentum": -0.46404963971312824,
+          "signed_common_translation_work": {
+            "2e-05": -0.46404972348090817,
+            "1e-05": -0.46404966136392994
+          },
+          "native_factored_translation": {
+            "2e-05": -0.4640493801444378,
+            "1e-05": -0.4640493179941529
+          },
+          "sealed_vortex_boundary_term": -0.019759631638914654,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010879405661397671,
+          "free_solid_axial_work_fixed_eulerian_order": -0.01377964379035389,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.025968880135224026,
+            "duct_rim": -0.010472179765969258,
+            "upper_disk_rim": -0.046747025080208005,
+            "outer_bank_rim": -0.024754142457993566
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0
+        }
+      ],
+      "initial_grid_label": "The first readout stored solid node shape (33,34), i.e. 33 radial and 32 axial cells."
+    },
+    "relaxed_coarse": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_closed_rim_endpoint.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_balance01/polar_final/controls.npz",
+        "/var/projects/toy_physics/_scratch/s11c/fixed_wall_angular01/coarse/equilibrium.npz",
+        "/var/projects/toy_physics/_scratch/s11c/closedrim4_weak01/relaxed_coarse/controls.npz"
+      ],
+      "guard_exit": 0,
+      "native_exit": 0,
+      "stdout_sha256": "35d78ee5d21fc31eadb556922e69187b6b8a7cc96cb8676f6851a5e111cfda64",
+      "lines": [
+        {
+          "kind": "matched_control",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "endpoint": "8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66",
+          "input_control": "b2355ab0124f5a41345d0e2764a1af671909cfe28e8325d67291280d64bb4eed",
+          "controls_sha": "a22d256eeef7cf8000bedf4fb6c85eb011900ef0771b730a2898343b707b8fd7",
+          "solid_cells": [
+            24,
+            24
+          ],
+          "ledger": "wound drive minus wound rest on identical relaxed lattice",
+          "angular_amplitude": -0.0008702114041155159,
+          "drive_error": 1.9819821046705802e-07,
+          "rest_initial": 1.870283559228159e-07,
+          "rest_final": 1.870283559228159e-07,
+          "field_change": 0.0,
+          "fixed_rest_reused": true
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.17199265094992544,
+            0.22398530189985077
+          ],
+          "upper_half_thickness": [
+            0.15823756851926885,
+            0.27659905033627263
+          ],
+          "lateral_radius_at_disk": [
+            4.300181217733583,
+            4.838520233618395
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.754217423579325,
+            8.253098106855823,
+            1.501119317196742
+          ],
+          "outward_mass": 4.732403358076454e-10,
+          "momentum": [
+            -0.5486780465974835,
+            0.04066985941271705,
+            -0.002148307111214723
+          ],
+          "outward_momentum": -0.5101564942959812,
+          "signed_common_translation_work": {
+            "2e-05": -0.5101565799359165,
+            "1e-05": -0.510156515298732
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5101563470111259,
+            "1e-05": -0.5101562824183503
+          },
+          "sealed_vortex_boundary_term": -0.018657166727834157,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.009467875127483929,
+          "free_solid_axial_work_fixed_eulerian_order": -0.012442259335986836,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.025767568850767475,
+            "duct_rim": -0.010219054834749386,
+            "upper_disk_rim": -0.046556030763611034,
+            "outer_bank_rim": -0.02456238991584314
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              1.0197447731123983,
+              0.21583249664027032
+            ],
+            [
+              -0.6365092068780597,
+              0.2865555660851263
+            ]
+          ],
+          "sharp_slit_total_axial": 0.5023880627253966,
+          "outer_plus_slit_axial": -0.0077684315705846,
+          "slit_quadrature_difference": 3.949696125715718e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.17199265094992544,
+            0.22398530189985077
+          ],
+          "upper_half_thickness": [
+            0.15823756851926885,
+            0.27659905033627263
+          ],
+          "lateral_radius_at_disk": [
+            4.838520233618395,
+            5.593329672492339
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.82825274117958,
+            8.545648366968813,
+            1.2826043746704106
+          ],
+          "outward_mass": 4.5964232420203643e-10,
+          "momentum": [
+            -0.5363176472829363,
+            0.02585610755207794,
+            -2.0403751712498744e-05
+          ],
+          "outward_momentum": -0.5104819434825709,
+          "signed_common_translation_work": {
+            "2e-05": -0.5104820294365986,
+            "1e-05": -0.5104819650325609
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5104817977996667,
+            "1e-05": -0.510481733440038
+          },
+          "sealed_vortex_boundary_term": -0.018657166727834157,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.009467875127483929,
+          "free_solid_axial_work_fixed_eulerian_order": -0.012442259335986836,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.025767568850767475,
+            "duct_rim": -0.010219054834749386,
+            "upper_disk_rim": -0.04655603076366788,
+            "outer_bank_rim": -0.02456238991584314
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              1.0197447731123983,
+              0.21583249664027032
+            ],
+            [
+              -0.6365092068780597,
+              0.2865555660851263
+            ]
+          ],
+          "sharp_slit_total_axial": 0.5023880627253966,
+          "outer_plus_slit_axial": -0.008093880757174321,
+          "slit_quadrature_difference": 3.949696125715718e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.22398530189985077,
+            0.2759779528497762
+          ],
+          "upper_half_thickness": [
+            0.27659905033627263,
+            0.48637895453151525
+          ],
+          "lateral_radius_at_disk": [
+            4.300181217733583,
+            4.838520233618395
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.925795278617699,
+            7.64461457979005,
+            2.28118069931657
+          ],
+          "outward_mass": 4.889217919412658e-10,
+          "momentum": [
+            -0.5001156001055292,
+            0.03801664086901886,
+            -0.0015924883229214207
+          ],
+          "outward_momentum": -0.4636914475594318,
+          "signed_common_translation_work": {
+            "2e-05": -0.46369153146041947,
+            "1e-05": -0.46369146817770707
+          },
+          "native_factored_translation": {
+            "2e-05": -0.46369119082179105,
+            "1e-05": -0.4636911275168742
+          },
+          "sealed_vortex_boundary_term": -0.01975958971459034,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.009467875127483929,
+          "free_solid_axial_work_fixed_eulerian_order": -0.012442259335986836,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.026134693471988157,
+            "duct_rim": -0.010586179456055334,
+            "upper_disk_rim": -0.0469231553849454,
+            "outer_bank_rim": -0.02492951453717751
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              1.03507523551121,
+              0.16298346606879716
+            ],
+            [
+              -0.644017988316478,
+              0.29456825992508195
+            ]
+          ],
+          "sharp_slit_total_axial": 0.4575517259938791,
+          "outer_plus_slit_axial": -0.006139721565552703,
+          "slit_quadrature_difference": 3.8325453921572716e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.22398530189985077,
+            0.2759779528497762
+          ],
+          "upper_half_thickness": [
+            0.27659905033627263,
+            0.48637895453151525
+          ],
+          "lateral_radius_at_disk": [
+            4.838520233618395,
+            5.593329672492339
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.992412480162512,
+            8.05409011813104,
+            1.9383223625011432
+          ],
+          "outward_mass": 4.696705246942656e-10,
+          "momentum": [
+            -0.4883768346229322,
+            0.023880976290971537,
+            0.00044307547974022164
+          ],
+          "outward_momentum": -0.46405278285222046,
+          "signed_common_translation_work": {
+            "2e-05": -0.46405286691086894,
+            "1e-05": -0.46405280402783683
+          },
+          "native_factored_translation": {
+            "2e-05": -0.46405252360770527,
+            "1e-05": -0.4640524607024687
+          },
+          "sealed_vortex_boundary_term": -0.01975958971459034,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.009467875127483929,
+          "free_solid_axial_work_fixed_eulerian_order": -0.012442259335986836,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.026134693472045,
+            "duct_rim": -0.010586179456083755,
+            "upper_disk_rim": -0.046923155385002246,
+            "outer_bank_rim": -0.02492951453717751
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              1.03507523551121,
+              0.16298346606879716
+            ],
+            [
+              -0.644017988316478,
+              0.29456825992508195
+            ]
+          ],
+          "sharp_slit_total_axial": 0.4575517259938791,
+          "outer_plus_slit_axial": -0.0065010568583413475,
+          "slit_quadrature_difference": 3.8325453921572716e-11
+        }
+      ]
+    },
+    "relaxed_fine": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_closed_rim_endpoint.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_balance01/polar_transfer/controls.npz",
+        "/var/projects/toy_physics/_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz",
+        "/var/projects/toy_physics/_scratch/s11c/closedrim4_weak01/relaxed_fine/controls.npz"
+      ],
+      "guard_exit": 0,
+      "native_exit": 0,
+      "stdout_sha256": "762b98740e76b9ea59ca14e719d7d211882bb0eb5974587f991105aa7f201959",
+      "lines": [
+        {
+          "kind": "matched_control",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "endpoint": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "input_control": "b86af9217291d5d6e3cd8845060543cd81d37a2a27217b76ef6308d835fa2aa0",
+          "controls_sha": "82dba66e1a2fb75387cfe041b3f9b7e8d5b243ee32e7b2186cb1b0dd6df5073c",
+          "solid_cells": [
+            33,
+            32
+          ],
+          "ledger": "wound drive minus wound rest on identical relaxed lattice",
+          "angular_amplitude": -0.0008702349530303411,
+          "drive_error": 1.9708210652348392e-07,
+          "rest_initial": 1.8541252532177891e-07,
+          "rest_final": 1.8541252532177891e-07,
+          "field_change": 0.0,
+          "fixed_rest_reused": true
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.17199265094992544,
+            0.22398530189985077
+          ],
+          "upper_half_thickness": [
+            0.15823756851926885,
+            0.27659905033627263
+          ],
+          "lateral_radius_at_disk": [
+            4.300181217733583,
+            4.838520233618395
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.754195597203328,
+            8.25307926831563,
+            1.5011163309207618
+          ],
+          "outward_mass": 2.0330646055555235e-09,
+          "momentum": [
+            -0.5486743228895401,
+            0.04066971260663681,
+            -0.002148293974926699
+          ],
+          "outward_momentum": -0.51015290425783,
+          "signed_common_translation_work": {
+            "2e-05": -0.5101529902296065,
+            "1e-05": -0.5101529240825187
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5101527572826114,
+            "1e-05": -0.5101526911355236
+          },
+          "sealed_vortex_boundary_term": -0.018657224376755665,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010879405661397671,
+          "free_solid_axial_work_fixed_eulerian_order": -0.01377964379035389,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.025601767037642276,
+            "duct_rim": -0.01010506666841593,
+            "upper_disk_rim": -0.0463799119826831,
+            "outer_bank_rim": -0.024387029360411816
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              1.01981767462097,
+              0.21587588981933886
+            ],
+            [
+              -0.6365192779684619,
+              0.2865638513486314
+            ]
+          ],
+          "sharp_slit_total_axial": 0.5024397411679702,
+          "outer_plus_slit_axial": -0.007713163089859809,
+          "slit_quadrature_difference": 3.9497516368669494e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.17199265094992544,
+            0.22398530189985077
+          ],
+          "upper_half_thickness": [
+            0.15823756851926885,
+            0.27659905033627263
+          ],
+          "lateral_radius_at_disk": [
+            4.838520233618395,
+            5.593329672492339
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.828231158293745,
+            8.545629469755212,
+            1.282601690550587
+          ],
+          "outward_mass": 2.012054522992912e-09,
+          "momentum": [
+            -0.5363139611747172,
+            0.025856011615604014,
+            -2.040235264321448e-05
+          ],
+          "outward_momentum": -0.5104783519117564,
+          "signed_common_translation_work": {
+            "2e-05": -0.510478437143469,
+            "1e-05": -0.5104783733278495
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5104782054732304,
+            "1e-05": -0.5104781416687132
+          },
+          "sealed_vortex_boundary_term": -0.018657224376755665,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010879405661397671,
+          "free_solid_axial_work_fixed_eulerian_order": -0.01377964379035389,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.025601767037585432,
+            "duct_rim": -0.010105066668387508,
+            "upper_disk_rim": -0.046379911982626254,
+            "outer_bank_rim": -0.024387029360411816
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              1.01981767462097,
+              0.21587588981933886
+            ],
+            [
+              -0.6365192779684619,
+              0.2865638513486314
+            ]
+          ],
+          "sharp_slit_total_axial": 0.5024397411679702,
+          "outer_plus_slit_axial": -0.008038610743786201,
+          "slit_quadrature_difference": 3.9497516368669494e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.22398530189985077,
+            0.2759779528497762
+          ],
+          "upper_half_thickness": [
+            0.27659905033627263,
+            0.48637895453151525
+          ],
+          "lateral_radius_at_disk": [
+            4.300181217733583,
+            4.838520233618395
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.92577315668288,
+            7.6445971389998055,
+            2.281176019661888
+          ],
+          "outward_mass": 1.978814001546425e-09,
+          "momentum": [
+            -0.50011234143624,
+            0.038016509331027605,
+            -0.0015924741500742468
+          ],
+          "outward_momentum": -0.46368830625528656,
+          "signed_common_translation_work": {
+            "2e-05": -0.4636883908504252,
+            "1e-05": -0.4636883261133206
+          },
+          "native_factored_translation": {
+            "2e-05": -0.4636880501562856,
+            "1e-05": -0.46368798538587436
+          },
+          "sealed_vortex_boundary_term": -0.019759631638914654,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010879405661397671,
+          "free_solid_axial_work_fixed_eulerian_order": -0.01377964379035389,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.02596888013511034,
+            "duct_rim": -0.010472179765912415,
+            "upper_disk_rim": -0.04674702508015116,
+            "outer_bank_rim": -0.024754142457936723
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              1.0351483686963763,
+              0.16302735285859596
+            ],
+            [
+              -0.6440280801015391,
+              0.29457656764867113
+            ]
+          ],
+          "sharp_slit_total_axial": 0.45760392050726706,
+          "outer_plus_slit_axial": -0.006084385748019505,
+          "slit_quadrature_difference": 3.8343939134932725e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.22398530189985077,
+            0.2759779528497762
+          ],
+          "upper_half_thickness": [
+            0.27659905033627263,
+            0.48637895453151525
+          ],
+          "lateral_radius_at_disk": [
+            4.838520233618395,
+            5.593329672492339
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.99239057048584,
+            8.054072306250317,
+            1.9383182661850962
+          ],
+          "outward_mass": 1.9495731695684526e-09,
+          "momentum": [
+            -0.4883736117761576,
+            0.023880896303257407,
+            0.0004430757597719793
+          ],
+          "outward_momentum": -0.46404963971312824,
+          "signed_common_translation_work": {
+            "2e-05": -0.46404972348090817,
+            "1e-05": -0.46404966136392994
+          },
+          "native_factored_translation": {
+            "2e-05": -0.4640493801444378,
+            "1e-05": -0.4640493179941529
+          },
+          "sealed_vortex_boundary_term": -0.019759631638914654,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010879405661397671,
+          "free_solid_axial_work_fixed_eulerian_order": -0.01377964379035389,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.025968880135224026,
+            "duct_rim": -0.010472179765969258,
+            "upper_disk_rim": -0.046747025080208005,
+            "outer_bank_rim": -0.024754142457993566
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              1.0351483686963763,
+              0.16302735285859596
+            ],
+            [
+              -0.6440280801015391,
+              0.29457656764867113
+            ]
+          ],
+          "sharp_slit_total_axial": 0.45760392050726706,
+          "outer_plus_slit_axial": -0.006445719205861178,
+          "slit_quadrature_difference": 3.8343939134932725e-11
+        }
+      ]
+    },
+    "double": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "python3",
+        "/var/projects/toy_physics/_scratch/s11c/closedrim4_weak01/nested_source/mouth_closed_rim_refinement.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz",
+        "/var/projects/toy_physics/_scratch/s11c/closedrim4_weak01/relaxed_fine/controls.npz",
+        "/var/projects/toy_physics/_scratch/s11c/closedrim4_weak01/double/controls.npz"
+      ],
+      "guard_exit": 0,
+      "native_exit": 0,
+      "stdout_sha256": "72321ab1fe0e3e98cceab3662766b8b0030dc29c7c5f4293815093ba8a116a59",
+      "lines": [
+        {
+          "kind": "source",
+          "state": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+          "endpoint": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70",
+          "control": "82dba66e1a2fb75387cfe041b3f9b7e8d5b243ee32e7b2186cb1b0dd6df5073c",
+          "old_grid": [
+            13,
+            10,
+            14
+          ],
+          "new_grid": [
+            26,
+            20,
+            28
+          ],
+          "held_internal_amplitude": -0.0008702349530303411,
+          "solid_cells": [
+            33,
+            32
+          ]
+        },
+        {
+          "kind": "field_equilibrium",
+          "rest": false,
+          "iterations": 39,
+          "energy": -0.7124877611270533,
+          "stationarity": 1.90767458479789e-07,
+          "gradient_integral_steps": 12,
+          "restarts": 0,
+          "excess_energy": -0.7124877611270533,
+          "feed_current": 11.533197327552752,
+          "bulk_current": 11.533197329273248,
+          "port_error": 1.7204957458716308e-09,
+          "weak_disk_current": 11.53319736202499,
+          "incident_slice_current": 11.533197362024994,
+          "receiving_slice_current": 10.923276324076998,
+          "positive_slice_current": 11.533197362640118,
+          "dense_total_subsonic_share": 0.7203237944064151,
+          "minimum_total_mach": 0.3876823231834012,
+          "total_axial_stress": -93.80755228337556,
+          "crystalline_range_in_band": [
+            0.02903740624900801,
+            0.9484855740776922
+          ]
+        },
+        {
+          "kind": "field_equilibrium",
+          "rest": true,
+          "iterations": 34,
+          "energy": -3.316547374020207,
+          "stationarity": 1.9208843144598817e-07,
+          "gradient_integral_steps": 9,
+          "restarts": 0,
+          "excess_energy": -3.316547374020207,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.3252491015224509,
+          "total_axial_stress": -94.7170764103098,
+          "crystalline_range_in_band": [
+            0.02903741139294261,
+            0.9484855781903202
+          ]
+        },
+        {
+          "kind": "matched_states",
+          "sha256": "918b5b41b9f1376f2e3b7640c552347cef282974bffee24279f2e0d3b1d0c8e0"
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.17199265094992544,
+            0.22398530189985077
+          ],
+          "upper_half_thickness": [
+            0.15823756851926885,
+            0.27659905033627263
+          ],
+          "lateral_radius_at_disk": [
+            4.300181217733583,
+            4.838520233618395
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.702328569868325,
+            8.209883193870029,
+            1.4924453771444333
+          ],
+          "outward_mass": 1.1461376292487557e-09,
+          "momentum": [
+            -0.5366454156541967,
+            0.03896835089749176,
+            -0.002246804463253124
+          ],
+          "outward_momentum": -0.4999238692199581,
+          "signed_common_translation_work": {
+            "2e-05": -0.4999239528347132,
+            "1e-05": -0.4999238917946513
+          },
+          "native_factored_translation": {
+            "2e-05": -0.49992393835740495,
+            "1e-05": -0.4999238773395475
+          },
+          "sealed_vortex_boundary_term": -0.018613276241423074,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010713233624137678,
+          "free_solid_axial_work_fixed_eulerian_order": -0.013857966904264163,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.0492992186294714,
+            "duct_rim": -0.01732235540180227,
+            "upper_disk_rim": -0.07894459831561562,
+            "outer_bank_rim": -0.04984560562382967
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              0.49192288511030446,
+              0.10334540481755101
+            ],
+            [
+              -0.41446435419706845,
+              0.3438253745928741
+            ]
+          ],
+          "sharp_slit_total_axial": 0.4471707794104251,
+          "outer_plus_slit_axial": -0.05275308980953297
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.17199265094992544,
+            0.22398530189985077
+          ],
+          "upper_half_thickness": [
+            0.15823756851926885,
+            0.27659905033627263
+          ],
+          "lateral_radius_at_disk": [
+            4.838520233618395,
+            5.593329672492339
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.774295831050436,
+            8.500720491341172,
+            1.2735753409170194
+          ],
+          "outward_mass": 1.207755007115452e-09,
+          "momentum": [
+            -0.5243379999862788,
+            0.024408709374376482,
+            -7.845248888094097e-05
+          ],
+          "outward_momentum": -0.5000077431007832,
+          "signed_common_translation_work": {
+            "2e-05": -0.5000078263650565,
+            "1e-05": -0.5000077656580615
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5000078119987705,
+            "1e-05": -0.5000077512695711
+          },
+          "sealed_vortex_boundary_term": -0.018613276241423074,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010713233624137678,
+          "free_solid_axial_work_fixed_eulerian_order": -0.013857966904264163,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.0492992186294714,
+            "duct_rim": -0.01732235540180227,
+            "upper_disk_rim": -0.07894459831561562,
+            "outer_bank_rim": -0.04984560562382967
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              0.49192288511030446,
+              0.10334540481755101
+            ],
+            [
+              -0.41446435419706845,
+              0.3438253745928741
+            ]
+          ],
+          "sharp_slit_total_axial": 0.4471707794104251,
+          "outer_plus_slit_axial": -0.05283696369035812
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.22398530189985077,
+            0.2759779528497762
+          ],
+          "upper_half_thickness": [
+            0.27659905033627263,
+            0.48637895453151525
+          ],
+          "lateral_radius_at_disk": [
+            4.300181217733583,
+            4.838520233618395
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.871337415264572,
+            7.603756019506272,
+            2.2675813967409755
+          ],
+          "outward_mass": 9.826757185749102e-10,
+          "momentum": [
+            -0.4894707742063128,
+            0.03720160658578845,
+            -0.0017572059919462113
+          ],
+          "outward_momentum": -0.45402637361247056,
+          "signed_common_translation_work": {
+            "2e-05": -0.45402645671988034,
+            "1e-05": -0.45402639263780736
+          },
+          "native_factored_translation": {
+            "2e-05": -0.4540264357366652,
+            "1e-05": -0.4540263716545922
+          },
+          "sealed_vortex_boundary_term": -0.019658599562459498,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010713233624137678,
+          "free_solid_axial_work_fixed_eulerian_order": -0.013857966904264163,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.04967196334746404,
+            "duct_rim": -0.017695100119738072,
+            "upper_disk_rim": -0.07931734303349458,
+            "outer_bank_rim": -0.05021835034170863
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              0.49539462843901233,
+              0.04999875451920068
+            ],
+            [
+              -0.4169400674364013,
+              0.3513886052209977
+            ]
+          ],
+          "sharp_slit_total_axial": 0.40138735974019835,
+          "outer_plus_slit_axial": -0.05263901387227221
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.22398530189985077,
+            0.2759779528497762
+          ],
+          "upper_half_thickness": [
+            0.27659905033627263,
+            0.48637895453151525
+          ],
+          "lateral_radius_at_disk": [
+            4.838520233618395,
+            5.593329672492339
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.935711584423048,
+            8.011163703675408,
+            1.9245478818126052
+          ],
+          "outward_mass": 1.0649645609817071e-09,
+          "momentum": [
+            -0.4777620160882135,
+            0.023292084289448782,
+            0.00035137609218995866
+          ],
+          "outward_momentum": -0.4541185557065748,
+          "signed_common_translation_work": {
+            "2e-05": -0.45411863935918,
+            "1e-05": -0.45411857572119624
+          },
+          "native_factored_translation": {
+            "2e-05": -0.45411861827604477,
+            "1e-05": -0.4541185546047543
+          },
+          "sealed_vortex_boundary_term": -0.019658599562459498,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "bonded_axial_pin_work_fixed_eulerian_order": 0.010713233624137678,
+          "free_solid_axial_work_fixed_eulerian_order": -0.013857966904264163,
+          "outer_crystal_pin_difference": 0.0,
+          "bath_phase_and_amplitude_pin_work": 0.0,
+          "advected_fixed_order_work_extensions": {
+            "all_volume": -0.04967196334752089,
+            "duct_rim": -0.017695100119794915,
+            "upper_disk_rim": -0.07931734303355142,
+            "outer_bank_rim": -0.05021835034176547
+          },
+          "convected_order_value_change_on_fixed_labels": 0.0,
+          "held_slit_work_banks_mass_and_axial": [
+            [
+              0.49539462843901233,
+              0.04999875451920068
+            ],
+            [
+              -0.4169400674364013,
+              0.3513886052209977
+            ]
+          ],
+          "sharp_slit_total_axial": 0.40138735974019835,
+          "outer_plus_slit_axial": -0.05273119596637643
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "mouth_closed_rim_refinement.py": "aa37354a423c44c726dcdf52d8be11a6440be56bb3d4e091e279e9a56b029192",
+    "mouth_closed_rim_surface_review.py": "762fb15e3dc40d3f0bf9f0c16e415270db245743cc1ba2a7d968722cebe1ec55",
+    "mouth_closed_rim_endpoint.py": "8c050fe3ba57768879cdfaf8fc80401413f4ce6b410b0c926525c8cc4c1b42b0",
+    "mouth_fixed_wall_angular.py": "ba653a2a7219255e6f6bc9541f0c2de08d4d3551d5ae947b086460f6488ef81b",
+    "mouth_closed_rim_work.py": "67e50d45b64c84cb7314b01d2d78e5dd9173748d73822efcea8a648713097aab"
+  },
+  "physical_inputs": {
+    "_scratch/s11c/r4_polar_depth01/coarse/accepted_003.npz": "d53d668168768ec5446388b4a023dd953cf890ed00301363e4ac7b833f076f34",
+    "_scratch/s11c/r4_polar_depth01/transfer/refined/accepted_000.npz": "1b75ca7478bdaf47a12681eb2cd946db1d70473135672bd1f044018c66ab35fb",
+    "_scratch/s11c/supercore_joined_front01/adopt309/state.npz": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+    "_scratch/s11c/fixed_wall_angular01/coarse/equilibrium.npz": "8ed09bb22d2530b0d63d1a3da394012ab357fbf44eef23f1d8e7debee59a9d66",
+    "_scratch/s11c/fixed_wall_angular01/fine/equilibrium.npz": "a3384b79986d7be829bef87c314b5f0ceb9e9ea09cd92b38c64ecb0e71a92c70"
+  },
+  "independent_review": {
+    "record": "mouth_closed_rim_review.json",
+    "verdict": "Scoped clear for the nested conservative weak and signed native work on identical physical support intervals, and for the interpretation that thickness agreement is improved while the common level lacks mesh convergence."
+  }
+}

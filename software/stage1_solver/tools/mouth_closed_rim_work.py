@@ -20,14 +20,14 @@ from mouth_supercore_joined_front import check_guard, emit, file_sha, ORDER_INER
 
 
 class Closed:
-    def __init__(self,m,b,d,pair,window_stride=1):
+    def __init__(self,m,b,d,pair,window_stride=1,*,include_constraints=True):
         self.window_stride=window_stride
         self.m,self.b,self.d,self.pair=m,b,d,pair
         wt,r,a,z,F,Fp,*_=m.D.T
         self.states=[]
         self.order_grad=[]
         self.solid_grad=[]
-        q=d[b.mask]*b.scale
+        q=d[b.mask]*b.scale if include_constraints else None
         self.natural=[]
         for U in pair:
             t,p,c=(m.V@v for v in U)
@@ -36,9 +36,10 @@ class Closed:
             state=physical(m.winding,r,a,(t,p,m.ref[:,0]+c),(gv,gp,gc),F,Fp)
             self.states.append(state)
             self.natural.append((t,gv))
-            _,g=m.evaluate(U)
-            self.order_grad.append(g[2]);set_front(b,m,U);b.energy(q)
-            self.solid_grad.append(b.native.copy())
+            if include_constraints:
+                _,g=m.evaluate(U)
+                self.order_grad.append(g[2]);set_front(b,m,U);b.energy(q)
+                self.solid_grad.append(b.native.copy())
         self.Tr,self.Tz=[np.sum(v,axis=0) for v in (
             a-bb for a,bb in zip(stresses(self.states[0]),stresses(self.states[1])))]
         self.j=lag(self.states[0])[1]*self.states[0][3][:,None]-lag(self.states[1])[1]*self.states[1][3][:,None]
@@ -148,7 +149,7 @@ class Closed:
         if max(abs(v-exact) for v in signed.values())>1e-4:
             raise ArithmeticError(f'Signed material geometry work disagrees {exact}, {signed}')
         if abs(sum(current))>3e-5:raise ArithmeticError(f'All-bank weak mass balance failed {current}')
-        work=self.constraint_diagnostics(ax,eta)
+        work=self.constraint_diagnostics(ax,eta) if self.solid_grad else {}
         return dict(kind='closed_work',axial_band=k,lateral_band=j,**geometry,
                     flux_order=['bottom_outward','top_outward','side_outward'],mass=current.tolist(),
                     outward_mass=sum(current),momentum=momentum.tolist(),outward_momentum=exact,

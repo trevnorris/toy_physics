@@ -1,0 +1,19 @@
+# Independent radius-four disk-work review
+
+**Scoped verdict.** The corrected coupling transfers the same virtual work to the ordered crystal and the conversion field. Bowing a disk with a clamped rim and translating a volume that includes both sloping banks measure different reactions. The unresolved whole-rim force still changes with the fluid grid.
+
+The crystal integration covers every reference triangle whose displaced depth reaches a mobile order basis. Beyond this region the driven and resting order corrections both vanish. Signed displacements of the same material stencil, redeposition to the fluid nodes and the order perturbation give reciprocal work. The solid disk's strain and the work from its displacement relative to the conversion field both enter its direct actuator load. The short virtual displacement fixes the two outer order planes. The extended near and far displacements carry those planes and the specified reference order with the disturbed fields.
+
+| Independent paired measurement | Doubled grid | Rim-refined grid |
+|---|---:|---:|
+| Near / far fluid work with the disk clamped at its edge | −0.000744 / −0.000838 | −0.000992 / −0.001012 |
+| Short fluid work with both outer order planes held | −0.001156 | −0.001036 |
+| Upper minus lower fluid momentum on the disk, weighted by its motion | −0.005616 | −0.002860 |
+| Incident crystal traction on the same weighted disk | +0.006134 | +0.006123 |
+| Sharp surrounding axial sum including both banks, at half-heights 0.16 / 0.235 | −0.069740 / −0.056007 | −0.086361 / −0.073329 |
+
+The fluid readouts use independent trilinear interpolation and complex-step stress. A disk-weighted exterior surface requires the distributed radial-gradient term. On the corrected doubled near enclosure, this term almost cancels the cap work. An independent material trace uses the deformed crystal Cauchy stress on the terminal face. Its sum with the two fluid traces changes from +0.000519 to +0.003263. The same prescribed near-disk displacement gives energetic forces +0.006666 and +0.006408. These one-sided fluxes and energy derivatives have distinct interior load contributions and finite-grid errors. In the full-rim comparison, the terminal strips on both banks have much larger traction/work discrepancies than the upstream strips. On the rim-refined receiving bank, holding the specified order profile fixed in space changes its terminal discrepancy from −0.03821 to −0.03613 or −0.03586 for opposite signed motions. This prescription accounts for a small part of the discrepancy. Completing the bowed disk with a bonded virtual motion of both banks closes the common-translation work to 1.32 × 10⁻⁹. That identity uses the same explicit bank flux and cannot independently validate its recovered value.
+
+**Compression under matched loading.** The saved material and revised conversion field pass their simultaneous force tests on the original 64-subdivision register-aligned rule. I recovered the same material coordinates and resampled them independently. Minimum stretches at 64 subdivisions were 0.21462 and 0.21324 on the doubled and rim-refined fields. At 128 aligned subdivisions the same displacements gave 0.17687 and 0.17651, with minimum volume ratios 0.08046 and 0.07955. Their resampled nodal force residuals were 4.90e-05 and 2.87e-05. A different uniform sampling also places the compression just inside the disk edge. A lower bound on continuum stretch needs stronger control of the piecewise strain at material boundaries.
+
+The outer wall, ordered interior and conserved winding were held throughout. Positive stiffness in the tested directions and positive sampled local volume leave the continuum stretch and reaction at the clamped disk unresolved. [Raw independent readouts](../../../research/pde_ledger_v3/_measurements/mouth_rim_disk_work_review.json)

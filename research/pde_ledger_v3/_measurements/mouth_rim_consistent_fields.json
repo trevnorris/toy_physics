@@ -1,0 +1,781 @@
+{
+  "early_setup": "Both field01 workers exited before field assembly because their copied geometry module resolved its source-relative input manifest from scratch. The original guard errors are retained. Corrected source layout reuses both full crystal load archives and the old field states.",
+  "scope": "Driven and resting same-shape rematch to the same crystal-energy load integrated across element boundaries. Closed axial flux plus both sealed-bank axial tractions; common-translation work verifies external flux only.",
+  "held": "Rejected ordered radius-four wall, one quantum, fixed 33 x 32 material state, old angular shape, order and reservoirs. Physical surface placements match the previous grid study.",
+  "results": {
+    "double": {
+      "source": {
+        "kind": "input",
+        "checkpoint": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "source": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "level": "double",
+        "grid": [
+          26,
+          20,
+          28
+        ],
+        "prior_fields_sha": "02078533996e99c945c8004a8d32b898c9f2ed436c829eaf2b9a2c18baee6e41",
+        "load_sha": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b",
+        "shape": [
+          0.7947544528740486,
+          3.50085165008071
+        ],
+        "internal_amplitude": -0.000850694032942122,
+        "nodes": 149235,
+        "free_order_nodes": 28930
+      },
+      "matched": [
+        {
+          "kind": "matched",
+          "rest": false,
+          "initial_corrected_residual": 0.00044143813569464513,
+          "change_max": [
+            3.8833271864824326e-07,
+            0.00013892479522781276,
+            0.001161598346860887
+          ],
+          "iterations": 22,
+          "energy": -0.7481371957949923,
+          "stationarity": 1.5818492160436737e-07,
+          "gradient_integral_steps": 7,
+          "restarts": 0,
+          "excess_energy": -0.7481371957949923,
+          "feed_current": 11.531526547860626,
+          "bulk_current": 11.531526547860649,
+          "port_error": 2.3092638912203256e-14,
+          "weak_disk_current": 11.531526546505049,
+          "incident_slice_current": 11.531526546505049,
+          "receiving_slice_current": 10.922411725569887,
+          "positive_slice_current": 11.531526547131904,
+          "dense_total_subsonic_share": 0.7200016532979804,
+          "minimum_total_mach": 0.3877801469881352,
+          "total_axial_stress": -93.94915436142993,
+          "crystalline_range_in_band": [
+            0.029024717811630928,
+            0.9486643672472602
+          ]
+        },
+        {
+          "kind": "matched",
+          "rest": true,
+          "initial_corrected_residual": 0.00044147937223188794,
+          "change_max": [
+            3.548448423984496e-09,
+            0.0,
+            0.0011615543413711071
+          ],
+          "iterations": 21,
+          "energy": -3.3518213145366165,
+          "stationarity": 1.3693935765808304e-07,
+          "gradient_integral_steps": 9,
+          "restarts": 0,
+          "excess_energy": -3.3518213145366165,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.32528811803083935,
+          "total_axial_stress": -94.8564193551671,
+          "crystalline_range_in_band": [
+            0.029024722918943344,
+            0.9486643726884597
+          ]
+        }
+      ],
+      "windows": [
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.17190418868261914,
+            0.2238083773652383
+          ],
+          "upper_half_thickness": [
+            0.15823965414660912,
+            0.276607591864238
+          ],
+          "lateral_radius_at_disk": [
+            4.299818764918316,
+            4.838166013882615
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.702118276944555,
+            8.20960265885486,
+            1.4925156179301342
+          ],
+          "outward_mass": -1.5955992083149795e-10,
+          "momentum": [
+            -0.5369188497478709,
+            0.038987099234169306,
+            -0.0022300218553454342
+          ],
+          "outward_momentum": -0.500161772369047,
+          "signed_common_translation_work": {
+            "2e-05": -0.500161857452941,
+            "1e-05": -0.5001617872535391
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5001618429867349,
+            "1e-05": -0.5001617727984353
+          },
+          "sealed_vortex_boundary_term": -0.01861917806667021,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "slit_banks_mass_axial": [
+            [
+              0.4893598879292412,
+              0.10387384858642223
+            ],
+            [
+              -0.41703467008591016,
+              0.342864304634529
+            ]
+          ],
+          "slit_force": 0.44673815322095123,
+          "closed_plus_slit": -0.05342361914809579,
+          "slit_quad_max": 6.563685706062472e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.17190418868261914,
+            0.2238083773652383
+          ],
+          "upper_half_thickness": [
+            0.15823965414660912,
+            0.276607591864238
+          ],
+          "lateral_radius_at_disk": [
+            4.838166013882615,
+            5.592986996423143
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.774567977536313,
+            8.50098824319753,
+            1.2735797341900912
+          ],
+          "outward_mass": -1.4869216968804722e-10,
+          "momentum": [
+            -0.5245941343174133,
+            0.024420142729786404,
+            -7.160956398061802e-05
+          ],
+          "outward_momentum": -0.5002456011516075,
+          "signed_common_translation_work": {
+            "2e-05": -0.5002456854197312,
+            "1e-05": -0.5002456177960468
+          },
+          "native_factored_translation": {
+            "2e-05": -0.5002456710756498,
+            "1e-05": -0.5002456034519653
+          },
+          "sealed_vortex_boundary_term": -0.01861917806667021,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "slit_banks_mass_axial": [
+            [
+              0.4893598879292412,
+              0.10387384858642223
+            ],
+            [
+              -0.41703467008591016,
+              0.342864304634529
+            ]
+          ],
+          "slit_force": 0.44673815322095123,
+          "closed_plus_slit": -0.053507447930656316,
+          "slit_quad_max": 6.563685706062472e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.2238083773652383,
+            0.2757125660478573
+          ],
+          "upper_half_thickness": [
+            0.276607591864238,
+            0.48639893828032676
+          ],
+          "lateral_radius_at_disk": [
+            4.299818764918316,
+            4.838166013882615
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.870975100456638,
+            7.603395579775595,
+            2.2675795204657057
+          ],
+          "outward_mass": -2.1533708149945596e-10,
+          "momentum": [
+            -0.4896031555423335,
+            0.03721689881959783,
+            -0.0017372630334704649
+          ],
+          "outward_momentum": -0.45412351975620613,
+          "signed_common_translation_work": {
+            "2e-05": -0.4541236041100127,
+            "1e-05": -0.45412353888441
+          },
+          "native_factored_translation": {
+            "2e-05": -0.454123583149002,
+            "1e-05": -0.4541235178567859
+          },
+          "sealed_vortex_boundary_term": -0.019663372591464716,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "slit_banks_mass_axial": [
+            [
+              0.49284805653664077,
+              0.050386967006876233
+            ],
+            [
+              -0.4195076202647312,
+              0.35042886588627076
+            ]
+          ],
+          "slit_force": 0.400815832893147,
+          "closed_plus_slit": -0.053307686863059145,
+          "slit_quad_max": 6.458110435314524e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.2238083773652383,
+            0.2757125660478573
+          ],
+          "upper_half_thickness": [
+            0.276607591864238,
+            0.48639893828032676
+          ],
+          "lateral_radius_at_disk": [
+            4.838166013882615,
+            5.592986996423143
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.935811807596055,
+            8.011295279502244,
+            1.9245165278936633
+          ],
+          "outward_mass": -2.0014767621034935e-10,
+          "momentum": [
+            -0.47787693720128405,
+            0.023302069827328475,
+            0.00035921355428045535
+          ],
+          "outward_momentum": -0.4542156538196751,
+          "signed_common_translation_work": {
+            "2e-05": -0.4542157368780941,
+            "1e-05": -0.45421567493875153
+          },
+          "native_factored_translation": {
+            "2e-05": -0.4542157158171633,
+            "1e-05": -0.45421565384451407
+          },
+          "sealed_vortex_boundary_term": -0.019663372591464716,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "slit_banks_mass_axial": [
+            [
+              0.49284805653664077,
+              0.050386967006876233
+            ],
+            [
+              -0.4195076202647312,
+              0.35042886588627076
+            ]
+          ],
+          "slit_force": 0.400815832893147,
+          "closed_plus_slit": -0.05339982092652812,
+          "slit_quad_max": 6.458110435314524e-11
+        }
+      ],
+      "corrected_minus_legacy_closed": {
+        "2,4": -0.00022622095811258847,
+        "2,5": -0.00022622074389205826,
+        "3,4": -0.00022625555811378595,
+        "3,5": -0.00022625549978116943
+      },
+      "strips": [
+        {
+          "kind": "strip",
+          "depth_from_exit": 0.0075,
+          "bank_mass_axial": [
+            [
+              0.3374409625164797,
+              0.36426385275246587
+            ],
+            [
+              -0.21927290228572988,
+              0.22011768428831638
+            ]
+          ],
+          "strip_axial": 0.5843815370407822,
+          "cumulative_axial": 0.5843815370407822
+        },
+        {
+          "kind": "strip",
+          "depth_from_exit": 0.015,
+          "bank_mass_axial": [
+            [
+              0.3828616322003513,
+              0.3661692320360114
+            ],
+            [
+              -0.28780764109537876,
+              0.26144933660753467
+            ]
+          ],
+          "strip_axial": 0.04323703160276385,
+          "cumulative_axial": 0.627618568643546
+        },
+        {
+          "kind": "strip",
+          "depth_from_exit": 0.03,
+          "bank_mass_axial": [
+            [
+              0.4188933213215919,
+              0.34594057016693414
+            ],
+            [
+              -0.33930515198448397,
+              0.2868093228233273
+            ]
+          ],
+          "strip_axial": 0.005131324346715316,
+          "cumulative_axial": 0.6327498929902614
+        }
+      ],
+      "corrected_field_sha": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+      "corrected_order_sha": "3d6f81dce8b659a28428711af6c95c4ca5c42587ed41db8d916d66a6da244e78",
+      "guard_limits_verified": true,
+      "cap_gib": 16,
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/src/mouth_rim_consistent_fields.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_fluid01/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_crystal01/double/load.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double"
+      ],
+      "pinned_tool_sha": "15e227fc4298bcfc1bf832ab8d5c3d8e6585cf26df8b1395b989f2d6d588aec2",
+      "transcript_hash": "0ef42021e743a9c30495641884a8f0b9b04f13dfe0c403c32b9ca5ca21441edc"
+    },
+    "local": {
+      "source": {
+        "kind": "input",
+        "checkpoint": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "source": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+        "level": "local",
+        "grid": [
+          32,
+          20,
+          34
+        ],
+        "prior_fields_sha": "b05d94b9f9411a1b4506750359789b0e9d8e110ed674501233d072b290382434",
+        "load_sha": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679",
+        "shape": [
+          0.7947544528740486,
+          3.50085165008071
+        ],
+        "internal_amplitude": -0.000850694032942122,
+        "nodes": 223983,
+        "free_order_nodes": 43684
+      },
+      "matched": [
+        {
+          "kind": "matched",
+          "rest": false,
+          "initial_corrected_residual": 0.0004994019312860664,
+          "change_max": [
+            3.894373450386013e-07,
+            0.00018297054769150778,
+            0.0012078543833447808
+          ],
+          "iterations": 22,
+          "energy": -0.744678059742381,
+          "stationarity": 1.6280351394435654e-07,
+          "gradient_integral_steps": 7,
+          "restarts": 0,
+          "excess_energy": -0.744678059742381,
+          "feed_current": 11.52625959872799,
+          "bulk_current": 11.526259598727911,
+          "port_error": 7.815970093361102e-14,
+          "weak_disk_current": 11.526259553860026,
+          "incident_slice_current": 11.526259553860026,
+          "receiving_slice_current": 11.108896120776572,
+          "positive_slice_current": 11.52625955449336,
+          "dense_total_subsonic_share": 0.7237186667866647,
+          "minimum_total_mach": 0.38739790506780014,
+          "total_axial_stress": -95.7367566197171,
+          "crystalline_range_in_band": [
+            0.028905456543820474,
+            0.9486640473559982
+          ]
+        },
+        {
+          "kind": "matched",
+          "rest": true,
+          "initial_corrected_residual": 0.0004994907585336989,
+          "change_max": [
+            1.2126109005805574e-09,
+            0.0,
+            0.0012078587517772577
+          ],
+          "iterations": 21,
+          "energy": -3.347176239792458,
+          "stationarity": 1.776638883321833e-07,
+          "gradient_integral_steps": 8,
+          "restarts": 0,
+          "excess_energy": -3.347176239792458,
+          "feed_current": -0.0,
+          "bulk_current": 0.0,
+          "port_error": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "dense_total_subsonic_share": null,
+          "minimum_total_mach": 0.32511438907696155,
+          "total_axial_stress": -96.65087513494002,
+          "crystalline_range_in_band": [
+            0.02890545913642562,
+            0.9486640534008652
+          ]
+        }
+      ],
+      "windows": [
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.17190418868261914,
+            0.2238083773652383
+          ],
+          "upper_half_thickness": [
+            0.15823965414660912,
+            0.276607591864238
+          ],
+          "lateral_radius_at_disk": [
+            4.299818764918316,
+            4.838166013882615
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.700166419438162,
+            8.209113260385365,
+            1.491053158773956
+          ],
+          "outward_mass": -2.788407282849903e-10,
+          "momentum": [
+            -0.5358716525671838,
+            0.039164304069195306,
+            -0.002250969500046018
+          ],
+          "outward_momentum": -0.49895831799803453,
+          "signed_common_translation_work": {
+            "2e-05": -0.4989584036274585,
+            "1e-05": -0.49895834175472936
+          },
+          "native_factored_translation": {
+            "2e-05": -0.49895838942770604,
+            "1e-05": -0.4989583274994657
+          },
+          "sealed_vortex_boundary_term": -0.018661866311368416,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "slit_banks_mass_axial": [
+            [
+              0.3361338370018341,
+              0.06241715608109222
+            ],
+            [
+              -0.31163329482097196,
+              0.35880046107321734
+            ]
+          ],
+          "slit_force": 0.42121761715430955,
+          "closed_plus_slit": -0.07774070084372497,
+          "slit_quad_max": 6.081551928716067e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 2,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.17190418868261914,
+            0.2238083773652383
+          ],
+          "upper_half_thickness": [
+            0.15823965414660912,
+            0.276607591864238
+          ],
+          "lateral_radius_at_disk": [
+            4.838166013882615,
+            5.592986996423143
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.771469444863877,
+            8.499047636564969,
+            1.2724218080290912
+          ],
+          "outward_mass": -2.6981705758544194e-10,
+          "momentum": [
+            -0.5235737765418708,
+            0.024610579981342032,
+            -7.759798380790234e-05
+          ],
+          "outward_momentum": -0.49904079454433664,
+          "signed_common_translation_work": {
+            "2e-05": -0.4990408780880528,
+            "1e-05": -0.4990408180693961
+          },
+          "native_factored_translation": {
+            "2e-05": -0.4990408639882204,
+            "1e-05": -0.4990408039473592
+          },
+          "sealed_vortex_boundary_term": -0.018661866311368416,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "slit_banks_mass_axial": [
+            [
+              0.3361338370018341,
+              0.06241715608109222
+            ],
+            [
+              -0.31163329482097196,
+              0.35880046107321734
+            ]
+          ],
+          "slit_force": 0.42121761715430955,
+          "closed_plus_slit": -0.07782317739002709,
+          "slit_quad_max": 6.081551928716067e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 4,
+          "lower_half_thickness": [
+            0.2238083773652383,
+            0.2757125660478573
+          ],
+          "upper_half_thickness": [
+            0.276607591864238,
+            0.48639893828032676
+          ],
+          "lateral_radius_at_disk": [
+            4.299818764918316,
+            4.838166013882615
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.868618606388303,
+            7.60297289768168,
+            2.265645708440426
+          ],
+          "outward_mass": -2.661963982575344e-10,
+          "momentum": [
+            -0.4888589092259287,
+            0.037608667631088846,
+            -0.0017798677913271968
+          ],
+          "outward_momentum": -0.45303010938616706,
+          "signed_common_translation_work": {
+            "2e-05": -0.45303019194919963,
+            "1e-05": -0.4530301287664073
+          },
+          "native_factored_translation": {
+            "2e-05": -0.4530301711658246,
+            "1e-05": -0.45303010793862336
+          },
+          "sealed_vortex_boundary_term": -0.019695104229098984,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "slit_banks_mass_axial": [
+            [
+              0.3378353080210157,
+              0.008919320015655237
+            ],
+            [
+              -0.3128982259570617,
+              0.3662763435886246
+            ]
+          ],
+          "slit_force": 0.37519566360427986,
+          "closed_plus_slit": -0.0778344457818872,
+          "slit_quad_max": 6.000336165434828e-11
+        },
+        {
+          "kind": "closed_work",
+          "axial_band": 3,
+          "lateral_band": 5,
+          "lower_half_thickness": [
+            0.2238083773652383,
+            0.2757125660478573
+          ],
+          "upper_half_thickness": [
+            0.276607591864238,
+            0.48639893828032676
+          ],
+          "lateral_radius_at_disk": [
+            4.838166013882615,
+            5.592986996423143
+          ],
+          "flux_order": [
+            "bottom_outward",
+            "top_outward",
+            "side_outward"
+          ],
+          "mass": [
+            -9.932430024968154,
+            8.009605036239162,
+            1.9228249884753887
+          ],
+          "outward_mass": -2.536035825784211e-10,
+          "momentum": [
+            -0.47716032247092194,
+            0.02369586737741621,
+            0.0003454487978719572
+          ],
+          "outward_momentum": -0.4531190062956338,
+          "signed_common_translation_work": {
+            "2e-05": -0.4531190872625323,
+            "1e-05": -0.4531190262113682
+          },
+          "native_factored_translation": {
+            "2e-05": -0.45311906635703275,
+            "1e-05": -0.4531190052947664
+          },
+          "sealed_vortex_boundary_term": -0.019695104229098984,
+          "crystal_flux_drive_minus_rest": 0.0,
+          "slit_banks_mass_axial": [
+            [
+              0.3378353080210157,
+              0.008919320015655237
+            ],
+            [
+              -0.3128982259570617,
+              0.3662763435886246
+            ]
+          ],
+          "slit_force": 0.37519566360427986,
+          "closed_plus_slit": -0.07792334269135393,
+          "slit_quad_max": 6.000336165434828e-11
+        }
+      ],
+      "corrected_minus_legacy_closed": {
+        "2,4": -0.00015338668157272028,
+        "2,5": -0.00015338651434515516,
+        "3,4": -0.0001534371746779728,
+        "3,5": -0.00015343713148918692
+      },
+      "strips": [
+        {
+          "kind": "strip",
+          "depth_from_exit": 0.0075,
+          "bank_mass_axial": [
+            [
+              0.2603020023045686,
+              0.34951164018284603
+            ],
+            [
+              -0.20013214941098695,
+              0.2611499253201522
+            ]
+          ],
+          "strip_axial": 0.6106615655029982,
+          "cumulative_axial": 0.6106615655029982
+        },
+        {
+          "kind": "strip",
+          "depth_from_exit": 0.015,
+          "bank_mass_axial": [
+            [
+              0.2843972026449638,
+              0.3393650711053054
+            ],
+            [
+              -0.24067909300184254,
+              0.28848787300796713
+            ]
+          ],
+          "strip_axial": 0.01719137861027431,
+          "cumulative_axial": 0.6278529441132725
+        },
+        {
+          "kind": "strip",
+          "depth_from_exit": 0.03,
+          "bank_mass_axial": [
+            [
+              0.30185062911654403,
+              0.3121203724887375
+            ],
+            [
+              -0.270712293310301,
+              0.3079324228734748
+            ]
+          ],
+          "strip_axial": -0.007800148751060276,
+          "cumulative_axial": 0.6200527953622123
+        }
+      ],
+      "corrected_field_sha": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+      "corrected_order_sha": "1fbe912c1a609dca0d91ceff3e1ad9432a36882af46c67df6d319d530ab2178f",
+      "guard_limits_verified": true,
+      "cap_gib": 24,
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/src/mouth_rim_consistent_fields.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_fluid01/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_crystal01/local/load.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local"
+      ],
+      "pinned_tool_sha": "15e227fc4298bcfc1bf832ab8d5c3d8e6585cf26df8b1395b989f2d6d588aec2",
+      "transcript_hash": "7e68853de4f732a98fe1a1e8963f14b766028f628e44db675ffb5f7f6771d887"
+    }
+  }
+}

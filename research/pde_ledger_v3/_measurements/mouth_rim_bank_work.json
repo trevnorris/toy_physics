@@ -1,0 +1,1638 @@
+{
+  "scope": "One-sided domain variations at the sloping slit. Each moving-bank trace vanishes at the shared disk and outside its depth strip. Comparison moves the material and every prescribed order value on that bank together. An alternative fixed-Eulerian order profile entails separate pin work. Stationarity of the held crystal is not assumed. Observed mismatch includes any discrete balance error and these imposed mechanical constraints; it is not an absolute disk or mouth force.",
+  "sign": "Minus signed change in driven-minus-resting energy compared with outward canonical momentum on the same face. Fields are pulled back, the factorized vortex measure includes its boundary term, and the duct crystal strain is integrated on its reference triangles with the paired mobile order. No altered wall or field is evolved.",
+  "data": {
+    "double": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_bank_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_fluid01/double/fields.npz",
+        "double"
+      ],
+      "tool_sha": "adf8fef005e62fbb57fb54fecfac1a9a4bcf4c7c392d94479e4b2b9d48cbd669",
+      "guard_exit": 0,
+      "stdout_sha": "51735a753b8d228ff6d5b46b22092a4cabb01c6e39594ef8b97f758d15d0704c",
+      "source": {
+        "kind": "source",
+        "field": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "load": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b",
+        "reference": "02078533996e99c945c8004a8d32b898c9f2ed436c829eaf2b9a2c18baee6e41",
+        "load_plane": "double"
+      },
+      "results": [
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.0003101811640803745,
+          "signed_solid": 0.00031018116425388326,
+          "total_native": -0.04684687681878814,
+          "native_minus_wall": -0.07420409771742822,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.0032548420191541583,
+            -0.048850005548767436,
+            0.004947789415317594
+          ],
+          "direct_reaction": [
+            -0.047157059507307864,
+            -0.04715705875790732
+          ],
+          "native_including_vortex_bank": [
+            -0.0471570595926919,
+            -0.04715705798286851
+          ],
+          "vortex_bank_energy_derivative": -0.0019382774669650664,
+          "outward_wall_axial": 0.027357220898640094,
+          "outward_wall_mass": 0.101759894193397
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.0003101811640803745,
+          "signed_solid": 0.00031018116425388326,
+          "total_native": -0.04680680888348261,
+          "native_minus_wall": -0.07417523560623149,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.0032548660957833,
+            -0.04880989844092884,
+            0.004947774941476357
+          ],
+          "direct_reaction": [
+            -0.047116990746498555,
+            -0.04711698873421932
+          ],
+          "native_including_vortex_bank": [
+            -0.04711699096349698,
+            -0.047116990047562986
+          ],
+          "vortex_bank_energy_derivative": -0.0019382769259559348,
+          "outward_wall_axial": 0.027368426722748883,
+          "outward_wall_mass": 0.1017621154440996
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0017191459499466318,
+          "signed_solid": 0.0017191459508833287,
+          "total_native": -0.04589362240513769,
+          "native_minus_wall": -0.07325084330377779,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.0038951735202216176,
+            -0.0528176370496492,
+            0.009100045047701677
+          ],
+          "direct_reaction": [
+            -0.04761276831133365,
+            -0.04761276828357808
+          ],
+          "native_including_vortex_bank": [
+            -0.047612768660395655,
+            -0.04761276835508432
+          ],
+          "vortex_bank_energy_derivative": -0.0019382774669650664,
+          "outward_wall_axial": 0.027357220898640094,
+          "outward_wall_mass": 0.101759894193397
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0017191459499466318,
+          "signed_solid": 0.0017191459508833287,
+          "total_native": -0.04585578479686633,
+          "native_minus_wall": -0.07322421151961522,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.003895187722409668,
+            -0.05277979220313221,
+            0.009100049249514353
+          ],
+          "direct_reaction": [
+            -0.04757492887835779,
+            -0.04757493153595416
+          ],
+          "native_including_vortex_bank": [
+            -0.04757493175989148,
+            -0.04757493074681297
+          ],
+          "vortex_bank_energy_derivative": -0.0019382769259559348,
+          "outward_wall_axial": 0.027368426722748883,
+          "outward_wall_mass": 0.1017621154440996
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.026493760551566697,
+          "native_minus_wall": -0.05232496421434274,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0024450492508571176,
+            0.024048712314372687,
+            0.0
+          ],
+          "direct_reaction": [
+            0.02649376048408092,
+            0.02649376114327584
+          ],
+          "native_including_vortex_bank": [
+            0.026493760620955636,
+            0.026493760551566697
+          ],
+          "vortex_bank_energy_derivative": -0.0019482475683127837,
+          "outward_wall_axial": 0.07881872476590944,
+          "outward_wall_mass": -0.11923591884078477
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.026496004849197948,
+          "native_minus_wall": -0.05232196058899957,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.0024450735024054496,
+            0.024050931757590623,
+            0.0
+          ],
+          "direct_reaction": [
+            0.02649600442175548,
+            0.02649600350235204
+          ],
+          "native_including_vortex_bank": [
+            0.026496004547356063,
+            0.026496004849197948
+          ],
+          "vortex_bank_energy_derivative": -0.001948247286421787,
+          "outward_wall_axial": 0.07881796543819752,
+          "outward_wall_mass": -0.11923573781331681
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.026337810909477826,
+          "native_minus_wall": -0.05248091385643161,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0025714945010684165,
+            0.023766315342077744,
+            0.0
+          ],
+          "direct_reaction": [
+            0.026337809662380085,
+            0.026337809141963042
+          ],
+          "native_including_vortex_bank": [
+            0.026337809029037578,
+            0.026337810909477826
+          ],
+          "vortex_bank_energy_derivative": -0.0019482475683127837,
+          "outward_wall_axial": 0.07881872476590944,
+          "outward_wall_mass": -0.11923591884078477
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.026339762642525407,
+          "native_minus_wall": -0.05247820279567211,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.002571493511662193,
+            0.023768268658711983,
+            0.0
+          ],
+          "direct_reaction": [
+            0.026339759671978324,
+            0.026339764203076044
+          ],
+          "native_including_vortex_bank": [
+            0.02633976131719667,
+            0.026339762642525407
+          ],
+          "vortex_bank_energy_derivative": -0.001948247286421787,
+          "outward_wall_axial": 0.07881796543819752,
+          "outward_wall_mass": -0.11923573781331681
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.00013245694732708058,
+          "signed_solid": 0.0001324569473458808,
+          "total_native": -0.059952759975748005,
+          "native_minus_wall": -0.004744917318386228,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.0015020670815928741,
+            -0.057730404514528606,
+            -0.0008527452789737211
+          ],
+          "direct_reaction": [
+            -0.06008521649669696,
+            -0.060085215955463234
+          ],
+          "native_including_vortex_bank": [
+            -0.06008521707573075,
+            -0.060085216923075085
+          ],
+          "vortex_bank_energy_derivative": -0.0010716935571783175,
+          "outward_wall_axial": -0.055207842657361776,
+          "outward_wall_mass": 0.021352265647329456
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.00013245694732708058,
+          "signed_solid": 0.0001324569473458808,
+          "total_native": -0.059952220326810225,
+          "native_minus_wall": -0.004744364988412658,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.0015020812781716807,
+            -0.05772983938600568,
+            -0.000852757126697079
+          ],
+          "direct_reaction": [
+            -0.06008467768117698,
+            -0.06008467616502866
+          ],
+          "native_including_vortex_bank": [
+            -0.06008467832537973,
+            -0.060084677274137306
+          ],
+          "vortex_bank_energy_derivative": -0.0010716927981199633,
+          "outward_wall_axial": -0.05520785533839757,
+          "outward_wall_mass": 0.021352251012164505
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0008281679796684375,
+          "signed_solid": 0.0008281679798267936,
+          "total_native": -0.05940342291190813,
+          "native_minus_wall": -0.004195580254546354,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.0023566901575843013,
+            -0.05258257705507461,
+            -0.005292328693688564
+          ],
+          "direct_reaction": [
+            -0.06023159546120205,
+            -0.0602315967657141
+          ],
+          "native_including_vortex_bank": [
+            -0.060231597469647985,
+            -0.060231590891576564
+          ],
+          "vortex_bank_energy_derivative": -0.0010716935571783175,
+          "outward_wall_axial": -0.055207842657361776,
+          "outward_wall_mass": 0.021352265647329456
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0008281679796684375,
+          "signed_solid": 0.0008281679798267936,
+          "total_native": -0.05940302346332168,
+          "native_minus_wall": -0.004195168124924112,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.0023567007833736123,
+            -0.05258215067987489,
+            -0.005292343075985917
+          ],
+          "direct_reaction": [
+            -0.06023119800135923,
+            -0.06023119256126641
+          ],
+          "native_including_vortex_bank": [
+            -0.06023119673042727,
+            -0.06023119144299011
+          ],
+          "vortex_bank_energy_derivative": -0.0010716927981199633,
+          "outward_wall_axial": -0.05520785533839757,
+          "outward_wall_mass": 0.021352251012164505
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.011867972469687085,
+          "native_minus_wall": -0.003090055604190317,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0011576750116190915,
+            0.01071029694799081,
+            0.0
+          ],
+          "direct_reaction": [
+            0.011867971570767022,
+            0.011867972549151062
+          ],
+          "native_including_vortex_bank": [
+            0.011867972101925708,
+            0.011867972469687085
+          ],
+          "vortex_bank_energy_derivative": -0.0017690682012907613,
+          "outward_wall_axial": 0.014958028073877402,
+          "outward_wall_mass": -0.024416351979799734
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.011868443237234013,
+          "native_minus_wall": -0.003089581233678529,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.0011577028837898434,
+            0.010710740044649532,
+            0.0
+          ],
+          "direct_reaction": [
+            0.01186844307207724,
+            0.011868443387796912
+          ],
+          "native_including_vortex_bank": [
+            0.011868442473955684,
+            0.011868443237234013
+          ],
+          "vortex_bank_energy_derivative": -0.001769067963658384,
+          "outward_wall_axial": 0.014958024470912542,
+          "outward_wall_mass": -0.024416329754660102
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.011801535835715096,
+          "native_minus_wall": -0.003156492238162306,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0012833553113139606,
+            0.010518180242965183,
+            0.0
+          ],
+          "direct_reaction": [
+            0.01180153495067282,
+            0.011801534874344988
+          ],
+          "native_including_vortex_bank": [
+            0.011801535141825706,
+            0.011801535835715096
+          ],
+          "vortex_bank_energy_derivative": -0.0017690682012907613,
+          "outward_wall_axial": 0.014958028073877402,
+          "outward_wall_mass": -0.024416351979799734
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.01180160102491334,
+          "native_minus_wall": -0.0031564234459992013,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.0012833582424409407,
+            0.010518243687699566,
+            0.0
+          ],
+          "direct_reaction": [
+            0.011801602400191014,
+            0.011801598115424028
+          ],
+          "native_including_vortex_bank": [
+            0.011801602280853137,
+            0.01180160102491334
+          ],
+          "vortex_bank_energy_derivative": -0.001769067963658384,
+          "outward_wall_axial": 0.014958024470912542,
+          "outward_wall_mass": -0.024416329754660102
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": -0.04604611483546778,
+          "native_minus_wall": -0.0005715191936076988,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.0006531807999681505,
+            -0.045392934885847204,
+            0.0
+          ],
+          "direct_reaction": [
+            -0.04604611503200573,
+            -0.04604611503200573
+          ],
+          "native_including_vortex_bank": [
+            -0.0460461159456908,
+            -0.04604611483546778
+          ],
+          "vortex_bank_energy_derivative": 0.0002567235568288733,
+          "outward_wall_axial": -0.04547459564186008,
+          "outward_wall_mass": 0.004498211952236474
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": -0.046046061077156024,
+          "native_minus_wall": -0.0005715090260087555,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.0006531819318118387,
+            -0.045392883864246655,
+            0.0
+          ],
+          "direct_reaction": [
+            -0.046046066196070434,
+            -0.04604606579361459
+          ],
+          "native_including_vortex_bank": [
+            -0.04604606540702582,
+            -0.046046061077156024
+          ],
+          "vortex_bank_energy_derivative": 0.000256724005156301,
+          "outward_wall_axial": -0.04547455205114727,
+          "outward_wall_mass": 0.00449867802999153
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": -0.0457769948869195,
+          "native_minus_wall": -0.000302399245059419,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.0008230327421837602,
+            -0.044953958651636226,
+            0.0
+          ],
+          "direct_reaction": [
+            -0.0457769906980765,
+            -0.045776984536338716
+          ],
+          "native_including_vortex_bank": [
+            -0.04577699177829503,
+            -0.0457769948869195
+          ],
+          "vortex_bank_energy_derivative": 0.0002567235568288733,
+          "outward_wall_axial": -0.04547459564186008,
+          "outward_wall_mass": 0.004498211952236474
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": -0.045777020454042854,
+          "native_minus_wall": -0.00030246840289558513,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.0008230363687413145,
+            -0.04495398129253679,
+            0.0
+          ],
+          "direct_reaction": [
+            -0.0457770155115611,
+            -0.045777021201454104
+          ],
+          "native_including_vortex_bank": [
+            -0.0457770175535852,
+            -0.045777020454042854
+          ],
+          "vortex_bank_energy_derivative": 0.000256724005156301,
+          "outward_wall_axial": -0.04547455205114727,
+          "outward_wall_mass": 0.00449867802999153
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.00652191723832056,
+          "native_minus_wall": -0.00017964233929895074,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0006135400105297117,
+            0.005908373282324463,
+            0.0
+          ],
+          "direct_reaction": [
+            0.006521915785207,
+            0.006521913675783253
+          ],
+          "native_including_vortex_bank": [
+            0.006521912519872705,
+            0.00652191723832056
+          ],
+          "vortex_bank_energy_derivative": -0.001310567886268307,
+          "outward_wall_axial": 0.0067015595776195105,
+          "outward_wall_mass": -0.003228328998432425
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.006521935574057684,
+          "native_minus_wall": -0.0001796155079676542,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.0006135414315604493,
+            0.0059083961755236145,
+            0.0
+          ],
+          "direct_reaction": [
+            0.006521938142323158,
+            0.006521937823134039
+          ],
+          "native_including_vortex_bank": [
+            0.006521936642647345,
+            0.006521935574057684
+          ],
+          "vortex_bank_energy_derivative": -0.0013105676812809198,
+          "outward_wall_axial": 0.006701551082025338,
+          "outward_wall_mass": -0.003228162612986049
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.0064828349453631,
+          "native_minus_wall": -0.00021872463225641042,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0006626293798832616,
+            0.005820209589624379,
+            0.0
+          ],
+          "direct_reaction": [
+            0.006482841485855317,
+            0.006482831937937306
+          ],
+          "native_including_vortex_bank": [
+            0.006482837110297998,
+            0.0064828349453631
+          ],
+          "vortex_bank_energy_derivative": -0.001310567886268307,
+          "outward_wall_axial": 0.0067015595776195105,
+          "outward_wall_mass": -0.003228328998432425
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.006482889252326222,
+          "native_minus_wall": -0.00021866182969911604,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.0006626347050345816,
+            0.005820251878356802,
+            0.0
+          ],
+          "direct_reaction": [
+            0.006482885561709395,
+            0.006482889780556889
+          ],
+          "native_including_vortex_bank": [
+            0.006482886629424326,
+            0.006482889252326222
+          ],
+          "vortex_bank_energy_derivative": -0.0013105676812809198,
+          "outward_wall_axial": 0.006701551082025338,
+          "outward_wall_mass": -0.003228162612986049
+        }
+      ]
+    },
+    "local": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_bank_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_fluid01/double/fields.npz",
+        "local"
+      ],
+      "tool_sha": "adf8fef005e62fbb57fb54fecfac1a9a4bcf4c7c392d94479e4b2b9d48cbd669",
+      "guard_exit": 0,
+      "stdout_sha": "69f8e2a52321cfeb4845ae6b9298b624865d35d2c8764f45829dac41d7a60b88",
+      "source": {
+        "kind": "source",
+        "field": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+        "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "load": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679",
+        "reference": "02078533996e99c945c8004a8d32b898c9f2ed436c829eaf2b9a2c18baee6e41",
+        "load_plane": "local"
+      },
+      "results": [
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.00030506769772206324,
+          "signed_solid": 0.00030506769789538396,
+          "total_native": -0.04767748851189299,
+          "native_minus_wall": -0.043135511396103936,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.00322085721164498,
+            -0.0493895162397818,
+            0.0046278174154386065
+          ],
+          "direct_reaction": [
+            -0.04798255745855351,
+            -0.047982556816705824
+          ],
+          "native_including_vortex_bank": [
+            -0.047982557604332725,
+            -0.04798255620961505
+          ],
+          "vortex_bank_energy_derivative": -0.001864985030929086,
+          "outward_wall_axial": -0.004541977115789057,
+          "outward_wall_mass": 0.05434890577257242
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.00030506769772206324,
+          "signed_solid": 0.00030506769789538396,
+          "total_native": -0.04765548122794588,
+          "native_minus_wall": -0.04311694251208372,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.0032208644820268424,
+            -0.049367500583994625,
+            0.004627816387437256
+          ],
+          "direct_reaction": [
+            -0.04796055041826619,
+            -0.047960548175268736
+          ],
+          "native_including_vortex_bank": [
+            -0.047960549888439466,
+            -0.04796054892566794
+          ],
+          "vortex_bank_energy_derivative": -0.001864984502636931,
+          "outward_wall_axial": -0.004538538715862156,
+          "outward_wall_mass": 0.05434885887161993
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0017090505766571285,
+          "signed_solid": 0.0017090505775870578,
+          "total_native": -0.04625636564214238,
+          "native_minus_wall": -0.04171438852635333,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.0038350212826943897,
+            -0.05280000277402659,
+            0.0086696076623749
+          ],
+          "direct_reaction": [
+            -0.04796541787366326,
+            -0.0479654144180941
+          ],
+          "native_including_vortex_bank": [
+            -0.047965418078423076,
+            -0.04796541621879951
+          ],
+          "vortex_bank_energy_derivative": -0.001864985030929086,
+          "outward_wall_axial": -0.004541977115789057,
+          "outward_wall_mass": 0.05434890577257242
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0017090505766571285,
+          "signed_solid": 0.0017090505775870578,
+          "total_native": -0.04623508815636161,
+          "native_minus_wall": -0.041696549440499456,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.0038350286681527596,
+            -0.0527787232827137,
+            0.008669618987363847
+          ],
+          "direct_reaction": [
+            -0.04794413752465254,
+            -0.04794412779285384
+          ],
+          "native_including_vortex_bank": [
+            -0.04794413649175601,
+            -0.04794413873301874
+          ],
+          "vortex_bank_energy_derivative": -0.001864984502636931,
+          "outward_wall_axial": -0.004538538715862156,
+          "outward_wall_mass": 0.05434885887161993
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.023616893440176565,
+          "native_minus_wall": -0.037993126958026355,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0022584525768429425,
+            0.021358440845729645,
+            0.0
+          ],
+          "direct_reaction": [
+            0.023616892032285453,
+            0.023616894259670396
+          ],
+          "native_including_vortex_bank": [
+            0.0236168921495423,
+            0.023616893440176565
+          ],
+          "vortex_bank_energy_derivative": -0.0019123631976487331,
+          "outward_wall_axial": 0.061610020398202923,
+          "outward_wall_mass": -0.07651144864756076
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.023617185708492517,
+          "native_minus_wall": -0.037992640879079054,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.002258457519590522,
+            0.021358728851826273,
+            0.0
+          ],
+          "direct_reaction": [
+            0.023617185845870026,
+            0.023617185800767215
+          ],
+          "native_including_vortex_bank": [
+            0.023617185652981366,
+            0.023617185708492517
+          ],
+          "vortex_bank_energy_derivative": -0.0019123629221976962,
+          "outward_wall_axial": 0.06160982658757157,
+          "outward_wall_mass": -0.07651139588342834
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.023397417891330517,
+          "native_minus_wall": -0.0382126025068724,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0023795673338888323,
+            0.02101785045678311,
+            0.0
+          ],
+          "direct_reaction": [
+            0.023397416792220183,
+            0.023397417447945656
+          ],
+          "native_including_vortex_bank": [
+            0.023397416343957176,
+            0.023397417891330517
+          ],
+          "vortex_bank_energy_derivative": -0.0019123631976487331,
+          "outward_wall_axial": 0.061610020398202923,
+          "outward_wall_mass": -0.07651144864756076
+        },
+        {
+          "kind": "bank_test",
+          "strip": "near",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.7604687385883343,
+            0.7776115957311914,
+            0.7947544528740486
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.023397624911865412,
+          "native_minus_wall": -0.03821220167570616,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.002379566171998887,
+            0.021018062065472257,
+            0.0
+          ],
+          "direct_reaction": [
+            0.023397626646923242,
+            0.023397631308125222
+          ],
+          "native_including_vortex_bank": [
+            0.023397628405598492,
+            0.023397624911865412
+          ],
+          "vortex_bank_energy_derivative": -0.0019123629221976962,
+          "outward_wall_axial": 0.06160982658757157,
+          "outward_wall_mass": -0.07651139588342834
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.0001282962461706988,
+          "signed_solid": 0.0001282962461889242,
+          "total_native": -0.0598476270076885,
+          "native_minus_wall": -0.002296993460712965,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.0014801485581641474,
+            -0.05760074446434962,
+            -0.0008950289801046285
+          ],
+          "direct_reaction": [
+            -0.059975921604116245,
+            -0.059975920840837915
+          ],
+          "native_including_vortex_bank": [
+            -0.05997592196322494,
+            -0.059975923253859205
+          ],
+          "vortex_bank_energy_derivative": -0.0010545184326234357,
+          "outward_wall_axial": -0.05755063354697554,
+          "outward_wall_mass": 0.010443876796760024
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.0001282962461706988,
+          "signed_solid": 0.0001282962461889242,
+          "total_native": -0.05984759252430321,
+          "native_minus_wall": -0.002296947736065716,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.0014801527682293206,
+            -0.057600708150927826,
+            -0.0008950294750231791
+          ],
+          "direct_reaction": [
+            -0.059975890137967114,
+            -0.059975891336661036
+          ],
+          "native_including_vortex_bank": [
+            -0.05997588967773429,
+            -0.05997588877047391
+          ],
+          "vortex_bank_energy_derivative": -0.0010545176768360343,
+          "outward_wall_axial": -0.057550644788237494,
+          "outward_wall_mass": 0.010443867776458267
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0008035613393606042,
+          "signed_solid": 0.0008035613395137063,
+          "total_native": -0.05896721386317428,
+          "native_minus_wall": -0.0014165803161987414,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.00231982724246399,
+            -0.05202745716646322,
+            -0.005423490110593843
+          ],
+          "direct_reaction": [
+            -0.059770774801792825,
+            -0.059770779492485104
+          ],
+          "native_including_vortex_bank": [
+            -0.05977077492497913,
+            -0.05977077520253488
+          ],
+          "vortex_bank_energy_derivative": -0.0010545184326234357,
+          "outward_wall_axial": -0.05755063354697554,
+          "outward_wall_mass": 0.010443876796760024
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0008035613393606042,
+          "signed_solid": 0.0008035613395137063,
+          "total_native": -0.0589671805628704,
+          "native_minus_wall": -0.001416535774632903,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.002319833226967452,
+            -0.052027419653822016,
+            -0.005423495850963578
+          ],
+          "direct_reaction": [
+            -0.059770753221832784,
+            -0.05977075212548755
+          ],
+          "native_including_vortex_bank": [
+            -0.05977075324038364,
+            -0.059770741902231
+          ],
+          "vortex_bank_energy_derivative": -0.0010545176768360343,
+          "outward_wall_axial": -0.057550644788237494,
+          "outward_wall_mass": 0.010443867776458267
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.01162298203649401,
+          "native_minus_wall": -0.001684250705544045,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0011342151632340591,
+            0.01048876636817053,
+            0.0
+          ],
+          "direct_reaction": [
+            0.01162298162576958,
+            0.011622981979653169
+          ],
+          "native_including_vortex_bank": [
+            0.011622981647915951,
+            0.01162298203649401
+          ],
+          "vortex_bank_energy_derivative": -0.0017568228551897195,
+          "outward_wall_axial": 0.013307232742038055,
+          "outward_wall_mass": -0.012705109105590171
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.011623008667928113,
+          "native_minus_wall": -0.0016842214834456044,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.0011342166678289557,
+            0.010488789955486424,
+            0.0
+          ],
+          "direct_reaction": [
+            0.011623004895350286,
+            0.011623008951133773
+          ],
+          "native_including_vortex_bank": [
+            0.011623007096268644,
+            0.011623008667928113
+          ],
+          "vortex_bank_energy_derivative": -0.001756822619226627,
+          "outward_wall_axial": 0.013307230151373717,
+          "outward_wall_mass": -0.012705096458799607
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.011551622992819952,
+          "native_minus_wall": -0.0017556097492181025,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0012609660745547813,
+            0.010290655370750216,
+            0.0
+          ],
+          "direct_reaction": [
+            0.01155162133309462,
+            0.011551623171901504
+          ],
+          "native_including_vortex_bank": [
+            0.011551621521774445,
+            0.011551622992819952
+          ],
+          "vortex_bank_energy_derivative": -0.0017568228551897195,
+          "outward_wall_axial": 0.013307232742038055,
+          "outward_wall_mass": -0.012705109105590171
+        },
+        {
+          "kind": "bank_test",
+          "strip": "middle",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.6918973100169057,
+            0.7261830243026199,
+            0.7604687385883343
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.011551588374637566,
+          "native_minus_wall": -0.0017556417767361516,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.001260964603721909,
+            0.010290621770874068,
+            0.0
+          ],
+          "direct_reaction": [
+            0.011551589091524095,
+            0.011551589407243767
+          ],
+          "native_including_vortex_bank": [
+            0.011551585713571753,
+            0.011551588374637566
+          ],
+          "vortex_bank_energy_derivative": -0.001756822619226627,
+          "outward_wall_axial": 0.013307230151373717,
+          "outward_wall_mass": -0.012705096458799607
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": -0.04588626765809248,
+          "native_minus_wall": -0.0002570143151646026,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.0006570840382888188,
+            -0.04522918396585973,
+            0.0
+          ],
+          "direct_reaction": [
+            -0.045886267938111125,
+            -0.0458862696728346
+          ],
+          "native_including_vortex_bank": [
+            -0.045886268560148685,
+            -0.04588626765809248
+          ],
+          "vortex_bank_energy_derivative": 0.00026776229598193726,
+          "outward_wall_axial": -0.045629253342927875,
+          "outward_wall_mass": 0.0022206967102696867
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "duct",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.9763313609467456,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": -0.04588627201984349,
+          "native_minus_wall": -0.0002570163556969221,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.0006570858069184331,
+            -0.045229188189968864,
+            0.0
+          ],
+          "direct_reaction": [
+            -0.04588627267737566,
+            -0.045886278568496586
+          ],
+          "native_including_vortex_bank": [
+            -0.045886274129267234,
+            -0.04588627201984349
+          ],
+          "vortex_bank_energy_derivative": 0.00026776273031899576,
+          "outward_wall_axial": -0.045629255664146565,
+          "outward_wall_mass": 0.002220725612494765
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": -0.04558347925263287,
+          "native_minus_wall": 4.577409029500601e-05,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            -0.0008249318541610484,
+            -0.04475854517433983,
+            0.0
+          ],
+          "direct_reaction": [
+            -0.045583477575883435,
+            -0.04558347588279332
+          ],
+          "native_including_vortex_bank": [
+            -0.04558347714320912,
+            -0.04558347925263287
+          ],
+          "vortex_bank_energy_derivative": 0.00026776229598193726,
+          "outward_wall_axial": -0.045629253342927875,
+          "outward_wall_mass": 0.0022206967102696867
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "duct",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.9053254437869822,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": -0.04558350447269895,
+          "native_minus_wall": 4.575119144761136e-05,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            -0.0008249355464308994,
+            -0.04475857005236077,
+            0.0
+          ],
+          "direct_reaction": [
+            -0.04558350637229314,
+            -0.0455835057339149
+          ],
+          "native_including_vortex_bank": [
+            -0.045583504458821165,
+            -0.04558350447269895
+          ],
+          "vortex_bank_energy_derivative": 0.00026776273031899576,
+          "outward_wall_axial": -0.045629255664146565,
+          "outward_wall_mass": 0.002220725612494765
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.00647512868692546,
+          "native_minus_wall": -9.86461165552793e-05,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0006076382281117731,
+            0.005867488248767657,
+            0.0
+          ],
+          "direct_reaction": [
+            0.006475127434235617,
+            0.0064751268791241046
+          ],
+          "native_including_vortex_bank": [
+            0.006475128298347402,
+            0.00647512868692546
+          ],
+          "vortex_bank_energy_derivative": -0.0013092873211414417,
+          "outward_wall_axial": 0.0065737748034807395,
+          "outward_wall_mass": -0.0016813681255948762
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "outside",
+          "radial_cells": 4,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.007427354427256582,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.006475132159176901,
+          "native_minus_wall": -9.864146378281077e-05,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.0006076378510769531,
+            0.0058674889516031345,
+            0.0
+          ],
+          "direct_reaction": [
+            0.006475123721927378,
+            0.006475127295457739
+          ],
+          "native_including_vortex_bank": [
+            0.006475126982762048,
+            0.006475132159176901
+          ],
+          "vortex_bank_energy_derivative": -0.0013092871157791126,
+          "outward_wall_axial": 0.006573773622959711,
+          "outward_wall_mass": -0.001681356076807191
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.0064485928023246845,
+          "native_minus_wall": -0.000125182001156055,
+          "quadrature": 2,
+          "canonical_sector_reactions": [
+            0.0006573304661908752,
+            0.005791262740504684,
+            0.0
+          ],
+          "direct_reaction": [
+            0.0064485928263913195,
+            0.006448595046837369
+          ],
+          "native_including_vortex_bank": [
+            0.006448593024369289,
+            0.0064485928023246845
+          ],
+          "vortex_bank_energy_derivative": -0.0013092873211414417,
+          "outward_wall_axial": 0.0065737748034807395,
+          "outward_wall_mass": -0.0016813681255948762
+        },
+        {
+          "kind": "bank_test",
+          "strip": "upstream",
+          "bank": "outside",
+          "radial_cells": 8,
+          "depth_knots": [
+            0.5709460755088103,
+            0.5968981698501199,
+            0.6488023585327389
+          ],
+          "normalized_radial_bound": 0.032612036280854566,
+          "solid_reaction": 0.0,
+          "signed_solid": 0.0,
+          "total_native": 0.006448622434206143,
+          "native_minus_wall": -0.00012515118875356876,
+          "quadrature": 4,
+          "canonical_sector_reactions": [
+            0.0006573334074600479,
+            0.005791284230476682,
+            0.0
+          ],
+          "direct_reaction": [
+            0.0064486201933888765,
+            0.006448618056209554
+          ],
+          "native_including_vortex_bank": [
+            0.006448618083519665,
+            0.006448622434206143
+          ],
+          "vortex_bank_energy_derivative": -0.0013092871157791126,
+          "outward_wall_axial": 0.006573773622959711,
+          "outward_wall_mass": -0.001681356076807191
+        }
+      ]
+    }
+  }
+}

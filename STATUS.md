@@ -2,7 +2,7 @@
 
 ## Common-medium research
 
-**Current 0PN result.** The last rings of the rejected radius-four wall resist small radial and axial displacements. Resolving the material registration changes the signed radial load from inward to outward. Local material release concentrates compression near the held downstream disk. The enclosing axial residual changes from −0.008921 to −0.053197 to −0.077587 with carrier refinement. Translating the mouth requires a converged force balance there. [Exit-rim diagnostic](software/stage1_solver/reports/mouth_downstream_exit_rim.md) · [0PN roadmap](docs/zero_pn_free_fall_roadmap.md)
+**Current 0PN result.** Matching the bonded-crystal force and the load on the conversion field changes the grid-to-grid axial force drift by only 0.30% on the fixed radius-four wall. The disk has a measurable clamped reaction. On both sides of the final 0.03429 of sloping wall, the energetic reaction differs from the stress recovered at the face. Whole-mouth relaxation and free fall still require a converged terminal reaction. [Disk and wall audit](software/stage1_solver/reports/mouth_terminal_force_balance.md) · [0PN roadmap](docs/zero_pn_free_fall_roadmap.md)
 
 **Record 5 retired as a bulk candidate.** The classical Langevin particle runs are preserved as a proof of concept for relaxation of held shear. They supply no physical bulk transport coefficients for the coherent model. [Historical transit measurements](software/stage1_solver/reports/mouth_receiver_transit.md) · [Historical common-face test](software/stage1_solver/reports/mouth_receiver_common_face.md)
 

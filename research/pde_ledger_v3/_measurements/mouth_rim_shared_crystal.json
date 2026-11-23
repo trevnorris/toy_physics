@@ -1,0 +1,261 @@
+{
+  "scope": "Fixed rejected radius-four wall with fixed native displacement. The whole radial disk and collar over the last six material rows cover every P1 solid triangle that can reach a mobile Q1 terminal-order basis. Both phase-coupled material work and the field load use the same sites. Upstream solid with immobile order cancels from paired work. Full angular overlap uses the exact solid-angle weights. Signed total force on the old fields is a consistency control; fresh rematches are independent.",
+  "baseline": "449954d6",
+  "snapshot_sha256": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+  "records": {
+    "double": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_shared_crystal.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_crystal01/double/load.npz",
+        "double"
+      ],
+      "tool_sha256": "17b0de966f5a239d7afca7749aa6a8fd221fa1bc51b836f3be8b238e41b99d85",
+      "caps_gib": 2.0,
+      "stdout_sha256": "8513cca702f4ffa5f2a76bca8e4c7708ebb8c024f0d3029eeda3fa00bee0941f",
+      "readings": [
+        {
+          "refinements": 16,
+          "points": 323410,
+          "first_material_row": 26,
+          "logical_area": 0.18750000000000006,
+          "analytic_ring_force_mobile": [
+            -2.82397471239126,
+            2.797693691374644
+          ],
+          "signed_ring_force_mobile": [
+            -2.8239747134497732,
+            2.7976936386207027
+          ],
+          "signed_step": 1e-06,
+          "adjoint_residual": 4.440892098500626e-16,
+          "field_probe_work": -0.710442598354384,
+          "partition_work": 20.76881207660679
+        },
+        {
+          "refinements": 32,
+          "points": 640210,
+          "first_material_row": 26,
+          "logical_area": 0.18750000000000006,
+          "analytic_ring_force_mobile": [
+            -2.8239775363358106,
+            2.7977568629946346
+          ],
+          "signed_ring_force_mobile": [
+            -2.823977537468884,
+            2.797756888913205
+          ],
+          "signed_step": 1e-06,
+          "adjoint_residual": 2.220446049250313e-16,
+          "field_probe_work": -0.7104423385269386,
+          "partition_work": 20.768811375848827,
+          "free_column_max_abs_difference": 4.65622322739917e-05,
+          "free_l1_difference_relative": 9.013639344470944e-05
+        },
+        {
+          "refinements": 64,
+          "points": 1273905,
+          "first_material_row": 26,
+          "logical_area": 0.18749999999999992,
+          "analytic_ring_force_mobile": [
+            -2.8239762084432063,
+            2.7977212047065114
+          ],
+          "signed_ring_force_mobile": [
+            -2.8239762100826664,
+            2.7977212048885645
+          ],
+          "signed_step": 1e-06,
+          "adjoint_residual": 7.771561172376096e-16,
+          "field_probe_work": -0.7104423030667221,
+          "partition_work": 20.768811520449074,
+          "free_column_max_abs_difference": 8.612098033516924e-06,
+          "free_l1_difference_relative": 1.5074608349647592e-05
+        }
+      ],
+      "load_sha256": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b"
+    },
+    "local": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_shared_crystal.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_crystal01/local/load.npz",
+        "local"
+      ],
+      "tool_sha256": "17b0de966f5a239d7afca7749aa6a8fd221fa1bc51b836f3be8b238e41b99d85",
+      "caps_gib": 2.0,
+      "stdout_sha256": "dd449f392d20dfe44550e133dd39e9932106259484b97682664894f15c047df5",
+      "readings": [
+        {
+          "refinements": 16,
+          "points": 340615,
+          "first_material_row": 26,
+          "logical_area": 0.18750000000000003,
+          "analytic_ring_force_mobile": [
+            -2.79977353411896,
+            2.8318556318008308
+          ],
+          "signed_ring_force_mobile": [
+            -2.7997735351699333,
+            2.8318555858499814
+          ],
+          "signed_step": 1e-06,
+          "adjoint_residual": 7.771561172376096e-16,
+          "field_probe_work": -0.7125312069278759,
+          "partition_work": 20.768812076606785
+        },
+        {
+          "refinements": 32,
+          "points": 674310,
+          "first_material_row": 26,
+          "logical_area": 0.18750000000000006,
+          "analytic_ring_force_mobile": [
+            -2.799774898564682,
+            2.831847869397293
+          ],
+          "signed_ring_force_mobile": [
+            -2.799774919366158,
+            2.831847886465932
+          ],
+          "signed_step": 1e-06,
+          "adjoint_residual": 4.440892098500626e-16,
+          "field_probe_work": -0.7125309385240481,
+          "partition_work": 20.768811375848827,
+          "free_column_max_abs_difference": 8.599752565940921e-05,
+          "free_l1_difference_relative": 0.0002860578413125119
+        },
+        {
+          "refinements": 64,
+          "points": 1341755,
+          "first_material_row": 26,
+          "logical_area": 0.1875,
+          "analytic_ring_force_mobile": [
+            -2.7997736792515244,
+            2.8318773109659405
+          ],
+          "signed_ring_force_mobile": [
+            -2.7997736827267943,
+            2.831877322212229
+          ],
+          "signed_step": 1e-06,
+          "adjoint_residual": 9.992007221626409e-16,
+          "field_probe_work": -0.7125308602858909,
+          "partition_work": 20.768811520449074,
+          "free_column_max_abs_difference": 2.7516190722838563e-05,
+          "free_l1_difference_relative": 5.60609579109406e-05
+        }
+      ],
+      "load_sha256": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679"
+    },
+    "double_cross": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_shared_work_check.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_crystal01/double/load.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_fluid01/double/solid_load.npz"
+      ],
+      "tool_sha256": "2495bb13196208a4f71f00a435b1a9000a56287e8dcc68b25b9f2d0ff0f0c6d1",
+      "caps_gib": 2.0,
+      "stdout_sha256": "4f4d9f4875d692239dae7a0f0e86197a632bcfbd464343f70c407b7c6049230c",
+      "readings": [
+        {
+          "checkpoint": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "field": "b8b3305ce64b6bbd722cf6d51ff7376c69edcec690c9019af42244e5ce4cdda2",
+          "source": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b",
+          "deposited_source_native_free_norm": 18.31543338080123,
+          "corrected_minus_native_free_L1": 0.702986068335407,
+          "corrected_minus_native_free_max": 0.00940792469292795,
+          "signed_step": 1e-06,
+          "reassembled_load_mixed_work": [
+            [
+              2.8239762100818195,
+              -1.9063228367582532
+            ],
+            [
+              -2.7977212049029236,
+              -1.173813881771359
+            ]
+          ],
+          "direct_material_mixed_work": [
+            [
+              2.8239762084432063,
+              -1.9063228378968389
+            ],
+            [
+              -2.7977212047065123,
+              -1.1738140465978262
+            ]
+          ],
+          "max_mixed_work_error": 1.648264671416655e-07,
+          "signed_total_radial_axial_force": [
+            0.11591666973017821,
+            0.14779877550013415
+          ],
+          "analytic_total_radial_axial_force": [
+            0.11591667198918659,
+            0.1477987564923623
+          ]
+        }
+      ]
+    },
+    "local_cross": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_shared_work_check.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_crystal01/local/load.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_fluid01/local/solid_load.npz"
+      ],
+      "tool_sha256": "2495bb13196208a4f71f00a435b1a9000a56287e8dcc68b25b9f2d0ff0f0c6d1",
+      "caps_gib": 2.0,
+      "stdout_sha256": "fb2ac7e790d15a5c2782ade6d442a6403c2cdb743f505719812061330ba3206d",
+      "readings": [
+        {
+          "checkpoint": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "field": "31de19bdb62c8c108ce2057ca0fd87b1f9bd029950d45214c35a1a4643309bae",
+          "source": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679",
+          "deposited_source_native_free_norm": 18.453282046406372,
+          "corrected_minus_native_free_L1": 1.8674683658955185,
+          "corrected_minus_native_free_max": 0.015100003909414926,
+          "signed_step": 1e-06,
+          "reassembled_load_mixed_work": [
+            [
+              2.7997736827360984,
+              -1.449567397342923
+            ],
+            [
+              -2.8318773222201163,
+              -0.9852893113012691
+            ]
+          ],
+          "direct_material_mixed_work": [
+            [
+              2.7997736792515244,
+              -1.4495673940313594
+            ],
+            [
+              -2.8318773109659405,
+              -0.9852893294860796
+            ]
+          ],
+          "max_mixed_work_error": 1.818481054627341e-08,
+          "signed_total_radial_axial_force": [
+            0.14011919708756243,
+            0.1819548837829412
+          ],
+          "analytic_total_radial_axial_force": [
+            0.14011920118086044,
+            0.18195486275196537
+          ]
+        }
+      ]
+    }
+  }
+}

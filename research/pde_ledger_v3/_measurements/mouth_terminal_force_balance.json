@@ -1,0 +1,886 @@
+{
+  "scope": "Stationary lattice, ordered interior; one quantum on both sides, same rejected R4 geometry, no global shape release. Signs are derivative of driven minus resting energy for positive downstream displacement. Surface residual is signed outward axial flux plus two-bank traction. The compact direct disk test moves none of the externally fixed lateral wall. Its complement measures virtual work on those constraints and all remaining terminal sites. The full aperture virtual motion is a separate diagnostic.",
+  "baseline_commit": "449954d6",
+  "runs": {
+    "legacy_disk": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_terminal_disk_work.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "_scratch/s11c/r4_last_rings_fluid01/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/legacy_double/result.json"
+      ],
+      "memory_gib": 3.0,
+      "exit": 0,
+      "stdout_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "disk_double": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/src/mouth_terminal_disk_work.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/disk_double/result.json"
+      ],
+      "memory_gib": 3.0,
+      "exit": 0,
+      "stdout_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clamp_double": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_terminal_clamp_budget.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/disk_double/result.json",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/clamp_double/result.json"
+      ],
+      "memory_gib": 3.0,
+      "exit": 0,
+      "stdout_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bond_double": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_terminal_bonded_clamp.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/disk_double/result.json",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/clamp_double/result.json",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/bond_double/result.json"
+      ],
+      "memory_gib": 3.0,
+      "exit": 0,
+      "stdout_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "patch_double": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/src/mouth_rim_compression_feedback.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_fluid01/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_crystal01/double/load.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/patch_double/last.npz"
+      ],
+      "memory_gib": 18.0,
+      "exit": 0,
+      "stdout_sha": "0e8d7cf3602c88cde08a2102ddacf25bfd56c1af65304cc819e00aa3ab668a39"
+    },
+    "disk_local": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/src/mouth_terminal_disk_work.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/disk_local/result.json"
+      ],
+      "memory_gib": 3.0,
+      "exit": 0,
+      "stdout_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clamp_local": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_terminal_clamp_budget.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/disk_local/result.json",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/clamp_local/result.json"
+      ],
+      "memory_gib": 3.0,
+      "exit": 0,
+      "stdout_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bond_local": {
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_terminal_bonded_clamp.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/disk_local/result.json",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/clamp_local/result.json",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/bond_local/result.json"
+      ],
+      "memory_gib": 3.0,
+      "exit": 0,
+      "stdout_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "patch_local": {
+      "command": [
+        "env",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/src/mouth_rim_compression_feedback.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_fluid01/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_crystal01/local/load.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/patch_local/last.npz"
+      ],
+      "memory_gib": 26.0,
+      "exit": 0,
+      "stdout_sha": "99c3b3f9532986d78bffa475e98c3789a088dd0c2c62fced5f0037c818098730"
+    }
+  },
+  "comparison": {
+    "double": {
+      "disk": {
+        "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "fields": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "load": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b",
+        "grid": "double",
+        "disk_rule": "R4 bonded outer wall clamped, unit motion inboard of 0.90 normalized radius, cubic taper sampled on native radial nodes. All original nonterminal solid sites fixed.",
+        "signed_steps": [
+          1e-05,
+          5e-06
+        ],
+        "ramps": {
+          "short": [
+            0.6747544528740486,
+            0.7947544528740486,
+            0.7947544528740486,
+            0.9147544528740486
+          ],
+          "near": [
+            0.5709460755088103,
+            0.6228502641914294,
+            0.9529941070206577,
+            1.0713620447382866
+          ],
+          "far": [
+            0.5190418868261912,
+            0.5709460755088103,
+            1.0713620447382866,
+            1.2811533911543753
+          ]
+        },
+        "reactions": {
+          "short": {
+            "field_physical": -0.0011559308454555522,
+            "axial_cap_part": -0.1016013174382526,
+            "field_native": -0.0011559284339955345,
+            "field_signed_physical": [
+              -0.0011559308978753638,
+              -0.0011559308631808943
+            ],
+            "field_signed_native": [
+              -0.001155928487477087,
+              -0.001155928439078302
+            ],
+            "solid_strain_work": 0.005960335453700633,
+            "solid_relative_order_work": 0.0008099879169774824,
+            "solid_spatial_advection": -2.3548637875887112e-05,
+            "solid_signed_work": [
+              0.006770328267080395,
+              0.006770325716610273
+            ],
+            "native_actuator": 0.005614394936682581,
+            "physical_actuator": 0.0056143925252225635
+          },
+          "near": {
+            "field_physical": -0.0007438679045883578,
+            "axial_cap_part": -0.23596547892503705,
+            "field_native": -0.0007438592274283257,
+            "field_signed_physical": [
+              -0.000743877812646461,
+              -0.0007438703777951153
+            ],
+            "field_signed_native": [
+              -0.0007438691452740787,
+              -0.0007438617378313639
+            ],
+            "solid_strain_work": 0.005960335453700633,
+            "solid_relative_order_work": 0.0014497599015698157,
+            "solid_spatial_advection": -2.3548637875887112e-05,
+            "solid_signed_work": [
+              0.007410101709186335,
+              0.007410098635846431
+            ],
+            "native_actuator": 0.006666236127842123,
+            "physical_actuator": 0.006666227450682091
+          },
+          "far": {
+            "field_physical": -0.0008377142545240995,
+            "axial_cap_part": -0.2813422477891039,
+            "field_native": -0.0008377006395480432,
+            "field_signed_physical": [
+              -0.0008377255122232821,
+              -0.0008377170838958017
+            ],
+            "field_signed_native": [
+              -0.0008377119135524747,
+              -0.0008377034840106878
+            ],
+            "solid_strain_work": 0.005960335453700633,
+            "solid_relative_order_work": 0.0014497599015698157,
+            "solid_spatial_advection": -2.3548637875887112e-05,
+            "solid_signed_work": [
+              0.007410101709186335,
+              0.007410098635846431
+            ],
+            "native_actuator": 0.0065723947157224055,
+            "physical_actuator": 0.006572381100746349
+          }
+        }
+      },
+      "clamp": {
+        "fields": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "measured": {
+          "near": {
+            "disk": 0.006666227450682091,
+            "complement": -0.49242212979564093,
+            "complement_fluid": -0.4994179057768765,
+            "complement_solid": 0.0069957759812356,
+            "full_terminal_virtual": -0.48575591546053903,
+            "full_solid": 0.01440587179300009,
+            "external_virtual": -0.5001617872535391,
+            "sloping_banks": 0.44673815322095123,
+            "measured_closed": -0.05342361914809579,
+            "split_error": 1.311558017746961e-08,
+            "closed_minus_full_terminal": 0.43233229631244324
+          },
+          "far": {
+            "disk": 0.006572381100746349,
+            "complement": -0.44629003055515204,
+            "complement_fluid": -0.4532858065363876,
+            "complement_solid": 0.0069957759812356,
+            "full_terminal_virtual": -0.4397176670914099,
+            "full_solid": 0.01440587179300009,
+            "external_virtual": -0.45412353888441,
+            "sloping_banks": 0.400815832893147,
+            "measured_closed": -0.053307686863059145,
+            "split_error": 1.7637004245951715e-08,
+            "closed_minus_full_terminal": 0.38640998022835077
+          }
+        },
+        "scope": "Full virtual test moves all terminal disk sites and continues along the held banks. The bowed disk test fixes the banks. Free original interior crystal nodes stay fixed in both terminal tests; the common outer translation convects all of them."
+      },
+      "bond": {
+        "fields": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+        "common_motion": "The solid and the field follow the same enclosed translation when the disk and its welded complementary virtual motion are added.",
+        "max_chart_extrapolation": 0.0,
+        "measurements": {
+          "near": {
+            "solid_complement": -0.007410095355270449,
+            "solid_signed": [
+              -0.007410101709175314,
+              -0.007410098635862043
+            ],
+            "complement_total": -0.506828001132147,
+            "disk": 0.006666227450682091,
+            "sum_of_virtual_works": -0.5001617736814649,
+            "common_translation": -0.5001617872535391,
+            "common_solid": 0.0,
+            "strong_wall_banks": 0.44673815322095123,
+            "closed": -0.05342361914809579,
+            "weighted_disk_plus_banks_and_complement": -0.05342362046051363,
+            "boundary_identity_error": -1.3124178410706122e-09
+          },
+          "far": {
+            "solid_complement": -0.007410095355270449,
+            "solid_signed": [
+              -0.007410101709175314,
+              -0.007410098635862043
+            ],
+            "complement_total": -0.46069590189165804,
+            "disk": 0.006572381100746349,
+            "sum_of_virtual_works": -0.45412352079091167,
+            "common_translation": -0.45412353888441,
+            "common_solid": 0.0,
+            "strong_wall_banks": 0.400815832893147,
+            "closed": -0.053307686863059145,
+            "weighted_disk_plus_banks_and_complement": -0.05330768789776469,
+            "boundary_identity_error": -1.034705543467851e-09
+          }
+        }
+      },
+      "patch": [
+        {
+          "kind": "inputs",
+          "checkpoint": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "drive": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+          "old": "02078533996e99c945c8004a8d32b898c9f2ed436c829eaf2b9a2c18baee6e41",
+          "quadrature": 64,
+          "repeated_patch_rule_l1": 6.107642958071412e-15,
+          "level": "double",
+          "dofs": 946
+        },
+        {
+          "kind": "legacy_field_same_quadrature",
+          "iterations": 13,
+          "stopping": "material force below 1e-6",
+          "energy_change": -0.01686894042259634,
+          "max_force": 4.5900599726991786e-07,
+          "original_probe_force": [
+            -1.9210767632839862e-09,
+            4.076448029169909e-08
+          ],
+          "min_stretch": 0.21569518443934227,
+          "min_volume_ratio": 0.09225086534867742,
+          "max_displacement": 0.0020817626461845044,
+          "min_stretch_site": [
+            3.4319202210187423,
+            0.9970184293692588
+          ]
+        },
+        {
+          "kind": "corrected_field_same_quadrature",
+          "iterations": 13,
+          "stopping": "material force below 1e-6",
+          "energy_change": -0.019409860646955917,
+          "max_force": 4.635913871745001e-07,
+          "original_probe_force": [
+            -5.483133509394161e-08,
+            6.695001736971274e-08
+          ],
+          "min_stretch": 0.2154023691098897,
+          "min_volume_ratio": 0.09212595876387304,
+          "max_displacement": 0.0020996132796554552,
+          "min_stretch_site": [
+            3.4319114958740755,
+            0.9970214133206411
+          ]
+        },
+        {
+          "kind": "feedback",
+          "sweep": 0,
+          "field_residual": 1.7610260055248863e-07,
+          "prior_field_residual": 0.0005437333517863245,
+          "old_min": 0.21569518443934227,
+          "frozen_corrected_min": 0.2154023691098897,
+          "plane_l1_change": 0.48621670990590493,
+          "energy_change": -0.019022124851988762,
+          "max_force": 0.0010231311571647361,
+          "original_probe_force": [
+            0.002022890671666319,
+            0.01673502553377293
+          ],
+          "min_stretch": 0.2154023691098897,
+          "min_volume_ratio": 0.09212595876387304,
+          "max_displacement": 0.0020996132796554552,
+          "min_stretch_site": [
+            3.4319114958740755,
+            0.9970214133206411
+          ]
+        },
+        {
+          "kind": "solid_sweep",
+          "iterations": 13,
+          "stopping": "material force below 1e-6",
+          "energy_change": -0.01902278894407626,
+          "max_force": 8.521929580687648e-07,
+          "original_probe_force": [
+            -2.1309292618486037e-09,
+            3.1418158288053796e-07
+          ],
+          "min_stretch": 0.21462474475510657,
+          "min_volume_ratio": 0.09183051122332966,
+          "max_displacement": 0.0021129363921516425,
+          "min_stretch_site": [
+            3.4319047143167185,
+            0.9970297585132323
+          ]
+        },
+        {
+          "kind": "feedback",
+          "sweep": 1,
+          "field_residual": 1.9101994717847944e-07,
+          "prior_field_residual": 1.1576191429535186e-05,
+          "old_min": 0.21569518443934227,
+          "frozen_corrected_min": 0.2154023691098897,
+          "plane_l1_change": 0.4888678299842095,
+          "energy_change": -0.019038910852414482,
+          "max_force": 1.4169695107535407e-05,
+          "original_probe_force": [
+            -9.633708179487958e-05,
+            0.00035527372058330404
+          ],
+          "min_stretch": 0.21462474475510657,
+          "min_volume_ratio": 0.09183051122332966,
+          "max_displacement": 0.0021129363921516425,
+          "min_stretch_site": [
+            3.4319047143167185,
+            0.9970297585132323
+          ]
+        }
+      ],
+      "patch_last_sha": "d44bac01d54ff76b32dc7f1d52dd2680c31549d9f3967b712aff2e40c68a72ed",
+      "previous": [
+        {
+          "near_or_far": 2,
+          "flux": -0.5001619595427933,
+          "slit": 0.4469645613528101,
+          "closed": -0.0531973981899832,
+          "mass": 1.1446386061209068e-09
+        },
+        {
+          "near_or_far": 3,
+          "flux": -0.4541241009417414,
+          "slit": 0.401042669636796,
+          "closed": -0.05308143130494536,
+          "mass": 9.82649961400739e-10
+        }
+      ],
+      "previous_source": "02078533996e99c945c8004a8d32b898c9f2ed436c829eaf2b9a2c18baee6e41",
+      "corrected": [
+        {
+          "near_or_far": 2,
+          "flux": -0.500161772369047,
+          "slit": 0.44673815322095123,
+          "closed": -0.05342361914809579,
+          "mass": -1.5955992083149795e-10
+        },
+        {
+          "near_or_far": 3,
+          "flux": -0.45412351975620613,
+          "slit": 0.400815832893147,
+          "closed": -0.053307686863059145,
+          "mass": -2.1533708149945596e-10
+        }
+      ],
+      "corrected_source": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077"
+    },
+    "local": {
+      "disk": {
+        "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+        "fields": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+        "load": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679",
+        "grid": "local",
+        "disk_rule": "R4 bonded outer wall clamped, unit motion inboard of 0.90 normalized radius, cubic taper sampled on native radial nodes. All original nonterminal solid sites fixed.",
+        "signed_steps": [
+          1e-05,
+          5e-06
+        ],
+        "ramps": {
+          "short": [
+            0.6747544528740486,
+            0.7947544528740486,
+            0.7947544528740486,
+            0.9147544528740486
+          ],
+          "near": [
+            0.5709460755088103,
+            0.6228502641914294,
+            0.9529941070206577,
+            1.0713620447382866
+          ],
+          "far": [
+            0.5190418868261912,
+            0.5709460755088103,
+            1.0713620447382866,
+            1.2811533911543753
+          ]
+        },
+        "reactions": {
+          "short": {
+            "field_physical": -0.0010360810520103556,
+            "axial_cap_part": -0.10119037989883403,
+            "field_native": -0.0010360787054278786,
+            "field_signed_physical": [
+              -0.001036081096611477,
+              -0.0010360811070198178
+            ],
+            "field_signed_native": [
+              -0.0010360787562960216,
+              -0.0010360787117136283
+            ],
+            "solid_strain_work": 0.005945323050005853,
+            "solid_relative_order_work": 0.000818789935383897,
+            "solid_spatial_advection": -2.655239390509256e-05,
+            "solid_signed_work": [
+              0.006764111464827972,
+              0.006764111266459158
+            ],
+            "native_actuator": 0.005728034279961871,
+            "physical_actuator": 0.005728031933379394
+          },
+          "near": {
+            "field_physical": -0.000992021027105404,
+            "axial_cap_part": -0.23535878270331656,
+            "field_native": -0.0009920123613431711,
+            "field_signed_physical": [
+              -0.000992030992422184,
+              -0.0009920235785609924
+            ],
+            "field_signed_native": [
+              -0.0009920223382337001,
+              -0.0009920147373693178
+            ],
+            "solid_strain_work": 0.005945323050005853,
+            "solid_relative_order_work": 0.0014546253979607958,
+            "solid_spatial_advection": -2.655239390509256e-05,
+            "solid_signed_work": [
+              0.007399946746010129,
+              0.007399946650208154
+            ],
+            "native_actuator": 0.006407936086623478,
+            "physical_actuator": 0.006407927420861245
+          },
+          "far": {
+            "field_physical": -0.001012087484251821,
+            "axial_cap_part": -0.2807496088853199,
+            "field_native": -0.001012073915507103,
+            "field_signed_physical": [
+              -0.0010120987964379394,
+              -0.001012090379559634
+            ],
+            "field_signed_native": [
+              -0.001012085244257721,
+              -0.0010120766467947018
+            ],
+            "solid_strain_work": 0.005945323050005853,
+            "solid_relative_order_work": 0.0014546253979607958,
+            "solid_spatial_advection": -2.655239390509256e-05,
+            "solid_signed_work": [
+              0.007399946746010129,
+              0.007399946650208154
+            ],
+            "native_actuator": 0.006387874532459546,
+            "physical_actuator": 0.006387860963714828
+          }
+        }
+      },
+      "clamp": {
+        "fields": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+        "measured": {
+          "near": {
+            "disk": 0.006407927420861245,
+            "complement": -0.4910860296291047,
+            "complement_fluid": -0.4979662981344396,
+            "complement_solid": 0.006880268505334928,
+            "full_terminal_virtual": -0.4846781234155087,
+            "full_solid": 0.014280218339220682,
+            "external_virtual": -0.49895834175472936,
+            "sloping_banks": 0.42121761715430955,
+            "measured_closed": -0.07774070084372497,
+            "split_error": 2.1207265277212173e-08,
+            "closed_minus_full_terminal": 0.4069374225717837
+          },
+          "far": {
+            "disk": 0.006387860963714828,
+            "complement": -0.4451377543098604,
+            "complement_fluid": -0.4520180228151953,
+            "complement_solid": 0.006880268505334928,
+            "full_terminal_virtual": -0.43874991042718664,
+            "full_solid": 0.014280218339220682,
+            "external_virtual": -0.4530301287664073,
+            "sloping_banks": 0.37519566360427986,
+            "measured_closed": -0.0778344457818872,
+            "split_error": 1.7081041081556947e-08,
+            "closed_minus_full_terminal": 0.36091546464529944
+          }
+        },
+        "scope": "Full virtual test moves all terminal disk sites and continues along the held banks. The bowed disk test fixes the banks. Free original interior crystal nodes stay fixed in both terminal tests; the common outer translation convects all of them."
+      },
+      "bond": {
+        "fields": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+        "common_motion": "The solid and the field follow the same enclosed translation when the disk and its welded complementary virtual motion are added.",
+        "max_chart_extrapolation": 0.0,
+        "measurements": {
+          "near": {
+            "solid_complement": -0.007399948447966649,
+            "solid_signed": [
+              -0.007399946745999094,
+              -0.00739994665022406
+            ],
+            "complement_total": -0.5053662465824063,
+            "disk": 0.006407927420861245,
+            "sum_of_virtual_works": -0.498958319161545,
+            "common_translation": -0.49895834175472936,
+            "common_solid": 0.0,
+            "strong_wall_banks": 0.42121761715430955,
+            "closed": -0.07774070084372497,
+            "weighted_disk_plus_banks_and_complement": -0.07774070200723543,
+            "boundary_identity_error": -1.1635104546492414e-09
+          },
+          "far": {
+            "solid_complement": -0.007399948447966649,
+            "solid_signed": [
+              -0.007399946745999094,
+              -0.00739994665022406
+            ],
+            "complement_total": -0.459417971263162,
+            "disk": 0.006387860963714828,
+            "sum_of_virtual_works": -0.4530301102994471,
+            "common_translation": -0.4530301287664073,
+            "common_solid": 0.0,
+            "strong_wall_banks": 0.37519566360427986,
+            "closed": -0.0778344457818872,
+            "weighted_disk_plus_banks_and_complement": -0.07783444669516726,
+            "boundary_identity_error": -9.132800626865389e-10
+          }
+        }
+      },
+      "patch": [
+        {
+          "kind": "inputs",
+          "checkpoint": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "drive": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+          "old": "b05d94b9f9411a1b4506750359789b0e9d8e110ed674501233d072b290382434",
+          "quadrature": 64,
+          "repeated_patch_rule_l1": 1.3468472619304596e-14,
+          "level": "local",
+          "dofs": 946
+        },
+        {
+          "kind": "legacy_field_same_quadrature",
+          "iterations": 21,
+          "stopping": "no resolved feasible energy decrease",
+          "energy_change": -0.01668101957010435,
+          "max_force": 1.0381231747336878e-05,
+          "original_probe_force": [
+            -4.149223685141512e-06,
+            -9.873435099131371e-07
+          ],
+          "min_stretch": 0.2144830477147815,
+          "min_volume_ratio": 0.09222495008315632,
+          "max_displacement": 0.0019489448662219793,
+          "min_stretch_site": [
+            3.4319817910265957,
+            0.997033149465933
+          ]
+        },
+        {
+          "kind": "corrected_field_same_quadrature",
+          "iterations": 13,
+          "stopping": "material force below 1e-6",
+          "energy_change": -0.019281491697277813,
+          "max_force": 4.802652886562453e-07,
+          "original_probe_force": [
+            3.371211432543842e-08,
+            1.218709307247026e-07
+          ],
+          "min_stretch": 0.214133627673853,
+          "min_volume_ratio": 0.0920860217506203,
+          "max_displacement": 0.001964589919225486,
+          "min_stretch_site": [
+            3.4319739974558243,
+            0.9970367339228987
+          ]
+        },
+        {
+          "kind": "feedback",
+          "sweep": 0,
+          "field_residual": 1.7127774979353667e-07,
+          "prior_field_residual": 0.0005823785949105563,
+          "old_min": 0.2144830477147815,
+          "frozen_corrected_min": 0.214133627673853,
+          "plane_l1_change": 0.5697289396496946,
+          "energy_change": -0.018770471353625424,
+          "max_force": 0.0012373795010310884,
+          "original_probe_force": [
+            0.0031892905280275874,
+            0.018121885845558322
+          ],
+          "min_stretch": 0.214133627673853,
+          "min_volume_ratio": 0.0920860217506203,
+          "max_displacement": 0.001964589919225486,
+          "min_stretch_site": [
+            3.4319739974558243,
+            0.9970367339228987
+          ]
+        },
+        {
+          "kind": "solid_sweep",
+          "iterations": 10,
+          "stopping": "material force below 1e-6",
+          "energy_change": -0.018771204649828302,
+          "max_force": 3.839178348841177e-07,
+          "original_probe_force": [
+            2.6103914450912973e-08,
+            2.084270137503789e-07
+          ],
+          "min_stretch": 0.2132359998476014,
+          "min_volume_ratio": 0.09177185927942863,
+          "max_displacement": 0.0019763089587285197,
+          "min_stretch_site": [
+            3.431967887510667,
+            0.9970460707852297
+          ]
+        },
+        {
+          "kind": "feedback",
+          "sweep": 1,
+          "field_residual": 1.4479626382271833e-07,
+          "prior_field_residual": 1.1757913652464909e-05,
+          "old_min": 0.2144830477147815,
+          "frozen_corrected_min": 0.214133627673853,
+          "plane_l1_change": 0.5729568463172104,
+          "energy_change": -0.018785075870824938,
+          "max_force": 1.7287124106091234e-05,
+          "original_probe_force": [
+            -8.355405731550668e-05,
+            0.0003875291738410729
+          ],
+          "min_stretch": 0.2132359998476014,
+          "min_volume_ratio": 0.09177185927942863,
+          "max_displacement": 0.0019763089587285197,
+          "min_stretch_site": [
+            3.431967887510667,
+            0.9970460707852297
+          ]
+        }
+      ],
+      "patch_last_sha": "d837c0905e99d4e5ead0fc3777e76f98e2097a033a978e044db6418a2b2b4c9a",
+      "previous": [
+        {
+          "near_or_far": 2,
+          "flux": -0.4989582367255709,
+          "slit": 0.4213709225634186,
+          "closed": -0.07758731416215225,
+          "mass": -5.477096554074024e-10
+        },
+        {
+          "near_or_far": 3,
+          "flux": -0.4530304640066121,
+          "slit": 0.3753494553994029,
+          "closed": -0.07768100860720922,
+          "mass": -4.2196779403980145e-10
+        }
+      ],
+      "previous_source": "b05d94b9f9411a1b4506750359789b0e9d8e110ed674501233d072b290382434",
+      "corrected": [
+        {
+          "near_or_far": 2,
+          "flux": -0.49895831799803453,
+          "slit": 0.42121761715430955,
+          "closed": -0.07774070084372497,
+          "mass": -2.788407282849903e-10
+        },
+        {
+          "near_or_far": 3,
+          "flux": -0.45303010938616706,
+          "slit": 0.37519566360427986,
+          "closed": -0.0778344457818872,
+          "mass": -2.661963982575344e-10
+        }
+      ],
+      "corrected_source": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb"
+    }
+  },
+  "legacy_control": {
+    "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+    "fields": "02078533996e99c945c8004a8d32b898c9f2ed436c829eaf2b9a2c18baee6e41",
+    "load": null,
+    "grid": "double",
+    "disk_rule": "R4 bonded outer wall clamped, unit motion inboard of 0.90 normalized radius, cubic taper sampled on native radial nodes. All original nonterminal solid sites fixed.",
+    "signed_steps": [
+      1e-05,
+      5e-06
+    ],
+    "ramps": {
+      "short": [
+        0.6747544528740486,
+        0.7947544528740486,
+        0.7947544528740486,
+        0.9147544528740486
+      ],
+      "near": [
+        0.5709460755088103,
+        0.6228502641914294,
+        0.9529941070206577,
+        1.0713620447382866
+      ],
+      "far": [
+        0.5190418868261912,
+        0.5709460755088103,
+        1.0713620447382866,
+        1.2811533911543753
+      ]
+    },
+    "reactions": {
+      "short": {
+        "field_physical": -0.0009937796716079916,
+        "axial_cap_part": -0.10144669535228237,
+        "field_native": -0.0009937772603085676,
+        "field_signed_physical": [
+          -0.0009937796828507553,
+          -0.0009937796929121515
+        ],
+        "field_signed_native": [
+          -0.0009937773009019435,
+          -0.000993777231339532
+        ],
+        "solid_strain_work": 0.0058949964662135595,
+        "solid_relative_order_work": 0.0008051698493070688,
+        "solid_spatial_advection": -2.4918711679040312e-05,
+        "solid_signed_work": [
+          0.006700171264314935,
+          0.006700168664685
+        ],
+        "native_actuator": 0.005706389055212061,
+        "physical_actuator": 0.005706386643912637
+      },
+      "near": {
+        "field_physical": -0.000731775601335867,
+        "axial_cap_part": -0.2359680510212674,
+        "field_native": -0.0007317669243071118,
+        "field_signed_physical": [
+          -0.0007317855068439474,
+          -0.0007317780988808156
+        ],
+        "field_signed_native": [
+          -0.0007317768746864517,
+          -0.0007317694422637189
+        ],
+        "solid_strain_work": 0.0058949964662135595,
+        "solid_relative_order_work": 0.0014373662187334314,
+        "solid_spatial_advection": -2.4918711679040312e-05,
+        "solid_signed_work": [
+          0.007332369107393197,
+          0.007332366003799502
+        ],
+        "native_actuator": 0.006600595760639879,
+        "physical_actuator": 0.006600587083611124
+      },
+      "far": {
+        "field_physical": -0.0008256043485242032,
+        "axial_cap_part": -0.28134413631110605,
+        "field_native": -0.0008255907337124807,
+        "field_signed_physical": [
+          -0.0008256156236105608,
+          -0.0008256071718643135
+        ],
+        "field_signed_native": [
+          -0.0008256020395114305,
+          -0.0008255936063267244
+        ],
+        "solid_strain_work": 0.0058949964662135595,
+        "solid_relative_order_work": 0.0014373662187334314,
+        "solid_spatial_advection": -2.4918711679040312e-05,
+        "solid_signed_work": [
+          0.007332369107393197,
+          0.007332366003799502
+        ],
+        "native_actuator": 0.00650677195123451,
+        "physical_actuator": 0.006506758336422788
+      }
+    }
+  },
+  "local_patch_scope": "Compression comparisons are in driven brane. The enriched patch has all its outer boundaries held. Zero-displacement/legacy-field energy is the common stored offset for this diagnostic. Force divided by the discrete displacement norm, stretches and volume ratios use actual values. The global wall and ordinary lattice sites outside the patch are held. The re-equilibrated local patch is separate from the saved solid used for the virtual-work and closed-shell comparisons.",
+  "clamp_extension_control": "The clamp-only archive is a diagnostic extension which holds original nonterminal solid nodes while carrying the adjoining fluid. Under virtual motion those two extensions can slip on a tilted bank. The physical bookkeeping reported in the main text uses the bond archive; disk and complementary motions sum to the same field and material translation on the sidewall. No reaction from the mismatched extension is attributed to a permanently bonded wall.",
+  "sources": {
+    "mouth_rim_shared_crystal.py": "17b0de966f5a239d7afca7749aa6a8fd221fa1bc51b836f3be8b238e41b99d85",
+    "mouth_terminal_disk_work.py": "88d80e2f283e08604647ef1dce2d75dd1cb661768dd54a77b78b2bde8c39e0db",
+    "mouth_rim_consistent_fields.py": "15e227fc4298bcfc1bf832ab8d5c3d8e6585cf26df8b1395b989f2d6d588aec2",
+    "mouth_rim_compression_feedback.py": "2246699ce5bbb3c781983775fb6147004883f11ad5ec9c2d899982d6465825d5",
+    "mouth_terminal_bonded_clamp.py": "4f283ea0a2d81d4cb9a491980844ade4ba8a01303fa21b7076d716f9d4be55d2",
+    "mouth_terminal_clamp_budget.py": "5ebdb17d60a11a8365b62b6b45a7ed5bbb92b61f778800d1be4cc3e033f21a89"
+  }
+}

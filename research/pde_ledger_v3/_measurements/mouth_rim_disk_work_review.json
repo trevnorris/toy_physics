@@ -1,0 +1,885 @@
+{
+  "scope": "One-quantum fixed rejected R4 wall. Paired active-minus-resting physical field stress. Weighted cap and radial-gradient terms measured independently of corrected crystal deposition. Clamped sharp disk jump, closed surfaces and energy extension isolated. Material work from common quadrature is in the joint report.",
+  "script_sha": "43fbb7ad79228fd21213253508a1db8fc74af8a4af54a5bedb9b887427acf91d",
+  "results": {
+    "archived_doubled": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_disk_work_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "_scratch/s11c/r4_last_rings_fluid01/double/fields.npz",
+        "--original-load"
+      ],
+      "guard_exit": 0,
+      "peak_gib_cap": 2.0,
+      "output_sha": "4cf525bea5bb42a493bcc207a713f5681d585fe2b3e6cb33dd9c3daf9acc61f3",
+      "rows": [
+        {
+          "kind": "review_inputs",
+          "field": "02078533996e99c945c8004a8d32b898c9f2ed436c829eaf2b9a2c18baee6e41",
+          "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "load": "archived native material deposition",
+          "level": "double",
+          "windows": [
+            [
+              0.5709460755088103,
+              0.6228502641914294,
+              0.9529941070206577,
+              1.0713620447382866
+            ],
+            [
+              0.5190418868261912,
+              0.5709460755088103,
+              1.0713620447382866,
+              1.2811533911543753
+            ]
+          ],
+          "independent_pointwise_difference": 4.785061236134425e-14
+        },
+        {
+          "kind": "terminal_trace",
+          "quadrature": 2,
+          "aperture_and_clamped_lower": [
+            0.8097614468406847,
+            0.32072426143007626
+          ],
+          "aperture_and_clamped_upper": [
+            0.414844054239924,
+            0.3151967317717205
+          ],
+          "aperture_and_clamped_jump": [
+            -0.39491739260076075,
+            -0.00552752965835579
+          ]
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 2,
+          "half_height": 0.16,
+          "radius": 4.55,
+          "old_whole_physical": -0.06952808555997309,
+          "sealed_slit": 0.4855588975295824,
+          "disk_low": -0.40962931918185796,
+          "disk_high": 0.19151719677727166,
+          "clamped_closed": -0.2181121224045863,
+          "rim_complement_closed": 0.1485840368446132,
+          "radial_work": 0.2081928322906651,
+          "clamped_configurational_work": -0.009919290113921203
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 2,
+          "half_height": 0.235,
+          "radius": 4.55,
+          "old_whole_physical": -0.055794710694605065,
+          "sealed_slit": 0.4128925607075259,
+          "disk_low": -0.4101113009314075,
+          "disk_high": 0.16628735319233895,
+          "clamped_closed": -0.24382394773906857,
+          "rim_complement_closed": 0.1880292370444635,
+          "radial_work": 0.23992118451422711,
+          "clamped_configurational_work": -0.0039027632248414545
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 2,
+          "window": "near",
+          "axial_cap_taper": -0.2359680510214783,
+          "interior_radial_gradient": 0.2352362785813597,
+          "convected_field_work": -0.0007317724401185999
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 2,
+          "window": "far",
+          "axial_cap_taper": -0.2813441235891934,
+          "interior_radial_gradient": 0.28051850081756374,
+          "convected_field_work": -0.0008256227716296749
+        },
+        {
+          "kind": "terminal_trace",
+          "quadrature": 4,
+          "aperture_and_clamped_lower": [
+            0.8096408845694014,
+            0.3207241847796997
+          ],
+          "aperture_and_clamped_upper": [
+            0.41482788391587583,
+            0.3151962536745501
+          ],
+          "aperture_and_clamped_jump": [
+            -0.3948130006535256,
+            -0.005527931105149597
+          ]
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 4,
+          "half_height": 0.16,
+          "radius": 4.55,
+          "old_whole_physical": -0.06951409083969773,
+          "sealed_slit": 0.4855730383793996,
+          "disk_low": -0.409629068501476,
+          "disk_high": 0.1915172290626285,
+          "clamped_closed": -0.21811183943884752,
+          "rim_complement_closed": 0.14859774859914981,
+          "radial_work": 0.20819273952713163,
+          "clamped_configurational_work": -0.009919099911715884
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 4,
+          "half_height": 0.235,
+          "radius": 4.55,
+          "old_whole_physical": -0.05578071288814618,
+          "sealed_slit": 0.412906664054004,
+          "disk_low": -0.4101111954131112,
+          "disk_high": 0.16628737034813984,
+          "clamped_closed": -0.24382382506497136,
+          "rim_complement_closed": 0.18804311217682518,
+          "radial_work": 0.2399210918785709,
+          "clamped_configurational_work": -0.003902733186400442
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 4,
+          "window": "near",
+          "axial_cap_taper": -0.23596782491281607,
+          "interior_radial_gradient": 0.2352360712375785,
+          "convected_field_work": -0.000731753675237562
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 4,
+          "window": "far",
+          "axial_cap_taper": -0.28134402789627205,
+          "interior_radial_gradient": 0.2805183871978328,
+          "convected_field_work": -0.0008256406984392672
+        }
+      ]
+    },
+    "corrected_doubled": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_disk_work_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz"
+      ],
+      "guard_exit": 0,
+      "peak_gib_cap": 2.0,
+      "output_sha": "8d67e2b0c5bf23f542172d0cffca3718e4f3475609a9f429c758b3892d161ca2",
+      "rows": [
+        {
+          "kind": "review_inputs",
+          "field": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+          "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "load": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b",
+          "level": "double",
+          "windows": [
+            [
+              0.5709460755088103,
+              0.6228502641914294,
+              0.9529941070206577,
+              1.0713620447382866
+            ],
+            [
+              0.5190418868261912,
+              0.5709460755088103,
+              1.0713620447382866,
+              1.2811533911543753
+            ]
+          ],
+          "independent_pointwise_difference": 4.696243394164412e-14
+        },
+        {
+          "kind": "terminal_trace",
+          "quadrature": 2,
+          "aperture_and_clamped_lower": [
+            0.8098570009623123,
+            0.3207867488961329
+          ],
+          "aperture_and_clamped_upper": [
+            0.4149098240851276,
+            0.31517120549812144
+          ],
+          "aperture_and_clamped_jump": [
+            -0.39494717687718467,
+            -0.005615543398011458
+          ]
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 2,
+          "half_height": 0.16,
+          "radius": 4.55,
+          "old_whole_physical": -0.06975441949952077,
+          "sealed_slit": 0.48533330531788077,
+          "disk_low": -0.40962728090670963,
+          "disk_high": 0.1915181696433018,
+          "clamped_closed": -0.21810911126340785,
+          "rim_complement_closed": 0.14835469176388705,
+          "radial_work": 0.20817767593137976,
+          "clamped_configurational_work": -0.009931435332028088
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 2,
+          "half_height": 0.235,
+          "radius": 4.55,
+          "old_whole_physical": -0.05602097616462942,
+          "sealed_slit": 0.412665812848607,
+          "disk_low": -0.4101098369113725,
+          "disk_high": 0.16628813456842154,
+          "clamped_closed": -0.24382170234295095,
+          "rim_complement_closed": 0.18780072617832153,
+          "radial_work": 0.23990681969858782,
+          "clamped_configurational_work": -0.003914882644363127
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 2,
+          "window": "near",
+          "axial_cap_taper": -0.23596547892524777,
+          "interior_radial_gradient": 0.2352216141817177,
+          "convected_field_work": -0.0007438647435300816
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 2,
+          "window": "far",
+          "axial_cap_taper": -0.2813422350674563,
+          "interior_radial_gradient": 0.28050450238927255,
+          "convected_field_work": -0.0008377326781837668
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 2,
+          "window": "short",
+          "axial_cap_taper": -0.10160131743824655,
+          "interior_radial_gradient": 0.10044538659279777,
+          "convected_field_work": -0.0011559308454487799
+        },
+        {
+          "kind": "terminal_trace",
+          "quadrature": 4,
+          "aperture_and_clamped_lower": [
+            0.8097366399270643,
+            0.3207866727176295
+          ],
+          "aperture_and_clamped_upper": [
+            0.4148936296960739,
+            0.315170728462095
+          ],
+          "aperture_and_clamped_jump": [
+            -0.39484301023099044,
+            -0.005615944255534522
+          ]
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 4,
+          "half_height": 0.16,
+          "radius": 4.55,
+          "old_whole_physical": -0.06974045297438392,
+          "sealed_slit": 0.48534741799127423,
+          "disk_low": -0.40962703029532815,
+          "disk_high": 0.1915182019249037,
+          "clamped_closed": -0.21810882837042445,
+          "rim_complement_closed": 0.14836837539604053,
+          "radial_work": 0.20817758366239258,
+          "clamped_configurational_work": -0.009931244708031861
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 4,
+          "half_height": 0.235,
+          "radius": 4.55,
+          "old_whole_physical": -0.05600700654710539,
+          "sealed_slit": 0.412679888018997,
+          "disk_low": -0.41010973141573637,
+          "disk_high": 0.16628815172228284,
+          "clamped_closed": -0.24382157969345353,
+          "rim_complement_closed": 0.18781457314634814,
+          "radial_work": 0.23990672755667933,
+          "clamped_configurational_work": -0.0039148521367741995
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 4,
+          "window": "near",
+          "axial_cap_taper": -0.23596525286170614,
+          "interior_radial_gradient": 0.23522140733173924,
+          "convected_field_work": -0.0007438455299668967
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 4,
+          "window": "far",
+          "axial_cap_taper": -0.2813421393938702,
+          "interior_radial_gradient": 0.28050438926286986,
+          "convected_field_work": -0.0008377501310003477
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 4,
+          "window": "short",
+          "axial_cap_taper": -0.10160105715917932,
+          "interior_radial_gradient": 0.10044534285021689,
+          "convected_field_work": -0.0011557143089624272
+        }
+      ]
+    },
+    "corrected_rim_refined": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_disk_work_review.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz"
+      ],
+      "guard_exit": 0,
+      "peak_gib_cap": 2.0,
+      "output_sha": "590657dd8fc349087b01654fc567737610c67b9a300f771b3f81e99851f4165f",
+      "rows": [
+        {
+          "kind": "review_inputs",
+          "field": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+          "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "load": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679",
+          "level": "local",
+          "windows": [
+            [
+              0.5709460755088103,
+              0.6228502641914294,
+              0.9529941070206577,
+              1.0713620447382866
+            ],
+            [
+              0.5190418868261912,
+              0.5709460755088103,
+              1.0713620447382866,
+              1.2811533911543753
+            ]
+          ],
+          "independent_pointwise_difference": 2.846334279382745e-14
+        },
+        {
+          "kind": "terminal_trace",
+          "quadrature": 2,
+          "aperture_and_clamped_lower": [
+            0.8185397694468758,
+            0.3208523070910245
+          ],
+          "aperture_and_clamped_upper": [
+            0.44334808009913756,
+            0.3179922868727589
+          ],
+          "aperture_and_clamped_jump": [
+            -0.3751916893477382,
+            -0.0028600202182656465
+          ]
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 2,
+          "half_height": 0.16,
+          "radius": 4.55,
+          "old_whole_physical": -0.0863746584019443,
+          "sealed_slit": 0.4601516391826593,
+          "disk_low": -0.41484354494275855,
+          "disk_high": 0.19764283790957196,
+          "clamped_closed": -0.21720070703318659,
+          "rim_complement_closed": 0.13082604863124225,
+          "radial_work": 0.2071939528111011,
+          "clamped_configurational_work": -0.010006754222085495
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 2,
+          "half_height": 0.235,
+          "radius": 4.55,
+          "old_whole_physical": -0.07334292677489845,
+          "sealed_slit": 0.3870179994242817,
+          "disk_low": -0.40680365122052237,
+          "disk_high": 0.173251806313361,
+          "clamped_closed": -0.23355184490716135,
+          "rim_complement_closed": 0.1602089181322629,
+          "radial_work": 0.23912481890234358,
+          "clamped_configurational_work": 0.005572973995182223
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 2,
+          "window": "near",
+          "axial_cap_taper": -0.2353587827033176,
+          "interior_radial_gradient": 0.23436676169879725,
+          "convected_field_work": -0.0009920210045203381
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 2,
+          "window": "far",
+          "axial_cap_taper": -0.2807496086651988,
+          "interior_radial_gradient": 0.27973752075657915,
+          "convected_field_work": -0.0010120879086196743
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 2,
+          "window": "short",
+          "axial_cap_taper": -0.10119037989883693,
+          "interior_radial_gradient": 0.10015429884682304,
+          "convected_field_work": -0.0010360810520138874
+        },
+        {
+          "kind": "terminal_trace",
+          "quadrature": 4,
+          "aperture_and_clamped_lower": [
+            0.8184059035831255,
+            0.3208522493527028
+          ],
+          "aperture_and_clamped_upper": [
+            0.44333334351864484,
+            0.317991975205481
+          ],
+          "aperture_and_clamped_jump": [
+            -0.37507256006448064,
+            -0.0028602741472217863
+          ]
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 4,
+          "half_height": 0.16,
+          "radius": 4.55,
+          "old_whole_physical": -0.08636092434229842,
+          "sealed_slit": 0.46016549876088647,
+          "disk_low": -0.4148434251001272,
+          "disk_high": 0.197642879650938,
+          "clamped_closed": -0.21720054544918924,
+          "rim_complement_closed": 0.1308396211068908,
+          "radial_work": 0.20719395540833138,
+          "clamped_configurational_work": -0.010006590040857855
+        },
+        {
+          "kind": "weighted_surface",
+          "quadrature": 4,
+          "half_height": 0.235,
+          "radius": 4.55,
+          "old_whole_physical": -0.07332917925039512,
+          "sealed_slit": 0.3870318463446544,
+          "disk_low": -0.4068035635731899,
+          "disk_high": 0.17325183410234446,
+          "clamped_closed": -0.23355172947084546,
+          "rim_complement_closed": 0.16022255022045034,
+          "radial_work": 0.23912482434149634,
+          "clamped_configurational_work": 0.005573094870650885
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 4,
+          "window": "near",
+          "axial_cap_taper": -0.23535863922413355,
+          "interior_radial_gradient": 0.23436675985844455,
+          "convected_field_work": -0.000991879365689008
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 4,
+          "window": "far",
+          "axial_cap_taper": -0.2807495438347692,
+          "interior_radial_gradient": 0.27973752629086507,
+          "convected_field_work": -0.0010120175439041201
+        },
+        {
+          "kind": "weak_sector",
+          "quadrature": 4,
+          "window": "short",
+          "axial_cap_taper": -0.10119022392461476,
+          "interior_radial_gradient": 0.10015430406621956,
+          "convected_field_work": -0.0010359198583951984
+        }
+      ]
+    }
+  },
+  "direct_disk_material_traces": {
+    "archive": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_disk_material_trace.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_last_rings_fluid01/double/fields.npz"
+      ],
+      "rows": [
+        {
+          "kind": "material_trace_source",
+          "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "fields": "02078533996e99c945c8004a8d32b898c9f2ed436c829eaf2b9a2c18baee6e41",
+          "load": "archived native quadrature"
+        },
+        {
+          "kind": "solid_face",
+          "quadrature": 4,
+          "full_solid_traction": 0.010967222017221336,
+          "clamped_solid_traction": 0.006068465872024518,
+          "complementary_edge_solid_traction": 0.004898756145196822,
+          "minimum_face_jacobian": 0.14132758408828514,
+          "minimum_meridional_stretch": 0.3144948065645776
+        },
+        {
+          "kind": "solid_face",
+          "quadrature": 8,
+          "full_solid_traction": 0.010967222017221341,
+          "clamped_solid_traction": 0.0060684658720245145,
+          "complementary_edge_solid_traction": 0.004898756145196822,
+          "minimum_face_jacobian": 0.14118171080553502,
+          "minimum_meridional_stretch": 0.31449475689703343
+        },
+        {
+          "kind": "solid_face",
+          "quadrature": 16,
+          "full_solid_traction": 0.010967222017221332,
+          "clamped_solid_traction": 0.0060684658720245085,
+          "complementary_edge_solid_traction": 0.004898756145196825,
+          "minimum_face_jacobian": 0.14113890870918386,
+          "minimum_meridional_stretch": 0.3144947423179353
+        }
+      ],
+      "stdout_sha": "09cf74f7b3840addc64b35540bd2916e0e32e248bfa9f140e8186709db94a979"
+    },
+    "doubled": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_disk_material_trace.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz"
+      ],
+      "rows": [
+        {
+          "kind": "material_trace_source",
+          "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "fields": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+          "load": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b"
+        },
+        {
+          "kind": "solid_face",
+          "quadrature": 4,
+          "full_solid_traction": 0.01103619237821928,
+          "clamped_solid_traction": 0.006134499301204683,
+          "complementary_edge_solid_traction": 0.004901693077014604,
+          "minimum_face_jacobian": 0.14132758408828514,
+          "minimum_meridional_stretch": 0.3144948065645776
+        },
+        {
+          "kind": "solid_face",
+          "quadrature": 8,
+          "full_solid_traction": 0.011036192378219283,
+          "clamped_solid_traction": 0.006134499301204678,
+          "complementary_edge_solid_traction": 0.004901693077014603,
+          "minimum_face_jacobian": 0.14118171080553502,
+          "minimum_meridional_stretch": 0.31449475689703343
+        },
+        {
+          "kind": "solid_face",
+          "quadrature": 16,
+          "full_solid_traction": 0.011036192378219283,
+          "clamped_solid_traction": 0.006134499301204684,
+          "complementary_edge_solid_traction": 0.004901693077014599,
+          "minimum_face_jacobian": 0.14113890870918386,
+          "minimum_meridional_stretch": 0.3144947423179353
+        }
+      ],
+      "stdout_sha": "03a5cb322ba1234dc030b370041afacf816dcd9296263d64499f200353067dde"
+    },
+    "refined": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_disk_material_trace.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz"
+      ],
+      "rows": [
+        {
+          "kind": "material_trace_source",
+          "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "fields": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+          "load": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679"
+        },
+        {
+          "kind": "solid_face",
+          "quadrature": 4,
+          "full_solid_traction": 0.010985055756725438,
+          "clamped_solid_traction": 0.006123466097265089,
+          "complementary_edge_solid_traction": 0.004861589659460356,
+          "minimum_face_jacobian": 0.14132758408828514,
+          "minimum_meridional_stretch": 0.3144948065645776
+        },
+        {
+          "kind": "solid_face",
+          "quadrature": 8,
+          "full_solid_traction": 0.010985055756725445,
+          "clamped_solid_traction": 0.006123466097265086,
+          "complementary_edge_solid_traction": 0.00486158965946035,
+          "minimum_face_jacobian": 0.14118171080553502,
+          "minimum_meridional_stretch": 0.31449475689703343
+        },
+        {
+          "kind": "solid_face",
+          "quadrature": 16,
+          "full_solid_traction": 0.010985055756725428,
+          "clamped_solid_traction": 0.0061234660972650816,
+          "complementary_edge_solid_traction": 0.0048615896594603565,
+          "minimum_face_jacobian": 0.14113890870918386,
+          "minimum_meridional_stretch": 0.3144947423179353
+        }
+      ],
+      "stdout_sha": "db4762ae52e098b37178210d5e69c493076d9cb4d24a0112a9119e96f3e3c562"
+    }
+  },
+  "patch_resampling": {
+    "patch_double": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_patch_resample.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/patch_double/last.npz"
+      ],
+      "records": [
+        {
+          "kind": "snapshot",
+          "last_iterate": "d44bac01d54ff76b32dc7f1d52dd2680c31549d9f3967b712aff2e40c68a72ed",
+          "drive": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+          "preparation": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "primary_exit": 0,
+          "primary_sweep": 1,
+          "primary_min": 0.21462474475510657,
+          "primary_force": 1.4169695107535407e-05,
+          "primary_field_residual": 1.9101994717847944e-07
+        },
+        {
+          "kind": "uniform_resampling",
+          "subdivision": 24,
+          "energy_change": -0.017086621693848215,
+          "max_force": 0.024462055191510734,
+          "original_probe_force": [
+            -0.013633894451341319,
+            -7.744934010526391e-05
+          ],
+          "min_stretch": 0.2287207346546872,
+          "min_volume_ratio": 0.09187974900613005,
+          "max_displacement": 0.0021129363921516425,
+          "min_stretch_site": [
+            3.4283494478506342,
+            0.9988069185445989
+          ]
+        },
+        {
+          "kind": "uniform_resampling",
+          "subdivision": 40,
+          "energy_change": -0.016970450594588047,
+          "max_force": 0.0034116209892101467,
+          "original_probe_force": [
+            -0.0016381542241346518,
+            0.00030100569663217867
+          ],
+          "min_stretch": 0.22862757498321232,
+          "min_volume_ratio": 0.09183521251843693,
+          "max_displacement": 0.0021129363921516425,
+          "min_stretch_site": [
+            3.4281448649121296,
+            0.998914185604275
+          ]
+        }
+      ],
+      "stdout_sha": "55375af997511cfaf5bac567556713283bf73d46cdc06516e45fbca7afd7f980"
+    },
+    "patch_local": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_patch_resample.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/patch_local/last.npz"
+      ],
+      "records": [
+        {
+          "kind": "snapshot",
+          "last_iterate": "d837c0905e99d4e5ead0fc3777e76f98e2097a033a978e044db6418a2b2b4c9a",
+          "drive": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+          "preparation": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "primary_exit": 0,
+          "primary_sweep": 1,
+          "primary_min": 0.2132359998476014,
+          "primary_force": 1.7287124106091234e-05,
+          "primary_field_residual": 1.4479626382271833e-07
+        },
+        {
+          "kind": "uniform_resampling",
+          "subdivision": 24,
+          "energy_change": -0.016912112557594682,
+          "max_force": 0.02451420083677403,
+          "original_probe_force": [
+            -0.014472167113349992,
+            -0.00024344530555620904
+          ],
+          "min_stretch": 0.23050285079373234,
+          "min_volume_ratio": 0.09182596882801923,
+          "max_displacement": 0.0019763089587285197,
+          "min_stretch_site": [
+            3.428385861324065,
+            0.9988119535647982
+          ]
+        },
+        {
+          "kind": "uniform_resampling",
+          "subdivision": 40,
+          "energy_change": -0.016794924240730133,
+          "max_force": 0.0034262116016447897,
+          "original_probe_force": [
+            -0.0017378516870820713,
+            0.00034652804518867916
+          ],
+          "min_stretch": 0.23041016097424824,
+          "min_volume_ratio": 0.09178144889729198,
+          "max_displacement": 0.0019763089587285197,
+          "min_stretch_site": [
+            3.4281780034657015,
+            0.9989187723567682
+          ]
+        }
+      ],
+      "stdout_sha": "8889088f419b9edf3de2adac7e2102c91dcfec2a4b7d99bbc5eaea03390007a2"
+    },
+    "registered_double": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_patch_resample.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/patch_double/last.npz",
+        "--registered",
+        "96",
+        "128"
+      ],
+      "records": [
+        {
+          "kind": "snapshot",
+          "last_iterate": "d44bac01d54ff76b32dc7f1d52dd2680c31549d9f3967b712aff2e40c68a72ed",
+          "drive": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+          "preparation": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "primary_exit": 0,
+          "primary_sweep": 1,
+          "primary_min": 0.21462474475510657,
+          "primary_force": 1.4169695107535407e-05,
+          "primary_field_residual": 1.9101994717847944e-07
+        },
+        {
+          "kind": "registered_resampling",
+          "subdivision": 96,
+          "energy_change": -0.016953272784999782,
+          "max_force": 4.427644665219027e-05,
+          "original_probe_force": [
+            -0.00011774298061526533,
+            0.00034375572352998463
+          ],
+          "min_stretch": 0.17693539805247963,
+          "min_volume_ratio": 0.08049657057560777,
+          "max_displacement": 0.0021129363921516425,
+          "min_stretch_site": [
+            3.4290167017358204,
+            0.9984657082859649
+          ]
+        },
+        {
+          "kind": "registered_resampling",
+          "subdivision": 128,
+          "energy_change": -0.016953266527012883,
+          "max_force": 4.899052654871311e-05,
+          "original_probe_force": [
+            -0.00011764996697888318,
+            0.00033414490380051574
+          ],
+          "min_stretch": 0.1768727862425606,
+          "min_volume_ratio": 0.08046102650212854,
+          "max_displacement": 0.0021129363921516425,
+          "min_stretch_site": [
+            3.4286202605498635,
+            0.9986704364035721
+          ]
+        }
+      ],
+      "stdout_sha": "b87c5d9cbbfc1518377e3526504ea90bb10738bca78f0f8c9c1792962cebc0cf"
+    },
+    "registered_local": {
+      "command": [
+        "python3",
+        "software/stage1_solver/tools/mouth_rim_patch_resample.py",
+        "_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_disk_consistency01/patch_local/last.npz",
+        "--registered",
+        "96",
+        "128"
+      ],
+      "records": [
+        {
+          "kind": "snapshot",
+          "last_iterate": "d837c0905e99d4e5ead0fc3777e76f98e2097a033a978e044db6418a2b2b4c9a",
+          "drive": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+          "preparation": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "primary_exit": 0,
+          "primary_sweep": 1,
+          "primary_min": 0.2132359998476014,
+          "primary_force": 1.7287124106091234e-05,
+          "primary_field_residual": 1.4479626382271833e-07
+        },
+        {
+          "kind": "registered_resampling",
+          "subdivision": 96,
+          "energy_change": -0.016777484607848933,
+          "max_force": 3.048800059449186e-05,
+          "original_probe_force": [
+            -7.093475442463857e-05,
+            0.00040217265816308296
+          ],
+          "min_stretch": 0.17656533241808825,
+          "min_volume_ratio": 0.07958508153634637,
+          "max_displacement": 0.0019763089587285197,
+          "min_stretch_site": [
+            3.429063524676796,
+            0.998472201600437
+          ]
+        },
+        {
+          "kind": "registered_resampling",
+          "subdivision": 128,
+          "energy_change": -0.016777477749164563,
+          "max_force": 2.869421847308349e-05,
+          "original_probe_force": [
+            -8.05636052102636e-05,
+            0.00040217414382569705
+          ],
+          "min_stretch": 0.17650600383646742,
+          "min_volume_ratio": 0.07955008097388765,
+          "max_displacement": 0.0019763089587285197,
+          "min_stretch_site": [
+            3.428660835674678,
+            0.9986760632830392
+          ]
+        }
+      ],
+      "stdout_sha": "8437e46632e0670e4dc2378440bbf3fdafbaae9b6640da5121dacce3b4e83190"
+    }
+  },
+  "solid_trace_source": "877bccd5267a1996ebeb94a7fe0dad9228bcf4fb2a9ae4c9bcf2777f9b95d8d8"
+}

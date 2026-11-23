@@ -1,0 +1,530 @@
+{
+  "scope": "Fixed radius-four exterior wall-face stress-work diagnostic on the two matched corrected field pairs. One-sided derivatives with respect to signed bank motion are ordered negative then positive. The prescribed Eulerian order is the existing receiver side table sampled at moved physical nodes with its original wall clipping. The material-advected baseline keeps its nodal labels fixed. Both are conditional boundary motions.",
+  "method": "Rest and driven histories have identical pinned order at every exterior cell node. The order potential and pure order-gradient contributions therefore cancel from the difference between the preparations. Only their phase/order kinetic projection changes. Independent one-sided analytic table slopes and signed re-sampling of the full paired kinetic projection check the constrained energy derivative.",
+  "runs": {
+    "double": {
+      "source_sha256": "b3f0a6f7ea6baaedf1c86b86b3184e9f68f8b79337f0cb5ef092cb18d7339253",
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_rim_exterior_pin.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/double/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_banks01/double/stdout"
+      ],
+      "guard_exit": 0,
+      "output_sha256": "ff6a16a11ea90a4483b4e2f8b5195e7bafabc21e4bfc607defb2b5830718f310",
+      "results": [
+        {
+          "kind": "source",
+          "field": "4cfcf8cb8be6125c398d1d830c3b78977efeb92387a305019ae468e135ad3077",
+          "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "load": "1bc12c6e8d426ebfa7958c2b84af291c67fb5ec11ae304bae84d77ce85c23e6b",
+          "bank_work": "51735a753b8d228ff6d5b46b22092a4cabb01c6e39594ef8b97f758d15d0704c"
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "near",
+          "quadrature": 2,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            7.647820783329706e-06,
+            7.877129256206317e-06,
+            3.815164368869972e-06,
+            3.925678978111691e-06
+          ],
+          "independently_differentiated_nodal_work": [
+            0.0020758851030112987,
+            0.002565162710790472
+          ],
+          "resampled_nodal_variation_work": [
+            0.00207589002120377,
+            0.002565156075882728,
+            0.0020758875481515235,
+            0.0025651593883342597
+          ],
+          "signed_full_energy_change": [
+            0.002075873238595878,
+            0.0025652119347771224,
+            0.0020758791561964795,
+            0.0025651873172205346
+          ],
+          "signed_external_order_cusp": 0.0004892776077791731,
+          "prior_advected_residual": -0.05248091385643161,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.05040502875342031,
+            -0.04991575114564114
+          ],
+          "centered_fixed_minus_traction": -0.050160389949530725
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "near",
+          "quadrature": 4,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            7.647820783329706e-06,
+            7.877129256206317e-06,
+            3.815164368869972e-06,
+            3.925678978111691e-06
+          ],
+          "independently_differentiated_nodal_work": [
+            0.0020738134049327205,
+            0.002564271556332215
+          ],
+          "resampled_nodal_variation_work": [
+            0.0020738183201147605,
+            0.0025642649210108146,
+            0.0020738158485973774,
+            0.0025642682336841287
+          ],
+          "signed_full_energy_change": [
+            0.0020738018415569198,
+            0.0025643205391369752,
+            0.0020738076086701217,
+            0.0025642960421751824
+          ],
+          "signed_external_order_cusp": 0.0004904581513994945,
+          "prior_advected_residual": -0.05247820279567211,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.05040438939073939,
+            -0.0499139312393399
+          ],
+          "centered_fixed_minus_traction": -0.05015916031503965
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "middle",
+          "quadrature": 2,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            5.6386349198689345e-06,
+            5.808638254833909e-06,
+            2.8115074988122046e-06,
+            2.9112337163184066e-06
+          ],
+          "independently_differentiated_nodal_work": [
+            0.00029220296787919165,
+            0.00030203689878534427
+          ],
+          "resampled_nodal_variation_work": [
+            0.0002922034119529305,
+            0.00030203643889844563,
+            0.00029220319001831607,
+            0.00030203666868469496
+          ],
+          "signed_full_energy_change": [
+            0.0002922313264226603,
+            0.0003020043909530259,
+            0.00029221714723534924,
+            0.00030202064480562183
+          ],
+          "signed_external_order_cusp": 9.833930906152618e-06,
+          "prior_advected_residual": -0.003156492238162306,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.0028642892702831144,
+            -0.002854455339376962
+          ],
+          "centered_fixed_minus_traction": -0.002859372304830038
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "middle",
+          "quadrature": 4,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            5.6386349198689345e-06,
+            5.808638254833909e-06,
+            2.8115074988122046e-06,
+            2.9112337163184066e-06
+          ],
+          "independently_differentiated_nodal_work": [
+            0.0002921607838710738,
+            0.0003019947758813972
+          ],
+          "resampled_nodal_variation_work": [
+            0.0002921612279226547,
+            0.00030199431601655275,
+            0.00029216100599869984,
+            0.00030199454579193274
+          ],
+          "signed_full_energy_change": [
+            0.00029218914602044616,
+            0.0003019622644315757,
+            0.0002921749650305971,
+            0.00030197852009322733
+          ],
+          "signed_external_order_cusp": 9.833992010323386e-06,
+          "prior_advected_residual": -0.0031564234459992013,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.0028642626621281277,
+            -0.002854428670117804
+          ],
+          "centered_fixed_minus_traction": -0.002859345666122966
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "upstream",
+          "quadrature": 2,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            1.8017352692023536e-06,
+            1.8312620295724003e-06,
+            9.033705532512926e-07,
+            9.18325636423134e-07
+          ],
+          "independently_differentiated_nodal_work": [
+            2.0196860853484157e-05,
+            2.041863906077311e-05
+          ],
+          "resampled_nodal_variation_work": [
+            2.0196873254643955e-05,
+            2.0418626565524403e-05,
+            2.019686705471076e-05,
+            2.0418632794992116e-05
+          ],
+          "signed_full_energy_change": [
+            2.0218046587571012e-05,
+            2.039491814708065e-05,
+            2.0207453453281764e-05,
+            2.0406778381856682e-05
+          ],
+          "signed_external_order_cusp": 2.2177820728895383e-07,
+          "prior_advected_residual": -0.00021872463225641042,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.00019852777140292626,
+            -0.0001983059931956373
+          ],
+          "centered_fixed_minus_traction": -0.0001984168822992818
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "upstream",
+          "quadrature": 4,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            1.8017352692023536e-06,
+            1.8312620295724003e-06,
+            9.033705532512926e-07,
+            9.18325636423134e-07
+          ],
+          "independently_differentiated_nodal_work": [
+            2.0196031865793876e-05,
+            2.0418163962832742e-05
+          ],
+          "resampled_nodal_variation_work": [
+            2.0196044266334008e-05,
+            2.0418151468051074e-05,
+            2.0196038066710883e-05,
+            2.041815769728548e-05
+          ],
+          "signed_full_energy_change": [
+            2.0217216919374972e-05,
+            2.0394443415137922e-05,
+            2.0206624125192635e-05,
+            2.040630346634751e-05
+          ],
+          "signed_external_order_cusp": 2.2213209703886592e-07,
+          "prior_advected_residual": -0.00021866182969911604,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.00019846579783332216,
+            -0.00019824366573628329
+          ],
+          "centered_fixed_minus_traction": -0.00019835473178480274
+        }
+      ]
+    },
+    "local": {
+      "source_sha256": "b3f0a6f7ea6baaedf1c86b86b3184e9f68f8b79337f0cb5ef092cb18d7339253",
+      "command": [
+        "/usr/bin/python3",
+        "software/stage1_solver/tools/mouth_rim_exterior_pin.py",
+        "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_fixed_wall01/stall/latest.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_fields02/local/fields.npz",
+        "/var/projects/toy_physics/_scratch/s11c/r4_consistent_banks01/local/stdout"
+      ],
+      "guard_exit": 0,
+      "output_sha256": "0ade0b1d67b085204a0aab3d7e77564d8e2869fa7a48294ab64069f653c7e172",
+      "results": [
+        {
+          "kind": "source",
+          "field": "05328287395e926bf8095ae0979670a1562f8c0c8464949ec2a842b12eaa99eb",
+          "wall": "d564e2ab9b6d4c25cf3050bac01ab42ae954f4019b059e1e4eac8e715789e1b8",
+          "load": "fafe2592048566939cb678619d6fc3f1437129bb5943cdd1ffd2769cd0a11679",
+          "bank_work": "69f8e2a52321cfeb4845ae6b9298b624865d35d2c8764f45829dac41d7a60b88"
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "near",
+          "quadrature": 2,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            7.756537587999546e-06,
+            7.877129256206317e-06,
+            3.871645180231198e-06,
+            3.925678978111691e-06
+          ],
+          "independently_differentiated_nodal_work": [
+            0.002082016537297168,
+            0.0023520275744556614
+          ],
+          "resampled_nodal_variation_work": [
+            0.0020820214371779977,
+            0.0023520219696856904,
+            0.002082018980268033,
+            0.0023520247628474773
+          ],
+          "signed_full_energy_change": [
+            0.002081994296065934,
+            0.0023520704734973146,
+            0.0020820054089857,
+            0.0023520490142338994
+          ],
+          "signed_external_order_cusp": 0.0002700110371584934,
+          "prior_advected_residual": -0.0382126025068724,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.03613058596957523,
+            -0.03586057493241674
+          ],
+          "centered_fixed_minus_traction": -0.03599558045099599
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "near",
+          "quadrature": 4,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            7.756537587999546e-06,
+            7.877129256206317e-06,
+            3.871645180231198e-06,
+            3.925678978111691e-06
+          ],
+          "independently_differentiated_nodal_work": [
+            0.002081591399140006,
+            0.0023518914070929983
+          ],
+          "resampled_nodal_variation_work": [
+            0.002081596298595528,
+            0.0023518858022867945,
+            0.0020815938418999175,
+            0.002351888595466283
+          ],
+          "signed_full_energy_change": [
+            0.0020815691817643663,
+            0.0023519342807315356,
+            0.002081580282764918,
+            0.002351912834159165
+          ],
+          "signed_external_order_cusp": 0.0002703000079529922,
+          "prior_advected_residual": -0.03821220167570616,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.03613061027656615,
+            -0.03586031026861316
+          ],
+          "centered_fixed_minus_traction": -0.03599546027258966
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "middle",
+          "quadrature": 2,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            5.719386616753752e-06,
+            5.808638254833909e-06,
+            2.8608953952513616e-06,
+            2.9112337163184066e-06
+          ],
+          "independently_differentiated_nodal_work": [
+            0.0002782584009199071,
+            0.0002808561739053927
+          ],
+          "resampled_nodal_variation_work": [
+            0.00027825882184209614,
+            0.00028085574882948615,
+            0.0002782586115631434,
+            0.0002808559613161563
+          ],
+          "signed_full_energy_change": [
+            0.00027828882196797704,
+            0.00028082351024289116,
+            0.0002782736116177584,
+            0.00028083984212076387
+          ],
+          "signed_external_order_cusp": 2.597772985485586e-06,
+          "prior_advected_residual": -0.0017556097492181025,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.0014773513482981954,
+            -0.0014747535753127099
+          ],
+          "centered_fixed_minus_traction": -0.0014760524618054527
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "middle",
+          "quadrature": 4,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            5.719386616753752e-06,
+            5.808638254833909e-06,
+            2.8608953952513616e-06,
+            2.9112337163184066e-06
+          ],
+          "independently_differentiated_nodal_work": [
+            0.0002782556409523968,
+            0.00028085340674946144
+          ],
+          "resampled_nodal_variation_work": [
+            0.00027825606187161726,
+            0.0002808529816765359,
+            0.0002782558515941273,
+            0.00028085319416172344
+          ],
+          "signed_full_energy_change": [
+            0.00027828606200498295,
+            0.0002808207430777592,
+            0.00027827085165127067,
+            0.00028083707496026595
+          ],
+          "signed_external_order_cusp": 2.597765797064666e-06,
+          "prior_advected_residual": -0.0017556417767361516,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.0014773861357837547,
+            -0.00147478836998669
+          ],
+          "centered_fixed_minus_traction": -0.0014760872528852224
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "upstream",
+          "quadrature": 2,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            1.9567639115702917e-06,
+            1.9574332508209835e-06,
+            9.791292716609945e-07,
+            9.820745681121679e-07
+          ],
+          "independently_differentiated_nodal_work": [
+            1.79565788335731e-05,
+            1.800911735832908e-05
+          ],
+          "resampled_nodal_variation_work": [
+            1.7956588961737882e-05,
+            1.8009107203656854e-05,
+            1.7956583904453335e-05,
+            1.8009112292646783e-05
+          ],
+          "signed_full_energy_change": [
+            1.7978912256637787e-05,
+            1.7985547825307607e-05,
+            1.796774527545465e-05,
+            1.7997332402931573e-05
+          ],
+          "signed_external_order_cusp": 5.2538524755979776e-08,
+          "prior_advected_residual": -0.000125182001156055,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.00010722542232248191,
+            -0.00010717288379772593
+          ],
+          "centered_fixed_minus_traction": -0.00010719915306010391
+        },
+        {
+          "kind": "prescribed_profile",
+          "strip": "upstream",
+          "quadrature": 4,
+          "signed_steps": [
+            -1e-06,
+            1e-06,
+            -5e-07,
+            5e-07
+          ],
+          "profile_nodal_error": [
+            1.9567639115702917e-06,
+            1.9574332508209835e-06,
+            9.791292716609945e-07,
+            9.820745681121679e-07
+          ],
+          "independently_differentiated_nodal_work": [
+            1.7956533645040872e-05,
+            1.8009094814203933e-05
+          ],
+          "resampled_nodal_variation_work": [
+            1.7956543773169697e-05,
+            1.8009084659558426e-05,
+            1.7956538715903218e-05,
+            1.8009089748535037e-05
+          ],
+          "signed_full_energy_change": [
+            1.7978866976544487e-05,
+            1.7985525336897777e-05,
+            1.7967700041020363e-05,
+            1.799730988680074e-05
+          ],
+          "signed_external_order_cusp": 5.2561169163060825e-08,
+          "prior_advected_residual": -0.00012515118875356876,
+          "fixed_Eulerian_residual_one_sided": [
+            -0.00010719465510852788,
+            -0.00010714209393936483
+          ],
+          "centered_fixed_minus_traction": -0.00010716837452394635
+        }
+      ]
+    }
+  }
+}

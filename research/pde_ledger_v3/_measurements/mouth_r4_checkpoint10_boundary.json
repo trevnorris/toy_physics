@@ -1,0 +1,1843 @@
+{
+  "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+  "target": {
+    "id": 51603,
+    "field_index_x_theta_t": [
+      19,
+      3,
+      7
+    ],
+    "x": 0.9275147928994083,
+    "theta": 0.12129504969343591,
+    "w": 0.18111191069964827,
+    "chi": 0.0
+  },
+  "rejections": [
+    {
+      "kind": "rejected_shape_rematch",
+      "scale": 1.0,
+      "detail": "Cannot establish zero-order stability at joined node 51603: chi=3.6403035309499604e-05, lower-bound order force=-7.1967443814220655e-09, nodes=126, nonpositive quadrature sites=2052"
+    },
+    {
+      "kind": "rejected_shape_rematch",
+      "scale": 0.5,
+      "detail": "Cannot establish zero-order stability at joined node 51603: chi=1.8231294392060797e-05, lower-bound order force=-3.657390933945598e-09, nodes=126, nonpositive quadrature sites=2058"
+    },
+    {
+      "kind": "rejected_shape_rematch",
+      "scale": 0.25,
+      "detail": "Cannot establish zero-order stability at joined node 51603: chi=9.083278682428973e-06, lower-bound order force=-1.8434639036633838e-09, nodes=126, nonpositive quadrature sites=2058"
+    },
+    {
+      "kind": "rejected_shape_rematch",
+      "scale": 0.125,
+      "detail": "Cannot establish zero-order stability at joined node 51603: chi=4.493073126114848e-06, lower-bound order force=-9.254926950676146e-10, nodes=126, nonpositive quadrature sites=2058"
+    },
+    {
+      "kind": "rejected_shape_rematch",
+      "scale": 0.0625,
+      "detail": "Cannot establish zero-order stability at joined node 51603: chi=2.1936896247068265e-06, lower-bound order force=-4.636720369634306e-10, nodes=126, nonpositive quadrature sites=2058"
+    }
+  ],
+  "trace": [
+    {
+      "iteration": 8,
+      "state_sha256": "b30bfe22ef6f8133a66d29bda996a8558d6851421fd79eb89a5b6ed582ca8d18",
+      "forces": [
+        0.16250400221906602,
+        -0.6567032687598839,
+        0.6092961120884866,
+        -0.5905225407332182,
+        0.442164673586376,
+        0.009858995326794684
+      ],
+      "depth": 0.8185806416379796,
+      "exit": 3.3226909609162023,
+      "intake": 10.784112563857512,
+      "dense_subsonic": 0.6708412108536097
+    },
+    {
+      "iteration": 9,
+      "state_sha256": "90556028897eb82d0d2b621437f2db2281e498f83d1cc0caebec9a25886f5fbf",
+      "forces": [
+        0.1518857607152313,
+        -0.6427277548937127,
+        0.6958231824683025,
+        -0.6591600686078891,
+        0.46334687795024365,
+        0.009103314368985593
+      ],
+      "depth": 0.8190811122969214,
+      "exit": 3.3081859408298877,
+      "intake": 10.716968992696987,
+      "dense_subsonic": 0.6675031351814171
+    },
+    {
+      "iteration": 10,
+      "state_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "forces": [
+        0.15056488336995244,
+        -0.6412364018615335,
+        0.7054993329802528,
+        -0.6668344576610252,
+        0.4656029341276735,
+        0.009007417247630656
+      ],
+      "depth": 0.8191403557693495,
+      "exit": 3.306377271246663,
+      "intake": 10.708572690281159,
+      "dense_subsonic": 0.6675622885530933
+    }
+  ],
+  "folded_prisms": [
+    {
+      "cell_t_x_angle_triangle": [
+        5,
+        17,
+        0,
+        0
+      ],
+      "certificate_includes_target": true,
+      "vertices": [
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            0
+          ],
+          "landed": [
+            0.8919771603984252,
+            0.22357693950785837,
+            0.0
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.0034634796672501087,
+            "at_x_t_theta": [
+              0.9108763398983425,
+              0.19323905345501974,
+              0.0
+            ]
+          },
+          "incident_prisms": 6,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            0
+          ],
+          "landed": [
+            0.9078335129310273,
+            0.22306234651614115,
+            0.0
+          ],
+          "chi": 0.00011541077718769191,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              0,
+              0
+            ],
+            "chi": 0.005907139796218805,
+            "at_x_t_theta": [
+              0.926581441069885,
+              0.1860542505593505,
+              0.0
+            ]
+          },
+          "incident_prisms": 6,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            0
+          ],
+          "landed": [
+            0.8919192906088478,
+            0.241657629908239,
+            0.0
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.00011541077718769191,
+            "at_x_t_theta": [
+              0.9078335129310273,
+              0.22306234651614115,
+              0.0
+            ]
+          },
+          "incident_prisms": 6,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            1
+          ],
+          "landed": [
+            0.8922074761927755,
+            0.2471334290651755,
+            0.26177515636687376
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.0034634796672501087,
+            "at_x_t_theta": [
+              0.9108763398983425,
+              0.19323905345501974,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            1
+          ],
+          "landed": [
+            0.9083390050441034,
+            0.2470174936944361,
+            0.2617762088045406
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              0,
+              0
+            ],
+            "chi": 0.005907139796218805,
+            "at_x_t_theta": [
+              0.926581441069885,
+              0.1860542505593505,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            1
+          ],
+          "landed": [
+            0.8919918816482233,
+            0.24701742148493874,
+            0.26179784493615676
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.00011541077718769191,
+            "at_x_t_theta": [
+              0.9078335129310273,
+              0.22306234651614115,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        }
+      ],
+      "minimum": {
+        "barycentric": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "angular_fraction": 1.0,
+        "physical_r_z_theta": [
+          3.550162798982871,
+          0.20234199766611344,
+          0.2617762088045406
+        ],
+        "landed_x_t_theta": [
+          0.9083390050441034,
+          0.2470174936944361,
+          0.2617762088045406
+        ],
+        "J": -0.0016833678411940225,
+        "det_chart": -0.003153165052958152,
+        "principal_stretches": [
+          0.002417218087960337,
+          0.8094049248651599,
+          0.8095397501036069,
+          1.062818657887314
+        ],
+        "chi": 0.0,
+        "n": 0.18368768844958303
+      },
+      "vertex_of_minimum": 1,
+      "ordered_vertex_states": [
+        {
+          "barycentric": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "angular_fraction": 0.0,
+          "physical_r_z_theta": [
+            3.5573681703784703,
+            0.18271936988397777,
+            0.0
+          ],
+          "landed_x_t_theta": [
+            0.9078335129310273,
+            0.22306234651614115,
+            0.0
+          ],
+          "J": 0.2516289777401175,
+          "det_chart": 0.4683673904731323,
+          "principal_stretches": [
+            0.36845888891925044,
+            0.8110460361883539,
+            0.811250340379431,
+            1.037937533329677
+          ],
+          "chi": 0.00011541077718769341,
+          "n": 0.0
+        }
+      ]
+    },
+    {
+      "cell_t_x_angle_triangle": [
+        5,
+        17,
+        1,
+        0
+      ],
+      "certificate_includes_target": false,
+      "vertices": [
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            1
+          ],
+          "landed": [
+            0.8922074761927755,
+            0.2471334290651755,
+            0.26177515636687376
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.0034634796672501087,
+            "at_x_t_theta": [
+              0.9108763398983425,
+              0.19323905345501974,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            1
+          ],
+          "landed": [
+            0.9083390050441034,
+            0.2470174936944361,
+            0.2617762088045406
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              0,
+              0
+            ],
+            "chi": 0.005907139796218805,
+            "at_x_t_theta": [
+              0.926581441069885,
+              0.1860542505593505,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            1
+          ],
+          "landed": [
+            0.8919918816482233,
+            0.24701742148493874,
+            0.26179784493615676
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.00011541077718769191,
+            "at_x_t_theta": [
+              0.9078335129310273,
+              0.22306234651614115,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            2
+          ],
+          "landed": [
+            0.8921778882544321,
+            0.24555172236045023,
+            0.5235983751157309
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              2,
+              0
+            ],
+            "chi": 0.0003316512442140754,
+            "at_x_t_theta": [
+              0.9148181502457073,
+              0.2180327061417483,
+              0.7853982588108902
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            2
+          ],
+          "landed": [
+            0.9083212575837594,
+            0.24684027129739872,
+            0.5235984344640354
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              1,
+              0
+            ],
+            "chi": 0.0027550156459651897,
+            "at_x_t_theta": [
+              0.9309429528469464,
+              0.2027874492063128,
+              0.523602720910507
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            2
+          ],
+          "landed": [
+            0.8920013575800975,
+            0.24829402043258925,
+            0.52359814148049
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": null,
+          "incident_prisms": 12,
+          "classification": "strictly_melted"
+        }
+      ],
+      "minimum": {
+        "barycentric": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "angular_fraction": 0.0,
+        "physical_r_z_theta": [
+          3.485833399026189,
+          0.2023419385164001,
+          0.26179784493615676
+        ],
+        "landed_x_t_theta": [
+          0.8919918816482233,
+          0.24701742148493874,
+          0.26179784493615676
+        ],
+        "J": -0.0016180847978755463,
+        "det_chart": -0.0031016041418170785,
+        "principal_stretches": [
+          0.0023072401408554166,
+          0.7843687395960398,
+          0.784376270925657,
+          1.1398921295627389
+        ],
+        "chi": 0.0,
+        "n": 0.1796046145501778
+      },
+      "vertex_of_minimum": 2
+    },
+    {
+      "cell_t_x_angle_triangle": [
+        5,
+        17,
+        2,
+        0
+      ],
+      "certificate_includes_target": false,
+      "vertices": [
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            2
+          ],
+          "landed": [
+            0.8921778882544321,
+            0.24555172236045023,
+            0.5235983751157309
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              2,
+              0
+            ],
+            "chi": 0.0003316512442140754,
+            "at_x_t_theta": [
+              0.9148181502457073,
+              0.2180327061417483,
+              0.7853982588108902
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            2
+          ],
+          "landed": [
+            0.9083212575837594,
+            0.24684027129739872,
+            0.5235984344640354
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              1,
+              0
+            ],
+            "chi": 0.0027550156459651897,
+            "at_x_t_theta": [
+              0.9309429528469464,
+              0.2027874492063128,
+              0.523602720910507
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            2
+          ],
+          "landed": [
+            0.8920013575800975,
+            0.24829402043258925,
+            0.52359814148049
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": null,
+          "incident_prisms": 12,
+          "classification": "strictly_melted"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            3
+          ],
+          "landed": [
+            0.8921955063077175,
+            0.2468555465177114,
+            0.7853974187524988
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              2,
+              0
+            ],
+            "chi": 0.0003316512442140754,
+            "at_x_t_theta": [
+              0.9148181502457073,
+              0.2180327061417483,
+              0.7853982588108902
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            3
+          ],
+          "landed": [
+            0.9083292849053854,
+            0.2466641373678215,
+            0.7853972136645931
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              2,
+              0
+            ],
+            "chi": 0.0027550156459651897,
+            "at_x_t_theta": [
+              0.9309429528469464,
+              0.2027874492063128,
+              0.523602720910507
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            3
+          ],
+          "landed": [
+            0.8919993473501209,
+            0.24684151027772408,
+            0.7853974277128317
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": null,
+          "incident_prisms": 12,
+          "classification": "strictly_melted"
+        }
+      ],
+      "minimum": {
+        "barycentric": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "angular_fraction": 1.0,
+        "physical_r_z_theta": [
+          3.478142198243348,
+          0.20220934019815534,
+          0.7853974187524988
+        ],
+        "landed_x_t_theta": [
+          0.8921955063077175,
+          0.2468555465177114,
+          0.7853974187524988
+        ],
+        "J": -0.00021533108518475126,
+        "det_chart": -0.00043138302024338745,
+        "principal_stretches": [
+          0.00031823451034358887,
+          0.782744720199492,
+          0.7827597068812054,
+          1.1043604528167337
+        ],
+        "chi": 0.0,
+        "n": 0.7734477008298212
+      },
+      "vertex_of_minimum": 0
+    },
+    {
+      "cell_t_x_angle_triangle": [
+        5,
+        17,
+        3,
+        0
+      ],
+      "certificate_includes_target": false,
+      "vertices": [
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            3
+          ],
+          "landed": [
+            0.8921955063077175,
+            0.2468555465177114,
+            0.7853974187524988
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              2,
+              0
+            ],
+            "chi": 0.0003316512442140754,
+            "at_x_t_theta": [
+              0.9148181502457073,
+              0.2180327061417483,
+              0.7853982588108902
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            3
+          ],
+          "landed": [
+            0.9083292849053854,
+            0.2466641373678215,
+            0.7853972136645931
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              2,
+              0
+            ],
+            "chi": 0.0027550156459651897,
+            "at_x_t_theta": [
+              0.9309429528469464,
+              0.2027874492063128,
+              0.523602720910507
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            3
+          ],
+          "landed": [
+            0.8919993473501209,
+            0.24684151027772408,
+            0.7853974277128317
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": null,
+          "incident_prisms": 12,
+          "classification": "strictly_melted"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            4
+          ],
+          "landed": [
+            0.8921856945624085,
+            0.2463601018489863,
+            1.0471968807994834
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              3,
+              0
+            ],
+            "chi": 0.0003316512442140754,
+            "at_x_t_theta": [
+              0.9148181502457073,
+              0.2180327061417483,
+              0.7853982588108902
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            4
+          ],
+          "landed": [
+            0.9083235249295938,
+            0.2470648032583798,
+            1.0471962815569855
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              3,
+              0
+            ],
+            "chi": 0.002622027004939502,
+            "at_x_t_theta": [
+              0.9309862858539432,
+              0.20272115780648828,
+              0.7853987919002536
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            4
+          ],
+          "landed": [
+            0.8920161195500738,
+            0.2477646884293853,
+            1.04719700549263
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": null,
+          "incident_prisms": 12,
+          "classification": "strictly_melted"
+        }
+      ],
+      "minimum": {
+        "barycentric": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "angular_fraction": 0.0,
+        "physical_r_z_theta": [
+          3.477381432951132,
+          0.20219784254753845,
+          0.7853974277128317
+        ],
+        "landed_x_t_theta": [
+          0.8919993473501209,
+          0.24684151027772408,
+          0.7853974277128317
+        ],
+        "J": -0.00022232820582916834,
+        "det_chart": -0.00043138365248486516,
+        "principal_stretches": [
+          0.00032064402300650884,
+          0.7824593147048563,
+          0.7824708407556652,
+          1.1325085442561318
+        ],
+        "chi": 0.0,
+        "n": 0.7733580531153756
+      },
+      "vertex_of_minimum": 2
+    },
+    {
+      "cell_t_x_angle_triangle": [
+        5,
+        18,
+        4,
+        0
+      ],
+      "certificate_includes_target": false,
+      "vertices": [
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            4
+          ],
+          "landed": [
+            0.9083235249295938,
+            0.2470648032583798,
+            1.0471962815569855
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              3,
+              0
+            ],
+            "chi": 0.002622027004939502,
+            "at_x_t_theta": [
+              0.9309862858539432,
+              0.20272115780648828,
+              0.7853987919002536
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            19,
+            4
+          ],
+          "landed": [
+            0.9247018723998285,
+            0.24072907389740855,
+            1.0471957735156854
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              19,
+              3,
+              0
+            ],
+            "chi": 0.005193863751816816,
+            "at_x_t_theta": [
+              0.9466240748791784,
+              0.19188572808649862,
+              0.785398612468628
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            18,
+            4
+          ],
+          "landed": [
+            0.9073204665067136,
+            0.2481091184737667,
+            1.04719712238635
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": null,
+          "incident_prisms": 12,
+          "classification": "strictly_melted"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            5
+          ],
+          "landed": [
+            0.9083657976125035,
+            0.24757184607152136,
+            1.3090334111914312
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              5,
+              0
+            ],
+            "chi": 0.003961773411278627,
+            "at_x_t_theta": [
+              0.9265797713095143,
+              0.18810518253231792,
+              1.5707963267948966
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            19,
+            5
+          ],
+          "landed": [
+            0.9246891487940182,
+            0.241028437691517,
+            1.30902661117808
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              19,
+              5,
+              0
+            ],
+            "chi": 0.007004032190545265,
+            "at_x_t_theta": [
+              0.9421728473911513,
+              0.18148421187934685,
+              1.5707963267948966
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            18,
+            5
+          ],
+          "landed": [
+            0.9073390785449033,
+            0.247843551654924,
+            1.308999491877399
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              18,
+              5,
+              0
+            ],
+            "chi": 5.696928217352083e-05,
+            "at_x_t_theta": [
+              0.9237473384760407,
+              0.22058029246158348,
+              1.5707963267948966
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        }
+      ],
+      "minimum": {
+        "barycentric": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "angular_fraction": 1.0,
+        "physical_r_z_theta": [
+          3.527870039120209,
+          0.2030186550777536,
+          1.308999491877399
+        ],
+        "landed_x_t_theta": [
+          0.9073390785449033,
+          0.247843551654924,
+          1.308999491877399
+        ],
+        "J": -0.0019950034411445592,
+        "det_chart": -0.0037315242744222826,
+        "principal_stretches": [
+          0.0026817003336187,
+          0.8041310551264397,
+          0.8041402821848893,
+          1.1504685485648036
+        ],
+        "chi": 0.0,
+        "n": 0.9171344784446975
+      },
+      "vertex_of_minimum": 2
+    },
+    {
+      "cell_t_x_angle_triangle": [
+        5,
+        18,
+        5,
+        0
+      ],
+      "certificate_includes_target": false,
+      "vertices": [
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            5
+          ],
+          "landed": [
+            0.9083657976125035,
+            0.24757184607152136,
+            1.3090334111914312
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              5,
+              0
+            ],
+            "chi": 0.003961773411278627,
+            "at_x_t_theta": [
+              0.9265797713095143,
+              0.18810518253231792,
+              1.5707963267948966
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            19,
+            5
+          ],
+          "landed": [
+            0.9246891487940182,
+            0.241028437691517,
+            1.30902661117808
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              19,
+              5,
+              0
+            ],
+            "chi": 0.007004032190545265,
+            "at_x_t_theta": [
+              0.9421728473911513,
+              0.18148421187934685,
+              1.5707963267948966
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            18,
+            5
+          ],
+          "landed": [
+            0.9073390785449033,
+            0.247843551654924,
+            1.308999491877399
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              18,
+              5,
+              0
+            ],
+            "chi": 5.696928217352083e-05,
+            "at_x_t_theta": [
+              0.9237473384760407,
+              0.22058029246158348,
+              1.5707963267948966
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            18,
+            6
+          ],
+          "landed": [
+            0.9078658634067801,
+            0.22300895878578264,
+            1.5707963267948966
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              18,
+              5,
+              0
+            ],
+            "chi": 0.003961773411278627,
+            "at_x_t_theta": [
+              0.9265797713095143,
+              0.18810518253231792,
+              1.5707963267948966
+            ]
+          },
+          "incident_prisms": 6,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            19,
+            6
+          ],
+          "landed": [
+            0.9237473384760407,
+            0.22058029246158348,
+            1.5707963267948966
+          ],
+          "chi": 5.696928217352083e-05,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              19,
+              5,
+              0
+            ],
+            "chi": 0.007004032190545265,
+            "at_x_t_theta": [
+              0.9421728473911513,
+              0.18148421187934685,
+              1.5707963267948966
+            ]
+          },
+          "incident_prisms": 6,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            18,
+            6
+          ],
+          "landed": [
+            0.9073096979423144,
+            0.24420879443250462,
+            1.5707963267948966
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              18,
+              5,
+              0
+            ],
+            "chi": 5.696928217352083e-05,
+            "at_x_t_theta": [
+              0.9237473384760407,
+              0.22058029246158348,
+              1.5707963267948966
+            ]
+          },
+          "incident_prisms": 6,
+          "classification": "shared_active"
+        }
+      ],
+      "minimum": {
+        "barycentric": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "angular_fraction": 0.0,
+        "physical_r_z_theta": [
+          3.531968269949835,
+          0.20279609006950064,
+          1.3090334111914312
+        ],
+        "landed_x_t_theta": [
+          0.9083657976125035,
+          0.24757184607152136,
+          1.3090334111914312
+        ],
+        "J": -0.001986259757271965,
+        "det_chart": -0.003816710099540143,
+        "principal_stretches": [
+          0.0027815579936403675,
+          0.805334272035977,
+          0.8053755755028139,
+          1.100964430977184
+        ],
+        "chi": 0.0,
+        "n": 0.9173463401299483
+      },
+      "vertex_of_minimum": 0
+    },
+    {
+      "cell_t_x_angle_triangle": [
+        5,
+        16,
+        0,
+        1
+      ],
+      "certificate_includes_target": false,
+      "vertices": [
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            0
+          ],
+          "landed": [
+            0.8919192906088478,
+            0.241657629908239,
+            0.0
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.00011541077718769191,
+            "at_x_t_theta": [
+              0.9078335129310273,
+              0.22306234651614115,
+              0.0
+            ]
+          },
+          "incident_prisms": 6,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            16,
+            0
+          ],
+          "landed": [
+            0.8767363214944079,
+            0.2400293223749906,
+            0.0
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              15,
+              0,
+              1
+            ],
+            "chi": 0.00034438745955442103,
+            "at_x_t_theta": [
+              0.8767517664754373,
+              0.2179379933353973,
+              0.0
+            ]
+          },
+          "incident_prisms": 6,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            0
+          ],
+          "landed": [
+            0.8919771603984252,
+            0.22357693950785837,
+            0.0
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.0034634796672501087,
+            "at_x_t_theta": [
+              0.9108763398983425,
+              0.19323905345501974,
+              0.0
+            ]
+          },
+          "incident_prisms": 6,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            1
+          ],
+          "landed": [
+            0.8919918816482233,
+            0.24701742148493874,
+            0.26179784493615676
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.00011541077718769191,
+            "at_x_t_theta": [
+              0.9078335129310273,
+              0.22306234651614115,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            16,
+            1
+          ],
+          "landed": [
+            0.8769791287001664,
+            0.2445439998832032,
+            0.2617969054858659
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              15,
+              0,
+              1
+            ],
+            "chi": 0.00034438745955442103,
+            "at_x_t_theta": [
+              0.8767517664754373,
+              0.2179379933353973,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            1
+          ],
+          "landed": [
+            0.8922074761927755,
+            0.2471334290651755,
+            0.26177515636687376
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.0034634796672501087,
+            "at_x_t_theta": [
+              0.9108763398983425,
+              0.19323905345501974,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        }
+      ],
+      "minimum": {
+        "barycentric": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "angular_fraction": 1.0,
+        "physical_r_z_theta": [
+          3.48664260703048,
+          0.20243696500694713,
+          0.26177515636687376
+        ],
+        "landed_x_t_theta": [
+          0.8922074761927756,
+          0.24713342906517546,
+          0.26177515636687376
+        ],
+        "J": -0.0010227506007056374,
+        "det_chart": -0.002024267785818085,
+        "principal_stretches": [
+          0.0016293388802722795,
+          0.7846023569390626,
+          0.7847360296932445,
+          1.0194950486961742
+        ],
+        "chi": 0.0,
+        "n": 0.17962648562104447
+      },
+      "vertex_of_minimum": 2
+    },
+    {
+      "cell_t_x_angle_triangle": [
+        5,
+        16,
+        1,
+        1
+      ],
+      "certificate_includes_target": false,
+      "vertices": [
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            1
+          ],
+          "landed": [
+            0.8919918816482233,
+            0.24701742148493874,
+            0.26179784493615676
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.00011541077718769191,
+            "at_x_t_theta": [
+              0.9078335129310273,
+              0.22306234651614115,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            16,
+            1
+          ],
+          "landed": [
+            0.8769791287001664,
+            0.2445439998832032,
+            0.2617969054858659
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              5,
+              15,
+              0,
+              1
+            ],
+            "chi": 0.00034438745955442103,
+            "at_x_t_theta": [
+              0.8767517664754373,
+              0.2179379933353973,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            1
+          ],
+          "landed": [
+            0.8922074761927755,
+            0.2471334290651755,
+            0.26177515636687376
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              0,
+              0
+            ],
+            "chi": 0.0034634796672501087,
+            "at_x_t_theta": [
+              0.9108763398983425,
+              0.19323905345501974,
+              0.0
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            17,
+            2
+          ],
+          "landed": [
+            0.8920013575800975,
+            0.24829402043258925,
+            0.52359814148049
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": null,
+          "incident_prisms": 12,
+          "classification": "strictly_melted"
+        },
+        {
+          "node_t_x_theta": [
+            6,
+            16,
+            2
+          ],
+          "landed": [
+            0.8769771634390351,
+            0.2446595145151832,
+            0.5235980010662394
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": null,
+          "incident_prisms": 12,
+          "classification": "strictly_melted"
+        },
+        {
+          "node_t_x_theta": [
+            5,
+            17,
+            2
+          ],
+          "landed": [
+            0.8921778882544321,
+            0.24555172236045023,
+            0.5235983751157309
+          ],
+          "chi": 0.0,
+          "ordered_neighbor": {
+            "cell": [
+              4,
+              17,
+              2,
+              0
+            ],
+            "chi": 0.0003316512442140754,
+            "at_x_t_theta": [
+              0.9148181502457073,
+              0.2180327061417483,
+              0.7853982588108902
+            ]
+          },
+          "incident_prisms": 12,
+          "classification": "shared_active"
+        }
+      ],
+      "minimum": {
+        "barycentric": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "angular_fraction": 0.0,
+        "physical_r_z_theta": [
+          3.485833399026189,
+          0.2023419385164001,
+          0.26179784493615676
+        ],
+        "landed_x_t_theta": [
+          0.8919918816482233,
+          0.24701742148493874,
+          0.26179784493615676
+        ],
+        "J": -0.0010314604043350866,
+        "det_chart": -0.0019771410413140077,
+        "principal_stretches": [
+          0.001603435829997961,
+          0.7843687395960398,
+          0.7843752184343669,
+          1.0455789612751998
+        ],
+        "chi": 0.0,
+        "n": 0.1796046145501778
+      },
+      "vertex_of_minimum": 0
+    }
+  ],
+  "coordinate_convention": "zero-based [depth, radial, polar, triangle]. The six vertices are the bottom triangle followed by the top triangle.",
+  "local_stretches": "magnitudes of singular values plus hoop, evaluated from saved labels; signed model volume ratio reported separately",
+  "orientation": {
+    "status": "certified",
+    "all_active_cells_oriented": true,
+    "witness": null,
+    "physical_radial_chart_derivative_lower_bound": 3.2700141795250337,
+    "counts": {
+      "total_prisms": 6912,
+      "positive_bernstein_prisms": 6904,
+      "exact_prisms": 8,
+      "exact_subprisms": 12,
+      "inactive_fold_enclosures": 8,
+      "max_depth_used": 1,
+      "active_fold_prisms": 0,
+      "unresolved_prisms": 0
+    }
+  },
+  "field": {
+    "amplitude": 6.867890149047629e-10,
+    "phase": 6.065961959404904e-08,
+    "order_free": 0.34959525648184164,
+    "order_kkt": 2.572955182245096e-10,
+    "order_interior": 2.572955182245096e-10
+  },
+  "command": [
+    "env",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "/usr/bin/python3",
+    "-B",
+    "software/stage1_solver/tools/mouth_r4_checkpoint10_boundary.py",
+    "_scratch/s11c/r4_melted_survival01",
+    "_scratch/s11c/r4_cp10_boundary01/build",
+    "_scratch/s11c/r4_cp10_boundary01/readout.json"
+  ],
+  "stdout": [
+    "folds, target overlaps, conservative enclosures 8 0 1"
+  ],
+  "diagnostic_sha256": "e6f5173f9abe9539354026e00fd91793fe024fde8a3bb5ba41df5c84b6a0ab65",
+  "native_point_callback_sha256": "25f40f4319dea610fa3ff8eaa98e08ff85cb83ede54defb6a61fa8d4896e3d6e",
+  "producer_manifest_sha256": "3afdbfcb2fafb9ebbd36f852ff1ec58bd013a45e61ae094eb001c93b7a98b6e8",
+  "radius": 4,
+  "winding": 1,
+  "phase_drop": 0.4510084282857874,
+  "diagnostic_scope": "Readback on saved state. The trial rejection text is archival. Field-basis disjointness applies to checkpoint 10. No relabel or rematch was performed.",
+  "independent_checks": {
+    "point_readback": {
+      "folded": {
+        "physical": [
+          3.550162798982871,
+          0.20234199766611344,
+          0.2617762088045406
+        ],
+        "reference": [
+          0.9118726769384466,
+          0.20833333333333331,
+          0.2617993877991494
+        ],
+        "chi": 0.0,
+        "J": -0.0016833678411939986,
+        "principal_stretches": [
+          0.002417218087960292,
+          0.8094049248651599,
+          0.8095397501036069,
+          1.0628186578873122
+        ],
+        "n": 0.18368768844958303,
+        "det_chart": -0.0031531650529581065
+      },
+      "positive_corner": {
+        "physical": [
+          3.5573681703784703,
+          0.18271936988397777,
+          0.0
+        ],
+        "reference": [
+          0.9118726769384466,
+          0.20833333333333331,
+          0.0
+        ],
+        "chi": 0.00011541077718769341,
+        "J": 0.2516289777401177,
+        "principal_stretches": [
+          0.3684588889192503,
+          0.8110460361883539,
+          0.8112503403794311,
+          1.0379375333296785
+        ],
+        "n": 0.0,
+        "det_chart": 0.46836739047313247
+      }
+    },
+    "order_basis_stdout": [
+      "joined-node indices x,t,a [[19  7  3]]",
+      "node frozen coordinate,chi (array([0.92751479, 0.22109997, 0.12129505]),) [0.] [3.63537786 0.18111191 0.12129505]",
+      "[5, 17, 0, 0] certified None {'exact_subprisms': 5, 'max_depth_used': 2, 'inactive_fold_enclosures': 1}",
+      "[5, 17, 1, 0] certified None {'exact_subprisms': 1, 'max_depth_used': 0, 'inactive_fold_enclosures': 1}",
+      "[5, 17, 2, 0] certified None {'exact_subprisms': 1, 'max_depth_used': 0, 'inactive_fold_enclosures': 1}",
+      "[5, 17, 3, 0] certified None {'exact_subprisms': 1, 'max_depth_used': 0, 'inactive_fold_enclosures': 1}",
+      "[5, 18, 4, 0] certified None {'exact_subprisms': 1, 'max_depth_used': 0, 'inactive_fold_enclosures': 1}",
+      "[5, 18, 5, 0] certified None {'exact_subprisms': 1, 'max_depth_used': 0, 'inactive_fold_enclosures': 1}",
+      "[5, 16, 0, 1] certified None {'exact_subprisms': 1, 'max_depth_used': 0, 'inactive_fold_enclosures': 1}",
+      "[5, 16, 1, 1] certified None {'exact_subprisms': 1, 'max_depth_used': 0, 'inactive_fold_enclosures': 1}"
+    ],
+    "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "independent_source_sha256": {
+      "chart_audit.py": "9403e6f1727ea4af0cabfd1fe80e6bef888a9420fd81bef8531749ade1a3f816",
+      "basis_certificate.py": "a26db95a141447fc4db06608dcc3a578f21e4f7f9807487cfb280d0690cc16d9",
+      "point_readback.py": "f784463374d3da4436cc84f0da2fad23e932cb64fe882a21d472618fe570e134"
+    }
+  }
+}

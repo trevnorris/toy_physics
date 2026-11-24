@@ -16,6 +16,7 @@ struct Data {
     const double *weights,*labels,*base,*correction,*offset,*spline,*shape;
     int spline_n, diagnose;
     double length, ref_length, pressure, core_ratio, epsilon;
+    int exact_melt_support;
 };
 struct Results {
     double *gradient,*load,*stats;
@@ -163,11 +164,14 @@ int field_id(const Data &d,int i,int k,int j) {
     return (i*d.field_a.n+k)*d.field_t.n+j;
 }
 bool zero_neighborhood(const Data &d,const Vec &X) {
-    const auto bx=incident_nodes(d.base_x,X[0]),bt=incident_nodes(d.base_t,X[1]);
+    // For full-prism exact-support trials, a knot belongs only to hats of
+    // strictly positive weight there. The surrounding prism is checked separately.
+    const auto nodes=d.exact_melt_support ? positive_basis_nodes : incident_nodes;
+    const auto bx=nodes(d.base_x,X[0]),bt=nodes(d.base_t,X[1]);
     for(int j=bt.lo;j<=bt.hi;++j)for(int i=bx.lo;i<=bx.hi;++i)
         if(d.base[j*d.base_x.n+i]!=0.)return false;
-    const auto fx=incident_nodes(d.field_x,X[0]),ft=incident_nodes(d.field_t,X[1]),
-               fa=incident_nodes(d.field_a,X[2]);
+    const auto fx=nodes(d.field_x,X[0]),ft=nodes(d.field_t,X[1]),
+               fa=nodes(d.field_a,X[2]);
     for(int i=fx.lo;i<=fx.hi;++i)for(int k=fa.lo;k<=fa.hi;++k)for(int j=ft.lo;j<=ft.hi;++j)
         if(d.correction[field_id(d,i,k,j)]!=0.)return false;
     return true;

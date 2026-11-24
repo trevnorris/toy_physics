@@ -57,7 +57,8 @@ class Data(ct.Structure):
         'x t a depth_edges angle_edges base_x base_t field_x field_t field_a cut_x cut_t cut_a reg_e reg_t gauss').split()]
         + [(s, Pointer) for s in 'weights labels base correction offset spline shape'.split()]
         + [('spline_n', ct.c_int), ('diagnose', ct.c_int)]
-        + [(s, ct.c_double) for s in 'length ref_length pressure core_ratio epsilon'.split()])
+        + [(s, ct.c_double) for s in 'length ref_length pressure core_ratio epsilon'.split()]
+        + [('exact_melt_support', ct.c_int)])
 
 
 class Results(ct.Structure):

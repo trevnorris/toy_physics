@@ -247,7 +247,8 @@ def _certify_wedge(points, scale, support, activation, counts, max_depth):
     return ('unresolved', uncertain) if uncertain is not None else ('certified', None)
 
 
-def active_orientation(body, solid, order, *, max_depth=12, first_failure=True, collect_activation=True):
+def active_orientation(body, solid, order, *, max_depth=12, first_failure=True, collect_activation=True,
+                       exact_fallback=None):
     """Check one unpacked placement and the corresponding full carrier order vector.
 
     The carrier IDs in potential_activation_nodes cover the Q1 basis functions
@@ -315,6 +316,13 @@ def active_orientation(body, solid, order, *, max_depth=12, first_failure=True, 
                 scale *= _rational(axis[idx+1])-_rational(axis[idx])
             counts['exact_prisms'] += 1
             status, item = _certify_wedge(p, scale, support, activation, counts, max_depth)
+            if status == 'unresolved' and exact_fallback is not None:
+                status, item = exact_fallback(p, scale, support)
+                if status == 'certified' and activation is not None:
+                    # This list only screens possible one-sided order derivatives.
+                    # Positive order has already been tested on its true support.
+                    minima = [_quadratic_min(row)[0] for row in _coefficients(p)]
+                    activation.update(support.ids[support.box(_possible_fold(minima) @ p)].ravel().tolist())
             if status != 'certified':
                 counts[status+'_prisms'] += 1
                 if failure == 'certified' or (status == 'active_fold' and failure != status):

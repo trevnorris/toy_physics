@@ -1,0 +1,648 @@
+{
+  "source_checkpoint": "f3538a34",
+  "scope": "24 x 24 R4, held entrance; original checkpoint and complete full shape proposal",
+  "phase_drop": 0.4510084282857874,
+  "winding": 1,
+  "entered_production_sources": {
+    "driver/mouth_exact_r4_release.py": "1166dd2f91a03972ac95f2ac80ca82043c2c72cd9e5059d3a12e07bb1b987d59",
+    "driver/mouth_r4_fold_constitutive.cpp": "25f40f4319dea610fa3ff8eaa98e08ff85cb83ede54defb6a61fa8d4896e3d6e",
+    "driver/mouth_r4_fold_constitutive.py": "77ff0029f0d721c30e19105ece3f7c65e471f50c7bcae0b338c79ca30630fd97",
+    "driver/mouth_whole_r4_relax.py": "fed8b0401be28a8e88067386277a684866b5d9e327fad939167d8ca19add5e46",
+    "patch/mouth_active_prism_orientation.py": "2df5305f1a63dedefb70683193539c336dcc8d0d46654b2e449d0ae4d25f604d",
+    "patch/mouth_exact_melt_trial.py": "dc91b3ac87925fa3d948d707e9817aca879dd05ac760ddffe19fd3bfec512836",
+    "patch/mouth_free_shape_solid.cpp": "14b7b3d98dce25ab80ea3bf91c3ae9ae1de1aab1112fba8a02323bbfeace1ffa",
+    "patch/mouth_free_shape_solid.py": "b2b6a9aafcb036127bd751b5715e4d17ea61378ce2cb7744b3ff6b3e2ad2bcfd",
+    "patch/mouth_prism_support_decision.py": "34cb89537d5c872e03271ea213ffa8410c46924fa60c39da4c26f413a29b94e6"
+  },
+  "checkpoint_control": {
+    "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "step": 0.0001,
+    "archived_differences": {
+      "energy": 0.0,
+      "solid_energy": 0.0,
+      "shape_force": 0.0,
+      "ports": 0.0
+    },
+    "producer_manifest_sha": "3afdbfcb2fafb9ebbd36f852ff1ec58bd013a45e61ae094eb001c93b7a98b6e8",
+    "producer_source_sha": "a0180c77a9433b5814cca359100198dfc0c1e6395741c5d77b42d6ccab99b747",
+    "total_energy": 92185.53614224629,
+    "solid_energy": 0.20652001564580955,
+    "n_material_forces": 10074,
+    "signed_shape_forces": [
+      0.15056488336995244,
+      -0.6412364018615335,
+      0.7054993329802528,
+      -0.6668344576610252,
+      0.4656029341276735,
+      0.009007417247630656
+    ],
+    "ports": {
+      "feed_current": 10.708572690281159,
+      "bulk_current": 10.708572690181937,
+      "weak_disk_current": 10.70857112983345,
+      "incident_slice_current": 10.70857112983345,
+      "receiving_slice_current": 10.041874545957983,
+      "positive_slice_current": 10.70857112983345,
+      "port_error": 9.922196397837979e-11,
+      "disk_minus_feed_current": -1.5604477088260182e-06
+    },
+    "stationarity": {
+      "amplitude": 6.867890149047629e-10,
+      "phase": 6.065961959404904e-08,
+      "order_free": 0.34959525648184164,
+      "order_kkt": 2.572955182245096e-10,
+      "order_interior": 2.572955182245096e-10
+    },
+    "negative_control": {
+      "corner_t_x_polar": [
+        5,
+        18,
+        1
+      ],
+      "chi": 0.001,
+      "landed_x_t_theta": [
+        0.9083390050441034,
+        0.2470174936944361,
+        0.2617762088045406
+      ],
+      "node_ids": [
+        49038,
+        49039,
+        49173,
+        49174,
+        51873,
+        51874,
+        52008,
+        52009
+      ],
+      "status": "active_fold",
+      "witness": {
+        "cell_t_x_angle": [
+          5,
+          17,
+          0
+        ],
+        "triangle": 0,
+        "barycentric": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "angular_fraction": 1.0,
+        "placement_x_t_angle": [
+          0.8922074761927755,
+          0.2471334290651755,
+          0.26177515636687376
+        ],
+        "chart_determinant": -0.003152237043237828,
+        "exact_determinant_sign": -1,
+        "order": 0.000478367876842134,
+        "exact_order_positive": true
+      },
+      "fixed_rejection": {
+        "exception": "InvalidPlacement",
+        "message": "Infeasible ordered material orientation in virtual work"
+      }
+    },
+    "exact_differences": {
+      "energy": 0.0,
+      "solid_energy": 0.0,
+      "solid_force": 0.0,
+      "order_deposition": 0.0,
+      "field_gradient": 0.0,
+      "ports": 0.0,
+      "signed_energies": 0.0,
+      "shape_force": 0.0
+    },
+    "bitwise_equal": {
+      "energy": true,
+      "solid_energy": true,
+      "solid_force": true,
+      "order_deposition": true,
+      "field_gradient": true,
+      "ports": true,
+      "signed_energies": true,
+      "shape_force": true
+    },
+    "exact_orientation_sha": "2df5305f1a63dedefb70683193539c336dcc8d0d46654b2e449d0ae4d25f604d",
+    "native_solid_sha": "14b7b3d98dce25ab80ea3bf91c3ae9ae1de1aab1112fba8a02323bbfeace1ffa",
+    "native_interface_sha": "b2b6a9aafcb036127bd751b5715e4d17ea61378ce2cb7744b3ff6b3e2ad2bcfd",
+    "candidate_sha": "dc91b3ac87925fa3d948d707e9817aca879dd05ac760ddffe19fd3bfec512836"
+  },
+  "full_shape_history": [
+    {
+      "iteration": 7,
+      "metric": "carried",
+      "armijo_scale": 1.0,
+      "rematch_scale": 1.0,
+      "bitwise_next_x": true
+    },
+    {
+      "iteration": 8,
+      "metric": "carried",
+      "armijo_scale": 1.0,
+      "rematch_scale": 0.5,
+      "bitwise_next_x": true
+    },
+    {
+      "iteration": 9,
+      "metric": "carried",
+      "armijo_scale": 1.0,
+      "rematch_scale": 0.0625,
+      "bitwise_next_x": true
+    }
+  ],
+  "full_shape_replay": {
+    "archived": "Cannot establish zero-order stability at joined node 51603: chi=3.6403035309499604e-05, lower-bound order force=-7.1967443814220655e-09, nodes=126, nonpositive quadrature sites=2052",
+    "replayed": "Cannot establish zero-order stability at joined node 51603: chi=3.6403035309499604e-05, lower-bound order force=-7.1967443814220655e-09, nodes=126, nonpositive quadrature sites=2052",
+    "order": 3.6403035309499604e-05,
+    "lower_bound_order_derivative": -7.1967443814220655e-09,
+    "field": {
+      "stationarity": 6.213230530072167e-08,
+      "carrier_metric_residual": 3.851018435715854e-08,
+      "order_projected_residual": 6.213230530072167e-08,
+      "order_steps": [
+        2
+      ],
+      "carrier_steps": [
+        3
+      ]
+    },
+    "energy": 92185.50699667462,
+    "solid_order_work_error": -1.5681900222830336e-14,
+    "radius": 3.2775726740152384,
+    "depth": 0.8200888333873811,
+    "proposal_sha256": "3764dbf68f0e8dcc53ef89fbdaf7b0453b2a2039b56774c282a62ab743a117e4",
+    "snapshot_sha256": "f87fdb65888ffd91294af657551bfa02bf390b2f9648b6421450fbeaabe3515d"
+  },
+  "full_shape_current": {
+    "feed_current": 10.573679952515585,
+    "bulk_current": 10.57367995251545,
+    "weak_disk_current": 10.573679952515604,
+    "incident_slice_current": 10.573679952515604,
+    "receiving_slice_current": 9.907651182748733,
+    "dense_total_subsonic_share": 0.6611057104947653,
+    "port_error": 1.3500311979441904e-13,
+    "disk_minus_feed_current": 1.9539925233402755e-14
+  },
+  "full_shape_order": {
+    "terminal_from_fraction": {
+      "disk": {
+        "0.5": 0.0,
+        "0.1": 0.0748183774799761,
+        "0.01": 0.18454228111998217,
+        "0.0": 0.3470409783922932
+      },
+      "axis": {
+        "0.5": 0.0,
+        "0.1": 0.039805220814266226,
+        "0.01": 0.14803786234427982,
+        "0.0": 0.22084425897078075
+      },
+      "wall": {
+        "0.5": 0.0,
+        "0.1": 0.0748183774799761,
+        "0.01": 0.18454228111998217,
+        "0.0": 0.3470409783922932
+      }
+    },
+    "shaft_distinct_nodes": 30085,
+    "shaft_nodes_at_or_below": {
+      "0.5": 30085,
+      "0.1": 28843,
+      "0.01": 27090,
+      "0.0": 25892
+    },
+    "sections": [
+      {
+        "t": 0.0,
+        "disk": [
+          0.19749479597630618,
+          0.3396756241859998
+        ],
+        "axis": 0.19749479597630618,
+        "wall": [
+          0.3267126979758346,
+          0.3396756241859998
+        ]
+      },
+      {
+        "t": 0.1,
+        "disk": [
+          0.029900535280916025,
+          0.060258359081951506
+        ],
+        "axis": 0.029900535280916025,
+        "wall": [
+          0.05652675552534256,
+          0.060258359081951506
+        ]
+      },
+      {
+        "t": 0.25,
+        "disk": [
+          0.0,
+          0.0018473129845823545
+        ],
+        "axis": 0.0,
+        "wall": [
+          0.0007872017513975979,
+          0.0018473129845823545
+        ]
+      },
+      {
+        "t": 0.5,
+        "disk": [
+          0.0,
+          0.0
+        ],
+        "axis": 0.0,
+        "wall": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "t": 0.75,
+        "disk": [
+          0.0,
+          0.0
+        ],
+        "axis": 0.0,
+        "wall": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "t": 0.97765,
+        "disk": [
+          0.0,
+          0.0
+        ],
+        "axis": 0.0,
+        "wall": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "t": 1.0,
+        "disk": [
+          0.0,
+          0.0
+        ],
+        "axis": 0.0,
+        "wall": [
+          0.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  "support_readback": [
+    {
+      "cell": [
+        5,
+        17,
+        0,
+        0
+      ],
+      "actual": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 2,
+          "exact_subprisms": 5,
+          "inactive_fold_enclosures": 1
+        }
+      },
+      "basis51603": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 2,
+          "exact_subprisms": 5,
+          "inactive_fold_enclosures": 1
+        }
+      }
+    },
+    {
+      "cell": [
+        5,
+        17,
+        1,
+        0
+      ],
+      "actual": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      },
+      "basis51603": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      }
+    },
+    {
+      "cell": [
+        5,
+        17,
+        2,
+        0
+      ],
+      "actual": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      },
+      "basis51603": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      }
+    },
+    {
+      "cell": [
+        5,
+        17,
+        3,
+        0
+      ],
+      "actual": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      },
+      "basis51603": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      }
+    },
+    {
+      "cell": [
+        5,
+        18,
+        4,
+        0
+      ],
+      "actual": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      },
+      "basis51603": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      }
+    },
+    {
+      "cell": [
+        5,
+        18,
+        5,
+        0
+      ],
+      "actual": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 1,
+          "exact_subprisms": 3,
+          "inactive_fold_enclosures": 1
+        }
+      },
+      "basis51603": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      }
+    },
+    {
+      "cell": [
+        5,
+        16,
+        0,
+        1
+      ],
+      "actual": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      },
+      "basis51603": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      }
+    },
+    {
+      "cell": [
+        5,
+        16,
+        1,
+        1
+      ],
+      "actual": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      },
+      "basis51603": {
+        "status": "certified",
+        "witness": null,
+        "counts": {
+          "max_depth_used": 0,
+          "exact_subprisms": 1,
+          "inactive_fold_enclosures": 1
+        }
+      }
+    }
+  ],
+  "guarded_runs": {
+    "r4_exact_cp10_controls01/old_guard": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/python3",
+        "-u",
+        "software/stage1_solver/tools/mouth_exact_checkpoint_control.py",
+        "_scratch/s11c/r4_melted_survival01",
+        "_scratch/s11c/r4_exact_cp10_controls01"
+      ],
+      "started": "2026-11-24T05:26:53.990818+00:00",
+      "ended": "2026-11-24T05:29:36.379466+00:00",
+      "sample_peak_bytes": 1974894592,
+      "exit_code": 0,
+      "limits_verified": true,
+      "outcome_sha256": "09efb73f17501b4e1f865cbb68836d6cd385c9181a489ba4392d4ef950ff1f50"
+    },
+    "r4_exact_fulltrial01/serial_guard": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/python3",
+        "-Bu",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_fulltrial01/mouth_exact_trial_replay.py",
+        "/var/projects/toy_physics/_scratch/s11c/r4_melted_survival01",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_fulltrial01"
+      ],
+      "started": "2026-11-24T05:29:39.598735+00:00",
+      "ended": "2026-11-24T05:36:31.577850+00:00",
+      "sample_peak_bytes": 10428424192,
+      "exit_code": 0,
+      "limits_verified": true,
+      "outcome_sha256": "7c1eaa874192be044db52cd2d396ca7e34649c0182a7435ce5bee30b8c2a4382"
+    },
+    "r4_exact_fulltrial01/basis_guard": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/python3",
+        "-B",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_fulltrial01/check_restored_fields.py"
+      ],
+      "started": "2026-11-24T05:36:33.578683+00:00",
+      "ended": "2026-11-24T05:36:34.378182+00:00",
+      "sample_peak_bytes": 108089344,
+      "exit_code": 0,
+      "limits_verified": true,
+      "outcome_sha256": "8adc80f2a156308eb901769432ca51e9037e9622fbce98e74b88d2bc59262b96"
+    },
+    "r4_exact_cp10_controls01/new_guard": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/python3",
+        "-Bu",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_cp10_controls01/mouth_exact_checkpoint_control.py",
+        "/var/projects/toy_physics/_scratch/s11c/r4_melted_survival01",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_cp10_controls01",
+        "--candidate",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_support01/patch"
+      ],
+      "started": "2026-11-24T05:36:34.072186+00:00",
+      "ended": "2026-11-24T05:39:23.668441+00:00",
+      "sample_peak_bytes": 1956753408,
+      "exit_code": 0,
+      "limits_verified": true,
+      "outcome_sha256": "ea3255fc35177f7652214dcd2929614ecc6ef5cb8b04e1b6d4a60fd0820373a6"
+    },
+    "r4_exact_predicate01/axis_guard": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/python3",
+        "-u",
+        "_scratch/s11c/r4_exact_predicate01/check_endpoints.py"
+      ],
+      "started": "2026-11-24T05:29:17.186085+00:00",
+      "ended": "2026-11-24T05:29:18.030846+00:00",
+      "sample_peak_bytes": 114864128,
+      "exit_code": 0,
+      "limits_verified": true,
+      "outcome_sha256": "f8aa00b507870f2592e1fbb16cb2c4fb5f5ae45d3386159d832b8e5c0b09cb82"
+    }
+  },
+  "physical_replay_gate": {
+    "checkpoint_sha": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "replayed_sha": "f87fdb65888ffd91294af657551bfa02bf390b2f9648b6421450fbeaabe3515d",
+    "archived_rejection": "Cannot establish zero-order stability at joined node 51603: chi=3.6403035309499604e-05, lower-bound order force=-7.1967443814220655e-09, nodes=126, nonpositive quadrature sites=2052",
+    "order": 3.6403035309499604e-05,
+    "joined_dE_dchi": -7.1967443814220655e-09,
+    "depth": 0.8200888333873811,
+    "exit": 3.2775726740152384,
+    "energy": 92185.50699667462,
+    "guard_checks": {
+      "raw_residual": {
+        "amplitude": 3.4444858879219276e-09,
+        "phase": 6.010427922983268e-11,
+        "order_free": 0.35313045784139985,
+        "order_kkt": 8.449872023396851e-07,
+        "order_interior": 8.449872023396851e-07
+      },
+      "material_domain": {
+        "status": "certified",
+        "all_active_cells_oriented": true,
+        "witness": null,
+        "physical_radial_chart_derivative_lower_bound": 3.2403224393710977,
+        "counts": {
+          "total_prisms": 6912,
+          "positive_bernstein_prisms": 6904,
+          "exact_prisms": 8,
+          "exact_subprisms": 14,
+          "inactive_fold_enclosures": 8,
+          "max_depth_used": 2,
+          "active_fold_prisms": 0,
+          "unresolved_prisms": 0
+        }
+      },
+      "zero_order_check": {
+        "enclosure_nodes": 124,
+        "invalid_quadrature_points": 2052,
+        "positive_disjoint_nodes": [],
+        "zero_adverse_disjoint_nodes": []
+      }
+    },
+    "forces_at_checkpoint": [
+      0.15056488336995244,
+      -0.6412364018615335,
+      0.7054993329802528,
+      -0.6668344576610252,
+      0.4656029341276735,
+      0.009007417247630656
+    ],
+    "basis_status": "certified"
+  }
+}

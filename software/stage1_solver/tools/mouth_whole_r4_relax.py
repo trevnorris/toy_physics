@@ -259,18 +259,22 @@ class Release:
         trial = self.build(x+dx, True)
         return x+dx, trial, trial.match(q, u)
 
-    def run(self):
+    def run(self, *, matched_energy=None, last_x=None, last_g=None):
         q,u,t = self.q, self.u, self.trial
         self.trial = None
-        last_x = last_g = None
-        u, current_energy, current_gradient, load, info = t.match(q, u)
-        initial = t.b.residual(q, current_gradient)
-        edge = self.initial_material(t, q, u)
-        atomic_json(self.args.folder/"initial_material.json", edge)
-        self.write_state(t, q, u, current_energy, initial, info)
-        self.iteration += 1
-        if not feasible_placement(edge["orientation"]):
-            raise ArithmeticError("Initial placement fails orientation check")
+        if matched_energy is None:
+            u, current_energy, current_gradient, load, info = t.match(q, u)
+            initial = t.b.residual(q, current_gradient)
+            edge = self.initial_material(t, q, u)
+            atomic_json(self.args.folder/"initial_material.json", edge)
+            self.write_state(t, q, u, current_energy, initial, info)
+            self.iteration += 1
+            if not feasible_placement(edge["orientation"]):
+                raise ArithmeticError("Initial placement fails orientation check")
+        else:
+            # Resume exactly between a verified full shape rematch and its
+            # next material update, retaining the preceding shape secant.
+            current_energy = matched_energy
         while True:
             # Gauss-Seidel update of the three physical blocks with every
             # internal coordinate free on each shape. Do not reject a shape

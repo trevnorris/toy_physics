@@ -289,8 +289,8 @@ struct OriginalPrisms {
     bool include(int,int,int,int) const {return true;}
     void enrich(TriSlice &,const Data &,int,int,int,int,double,double) const {}
 };
-template<class Prisms>
-int integrate_solid(const Data *data,Results *res,const Prisms &prisms) {
+template<class Prisms, class Integrand = decltype(&sample)>
+int integrate_solid(const Data *data,Results *res,const Prisms &prisms, Integrand integrand = &sample) {
     const Data &d=*data;Results &out=*res;
     std::fill(out.stats,out.stats+30,0.);
     for(int slot:{5,13,17})out.stats[slot]=std::numeric_limits<double>::infinity();
@@ -330,7 +330,7 @@ int integrate_solid(const Data *data,Results *res,const Prisms &prisms) {
                         if(delta<1e-15)continue;
                         for(int q=0;q<d.gauss.n;q++){
                             double g=d.gauss.v[q],w=d.weights[q]*weight,den=0,denx=0;
-                            int err=sample(d,out,initial,s,t,a,xl+g*delta,w*delta,i<cutnode,den,denx);
+                            int err=integrand(d,out,initial,s,t,a,xl+g*delta,w*delta,i<cutnode,den,denx);
                             if(err)return err;
                             workl+=w*((1-g)*delta*denx-den);workr+=w*(g*delta*denx+den);
                         }

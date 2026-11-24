@@ -1,0 +1,1397 @@
+{
+  "source_commit": "e2e1d048",
+  "gate": "Stage 1 fails preservation of the two one-sided natural hoop lengths by one continuous Euclidean material reference map.",
+  "radius": 4,
+  "winding": 1,
+  "phase_drop": 0.4510084282857874,
+  "U": "(n^5-5n+4)/20",
+  "descent": false,
+  "gauge_values_requested": [
+    0,
+    1e-10,
+    1e-08
+  ],
+  "gauge_scope": "An extension supported in exactly melted material cannot change the ordered trace obstruction. No full finite-gauge solves or whole-mouth force differences exist at a matched single-map state.",
+  "final_decision": "Keep R4 held. Consider an inverse chart field with both original reference metrics, welded in physical space. R3 blind.",
+  "units": "Solver units. Shape forces are minus energy derivatives. Mapped material quadrature retains each native material reference and is independent of a trilinear spatial projection.",
+  "states": {
+    "cp10": {
+      "bond": {
+        "state_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+        "bond": [
+          {
+            "material_t": 0.020833333333333332,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.522817734313882,
+            "physical_w": 0.02025985363917395,
+            "chi": 0.18527170515660896,
+            "core_reference_radius": 3.5261816063333065,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.999040093490566,
+            "collar_hoop": 0.7828437337013202,
+            "minimum_possible_max_relative_stretch_error": 0.12133022169574031
+          },
+          {
+            "material_t": 0.0625,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.511069689838491,
+            "physical_w": 0.06340402104459057,
+            "chi": 0.07118702431188581,
+            "core_reference_radius": 3.520075458691517,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9974303172110819,
+            "collar_hoop": 0.7802288847488055,
+            "minimum_possible_max_relative_stretch_error": 0.1221839552951486
+          },
+          {
+            "material_t": 0.10416666666666666,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.504967813722654,
+            "physical_w": 0.11343519430757794,
+            "chi": 0.019120955965988184,
+            "core_reference_radius": 3.5167896304296105,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9966357945796835,
+            "collar_hoop": 0.7788796505984014,
+            "minimum_possible_max_relative_stretch_error": 0.12264390297063349
+          },
+          {
+            "material_t": 0.14583333333333331,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.4729244077610075,
+            "physical_w": 0.16390573616879298,
+            "chi": 0.0021887307283027352,
+            "core_reference_radius": 3.5168033307418143,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9875259682413863,
+            "collar_hoop": 0.7717632476234094,
+            "minimum_possible_max_relative_stretch_error": 0.12264198442887436
+          },
+          {
+            "material_t": 0.1875,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.4337727776236027,
+            "physical_w": 0.19260145866869405,
+            "chi": 0.0,
+            "core_reference_radius": 3.520079443868891,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9754812973399981,
+            "collar_hoop": 0.7630603694766855,
+            "minimum_possible_max_relative_stretch_error": 0.12218339768195545
+          },
+          {
+            "material_t": 0.22916666666666666,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.4231301201634743,
+            "physical_w": 0.1991923527412742,
+            "chi": 0.0,
+            "core_reference_radius": 3.526146826993932,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9707838428790168,
+            "collar_hoop": 0.7606947482810713,
+            "minimum_possible_max_relative_stretch_error": 0.12133508070532138
+          },
+          {
+            "material_t": 0.2708333333333333,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.4163024222189735,
+            "physical_w": 0.21359650069660538,
+            "chi": 0.0,
+            "core_reference_radius": 3.5342088053548997,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.966637499217851,
+            "collar_hoop": 0.759177502515993,
+            "minimum_possible_max_relative_stretch_error": 0.12020986982581147
+          },
+          {
+            "material_t": 0.3125,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.40353315543187,
+            "physical_w": 0.24345292943251393,
+            "chi": 0.0,
+            "core_reference_radius": 3.5432697274791987,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9605617277686564,
+            "collar_hoop": 0.756339842528399,
+            "minimum_possible_max_relative_stretch_error": 0.11894792850875155
+          },
+          {
+            "material_t": 0.35416666666666663,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.388310987604382,
+            "physical_w": 0.2768897063022885,
+            "chi": 0.0,
+            "core_reference_radius": 3.5522665655583165,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9538436566464269,
+            "collar_hoop": 0.7529570956166642,
+            "minimum_possible_max_relative_stretch_error": 0.11769772234011613
+          }
+        ]
+      },
+      "field_and_mapped_quadrature_energy": {
+        "state_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+        "state": "cp10",
+        "quadrature": "Imaged material quadrature with each native reference tensor; epsilon=0.",
+        "lagrangian_total": 92185.53614224629,
+        "lagrangian_crystal": 0.20652001564580955,
+        "branchwise_E_Euler": 0.2065200156458152,
+        "branchwise_E_Lagr": 0.2065200156458151,
+        "summed_cell_delta": 1.1150523944220452e-16,
+        "total_after_replacing_integral": 92185.53614224629,
+        "max_abs_element_energy_delta": 2.303929616531697e-18,
+        "element_energy_hash": "c357adb2abc9a6b125a01edf5b9aca865c56c55d0e271ef2f81f9fe5d77419b2",
+        "active_quadrature_points": 5291652,
+        "max_abs_J_roundtrip": 2.220446049250313e-15,
+        "principal_stretch_roundtrip_error_upper_frobenius": 1.4486309683835e-15,
+        "positive_order_rejection": {
+          "chi": 0.19359245940148462,
+          "J_inverse_perturbed": -0.9897085749720415,
+          "landed_chart": [
+            0.004695902724135764,
+            0.0014483800883718673,
+            0.0015510197439003593
+          ]
+        },
+        "field_held": true,
+        "port_values": {
+          "feed_current": 10.708572690281159,
+          "bulk_current": 10.708572690181937,
+          "weak_disk_current": 10.70857112983345,
+          "incident_slice_current": 10.70857112983345,
+          "receiving_slice_current": 10.041874545957983,
+          "positive_slice_current": 10.70857112983345,
+          "port_error": 9.922196397837979e-11,
+          "disk_minus_feed_current": -1.5604477088260182e-06
+        },
+        "maximum_archived_port_delta": 0.0
+      },
+      "spatial_grid": {
+        "truth": {
+          "cell_t_x_angle": [
+            5,
+            18,
+            0
+          ],
+          "triangle": 0,
+          "barycentric": [
+            0.5,
+            0.25,
+            0.25
+          ],
+          "angular_fraction": 0.2,
+          "child_half": 0,
+          "child_angular_fraction": 0.43167365603267016,
+          "placement_x_t_angle": [
+            0.9117682214061416,
+            0.23134148267559587,
+            0.05235648077915213
+          ],
+          "order": 0.00014292142945998215,
+          "chi": 0.00014292142945998215,
+          "chart_J": 0.44534290795229314,
+          "J_interval": [
+            0.2434672988731422,
+            0.24346729887314225
+          ],
+          "J": 0.24346729887314222,
+          "W": 0.8505414689181345,
+          "chi_W": 0.00012156060255277277,
+          "hoop": 0.8166380114816326,
+          "principal_stretches": [
+            0.3421278146790869,
+            0.8166380114816326,
+            0.8167412167139977,
+            1.0669355613494658
+          ]
+        },
+        "spatial_point_float64": [
+          0.9117682214061416,
+          0.23134148267559587,
+          0.05235648077915213
+        ],
+        "point_order_at_float64": 0.000142921429459983,
+        "exact_order": 0.00014292142945998215,
+        "smallest_forward_stretch": 0.3421278146790869,
+        "target_inverse_norm": 2.922884247040808,
+        "physical_xyz": [
+          0.18683670043999634,
+          3.565288336177145,
+          0.1895011444230964
+        ],
+        "largest_norm_at_registered_collar_sample": 4.6097722286464435,
+        "levels": [
+          {
+            "factor": 1,
+            "cell_index": [
+              18,
+              7,
+              1
+            ],
+            "chart_widths": [
+              0.022189349112426093,
+              0.03158571045575195,
+              0.0426397643203745
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 2,
+            "order_vertex_values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0008800679516095141,
+              0.0006196552016096309,
+              0.0,
+              0.0
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 0.015138431876595831,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 0.0149083198242188,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.18005228849250754,
+              "inverse_spectral_norm": 2.206751412973086,
+              "min_stretch": 0.4531548021771658,
+              "J": 0.316451333499472,
+              "W": 0.5853661440770638,
+              "absolute_reference_coordinate_error": 0.001113082206181154,
+              "signed_cartesian_det_inverse": -3.1600435648082628
+            }
+          },
+          {
+            "factor": 2,
+            "cell_index": [
+              18,
+              7,
+              1
+            ],
+            "chart_widths": [
+              0.011094674556213047,
+              0.015792855227875977,
+              0.02131988216018725
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 4,
+            "order_vertex_values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.00037493078830478624,
+              0.00030982760080481544,
+              0.00018746539415239312,
+              0.00015491380040240772
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 0.007569215938297916,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 0.0074541599121094,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.08847929787178233,
+              "inverse_spectral_norm": 2.394193483188176,
+              "min_stretch": 0.4176771873375796,
+              "J": 0.29739303383308663,
+              "W": 0.6602764474020103,
+              "absolute_reference_coordinate_error": 0.002431447887408783,
+              "signed_cartesian_det_inverse": -3.362553544415755
+            }
+          },
+          {
+            "factor": 4,
+            "cell_index": [
+              18,
+              7,
+              1
+            ],
+            "chart_widths": [
+              0.005547337278106523,
+              0.007896427613937988,
+              0.010659941080093625
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 8,
+            "order_vertex_values": [
+              0.00014059904561429483,
+              0.0001283921979580503,
+              9.373269707619656e-05,
+              8.559479863870021e-05,
+              0.00028119809122858965,
+              0.0002567843959161006,
+              0.00018746539415239312,
+              0.00017118959727740042
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 0.003784607969148958,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 0.0037270799560547,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.045538933716378516,
+              "inverse_spectral_norm": 2.8819165543782574,
+              "min_stretch": 0.34699130982150844,
+              "J": 0.24642979901909332,
+              "W": 0.8366982641069858,
+              "absolute_reference_coordinate_error": 0.00010234055451949125,
+              "signed_cartesian_det_inverse": -4.057950799702272
+            }
+          },
+          {
+            "factor": 8,
+            "cell_index": [
+              18,
+              7,
+              1
+            ],
+            "chart_widths": [
+              0.0027736686390532617,
+              0.003948213806968994,
+              0.005329970540046813
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 8,
+            "order_vertex_values": [
+              0.00014059904561429483,
+              0.00013449562178617256,
+              0.0001171658713452457,
+              0.00011207968482181049,
+              0.00021089856842144227,
+              0.00020174343267925887,
+              0.00017574880701786856,
+              0.00016811952723271573
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 0.001892303984574479,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 0.00186353997802735,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.022888494108686874,
+              "inverse_spectral_norm": 2.9233102937396334,
+              "min_stretch": 0.34207795256683265,
+              "J": 0.24355579593809198,
+              "W": 0.8507068064340826,
+              "absolute_reference_coordinate_error": 4.9031615094558815e-06,
+              "signed_cartesian_det_inverse": -4.105835363713472
+            }
+          },
+          {
+            "factor": 32,
+            "cell_index": [
+              18,
+              7,
+              1
+            ],
+            "chart_widths": [
+              0.0006934171597633154,
+              0.0009870534517422485,
+              0.0013324926350117032
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 8,
+            "order_vertex_values": [
+              0.000141845687878366,
+              0.00014027214892267824,
+              0.00013539815661116756,
+              0.0001338961421534656,
+              0.00015760631986485113,
+              0.00015585794324742027,
+              0.00015044239623463062,
+              0.00014877349128162844
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 0.00047307599614361973,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 0.0004658849945068375,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.005723779886877001,
+              "inverse_spectral_norm": 2.922893047476751,
+              "min_stretch": 0.34212678457847473,
+              "J": 0.24350016855677842,
+              "W": 0.8505505533191884,
+              "absolute_reference_coordinate_error": 3.1120089462160513e-07,
+              "signed_cartesian_det_inverse": -4.106773337887131
+            }
+          },
+          {
+            "factor": 128,
+            "cell_index": [
+              18,
+              7,
+              1
+            ],
+            "chart_widths": [
+              0.00017335428994082885,
+              0.00024676336293556213,
+              0.0003331231587529258
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 8,
+            "order_vertex_values": [
+              0.00014332975326113658,
+              0.0001429300356239555,
+              0.00014168228483284767,
+              0.00014128716165126635,
+              0.00014720353037630244,
+              0.00014679300955973808,
+              0.000145511535774276,
+              0.00014510573358778706
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 0.00011826899903590493,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 0.00011647124862670938,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.0014310046772170182,
+              "inverse_spectral_norm": 2.922885026956604,
+              "min_stretch": 0.342127723388843,
+              "J": 0.24348121351047883,
+              "W": 0.850544365602933,
+              "absolute_reference_coordinate_error": 2.0170216908126103e-08,
+              "signed_cartesian_det_inverse": -4.107093050762056
+            }
+          }
+        ],
+        "sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b"
+      },
+      "signed_crystal_work": {
+        "state_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+        "modes": [
+          "log_depth",
+          "scaled_log_exit",
+          "mean_width",
+          "depth_asymmetry",
+          "waist_profile",
+          "polar_equatorial"
+        ],
+        "branchwise_E_crystal": 0.20652001564581512,
+        "analytic_fixed_spatial_knots": [
+          -0.4412797411213755,
+          0.14485012699153715,
+          0.5395514026266948,
+          -0.28425402520901655,
+          0.40406027127895666,
+          -0.0403339538749752
+        ],
+        "signed_fixed_knots_minus_plus": [
+          [
+            0.20647593196363143,
+            0.20656418791826742,
+            0.20649796273214197,
+            0.20654209070705545
+          ],
+          [
+            0.20653451318777202,
+            0.2065055431630063,
+            0.20652726128451868,
+            0.2065127762718986
+          ],
+          [
+            0.20657421573960688,
+            0.20646630545908695,
+            0.20654705445432908,
+            0.20649309931406706
+          ],
+          [
+            0.20649176430604582,
+            0.20654861511108513,
+            0.20650584646024242,
+            0.20653427186276302
+          ],
+          [
+            0.2065604603063095,
+            0.20647964825205423,
+            0.20654022831772073,
+            0.2064998222905929
+          ],
+          [
+            0.20651599003406992,
+            0.20652405682484493,
+            0.20651800089403197,
+            0.20652203428941945
+          ]
+        ],
+        "signed_fixed_knots_h": [
+          -0.44127977317995337,
+          0.14485012382867146,
+          0.5395514025996473,
+          -0.28425402519655085,
+          0.40406027127640187,
+          -0.040333953875010264
+        ],
+        "signed_fixed_knots_half": [
+          -0.4412797491348819,
+          0.14485012620080173,
+          0.5395514026201864,
+          -0.28425402520598775,
+          0.404060271278206,
+          -0.04033395387487149
+        ],
+        "residual_analytic_minus_h": [
+          3.205857784793764e-08,
+          3.1628656915749787e-09,
+          2.704747537052299e-11,
+          -1.246569514279372e-11,
+          2.554789713116179e-12,
+          3.5062230896443225e-14
+        ],
+        "residual_analytic_minus_half": [
+          8.01350635848408e-09,
+          7.907354215852536e-10,
+          6.508349414957593e-12,
+          -3.0287994334798896e-12,
+          7.506772981002996e-13,
+          -1.0371564718170134e-13
+        ],
+        "production_signed_depth_energies": [
+          0.20651784028634412,
+          0.20652229375633077,
+          0.2065189151536043,
+          0.20652114181489634
+        ],
+        "production_depth_h": -0.02226734993324153,
+        "production_depth_half": -0.02226661292042964,
+        "depth_order_knot_and_quadrature_work_h": 0.41901242324671184,
+        "depth_order_knot_and_quadrature_work_half": 0.41901313621445224,
+        "saved_total": [
+          0.15056488336995244,
+          -0.6412364018615335,
+          0.7054993329802528,
+          -0.6668344576610252,
+          0.4656029341276735,
+          0.009007417247630656
+        ],
+        "crystal_at_matched_kinematics": [
+          -0.02226734993324153,
+          0.14485012382867146,
+          0.5395514025996473,
+          -0.28425402519655085,
+          0.40406027127640187,
+          -0.040333953875010264
+        ],
+        "saved_total_minus_crystal": [
+          0.17283223330319397,
+          -0.786086525690205,
+          0.1659479303806055,
+          -0.3825804324644744,
+          0.061542662851271634,
+          0.04934137112264092
+        ]
+      },
+      "independent_native_crystal_work": {
+        "state_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+        "signed_energy": [
+          [
+            0.20653451318776855,
+            0.20650554316303635,
+            0.20652726128452684,
+            0.20651277627191536
+          ],
+          [
+            0.20657421573960824,
+            0.20646630545908654,
+            0.2065470544543129,
+            0.20649309931406773
+          ],
+          [
+            0.20649176430605334,
+            0.2065486151111046,
+            0.2065058464602038,
+            0.2065342718627762
+          ],
+          [
+            0.20656046030631073,
+            0.2064796482520398,
+            0.20654022831772537,
+            0.20649982229061464
+          ],
+          [
+            0.20651599003408683,
+            0.20652405682487165,
+            0.206518000894043,
+            0.20652203428940466
+          ]
+        ],
+        "forces_h": [
+          0.14485012366102779,
+          0.5395514026085291,
+          -0.28425402525622534,
+          0.4040602713546726,
+          -0.04033395392413763
+        ],
+        "forces_half": [
+          0.14485012611475945,
+          0.5395514024517101,
+          -0.2842540257239068,
+          0.40406027110723164,
+          -0.04033395361646708
+        ]
+      }
+    },
+    "post": {
+      "bond": {
+        "state_sha256": "2a970cd6b6ffb4ac263d554666e474493daff79f04eb2ed0641f32a132697ddc",
+        "bond": [
+          {
+            "material_t": 0.020833333333333332,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.5213445480827854,
+            "physical_w": 0.0209687808072881,
+            "chi": 0.20317028015819713,
+            "core_reference_radius": 3.5261816063333065,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9986291084978,
+            "collar_hoop": 0.7825216875408822,
+            "minimum_possible_max_relative_stretch_error": 0.12133022169574034
+          },
+          {
+            "material_t": 0.0625,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.505202803764629,
+            "physical_w": 0.06342463855781494,
+            "chi": 0.0809406821701106,
+            "core_reference_radius": 3.520075458691517,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9957754759394786,
+            "collar_hoop": 0.7789344033825386,
+            "minimum_possible_max_relative_stretch_error": 0.12218395529514864
+          },
+          {
+            "material_t": 0.10416666666666666,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.4936054625964177,
+            "physical_w": 0.10678206665284071,
+            "chi": 0.026619998678099197,
+            "core_reference_radius": 3.5167896304296105,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9934037796758323,
+            "collar_hoop": 0.7763538024874551,
+            "minimum_possible_max_relative_stretch_error": 0.12264390297063349
+          },
+          {
+            "material_t": 0.14583333333333331,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.4790626518074235,
+            "physical_w": 0.15643421983207048,
+            "chi": 0.005103667914923573,
+            "core_reference_radius": 3.5168033307418143,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9892539588433368,
+            "collar_hoop": 0.7731136927577272,
+            "minimum_possible_max_relative_stretch_error": 0.12264198442887435
+          },
+          {
+            "material_t": 0.1875,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.446672107572977,
+            "physical_w": 0.1912106689752236,
+            "chi": 0.0,
+            "core_reference_radius": 3.520079443868891,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9791346452245188,
+            "collar_hoop": 0.7659181638743751,
+            "minimum_possible_max_relative_stretch_error": 0.12218339768195549
+          },
+          {
+            "material_t": 0.22916666666666666,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.422715206919479,
+            "physical_w": 0.19942428884114485,
+            "chi": 0.0,
+            "core_reference_radius": 3.526146826993932,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9706661751292265,
+            "collar_hoop": 0.760602545222724,
+            "minimum_possible_max_relative_stretch_error": 0.12133508070532145
+          },
+          {
+            "material_t": 0.2708333333333333,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.4158326283292415,
+            "physical_w": 0.21384382278099998,
+            "chi": 0.0,
+            "core_reference_radius": 3.5342088053548997,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.966504571761615,
+            "collar_hoop": 0.7590731039857036,
+            "minimum_possible_max_relative_stretch_error": 0.12020986982581142
+          },
+          {
+            "material_t": 0.3125,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.402867851686583,
+            "physical_w": 0.24373482209350253,
+            "chi": 0.0,
+            "core_reference_radius": 3.5432697274791987,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.9603739625006602,
+            "collar_hoop": 0.7561919974195184,
+            "minimum_possible_max_relative_stretch_error": 0.11894792850875152
+          },
+          {
+            "material_t": 0.35416666666666663,
+            "material_theta": 0.6544984694978735,
+            "physical_r": 3.3872738224622565,
+            "physical_w": 0.2772103152031214,
+            "chi": 0.0,
+            "core_reference_radius": 3.5522665655583165,
+            "collar_reference_radius": 4.5,
+            "core_hoop": 0.953551684216703,
+            "collar_hoop": 0.752726614749959,
+            "minimum_possible_max_relative_stretch_error": 0.11769772234011619
+          }
+        ]
+      },
+      "field_and_mapped_quadrature_energy": {
+        "state_sha256": "2a970cd6b6ffb4ac263d554666e474493daff79f04eb2ed0641f32a132697ddc",
+        "state": "post",
+        "quadrature": "Imaged material quadrature with each native reference tensor; epsilon=0.",
+        "lagrangian_total": 92185.47335775776,
+        "lagrangian_crystal": 0.20024657124170625,
+        "branchwise_E_Euler": 0.20024657124170617,
+        "branchwise_E_Lagr": 0.20024657124170606,
+        "summed_cell_delta": 1.0325954215877556e-16,
+        "total_after_replacing_integral": 92185.47335775776,
+        "max_abs_element_energy_delta": 3.178067618098135e-18,
+        "element_energy_hash": "855b173bc9d7c25214b584ce6070a17979ce4f35da03f7e2712052cc7f48ad6c",
+        "active_quadrature_points": 5050491,
+        "max_abs_J_roundtrip": 2.220446049250313e-15,
+        "principal_stretch_roundtrip_error_upper_frobenius": 2.2977039049691022e-15,
+        "positive_order_rejection": {
+          "chi": 0.2233112085558707,
+          "J_inverse_perturbed": -1.0330008452588797,
+          "landed_chart": [
+            0.004695902724135764,
+            0.0013858992829138298,
+            0.0015511150829773557
+          ]
+        },
+        "field_held": true,
+        "port_values": {
+          "feed_current": 10.573545763887278,
+          "bulk_current": 10.573545763887266,
+          "weak_disk_current": 10.573545763887198,
+          "incident_slice_current": 10.573545763887198,
+          "receiving_slice_current": 9.907524882433146,
+          "positive_slice_current": 10.573545763887198,
+          "port_error": 1.2434497875801753e-14,
+          "disk_minus_feed_current": -7.993605777301127e-14
+        },
+        "maximum_archived_port_delta": 0.0
+      },
+      "spatial_grid": {
+        "truth": {
+          "cell_t_x_angle": [
+            5,
+            18,
+            0
+          ],
+          "triangle": 0,
+          "barycentric": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "angular_fraction": 0.6832729216436431,
+          "child_half": 1,
+          "child_angular_fraction": 0.40984772192072527,
+          "placement_x_t_angle": [
+            0.9089381107963834,
+            0.24648705771285753,
+            0.17885882410087225
+          ],
+          "order": 8.299761227988374e-21,
+          "chi": 8.299761227988374e-21,
+          "chart_J": 3.938485395173798e-14,
+          "J_interval": [
+            2.1102191078959678e-14,
+            2.1102191078959685e-14
+          ],
+          "J": 2.110219107895968e-14,
+          "W": 31.093614077053928,
+          "chi_W": 2.580695725547657e-19,
+          "hoop": 0.8100679532726628,
+          "principal_stretches": [
+            2.7184630447213253e-14,
+            0.8100679532726628,
+            0.8101956209614355,
+            1.1814406826129733
+          ]
+        },
+        "spatial_point_float64": [
+          0.9089381107963834,
+          0.24648705771285753,
+          0.17885882410087225
+        ],
+        "point_order_at_float64": 1.3922202579864787e-20,
+        "exact_order": 8.299761227988374e-21,
+        "smallest_forward_stretch": 2.7184630447213253e-14,
+        "target_inverse_norm": 36785491785212.48,
+        "physical_xyz": [
+          0.6321360536520033,
+          3.496505461402289,
+          0.20214128360482542
+        ],
+        "largest_norm_at_registered_collar_sample": 4.6097722286464435,
+        "levels": [
+          {
+            "factor": 1,
+            "cell_index": [
+              18,
+              7,
+              3
+            ],
+            "chart_widths": [
+              0.022189349112426093,
+              0.03154917985297184,
+              0.057563774407436374
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 1,
+            "order_vertex_values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0009473058302201118,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 300321576757.32965,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 297318360989.7563,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.17822063549878964,
+              "inverse_spectral_norm": 2.7927152829281088,
+              "min_stretch": 0.3580744539599178,
+              "J": 0.25149742580378076,
+              "W": 0.8131244885775363,
+              "absolute_reference_coordinate_error": 0.03368746111844949,
+              "signed_cartesian_det_inverse": -3.976183838876362
+            }
+          },
+          {
+            "factor": 2,
+            "cell_index": [
+              18,
+              7,
+              3
+            ],
+            "chart_widths": [
+              0.011094674556213047,
+              0.01577458992648592,
+              0.028781887203718187
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 1,
+            "order_vertex_values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.00011841322877751397,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 150160788378.66483,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 148659180494.87814,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.0897824363846329,
+              "inverse_spectral_norm": 4.16144640993672,
+              "min_stretch": 0.24030106397914813,
+              "J": 0.16385294963188704,
+              "W": 1.208180201201456,
+              "absolute_reference_coordinate_error": 0.02635065365024114,
+              "signed_cartesian_det_inverse": -6.103033251745578
+            }
+          },
+          {
+            "factor": 4,
+            "cell_index": [
+              18,
+              7,
+              3
+            ],
+            "chart_widths": [
+              0.005547337278106523,
+              0.00788729496324296,
+              0.014390943601859094
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 1,
+            "order_vertex_values": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.4801653597189247e-05,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 75080394189.33241,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 74329590247.43907,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.045103229347327606,
+              "inverse_spectral_norm": 7.3383090933482995,
+              "min_stretch": 0.13627117463700664,
+              "J": 0.0968483072105494,
+              "W": 1.790238656253003,
+              "absolute_reference_coordinate_error": 0.010965124611400172,
+              "signed_cartesian_det_inverse": -10.325425697178039
+            }
+          },
+          {
+            "factor": 8,
+            "cell_index": [
+              18,
+              7,
+              3
+            ],
+            "chart_widths": [
+              0.0027736686390532617,
+              0.00394364748162148,
+              0.007195471800929547
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 4,
+            "order_vertex_values": [
+              3.7004133992973117e-06,
+              0.0,
+              1.8502066996486559e-06,
+              0.0,
+              7.4008267985946234e-06,
+              0.0,
+              3.7004133992973117e-06,
+              0.0
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 37540197094.66621,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 37164795123.719536,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.04129480749759065,
+              "inverse_spectral_norm": 13.417831811063218,
+              "min_stretch": 0.07452768927804594,
+              "J": 0.051300733966963545,
+              "W": 2.403766709068506,
+              "absolute_reference_coordinate_error": 0.020381483503211003,
+              "signed_cartesian_det_inverse": -19.49289849622768
+            }
+          },
+          {
+            "factor": 32,
+            "cell_index": [
+              18,
+              7,
+              3
+            ],
+            "chart_widths": [
+              0.0006934171597633154,
+              0.00098591187040537,
+              0.0017988679502323867
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 4,
+            "order_vertex_values": [
+              8.672843904603074e-07,
+              0.0,
+              7.227369920502562e-07,
+              0.0,
+              1.0407412685523689e-06,
+              0.0,
+              8.672843904603074e-07,
+              0.0
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 9385049273.666552,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 9291198780.929884,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.03924639519635417,
+              "inverse_spectral_norm": 47.55141853279135,
+              "min_stretch": 0.021029866844254126,
+              "J": 0.025096972036224532,
+              "W": 4.232496646446239,
+              "absolute_reference_coordinate_error": 0.008375113562135493,
+              "signed_cartesian_det_inverse": -39.84544424548975
+            }
+          },
+          {
+            "factor": 128,
+            "cell_index": [
+              18,
+              7,
+              3
+            ],
+            "chart_widths": [
+              0.00017335428994082885,
+              0.0002464779676013425,
+              0.0004497169875580967
+            ],
+            "inverse_sheet_counts": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "ordered_vertex_count": 4,
+            "order_vertex_values": [
+              2.1682109761507685e-07,
+              0.0,
+              2.0778688521444866e-07,
+              0.0,
+              2.276621524958307e-07,
+              0.0,
+              2.181762294751711e-07,
+              0.0
+            ],
+            "max_nodal_span_needed_for_exact_stretch": 2346262318.416638,
+            "coefficient_bound_required_for_99pct_of_inverse_gradient": 2322799695.232471,
+            "Q1_saved_melt_label_continuation": {
+              "max_nodal_u_component_span": 0.037867358963694114,
+              "inverse_spectral_norm": 128.9411881755265,
+              "min_stretch": 0.007755473748533393,
+              "J": 0.011023712076684988,
+              "W": 5.744803478453505,
+              "absolute_reference_coordinate_error": 0.015844027074302932,
+              "signed_cartesian_det_inverse": -90.71354486071778
+            }
+          }
+        ],
+        "sha256": "2a970cd6b6ffb4ac263d554666e474493daff79f04eb2ed0641f32a132697ddc"
+      },
+      "signed_crystal_work": {
+        "state_sha256": "2a970cd6b6ffb4ac263d554666e474493daff79f04eb2ed0641f32a132697ddc",
+        "modes": [
+          "log_depth",
+          "scaled_log_exit",
+          "mean_width",
+          "depth_asymmetry",
+          "waist_profile",
+          "polar_equatorial"
+        ],
+        "branchwise_E_crystal": 0.2002465712417061,
+        "analytic_fixed_spatial_knots": [
+          -0.16037777928819869,
+          0.2273669679427228,
+          0.9216653477700776,
+          -0.6118396262413588,
+          0.5116711938665844,
+          -0.023692683640902018
+        ],
+        "signed_fixed_knots_minus_plus": [
+          [
+            0.20023058185627124,
+            0.20026265741915936,
+            0.2002385644513046,
+            0.20025460223011224
+          ],
+          [
+            0.2002693212503411,
+            0.20022384785742775,
+            0.2002579429181056,
+            0.20023520622139573
+          ],
+          [
+            0.20033900351971995,
+            0.20015467045017232,
+            0.20029272094490422,
+            0.200200554410128
+          ],
+          [
+            0.2001855755120639,
+            0.20030794343730937,
+            0.20021602631863936,
+            0.20027721028126313
+          ],
+          [
+            0.2002977813284432,
+            0.20019544708967058,
+            0.20027216554323707,
+            0.2002209984238505
+          ],
+          [
+            0.20024421078138588,
+            0.2002489493181141,
+            0.20024538880953505,
+            0.20024775807789913
+          ]
+        ],
+        "signed_fixed_knots_h": [
+          -0.16037781444058763,
+          0.22736696456679417,
+          0.921665347738132,
+          -0.6118396262273784,
+          0.5116711938631113,
+          -0.02369268364110777
+        ],
+        "signed_fixed_knots_half": [
+          -0.16037778807626024,
+          0.22736696709879656,
+          0.9216653477622794,
+          -0.6118396262377868,
+          0.5116711938657481,
+          -0.023692683640830214
+        ],
+        "residual_analytic_minus_h": [
+          3.5152388944137414e-08,
+          3.375928619986368e-09,
+          3.1945557310564254e-11,
+          -1.3980372415289821e-11,
+          3.4731106879348772e-12,
+          2.0575208203865714e-13
+        ],
+        "residual_analytic_minus_half": [
+          8.7880615562419e-09,
+          8.439262344506204e-10,
+          7.7982065249671e-12,
+          -3.5720315594289787e-12,
+          8.363310044501304e-13,
+          -7.1803674117632e-14
+        ],
+        "production_signed_depth_energies": [
+          0.20026358028653277,
+          0.2002296830742499,
+          0.20025506066123278,
+          0.20023811204117653
+        ],
+        "production_depth_h": 0.16948606141431455,
+        "production_depth_half": 0.169486200562452,
+        "depth_order_knot_and_quadrature_work_h": 0.3298638758549022,
+        "depth_order_knot_and_quadrature_work_half": 0.32986398863871225
+      },
+      "independent_native_crystal_work": {
+        "state_sha256": "2a970cd6b6ffb4ac263d554666e474493daff79f04eb2ed0641f32a132697ddc",
+        "signed_energy": [
+          [
+            0.200269321250345,
+            0.20022384785740913,
+            0.20025794291809879,
+            0.2002352062214046
+          ],
+          [
+            0.20033900351968884,
+            0.20015467045018492,
+            0.20029272094489387,
+            0.20020055441013557
+          ],
+          [
+            0.2001855755120453,
+            0.20030794343732564,
+            0.2002160263186383,
+            0.20027721028126416
+          ],
+          [
+            0.20029778132846204,
+            0.20019544708966996,
+            0.20027216554320143,
+            0.20022099842386018
+          ],
+          [
+            0.20024421078139856,
+            0.20024894931814297,
+            0.20024538880956225,
+            0.20024775807789835
+          ]
+        ],
+        "forces_h": [
+          0.22736696467934303,
+          0.9216653475195569,
+          -0.6118396264016834,
+          0.5116711939603946,
+          -0.023692683722015273
+        ],
+        "forces_half": [
+          0.22736696694197756,
+          0.9216653475829784,
+          -0.6118396262586034,
+          0.5116711934124996,
+          -0.023692683361054012
+        ]
+      }
+    }
+  },
+  "independent_crosscheck": {
+    "method": "Both traces at nine material depths reconstructed from the exact same material coordinates.",
+    "maximum_hoop_and_chi_difference": 0.0
+  },
+  "provenance": {
+    "accepted_cp10": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PYTHONPATH=_scratch/s11c/r4_local_refinement01/descent_pin:_scratch/s11c/r4_feasible_descent01/pin:_scratch/s11c/r4_exact_support01/driver:_scratch/s11c/r4_exact_support01/patch:_scratch/s11c/r4_melted_survival01/pin/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "-Bu",
+        "_scratch/s11c/r4_inverse_material01/pin/mouth_inverse_material_audit.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_inverse_material01/cp10",
+        "cp10"
+      ],
+      "stdout_sha256": "a6a5ac7a66601bb84e6b2e592b37839cb238631eeb18e9f033ae1f907f0e4af7",
+      "result_sha256": "f808aafa3f590e2724f7ec7ba7922d93154e5d1e0fb4ec9cbd41c5895fc9030b"
+    },
+    "accepted_post": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PYTHONPATH=_scratch/s11c/r4_local_refinement01/descent_pin:_scratch/s11c/r4_feasible_descent01/pin:_scratch/s11c/r4_exact_support01/driver:_scratch/s11c/r4_exact_support01/patch:_scratch/s11c/r4_melted_survival01/pin/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "-Bu",
+        "_scratch/s11c/r4_inverse_material01/pin/mouth_inverse_material_audit.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_inverse_material01/post",
+        "post"
+      ],
+      "stdout_sha256": "b0dd319b919ac7a500a05a6e35e81f8caddcac6fdc0addf854a4c13ddd71e4e3",
+      "result_sha256": "31dc3c96c133937d168d2b6c87c49c28b8747a94a5322355b012a6fb5ee7ea97"
+    },
+    "join_independent": {
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "_scratch/s11c/r4_reference_join_audit01/check.py"
+      ],
+      "stdout_sha256": "a09c1090d76cc61e056dbe1e76f50b4f89ca57983596ed5cc28d73a4e27d94c4",
+      "result_sha256": "cbc9688024a459baaf9965e63c221c51cf98eb93b8ab51e2ce172145011e967e"
+    },
+    "join_reproduction": {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "software/stage1_solver/tools/mouth_inverse_bond_trace.py",
+        "_scratch/s11c"
+      ],
+      "stdout_sha256": "121b4c4acd41bda2d9ca2c2741360fe19b17144dcdf47218c69d0ab51928028d",
+      "result_sha256": "c116783049bcd15f1574c027f6cf004e81b979d1f4f0da1a6648220beb0fb202"
+    },
+    "actual_spatial_grid": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_eulerian_r4_spatial_cell.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_eulerian_spatial_cell01/result.json"
+      ],
+      "stdout_sha256": "2cfd8614bc379839d3df3f8e10db0ac75075d5377233ea671b6294b713fee48e",
+      "result_sha256": "3ac75eb6a425c642f9e5fc89909597be2e26b0499cdbc65c503cb91b7cfa9512"
+    },
+    "six_crystal": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "-Bu",
+        "_scratch/s11c/r4_euler_shape01/pin/mouth_r4_inverse_shape_work.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_euler_shape01"
+      ],
+      "stdout_sha256": "9502773168d668a9534b70624b0c0b901046b971283723bc5044da5e1a52ff5e",
+      "result_sha256": "d6c398a8bf133a545bf9995aa42b34b09b09bd3551f76d4c4a03a5559de8c7e2"
+    },
+    "native_signed_control": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PYTHONPATH=/var/projects/toy_physics/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "-Bu",
+        "_scratch/s11c/r4_euler_shape01/native_supplement.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_euler_shape01"
+      ],
+      "stdout_sha256": "f52fdeddddf990ffe2c4b649ed8fdd5de8f635855a2d123733951a69451b36bc",
+      "result_sha256": "9ba409f9579433ca518a24e244cba3b68dcab150b7b6d85be133bce64d5f35b6"
+    }
+  }
+}

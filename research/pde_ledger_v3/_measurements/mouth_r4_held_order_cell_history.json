@@ -1,0 +1,126 @@
+{
+  "held_before_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+  "accepted_sha256": "418376c3eb1922f6335543f43dfee11e531cebbb6958d37afd73e844571b653a",
+  "corner_source_sha256": "3aa7f7919a4c08bec7e3776ad824cfd0fd4ceedb5eb8ac0e09dbcbe174943eea",
+  "cell": [
+    15,
+    9,
+    1
+  ],
+  "vertices": [
+    {
+      "local": [
+        0,
+        0,
+        0
+      ],
+      "node": [
+        15,
+        9,
+        1
+      ],
+      "before": 0.0,
+      "after": 0.0
+    },
+    {
+      "local": [
+        0,
+        0,
+        1
+      ],
+      "node": [
+        15,
+        9,
+        2
+      ],
+      "before": 0.0,
+      "after": 0.000549695617281865
+    },
+    {
+      "local": [
+        0,
+        1,
+        0
+      ],
+      "node": [
+        15,
+        10,
+        1
+      ],
+      "before": 0.0,
+      "after": 0.0
+    },
+    {
+      "local": [
+        0,
+        1,
+        1
+      ],
+      "node": [
+        15,
+        10,
+        2
+      ],
+      "before": 0.0,
+      "after": 0.0
+    },
+    {
+      "local": [
+        1,
+        0,
+        0
+      ],
+      "node": [
+        16,
+        9,
+        1
+      ],
+      "before": 0.0,
+      "after": 0.0
+    },
+    {
+      "local": [
+        1,
+        0,
+        1
+      ],
+      "node": [
+        16,
+        9,
+        2
+      ],
+      "before": 0.0,
+      "after": 0.0
+    },
+    {
+      "local": [
+        1,
+        1,
+        0
+      ],
+      "node": [
+        16,
+        10,
+        1
+      ],
+      "before": 0.0,
+      "after": 0.0
+    },
+    {
+      "local": [
+        1,
+        1,
+        1
+      ],
+      "node": [
+        16,
+        10,
+        2
+      ],
+      "before": 0.0,
+      "after": 0.0
+    }
+  ],
+  "before_positive_vertices": 0,
+  "after_positive_vertices": 1
+}

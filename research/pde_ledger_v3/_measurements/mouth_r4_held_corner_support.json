@@ -1,0 +1,560 @@
+{
+  "accepted_sha256": "418376c3eb1922f6335543f43dfee11e531cebbb6958d37afd73e844571b653a",
+  "cell": [
+    15,
+    9,
+    1
+  ],
+  "vertex": [
+    16,
+    10,
+    1
+  ],
+  "determinant_from_four_nodes": 0.00034962704013846913,
+  "determining_nodes": [
+    {
+      "node": [
+        16,
+        10,
+        1
+      ],
+      "chi": 0.0,
+      "incident_cells": 8,
+      "positive_order_cells": 1
+    },
+    {
+      "node": [
+        15,
+        10,
+        1
+      ],
+      "chi": 0.0,
+      "incident_cells": 8,
+      "positive_order_cells": 2
+    },
+    {
+      "node": [
+        16,
+        9,
+        1
+      ],
+      "chi": 0.0,
+      "incident_cells": 8,
+      "positive_order_cells": 5
+    },
+    {
+      "node": [
+        16,
+        10,
+        2
+      ],
+      "chi": 0.0,
+      "incident_cells": 8,
+      "positive_order_cells": 3
+    }
+  ],
+  "accepted_corner": {
+    "cell": [
+      15,
+      9,
+      1
+    ],
+    "local": [
+      1.0,
+      1.0,
+      0.0
+    ],
+    "material_side": "core",
+    "physical_chart": [
+      0.8520710059171598,
+      0.3158571045583602,
+      0.027525130258653743
+    ],
+    "physical": {
+      "radius": 3.305321088517217,
+      "theta": 0.027525130258653743,
+      "cylindrical_radius": 0.09096790578125084,
+      "axial_brane_coordinate": 3.304069057739927,
+      "w": 0.2587313010002118
+    },
+    "label": [
+      0.8213153222692559,
+      0.31752608865148,
+      0.03163092910837246
+    ],
+    "distance_from_weld_in_label": -0.0611815803153396,
+    "chi": 0.0,
+    "max_vertex_chi": 0.000549695617281865,
+    "positive_vertices": 1,
+    "chart_det": 0.0003496270401383863,
+    "Jinv": 0.0005014362395531604,
+    "J": 1994.2714967931306,
+    "W_formal": 14922800.073223773,
+    "chi_W": 0.0,
+    "chi_Jinv_W": 0.0,
+    "grad_xi_frobenius": 0.8904783301182522,
+    "grad_xi_spectral": 0.8350335558995099,
+    "condition_F": 11541.55750592982,
+    "min_singular_Finv": 0.00018945969517124417,
+    "max_singular_Finv": 2.1866599668748488
+  },
+  "accepted_incident_cells": [
+    {
+      "cell": [
+        16,
+        10,
+        1
+      ],
+      "local": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_side": "core",
+      "physical_chart": [
+        0.8520710059171598,
+        0.3158571045583602,
+        0.027525130258653743
+      ],
+      "physical": {
+        "radius": 3.305321088517217,
+        "theta": 0.027525130258653743,
+        "cylindrical_radius": 0.09096790578125084,
+        "axial_brane_coordinate": 3.304069057739927,
+        "w": 0.2587313010002118
+      },
+      "label": [
+        0.8213153222692559,
+        0.31752608865148,
+        0.03163092910837246
+      ],
+      "distance_from_weld_in_label": -0.0611815803153396,
+      "chi": 0.0,
+      "max_vertex_chi": 0.0,
+      "positive_vertices": 0,
+      "chart_det": 1.4627477285085584,
+      "Jinv": 2.0978775557746943,
+      "J": 0.476672242975937,
+      "W_formal": 1.311034906578315,
+      "chi_W": 0.0,
+      "chi_Jinv_W": 0.0,
+      "grad_xi_frobenius": 1.4342275770084953,
+      "grad_xi_spectral": 1.3603999337379387,
+      "condition_F": 5.844658114276496,
+      "min_singular_Finv": 0.5707387405584196,
+      "max_singular_Finv": 3.3357728111367146
+    },
+    {
+      "cell": [
+        16,
+        10,
+        0
+      ],
+      "local": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "material_side": "core",
+      "physical_chart": [
+        0.8520710059171598,
+        0.3158571045583602,
+        0.027525130258653743
+      ],
+      "physical": {
+        "radius": 3.305321088517217,
+        "theta": 0.027525130258653743,
+        "cylindrical_radius": 0.09096790578125084,
+        "axial_brane_coordinate": 3.304069057739927,
+        "w": 0.2587313010002118
+      },
+      "label": [
+        0.8213153222692559,
+        0.31752608865148,
+        0.03163092910837246
+      ],
+      "distance_from_weld_in_label": -0.0611815803153396,
+      "chi": 0.0,
+      "max_vertex_chi": 0.0,
+      "positive_vertices": 0,
+      "chart_det": 1.7411701744885428,
+      "Jinv": 2.4971919345027715,
+      "J": 0.400449795701873,
+      "W_formal": 1.375269346953737,
+      "chi_W": 0.0,
+      "chi_Jinv_W": 0.0,
+      "grad_xi_frobenius": 1.4900797547839146,
+      "grad_xi_spectral": 1.409266016236482,
+      "condition_F": 6.078744096410681,
+      "min_singular_Finv": 0.5706958017545585,
+      "max_singular_Finv": 3.469113735761882
+    },
+    {
+      "cell": [
+        16,
+        9,
+        1
+      ],
+      "local": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "material_side": "core",
+      "physical_chart": [
+        0.8520710059171598,
+        0.3158571045583602,
+        0.027525130258653743
+      ],
+      "physical": {
+        "radius": 3.305321088517217,
+        "theta": 0.027525130258653743,
+        "cylindrical_radius": 0.09096790578125084,
+        "axial_brane_coordinate": 3.304069057739927,
+        "w": 0.2587313010002118
+      },
+      "label": [
+        0.8213153222692559,
+        0.31752608865148,
+        0.03163092910837246
+      ],
+      "distance_from_weld_in_label": -0.0611815803153396,
+      "chi": 0.0,
+      "max_vertex_chi": 0.0,
+      "positive_vertices": 0,
+      "chart_det": 0.7789145476378763,
+      "Jinv": 1.1171217808159042,
+      "J": 0.8951575532522849,
+      "W_formal": 2.614352837366166,
+      "chi_W": 0.0,
+      "chi_Jinv_W": 0.0,
+      "grad_xi_frobenius": 0.9533875485689864,
+      "grad_xi_spectral": 0.8413253380924615,
+      "condition_F": 6.092806007747357,
+      "min_singular_Finv": 0.36979281692407395,
+      "max_singular_Finv": 2.2530758965768163
+    },
+    {
+      "cell": [
+        16,
+        9,
+        0
+      ],
+      "local": [
+        0.0,
+        1.0,
+        1.0
+      ],
+      "material_side": "core",
+      "physical_chart": [
+        0.8520710059171598,
+        0.3158571045583602,
+        0.027525130258653743
+      ],
+      "physical": {
+        "radius": 3.305321088517217,
+        "theta": 0.027525130258653743,
+        "cylindrical_radius": 0.09096790578125084,
+        "axial_brane_coordinate": 3.304069057739927,
+        "w": 0.2587313010002118
+      },
+      "label": [
+        0.8213153222692559,
+        0.31752608865148,
+        0.03163092910837246
+      ],
+      "distance_from_weld_in_label": -0.0611815803153396,
+      "chi": 0.0,
+      "max_vertex_chi": 0.0,
+      "positive_vertices": 0,
+      "chart_det": 1.2816786112863308,
+      "Jinv": 1.8381876381894104,
+      "J": 0.5440141034704086,
+      "W_formal": 0.8235460398105151,
+      "chi_W": 0.0,
+      "chi_Jinv_W": 0.0,
+      "grad_xi_frobenius": 1.035507967488234,
+      "grad_xi_spectral": 0.8356081470803898,
+      "condition_F": 3.877157795834875,
+      "min_singular_Finv": 0.6528362176618717,
+      "max_singular_Finv": 2.531149030711079
+    },
+    {
+      "cell": [
+        15,
+        10,
+        1
+      ],
+      "local": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "material_side": "core",
+      "physical_chart": [
+        0.8520710059171598,
+        0.3158571045583602,
+        0.027525130258653743
+      ],
+      "physical": {
+        "radius": 3.305321088517217,
+        "theta": 0.027525130258653743,
+        "cylindrical_radius": 0.09096790578125084,
+        "axial_brane_coordinate": 3.304069057739927,
+        "w": 0.2587313010002118
+      },
+      "label": [
+        0.8213153222692559,
+        0.31752608865148,
+        0.03163092910837246
+      ],
+      "distance_from_weld_in_label": -0.0611815803153396,
+      "chi": 0.0,
+      "max_vertex_chi": 0.0,
+      "positive_vertices": 0,
+      "chart_det": 1.0218073921793749,
+      "Jinv": 1.4654794894560927,
+      "J": 0.6823705191337385,
+      "W_formal": 1.3917695472367686,
+      "chi_W": 0.0,
+      "chi_Jinv_W": 0.0,
+      "grad_xi_frobenius": 1.28258469322814,
+      "grad_xi_spectral": 1.218373429867553,
+      "condition_F": 5.314398697937549,
+      "min_singular_Finv": 0.5018269544293392,
+      "max_singular_Finv": 2.666908513209246
+    },
+    {
+      "cell": [
+        15,
+        10,
+        0
+      ],
+      "local": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "material_side": "core",
+      "physical_chart": [
+        0.8520710059171598,
+        0.3158571045583602,
+        0.027525130258653743
+      ],
+      "physical": {
+        "radius": 3.305321088517217,
+        "theta": 0.027525130258653743,
+        "cylindrical_radius": 0.09096790578125084,
+        "axial_brane_coordinate": 3.304069057739927,
+        "w": 0.2587313010002118
+      },
+      "label": [
+        0.8213153222692559,
+        0.31752608865148,
+        0.03163092910837246
+      ],
+      "distance_from_weld_in_label": -0.0611815803153396,
+      "chi": 0.0,
+      "max_vertex_chi": 0.0,
+      "positive_vertices": 0,
+      "chart_det": 1.2579432133352924,
+      "Jinv": 1.8041462531519272,
+      "J": 0.5542787887916257,
+      "W_formal": 1.444090485865686,
+      "chi_W": 0.0,
+      "chi_Jinv_W": 0.0,
+      "grad_xi_frobenius": 1.3447842179807046,
+      "grad_xi_spectral": 1.2715104362583876,
+      "condition_F": 5.583680642169739,
+      "min_singular_Finv": 0.5069065979485782,
+      "max_singular_Finv": 2.830404558353595
+    },
+    {
+      "cell": [
+        15,
+        9,
+        1
+      ],
+      "local": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "material_side": "core",
+      "physical_chart": [
+        0.8520710059171598,
+        0.3158571045583602,
+        0.027525130258653743
+      ],
+      "physical": {
+        "radius": 3.305321088517217,
+        "theta": 0.027525130258653743,
+        "cylindrical_radius": 0.09096790578125084,
+        "axial_brane_coordinate": 3.304069057739927,
+        "w": 0.2587313010002118
+      },
+      "label": [
+        0.8213153222692559,
+        0.31752608865148,
+        0.03163092910837246
+      ],
+      "distance_from_weld_in_label": -0.0611815803153396,
+      "chi": 0.0,
+      "max_vertex_chi": 0.000549695617281865,
+      "positive_vertices": 1,
+      "chart_det": 0.0003496270401383863,
+      "Jinv": 0.0005014362395531604,
+      "J": 1994.2714967931306,
+      "W_formal": 14922800.073223773,
+      "chi_W": 0.0,
+      "chi_Jinv_W": 0.0,
+      "grad_xi_frobenius": 0.8904783301182522,
+      "grad_xi_spectral": 0.8350335558995099,
+      "condition_F": 11541.55750592982,
+      "min_singular_Finv": 0.00018945969517124417,
+      "max_singular_Finv": 2.1866599668748488
+    },
+    {
+      "cell": [
+        15,
+        9,
+        0
+      ],
+      "local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_side": "core",
+      "physical_chart": [
+        0.8520710059171598,
+        0.3158571045583602,
+        0.027525130258653743
+      ],
+      "physical": {
+        "radius": 3.305321088517217,
+        "theta": 0.027525130258653743,
+        "cylindrical_radius": 0.09096790578125084,
+        "axial_brane_coordinate": 3.304069057739927,
+        "w": 0.2587313010002118
+      },
+      "label": [
+        0.8213153222692559,
+        0.31752608865148,
+        0.03163092910837246
+      ],
+      "distance_from_weld_in_label": -0.0611815803153396,
+      "chi": 0.0,
+      "max_vertex_chi": 0.0,
+      "positive_vertices": 0,
+      "chart_det": 0.4199087149123897,
+      "Jinv": 0.6022344463915829,
+      "J": 1.660482899959833,
+      "W_formal": 8.247740596106526,
+      "chi_W": 0.0,
+      "chi_Jinv_W": 0.0,
+      "grad_xi_frobenius": 0.9779431241319939,
+      "grad_xi_spectral": 0.8291445399471853,
+      "condition_F": 10.894540274777908,
+      "min_singular_Finv": 0.2282047517238694,
+      "max_singular_Finv": 2.4861858585513885
+    }
+  ],
+  "immutable_under_melt_extension": true,
+  "trials_at_floor": [
+    {
+      "alpha": 0.0001,
+      "predictor": "harmonic_increment",
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "witness": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": -0.005022310760497584,
+        "chart_lower": -0.005022310760563368,
+        "roundoff_margin": 6.578405234238902e-14,
+        "subdivisions": 0
+      }
+    },
+    {
+      "alpha": 0.0001,
+      "predictor": "fixed_melt",
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "witness": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": -0.005022310760497584,
+        "chart_lower": -0.005022310760563368,
+        "roundoff_margin": 6.578405234238902e-14,
+        "subdivisions": 0
+      }
+    },
+    {
+      "alpha": 0.0001,
+      "predictor": "harmonic_increment",
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "witness": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": -0.005049542016850539,
+        "chart_lower": -0.005049542016916284,
+        "roundoff_margin": 6.574505770414658e-14,
+        "subdivisions": 0
+      }
+    },
+    {
+      "alpha": 0.0001,
+      "predictor": "fixed_melt",
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "witness": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": -0.005049542016850539,
+        "chart_lower": -0.005049542016916284,
+        "roundoff_margin": 6.574505770414658e-14,
+        "subdivisions": 0
+      }
+    }
+  ],
+  "trial_reason_counts": {
+    "Label leaves the saved material domain": 20,
+    "Nonpositive or roundoff-unresolved chart determinant": 40
+  },
+  "source_sha256": "986c8f80f88c4e349b538288131d7051c192d1c3d0f484860f8043dd2fe60510",
+  "interpretation": "A trilinear cell determinant at a corner depends on that vertex and its three adjacent edge vertices. A melt-only extension cannot change any vertex incident to an element with positive order."
+}

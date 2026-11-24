@@ -1,0 +1,428 @@
+{
+  "radius": 4,
+  "winding": 1,
+  "epsilon": 1e-08,
+  "solver_base": "091e8c4d",
+  "saved_state_sha256": "418376c3eb1922f6335543f43dfee11e531cebbb6958d37afd73e844571b653a",
+  "held_solver_sha256": "38a2981bb59c4a371af67644109940031b76b25f36e2aaff102ce691eb226690",
+  "verified_derivative_gate_sha256": "451f12bbd3569ab5acd00a496a04d73e4176595c929316d4bc84c8a53221aa65",
+  "held_readback_sha256": "88938b63819c201c0c8ef89a4a4a03df16966b194b4b653ffadc1dd0318ef0e5",
+  "order_and_flow_rematch": {
+    "physical_change": -0.025726670224685222,
+    "old_gauge": 8.090346663896042e-09,
+    "new_gauge": 5.463520391760752e-09,
+    "delta": -0.025726672851511492,
+    "entered_melt": 0,
+    "left_melt": 759
+  },
+  "stop": "No certified reducing active step at or above 0.0001",
+  "held_shape": {
+    "depth": 0.8191403557693495,
+    "exit_radius": 3.306377271246663
+  },
+  "prior_held_fields": {
+    "front": 0.28460443110718825,
+    "current": 10.708522019454033
+  },
+  "sampled_melted_front_depth": 0.3104775612675553,
+  "current": {
+    "feed_current": 10.707884999987012,
+    "bulk_current": 10.70788499998712,
+    "weak_disk_current": 10.707884999987,
+    "port_error": 1.0835776720341528e-13,
+    "disk_minus_feed_current": -1.2434497875801753e-14,
+    "dense_total_subsonic_share": 0.6675849102524305,
+    "minimum_total_mach": 0.4284707526077593
+  },
+  "energies": {
+    "physical": 92185.4421369118,
+    "crystal": 0.3048567026564901,
+    "gauge": 1.3076383182539788e-08,
+    "total": 92185.44213692489,
+    "gauge_to_crystal": 4.289354004223467e-08,
+    "fixed_fields_active_steps_delta": -0.02899125540744496
+  },
+  "free_crystal_force": 0.17798342081567212,
+  "material_target": 3e-05,
+  "physical_force_components": [
+    0.17798342081567212,
+    0.024335530400912127,
+    0.0015360240037470304
+  ],
+  "melt_inner_unit_residual": 2.171881425768775e-08,
+  "accepted_steps": [
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 1,
+      "alpha": 0.0078125,
+      "material_force": 0.22386455641954145,
+      "energy_change": -0.005079737402667983,
+      "inner_residual": 2.4166798078331664e-08,
+      "chart_lower": 0.166594033790516,
+      "physical_min_active_Jinv": 0.2721686806095176
+    },
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 2,
+      "alpha": 0.0078125,
+      "material_force": 0.21943766145973917,
+      "energy_change": -0.004075166185517232,
+      "inner_residual": 2.8764410030289803e-08,
+      "chart_lower": 0.09189464520915866,
+      "physical_min_active_Jinv": 0.33824989473207856
+    },
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 3,
+      "alpha": 0.0078125,
+      "material_force": 0.21451888296877333,
+      "energy_change": -0.002478447745789092,
+      "inner_residual": 1.826174524224627e-08,
+      "chart_lower": 0.07717720382763106,
+      "physical_min_active_Jinv": 0.14964769812349896
+    },
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 4,
+      "alpha": 0.0078125,
+      "material_force": 0.2033853888121587,
+      "energy_change": -0.0050410251494443226,
+      "inner_residual": 2.90742490395568e-08,
+      "chart_lower": 0.04186822325009216,
+      "physical_min_active_Jinv": 0.30412798174696126
+    },
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 5,
+      "alpha": 0.00048828125,
+      "material_force": 0.20300759302459606,
+      "energy_change": -0.000168674542845082,
+      "inner_residual": 2.8697912855552704e-08,
+      "chart_lower": 0.01480711115318762,
+      "physical_min_active_Jinv": 0.26884986633616575
+    },
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 6,
+      "alpha": 0.000244140625,
+      "material_force": 0.20293002182781425,
+      "energy_change": -0.00011996471871267289,
+      "inner_residual": 2.686103440791964e-08,
+      "chart_lower": 0.0016507397336808563,
+      "physical_min_active_Jinv": 0.2503872408284002
+    },
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 7,
+      "alpha": 0.001953125,
+      "material_force": 0.20200924284560362,
+      "energy_change": -0.0006980530403420948,
+      "inner_residual": 2.9437696278441366e-08,
+      "chart_lower": 0.0006653809774530241,
+      "physical_min_active_Jinv": 0.2506641996704491
+    },
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 8,
+      "alpha": 0.0078125,
+      "material_force": 0.18970373177494027,
+      "energy_change": -0.006797521424930675,
+      "inner_residual": 2.9275334901927852e-08,
+      "chart_lower": 0.07909110449480909,
+      "physical_min_active_Jinv": 0.5001725121129182
+    },
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 9,
+      "alpha": 0.015625,
+      "material_force": 0.18048922790825614,
+      "energy_change": -0.0035892968809320136,
+      "inner_residual": 1.578186799473802e-08,
+      "chart_lower": 0.0388785400859888,
+      "physical_min_active_Jinv": 0.5418732025440537
+    },
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 10,
+      "alpha": 0.0009765625,
+      "material_force": 0.17854617124633257,
+      "energy_change": -0.0007330224774594329,
+      "inner_residual": 2.8966482409627063e-08,
+      "chart_lower": 0.011291595765514384,
+      "physical_min_active_Jinv": 0.5130392935191254
+    },
+    {
+      "kind": "barrier_active_step",
+      "sweep": 0,
+      "step": 11,
+      "alpha": 0.000244140625,
+      "material_force": 0.17798342081567212,
+      "energy_change": -0.00021034583880435997,
+      "inner_residual": 2.171881425768775e-08,
+      "chart_lower": 0.0003496270400723384,
+      "physical_min_active_Jinv": 0.5030673372031083
+    }
+  ],
+  "last_step_fraction": 0.000244140625,
+  "min_step_fraction": 0.000244140625,
+  "rejected_predictors": {
+    "Label leaves the saved material domain": 20,
+    "Nonpositive or roundoff-unresolved chart determinant": 40
+  },
+  "trials_at_floor": [
+    {
+      "alpha": 0.0001,
+      "predictor": "harmonic_increment",
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "witness": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": -0.005022310760497584,
+        "chart_lower": -0.005022310760563368,
+        "roundoff_margin": 6.578405234238902e-14,
+        "subdivisions": 0
+      }
+    },
+    {
+      "alpha": 0.0001,
+      "predictor": "fixed_melt",
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "witness": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": -0.005022310760497584,
+        "chart_lower": -0.005022310760563368,
+        "roundoff_margin": 6.578405234238902e-14,
+        "subdivisions": 0
+      }
+    },
+    {
+      "alpha": 0.0001,
+      "predictor": "harmonic_increment",
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "witness": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": -0.005049542016850539,
+        "chart_lower": -0.005049542016916284,
+        "roundoff_margin": 6.574505770414658e-14,
+        "subdivisions": 0
+      }
+    },
+    {
+      "alpha": 0.0001,
+      "predictor": "fixed_melt",
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "witness": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": -0.005049542016850539,
+        "chart_lower": -0.005049542016916284,
+        "roundoff_margin": 6.574505770414658e-14,
+        "subdivisions": 0
+      }
+    }
+  ],
+  "accepted_corner": {
+    "cell": [
+      15,
+      9,
+      1
+    ],
+    "local": [
+      1.0,
+      1.0,
+      0.0
+    ],
+    "material_side": "core",
+    "physical_chart": [
+      0.8520710059171598,
+      0.3158571045583602,
+      0.027525130258653743
+    ],
+    "physical": {
+      "radius": 3.305321088517217,
+      "theta": 0.027525130258653743,
+      "cylindrical_radius": 0.09096790578125084,
+      "axial_brane_coordinate": 3.304069057739927,
+      "w": 0.2587313010002118
+    },
+    "label": [
+      0.8213153222692559,
+      0.31752608865148,
+      0.03163092910837246
+    ],
+    "distance_from_weld_in_label": -0.0611815803153396,
+    "chi": 0.0,
+    "max_vertex_chi": 0.000549695617281865,
+    "positive_vertices": 1,
+    "chart_det": 0.0003496270401383863,
+    "Jinv": 0.0005014362395531604,
+    "J": 1994.2714967931306,
+    "W_formal": 14922800.073223773,
+    "chi_W": 0.0,
+    "chi_Jinv_W": 0.0,
+    "grad_xi_frobenius": 0.8904783301182522,
+    "grad_xi_spectral": 0.8350335558995099,
+    "condition_F": 11541.55750592982,
+    "min_singular_Finv": 0.00018945969517124417,
+    "max_singular_Finv": 2.1866599668748488
+  },
+  "active_quadrature_minimum": {
+    "cell": [
+      15,
+      9,
+      1
+    ],
+    "local": [
+      0.8906068456629286,
+      0.8872983346207417,
+      0.1127016653792583
+    ],
+    "material_side": "core",
+    "physical_chart": [
+      0.8486726978682271,
+      0.312297342387719,
+      0.03233070270893903
+    ],
+    "physical": {
+      "radius": 3.2934404459771662,
+      "theta": 0.03233070270893903,
+      "cylindrical_radius": 0.10646069491441931,
+      "axial_brane_coordinate": 3.291719321515219,
+      "w": 0.2558153561492985
+    },
+    "label": [
+      0.8209657411739969,
+      0.31828954837373397,
+      0.035441808770581784
+    ],
+    "distance_from_weld_in_label": -0.06153116141059854,
+    "chi": 7.637884503933835e-07,
+    "max_vertex_chi": 0.000549695617281865,
+    "positive_vertices": 1,
+    "chart_det": 0.36542376658039327,
+    "Jinv": 0.5030673372031089,
+    "J": 1.987805460715608,
+    "W_formal": 9.585454165522705,
+    "chi_W": 7.321259183401391e-06,
+    "chi_Jinv_W": 3.683086362367545e-06,
+    "grad_xi_frobenius": 1.077007586922281,
+    "grad_xi_spectral": 1.0256783926942956,
+    "condition_F": 9.590780371848076,
+    "min_singular_Finv": 0.21276826650299202,
+    "max_singular_Finv": 2.0406137141290364
+  },
+  "global_quadrature_minimum": {
+    "cell": [
+      25,
+      10,
+      17
+    ],
+    "local": [
+      0.1127016653792583,
+      0.1127016653792583,
+      0.1127016653792583
+    ],
+    "material_side": "collar",
+    "physical_chart": [
+      0.9986874284990818,
+      0.3194168667298769,
+      1.2727530995783605
+    ],
+    "physical": {
+      "radius": 3.8470348849905562,
+      "theta": 1.2727530995783605,
+      "cylindrical_radius": 3.677430372112236,
+      "axial_brane_coordinate": 1.1296828159270034,
+      "w": 0.2616472458518423
+    },
+    "label": [
+      0.999425847426914,
+      0.3209977632633668,
+      1.2727506879656016
+    ],
+    "distance_from_weld_in_label": 0.11692894484231857,
+    "chi": 0.0,
+    "max_vertex_chi": 0.0,
+    "positive_vertices": 0,
+    "chart_det": 0.3503346763270296,
+    "Jinv": 0.48696012785933906,
+    "J": 2.0535562211139697,
+    "W_formal": 0.805518329261369,
+    "chi_W": 0.0,
+    "chi_Jinv_W": 0.0,
+    "grad_xi_frobenius": 0.9953550993290289,
+    "grad_xi_spectral": 0.9536664639924567,
+    "condition_F": 1.8024322121658578,
+    "min_singular_Finv": 0.5773470839142762,
+    "max_singular_Finv": 1.0406289816471161
+  },
+  "chart_bounds": {
+    "chart_det_global_lower": 0.0003496270400723384,
+    "chart_lowest_cell": [
+      15,
+      9,
+      1
+    ],
+    "chart_det_active_lower": 0.0003496270400723384
+  },
+  "pre_label_field_residuals": {
+    "phase_raw": 6.446108384350118e-11,
+    "amplitude_raw": 4.355433687021565e-09,
+    "carrier_metric": 3.3648538367866334e-08,
+    "order_raw": 0.34959525648184164,
+    "order_kkt": 1.8334862320254622e-09,
+    "order_projected": 8.641722337721092e-10
+  },
+  "stationary_shape_forces": null,
+  "second_gauge": "not admitted",
+  "paired_held_comparison": null,
+  "shape_release": false
+}

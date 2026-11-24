@@ -1,0 +1,109 @@
+{
+  "input_sha256": "418376c3eb1922f6335543f43dfee11e531cebbb6958d37afd73e844571b653a",
+  "original_fixed_trace_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+  "source_manifest_sha256": "fb4dbfc911ec0a022cc0e61b416777f36029171f520ab7a017f36db3fe0b6976",
+  "epsilon": 1e-08,
+  "radius": 4,
+  "before_label_steps": {
+    "physical_energy": 92185.47112817482,
+    "crystal_energy": 0.33384796567679786,
+    "source_exchange": -2.7755575615628914e-16,
+    "phase_raw": 6.446108384350118e-11,
+    "amplitude_raw": 4.355433687021565e-09,
+    "order_raw": 0.34959525648184164,
+    "order_kkt": 1.8334862320254622e-09,
+    "order_projected": 8.641722337721092e-10,
+    "largest_kkt_group": 32021,
+    "largest_kkt_gradient": -1.8334862320254622e-09,
+    "order_at_largest_kkt": 0.48640022835305224
+  },
+  "after_label_steps": {
+    "physical_energy": 92185.4421369118,
+    "crystal_energy": 0.3048567026564901,
+    "source_exchange": -4.440892098500626e-16,
+    "phase_raw": 6.446108384350118e-11,
+    "amplitude_raw": 4.355433687021565e-09,
+    "order_raw": 0.34959525648184164,
+    "order_kkt": 0.017717169755498773,
+    "order_projected": 0.0015478656712805692,
+    "largest_kkt_group": 50658,
+    "largest_kkt_gradient": -0.017717169755498773,
+    "order_at_largest_kkt": 0.0025016792575177286
+  },
+  "fixed_field_carrier_gradient_change": 0.0,
+  "carrier_metric_from_identical_fields": 3.3648538367866334e-08,
+  "largest_free_forces_by_component": [
+    {
+      "component": "radial",
+      "group": 19675,
+      "signed_label_force": 0.17798342081567212,
+      "nodes": [
+        {
+          "index": [
+            17,
+            1,
+            19
+          ],
+          "radius": 3.5110638399080116,
+          "depth": 0.02587313009994973,
+          "theta": 1.4657055899195157,
+          "chi": 0.27551489824405084
+        }
+      ]
+    },
+    {
+      "component": "axial",
+      "group": 18571,
+      "signed_label_force": -0.024335530400912127,
+      "nodes": [
+        {
+          "index": [
+            17,
+            1,
+            15
+          ],
+          "radius": 3.5110638399080116,
+          "depth": 0.02587313009994973,
+          "theta": 1.0652525502985477,
+          "chi": 0.2810719054819628
+        }
+      ]
+    },
+    {
+      "component": "angular",
+      "group": 15428,
+      "signed_label_force": -0.0015360240037470304,
+      "nodes": [
+        {
+          "index": [
+            14,
+            1,
+            16
+          ],
+          "radius": 3.1393041392118692,
+          "depth": 0.02587313009994973,
+          "theta": 1.1622280678831356,
+          "chi": 0.3018448886348717
+        }
+      ]
+    }
+  ],
+  "total_fixed_field_energy": 92185.44213692489,
+  "gauge_energy": 1.3076383182539788e-08,
+  "gauge_to_crystal": 4.289354004223467e-08,
+  "unscaled_melt_residual": 2.171881425768775e-08,
+  "free_label_residual": 0.17798342081567212,
+  "currents": {
+    "feed_current": 10.707884999987012,
+    "bulk_current": 10.70788499998712,
+    "weak_disk_current": 10.707884999987,
+    "incident_slice_current": 10.707884999987002,
+    "receiving_slice_current": 10.041224705733482,
+    "positive_slice_current": 10.707884999987002,
+    "port_error": 1.0835776720341528e-13,
+    "disk_minus_feed_current": -1.2434497875801753e-14,
+    "dense_total_subsonic_share": 0.6675849102524305,
+    "total_axial_stress": -26.582851078563515
+  },
+  "max_abs_change_from_saved_current": 0.0
+}

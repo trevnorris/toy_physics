@@ -1,0 +1,1609 @@
+{
+  "scope": "Frozen R4 shape and active-label virtual work with exact geometry-specific quadratic melted extension on both perturbed banks.",
+  "sources": {
+    "mouth_r4_harmonic_gradient.py": "e9c331389472bba636e967651d13262fa363823cd58dd163f7563470e1266570",
+    "mouth_r4_harmonic_shape.py": "2ff8254b768e4c6abe49f53102a4be8f094ecf69040002d91fba8f7ac2c4bd30"
+  },
+  "cases": {
+    "primary": {
+      "case": "primary",
+      "epsilon": 1e-08,
+      "state_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+      "analytic_archive_sha256": "4fc88193e11a4b45daa2842a18a5a226d86afa1470a848993a9704792101baf7",
+      "modes": {
+        "log_depth": {
+          "analytic": 0.008779705042868005,
+          "steps": [
+            {
+              "h": 1e-05,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.00901348550485479,
+                  "min_chart": 6.230047335507247e-06,
+                  "min_chart_active": 0.1354359439567015
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -6.2301176120852765e-06,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 5e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.008897163693136334,
+                  "min_chart": 3.1150325217007033e-06,
+                  "min_chart_active": 0.13543153414323178
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -3.1150499496741985e-06,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "scaled_log_exit": {
+          "analytic": -0.674022723124803,
+          "steps": [
+            {
+              "h": 0.0001,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -0.6737232997831227,
+                  "min_chart": 2.0296621983360797e-07,
+                  "min_chart_active": 0.13542712430771298
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -2.0274054587215072e-07,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 5e-05,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -0.6738729478545583,
+                  "min_chart": 1.0145497278282766e-07,
+                  "min_chart_active": 0.13542712430771298
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -1.0139841244576044e-07,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "mean_width": {
+          "analytic": 0.5732765779768358,
+          "steps": [
+            {
+              "h": 0.0001,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.5781344383160186,
+                  "min_chart": 3.7847916618322415e-06,
+                  "min_chart_active": 0.13542712430771298
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -3.7834898362517207e-06,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 5e-05,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.5757055692229625,
+                  "min_chart": 1.8922331880260858e-06,
+                  "min_chart_active": 0.13542712430771298
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -1.8919075910540002e-06,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "depth_asymmetry": {
+          "analytic": -0.5769945306975994,
+          "steps": [
+            {
+              "h": 0.0001,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -1.6213924115202527e-06,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": -0.580393477283934,
+                  "min_chart": 1.6212375262091612e-06,
+                  "min_chart_active": 0.13542712430771298
+                }
+              }
+            },
+            {
+              "h": 5e-05,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -8.106767806267998e-07,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": -0.5786941073386583,
+                  "min_chart": 8.106381991399777e-07,
+                  "min_chart_active": 0.13542712430771298
+                }
+              }
+            }
+          ]
+        },
+        "waist_profile": {
+          "analytic": 0.39760177446175665,
+          "steps": [
+            {
+              "h": 0.0001,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.39853298964826284,
+                  "min_chart": 5.685032464177691e-06,
+                  "min_chart_active": 0.13542712430771298
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -5.681781168030413e-06,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 5e-05,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.39806758326712527,
+                  "min_chart": 2.8421099722365242e-06,
+                  "min_chart_active": 0.13542712430771298
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -2.8412970063892313e-06,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "polar_equatorial": {
+          "analytic": 0.020185967643572927,
+          "steps": [
+            {
+              "h": 0.0001,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -5.658410356370563e-06,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 0.019943770676404345,
+                  "min_chart": 5.658819029715553e-06,
+                  "min_chart_active": 0.13542712430771298
+                }
+              }
+            },
+            {
+              "h": 5e-05,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -2.829256194261442e-06,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 0.02006487017251814,
+                  "min_chart": 2.8293585046696547e-06,
+                  "min_chart_active": 0.13542712430771298
+                }
+              }
+            }
+          ]
+        }
+      },
+      "base_reextension_max": 2.220446049250313e-16,
+      "base_active_reextension_max": 0.0,
+      "base_energies": [
+        0.17478794445891435,
+        0.039765251718808244,
+        2.4148167586124685,
+        45835.73298182438,
+        46347.05505816136,
+        -0.409474922355563,
+        0.30534179980063414,
+        0.18357802706393175,
+        5.194977680831645e-09
+      ],
+      "physical_mode_order": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "active_probes": {
+        "interior_0": {
+          "analytic": -0.12656537220496927,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -0.126829222416025,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": -0.1263015018404534,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                }
+              },
+              "central": -0.1265653621282392,
+              "central_minus_analytic": 1.0076730061481243e-08
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -0.1266972998459348,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": -0.1264334395789657,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                }
+              },
+              "central": -0.12656536971245025,
+              "central_minus_analytic": 2.492519024510642e-09
+            }
+          ],
+          "component": 0,
+          "free_coordinate": 3154,
+          "node": [
+            17,
+            1,
+            19
+          ],
+          "incident_melt_cross_entries": 0
+        },
+        "limiting_vertex_0": {
+          "analytic": -7.1692019414549686e-06,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -0.00010233553184630334,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": -7.168723947792444e-06,
+                  "min_chart": 0.00010233553203556398,
+                  "harmonic_residual": 5.1275607024225955e-14
+                }
+              }
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -5.116776587955352e-05,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": -7.1689598701851764e-06,
+                  "min_chart": 5.116776606692819e-05,
+                  "harmonic_residual": 5.1275607024225955e-14
+                }
+              }
+            }
+          ],
+          "component": 0,
+          "free_coordinate": 3659,
+          "node": [
+            19,
+            9,
+            19
+          ],
+          "incident_melt_cross_entries": 13
+        },
+        "interior_1": {
+          "analytic": 0.02749556939312818,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.02746712857160105,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 0.027524009751922485,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                }
+              },
+              "central": 0.027495569161761768,
+              "central_minus_analytic": -2.3136641214005493e-10
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.027481349029745417,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 0.027509789640722815,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                }
+              },
+              "central": 0.027495569335234116,
+              "central_minus_analytic": -5.7894064542374224e-11
+            }
+          ],
+          "component": 1,
+          "free_coordinate": 8048,
+          "node": [
+            17,
+            1,
+            15
+          ],
+          "incident_melt_cross_entries": 0
+        },
+        "limiting_vertex_1": {
+          "analytic": 2.9696630021700573e-07,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -6.353989106092722e-05,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 2.9706792581407626e-07,
+                  "min_chart": 6.353989125073982e-05,
+                  "harmonic_residual": 5.1275607024225955e-14
+                }
+              }
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -3.1769945483136967e-05,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 2.9704017023846063e-07,
+                  "min_chart": 3.176994567235156e-05,
+                  "harmonic_residual": 5.1275607024225955e-14
+                }
+              }
+            }
+          ],
+          "component": 1,
+          "free_coordinate": 8557,
+          "node": [
+            19,
+            9,
+            19
+          ],
+          "incident_melt_cross_entries": 13
+        },
+        "interior_2": {
+          "analytic": 0.0011032743067338222,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.0009836363251691793,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 0.0012229123408369347,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                }
+              },
+              "central": 0.001103274333003057,
+              "central_minus_analytic": 2.626923483427246e-11
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.0010434553221472243,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 0.0011630933161033141,
+                  "min_chart": 9.465333962785144e-14,
+                  "harmonic_residual": 5.1275607024225955e-14
+                }
+              },
+              "central": 0.0011032743191252692,
+              "central_minus_analytic": 1.2391447026458002e-11
+            }
+          ],
+          "component": 2,
+          "free_coordinate": 12697,
+          "node": [
+            16,
+            1,
+            17
+          ],
+          "incident_melt_cross_entries": 0
+        },
+        "limiting_vertex_2": {
+          "analytic": -3.64907013027434e-07,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -3.654299085553703e-07,
+                  "min_chart": 1.4385140553980115e-05,
+                  "harmonic_residual": 4.970869093949559e-14
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -1.4385140364266216e-05,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -3.651801083748296e-07,
+                  "min_chart": 7.1925703237844215e-06,
+                  "harmonic_residual": 5.427516075462435e-14
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -7.192570134070568e-06,
+                    "cell": [
+                      18,
+                      8,
+                      19
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ],
+          "component": 2,
+          "free_coordinate": 13323,
+          "node": [
+            19,
+            9,
+            19
+          ],
+          "incident_melt_cross_entries": 9
+        }
+      },
+      "complete": true
+    },
+    "secondary": {
+      "case": "secondary",
+      "epsilon": 1e-10,
+      "state_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+      "analytic_archive_sha256": "e45fa2d385e51e309bb3c07ebd9f11a09bdf8e892a979c6fb07f2182129bb7e3",
+      "modes": {
+        "log_depth": {
+          "analytic": 0.07538911292371366,
+          "steps": [
+            {
+              "h": 1e-05,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.07562812472618122,
+                  "min_chart": 4.983402871149145e-06,
+                  "min_chart_active": 0.021069674266500464
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -4.983445004203151e-06,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 5e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.07550918174175711,
+                  "min_chart": 2.4917069974709936e-06,
+                  "min_chart_active": 0.02106496559642796
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -2.491716939577391e-06,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "scaled_log_exit": {
+          "analytic": -0.681712197041332,
+          "steps": [
+            {
+              "h": 0.0001,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -0.6814130680427896,
+                  "min_chart": 1.2073442157730976e-06,
+                  "min_chart_active": 0.021060256902812036
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -1.2075917273529443e-06,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 5e-05,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -0.6815625689449822,
+                  "min_chart": 6.037033420360006e-07,
+                  "min_chart_active": 0.021060256902812036
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -6.037646290980455e-07,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "mean_width": {
+          "analytic": 0.5462535087006897,
+          "steps": [
+            {
+              "h": 0.0001,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.5511038184365169,
+                  "min_chart": 4.762589065393269e-06,
+                  "min_chart_active": 0.021060256902812036
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -4.763402562610289e-06,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 5e-05,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.5486787246452635,
+                  "min_chart": 2.3813965382734075e-06,
+                  "min_chart_active": 0.021060256902812036
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -2.3815993209072645e-06,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "depth_asymmetry": {
+          "analytic": -0.5655226773888063,
+          "steps": [
+            {
+              "h": 0.0001,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -0.5621289389535955,
+                  "min_chart": 5.875813027530534e-07,
+                  "min_chart_active": 0.021060256902812036
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -5.881317156770662e-07,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 5e-05,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -0.5638257034898855,
+                  "min_chart": 2.9385974405367434e-07,
+                  "min_chart_active": 0.021060256902812036
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -2.939967545510101e-07,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "waist_profile": {
+          "analytic": 0.3739699608031014,
+          "steps": [
+            {
+              "h": 0.0001,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.3748999585661751,
+                  "min_chart": 8.453249516688712e-06,
+                  "min_chart_active": 0.021060256902812036
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -8.45537593508512e-06,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 5e-05,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.37443516089658946,
+                  "min_chart": 4.226890949530301e-06,
+                  "min_chart_active": 0.021060256902812036
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -4.227421961009308e-06,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "polar_equatorial": {
+          "analytic": 0.022609999153998302,
+          "steps": [
+            {
+              "h": 0.0001,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.022851613437827472,
+                  "min_chart": 1.02261206860077e-05,
+                  "min_chart_active": 0.021060256902812036
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -1.022790816045102e-05,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 5e-05,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.02273080414665709,
+                  "min_chart": 5.113284137919514e-06,
+                  "min_chart_active": 0.021060256902812036
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "code": 2,
+                    "chart_bound": -5.1137304129044716e-06,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "base_reextension_max": 2.220446049250313e-16,
+      "base_active_reextension_max": 0.0,
+      "base_energies": [
+        0.17478794445891435,
+        0.039765251718808244,
+        2.4148167586124685,
+        45835.73298182438,
+        46347.05505816136,
+        -0.409474922355563,
+        0.30534179980063414,
+        0.17913191244656781,
+        5.568993695806831e-11
+      ],
+      "physical_mode_order": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "active_probes": {
+        "interior_0": {
+          "analytic": -0.11469149447645666,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -0.11495495506885778,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": -0.11442801359229371,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                }
+              },
+              "central": -0.11469148433057574,
+              "central_minus_analytic": 1.0145880913192684e-08
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": -0.11482322731515282,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": -0.11455975656993189,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                }
+              },
+              "central": -0.11469149194254236,
+              "central_minus_analytic": 2.5339143006064546e-09
+            }
+          ],
+          "component": 0,
+          "free_coordinate": 3154,
+          "node": [
+            17,
+            1,
+            19
+          ],
+          "incident_melt_cross_entries": 0
+        },
+        "limiting_vertex_0": {
+          "analytic": -1.5284288484895083e-07,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -5.486945347488244e-05,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": -1.528221993396528e-07,
+                  "min_chart": 5.48694542642042e-05,
+                  "harmonic_residual": 4.903396482250355e-14
+                }
+              }
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -2.7434726540846788e-05,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": -1.528221993396528e-07,
+                  "min_chart": 2.743472733161951e-05,
+                  "harmonic_residual": 4.903396482250355e-14
+                }
+              }
+            }
+          ],
+          "component": 0,
+          "free_coordinate": 3658,
+          "node": [
+            19,
+            9,
+            5
+          ],
+          "incident_melt_cross_entries": 11
+        },
+        "interior_1": {
+          "analytic": 0.027323204840033862,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.02732965610763305,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 0.027316767722829205,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                }
+              },
+              "central": 0.027323211915231127,
+              "central_minus_analytic": 7.075197264866384e-09
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.02732642870317825,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 0.027319984524654117,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                }
+              },
+              "central": 0.027323206613916184,
+              "central_minus_analytic": 1.7738823222812616e-09
+            }
+          ],
+          "component": 1,
+          "free_coordinate": 9192,
+          "node": [
+            23,
+            2,
+            15
+          ],
+          "incident_melt_cross_entries": 0
+        },
+        "limiting_vertex_1": {
+          "analytic": 2.1087097598484923e-08,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -6.627096543077993e-05,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 2.110811525568579e-08,
+                  "min_chart": 6.627096622012745e-05,
+                  "harmonic_residual": 4.903396482250355e-14
+                }
+              }
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -3.313548251894809e-05,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 2.1094237467877974e-08,
+                  "min_chart": 3.313548330825964e-05,
+                  "harmonic_residual": 4.903396482250355e-14
+                }
+              }
+            }
+          ],
+          "component": 1,
+          "free_coordinate": 8556,
+          "node": [
+            19,
+            9,
+            5
+          ],
+          "incident_melt_cross_entries": 11
+        },
+        "interior_2": {
+          "analytic": 0.0008434929544482326,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.0007459820539068573,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 0.0009410038998014514,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                }
+              },
+              "central": 0.0008434929768541544,
+              "central_minus_analytic": 2.240592173602396e-11
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 0.0007947374980332711,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                },
+                "1": {
+                  "valid": true,
+                  "one_sided": 0.0008922484140416742,
+                  "min_chart": 3.946557741134459e-13,
+                  "harmonic_residual": 4.903396482250355e-14
+                }
+              },
+              "central": 0.0008434929560374727,
+              "central_minus_analytic": 1.5892400243022742e-12
+            }
+          ],
+          "component": 2,
+          "free_coordinate": 12355,
+          "node": [
+            14,
+            1,
+            17
+          ],
+          "incident_melt_cross_entries": 0
+        },
+        "limiting_vertex_2": {
+          "analytic": 2.413832445456175e-08,
+          "steps": [
+            {
+              "h": 2e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 2.413347299778934e-08,
+                  "min_chart": 3.780991425986175e-05,
+                  "harmonic_residual": 5.5559045862227374e-14
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -3.780991347031927e-05,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "h": 1e-06,
+              "banks": {
+                "-1": {
+                  "valid": true,
+                  "one_sided": 2.4119595209981526e-08,
+                  "min_chart": 1.8904957327116564e-05,
+                  "harmonic_residual": 4.513408960807319e-14
+                },
+                "1": {
+                  "valid": false,
+                  "reason": "nonpositive sampled chart determinant",
+                  "witness": {
+                    "reason": "nonpositive sampled chart determinant",
+                    "code": 2,
+                    "chart_bound": -1.8904956537822793e-05,
+                    "cell": [
+                      18,
+                      8,
+                      5
+                    ],
+                    "local": [
+                      1.0,
+                      1.0,
+                      0.0
+                    ],
+                    "chi": 0.0
+                  }
+                }
+              }
+            }
+          ],
+          "component": 2,
+          "free_coordinate": 13322,
+          "node": [
+            19,
+            9,
+            5
+          ],
+          "incident_melt_cross_entries": 11
+        }
+      },
+      "complete": true
+    }
+  }
+}

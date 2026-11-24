@@ -1,0 +1,1096 @@
+{
+  "radius": 4,
+  "winding": 1,
+  "starting_commit": "12e02d90",
+  "experiments": {
+    "linear_reextension": {
+      "command": [
+        "software/stage1_solver/tools/mouth_r4_slaved_melt.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_slaved_melt01/static.json"
+      ],
+      "sha256": "ff2844637423826c6159a7c82a7034cd03cf712e1f77602e75207653af2a2ec2",
+      "data": {
+        "origin": "12e02d90",
+        "phase_drop": 0.4510084282857874,
+        "phase": "held R4, unchanged active trace, repeated harmonic solution",
+        "cases": {
+          "primary": {
+            "case": "primary",
+            "epsilon": 1e-08,
+            "state_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+            "active_nodes": 5904,
+            "melt_only_nodes": 25281,
+            "free_active_dofs": 14433,
+            "eliminated_dofs": 66654,
+            "before": {
+              "crystal_energy": 0.18357802706393175,
+              "gauge_energy": 5.194977680831644e-09,
+              "total_energy": 92185.49685485024,
+              "max_free_force": 0.12656537220496927,
+              "unit_harmonic_residual": [
+                2.565265708187603e-14,
+                2.878600136035914e-14,
+                5.1275607024225955e-14
+              ],
+              "corner": {
+                "cell": [
+                  18,
+                  8,
+                  19
+                ],
+                "local": [
+                  1.0,
+                  1.0,
+                  0.0
+                ],
+                "material_side": "collar",
+                "physical_chart": [
+                  0.9275147928994083,
+                  0.2842713941018018,
+                  1.4657055899195157
+                ],
+                "physical": {
+                  "radius": 3.588186583926424,
+                  "theta": 1.4657055899195157,
+                  "cylindrical_radius": 3.5683907335731186,
+                  "axial_brane_coordinate": 0.37639146326541556,
+                  "w": 0.2328581708995989
+                },
+                "label": [
+                  0.9084749485592136,
+                  0.23756369212979503,
+                  1.4656939822222936
+                ],
+                "distance_from_weld_in_label": 0.02597804597461817,
+                "chi": 0.0,
+                "max_vertex_chi": 0.0,
+                "positive_vertices": 0,
+                "chart_det": 9.513720021375457e-14,
+                "Jinv": 1.7865730513800506e-13,
+                "J": 5597308205379.809,
+                "W_formal": 5.615490974616149e+25,
+                "chi_W": 0.0,
+                "chi_Jinv_W": 0.0,
+                "grad_xi_frobenius": 0.5653428140816549,
+                "grad_xi_spectral": 0.490936531715363,
+                "condition_F": 12143872512230.393,
+                "min_singular_Finv": 1.0172098387209558e-13,
+                "max_singular_Finv": 1.2352866599613725
+              },
+              "whole_cell_chart": {
+                "chart_det_global_lower": 3.6303459402007717e-14,
+                "chart_lowest_cell": [
+                  18,
+                  8,
+                  19
+                ],
+                "chart_det_active_lower": 0.13542712430768755
+              },
+              "min_physical_at_quadrature": 0.10494846143735537,
+              "min_physical_at_ordered_quadrature": 0.23214462795679433,
+              "currents": {
+                "feed_current": 10.708522019454033,
+                "bulk_current": 10.708522019397575,
+                "weak_disk_current": 10.708521505486123,
+                "incident_slice_current": 10.708521505486125,
+                "receiving_slice_current": 10.041827929368411,
+                "positive_slice_current": 10.708521505486125,
+                "port_error": 5.645794942665816e-11,
+                "disk_minus_feed_current": -5.139679100096828e-07,
+                "dense_total_subsonic_share": 0.6675636550002787,
+                "total_axial_stress": -26.58274618477214
+              }
+            },
+            "after": {
+              "crystal_energy": 0.18357802706393175,
+              "gauge_energy": 5.194977680831645e-09,
+              "total_energy": 92185.49685485024,
+              "max_free_force": 0.12656537220496927,
+              "unit_harmonic_residual": [
+                2.6201263381153694e-14,
+                2.878600136035914e-14,
+                5.1275607024225955e-14
+              ],
+              "corner": {
+                "cell": [
+                  18,
+                  8,
+                  19
+                ],
+                "local": [
+                  1.0,
+                  1.0,
+                  0.0
+                ],
+                "material_side": "collar",
+                "physical_chart": [
+                  0.9275147928994083,
+                  0.2842713941018018,
+                  1.4657055899195157
+                ],
+                "physical": {
+                  "radius": 3.588186583926424,
+                  "theta": 1.4657055899195157,
+                  "cylindrical_radius": 3.5683907335731186,
+                  "axial_brane_coordinate": 0.37639146326541556,
+                  "w": 0.2328581708995989
+                },
+                "label": [
+                  0.9084749485592136,
+                  0.23756369212979503,
+                  1.4656939822222936
+                ],
+                "distance_from_weld_in_label": 0.02597804597461817,
+                "chi": 0.0,
+                "max_vertex_chi": 0.0,
+                "positive_vertices": 0,
+                "chart_det": 9.459638049519608e-14,
+                "Jinv": 1.776417045814818e-13,
+                "J": 5629308738935.872,
+                "W_formal": 5.679883493701398e+25,
+                "chi_W": 0.0,
+                "chi_Jinv_W": 0.0,
+                "grad_xi_frobenius": 0.5653428140816549,
+                "grad_xi_spectral": 0.490936531715363,
+                "condition_F": 12213300599012.309,
+                "min_singular_Finv": 1.0114273778386093e-13,
+                "max_singular_Finv": 1.2352866599613734
+              },
+              "whole_cell_chart": {
+                "chart_det_global_lower": 3.574834788969514e-14,
+                "chart_lowest_cell": [
+                  18,
+                  8,
+                  19
+                ],
+                "chart_det_active_lower": 0.13542712430768755
+              },
+              "min_physical_at_quadrature": 0.10494846143735538,
+              "min_physical_at_ordered_quadrature": 0.23214462795679433,
+              "currents": {
+                "feed_current": 10.708522019454033,
+                "bulk_current": 10.708522019397575,
+                "weak_disk_current": 10.708521505486123,
+                "incident_slice_current": 10.708521505486125,
+                "receiving_slice_current": 10.041827929368411,
+                "positive_slice_current": 10.708521505486125,
+                "port_error": 5.645794942665816e-11,
+                "disk_minus_feed_current": -5.139679100096828e-07,
+                "dense_total_subsonic_share": 0.6675636550002787,
+                "total_axial_stress": -26.58274618477214
+              }
+            },
+            "delta": {
+              "crystal_energy": 0.0,
+              "gauge_energy": 8.271806125530277e-25,
+              "total_energy": 0.0,
+              "active_labels": 0.0,
+              "melt_only_labels": 2.220446049250313e-16,
+              "lifted_trace_roundoff": 0.0,
+              "all_active_elastic_nodal_forces": 0.0,
+              "all_free_elastic_forces": 0.0,
+              "all_free_combined_forces": 8.470329472543003e-22,
+              "order_conjugate_load": 2.1510571102112408e-16,
+              "currents": {
+                "feed_current": 0.0,
+                "bulk_current": 0.0,
+                "weak_disk_current": 0.0,
+                "incident_slice_current": 0.0,
+                "receiving_slice_current": 0.0,
+                "positive_slice_current": 0.0,
+                "port_error": 0.0,
+                "disk_minus_feed_current": 0.0,
+                "dense_total_subsonic_share": 0.0,
+                "total_axial_stress": 0.0
+              }
+            },
+            "last_accepted_alpha_from_production": 3.552713678800501e-15
+          },
+          "secondary": {
+            "case": "secondary",
+            "epsilon": 1e-10,
+            "state_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+            "active_nodes": 5904,
+            "melt_only_nodes": 25281,
+            "free_active_dofs": 14433,
+            "eliminated_dofs": 66654,
+            "before": {
+              "crystal_energy": 0.17913191244656781,
+              "gauge_energy": 5.568993695806831e-11,
+              "total_energy": 92185.49240873048,
+              "max_free_force": 0.11469149447645666,
+              "unit_harmonic_residual": [
+                2.7967211879698084e-14,
+                2.197200754672224e-14,
+                4.903396482250355e-14
+              ],
+              "corner": {
+                "cell": [
+                  18,
+                  8,
+                  5
+                ],
+                "local": [
+                  1.0,
+                  1.0,
+                  0.0
+                ],
+                "material_side": "collar",
+                "physical_chart": [
+                  0.9275147928994083,
+                  0.2842713941018018,
+                  0.2417346402795315
+                ],
+                "physical": {
+                  "radius": 3.6122818805838404,
+                  "theta": 0.2417346402795315,
+                  "cylindrical_radius": 0.8647340086554873,
+                  "axial_brane_coordinate": 3.507251841409302,
+                  "w": 0.2328581708995989
+                },
+                "label": [
+                  0.9097658539492834,
+                  0.25131620102973473,
+                  0.24200995350475418
+                ],
+                "distance_from_weld_in_label": 0.027268951364687988,
+                "chi": 0.0,
+                "max_vertex_chi": 0.0,
+                "positive_vertices": 0,
+                "chart_det": 3.9465704397404065e-13,
+                "Jinv": 6.996345383923923e-13,
+                "J": 1429317658184.489,
+                "W_formal": 6.387661519104408e+24,
+                "chi_W": 0.0,
+                "chi_Jinv_W": 0.0,
+                "grad_xi_frobenius": 0.5926809062766007,
+                "grad_xi_spectral": 0.5114838773462693,
+                "condition_F": 5582615555089.992,
+                "min_singular_Finv": 2.916822186159413e-13,
+                "max_singular_Finv": 1.6283496907885135
+              },
+              "whole_cell_chart": {
+                "chart_det_global_lower": 3.3885525896579846e-13,
+                "chart_lowest_cell": [
+                  18,
+                  8,
+                  5
+                ],
+                "chart_det_active_lower": 0.0210602569027956
+              },
+              "min_physical_at_quadrature": 0.09509092105305865,
+              "min_physical_at_ordered_quadrature": 0.09509092105305865,
+              "currents": {
+                "feed_current": 10.708522019454033,
+                "bulk_current": 10.708522019397575,
+                "weak_disk_current": 10.708521505486123,
+                "incident_slice_current": 10.708521505486125,
+                "receiving_slice_current": 10.041827929368411,
+                "positive_slice_current": 10.708521505486125,
+                "port_error": 5.645794942665816e-11,
+                "disk_minus_feed_current": -5.139679100096828e-07,
+                "dense_total_subsonic_share": 0.6675636550002787,
+                "total_axial_stress": -26.58274618477214
+              }
+            },
+            "after": {
+              "crystal_energy": 0.17913191244656781,
+              "gauge_energy": 5.568993695806831e-11,
+              "total_energy": 92185.49240873048,
+              "max_free_force": 0.11469149447645666,
+              "unit_harmonic_residual": [
+                2.813721478034381e-14,
+                2.4154289679501062e-14,
+                4.903396482250355e-14
+              ],
+              "corner": {
+                "cell": [
+                  18,
+                  8,
+                  5
+                ],
+                "local": [
+                  1.0,
+                  1.0,
+                  0.0
+                ],
+                "material_side": "collar",
+                "physical_chart": [
+                  0.9275147928994083,
+                  0.2842713941018018,
+                  0.2417346402795315
+                ],
+                "physical": {
+                  "radius": 3.6122818805838404,
+                  "theta": 0.2417346402795315,
+                  "cylindrical_radius": 0.8647340086554873,
+                  "axial_brane_coordinate": 3.507251841409302,
+                  "w": 0.2328581708995989
+                },
+                "label": [
+                  0.9097658539492834,
+                  0.25131620102973473,
+                  0.24200995350475418
+                ],
+                "distance_from_weld_in_label": 0.027268951364687988,
+                "chi": 0.0,
+                "max_vertex_chi": 0.0,
+                "positive_vertices": 0,
+                "chart_det": 3.9465704397404065e-13,
+                "Jinv": 6.996345383923923e-13,
+                "J": 1429317658184.489,
+                "W_formal": 6.387661519104408e+24,
+                "chi_W": 0.0,
+                "chi_Jinv_W": 0.0,
+                "grad_xi_frobenius": 0.5926809062766007,
+                "grad_xi_spectral": 0.5114838773462693,
+                "condition_F": 5582615555089.992,
+                "min_singular_Finv": 2.916822186159413e-13,
+                "max_singular_Finv": 1.6283496907885135
+              },
+              "whole_cell_chart": {
+                "chart_det_global_lower": 3.3885525896579846e-13,
+                "chart_lowest_cell": [
+                  18,
+                  8,
+                  5
+                ],
+                "chart_det_active_lower": 0.0210602569027956
+              },
+              "min_physical_at_quadrature": 0.09509092105305865,
+              "min_physical_at_ordered_quadrature": 0.09509092105305865,
+              "currents": {
+                "feed_current": 10.708522019454033,
+                "bulk_current": 10.708522019397575,
+                "weak_disk_current": 10.708521505486123,
+                "incident_slice_current": 10.708521505486125,
+                "receiving_slice_current": 10.041827929368411,
+                "positive_slice_current": 10.708521505486125,
+                "port_error": 5.645794942665816e-11,
+                "disk_minus_feed_current": -5.139679100096828e-07,
+                "dense_total_subsonic_share": 0.6675636550002787,
+                "total_axial_stress": -26.58274618477214
+              }
+            },
+            "delta": {
+              "crystal_energy": 0.0,
+              "gauge_energy": 0.0,
+              "total_energy": 0.0,
+              "active_labels": 0.0,
+              "melt_only_labels": 2.220446049250313e-16,
+              "lifted_trace_roundoff": 0.0,
+              "all_active_elastic_nodal_forces": 0.0,
+              "all_free_elastic_forces": 0.0,
+              "all_free_combined_forces": 1.0339757656912846e-25,
+              "order_conjugate_load": 1.942890293094024e-16,
+              "currents": {
+                "feed_current": 0.0,
+                "bulk_current": 0.0,
+                "weak_disk_current": 0.0,
+                "incident_slice_current": 0.0,
+                "receiving_slice_current": 0.0,
+                "positive_slice_current": 0.0,
+                "port_error": 0.0,
+                "disk_minus_feed_current": 0.0,
+                "dense_total_subsonic_share": 0.0,
+                "total_axial_stress": 0.0
+              }
+            },
+            "last_accepted_alpha_from_production": 1.4210854715202004e-14
+          }
+        }
+      }
+    },
+    "independent_harmonic_variation": {
+      "command": [
+        "software/stage1_solver/tools/mouth_r4_harmonic_stationarity_review.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_slaved_harmonic_review01/readout.json"
+      ],
+      "sha256": "79fa78a41ea8d01e155e0b4b627c93453a487421de9d9e5baca25bacc635572b",
+      "data": {
+        "primary": {
+          "saved_state_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+          "epsilon": 1e-08,
+          "independent_unit_gauge_energy": 0.5194977680831642,
+          "unit_gauge_energy_difference": -2.220446049250313e-16,
+          "independent_melted_residual": [
+            2.563921297493721e-14,
+            2.873569437955581e-14,
+            5.1276094915203574e-14
+          ],
+          "maximum_observed_unit_melted_residual_over_accepted_steps": 5.983608790741113e-14,
+          "total_accepted": 50,
+          "accepted_below_1e_minus4": 31,
+          "first_small_alpha": 3.814697265625e-06,
+          "first_small_iteration": 9,
+          "final_uninterrupted_subthreshold_steps": 20,
+          "final_alpha": 3.552713678800501e-15,
+          "final_active_force": 0.12656537220496927,
+          "active_force_at_first_small": 0.13431790790646872,
+          "terminal_melted_residual": 5.1275607024225955e-14
+        },
+        "secondary": {
+          "saved_state_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+          "epsilon": 1e-10,
+          "independent_unit_gauge_energy": 0.5568993695806831,
+          "unit_gauge_energy_difference": 0.0,
+          "independent_melted_residual": [
+            2.803399873352319e-14,
+            2.1838433839072025e-14,
+            4.903378863965052e-14
+          ],
+          "maximum_observed_unit_melted_residual_over_accepted_steps": 5.929530819256609e-14,
+          "total_accepted": 36,
+          "accepted_below_1e_minus4": 19,
+          "first_small_alpha": 3.814697265625e-06,
+          "first_small_iteration": 9,
+          "final_uninterrupted_subthreshold_steps": 15,
+          "final_alpha": 1.4210854715202004e-14,
+          "final_active_force": 0.11469149447645666,
+          "active_force_at_first_small": 0.13431793547919582,
+          "terminal_melted_residual": 4.903396482250355e-14
+        }
+      }
+    },
+    "independent_barrier_variation": {
+      "command": [
+        "software/stage1_solver/tools/mouth_r4_barrier_cell_review.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_slaved_melt_barrier01/secondary/barrier.so",
+        "c94cea2d4c84ad7d37fa969c38458848d2a35d159879fc2c713f22ce6c141d0d",
+        "_scratch/s11c/r4_slaved_harmonic_review01/barrier_cell.json"
+      ],
+      "sha256": "43e9f6ad3cff30d53283e03f1f2b980eefc7a8dc1648ac71c85dc4baca880b4b",
+      "data": {
+        "source_sha256": "c94cea2d4c84ad7d37fa969c38458848d2a35d159879fc2c713f22ce6c141d0d",
+        "library_sha256": "55fab79ea55d2b37de06a308e0bc163e3e2f8e8e85fe6679c8c8d9988b23d18c",
+        "cases": {
+          "primary": {
+            "cell": [
+              18,
+              8,
+              19
+            ],
+            "saved_state_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+            "production_barrier_per_unit_volume": 3.7172694480254487,
+            "independent": 3.7172694694312938,
+            "energy_difference": -2.1405845096467147e-08,
+            "production_min_corner_det": 9.513721650569355e-14,
+            "max_relative_derivative_error": 1.712467486756288e-07,
+            "max_gradient": 65724516949911.05,
+            "largest_error_component": [
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          "secondary": {
+            "cell": [
+              18,
+              8,
+              5
+            ],
+            "saved_state_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+            "production_barrier_per_unit_volume": 3.4768255332232982,
+            "independent": 3.476825534719542,
+            "energy_difference": -1.4962435734844348e-09,
+            "production_min_corner_det": 3.9465704869806595e-13,
+            "max_relative_derivative_error": 1.1969950536042694e-08,
+            "max_gradient": 10068611969140.719,
+            "largest_error_component": [
+              1,
+              0,
+              0,
+              2
+            ]
+          }
+        }
+      }
+    },
+    "barrier": {
+      "command": [
+        "software/stage1_solver/tools/mouth_r4_melt_barrier_readout.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_slaved_melt_barrier01/measured.json"
+      ],
+      "sha256": "a7eaf48ac3e07ea2881b4dc519fe50b17b019fac54ff98096fd69242bf1972e3",
+      "data": {
+        "gauge": "Physical-volume harmonic Dirichlet energy plus the cell volume divided by eight times the sum of d-1-log(d) at eight one-sided Q1 corners. Only exactly melted cells contribute; d=det(dxi/dp).",
+        "scope": "Fixed active trace, followed by one fixed-field preconditioned active-trace trial if its inner residual passes. No shape update.",
+        "inner_tolerance_unscaled": 3e-08,
+        "cases": {
+          "primary": {
+            "case": "primary",
+            "epsilon": 1e-08,
+            "sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+            "start": {
+              "harmonic": 0.5194977680831644,
+              "barrier": 0.555696347766993,
+              "corner_min": 9.513721650569355e-14
+            },
+            "initial_chart": 9.515255965815174e-14,
+            "inner": {
+              "stationary": true,
+              "accepted_steps": 310,
+              "min_alpha": 1.1920928955078125e-07,
+              "last": {
+                "alpha": 0.0625,
+                "search_normalization": 1.0,
+                "delta": -5.186608618283215e-17,
+                "chart_lower": 0.13542712430768755
+              },
+              "residual": 1.9533954989084303e-08,
+              "harmonic": 0.5786473131129455,
+              "barrier": 0.23038735327665877,
+              "corner_min": 0.1395302599639085
+            },
+            "static": {
+              "energy_before": 0.18357802706393175,
+              "delta_physical": 0.0,
+              "active_label_delta": 0.0,
+              "physical_force_delta": 0.0,
+              "total_field_held": true,
+              "chart": {
+                "chart_det_global_lower": 0.13542712430768755,
+                "chart_lowest_cell": [
+                  0,
+                  8,
+                  2
+                ],
+                "chart_det_active_lower": 0.13542712430768755
+              },
+              "sampled_min_Jinv": 0.23214462795679433,
+              "sampled_min_active_Jinv": 0.23214462795679433,
+              "unit_gauge": 0.8090346663896042,
+              "gauge_delta_from_old_harmonic": 2.8953689830643982e-09,
+              "new_gauge_delta": -2.6615944946055308e-09,
+              "gauge_force_on_free_active": 3.3682695262209686e-08,
+              "gauge_to_elastic": 4.407034323927312e-08,
+              "max_active_force": 0.12656537220496927
+            },
+            "melt_gradient_check": [
+              {
+                "h": 2e-08,
+                "analytic": 0.5693982449361911,
+                "central": 0.5693982446064688,
+                "difference": -3.2972233277028806e-10
+              },
+              {
+                "h": 1e-08,
+                "analytic": 0.5693982449361911,
+                "central": 0.5693982349421617,
+                "difference": -9.994029447762953e-09
+              }
+            ],
+            "outer_trials": [
+              {
+                "alpha": 1.0,
+                "issue": "Label leaves the saved material domain",
+                "witness": {
+                  "reason": "Label leaves the saved material domain",
+                  "component": 0,
+                  "lowest": 0.0,
+                  "highest": 1.0074623179629831
+                }
+              },
+              {
+                "alpha": 0.5,
+                "issue": "Label leaves the saved material domain",
+                "witness": {
+                  "reason": "Label leaves the saved material domain",
+                  "component": 0,
+                  "lowest": 0.0,
+                  "highest": 1.0034925969656692
+                }
+              },
+              {
+                "alpha": 0.25,
+                "issue": "Label leaves the saved material domain",
+                "witness": {
+                  "reason": "Label leaves the saved material domain",
+                  "component": 0,
+                  "lowest": 0.0,
+                  "highest": 1.0015077364670124
+                }
+              },
+              {
+                "alpha": 0.125,
+                "issue": "Label leaves the saved material domain",
+                "witness": {
+                  "reason": "Label leaves the saved material domain",
+                  "component": 0,
+                  "lowest": 0.0,
+                  "highest": 1.000515306217684
+                }
+              },
+              {
+                "alpha": 0.0625,
+                "issue": "Label leaves the saved material domain",
+                "witness": {
+                  "reason": "Label leaves the saved material domain",
+                  "component": 0,
+                  "lowest": 0.0,
+                  "highest": 1.0000190910930196
+                }
+              },
+              {
+                "alpha": 0.03125,
+                "issue": "Nonpositive or roundoff-unresolved chart determinant",
+                "witness": {
+                  "reason": "Nonpositive or roundoff-unresolved chart determinant",
+                  "cell": [
+                    8,
+                    8,
+                    0
+                  ],
+                  "chart_fractions": [
+                    1.0,
+                    1.0,
+                    1.0
+                  ],
+                  "chart_det": -0.1676297088827552,
+                  "chart_lower": -0.16762970888282797,
+                  "roundoff_margin": 7.278056502676135e-14,
+                  "subdivisions": 0
+                }
+              },
+              {
+                "alpha": 0.015625,
+                "issue": "Nonpositive or roundoff-unresolved chart determinant",
+                "witness": {
+                  "reason": "Nonpositive or roundoff-unresolved chart determinant",
+                  "cell": [
+                    17,
+                    7,
+                    19
+                  ],
+                  "chart_fractions": [
+                    1.0,
+                    1.0,
+                    1.0
+                  ],
+                  "chart_det": -0.005034204968360267,
+                  "chart_lower": -0.0050342049684176365,
+                  "roundoff_margin": 5.736873424842892e-14,
+                  "subdivisions": 0
+                }
+              },
+              {
+                "alpha": 0.0078125
+              }
+            ],
+            "outer_predictor_energy_change": -0.0017438222148459606,
+            "outer_probe": {
+              "alpha": 0.0078125,
+              "inner": {
+                "stationary": true,
+                "accepted_steps": 112,
+                "min_alpha": 0.0625,
+                "last": {
+                  "alpha": 0.0625,
+                  "search_normalization": 1.0,
+                  "delta": -2.9168103479377504e-17,
+                  "chart_lower": 0.11849125572343139
+                },
+                "residual": 2.4516441159746355e-08,
+                "harmonic": 0.5658198840400048,
+                "barrier": 0.25480345684038763,
+                "corner_min": 0.12185517775689392
+              },
+              "reduced_energy_change": -0.0017438222505217202,
+              "active_force": 0.1250778861090979,
+              "sampled_min_active_Jinv": 0.2074404961032448,
+              "orientation": {
+                "chart_det_global_lower": 0.11849125572343139,
+                "chart_lowest_cell": [
+                  0,
+                  8,
+                  2
+                ],
+                "chart_det_active_lower": 0.11849125572343139
+              }
+            },
+            "initial_limiting_physical_Jinv": 1.7865730513800506e-13,
+            "fixed_trace_limiting_physical_Jinv": 0.3209836481042117,
+            "fixed_trace_limiting_chart_det": 0.17092771869273882,
+            "fixed_trace_limiting_gradient": 0.5737055877825462,
+            "same_active_nodes": 5904,
+            "strictly_melted_nodes": 25281,
+            "fixed_trace_state_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+            "accepted_fixed_trace_changes": 310,
+            "after_corner": {
+              "cell": [
+                18,
+                8,
+                19
+              ],
+              "local": [
+                1.0,
+                1.0,
+                0.0
+              ],
+              "material_side": "collar",
+              "physical_chart": [
+                0.9275147928994083,
+                0.2842713941018018,
+                1.4657055899195157
+              ],
+              "physical": {
+                "radius": 3.588186583926424,
+                "theta": 1.4657055899195157,
+                "cylindrical_radius": 3.5683907335731186,
+                "axial_brane_coordinate": 0.37639146326541556,
+                "w": 0.2328581708995989
+              },
+              "label": [
+                0.9084749485592136,
+                0.23756369212979503,
+                1.4656939822222936
+              ],
+              "distance_from_weld_in_label": 0.02597804597461817,
+              "chi": 0.0,
+              "max_vertex_chi": 0.0,
+              "positive_vertices": 0,
+              "chart_det": 0.17092771869273882,
+              "Jinv": 0.3209836481042117,
+              "J": 3.1154234986927944,
+              "W_formal": 16.130835723797286,
+              "chi_W": 0.0,
+              "chi_Jinv_W": 0.0,
+              "grad_xi_frobenius": 0.5737055877825462,
+              "grad_xi_spectral": 0.48752877722877125,
+              "condition_F": 7.453426582136602,
+              "min_singular_Finv": 0.1706826183893399,
+              "max_singular_Finv": 1.2721703650117837
+            }
+          },
+          "secondary": {
+            "case": "secondary",
+            "epsilon": 1e-10,
+            "sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+            "start": {
+              "harmonic": 0.5568993695806832,
+              "barrier": 0.5216051761950964,
+              "corner_min": 3.9465704869806595e-13
+            },
+            "initial_chart": 3.946557741134459e-13,
+            "inner": {
+              "stationary": true,
+              "accepted_steps": 171,
+              "min_alpha": 9.5367431640625e-07,
+              "last": {
+                "alpha": 0.0625,
+                "search_normalization": 1.0,
+                "delta": -9.427531579382489e-17,
+                "chart_lower": 0.0210602569027956
+              },
+              "residual": 2.867930049823761e-08,
+              "harmonic": 0.6262398070008254,
+              "barrier": 0.2611490400800151,
+              "corner_min": 0.05800133254977205
+            },
+            "static": {
+              "energy_before": 0.17913191244656781,
+              "delta_physical": 0.0,
+              "active_label_delta": 0.0,
+              "physical_force_delta": 0.0,
+              "total_field_held": true,
+              "chart": {
+                "chart_det_global_lower": 0.0210602569027956,
+                "chart_lowest_cell": [
+                  1,
+                  8,
+                  2
+                ],
+                "chart_det_active_lower": 0.0210602569027956
+              },
+              "sampled_min_Jinv": 0.09509092105305865,
+              "sampled_min_active_Jinv": 0.09509092105305865,
+              "unit_gauge": 0.8873888470808405,
+              "gauge_delta_from_old_harmonic": 3.3048947750015736e-11,
+              "new_gauge_delta": -1.9111569869493916e-11,
+              "gauge_force_on_free_active": 7.248044031900649e-10,
+              "gauge_to_elastic": 4.953828912788136e-10,
+              "max_active_force": 0.11469149447645666
+            },
+            "melt_gradient_check": [
+              {
+                "h": 2e-08,
+                "analytic": 0.569338411933935,
+                "central": 0.5693384133974712,
+                "difference": 1.4635362072636451e-09
+              },
+              {
+                "h": 1e-08,
+                "analytic": 0.569338411933935,
+                "central": 0.5693384199690916,
+                "difference": 8.035156625241409e-09
+              }
+            ],
+            "outer_trials": [
+              {
+                "alpha": 1.0,
+                "issue": "Label leaves the saved material domain",
+                "witness": {
+                  "reason": "Label leaves the saved material domain",
+                  "component": 0,
+                  "lowest": 0.0,
+                  "highest": 1.0059492029391366
+                }
+              },
+              {
+                "alpha": 0.5,
+                "issue": "Label leaves the saved material domain",
+                "witness": {
+                  "reason": "Label leaves the saved material domain",
+                  "component": 0,
+                  "lowest": 0.0,
+                  "highest": 1.0028534616553186
+                }
+              },
+              {
+                "alpha": 0.25,
+                "issue": "Label leaves the saved material domain",
+                "witness": {
+                  "reason": "Label leaves the saved material domain",
+                  "component": 0,
+                  "lowest": 0.0,
+                  "highest": 1.0013055910134097
+                }
+              },
+              {
+                "alpha": 0.125,
+                "issue": "Label leaves the saved material domain",
+                "witness": {
+                  "reason": "Label leaves the saved material domain",
+                  "component": 0,
+                  "lowest": 0.0,
+                  "highest": 1.000531655692455
+                }
+              },
+              {
+                "alpha": 0.0625,
+                "issue": "Label leaves the saved material domain",
+                "witness": {
+                  "reason": "Label leaves the saved material domain",
+                  "component": 0,
+                  "lowest": 0.0,
+                  "highest": 1.000144688031978
+                }
+              },
+              {
+                "alpha": 0.03125,
+                "issue": "Nonpositive or roundoff-unresolved chart determinant",
+                "witness": {
+                  "reason": "Nonpositive or roundoff-unresolved chart determinant",
+                  "cell": [
+                    8,
+                    8,
+                    0
+                  ],
+                  "chart_fractions": [
+                    1.0,
+                    1.0,
+                    1.0
+                  ],
+                  "chart_det": -0.1682588138111448,
+                  "chart_lower": -0.16825881381121455,
+                  "roundoff_margin": 6.975250058754246e-14,
+                  "subdivisions": 0
+                }
+              },
+              {
+                "alpha": 0.015625,
+                "issue": "Nonpositive or roundoff-unresolved chart determinant",
+                "witness": {
+                  "reason": "Nonpositive or roundoff-unresolved chart determinant",
+                  "cell": [
+                    18,
+                    8,
+                    4
+                  ],
+                  "chart_fractions": [
+                    1.0,
+                    1.0,
+                    1.0
+                  ],
+                  "chart_det": -0.11990521501225777,
+                  "chart_lower": -0.11990521501231113,
+                  "roundoff_margin": 5.3357786300197774e-14,
+                  "subdivisions": 0
+                }
+              },
+              {
+                "alpha": 0.0078125
+              }
+            ],
+            "outer_predictor_energy_change": -0.0013837893242558289,
+            "outer_probe": {
+              "alpha": 0.0078125,
+              "inner": {
+                "stationary": true,
+                "accepted_steps": 135,
+                "min_alpha": 0.0625,
+                "last": {
+                  "alpha": 0.125,
+                  "search_normalization": 1.0,
+                  "delta": -6.834046058739111e-18,
+                  "chart_lower": 0.06079427641734571
+                },
+                "residual": 2.6472999956669158e-08,
+                "harmonic": 0.6097028067926071,
+                "barrier": 0.27990436621124093,
+                "corner_min": 0.06079427641739121
+              },
+              "reduced_energy_change": -0.0013837893246822675,
+              "active_force": 0.11307837199310244,
+              "sampled_min_active_Jinv": 0.15850369638769568,
+              "orientation": {
+                "chart_det_global_lower": 0.06079427641734571,
+                "chart_lowest_cell": [
+                  25,
+                  10,
+                  16
+                ],
+                "chart_det_active_lower": 0.07087144361516039
+              }
+            },
+            "initial_limiting_physical_Jinv": 6.996345383923923e-13,
+            "fixed_trace_limiting_physical_Jinv": 0.4300241924282674,
+            "fixed_trace_limiting_chart_det": 0.2425724679216458,
+            "fixed_trace_limiting_gradient": 0.6049614892839501,
+            "same_active_nodes": 5904,
+            "strictly_melted_nodes": 25281,
+            "fixed_trace_state_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+            "accepted_fixed_trace_changes": 171,
+            "after_corner": {
+              "cell": [
+                18,
+                8,
+                5
+              ],
+              "local": [
+                1.0,
+                1.0,
+                0.0
+              ],
+              "material_side": "collar",
+              "physical_chart": [
+                0.9275147928994083,
+                0.2842713941018018,
+                0.2417346402795315
+              ],
+              "physical": {
+                "radius": 3.6122818805838404,
+                "theta": 0.2417346402795315,
+                "cylindrical_radius": 0.8647340086554873,
+                "axial_brane_coordinate": 3.507251841409302,
+                "w": 0.2328581708995989
+              },
+              "label": [
+                0.9097658539492834,
+                0.25131620102973473,
+                0.24200995350475418
+              ],
+              "distance_from_weld_in_label": 0.027268951364687988,
+              "chi": 0.0,
+              "max_vertex_chi": 0.0,
+              "positive_vertices": 0,
+              "chart_det": 0.2425724679216458,
+              "Jinv": 0.4300241924282674,
+              "J": 2.325450562102528,
+              "W_formal": 14.448020708222108,
+              "chi_W": 0.0,
+              "chi_Jinv_W": 0.0,
+              "grad_xi_frobenius": 0.6049614892839501,
+              "grad_xi_spectral": 0.5103169772441123,
+              "condition_F": 9.152447339586736,
+              "min_singular_Finv": 0.17679629697794993,
+              "max_singular_Finv": 1.6181187979246245
+            }
+          }
+        },
+        "sources": {
+          "mouth_r4_melt_barrier.cpp": "c94cea2d4c84ad7d37fa969c38458848d2a35d159879fc2c713f22ce6c141d0d",
+          "mouth_r4_melt_barrier.py": "8df396304cfec1b6f6c7f3745e644d4804842150c51f4319d50b5804a50ff9c1",
+          "mouth_r4_melt_barrier_readout.py": "72408c851513f5b717ffb3c767d8fb36366312b4f34ad867c889324de3682c59"
+        }
+      }
+    },
+    "order_source": {
+      "command": [
+        "software/stage1_solver/tools/mouth_r4_melt_trace_check.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_slaved_melt01/trace.json"
+      ],
+      "sha256": "55610fb4ce94913b3a93806697c1f47b7050805ba26c69527370649869fe64ca",
+      "data": {
+        "primary": {
+          "source_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+          "extension_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+          "fixed_trace_label_change": 0.0,
+          "fixed_trace_elastic_energy_change": 0.0,
+          "fixed_trace_elastic_force_max_change": 0.0,
+          "maximum_order_source_change": {
+            "node": [
+              18,
+              10,
+              19
+            ],
+            "order": 0.0,
+            "before": 0.02171204120177774,
+            "after": 0.03371109236274817,
+            "change": 0.011999051160970428
+          },
+          "order_source_change_on_positive_labels": 0.0,
+          "same_trace_gauge_rescalings": {
+            "1e-08": {
+              "gauge_energy": 8.090346663896042e-09,
+              "ratio": 4.407034323927312e-08,
+              "max_active_gauge_gradient": 3.3682695262209686e-08
+            },
+            "1e-10": {
+              "gauge_energy": 8.090346663896042e-11,
+              "ratio": 4.4070343239273114e-10,
+              "max_active_gauge_gradient": 3.3682695262209686e-10
+            }
+          }
+        },
+        "secondary": {
+          "source_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+          "extension_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+          "fixed_trace_label_change": 0.0,
+          "fixed_trace_elastic_energy_change": 0.0,
+          "fixed_trace_elastic_force_max_change": 0.0,
+          "maximum_order_source_change": {
+            "node": [
+              18,
+              10,
+              19
+            ],
+            "order": 0.0,
+            "before": 0.02130101324063965,
+            "after": 0.03676105462051703,
+            "change": 0.015460041379877377
+          },
+          "order_source_change_on_positive_labels": 0.0,
+          "same_trace_gauge_rescalings": {
+            "1e-08": {
+              "gauge_energy": 8.873888470808406e-09,
+              "ratio": 4.9538289127881355e-08,
+              "max_active_gauge_gradient": 7.24804403190065e-08
+            },
+            "1e-10": {
+              "gauge_energy": 8.873888470808406e-11,
+              "ratio": 4.953828912788136e-10,
+              "max_active_gauge_gradient": 7.248044031900649e-10
+            }
+          }
+        }
+      }
+    }
+  }
+}

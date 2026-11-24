@@ -1,0 +1,174 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_smooth_shape_precision.py",
+    "_scratch/s11c/r4_projected_corner_held01",
+    "research/pde_ledger_v3/_measurements/mouth_r4_smooth_shape_work.json",
+    "research/pde_ledger_v3/_measurements/mouth_r4_smooth_shape_precision.json"
+  ],
+  "state_sha256": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+  "source_sha256": "5381d618c6da0be6290fa22ee4c3192ae17e07bfc065e66bb3584da2efe9a985",
+  "physical_bank_source_sha256": "3fdef30f3b3615ac6b90f39aabfeaea7e59fc588f2225bb25158dbc9f924a927",
+  "analytic_bank_sha256": "9b14f880884a861c45ba7c3d9c0da432776d26d53af3ea3090327d5736dbb2f2",
+  "promoted_crystal_static_delta": 3.978208821392437e-16,
+  "rows": [
+    {
+      "mode": "log_depth",
+      "samples": [
+        {
+          "h": 3.814697265625e-06,
+          "crystal_minus_analytic": 3.731050903040716e-10,
+          "bath_minus_analytic": 1.979077859926015e-09,
+          "unit_gauge_minus_analytic": -3.0135897952348473e-07,
+          "smooth_total_central": {
+            "1e-08": -0.027366526542336362,
+            "1e-10": -0.02736650070206595
+          },
+          "total_signed_errors": {
+            "1e-08": 2.3521799366402916e-09,
+            "1e-10": 2.352182920094189e-09
+          }
+        },
+        {
+          "h": 9.5367431640625e-07,
+          "crystal_minus_analytic": 4.043641835352893e-12,
+          "bath_minus_analytic": 1.0805388389600878e-09,
+          "unit_gauge_minus_analytic": -1.8504203871646044e-08,
+          "smooth_total_central": {
+            "1e-08": -0.027366527809934,
+            "1e-10": -0.02736650196966639
+          },
+          "total_signed_errors": {
+            "1e-08": 1.084582295753402e-09,
+            "1e-10": 1.0845824789450203e-09
+          }
+        },
+        {
+          "h": 2.384185791015625e-07,
+          "crystal_minus_analytic": 2.458371776547369e-13,
+          "bath_minus_analytic": 2.3229626736065434e-08,
+          "unit_gauge_minus_analytic": 2.1416076683312274e-09,
+          "smooth_total_central": {
+            "1e-08": -0.027366505664643704,
+            "1e-10": -0.027366479824376296
+          },
+          "total_signed_errors": {
+            "1e-08": 2.3229872594659165e-08,
+            "1e-10": 2.322987257345725e-08
+          }
+        },
+        {
+          "h": 5.960464477539063e-08,
+          "crystal_minus_analytic": -2.1347955477004602e-10,
+          "bath_minus_analytic": -1.3610877244718544e-08,
+          "unit_gauge_minus_analytic": -5.3548639029898926e-09,
+          "smooth_total_central": {
+            "1e-08": -0.02736654271887315,
+            "1e-10": -0.02736651687860567
+          },
+          "total_signed_errors": {
+            "1e-08": -1.382435685303723e-08,
+            "1e-10": -1.3824356800024077e-08
+          }
+        }
+      ]
+    },
+    {
+      "mode": "scaled_log_exit",
+      "samples": [
+        {
+          "h": 3.814697265625e-06,
+          "crystal_minus_analytic": -9.873882798622918e-12,
+          "bath_minus_analytic": -9.302569825564433e-11,
+          "unit_gauge_minus_analytic": -1.901944097007502e-12,
+          "smooth_total_central": {
+            "1e-08": -0.5337616690095461,
+            "1e-10": -0.5337616632748877
+          },
+          "total_signed_errors": {
+            "1e-08": -1.0289958107328669e-10,
+            "1e-10": -1.0289958105445745e-10
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mean_width",
+      "samples": [
+        {
+          "h": 3.814697265625e-06,
+          "crystal_minus_analytic": -1.6189295997531827e-13,
+          "bath_minus_analytic": 2.700940582300859e-10,
+          "unit_gauge_minus_analytic": -4.087169838684623e-12,
+          "smooth_total_central": {
+            "1e-08": 1.002504100051165,
+            "1e-10": 1.002504127490476
+          },
+          "total_signed_errors": {
+            "1e-08": 2.699321652292389e-10,
+            "1e-10": 2.6993216526970187e-10
+          }
+        }
+      ]
+    },
+    {
+      "mode": "depth_asymmetry",
+      "samples": [
+        {
+          "h": 3.814697265625e-06,
+          "crystal_minus_analytic": 5.950434914768488e-14,
+          "bath_minus_analytic": -3.441523732661267e-10,
+          "unit_gauge_minus_analytic": 4.832503754798045e-13,
+          "smooth_total_central": {
+            "1e-08": -0.6240805090814279,
+            "1e-10": -0.6240805257792332
+          },
+          "total_signed_errors": {
+            "1e-08": -3.440928689121465e-10,
+            "1e-10": -3.4409286891693066e-10
+          }
+        }
+      ]
+    },
+    {
+      "mode": "waist_profile",
+      "samples": [
+        {
+          "h": 3.814697265625e-06,
+          "crystal_minus_analytic": -3.159419340731384e-14,
+          "bath_minus_analytic": 9.750089624560587e-12,
+          "unit_gauge_minus_analytic": -6.356627680823013e-12,
+          "smooth_total_central": {
+            "1e-08": 0.9828187195129278,
+            "1e-10": 0.9828187409609596
+          },
+          "total_signed_errors": {
+            "1e-08": 9.718495367586996e-12,
+            "1e-10": 9.718495430517611e-12
+          }
+        }
+      ]
+    },
+    {
+      "mode": "polar_equatorial",
+      "samples": [
+        {
+          "h": 3.814697265625e-06,
+          "crystal_minus_analytic": -2.8043566817695376e-16,
+          "bath_minus_analytic": 1.1152500936639775e-09,
+          "unit_gauge_minus_analytic": 4.320581774839606e-13,
+          "smooth_total_central": {
+            "1e-08": -0.024928025718292092,
+            "1e-10": -0.024928026693495784
+          },
+          "total_signed_errors": {
+            "1e-08": 1.11524981323263e-09,
+            "1e-10": 1.1152498132283526e-09
+          }
+        }
+      ]
+    }
+  ],
+  "accuracy": "80-bit crystal quadrature with moving cuts, LD field and gauge sums, promoted extensive order terms; the existing carrier interpolation tables stay in native precision."
+}

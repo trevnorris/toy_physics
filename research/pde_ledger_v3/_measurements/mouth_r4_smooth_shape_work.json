@@ -1,0 +1,308 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_smooth_shape_work.py",
+    "_scratch/s11c/r4_projected_corner_held01",
+    "research/pde_ledger_v3/_measurements/mouth_r4_smooth_shape_work.json"
+  ],
+  "source_sha256": "730c8e44749ee3e1a62fa1ac92f9a226f19dd5390c17aef7f5445b4a6411ca75",
+  "state_sha256": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+  "held_fields": true,
+  "stationary": false,
+  "shapes": [
+    {
+      "mode": "log_depth",
+      "elastic": 0.020316728220863993,
+      "bath": -0.04768323101410006,
+      "unit_gauge": -2.610128022939111,
+      "banks": [
+        {
+          "h": 2e-05,
+          "crystal": 0.020312831898461337,
+          "bath": -0.04768317614079697,
+          "unit_gauge": -2.6101363037783334,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": -0.027366528894516295,
+              "central": -0.027370370343698675,
+              "signed_error": -3.841449182378517e-06
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": -0.02736650305424887,
+              "central": -0.027370344503349266,
+              "signed_error": -3.841449100398209e-06
+            }
+          ]
+        },
+        {
+          "h": 1e-05,
+          "crystal": 0.02031539332869592,
+          "bath": -0.04768321707583874,
+          "unit_gauge": -2.6101300929367346,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": -0.027366528894516295,
+              "central": -0.02736784984844375,
+              "signed_error": -1.3209539274516324e-06
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": -0.02736650305424887,
+              "central": -0.02736782400815583,
+              "signed_error": -1.320953906958656e-06
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "scaled_log_exit",
+      "elastic": 0.21485826241642772,
+      "bath": -0.7486199255304901,
+      "unit_gauge": -0.5792584162586001,
+      "banks": [
+        {
+          "h": 2e-05,
+          "crystal": 0.2148582621513961,
+          "bath": -0.7486199258131896,
+          "unit_gauge": -0.5792584163186428,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": -0.5337616689066464,
+              "central": -0.5337616694543776,
+              "signed_error": -5.477311941312201e-10
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": -0.5337616631719881,
+              "central": -0.5337616637197193,
+              "signed_error": -5.477311935367965e-10
+            }
+          ]
+        },
+        {
+          "h": 1e-05,
+          "crystal": 0.2148582623484607,
+          "bath": -0.7486199257183668,
+          "unit_gauge": -0.5792584162736291,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": -0.5337616689066464,
+              "central": -0.5337616691624902,
+              "signed_error": -2.5584380946384e-10
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": -0.5337616631719881,
+              "central": -0.5337616634278319,
+              "signed_error": -2.558438093150526e-10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "mean_width",
+      "elastic": 0.7638618243174178,
+      "bath": 0.23864230318029078,
+      "unit_gauge": -2.7716475736740187,
+      "banks": [
+        {
+          "h": 2e-05,
+          "crystal": 0.7638618243141492,
+          "bath": 0.23864230305820636,
+          "unit_gauge": -2.77164757378651,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": 1.002504099781233,
+              "central": 1.0025040996558798,
+              "signed_error": -1.253529914282569e-10
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": 1.0025041272205437,
+              "central": 1.0025041270951909,
+              "signed_error": -1.253529903145941e-10
+            }
+          ]
+        },
+        {
+          "h": 1e-05,
+          "crystal": 0.763861824315537,
+          "bath": 0.23864230364226852,
+          "unit_gauge": -2.771647573702032,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": 1.002504099781233,
+              "central": 1.0025041002413297,
+              "signed_error": 4.6009695491079165e-10
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": 1.0025041272205437,
+              "central": 1.0025041276806408,
+              "signed_error": 4.600969551881234e-10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "depth_asymmetry",
+      "elastic": -0.3343570675404487,
+      "bath": -0.2897234580633564,
+      "unit_gauge": 1.6866470124102215,
+      "banks": [
+        {
+          "h": 2e-05,
+          "crystal": -0.33435706753848216,
+          "bath": -0.2897234579696779,
+          "unit_gauge": 1.6866470124253534,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": -0.624080508737335,
+              "central": -0.62408050864169,
+              "signed_error": 9.564504588134122e-11
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": -0.6240805254351404,
+              "central": -0.6240805253394953,
+              "signed_error": 9.564504573153721e-11
+            }
+          ]
+        },
+        {
+          "h": 1e-05,
+          "crystal": -0.33435706753848216,
+          "bath": -0.28972345781257003,
+          "unit_gauge": 1.6866470124059074,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": -0.624080508737335,
+              "central": -0.624080508484582,
+              "signed_error": 2.527529708534937e-10
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": -0.6240805254351404,
+              "central": -0.6240805251823874,
+              "signed_error": 2.527529708962044e-10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "waist_profile",
+      "elastic": 0.6681525375605499,
+      "bath": 0.3146662036073379,
+      "unit_gauge": -2.1664678492263376,
+      "banks": [
+        {
+          "h": 2e-05,
+          "crystal": 0.6681525375612507,
+          "bath": 0.3146662033869624,
+          "unit_gauge": -2.166467849400675,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": 0.9828187195032093,
+              "central": 0.9828187192835345,
+              "signed_error": -2.1967482646083655e-10
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": 0.982818740951241,
+              "central": 0.9828187407315663,
+              "signed_error": -2.1967482473489432e-10
+            }
+          ]
+        },
+        {
+          "h": 1e-05,
+          "crystal": 0.6681525375584751,
+          "bath": 0.31466620386263683,
+          "unit_gauge": -2.166467849270609,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": 0.9828187195032093,
+              "central": 0.9828187197564334,
+              "signed_error": 2.53224092808374e-10
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": 0.982818740951241,
+              "central": 0.9828187412044651,
+              "signed_error": 2.532240932466618e-10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "polar_equatorial",
+      "elastic": -0.044832539710870874,
+      "bath": 0.019904511892274733,
+      "unit_gauge": 0.09850542341920872,
+      "banks": [
+        {
+          "h": 2e-05,
+          "crystal": -0.04483253971121481,
+          "bath": 0.019904511800538593,
+          "unit_gauge": 0.0985054234310833,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": -0.024928026833541908,
+              "central": -0.02492802692562198,
+              "signed_error": -9.208007443399464e-11
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": -0.0249280278087456,
+              "central": -0.024928027900825673,
+              "signed_error": -9.208007455155307e-11
+            }
+          ]
+        },
+        {
+          "h": 1e-05,
+          "crystal": -0.04483253971121481,
+          "bath": 0.019904512090812804,
+          "unit_gauge": 0.0985054234221745,
+          "epsilon": [
+            {
+              "epsilon": 1e-08,
+              "analytic": -0.024928026833541908,
+              "central": -0.02492802663534777,
+              "signed_error": 1.981941354461138e-10
+            },
+            {
+              "epsilon": 1e-10,
+              "analytic": -0.0249280278087456,
+              "central": -0.024928027610551462,
+              "signed_error": 1.9819413541675267e-10
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "precision": "Promoted energy sums, extensive reservoir order terms, gauge shape and signed differences. Native two-metric crystal kernel and tabulated vortex use float64 inputs.",
+  "max_abs_at_each_width": [
+    3.841449182378517e-06,
+    1.3209539274516324e-06
+  ]
+}

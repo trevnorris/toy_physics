@@ -1,0 +1,230 @@
+{
+  "source_sha256": "2fa4fbe4ff3b10302451a7f0e182e0de969bb3772962e2247992282c219d8206",
+  "state_sha256": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_smooth_static.py",
+    "_scratch/s11c/r4_projected_corner_held01",
+    "research/pde_ledger_v3/_measurements/mouth_r4_smooth_static.json"
+  ],
+  "gauge_quadrature": "2 point Gauss s(Q1 chi), mean 8 corner log barriers",
+  "unit_energy": {
+    "boolean": 1.8445756239213467,
+    "smooth": 5.175985798885867
+  },
+  "frozen_physical_crystal_energy": 0.3231416160907715,
+  "max_abs_physical_label_derivative": 0.07797064397780097,
+  "new_unit_six_shape_forces": [
+    -2.610128022939111,
+    -0.5792584162586001,
+    -2.7716475736740187,
+    1.6866470124102215,
+    -2.1664678492263376,
+    0.09850542341920872
+  ],
+  "old_unit_six_shape_forces": [
+    0.9252223631181676,
+    -0.06681922067496446,
+    -1.0019024928099491,
+    0.9099311998717675,
+    -0.7722982185408092,
+    0.01923333991131472
+  ],
+  "new_unit_six_shape_forces_extended_fd": [
+    [
+      -2.6101283242980906,
+      -2.610128041443315
+    ],
+    [
+      -0.579258416260502,
+      -0.5792584162586957
+    ],
+    [
+      -2.7716475736781057,
+      -2.7716475736742074
+    ],
+    [
+      1.6866470124107047,
+      1.6866470124102482
+    ],
+    [
+      -2.1664678492326943,
+      -2.166467849226746
+    ],
+    [
+      0.09850542341964078,
+      0.09850542341923114
+    ]
+  ],
+  "negative_controls": {
+    "ordered": {
+      "cell": [
+        2,
+        1,
+        1
+      ],
+      "gauss_fraction": [
+        0.21132486540518708,
+        0.21132486540518708,
+        0.21132486540518708
+      ],
+      "order": 0.4269804899211652,
+      "before": 0.812573523428439,
+      "after": -0.8140404174067646,
+      "rejection": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          2,
+          0,
+          0
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "chart_det": -0.8137001481263249,
+        "chart_lower": -0.8137001481265063,
+        "roundoff_margin": 1.8140490588508559e-13,
+        "subdivisions": 0
+      }
+    },
+    "fringe": {
+      "cell": [
+        7,
+        11,
+        19
+      ],
+      "gauss_fraction": [
+        0.21132486540518708,
+        0.21132486540518708,
+        0.21132486540518708
+      ],
+      "order": 5.954608569051186e-07,
+      "before": 0.31474765153656437,
+      "after": -0.3446040597821774,
+      "rejection": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          7,
+          10,
+          18
+        ],
+        "chart_fractions": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "chart_det": -0.7498132297404521,
+        "chart_lower": -0.7498132297405108,
+        "roundoff_margin": 5.872336881948918e-14,
+        "subdivisions": 0
+      }
+    }
+  },
+  "direct_current_readings": {
+    "feed_current": 10.707764123737684,
+    "bulk_current": 10.70776412373755,
+    "weak_disk_current": 10.70776412373761,
+    "incident_slice_current": 10.70776412373761,
+    "receiving_slice_current": 10.041110039384542,
+    "positive_slice_current": 10.70776412373761,
+    "port_error": 1.3500311979441904e-13,
+    "disk_minus_feed_current": -7.460698725481052e-14,
+    "dense_total_subsonic_share": 0.6675885473802782,
+    "total_axial_stress": -26.5828700694471
+  },
+  "current_readback_delta": {
+    "feed_current": 0.0,
+    "bulk_current": 0.0,
+    "weak_disk_current": 0.0,
+    "incident_slice_current": 0.0,
+    "receiving_slice_current": 0.0,
+    "positive_slice_current": 0.0,
+    "port_error": 0.0,
+    "disk_minus_feed_current": 0.0,
+    "dense_total_subsonic_share": 0.0,
+    "total_axial_stress": 0.0
+  },
+  "static_at_epsilon": {
+    "0.0": {
+      "delta_physical_crystal_energy": 0.0,
+      "delta_gauge_energy": 0.0,
+      "max_abs_free_active_force_change": 0.0,
+      "six_shape_force_changes": [
+        -0.0,
+        -0.0,
+        -0.0,
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "physical_label_selector_unchanged": true,
+      "fixed_field_currents_delta": {
+        "feed_current": 0.0,
+        "bulk_current": 0.0,
+        "weak_disk_current": 0.0,
+        "incident_slice_current": 0.0,
+        "receiving_slice_current": 0.0,
+        "positive_slice_current": 0.0,
+        "port_error": 0.0,
+        "disk_minus_feed_current": 0.0,
+        "dense_total_subsonic_share": 0.0,
+        "total_axial_stress": 0.0
+      }
+    },
+    "1e-10": {
+      "delta_physical_crystal_energy": 0.0,
+      "delta_gauge_energy": 3.3314101749645195e-10,
+      "max_abs_free_active_force_change": 7.413466151697015e-10,
+      "six_shape_force_changes": [
+        -3.535350386057279e-10,
+        -5.124391955836356e-11,
+        -1.7697450808640695e-10,
+        7.767158125384541e-11,
+        -1.3941696306855286e-10,
+        7.9272083507894e-12
+      ],
+      "physical_label_selector_unchanged": true,
+      "fixed_field_currents_delta": {
+        "feed_current": 0.0,
+        "bulk_current": 0.0,
+        "weak_disk_current": 0.0,
+        "incident_slice_current": 0.0,
+        "receiving_slice_current": 0.0,
+        "positive_slice_current": 0.0,
+        "port_error": 0.0,
+        "disk_minus_feed_current": 0.0,
+        "dense_total_subsonic_share": 0.0,
+        "total_axial_stress": 0.0
+      }
+    },
+    "1e-08": {
+      "delta_physical_crystal_energy": 0.0,
+      "delta_gauge_energy": 3.3314101749645194e-08,
+      "max_abs_free_active_force_change": 7.413466151697014e-08,
+      "six_shape_force_changes": [
+        -3.5353503860572786e-08,
+        -5.124391955836356e-09,
+        -1.7697450808640697e-08,
+        7.76715812538454e-09,
+        -1.3941696306855285e-08,
+        7.9272083507894e-10
+      ],
+      "physical_label_selector_unchanged": true,
+      "fixed_field_currents_delta": {
+        "feed_current": 0.0,
+        "bulk_current": 0.0,
+        "weak_disk_current": 0.0,
+        "incident_slice_current": 0.0,
+        "receiving_slice_current": 0.0,
+        "positive_slice_current": 0.0,
+        "port_error": 0.0,
+        "disk_minus_feed_current": 0.0,
+        "dense_total_subsonic_share": 0.0,
+        "total_axial_stress": 0.0
+      }
+    }
+  }
+}

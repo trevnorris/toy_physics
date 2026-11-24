@@ -1,0 +1,297 @@
+{
+  "state_sha256": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+  "source_sha256": "6efaa082f3390ce16a9de5221fc4cb0783f52eaadb581dc6ef41976a12e355ee",
+  "boundary_energy_evaluator_sha256": "8e60f7b3298d09cc01634732be858f6e8904d5016adde6a70450b2a4229b630a",
+  "pinned_sources_sha256": "625c07dc0ed83f93df23959c4310c336c49e3ef61cd751fdbe6df0f9dbf37c49",
+  "precision_mantissa": 63,
+  "counts": {
+    "all_free": 143648,
+    "lower_bound": 52955,
+    "interior": 90588,
+    "upper_bound": 105
+  },
+  "widths": [
+    {
+      "h": 1e-08,
+      "physical": {
+        "signed": -1.4339042833795914e-11,
+        "absolute": 1.4339042833795914e-11,
+        "group": 144583
+      },
+      "unscaled_gauge": {
+        "signed": -1.848820421235571e-11,
+        "absolute": 1.848820421235571e-11,
+        "group": 67941
+      },
+      "both_gauges": {
+        "1e-08": {
+          "all_free": {
+            "signed": -1.4339042833795914e-11,
+            "absolute": 1.4339042833795914e-11,
+            "group": 144583
+          },
+          "lower_bound": {
+            "signed": -1.4339042833795914e-11,
+            "absolute": 1.4339042833795914e-11,
+            "group": 144583
+          },
+          "interior": {
+            "signed": 1.5966759164820488e-12,
+            "absolute": 1.5966759164820488e-12,
+            "group": 143666
+          },
+          "upper_bound": {
+            "signed": 3.592052553682965e-13,
+            "absolute": 3.592052553682965e-13,
+            "group": 144451
+          },
+          "lower_bound_feasible_one_sided": {
+            "signed": 0.0017050641384581092,
+            "absolute": 0.0017050641384581092,
+            "group": 144583
+          },
+          "upper_bound_feasible_one_sided": {
+            "signed": -8.041636209730946e-05,
+            "absolute": 8.041636209730946e-05,
+            "group": 144455
+          }
+        },
+        "1e-10": {
+          "all_free": {
+            "signed": -1.4339042833795914e-11,
+            "absolute": 1.4339042833795914e-11,
+            "group": 144583
+          },
+          "lower_bound": {
+            "signed": -1.4339042833795914e-11,
+            "absolute": 1.4339042833795914e-11,
+            "group": 144583
+          },
+          "interior": {
+            "signed": 1.5966759164820488e-12,
+            "absolute": 1.5966759164820488e-12,
+            "group": 143666
+          },
+          "upper_bound": {
+            "signed": 3.592052553682965e-13,
+            "absolute": 3.592052553682965e-13,
+            "group": 144451
+          },
+          "lower_bound_feasible_one_sided": {
+            "signed": 0.0017050641384581092,
+            "absolute": 0.0017050641384581092,
+            "group": 144583
+          },
+          "upper_bound_feasible_one_sided": {
+            "signed": -8.041636209730946e-05,
+            "absolute": 8.041636209730946e-05,
+            "group": 144455
+          }
+        }
+      }
+    },
+    {
+      "h": 1e-09,
+      "physical": {
+        "signed": 1.5892981375387194e-12,
+        "absolute": 1.5892981375387194e-12,
+        "group": 143666
+      },
+      "unscaled_gauge": {
+        "signed": -1.848820427252205e-12,
+        "absolute": 1.848820427252205e-12,
+        "group": 67941
+      },
+      "both_gauges": {
+        "1e-08": {
+          "all_free": {
+            "signed": 1.5892981375387194e-12,
+            "absolute": 1.5892981375387194e-12,
+            "group": 143666
+          },
+          "lower_bound": {
+            "signed": -1.4339042832525364e-13,
+            "absolute": 1.4339042832525364e-13,
+            "group": 144583
+          },
+          "interior": {
+            "signed": 1.5892981375387194e-12,
+            "absolute": 1.5892981375387194e-12,
+            "group": 143666
+          },
+          "upper_bound": {
+            "signed": 3.592052527577145e-15,
+            "absolute": 3.592052527577145e-15,
+            "group": 144451
+          },
+          "lower_bound_feasible_one_sided": {
+            "signed": 0.00017050641513632477,
+            "absolute": 0.00017050641513632477,
+            "group": 144583
+          },
+          "lower_bound_feasible_extrapolated": {
+            "signed": 1.4339042796791162e-12,
+            "absolute": 1.4339042796791162e-12,
+            "group": 144583
+          },
+          "upper_bound_feasible_one_sided": {
+            "signed": -8.04163623688694e-06,
+            "absolute": 8.04163623688694e-06,
+            "group": 144455
+          },
+          "upper_bound_feasible_extrapolated": {
+            "signed": -3.5920525472097595e-14,
+            "absolute": 3.5920525472097595e-14,
+            "group": 144451
+          }
+        },
+        "1e-10": {
+          "all_free": {
+            "signed": 1.5892981375387194e-12,
+            "absolute": 1.5892981375387194e-12,
+            "group": 143666
+          },
+          "lower_bound": {
+            "signed": -1.4339042832525364e-13,
+            "absolute": 1.4339042832525364e-13,
+            "group": 144583
+          },
+          "interior": {
+            "signed": 1.5892981375387194e-12,
+            "absolute": 1.5892981375387194e-12,
+            "group": 143666
+          },
+          "upper_bound": {
+            "signed": 3.592052527577145e-15,
+            "absolute": 3.592052527577145e-15,
+            "group": 144451
+          },
+          "lower_bound_feasible_one_sided": {
+            "signed": 0.00017050641513632477,
+            "absolute": 0.00017050641513632477,
+            "group": 144583
+          },
+          "lower_bound_feasible_extrapolated": {
+            "signed": 1.4339042796791162e-12,
+            "absolute": 1.4339042796791162e-12,
+            "group": 144583
+          },
+          "upper_bound_feasible_one_sided": {
+            "signed": -8.04163623688694e-06,
+            "absolute": 8.04163623688694e-06,
+            "group": 144455
+          },
+          "upper_bound_feasible_extrapolated": {
+            "signed": -3.5920525472097595e-14,
+            "absolute": 3.5920525472097595e-14,
+            "group": 144451
+          }
+        }
+      }
+    },
+    {
+      "h": 1e-10,
+      "physical": {
+        "signed": 1.5892408916640122e-12,
+        "absolute": 1.5892408916640122e-12,
+        "group": 143666
+      },
+      "unscaled_gauge": {
+        "signed": -1.8488204279395015e-13,
+        "absolute": 1.8488204279395015e-13,
+        "group": 67941
+      },
+      "both_gauges": {
+        "1e-08": {
+          "all_free": {
+            "signed": 1.5892408916640122e-12,
+            "absolute": 1.5892408916640122e-12,
+            "group": 143666
+          },
+          "lower_bound": {
+            "signed": -1.4339042833517981e-15,
+            "absolute": 1.4339042833517981e-15,
+            "group": 144583
+          },
+          "interior": {
+            "signed": 1.5892408916640122e-12,
+            "absolute": 1.5892408916640122e-12,
+            "group": 143666
+          },
+          "upper_bound": {
+            "signed": 3.5920499071723617e-17,
+            "absolute": 3.5920499071723617e-17,
+            "group": 144451
+          },
+          "lower_bound_feasible_one_sided": {
+            "signed": 1.7050641526537616e-05,
+            "absolute": 1.7050641526537616e-05,
+            "group": 144583
+          },
+          "lower_bound_feasible_extrapolated": {
+            "signed": 1.4339042828554897e-14,
+            "absolute": 1.4339042828554897e-14,
+            "group": 144583
+          },
+          "upper_bound_feasible_one_sided": {
+            "signed": -8.041636239603296e-07,
+            "absolute": 8.041636239603296e-07,
+            "group": 144455
+          },
+          "upper_bound_feasible_extrapolated": {
+            "signed": -3.592052818072636e-16,
+            "absolute": 3.592052818072636e-16,
+            "group": 144451
+          }
+        },
+        "1e-10": {
+          "all_free": {
+            "signed": 1.5892408916640122e-12,
+            "absolute": 1.5892408916640122e-12,
+            "group": 143666
+          },
+          "lower_bound": {
+            "signed": -1.4339042833517981e-15,
+            "absolute": 1.4339042833517981e-15,
+            "group": 144583
+          },
+          "interior": {
+            "signed": 1.5892408916640122e-12,
+            "absolute": 1.5892408916640122e-12,
+            "group": 143666
+          },
+          "upper_bound": {
+            "signed": 3.5920499071723617e-17,
+            "absolute": 3.5920499071723617e-17,
+            "group": 144451
+          },
+          "lower_bound_feasible_one_sided": {
+            "signed": 1.7050641526537616e-05,
+            "absolute": 1.7050641526537616e-05,
+            "group": 144583
+          },
+          "lower_bound_feasible_extrapolated": {
+            "signed": 1.4339042828554897e-14,
+            "absolute": 1.4339042828554897e-14,
+            "group": 144583
+          },
+          "upper_bound_feasible_one_sided": {
+            "signed": -8.041636239603296e-07,
+            "absolute": 8.041636239603296e-07,
+            "group": 144455
+          },
+          "upper_bound_feasible_extrapolated": {
+            "signed": -3.592052818072636e-16,
+            "absolute": 3.592052818072636e-16,
+            "group": 144451
+          }
+        }
+      }
+    }
+  ],
+  "analytic": "Production complete physical residual plus analytic derivative of the quadrature-weighted cubic.",
+  "differences": "Per-node long-double signed changes of the local discrete energies. Harmonic and determinant density recomputed for the gauge. All joined order DOFs, all six blocks, every other coordinate held fixed.",
+  "boundary_extension": "Physical polynomial and kinetic terms continue algebraically for central differences. The cubic gauge holds its value constant outside [0,1] at each quadrature point. One-sided differences use only the admissible nodal direction.",
+  "target": 1e-07,
+  "all_order_central_within_target": true
+}

@@ -1,0 +1,332 @@
+{
+  "state_sha256": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+  "sources_sha256": "625c07dc0ed83f93df23959c4310c336c49e3ef61cd751fdbe6df0f9dbf37c49",
+  "script_sha256": "8e60f7b3298d09cc01634732be858f6e8904d5016adde6a70450b2a4229b630a",
+  "frozen_shape": [
+    0.03203348161357326,
+    -0.22160765321621922,
+    0.0008870732843312349,
+    -0.0685819081404728,
+    0.0708792715906547,
+    0.02342688643280306
+  ],
+  "chi_gauge": "1-3 chi^2+2 chi^3 on [0,1], constant outside; applied at Gauss points",
+  "unit_gauge": {
+    "old_unit": 1.8445756239213469,
+    "new_unit": 5.175985798885867
+  },
+  "physical_derivative_max_error": 2.144009796090085e-17,
+  "free_zero_count": 52955,
+  "free_zero_front": 16394,
+  "front_with_linear_gauge_term": 677,
+  "greatest_absolute_front_gauge_slope": {
+    "node": [
+      9,
+      11,
+      19
+    ],
+    "group": 25417,
+    "slope": -1.0384530744979569e-05
+  },
+  "quadrature": "2x2x2 physical Gauss weights; harmonic density at Gauss points and original mean of eight corner barrier densities per cell.",
+  "physical_work": "Factored long-double direct cell energy changes with full joined Q1 support. Directed differences keep shape, other order coefficients, labels, carriers fixed.",
+  "scope": "Every free zero order group in all six carrier blocks including all zero groups incident to positive order at a physical quadrature point. Numerical gauge acts only on the original spatial-label grid.",
+  "witnesses": {
+    "previous_blocking_node": {
+      "node": [
+        16,
+        10,
+        1
+      ],
+      "group": 42831,
+      "joins_positive_q": true,
+      "slope_physical": 0.0008835407670611826,
+      "unit_gauge_linear": -1.710326932450875e-07,
+      "unit_gauge_quadratic": -0.0002559898426946529,
+      "unit_gauge_cubic": 7.238299214507408e-05,
+      "samples": [
+        {
+          "h": 1e-09,
+          "epsilon": 1e-08,
+          "physical": 8.835408566732406e-13,
+          "gauge": -1.7103294923493013e-24,
+          "total": 8.835408566715303e-13
+        },
+        {
+          "h": 1e-09,
+          "epsilon": 1e-10,
+          "physical": 8.835408566732406e-13,
+          "gauge": -1.7103294923493015e-26,
+          "total": 8.835408566732235e-13
+        },
+        {
+          "h": 1e-10,
+          "epsilon": 1e-08,
+          "physical": 8.835407760223885e-14,
+          "gauge": -1.7103271884407178e-25,
+          "total": 8.835407760206781e-14
+        },
+        {
+          "h": 1e-10,
+          "epsilon": 1e-10,
+          "physical": 8.835407760223885e-14,
+          "gauge": -1.710327188440718e-27,
+          "total": 8.835407760223713e-14
+        },
+        {
+          "h": 1e-12,
+          "epsilon": 1e-08,
+          "physical": 8.835407671507947e-16,
+          "gauge": -1.7103269350107735e-27,
+          "total": 8.835407671490843e-16
+        },
+        {
+          "h": 1e-12,
+          "epsilon": 1e-10,
+          "physical": 8.835407671507947e-16,
+          "gauge": -1.7103269350107733e-29,
+          "total": 8.835407671507775e-16
+        }
+      ]
+    },
+    "gauge_witness": {
+      "node": [
+        24,
+        9,
+        17
+      ],
+      "group": 67670,
+      "joins_positive_q": true,
+      "slope_physical": 0.011724901540125104,
+      "unit_gauge_linear": -2.734770441931648e-06,
+      "unit_gauge_quadratic": -0.002405889523624357,
+      "unit_gauge_cubic": 0.0006728095374749966,
+      "samples": [
+        {
+          "h": 1e-09,
+          "epsilon": 1e-08,
+          "physical": 1.1724906547123477e-11,
+          "gauge": -2.734772847821171e-23,
+          "total": 1.172490654709613e-11
+        },
+        {
+          "h": 1e-09,
+          "epsilon": 1e-10,
+          "physical": 1.1724906547123477e-11,
+          "gauge": -2.734772847821171e-25,
+          "total": 1.1724906547123204e-11
+        },
+        {
+          "h": 1e-10,
+          "epsilon": 1e-08,
+          "physical": 1.172490204082494e-12,
+          "gauge": -2.7347706825206004e-24,
+          "total": 1.1724902040797593e-12
+        },
+        {
+          "h": 1e-10,
+          "epsilon": 1e-10,
+          "physical": 1.172490204082494e-12,
+          "gauge": -2.7347706825206e-26,
+          "total": 1.1724902040824668e-12
+        },
+        {
+          "h": 1e-12,
+          "epsilon": 1e-08,
+          "physical": 1.1724901545132101e-14,
+          "gauge": -2.7347704443375377e-26,
+          "total": 1.1724901545104754e-14
+        },
+        {
+          "h": 1e-12,
+          "epsilon": 1e-10,
+          "physical": 1.1724901545132101e-14,
+          "gauge": -2.7347704443375376e-28,
+          "total": 1.1724901545131828e-14
+        }
+      ]
+    }
+  },
+  "summary": [
+    {
+      "h": 1e-09,
+      "epsilon": 1e-08,
+      "whole_free_zero": {
+        "count": 52955,
+        "positive_physical": 52955,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816258107e-22,
+        "physical_at_min": 8.312245816258107e-22,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.4676072188855007e-08
+      },
+      "front": {
+        "count": 16394,
+        "positive_physical": 16394,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816258107e-22,
+        "physical_at_min": 8.312245816258107e-22,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.4676072188855007e-08
+      }
+    },
+    {
+      "h": 1e-09,
+      "epsilon": 1e-10,
+      "whole_free_zero": {
+        "count": 52955,
+        "positive_physical": 52955,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816258107e-22,
+        "physical_at_min": 8.312245816258107e-22,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.4676072188855005e-10
+      },
+      "front": {
+        "count": 16394,
+        "positive_physical": 16394,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816258107e-22,
+        "physical_at_min": 8.312245816258107e-22,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.4676072188855005e-10
+      }
+    },
+    {
+      "h": 1e-10,
+      "epsilon": 1e-08,
+      "whole_free_zero": {
+        "count": 52955,
+        "positive_physical": 52955,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816270165e-24,
+        "physical_at_min": 8.312245816270165e-24,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.4691640384877883e-08
+      },
+      "front": {
+        "count": 16394,
+        "positive_physical": 16394,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816270165e-24,
+        "physical_at_min": 8.312245816270165e-24,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.4691640384877883e-08
+      }
+    },
+    {
+      "h": 1e-10,
+      "epsilon": 1e-10,
+      "whole_free_zero": {
+        "count": 52955,
+        "positive_physical": 52955,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816270165e-24,
+        "physical_at_min": 8.312245816270165e-24,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.469164038487788e-10
+      },
+      "front": {
+        "count": 16394,
+        "positive_physical": 16394,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816270165e-24,
+        "physical_at_min": 8.312245816270165e-24,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.469164038487788e-10
+      }
+    },
+    {
+      "h": 1e-12,
+      "epsilon": 1e-08,
+      "whole_free_zero": {
+        "count": 52955,
+        "positive_physical": 52955,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816271491e-28,
+        "physical_at_min": 8.312245816271491e-28,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.469335408720771e-08
+      },
+      "front": {
+        "count": 16394,
+        "positive_physical": 16394,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816271491e-28,
+        "physical_at_min": 8.312245816271491e-28,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.469335408720771e-08
+      }
+    },
+    {
+      "h": 1e-12,
+      "epsilon": 1e-10,
+      "whole_free_zero": {
+        "count": 52955,
+        "positive_physical": 52955,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816271491e-28,
+        "physical_at_min": 8.312245816271491e-28,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.4693354087207713e-10
+      },
+      "front": {
+        "count": 16394,
+        "positive_physical": 16394,
+        "physical_positive_total_nonpositive": 0,
+        "total_strict_descents": 0,
+        "exact_zero": 0,
+        "sign_failure_groups": [],
+        "min_group": 241,
+        "min_total": 8.312245816271491e-28,
+        "physical_at_min": 8.312245816271491e-28,
+        "gauge_at_min": 0.0,
+        "max_abs_gauge_over_positive_physical": 2.4693354087207713e-10
+      }
+    }
+  ]
+}

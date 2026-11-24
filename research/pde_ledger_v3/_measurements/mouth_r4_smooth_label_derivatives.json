@@ -1,0 +1,299 @@
+{
+  "state": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+  "complete_free_coordinates": 81125,
+  "passed": true,
+  "components": [
+    {
+      "component": 0,
+      "state_sha256": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+      "script_sha256": "3fdef30f3b3615ac6b90f39aabfeaea7e59fc588f2225bb25158dbc9f924a927",
+      "smooth_evaluator_sha256": "2fa4fbe4ff3b10302451a7f0e182e0de969bb3772962e2247992282c219d8206",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_smooth_label_derivatives.py",
+        "_scratch/s11c/r4_projected_corner_held01",
+        "_scratch/s11c/r4_smooth_label_bank01/component_0",
+        "--component",
+        "0"
+      ],
+      "scalar_label_count": 27825,
+      "colors": 8,
+      "active_count": 6093,
+      "free_melt_count": 21732,
+      "narrow_refinements": 18,
+      "physical_energy_difference_from_native": 3.978208821392437e-16,
+      "unscaled_smooth_gauge_energy": 5.175985798885867,
+      "native_precision_epsilon": 1.0842021724855044e-19,
+      "broad_widths": [
+        5.960464477539063e-08,
+        2.9802322387695312e-08
+      ],
+      "narrow_binary128_physical_widths": [
+        1.4551915228366852e-11,
+        7.275957614183426e-12
+      ],
+      "broad_minimum_ordered_chart": 0.0013906231247069409,
+      "status": {
+        "1e-08": {
+          "active": {
+            "max_abs_full": 4.8152700079977584e-11,
+            "max_abs_half": 1.1859895753662043e-11,
+            "half_minus_full_peak": 3.629280432631554e-11,
+            "largest_error_group": 28931,
+            "peak_node": [
+              25,
+              2,
+              14
+            ],
+            "analytic": 0.03515542653946074,
+            "direct_fd": 0.03515542655132063,
+            "max_abs_uncorrected_broad_error": 1.6119006630860593e-10
+          },
+          "fully_melted": {
+            "max_abs_full": 2.0125405308631453e-16,
+            "max_abs_half": 5.031362404180409e-17,
+            "half_minus_full_peak": 1.5094042904451044e-16,
+            "largest_error_group": 29123,
+            "peak_node": [
+              25,
+              11,
+              17
+            ],
+            "analytic": -2.3506304047985966e-16,
+            "direct_fd": -2.8537666452166376e-16,
+            "max_abs_uncorrected_broad_error": 2.0125405308631453e-16
+          }
+        },
+        "1e-10": {
+          "active": {
+            "max_abs_full": 4.8152697137176113e-11,
+            "max_abs_half": 1.1859895017944589e-11,
+            "half_minus_full_peak": 3.6292802119231526e-11,
+            "largest_error_group": 28931,
+            "peak_node": [
+              25,
+              2,
+              14
+            ],
+            "analytic": 0.03515542773099106,
+            "direct_fd": 0.03515542774285096,
+            "max_abs_uncorrected_broad_error": 1.6119006134865559e-10
+          },
+          "fully_melted": {
+            "max_abs_full": 2.0125405308631454e-18,
+            "max_abs_half": 5.031362404180409e-19,
+            "half_minus_full_peak": 1.5094042904451044e-18,
+            "largest_error_group": 29123,
+            "peak_node": [
+              25,
+              11,
+              17
+            ],
+            "analytic": -2.3506304047985967e-18,
+            "direct_fd": -2.8537666452166377e-18,
+            "max_abs_uncorrected_broad_error": 2.0125405308631454e-18
+          }
+        }
+      },
+      "tolerance": 1e-10,
+      "passed": true,
+      "raw_sha256": "1c9fd9ae07c4db5b73225c4e2933add83f5b760884a55283d5c2505559609152"
+    },
+    {
+      "component": 1,
+      "state_sha256": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+      "script_sha256": "3fdef30f3b3615ac6b90f39aabfeaea7e59fc588f2225bb25158dbc9f924a927",
+      "smooth_evaluator_sha256": "2fa4fbe4ff3b10302451a7f0e182e0de969bb3772962e2247992282c219d8206",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_smooth_label_derivatives.py",
+        "_scratch/s11c/r4_projected_corner_held01",
+        "_scratch/s11c/r4_smooth_label_bank01/component_1",
+        "--component",
+        "1"
+      ],
+      "scalar_label_count": 27878,
+      "colors": 8,
+      "active_count": 6106,
+      "free_melt_count": 21772,
+      "narrow_refinements": 8,
+      "physical_energy_difference_from_native": 3.978208821392437e-16,
+      "unscaled_smooth_gauge_energy": 5.175985798885867,
+      "native_precision_epsilon": 1.0842021724855044e-19,
+      "broad_widths": [
+        5.960464477539063e-08,
+        2.9802322387695312e-08
+      ],
+      "narrow_binary128_physical_widths": [
+        1.4551915228366852e-11,
+        7.275957614183426e-12
+      ],
+      "broad_minimum_ordered_chart": 0.0013887682774993777,
+      "status": {
+        "1e-08": {
+          "active": {
+            "max_abs_full": 4.107113954439652e-11,
+            "max_abs_half": 1.0318294829548726e-11,
+            "half_minus_full_peak": 3.0752844714847796e-11,
+            "largest_error_group": 26699,
+            "peak_node": [
+              24,
+              3,
+              16
+            ],
+            "analytic": 0.04941803801119044,
+            "direct_fd": 0.04941803802150874,
+            "max_abs_uncorrected_broad_error": 6.099206417696103e-10
+          },
+          "fully_melted": {
+            "max_abs_full": 2.944765831124053e-19,
+            "max_abs_half": 7.354414410229221e-20,
+            "half_minus_full_peak": 2.2093243901011307e-19,
+            "largest_error_group": 15635,
+            "peak_node": [
+              14,
+              26,
+              19
+            ],
+            "analytic": 1.6645609780000178e-19,
+            "direct_fd": 2.40000241902294e-19,
+            "max_abs_uncorrected_broad_error": 2.944765831124053e-19
+          }
+        },
+        "1e-10": {
+          "active": {
+            "max_abs_full": 4.107113954487446e-11,
+            "max_abs_half": 1.0318294829668627e-11,
+            "half_minus_full_peak": 3.075284471520583e-11,
+            "largest_error_group": 26699,
+            "peak_node": [
+              24,
+              3,
+              16
+            ],
+            "analytic": 0.04941803766606866,
+            "direct_fd": 0.04941803767638695,
+            "max_abs_uncorrected_broad_error": 6.099206417697882e-10
+          },
+          "fully_melted": {
+            "max_abs_full": 2.9447658311240526e-21,
+            "max_abs_half": 7.354414410229221e-22,
+            "half_minus_full_peak": 2.2093243901011306e-21,
+            "largest_error_group": 15635,
+            "peak_node": [
+              14,
+              26,
+              19
+            ],
+            "analytic": 1.6645609780000177e-21,
+            "direct_fd": 2.4000024190229397e-21,
+            "max_abs_uncorrected_broad_error": 2.9447658311240526e-21
+          }
+        }
+      },
+      "tolerance": 1e-10,
+      "passed": true,
+      "raw_sha256": "1ca0948b9329099e2e31c4d06c0ae71bfb38ae3e88de3a55d7966be56800f3d3"
+    },
+    {
+      "component": 2,
+      "state_sha256": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+      "script_sha256": "3fdef30f3b3615ac6b90f39aabfeaea7e59fc588f2225bb25158dbc9f924a927",
+      "smooth_evaluator_sha256": "2fa4fbe4ff3b10302451a7f0e182e0de969bb3772962e2247992282c219d8206",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_smooth_label_derivatives.py",
+        "_scratch/s11c/r4_projected_corner_held01",
+        "_scratch/s11c/r4_smooth_label_bank01/component_2",
+        "--component",
+        "2"
+      ],
+      "scalar_label_count": 25422,
+      "colors": 8,
+      "active_count": 5775,
+      "free_melt_count": 19647,
+      "narrow_refinements": 0,
+      "physical_energy_difference_from_native": 3.978208821392437e-16,
+      "unscaled_smooth_gauge_energy": 5.175985798885867,
+      "native_precision_epsilon": 1.0842021724855044e-19,
+      "broad_widths": [
+        5.960464477539063e-08,
+        2.9802322387695312e-08
+      ],
+      "narrow_binary128_physical_widths": [
+        1.4551915228366852e-11,
+        7.275957614183426e-12
+      ],
+      "broad_minimum_ordered_chart": 0.0013906102407714625,
+      "status": {
+        "1e-08": {
+          "active": {
+            "max_abs_full": 2.307704130733161e-13,
+            "max_abs_half": 2.2674344224920323e-13,
+            "half_minus_full_peak": 2.34479102680929e-13,
+            "largest_error_group": 20067,
+            "peak_node": [
+              18,
+              1,
+              16
+            ],
+            "analytic": 0.00011276056922683494,
+            "direct_fd": 0.00011276056945357838,
+            "max_abs_uncorrected_broad_error": 2.307704130733161e-13
+          },
+          "fully_melted": {
+            "max_abs_full": 4.080699088032202e-22,
+            "max_abs_half": 2.0075682042870574e-22,
+            "half_minus_full_peak": 3.8191672047105386e-22,
+            "largest_error_group": 20297,
+            "peak_node": [
+              18,
+              12,
+              15
+            ],
+            "analytic": 6.379376741657173e-19,
+            "direct_fd": 6.381384309861459e-19,
+            "max_abs_uncorrected_broad_error": 4.080699088032202e-22
+          }
+        },
+        "1e-10": {
+          "active": {
+            "max_abs_full": 2.307704130868566e-13,
+            "max_abs_half": 2.2674344227265648e-13,
+            "half_minus_full_peak": 2.3447910279963404e-13,
+            "largest_error_group": 20067,
+            "peak_node": [
+              18,
+              1,
+              16
+            ],
+            "analytic": 0.00011276054601401476,
+            "direct_fd": 0.0001127605462407582,
+            "max_abs_uncorrected_broad_error": 2.307704130868566e-13
+          },
+          "fully_melted": {
+            "max_abs_full": 4.080699088032203e-24,
+            "max_abs_half": 2.0075682042870574e-24,
+            "half_minus_full_peak": 3.819167204710539e-24,
+            "largest_error_group": 20297,
+            "peak_node": [
+              18,
+              12,
+              15
+            ],
+            "analytic": 6.379376741657173e-21,
+            "direct_fd": 6.38138430986146e-21,
+            "max_abs_uncorrected_broad_error": 4.080699088032203e-24
+          }
+        }
+      },
+      "tolerance": 1e-10,
+      "passed": true,
+      "raw_sha256": "e2eefdc3e8a83a8461c8372b3098d3a14fcd90b5dc1156091f5f59eaeff338a7"
+    }
+  ],
+  "convention": "Frozen Q1 smoothstep after interpolation. Energy signs evaluated per cell for joined free DOFs. Native physical derivative is compared to independently integrated long double/quad-precision physical energy; the gauge derivative is checked against long-double energy differences. Static result only."
+}

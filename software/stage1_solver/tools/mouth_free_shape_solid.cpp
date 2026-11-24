@@ -98,7 +98,9 @@ Ref reference(const Data &d,double x,double t,const Profile &initial,bool core) 
     return out;
 }
 struct TriSlice {
-    int id[6]; double n[6],nx[6],nt[6],na[6],nax[6],x0;
+    // The parent has six functions. A conforming edge refinement may add
+    // one hierarchical function with the same affine-in-x structure.
+    int count=6, id[7]; double n[7],nx[7],nt[7],na[7],nax[7],x0;
     Vec X; Mat M; Vec Max{};
     TriSlice(const Data &d,int i,int j,int k,double t,double a,double mid) {
         double dx=d.x.v[i+1]-d.x.v[i],dt=d.t.v[j+1]-d.t.v[j],da=d.a.v[k+1]-d.a.v[k];
@@ -271,7 +273,7 @@ int sample(const Data &d,Results &out,const Profile &initial,const TriSlice &s,d
                             +hoop*(wall.grad[c]/wall.R+(c==2?std::cos(X[2])/sn:0));
         pos[c]=W*dc[c]+chi*derivative;
     }
-    for(int n=0;n<6;n++)for(int c=0;c<3;c++)out.gradient[3*s.id[n]+c]+=wt*(
+    for(int n=0;n<s.count;n++)for(int c=0;c<3;c++)out.gradient[3*s.id[n]+c]+=wt*(
         pos[c]*(s.n[n]+dx*s.nx[n])+
         chi*(gradM[c][0]*s.nx[n]+gradM[c][1]*s.nt[n]+gradM[c][2]*(s.na[n]+dx*s.nax[n])));
     // d/dx at fixed material t and angle, within one smooth integration piece.
@@ -283,7 +285,12 @@ int sample(const Data &d,Results &out,const Profile &initial,const TriSlice &s,d
     density_x=V*eprime;
     return 0;
 }
-extern "C" int solid_eval(const Data *data,Results *res) {
+struct OriginalPrisms {
+    bool include(int,int,int,int) const {return true;}
+    void enrich(TriSlice &,const Data &,int,int,int,int,double,double) const {}
+};
+template<class Prisms>
+int integrate_solid(const Data *data,Results *res,const Prisms &prisms) {
     const Data &d=*data;Results &out=*res;
     std::fill(out.stats,out.stats+30,0.);
     for(int slot:{5,13,17})out.stats[slot]=std::numeric_limits<double>::infinity();
@@ -307,9 +314,11 @@ extern "C" int solid_eval(const Data *data,Results *res) {
             for(int i=0;i<d.x.n-1;i++){
                 double lo=d.x.v[i],hi=d.x.v[i+1],diagonal=lo+(1-v)*(hi-lo);
                 for(int half=0;half<2;half++){
+                    if(!prisms.include(j,i,k,half))continue;
                     double l=half?diagonal:lo,r=half?hi:diagonal;
                     if(r-l<1e-15)continue;
                     TriSlice s(d,i,j,k,t,a,(l+r)/2);
+                    prisms.enrich(s,d,j,i,k,half,t,a);
                     edges.clear();edges.push_back({l,-1});edges.push_back({r,-1});
                     if(i>=cutnode)for(auto it=std::upper_bound(fixed.begin(),fixed.end(),l);it!=fixed.end() && *it<r;it++)
                         edges.push_back({*it,-1});
@@ -328,7 +337,7 @@ extern "C" int solid_eval(const Data *data,Results *res) {
                         if(out.gradient)for(int e=0;e<2;e++) {
                             const Edge &cutedge=edges[z+e];int c=cutedge.component;if(c<0)continue;
                             double adj=-(e?workr:workl)/s.M[c][0];
-                            for(int n=0;n<6;n++)out.gradient[3*s.id[n]+c]+=adj*(s.n[n]+(cutedge.x-s.x0)*s.nx[n]);
+                            for(int n=0;n<s.count;n++)out.gradient[3*s.id[n]+c]+=adj*(s.n[n]+(cutedge.x-s.x0)*s.nx[n]);
                         }
                     }
                 }
@@ -336,4 +345,7 @@ extern "C" int solid_eval(const Data *data,Results *res) {
         }
     }
     return 0;
+}
+extern "C" int solid_eval(const Data *data,Results *res) {
+    return integrate_solid(data,res,OriginalPrisms{});
 }

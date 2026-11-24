@@ -1,0 +1,1228 @@
+{
+  "status": "refined_child_barrier",
+  "baseline_commit": "bd44031a",
+  "held_entrance": 4,
+  "winding": 1,
+  "phase_drop": 0.4510084282857874,
+  "U": "(n^5-5n+4)/20",
+  "baseline_state_sha256": "c99706009efdaf3ce94f5c8a626a737927ff2ce4705cb030c843b5862d908cef",
+  "final_material_state_sha256": "2a970cd6b6ffb4ac263d554666e474493daff79f04eb2ed0641f32a132697ddc",
+  "geometry": {
+    "connectivity": {
+      "parent_prisms_split": 6,
+      "children": 12,
+      "material_prisms": 6918,
+      "angular_midpoint_vertices": 7,
+      "independent_midpoint_vertices": 1,
+      "transition_cells": 18,
+      "transition_quadrilateral_partitions": 6,
+      "paired_interior_facets": 15858,
+      "exterior_facets": 2880
+    },
+    "split_angle": 0.12129504969343591,
+    "split_parent_fraction": 0.46331296155089785,
+    "exact_max_reference_or_placement_delta": 0.0,
+    "exact_max_reference_or_placement_derivative_delta": 0.0,
+    "negative_control": {
+      "cell_t_x_angle": [
+        5,
+        18,
+        0
+      ],
+      "triangle": 0,
+      "child_half": 1,
+      "child_angular_fraction": 1.0,
+      "barycentric_vertex": 0,
+      "placement_x_t_angle": [
+        0.909114697468314,
+        0.253775924759195,
+        0.26176776282985065
+      ],
+      "chart_J": -0.18983934854639917,
+      "order": 0.001,
+      "child_status": "active_fold",
+      "global_status": "active_fold"
+    }
+  },
+  "shared_face_control": {
+    "star_interface_half_faces": 12,
+    "transition_half_faces": 12,
+    "in_prism_seams": 6,
+    "parent_endcaps": 12,
+    "maximum_exact_placement_trace_difference": 0.0,
+    "maximum_exact_hierarchical_basis_trace_difference": 0.0
+  },
+  "elastic_energy": 0.20024657124174416,
+  "total_energy": 92185.47335775776,
+  "parent_coordinate_count": 10074,
+  "conservation_maxima": {
+    "total": 0.0,
+    "elastic_energy": 0.0,
+    "forces": 0.0,
+    "deposition": 0.0,
+    "field_gradient": 0.0,
+    "currents": 0.0
+  },
+  "regional_parent_count": 36,
+  "region_results": [
+    {
+      "cell": [
+        4,
+        17,
+        0,
+        0
+      ],
+      "parent_energy": 1.0145123439787882e-05,
+      "sum_children": 1.0145123439787882e-05,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        17,
+        0,
+        1
+      ],
+      "parent_energy": 1.5670268817412646e-06,
+      "sum_children": 1.5670268817412646e-06,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        17,
+        1,
+        0
+      ],
+      "parent_energy": 2.3988063389880203e-05,
+      "sum_children": 2.3988063389880203e-05,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        17,
+        1,
+        1
+      ],
+      "parent_energy": 3.250585418284074e-06,
+      "sum_children": 3.250585418284074e-06,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        18,
+        0,
+        0
+      ],
+      "parent_energy": 1.865573581000151e-05,
+      "sum_children": 1.865573581000151e-05,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        18,
+        0,
+        1
+      ],
+      "parent_energy": 2.6251030302891693e-06,
+      "sum_children": 2.6251030302891693e-06,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        18,
+        1,
+        0
+      ],
+      "parent_energy": 5.643020164491605e-05,
+      "sum_children": 5.643020164491605e-05,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        18,
+        1,
+        1
+      ],
+      "parent_energy": 6.005266545192524e-06,
+      "sum_children": 6.005266545192524e-06,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        19,
+        0,
+        0
+      ],
+      "parent_energy": 1.8024007944025207e-05,
+      "sum_children": 1.8024007944025207e-05,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        19,
+        0,
+        1
+      ],
+      "parent_energy": 3.0119385972869693e-06,
+      "sum_children": 3.0119385972869693e-06,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        19,
+        1,
+        0
+      ],
+      "parent_energy": 6.206721223368064e-05,
+      "sum_children": 6.206721223368064e-05,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        4,
+        19,
+        1,
+        1
+      ],
+      "parent_energy": 8.82810309242796e-06,
+      "sum_children": 8.82810309242796e-06,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        17,
+        0,
+        0
+      ],
+      "parent_energy": 5.695865171061629e-09,
+      "sum_children": 5.695865171061629e-09,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        17,
+        0,
+        1
+      ],
+      "parent_energy": 3.928897545766215e-08,
+      "sum_children": 3.928897545766215e-08,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        17,
+        1,
+        0
+      ],
+      "parent_energy": 0.0,
+      "sum_children": 0.0,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        17,
+        1,
+        1
+      ],
+      "parent_energy": 0.0,
+      "sum_children": 0.0,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        18,
+        0,
+        0
+      ],
+      "parent_energy": 1.1219810152387763e-06,
+      "sum_children": 1.1219810152387763e-06,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        18,
+        0,
+        1
+      ],
+      "parent_energy": 3.8086444586598607e-07,
+      "sum_children": 3.8086444586598607e-07,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        18,
+        1,
+        0
+      ],
+      "parent_energy": 0.0,
+      "sum_children": 0.0,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        18,
+        1,
+        1
+      ],
+      "parent_energy": 0.0,
+      "sum_children": 0.0,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        19,
+        0,
+        0
+      ],
+      "parent_energy": 4.190124954997842e-06,
+      "sum_children": 4.190124954997842e-06,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        19,
+        0,
+        1
+      ],
+      "parent_energy": 8.679260249575665e-07,
+      "sum_children": 8.679260249575665e-07,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        19,
+        1,
+        0
+      ],
+      "parent_energy": 1.0084947986670697e-05,
+      "sum_children": 1.0084947986670697e-05,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        5,
+        19,
+        1,
+        1
+      ],
+      "parent_energy": 1.7387976790954925e-06,
+      "sum_children": 1.7387976790954925e-06,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        17,
+        0,
+        0
+      ],
+      "parent_energy": 6.675768208764689e-11,
+      "sum_children": 6.675768208764689e-11,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        17,
+        0,
+        1
+      ],
+      "parent_energy": 9.710173670550594e-11,
+      "sum_children": 9.710173670550594e-11,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        17,
+        1,
+        0
+      ],
+      "parent_energy": 0.0,
+      "sum_children": 0.0,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        17,
+        1,
+        1
+      ],
+      "parent_energy": 0.0,
+      "sum_children": 0.0,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        18,
+        0,
+        0
+      ],
+      "parent_energy": 2.2340712991918445e-09,
+      "sum_children": 2.2340712991918445e-09,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        18,
+        0,
+        1
+      ],
+      "parent_energy": 2.8070815314382358e-12,
+      "sum_children": 2.8070815314382358e-12,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        18,
+        1,
+        0
+      ],
+      "parent_energy": 0.0,
+      "sum_children": 0.0,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        18,
+        1,
+        1
+      ],
+      "parent_energy": 0.0,
+      "sum_children": 0.0,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        19,
+        0,
+        0
+      ],
+      "parent_energy": 1.2465251075309673e-08,
+      "sum_children": 1.2465251075309673e-08,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        19,
+        0,
+        1
+      ],
+      "parent_energy": 2.367997684617016e-08,
+      "sum_children": 2.367997684617016e-08,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        19,
+        1,
+        0
+      ],
+      "parent_energy": 0.0,
+      "sum_children": 0.0,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    },
+    {
+      "cell": [
+        6,
+        19,
+        1,
+        1
+      ],
+      "parent_energy": 0.0,
+      "sum_children": 0.0,
+      "max_abs_delta": {
+        "energy": 0.0,
+        "old_coordinate_force": 0.0,
+        "order_load": 0.0
+      }
+    }
+  ],
+  "reintegrated": [
+    {
+      "region": [
+        5,
+        18,
+        0,
+        0
+      ],
+      "old": 1.1218797690956641e-06,
+      "refined": 1.1218797690956641e-06,
+      "energy": {
+        "max_abs": 0.0,
+        "max_fraction_tolerance": 0.0,
+        "pass_roundoff": true
+      },
+      "force": {
+        "max_abs": 0.0,
+        "max_fraction_tolerance": 0.0,
+        "pass_roundoff": true
+      },
+      "load": {
+        "max_abs": 0.0,
+        "max_fraction_tolerance": 0.0,
+        "pass_roundoff": true
+      }
+    },
+    {
+      "region": "star",
+      "old": 2.4014734126034815e-05,
+      "refined": 2.4014734126034815e-05,
+      "energy": {
+        "max_abs": 0.0,
+        "max_fraction_tolerance": 0.0,
+        "pass_roundoff": true
+      },
+      "force": {
+        "max_abs": 0.0,
+        "max_fraction_tolerance": 0.0,
+        "pass_roundoff": true
+      },
+      "load": {
+        "max_abs": 0.0,
+        "max_fraction_tolerance": 0.0,
+        "pass_roundoff": true
+      }
+    }
+  ],
+  "currents_before": {
+    "feed_current": 10.573545763887278,
+    "bulk_current": 10.573545763887266,
+    "weak_disk_current": 10.573545763887198,
+    "incident_slice_current": 10.573545763887198,
+    "receiving_slice_current": 9.907524882433146,
+    "positive_slice_current": 10.573545763887198,
+    "port_error": 1.2434497875801753e-14,
+    "disk_minus_feed_current": -7.993605777301127e-14
+  },
+  "signed_new_coordinate_force": [
+    0.0013280451048080526,
+    0.00011961917263435503,
+    1.1327218716386804e-05
+  ],
+  "signed_work_calibration": {
+    "seam": 0.12129504969343591,
+    "fraction": 0.46331296155089785,
+    "regions": {
+      "target": {
+        "energy": 0.0,
+        "g": 0.0,
+        "deposition": 0.0,
+        "extra": [
+          5.4333063194693324e-05,
+          8.610896237055217e-05,
+          -1.165530645182237e-05
+        ]
+      },
+      "star": {
+        "energy": 0.0,
+        "g": 0.0,
+        "deposition": 0.0,
+        "extra": [
+          -0.0013280451048080526,
+          -0.00011961917263435503,
+          -1.1327218716386804e-05
+        ]
+      },
+      "outside": {
+        "energy": 0.0,
+        "g": 0.0,
+        "deposition": 0.0,
+        "extra": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "virtual_work": {
+      "0": {
+        "analytic": 0.187108537341669,
+        "signed": [
+          [
+            0.1871085378050627,
+            4.633937122910936e-10
+          ],
+          [
+            0.18710853744597494,
+            1.0430595276389454e-10
+          ]
+        ]
+      },
+      "1": {
+        "analytic": -0.006985894915390822,
+        "signed": [
+          [
+            -0.00698589490422119,
+            1.1169631192187168e-11
+          ],
+          [
+            -0.006985894942818788,
+            -2.742796614829679e-11
+          ]
+        ]
+      },
+      "2": {
+        "analytic": 0.1771372016143858,
+        "signed": [
+          [
+            0.17713720160236932,
+            -1.2016471151454766e-11
+          ],
+          [
+            0.17713720164031638,
+            2.593059100775008e-11
+          ]
+        ]
+      }
+    },
+    "neutral_min_J": 0.5042759227862145,
+    "order_work_error": 1.2127541741571539e-11
+  },
+  "proposed_increment": [
+    3.5144890993659444e-06,
+    7.200923376134725e-06,
+    3.604991590319824e-08
+  ],
+  "accepted_increment": [
+    2.0457018977997035e-16,
+    4.19148906141911e-16,
+    2.098381280852379e-18
+  ],
+  "accepted": [
+    {
+      "iteration": 0,
+      "direction": "lbfgs",
+      "alpha": 5.820766091346741e-11,
+      "solver_scale": 5.820766091346741e-11,
+      "directional_work": -3.757606920045577e-14,
+      "delta_total_energy": -3.7914116290949096e-14,
+      "tiny_without_meaningful_drop": true,
+      "crystal_energy": 0.20024657124170625,
+      "energy": 92185.47335775777
+    }
+  ],
+  "number_of_rejections": {
+    "active_fold": 34
+  },
+  "order_cert": {
+    "total_prisms": 6918,
+    "positive_bernstein_prisms": 6778,
+    "exact_prisms": 140,
+    "exact_subprisms": 614,
+    "inactive_fold_enclosures": 182,
+    "max_depth_used": 12,
+    "active_fold_prisms": 0,
+    "unresolved_prisms": 0,
+    "refined_children_checked": 12
+  },
+  "rounded_fixed_field_totals": [
+    92185.47335775777,
+    92185.47335775777
+  ],
+  "insignificant_energy_cut": 4.656612873077393e-10,
+  "last_rejection": {
+    "iteration": 0,
+    "direction": "lbfgs",
+    "alpha": 1.1641532182693481e-10,
+    "solver_scale": 1.1641532182693481e-10,
+    "directional_work": -7.515213840091154e-14,
+    "reused_archived_rejection": false
+  },
+  "rejected_point": {
+    "cell_t_x_angle": [
+      5,
+      18,
+      0
+    ],
+    "triangle": 0,
+    "barycentric": [
+      0.9999999990541255,
+      9.313225746154785e-10,
+      1.4551915228366852e-11
+    ],
+    "angular_fraction": 0.6832729216436286,
+    "placement_x_t_angle": [
+      0.9089381108127206,
+      0.24648705770733378,
+      0.1788588241008709
+    ],
+    "chart_determinant": -5.356264380595e-16,
+    "exact_determinant_sign": -1,
+    "order": 6.978407002e-19,
+    "exact_order_positive": true,
+    "child_half": 1,
+    "child_angular_fraction": 0.4098477219206984
+  },
+  "same_location_after_accepted_step": {
+    "primary": {
+      "cell_t_x_angle": [
+        5,
+        18,
+        0
+      ],
+      "triangle": 0,
+      "barycentric": [
+        0.9999999990541255,
+        9.313225746154785e-10,
+        1.4551915228366852e-11
+      ],
+      "angular_fraction": 0.6832729216436286,
+      "child_half": 1,
+      "child_angular_fraction": 0.40984772192069835,
+      "placement_x_t_angle": [
+        0.9089381108127199,
+        0.246487057707332,
+        0.1788588241008709
+      ],
+      "order": 7.009455328097171e-19,
+      "chi": 7.009455328097171e-19,
+      "chart_J": 5.3625675748632044e-14,
+      "J_interval": [
+        2.87323461415277e-14,
+        2.873234614152771e-14
+      ],
+      "J": 2.8732346141527706e-14,
+      "W": 30.78496742342444,
+      "chi_W": 2.1578585393142027e-17,
+      "hoop": 0.810067953298119,
+      "principal_stretches": [
+        3.7089369638392386e-14,
+        0.810067953298119,
+        0.810195620986898,
+        1.1814406826313513
+      ]
+    },
+    "independent": {
+      "chart_J": 5.3625675748632044e-14,
+      "J": 2.873234614152771e-14,
+      "chi": 7.009455328097171e-19,
+      "W": 30.784967423424437,
+      "chi_W": 2.1578585393142027e-17,
+      "placement_x_t_angle": [
+        0.9089381108127199,
+        0.246487057707332,
+        0.1788588241008709
+      ],
+      "upper_bound_ordered_J": 2.873234614152771e-14
+    }
+  },
+  "prior_location_after_accepted_step": {
+    "primary": {
+      "cell_t_x_angle": [
+        5,
+        18,
+        0
+      ],
+      "triangle": 0,
+      "barycentric": [
+        0.999999996216502,
+        3.725290298461914e-09,
+        5.820766091346741e-11
+      ],
+      "angular_fraction": 0.6832729216436064,
+      "child_half": 1,
+      "child_angular_fraction": 0.409847721920657,
+      "placement_x_t_angle": [
+        0.908938110861729,
+        0.24648705769075596,
+        0.17885882410087225
+      ],
+      "order": 9.15112697683453e-21,
+      "chi": 9.15112697683453e-21,
+      "chart_J": 8.402110740441254e-14,
+      "J_interval": [
+        4.501805353508283e-14,
+        4.501805353508284e-14
+      ],
+      "J": 4.5018053535082835e-14,
+      "W": 30.335927356017475,
+      "chi_W": 2.776079231949441e-19,
+      "hoop": 0.8100679533744871,
+      "principal_stretches": [
+        5.804559413775597e-14,
+        0.8100679533744871,
+        0.810195621063287,
+        1.181440682686487
+      ]
+    },
+    "independent": {
+      "chart_J": 8.402110740441254e-14,
+      "J": 4.501805353508287e-14,
+      "chi": 9.15112697683453e-21,
+      "W": 30.335927356017475,
+      "chi_W": 2.776079231949441e-19,
+      "placement_x_t_angle": [
+        0.908938110861729,
+        0.24648705769075596,
+        0.17885882410087225
+      ],
+      "upper_bound_ordered_J": 4.501805353508287e-14
+    }
+  },
+  "material_residual": {
+    "material_force_max": 0.07769590555770124,
+    "material_force_site": [
+      1,
+      16,
+      3,
+      0
+    ],
+    "angular_sum_force_max": 0.28984002460682523,
+    "angular_sum_force_site": [
+      1,
+      16,
+      0
+    ],
+    "bond_force_max": 0.07769590555770124,
+    "last_free_ring_angular_sum": [
+      0.0,
+      0.0
+    ],
+    "last_free_ring_peak_per_direction": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "last_free_ring_reference": [
+      0.9583333333333333,
+      0.9853121128230744
+    ],
+    "last_free_ring_landed_depth_fraction": [
+      0.9717142567743352,
+      0.9717184697225854
+    ],
+    "child_node_force": [
+      0.0003369638905079892,
+      0.00028281011238022306,
+      3.659023582485828e-06
+    ],
+    "child_node_reference": [
+      0.9118726769384466,
+      0.20833333333333331,
+      0.12129504969343591
+    ]
+  },
+  "final_verified_bounds": {
+    "scope": "Six parents and both angular children. Lower J bound assumes the full orientation guard passed.",
+    "sampled_positive_points": 913,
+    "full_constitutive_points": 69,
+    "observed_ordered_children": 12,
+    "positive_to_exact_zero_segment_endpoints": 82,
+    "infimum_J_bounds": [
+      0.0,
+      2.1102191078959685e-14
+    ],
+    "best_J_witness": {
+      "cell_t_x_angle": [
+        5,
+        18,
+        0
+      ],
+      "triangle": 0,
+      "barycentric": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "angular_fraction": 0.6832729216436431,
+      "child_half": 1,
+      "child_angular_fraction": 0.40984772192072527,
+      "placement_x_t_angle": [
+        0.9089381107963834,
+        0.24648705771285753,
+        0.17885882410087225
+      ],
+      "order": 8.299761227988374e-21,
+      "chi": 8.299761227988374e-21,
+      "chart_J": 3.938485395173798e-14,
+      "J_interval": [
+        2.1102191078959678e-14,
+        2.1102191078959685e-14
+      ],
+      "J": 2.110219107895968e-14,
+      "W": 31.093614077053928,
+      "chi_W": 2.580695725547657e-19,
+      "hoop": 0.8100679532726628,
+      "principal_stretches": [
+        2.7184630447213253e-14,
+        0.8100679532726628,
+        0.8101956209614355,
+        1.1814406826129733
+      ]
+    },
+    "infimum_chi_bounds": [
+      0.0,
+      0.0
+    ],
+    "smallest_positive_chi_witness": {
+      "cell_t_x_angle": [
+        4,
+        17,
+        0
+      ],
+      "triangle": 1,
+      "barycentric": [
+        0.7892430038020097,
+        0.21075699619799032,
+        0.0
+      ],
+      "angular_fraction": 0.46331296155089785,
+      "child_half": 0,
+      "child_angular_fraction": 1.0,
+      "placement_x_t_angle": [
+        0.9053254437869822,
+        0.24085448951932992,
+        0.12128071824831592
+      ],
+      "order": 8.527945688495904e-22,
+      "chi": 8.527945688495904e-22,
+      "chart_J": 1.1682234903050266,
+      "J_interval": [
+        0.6215357578684813,
+        0.6215357578684815
+      ],
+      "J": 0.6215357578684814,
+      "W": 0.544349900892074,
+      "chi_W": 4.642186390345735e-22,
+      "hoop": 0.8050702571921969,
+      "principal_stretches": [
+        0.6209645482787393,
+        0.8050702571921969,
+        0.8052506722833735,
+        1.543954275957213
+      ]
+    },
+    "infimum_chi_W_bounds": [
+      0.0,
+      0.0
+    ],
+    "regular_zero_order_boundary": {
+      "cell_t_x_angle": [
+        4,
+        17,
+        0
+      ],
+      "triangle": 1,
+      "barycentric": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "angular_fraction": 0.14519522582075572,
+      "exact_order": 0.0,
+      "chart_J": 1.0421216094940562,
+      "positive_midpoint_order": 0.04719559646505319,
+      "strict_J_inside": true,
+      "ordered_approach": "One Q1 support interval with positive order in its interior"
+    },
+    "chi_W_witness_estimate": 4.642186390345735e-22,
+    "smallest_chi_W_witness": {
+      "cell_t_x_angle": [
+        4,
+        17,
+        0
+      ],
+      "triangle": 1,
+      "barycentric": [
+        0.7892430038020097,
+        0.21075699619799032,
+        0.0
+      ],
+      "angular_fraction": 0.46331296155089785,
+      "child_half": 0,
+      "child_angular_fraction": 1.0,
+      "placement_x_t_angle": [
+        0.9053254437869822,
+        0.24085448951932992,
+        0.12128071824831592
+      ],
+      "order": 8.527945688495904e-22,
+      "chi": 8.527945688495904e-22,
+      "chart_J": 1.1682234903050266,
+      "J_interval": [
+        0.6215357578684813,
+        0.6215357578684815
+      ],
+      "J": 0.6215357578684814,
+      "W": 0.544349900892074,
+      "chi_W": 4.642186390345735e-22,
+      "hoop": 0.8050702571921969,
+      "principal_stretches": [
+        0.6209645482787393,
+        0.8050702571921969,
+        0.8052506722833735,
+        1.543954275957213
+      ]
+    },
+    "chi_W_qualification": "Upper witness evaluated with the constitutive law to float precision; no certified rounding bound.",
+    "zero_order_infimum_proved_on_segment": true,
+    "order_values": "Distinct positive witnesses. An unresolved lower infimum need not be attained at a point."
+  },
+  "independent_tight_witness": {
+    "chart_J": 3.938485395173798e-14,
+    "J": 2.1102191078959685e-14,
+    "chi": 8.299761227988374e-21,
+    "W": 31.093614077053928,
+    "chi_W": 2.5806957255476566e-19,
+    "placement_x_t_angle": [
+      0.9089381107963834,
+      0.24648705771285753,
+      0.17885882410087225
+    ],
+    "upper_bound_ordered_J": 2.1102191078959685e-14
+  },
+  "signed_shape_forces_last_complete": {
+    "checkpoint": 10,
+    "x": [
+      0.03203348161357326,
+      -0.22160765321621922,
+      0.0008870732843312349,
+      -0.0685819081404728,
+      0.0708792715906547,
+      0.02342688643280306
+    ],
+    "forces": [
+      0.15056488336995244,
+      -0.6412364018615335,
+      0.7054993329802528,
+      -0.6668344576610252,
+      0.4656029341276735,
+      0.009007417247630656
+    ],
+    "sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b"
+  },
+  "shape": {
+    "exit": 3.2775726740152384,
+    "depth": 0.8200888333873811
+  },
+  "sampled_full_disk_zero_from": 0.28460443110735106,
+  "frozen_field_flow": {
+    "feed_current": 10.573545763887278,
+    "bulk_current": 10.573545763887266,
+    "weak_disk_current": 10.573545763887198,
+    "port_error": 1.2434497875801753e-14,
+    "disk_minus_feed_current": -7.993605777301127e-14,
+    "dense_total_subsonic_share": 0.6611090860566464
+  },
+  "commands": {
+    "guard_audit": [
+      "env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "PYTHONPATH=_scratch/s11c/r4_feasible_descent01/pin:_scratch/s11c/r4_exact_support01/driver:_scratch/s11c/r4_exact_support01/patch:_scratch/s11c/r4_melted_survival01/pin/software/stage1_solver/tools",
+      "/usr/bin/python3",
+      "-Bu",
+      "_scratch/s11c/r4_local_refinement01/audit_pin/mouth_r4_refinement_audit.py",
+      "_scratch/s11c",
+      "_scratch/s11c/r4_local_refinement01/audit"
+    ],
+    "guard_step": [
+      "env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "PYTHONPATH=_scratch/s11c/r4_feasible_descent01/pin:_scratch/s11c/r4_exact_support01/driver:_scratch/s11c/r4_exact_support01/patch:_scratch/s11c/r4_melted_survival01/pin/software/stage1_solver/tools",
+      "/usr/bin/python3",
+      "-Bu",
+      "_scratch/s11c/r4_local_refinement01/descent_pin/mouth_r4_refinement_descent.py",
+      "_scratch/s11c/r4_local_refinement01"
+    ],
+    "guard_final": [
+      "env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "PYTHONPATH=_scratch/s11c/r4_feasible_descent01/pin:_scratch/s11c/r4_exact_support01/driver:_scratch/s11c/r4_exact_support01/patch:_scratch/s11c/r4_melted_survival01/pin/software/stage1_solver/tools",
+      "/usr/bin/python3",
+      "-Bu",
+      "_scratch/s11c/r4_local_refinement01/descent_pin/mouth_r4_refinement_follow.py",
+      "_scratch/s11c/r4_local_refinement01"
+    ]
+  },
+  "source_hashes": {
+    "audit_pin": {
+      "mouth_exact_checkpoint_control.py": "71a1145c0714e856a957e2563bebcc57b7150eca54c8adb15a6761ea77a9cab1",
+      "mouth_r4_conforming_prisms.py": "b9df5c5874bea4e3d6e6e3200e83526a8d6b51c96c08c7eaa97221012a9a031e",
+      "mouth_r4_refined_solid.py": "cb5eaae4e27061221b2099a77a3d7eb68ee45c76d360ba8d8d9fd97db1a2910a",
+      "mouth_r4_refinement_audit.py": "d3864e95e64c2a0731bab5a98d6484c88ef17c65b9958d435bbd26271a201b6e"
+    },
+    "descent_pin": {
+      "mouth_exact_checkpoint_control.py": "71a1145c0714e856a957e2563bebcc57b7150eca54c8adb15a6761ea77a9cab1",
+      "mouth_r4_conforming_prisms.py": "a3641db42d259283af49dfc4ba0170439149ca538f753cf2132c3e8a83172e16",
+      "mouth_r4_refined_bounds.py": "c69e256714fa901ff7ad1255a768badc32a947bbedb3c521dd498439ab0c348c",
+      "mouth_r4_refined_solid.py": "cb5eaae4e27061221b2099a77a3d7eb68ee45c76d360ba8d8d9fd97db1a2910a",
+      "mouth_r4_refinement_audit.py": "d3864e95e64c2a0731bab5a98d6484c88ef17c65b9958d435bbd26271a201b6e",
+      "mouth_r4_refinement_descent.py": "bf2014c2a5990e30e16f244ac5e3c579d0948098e3f9179c8188cd92d9491191",
+      "mouth_r4_refinement_follow.py": "0f33fd0142305b813dac22a3e858eaf9e4099b4df8eb9cb7ed7430bfb158e19e",
+      "mouth_r4_refinement_review.py": "28fb3bc6fc283cbe3e33aa25ee9f07b849ca5e53ad159425bd7b89fffa3efdf5"
+    }
+  },
+  "cpp_hashes": {
+    "mouth_r4_refined_solid.cpp": "b29f9855d37510787e28388710b3db978d3fe59bf658de44d8d14ef131e05ad7",
+    "mouth_free_shape_solid.cpp": "0f52573e72b39d777f284478d7d48bd377576f919804aebd4c807726df1b3c82"
+  }
+}

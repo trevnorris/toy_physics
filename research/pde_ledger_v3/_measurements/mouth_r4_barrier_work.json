@@ -1,0 +1,1086 @@
+{
+  "passed": false,
+  "failed": [
+    [
+      "primary",
+      "log_depth",
+      1e-05,
+      "central check"
+    ],
+    [
+      "primary",
+      "log_depth",
+      5e-06,
+      "central check"
+    ],
+    [
+      "secondary",
+      "log_depth",
+      1e-05,
+      "central check"
+    ],
+    [
+      "secondary",
+      "log_depth",
+      5e-06,
+      "central check"
+    ]
+  ],
+  "sources": {
+    "mouth_r4_barrier_gradient.py": "a67a232e6003321d6dc159db1292e3533a8b48932bece16e1ef24a85adff20ae",
+    "mouth_r4_barrier_shape.py": "71c432d20973c43bdebbbed4ad41e1f2f8b00526f42a26fe1f53924d147cf264",
+    "mouth_r4_melt_barrier.py": "8df396304cfec1b6f6c7f3745e644d4804842150c51f4319d50b5804a50ff9c1",
+    "mouth_r4_melt_barrier.cpp": "c94cea2d4c84ad7d37fa969c38458848d2a35d159879fc2c713f22ce6c141d0d",
+    "mouth_r4_harmonic_gradient.py": "e9c331389472bba636e967651d13262fa363823cd58dd163f7563470e1266570"
+  },
+  "absolute_tolerance": 1e-07,
+  "cases": {
+    "primary": {
+      "source_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+      "fixed_trace_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+      "modes": {
+        "active": {
+          "source_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+          "fixed_trace_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+          "case": "primary",
+          "epsilon": 1e-08,
+          "test": "active",
+          "node": [
+            19,
+            9,
+            19
+          ],
+          "component": "radial",
+          "analytic_physical": -7.166313032983109e-06,
+          "work": {
+            "analytic": -7.188963323919838e-06,
+            "steps": [
+              {
+                "h": 2e-06,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -7.189447535834929e-06,
+                    "min_chart": 0.13542712430768755,
+                    "predictor_chart": 0.13542712430768755,
+                    "inner_residual": 2.1532580829486392e-08,
+                    "melted_label_change": 2.1922155283848888e-06,
+                    "iterations": 70
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -7.18848534921519e-06,
+                    "min_chart": 0.13542712430768755,
+                    "predictor_chart": 0.13542712430768755,
+                    "inner_residual": 2.9734164352923642e-08,
+                    "melted_label_change": 2.1922242856020624e-06,
+                    "iterations": 60
+                  }
+                },
+                "central": -7.18896644252506e-06,
+                "central_minus_analytic": -3.1186052216452946e-12
+              },
+              {
+                "h": 1e-06,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -7.189196580967608e-06,
+                    "min_chart": 0.13542712430768755,
+                    "predictor_chart": 0.13542712430768755,
+                    "inner_residual": 2.509329080635503e-08,
+                    "melted_label_change": 1.0958101223645933e-06,
+                    "iterations": 55
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -7.188722426549579e-06,
+                    "min_chart": 0.13542712430768755,
+                    "predictor_chart": 0.13542712430768755,
+                    "inner_residual": 2.5743926118475258e-08,
+                    "melted_label_change": 1.0962377171575e-06,
+                    "iterations": 46
+                  }
+                },
+                "central": -7.188959503758593e-06,
+                "central_minus_analytic": 3.8201612453079865e-12
+              }
+            ]
+          }
+        },
+        "log_depth": {
+          "source_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+          "fixed_trace_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+          "case": "primary",
+          "epsilon": 1e-08,
+          "test": "log_depth",
+          "analytic_physical": 0.008779701692350131,
+          "analytic_unit_gauge": 0.10103173349199311,
+          "gauge_anchor": 8.090346663896042e-09,
+          "independent_unit_error": -1.0771548583643487e-16,
+          "work": {
+            "analytic": 0.008779702702667466,
+            "steps": [
+              {
+                "h": 1e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.009013483164672974,
+                    "min_chart": 0.1354359439567015,
+                    "min_chart_active": 0.1354359439567015,
+                    "inner_residual": 1.7404060817733172e-08,
+                    "iterations": 66,
+                    "melted_label_change": 4.5498149270351007e-07,
+                    "one_sided_unit_gauge_force": 0.10103717052213057
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.00854569027043713,
+                    "min_chart": 0.1354183045705248,
+                    "min_chart_active": 0.1354183045705248,
+                    "inner_residual": 2.9686695559487733e-08,
+                    "iterations": 57,
+                    "melted_label_change": 4.5498595546700216e-07,
+                    "one_sided_unit_gauge_force": 0.10102629591977279
+                  }
+                },
+                "central": 0.008779586717555053,
+                "central_minus_analytic": -1.1598511241370235e-07,
+                "unit_gauge_central": 0.10103173322095169,
+                "unit_gauge_central_minus_analytic": -2.710414254147864e-10
+              },
+              {
+                "h": 5e-06,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.008897161352945186,
+                    "min_chart": 0.13543153414323178,
+                    "min_chart_active": 0.13543153414323178,
+                    "inner_residual": 2.9360931996878087e-08,
+                    "iterations": 57,
+                    "melted_label_change": 2.2746726069389211e-07,
+                    "one_sided_unit_gauge_force": 0.1010344519094327
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.008661804899579758,
+                    "min_chart": 0.135422714450145,
+                    "min_chart_active": 0.135422714450145,
+                    "inner_residual": 1.7117514513036863e-08,
+                    "iterations": 55,
+                    "melted_label_change": 2.274605963581422e-07,
+                    "one_sided_unit_gauge_force": 0.1010290146365387
+                  }
+                },
+                "central": 0.008779483126262472,
+                "central_minus_analytic": -2.1957640499413456e-07,
+                "unit_gauge_central": 0.1010317332729857,
+                "unit_gauge_central_minus_analytic": -2.190074094299277e-10
+              }
+            ]
+          }
+        },
+        "scaled_log_exit": {
+          "source_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+          "fixed_trace_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+          "case": "primary",
+          "epsilon": 1e-08,
+          "test": "scaled_log_exit",
+          "analytic_physical": -0.6740227234084968,
+          "analytic_unit_gauge": -0.04704161026121992,
+          "gauge_anchor": 8.090346663896042e-09,
+          "independent_unit_error": -1.0771548583643487e-16,
+          "work": {
+            "analytic": -0.6740227238789129,
+            "steps": [
+              {
+                "h": 0.0001,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -0.6737233005372032,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.976758255082007e-08,
+                    "iterations": 59,
+                    "melted_label_change": 1.1878996822312082e-06,
+                    "one_sided_unit_gauge_force": -0.04703432180842834
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -0.6743221696608805,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.434708638973833e-08,
+                    "iterations": 63,
+                    "melted_label_change": 1.1850905367039033e-06,
+                    "one_sided_unit_gauge_force": -0.04704889928935013
+                  }
+                },
+                "central": -0.6740227350990419,
+                "central_minus_analytic": -1.1220128937061702e-08,
+                "unit_gauge_central": -0.04704161054888924,
+                "unit_gauge_central_minus_analytic": -2.876693189213242e-10
+              },
+              {
+                "h": 5e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -0.6738729486086534,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.8032042929948542e-08,
+                    "iterations": 49,
+                    "melted_label_change": 5.949359213608396e-07,
+                    "one_sided_unit_gauge_force": -0.047037965959895976
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -0.6741725291067844,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 1.5672534313523542e-08,
+                    "iterations": 58,
+                    "melted_label_change": 5.918521117642683e-07,
+                    "one_sided_unit_gauge_force": -0.047045254697425785
+                  }
+                },
+                "central": -0.6740227388577189,
+                "central_minus_analytic": -1.4978805973342446e-08,
+                "unit_gauge_central": -0.04704161032866088,
+                "unit_gauge_central_minus_analytic": -6.74409625367467e-11
+              }
+            ]
+          }
+        },
+        "mean_width": {
+          "source_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+          "fixed_trace_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+          "case": "primary",
+          "epsilon": 1e-08,
+          "test": "mean_width",
+          "analytic_physical": 0.5732765796971876,
+          "analytic_unit_gauge": -0.3625703898960431,
+          "gauge_anchor": 8.090346663896042e-09,
+          "independent_unit_error": -1.0771548583643487e-16,
+          "work": {
+            "analytic": 0.5732765760714837,
+            "steps": [
+              {
+                "h": 0.0001,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.5781344364107468,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.3942191431682025e-08,
+                    "iterations": 58,
+                    "melted_label_change": 2.046056061633106e-06,
+                    "one_sided_unit_gauge_force": -0.3625491737967695
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.5684186903792381,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.286409816115503e-08,
+                    "iterations": 70,
+                    "melted_label_change": 2.044879013729517e-06,
+                    "one_sided_unit_gauge_force": -0.36259160681537866
+                  }
+                },
+                "central": 0.5732765633949924,
+                "central_minus_analytic": -1.2676491301100157e-08,
+                "unit_gauge_central": -0.3625703903060741,
+                "unit_gauge_central_minus_analytic": -4.100309536347879e-10
+              },
+              {
+                "h": 5e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.5757055673176503,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.8613887535864496e-08,
+                    "iterations": 56,
+                    "melted_label_change": 1.0229982244647218e-06,
+                    "one_sided_unit_gauge_force": -0.36255978174206593
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.5708475486944766,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.352646168504724e-08,
+                    "iterations": 58,
+                    "melted_label_change": 1.0221840734403465e-06,
+                    "one_sided_unit_gauge_force": -0.3625809982547148
+                  }
+                },
+                "central": 0.5732765580060635,
+                "central_minus_analytic": -1.806542027082969e-08,
+                "unit_gauge_central": -0.36257038999839036,
+                "unit_gauge_central_minus_analytic": -1.023472417926996e-10
+              }
+            ]
+          }
+        },
+        "depth_asymmetry": {
+          "source_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+          "fixed_trace_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+          "case": "primary",
+          "epsilon": 1e-08,
+          "test": "depth_asymmetry",
+          "analytic_physical": -0.5769945334426517,
+          "analytic_unit_gauge": 0.314837787177696,
+          "gauge_anchor": 8.090346663896042e-09,
+          "independent_unit_error": -1.0771548583643487e-16,
+          "work": {
+            "analytic": -0.5769945302942738,
+            "steps": [
+              {
+                "h": 0.0001,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -0.5735955836474085,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 1.8579987912364232e-08,
+                    "iterations": 63,
+                    "melted_label_change": 1.8284732534179504e-06,
+                    "one_sided_unit_gauge_force": 0.3148592618245231
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -0.5803934768806458,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.927670111999318e-08,
+                    "iterations": 58,
+                    "melted_label_change": 1.826909584723424e-06,
+                    "one_sided_unit_gauge_force": 0.3148163125563173
+                  }
+                },
+                "central": -0.5769945302640271,
+                "central_minus_analytic": 3.024669403828284e-11,
+                "unit_gauge_central": 0.3148377871904202,
+                "unit_gauge_central_minus_analytic": 1.2724210574077688e-11
+              },
+              {
+                "h": 5e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -0.5752949522896249,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.6369261736398225e-08,
+                    "iterations": 54,
+                    "melted_label_change": 9.146303969198577e-07,
+                    "one_sided_unit_gauge_force": 0.3148485245175711
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -0.5786941069353514,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.6331310228305382e-08,
+                    "iterations": 54,
+                    "melted_label_change": 9.129254876505399e-07,
+                    "one_sided_unit_gauge_force": 0.31482704987502436
+                  }
+                },
+                "central": -0.5769945296124881,
+                "central_minus_analytic": 6.817857389762594e-10,
+                "unit_gauge_central": 0.31483778719629774,
+                "unit_gauge_central_minus_analytic": 1.8601731266443267e-11
+              }
+            ]
+          }
+        },
+        "waist_profile": {
+          "source_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+          "fixed_trace_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+          "case": "primary",
+          "epsilon": 1e-08,
+          "test": "waist_profile",
+          "analytic_physical": 0.39760177504302235,
+          "analytic_unit_gauge": -0.22838806110302787,
+          "gauge_anchor": 8.090346663896042e-09,
+          "independent_unit_error": -1.0771548583643487e-16,
+          "work": {
+            "analytic": 0.39760177275914177,
+            "steps": [
+              {
+                "h": 0.0001,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.398532987945781,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.8212825391865648e-08,
+                    "iterations": 75,
+                    "melted_label_change": 3.284688299409755e-06,
+                    "one_sided_unit_gauge_force": -0.22834693659807404
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.3966705421953437,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.205880031413976e-08,
+                    "iterations": 78,
+                    "melted_label_change": 3.283265968656579e-06,
+                    "one_sided_unit_gauge_force": -0.2284291869561017
+                  }
+                },
+                "central": 0.39760176507056233,
+                "central_minus_analytic": -7.68857943977963e-09,
+                "unit_gauge_central": -0.22838806177708787,
+                "unit_gauge_central_minus_analytic": -6.740600022592247e-10
+              },
+              {
+                "h": 5e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.39806758156457706,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.578890461076011e-08,
+                    "iterations": 57,
+                    "melted_label_change": 1.6425118404828076e-06,
+                    "one_sided_unit_gauge_force": -0.22836749868780393
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.39713602588990493,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.5516318486514672e-08,
+                    "iterations": 67,
+                    "melted_label_change": 1.6414670423459121e-06,
+                    "one_sided_unit_gauge_force": -0.22840862387074362
+                  }
+                },
+                "central": 0.39760180372724097,
+                "central_minus_analytic": 3.096809919611587e-08,
+                "unit_gauge_central": -0.22838806127927377,
+                "unit_gauge_central_minus_analytic": -1.7624590675779928e-10
+              }
+            ]
+          }
+        },
+        "polar_equatorial": {
+          "source_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+          "fixed_trace_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+          "case": "primary",
+          "epsilon": 1e-08,
+          "test": "polar_equatorial",
+          "analytic_physical": 0.020185967867906298,
+          "analytic_unit_gauge": -0.003978777670355701,
+          "gauge_anchor": 8.090346663896042e-09,
+          "independent_unit_error": -1.0771548583643487e-16,
+          "work": {
+            "analytic": 0.02018596782811852,
+            "steps": [
+              {
+                "h": 0.0001,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.0204281644295163,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.75650831257912e-08,
+                    "iterations": 62,
+                    "melted_label_change": 2.305769261967683e-06,
+                    "one_sided_unit_gauge_force": -0.003964119091081211
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.019943770860898248,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.477829621496362e-08,
+                    "iterations": 56,
+                    "melted_label_change": 2.3061551596703644e-06,
+                    "one_sided_unit_gauge_force": -0.003993436255324441
+                  }
+                },
+                "central": 0.020185967645207276,
+                "central_minus_analytic": -1.8291124517788582e-10,
+                "unit_gauge_central": -0.003978777673202826,
+                "unit_gauge_central_minus_analytic": -2.8471253132877905e-12
+              },
+              {
+                "h": 5e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.02030706397950934,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.8833854139823784e-08,
+                    "iterations": 56,
+                    "melted_label_change": 1.152262936787718e-06,
+                    "one_sided_unit_gauge_force": -0.0039714483721861645
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.020064870357037898,
+                    "min_chart": 0.13542712430771298,
+                    "min_chart_active": 0.13542712430771298,
+                    "inner_residual": 2.6529854216304858e-08,
+                    "iterations": 53,
+                    "melted_label_change": 1.1532994066421054e-06,
+                    "one_sided_unit_gauge_force": -0.003986106963234303
+                  }
+                },
+                "central": 0.020185967168273616,
+                "central_minus_analytic": -6.598449044104004e-10,
+                "unit_gauge_central": -0.003978777667710234,
+                "unit_gauge_central_minus_analytic": 2.6454671786524386e-12
+              }
+            ]
+          }
+        }
+      },
+      "max_abs_centered_error": 2.1957640499413456e-07,
+      "max_abs_unit_gauge_centered_error": 6.740600022592247e-10
+    },
+    "secondary": {
+      "source_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+      "fixed_trace_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+      "modes": {
+        "active": {
+          "source_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+          "fixed_trace_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+          "case": "secondary",
+          "epsilon": 1e-10,
+          "test": "active",
+          "node": [
+            19,
+            9,
+            5
+          ],
+          "component": "radial",
+          "analytic_physical": -1.5283679985496855e-07,
+          "work": {
+            "analytic": -1.5285601114576607e-07,
+            "steps": [
+              {
+                "h": 2e-06,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -1.52869168574349e-07,
+                    "min_chart": 0.0210602569027956,
+                    "predictor_chart": 0.0210602569027956,
+                    "inner_residual": 2.511279264746924e-08,
+                    "melted_label_change": 9.98531288542992e-07,
+                    "iterations": 43
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -1.528414082613729e-07,
+                    "min_chart": 0.0210602569027956,
+                    "predictor_chart": 0.0210602569027956,
+                    "inner_residual": 2.8575738136209575e-08,
+                    "melted_label_change": 9.99140703672463e-07,
+                    "iterations": 49
+                  }
+                },
+                "central": -1.5285528841786095e-07,
+                "central_minus_analytic": 7.22727905120364e-13
+              },
+              {
+                "h": 1e-06,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -1.528691673900236e-07,
+                    "min_chart": 0.0210602569027956,
+                    "predictor_chart": 0.0210602569027956,
+                    "inner_residual": 2.16429696512678e-08,
+                    "melted_label_change": 4.996173441629281e-07,
+                    "iterations": 39
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -1.5284140944573223e-07,
+                    "min_chart": 0.0210602569027956,
+                    "predictor_chart": 0.0210602569027956,
+                    "inner_residual": 2.4022863148167803e-08,
+                    "melted_label_change": 4.997727045541467e-07,
+                    "iterations": 43
+                  }
+                },
+                "central": -1.528552884178779e-07,
+                "central_minus_analytic": 7.227278881797051e-13
+              }
+            ]
+          }
+        },
+        "log_depth": {
+          "source_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+          "fixed_trace_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+          "case": "secondary",
+          "epsilon": 1e-10,
+          "test": "log_depth",
+          "analytic_physical": 0.07538911289004373,
+          "analytic_unit_gauge": 0.0907780981415083,
+          "gauge_anchor": 8.873888470808405e-11,
+          "independent_unit_error": -3.237969788127959e-16,
+          "work": {
+            "analytic": 0.07538911289912154,
+            "steps": [
+              {
+                "h": 1e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.0756281247015893,
+                    "min_chart": 0.021069674266500464,
+                    "min_chart_active": 0.021069674266500464,
+                    "inner_residual": 1.690545817266756e-08,
+                    "iterations": 62,
+                    "melted_label_change": 5.441075494605485e-07,
+                    "one_sided_unit_gauge_force": 0.09078338668564394
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.07514988024562294,
+                    "min_chart": 0.021050839444946595,
+                    "min_chart_active": 0.021050839444946595,
+                    "inner_residual": 1.781799936761974e-08,
+                    "iterations": 63,
+                    "melted_label_change": 5.441560855246053e-07,
+                    "one_sided_unit_gauge_force": 0.09077280843683186
+                  }
+                },
+                "central": 0.07538900247360612,
+                "central_minus_analytic": -1.1042551541218248e-07,
+                "unit_gauge_central": 0.09077809756123789,
+                "unit_gauge_central_minus_analytic": -5.80270415051487e-10
+              },
+              {
+                "h": 5e-06,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.07550918171716511,
+                    "min_chart": 0.02106496559642796,
+                    "min_chart_active": 0.02106496559642796,
+                    "inner_residual": 2.3367341648455886e-08,
+                    "iterations": 55,
+                    "melted_label_change": 2.7204814379011566e-07,
+                    "one_sided_unit_gauge_force": 0.0907807421038961
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.07526860496188506,
+                    "min_chart": 0.021055548185652688,
+                    "min_chart_active": 0.021055548185652688,
+                    "inner_residual": 2.9204075201909926e-08,
+                    "iterations": 57,
+                    "melted_label_change": 2.7211759145995273e-07,
+                    "one_sided_unit_gauge_force": 0.09077545304012506
+                  }
+                },
+                "central": 0.07538889333952509,
+                "central_minus_analytic": -2.1955959644825995e-07,
+                "unit_gauge_central": 0.09077809757201058,
+                "unit_gauge_central_minus_analytic": -5.694977267545198e-10
+              }
+            ]
+          }
+        },
+        "scaled_log_exit": {
+          "source_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+          "fixed_trace_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+          "case": "secondary",
+          "epsilon": 1e-10,
+          "test": "scaled_log_exit",
+          "analytic_physical": -0.6817121970430611,
+          "analytic_unit_gauge": -0.054420222043041595,
+          "gauge_anchor": 8.873888470808405e-11,
+          "independent_unit_error": -3.237969788127959e-16,
+          "work": {
+            "analytic": -0.681712197048503,
+            "steps": [
+              {
+                "h": 0.0001,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -0.68141306804996,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.988481954350336e-08,
+                    "iterations": 64,
+                    "melted_label_change": 1.0364453227884596e-06,
+                    "one_sided_unit_gauge_force": -0.05441218973390864
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -0.6820113484691301,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.8689058160363823e-08,
+                    "iterations": 65,
+                    "melted_label_change": 1.0363990576300885e-06,
+                    "one_sided_unit_gauge_force": -0.054428255113869596
+                  }
+                },
+                "central": -0.681712208259545,
+                "central_minus_analytic": -1.121104198364975e-08,
+                "unit_gauge_central": -0.05442022242388912,
+                "unit_gauge_central_minus_analytic": -3.808475271260825e-10
+              },
+              {
+                "h": 5e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -0.681562568952153,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.7284531589144914e-08,
+                    "iterations": 53,
+                    "melted_label_change": 5.182271167192276e-07,
+                    "one_sided_unit_gauge_force": -0.054416205815998674
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -0.6818618550978917,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.4461825433742118e-08,
+                    "iterations": 62,
+                    "melted_label_change": 5.181730943215612e-07,
+                    "one_sided_unit_gauge_force": -0.05442423849651913
+                  }
+                },
+                "central": -0.6817122120250223,
+                "central_minus_analytic": -1.4976519246978626e-08,
+                "unit_gauge_central": -0.0544202221562589,
+                "unit_gauge_central_minus_analytic": -1.1321730358782034e-10
+              }
+            ]
+          }
+        },
+        "mean_width": {
+          "source_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+          "fixed_trace_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+          "case": "secondary",
+          "epsilon": 1e-10,
+          "test": "mean_width",
+          "analytic_physical": 0.546253508721031,
+          "analytic_unit_gauge": -0.4010241879683696,
+          "gauge_anchor": 8.873888470808405e-11,
+          "independent_unit_error": -3.237969788127959e-16,
+          "work": {
+            "analytic": 0.5462535086809286,
+            "steps": [
+              {
+                "h": 0.0001,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.5511038184167563,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.8727919695664336e-08,
+                    "iterations": 74,
+                    "melted_label_change": 1.834855700044713e-06,
+                    "one_sided_unit_gauge_force": -0.40099743928416276
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.5414031735923406,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.9344537280998062e-08,
+                    "iterations": 69,
+                    "melted_label_change": 1.8348498140308145e-06,
+                    "one_sided_unit_gauge_force": -0.401050937631381
+                  }
+                },
+                "central": 0.5462534960045484,
+                "central_minus_analytic": -1.2676380167775392e-08,
+                "unit_gauge_central": -0.4010241884577719,
+                "unit_gauge_central_minus_analytic": -4.894022964663236e-10
+              },
+              {
+                "h": 5e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.5486787246255024,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.7990587066900607e-08,
+                    "iterations": 59,
+                    "melted_label_change": 9.174386622068376e-07,
+                    "one_sided_unit_gauge_force": -0.4010108134578426
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.543828256605459,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.5180109617392935e-08,
+                    "iterations": 65,
+                    "melted_label_change": 9.174548191159815e-07,
+                    "one_sided_unit_gauge_force": -0.40103756262546236
+                  }
+                },
+                "central": 0.5462534906154807,
+                "central_minus_analytic": -1.8065447915383004e-08,
+                "unit_gauge_central": -0.4010241880416525,
+                "unit_gauge_central_minus_analytic": -7.328293527564256e-11
+              }
+            ]
+          }
+        },
+        "depth_asymmetry": {
+          "source_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+          "fixed_trace_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+          "case": "secondary",
+          "epsilon": 1e-10,
+          "test": "depth_asymmetry",
+          "analytic_physical": -0.5655226774171702,
+          "analytic_unit_gauge": 0.3492635035603067,
+          "gauge_anchor": 8.873888470808405e-11,
+          "independent_unit_error": -3.237969788127959e-16,
+          "work": {
+            "analytic": -0.5655226773822438,
+            "steps": [
+              {
+                "h": 0.0001,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -0.5621289389470323,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.4219141099741937e-08,
+                    "iterations": 66,
+                    "melted_label_change": 1.3821992586038334e-06,
+                    "one_sided_unit_gauge_force": 0.3492865356461354
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -0.5689164157573979,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.7312530801251733e-08,
+                    "iterations": 62,
+                    "melted_label_change": 1.3819976666940015e-06,
+                    "one_sided_unit_gauge_force": 0.3492404710808371
+                  }
+                },
+                "central": -0.5655226773522151,
+                "central_minus_analytic": 3.002875725854892e-11,
+                "unit_gauge_central": 0.3492635033634862,
+                "unit_gauge_central_minus_analytic": -1.9682050433900145e-10
+              },
+              {
+                "h": 5e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": -0.5638257034833226,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.8951119341496037e-08,
+                    "iterations": 59,
+                    "melted_label_change": 6.910720045660845e-07,
+                    "one_sided_unit_gauge_force": 0.3492750196644232
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": -0.5672196499177521,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.1422026597051058e-08,
+                    "iterations": 72,
+                    "melted_label_change": 6.90958012750098e-07,
+                    "one_sided_unit_gauge_force": 0.34925198738746777
+                  }
+                },
+                "central": -0.5655226767005374,
+                "central_minus_analytic": 6.817064690523011e-10,
+                "unit_gauge_central": 0.3492635035259455,
+                "unit_gauge_central_minus_analytic": -3.43612360786949e-11
+              }
+            ]
+          }
+        },
+        "waist_profile": {
+          "source_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+          "fixed_trace_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+          "case": "secondary",
+          "epsilon": 1e-10,
+          "test": "waist_profile",
+          "analytic_physical": 0.3739699608123112,
+          "analytic_unit_gauge": -0.25464124028445995,
+          "gauge_anchor": 8.873888470808405e-11,
+          "independent_unit_error": -3.237969788127959e-16,
+          "work": {
+            "analytic": 0.3739699607868471,
+            "steps": [
+              {
+                "h": 0.0001,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.37489995854992253,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.9356353322199102e-08,
+                    "iterations": 74,
+                    "melted_label_change": 3.034653055511427e-06,
+                    "one_sided_unit_gauge_force": -0.25458752335416807
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.3730399476467881,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.561795730150057e-08,
+                    "iterations": 72,
+                    "melted_label_change": 3.0349647817673464e-06,
+                    "one_sided_unit_gauge_force": -0.25469495891125826
+                  }
+                },
+                "central": 0.37396995309835535,
+                "central_minus_analytic": -7.688491732160685e-09,
+                "unit_gauge_central": -0.25464124113271314,
+                "unit_gauge_central_minus_analytic": -8.482531899112189e-10
+              },
+              {
+                "h": 5e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.3744351608803361,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.6736370984238415e-08,
+                    "iterations": 79,
+                    "melted_label_change": 1.5173292098880076e-06,
+                    "one_sided_unit_gauge_force": -0.25461438148050436
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.37350482262945417,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.8844170404593306e-08,
+                    "iterations": 57,
+                    "melted_label_change": 1.517436612918921e-06,
+                    "one_sided_unit_gauge_force": -0.2546680992611715
+                  }
+                },
+                "central": 0.37396999175489515,
+                "central_minus_analytic": 3.096804807034559e-08,
+                "unit_gauge_central": -0.2546412403708379,
+                "unit_gauge_central_minus_analytic": -8.637796033994505e-11
+              }
+            ]
+          }
+        },
+        "polar_equatorial": {
+          "source_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+          "fixed_trace_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+          "case": "secondary",
+          "epsilon": 1e-10,
+          "test": "polar_equatorial",
+          "analytic_physical": 0.022609999155164196,
+          "analytic_unit_gauge": -0.006682983282795838,
+          "gauge_anchor": 8.873888470808405e-11,
+          "independent_unit_error": -3.237969788127959e-16,
+          "work": {
+            "analytic": 0.022609999154495897,
+            "steps": [
+              {
+                "h": 0.0001,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.0228516134383255,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.526642764542203e-08,
+                    "iterations": 60,
+                    "melted_label_change": 1.5427763116471205e-06,
+                    "one_sided_unit_gauge_force": -0.006669198277506035
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.02236838450477537,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.361434156203379e-08,
+                    "iterations": 54,
+                    "melted_label_change": 1.5445761320509455e-06,
+                    "one_sided_unit_gauge_force": -0.006696768012986859
+                  }
+                },
+                "central": 0.022609998971550437,
+                "central_minus_analytic": -1.8294546086372598e-10,
+                "unit_gauge_central": -0.006682983145246447,
+                "unit_gauge_central_minus_analytic": 1.3754939114790643e-10
+              },
+              {
+                "h": 5e-05,
+                "banks": {
+                  "-1": {
+                    "valid": true,
+                    "one_sided": 0.022730804147154907,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 2.6014910487100196e-08,
+                    "iterations": 65,
+                    "melted_label_change": 7.711026054901815e-07,
+                    "one_sided_unit_gauge_force": -0.006676090771338662
+                  },
+                  "1": {
+                    "valid": true,
+                    "one_sided": 0.022489192841801092,
+                    "min_chart": 0.021060256902812036,
+                    "min_chart_active": 0.021060256902812036,
+                    "inner_residual": 1.8800260347042342e-08,
+                    "iterations": 58,
+                    "melted_label_change": 7.726810853925237e-07,
+                    "one_sided_unit_gauge_force": -0.00668987563350309
+                  }
+                },
+                "central": 0.022609998494478,
+                "central_minus_analytic": -6.600178979743188e-10,
+                "unit_gauge_central": -0.006682983202420876,
+                "unit_gauge_central_minus_analytic": 8.037496189439164e-11
+              }
+            ]
+          }
+        }
+      },
+      "max_abs_centered_error": 2.1955959644825995e-07,
+      "max_abs_unit_gauge_centered_error": 8.482531899112189e-10
+    }
+  },
+  "measurement_source": {
+    "study": "paired read-only signed variations of the held repaired label states",
+    "command": "mouth_r4_barrier_gradient.py _scratch/s11c _scratch/s11c/r4_barrier_work01 collect",
+    "gate_sha256": "b9685cf4a7ce1512387b2ec5ae95d746977f0083c115f439b81c81dd577f4f28"
+  }
+}

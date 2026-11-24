@@ -1,0 +1,136 @@
+{
+  "experiment": "Radius-four fixed-shape reduced active-label energy derivative on independently repaired maps",
+  "method": "One deterministic PCG64 direction over free registry groups in radial, axial and angular labels. Both signs re-equilibrate the strictly melted extension at fixed order, coherent fields and geometry.",
+  "widths": [
+    2e-06,
+    1e-06
+  ],
+  "seed": 9256324,
+  "absolute_tolerance": 1e-07,
+  "worker_source_sha256": "f5306f7197a4a97b755188083f49c50e1fcf7b316920cc9fcb01e131c629ccf3",
+  "review_source_sha256": "723abb1cd09c67a41a738b6ae8564c67de4ae687f085f1f53c47219412ef5b72",
+  "cases": {
+    "primary": {
+      "analytic": -0.0017140122841635271,
+      "full_half_errors": [
+        -1.490474432243316e-11,
+        -1.4904755598135755e-11
+      ],
+      "min_chart": 0.13542403277690923,
+      "min_active_physical_Jinv": 0.23214043959628983,
+      "max_inner_residual": 2.9033688580051842e-08,
+      "min_melt_adjustment": 6.425449272651207e-08,
+      "moved_groups": [
+        4887,
+        4898,
+        4648
+      ],
+      "coupled_groups": [
+        680,
+        681,
+        628
+      ],
+      "epsilon": 1e-08,
+      "source_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+      "repaired_sha256": "dfeb6e52a940e954eba6dd6d3daca464ca2cc5e3183a56d65817996c43c894b5",
+      "packed_direction_sha256": "18bb0396352222d64870352a61ee99644a784bd63fefd1e26451e3acd5429e6a",
+      "component_work": [
+        {
+          "component": "radial",
+          "free": 4887,
+          "moved": 4887,
+          "at_bound": 0,
+          "cross_coupled_moved": 680,
+          "l2": 2.001218413570849,
+          "max_abs": 0.04999938238473542,
+          "analytic_physical": -0.0038412430028655375,
+          "analytic_unit_gauge": -0.16692154857462813
+        },
+        {
+          "component": "axial",
+          "free": 4898,
+          "moved": 4898,
+          "at_bound": 0,
+          "cross_coupled_moved": 681,
+          "l2": 2.034457562786611,
+          "max_abs": 0.04999119560772393,
+          "analytic_physical": 0.00203414875720799,
+          "analytic_unit_gauge": -0.30579722320176883
+        },
+        {
+          "component": "angular",
+          "free": 4648,
+          "moved": 4648,
+          "at_bound": 0,
+          "cross_coupled_moved": 628,
+          "l2": 3.107354113596932,
+          "max_abs": 0.07852310753725195,
+          "analytic_physical": 9.308664416879273e-05,
+          "analytic_unit_gauge": 0.004451294592825258
+        }
+      ]
+    },
+    "secondary": {
+      "analytic": -0.001129165906367811,
+      "full_half_errors": [
+        -1.829294636775114e-11,
+        -1.1354053981726953e-11
+      ],
+      "min_chart": 0.021056604747601147,
+      "min_active_physical_Jinv": 0.09508691403810955,
+      "max_inner_residual": 2.9502636677419813e-08,
+      "min_melt_adjustment": 6.951954595324494e-08,
+      "moved_groups": [
+        4887,
+        4898,
+        4648
+      ],
+      "coupled_groups": [
+        680,
+        681,
+        628
+      ],
+      "epsilon": 1e-10,
+      "source_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+      "repaired_sha256": "49a077310a589702ad0a10b8b6f73d602f4175be8bcdf5bf6a0b25561ebaf763",
+      "packed_direction_sha256": "18bb0396352222d64870352a61ee99644a784bd63fefd1e26451e3acd5429e6a",
+      "component_work": [
+        {
+          "component": "radial",
+          "free": 4887,
+          "moved": 4887,
+          "at_bound": 0,
+          "cross_coupled_moved": 680,
+          "l2": 2.001218413570849,
+          "max_abs": 0.04999938238473542,
+          "analytic_physical": -0.003336122910037424,
+          "analytic_unit_gauge": -0.005223369022502509
+        },
+        {
+          "component": "axial",
+          "free": 4898,
+          "moved": 4898,
+          "at_bound": 0,
+          "cross_coupled_moved": 681,
+          "l2": 2.034457562786611,
+          "max_abs": 0.04999119560772393,
+          "analytic_physical": 0.001987138301051778,
+          "analytic_unit_gauge": -0.04492536261628165
+        },
+        {
+          "component": "angular",
+          "free": 4648,
+          "moved": 4648,
+          "at_bound": 0,
+          "cross_coupled_moved": 628,
+          "l2": 3.107354113596932,
+          "max_abs": 0.07852310753725195,
+          "analytic_physical": 0.0002198187067904209,
+          "analytic_unit_gauge": 0.008422870211141324
+        }
+      ]
+    }
+  },
+  "review": "All three coordinate components participate in the same admissible active-label variation. At both widths and both gauge weights, the four signed stationary endpoint energies reproduce the analytic directional derivative within 1e-7.",
+  "scope": "One reproducible dense linear combination checks registry, seam and aggregate graded work. It does not establish componentwise agreement for every basis vector or stationarity at the held shape."
+}

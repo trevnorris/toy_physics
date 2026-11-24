@@ -91,7 +91,7 @@ class ProjectedHeld(BarrierHeldDriver):
             info['stationary'] = (absmax(gradient)<=FORCE_TOL and info['max_unit_melt_residual']<=3.e-8)
         return value,gradient,info
 
-    def active_step(self,t,solid,order,barrier,current,energy,grad,state):
+    def active_step(self,t,solid,order,barrier,current,energy,grad,state,*,diagonal_first=False):
         opt = barrier.opt
         elliptic = opt._precondition(order)
         diagonal = local_inverse_diagonal(opt,order,grad)
@@ -126,7 +126,10 @@ class ProjectedHeld(BarrierHeldDriver):
                                 direction=direction,gradient=grad,active_mask=opt.active)
             return labels,evidence
 
-        for name, metric in [('elliptic',elliptic),('local_diagonal',diagonal)]:
+        metrics = [('elliptic',elliptic),('local_diagonal',diagonal)]
+        if diagonal_first:
+            metrics.reverse()
+        for name, metric in metrics:
             # One correction per new witness. Repeated witnesses go through the
             # finite line search. A separate maximum-force direction remains
             # available if the local tangents block the coupled proposal.

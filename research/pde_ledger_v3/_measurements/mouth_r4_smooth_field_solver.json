@@ -1,0 +1,57 @@
+{
+  "radius": 4,
+  "state_sha256": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+  "script_sha256": "861ec2f274902ad915f01f3fe5912ad07bf2dda3c29ba99e9834e7cbf787cc3a",
+  "full_order_coordinate_count": 147555,
+  "free_order_coordinate_count": 143648,
+  "gauge": 5.175985798885867e-08,
+  "unit_gauge": 5.175985798885867,
+  "deltas": {
+    "unit_energy": -2.693158196453993e-16,
+    "unit_all_order_gradients": 1.6733135873008703e-18,
+    "full_order_solver_vs_independent": 4.2847669856627135e-16,
+    "physical_energy": 0.0,
+    "amplitude_raw": 0.0,
+    "phase_raw": 0.0
+  },
+  "previous_assembled_diffusion": {
+    "node": 144205,
+    "free": true,
+    "order": 0.6367125306735656,
+    "depth": -0.0014792899408284004,
+    "signed_total": 1.107433708054496e-10,
+    "signed_diffusion": 1.1056044968427159e-10,
+    "assembled_positive_terms": 320570.137982658,
+    "assembled_negative_terms": -320509.698446761,
+    "max_free": 1.107433708054496e-10,
+    "max_fixed": 3.5866309922027995e-11,
+    "max_after_subtracting_diffusion": 2.9348415118299006e-12
+  },
+  "diagnostics": {
+    "physical_energy": 92185.4138012706,
+    "unit_gauge": 5.175985798885867,
+    "gauge_energy": 5.175985798885867e-08,
+    "phase_raw": 7.280297899096583e-11,
+    "amplitude_raw": 8.799187516116168e-09,
+    "order_raw": 0.34959525648184164,
+    "order_kkt": 4.818634371693572e-09,
+    "order_projected": 1.0782298621656028e-09,
+    "carrier_metric": 1.2116476113219744e-08,
+    "shared_work_error": 5.551115123125783e-16,
+    "order_knot_transport": [
+      {
+        "free_interior": -3.540809238172103e-08,
+        "lower_obstacle": 2.6260180580007894e-16,
+        "upper_obstacle": -0.0,
+        "total": -3.540809211911922e-08
+      },
+      {
+        "free_interior": -7.146205719866645e-08,
+        "lower_obstacle": -0.021502646829394182,
+        "upper_obstacle": -0.0,
+        "total": -0.02150271829145138
+      }
+    ]
+  },
+  "passed": true
+}

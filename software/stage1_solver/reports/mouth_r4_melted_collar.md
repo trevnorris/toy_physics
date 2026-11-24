@@ -22,3 +22,5 @@ The saved states establish that the shaft had lost order before its material coo
 **Independent review**
 
 > Scoped clear for continuing the held 24 × 24 radius-four relaxation with orientation required throughout ordered material and a tested one-sided lower bound for reordering in melted cells. Physical survival, continuum convergence and free release require the endpoint evidence.
+
+**Checkpoint views.** The equatorial cutaway preserves the physical proportions. Both field sections enlarge depth by 2.7× and use fixed scales across the three saved updates. The exit narrows from 3.35189 at updates 6 and 7 to 3.32269 at update 8. Across all three, the entire shaft has zero crystalline order beyond physical depth 0.28460. The dark center of the density map follows the vortex core. [Three-frame sequence](figures/r4_melted_collar/checkpoint_sequence.gif) · [Checkpoint 8 at full resolution](figures/r4_melted_collar/checkpoint_08.png) · [Render inputs and measurements](../../../research/pde_ledger_v3/_measurements/mouth_r4_survival_views.json)

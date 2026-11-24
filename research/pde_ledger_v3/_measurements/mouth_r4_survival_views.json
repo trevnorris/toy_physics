@@ -1,0 +1,68 @@
+{
+  "command": [
+    "env",
+    "MPLCONFIGDIR=/tmp/r4-checkpoint-views-mpl",
+    "/usr/bin/python3",
+    "-B",
+    "software/stage1_solver/tools/mouth_render_survival_checkpoints.py",
+    "_scratch/s11c/r4_melted_survival01",
+    "software/stage1_solver/reports/figures/r4_melted_collar"
+  ],
+  "start_utc": "2026-11-24T03:11:15.062476+00:00",
+  "end_utc": "2026-11-24T03:11:19.022151+00:00",
+  "peak_bytes": 223330304,
+  "exit_code": 0,
+  "renderer_sha256": "17a81aca3ad6c7ed3bbc6591ef09ba94e7e9134c2a381f39bb23d4e2833878fc",
+  "frozen_source_manifest": {
+    "path": "_scratch/s11c/r4_melted_survival01/sources.json",
+    "sha256": "3afdbfcb2fafb9ebbd36f852ff1ec58bd013a45e61ae094eb001c93b7a98b6e8"
+  },
+  "checkpoints": {
+    "6": {
+      "sha256": "988d5c2e3d5124dd3caaf7b00f206031ee15e17bf81b2b2d64798d400e10ce12",
+      "depth": 0.8177023069783569,
+      "exit_radius": 3.351892075391091,
+      "full_shaft_zero_order_depth": 0.2846044311069307,
+      "section_density_range": [
+        0.0,
+        0.9744687351111198
+      ]
+    },
+    "7": {
+      "sha256": "f7bf2001feac11476f0d3d82c7544698b7a9734af616699dac848ed009c6c3b0",
+      "depth": 0.8177023069783569,
+      "exit_radius": 3.351892075391091,
+      "full_shaft_zero_order_depth": 0.2846044311069307,
+      "section_density_range": [
+        0.0,
+        0.9744687350928405
+      ]
+    },
+    "8": {
+      "sha256": "b30bfe22ef6f8133a66d29bda996a8558d6851421fd79eb89a5b6ed582ca8d18",
+      "depth": 0.8185806416379796,
+      "exit_radius": 3.3226909609162023,
+      "full_shaft_zero_order_depth": 0.2846044311070896,
+      "section_density_range": [
+        0.0,
+        0.9744551033859032
+      ]
+    }
+  },
+  "sha256_outputs": {
+    "checkpoint_06.png": "82342bc0990652c60a7afaa4fb829a59fba45e9e8dfac1741e46808701d01e14",
+    "checkpoint_07.png": "da1d0812c4ad41be2c82701c8ddff686560e17f79ead437538c14d7ffe07d8e5",
+    "checkpoint_08.png": "0fea2abc9e9aa639a72ce38d886a17761c71c13d9cb969df8704e5a1a45fdf09",
+    "checkpoint_sequence.gif": "0215ff12cfc9f9b8eeb1ecf11c3f82e2b0307a7d0ab35d48ae9b8bf6934d6b86"
+  },
+  "transcript": {
+    "path": "_scratch/s11c/r4_checkpoint_views_final01/stdout",
+    "size": 439,
+    "sha256": "8ccd989a988327dd585407d6300c7dabfd51cb2b593b1768e25962efbdf08ff3",
+    "lines": [
+      "6 988d5c2e3d5124dd3caaf7b00f206031ee15e17bf81b2b2d64798d400e10ce12 0.8177023069783569 3.351892075391091 0.2846044311069307 0.0 0.9744687351111198",
+      "7 f7bf2001feac11476f0d3d82c7544698b7a9734af616699dac848ed009c6c3b0 0.8177023069783569 3.351892075391091 0.2846044311069307 0.0 0.9744687350928405",
+      "8 b30bfe22ef6f8133a66d29bda996a8558d6851421fd79eb89a5b6ed582ca8d18 0.8185806416379796 3.3226909609162023 0.2846044311070896 0.0 0.9744551033859032"
+    ]
+  }
+}

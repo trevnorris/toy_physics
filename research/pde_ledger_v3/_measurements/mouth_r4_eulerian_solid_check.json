@@ -1,0 +1,315 @@
+{
+  "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+  "labels": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+  "prep": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+  "degree": 3,
+  "cases": {
+    "checkpoint": {
+      "energy": 0.20053974249750067,
+      "gradient_seconds": 0.7928952779620886,
+      "order_identity_error": 5.551115123125783e-17,
+      "legacy_energy": 0.2005397424975007,
+      "min_Jinv": 0.2867246726851687,
+      "min_active_Jinv": 0.6174388688590428,
+      "min_chart_bound": 0.1926557354181381,
+      "local_minimum": {
+        "cell": [
+          1,
+          8,
+          1
+        ],
+        "local": [
+          0.05398989659639903,
+          0.1127016653792583,
+          0.8872983346207417
+        ],
+        "chart": [
+          0.07935725581837802,
+          0.25624544581655034,
+          0.06535932212874296
+        ],
+        "chi": 0.0,
+        "Jinv": 0.2867246726851687,
+        "grad_xi_norm": 3.266009028770012,
+        "W": 7.11890990223421
+      },
+      "local_active_minimum": {
+        "cell": [
+          25,
+          0,
+          11
+        ],
+        "local": [
+          0.8872983346207417,
+          0.1127016653792583,
+          0.8872983346207417
+        ],
+        "chart": [
+          0.9998332815600899,
+          0.003559762170549941,
+          0.7783327652907359
+        ],
+        "chi": 0.3192115122484072,
+        "Jinv": 0.6174388688590428,
+        "grad_xi_norm": 1.2743035553220023,
+        "W": 0.3711610618166502
+      },
+      "signed": {
+        "whole": {
+          "projected": 0.041663833896411276,
+          "fd": [
+            {
+              "h": 2e-06,
+              "plus": 0.20053982583361432,
+              "minus": 0.20053965917827865,
+              "center": 0.041663833917626736,
+              "error": 2.1215459944379234e-11,
+              "one_sided_plus": 0.041668056824373245,
+              "one_sided_minus": 0.041659611010880226,
+              "seconds": 1.5196168250404298
+            },
+            {
+              "h": 4e-07,
+              "plus": 0.20053975916337205,
+              "minus": 0.20053972583230487,
+              "center": 0.04166383398007678,
+              "error": 8.366550507954429e-11,
+              "one_sided_plus": 0.041664678443464886,
+              "one_sided_minus": 0.041662989516688675,
+              "seconds": 1.3999728448688984
+            },
+            {
+              "h": 8e-08,
+              "plus": 0.20053974583062076,
+              "minus": 0.20053973916440745,
+              "center": 0.04166383314740951,
+              "error": -7.490017633893231e-10,
+              "one_sided_plus": 0.04166400106864199,
+              "one_sided_minus": 0.04166366522617704,
+              "seconds": 1.4236084991134703
+            }
+          ]
+        },
+        "weld_and_front": {
+          "projected": 0.012611355901984391,
+          "fd": [
+            {
+              "h": 2e-06,
+              "plus": 0.20053976772085508,
+              "minus": 0.2005397172754314,
+              "center": 0.012611355917901967,
+              "error": 1.5917576284829593e-11,
+              "one_sided_plus": 0.012611677202567506,
+              "one_sided_minus": 0.012611034633236429,
+              "seconds": 1.487831275910139
+            },
+            {
+              "h": 4e-07,
+              "plus": 0.2005397475420687,
+              "minus": 0.20053973745298406,
+              "center": 0.012611355813818559,
+              "error": -8.816583227377883e-11,
+              "one_sided_plus": 0.012611420102670579,
+              "one_sided_minus": 0.01261129152496654,
+              "seconds": 1.4452642342075706
+            },
+            {
+              "h": 8e-08,
+              "plus": 0.20053974350641007,
+              "minus": 0.2005397414885932,
+              "center": 0.012611355536262803,
+              "error": -3.6572158843006797e-10,
+              "one_sided_plus": 0.012611367505854787,
+              "one_sided_minus": 0.012611343566670818,
+              "seconds": 1.41974195279181
+            }
+          ]
+        }
+      },
+      "legacy_error": -2.7755575615628914e-17,
+      "order_tests": {
+        "interior": {
+          "work": 0.05605129196428636,
+          "energy_change": 1.1210258393790085e-07,
+          "error": 9.328122385205394e-18
+        },
+        "melted_positive_step": {
+          "work": 61.13055957673234,
+          "energy_change": 0.00012226111915347726,
+          "error": 1.2576745200831851e-17
+        }
+      }
+    },
+    "C_infinity": {
+      "energy": 0.8394538681500614,
+      "gradient_seconds": 0.7239480158314109,
+      "order_identity_error": 0.0,
+      "legacy_energy": 0.8394538681500616,
+      "min_Jinv": 0.586249400858896,
+      "min_active_Jinv": 0.586249400858896,
+      "min_chart_bound": 0.7605663770423515,
+      "local_minimum": {
+        "cell": [
+          25,
+          2,
+          0
+        ],
+        "local": [
+          0.9116408632311066,
+          0.5,
+          0.1127016653792583
+        ],
+        "chart": [
+          0.9998692912177976,
+          0.07896427613937199,
+          0.0031021280199312914
+        ],
+        "chi": 0.09297170259196307,
+        "Jinv": 0.586249400858896,
+        "grad_xi_norm": 1.2739505173397783,
+        "W": 0.5345031990778661
+      },
+      "local_active_minimum": {
+        "cell": [
+          25,
+          2,
+          0
+        ],
+        "local": [
+          0.9116408632311066,
+          0.5,
+          0.1127016653792583
+        ],
+        "chart": [
+          0.9998692912177976,
+          0.07896427613937199,
+          0.0031021280199312914
+        ],
+        "chi": 0.09297170259196307,
+        "Jinv": 0.586249400858896,
+        "grad_xi_norm": 1.2739505173397783,
+        "W": 0.5345031990778661
+      },
+      "signed": {
+        "whole": {
+          "projected": 1.4114158652562958,
+          "fd": [
+            {
+              "h": 2e-06,
+              "plus": 0.8394566909888772,
+              "minus": 0.8394510453254165,
+              "center": 1.4114158651823416,
+              "error": -7.395417611633093e-11,
+              "one_sided_plus": 1.4114194079040132,
+              "one_sided_minus": 1.41141232246067,
+              "seconds": 1.3756880890578032
+            },
+            {
+              "h": 4e-07,
+              "plus": 0.8394544327166917,
+              "minus": 0.8394533035839998,
+              "center": 1.4114158648770303,
+              "error": -3.79265507888249e-10,
+              "one_sided_plus": 1.4114165758360997,
+              "one_sided_minus": 1.411415153917961,
+              "seconds": 1.414654920808971
+            },
+            {
+              "h": 8e-08,
+              "plus": 0.8394539810633429,
+              "minus": 0.839453755236805,
+              "center": 1.4114158619626949,
+              "error": -3.293600947529285e-09,
+              "one_sided_plus": 1.411416018781697,
+              "one_sided_minus": 1.4114157051436926,
+              "seconds": 1.3798959692940116
+            }
+          ]
+        },
+        "weld_and_front": {
+          "projected": 0.22741518093453167,
+          "fd": [
+            {
+              "h": 2e-06,
+              "plus": 0.8394543229809944,
+              "minus": 0.8394534133202705,
+              "center": 0.2274151809922298,
+              "error": 5.769812405631569e-11,
+              "one_sided_plus": 0.22741546651383615,
+              "one_sided_minus": 0.22741489547062343,
+              "seconds": 1.373347857967019
+            },
+            {
+              "h": 4e-07,
+              "plus": 0.8394539591161577,
+              "minus": 0.839453777184013,
+              "center": 0.22741518085345191,
+              "error": -8.107975402182888e-11,
+              "one_sided_plus": 0.22741524080549524,
+              "one_sided_minus": 0.22741512090140859,
+              "seconds": 1.4866800750605762
+            },
+            {
+              "h": 8e-08,
+              "plus": 0.8394538863432779,
+              "minus": 0.8394538499568495,
+              "center": 0.22741517766156072,
+              "error": -3.272970949819154e-09,
+              "one_sided_plus": 0.22741520611102573,
+              "one_sided_minus": 0.2274151492120957,
+              "seconds": 1.3439661609008908
+            }
+          ]
+        }
+      },
+      "legacy_error": -2.220446049250313e-16,
+      "order_tests": {
+        "interior": {
+          "work": 0.24213459537179424,
+          "energy_change": 4.842691907480656e-07,
+          "error": 4.477204400949418e-18
+        },
+        "melted_positive_step": {
+          "work": 44.0281658077016,
+          "energy_change": 8.805633161546034e-05,
+          "error": 5.715100701714215e-17
+        }
+      }
+    }
+  },
+  "negative_control": {
+    "code": 2,
+    "chart_bound": -0.8105439245257873,
+    "cell": [
+      0,
+      0,
+      0
+    ],
+    "local": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "chi": 0.19740441751175958
+  },
+  "passed": true,
+  "source_commit": "fb0347a8",
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_eulerian_solid_check.py",
+    "_scratch/s11c",
+    "_scratch/s11c/r4_eulerian_solid_check01/cases"
+  ],
+  "material": "Two bonded stress-free reference metrics, absolute Q1 spatial order, single inverse chart at checkpoint 10",
+  "input_hash": "67074a7bd41f8ed75520b63128359bc79d5d63ae768c48cb64ff55cdf6f4279b",
+  "sources": {
+    "mouth_r4_eulerian_solid.cpp": "e798467944c93d1bb99534aa268d2221b8b4e66dcb133246e95c5debbbf96d74",
+    "mouth_r4_eulerian_solid.py": "51d34d88837b63e2d77dd603227e86393ea6b7a2dd0bba5b3a6707a12db8f38f",
+    "mouth_r4_eulerian_solid_check.py": "d8bd2c54b6e3a53e00185aafc0846d1476b3ac4b64b156a2795585d55733a7e3",
+    "mouth_r4_eulerian_relax_labels.py": "a44c0f12a9378a1df80d9db9c87ce129f4bd4f7978ddb85d8e5ca327b9b673dd",
+    "mouth_r4_eulerian_release.py": "ec4860bbc44d97a853cc396c2522490e9b92b1081e57986650887044acb55bf8",
+    "mouth_r4_eulerian_gauge_check.py": "8a698a4d05334979f633b538df665ba0ed5cb938dbc2ffa81cc624f5f53f576e"
+  },
+  "orientation_scope": "The chart Jacobian is bounded over whole cells. Physical extrema are Gauss-point samples."
+}

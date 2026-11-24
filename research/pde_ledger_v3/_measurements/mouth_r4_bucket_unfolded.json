@@ -1,0 +1,1146 @@
+{
+  "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+  "control_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+  "columns": [
+    "stored_crystal_energy",
+    "log_depth",
+    "scaled_log_exit",
+    "mean_width",
+    "depth_asymmetry",
+    "waist_profile",
+    "polar_equatorial"
+  ],
+  "levels": [
+    1,
+    2,
+    4
+  ],
+  "raw_pair_order": [
+    "native material",
+    "spatial labels"
+  ],
+  "epsilon_reg": 0,
+  "phase_drop": 0.4510084282857874,
+  "fluid_potential": "(n^5 - 5n + 4)/20",
+  "preparation": {
+    "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "control_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+    "factor": 0.5,
+    "rule": "Half the displacement from the identity material chart to the CP10 map, at every original node. Native piecewise-smooth prism interpolation and existing reference metrics retained.",
+    "native_orientation": {
+      "min_normalized_chart_J": 0.5043041081613256,
+      "max_normalized_chart_J": 1.3876635706234248,
+      "min_prism": [
+        5,
+        16,
+        0,
+        1
+      ],
+      "min_barycentric_vertex": 2,
+      "prisms": 6912,
+      "nonpositive_prisms": 0
+    },
+    "native_prior_chart_orientation": {
+      "6": {
+        "min_normalized_chart_J": 4.702448951339499e-16,
+        "max_normalized_chart_J": 1.85066794303219,
+        "min_prism": [
+          5,
+          17,
+          0,
+          0
+        ],
+        "min_barycentric_vertex": 1,
+        "prisms": 6912,
+        "nonpositive_prisms": 0
+      },
+      "7": {
+        "min_normalized_chart_J": -0.001025874937676755,
+        "max_normalized_chart_J": 1.8481436376781952,
+        "min_prism": [
+          5,
+          17,
+          0,
+          0
+        ],
+        "min_barycentric_vertex": 1,
+        "prisms": 6912,
+        "nonpositive_prisms": 3
+      },
+      "8": {
+        "min_normalized_chart_J": -0.0030040028515467003,
+        "max_normalized_chart_J": 1.8443563889289165,
+        "min_prism": [
+          5,
+          18,
+          5,
+          0
+        ],
+        "min_barycentric_vertex": 0,
+        "prisms": 6912,
+        "nonpositive_prisms": 8
+      },
+      "9": {
+        "min_normalized_chart_J": -0.0037921770378225757,
+        "max_normalized_chart_J": 1.8439296619510641,
+        "min_prism": [
+          5,
+          18,
+          5,
+          0
+        ],
+        "min_barycentric_vertex": 0,
+        "prisms": 6912,
+        "nonpositive_prisms": 8
+      },
+      "10": {
+        "min_normalized_chart_J": -0.0038167100995401427,
+        "max_normalized_chart_J": 1.843916472569134,
+        "min_prism": [
+          5,
+          18,
+          5,
+          0
+        ],
+        "min_barycentric_vertex": 0,
+        "prisms": 6912,
+        "nonpositive_prisms": 8
+      }
+    },
+    "unchanged_checkpoint_arrays": [
+      "x",
+      "field",
+      "energy",
+      "shape_params",
+      "shape_extra",
+      "state_sha",
+      "radius",
+      "winding"
+    ],
+    "max_displacement": 0.034941054203071274,
+    "entrance_wall_terminal_offset_max": 0.0,
+    "axis_radial_offset_max": 0.0,
+    "polar_reflection_max": 0.0
+  },
+  "labels": [
+    {
+      "level": 1,
+      "source_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+      "sha256": "396a9e9667c5827b02f8cca1ef80fa10fe365dfd419ada695aafa65180fcdf6b",
+      "native_cp10_labels_sha256": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+      "active_nodes": 5006,
+      "missing": 0,
+      "duplicate": 0,
+      "max_landing_residual": 1.1183547048023607e-16,
+      "max_difference_before_registered_snap": 0.0,
+      "transport": {
+        "max_same_sign_candidate_spread": 0.0,
+        "max_two_sided_jump": 0.0
+      },
+      "gauge": {
+        "max_projected_gradient": [
+          3.0444397003392965e-16,
+          2.220446049250313e-15,
+          2.7985968577282083e-18
+        ],
+        "max_unscaled_active_trace_reaction": [
+          0.03065273256356983,
+          0.4204221777895977,
+          0.0013222652642062827
+        ],
+        "unscaled_energy": 0.07498947207329551,
+        "max_snap_in_clamped_chart": 2.220446049250313e-16
+      },
+      "lower_bernstein_bound_chart_Jinv": {
+        "active_cells": 0.7649969149057405,
+        "melted_cells": 0.7029947930457673
+      }
+    },
+    {
+      "level": 2,
+      "source_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+      "sha256": "66bb4acb6ad42473f2c1b4c071b48d1da7c480e33a3f7990a1ebdf3924f426f5",
+      "native_cp10_labels_sha256": "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+      "active_nodes": 35905,
+      "missing": 0,
+      "duplicate": 0,
+      "max_landing_residual": 1.1800270098083834e-16,
+      "max_difference_before_registered_snap": 4.440892098500626e-16,
+      "transport": {
+        "max_same_sign_candidate_spread": 0.0,
+        "max_two_sided_jump": 0.0
+      },
+      "gauge": {
+        "extension": "Native harmonic extension prolonged only outside positive-order cell closure"
+      },
+      "lower_bernstein_bound_chart_Jinv": {
+        "active_cells": 0.7406933878238369,
+        "melted_cells": 0.7029947930457676
+      }
+    },
+    {
+      "level": 4,
+      "source_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+      "sha256": "c618d1acf0cdb06e24863732217c46cf2a02397ef3dc0d6c70fe8590d9c61472",
+      "native_cp10_labels_sha256": "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35",
+      "active_nodes": 271385,
+      "missing": 0,
+      "duplicate": 0,
+      "max_landing_residual": 1.768119338109084e-16,
+      "max_difference_before_registered_snap": 4.440892098500626e-16,
+      "transport": {
+        "max_same_sign_candidate_spread": 0.0,
+        "max_two_sided_jump": 0.0
+      },
+      "gauge": {
+        "extension": "Native harmonic extension prolonged only outside positive-order cell closure"
+      },
+      "lower_bernstein_bound_chart_Jinv": {
+        "active_cells": 0.722464974966353,
+        "melted_cells": 0.7029947930457676
+      }
+    }
+  ],
+  "exact_signed_inverse": {
+    "source_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+    "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "h": 2e-07,
+    "grids": {
+      "1": {
+        "static_labels_sha256": "396a9e9667c5827b02f8cca1ef80fa10fe365dfd419ada695aafa65180fcdf6b",
+        "signed_sha256": "3c5fb42477fcf6cc031fe9697f5ef8ac340bdca820b57e119bf62d2fbcdd2448",
+        "signs": [
+          {
+            "sign": -1,
+            "length": 0.8191401919412947,
+            "active_nodes": 5006,
+            "maximum_landing_error": 1.110263183582466e-16,
+            "max_exact_minus_tangent": 6.661338147750939e-16
+          },
+          {
+            "sign": 1,
+            "length": 0.8191405195974372,
+            "active_nodes": 5006,
+            "maximum_landing_error": 1.1550824189073363e-16,
+            "max_exact_minus_tangent": 6.661338147750939e-16
+          }
+        ]
+      },
+      "2": {
+        "static_labels_sha256": "66bb4acb6ad42473f2c1b4c071b48d1da7c480e33a3f7990a1ebdf3924f426f5",
+        "signed_sha256": "cf9577efe2cf9a478aecd1670a78e8500df283f6e91c2300aeed2f4dbc066710",
+        "signs": [
+          {
+            "sign": -1,
+            "length": 0.8191401919412947,
+            "active_nodes": 35905,
+            "maximum_landing_error": 1.288903169010573e-16,
+            "max_exact_minus_tangent": 6.661338147750939e-16
+          },
+          {
+            "sign": 1,
+            "length": 0.8191405195974372,
+            "active_nodes": 35905,
+            "maximum_landing_error": 1.2614692276868844e-16,
+            "max_exact_minus_tangent": 6.661338147750939e-16
+          }
+        ]
+      },
+      "4": {
+        "static_labels_sha256": "c618d1acf0cdb06e24863732217c46cf2a02397ef3dc0d6c70fe8590d9c61472",
+        "signed_sha256": "d537bbad35f2a7fe0da03d7a977c4b76c1ec90d82bc654b7bc5f6ab13ffba213",
+        "signs": [
+          {
+            "sign": -1,
+            "length": 0.8191401919412947,
+            "active_nodes": 271385,
+            "maximum_landing_error": 1.43604774737412e-16,
+            "max_exact_minus_tangent": 6.661338147750939e-16
+          },
+          {
+            "sign": 1,
+            "length": 0.8191405195974372,
+            "active_nodes": 271385,
+            "maximum_landing_error": 1.6505101368718045e-16,
+            "max_exact_minus_tangent": 1.2304712804223072e-11
+          }
+        ]
+      }
+    }
+  },
+  "depth": {
+    "source_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+    "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "prepared_sha256": "785ed8d707766f5ec79a0bc57cc9cdfce91a5ec0ed6b5761ec943be7cf87563a",
+    "h": 2e-07,
+    "common_bath_force": 0.17283083193097667,
+    "rows": {
+      "1_6": {
+        "native_total": 0.8458248548528348,
+        "spatial_total": 0.8397486945442426,
+        "paired_crystal_forces": [
+          0.6729940229218581,
+          0.6669178626132659
+        ],
+        "spatial_minus_native": -0.00607616030859217,
+        "reconstructed_fd_minus_paired": [
+          -2.904226934895976e-11,
+          -3.969825266040769e-11
+        ],
+        "signed_energies": [
+          [
+            0.22261529456644882,
+            0.22125703718378661
+          ],
+          [
+            0.22261502536883968,
+            0.2212567704166416
+          ]
+        ],
+        "min_ordered_Jinv": 0.6099013578233693,
+        "points": 15174360
+      },
+      "1_8": {
+        "native_total": 0.8458507865613717,
+        "spatial_total": 0.8398139645674304,
+        "paired_crystal_forces": [
+          0.673019954630395,
+          0.6669831326364537
+        ],
+        "spatial_minus_native": -0.006036821993941316,
+        "reconstructed_fd_minus_paired": [
+          -6.106817558148431e-11,
+          -8.379433014430934e-11
+        ],
+        "signed_energies": [
+          [
+            0.2226055799939134,
+            0.22124392944970275
+          ],
+          [
+            0.22260531078593154,
+            0.22124366265644974
+          ]
+        ],
+        "min_ordered_Jinv": 0.6093871382342292,
+        "points": 35986000
+      },
+      "2_6": {
+        "native_total": 0.8458290858015265,
+        "spatial_total": 0.8479261916127713,
+        "paired_crystal_forces": [
+          0.6729982538705498,
+          0.6750953596817946
+        ],
+        "spatial_minus_native": 0.002097105811244695,
+        "reconstructed_fd_minus_paired": [
+          -1.970216080126458e-11,
+          -7.366940456103588e-11
+        ],
+        "signed_energies": [
+          [
+            0.2226146611297162,
+            0.2219093594911373
+          ],
+          [
+            0.22261439193041466,
+            0.22190908945299345
+          ]
+        ],
+        "min_ordered_Jinv": 0.6098086049174168,
+        "points": 54130338
+      },
+      "2_8": {
+        "native_total": 0.8458291877805174,
+        "spatial_total": 0.8479527221030587,
+        "paired_crystal_forces": [
+          0.6729983558495407,
+          0.675121890172082
+        ],
+        "spatial_minus_native": 0.0021235343225413754,
+        "reconstructed_fd_minus_paired": [
+          -1.986142299887847e-10,
+          -2.452164346144342e-10
+        ],
+        "signed_energies": [
+          [
+            0.22260938052512105,
+            0.2219053702323806
+          ],
+          [
+            0.22260911132577882,
+            0.22190510018362464
+          ]
+        ],
+        "min_ordered_Jinv": 0.60933684256617,
+        "points": 128326120
+      },
+      "4_6": {
+        "native_total": 0.8458307364255362,
+        "spatial_total": 0.8418849967414875,
+        "paired_crystal_forces": [
+          0.6729999044945595,
+          0.6690541648105108
+        ],
+        "spatial_minus_native": -0.003945739684048582,
+        "reconstructed_fd_minus_paired": [
+          -1.605762232166283e-10,
+          -3.3116872536365777e-10
+        ],
+        "signed_energies": [
+          [
+            0.2226062123012354,
+            0.22179699364202712
+          ],
+          [
+            0.22260594310127368,
+            0.22179672602036135
+          ]
+        ],
+        "min_ordered_Jinv": 0.609762367582524,
+        "points": 246846768
+      },
+      "4_8": {
+        "native_total": 0.8458298863855868,
+        "spatial_total": 0.8418935122716119,
+        "paired_crystal_forces": [
+          0.6729990544546101,
+          0.6690626803406352
+        ],
+        "spatial_minus_native": -0.003936374113974912,
+        "reconstructed_fd_minus_paired": [
+          -6.9024156952157e-10,
+          -6.978922206303008e-10
+        ],
+        "signed_energies": [
+          [
+            0.22260700154604768,
+            0.22179707182438835
+          ],
+          [
+            0.22260673234642617,
+            0.2217968041993165
+          ]
+        ],
+        "min_ordered_Jinv": 0.60931174269686,
+        "points": 585081192
+      }
+    }
+  },
+  "five_shapes": {
+    "6": {
+      "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "control_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+      "label_sha256": [
+        "396a9e9667c5827b02f8cca1ef80fa10fe365dfd419ada695aafa65180fcdf6b",
+        "66bb4acb6ad42473f2c1b4c071b48d1da7c480e33a3f7990a1ebdf3924f426f5",
+        "c618d1acf0cdb06e24863732217c46cf2a02397ef3dc0d6c70fe8590d9c61472"
+      ],
+      "cpp_sha256": "2968251566a3d8ff6d09f80edb0d06c05d95593a987d607eeeb83cdee99d9352",
+      "common_force_source_sha256": "3744ff1eaa984398ae9f61e40281501fd263c047501ea6a19d48c3c85f5ad5c0",
+      "degree": 6,
+      "crystal_columns": [
+        "energy",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "rows": [
+        "material",
+        "spatial 1x",
+        "spatial 2x",
+        "spatial 4x"
+      ],
+      "crystal_values": [
+        [
+          0.22260593952536764,
+          0.2771242804891578,
+          1.1159634987743337,
+          -0.745903910692775,
+          0.6099080067661846,
+          -0.029928685272391866
+        ],
+        [
+          0.22148874723060422,
+          0.27983811089128036,
+          1.125682394698785,
+          -0.7496784099870678,
+          0.6200952820826905,
+          -0.029266195436966472
+        ],
+        [
+          0.22219125973474532,
+          0.2780271193159925,
+          1.1198722184463248,
+          -0.7489538904428634,
+          0.6114684333648502,
+          -0.029638393117291023
+        ],
+        [
+          0.2218948426583789,
+          0.27738395931162385,
+          1.1169838841651685,
+          -0.7464935857450851,
+          0.6106770219135709,
+          -0.02981984413461336
+        ]
+      ],
+      "common_force": [
+        -0.7860865645126646,
+        0.16594803503209554,
+        -0.38258042724604424,
+        0.06154272593266415,
+        0.04934137032561999
+      ],
+      "total_force": [
+        [
+          -0.5089622840235067,
+          1.2819115338064293,
+          -1.1284843379388192,
+          0.6714507326988488,
+          0.019412685053228126
+        ],
+        [
+          -0.5062484536213843,
+          1.2916304297308807,
+          -1.132258837233112,
+          0.6816380080153547,
+          0.02007517488865352
+        ],
+        [
+          -0.508059445196672,
+          1.2858202534784202,
+          -1.1315343176889077,
+          0.6730111592975144,
+          0.01970297720832897
+        ],
+        [
+          -0.5087026052010407,
+          1.2829319191972641,
+          -1.1290740129911292,
+          0.6722197478462351,
+          0.01952152619100663
+        ]
+      ],
+      "spatial_minus_material": [
+        [
+          -0.001117192294763425,
+          0.00271383040212253,
+          0.00971889592445141,
+          -0.0037744992942928546,
+          0.010187275316505873,
+          0.0006624898354253943
+        ],
+        [
+          -0.00041467979062231874,
+          0.0009028388268346732,
+          0.003908719671991134,
+          -0.0030499797500884718,
+          0.0015604265986656207,
+          0.0002902921551008429
+        ],
+        [
+          -0.000711096866988753,
+          0.00025967882246602514,
+          0.0010203853908348215,
+          -0.0005896750523101124,
+          0.0007690151473862539,
+          0.00010884113777850576
+        ]
+      ],
+      "ordered_sample_count": 44251650,
+      "sampled_signed_derivative_relative_error": 4.220485338122847e-11,
+      "signed_check_step": 1e-05
+    },
+    "8": {
+      "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "control_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+      "label_sha256": [
+        "396a9e9667c5827b02f8cca1ef80fa10fe365dfd419ada695aafa65180fcdf6b",
+        "66bb4acb6ad42473f2c1b4c071b48d1da7c480e33a3f7990a1ebdf3924f426f5",
+        "c618d1acf0cdb06e24863732217c46cf2a02397ef3dc0d6c70fe8590d9c61472"
+      ],
+      "cpp_sha256": "2968251566a3d8ff6d09f80edb0d06c05d95593a987d607eeeb83cdee99d9352",
+      "common_force_source_sha256": "3744ff1eaa984398ae9f61e40281501fd263c047501ea6a19d48c3c85f5ad5c0",
+      "degree": 8,
+      "crystal_columns": [
+        "energy",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "rows": [
+        "material",
+        "spatial 1x",
+        "spatial 2x",
+        "spatial 4x"
+      ],
+      "crystal_values": [
+        [
+          0.22260624742869442,
+          0.27712362572375726,
+          1.1159606731461544,
+          -0.745901735143755,
+          0.6099067872709976,
+          -0.029926543563599556
+        ],
+        [
+          0.22133428210915795,
+          0.27968663291106555,
+          1.1250074512698922,
+          -0.7491083990061914,
+          0.6199054980502029,
+          -0.029243595905843554
+        ],
+        [
+          0.2221143386934358,
+          0.2779318727713297,
+          1.1195001193183698,
+          -0.7487343445832642,
+          0.6112065519594803,
+          -0.029655002782931674
+        ],
+        [
+          0.22186209107289884,
+          0.277268953113576,
+          1.116496282184518,
+          -0.7461235469991171,
+          0.6104761905003087,
+          -0.029838076323648377
+        ]
+      ],
+      "common_force": [
+        -0.7860865645126646,
+        0.16594803503209554,
+        -0.38258042724604424,
+        0.06154272593266415,
+        0.04934137032561999
+      ],
+      "total_force": [
+        [
+          -0.5089629387889073,
+          1.2819087081782499,
+          -1.1284821623897994,
+          0.6714495132036618,
+          0.019414826762020436
+        ],
+        [
+          -0.506399931601599,
+          1.2909554863019879,
+          -1.1316888262522355,
+          0.6814482239828671,
+          0.020097774419776438
+        ],
+        [
+          -0.5081546917413349,
+          1.2854481543504654,
+          -1.1313147718293084,
+          0.6727492778921444,
+          0.019686367542688318
+        ],
+        [
+          -0.5088176113990885,
+          1.2824443172166133,
+          -1.1287039742451612,
+          0.6720189164329728,
+          0.019503294001971615
+        ]
+      ],
+      "spatial_minus_material": [
+        [
+          -0.0012719653195364666,
+          0.002563007187308286,
+          0.009046778123737775,
+          -0.0032066638624363986,
+          0.009998710779205333,
+          0.0006829476577560022
+        ],
+        [
+          -0.0004919087352586171,
+          0.0008082470475724302,
+          0.0035394461722153547,
+          -0.0028326094395091372,
+          0.0012997646884826963,
+          0.0002715407806678817
+        ],
+        [
+          -0.0007441563557955833,
+          0.00014532738981876125,
+          0.0005356090383634715,
+          -0.00022181185536207515,
+          0.000569403229311094,
+          8.846723995117878e-05
+        ]
+      ],
+      "ordered_sample_count": 104897256,
+      "sampled_signed_derivative_relative_error": 5.654325247742448e-11,
+      "signed_check_step": 1e-05
+    }
+  },
+  "results": {
+    "6": {
+      "raw_pairs": [
+        [
+          [
+            0.22260593952536764,
+            0.8458248548528348,
+            -0.5089622840235067,
+            1.2819115338064293,
+            -1.1284843379388192,
+            0.6714507326988488,
+            0.019412685053228126
+          ],
+          [
+            0.22148874723060422,
+            0.8397486945442426,
+            -0.5062484536213843,
+            1.2916304297308807,
+            -1.132258837233112,
+            0.6816380080153547,
+            0.02007517488865352
+          ]
+        ],
+        [
+          [
+            0.22260593952536764,
+            0.8458290858015265,
+            -0.5089622840235067,
+            1.2819115338064293,
+            -1.1284843379388192,
+            0.6714507326988488,
+            0.019412685053228126
+          ],
+          [
+            0.22219125973474532,
+            0.8479261916127713,
+            -0.508059445196672,
+            1.2858202534784202,
+            -1.1315343176889077,
+            0.6730111592975144,
+            0.01970297720832897
+          ]
+        ],
+        [
+          [
+            0.22260593952536764,
+            0.8458307364255362,
+            -0.5089622840235067,
+            1.2819115338064293,
+            -1.1284843379388192,
+            0.6714507326988488,
+            0.019412685053228126
+          ],
+          [
+            0.2218948426583789,
+            0.8418849967414875,
+            -0.5087026052010407,
+            1.2829319191972641,
+            -1.1290740129911292,
+            0.6722197478462351,
+            0.01952152619100663
+          ]
+        ]
+      ],
+      "spatial_minus_material": [
+        [
+          -0.001117192294763425,
+          -0.00607616030859217,
+          0.00271383040212253,
+          0.00971889592445141,
+          -0.0037744992942928546,
+          0.010187275316505873,
+          0.0006624898354253943
+        ],
+        [
+          -0.00041467979062231874,
+          0.002097105811244695,
+          0.0009028388268346732,
+          0.003908719671991134,
+          -0.0030499797500884718,
+          0.0015604265986656207,
+          0.0002902921551008429
+        ],
+        [
+          -0.000711096866988753,
+          -0.003945739684048582,
+          0.00025967882246602514,
+          0.0010203853908348215,
+          -0.0005896750523101124,
+          0.0007690151473862539,
+          0.00010884113777850576
+        ]
+      ],
+      "near_static_energy_on_split_signed_rule": [
+        {
+          "signed_delta": [
+            -0.001358257382662209,
+            -0.0013582549521980736
+          ],
+          "mean_delta": -0.0013582561674301413,
+          "max_deviation_from_mean": 1.2152320677527584e-09
+        },
+        {
+          "signed_delta": [
+            -0.0007053016385789035,
+            -0.0007053024774212047
+          ],
+          "mean_delta": -0.0007053020580000541,
+          "max_deviation_from_mean": 4.1942115058812846e-10
+        },
+        {
+          "signed_delta": [
+            -0.0008092186592082717,
+            -0.0008092170809123334
+          ],
+          "mean_delta": -0.0008092178700603025,
+          "max_deviation_from_mean": 7.891479691934933e-10
+        }
+      ],
+      "change_in_absolute_error": [
+        [
+          -0.0007025125041411062,
+          -0.003979054497347475,
+          -0.001810991575287857,
+          -0.005810176252460275,
+          -0.0007245195442043828,
+          -0.008626848717840252,
+          -0.00037219768032455136
+        ],
+        [
+          0.0002964170763664342,
+          0.001848633872803887,
+          -0.0006431600043686481,
+          -0.002888334281156313,
+          -0.0024603046977783594,
+          -0.0007914114512793669,
+          -0.00018145101732233715
+        ]
+      ],
+      "monotone_in_absolute_value": [
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "8": {
+      "raw_pairs": [
+        [
+          [
+            0.22260624742869442,
+            0.8458507865613717,
+            -0.5089629387889073,
+            1.2819087081782499,
+            -1.1284821623897994,
+            0.6714495132036618,
+            0.019414826762020436
+          ],
+          [
+            0.22133428210915795,
+            0.8398139645674304,
+            -0.506399931601599,
+            1.2909554863019879,
+            -1.1316888262522355,
+            0.6814482239828671,
+            0.020097774419776438
+          ]
+        ],
+        [
+          [
+            0.22260624742869442,
+            0.8458291877805174,
+            -0.5089629387889073,
+            1.2819087081782499,
+            -1.1284821623897994,
+            0.6714495132036618,
+            0.019414826762020436
+          ],
+          [
+            0.2221143386934358,
+            0.8479527221030587,
+            -0.5081546917413349,
+            1.2854481543504654,
+            -1.1313147718293084,
+            0.6727492778921444,
+            0.019686367542688318
+          ]
+        ],
+        [
+          [
+            0.22260624742869442,
+            0.8458298863855868,
+            -0.5089629387889073,
+            1.2819087081782499,
+            -1.1284821623897994,
+            0.6714495132036618,
+            0.019414826762020436
+          ],
+          [
+            0.22186209107289884,
+            0.8418935122716119,
+            -0.5088176113990885,
+            1.2824443172166133,
+            -1.1287039742451612,
+            0.6720189164329728,
+            0.019503294001971615
+          ]
+        ]
+      ],
+      "spatial_minus_material": [
+        [
+          -0.0012719653195364666,
+          -0.006036821993941316,
+          0.002563007187308286,
+          0.009046778123737775,
+          -0.0032066638624363986,
+          0.009998710779205333,
+          0.0006829476577560022
+        ],
+        [
+          -0.0004919087352586171,
+          0.0021235343225413754,
+          0.0008082470475724302,
+          0.0035394461722153547,
+          -0.0028326094395091372,
+          0.0012997646884826963,
+          0.0002715407806678817
+        ],
+        [
+          -0.0007441563557955833,
+          -0.003936374113974912,
+          0.00014532738981876125,
+          0.0005356090383634715,
+          -0.00022181185536207515,
+          0.000569403229311094,
+          8.846723995117878e-05
+        ]
+      ],
+      "near_static_energy_on_split_signed_rule": [
+        {
+          "signed_delta": [
+            -0.0013616505442106408,
+            -0.0013616481294818072
+          ],
+          "mean_delta": -0.001361649336846224,
+          "max_deviation_from_mean": 1.207364416777601e-09
+        },
+        {
+          "signed_delta": [
+            -0.0007040102927404479,
+            -0.0007040111421541817
+          ],
+          "mean_delta": -0.0007040107174473148,
+          "max_deviation_from_mean": 4.247068668972176e-10
+        },
+        {
+          "signed_delta": [
+            -0.0008099297216593304,
+            -0.0008099281471096731
+          ],
+          "mean_delta": -0.0008099289343845018,
+          "max_deviation_from_mean": 7.872748286619213e-10
+        }
+      ],
+      "change_in_absolute_error": [
+        [
+          -0.0007800565842778495,
+          -0.0039132876713999405,
+          -0.0017547601397358559,
+          -0.005507331951522421,
+          -0.0003740544229272613,
+          -0.008698946090722637,
+          -0.00041140687708812046
+        ],
+        [
+          0.00025224762053696614,
+          0.0018128397914335369,
+          -0.0006629196577536689,
+          -0.0030038371338518832,
+          -0.002610797584147062,
+          -0.0007303614591716023,
+          -0.00018307354071670293
+        ]
+      ],
+      "monotone_in_absolute_value": [
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "manifest": {
+    "control.json": {
+      "sha256": "f18198d0235e547d32e13cf14c666a7d488e70ef9bb9d5ab375335758a332931",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_unfolded_control.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "prepare"
+      ]
+    },
+    "1/result.json": {
+      "sha256": "64eeac351c4608fedccf9fb39ec98d665854f2bd2513a7194ead3bc9125437ed",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_unfolded_control.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "1"
+      ]
+    },
+    "2/result.json": {
+      "sha256": "798c127c0a4b186d79088ee2cd41fb74b73302cd906ea767aa35e9601f72c87d",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_unfolded_control.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "2"
+      ]
+    },
+    "4/result.json": {
+      "sha256": "f23141ea4d4aae6226f95eaf241033287ac5666883d2b6c8996ac00a015b84f1",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_unfolded_control.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "4"
+      ]
+    },
+    "depth/prepared.json": {
+      "sha256": "785ed8d707766f5ec79a0bc57cc9cdfce91a5ec0ed6b5761ec943be7cf87563a",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_unfolded_depth.py",
+        "prepare",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01"
+      ]
+    },
+    "depth/result.json": {
+      "sha256": "7135dfddd05ef03d1a7574c598c3f0070c76a7e1dd99523706f297ff6b8dde61",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_unfolded_depth.py",
+        "combine",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01"
+      ]
+    },
+    "depth/polar_0/result.json": {
+      "sha256": "d5261808f84badccca0e8cf980bec00a213ca9a377cf7ccc2375589a993aeea7",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_unfolded_depth.py",
+        "sector",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "0"
+      ]
+    },
+    "depth/polar_1/result.json": {
+      "sha256": "8c7a4fbbdb0edbe2244095e5617e802b0b3e72c3254b2c37799087a9de252484",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_unfolded_depth.py",
+        "sector",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "1"
+      ]
+    },
+    "depth/polar_2/result.json": {
+      "sha256": "e201253b9d6dfd08ed122812a984efef515d4bf6cb76e1495b02790b6d99cff4",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_unfolded_depth.py",
+        "sector",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "2"
+      ]
+    },
+    "depth/polar_3/result.json": {
+      "sha256": "4300b1d03d45ae96b5284a975834487f2ace17becd90727242141f7db88790bd",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_unfolded_depth.py",
+        "sector",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "3"
+      ]
+    },
+    "depth/polar_4/result.json": {
+      "sha256": "f0cd4165a6ef039fcf2a9b9b0a26bf62b10ee17cc39a6e0e47a2dde6802f4a35",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_unfolded_depth.py",
+        "sector",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "4"
+      ]
+    },
+    "depth/polar_5/result.json": {
+      "sha256": "c493b128e0748480b2887e132054d81f480ebfc75c883db110b80545a06bdbd7",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_unfolded_depth.py",
+        "sector",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "5"
+      ]
+    },
+    "shape_6/result.json": {
+      "sha256": "3d9723e660bc657124cfa5c647691618fc9435789777e9789a175641a891ed98",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_unfolded_shape_work.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "_scratch/s11c/r4_bucket_unfolded01/shape_6",
+        "6"
+      ]
+    },
+    "shape_8/result.json": {
+      "sha256": "939fc94a55c5bef59c87c06accf2b5aa34fbf69fd8a2d40c3fbf7d0cd18f04d7",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_unfolded_shape_work.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_bucket_unfolded01",
+        "_scratch/s11c/r4_bucket_unfolded01/shape_8",
+        "8"
+      ]
+    }
+  }
+}

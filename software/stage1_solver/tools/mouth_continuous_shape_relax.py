@@ -38,6 +38,8 @@ class ShapeTrial(ContinuousTrial):
 
 
 class ContinuousRelease(Release):
+    trial_type = ShapeTrial
+
     def __init__(self, args):
         self.args=args
         case=args.original/args.level
@@ -80,7 +82,7 @@ class ContinuousRelease(Release):
         shape=Meridian(4.,self.base.sh.params+x[:4]*[1.,.25,.25,.25],
                        extra=self.base.sh.extra+.25*x[4])
         axes=axes_for_depth(shape.length,self.reference_depth)
-        trial=ShapeTrial(self.base,self.args.state,x,**self.discretization,
+        trial=getattr(self, "trial_type", ShapeTrial)(self.base,self.args.state,x,**self.discretization,
                          axes=axes,precondition=solve_fields)
         # Signed shapes include the full bath energy on both sides of the difference.
         trial.model.extended_energy_sum=True

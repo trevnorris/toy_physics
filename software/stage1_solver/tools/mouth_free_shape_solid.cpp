@@ -17,7 +17,11 @@ struct Data {
     int spline_n, diagnose;
     double length, ref_length, pressure, core_ratio, epsilon;
 };
-struct Results { double *gradient,*load,*stats; };
+struct Results {
+    double *gradient,*load,*stats;
+    // Only supplied by the absolute-order, melted-label evaluator.
+    double *melted=nullptr,*undefined_nodes=nullptr;
+};
 int cell(Grid g,double p) {
     return std::clamp(int(std::upper_bound(g.v,g.v+g.n,p)-g.v)-1,0,g.n-2);
 }
@@ -141,6 +145,33 @@ void stretches(const Mat &F,double h,double *stats,const Vec &X){
     extremes(std::min(h,std::sqrt(std::max(0.,lo))),17,true,stats,X);
     extremes(std::max(h,std::sqrt(std::max(0.,hi))),21,false,stats,X);
 }
+struct Support { int lo,hi; };
+Support incident_nodes(Grid grid,double value) {
+    // A point on a knot needs both incident cells to prove local constancy.
+    const int i=cell(grid,value);
+    return {value==grid.v[i] && i>0 ? i-1 : i,i+1};
+}
+Support positive_basis_nodes(Grid grid,double value) {
+    // Only basis functions positive at the point can receive a one-sided
+    // deposition there. This is narrower than the neighborhood certificate.
+    const int i=cell(grid,value);
+    if(value==grid.v[i])return {i,i};
+    if(value==grid.v[i+1])return {i+1,i+1};
+    return {i,i+1};
+}
+int field_id(const Data &d,int i,int k,int j) {
+    return (i*d.field_a.n+k)*d.field_t.n+j;
+}
+bool zero_neighborhood(const Data &d,const Vec &X) {
+    const auto bx=incident_nodes(d.base_x,X[0]),bt=incident_nodes(d.base_t,X[1]);
+    for(int j=bt.lo;j<=bt.hi;++j)for(int i=bx.lo;i<=bx.hi;++i)
+        if(d.base[j*d.base_x.n+i]!=0.)return false;
+    const auto fx=incident_nodes(d.field_x,X[0]),ft=incident_nodes(d.field_t,X[1]),
+               fa=incident_nodes(d.field_a,X[2]);
+    for(int i=fx.lo;i<=fx.hi;++i)for(int k=fa.lo;k<=fa.hi;++k)for(int j=ft.lo;j<=ft.hi;++j)
+        if(d.correction[field_id(d,i,k,j)]!=0.)return false;
+    return true;
+}
 // Derivatives include reference integration-point and weight motion at each
 // crossing of an Eulerian order knot, so the residual differentiates precisely
 // the finite quadrature used by the minimizer.
@@ -155,7 +186,44 @@ int sample(const Data &d,Results &out,const Profile &initial,const TriSlice &s,d
     Mat B=product(M,ref.inv),F=product(C,B);
     double sn=std::sin(X[2]),h=wall.R*sn/(ref.S*sn0);
     double J=wall.grad[0]*d.length*wall.R*determinant(M)*h/(ref.det2*ref.S);
-    if(!(J>0 && wall.R>0 && wall.grad[0]>0 && ref.S>0))return 2;
+    if(!(J>0 && wall.R>0 && wall.grad[0]>0 && ref.S>0)){
+        // A melted label relaxes only the orientation of M. The physical
+        // chart, reference volume, and all other factors in J remain regular.
+        if(!out.melted || !(J<=0 && std::isfinite(J) && determinant(M)<=0
+                            && wall.R>0 && wall.grad[0]>0 && ref.S>0 && ref.det2>0
+                            && std::isfinite(ref.det2) && h>0 && std::isfinite(h)
+                            && d.length>0 && std::isfinite(norm2(F))))return 2;
+        double *m=out.melted;
+        if(!zero_neighborhood(d,X)){
+            m[9]=J;
+            for(int c=0;c<3;++c)m[10+c]=X[c];
+            return 3;
+        }
+        if(m[0]==0. || J<m[1]){
+            m[1]=J;
+            for(int c=0;c<3;++c)m[2+c]=X[c];
+            m[5]=x;m[6]=t;m[7]=a;
+        }
+        ++m[0];
+        const double wt=4*pi*ref.det2*ref.S*ref.S*sn0*sample_weight;
+        m[8]+=wt;
+        out.stats[3]+=wt;
+        ++out.stats[4];
+        if(d.diagnose){
+            extremes(J,5,true,out.stats,X);extremes(J,9,false,out.stats,X);
+            extremes(0.,13,true,out.stats,X);extremes(0.,25,false,out.stats,X);
+            stretches(F,h,out.stats,X);
+        }
+        const auto fx=positive_basis_nodes(d.field_x,X[0]),ft=positive_basis_nodes(d.field_t,X[1]),
+                   fa=positive_basis_nodes(d.field_a,X[2]);
+        for(int i=fx.lo;i<=fx.hi;++i)for(int k=fa.lo;k<=fa.hi;++k)for(int j=ft.lo;j<=ft.hi;++j)
+            out.undefined_nodes[field_id(d,i,k,j)]=1.;
+        // The crystal energy density is identically zero in this neighborhood
+        // for the fixed order. Its motion contributes zero to both moving-end
+        // quadrature terms. W and its order deposition remain undefined here.
+        density=0.;density_x=0.;
+        return 0;
+    }
     double press=-1+.5*J*(J-1),W=.5*(norm2(F)+h*h-4)-std::log(J)+.25*(J-1)*(J-1);
     const Basis bx=basis(d.base_x,X[0]),bt=basis(d.base_t,X[1]);
     double chi=0;Vec dc{};

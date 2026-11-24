@@ -298,6 +298,13 @@ class ContinuousTrial:
                 u[0,free] += scale*step
         raise ArithmeticError('Fixed-order carrier failed to settle')
 
+    def crystal_load_for_match(self, q, u):
+        _, _, inner, _ = self.b.evaluate(q, gradient=False)
+        return inner
+
+    def check_settled_fields(self, q, u, gradient):
+        return {}
+
     def match(self, q, u, rest=False, log=None):
         if self.K is None:
             raise ValueError('Field match requires preconditioning')
@@ -308,7 +315,7 @@ class ContinuousTrial:
         u[1,m.bulk] = 0. if rest else BIAS
         if rest:
             u[1].fill(0.)
-        _, _, inner, _ = self.b.evaluate(q, gradient=False)
+        inner = self.crystal_load_for_match(q, u)
         load = inner+self.ext
         joined = self.pull.T @ load
         order_steps, carrier_steps = [], []
@@ -325,11 +332,12 @@ class ContinuousTrial:
                 break
         else:
             raise ArithmeticError('Coupled order and carrier residual unresolved')
+        checks = self.check_settled_fields(q, u, g)
         solid_energy, gq, _, _ = self.b.evaluate(q,u[2],load=False)
         work_error = solid_energy-inner@u[2]
         if abs(work_error) > 2e-8*max(1.,abs(solid_energy)):
             raise ArithmeticError(f'Material deposition mismatch {work_error}')
         meta = dict(field=dict(stationarity=max(cr,pr), carrier_metric_residual=cr,
                                order_projected_residual=pr, order_steps=order_steps, carrier_steps=carrier_steps),
-                    solid_energy=solid_energy, exchange_error=work_error, energy=float(energy))
+                    solid_energy=solid_energy, exchange_error=work_error, energy=float(energy), **checks)
         return u, float(energy), gq, load, meta

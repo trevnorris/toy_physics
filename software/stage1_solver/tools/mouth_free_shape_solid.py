@@ -35,6 +35,16 @@ class InvalidPlacement(ValueError):
     """A trial leaves the physical crystal chart or reverses its orientation."""
 
 
+class UnresolvedActivation(ArithmeticError):
+    """Free order can activate at a quadrature site without an oriented label."""
+
+    def __init__(self, info):
+        self.info = info
+        super().__init__(f"Undefined order deposition at {info['nonpositive_J_points']} quadrature "
+                         f"sites, minimum J={info['min_nonpositive_J']} at "
+                         f"{info['min_nonpositive_J_site']}.")
+
+
 Pointer = ct.POINTER(ct.c_double)
 
 
@@ -51,7 +61,7 @@ class Data(ct.Structure):
 
 
 class Results(ct.Structure):
-    _fields_ = [(s, Pointer) for s in ('gradient', 'load', 'stats')]
+    _fields_ = [(s, Pointer) for s in ('gradient', 'load', 'stats', 'melted', 'undefined_nodes')]
 
 
 def pointer(values):
@@ -96,6 +106,7 @@ class Solid:
         self.sh = self.shape = shape
         self.epsilon = float(epsilon)
         self.model = model
+        self.melted_labels = False
         self.cut_node = 2*n
         self.cut = np.exp(-.5*np.exp(chart.co[0]))
         self.x = self.radial_mesh(n)
@@ -232,25 +243,66 @@ class Solid:
         out[...,1]=sampled[...,1,None]/self.sh.length
         return self.pack(out)
 
+    def lower_bound_load(self, q, absolute):
+        """Assemble the order load with all oriented contributions, including at χ=0.
+
+        On an unoriented, exactly melted site the cost of reordering is
+        undefined. Every oriented 4D extension has W >= 0 since each principal
+        stretch satisfies (s²-1)/2 - log(s) >= 0. Positive reference weights
+        and Q1 functions preserve this lower bound coefficient by coefficient.
+        The affected global order nodes are returned in undefined_order_nodes.
+        The energy itself remains the exact finite quadrature at the input order.
+        """
+        if not self.melted_labels:
+            raise ValueError('The lower-bound load requires melted_labels=True')
+        return self._evaluate(q, absolute, False, True, False, True)
+
     def evaluate(self, q, correction=None, *, diagnose=False, load=True, gradient=True):
+        return self._evaluate(q, correction, diagnose, load, gradient, False)
+
+    def _evaluate(self, q, correction, diagnose, load, gradient, lower_bound):
         offs=self.unpack(q)
+        if self.melted_labels and (correction is None or np.any(self.buffers['base'] != 0)):
+            raise ValueError('Melted-label evaluation requires the actual absolute order and zero background')
         dc=(self.zero_dc if correction is None else
             np.ascontiguousarray(np.asarray(correction)[self.ids],dtype=float))
         if not np.all(np.isfinite(dc)):raise ValueError('Nonfinite conversion field')
+        if self.melted_labels and (np.any(dc<0) or np.any(dc>1)):
+            raise ValueError('Absolute order outside [0,1]')
         self.data.offset, self.data.correction = pointer(offs),pointer(dc)
         self.data.diagnose=int(diagnose)
         native=np.zeros_like(offs) if gradient else None
         block=np.zeros(self.ids.shape) if load else None
         stats=np.zeros(30)
+        melt=np.zeros(13) if self.melted_labels else None
+        undefined=np.zeros(self.ids.shape) if self.melted_labels else None
         result=Results(pointer(native) if gradient else Pointer(),
-                       pointer(block) if load else Pointer(),pointer(stats))
+                       pointer(block) if load else Pointer(),pointer(stats),
+                       pointer(melt) if self.melted_labels else Pointer(),
+                       pointer(undefined) if self.melted_labels else Pointer())
         code=self.work(ct.byref(self.data),ct.byref(result))
+        if code==3:
+            raise InvalidPlacement(f'Nonpositive J={melt[9]} at landed {melt[10:13].tolist()} '
+                                   'outside a proven exactly zero-order neighborhood')
         if code:raise InvalidPlacement('Material left open order chart' if code==1 else 'Inverted solid')
         g=self.reduce(native) if gradient else None
         deposit=(np.bincount(self.ids.ravel(),weights=block.ravel(),minlength=self.model.size)
                  if load else None)
         info=dict(transfer_energy=stats[1],unit_order_energy=stats[2],
                   reference_volume=stats[3],quadrature_points=int(stats[4]))
+        if self.melted_labels:
+            count=int(melt[0])
+            info.update(nonpositive_J_points=count, min_nonpositive_J=float(melt[1]) if count else None,
+                        min_nonpositive_J_site=melt[2:5].tolist() if count else None,
+                        min_nonpositive_J_reference_site=melt[5:8].tolist() if count else None,
+                        nonpositive_J_reference_volume=float(melt[8]),
+                        undefined_order_nodes=np.unique(self.ids[undefined!=0]).tolist(),
+                        order_load_is_lower_bound=bool(lower_bound and count))
+            if count:
+                info['oriented_unit_order_energy']=info['unit_order_energy']
+                info['unit_order_energy']=None
+                if load and not lower_bound:
+                    raise UnresolvedActivation(info)
         if diagnose:
             for name,ix in (('min_J',5),('max_J',9),('minimum_order',13),('min_stretch',17),
                             ('max_stretch',21),('maximum_order',25)):

@@ -1,0 +1,275 @@
+{
+  "reference": {
+    "measurements": {
+      "checkpoint_sha256": "988d5c2e3d5124dd3caaf7b00f206031ee15e17bf81b2b2d64798d400e10ce12",
+      "solid_energy": 0.20665739742281677,
+      "total_energy": 92185.58249132951,
+      "archived_solid_energy_error": 0.0,
+      "archived_total_energy_error": 0.0,
+      "independent_raw_order_difference": 8.881784197001252e-16,
+      "lower_bound_nodes": 57322,
+      "folded_corner_eight_zero_order_nodes": [
+        49038,
+        49039,
+        49173,
+        49174,
+        51873,
+        51874,
+        52008,
+        52009
+      ],
+      "folded_corner_inner_order_load": [
+        0.02151110892102971,
+        0.03893429270543749,
+        0.029843005627261512,
+        0.0630019914676958,
+        0.010089736024187328,
+        0.011561541990613197,
+        0.014383082374688121,
+        0.01833088603645354
+      ],
+      "folded_corner_obstacle_reaction": [
+        0.014893874519851833,
+        0.03893429270543749,
+        0.021134394133027805,
+        0.0630019914676958,
+        0.003210273446494648,
+        0.011276783713139862,
+        0.005155201102212799,
+        0.01798645760466894
+      ],
+      "folded_corner_order_excitation": {
+        "slope": 0.2076556451473667,
+        "secant": 0.20765564515135004
+      },
+      "independent_current": {
+        "feed_current": 10.923297040080078,
+        "bulk_current": 10.923297040080131,
+        "weak_disk_current": 10.923297040080053
+      },
+      "archived_current_difference": {
+        "feed_current": 0.0,
+        "bulk_current": 0.0,
+        "weak_disk_current": -3.375077994860476e-14
+      },
+      "material_probe": {
+        "index": 259,
+        "derivative": 0.3111838044748477,
+        "secants": [
+          0.3111838041414128,
+          0.31118380849903815
+        ]
+      }
+    },
+    "guarded_command": [
+      "env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "/usr/bin/python3",
+      "-B",
+      "-u",
+      "_scratch/s11c/r4_melt_review01/read_reference.py"
+    ],
+    "pinned_test_script_sha256": "bab8695a6d84423624e265d3600c566c854e9466b2a095f3c5558c83529de232",
+    "committed_reader": "software/stage1_solver/tools/mouth_melted_collar_reference_check.py",
+    "reader_sha256": "1eb572c5bbdfb68c43a3d57fe3c035bdeec4c071f473255947e364151d775120",
+    "input_readback_sha256": "72a58b9939d212edee3c5995614e06bcb12b4d0f4cfd4c8c56c626e449b4429c",
+    "start_utc": "2026-11-24T01:12:21.117824+00:00",
+    "wall_seconds": 60.254641510080546,
+    "end_utc": "2026-11-24T01:13:21.400605+00:00",
+    "exit_code": 0,
+    "peak_bytes": 1876217856,
+    "stdout": {
+      "path": "_scratch/s11c/r4_melt_review01/reference_guard_host/stdout",
+      "sha256": "842af374a82579651ffd6576df1c3c583ab70dcfc3604d3067c6199c73215b0d",
+      "bytes": 1311,
+      "lines": [
+        "{\"checkpoint_sha256\": \"988d5c2e3d5124dd3caaf7b00f206031ee15e17bf81b2b2d64798d400e10ce12\", \"solid_energy\": 0.20665739742281677, \"total_energy\": 92185.58249132951, \"archived_solid_energy_error\": 0.0, \"archived_total_energy_error\": 0.0, \"independent_raw_order_difference\": 8.881784197001252e-16, \"lower_bound_nodes\": 57322, \"folded_corner_eight_zero_order_nodes\": [49038, 49039, 49173, 49174, 51873, 51874, 52008, 52009], \"folded_corner_inner_order_load\": [0.02151110892102971, 0.03893429270543749, 0.029843005627261512, 0.0630019914676958, 0.010089736024187328, 0.011561541990613197, 0.014383082374688121, 0.01833088603645354], \"folded_corner_obstacle_reaction\": [0.014893874519851833, 0.03893429270543749, 0.021134394133027805, 0.0630019914676958, 0.003210273446494648, 0.011276783713139862, 0.005155201102212799, 0.01798645760466894], \"folded_corner_order_excitation\": {\"slope\": 0.2076556451473667, \"secant\": 0.20765564515135004}, \"independent_current\": {\"feed_current\": 10.923297040080078, \"bulk_current\": 10.923297040080131, \"weak_disk_current\": 10.923297040080053}, \"archived_current_difference\": {\"feed_current\": 0.0, \"bulk_current\": 0.0, \"weak_disk_current\": -3.375077994860476e-14}, \"material_probe\": {\"index\": 259, \"derivative\": 0.3111838044748477, \"secants\": [0.3111838041414128, 0.31118380849903815]}}"
+      ]
+    }
+  },
+  "candidate": {
+    "measurements": {
+      "candidate_sha256": {
+        "mouth_continuous_order.py": "ebbd8fc308d8a0292502293b70ac42ca2b70d349d307c70e87f8c4eb5970de54",
+        "mouth_r4_fold_constitutive.py": "77ff0029f0d721c30e19105ece3f7c65e471f50c7bcae0b338c79ca30630fd97",
+        "mouth_whole_r4_relax.py": "3cca0b03f5fc20c454861ef316ebc49e7ab176134adf63418be37c90d4351146",
+        "mouth_free_shape_solid.py": "c2924dd0746e912bd5ccb0bbfafc40b83a3d0366c5c85b6d25ac50411ab56230",
+        "mouth_continuous_shape_relax.py": "d87e13f3469b93cfbfd0743c351afd240fc0a9a30e36e19ce87bd621a49f830c",
+        "mouth_free_shape_solid.cpp": "1a59ef0834e6975c8f2f70bc22580610bccccc57700be45bb0ccc334c2ae4c8d",
+        "mouth_active_prism_orientation.py": "fe4b1b55549cbb92c2e6f612378593944c8df7408660a2e842323dc96a574495"
+      },
+      "reference_checkpoint": "988d5c2e3d5124dd3caaf7b00f206031ee15e17bf81b2b2d64798d400e10ce12",
+      "reference_differences": {
+        "gq": 0.0,
+        "inner": 0.0,
+        "joined_inner": 0.0,
+        "raw": 8.881784197001252e-16,
+        "total": 0.0,
+        "solid": 0.0,
+        "field_gradient": 0.0
+      },
+      "subquadrature": {
+        "exact_corner_Jchart": -3.399896122336554e-09,
+        "original_zero_cert": "certified",
+        "first_positive_Q1_cert": "active_fold",
+        "candidate_witness": {
+          "cell_t_x_angle": [
+            5,
+            17,
+            0
+          ],
+          "triangle": 0,
+          "barycentric": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "angular_fraction": 1.0,
+          "placement_x_t_angle": [
+            0.9082907500999126,
+            0.2466069426415371,
+            0.2617767283200375
+          ],
+          "chart_determinant": -3.399896122336554e-09,
+          "exact_determinant_sign": -1,
+          "order": 0.001,
+          "exact_order_positive": true
+        },
+        "activation_nodes": 16,
+        "contains_eight": true,
+        "invalid_quadrature": 0
+      },
+      "deep": {
+        "old_material_energy": 0.20665739742281677,
+        "material_delta": 0.0,
+        "force_delta": 0.0,
+        "total_delta": 0.0,
+        "native_invalid": 6153,
+        "minimum_J": -0.2844378164754729,
+        "native_nodes": 36,
+        "geometric_nodes": 128,
+        "geometric_coverage": true,
+        "cert": "certified",
+        "raised_native_rejects": true,
+        "raw_reaction_min": 0.0016112005675674318,
+        "zero_order": true,
+        "joined_load_change": 0.023018174688702483,
+        "current_error": {
+          "feed_current": 0.0,
+          "bulk_current": 0.0,
+          "weak_disk_current": 3.375077994860476e-14
+        }
+      }
+    },
+    "guarded_command": [
+      "env",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "/usr/bin/python3",
+      "-B",
+      "-u",
+      "_scratch/s11c/r4_melt_review01/compare_folded.py"
+    ],
+    "pinned_test_script_sha256": "dacb85a3cf202d43fe99a6ea445ad78335ee4546a83e022da70b748e1b72dda0",
+    "committed_reader": "software/stage1_solver/tools/mouth_melted_collar_candidate_check.py",
+    "reader_sha256": "2bb2f7ab2f656e1a61fa067e4e7b461b42ba971b74877a694ccc6e2d2e850610",
+    "input_readback_sha256": "b0b4871ec0a2b383c8b5b63aed040a068a84aa3a069fd11279616ec4f7ceb3ad",
+    "start_utc": "2026-11-24T01:14:42.985448+00:00",
+    "wall_seconds": 63.37226997036487,
+    "end_utc": "2026-11-24T01:15:46.402210+00:00",
+    "exit_code": 0,
+    "peak_bytes": 1965916160,
+    "stdout": {
+      "path": "_scratch/s11c/r4_melt_review01/candidate_guard/stdout",
+      "sha256": "53d3640cf062c0451d7d917c49c005cace42720694fdd006951bc958a0573a1e",
+      "bytes": 1198,
+      "lines": [
+        "PINNED BASELINE {'gq': 0.0, 'inner': 0.0, 'joined_inner': 0.0, 'raw': 8.881784197001252e-16, 'total': 0.0, 'solid': 0.0, 'field_gradient': 0.0}",
+        "SUBQUADRATURE {\"exact_corner_Jchart\": -3.399896122336554e-09, \"original_zero_cert\": \"certified\", \"first_positive_Q1_cert\": \"active_fold\", \"candidate_witness\": {\"cell_t_x_angle\": [5, 17, 0], \"triangle\": 0, \"barycentric\": [0.0, 1.0, 0.0], \"angular_fraction\": 1.0, \"placement_x_t_angle\": [0.9082907500999126, 0.2466069426415371, 0.2617767283200375], \"chart_determinant\": -3.399896122336554e-09, \"exact_determinant_sign\": -1, \"order\": 0.001, \"exact_order_positive\": true}, \"activation_nodes\": 16, \"contains_eight\": true, \"invalid_quadrature\": 0}",
+        "DEEP FOLD {\"old_material_energy\": 0.20665739742281677, \"material_delta\": 0.0, \"force_delta\": 0.0, \"total_delta\": 0.0, \"native_invalid\": 6153, \"minimum_J\": -0.2844378164754729, \"native_nodes\": 36, \"geometric_nodes\": 128, \"geometric_coverage\": true, \"cert\": \"certified\", \"raised_native_rejects\": true, \"raw_reaction_min\": 0.0016112005675674318, \"zero_order\": true, \"joined_load_change\": 0.023018174688702483, \"current_error\": {\"feed_current\": 0.0, \"bulk_current\": 0.0, \"weak_disk_current\": 3.375077994860476e-14}}"
+      ]
+    }
+  },
+  "comparison_scope": "Accepted update 6 with frozen fields, two controlled material displacements, and direct perturbations of order. The independent reconstruction of the order gradient uses the pinned original physical equations.",
+  "baseline_sources": {
+    "research/pde_ledger_v3/_measurements/mouth_conversion_shape.json": "5c73eaecc31deb3e98e698ea58d51f765b57b51fbaf248ee8e10c4a3feafe906",
+    "research/pde_ledger_v3/_measurements/mouth_whole_r4_order_edges.json": "20090ad7a341777149075b7abd839d6c437cf7acfdefe15197115b6f6aa1d79e",
+    "software/stage1_solver/tools/mouth_bonded_front_adjoint.py": "99c62d9c4d683ab36fc4d1d51a4890bddf5c2eb08cb80aea2a30cbb3438b18c2",
+    "software/stage1_solver/tools/mouth_bonded_front_feedback.py": "268ff750c5fe266c744ed2a213221da2c92d684e5a13968b6f76074fe2cad90c",
+    "software/stage1_solver/tools/mouth_bonded_material_motion.py": "abfe40bfaa82777f10202ce3a7600f4cbac147c7d7171e2a882646428669662f",
+    "software/stage1_solver/tools/mouth_bonded_material_residual.py": "1be69afac8dc9b19be113fa539b87d9f9235cc55a6e506f9f35cb611cbec7a2d",
+    "software/stage1_solver/tools/mouth_breathing_mobile_patch.py": "8a6e3e556d25d8bbfa09889fe5308161c65c743c8ce8c5940c3e767c9a41dca1",
+    "software/stage1_solver/tools/mouth_circulation_material.py": "5859590cdbcf3ce095770410a9d6d2a4e3b7996c45e953aa4775eb943cdea56a",
+    "software/stage1_solver/tools/mouth_closed_rim_endpoint.py": "8c050fe3ba57768879cdfaf8fc80401413f4ce6b410b0c926525c8cc4c1b42b0",
+    "software/stage1_solver/tools/mouth_closed_rim_surface_review.py": "3319b06f268254327cbb27af66d39d9ced3166e0ea83cda0a5c87d71ba03b1f4",
+    "software/stage1_solver/tools/mouth_closed_rim_work.py": "d9a824f5bd8ee85149b9ccb08033ca979f0b5dbfcb99e0763232e371212987d2",
+    "software/stage1_solver/tools/mouth_continuous_depth_mesh.py": "ddade788a3d0fd898e26d91702bfd8dc24d9cf39f0028002652666168a7ff014",
+    "software/stage1_solver/tools/mouth_continuous_evidence.py": "9a88f99d5fb3f4a26531e7c06d906a4233ea17ae008a1face8c4af3089e06467",
+    "software/stage1_solver/tools/mouth_continuous_order.py": "8d6cf40b772120e39ad3f53db0f52f6424c9454518fb1b1a4bc23d32bea4f3b9",
+    "software/stage1_solver/tools/mouth_continuous_shape_relax.py": "456128967ba0a7c69d27c601a1d9b6d625f9a7672e0b968ac27f66b56679f328",
+    "software/stage1_solver/tools/mouth_conversion_shape_mode.py": "63ba9d32283deef446de5210e091cbe542af7a6451bfd5ecdfd7ef4b0010720c",
+    "software/stage1_solver/tools/mouth_curved_steady.py": "3878e2914f925d01207718c0d67f0770ca1eed41497e345a72a2b8e3a348a7a5",
+    "software/stage1_solver/tools/mouth_disk_boundary_work.py": "4ccddc4326fc3c1d7bf859ea0ce6ea505f9e201c99a718dafa429b4c01ca87d1",
+    "software/stage1_solver/tools/mouth_disk_independent_review.py": "8c773ee8208089f5ec862a42ea96b2f28716e8e6ffd37e909629cead4421202b",
+    "software/stage1_solver/tools/mouth_disk_mesh_rematch.py": "28d062c38e71f7b0f73ba673b685b3e61d3138241e02547ad5090d782fe3d40c",
+    "software/stage1_solver/tools/mouth_disk_pillbox.py": "47d13fc5cce3a60d7aa4b6cdd4bf858018859d43815002d98b52a8c3d77efc68",
+    "software/stage1_solver/tools/mouth_exchange_carrier.py": "6dd6a6ae17b7f30445a29d5e40627373057637a6cbc67cdc75ce9ed58403fc83",
+    "software/stage1_solver/tools/mouth_exchange_carrier_density.py": "8d5f3cfc7a4ef569be0f8faba81777aaec14bc9e4d44a148f5b2fad4a4957d69",
+    "software/stage1_solver/tools/mouth_exchange_geometry.py": "1cabc9f23319f25df3924b1f1669cd12e89269934a2817da52fc2b47a6757017",
+    "software/stage1_solver/tools/mouth_exchange_interior.py": "41c4578c60f6d8e01af9530edbffe2a8599e8d9d83451b07c7ab8dee5ecfdfac",
+    "software/stage1_solver/tools/mouth_exchange_shear.py": "d7aaa11468de702b99beb912f41e7ebc1999943d73dd7201d88c378b20b8c27b",
+    "software/stage1_solver/tools/mouth_exit_witness.py": "d90d4dda95e190bcc1935c6575d7fffb816d172080cf70f7f269651024df4826",
+    "software/stage1_solver/tools/mouth_finite_bore_support.py": "68307b0049cb97df2690d49e98b5f5eb56ec0173ade59c3545c12621fc7cd71e",
+    "software/stage1_solver/tools/mouth_fixed_wall_angular.py": "ba653a2a7219255e6f6bc9541f0c2de08d4d3551d5ae947b086460f6488ef81b",
+    "software/stage1_solver/tools/mouth_free_shape_solid.cpp": "73344acb71f2a27156eb109a6e42a0f5868dfb67e597ad5da2cd5ac5eab76098",
+    "software/stage1_solver/tools/mouth_free_shape_solid.py": "ac19ded515cc6e5763e354dd55190aafbc4f957b29ed1a49846197ba45c1da87",
+    "software/stage1_solver/tools/mouth_internal_collar.py": "af0b22ce0ef10ecd3103ee47f6737e24b134afbc3e271110ffc53f68fea6e916",
+    "software/stage1_solver/tools/mouth_internal_collar_check.py": "b4ca4a698fe1b2444826080acba686e7d041293bdbc36a68f6712155358985fb",
+    "software/stage1_solver/tools/mouth_joined_angular_work.py": "15875cd778eeaaeb72aba8229b9dd59164ebc2dc9eac1aa5c196a5a60accd887",
+    "software/stage1_solver/tools/mouth_joined_front_audit.py": "08b6906b19d6c069a5ee65bdb97316f4797d104aca2717fafbf757d2e9aa392e",
+    "software/stage1_solver/tools/mouth_joined_front_stationarity.py": "041aee7267087dd43c36cf041ccfbc7299ba3c86db03a18420776aa179c7d221",
+    "software/stage1_solver/tools/mouth_joined_front_trace.py": "396abf8ac60018813e82e21e9cf4215fae8b8fb0df35dfaed7d0199199692265",
+    "software/stage1_solver/tools/mouth_joint_collar_release.py": "38f2dec937e5c635512fd27373c935d8955be7dcffb983d42fe8e42bd9154270",
+    "software/stage1_solver/tools/mouth_joint_endpoint_audit.py": "6b7b457ea5399fb9126915bc7e6c9cf4e2522ef960a8301b6b64d97220b94a8c",
+    "software/stage1_solver/tools/mouth_joint_polar_shape.py": "1bf3c4b39cdabb7af2683049f868d408f503c6e11f4f0119bf497b0f654eb5cd",
+    "software/stage1_solver/tools/mouth_last_ring_solid.py": "8118551daa17fe5260370082d0234a756e976040cfea004bd80f6496426268b1",
+    "software/stage1_solver/tools/mouth_last_rings_fluid.py": "bca5036ed8c6dcc760012345673fc8d29bfa8496981373aee9dcd733d917bb59",
+    "software/stage1_solver/tools/mouth_live_waist_active_wave.py": "f6548ac04e123db74449d291319d651b8ce67aee92e3e3b71007ea19ca5307f5",
+    "software/stage1_solver/tools/mouth_live_waist_fields.py": "96411e9af5538c5e7f0f770807ff993c0f9458cdf6dab68c87f5a5ea0ecfd13a",
+    "software/stage1_solver/tools/mouth_live_waist_order.py": "bd1062a832e2f4257a93378e5712fc2b6b28f9e133e486b99c237c84c6a0e875",
+    "software/stage1_solver/tools/mouth_live_waist_reopen.py": "5042d23940692680c6d46ef78e4f2bfa9d6ca98ddc3b238b1a94d911876e5492",
+    "software/stage1_solver/tools/mouth_live_waist_wave.py": "da3c942439db4cbfe46682b1975250144ecff014f2542c75c43b665f46299c45",
+    "software/stage1_solver/tools/mouth_live_waist_wave_location.py": "8bba123960546c43ff6f703cc1a227f4d33cfc0bb22daad4973b54149233c432",
+    "software/stage1_solver/tools/mouth_mobile_joined_fields.py": "4e721ccee2ecba3e71075ff293b5750bdf9521d1ece29aba7b5aecb18d3f29fc",
+    "software/stage1_solver/tools/mouth_neck_order_check.py": "5e876665bf831d8eae5ec501f569472474c238e94ecbb5bbde98de543568074c",
+    "software/stage1_solver/tools/mouth_polar_bonded.py": "38b484edee2d95f2f9115fcf3a3bd2f4016c68c928f8ea968596a6c27a629356",
+    "software/stage1_solver/tools/mouth_polar_exit_readout.py": "2b423c071a124e1f9183cd9407c447e1d4b0bdbc96fc78093f60221b573ec571",
+    "software/stage1_solver/tools/mouth_polar_joined.py": "e8263eb26e5993d06ad24f406cff0073cc8ae7f613359968fffc8e43d291b24d",
+    "software/stage1_solver/tools/mouth_polar_shape_endpoint_review.py": "088c768d81c114bafcdbc8b80f02665eadf97146a82aaa244e49a1610db5aaad",
+    "software/stage1_solver/tools/mouth_poly_bonded_core.py": "7f884fecfc302f32203dacf6905628bb80f8db2e31c43533eea1789633d79ac0",
+    "software/stage1_solver/tools/mouth_poly_shallow_release.py": "b10f4d9404f31c955772762ab7b00ee2b4cd2291042c46c86a15f97dda54dd31",
+    "software/stage1_solver/tools/mouth_polycrystal_material.py": "306f63c7fa3905853dc1e30b093f38f7980a618de227f47d1e6ec014debd1fdf",
+    "software/stage1_solver/tools/mouth_receiver_order_control.py": "0729ea9871c408a2cf1261d8134d8c328c4d96a43b0f5a8dd7d6052c11367b0d",
+    "software/stage1_solver/tools/mouth_receiver_order_equilibrium.py": "803f062b7094b2b5bc82ae1fcb3be9e55978c144b2d1ee1df89e6deaea2d1665",
+    "software/stage1_solver/tools/mouth_rim_pinned_comparison.py": "e9d2bda29ada58b90f5620a665f7b74a580609234deee5f2c36fdb59691b9065",
+    "software/stage1_solver/tools/mouth_sealed_shape_relax.py": "4791971472f6f8baef5ee5d7eba30c3a04c91ddb7251b7ac48c08a0ef1ae3a96",
+    "software/stage1_solver/tools/mouth_shallow_puncture_fields.py": "2d732c61dcd871fd8064e8fa1aab785d699f857d0137aefac32ee82550dfcc84",
+    "software/stage1_solver/tools/mouth_strained_wave.py": "e3e5c2cf6a11a0ef565c2693074c968eaf028fe11be4dcf59e86a26c1603d95a",
+    "software/stage1_solver/tools/mouth_supercore_front.py": "f35d283712acb983d188edfe217f944d1634897b8bf2b3cf3edf0b5cab807496",
+    "software/stage1_solver/tools/mouth_supercore_joined_front.py": "bd2dacdf0c2b6e5c2c22ec38926a971f09cc75764ee8d09437a7f89b908d2125",
+    "software/stage1_solver/tools/mouth_supercore_shape.py": "c4f3183fdbecabedd74f96f847cf136b1df73cd244f16312f9d07edc0cc43497",
+    "software/stage1_solver/tools/mouth_supercore_terminal_order.py": "e8bfd9b7fb058c9e446996f224b212cab3359cdfdd455c8e48aab02ca9d9836f",
+    "software/stage1_solver/tools/mouth_unified_puncture.py": "74a69caccce1c3f8803cf40b21420b47cf1bfae4e0d95404259fcb5500985a74",
+    "software/stage1_solver/tools/mouth_unified_transverse.py": "83b6f304afe36c898b48f072b64fcb1ff7c6d8803fa8e351c01f7cb2cf2830d6",
+    "software/stage1_solver/tools/mouth_waist_outer_order.py": "cc9c3ae474145babc837c8d95e617f593eec969710a33ef9bf09a8ec130df981",
+    "software/stage1_solver/tools/mouth_whole_r4_relax.py": "8c351b2df2b11c21f34ffeb959e68340853e198f78ff21ee16e8f93a5fe44018",
+    "software/stage1_solver/tools/mouth_wider_wound_carrier.py": "057c72903d6a4c13d5988912b76e9e04cb599b30af9d12ca3eb1bfb7157bff0e",
+    "software/stage1_solver/tools/mouth_winding_resolved_patch.py": "a938462c0aa93eeabb222db53bd9faf8e81280ff56819f8b5d49b048243f1597",
+    "software/stage1_solver/tools/mouth_wound_carrier.py": "d347c7ba79388585dd1d075abefb98f3fb4804612b6a1a786c62ebb941783175"
+  },
+  "input_sha256": {
+    "_scratch/s11c/r4_continuous_coarse01/coarse/state_00006.npz": "988d5c2e3d5124dd3caaf7b00f206031ee15e17bf81b2b2d64798d400e10ce12",
+    "_scratch/s11c/r4_fold_gate01/decision.json": "517c41d5fcfdc815ecc20709789848db06f60402905a6fb8e96a277086bdb618",
+    "research/pde_ledger_v3/_measurements/mouth_r4_fold_constitutive.json": "3de4686f6d04b10a401d65ef0a7a16bd68afa7ed3459ae7356789f27b477d01a",
+    "_scratch/s11c/r4_melt_review01/reference.npz": "916118cd88751f1d78957b3643707970e9df9fd162ec220003767c016e0b626a"
+  }
+}

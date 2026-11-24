@@ -86,6 +86,18 @@ def infeasible(error):
         ("placement", "nonpositive", "inverting", "orientation", "outside", "folded", "infeasible"))
 
 
+def placement_check(trial, q, u):
+    if hasattr(trial, "check_material_domain"):
+        return trial.check_material_domain(q, u)
+    return orientation(trial.f.shape, trial.f.polar_shift, trial.b, trial.b.unpack(q))
+
+
+def feasible_placement(check):
+    if "all_active_cells_oriented" in check:
+        return check["all_active_cells_oriented"]
+    return check["all_open_cells_oriented"]
+
+
 def relax_material(trial, q, u, history, steps):
     """Advance the material at fixed fields, retaining its secant preconditioner."""
     b = trial.b
@@ -106,9 +118,9 @@ def relax_material(trial, q, u, history, steps):
                 step = -scale*2.**-half*direction
                 if np.array_equal(q+step, q):
                     break
-                if not orientation(trial.f.shape, trial.f.polar_shift, b,
-                                   b.unpack(q+step))["all_open_cells_oriented"]:
-                    last_failure = "Trial folds a material element"
+                check = placement_check(trial, q+step, u)
+                if not feasible_placement(check):
+                    last_failure = check.get("status", "Trial folds a material element")
                     continue
                 try:
                     new_e, new_g, _, _ = b.evaluate(q+step, u[2], load=False)
@@ -199,13 +211,13 @@ class Release:
         save_fields(path, x=self.x, solid=trial.b.unpack(q), q=q, field=u,
                     energy=e, shape_params=trial.f.shape.params, shape_extra=trial.f.shape.extra,
                     state_sha=digest(self.args.state), radius=4, winding=1)
-        volumes = orientation(trial.f.shape, trial.f.polar_shift, trial.b, trial.b.unpack(q))
+        volumes = placement_check(trial, q, u)
         self.last = dict(iteration=self.iteration, file=path.name, sha256=digest(path), orientation=volumes,
                          x=self.x.tolist(), energy=e, material=internal, field=meta,
                          **geometry(trial.f.shape, trial.f.polar_shift))
         atomic_json(self.args.folder/"latest.json", self.last)
         log("accepted", **self.last)
-        if not volumes["all_open_cells_oriented"]:
+        if not feasible_placement(volumes):
             raise ArithmeticError(f"Candidate fails open-cell orientation check: {volumes}")
 
     def shape_step(self, grad, diagonal, q, u, energy):
@@ -221,8 +233,7 @@ class Release:
                 dx = direction * 2.**-half
                 try:
                     proposed = self.build(self.x+dx)
-                    if not orientation(proposed.f.shape, proposed.f.polar_shift, proposed.b,
-                                       proposed.b.unpack(q))["all_open_cells_oriented"]:
+                    if not feasible_placement(placement_check(proposed, q, u)):
                         continue
                     fixed = proposed.fixed(q,u)
                     del proposed
@@ -234,25 +245,38 @@ class Release:
                     return dx, metric
         return None, None
 
+    def initial_material(self, trial, q, u):
+        return solid_readout(self.args.state, trial.f.shape, trial.f.polar_shift, trial.b, trial.b.unpack(q))
+
+    def check_progress(self):
+        pass
+
+    def material_update(self, trial, q, u):
+        updated, steps, reason = relax_material(trial, q, u, self.history, 36)
+        return updated, steps, reason, trial.match(updated, u)
+
+    def shape_update(self, x, dx, q, u):
+        trial = self.build(x+dx, True)
+        return x+dx, trial, trial.match(q, u)
+
     def run(self):
         q,u,t = self.q, self.u, self.trial
         self.trial = None
         last_x = last_g = None
         u, current_energy, current_gradient, load, info = t.match(q, u)
         initial = t.b.residual(q, current_gradient)
-        edge = solid_readout(self.args.state, t.f.shape, t.f.polar_shift, t.b, t.b.unpack(q))
+        edge = self.initial_material(t, q, u)
         atomic_json(self.args.folder/"initial_material.json", edge)
         self.write_state(t, q, u, current_energy, initial, info)
         self.iteration += 1
-        if not edge["orientation"]["all_open_cells_oriented"]:
+        if not feasible_placement(edge["orientation"]):
             raise ArithmeticError("Initial placement fails orientation check")
         while True:
             # Gauss-Seidel update of the three physical blocks with every
             # internal coordinate free on each shape. Do not reject a shape
             # just because its fixed-shape inner iteration is still moving.
             e0 = current_energy
-            q, steps, attempt = relax_material(t, q, u, self.history, 36)
-            u, e, gq, load, info = t.match(q, u)
+            q, steps, attempt, (u, e, gq, load, info) = self.material_update(t, q, u)
             if e>e0+1.e-9:
                 raise ArithmeticError(f"Material and coherent update raised the energy by {e-e0}")
             internal = t.b.residual(q, gq)
@@ -266,6 +290,7 @@ class Release:
             self.last.update(values)
             atomic_json(self.args.folder/"latest.json", self.last)
             log("residuals", **values)
+            self.check_progress()
             if last_x is not None:
                 dx, dg = self.x-last_x, g-last_g
                 prod = dx@dg
@@ -291,11 +316,9 @@ class Release:
                 current_energy = e
                 continue
             last_x, last_g = self.x.copy(), g.copy()
-            self.x = self.x+dx
             self.shape_metric = metric
             del t
-            t = self.build(self.x, True)
-            u, current_energy, _, _, _ = t.match(q, u)
+            self.x, t, (u, current_energy, _, _, _) = self.shape_update(self.x, dx, q, u)
             if current_energy > e+1.e-9:
                 raise ArithmeticError(f"Rematching after a shape step raised energy by {current_energy-e}")
 

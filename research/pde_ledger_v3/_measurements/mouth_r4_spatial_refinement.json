@@ -1,0 +1,2761 @@
+{
+  "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+  "input_commit": "f40af401",
+  "source_measurement_sha256": "3744ff1eaa984398ae9f61e40281501fd263c047501ea6a19d48c3c85f5ad5c0",
+  "phase_drop": 0.4510084282857874,
+  "reference_energy": 0.20652001564581512,
+  "saved_total_six": [
+    0.15056488336995244,
+    -0.6412364018615335,
+    0.7054993329802528,
+    -0.6668344576610252,
+    0.4656029341276735,
+    0.009007417247630656
+  ],
+  "mode_names": [
+    "log_depth",
+    "scaled_log_exit",
+    "mean_width",
+    "depth_asymmetry",
+    "waist_profile",
+    "polar_equatorial"
+  ],
+  "rows": {
+    "1": {
+      "energy": 0.20125929001142706,
+      "delta": -0.005260725634388068,
+      "deficit_percent": 2.5473199863640774,
+      "same_side_delta": -0.005072186467413725,
+      "matched_six": [
+        0.14434563977455225,
+        -0.6391459883017998,
+        0.7116954974321981,
+        -0.6663107359953213,
+        0.4768943097573183,
+        0.009267680524575952
+      ],
+      "residual_six": [
+        -0.006219243595400187,
+        0.002090413559733717,
+        0.006196164451945263,
+        0.0005237216657039134,
+        0.011291375629644773,
+        0.0002602632769452967
+      ]
+    },
+    "2": {
+      "energy": 0.203059569482198,
+      "delta": -0.003460446163617122,
+      "deficit_percent": 1.6755984415340344,
+      "same_side_delta": -0.003381801548623277,
+      "matched_six": [
+        0.14409920478408264,
+        -0.6398444866211301,
+        0.7112497507240716,
+        -0.6708769084318151,
+        0.46849276066939066,
+        0.009371580315066179
+      ],
+      "residual_six": [
+        -0.0064656785858698,
+        0.0013919152404033852,
+        0.005750417743818792,
+        -0.004042450770789907,
+        0.0028898265417171554,
+        0.0003641630674355231
+      ]
+    },
+    "4": {
+      "energy": 0.20413714051883552,
+      "delta": -0.002382875126979619,
+      "deficit_percent": 1.1538228483704382,
+      "same_side_delta": -0.002353718028001284,
+      "matched_six": [
+        0.13533467245501848,
+        -0.6408266397249305,
+        0.7068945691503828,
+        -0.667224110312069,
+        0.4673002150282833,
+        0.009129741427550166
+      ],
+      "residual_six": [
+        -0.015230210914933956,
+        0.0004097621366030424,
+        0.001395236170130043,
+        -0.00038965265104373703,
+        0.0016972809006097767,
+        0.0001223241799195099
+      ]
+    }
+  },
+  "gate": {
+    "energy_strictly_decreases": true,
+    "transport_corrected_depth_strictly_decreases": false,
+    "reference_degree": 6,
+    "energy_empirical_orders": [
+      0.6043037503572669,
+      0.538254709969255
+    ],
+    "degree8_depth_residuals": [
+      -0.00396731699881428,
+      -0.006726317665633058,
+      -0.013532252647889959
+    ],
+    "both_primary_trends_pass": false
+  },
+  "localization": {
+    "2": {
+      "relative_deficit": 0.016755984415340344,
+      "by_material_depth": {
+        "0/24 to 2/24": {
+          "positive_points": 2041512,
+          "native": 0.15413624073668028,
+          "projected": 0.15342306021878896,
+          "difference": -0.0007131805178913205,
+          "sum_absolute_pointwise": 0.01071653504592114
+        },
+        "2/24 to 5/24": {
+          "positive_points": 2724708,
+          "native": 0.051202188222581865,
+          "projected": 0.048582895551741265,
+          "difference": -0.002619292670840601,
+          "sum_absolute_pointwise": 0.009991814225605319
+        },
+        "5/24 to 9/24": {
+          "positive_points": 525432,
+          "native": 0.0011815866865529914,
+          "projected": 0.001053613711667791,
+          "difference": -0.0001279729748852004,
+          "sum_absolute_pointwise": 0.00027194858255312737
+        },
+        "9/24 to 24/24": {
+          "positive_points": 0,
+          "native": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "sum_absolute_pointwise": 0.0
+        }
+      },
+      "by_reference_side": {
+        "core": {
+          "positive_points": 3097161,
+          "native": 0.03483266409644767,
+          "projected": 0.0328067657333449,
+          "difference": -0.002025898363102767,
+          "sum_absolute_pointwise": 0.0064745577600642135
+        },
+        "collar": {
+          "positive_points": 2194491,
+          "native": 0.17168735154936746,
+          "projected": 0.1702528037488531,
+          "difference": -0.0014345478005143547,
+          "sum_absolute_pointwise": 0.014505740094015371
+        }
+      }
+    },
+    "4": {
+      "relative_deficit": 0.011538228483704383,
+      "by_material_depth": {
+        "0/24 to 2/24": {
+          "positive_points": 2041512,
+          "native": 0.15413624073668028,
+          "projected": 0.15339227448849216,
+          "difference": -0.00074396624818811,
+          "sum_absolute_pointwise": 0.0059511057354169235
+        },
+        "2/24 to 5/24": {
+          "positive_points": 2724708,
+          "native": 0.05120218822258187,
+          "projected": 0.049636620698150245,
+          "difference": -0.0015655675244316228,
+          "sum_absolute_pointwise": 0.0056441090097978115
+        },
+        "5/24 to 9/24": {
+          "positive_points": 525432,
+          "native": 0.0011815866865529914,
+          "projected": 0.001108245332193105,
+          "difference": -7.334135435988637e-05,
+          "sum_absolute_pointwise": 0.0001676749844970307
+        },
+        "9/24 to 24/24": {
+          "positive_points": 0,
+          "native": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "sum_absolute_pointwise": 0.0
+        }
+      },
+      "by_reference_side": {
+        "core": {
+          "positive_points": 3097161,
+          "native": 0.03483266409644767,
+          "projected": 0.03356472872624351,
+          "difference": -0.0012679353702041518,
+          "sum_absolute_pointwise": 0.0034470272599542787
+        },
+        "collar": {
+          "positive_points": 2194491,
+          "native": 0.17168735154936746,
+          "projected": 0.170572411792592,
+          "difference": -0.0011149397567754673,
+          "sum_absolute_pointwise": 0.008315862469757487
+        }
+      }
+    },
+    "relative_deficit_1x": 0.025473199863640772,
+    "successive_empirical_orders": [
+      0.6043037503572669,
+      0.538254709969255
+    ]
+  },
+  "checks": {
+    "energy_2": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+      "factor": 2,
+      "gauss_points_unchanged": 5291652,
+      "native_reference_tolerance": 2e-14,
+      "min_sampled_Jinv": 0.6139420378088146,
+      "max_sampled_Jinv": 4.4720327975985965,
+      "max_roundtrip_abs_point_energy": 4.404571325722362e-20,
+      "sum_absolute_roundtrip": 1.903459776214382e-16,
+      "total": {
+        "count": 5291652,
+        "original": 0.20652001564581512,
+        "projected": 0.203059569482198,
+        "difference": -0.003460446163617122,
+        "absolute_pointwise_sum": 0.020980297854079587,
+        "gradient_first": -0.0033898982076506234,
+        "label_values_and_metric_second": -7.054795596649848e-05
+      },
+      "signed_relative_deficit": 0.016755984415340344,
+      "by_correspondence": {
+        "same_material_prism": {
+          "count": 5047781,
+          "original": 0.20530318896961386,
+          "projected": 0.20168936488672476,
+          "difference": -0.003613824082889103,
+          "absolute_pointwise_sum": 0.02041497480504784,
+          "gradient_first": -0.003583256988884143,
+          "label_values_and_metric_second": -3.056709400495979e-05
+        },
+        "other_prism_same_bond_side": {
+          "count": 240008,
+          "original": 0.001126366005322423,
+          "projected": 0.0013583885395882492,
+          "difference": 0.00023202253426582613,
+          "absolute_pointwise_sum": 0.0004864661649987932,
+          "gradient_first": 0.00020016927111840942,
+          "label_values_and_metric_second": 3.18532631474167e-05
+        },
+        "opposite_bond_side": {
+          "count": 3863,
+          "original": 9.046067087884222e-05,
+          "projected": 1.181605588499707e-05,
+          "difference": -7.864461499384514e-05,
+          "absolute_pointwise_sum": 7.885688403295371e-05,
+          "gradient_first": -6.8104898848896205e-06,
+          "label_values_and_metric_second": -7.183412510895553e-05
+        }
+      },
+      "same_side": {
+        "count": 5287789,
+        "original": 0.20642955497493629,
+        "projected": 0.203047753426313,
+        "difference": -0.0033818015486232764,
+        "absolute_pointwise_sum": 0.02090144097004663,
+        "gradient_first": -0.0033830877177657335,
+        "label_values_and_metric_second": 1.2861691424570536e-06
+      },
+      "by_material_depth": [
+        {
+          "material_depth_lower": 0.0,
+          "material_depth_upper": 0.041666666666666664,
+          "count": 868368,
+          "original": 0.11580316887757236,
+          "projected": 0.11510834015387764,
+          "difference": -0.0006948287236947167,
+          "absolute_pointwise_sum": 0.007896845616282271,
+          "gradient_first": -0.0006247034425996294,
+          "label_values_and_metric_second": -7.01252810950873e-05
+        },
+        {
+          "material_depth_lower": 0.041666666666666664,
+          "material_depth_upper": 0.08333333333333333,
+          "count": 1173144,
+          "original": 0.03833307185910791,
+          "projected": 0.03831472006491131,
+          "difference": -1.835179419660374e-05,
+          "absolute_pointwise_sum": 0.0028196894296388685,
+          "gradient_first": -6.848919842252673e-07,
+          "label_values_and_metric_second": -1.7666902212378472e-05
+        },
+        {
+          "material_depth_lower": 0.08333333333333333,
+          "material_depth_upper": 0.125,
+          "count": 896469,
+          "original": 0.019317849363145793,
+          "projected": 0.020190494580225114,
+          "difference": 0.0008726452170793213,
+          "absolute_pointwise_sum": 0.0033366902171226296,
+          "gradient_first": 0.000892099992524312,
+          "label_values_and_metric_second": -1.945477544499068e-05
+        },
+        {
+          "material_depth_lower": 0.125,
+          "material_depth_upper": 0.16666666666666666,
+          "count": 1223820,
+          "original": 0.025749262391121214,
+          "projected": 0.023228236590790156,
+          "difference": -0.0025210258003310554,
+          "absolute_pointwise_sum": 0.005127792459316877,
+          "gradient_first": -0.0025589627986151125,
+          "label_values_and_metric_second": 3.793699828405684e-05
+        },
+        {
+          "material_depth_lower": 0.16666666666666666,
+          "material_depth_upper": 0.20833333333333331,
+          "count": 604419,
+          "original": 0.006135076468314863,
+          "projected": 0.0051641643807259965,
+          "difference": -0.000970912087588867,
+          "absolute_pointwise_sum": 0.0015273315491658118,
+          "gradient_first": -0.0009703538271027755,
+          "label_values_and_metric_second": -5.582604860916416e-07
+        },
+        {
+          "material_depth_lower": 0.20833333333333331,
+          "material_depth_upper": 0.25,
+          "count": 267786,
+          "original": 0.001092532687569007,
+          "projected": 0.0009647329091158559,
+          "difference": -0.00012779977845315112,
+          "absolute_pointwise_sum": 0.00025987275207217984,
+          "gradient_first": -0.0001274277342593235,
+          "label_values_and_metric_second": -3.720441938276036e-07
+        },
+        {
+          "material_depth_lower": 0.25,
+          "material_depth_upper": 0.29166666666666663,
+          "count": 211278,
+          "original": 8.85056461239589e-05,
+          "projected": 8.833017162538874e-05,
+          "difference": -1.7547449857016046e-07,
+          "absolute_pointwise_sum": 1.2039619231209941e-05,
+          "gradient_first": 1.3223226574702167e-07,
+          "label_values_and_metric_second": -3.0770676431718214e-07
+        },
+        {
+          "material_depth_lower": 0.29166666666666663,
+          "material_depth_upper": 0.3333333333333333,
+          "count": 45648,
+          "original": 5.482016721548961e-07,
+          "projected": 5.504811989365086e-07,
+          "difference": 2.279526781612579e-09,
+          "absolute_pointwise_sum": 3.620777493133541e-08,
+          "gradient_first": 2.263577983390987e-09,
+          "label_values_and_metric_second": 1.5948798221592094e-11
+        },
+        {
+          "material_depth_lower": 0.3333333333333333,
+          "material_depth_upper": 0.375,
+          "count": 720,
+          "original": 1.5118787056158124e-10,
+          "projected": 1.4972760980354782e-10,
+          "difference": -1.4602607580334045e-12,
+          "absolute_pointwise_sum": 3.4748063028148553e-12,
+          "gradient_first": -1.4575997862396708e-12,
+          "label_values_and_metric_second": -2.6609717937337118e-15
+        },
+        {
+          "material_depth_lower": 0.375,
+          "material_depth_upper": 0.41666666666666663,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.41666666666666663,
+          "material_depth_upper": 0.4583333333333333,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.4583333333333333,
+          "material_depth_upper": 0.5,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.5,
+          "material_depth_upper": 0.5416666666666666,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.5416666666666666,
+          "material_depth_upper": 0.5833333333333333,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.5833333333333333,
+          "material_depth_upper": 0.625,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.625,
+          "material_depth_upper": 0.6666666666666666,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.6666666666666666,
+          "material_depth_upper": 0.7083333333333333,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.7083333333333333,
+          "material_depth_upper": 0.75,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.75,
+          "material_depth_upper": 0.7916666666666666,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.7916666666666666,
+          "material_depth_upper": 0.8333333333333333,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.8333333333333333,
+          "material_depth_upper": 0.875,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.875,
+          "material_depth_upper": 0.9166666666666666,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.9166666666666666,
+          "material_depth_upper": 0.9583333333333333,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.9583333333333333,
+          "material_depth_upper": 1.0,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        }
+      ],
+      "by_material_radius": [
+        {
+          "material_radial_chart_lower": 0.0,
+          "material_radial_chart_upper": 0.055156056411537216,
+          "count": 201510,
+          "original": 4.4475732751110334e-06,
+          "projected": 3.2745767385716643e-06,
+          "difference": -1.1729965365393687e-06,
+          "absolute_pointwise_sum": 3.517682805642444e-06,
+          "gradient_first": -1.1713223921548027e-06,
+          "label_values_and_metric_second": -1.6741443845659884e-09
+        },
+        {
+          "material_radial_chart_lower": 0.055156056411537216,
+          "material_radial_chart_upper": 0.11031211282307443,
+          "count": 186561,
+          "original": 1.3994065497890925e-05,
+          "projected": 1.3674666111802577e-05,
+          "difference": -3.193993860883466e-07,
+          "absolute_pointwise_sum": 4.285548963165269e-06,
+          "gradient_first": -3.1976225073522694e-07,
+          "label_values_and_metric_second": 3.628646468803317e-10
+        },
+        {
+          "material_radial_chart_lower": 0.11031211282307443,
+          "material_radial_chart_upper": 0.16546816923461166,
+          "count": 185496,
+          "original": 3.991362202534615e-05,
+          "projected": 3.935642467489415e-05,
+          "difference": -5.571973504520056e-07,
+          "absolute_pointwise_sum": 1.0403369807941367e-05,
+          "gradient_first": -5.58959087782646e-07,
+          "label_values_and_metric_second": 1.7617373306404972e-09
+        },
+        {
+          "material_radial_chart_lower": 0.16546816923461166,
+          "material_radial_chart_upper": 0.22062422564614886,
+          "count": 224589,
+          "original": 8.637505706185285e-05,
+          "projected": 8.547978567094596e-05,
+          "difference": -8.952713909068912e-07,
+          "absolute_pointwise_sum": 2.1538482295232542e-05,
+          "gradient_first": -9.085037114098827e-07,
+          "label_values_and_metric_second": 1.3232320502991628e-08
+        },
+        {
+          "material_radial_chart_lower": 0.22062422564614886,
+          "material_radial_chart_upper": 0.27578028205768607,
+          "count": 136212,
+          "original": 0.00016206932073651795,
+          "projected": 0.0001594925469143497,
+          "difference": -2.57677382216826e-06,
+          "absolute_pointwise_sum": 3.757753414660749e-05,
+          "gradient_first": -2.5920751301433797e-06,
+          "label_values_and_metric_second": 1.5301307975119907e-08
+        },
+        {
+          "material_radial_chart_lower": 0.27578028205768607,
+          "material_radial_chart_upper": 0.3309363384692233,
+          "count": 183210,
+          "original": 0.00027899319593218904,
+          "projected": 0.0002738220087378261,
+          "difference": -5.1711871943629e-06,
+          "absolute_pointwise_sum": 5.9801061814254614e-05,
+          "gradient_first": -5.2094148525004446e-06,
+          "label_values_and_metric_second": 3.8227658137544856e-08
+        },
+        {
+          "material_radial_chart_lower": 0.3309363384692233,
+          "material_radial_chart_upper": 0.3860923948807605,
+          "count": 224703,
+          "original": 0.0004519778752574472,
+          "projected": 0.00044327036640625186,
+          "difference": -8.707508851195319e-06,
+          "absolute_pointwise_sum": 9.005547275786243e-05,
+          "gradient_first": -8.795407846664566e-06,
+          "label_values_and_metric_second": 8.789899546924703e-08
+        },
+        {
+          "material_radial_chart_lower": 0.3860923948807605,
+          "material_radial_chart_upper": 0.4412484512922977,
+          "count": 180714,
+          "original": 0.0006984764860833062,
+          "projected": 0.0006853913088454541,
+          "difference": -1.3085177237852086e-05,
+          "absolute_pointwise_sum": 0.00012695436473163677,
+          "gradient_first": -1.3250237551206574e-05,
+          "label_values_and_metric_second": 1.6506031335448667e-07
+        },
+        {
+          "material_radial_chart_lower": 0.4412484512922977,
+          "material_radial_chart_upper": 0.49640450770383493,
+          "count": 182850,
+          "original": 0.0010366633642735525,
+          "projected": 0.0010204430083263856,
+          "difference": -1.622035594716699e-05,
+          "absolute_pointwise_sum": 0.00017441753089788005,
+          "gradient_first": -1.6508622062480894e-05,
+          "label_values_and_metric_second": 2.8826611531390466e-07
+        },
+        {
+          "material_radial_chart_lower": 0.49640450770383493,
+          "material_radial_chart_upper": 0.5515605641153721,
+          "count": 219525,
+          "original": 0.0014838173724343775,
+          "projected": 0.0014596862264534187,
+          "difference": -2.4131145980958712e-05,
+          "absolute_pointwise_sum": 0.00022792392049911518,
+          "gradient_first": -2.4581466471586683e-05,
+          "label_values_and_metric_second": 4.503204906279692e-07
+        },
+        {
+          "material_radial_chart_lower": 0.5515605641153721,
+          "material_radial_chart_upper": 0.6067166205269093,
+          "count": 173598,
+          "original": 0.002055922377624876,
+          "projected": 0.0020169238636452507,
+          "difference": -3.899851397962558e-05,
+          "absolute_pointwise_sum": 0.0002917617887594636,
+          "gradient_first": -3.966344343964468e-05,
+          "label_values_and_metric_second": 6.649294600191035e-07
+        },
+        {
+          "material_radial_chart_lower": 0.6067166205269093,
+          "material_radial_chart_upper": 0.6618726769384466,
+          "count": 179493,
+          "original": 0.0027672844599119658,
+          "projected": 0.002704710870960962,
+          "difference": -6.257358895100376e-05,
+          "absolute_pointwise_sum": 0.0003815476291687314,
+          "gradient_first": -6.35628731219846e-05,
+          "label_values_and_metric_second": 9.89284170980849e-07
+        },
+        {
+          "material_radial_chart_lower": 0.6618726769384466,
+          "material_radial_chart_upper": 0.7170287333499838,
+          "count": 246477,
+          "original": 0.0036419485505445183,
+          "projected": 0.003568941895548256,
+          "difference": -7.300665499626218e-05,
+          "absolute_pointwise_sum": 0.000577444068653863,
+          "gradient_first": -7.443698419827437e-05,
+          "label_values_and_metric_second": 1.4303292020121879e-06
+        },
+        {
+          "material_radial_chart_lower": 0.7170287333499838,
+          "material_radial_chart_upper": 0.772184789761521,
+          "count": 126459,
+          "original": 0.004743782257447319,
+          "projected": 0.004533098917100108,
+          "difference": -0.00021068334034721108,
+          "absolute_pointwise_sum": 0.0008883809551121839,
+          "gradient_first": -0.00021257186319543843,
+          "label_values_and_metric_second": 1.8885228482273514e-06
+        },
+        {
+          "material_radial_chart_lower": 0.772184789761521,
+          "material_radial_chart_upper": 0.8273408461730583,
+          "count": 213771,
+          "original": 0.006379132461720773,
+          "projected": 0.005819198794751791,
+          "difference": -0.0005599336669689818,
+          "absolute_pointwise_sum": 0.0013761361385764693,
+          "gradient_first": -0.0005618403345544368,
+          "label_values_and_metric_second": 1.9066675854549833e-06
+        },
+        {
+          "material_radial_chart_lower": 0.8273408461730583,
+          "material_radial_chart_upper": 0.8824969025845955,
+          "count": 231993,
+          "original": 0.010987866056620622,
+          "projected": 0.00998000047245863,
+          "difference": -0.001007865584161992,
+          "absolute_pointwise_sum": 0.0022028122110741644,
+          "gradient_first": -0.0010095342309890142,
+          "label_values_and_metric_second": 1.668646827022344e-06
+        },
+        {
+          "material_radial_chart_lower": 0.8824969025845955,
+          "material_radial_chart_upper": 0.897184789761521,
+          "count": 116697,
+          "original": 0.05175182141694921,
+          "projected": 0.054133611357234344,
+          "difference": 0.0023817899402851332,
+          "absolute_pointwise_sum": 0.0046251490800891144,
+          "gradient_first": 0.0024592643159477043,
+          "label_values_and_metric_second": -7.747437566257116e-05
+        },
+        {
+          "material_radial_chart_lower": 0.897184789761521,
+          "material_radial_chart_upper": 0.9118726769384466,
+          "count": 200988,
+          "original": 0.03797696527958861,
+          "projected": 0.035973154424576076,
+          "difference": -0.0020038108550125295,
+          "absolute_pointwise_sum": 0.0028230830970806093,
+          "gradient_first": -0.0019881363483292133,
+          "label_values_and_metric_second": -1.5674506683316464e-05
+        },
+        {
+          "material_radial_chart_lower": 0.9118726769384466,
+          "material_radial_chart_upper": 0.9265605641153721,
+          "count": 244101,
+          "original": 0.022996553474416738,
+          "projected": 0.022574145651026476,
+          "difference": -0.0004224078233902607,
+          "absolute_pointwise_sum": 0.0013010208739988878,
+          "gradient_first": -0.00042342866925492454,
+          "label_values_and_metric_second": 1.0208458646639078e-06
+        },
+        {
+          "material_radial_chart_lower": 0.9265605641153721,
+          "material_radial_chart_upper": 0.9412484512922977,
+          "count": 238605,
+          "original": 0.013385013861155273,
+          "projected": 0.013254112883966915,
+          "difference": -0.00013090097718835745,
+          "absolute_pointwise_sum": 0.0010311358880999953,
+          "gradient_first": -0.0001387291695971931,
+          "label_values_and_metric_second": 7.828192408835652e-06
+        },
+        {
+          "material_radial_chart_lower": 0.9412484512922977,
+          "material_radial_chart_upper": 0.9559363384692233,
+          "count": 267519,
+          "original": 0.007560884910484038,
+          "projected": 0.007318140612805147,
+          "difference": -0.00024274429767889182,
+          "absolute_pointwise_sum": 0.0007548286934183935,
+          "gradient_first": -0.00024788023273864554,
+          "label_values_and_metric_second": 5.1359350597536955e-06
+        },
+        {
+          "material_radial_chart_lower": 0.9559363384692233,
+          "material_radial_chart_upper": 0.9706242256461488,
+          "count": 378240,
+          "original": 0.005278993549944236,
+          "projected": 0.004993943329000038,
+          "difference": -0.0002850502209441981,
+          "absolute_pointwise_sum": 0.0007194454773046084,
+          "gradient_first": -0.00029568426399598815,
+          "label_values_and_metric_second": 1.0634043051790067e-05
+        },
+        {
+          "material_radial_chart_lower": 0.9706242256461488,
+          "material_radial_chart_upper": 0.9853121128230744,
+          "count": 394617,
+          "original": 0.008368626842994444,
+          "projected": 0.008070909649776086,
+          "difference": -0.00029771719321835627,
+          "absolute_pointwise_sum": 0.0012994001216816275,
+          "gradient_first": -0.0002867479827345563,
+          "label_values_and_metric_second": -1.0969210483800006e-05
+        },
+        {
+          "material_radial_chart_lower": 0.9853121128230744,
+          "material_radial_chart_upper": 1.0,
+          "count": 353724,
+          "original": 0.02436849221383492,
+          "projected": 0.02393478584046803,
+          "difference": -0.00043370637336689395,
+          "absolute_pointwise_sum": 0.0019516768623421357,
+          "gradient_first": -0.00043305035609234846,
+          "label_values_and_metric_second": -6.560172745454891e-07
+        }
+      ],
+      "largest_changed_prisms": [
+        {
+          "index": [
+            0,
+            16,
+            5,
+            1
+          ],
+          "original": 0.003891745577785622,
+          "projected": 0.00451132388732741,
+          "delta": 0.0006195783095417874
+        },
+        {
+          "index": [
+            0,
+            16,
+            4,
+            1
+          ],
+          "original": 0.003701377533529793,
+          "projected": 0.004287573746288976,
+          "delta": 0.0005861962127591838
+        },
+        {
+          "index": [
+            0,
+            16,
+            3,
+            1
+          ],
+          "original": 0.0032753486211003543,
+          "projected": 0.0037650039947632994,
+          "delta": 0.0004896553736629452
+        },
+        {
+          "index": [
+            0,
+            16,
+            2,
+            1
+          ],
+          "original": 0.0025387917270480965,
+          "projected": 0.002904086248082684,
+          "delta": 0.0003652945210345876
+        },
+        {
+          "index": [
+            0,
+            16,
+            1,
+            1
+          ],
+          "original": 0.0015861559129092906,
+          "projected": 0.0018247815156765788,
+          "delta": 0.0002386256027672883
+        },
+        {
+          "index": [
+            0,
+            17,
+            5,
+            0
+          ],
+          "original": 0.004178248449426995,
+          "projected": 0.003941014165560459,
+          "delta": -0.00023723428386653535
+        },
+        {
+          "index": [
+            0,
+            17,
+            4,
+            0
+          ],
+          "original": 0.003906640002504767,
+          "projected": 0.0036937250647201365,
+          "delta": -0.00021291493778463069
+        },
+        {
+          "index": [
+            0,
+            15,
+            5,
+            1
+          ],
+          "original": 0.0007861020763365396,
+          "projected": 0.0005872637762657727,
+          "delta": -0.00019883830007076696
+        }
+      ],
+      "sum_absolute_element_differences": 0.017302892742539985,
+      "element_sha256": "e6fdda2e257e9e617da7c3b8de14099ab220791d3b6d9628f6e07c31b993899e",
+      "element_axes": [
+        "material_depth",
+        "material_radius",
+        "material_polar",
+        "prism_triangle",
+        "correspondence",
+        "column"
+      ],
+      "correspondence": [
+        "same_material_prism",
+        "other_prism_same_bond_side",
+        "opposite_bond_side"
+      ],
+      "columns": [
+        "positive_order_points",
+        "saved",
+        "spatial",
+        "saved_label_with_spatial_gradient",
+        "absolute_pointwise_energy_error"
+      ],
+      "decomposition": "Exact labels and metric with substituted spatial inverse chart gradient first, then replace label values and reference metric at the same physical point."
+    },
+    "labels_2": {
+      "factor": 2,
+      "source": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "source_labels": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+      "axes_shape": [
+        53,
+        109,
+        41
+      ],
+      "active_cells": 32000,
+      "required_nodes": 35905,
+      "max_chart_roundtrip": 1.2857621326141377e-16,
+      "missing": [],
+      "multiple": [],
+      "transport": {
+        "max_same_sign_candidate_spread": 0.0,
+        "max_two_sided_jump": 0.0
+      },
+      "max_active_nested_knot_delta": 2.7755575615628914e-17,
+      "max_registered_snap": 2.220446049250313e-16,
+      "sha256": "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2"
+    },
+    "energy_4": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35",
+      "factor": 4,
+      "gauss_points_unchanged": 5291652,
+      "native_reference_tolerance": 2e-14,
+      "min_sampled_Jinv": 0.6189163792697517,
+      "max_sampled_Jinv": 6.032975517023093,
+      "max_roundtrip_abs_point_energy": 4.404571325722362e-20,
+      "sum_absolute_roundtrip": 1.903459776214382e-16,
+      "total": {
+        "count": 5291652,
+        "original": 0.20652001564581512,
+        "projected": 0.20413714051883552,
+        "difference": -0.002382875126979619,
+        "absolute_pointwise_sum": 0.011762889729711765,
+        "gradient_first": -0.0023774226486599596,
+        "label_values_and_metric_second": -5.452478319659259e-06
+      },
+      "signed_relative_deficit": 0.011538228483704383,
+      "by_correspondence": {
+        "same_material_prism": {
+          "count": 5161145,
+          "original": 0.20618924550437534,
+          "projected": 0.20374528490961658,
+          "difference": -0.0024439605947587785,
+          "absolute_pointwise_sum": 0.01158802078225447,
+          "gradient_first": -0.0024528882306329314,
+          "label_values_and_metric_second": 8.927635874152857e-06
+        },
+        "other_prism_same_bond_side": {
+          "count": 128411,
+          "original": 0.00029932247116660685,
+          "projected": 0.0003895650379241014,
+          "difference": 9.024256675749454e-05,
+          "absolute_pointwise_sum": 0.00014564577292473115,
+          "gradient_first": 8.058661550329017e-05,
+          "label_values_and_metric_second": 9.655951254204369e-06
+        },
+        "opposite_bond_side": {
+          "count": 2096,
+          "original": 3.144767027317654e-05,
+          "projected": 2.2905712948414747e-06,
+          "difference": -2.915709897833507e-05,
+          "absolute_pointwise_sum": 2.9223174532563594e-05,
+          "gradient_first": -5.1210335303183515e-06,
+          "label_values_and_metric_second": -2.4036065448016715e-05
+        }
+      },
+      "same_side": {
+        "count": 5289556,
+        "original": 0.20648856797554196,
+        "projected": 0.20413484994754066,
+        "difference": -0.002353718028001284,
+        "absolute_pointwise_sum": 0.011733666555179201,
+        "gradient_first": -0.0023723016151296415,
+        "label_values_and_metric_second": 1.858358712835747e-05
+      },
+      "by_material_depth": [
+        {
+          "material_depth_lower": 0.0,
+          "material_depth_upper": 0.041666666666666664,
+          "count": 868368,
+          "original": 0.11580316887757236,
+          "projected": 0.11509400496986957,
+          "difference": -0.0007091639077027827,
+          "absolute_pointwise_sum": 0.004478630777173892,
+          "gradient_first": -0.0006918130090255119,
+          "label_values_and_metric_second": -1.7350898677270846e-05
+        },
+        {
+          "material_depth_lower": 0.041666666666666664,
+          "material_depth_upper": 0.08333333333333333,
+          "count": 1173144,
+          "original": 0.03833307185910791,
+          "projected": 0.038298269518622585,
+          "difference": -3.480234048532726e-05,
+          "absolute_pointwise_sum": 0.0014724749582430308,
+          "gradient_first": -3.5831375457598297e-05,
+          "label_values_and_metric_second": 1.0290349722710404e-06
+        },
+        {
+          "material_depth_lower": 0.08333333333333333,
+          "material_depth_upper": 0.125,
+          "count": 896469,
+          "original": 0.019317849363145793,
+          "projected": 0.01971104703772551,
+          "difference": 0.00039319767457971476,
+          "absolute_pointwise_sum": 0.0018457297852760056,
+          "gradient_first": 0.0003937540508764593,
+          "label_values_and_metric_second": -5.563762967445317e-07
+        },
+        {
+          "material_depth_lower": 0.125,
+          "material_depth_upper": 0.16666666666666666,
+          "count": 1223820,
+          "original": 0.025749262391121214,
+          "projected": 0.02434629950709969,
+          "difference": -0.0014029628840215237,
+          "absolute_pointwise_sum": 0.002860364134974254,
+          "gradient_first": -0.0014151261017254617,
+          "label_values_and_metric_second": 1.2163217703937904e-05
+        },
+        {
+          "material_depth_lower": 0.16666666666666666,
+          "material_depth_upper": 0.20833333333333331,
+          "count": 604419,
+          "original": 0.006135076468314863,
+          "projected": 0.005579274153325049,
+          "difference": -0.0005558023149898138,
+          "absolute_pointwise_sum": 0.0009380150895475517,
+          "gradient_first": -0.0005553080514673471,
+          "label_values_and_metric_second": -4.94263522466689e-07
+        },
+        {
+          "material_depth_lower": 0.20833333333333331,
+          "material_depth_upper": 0.25,
+          "count": 267786,
+          "original": 0.001092532687569007,
+          "projected": 0.001019524863567675,
+          "difference": -7.300782400133209e-05,
+          "absolute_pointwise_sum": 0.0001599415526193832,
+          "gradient_first": -7.29547490782142e-05,
+          "label_values_and_metric_second": -5.307492311789042e-08
+        },
+        {
+          "material_depth_lower": 0.25,
+          "material_depth_upper": 0.29166666666666663,
+          "count": 211278,
+          "original": 8.85056461239589e-05,
+          "projected": 8.816404927971986e-05,
+          "difference": -3.415968442390349e-07,
+          "absolute_pointwise_sum": 7.708630112085754e-06,
+          "gradient_first": -1.514701317719753e-07,
+          "label_values_and_metric_second": -1.9012671246705956e-07
+        },
+        {
+          "material_depth_lower": 0.29166666666666663,
+          "material_depth_upper": 0.3333333333333333,
+          "count": 45648,
+          "original": 5.48201672154896e-07,
+          "projected": 5.562684479433809e-07,
+          "difference": 8.06677578848481e-09,
+          "absolute_pointwise_sum": 2.4799462812320638e-08,
+          "gradient_first": 8.05763868151431e-09,
+          "label_values_and_metric_second": 9.137106970499945e-12
+        },
+        {
+          "material_depth_lower": 0.3333333333333333,
+          "material_depth_upper": 0.375,
+          "count": 720,
+          "original": 1.5118787056158124e-10,
+          "projected": 1.508977668341282e-10,
+          "difference": -2.9010372745303064e-13,
+          "absolute_pointwise_sum": 2.3027494071685763e-12,
+          "gradient_first": -2.8919523576373264e-13,
+          "label_values_and_metric_second": -9.084916892979939e-16
+        },
+        {
+          "material_depth_lower": 0.375,
+          "material_depth_upper": 0.41666666666666663,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.41666666666666663,
+          "material_depth_upper": 0.4583333333333333,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.4583333333333333,
+          "material_depth_upper": 0.5,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.5,
+          "material_depth_upper": 0.5416666666666666,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.5416666666666666,
+          "material_depth_upper": 0.5833333333333333,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.5833333333333333,
+          "material_depth_upper": 0.625,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.625,
+          "material_depth_upper": 0.6666666666666666,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.6666666666666666,
+          "material_depth_upper": 0.7083333333333333,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.7083333333333333,
+          "material_depth_upper": 0.75,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.75,
+          "material_depth_upper": 0.7916666666666666,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.7916666666666666,
+          "material_depth_upper": 0.8333333333333333,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.8333333333333333,
+          "material_depth_upper": 0.875,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.875,
+          "material_depth_upper": 0.9166666666666666,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.9166666666666666,
+          "material_depth_upper": 0.9583333333333333,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        },
+        {
+          "material_depth_lower": 0.9583333333333333,
+          "material_depth_upper": 1.0,
+          "count": 0,
+          "original": 0.0,
+          "projected": 0.0,
+          "difference": 0.0,
+          "absolute_pointwise_sum": 0.0,
+          "gradient_first": 0.0,
+          "label_values_and_metric_second": 0.0
+        }
+      ],
+      "by_material_radius": [
+        {
+          "material_radial_chart_lower": 0.0,
+          "material_radial_chart_upper": 0.055156056411537216,
+          "count": 201510,
+          "original": 4.4475732751110334e-06,
+          "projected": 3.584364710370358e-06,
+          "difference": -8.632085647406752e-07,
+          "absolute_pointwise_sum": 1.828736221515758e-06,
+          "gradient_first": -8.630404291345505e-07,
+          "label_values_and_metric_second": -1.6813560612469345e-10
+        },
+        {
+          "material_radial_chart_lower": 0.055156056411537216,
+          "material_radial_chart_upper": 0.11031211282307443,
+          "count": 186561,
+          "original": 1.3994065497890925e-05,
+          "projected": 1.3520871375028515e-05,
+          "difference": -4.731941228624097e-07,
+          "absolute_pointwise_sum": 2.4045412179687363e-06,
+          "gradient_first": -4.737879246195671e-07,
+          "label_values_and_metric_second": 5.938017571574051e-10
+        },
+        {
+          "material_radial_chart_lower": 0.11031211282307443,
+          "material_radial_chart_upper": 0.16546816923461166,
+          "count": 185496,
+          "original": 3.991362202534615e-05,
+          "projected": 3.865511568228597e-05,
+          "difference": -1.2585063430601808e-06,
+          "absolute_pointwise_sum": 5.616222451256787e-06,
+          "gradient_first": -1.261701078556092e-06,
+          "label_values_and_metric_second": 3.1947354959111568e-09
+        },
+        {
+          "material_radial_chart_lower": 0.16546816923461166,
+          "material_radial_chart_upper": 0.22062422564614886,
+          "count": 224589,
+          "original": 8.637505706185285e-05,
+          "projected": 8.359905400352874e-05,
+          "difference": -2.7760030583241104e-06,
+          "absolute_pointwise_sum": 1.1095361153324595e-05,
+          "gradient_first": -2.7811159903748507e-06,
+          "label_values_and_metric_second": 5.1129320507404556e-09
+        },
+        {
+          "material_radial_chart_lower": 0.22062422564614886,
+          "material_radial_chart_upper": 0.27578028205768607,
+          "count": 136212,
+          "original": 0.00016206932073651795,
+          "projected": 0.00015684448916568035,
+          "difference": -5.22483157083759e-06,
+          "absolute_pointwise_sum": 1.894669041245581e-05,
+          "gradient_first": -5.226970810339638e-06,
+          "label_values_and_metric_second": 2.13923950204872e-09
+        },
+        {
+          "material_radial_chart_lower": 0.27578028205768607,
+          "material_radial_chart_upper": 0.3309363384692233,
+          "count": 183210,
+          "original": 0.00027899319593218904,
+          "projected": 0.0002706878336182175,
+          "difference": -8.305362313971506e-06,
+          "absolute_pointwise_sum": 2.9686636342028326e-05,
+          "gradient_first": -8.319047552373466e-06,
+          "label_values_and_metric_second": 1.3685238401960858e-08
+        },
+        {
+          "material_radial_chart_lower": 0.3309363384692233,
+          "material_radial_chart_upper": 0.3860923948807605,
+          "count": 224703,
+          "original": 0.0004519778752574472,
+          "projected": 0.000438644667744135,
+          "difference": -1.3333207513312151e-05,
+          "absolute_pointwise_sum": 4.3018453161608804e-05,
+          "gradient_first": -1.33564071632638e-05,
+          "label_values_and_metric_second": 2.3199649951647942e-08
+        },
+        {
+          "material_radial_chart_lower": 0.3860923948807605,
+          "material_radial_chart_upper": 0.4412484512922977,
+          "count": 180714,
+          "original": 0.0006984764860833062,
+          "projected": 0.0006794077508361046,
+          "difference": -1.9068735247201563e-05,
+          "absolute_pointwise_sum": 6.033881222013745e-05,
+          "gradient_first": -1.91094767104733e-05,
+          "label_values_and_metric_second": 4.074146327173806e-08
+        },
+        {
+          "material_radial_chart_lower": 0.4412484512922977,
+          "material_radial_chart_upper": 0.49640450770383493,
+          "count": 182850,
+          "original": 0.0010366633642735525,
+          "projected": 0.0010112008045104755,
+          "difference": -2.546255976307704e-05,
+          "absolute_pointwise_sum": 8.074907454786764e-05,
+          "gradient_first": -2.5528858730295535e-05,
+          "label_values_and_metric_second": 6.629896721849222e-08
+        },
+        {
+          "material_radial_chart_lower": 0.49640450770383493,
+          "material_radial_chart_upper": 0.5515605641153721,
+          "count": 219525,
+          "original": 0.0014838173724343775,
+          "projected": 0.001453334781360655,
+          "difference": -3.0482591073722584e-05,
+          "absolute_pointwise_sum": 0.00010014415758039746,
+          "gradient_first": -3.057805031339849e-05,
+          "label_values_and_metric_second": 9.54592396759122e-08
+        },
+        {
+          "material_radial_chart_lower": 0.5515605641153721,
+          "material_radial_chart_upper": 0.6067166205269093,
+          "count": 173598,
+          "original": 0.002055922377624876,
+          "projected": 0.00201945893370121,
+          "difference": -3.64634439236661e-05,
+          "absolute_pointwise_sum": 0.00013086206237885003,
+          "gradient_first": -3.6605205949403554e-05,
+          "label_values_and_metric_second": 1.417620257374515e-07
+        },
+        {
+          "material_radial_chart_lower": 0.6067166205269093,
+          "material_radial_chart_upper": 0.6618726769384466,
+          "count": 179493,
+          "original": 0.0027672844599119658,
+          "projected": 0.0027168110897360536,
+          "difference": -5.04733701759125e-05,
+          "absolute_pointwise_sum": 0.00020483091415081942,
+          "gradient_first": -5.0665135603704376e-05,
+          "label_values_and_metric_second": 1.9176542779187423e-07
+        },
+        {
+          "material_radial_chart_lower": 0.6618726769384466,
+          "material_radial_chart_upper": 0.7170287333499838,
+          "count": 246477,
+          "original": 0.0036419485505445183,
+          "projected": 0.003594968042193207,
+          "difference": -4.69805083513116e-05,
+          "absolute_pointwise_sum": 0.0003622245340957149,
+          "gradient_first": -4.724807473597047e-05,
+          "label_values_and_metric_second": 2.675663846588716e-07
+        },
+        {
+          "material_radial_chart_lower": 0.7170287333499838,
+          "material_radial_chart_upper": 0.772184789761521,
+          "count": 126459,
+          "original": 0.004743782257447319,
+          "projected": 0.004586389794821922,
+          "difference": -0.00015739246262539688,
+          "absolute_pointwise_sum": 0.0005408200441107821,
+          "gradient_first": -0.0001577714875107468,
+          "label_values_and_metric_second": 3.790248853498988e-07
+        },
+        {
+          "material_radial_chart_lower": 0.772184789761521,
+          "material_radial_chart_upper": 0.8273408461730583,
+          "count": 213771,
+          "original": 0.006379132461720773,
+          "projected": 0.00614734648002157,
+          "difference": -0.00023178598169920308,
+          "absolute_pointwise_sum": 0.0005252148515092322,
+          "gradient_first": -0.000232064232172071,
+          "label_values_and_metric_second": 2.7825047286791386e-07
+        },
+        {
+          "material_radial_chart_lower": 0.8273408461730583,
+          "material_radial_chart_upper": 0.8824969025845955,
+          "count": 231993,
+          "original": 0.010987866056620622,
+          "projected": 0.01035027465276307,
+          "difference": -0.0006375914038575519,
+          "absolute_pointwise_sum": 0.0013292461684003185,
+          "gradient_first": -0.0006380623281224115,
+          "label_values_and_metric_second": 4.709242648597316e-07
+        },
+        {
+          "material_radial_chart_lower": 0.8824969025845955,
+          "material_radial_chart_upper": 0.897184789761521,
+          "count": 116697,
+          "original": 0.05175182141694921,
+          "projected": 0.052511701262849805,
+          "difference": 0.0007598798459005939,
+          "absolute_pointwise_sum": 0.002776071437383886,
+          "gradient_first": 0.0007793052328494547,
+          "label_values_and_metric_second": -1.942538694886071e-05
+        },
+        {
+          "material_radial_chart_lower": 0.897184789761521,
+          "material_radial_chart_upper": 0.9118726769384466,
+          "count": 200988,
+          "original": 0.03797696527958861,
+          "projected": 0.03716906227907894,
+          "difference": -0.0008079030005096615,
+          "absolute_pointwise_sum": 0.0013744335920610356,
+          "gradient_first": -0.0008103234182432511,
+          "label_values_and_metric_second": 2.4204177335895176e-06
+        },
+        {
+          "material_radial_chart_lower": 0.9118726769384466,
+          "material_radial_chart_upper": 0.9265605641153721,
+          "count": 244101,
+          "original": 0.022996553474416738,
+          "projected": 0.0227338878547845,
+          "difference": -0.00026266561963223385,
+          "absolute_pointwise_sum": 0.0008240681566535658,
+          "gradient_first": -0.00026608369595595266,
+          "label_values_and_metric_second": 3.4180763237188245e-06
+        },
+        {
+          "material_radial_chart_lower": 0.9265605641153721,
+          "material_radial_chart_upper": 0.9412484512922977,
+          "count": 238605,
+          "original": 0.013385013861155273,
+          "projected": 0.013255256140614392,
+          "difference": -0.00012975772054088226,
+          "absolute_pointwise_sum": 0.0006350836176969136,
+          "gradient_first": -0.000133405134161585,
+          "label_values_and_metric_second": 3.647413620702735e-06
+        },
+        {
+          "material_radial_chart_lower": 0.9412484512922977,
+          "material_radial_chart_upper": 0.9559363384692233,
+          "count": 267519,
+          "original": 0.007560884910484038,
+          "projected": 0.007428027534069046,
+          "difference": -0.00013285737641499214,
+          "absolute_pointwise_sum": 0.0004499001978571906,
+          "gradient_first": -0.00013426873131689487,
+          "label_values_and_metric_second": 1.4113549019027139e-06
+        },
+        {
+          "material_radial_chart_lower": 0.9559363384692233,
+          "material_radial_chart_upper": 0.9706242256461488,
+          "count": 378240,
+          "original": 0.005278993549944236,
+          "projected": 0.005077978261772281,
+          "difference": -0.0002010152881719546,
+          "absolute_pointwise_sum": 0.00042608760322141847,
+          "gradient_first": -0.00020412448895191907,
+          "label_values_and_metric_second": 3.1092007799644925e-06
+        },
+        {
+          "material_radial_chart_lower": 0.9706242256461488,
+          "material_radial_chart_upper": 0.9853121128230744,
+          "count": 394617,
+          "original": 0.008368626842994444,
+          "projected": 0.008202974164095492,
+          "difference": -0.0001656526788989519,
+          "absolute_pointwise_sum": 0.0007597547918297025,
+          "gradient_first": -0.00016324510395536104,
+          "label_values_and_metric_second": -2.407574943590868e-06
+        },
+        {
+          "material_radial_chart_lower": 0.9853121128230744,
+          "material_radial_chart_upper": 1.0,
+          "count": 353724,
+          "original": 0.02436849221383492,
+          "projected": 0.024193524295327538,
+          "difference": -0.000174967918507385,
+          "absolute_pointwise_sum": 0.0010704630730537738,
+          "gradient_first": -0.00017536238812731344,
+          "label_values_and_metric_second": 3.9446961992844997e-07
+        }
+      ],
+      "largest_changed_prisms": [
+        {
+          "index": [
+            0,
+            16,
+            5,
+            1
+          ],
+          "original": 0.0038917455777856217,
+          "projected": 0.004143378651979591,
+          "delta": 0.00025163307419396886
+        },
+        {
+          "index": [
+            0,
+            16,
+            4,
+            1
+          ],
+          "original": 0.003701377533529793,
+          "projected": 0.003940739301431452,
+          "delta": 0.00023936176790165963
+        },
+        {
+          "index": [
+            0,
+            16,
+            3,
+            1
+          ],
+          "original": 0.0032753486211003547,
+          "projected": 0.003477605557971267,
+          "delta": 0.00020225693687091285
+        },
+        {
+          "index": [
+            0,
+            16,
+            2,
+            1
+          ],
+          "original": 0.0025387917270480965,
+          "projected": 0.0026882104112480594,
+          "delta": 0.00014941868419996276
+        },
+        {
+          "index": [
+            0,
+            15,
+            5,
+            1
+          ],
+          "original": 0.0007861020763365396,
+          "projected": 0.0006473968633183946,
+          "delta": -0.00013870521301814504
+        },
+        {
+          "index": [
+            0,
+            15,
+            4,
+            1
+          ],
+          "original": 0.00077759276501295,
+          "projected": 0.00064042843107854,
+          "delta": -0.00013716433393441002
+        },
+        {
+          "index": [
+            0,
+            16,
+            5,
+            0
+          ],
+          "original": 0.006051895036726493,
+          "projected": 0.005934715318139073,
+          "delta": -0.00011717971858741965
+        },
+        {
+          "index": [
+            0,
+            16,
+            3,
+            0
+          ],
+          "original": 0.004879472479172476,
+          "projected": 0.004762370992664771,
+          "delta": -0.00011710148650770493
+        }
+      ],
+      "sum_absolute_element_differences": 0.009395301617465993,
+      "element_sha256": "fe7d32da221acc53596c8925b390f8fa239427581ebede42c05f77817e3e8711",
+      "element_axes": [
+        "material_depth",
+        "material_radius",
+        "material_polar",
+        "prism_triangle",
+        "correspondence",
+        "column"
+      ],
+      "correspondence": [
+        "same_material_prism",
+        "other_prism_same_bond_side",
+        "opposite_bond_side"
+      ],
+      "columns": [
+        "positive_order_points",
+        "saved",
+        "spatial",
+        "saved_label_with_spatial_gradient",
+        "absolute_pointwise_energy_error"
+      ],
+      "decomposition": "Exact labels and metric with substituted spatial inverse chart gradient first, then replace label values and reference metric at the same physical point."
+    },
+    "labels_4": {
+      "factor": 4,
+      "source": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "source_labels": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+      "axes_shape": [
+        105,
+        217,
+        81
+      ],
+      "active_cells": 256000,
+      "required_nodes": 271385,
+      "max_chart_roundtrip": 1.690093309985978e-16,
+      "missing": [],
+      "multiple": [],
+      "transport": {
+        "max_same_sign_candidate_spread": 0.0,
+        "max_two_sided_jump": 0.0
+      },
+      "max_active_nested_knot_delta": 2.7755575615628914e-17,
+      "max_registered_snap": 4.440892098500626e-16,
+      "sha256": "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35"
+    },
+    "force_1_8": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+      "level": 1,
+      "quadrature_degree": 8,
+      "native_signed_steps": [
+        4e-07,
+        8e-08
+      ],
+      "modes": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "fixed": {
+        "energy": 0.20082402204262237,
+        "analytic": [
+          0.08405229148446866,
+          0.14638396450484453,
+          0.5435603698832633,
+          -0.28240353762267,
+          0.4138926469520588,
+          -0.04025104481103085
+        ],
+        "min_Jinv_sampled": 0.6102267426944256,
+        "min_chart_det_sampled": 0.5913461568912052
+      },
+      "probes": [
+        {
+          "h": 4e-07,
+          "signed": [
+            {
+              "energy": 0.20082401155021326,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6102269867672139,
+              "min_chart_det_sampled": 0.5913464491558911
+            },
+            {
+              "energy": 0.2008240325367179,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6102264986217353,
+              "min_chart_det_sampled": 0.5913458646272777
+            }
+          ],
+          "force": -0.0262331308065189
+        },
+        {
+          "h": 8e-08,
+          "signed": [
+            {
+              "energy": 0.20082401994399288,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6102267915089756,
+              "min_chart_det_sampled": 0.5913462153440837
+            },
+            {
+              "energy": 0.20082402414131537,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6102266938798796,
+              "min_chart_det_sampled": 0.5913460984383614
+            }
+          ],
+          "force": -0.026233265559838514
+        }
+      ],
+      "total": [
+        0.14659756637113816,
+        -0.6397026000078201,
+        0.7095084049153588,
+        -0.6649839648687143,
+        0.47543537288472293,
+        0.009090325514589138
+      ],
+      "matched_crystal": [
+        -0.026233265559838514,
+        0.14638396450484453,
+        0.5435603698832633,
+        -0.28240353762267,
+        0.4138926469520588,
+        -0.04025104481103085
+      ],
+      "delta_against_saved": [
+        -0.00396731699881428,
+        0.0015338018537134346,
+        0.004009071935106023,
+        0.001850492792310976,
+        0.009832438757049422,
+        8.290826695848269e-05
+      ],
+      "transport_delta": -0.11028555704430718,
+      "depth_step_spread": 1.3475331961387838e-07,
+      "derivative": "frozen label analytic, except log depth from signed energies with one-sided inverse-label nodal velocities and exact parent grid motion",
+      "completed": true
+    },
+    "force_2_4": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+      "level": 2,
+      "quadrature_degree": 4,
+      "native_signed_steps": [
+        4e-07,
+        8e-08
+      ],
+      "modes": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "fixed": {
+        "energy": 0.20278863371568218,
+        "analytic": [
+          0.08376182504093514,
+          0.14633677626088698,
+          0.5456631883857367,
+          -0.28849378401052356,
+          0.4072265366738475,
+          -0.03992766671135279
+        ],
+        "min_Jinv_sampled": 0.613774456156635,
+        "min_chart_det_sampled": 0.575499156116659
+      },
+      "probes": [
+        {
+          "h": 4e-07,
+          "signed": [
+            {
+              "energy": 0.20278862035071651,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6137747015417572,
+              "min_chart_det_sampled": 0.5754989526879993
+            },
+            {
+              "energy": 0.20278864708268965,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6137742107716099,
+              "min_chart_det_sampled": 0.5754993595452065
+            }
+          ],
+          "force": -0.03341496641884323
+        },
+        {
+          "h": 8e-08,
+          "signed": [
+            {
+              "energy": 0.20278863104252579,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6137745052336514,
+              "min_chart_det_sampled": 0.5754991154309296
+            },
+            {
+              "energy": 0.2027886363889203,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6137744070796218,
+              "min_chart_det_sampled": 0.5754991968023783
+            }
+          ],
+          "force": -0.03341496575964831
+        }
+      ],
+      "total": [
+        0.13941586617132837,
+        -0.6397497882517775,
+        0.7116112234178322,
+        -0.6710742112565677,
+        0.46876926260651164,
+        0.009413703614267202
+      ],
+      "matched_crystal": [
+        -0.03341496575964831,
+        0.14633677626088698,
+        0.5456631883857367,
+        -0.28849378401052356,
+        0.4072265366738475,
+        -0.03992766671135279
+      ],
+      "delta_against_saved": [
+        -0.011149017198624073,
+        0.0014866136097559934,
+        0.006111890437579426,
+        -0.004239753595542517,
+        0.003166328478838132,
+        0.00040628636663654627
+      ],
+      "transport_delta": -0.11717679080058345,
+      "depth_step_spread": 6.591949208711867e-10,
+      "derivative": "frozen label analytic, except log depth from signed energies with one-sided inverse-label nodal velocities and exact parent grid motion",
+      "completed": true
+    },
+    "force_2_6": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+      "level": 2,
+      "quadrature_degree": 6,
+      "native_signed_steps": [
+        4e-07,
+        8e-08
+      ],
+      "modes": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "fixed": {
+        "energy": 0.20278539149830682,
+        "analytic": [
+          0.08371634013495557,
+          0.14624207789153446,
+          0.545301715691976,
+          -0.28829648118577084,
+          0.40695003473672653,
+          -0.03996979001055381
+        ],
+        "min_Jinv_sampled": 0.6111612827958909,
+        "min_chart_det_sampled": 0.5731134237182849
+      },
+      "probes": [
+        {
+          "h": 4e-07,
+          "signed": [
+            {
+              "energy": 0.20278538000669877,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6111615271996069,
+              "min_chart_det_sampled": 0.5731132036597514
+            },
+            {
+              "energy": 0.20278540299200087,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6111610383922719,
+              "min_chart_det_sampled": 0.5731136437767163
+            }
+          ],
+          "force": -0.028731627632616608
+        },
+        {
+          "h": 8e-08,
+          "signed": [
+            {
+              "energy": 0.20278538919981834,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6111613316766259,
+              "min_chart_det_sampled": 0.5731133797065862
+            },
+            {
+              "energy": 0.20278539379687868,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6111612339151589,
+              "min_chart_det_sampled": 0.5731134677299843
+            }
+          ],
+          "force": -0.028731627146894034
+        }
+      ],
+      "total": [
+        0.14409920478408264,
+        -0.6398444866211301,
+        0.7112497507240716,
+        -0.6708769084318151,
+        0.46849276066939066,
+        0.009371580315066179
+      ],
+      "matched_crystal": [
+        -0.028731627146894034,
+        0.14624207789153446,
+        0.545301715691976,
+        -0.28829648118577084,
+        0.40695003473672653,
+        -0.03996979001055381
+      ],
+      "delta_against_saved": [
+        -0.0064656785858698,
+        0.0013919152404033852,
+        0.005750417743818792,
+        -0.004042450770789907,
+        0.0028898265417171554,
+        0.0003641630674355231
+      ],
+      "transport_delta": -0.11244796728184961,
+      "depth_step_spread": 4.85722573273506e-10,
+      "derivative": "frozen label analytic, except log depth from signed energies with one-sided inverse-label nodal velocities and exact parent grid motion",
+      "completed": true
+    },
+    "force_2_8": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+      "level": 2,
+      "quadrature_degree": 8,
+      "native_signed_steps": [
+        4e-07,
+        8e-08
+      ],
+      "modes": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "fixed": {
+        "energy": 0.20277733429417755,
+        "analytic": [
+          0.08368771300047737,
+          0.14620107830214585,
+          0.545140675180735,
+          -0.2881990915497486,
+          0.40684172933372187,
+          -0.039989518858137035
+        ],
+        "min_Jinv_sampled": 0.6101428099838417,
+        "min_chart_det_sampled": 0.572196456277852
+      },
+      "probes": [
+        {
+          "h": 4e-07,
+          "signed": [
+            {
+              "energy": 0.20277732269830775,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6101430540051898,
+              "min_chart_det_sampled": 0.572196229769099
+            },
+            {
+              "energy": 0.20277734589186006,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6101425659625911,
+              "min_chart_det_sampled": 0.5721966827865063
+            }
+          ],
+          "force": -0.028991940376199565
+        },
+        {
+          "h": 8e-08,
+          "signed": [
+            {
+              "energy": 0.20277733197483763,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6101428587881034,
+              "min_chart_det_sampled": 0.5721964109761103
+            },
+            {
+              "energy": 0.20277733661360023,
+              "analytic": null,
+              "min_Jinv_sampled": 0.610142761179584,
+              "min_chart_det_sampled": 0.5721965015795911
+            }
+          ],
+          "force": -0.028992266226657293
+        }
+      ],
+      "total": [
+        0.14383856570431938,
+        -0.6398854862105188,
+        0.7110887102128305,
+        -0.6707795187957928,
+        0.468384455266386,
+        0.009351851467482956
+      ],
+      "matched_crystal": [
+        -0.028992266226657293,
+        0.14620107830214585,
+        0.545140675180735,
+        -0.2881990915497486,
+        0.40684172933372187,
+        -0.039989518858137035
+      ],
+      "delta_against_saved": [
+        -0.006726317665633058,
+        0.0013509156510147502,
+        0.005589377232577686,
+        -0.003945061134767558,
+        0.002781521138712495,
+        0.00034443421985230066
+      ],
+      "transport_delta": -0.11267997922713466,
+      "depth_step_spread": 3.2585045772748344e-07,
+      "derivative": "frozen label analytic, except log depth from signed energies with one-sided inverse-label nodal velocities and exact parent grid motion",
+      "completed": true
+    },
+    "force_4_4": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35",
+      "level": 4,
+      "quadrature_degree": 4,
+      "native_signed_steps": [
+        4e-07,
+        8e-08
+      ],
+      "modes": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "fixed": {
+        "energy": 0.2038953094627392,
+        "analytic": [
+          0.08334001554038759,
+          0.1452679937169722,
+          0.5409830670619054,
+          -0.28467394238743365,
+          0.40577143870171856,
+          -0.04020432194932131
+        ],
+        "min_Jinv_sampled": 0.6136259616469905,
+        "min_chart_det_sampled": 0.5446310771474099
+      },
+      "probes": [
+        {
+          "h": 4e-07,
+          "signed": [
+            {
+              "energy": 0.20389529469684786,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6136262069412306,
+              "min_chart_det_sampled": 0.5446310768616656
+            },
+            {
+              "energy": 0.2038953242313707,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6136257163528487,
+              "min_chart_det_sampled": 0.5446310774331484
+            }
+          ],
+          "force": -0.036918153534237774
+        },
+        {
+          "h": 8e-08,
+          "signed": [
+            {
+              "energy": 0.20389530650934026,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6136260107058304,
+              "min_chart_det_sampled": 0.544631077090257
+            },
+            {
+              "energy": 0.20389531241624728,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6136259125881542,
+              "min_chart_det_sampled": 0.5446310772045649
+            }
+          ],
+          "force": -0.0369181688691933
+        }
+      ],
+      "total": [
+        0.13591266306178337,
+        -0.6408185707956924,
+        0.7069311020940009,
+        -0.6672543696334778,
+        0.4673141646343827,
+        0.009137048376298681
+      ],
+      "matched_crystal": [
+        -0.0369181688691933,
+        0.1452679937169722,
+        0.5409830670619054,
+        -0.28467394238743365,
+        0.40577143870171856,
+        -0.04020432194932131
+      ],
+      "delta_against_saved": [
+        -0.014652220308169067,
+        0.0004178310658411455,
+        0.0014317691137480937,
+        -0.00041991197245261347,
+        0.0017112305067091826,
+        0.00012963112866802573
+      ],
+      "transport_delta": -0.12025818440958089,
+      "depth_step_spread": 1.5334955527634975e-08,
+      "derivative": "frozen label analytic, except log depth from signed energies with one-sided inverse-label nodal velocities and exact parent grid motion",
+      "completed": true
+    },
+    "force_4_6": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35",
+      "level": 4,
+      "quadrature_degree": 6,
+      "native_signed_steps": [
+        4e-07,
+        8e-08
+      ],
+      "modes": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "fixed": {
+        "energy": 0.2038964374134085,
+        "analytic": [
+          0.08333544628465818,
+          0.14525992478773414,
+          0.5409465341182873,
+          -0.2846436830660247,
+          0.40575748909561915,
+          -0.040211628898069826
+        ],
+        "min_Jinv_sampled": 0.6110897407463947,
+        "min_chart_det_sampled": 0.544599616112032
+      },
+      "probes": [
+        {
+          "h": 4e-07,
+          "signed": [
+            {
+              "energy": 0.2038964224163027,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6110899851063162,
+              "min_chart_det_sampled": 0.5445996158202125
+            },
+            {
+              "energy": 0.20389645241320828,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6110894963865702,
+              "min_chart_det_sampled": 0.544599616403859
+            }
+          ],
+          "force": -0.03749613196324386
+        },
+        {
+          "h": 8e-08,
+          "signed": [
+            {
+              "energy": 0.20389643441377,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6110897896183707,
+              "min_chart_det_sampled": 0.5445996160536675
+            },
+            {
+              "energy": 0.20389644041315552,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6110896918744221,
+              "min_chart_det_sampled": 0.5445996161704071
+            }
+          ],
+          "force": -0.03749615947595819
+        }
+      ],
+      "total": [
+        0.13533467245501848,
+        -0.6408266397249305,
+        0.7068945691503828,
+        -0.667224110312069,
+        0.4673002150282833,
+        0.009129741427550166
+      ],
+      "matched_crystal": [
+        -0.03749615947595819,
+        0.14525992478773414,
+        0.5409465341182873,
+        -0.2846436830660247,
+        0.40575748909561915,
+        -0.040211628898069826
+      ],
+      "delta_against_saved": [
+        -0.015230210914933956,
+        0.0004097621366030424,
+        0.001395236170130043,
+        -0.00038965265104373703,
+        0.0016972809006097767,
+        0.0001223241799195099
+      ],
+      "transport_delta": -0.12083160576061637,
+      "depth_step_spread": 2.751271432899216e-08,
+      "derivative": "frozen label analytic, except log depth from signed energies with one-sided inverse-label nodal velocities and exact parent grid motion",
+      "completed": true
+    },
+    "force_4_8": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35",
+      "level": 4,
+      "quadrature_degree": 8,
+      "native_signed_steps": [
+        4e-07,
+        8e-08
+      ],
+      "modes": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "fixed": {
+        "energy": 0.20389789111067277,
+        "analytic": [
+          0.08333085470146445,
+          0.14526316841331235,
+          0.54096097811589,
+          -0.28465555160794875,
+          0.40576268843271995,
+          -0.04020191077305636
+        ],
+        "min_Jinv_sampled": 0.6101008948191402,
+        "min_chart_det_sampled": 0.5445873422907933
+      },
+      "probes": [
+        {
+          "h": 4e-07,
+          "signed": [
+            {
+              "energy": 0.20389787679277166,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6101011388148277,
+              "min_chart_det_sampled": 0.5445873419966043
+            },
+            {
+              "energy": 0.2038979054313114,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6101006508235504,
+              "min_chart_det_sampled": 0.5445873425849905
+            }
+          ],
+          "force": -0.03579817466764501
+        },
+        {
+          "h": 8e-08,
+          "signed": [
+            {
+              "energy": 0.20389788824687094,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6101009436182702,
+              "min_chart_det_sampled": 0.5445873422319486
+            },
+            {
+              "energy": 0.20389789397458313,
+              "analytic": null,
+              "min_Jinv_sampled": 0.6101008460200141,
+              "min_chart_det_sampled": 0.5445873423496448
+            }
+          ],
+          "force": -0.03579820120891419
+        }
+      ],
+      "total": [
+        0.13703263072206248,
+        -0.6408233960993522,
+        0.7069090131479855,
+        -0.667235978853993,
+        0.4673054143653841,
+        0.00913945955256363
+      ],
+      "matched_crystal": [
+        -0.03579820120891419,
+        0.14526316841331235,
+        0.54096097811589,
+        -0.28465555160794875,
+        0.40576268843271995,
+        -0.04020191077305636
+      ],
+      "delta_against_saved": [
+        -0.013532252647889959,
+        0.0004130057621812844,
+        0.0014096801677326853,
+        -0.00040152119296776867,
+        0.0017024802377105797,
+        0.0001320423049329736
+      ],
+      "transport_delta": -0.11912905591037865,
+      "depth_step_spread": 2.654126918244515e-08,
+      "derivative": "frozen label analytic, except log depth from signed energies with one-sided inverse-label nodal velocities and exact parent grid motion",
+      "completed": true
+    },
+    "fixed_chart_depth_1": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+      "factor": 1,
+      "active_points": 5291652,
+      "frozen_inner_crystal": true,
+      "kinematics": "Hold the label function and its normalized chart gradient at each native image; transport order knots and physical depth.",
+      "native": {
+        "stress": -0.4412797411213755,
+        "order_knot_motion": 0.4191378317359103,
+        "total": -0.02214190938546523
+      },
+      "projected": {
+        "stress": -0.43180321039106695,
+        "order_knot_motion": 0.3644420303854382,
+        "total": -0.06736118000562874
+      },
+      "native_label_spatial_gradient": {
+        "stress": -0.43161551737524645,
+        "order_knot_motion": 0.3638987290184512,
+        "total": -0.06771678835679523
+      },
+      "projected_minus_native": {
+        "stress": 0.009476530730308574,
+        "order_knot_motion": -0.054695801350472084,
+        "total": -0.04521927062016351
+      },
+      "analytical_bath": 0.17283083193097667,
+      "saved_full_depth_force": 0.15056488336995244,
+      "native_plus_bath_minus_saved": 0.00012403917555900423,
+      "projected_plus_bath_minus_saved": -0.045095231444604505
+    },
+    "fixed_chart_depth_2": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+      "factor": 2,
+      "active_points": 5291652,
+      "frozen_inner_crystal": true,
+      "kinematics": "Hold the label function and its normalized chart gradient at each native image; transport order knots and physical depth.",
+      "native": {
+        "stress": -0.4412797411213755,
+        "order_knot_motion": 0.4191378317359103,
+        "total": -0.02214190938546523
+      },
+      "projected": {
+        "stress": -0.43711494344602364,
+        "order_knot_motion": 0.38863330247900746,
+        "total": -0.04848164096701618
+      },
+      "native_label_spatial_gradient": {
+        "stress": -0.4371208934841663,
+        "order_knot_motion": 0.38844854012640934,
+        "total": -0.04867235335775694
+      },
+      "projected_minus_native": {
+        "stress": 0.004164797675351883,
+        "order_knot_motion": -0.030504529256902835,
+        "total": -0.02633973158155095
+      },
+      "analytical_bath": 0.17283083193097667,
+      "saved_full_depth_force": 0.15056488336995244,
+      "native_plus_bath_minus_saved": 0.00012403917555900423,
+      "projected_plus_bath_minus_saved": -0.026215692405991947
+    },
+    "fixed_chart_depth_4": {
+      "checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35",
+      "factor": 4,
+      "active_points": 5291652,
+      "frozen_inner_crystal": true,
+      "kinematics": "Hold the label function and its normalized chart gradient at each native image; transport order knots and physical depth.",
+      "native": {
+        "stress": -0.4412797411213755,
+        "order_knot_motion": 0.4191378317359103,
+        "total": -0.02214190938546523
+      },
+      "projected": {
+        "stress": -0.4405490144432526,
+        "order_knot_motion": 0.4047155595868146,
+        "total": -0.03583345485643802
+      },
+      "native_label_spatial_gradient": {
+        "stress": -0.4405301850700932,
+        "order_knot_motion": 0.4046236468816786,
+        "total": -0.035906538188414605
+      },
+      "projected_minus_native": {
+        "stress": 0.000730726678122906,
+        "order_knot_motion": -0.014422272149095694,
+        "total": -0.013691545470972788
+      },
+      "analytical_bath": 0.17283083193097667,
+      "saved_full_depth_force": 0.15056488336995244,
+      "native_plus_bath_minus_saved": 0.00012403917555900423,
+      "projected_plus_bath_minus_saved": -0.013567506295413784
+    },
+    "native_4": {
+      "state": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "degree": 4,
+      "subdivisions": 2,
+      "step": 0.0001,
+      "energy": 0.20651956597050963,
+      "energy_minus_saved": -4.4967529991279953e-07,
+      "six": [
+        {
+          "minus": 0.206517368991659,
+          "plus": 0.20652186596759517,
+          "force": -0.022484879680789716
+        },
+        {
+          "minus": 0.2065340636761655,
+          "plus": 0.20650509332388683,
+          "force": 0.14485176139333866
+        },
+        {
+          "minus": 0.20657376704863992,
+          "plus": 0.20646585479863183,
+          "force": 0.5395612500404268
+        },
+        {
+          "minus": 0.20649131343616772,
+          "plus": 0.20654816662960893,
+          "force": -0.2842659672060155
+        },
+        {
+          "minus": 0.2065600104670495,
+          "plus": 0.20647919874057158,
+          "force": 0.4040586323895978
+        },
+        {
+          "minus": 0.20651554096008448,
+          "plus": 0.20652360654810095,
+          "force": -0.040327940082351965
+        }
+      ],
+      "total_minus_saved": [
+        -0.00021893111976548085,
+        1.5987422076202407e-06,
+        9.952092269505108e-06,
+        -1.1936791034505845e-05,
+        -1.5758054115466713e-06,
+        6.012995637370844e-06
+      ]
+    },
+    "native_5": {
+      "state": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "degree": 5,
+      "subdivisions": 2,
+      "step": 0.0001,
+      "energy": 0.2065212527712466,
+      "energy_minus_saved": 1.2371254370646678e-06,
+      "six": [
+        {
+          "minus": 0.20651905887293867,
+          "plus": 0.2065235500459321,
+          "force": -0.0224558649671025
+        },
+        {
+          "minus": 0.20653575045796732,
+          "plus": 0.20650678014362073,
+          "force": 0.14485157173296792
+        },
+        {
+          "minus": 0.20657545382459958,
+          "plus": 0.2064675416246781,
+          "force": 0.5395609996074191
+        },
+        {
+          "minus": 0.20649300016147595,
+          "plus": 0.20654985350668456,
+          "force": -0.2842667260430365
+        },
+        {
+          "minus": 0.2065616971138188,
+          "plus": 0.2064808856948971,
+          "force": 0.4040570946085842
+        },
+        {
+          "minus": 0.20651722712557993,
+          "plus": 0.20652529398400873,
+          "force": -0.04033429214400641
+        }
+      ],
+      "total_minus_saved": [
+        -0.00018991640607826654,
+        1.4090818368783786e-06,
+        9.701659261840412e-06,
+        -1.2695628055503505e-05,
+        -3.113586425185222e-06,
+        -3.390660170757287e-07
+      ]
+    }
+  },
+  "sources": {
+    "energy_2": {
+      "file": "2/result.json",
+      "sha256": "e220372f1117a82d97782b17f7d85c3a922269fd07184f16c47b7e6e3c244071",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_energy.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01/2/labels.npz",
+        "2",
+        "_scratch/s11c/r4_nested_energy01/2"
+      ]
+    },
+    "labels_2": {
+      "file": "2/result.json",
+      "sha256": "a79eb2e4e8cfe950cde2bb17601686719132d94addcf1b0303dc16e764c0e25d",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_labels.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01",
+        "2"
+      ]
+    },
+    "energy_4": {
+      "file": "4/result.json",
+      "sha256": "820be9ca53114f02396a5cd2360af0445dd5791e5df7914916f392b98a01e75d",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_energy.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01/4/labels.npz",
+        "4",
+        "_scratch/s11c/r4_nested_energy01/4"
+      ]
+    },
+    "labels_4": {
+      "file": "4/result.json",
+      "sha256": "fb01f602d11203541ca707414223dfa07fc4d3bda0bb77cc41099402003c8bb6",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_labels.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01",
+        "4"
+      ]
+    },
+    "force_1_8": {
+      "file": "1_8/readout.json",
+      "sha256": "777f3dd9019a76023dbaed738fe404b2c2f5a6d7b9b11ae36d59170991af5c44",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_forces.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_cp10_labels01/labels.npz",
+        "_scratch/s11c/r4_nested_forces01/1_8",
+        "1",
+        "8"
+      ]
+    },
+    "force_2_4": {
+      "file": "2_4/readout.json",
+      "sha256": "c91a230ee87f2975de75fbe84dd79536be7af448ed4e68875fff8a1f5dd56362",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_forces.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01/2/labels.npz",
+        "_scratch/s11c/r4_nested_forces01/2_4",
+        "2",
+        "4"
+      ]
+    },
+    "force_2_6": {
+      "file": "2_6/readout.json",
+      "sha256": "252c870b0d53d281570d4d92e9e9e7b43c973d30dc4e440ecbbf5338eefc3d06",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_forces.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01/2/labels.npz",
+        "_scratch/s11c/r4_nested_forces01/2_6",
+        "2",
+        "6"
+      ]
+    },
+    "force_2_8": {
+      "file": "2_8/readout.json",
+      "sha256": "3ec4421880243d92ff219feef7d779247f787f8670057af6047bfd5fef0fb0ca",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_forces.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01/2/labels.npz",
+        "_scratch/s11c/r4_nested_forces01/2_8",
+        "2",
+        "8"
+      ]
+    },
+    "force_4_4": {
+      "file": "4_4/readout.json",
+      "sha256": "d84fca81b1ef2738666c1f36fc4c46c1d03c6fbfdf9df3c5e6a16fe85525b7c3",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_forces.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01/4/labels.npz",
+        "_scratch/s11c/r4_nested_forces01/4_4",
+        "4",
+        "4"
+      ]
+    },
+    "force_4_6": {
+      "file": "4_6/readout.json",
+      "sha256": "91a451c03ce722b1fff951c2d72179b8d099a75216642a0367875c1c8fac4f8d",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_forces.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01/4/labels.npz",
+        "_scratch/s11c/r4_nested_forces01/4_6",
+        "4",
+        "6"
+      ]
+    },
+    "force_4_8": {
+      "file": "4_8/readout.json",
+      "sha256": "5f3fff50ea02d21ec30da545e38a017210cb23df7ebc9886cd3a2fd51bbe4f19",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_forces.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01/4/labels.npz",
+        "_scratch/s11c/r4_nested_forces01/4_8",
+        "4",
+        "8"
+      ]
+    },
+    "fixed_chart_depth_1": {
+      "file": "depth1/result.json",
+      "sha256": "c6f618617662c748af996c24e27976a9368bd00a8f724cddad08936ffc7122ec",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_energy_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_cp10_labels01/labels.npz",
+        "1",
+        "_scratch/s11c/r4_nested_energy01/depth1"
+      ]
+    },
+    "fixed_chart_depth_2": {
+      "file": "depth2/result.json",
+      "sha256": "59923db328ebdde3612dc798cb0c3fb90ddc75ae66cb22970ac89006f092953c",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_energy_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01/2/labels.npz",
+        "2",
+        "_scratch/s11c/r4_nested_energy01/depth2"
+      ]
+    },
+    "fixed_chart_depth_4": {
+      "file": "depth4/result.json",
+      "sha256": "040801376ed5d0c74e7ec3cb67d81be53602c0b67d55c0f6894df87d492f045b",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_energy_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_nested_labels01/4/labels.npz",
+        "4",
+        "_scratch/s11c/r4_nested_energy01/depth4"
+      ]
+    },
+    "native_4": {
+      "file": "native_4.json",
+      "sha256": "81803d4269d7e52ed607d654110c4e0896e2b6b79a4fd2a2ef0f95b8b8e8c0cd",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_native_integration.py",
+        "_scratch/s11c",
+        "4",
+        "_scratch/s11c/r4_nested_gate01/native_4.json"
+      ]
+    },
+    "native_5": {
+      "file": "native_5.json",
+      "sha256": "314acb2c68f042c6f74ed89002ac4b11b15ca553a75109b6eb8f2b698b2fec43",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_native_integration.py",
+        "_scratch/s11c",
+        "5",
+        "_scratch/s11c/r4_nested_gate01/native_5.json"
+      ]
+    },
+    "regional_energy": {
+      "file": "summary.json",
+      "sha256": "a1651fe09cbfa7152ae67f17c26e74a9ce8c98f0b00146bf01f0e39b192efd59",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_nested_energy_summary.py",
+        "_scratch/s11c/r4_nested_energy01",
+        "_scratch/s11c/r4_cp10_two_metric01/image/result.json",
+        "_scratch/s11c/r4_nested_energy01/summary.json"
+      ]
+    }
+  }
+}

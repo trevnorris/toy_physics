@@ -59,15 +59,27 @@ Evaluated spatial(const Geometry &g,const Vec &frac,const Mat &right,double det_
 // Angular hoop and the dependent azimuthal coordinate are retained exactly.
 extern "C" int cp10_spatial_integral(const Data *ds,int ns,const double *t_deriv,const double *xi,const double *chi,
               const double *nodes,const double *weights,int n,double *out,double *bad,double *checks,double *el) {
-    if(ns!=1 && ns!=25)return 1;
+    // The nested-grid audit only integrates positive-order cells. The legacy
+    // values 1 and 25 additionally survey pure-melt orientation, and 25 also
+    // carries 24 signed perturbations. Both use exactly the same integrand.
+    const bool active_only=ns==0 || ns==-1;
+    const bool derivatives=ns==25 || ns==-1;
+    const bool signed_probes=ns==25;
+    if(!active_only && ns!=1 && !signed_probes)return 1;
     const Data &d=ds[0]; int nx=d.field_x.n,nt=d.field_t.n,na=d.field_a.n;
     std::vector<long double> result(31,0.), per((d.x.n-1)*(d.t.n-1)*(d.a.n-1)*2,0.);
     bad[15]=bad[16]=std::numeric_limits<double>::infinity();
     auto node=[=](int i,int j,int k){return (i*nt+j)*na+k;};
     const double cut=d.x.v[(d.x.n-1)*2/3];
     for(int i=0;i<nx-1;i++)for(int j=0;j<nt-1;j++)for(int k=0;k<na-1;k++){
+        if(active_only){
+            bool has_order=false;
+            for(int I=0;I<2;I++)for(int T=0;T<2;T++)for(int A=0;A<2;A++)
+                if(chi[node(i+I,j+T,k+A)]>0)has_order=true;
+            if(!has_order)continue;
+        }
         Geometry gs[25];Q1 q;bool melted=true;
-        for(int l=0;l<ns;l++){
+        for(int l=0;l<(active_only?1:ns);l++){
             const auto &h=ds[l];
             gs[l]={h,{h.field_x.v[i],h.field_t.v[j],h.field_a.v[k]},
                        {h.field_x.v[i+1]-h.field_x.v[i],h.field_t.v[j+1]-h.field_t.v[j],h.field_a.v[k+1]-h.field_a.v[k]}};
@@ -185,7 +197,7 @@ extern "C" int cp10_spatial_integral(const Data *ds,int ns,const double *t_deriv
                 int ie=((Tref*(d.x.n-1)+I)*(d.a.n-1)+K)*2+tri;
                 const double pref=wt*b.volume*p.chi/b.J;
                 result[0]+=pref*b.W;per[ie]+=pref*b.W;
-                if(ns==1)continue;
+                if(!derivatives)continue;
                 // Because xi and chi are nodal transported material/scalar coordinates in ALE cell fractions,
                 // vref*dchi is stationary. All current-grid terms appear in F and dJ.
                 const Mat F=product(b.C,right);
@@ -217,6 +229,7 @@ extern "C" int cp10_spatial_integral(const Data *ds,int ns,const double *t_deriv
                     double div=dg[0]/b.wall.grad[0]+depth/d.length+2*dr/b.R+(mode==0?dwidth/g.width[1]:0.);
                     work+=(-1+.5*b.J*(b.J-1))*div;
                     result[1+mode]-=pref*work;
+                    if(!signed_probes)continue;
                     for(int sig=0;sig<4;sig++){
                         auto ss=spatial(gs[1+mode*4+sig],frac,right,detright,ref.S,an,p.chi);
                         if(!(ss.J>0))return 5;

@@ -1,0 +1,1405 @@
+{
+  "command": "mouth_r4_stage2_outcome.py _scratch/s11c OUTPUT",
+  "phase": "fixed-shape Stage 2 stop",
+  "release_solver_commit": "01622952",
+  "stage1_clearance_commit": "fb0347a8",
+  "frozen_source_manifest_sha256": "292169e555e3bdb1ac8178c0ce1bb375b11bf764297fd0cd9aa587271c9d1101",
+  "force_convention": "Minus the partial shape derivative at fixed saved fields, with production nodal transport. No stationary released derivative.",
+  "checkpoint_11": false,
+  "stationary_gauge_comparison": false,
+  "reference": {
+    "sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "energy": 92185.53614224629,
+    "six_shape_forces": [
+      0.15056488336995244,
+      -0.6412364018615335,
+      0.7054993329802528,
+      -0.6668344576610252,
+      0.4656029341276735,
+      0.009007417247630656
+    ],
+    "flow": {
+      "feed_current": 10.708572690281159,
+      "bulk_current": 10.708572690181937,
+      "port_error": 9.922196397837979e-11,
+      "weak_disk_current": 10.70857112983345,
+      "incident_slice_current": 10.70857112983345,
+      "receiving_slice_current": 10.041874545957983,
+      "dense_total_subsonic_share": 0.6675622885530933,
+      "disk_minus_feed_current": -1.5604477088260182e-06,
+      "total_axial_stress": -26.58273652720701
+    },
+    "sampled_fully_melted_depth": 0.28460443110718825
+  },
+  "cases": {
+    "primary": {
+      "epsilon": 1e-08,
+      "input_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "saved_state_sha256": "99efdcf7765ab091bd4da53d1bb51b8984af9accc4f85e95cf85eb18509e0214",
+      "geometry": {
+        "depth": 0.8191403557693495,
+        "exit_radius": 3.306377271246663,
+        "wall_polar_amplitude": 0.02342688643280306
+      },
+      "fixed_field_total_energy": 92185.49685485024,
+      "initial_rematched_total_energy": 92185.52829464083,
+      "initial_crystal_energy": 0.21501781821056462,
+      "crystal_energy": 0.18357802706393175,
+      "gauge_energy": 5.194977680831644e-09,
+      "gauge_over_crystal": 2.8298472120644773e-08,
+      "strict_label_energy_change": -0.03143979059386373,
+      "accepted_steps": 50,
+      "initial_free_label_force": 0.18215774194147416,
+      "final_free_label_force": 0.12656537220496927,
+      "final_free_force_by_component": [
+        0.12656537220496927,
+        0.02749556939312818,
+        0.0011032743067338222
+      ],
+      "harmonic_residual": 5.1275607024225955e-14,
+      "first_alpha": 0.015625,
+      "final_alpha": 3.552713678800501e-15,
+      "final_energy_change": -1.4377388168895777e-14,
+      "last_rejected_alpha": 8.881784197001252e-16,
+      "last_rejected": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          18,
+          8,
+          19
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": 4.3548498140921765e-14,
+        "chart_lower": -1.5238644516212778e-14,
+        "roundoff_margin": 5.878714265713454e-14,
+        "subdivisions": 0
+      },
+      "chart_lower_all": 9.515255965815174e-14,
+      "chart_lower_active_cells": 0.13542712430771298,
+      "lowest_sampled_physical": {
+        "cell": [
+          16,
+          9,
+          0
+        ],
+        "local": [
+          0.09912375657902112,
+          0.1127016653792583,
+          0.1127016653792583
+        ],
+        "chart": [
+          0.8548570286612447,
+          0.287831156272443,
+          0.0031021280199312914
+        ],
+        "chi": 0.0,
+        "Jinv": 0.10494846143735537,
+        "grad_xi_norm": 0.4748571665485435,
+        "W": 32.012419618129
+      },
+      "lowest_sampled_ordered_physical": {
+        "cell": [
+          0,
+          8,
+          1
+        ],
+        "local": [
+          0.9707733630153828,
+          0.1127016653792583,
+          0.8872983346207417
+        ],
+        "chart": [
+          0.07323881880737355,
+          0.25624544581655034,
+          0.06535932212874296
+        ],
+        "chi": 2.218856491267992e-05,
+        "Jinv": 0.23214462795679433,
+        "grad_xi_norm": 3.7361807623257035,
+        "W": 14.048739053248802
+      },
+      "accepted_corner": {
+        "cell": [
+          18,
+          8,
+          19
+        ],
+        "local": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "material_side": "collar",
+        "physical_chart": [
+          0.9275147928994083,
+          0.2842713941018018,
+          1.4657055899195157
+        ],
+        "physical": {
+          "radius": 3.588186583926424,
+          "theta": 1.4657055899195157,
+          "cylindrical_radius": 3.5683907335731186,
+          "axial_brane_coordinate": 0.37639146326541556,
+          "w": 0.2328581708995989
+        },
+        "label": [
+          0.9084749485592136,
+          0.23756369212979503,
+          1.4656939822222936
+        ],
+        "distance_from_weld_in_label": 0.02597804597461817,
+        "chi": 0.0,
+        "max_vertex_chi": 0.0,
+        "positive_vertices": 0,
+        "chart_det": 9.513720021375457e-14,
+        "Jinv": 1.7865730513800506e-13,
+        "J": 5597308205379.809,
+        "W_formal": 5.615490974616149e+25,
+        "chi_W": 0.0,
+        "chi_Jinv_W": 0.0,
+        "grad_xi_frobenius": 0.5653428140816549,
+        "grad_xi_spectral": 0.490936531715363,
+        "condition_F": 12143872512230.393,
+        "min_singular_Finv": 1.0172098387209558e-13,
+        "max_singular_Finv": 1.2352866599613725
+      },
+      "active_incident_cells": [
+        {
+          "cell": [
+            19,
+            8,
+            19
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "material_side": "collar",
+          "physical_chart": [
+            0.9275147928994083,
+            0.2842713941018018,
+            1.4657055899195157
+          ],
+          "physical": {
+            "radius": 3.588186583926424,
+            "theta": 1.4657055899195157,
+            "cylindrical_radius": 3.5683907335731186,
+            "axial_brane_coordinate": 0.37639146326541556,
+            "w": 0.2328581708995989
+          },
+          "label": [
+            0.9084749485592136,
+            0.23756369212979503,
+            1.4656939822222936
+          ],
+          "distance_from_weld_in_label": 0.02597804597461817,
+          "chi": 0.0,
+          "max_vertex_chi": 0.00014200346367743746,
+          "positive_vertices": 1,
+          "chart_det": 0.7173530260678442,
+          "Jinv": 1.3471108901872562,
+          "J": 0.7423293860099329,
+          "W_formal": 0.3843287963717113,
+          "chi_W": 0.0,
+          "chi_Jinv_W": 0.0,
+          "grad_xi_frobenius": 0.8013589799826889,
+          "grad_xi_spectral": 0.6698740330295716,
+          "condition_F": 2.033797202819121,
+          "min_singular_Finv": 0.6658551041472293,
+          "max_singular_Finv": 1.3542142482974693
+        }
+      ],
+      "flow": {
+        "feed_current": 10.708522019454033,
+        "bulk_current": 10.708522019397575,
+        "port_error": 5.645794942665816e-11,
+        "weak_disk_current": 10.708521505486123,
+        "incident_slice_current": 10.708521505486125,
+        "receiving_slice_current": 10.041827929368411,
+        "dense_total_subsonic_share": 0.6675636550002787,
+        "disk_minus_feed_current": -5.139679100096828e-07,
+        "total_axial_stress": -26.58274618477214
+      },
+      "sampled_fully_melted_depth": 0.28460443110718825,
+      "fields_before_label_descent": {
+        "phase_raw": 2.273014813912802e-09,
+        "amplitude_raw": 6.27543632069776e-10,
+        "order_raw": 0.34959525648184164,
+        "order_kkt": 1.5516490866132604e-07,
+        "order_projected": 5.4111584685268e-08,
+        "carrier_metric": 2.282476259850211e-08,
+        "shared_work_error": 1.6653345369377348e-16,
+        "order_knot_transport": [
+          {
+            "free_interior": -2.7430194651137756e-06,
+            "lower_obstacle": 4.225930047176802e-17,
+            "upper_obstacle": -0.0,
+            "total": -2.7430194650715163e-06
+          },
+          {
+            "free_interior": -4.408572973987329e-06,
+            "lower_obstacle": -0.010406631529651217,
+            "upper_obstacle": -0.0,
+            "total": -0.010411040102625203
+          }
+        ],
+        "order_step_energy": {
+          "physical_change": -0.0018673369631869718,
+          "old_gauge": 6.308940299670134e-09,
+          "new_gauge": 4.642208533288064e-09,
+          "delta": -0.0018673386299187381,
+          "entered_melt": 0,
+          "left_melt": 797
+        }
+      },
+      "frozen_shape_work": {
+        "log_depth": {
+          "analytic": 0.008779705042868005,
+          "signed": [
+            {
+              "h": 1e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": false
+              },
+              "one_sided": {
+                "-1": 0.009013485505116096,
+                "1": null
+              },
+              "central": null,
+              "analytic_minus_central": null
+            },
+            {
+              "h": 5e-06,
+              "feasible_banks": {
+                "-1": true,
+                "1": false
+              },
+              "one_sided": {
+                "-1": 0.00889716369326698,
+                "1": null
+              },
+              "central": null,
+              "analytic_minus_central": null
+            }
+          ]
+        },
+        "scaled_log_exit": {
+          "analytic": -0.674022723124803,
+          "signed": [
+            {
+              "h": 0.0001,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": -0.6737232997831049,
+                "1": -0.6743221689067596
+              },
+              "central": -0.6740227343449322,
+              "analytic_minus_central": 1.1220129159106307e-08
+            },
+            {
+              "h": 5e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": -0.6738729478545494,
+                "1": -0.6741725283526692
+              },
+              "central": -0.6740227381036092,
+              "analytic_minus_central": 1.497880619538705e-08
+            }
+          ]
+        },
+        "mean_width": {
+          "analytic": 0.5732765779768358,
+          "signed": [
+            {
+              "h": 0.0001,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.5781344383161128,
+                "1": 0.5684186922845771
+              },
+              "central": 0.5732765653003449,
+              "analytic_minus_central": 1.267649096803325e-08
+            },
+            {
+              "h": 5e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.5757055692230095,
+                "1": 0.5708475505998224
+              },
+              "central": 0.573276559911416,
+              "analytic_minus_central": 1.806541982674048e-08
+            }
+          ]
+        },
+        "depth_asymmetry": {
+          "analytic": -0.5769945306975994,
+          "signed": [
+            {
+              "h": 0.0001,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": -0.5735955840507349,
+                "1": -0.580393477283971
+              },
+              "central": -0.576994530667353,
+              "analytic_minus_central": -3.0246471993677915e-11
+            },
+            {
+              "h": 5e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": -0.575294952692951,
+                "1": -0.5786941073386769
+              },
+              "central": -0.5769945300158139,
+              "analytic_minus_central": -6.817855169316545e-10
+            }
+          ]
+        },
+        "waist_profile": {
+          "analytic": 0.39760177446175665,
+          "signed": [
+            {
+              "h": 0.0001,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.3985329896485128,
+                "1": 0.39667054389784123
+              },
+              "central": 0.39760176677317705,
+              "analytic_minus_central": 7.688579606313084e-09
+            },
+            {
+              "h": 5e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.3980675832672503,
+                "1": 0.39713602759246097
+              },
+              "central": 0.3976018054298556,
+              "analytic_minus_central": -3.096809897407127e-08
+            }
+          ]
+        },
+        "polar_equatorial": {
+          "analytic": 0.020185967643572927,
+          "signed": [
+            {
+              "h": 0.0001,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.02042816424498985,
+                "1": 0.019943770676333485
+              },
+              "central": 0.020185967460661668,
+              "analytic_minus_central": 1.8291125905567363e-10
+            },
+            {
+              "h": 5e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.02030706379497331,
+                "1": 0.020064870172482714
+              },
+              "central": 0.020185966983728012,
+              "analytic_minus_central": 6.598449148187413e-10
+            }
+          ]
+        }
+      },
+      "force_order": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "diagnostic_hashes": {
+        "label_stall.json.primary": "4e6a8ee11463e06d28563f330f74e36a30acaa8fa1ea7c4c3fa5cd833e947d84",
+        "readout.json.primary": "4fc88193e11a4b45daa2842a18a5a226d86afa1470a848993a9704792101baf7",
+        "primary.json.r4_eulerian_corner01": "e302052b29f5ffe1cc858a7c215746137511a5902a6aa71de152eb670c6b5fb6",
+        "review_primary.json.r4_eulerian_stage2_01": "b554cabe64a197da90a4f4fecb764d63b1a59c985b4e278ca986e62a17c0f619"
+      },
+      "vertices_of_limiting_cell": [
+        {
+          "node": [
+            18,
+            8,
+            19
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              18,
+              7,
+              19
+            ],
+            [
+              18,
+              7,
+              18
+            ],
+            [
+              17,
+              7,
+              19
+            ],
+            [
+              17,
+              7,
+              18
+            ]
+          ],
+          "independent_melted_label": false,
+          "melted_free_components": [
+            false,
+            false,
+            false
+          ],
+          "d_chart_det_d_vertex_label": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "derivative_norm": 0.0,
+          "melt_only_derivative_norm": 0.0
+        },
+        {
+          "node": [
+            18,
+            8,
+            20
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              18,
+              7,
+              19
+            ],
+            [
+              17,
+              7,
+              19
+            ]
+          ],
+          "independent_melted_label": false,
+          "melted_free_components": [
+            false,
+            false,
+            false
+          ],
+          "d_chart_det_d_vertex_label": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "derivative_norm": 0.0,
+          "melt_only_derivative_norm": 0.0
+        },
+        {
+          "node": [
+            18,
+            9,
+            19
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [],
+          "independent_melted_label": true,
+          "melted_free_components": [
+            true,
+            true,
+            true
+          ],
+          "d_chart_det_d_vertex_label": [
+            -17.31202909282639,
+            -10.748998156806298,
+            2.435635482974614
+          ],
+          "derivative_norm": 20.52266144757588,
+          "melt_only_derivative_norm": 20.52266144757588
+        },
+        {
+          "node": [
+            18,
+            9,
+            20
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [],
+          "independent_melted_label": true,
+          "melted_free_components": [
+            true,
+            true,
+            false
+          ],
+          "d_chart_det_d_vertex_label": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "derivative_norm": 0.0,
+          "melt_only_derivative_norm": 0.0
+        },
+        {
+          "node": [
+            19,
+            8,
+            19
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              19,
+              8,
+              19
+            ],
+            [
+              19,
+              7,
+              19
+            ],
+            [
+              19,
+              7,
+              18
+            ],
+            [
+              18,
+              7,
+              19
+            ],
+            [
+              18,
+              7,
+              18
+            ]
+          ],
+          "independent_melted_label": false,
+          "melted_free_components": [
+            false,
+            false,
+            false
+          ],
+          "d_chart_det_d_vertex_label": [
+            -32.6655609623406,
+            -20.281969992811156,
+            4.5957293003934
+          ],
+          "derivative_norm": 38.72360917549108,
+          "melt_only_derivative_norm": 0.0
+        },
+        {
+          "node": [
+            19,
+            8,
+            20
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              19,
+              8,
+              19
+            ],
+            [
+              19,
+              7,
+              19
+            ],
+            [
+              18,
+              7,
+              19
+            ]
+          ],
+          "independent_melted_label": false,
+          "melted_free_components": [
+            false,
+            false,
+            false
+          ],
+          "d_chart_det_d_vertex_label": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "derivative_norm": 0.0,
+          "melt_only_derivative_norm": 0.0
+        },
+        {
+          "node": [
+            19,
+            9,
+            19
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              19,
+              8,
+              19
+            ]
+          ],
+          "independent_melted_label": false,
+          "melted_free_components": [
+            false,
+            false,
+            false
+          ],
+          "d_chart_det_d_vertex_label": [
+            50.022772224131494,
+            31.059021652087665,
+            -7.037721478666601
+          ],
+          "derivative_norm": 59.2998321294713,
+          "melt_only_derivative_norm": 0.0
+        },
+        {
+          "node": [
+            19,
+            9,
+            20
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              19,
+              8,
+              19
+            ]
+          ],
+          "independent_melted_label": false,
+          "melted_free_components": [
+            false,
+            false,
+            false
+          ],
+          "d_chart_det_d_vertex_label": [
+            -0.04518216896450533,
+            -0.02805350247021144,
+            0.006356695298586714
+          ],
+          "derivative_norm": 0.05356150640434175,
+          "melt_only_derivative_norm": 0.0
+        }
+      ]
+    },
+    "secondary": {
+      "epsilon": 1e-10,
+      "input_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "saved_state_sha256": "7537be547eebd164d3d478cebe44b8bf85b5955879a5db832588c5f026873eae",
+      "geometry": {
+        "depth": 0.8191403557693495,
+        "exit_radius": 3.306377271246663,
+        "wall_polar_amplitude": 0.02342688643280306
+      },
+      "fixed_field_total_energy": 92185.49240873048,
+      "initial_rematched_total_energy": 92185.52829463623,
+      "initial_crystal_energy": 0.21501781821056462,
+      "crystal_energy": 0.17913191244656781,
+      "gauge_energy": 5.568993695806831e-11,
+      "gauge_over_crystal": 3.1088786022244766e-10,
+      "strict_label_energy_change": -0.03588590575472897,
+      "accepted_steps": 36,
+      "initial_free_label_force": 0.18215774194147416,
+      "final_free_label_force": 0.11469149447645666,
+      "final_free_force_by_component": [
+        0.11469149447645666,
+        0.027323204840033862,
+        0.0008434929544482326
+      ],
+      "harmonic_residual": 4.903396482250355e-14,
+      "first_alpha": 0.015625,
+      "final_alpha": 1.4210854715202004e-14,
+      "final_energy_change": -4.6351811278100286e-15,
+      "last_rejected_alpha": 1.4210854715202004e-14,
+      "last_rejected": {
+        "reason": "nonpositive sampled chart determinant",
+        "code": 2,
+        "chart_bound": -7.582694420134839e-14,
+        "cell": [
+          18,
+          8,
+          5
+        ],
+        "local": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chi": 0.0
+      },
+      "chart_lower_all": 3.946557741134459e-13,
+      "chart_lower_active_cells": 0.021060256902812036,
+      "lowest_sampled_physical": {
+        "cell": [
+          0,
+          8,
+          1
+        ],
+        "local": [
+          0.9721018639179664,
+          0.8872983346207417,
+          0.8872983346207417
+        ],
+        "chart": [
+          0.0733390459464738,
+          0.28071163193124515,
+          0.06535932212874296
+        ],
+        "chi": 1.3060463628922268e-05,
+        "Jinv": 0.09509092105305865,
+        "grad_xi_norm": 3.652877308352759,
+        "W": 84.47132322002997
+      },
+      "lowest_sampled_ordered_physical": {
+        "cell": [
+          0,
+          8,
+          1
+        ],
+        "local": [
+          0.9721018639179664,
+          0.8872983346207417,
+          0.8872983346207417
+        ],
+        "chart": [
+          0.0733390459464738,
+          0.28071163193124515,
+          0.06535932212874296
+        ],
+        "chi": 1.3060463628922268e-05,
+        "Jinv": 0.09509092105305865,
+        "grad_xi_norm": 3.652877308352759,
+        "W": 84.47132322002997
+      },
+      "accepted_corner": {
+        "cell": [
+          18,
+          8,
+          5
+        ],
+        "local": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "material_side": "collar",
+        "physical_chart": [
+          0.9275147928994083,
+          0.2842713941018018,
+          0.2417346402795315
+        ],
+        "physical": {
+          "radius": 3.6122818805838404,
+          "theta": 0.2417346402795315,
+          "cylindrical_radius": 0.8647340086554873,
+          "axial_brane_coordinate": 3.507251841409302,
+          "w": 0.2328581708995989
+        },
+        "label": [
+          0.9097658539492834,
+          0.25131620102973473,
+          0.24200995350475418
+        ],
+        "distance_from_weld_in_label": 0.027268951364687988,
+        "chi": 0.0,
+        "max_vertex_chi": 0.0,
+        "positive_vertices": 0,
+        "chart_det": 3.9465704397404065e-13,
+        "Jinv": 6.996345383923923e-13,
+        "J": 1429317658184.489,
+        "W_formal": 6.387661519104408e+24,
+        "chi_W": 0.0,
+        "chi_Jinv_W": 0.0,
+        "grad_xi_frobenius": 0.5926809062766007,
+        "grad_xi_spectral": 0.5114838773462693,
+        "condition_F": 5582615555089.992,
+        "min_singular_Finv": 2.916822186159413e-13,
+        "max_singular_Finv": 1.6283496907885135
+      },
+      "active_incident_cells": [
+        {
+          "cell": [
+            19,
+            8,
+            4
+          ],
+          "local": [
+            0.0,
+            1.0,
+            1.0
+          ],
+          "material_side": "collar",
+          "physical_chart": [
+            0.9275147928994083,
+            0.2842713941018018,
+            0.2417346402795315
+          ],
+          "physical": {
+            "radius": 3.6122818805838404,
+            "theta": 0.2417346402795315,
+            "cylindrical_radius": 0.8647340086554873,
+            "axial_brane_coordinate": 3.507251841409302,
+            "w": 0.2328581708995989
+          },
+          "label": [
+            0.9097658539492834,
+            0.25131620102973473,
+            0.24200995350475418
+          ],
+          "distance_from_weld_in_label": 0.027268951364687988,
+          "chi": 0.0,
+          "max_vertex_chi": 1.3366394298831225e-05,
+          "positive_vertices": 1,
+          "chart_det": 1.0101983892959678,
+          "Jinv": 1.7908452277018316,
+          "J": 0.5583955467124799,
+          "W_formal": 0.5446705496760017,
+          "chi_W": 0.0,
+          "chi_Jinv_W": 0.0,
+          "grad_xi_frobenius": 0.880625582236573,
+          "grad_xi_spectral": 0.7077075588036643,
+          "condition_F": 2.5883621811888244,
+          "min_singular_Finv": 0.6787386755781326,
+          "max_singular_Finv": 1.7568215187766292
+        }
+      ],
+      "flow": {
+        "feed_current": 10.708522019454033,
+        "bulk_current": 10.708522019397575,
+        "port_error": 5.645794942665816e-11,
+        "weak_disk_current": 10.708521505486123,
+        "incident_slice_current": 10.708521505486125,
+        "receiving_slice_current": 10.041827929368411,
+        "dense_total_subsonic_share": 0.6675636550002787,
+        "disk_minus_feed_current": -5.139679100096828e-07,
+        "total_axial_stress": -26.58274618477214
+      },
+      "sampled_fully_melted_depth": 0.28460443110718825,
+      "fields_before_label_descent": {
+        "phase_raw": 2.273014813912802e-09,
+        "amplitude_raw": 6.27543632069776e-10,
+        "order_raw": 0.34959525648184164,
+        "order_kkt": 1.5516490866132604e-07,
+        "order_projected": 5.4111584685268e-08,
+        "carrier_metric": 2.282476259850211e-08,
+        "shared_work_error": 1.6653345369377348e-16,
+        "order_knot_transport": [
+          {
+            "free_interior": -2.7430194651137756e-06,
+            "lower_obstacle": 4.225930047176802e-17,
+            "upper_obstacle": -0.0,
+            "total": -2.7430194650715163e-06
+          },
+          {
+            "free_interior": -4.408572973987329e-06,
+            "lower_obstacle": -0.010406631529651217,
+            "upper_obstacle": -0.0,
+            "total": -0.010411040102625203
+          }
+        ],
+        "order_step_energy": {
+          "physical_change": -0.0018673369631869718,
+          "old_gauge": 6.308940299670134e-11,
+          "new_gauge": 4.642208533288064e-11,
+          "delta": -0.0018673369798542895,
+          "entered_melt": 0,
+          "left_melt": 797
+        }
+      },
+      "frozen_shape_work": {
+        "log_depth": {
+          "analytic": 0.07538911292371366,
+          "signed": [
+            {
+              "h": 1e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": false
+              },
+              "one_sided": {
+                "-1": 0.07562812472618383,
+                "1": null
+              },
+              "central": null,
+              "analytic_minus_central": null
+            },
+            {
+              "h": 5e-06,
+              "feasible_banks": {
+                "-1": true,
+                "1": false
+              },
+              "one_sided": {
+                "-1": 0.07550918174175841,
+                "1": null
+              },
+              "central": null,
+              "analytic_minus_central": null
+            }
+          ]
+        },
+        "scaled_log_exit": {
+          "analytic": -0.681712197041332,
+          "signed": [
+            {
+              "h": 0.0001,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": -0.6814130680427892,
+                "1": -0.6820113484619593
+              },
+              "central": -0.6817122082523743,
+              "analytic_minus_central": 1.1211042316716657e-08
+            },
+            {
+              "h": 5e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": -0.6815625689449821,
+                "1": -0.6818618550907207
+              },
+              "central": -0.6817122120178514,
+              "analytic_minus_central": 1.4976519358000928e-08
+            }
+          ]
+        },
+        "mean_width": {
+          "analytic": 0.5462535087006897,
+          "signed": [
+            {
+              "h": 0.0001,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.5511038184365181,
+                "1": 0.5414031736121018
+              },
+              "central": 0.54625349602431,
+              "analytic_minus_central": 1.2676379723686182e-08
+            },
+            {
+              "h": 5e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.5486787246452641,
+                "1": 0.5438282566252203
+              },
+              "central": 0.5462534906352422,
+              "analytic_minus_central": 1.8065447471293794e-08
+            }
+          ]
+        },
+        "depth_asymmetry": {
+          "analytic": -0.5655226773888063,
+          "signed": [
+            {
+              "h": 0.0001,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": -0.562128938953595,
+                "1": -0.5689164157639606
+              },
+              "central": -0.5655226773587778,
+              "analytic_minus_central": -3.0028535213943996e-11
+            },
+            {
+              "h": 5e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": -0.5638257034898851,
+                "1": -0.5672196499243147
+              },
+              "central": -0.5655226767071,
+              "analytic_minus_central": -6.817063580299987e-10
+            }
+          ]
+        },
+        "waist_profile": {
+          "analytic": 0.3739699608031014,
+          "signed": [
+            {
+              "h": 0.0001,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.3748999585661783,
+                "1": 0.3730399476630405
+              },
+              "central": 0.3739699531146094,
+              "analytic_minus_central": 7.688492009716441e-09
+            },
+            {
+              "h": 5e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.37443516089659107,
+                "1": 0.3735048226457074
+              },
+              "central": 0.3739699917711492,
+              "analytic_minus_central": -3.096804779278983e-08
+            }
+          ]
+        },
+        "polar_equatorial": {
+          "analytic": 0.022609999153998302,
+          "signed": [
+            {
+              "h": 0.0001,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.022851613437828072,
+                "1": 0.022368384504277583
+              },
+              "central": 0.022609998971052828,
+              "analytic_minus_central": 1.829454747415138e-10
+            },
+            {
+              "h": 5e-05,
+              "feasible_banks": {
+                "-1": true,
+                "1": true
+              },
+              "one_sided": {
+                "-1": 0.022730804146657388,
+                "1": 0.022489192841303397
+              },
+              "central": 0.02260999849398039,
+              "analytic_minus_central": 6.600179118521066e-10
+            }
+          ]
+        }
+      },
+      "force_order": [
+        "log_depth",
+        "scaled_log_exit",
+        "mean_width",
+        "depth_asymmetry",
+        "waist_profile",
+        "polar_equatorial"
+      ],
+      "diagnostic_hashes": {
+        "label_stall.json.secondary": "5ed99d93ff3d3e808f5cf078738e9248ab0fcc4b3d545cb5e282109fd34e8f9b",
+        "readout.json.secondary_fixed_field": "e45fa2d385e51e309bb3c07ebd9f11a09bdf8e892a979c6fb07f2182129bb7e3",
+        "secondary.json.r4_eulerian_corner01": "05aae036d0db6e529556ed5eb102d39139ddfd00d9d1a66d829bd30d2ffe61aa",
+        "review_secondary.json.r4_eulerian_stage2_01": "1514ebff92a21ee6a55c57bad0050f4e2a2bc4464c7aed291c935caa865b691e"
+      },
+      "vertices_of_limiting_cell": [
+        {
+          "node": [
+            18,
+            8,
+            5
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              18,
+              7,
+              5
+            ],
+            [
+              18,
+              7,
+              4
+            ],
+            [
+              17,
+              7,
+              5
+            ],
+            [
+              17,
+              7,
+              4
+            ]
+          ],
+          "independent_melted_label": false,
+          "d_chart_det_d_vertex_label": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "derivative_norm": 0.0
+        },
+        {
+          "node": [
+            18,
+            8,
+            6
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              18,
+              7,
+              6
+            ],
+            [
+              18,
+              7,
+              5
+            ],
+            [
+              17,
+              7,
+              6
+            ],
+            [
+              17,
+              7,
+              5
+            ]
+          ],
+          "independent_melted_label": false,
+          "d_chart_det_d_vertex_label": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "derivative_norm": 0.0
+        },
+        {
+          "node": [
+            18,
+            9,
+            5
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [],
+          "independent_melted_label": true,
+          "d_chart_det_d_vertex_label": [
+            -13.109541189924713,
+            -15.83361770332949,
+            9.033635047053597
+          ],
+          "derivative_norm": 22.453732027190416
+        },
+        {
+          "node": [
+            18,
+            9,
+            6
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [],
+          "independent_melted_label": true,
+          "d_chart_det_d_vertex_label": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "derivative_norm": 0.0
+        },
+        {
+          "node": [
+            19,
+            8,
+            5
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              19,
+              8,
+              4
+            ],
+            [
+              19,
+              7,
+              5
+            ],
+            [
+              19,
+              7,
+              4
+            ],
+            [
+              18,
+              7,
+              5
+            ],
+            [
+              18,
+              7,
+              4
+            ]
+          ],
+          "independent_melted_label": false,
+          "d_chart_det_d_vertex_label": [
+            -13.139729748297576,
+            -15.870079245798879,
+            9.054437637717713
+          ],
+          "derivative_norm": 22.505438321915697
+        },
+        {
+          "node": [
+            19,
+            8,
+            6
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              19,
+              7,
+              6
+            ],
+            [
+              19,
+              7,
+              5
+            ],
+            [
+              18,
+              7,
+              6
+            ],
+            [
+              18,
+              7,
+              5
+            ]
+          ],
+          "independent_melted_label": false,
+          "d_chart_det_d_vertex_label": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "derivative_norm": 0.0
+        },
+        {
+          "node": [
+            19,
+            9,
+            5
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [
+            [
+              19,
+              8,
+              4
+            ]
+          ],
+          "independent_melted_label": false,
+          "d_chart_det_d_vertex_label": [
+            26.32005468496414,
+            31.789189093306703,
+            -18.136848955896493
+          ],
+          "derivative_norm": 45.08040718403635
+        },
+        {
+          "node": [
+            19,
+            9,
+            6
+          ],
+          "chi": 0.0,
+          "incident_active_cells": [],
+          "independent_melted_label": true,
+          "d_chart_det_d_vertex_label": [
+            -0.07078374674185349,
+            -0.0854921441783338,
+            0.048776271125182145
+          ],
+          "derivative_norm": 0.1212368349302354
+        }
+      ]
+    }
+  },
+  "primary_minus_secondary": {
+    "state_max_abs_difference": {
+      "x": 0.0,
+      "field": 0.0,
+      "labels": 0.06307707605616902
+    },
+    "physical_energy_difference": 0.004446114617363939,
+    "total_energy_difference": 0.004446119753993116,
+    "shape_force_differences": {
+      "log_depth": -0.06660940788084566,
+      "scaled_log_exit": 0.007689473916528966,
+      "mean_width": 0.027023069276146172,
+      "depth_asymmetry": -0.011471853308793079,
+      "waist_profile": 0.023631813658655243,
+      "polar_equatorial": -0.0024240315104253757
+    }
+  },
+  "independent_common_flow": {
+    "feed": 10.708522019454062,
+    "bulk": 10.708522019397563,
+    "disk": 10.708521505486123,
+    "subsonic_share": 0.6675636550002779,
+    "field_sha256": "f5ffea808c7a9b72ad951c419ecdea9eed2c058b549f77a00015117bf471a9ba",
+    "max_conservation_residual": 5.139679384313922e-07
+  }
+}

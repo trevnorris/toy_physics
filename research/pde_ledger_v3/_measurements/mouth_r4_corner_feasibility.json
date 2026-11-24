@@ -1,0 +1,729 @@
+{
+  "source_sha256": "418376c3eb1922f6335543f43dfee11e531cebbb6958d37afd73e844571b653a",
+  "epsilon": 1e-08,
+  "shape_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+  "initial_material_force": 0.17798342081567212,
+  "corner": {
+    "accepted": {
+      "cell": [
+        15,
+        9,
+        1
+      ],
+      "local": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "point": [
+        0.8520710059171598,
+        0.3158571045583602,
+        0.027525130258653743
+      ],
+      "label": [
+        0.8213153222692559,
+        0.31752608865148,
+        0.03163092910837246
+      ],
+      "chart_det": 0.00034962704013837,
+      "metric_factor": 1.4342032565750256,
+      "determinant": 0.0005014362395531374,
+      "nodes": [
+        [
+          15,
+          9,
+          1
+        ],
+        [
+          15,
+          9,
+          2
+        ],
+        [
+          15,
+          10,
+          1
+        ],
+        [
+          15,
+          10,
+          2
+        ],
+        [
+          16,
+          9,
+          1
+        ],
+        [
+          16,
+          9,
+          2
+        ],
+        [
+          16,
+          10,
+          1
+        ],
+        [
+          16,
+          10,
+          2
+        ]
+      ],
+      "node_gradient": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -22.431815624822175,
+          -22.980602961420853,
+          10.337413661790347
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          -34.63168085976094,
+          -35.51050313860704,
+          15.967533982549462
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          63.33331324746165,
+          64.91763003042585,
+          -29.191203009435537
+        ],
+        [
+          -6.268595706297811,
+          -6.426430327842524,
+          2.9021027970530366
+        ]
+      ],
+      "basis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "chi": 0.0
+    },
+    "closest_ordered_points_in_incident_cell": [
+      {
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "local": [
+          0.8906068456629286,
+          0.8872983346207417,
+          0.1127016653792583
+        ],
+        "point": [
+          0.8486726978682271,
+          0.312297342387719,
+          0.03233070270893903
+        ],
+        "label": [
+          0.8209657411739969,
+          0.3182895483737339,
+          0.035441808770581784
+        ],
+        "chart_det": 0.3654237665803934,
+        "metric_factor": 1.3766683593428335,
+        "determinant": 0.5030673372031087,
+        "nodes": [
+          [
+            15,
+            9,
+            1
+          ],
+          [
+            15,
+            9,
+            2
+          ],
+          [
+            15,
+            10,
+            1
+          ],
+          [
+            15,
+            10,
+            2
+          ],
+          [
+            16,
+            9,
+            1
+          ],
+          [
+            16,
+            9,
+            2
+          ],
+          [
+            16,
+            10,
+            1
+          ],
+          [
+            16,
+            10,
+            2
+          ]
+        ],
+        "node_gradient": [
+          [
+            -5.566076291478674,
+            -5.424409917448497,
+            1.6772714221631786
+          ],
+          [
+            -0.7694327185295541,
+            -0.7635949436167037,
+            0.4012927708227445
+          ],
+          [
+            -22.9139306396324,
+            -11.789023809317097,
+            5.5855730601818765
+          ],
+          [
+            -3.402105482613055,
+            -2.0847627126345496,
+            2.1915606790960185
+          ],
+          [
+            -15.344876616096897,
+            -25.813412895935095,
+            6.0646316512617595
+          ],
+          [
+            -2.457467983937667,
+            -3.886114300607606,
+            2.302927575240543
+          ],
+          [
+            49.40669472323962,
+            48.47939254879367,
+            -14.286658274853517
+          ],
+          [
+            2.272745143415293,
+            1.3757899452377862,
+            10.251635268178852
+          ]
+        ],
+        "basis": [
+          0.010939315433707141,
+          0.0013894752411710409,
+          0.08612504822848609,
+          0.01093931543370714,
+          0.08906068456629285,
+          0.011312190138087267,
+          0.7011732863922556,
+          0.08906068456629285
+        ],
+        "chi": 7.637884503933835e-07,
+        "distance": 0.020026113809679887
+      },
+      {
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "local": [
+          0.9357777146988572,
+          0.5,
+          0.1127016653792583
+        ],
+        "point": [
+          0.850075934924077,
+          0.300064249330081,
+          0.03233070270893903
+        ],
+        "label": [
+          0.8275734583187223,
+          0.3086203554409404,
+          0.033457262493411855
+        ],
+        "chart_det": 0.629230178921062,
+        "metric_factor": 1.3083877743040109,
+        "determinant": 0.8232770733234429,
+        "nodes": [
+          [
+            15,
+            9,
+            1
+          ],
+          [
+            15,
+            9,
+            2
+          ],
+          [
+            15,
+            10,
+            1
+          ],
+          [
+            15,
+            10,
+            2
+          ],
+          [
+            16,
+            9,
+            1
+          ],
+          [
+            16,
+            9,
+            2
+          ],
+          [
+            16,
+            10,
+            1
+          ],
+          [
+            16,
+            10,
+            2
+          ]
+        ],
+        "node_gradient": [
+          [
+            -13.976184562963319,
+            -10.566349598189014,
+            0.5948266196978245
+          ],
+          [
+            -1.808703996417054,
+            -1.5227379211540428,
+            0.76321350237287
+          ],
+          [
+            -13.483245094894258,
+            -6.259368563227416,
+            0.9618696306521097
+          ],
+          [
+            -1.7460924746606263,
+            -0.9756796021451044,
+            0.8098340774222379
+          ],
+          [
+            11.483895862106033,
+            -20.401456525605056,
+            -2.0404542071120293
+          ],
+          [
+            0.9705814310897832,
+            -5.22335073596064,
+            9.7606754371941
+          ],
+          [
+            18.666476904676426,
+            42.35521510713054,
+            3.307699761193996
+          ],
+          [
+            1.8828888407111173,
+            2.7477916979893573,
+            10.439980058215856
+          ]
+        ],
+        "basis": [
+          0.028492163396621084,
+          0.0036189792539503287,
+          0.028492163396621084,
+          0.0036189792539503287,
+          0.41515700391374977,
+          0.05273185343567882,
+          0.41515700391374977,
+          0.05273185343567882
+        ],
+        "chi": 1.989337034930489e-06,
+        "distance": 0.020548181519949606
+      },
+      {
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "local": [
+          0.9638102074604967,
+          0.5,
+          0.1127016653792583
+        ],
+        "point": [
+          0.8509467667998083,
+          0.300064249330081,
+          0.03233070270893903
+        ],
+        "label": [
+          0.8283728280203597,
+          0.308527624184719,
+          0.03347184085676042
+        ],
+        "chart_det": 0.5986000518992296,
+        "metric_factor": 1.3087262647265423,
+        "determinant": 0.7834036099871932,
+        "nodes": [
+          [
+            15,
+            9,
+            1
+          ],
+          [
+            15,
+            9,
+            2
+          ],
+          [
+            15,
+            10,
+            1
+          ],
+          [
+            15,
+            10,
+            2
+          ],
+          [
+            16,
+            9,
+            1
+          ],
+          [
+            16,
+            9,
+            2
+          ],
+          [
+            16,
+            10,
+            1
+          ],
+          [
+            16,
+            10,
+            2
+          ]
+        ],
+        "node_gradient": [
+          [
+            -13.297940993469245,
+            -9.790360782622246,
+            0.6009373758025384
+          ],
+          [
+            -1.707806592216213,
+            -1.3471836211551544,
+            0.4449833045250495
+          ],
+          [
+            -13.02012400472776,
+            -7.364056655532335,
+            0.8009424251015443
+          ],
+          [
+            -1.6725192079395377,
+            -1.0390025898490596,
+            0.4703872766286298
+          ],
+          [
+            10.758365927439286,
+            -21.125386162374834,
+            -2.0231848492547826
+          ],
+          [
+            0.8672296341367021,
+            -5.443553439507533,
+            9.561059021476588
+          ],
+          [
+            18.157216011000937,
+            43.49219023130526,
+            3.303369809703414
+          ],
+          [
+            1.8070068136636774,
+            2.7639548902043214,
+            10.237620170500751
+          ]
+        ],
+        "basis": [
+          0.0160555713252857,
+          0.002039324944465938,
+          0.0160555713252857,
+          0.002039324944465938,
+          0.4275935959850852,
+          0.05431150774516321,
+          0.4275935959850852,
+          0.05431150774516321
+        ],
+        "chi": 1.1210079841865087e-06,
+        "distance": 0.020565064762483064
+      }
+    ]
+  },
+  "retained_history": {
+    "chart_polynomial": [
+      0.0003496270401383665,
+      -53.79009059233469,
+      707.1571568357272,
+      -312.97029730922077
+    ],
+    "fractions": [
+      0.001953125,
+      0.0009765625,
+      0.00048828125,
+      0.000244140625,
+      0.0001220703125,
+      0.0001
+    ],
+    "saved_chart_determinants": [
+      -0.10201388498589148,
+      -0.051505652162104176,
+      -0.025746502661904758,
+      -0.012740573999063198,
+      -0.006206009234377141,
+      -0.005022310760497584
+    ],
+    "max_chart_fit_error": 1.313185671314443e-15,
+    "chart_slope": -53.79009059233469,
+    "physical_slope_bounds": [
+      -77.24409031366181,
+      -75.56679450285621
+    ],
+    "first_corner_zero": 6.500396583046868e-06,
+    "largest_domain_passing_alpha": 0.015625,
+    "angle_degrees": null,
+    "identifiability": "Retained L-BFGS direction and secants were not saved; one scalar determinant polynomial cannot identify the angle or full direction norm."
+  },
+  "metric_restart": {
+    "chart_polynomial": [
+      0.0003496270401383665,
+      -53.99227592488288,
+      5.853424012037613,
+      1.258637550433889
+    ],
+    "fractions": [
+      0.0078125,
+      0.00390625,
+      0.001953125,
+      0.0009765625,
+      0.00048828125,
+      0.000244140625,
+      0.0001220703125,
+      0.0001
+    ],
+    "saved_chart_determinants": [
+      -0.4211071638086843,
+      -0.21046830960849763,
+      -0.10508169845749737,
+      -0.052371621485411135,
+      -0.026012393227246633,
+      -0.0128317320397629,
+      -0.006241139729494416,
+      -0.005049542016850539
+    ],
+    "max_chart_fit_error": 3.0531133177191805e-15,
+    "chart_slope": -53.99227592488288,
+    "physical_slope_bounds": [
+      -77.46043976503182,
+      -77.04111581233042
+    ],
+    "first_corner_zero": 6.475505608837775e-06,
+    "largest_domain_passing_alpha": 0.0625,
+    "actual_chart_polynomial": [
+      0.0003496270401383665,
+      -53.992275924879834,
+      5.853424010576425,
+      1.2586376867935378
+    ],
+    "actual_physical_slope": -77.43659370815776,
+    "actual_chart_slope": -53.992275924879856,
+    "global_packed_angle_deg": 90.7831653547088,
+    "local_angles_definition": "Euclidean packed label components on the four supporting vertices",
+    "local_angle_deg": 96.33297447885917,
+    "g_dot_d": -0.4401756828880067,
+    "saved_probe_max_error": 4.038436252074007e-15,
+    "physical_J_slope": -77.43659370815776,
+    "chart_J_slope": -53.992275924879856,
+    "four_node_first_zero": 6.475505608838139e-06,
+    "global_predictor": {
+      "positive_through": 6.475485796546563e-06,
+      "whole_path_chart_lower": 1.067597697425112e-09,
+      "last_feasible_endpoint": 6.475485861301422e-06,
+      "first_rejection_upper": 6.475544068962336e-06,
+      "upper_issue": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_fractions": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": -2.0765450470250357e-09,
+        "chart_lower": -2.0766110470896468e-09,
+        "roundoff_margin": 6.600006461086653e-14,
+        "subdivisions": 0
+      }
+    }
+  },
+  "projected_restart": {
+    "g_dot_d": -0.44016796105194933,
+    "physical_J_slope": -5.2839677078253544e-14,
+    "chart_J_slope": 0.0006994496430978662,
+    "four_node_first_zero": 3.0325677868381065,
+    "global_predictor": {
+      "positive_through": 0.009218077665215025,
+      "whole_path_chart_lower": 3.933566104291129e-09,
+      "last_feasible_endpoint": 0.009218077757395804,
+      "first_rejection_upper": 0.009218077815603465,
+      "upper_issue": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          16,
+          9,
+          1
+        ],
+        "chart_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "chart_det": -2.260185150149141e-09,
+        "chart_lower": -2.260265047408792e-09,
+        "roundoff_margin": 7.989725965082885e-14,
+        "subdivisions": 0
+      }
+    },
+    "settled_descent": {
+      "fraction": 0.004609038832607513,
+      "elastic_change": -0.0019477958646545446,
+      "reduced_energy_change": -0.0019477951866950097,
+      "inner_residual": 2.2173785163039084e-08,
+      "min_Jinv_active": 0.40764262262684087,
+      "initial_whole_cell_bounds": {
+        "chart_det_global_lower": 0.0026721030199908504,
+        "chart_lowest_cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_det_active_lower": 0.0026721030199908504
+      },
+      "settled_whole_cell_bounds": {
+        "chart_det_global_lower": 0.0026721030199908504,
+        "chart_lowest_cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_det_active_lower": 0.0026721030199908504
+      }
+    }
+  },
+  "entrance_only": {
+    "node": [
+      17,
+      1,
+      19
+    ],
+    "force": 0.17798342081567212,
+    "restart_displacement_per_fraction": -0.00012946324022545643,
+    "unit_label_direction": 1.0,
+    "corner_slope_for_entrance_only": 0.0,
+    "unit_label_global_limit": {
+      "positive_through": 0.023837579641533956,
+      "whole_path_chart_lower": 9.021756414994812e-09,
+      "last_feasible_endpoint": 0.023837579879909754,
+      "first_rejection_upper": 0.023837579938117415,
+      "upper_issue": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          17,
+          0,
+          19
+        ],
+        "chart_fractions": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "chart_det": -6.113256185991123e-10,
+        "chart_lower": -6.113578961064756e-10,
+        "roundoff_margin": 3.2277507363389454e-14,
+        "subdivisions": 0
+      }
+    },
+    "local_force_zero_label_displacement": 0.00040044339292346417,
+    "local_force_zero_metric_fraction": 3.0931049788812928,
+    "residual_at_local_force_zero": 1.8557102740308223e-15,
+    "settled_descent": {
+      "fraction": 0.00040044339292346417,
+      "elastic_change": -3.578078632354709e-05,
+      "reduced_energy_change": -3.578078632354709e-05,
+      "inner_residual": 2.171881425768775e-08,
+      "min_Jinv_active": 0.5030673372031083,
+      "initial_whole_cell_bounds": {
+        "chart_det_global_lower": 0.0003496270400723384,
+        "chart_lowest_cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_det_active_lower": 0.0003496270400723384
+      },
+      "settled_whole_cell_bounds": {
+        "chart_det_global_lower": 0.0003496270400723384,
+        "chart_lowest_cell": [
+          15,
+          9,
+          1
+        ],
+        "chart_det_active_lower": 0.0003496270400723384
+      }
+    },
+    "fraction_units": "local_force_zero_metric_fraction is an absolute amplitude ratio. The restart moves this individual coordinate in the opposite direction from its scalar descent, so no positive fraction of that direction alone removes its force.",
+    "signed_equivalent_restart_fraction": -3.0931049788812928
+  },
+  "conditioning_note": "Ray upper/lower limits concern the specified line and include label-domain bounds. A melt re-equilibration can change purely melted constraints. The four active corner nodes do not change in that subsolve.",
+  "scope": "Frozen order and fluid at the held radius-four barrier stop. Physical Jinv gradients at fixed physical points. Norms and angles are Euclidean in nondimensional packed label coordinates; angles depend on the coordinate normalization.",
+  "source_files": {
+    "mouth_r4_corner_feasibility.py": "d135084926672d2741be2cd2b2ac6cc9aa3f1fcc3f3cf570cca5847e3b2bee38",
+    "mouth_r4_corner_projection.py": "30536d280f681a2c362896c792bde8dd9b37162fefe4377dec5c99d0059f257e",
+    "mouth_r4_eulerian_relax_labels.py": "a44c0f12a9378a1df80d9db9c87ce129f4bd4f7978ddb85d8e5ca327b9b673dd",
+    "mouth_r4_melt_barrier.py": "8df396304cfec1b6f6c7f3745e644d4804842150c51f4319d50b5804a50ff9c1"
+  },
+  "provenance": "Rejected-direction records were retained from the initial guard (exit 1 during ray exception serialization); corrected guarded continuation verified the saved SHA and reconstructed direction, and completed the three ray probes (exit 0, swap max 0)."
+}

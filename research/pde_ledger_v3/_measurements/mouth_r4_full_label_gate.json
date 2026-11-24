@@ -1,0 +1,49 @@
+{
+  "source_sha256": "418376c3eb1922f6335543f43dfee11e531cebbb6958d37afd73e844571b653a",
+  "checksums": {
+    "mouth_r4_full_label_work.json": "058c00cf88d2d8e2375a901efca47ee34282ee18bf80f44496d3de6bb66e30d8",
+    "mouth_r4_full_label_precision.json": "99c2bcf2191616a1fa5884faa1f03306fe17fd0863ce6be305a8d6538f756020",
+    "mouth_r4_full_label_quad.json": "f08a7765e01469d33cb87afd87088e24a71adc5f307f24d99d961b73ec8b8297"
+  },
+  "accepted_dof_counts": {
+    "active": 16698,
+    "melted": 64408,
+    "all": 81106
+  },
+  "binary128_held_out_count": 5,
+  "complete_minimum_certified_chart_volume": 0.0002632931305034696,
+  "binary128_promoted_raw_max_errors": [
+    3.693108766391652e-12,
+    2.3557222253618726e-13,
+    1.947620125071492e-14,
+    6.483854252115062e-15,
+    6.200850380042033e-15,
+    6.18317788463052e-15,
+    6.1820733536673e-15
+  ],
+  "width_rule": "All registry-free coordinates used coarse, half and quarter centered signed pairs. Marginal or failing broad extrapolations (>5e-11) used disjoint new 80-bit widths and seven new 128-bit widths. Both final raw binary128 widths and their mutual agreement must pass independently of any intermediate 80-bit width or post-hoc choice.",
+  "provenance": "Binary128 widens all original inputs and subtracts cell anchor energy before narrowing. Its 120 bisections resolve reference plane roots below binary128 machine precision. The three narrowest raw 80-bit widths lose precision with 52-bisection roots. All componentwise wide and narrow signed results are retained.",
+  "results": {
+    "1e-08": {
+      "max_abs_combined": 4.743276142005074e-11,
+      "components": [
+        4.743276142005074e-11,
+        1.5703201470068325e-11,
+        2.0442370814068553e-11
+      ],
+      "max_abs_melt": 3.6291640988693894e-20,
+      "passed": true
+    },
+    "1e-10": {
+      "max_abs_combined": 4.743276142005074e-11,
+      "components": [
+        4.743276142005074e-11,
+        1.5703201470068325e-11,
+        2.0442370814068553e-11
+      ],
+      "max_abs_melt": 3.6291640988690447e-22,
+      "passed": true
+    }
+  },
+  "passed": true
+}

@@ -1,0 +1,364 @@
+{
+  "source_sha": "418376c3eb1922f6335543f43dfee11e531cebbb6958d37afd73e844571b653a",
+  "baseline_crystal_energy": 0.3048567026564901,
+  "raw_unit_gauge_energy": 1.3076383182539788,
+  "cell_sum_minus_native": {
+    "physical": -2.3852447794681098e-18,
+    "unit_gauge": -4.2392304944183223e-17
+  },
+  "max_abs_required": 1e-10,
+  "baseline_orientation": 0.0003496270401383861,
+  "convention": "Chart-component unit steps at fixed chi, n, phase, q on the same stopped state. Eight-cell axis ties vary together. Every separately free scalar is tested. Crystal and gauge work are summed separately over their frozen, disjoint cell supports. Refinement widths are dyadic.",
+  "components": [
+    {
+      "component": 0,
+      "colors": 8,
+      "active_count": 5663,
+      "melted_count": 22162,
+      "tied_free_count": 0,
+      "widths": [
+        1.9073486328125e-06,
+        9.5367431640625e-07,
+        4.76837158203125e-07
+      ],
+      "1e-08": {
+        "h0": {
+          "active": 1.5936363086110905e-07,
+          "melted": 9.07396906385386e-15
+        },
+        "h1": {
+          "active": 4.6729896962388606e-08,
+          "melted": 2.2684904935776517e-15
+        },
+        "h2": {
+          "active": 9.982656354323716e-09,
+          "melted": 5.671224915393012e-16
+        },
+        "coarse_richardson": {
+          "active": 2.3576069634739794e-08,
+          "melted": 4.8085840864690094e-21
+        },
+        "fine_richardson": {
+          "active": 1.5583248500622426e-08,
+          "melted": 8.711110536611961e-21
+        },
+        "peak_active": {
+          "node": [
+            19,
+            6,
+            13
+          ],
+          "group": 22084,
+          "signed_error": 1.5583248500622426e-08,
+          "analytic_physical": 0.016220654605455284,
+          "analytic_unit_gauge": 0.0,
+          "fd_physical": 0.016220670188703785,
+          "fd_unit_gauge": 0.0
+        },
+        "peak_melted": {
+          "node": [
+            15,
+            11,
+            19
+          ],
+          "group": 17575,
+          "signed_error": -8.711110536611961e-21,
+          "analytic_physical": 0.0,
+          "analytic_unit_gauge": 1.1889368448092519e-09,
+          "fd_physical": 0.0,
+          "fd_unit_gauge": 1.1880657337555907e-09
+        }
+      },
+      "1e-10": {
+        "h0": {
+          "active": 1.5936363086110905e-07,
+          "melted": 9.07396906385386e-17
+        },
+        "h1": {
+          "active": 4.6729896962388606e-08,
+          "melted": 2.2684904935776517e-17
+        },
+        "h2": {
+          "active": 9.982656354323716e-09,
+          "melted": 5.671224915393012e-18
+        },
+        "coarse_richardson": {
+          "active": 2.3576069634739794e-08,
+          "melted": 4.8085840864681597e-23
+        },
+        "fine_richardson": {
+          "active": 1.5583248500622426e-08,
+          "melted": 8.711110536611681e-23
+        },
+        "peak_active": {
+          "node": [
+            19,
+            6,
+            13
+          ],
+          "group": 22084,
+          "signed_error": 1.5583248500622426e-08,
+          "analytic_physical": 0.016220654605455284,
+          "analytic_unit_gauge": 0.0,
+          "fd_physical": 0.016220670188703785,
+          "fd_unit_gauge": 0.0
+        },
+        "peak_melted": {
+          "node": [
+            15,
+            11,
+            19
+          ],
+          "group": 17575,
+          "signed_error": -8.711110536611681e-23,
+          "analytic_physical": 0.0,
+          "analytic_unit_gauge": 1.1889368448092519e-09,
+          "fd_physical": 0.0,
+          "fd_unit_gauge": 1.1880657337555907e-09
+        }
+      },
+      "unit_gauge_error": {
+        "active": 3.438750217736597e-11,
+        "melted": 8.711110536611481e-13
+      },
+      "crystal_error": {
+        "active": 1.5583248500622426e-08,
+        "melted": 0.0
+      }
+    },
+    {
+      "component": 1,
+      "colors": 8,
+      "active_count": 5675,
+      "melted_count": 22203,
+      "tied_free_count": 53,
+      "widths": [
+        1.9073486328125e-06,
+        9.5367431640625e-07,
+        4.76837158203125e-07
+      ],
+      "1e-08": {
+        "h0": {
+          "active": 5.082404930072115e-09,
+          "melted": 3.7767407247923066e-16
+        },
+        "h1": {
+          "active": 1.2704785331413282e-09,
+          "melted": 9.441855240471982e-17
+        },
+        "h2": {
+          "active": 3.1739372241545993e-10,
+          "melted": 2.3604422476949244e-17
+        },
+        "coarse_richardson": {
+          "active": 7.286307191281538e-12,
+          "melted": 1.8997789452690422e-20
+        },
+        "fine_richardson": {
+          "active": 1.5703201470068325e-11,
+          "melted": 3.6291640988693894e-20
+        },
+        "peak_active": {
+          "node": [
+            17,
+            1,
+            17
+          ],
+          "group": 18573,
+          "signed_error": -1.5703201470068325e-11,
+          "analytic_physical": 0.017217528553046497,
+          "analytic_unit_gauge": 0.0,
+          "fd_physical": 0.017217528537343294,
+          "fd_unit_gauge": 0.0
+        },
+        "peak_melted": {
+          "node": [
+            20,
+            11,
+            19
+          ],
+          "group": 22250,
+          "signed_error": -3.6291640988693894e-20,
+          "analytic_physical": 0.0,
+          "analytic_unit_gauge": 3.6070524275788607e-09,
+          "fd_physical": 0.0,
+          "fd_unit_gauge": 3.6034232634799914e-09
+        }
+      },
+      "1e-10": {
+        "h0": {
+          "active": 5.082404930072115e-09,
+          "melted": 3.776740724792307e-18
+        },
+        "h1": {
+          "active": 1.2704785331413282e-09,
+          "melted": 9.441855240471982e-19
+        },
+        "h2": {
+          "active": 3.1739372241545993e-10,
+          "melted": 2.3604422476949247e-19
+        },
+        "coarse_richardson": {
+          "active": 7.286307191281538e-12,
+          "melted": 1.8997789452690537e-22
+        },
+        "fine_richardson": {
+          "active": 1.5703201470068325e-11,
+          "melted": 3.6291640988690447e-22
+        },
+        "peak_active": {
+          "node": [
+            17,
+            1,
+            17
+          ],
+          "group": 18573,
+          "signed_error": -1.5703201470068325e-11,
+          "analytic_physical": 0.017217528553046497,
+          "analytic_unit_gauge": 0.0,
+          "fd_physical": 0.017217528537343294,
+          "fd_unit_gauge": 0.0
+        },
+        "peak_melted": {
+          "node": [
+            20,
+            11,
+            19
+          ],
+          "group": 22250,
+          "signed_error": -3.6291640988690447e-22,
+          "analytic_physical": 0.0,
+          "analytic_unit_gauge": 3.6070524275788607e-09,
+          "fd_physical": 0.0,
+          "fd_unit_gauge": 3.6034232634799914e-09
+        }
+      },
+      "unit_gauge_error": {
+        "active": 6.345424186093851e-12,
+        "melted": 3.629164098869116e-12
+      },
+      "crystal_error": {
+        "active": 1.5703201470068325e-11,
+        "melted": 0.0
+      }
+    },
+    {
+      "component": 2,
+      "colors": 8,
+      "active_count": 5360,
+      "melted_count": 20043,
+      "tied_free_count": 779,
+      "widths": [
+        1.9073486328125e-06,
+        9.5367431640625e-07,
+        4.76837158203125e-07
+      ],
+      "1e-08": {
+        "h0": {
+          "active": 2.1818436556704686e-10,
+          "melted": 9.731726535733284e-19
+        },
+        "h1": {
+          "active": 5.5077934427898503e-11,
+          "melted": 2.4319636582337236e-19
+        },
+        "h2": {
+          "active": 1.8644549662841237e-11,
+          "melted": 6.033527844007092e-20
+        },
+        "coarse_richardson": {
+          "active": 4.340567239403265e-12,
+          "melted": 1.4878578693157488e-21
+        },
+        "fine_richardson": {
+          "active": 2.0442370814068553e-11,
+          "melted": 3.246773509768597e-21
+        },
+        "peak_active": {
+          "node": [
+            18,
+            1,
+            18
+          ],
+          "group": 20050,
+          "signed_error": 2.0442370814068553e-11,
+          "analytic_physical": 0.000493912271832911,
+          "analytic_unit_gauge": 0.0,
+          "fd_physical": 0.0004939122922752818,
+          "fd_unit_gauge": 0.0
+        },
+        "peak_melted": {
+          "node": [
+            21,
+            11,
+            18
+          ],
+          "group": 23725,
+          "signed_error": -3.246773509768597e-21,
+          "analytic_physical": 0.0,
+          "analytic_unit_gauge": -3.2630199280417327e-10,
+          "fd_physical": 0.0,
+          "fd_unit_gauge": -3.266266701551501e-10
+        }
+      },
+      "1e-10": {
+        "h0": {
+          "active": 2.1818436556704686e-10,
+          "melted": 9.731726535733289e-21
+        },
+        "h1": {
+          "active": 5.5077934427898503e-11,
+          "melted": 2.4319636582337277e-21
+        },
+        "h2": {
+          "active": 1.8644549662841237e-11,
+          "melted": 6.033527844007134e-22
+        },
+        "coarse_richardson": {
+          "active": 4.340567239403265e-12,
+          "melted": 1.487857869315857e-23
+        },
+        "fine_richardson": {
+          "active": 2.0442370814068553e-11,
+          "melted": 3.246773509768623e-23
+        },
+        "peak_active": {
+          "node": [
+            18,
+            1,
+            18
+          ],
+          "group": 20050,
+          "signed_error": 2.0442370814068553e-11,
+          "analytic_physical": 0.000493912271832911,
+          "analytic_unit_gauge": 0.0,
+          "fd_physical": 0.0004939122922752818,
+          "fd_unit_gauge": 0.0
+        },
+        "peak_melted": {
+          "node": [
+            21,
+            11,
+            18
+          ],
+          "group": 23725,
+          "signed_error": -3.246773509768623e-23,
+          "analytic_physical": 0.0,
+          "analytic_unit_gauge": -3.2630199280417327e-10,
+          "fd_physical": 0.0,
+          "fd_unit_gauge": -3.266266701551501e-10
+        }
+      },
+      "unit_gauge_error": {
+        "active": 2.441611726202461e-13,
+        "melted": 3.2467735097685413e-13
+      },
+      "crystal_error": {
+        "active": 2.0442370814068553e-11,
+        "melted": 0.0
+      }
+    }
+  ],
+  "signed_banks_min_chart_orientation_bound": 0.0002632931305034696,
+  "pass": false
+}

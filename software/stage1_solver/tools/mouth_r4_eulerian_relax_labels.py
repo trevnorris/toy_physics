@@ -182,7 +182,8 @@ class LabelRelaxation:
         self.axes = tuple(body.buffers['field_'+d] for d in ('x','t','a'))
         self.base = np.stack(np.meshgrid(*self.axes,indexing='ij'),axis=-1)
         self.epsilon = float(epsilon)
-        if self.epsilon not in (0.,1.e-10,1.e-8):
+        # The two larger strengths are numerical continuation initializers.
+        if self.epsilon not in (0.,1.e-10,1.e-8,1.e-6,1.e-4):
             raise ValueError('Unregistered harmonic gauge strength')
         if np.shape(labels) != self.base.shape:
             raise ValueError('Unexpected spatial-label shape')

@@ -1,0 +1,21 @@
+# Radius 4 · Can the crystal move past the partly refrozen cell?
+
+**A downhill, orientation-preserving crystal step exists on the held state from `4c3c0a59`.** At depth 0.25873130 the four shared labels give the blocking corner a physical inverse volume of 0.00050143624. The closest ordered quadrature point in the cell has χ = 7.63788 × 10⁻⁷ and inverse volume 0.50306734. The much smaller corner value controls the rejected steps. The actual nodal derivatives at both sites and the next two quadrature points are tabulated in the [corner measurement](../../../research/pde_ledger_v3/_measurements/mouth_r4_corner_feasibility.json).
+
+| Fixed-field direction | Initial physical inverse-volume derivative | First zero at the four-label corner | Measured energy change |
+|---|---:|---:|---:|
+| Previous accumulated direction | [−77.24409, −75.56679] | 0.00000650040 | Rejected |
+| Previous restarted direction | −77.43659 | 0.00000647551 | Rejected |
+| Projected restart | −5.28 × 10⁻¹⁴ | 3.03257 | −0.00194779519 at α = 0.00460904 |
+
+The restarted direction makes an angle of 96.33297° with the physical determinant gradient on the four labels, or 90.78317° across the full independent-coordinate vector. The saved determinant samples identify the accumulated direction’s chart slope (−53.79009) and first zero. Its angle cannot be reconstructed because its vector and norm were not saved. With projection, the energy slope is −0.44016796 and a neighboring cell limits the full predictor at α ≈ 0.00921808. The accepted diagnostic step re-equilibrated the melted labels and certified positive orientation over every cell.
+
+An isolated radial displacement of **+0.00040044339** removes the entrance force of +0.17798342 at depth 0.02587313, lowers the energy by 0.0000357808 and leaves the blocking corner fixed. The old restart moved that entrance label in the negative direction. This establishes a local mechanical response while the six mouth coordinates and the carrier stay fixed.
+
+Four held-label order updates reduced the physical order residual from 0.01771717 to 1.90 × 10⁻⁹. The opposite vertex at depth **0.23285817** retained order, with χ falling from 0.00054970 to **0.00036510**. The blocking corner at **0.25873130** stayed at χ = 0 with exactly the same inverse volume. The first fully melted cross-section stayed at **0.31047756**. Physical energy fell by 0.00308637535. Sixty-one cells entered the fully melted set and 154 left it, adding 9.35 × 10⁻¹⁰ of gauge energy. Holding the carrier fixed left a phase residual of 0.00022947, so the previous intake, 10.70788500, still refers to the incoming state. [Held-order measurement](../../../research/pde_ledger_v3/_measurements/mouth_r4_fixed_label_order.json)
+
+**The gauge enters the active-label force.** Each fully melted cell contributes to every shared free label it touches. Adding a barrier inside a mixed cell would change the objective. Central energy differences covered all 16,698 active and 64,408 strictly melted independent label components. The largest discrepancy was **4.74328 × 10⁻¹¹** at both gauge strengths. A separate binary128 calculation resolved five radial components whose smallest extended-precision steps suffered cancellation. [Full coordinate audit and signed banks](../../../research/pde_ledger_v3/_measurements/mouth_r4_full_label_gate.json)
+
+There is a distinct effect when **order itself** varies. At the zero-order corner the physical right derivative is +0.00056210. Any positive order removes five cells from the gauge. At ε = 10⁻⁸ this subtracts 1.71035 × 10⁻¹², even as the order increment tends to zero. A +10⁻⁹ increment therefore lowers total energy by 1.14824 × 10⁻¹². The paired held experiment checks both physical stationarity and this one-sided numerical work. A negative jump precludes an exact local-minimum claim at that state. [One-sided energy variation](../../../research/pde_ledger_v3/_measurements/mouth_r4_order_mask_work.json)
+
+Independent review concluded, “scoped clear for existence of an admissible fixed-order descent at the saved stop, the held-label physical order rematch, and the full active-plus-melt label derivative at both frozen gauge strengths.” The open question is whether the primary and secondary gauges reach the same internal equilibrium and give the same six shape forces at held radius 4.

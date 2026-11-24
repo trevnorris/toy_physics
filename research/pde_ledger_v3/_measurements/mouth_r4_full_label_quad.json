@@ -1,0 +1,114 @@
+{
+  "state_sha": "418376c3eb1922f6335543f43dfee11e531cebbb6958d37afd73e844571b653a",
+  "raw_measurement_sha": "058c00cf88d2d8e2375a901efca47ee34282ee18bf80f44496d3de6bb66e30d8",
+  "guarded_input_directory": "_scratch/s11c/r4_corner_gradient01/result",
+  "full_free_coordinate_count": 81106,
+  "components": [
+    {
+      "component": 0,
+      "examined": 5,
+      "widths": [
+        2.9802322387695312e-08,
+        7.450580596923828e-09,
+        1.862645149230957e-09,
+        4.656612873077393e-10,
+        1.1641532182693481e-10,
+        2.9103830456733704e-11,
+        7.275957614183426e-12
+      ],
+      "raw_max_abs_errors": [
+        3.693108766391652e-12,
+        2.3557222253618726e-13,
+        1.947620125071492e-14,
+        6.483854252115062e-15,
+        6.200850380042033e-15,
+        6.18317788463052e-15,
+        6.1820733536673e-15
+      ],
+      "peak_nodes": [
+        [
+          17,
+          1,
+          18
+        ],
+        [
+          17,
+          1,
+          18
+        ],
+        [
+          17,
+          1,
+          18
+        ],
+        [
+          18,
+          1,
+          15
+        ],
+        [
+          18,
+          1,
+          15
+        ],
+        [
+          18,
+          1,
+          15
+        ],
+        [
+          18,
+          1,
+          15
+        ]
+      ],
+      "peak_final_node": [
+        18,
+        1,
+        15
+      ],
+      "signed_one_sided_minus_analytic_at_final_peak": [
+        [
+          -7.501157243695415e-06,
+          7.501154758661935e-06
+        ],
+        [
+          -1.8752890837466104e-06,
+          1.875288916840801e-06
+        ],
+        [
+          -4.6882226108488015e-07,
+          4.6882223906198964e-07
+        ],
+        [
+          -1.1720556900215453e-07,
+          1.1720555603444603e-07
+        ],
+        [
+          -2.9301396830449166e-08,
+          2.9301384428755183e-08
+        ],
+        [
+          -7.325353840530147e-09,
+          7.325341474181154e-09
+        ],
+        [
+          -1.831343096402949e-09,
+          1.8313307322562417e-09
+        ]
+      ],
+      "previous_to_final_max_change": 3.279711571768651e-18,
+      "untouched_max_error": 4.743276142005074e-11
+    },
+    {
+      "component": 1,
+      "examined": 0
+    },
+    {
+      "component": 2,
+      "examined": 0
+    }
+  ],
+  "note": "Only unresolved or marginal signed components were re-evaluated. Both final widths are raw central energy differences. All sites requiring an additional narrow pair had exactly zero gauge gradient.",
+  "pass_both_widths": true
+}

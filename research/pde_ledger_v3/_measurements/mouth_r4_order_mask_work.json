@@ -1,0 +1,85 @@
+{
+  "state_sha256": "22731eadafebe475e0df0f4499818e32296b1c83f760f86b5d89b7fb024e94d6",
+  "source_sha256": "735e93ce7b2d6e7addbe2d2ad1db3961d935f29087791b9649848cba0e375f25",
+  "epsilon": 1e-08,
+  "sites": {
+    "corner": {
+      "node": [
+        16,
+        10,
+        1
+      ],
+      "order": 0.0,
+      "physical_slope": 0.0005621006717619997,
+      "samples": [
+        {
+          "h": 1e-06,
+          "physical_work": 5.621902861818152e-10,
+          "gauge_mask_work": -1.710345583399003e-12,
+          "total_work": 5.604799405984162e-10,
+          "lost_cells": 5
+        },
+        {
+          "h": 1e-09,
+          "physical_work": 5.621007613764279e-13,
+          "gauge_mask_work": -1.710345583399003e-12,
+          "total_work": -1.148244822022575e-12,
+          "lost_cells": 5
+        },
+        {
+          "h": 1e-12,
+          "physical_work": 5.621006718516142e-16,
+          "gauge_mask_work": -1.710345583399003e-12,
+          "total_work": -1.7097834827271515e-12,
+          "lost_cells": 5
+        },
+        {
+          "h": 1e-15,
+          "physical_work": 5.621006717620894e-19,
+          "gauge_mask_work": -1.710345583399003e-12,
+          "total_work": -1.7103450212983312e-12,
+          "lost_cells": 5
+        }
+      ]
+    },
+    "opposite": {
+      "node": [
+        15,
+        9,
+        2
+      ],
+      "order": 0.0003650976839283739,
+      "physical_slope": -5.396574029661871e-13,
+      "samples": [
+        {
+          "h": 1e-06,
+          "physical_work": 2.7762902954984475e-13,
+          "gauge_mask_work": 0.0,
+          "total_work": 2.7762902954984475e-13,
+          "lost_cells": 0
+        },
+        {
+          "h": 1e-09,
+          "physical_work": 2.770899381254397e-19,
+          "gauge_mask_work": 0.0,
+          "total_work": 2.770899381254397e-19,
+          "lost_cells": 0
+        },
+        {
+          "h": 1e-12,
+          "physical_work": -2.620280294823862e-25,
+          "gauge_mask_work": 0.0,
+          "total_work": -2.620280294823862e-25,
+          "lost_cells": 0
+        },
+        {
+          "h": 1e-15,
+          "physical_work": -5.393798652800672e-28,
+          "gauge_mask_work": 0.0,
+          "total_work": -5.393798652800672e-28,
+          "lost_cells": 0
+        }
+      ]
+    }
+  }
+}

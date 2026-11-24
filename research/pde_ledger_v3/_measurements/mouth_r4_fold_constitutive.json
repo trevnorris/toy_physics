@@ -1,0 +1,3045 @@
+{
+  "command": [
+    "/var/projects/toy_physics/_scratch/s11c/r4_fold_constitutive01/reader/mouth_r4_fold_constitutive.py",
+    "/var/projects/toy_physics/_scratch/s11c/r4_fold_gate01/decision.json",
+    "/var/projects/toy_physics/_scratch/s11c/r4_fold_constitutive01/build",
+    "/var/projects/toy_physics/_scratch/s11c/r4_fold_constitutive01/result.json"
+  ],
+  "input_sha256": {
+    "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+    "/var/projects/toy_physics/_scratch/s11c/r4_whole_mouth01/coarse/endpoint.json": "c96d269556664836d1cf84e8bf78ac5914b0ac26ef0eb6b6e84b61731b4d26b9",
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_coarse01/pin/research/pde_ledger_v3/_measurements/mouth_whole_r4_order_edges.json": "20090ad7a341777149075b7abd839d6c437cf7acfdefe15197115b6f6aa1d79e",
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_coarse01/coarse/invocation.json": "aa37bf7cbf8374e2c6f11b9b1eafd5dfc546b26311dc4a72896c56f27645bcd2",
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_coarse01/sources.json": "977488908d69ee442cb88ede4aaecbb11562891b7accf05a1ae619b0216cf207",
+    "/var/projects/toy_physics/_scratch/s11c/r4_continuous_coarse01/coarse/state_00006.npz": "988d5c2e3d5124dd3caaf7b00f206031ee15e17bf81b2b2d64798d400e10ce12",
+    "/var/projects/toy_physics/_scratch/s11c/r4_fold_constitutive01/reader/mouth_r4_fold_constitutive.py": "77ff0029f0d721c30e19105ece3f7c65e471f50c7bcae0b338c79ca30630fd97",
+    "/var/projects/toy_physics/_scratch/s11c/r4_fold_constitutive01/reader/mouth_r4_fold_constitutive.cpp": "25f40f4319dea610fa3ff8eaa98e08ff85cb83ede54defb6a61fa8d4896e3d6e"
+  },
+  "iteration": 6,
+  "selected": {
+    "cell_t_x_angle": [
+      5,
+      17,
+      0
+    ],
+    "triangle": 0,
+    "vertex": 1,
+    "angular_fraction": 1.0
+  },
+  "checkpoint_sha256": "988d5c2e3d5124dd3caaf7b00f206031ee15e17bf81b2b2d64798d400e10ce12",
+  "gate_det": 3.8018226804562016e-16,
+  "coordinate_order": "chart x,t,theta; physical r,z,polar arc,azimuthal arc; W per reference four-volume",
+  "precision": "Chart based on nodal grid plus saved binary64 offsets at 75 decimal digits. C, reference inverse and hoop from pinned double-precision kernel. Direct native implementation reported alongside.",
+  "discrete_orientation": "Signed det(F) includes handedness of initial collar labels. J is the model ratio to the unsigned reference volume with signed current chart orientation.",
+  "reference_metrics": "At a label-grid boundary the production reference lookup selects its own one-sided tensor. The inward ray reports the limiting branch separately.",
+  "paths": "fraction 0 is selected corner, fraction 1 is the prism barycenter and angular midpoint",
+  "precision_at_extremum": {
+    "exact_grid_plus_offset": {
+      "rational": "118234989504148682168442579445013784109/251429301574887596326362690204570965830726135024975872",
+      "value": 4.702514335582827e-16,
+      "sign": 1
+    },
+    "binary64_landed_nodes": {
+      "rational": "356103355050463271184841992007/936647137905983613157133349048238120342515912",
+      "value": 3.801894444973015e-16,
+      "sign": 1
+    }
+  },
+  "material": {
+    "native_integrated_chi_W": 0.20665739742281677,
+    "residual": {
+      "material_force_max": 0.26577388976112354,
+      "material_force_site": [
+        1,
+        16,
+        4,
+        1
+      ],
+      "angular_sum_force_max": 0.8697286420851449,
+      "angular_sum_force_site": [
+        1,
+        16,
+        1
+      ],
+      "bond_force_max": 0.26577388976112354,
+      "last_free_ring_angular_sum": [
+        0.0,
+        0.0
+      ],
+      "last_free_ring_peak_per_direction": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "last_free_ring_reference": [
+        0.9583333333333333,
+        0.9853121128230744
+      ],
+      "last_free_ring_landed_depth_fraction": [
+        0.9717142567743352,
+        0.9717184697225854
+      ]
+    },
+    "force_vectors": {
+      "fold_vertex_ring": {
+        "node_t_x": [
+          5,
+          18
+        ],
+        "landed_r_z_theta": [
+          [
+            3.5610117954002276,
+            0.18202145045799834,
+            0.0
+          ],
+          [
+            3.55416136178442,
+            0.20165107409188732,
+            0.2617767283200375
+          ],
+          [
+            3.5504603493504168,
+            0.2015715184257874,
+            0.5235985905354054
+          ],
+          [
+            3.5455392930451866,
+            0.20143577423837297,
+            0.785397443439801
+          ],
+          [
+            3.540354374439766,
+            0.20179080352235365,
+            1.0471965502336364
+          ],
+          [
+            3.5366818655089483,
+            0.2021188352474935,
+            1.3090328262769022
+          ],
+          [
+            3.543969136396935,
+            0.18195874163461742,
+            1.5707963267948966
+          ]
+        ],
+        "physical_components_r_z_polar": [
+          [
+            7.926320477151756e-05,
+            0.00029144984091769306,
+            0.0
+          ],
+          [
+            0.00021352581309465148,
+            0.0006965122565998461,
+            -3.047282115715272e-06
+          ],
+          [
+            0.00036693369790994246,
+            0.0010591439934124864,
+            1.0136838549470597e-06
+          ],
+          [
+            0.0005296181417229676,
+            0.0014872586507393099,
+            9.935063282127135e-07
+          ],
+          [
+            0.0005552386615635088,
+            0.001602715743101628,
+            -5.350701291707898e-07
+          ],
+          [
+            0.0006792003220630712,
+            0.002551180420410594,
+            2.0563020803900445e-05
+          ],
+          [
+            0.0008288675453510144,
+            0.0036369226038674715,
+            0.0
+          ]
+        ],
+        "summed_radial_axial": [
+          0.0032526473864766736,
+          0.011325183509049028
+        ]
+      },
+      "terminal_free_ring": {
+        "node_t_x": [
+          23,
+          23
+        ],
+        "landed_r_z_theta": [
+          [
+            3.3103921663826843,
+            0.7945729894881334,
+            0.0
+          ],
+          [
+            3.3103897157735633,
+            0.7945764175749513,
+            0.26179938337649855
+          ],
+          [
+            3.310389610653504,
+            0.7945764344256366,
+            0.5235987215362434
+          ],
+          [
+            3.3103895949495747,
+            0.7945761889973947,
+            0.7853981069740832
+          ],
+          [
+            3.31038945621366,
+            0.7945760856314816,
+            1.0471975068041162
+          ],
+          [
+            3.3103893080950164,
+            0.7945760893051694,
+            1.3089969128692573
+          ],
+          [
+            3.310389277761227,
+            0.7945759886394675,
+            1.5707963267948966
+          ]
+        ],
+        "physical_components_r_z_polar": [
+          [
+            -0.0,
+            -0.0,
+            0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.0
+          ]
+        ],
+        "summed_radial_axial": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "ray": [
+    {
+      "fraction_toward_prism_center": 0.0,
+      "barycentric": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "angular_fraction": 1.0,
+      "reference_x_t_theta": [
+        0.9118726769384466,
+        0.20833333333333331,
+        0.2617993877991494
+      ],
+      "landed_x_t_theta": [
+        0.9082907500999126,
+        0.24660695264153712,
+        0.2617767283200375
+      ],
+      "physical_r_z_theta": [
+        3.55416136178442,
+        0.20165107409188732,
+        0.2617767283200375
+      ],
+      "cylindrical_radius": 0.9198068582947766,
+      "reference_radius": 4.385759934842169,
+      "polar_hoop": 0.8103181321589663,
+      "chart_to_physical_J_scale": 0.5346145382227169,
+      "det_chart": 4.702514335582827e-16,
+      "J": 2.5140325300033193e-16,
+      "signed_det_F": -2.51403253000332e-16,
+      "det_ref_inverse": -0.057625073724166025,
+      "principal_stretches": [
+        3.602983315154684e-16,
+        0.8103181321589663,
+        0.8104563464074465,
+        1.062486590143666
+      ],
+      "stretch_term": -0.7788336405135915,
+      "negative_log_J": 35.919473438280484,
+      "compression_term": 0.24999999999999986,
+      "W": 35.390639797766895,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18460747694541582,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06171426719447315,
+        -0.029471618431870215,
+        0.35467075012961324
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 4.517497725163081e-16,
+        "J": 2.4151199602602345e-16,
+        "W": 35.43077888853466,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 1.8214596497756474e-17
+      },
+      "meridional_polar_blocks": {
+        "chart_gradient": [
+          [
+            1.095422171719398,
+            -0.005026246441997309,
+            0.0019126657353264961
+          ],
+          [
+            -0.02744813397123834,
+            0.00017537635524485568,
+            0.09169552114127842
+          ],
+          [
+            8.954595186076523e-05,
+            0.0005383607579584107,
+            0.999913447165395
+          ]
+        ],
+        "current_chart_to_physical": [
+          [
+            3.9395022184870907,
+            -0.3270618946558459,
+            -0.010026074844271557
+          ],
+          [
+            0.0,
+            0.8177023069783569,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            3.55416136178442
+          ]
+        ],
+        "inverse_reference": [
+          [
+            -0.24570163295971026,
+            0.018896201986737703,
+            0.0
+          ],
+          [
+            -0.0935255559091623,
+            1.0357970124638407,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.22801065604517343
+          ]
+        ],
+        "physical_F": [
+          [
+            -1.0606530093489537,
+            0.061139904904499255,
+            -0.007405869794517473
+          ],
+          [
+            0.005501214244652501,
+            -0.0002755748184314304,
+            0.017096156718733938
+          ],
+          [
+            -0.00025715095212836415,
+            0.0019879296798354443,
+            0.8103165225279954
+          ]
+        ],
+        "smallest_stretch": 3.602983315154684e-16,
+        "smallest_right_direction_r_z_polar": [
+          0.057564860955791254,
+          0.9983388088980617,
+          -0.0024309321545002275
+        ],
+        "smallest_left_direction_r_z_polar": [
+          0.005190513354947744,
+          0.9997650403900757,
+          -0.021045726049301276
+        ]
+      }
+    },
+    {
+      "fraction_toward_prism_center": 1e-12,
+      "barycentric": [
+        3.333333333333333e-13,
+        0.9999999999993333,
+        3.333333333333333e-13
+      ],
+      "angular_fraction": 0.9999999999995001,
+      "reference_x_t_theta": [
+        0.9118726769384369,
+        0.2083333333333472,
+        0.2617993877990185
+      ],
+      "landed_x_t_theta": [
+        0.9082907500999015,
+        0.24660695264152538,
+        0.26177672831990667
+      ],
+      "physical_r_z_theta": [
+        3.5541613617843812,
+        0.2016510740918777,
+        0.26177672831990667
+      ],
+      "cylindrical_radius": 0.9198068582943173,
+      "reference_radius": 4.385759934842211,
+      "polar_hoop": 0.81031813215895,
+      "chart_to_physical_J_scale": 0.5346145382226903,
+      "det_chart": 2.431206081709071e-13,
+      "J": 1.2997581166970913e-13,
+      "signed_det_F": -1.299758116697091e-13,
+      "det_ref_inverse": -0.05762507372416485,
+      "principal_stretches": [
+        1.8627471014428861e-13,
+        0.81031813215895,
+        0.8104563464074298,
+        1.0624865901436378
+      ],
+      "stretch_term": -0.7788336405136481,
+      "negative_log_J": 29.671428025846332,
+      "compression_term": 0.24999999999993502,
+      "W": 29.142594385332618,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18460747694524862,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06171426719442618,
+        -0.029471618431843354,
+        0.3546707501295189
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 2.43073302103576e-13,
+        "J": 1.299505211583678e-13,
+        "W": 29.14278898286451,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.5673907444456745e-16,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "fraction_toward_prism_center": 1e-10,
+      "barycentric": [
+        3.3333333333333335e-11,
+        0.9999999999333333,
+        3.3333333333333335e-11
+      ],
+      "angular_fraction": 0.99999999995,
+      "reference_x_t_theta": [
+        0.9118726769374675,
+        0.2083333333347222,
+        0.26179938778605943
+      ],
+      "landed_x_t_theta": [
+        0.908290750098808,
+        0.24660695264036395,
+        0.26177672830694937
+      ],
+      "physical_r_z_theta": [
+        3.5541613617805834,
+        0.201651074090928,
+        0.26177672830694937
+      ],
+      "cylindrical_radius": 0.919806858248851,
+      "reference_radius": 4.385759934846286,
+      "polar_hoop": 0.810318132157333,
+      "chart_to_physical_J_scale": 0.5346145382200669,
+      "det_chart": 2.4268738918052877e-11,
+      "J": 1.2974420649858206e-11,
+      "signed_det_F": -1.2974420649858204e-11,
+      "det_ref_inverse": -0.05762507372405005,
+      "principal_stretches": [
+        1.8594278541609946e-11,
+        0.810318132157333,
+        0.8104563464058081,
+        1.062486590140851
+      ],
+      "stretch_term": -0.7788336405192338,
+      "negative_log_J": 25.06804133913683,
+      "compression_term": 0.2499999999935128,
+      "W": 24.539207698611108,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18460747692870882,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.061714267189691974,
+        -0.029471618429237262,
+        0.3546707501202057
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 2.4268843676953235e-11,
+        "J": 1.2974476655489344e-11,
+        "W": 24.53920338200139,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 8.104411239329146e-17
+      }
+    },
+    {
+      "fraction_toward_prism_center": 1e-08,
+      "barycentric": [
+        3.3333333333333334e-09,
+        0.9999999933333333,
+        3.3333333333333334e-09
+      ],
+      "angular_fraction": 0.9999999949999999,
+      "reference_x_t_theta": [
+        0.9118726768405274,
+        0.20833333347222222,
+        0.26179938649015244
+      ],
+      "landed_x_t_theta": [
+        0.9082907499894478,
+        0.24660695252422,
+        0.2617767270112198
+      ],
+      "physical_r_z_theta": [
+        3.5541613614007352,
+        0.20165107399595683,
+        0.2617767270112198
+      ],
+      "cylindrical_radius": 0.9198068537022078,
+      "reference_radius": 4.385759935253869,
+      "polar_hoop": 0.8103181319956065,
+      "chart_to_physical_J_scale": 0.5346145379576747,
+      "det_chart": 2.4268271750693784e-09,
+      "J": 1.2974170889028445e-09,
+      "signed_det_F": -1.2974170889028443e-09,
+      "det_ref_inverse": -0.05762507371256869,
+      "principal_stretches": [
+        1.859392060942577e-09,
+        0.8103181319956065,
+        0.8104563462435906,
+        1.0624865898621527
+      ],
+      "stretch_term": -0.7788336410778667,
+      "negative_log_J": 20.462890403583152,
+      "compression_term": 0.24999999935129147,
+      "W": 19.934056761856578,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18460747527472487,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06171426671633162,
+        -0.029471618168768345,
+        0.35467074918887814
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 2.426827189389682e-09,
+        "J": 1.297417096558687e-09,
+        "W": 19.934056755955744,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 1.1102230246251565e-16,
+        "F_max_abs_difference": 1.1102230246251565e-16
+      }
+    },
+    {
+      "fraction_toward_prism_center": 1e-06,
+      "barycentric": [
+        3.333333333333333e-07,
+        0.9999993333333334,
+        3.333333333333333e-07
+      ],
+      "angular_fraction": 0.9999994999999999,
+      "reference_x_t_theta": [
+        0.9118726671465219,
+        0.20833334722222221,
+        0.2617992568994555
+      ],
+      "landed_x_t_theta": [
+        0.9082907390534449,
+        0.24660694090983043,
+        0.26177659743827375
+      ],
+      "physical_r_z_theta": [
+        3.5541613234160603,
+        0.20165106449884368,
+        0.26177659743827375
+      ],
+      "cylindrical_radius": 0.919806399037966,
+      "reference_radius": 4.38575997601221,
+      "polar_hoop": 0.810318115823032,
+      "chart_to_physical_J_scale": 0.5346145117185387,
+      "det_chart": 2.4268266513194214e-07,
+      "J": 1.2974167452206688e-07,
+      "signed_det_F": -1.2974167452206688e-07,
+      "det_ref_inverse": -0.05762507256443451,
+      "principal_stretches": [
+        1.8593916914949225e-07,
+        0.810318115823032,
+        0.8104563300218818,
+        1.0624865619923962
+      ],
+      "stretch_term": -0.7788336969410087,
+      "negative_log_J": 15.857720482492311,
+      "compression_term": 0.24999993512916693,
+      "W": 15.32888672068047,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18460730987637947,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.061714219380224006,
+        -0.02947159212177567,
+        0.35467065605608156
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 2.426826651536384e-07,
+        "J": 1.2974167453366602e-07,
+        "W": 15.32888672059107,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 5.898059818321144e-17,
+        "F_max_abs_difference": 2.7755575615628914e-17
+      }
+    },
+    {
+      "fraction_toward_prism_center": 0.0001,
+      "barycentric": [
+        3.3333333333333335e-05,
+        0.9999333333333333,
+        3.3333333333333335e-05
+      ],
+      "angular_fraction": 0.99995,
+      "reference_x_t_theta": [
+        0.9118716977459681,
+        0.2083347222222222,
+        0.26178629782975943
+      ],
+      "landed_x_t_theta": [
+        0.9082896454542769,
+        0.24660577950194562,
+        0.2617636401436291
+      ],
+      "physical_r_z_theta": [
+        3.554157524937774,
+        0.20165011481293693,
+        0.2617636401436291
+      ],
+      "cylindrical_radius": 0.9197609325808745,
+      "reference_radius": 4.385764051848403,
+      "polar_hoop": 0.8103164985642205,
+      "chart_to_physical_J_scale": 0.5346118878043763,
+      "det_chart": 2.4268247058132157e-05,
+      "J": 1.2974093373451034e-05,
+      "signed_det_F": -1.2974093373451037e-05,
+      "det_ref_inverse": -0.05762495775109579,
+      "principal_stretches": [
+        1.8593933848629647e-05,
+        0.8103164985642205,
+        0.8104547078496798,
+        1.0624837750425216
+      ],
+      "stretch_term": -0.7788392830522849,
+      "negative_log_J": 11.252556006232219,
+      "compression_term": 0.24999351299539505,
+      "W": 10.723710236175329,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18459077027361454,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06170948574688694,
+        -0.02946898745377472,
+        0.3546613422032325
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 2.426824705812833e-05,
+        "J": 1.2974093373448989e-05,
+        "W": 10.723710236175485,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.7755575615628914e-17,
+        "F_max_abs_difference": 6.938893903907228e-18
+      }
+    },
+    {
+      "fraction_toward_prism_center": 0.001,
+      "barycentric": [
+        0.0003333333333333333,
+        0.9993333333333333,
+        0.0003333333333333333
+      ],
+      "angular_fraction": 0.9994999999999999,
+      "reference_x_t_theta": [
+        0.9118628850136621,
+        0.2083472222222222,
+        0.26166848810524984
+      ],
+      "landed_x_t_theta": [
+        0.9082797037470076,
+        0.24659522407061632,
+        0.26164584655298284
+      ],
+      "physical_r_z_theta": [
+        3.5541229923509987,
+        0.20164148361238782,
+        0.26164584655298284
+      ],
+      "cylindrical_radius": 0.9193475981720288,
+      "reference_radius": 4.385801105098435,
+      "polar_hoop": 0.8103017960938513,
+      "chart_to_physical_J_scale": 0.5345880339943228,
+      "det_chart": 0.00024268070647600473,
+      "J": 0.00012973420176336069,
+      "signed_det_F": -0.00012973420176336069,
+      "det_ref_inverse": -0.05762391400071364,
+      "principal_stretches": [
+        0.00018594088093875524,
+        0.8103017960938513,
+        0.810439960712576,
+        1.0624584414783698
+      ],
+      "stretch_term": -0.7788900474423097,
+      "negative_log_J": 8.950022802380754,
+      "compression_term": 0.2499351371068591,
+      "W": 8.421067892045304,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18444043131037824,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06166645067055647,
+        -0.0294453115072645,
+        0.3545766187569925
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 0.00024268070647587007,
+        "J": 0.0001297342017632887,
+        "W": 8.421067892045858,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.3245294578089215e-16,
+        "F_max_abs_difference": 1.0115606269289756e-16
+      }
+    },
+    {
+      "fraction_toward_prism_center": 0.01,
+      "barycentric": [
+        0.003333333333333333,
+        0.9933333333333333,
+        0.003333333333333333
+      ],
+      "angular_fraction": 0.995,
+      "reference_x_t_theta": [
+        0.9117747576906005,
+        0.2084722222222222,
+        0.2604903908601537
+      ],
+      "landed_x_t_theta": [
+        0.9081802969159571,
+        0.246489949431756,
+        0.2604679103524723
+      ],
+      "physical_r_z_theta": [
+        3.5537775708212815,
+        0.2015554002973254,
+        0.2604679103524723
+      ],
+      "cylindrical_radius": 0.9152139600513562,
+      "reference_radius": 4.386171656798805,
+      "polar_hoop": 0.8101547597588798,
+      "chart_to_physical_J_scale": 0.534349491498384,
+      "det_chart": 0.0024266306546416984,
+      "J": 0.001296668856362182,
+      "signed_det_F": -0.001296668856362182,
+      "det_ref_inverse": -0.057613477214601444,
+      "principal_stretches": [
+        0.001859562610874164,
+        0.8101547597588798,
+        0.8102924777560868,
+        1.0622053375834293
+      ],
+      "stretch_term": -0.7793958642840512,
+      "negative_log_J": 6.647956721310123,
+      "compression_term": 0.24935208590934968,
+      "W": 6.117912942935422,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18293913685385085,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06123590290253817,
+        -0.029208836346390044,
+        0.3537242287469735
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 0.0024266306546416806,
+        "J": 0.0012966688563621725,
+        "W": 6.117912942935429,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 9.367506770274758e-17,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "fraction_toward_prism_center": 0.05,
+      "barycentric": [
+        0.016666666666666666,
+        0.9666666666666667,
+        0.016666666666666666
+      ],
+      "angular_fraction": 0.975,
+      "reference_x_t_theta": [
+        0.9113830806992158,
+        0.20902777777777776,
+        0.2552544031041707
+      ],
+      "landed_x_t_theta": [
+        0.9077387140711302,
+        0.2460282143576735,
+        0.25523263188180595
+      ],
+      "physical_r_z_theta": [
+        3.552240267051786,
+        0.20117783846203532,
+        0.25523263188180595
+      ],
+      "cylindrical_radius": 0.8968359159157953,
+      "reference_radius": 4.387818975753931,
+      "polar_hoop": 0.8095010109129486,
+      "chart_to_physical_J_scale": 0.5332892123451348,
+      "det_chart": 0.012129233048454447,
+      "J": 0.006468389138760851,
+      "signed_det_F": -0.006468389138760849,
+      "det_ref_inverse": -0.057567107282735556,
+      "principal_stretches": [
+        0.009301182480053741,
+        0.8095010109129486,
+        0.8096367450222436,
+        1.0610854727118137
+      ],
+      "stretch_term": -0.7816037810225601,
+      "negative_log_J": 5.040828175384886,
+      "compression_term": 0.24677626544513218,
+      "W": 4.506000659807458,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.176313678500016,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.05931865576565134,
+        -0.028164256913019825,
+        0.34982278984671267
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 0.012129233048454383,
+        "J": 0.006468389138760816,
+        "W": 4.506000659807463,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 4.440892098500626e-16
+      }
+    },
+    {
+      "fraction_toward_prism_center": 0.1,
+      "barycentric": [
+        0.03333333333333333,
+        0.9333333333333333,
+        0.03333333333333333
+      ],
+      "angular_fraction": 0.9500000000000001,
+      "reference_x_t_theta": [
+        0.9108934844599849,
+        0.2097222222222222,
+        0.24870941840919195
+      ],
+      "landed_x_t_theta": [
+        0.9071872527698356,
+        0.24546517048641445,
+        0.24868851894256044
+      ],
+      "physical_r_z_theta": [
+        3.550313856130739,
+        0.20071743618957677,
+        0.24868851894256044
+      ],
+      "cylindrical_radius": 0.8738495301724444,
+      "reference_radius": 4.389879095182191,
+      "polar_hoop": 0.8086832499254649,
+      "chart_to_physical_J_scale": 0.5319636850004184,
+      "det_chart": 0.024248665535027962,
+      "J": 0.012899409474356116,
+      "signed_det_F": -0.012899409474356116,
+      "det_ref_inverse": -0.057509181089792034,
+      "principal_stretches": [
+        0.018610570426357012,
+        0.8086832499254649,
+        0.8088165070867651,
+        1.0596969647274368
+      ],
+      "stretch_term": -0.7842716243849078,
+      "negative_log_J": 4.350573745844014,
+      "compression_term": 0.24359189395401873,
+      "W": 3.8098940154131253,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.16814362897016288,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.05691648110495472,
+        -0.026874032502074964,
+        0.3446883046562096
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 0.024248665535028018,
+        "J": 0.012899409474356145,
+        "W": 3.809894015413123,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 6.245004513516506e-17,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "fraction_toward_prism_center": 0.25,
+      "barycentric": [
+        0.08333333333333333,
+        0.8333333333333334,
+        0.08333333333333333
+      ],
+      "angular_fraction": 0.875,
+      "reference_x_t_theta": [
+        0.9094246957422925,
+        0.21180555555555555,
+        0.22907446432425574
+      ],
+      "landed_x_t_theta": [
+        0.9055363172308791,
+        0.2438702053482652,
+        0.22905608111874123
+      ],
+      "physical_r_z_theta": [
+        3.544503272419003,
+        0.1994132295165621,
+        0.22905608111874123
+      ],
+      "cylindrical_radius": 0.8048091001044965,
+      "reference_radius": 4.3956756473942855,
+      "polar_hoop": 0.8062978488384106,
+      "chart_to_physical_J_scale": 0.5324475592280762,
+      "det_chart": 0.06054815962346621,
+      "J": 0.03223871980726654,
+      "signed_det_F": -0.03223871980726654,
+      "det_ref_inverse": -0.057814964668557164,
+      "principal_stretches": [
+        0.04482931050085943,
+        0.8062978488384106,
+        0.8064300949954638,
+        1.1059958582713434
+      ],
+      "stretch_term": -0.7371588876254054,
+      "negative_log_J": 3.434587070343437,
+      "compression_term": 0.2341404738600696,
+      "W": 2.931568656578101,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.14450751920715202,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.049833935186144734,
+        -0.023060126105159656,
+        0.326275602606003
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        4
+      ],
+      "native": {
+        "det_chart": 0.06054815962346632,
+        "J": 0.03223871980726659,
+        "W": 2.9315686565781,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "fraction_toward_prism_center": 0.5,
+      "barycentric": [
+        0.16666666666666666,
+        0.6666666666666666,
+        0.16666666666666666
+      ],
+      "angular_fraction": 0.75,
+      "reference_x_t_theta": [
+        0.906976714546138,
+        0.21527777777777776,
+        0.19634954084936207
+      ],
+      "landed_x_t_theta": [
+        0.9027962525490413,
+        0.24152581837010906,
+        0.19633502139209966
+      ],
+      "physical_r_z_theta": [
+        3.534717564575736,
+        0.1974962188760738,
+        0.19633502139209966
+      ],
+      "cylindrical_radius": 0.6895388517971551,
+      "reference_radius": 4.405333962368431,
+      "polar_hoop": 0.8023136453149889,
+      "chart_to_physical_J_scale": 0.5259237831679333,
+      "det_chart": 0.12085130519992174,
+      "J": 0.06355857563152538,
+      "signed_det_F": -0.06355857563152538,
+      "det_ref_inverse": -0.05753292573770022,
+      "principal_stretches": [
+        0.08981463440193317,
+        0.8023136453149889,
+        0.8024323419821602,
+        1.0991942464410305
+      ],
+      "stretch_term": -0.748050245560291,
+      "negative_log_J": 2.7557933473896883,
+      "compression_term": 0.21923063531831438,
+      "W": 2.226973737147712,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.10816942016846202,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.03929694705711154,
+        -0.01682978711675683,
+        0.29314294910350097
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        4
+      ],
+      "native": {
+        "det_chart": 0.12085130519992171,
+        "J": 0.06355857563152535,
+        "W": 2.226973737147712,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 1.1102230246251565e-16,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "fraction_toward_prism_center": 1.0,
+      "barycentric": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "angular_fraction": 0.5,
+      "reference_x_t_theta": [
+        0.9020807521538297,
+        0.2222222222222222,
+        0.1308996938995747
+      ],
+      "landed_x_t_theta": [
+        0.8973592277469533,
+        0.23801412535914407,
+        0.13089166436278077
+      ],
+      "physical_r_z_theta": [
+        3.5147866121956164,
+        0.19462469939960794,
+        0.13089166436278077
+      ],
+      "cylindrical_radius": 0.45874373227674436,
+      "reference_radius": 4.424728270963874,
+      "polar_hoop": 0.7943023907139418,
+      "chart_to_physical_J_scale": 0.5128819397622362,
+      "det_chart": 0.24072255421180216,
+      "J": 0.12346225054866915,
+      "signed_det_F": -0.12346225054866916,
+      "det_ref_inverse": -0.056971541569522444,
+      "principal_stretches": [
+        0.1801364075970895,
+        0.7943023907139418,
+        0.794395232024576,
+        1.086200987399923
+      ],
+      "stretch_term": -0.7628691085360922,
+      "negative_log_J": 2.091819833212266,
+      "compression_term": 0.192079606553301,
+      "W": 1.5210303312294748,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.04936653632505443,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.018707832696611578,
+        -0.007542599823110662,
+        0.20902000291674827
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        3
+      ],
+      "native": {
+        "det_chart": 0.2407225542118021,
+        "J": 0.12346225054866912,
+        "W": 1.5210303312294746,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 2.220446049250313e-16
+      },
+      "meridional_polar_blocks": {
+        "chart_gradient": [
+          [
+            1.086520465440988,
+            -0.003026038977192633,
+            0.0010345468173821322
+          ],
+          [
+            -0.033824189054395076,
+            0.2216796805325489,
+            0.067716225029752
+          ],
+          [
+            4.4772975930382614e-05,
+            0.0002691803789792053,
+            0.9999386588573684
+          ]
+        ],
+        "current_chart_to_physical": [
+          [
+            3.943477608243576,
+            -0.3135490193118746,
+            -0.004766559260402543
+          ],
+          [
+            0.0,
+            0.8177023069783569,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            3.5147866121956164
+          ]
+        ],
+        "inverse_reference": [
+          [
+            -0.2552296024977827,
+            0.006914504182987063,
+            0.0
+          ],
+          [
+            -0.1393333755621158,
+            0.991448520684084,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.22600257886167593
+          ]
+        ],
+        "physical_F": [
+          [
+            -1.084933624202214,
+            -0.05104570499843648,
+            -0.004953730324775668
+          ],
+          [
+            -0.018197510080727966,
+            0.17952663457861576,
+            0.012514150030422477
+          ],
+          [
+            -0.00017198975515392965,
+            0.0009391090565251982,
+            0.7943021121166184
+          ]
+        ],
+        "smallest_stretch": 0.1801364075970895,
+        "smallest_right_direction_r_z_polar": [
+          -0.04544633112464821,
+          0.9989540916763597,
+          -0.005035246803070318
+        ],
+        "smallest_left_direction_r_z_polar": [
+          -0.00922145558641529,
+          0.999813790085508,
+          -0.016951398518106096
+        ]
+      }
+    }
+  ],
+  "parent_prisms_sampled": [
+    {
+      "triangle": 0,
+      "barycentric": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "angular_fraction": 0.0,
+      "reference_x_t_theta": [
+        0.897184789761521,
+        0.20833333333333331,
+        0.0
+      ],
+      "landed_x_t_theta": [
+        0.8919620726270212,
+        0.2231915779932037,
+        0.0
+      ],
+      "physical_r_z_theta": [
+        3.4983545954175623,
+        0.18250426822318253,
+        0.0
+      ],
+      "cylindrical_radius": 0.0,
+      "reference_radius": 4.443432100151801,
+      "polar_hoop": 0.787237016085574,
+      "chart_to_physical_J_scale": 0.5093193077714633,
+      "det_chart": 0.4774984052808801,
+      "J": 0.24319915723963548,
+      "signed_det_F": -0.24319915723963542,
+      "det_ref_inverse": -0.0573061829810527,
+      "principal_stretches": [
+        0.3627231338003849,
+        0.787237016085574,
+        0.7874470642083962,
+        1.0815832077653116
+      ],
+      "stretch_term": -0.7293973472301933,
+      "negative_log_J": 1.4138745941936808,
+      "compression_term": 0.1431868789006995,
+      "W": 0.8276641258641869,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.0,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        0
+      ],
+      "native": {
+        "det_chart": 0.47749840528088017,
+        "J": 0.2431991572396355,
+        "W": 0.8276641258641867,
+        "sample_status": -1,
+        "sample_chi_W": null,
+        "pointwise_chiW_difference": null,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 6.938893903907228e-17
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "angular_fraction": 0.0,
+      "reference_x_t_theta": [
+        0.9118726769384466,
+        0.20833333333333331,
+        0.0
+      ],
+      "landed_x_t_theta": [
+        0.9077900153813396,
+        0.22260112134282645,
+        0.0
+      ],
+      "physical_r_z_theta": [
+        3.5610117954002276,
+        0.18202145045799834,
+        0.0
+      ],
+      "cylindrical_radius": 0.0,
+      "reference_radius": 4.385759934842169,
+      "polar_hoop": 0.8118783591978372,
+      "chart_to_physical_J_scale": 0.5378361533623154,
+      "det_chart": 0.47750080438091536,
+      "J": 0.25681719585564294,
+      "signed_det_F": -0.25681719585564294,
+      "det_ref_inverse": -0.057625073724166025,
+      "principal_stretches": [
+        0.3755139628498192,
+        0.8118783591978372,
+        0.8120870804518342,
+        1.037300155173844
+      ],
+      "stretch_term": -0.7321828777052936,
+      "negative_log_J": 1.359390747353505,
+      "compression_term": 0.13808017009396745,
+      "W": 0.7652880397421788,
+      "chi": 0.00011624035834479519,
+      "chi_W": 8.895735597661674e-05,
+      "n": 0.0,
+      "order_gradient_r_z_polar": [
+        0.011946387671819275,
+        -0.0002019760301464459,
+        -0.0002219108010559122
+      ],
+      "density_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        0
+      ],
+      "native": {
+        "det_chart": 0.4775008043809154,
+        "J": 0.256817195855643,
+        "W": 0.7652880397421787,
+        "sample_status": -1,
+        "sample_chi_W": null,
+        "pointwise_chiW_difference": null,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 6.938893903907228e-17
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "angular_fraction": 0.0,
+      "reference_x_t_theta": [
+        0.897184789761521,
+        0.25,
+        0.0
+      ],
+      "landed_x_t_theta": [
+        0.8919193296473383,
+        0.24165757735611423,
+        0.0
+      ],
+      "physical_r_z_theta": [
+        3.492507676451281,
+        0.19760395850289536,
+        0.0
+      ],
+      "cylindrical_radius": 0.0,
+      "reference_radius": 4.444100270031677,
+      "polar_hoop": 0.7858704528970595,
+      "chart_to_physical_J_scale": 0.5239522161248997,
+      "det_chart": 0.47753932241673824,
+      "J": 0.250207786267033,
+      "signed_det_F": -0.250207786267033,
+      "det_ref_inverse": -0.059203027038361986,
+      "principal_stretches": [
+        0.36345582430101525,
+        0.7858704528970595,
+        0.7858810026223156,
+        1.1146574850020157
+      ],
+      "stretch_term": -0.6951186179456827,
+      "negative_log_J": 1.3854635612615542,
+      "compression_term": 0.1405470909436458,
+      "W": 0.8308920342595174,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.0,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        0
+      ],
+      "native": {
+        "det_chart": 0.47753932241673835,
+        "J": 0.25020778626703305,
+        "W": 0.8308920342595175,
+        "sample_status": -1,
+        "sample_chi_W": null,
+        "pointwise_chiW_difference": null,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 1.1102230246251565e-16
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "angular_fraction": 0.0,
+      "reference_x_t_theta": [
+        0.9020807521538297,
+        0.2222222222222222,
+        0.0
+      ],
+      "landed_x_t_theta": [
+        0.8972238058852331,
+        0.2291500922307148,
+        0.0
+      ],
+      "physical_r_z_theta": [
+        3.5173047578041223,
+        0.18737655906135875,
+        0.0
+      ],
+      "cylindrical_radius": 0.0,
+      "reference_radius": 4.424728270963874,
+      "polar_hoop": 0.7948711846083915,
+      "chart_to_physical_J_scale": 0.5139544941721453,
+      "det_chart": 0.4775128440261779,
+      "J": 0.2454198722121768,
+      "signed_det_F": -0.2454198722121768,
+      "det_ref_inverse": -0.056971541569522444,
+      "principal_stretches": [
+        0.3614241320808168,
+        0.7948711846083915,
+        0.7949853909234431,
+        1.0745748641362254
+      ],
+      "stretch_term": -0.7254197431068967,
+      "negative_log_J": 1.4047847711242107,
+      "compression_term": 0.1423477923130719,
+      "W": 0.8217128203303858,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.0,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        0
+      ],
+      "native": {
+        "det_chart": 0.4775128440261779,
+        "J": 0.2454198722121768,
+        "W": 0.8217128203303857,
+        "sample_status": -1,
+        "sample_chi_W": null,
+        "pointwise_chiW_difference": null,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 4.163336342344337e-17
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "angular_fraction": 0.5,
+      "reference_x_t_theta": [
+        0.897184789761521,
+        0.20833333333333331,
+        0.1308996938995747
+      ],
+      "landed_x_t_theta": [
+        0.8920816927288082,
+        0.23510084286486374,
+        0.13088770653959972
+      ],
+      "physical_r_z_theta": [
+        3.494883957816076,
+        0.19224250158315526,
+        0.13088770653959972
+      ],
+      "cylindrical_radius": 0.4561323592125023,
+      "reference_radius": 4.443432100151801,
+      "polar_hoop": 0.7864564280482371,
+      "chart_to_physical_J_scale": 0.5079169650591564,
+      "det_chart": 0.2407084699540551,
+      "J": 0.1222599155230968,
+      "signed_det_F": -0.1222599155230968,
+      "det_ref_inverse": -0.0573061829810527,
+      "principal_stretches": [
+        0.1804936376389841,
+        0.7864564280482371,
+        0.7866263286101958,
+        1.0949115798259996
+      ],
+      "stretch_term": -0.7656479925268166,
+      "negative_log_J": 2.1016060453428893,
+      "compression_term": 0.1926069139743803,
+      "W": 1.5285649667904528,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.0490078597716407,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.018792529023262318,
+        -0.007070619116177593,
+        0.2087210586708564
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        3
+      ],
+      "native": {
+        "det_chart": 0.24070846995405507,
+        "J": 0.12225991552309678,
+        "W": 1.5285649667904526,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 4.440892098500626e-16
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "angular_fraction": 0.5,
+      "reference_x_t_theta": [
+        0.9118726769384466,
+        0.20833333333333331,
+        0.1308996938995747
+      ],
+      "landed_x_t_theta": [
+        0.908040382740626,
+        0.23460403699218177,
+        0.13088836416001876
+      ],
+      "physical_r_z_theta": [
+        3.5579849496260834,
+        0.1918362622749428,
+        0.13088836416001876
+      ],
+      "cylindrical_radius": 0.46437026124487524,
+      "reference_radius": 4.385759934842169,
+      "polar_hoop": 0.811188667296823,
+      "chart_to_physical_J_scale": 0.5365193288645307,
+      "det_chart": 0.24070945113253472,
+      "J": 0.12914527317297708,
+      "signed_det_F": -0.12914527317297708,
+      "det_ref_inverse": -0.057625073724166025,
+      "principal_stretches": [
+        0.18718902898994721,
+        0.811188667296823,
+        0.8113565839418004,
+        1.0482490665929214
+      ],
+      "stretch_term": -0.7749038007781831,
+      "negative_log_J": 2.046817359622439,
+      "compression_term": 0.18959698880924217,
+      "W": 1.4615105476534977,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.050189198630161,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.018232307625984715,
+        -0.008615251359301274,
+        0.2098505698257287
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        3
+      ],
+      "native": {
+        "det_chart": 0.24070945113253472,
+        "J": 0.12914527317297708,
+        "W": 1.4615105476534977,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "angular_fraction": 0.5,
+      "reference_x_t_theta": [
+        0.897184789761521,
+        0.25,
+        0.1308996938995747
+      ],
+      "landed_x_t_theta": [
+        0.8919556077714251,
+        0.24433749622038664,
+        0.13089892238872386
+      ],
+      "physical_r_z_theta": [
+        3.4914896490760436,
+        0.19979533434072572,
+        0.13089892238872386
+      ],
+      "cylindrical_radius": 0.455728178392501,
+      "reference_radius": 4.444100270031677,
+      "polar_hoop": 0.785641406826093,
+      "chart_to_physical_J_scale": 0.523434959560822,
+      "det_chart": 0.24074974154881668,
+      "J": 0.1260168312318832,
+      "signed_det_F": -0.1260168312318832,
+      "det_ref_inverse": -0.059203027038361986,
+      "principal_stretches": [
+        0.18137559864460467,
+        0.785641406826093,
+        0.7856499593291794,
+        1.125631502392879
+      ],
+      "stretch_term": -0.7327891671617188,
+      "negative_log_J": 2.071339799746412,
+      "compression_term": 0.19096164482248965,
+      "W": 1.5295122774071823,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.04889876074441399,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.018642683178801505,
+        -0.007161618240636463,
+        0.2084536418801742
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        3
+      ],
+      "native": {
+        "det_chart": 0.24074974154881665,
+        "J": 0.12601683123188318,
+        "W": 1.5295122774071828,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "angular_fraction": 0.5,
+      "reference_x_t_theta": [
+        0.9020807521538297,
+        0.2222222222222222,
+        0.1308996938995747
+      ],
+      "landed_x_t_theta": [
+        0.8973592277469533,
+        0.23801412535914407,
+        0.13089166436278077
+      ],
+      "physical_r_z_theta": [
+        3.5147866121956164,
+        0.19462469939960794,
+        0.13089166436278077
+      ],
+      "cylindrical_radius": 0.45874373227674436,
+      "reference_radius": 4.424728270963874,
+      "polar_hoop": 0.7943023907139418,
+      "chart_to_physical_J_scale": 0.5128819397622362,
+      "det_chart": 0.24072255421180216,
+      "J": 0.12346225054866915,
+      "signed_det_F": -0.12346225054866916,
+      "det_ref_inverse": -0.056971541569522444,
+      "principal_stretches": [
+        0.1801364075970895,
+        0.7943023907139418,
+        0.794395232024576,
+        1.086200987399923
+      ],
+      "stretch_term": -0.7628691085360922,
+      "negative_log_J": 2.091819833212266,
+      "compression_term": 0.192079606553301,
+      "W": 1.5210303312294748,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.04936653632505443,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.018707832696611578,
+        -0.007542599823110662,
+        0.20902000291674827
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        3
+      ],
+      "native": {
+        "det_chart": 0.2407225542118021,
+        "J": 0.12346225054866912,
+        "W": 1.5210303312294746,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "angular_fraction": 1.0,
+      "reference_x_t_theta": [
+        0.897184789761521,
+        0.20833333333333331,
+        0.2617993877991494
+      ],
+      "landed_x_t_theta": [
+        0.8922013128305952,
+        0.2470101077365238,
+        0.26177541307919944
+      ],
+      "physical_r_z_theta": [
+        3.4906577802897525,
+        0.201980734943128,
+        0.26177541307919944
+      ],
+      "cylindrical_radius": 0.9033678772557853,
+      "reference_radius": 4.443432100151801,
+      "polar_hoop": 0.7855066476667761,
+      "chart_to_physical_J_scale": 0.5059776843535818,
+      "det_chart": 4.3674307645066e-07,
+      "J": 2.209822504799643e-07,
+      "signed_det_F": -2.2098225047996425e-07,
+      "det_ref_inverse": -0.0573061829810527,
+      "principal_stretches": [
+        3.2225030755011965e-07,
+        0.7855066476667761,
+        0.7856494570016652,
+        1.111182446401762
+      ],
+      "stretch_term": -0.7655039039963917,
+      "negative_log_J": 15.325183453224344,
+      "compression_term": 0.24999988950888696,
+      "W": 14.809679438736838,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18057200673998772,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06405369362476007,
+        -0.024264148934775798,
+        0.3540768217801256
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 4.367430764321664e-07,
+        "J": 2.2098225047060695e-07,
+        "W": 14.809679438779183,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "angular_fraction": 1.0,
+      "reference_x_t_theta": [
+        0.9118726769384466,
+        0.20833333333333331,
+        0.2617993877991494
+      ],
+      "landed_x_t_theta": [
+        0.9082907500999126,
+        0.24660695264153712,
+        0.2617767283200375
+      ],
+      "physical_r_z_theta": [
+        3.55416136178442,
+        0.20165107409188732,
+        0.2617767283200375
+      ],
+      "cylindrical_radius": 0.9198068582947766,
+      "reference_radius": 4.385759934842169,
+      "polar_hoop": 0.8103181321589663,
+      "chart_to_physical_J_scale": 0.5346145382227169,
+      "det_chart": 4.702514335582827e-16,
+      "J": 2.5140325300033193e-16,
+      "signed_det_F": -2.51403253000332e-16,
+      "det_ref_inverse": -0.057625073724166025,
+      "principal_stretches": [
+        3.602983315154684e-16,
+        0.8103181321589663,
+        0.8104563464074465,
+        1.062486590143666
+      ],
+      "stretch_term": -0.7788336405135915,
+      "negative_log_J": 35.919473438280484,
+      "compression_term": 0.24999999999999986,
+      "W": 35.390639797766895,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18460747694541582,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06171426719447315,
+        -0.029471618431870215,
+        0.35467075012961324
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 4.517497725163081e-16,
+        "J": 2.4151199602602345e-16,
+        "W": 35.43077888853466,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 1.8214596497756474e-17
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "angular_fraction": 1.0,
+      "reference_x_t_theta": [
+        0.897184789761521,
+        0.25,
+        0.2617993877991494
+      ],
+      "landed_x_t_theta": [
+        0.891991885895512,
+        0.247017415084659,
+        0.2617978447774477
+      ],
+      "physical_r_z_theta": [
+        3.4898304763927026,
+        0.20198671017855604,
+        0.2617978447774477
+      ],
+      "cylindrical_radius": 0.9032293900698771,
+      "reference_radius": 4.444100270031677,
+      "polar_hoop": 0.7852681460093147,
+      "chart_to_physical_J_scale": 0.5224403569413548,
+      "det_chart": 4.206279674145506e-05,
+      "J": 2.1975302543557442e-05,
+      "signed_det_F": -2.1975302543557442e-05,
+      "det_ref_inverse": -0.059203027038361986,
+      "principal_stretches": [
+        3.1272766328005035e-05,
+        0.7852681460093147,
+        0.7852743215373088,
+        1.1395389809952265
+      ],
+      "stretch_term": -0.7340745443057938,
+      "negative_log_J": 10.725591346862894,
+      "compression_term": 0.2499890124694567,
+      "W": 10.241505815026557,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18054658409212998,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06407217602763556,
+        -0.02421002978816253,
+        0.3540839278387655
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 4.206279674143656e-05,
+        "J": 2.1975302543547773e-05,
+        "W": 10.241505815026995,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "triangle": 0,
+      "barycentric": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "angular_fraction": 1.0,
+      "reference_x_t_theta": [
+        0.9020807521538297,
+        0.2222222222222222,
+        0.2617993877991494
+      ],
+      "landed_x_t_theta": [
+        0.8974946496086733,
+        0.2468781584875733,
+        0.26178332872556154
+      ],
+      "physical_r_z_theta": [
+        3.5115470319316033,
+        0.2018728397378571,
+        0.26178332872556154
+      ],
+      "cylindrical_radius": 0.9088007788450965,
+      "reference_radius": 4.424728270963874,
+      "polar_hoop": 0.7935711207385605,
+      "chart_to_physical_J_scale": 0.5112916422746524,
+      "det_chart": 1.4166513272791992e-05,
+      "J": 7.2432198365514785e-06,
+      "signed_det_F": -7.243219836551479e-06,
+      "det_ref_inverse": -0.056971541569522444,
+      "principal_stretches": [
+        1.0447925242391433e-05,
+        0.7935711207385605,
+        0.7936474671691655,
+        1.1007485465672584
+      ],
+      "stretch_term": -0.7643606056533112,
+      "negative_log_J": 11.835444721623741,
+      "compression_term": 0.24999637840319777,
+      "W": 11.321080494373629,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.1819199838130861,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06380680891958895,
+        -0.02572650506005775,
+        0.35430771828390734
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 1.4166513272773545e-05,
+        "J": 7.243219836542047e-06,
+        "W": 11.32108049437493,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 2.220446049250313e-16,
+        "F_max_abs_difference": 1.1102230246251565e-16
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "angular_fraction": 0.0,
+      "reference_x_t_theta": [
+        0.9118726769384466,
+        0.25,
+        0.0
+      ],
+      "landed_x_t_theta": [
+        0.9072665013142872,
+        0.2442659229362939,
+        0.0
+      ],
+      "physical_r_z_theta": [
+        3.552211183371442,
+        0.19973680870120505,
+        0.0
+      ],
+      "cylindrical_radius": 0.0,
+      "reference_radius": 4.38718593173511,
+      "polar_hoop": 0.8096721185993684,
+      "chart_to_physical_J_scale": 0.5506293875495506,
+      "det_chart": 0.5455208634959708,
+      "J": 0.30037981896228844,
+      "signed_det_F": -0.30037981896228855,
+      "det_ref_inverse": -0.059359118240908545,
+      "principal_stretches": [
+        0.44111738044924825,
+        0.8096721185993684,
+        0.8096772995389809,
+        1.0387126809699287
+      ],
+      "stretch_term": -0.7076725770159649,
+      "negative_log_J": 1.202707541900508,
+      "compression_term": 0.12236709942881008,
+      "W": 0.6174020643133532,
+      "chi": 2.6581467446773663e-05,
+      "chi_W": 1.641145287411626e-05,
+      "n": 0.0,
+      "order_gradient_r_z_polar": [
+        0.0034719365941523264,
+        -0.0023176327985755217,
+        -5.0871563878174433e-05
+      ],
+      "density_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        0
+      ],
+      "native": {
+        "det_chart": 0.5455208634959711,
+        "J": 0.30037981896228855,
+        "W": 0.6174020643133531,
+        "sample_status": -1,
+        "sample_chi_W": null,
+        "pointwise_chiW_difference": null,
+        "chart_gradient_max_abs_difference": 1.1102230246251565e-16,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "angular_fraction": 0.0,
+      "reference_x_t_theta": [
+        0.897184789761521,
+        0.25,
+        0.0
+      ],
+      "landed_x_t_theta": [
+        0.8919193296473383,
+        0.24165757735611423,
+        0.0
+      ],
+      "physical_r_z_theta": [
+        3.492507676451281,
+        0.19760395850289536,
+        0.0
+      ],
+      "cylindrical_radius": 0.0,
+      "reference_radius": 4.444100270031677,
+      "polar_hoop": 0.7858704528970595,
+      "chart_to_physical_J_scale": 0.5239522161248997,
+      "det_chart": 0.5455221103473783,
+      "J": 0.2858275186616409,
+      "signed_det_F": -0.2858275186616409,
+      "det_ref_inverse": -0.059203027038361986,
+      "principal_stretches": [
+        0.43468433531029205,
+        0.7858704528970595,
+        0.7858826004883569,
+        1.0646856857676652
+      ],
+      "stretch_term": -0.7211450443351572,
+      "negative_log_J": 1.2523667316917964,
+      "compression_term": 0.1275105832752472,
+      "W": 0.6587322706318863,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.0,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        0
+      ],
+      "native": {
+        "det_chart": 0.5455221103473784,
+        "J": 0.285827518661641,
+        "W": 0.6587322706318861,
+        "sample_status": -1,
+        "sample_chi_W": null,
+        "pointwise_chiW_difference": null,
+        "chart_gradient_max_abs_difference": 1.1102230246251565e-16,
+        "F_max_abs_difference": 1.1102230246251565e-16
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "angular_fraction": 0.0,
+      "reference_x_t_theta": [
+        0.9118726769384466,
+        0.20833333333333331,
+        0.0
+      ],
+      "landed_x_t_theta": [
+        0.9077900153813396,
+        0.22260112134282647,
+        0.0
+      ],
+      "physical_r_z_theta": [
+        3.5610117954002276,
+        0.18202145045799836,
+        0.0
+      ],
+      "cylindrical_radius": 0.0,
+      "reference_radius": 4.385759934842169,
+      "polar_hoop": 0.8118783591978372,
+      "chart_to_physical_J_scale": 0.5378361533623154,
+      "det_chart": 0.545478108860585,
+      "J": 0.2933778478129274,
+      "signed_det_F": -0.2933778478129274,
+      "det_ref_inverse": -0.057625073724166025,
+      "principal_stretches": [
+        0.44913889721867206,
+        0.8118783591978372,
+        0.8121157503441653,
+        0.9906899361759779
+      ],
+      "stretch_term": -0.7490646196369964,
+      "negative_log_J": 1.226293917783747,
+      "compression_term": 0.1248287164903726,
+      "W": 0.6020580146371232,
+      "chi": 0.00011624035834479508,
+      "chi_W": 6.998343936577508e-05,
+      "n": 0.0,
+      "order_gradient_r_z_polar": [
+        0.011946387671819263,
+        -0.0002019760301464496,
+        -0.00022191080105591208
+      ],
+      "density_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        0
+      ],
+      "native": {
+        "det_chart": 0.5454781088605851,
+        "J": 0.2933778478129274,
+        "W": 0.6020580146371229,
+        "sample_status": -1,
+        "sample_chi_W": null,
+        "pointwise_chiW_difference": null,
+        "chart_gradient_max_abs_difference": 1.1102230246251565e-16,
+        "F_max_abs_difference": 1.1102230246251565e-16
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "angular_fraction": 0.0,
+      "reference_x_t_theta": [
+        0.906976714546138,
+        0.2361111111111111,
+        0.0
+      ],
+      "landed_x_t_theta": [
+        0.9023252821143215,
+        0.23617487387841155,
+        0.0
+      ],
+      "physical_r_z_theta": [
+        3.5352640205749477,
+        0.1931207392206996,
+        0.0
+      ],
+      "cylindrical_radius": 0.0,
+      "reference_radius": 4.405905408411876,
+      "polar_hoop": 0.8023652604310234,
+      "chart_to_physical_J_scale": 0.5264177722514198,
+      "det_chart": 0.5455070275679781,
+      "J": 0.28716459419982887,
+      "signed_det_F": -0.2871645941998288,
+      "det_ref_inverse": -0.05752546371576987,
+      "principal_stretches": [
+        0.4327979949052129,
+        0.8023652604310234,
+        0.8024153359041439,
+        1.030562452380673
+      ],
+      "stretch_term": -0.7314832724542282,
+      "negative_log_J": 1.2476997286560858,
+      "compression_term": 0.12703357894057365,
+      "W": 0.6432500351424312,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.0,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        0
+      ],
+      "native": {
+        "det_chart": 0.5455070275679781,
+        "J": 0.28716459419982887,
+        "W": 0.6432500351424311,
+        "sample_status": -1,
+        "sample_chi_W": null,
+        "pointwise_chiW_difference": null,
+        "chart_gradient_max_abs_difference": 1.1102230246251565e-16,
+        "F_max_abs_difference": 5.551115123125783e-17
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "angular_fraction": 0.5,
+      "reference_x_t_theta": [
+        0.9118726769384466,
+        0.25,
+        0.1308996938995747
+      ],
+      "landed_x_t_theta": [
+        0.9072839019072517,
+        0.24609685462230935,
+        0.13089862320468987
+      ],
+      "physical_r_z_theta": [
+        3.5513569571637267,
+        0.20123396576477967,
+        0.13089862320468987
+      ],
+      "cylindrical_radius": 0.46354133094300404,
+      "reference_radius": 4.38718593173511,
+      "polar_hoop": 0.8094774486824337,
+      "chart_to_physical_J_scale": 0.5501591578051737,
+      "det_chart": 0.2900227582001486,
+      "J": 0.15955867639572727,
+      "signed_det_F": -0.15955867639572732,
+      "det_ref_inverse": -0.059359118240908545,
+      "principal_stretches": [
+        0.2345336172295905,
+        0.8094774486824337,
+        0.8094793739404705,
+        1.0382567945772874
+      ],
+      "stretch_term": -0.7782531070714113,
+      "negative_log_J": 1.8353435473182242,
+      "compression_term": 0.17658540460542546,
+      "W": 1.2336758448522385,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.04999541314921006,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.018024172663996467,
+        -0.008686106469634707,
+        0.20943606539138782
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        3
+      ],
+      "native": {
+        "det_chart": 0.2900227582001485,
+        "J": 0.1595586763957272,
+        "W": 1.2336758448522391,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 3.469446951953614e-18,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "angular_fraction": 0.5,
+      "reference_x_t_theta": [
+        0.897184789761521,
+        0.25,
+        0.1308996938995747
+      ],
+      "landed_x_t_theta": [
+        0.8919556077714252,
+        0.2443374962203866,
+        0.13089892238872386
+      ],
+      "physical_r_z_theta": [
+        3.491489649076044,
+        0.1997953343407257,
+        0.13089892238872386
+      ],
+      "cylindrical_radius": 0.45572817839250107,
+      "reference_radius": 4.444100270031677,
+      "polar_hoop": 0.7856414068260931,
+      "chart_to_physical_J_scale": 0.5234349595608222,
+      "det_chart": 0.2900217620133883,
+      "J": 0.1518075292712363,
+      "signed_det_F": -0.1518075292712363,
+      "det_ref_inverse": -0.059203027038361986,
+      "principal_stretches": [
+        0.23069861861357396,
+        0.7856414068260931,
+        0.7856496249125697,
+        1.0660928871948827
+      ],
+      "stretch_term": -0.7878731749986617,
+      "negative_log_J": 1.8851418153083757,
+      "compression_term": 0.17985761685024115,
+      "W": 1.2771262571599553,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.04889876074441399,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.01864268317880116,
+        -0.007161618240636817,
+        0.20845364188017418
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        3
+      ],
+      "native": {
+        "det_chart": 0.2900217620133883,
+        "J": 0.1518075292712363,
+        "W": 1.277126257159955,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 3.469446951953614e-18,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "angular_fraction": 0.5,
+      "reference_x_t_theta": [
+        0.9118726769384466,
+        0.20833333333333331,
+        0.1308996938995747
+      ],
+      "landed_x_t_theta": [
+        0.908040382740626,
+        0.23460403699218174,
+        0.13088836416001876
+      ],
+      "physical_r_z_theta": [
+        3.5579849496260834,
+        0.1918362622749428,
+        0.13088836416001876
+      ],
+      "cylindrical_radius": 0.46437026124487524,
+      "reference_radius": 4.385759934842169,
+      "polar_hoop": 0.811188667296823,
+      "chart_to_physical_J_scale": 0.5365193288645307,
+      "det_chart": 0.28998015159457463,
+      "J": 0.15557995631755603,
+      "signed_det_F": -0.15557995631755606,
+      "det_ref_inverse": -0.057625073724166025,
+      "principal_stretches": [
+        0.2383583829982103,
+        0.811188667296823,
+        0.8113579335306039,
+        0.9917195001890833
+      ],
+      "stretch_term": -0.8216744819726728,
+      "negative_log_J": 1.8605954909751383,
+      "compression_term": 0.17826130254316513,
+      "W": 1.2171823115456308,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.05018919863016099,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.018232307625984993,
+        -0.008615251359301159,
+        0.20985056982572867
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        3
+      ],
+      "native": {
+        "det_chart": 0.28998015159457463,
+        "J": 0.15557995631755606,
+        "W": 1.2171823115456306,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 3.469446951953614e-18,
+        "F_max_abs_difference": 5.551115123125783e-17
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "angular_fraction": 0.5,
+      "reference_x_t_theta": [
+        0.906976714546138,
+        0.2361111111111111,
+        0.1308996938995747
+      ],
+      "landed_x_t_theta": [
+        0.9024266308064344,
+        0.2416794626116259,
+        0.13089530325114415
+      ],
+      "physical_r_z_theta": [
+        3.5336137531215557,
+        0.19762185412681604,
+        0.13089530325114415
+      ],
+      "cylindrical_radius": 0.46121376584297813,
+      "reference_radius": 4.405905408411876,
+      "polar_hoop": 0.8019908687354962,
+      "chart_to_physical_J_scale": 0.5256496484975643,
+      "det_chart": 0.29000822393603715,
+      "J": 0.15244272097338085,
+      "signed_det_F": -0.15244272097338085,
+      "det_ref_inverse": -0.05752546371576987,
+      "principal_stretches": [
+        0.22950506194814105,
+        0.8019908687354962,
+        0.8020263661894301,
+        1.0326576197405881
+      ],
+      "stretch_term": -0.7972550106668725,
+      "negative_log_J": 1.8809663536646357,
+      "compression_term": 0.1795883353077516,
+      "W": 1.2632996783055146,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.049697196099257886,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.01860889887261246,
+        -0.00801436282386711,
+        0.20926393033163448
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        3
+      ],
+      "native": {
+        "det_chart": 0.2900082239360372,
+        "J": 0.15244272097338088,
+        "W": 1.2632996783055142,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 3.469446951953614e-17,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "angular_fraction": 1.0,
+      "reference_x_t_theta": [
+        0.9118726769384466,
+        0.25,
+        0.2617993877991494
+      ],
+      "landed_x_t_theta": [
+        0.9073013025002163,
+        0.24792778630832477,
+        0.26179724640937974
+      ],
+      "physical_r_z_theta": [
+        3.549830922361057,
+        0.20273112282835423,
+        0.26179724640937974
+      ],
+      "cylindrical_radius": 0.9187565070444333,
+      "reference_radius": 4.38718593173511,
+      "polar_hoop": 0.8091297264662501,
+      "chart_to_physical_J_scale": 0.549171780211868,
+      "det_chart": 0.0345058237232256,
+      "J": 0.01894962464176071,
+      "signed_det_F": -0.018949624641760716,
+      "det_ref_inverse": -0.059359118240908545,
+      "principal_stretches": [
+        0.027827214112443387,
+        0.809126481557133,
+        0.8091297264662501,
+        1.0401508060690219
+      ],
+      "stretch_term": -0.8039676846901649,
+      "negative_log_J": 3.965971155472533,
+      "compression_term": 0.24061495974763555,
+      "W": 3.4026184305300036,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.1843344135107831,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06169760221318325,
+        -0.029222207622305523,
+        0.35460830465123633
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 0.03450582372322557,
+        "J": 0.01894962464176069,
+        "W": 3.4026184305300045,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 3.469446951953614e-17,
+        "F_max_abs_difference": 1.1102230246251565e-16
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "angular_fraction": 1.0,
+      "reference_x_t_theta": [
+        0.897184789761521,
+        0.25,
+        0.2617993877991494
+      ],
+      "landed_x_t_theta": [
+        0.891991885895512,
+        0.247017415084659,
+        0.2617978447774477
+      ],
+      "physical_r_z_theta": [
+        3.4898304763927026,
+        0.20198671017855604,
+        0.2617978447774477
+      ],
+      "cylindrical_radius": 0.9032293900698771,
+      "reference_radius": 4.444100270031677,
+      "polar_hoop": 0.7852681460093147,
+      "chart_to_physical_J_scale": 0.5224403569413548,
+      "det_chart": 0.034502584498297684,
+      "J": 0.0180255425606899,
+      "signed_det_F": -0.0180255425606899,
+      "det_ref_inverse": -0.059203027038361986,
+      "principal_stretches": [
+        0.02733401573615701,
+        0.7852681460093147,
+        0.785271505904807,
+        1.0694170049385643
+      ],
+      "stretch_term": -0.8111513610045282,
+      "negative_log_J": 4.015965495809771,
+      "compression_term": 0.24106845876580685,
+      "W": 3.4458825935710493,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18054658409212998,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06407217602763556,
+        -0.02421002978816253,
+        0.3540839278387655
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 0.03450258449829764,
+        "J": 0.018025542560689875,
+        "W": 3.44588259357105,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 3.469446951953614e-17,
+        "F_max_abs_difference": 2.42861286636753e-17
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "angular_fraction": 1.0,
+      "reference_x_t_theta": [
+        0.9118726769384466,
+        0.20833333333333331,
+        0.2617993877991494
+      ],
+      "landed_x_t_theta": [
+        0.9082907500999126,
+        0.24660695264153712,
+        0.2617767283200375
+      ],
+      "physical_r_z_theta": [
+        3.55416136178442,
+        0.20165107409188732,
+        0.2617767283200375
+      ],
+      "cylindrical_radius": 0.9198068582947766,
+      "reference_radius": 4.385759934842169,
+      "polar_hoop": 0.8103181321589663,
+      "chart_to_physical_J_scale": 0.5346145382227169,
+      "det_chart": 0.034463365147463475,
+      "J": 0.01842461604391206,
+      "signed_det_F": -0.018424616043912063,
+      "det_ref_inverse": -0.057625073724166025,
+      "principal_stretches": [
+        0.028201183587715416,
+        0.8103181321589663,
+        0.8104416844238728,
+        0.9948412462371171
+      ],
+      "stretch_term": -0.8480321944361157,
+      "negative_log_J": 3.994067679988886,
+      "compression_term": 0.24087255859713536,
+      "W": 3.3869080441499055,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.18460747694541582,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06171426719447315,
+        -0.029471618431870215,
+        0.35467075012961324
+      ],
+      "field_cell_x_t_angle": [
+        18,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 0.03446336514746343,
+        "J": 0.01842461604391204,
+        "W": 3.386908044149907,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 3.469446951953614e-17,
+        "F_max_abs_difference": 2.7755575615628914e-17
+      }
+    },
+    {
+      "triangle": 1,
+      "barycentric": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "angular_fraction": 1.0,
+      "reference_x_t_theta": [
+        0.906976714546138,
+        0.2361111111111111,
+        0.2617993877991494
+      ],
+      "landed_x_t_theta": [
+        0.9025279794985469,
+        0.24718405134484028,
+        0.2617906065022883
+      ],
+      "physical_r_z_theta": [
+        3.531272090080295,
+        0.20212296903293253,
+        0.2617906065022883
+      ],
+      "cylindrical_radius": 0.9139305177791197,
+      "reference_radius": 4.405905408411876,
+      "polar_hoop": 0.8014598669060368,
+      "chart_to_physical_J_scale": 0.5243727752181959,
+      "det_chart": 0.03449059112299559,
+      "J": 0.018085926986081267,
+      "signed_det_F": -0.018085926986081264,
+      "det_ref_inverse": -0.05752546371576987,
+      "principal_stretches": [
+        0.027158952529384096,
+        0.8014598669060368,
+        0.801482082393872,
+        1.0366977582242123
+      ],
+      "stretch_term": -0.8199043513654698,
+      "negative_log_J": 4.012621157712733,
+      "compression_term": 0.24103881169569583,
+      "W": 3.4337556180429583,
+      "chi": 0.0,
+      "chi_W": 0.0,
+      "n": 0.1831784584802528,
+      "order_gradient_r_z_polar": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "density_gradient_r_z_polar": [
+        0.06354353207190643,
+        -0.027154535953411604,
+        0.3544922393302901
+      ],
+      "field_cell_x_t_angle": [
+        17,
+        7,
+        5
+      ],
+      "native": {
+        "det_chart": 0.03449059112299555,
+        "J": 0.01808592698608125,
+        "W": 3.4337556180429596,
+        "sample_status": 0,
+        "sample_chi_W": 0.0,
+        "pointwise_chiW_difference": 0.0,
+        "chart_gradient_max_abs_difference": 3.469446951953614e-17,
+        "F_max_abs_difference": 2.220446049250313e-16
+      }
+    }
+  ],
+  "sampled_range_convention": "Two triangles, each at all three meridional vertices and the barycenter on both angular faces and the angular midpoint; finite samples, no physical-J bound asserted.",
+  "parent_sampled_ranges": {
+    "det_chart": [
+      4.702514335582827e-16,
+      0.5455221103473783
+    ],
+    "J": [
+      2.5140325300033193e-16,
+      0.30037981896228844
+    ],
+    "chi": [
+      0.0,
+      0.00011624035834479519
+    ],
+    "n": [
+      0.0,
+      0.18460747694541582
+    ],
+    "W": [
+      0.6020580146371232,
+      35.390639797766895
+    ],
+    "chi_W": [
+      0.0,
+      8.895735597661674e-05
+    ]
+  },
+  "checks": {
+    "native_integrated_matches": true,
+    "archived_ring_reproduced": true,
+    "terminal_force_vector_sum": true,
+    "exact_fraction_matches_high_precision": true,
+    "native_pointwise_chiW_error_max": 0.0,
+    "regular_chart_at_corner": true
+  }
+}

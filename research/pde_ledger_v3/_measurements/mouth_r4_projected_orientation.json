@@ -1,0 +1,719 @@
+{
+  "command": "/usr/bin/python3 -Bu software/stage1_solver/tools/mouth_r4_projected_orientation.py _scratch/s11c/r4_projected_corner_held01 research/pde_ledger_v3/_measurements/mouth_r4_held_corner_support.json research/pde_ledger_v3/_measurements/mouth_r4_projected_orientation.json",
+  "state_sha256": {
+    "held_stop": "ae9dd7452d5291c6af95cdcfa23ae1cb6d0705fe29fc7d32cfc596608854f008",
+    "failed_trial": "23172a606edb2b0707f3ebd132a42bae06e9bb336e4712ad34b154fe0d7839d1",
+    "last_active": "c96fcc61880f6f1e3f2bd0e05194d85344b470ef2b05af153b19856ffc0005c2"
+  },
+  "input_sha256": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/mouth_r4_held_corner_support.json": "3aa7f7919a4c08bec7e3776ad824cfd0fd4ceedb5eb8ac0e09dbcbe174943eea",
+    "/var/projects/toy_physics/_scratch/s11c/r4_projected_corner_held01/primary/inner_0000034.jsonl": "e1298a212c123732f575272a443d547aff082bce70791714454a51b8f676cda7",
+    "/var/projects/toy_physics/_scratch/s11c/r4_projected_corner_held01/sources.json": "625c07dc0ed83f93df23959c4310c336c49e3ef61cd751fdbe6df0f9dbf37c49",
+    "/var/projects/toy_physics/_scratch/s11c/r4_projected_corner_held01/primary/held_stop.json": "3967259115e85661eba7fcce61f7dc53536990e02ec5b6fca3338a748821e2b3",
+    "/var/projects/toy_physics/_scratch/s11c/r4_projected_corner_held01/primary/failed_trial.json": "94c4a1ffc509c7f9d5669363a8d9f0eeb97ee59fa955f5bb8f0423c3513bdb70",
+    "/var/projects/toy_physics/_scratch/s11c/r4_projected_corner_held01/primary/last_active.json": "2a8b8459d641e570fc91ff64b156159bb96e55f67a0b4f3712bb9b61cc8d51a9",
+    "/var/projects/toy_physics/_scratch/s11c/r4_melted_survival01/coarse/state_00010.npz": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "/var/projects/toy_physics/_scratch/s11c/supercore_joined_front01/adopt309/state.npz": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+    "/var/projects/toy_physics/_scratch/s11c/r4_whole_mouth01/coarse/endpoint.json": "c96d269556664836d1cf84e8bf78ac5914b0ac26ef0eb6b6e84b61731b4d26b9"
+  },
+  "physical_quadrature": "Three-point Gauss rules in depth, angle and each native cut radial segment. Ranges of signed physical Jinv over visited points. Exactly melted cells have eight zero-order nodes.",
+  "coordinates": "Cells, corners and nodes are zero-based (radial fraction, depth fraction, polar angle). Physical distances are Euclidean in (cylindrical radius, axial brane coordinate, depth) at common azimuth.",
+  "old_corner": {
+    "cell": [
+      15,
+      9,
+      1
+    ],
+    "local": [
+      1.0,
+      1.0,
+      0.0
+    ],
+    "physical": {
+      "radius": 3.305321088517217,
+      "theta": 0.027525130258653743,
+      "cylindrical_radius": 0.09096790578125084,
+      "axial_brane_coordinate": 3.304069057739927,
+      "w": 0.2587313010002118
+    },
+    "chart_det": 0.0003496270401383863,
+    "Jinv": 0.0005014362395531604,
+    "chi": 0.0
+  },
+  "active_cells": 5991,
+  "strictly_melted_cells": 22089,
+  "max_active_trace_difference": 0.0,
+  "max_label_difference": 0.0025208708075401542,
+  "labels_changed_components": 64710,
+  "search": {
+    "stop": {
+      "stationary": false,
+      "reason": "No resolved Armijo descent",
+      "accepted_steps": 105,
+      "alpha": 9.313225746154785e-10,
+      "residual": 5.931099111844418e-08,
+      "harmonic": 1.3171646414706615,
+      "barrier": 0.527410555169018,
+      "corner_min": 0.007454096631924541
+    },
+    "last_accepted_inner_step": {
+      "i": 105,
+      "unit_energy": 1.8445751966396793,
+      "melt_residual": 5.931099111844418e-08,
+      "last": {
+        "alpha": 5.960464477539063e-08,
+        "search_normalization": 1.0,
+        "delta": -6.240067437781043e-20,
+        "chart_lower": 0.0013907601398197203
+      },
+      "harmonic": 1.3171646414706615,
+      "barrier": 0.527410555169018,
+      "corner_min": 0.007454096631924541
+    },
+    "residual_target_unscaled": 3e-08,
+    "next_fraction_after_last_rejection": 9.313225746154785e-10,
+    "last_rejected_fraction": 1.862645149230957e-09,
+    "final_rejected_perturbation_saved": false
+  },
+  "states": {
+    "held_stop": {
+      "chart_certificate": {
+        "chart_det_global_lower": 0.0013907601398197203,
+        "chart_lowest_cell": [
+          13,
+          10,
+          1
+        ],
+        "chart_det_active_lower": 0.0013907601398197203
+      },
+      "minimum_one_sided_chart_corner": {
+        "active": {
+          "cell": [
+            13,
+            10,
+            1
+          ],
+          "local": [
+            1,
+            1,
+            0
+          ],
+          "node": [
+            14,
+            11,
+            1
+          ],
+          "physical": {
+            "radius": 3.0383241456616443,
+            "theta": 0.027525130258653743,
+            "cylindrical_radius": 0.08361970810510208,
+            "axial_brane_coordinate": 3.0371732513188934,
+            "w": 0.28460443110718825
+          },
+          "chart_point": [
+            0.7869822485207101,
+            0.34744281502268715,
+            0.027525130258653743
+          ],
+          "label": [
+            0.7567533208420297,
+            0.29122144325718774,
+            0.02793784431233647
+          ],
+          "material_side": "core",
+          "chi": 0.0,
+          "positive_order_vertices": 1,
+          "max_vertex_order": 0.0005718948865479696,
+          "chart_det": 0.0013907601398333573,
+          "physical_Jinv": 0.0017718705716496068,
+          "formal_W": 239550.53055503828,
+          "chi_W": 0.0,
+          "chi_Jinv_W": 0.0,
+          "grad_xi_norm": 0.42054341030682896,
+          "distance_from_old_corner": 0.2682476213422111,
+          "joined_unit_gauge_gradient_at_corner_vertex": [
+            {
+              "component": 0,
+              "role": "active_trace_free",
+              "signed": 0.04335317281386217
+            },
+            {
+              "component": 1,
+              "role": "active_trace_free",
+              "signed": -0.39289347620125725
+            },
+            {
+              "component": 2,
+              "role": "active_trace_free",
+              "signed": -0.07949993176206593
+            }
+          ],
+          "distance_from_peak_melted_gauge_gradient": 0.3881807709397641
+        },
+        "melt": {
+          "cell": [
+            13,
+            10,
+            0
+          ],
+          "local": [
+            1,
+            0,
+            1
+          ],
+          "node": [
+            14,
+            10,
+            1
+          ],
+          "physical": {
+            "radius": 3.050895739215042,
+            "theta": 0.027525130258653743,
+            "cylindrical_radius": 0.08396569916232753,
+            "axial_brane_coordinate": 3.0497400828471726,
+            "w": 0.2587313010002118
+          },
+          "chart_point": [
+            0.7869822485207101,
+            0.3158571045583602,
+            0.027525130258653743
+          ],
+          "label": [
+            0.759810586443039,
+            0.2909464723421222,
+            0.027631526106172057
+          ],
+          "material_side": "core",
+          "chi": 0.0,
+          "positive_order_vertices": 0,
+          "max_vertex_order": 0.0,
+          "chart_det": 0.007454096631924541,
+          "physical_Jinv": 0.00935286399622009,
+          "formal_W": 7771.23163825804,
+          "chi_W": 0.0,
+          "chi_Jinv_W": 0.0,
+          "grad_xi_norm": 0.4091001817740943,
+          "distance_from_old_corner": 0.2544253493021745,
+          "joined_unit_gauge_gradient_at_corner_vertex": [
+            {
+              "component": 0,
+              "role": "active_trace_free",
+              "signed": -0.04886147181928222
+            },
+            {
+              "component": 1,
+              "role": "active_trace_free",
+              "signed": 0.3969537964123401
+            },
+            {
+              "component": 2,
+              "role": "active_trace_free",
+              "signed": 0.07757635528035735
+            }
+          ],
+          "distance_from_peak_melted_gauge_gradient": 0.3751341997255647
+        }
+      },
+      "original_corner_on_this_map": {
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "local": [
+          1,
+          1,
+          0
+        ],
+        "node": [
+          16,
+          10,
+          1
+        ],
+        "physical": {
+          "radius": 3.305321088517217,
+          "theta": 0.027525130258653743,
+          "cylindrical_radius": 0.09096790578125084,
+          "axial_brane_coordinate": 3.304069057739927,
+          "w": 0.2587313010002118
+        },
+        "chart_point": [
+          0.8520710059171598,
+          0.3158571045583602,
+          0.027525130258653743
+        ],
+        "label": [
+          0.819103196068014,
+          0.2844925351905387,
+          0.029479682068537825
+        ],
+        "material_side": "core",
+        "chi": 0.0,
+        "positive_order_vertices": 3,
+        "max_vertex_order": 0.001659207557112673,
+        "chart_det": 0.05962386720588776,
+        "physical_Jinv": 0.0787839397857586,
+        "formal_W": 441.14221627361064,
+        "chi_W": 0.0,
+        "chi_Jinv_W": 0.0,
+        "grad_xi_norm": 0.6848605143196708
+      },
+      "native_sampled_physical_minima": {
+        "strictly_melted": {
+          "cell": [
+            14,
+            10,
+            1
+          ],
+          "local": [
+            0.01578756912907806,
+            0.1127016653792583,
+            0.1127016653792583
+          ],
+          "chart": [
+            0.787519399541374,
+            0.3194168667298769,
+            0.03233070270893903
+          ],
+          "chi": 0.0,
+          "Jinv": 0.0986399178805669,
+          "grad_xi_norm": 0.4432219830997862,
+          "W": 81.00925093299189,
+          "physical": {
+            "radius": 3.051644047596051,
+            "theta": 0.03233070270893903,
+            "cylindrical_radius": 0.09864460926729607,
+            "axial_brane_coordinate": 3.0500492839118047,
+            "w": 0.2616472458518423
+          },
+          "positive_order_vertices": 0
+        },
+        "positive_order": {
+          "cell": [
+            13,
+            10,
+            1
+          ],
+          "local": [
+            0.9876316194957269,
+            0.8872983346207417,
+            0.1127016653792583
+          ],
+          "chart": [
+            0.7865248379991023,
+            0.34388305285117043,
+            0.03233070270893903
+          ],
+          "chi": 8.984413219520888e-08,
+          "Jinv": 0.035717937928994185,
+          "grad_xi_norm": 0.4205688907408746,
+          "W": 571.6684973869711,
+          "physical": {
+            "radius": 3.0380326736528516,
+            "theta": 0.03233070270893903,
+            "cylindrical_radius": 0.09820462064369638,
+            "axial_brane_coordinate": 3.0364450231589113,
+            "w": 0.28168848625555776
+          },
+          "positive_order_vertices": 1
+        }
+      },
+      "crystal_energy": 0.3231416160907715,
+      "gauge": {
+        "unit_energy": 1.8445756239213467,
+        "harmonic": 1.3171661521555618,
+        "barrier": 0.5274094717657849,
+        "corner_min": 0.007454096631924541,
+        "peak_melt_only": {
+          "component": 1,
+          "group": 18745,
+          "node": [
+            17,
+            10,
+            0
+          ],
+          "equivalent_nodes": [
+            [
+              17,
+              10,
+              0
+            ]
+          ],
+          "signed_unit_gradient": -0.00033830565686996175,
+          "chi": 0.0,
+          "physical": {
+            "cylindrical_radius": 0.0,
+            "axial_brane_coordinate": 3.415356588448221,
+            "w": 0.2587313010002118
+          }
+        }
+      }
+    },
+    "failed_trial": {
+      "chart_certificate": {
+        "chart_det_global_lower": 0.0013907601398197203,
+        "chart_lowest_cell": [
+          13,
+          10,
+          1
+        ],
+        "chart_det_active_lower": 0.0013907601398197203
+      },
+      "minimum_one_sided_chart_corner": {
+        "active": {
+          "cell": [
+            13,
+            10,
+            1
+          ],
+          "local": [
+            1,
+            1,
+            0
+          ],
+          "node": [
+            14,
+            11,
+            1
+          ],
+          "physical": {
+            "radius": 3.0383241456616443,
+            "theta": 0.027525130258653743,
+            "cylindrical_radius": 0.08361970810510208,
+            "axial_brane_coordinate": 3.0371732513188934,
+            "w": 0.28460443110718825
+          },
+          "chart_point": [
+            0.7869822485207101,
+            0.34744281502268715,
+            0.027525130258653743
+          ],
+          "label": [
+            0.7567533208420297,
+            0.29122144325718774,
+            0.02793784431233647
+          ],
+          "material_side": "core",
+          "chi": 0.0,
+          "positive_order_vertices": 1,
+          "max_vertex_order": 0.0005718948865479696,
+          "chart_det": 0.0013907601398333573,
+          "physical_Jinv": 0.0017718705716496068,
+          "formal_W": 239550.53055503828,
+          "chi_W": 0.0,
+          "chi_Jinv_W": 0.0,
+          "grad_xi_norm": 0.42054341030682896,
+          "distance_from_old_corner": 0.2682476213422111,
+          "joined_unit_gauge_gradient_at_corner_vertex": [
+            {
+              "component": 0,
+              "role": "active_trace_free",
+              "signed": 0.043350668530952194
+            },
+            {
+              "component": 1,
+              "role": "active_trace_free",
+              "signed": -0.39290496386129287
+            },
+            {
+              "component": 2,
+              "role": "active_trace_free",
+              "signed": -0.07951267050799775
+            }
+          ],
+          "distance_from_peak_melted_gauge_gradient": 4.027104148984483
+        },
+        "melt": {
+          "cell": [
+            13,
+            10,
+            0
+          ],
+          "local": [
+            1,
+            0,
+            1
+          ],
+          "node": [
+            14,
+            10,
+            1
+          ],
+          "physical": {
+            "radius": 3.050895739215042,
+            "theta": 0.027525130258653743,
+            "cylindrical_radius": 0.08396569916232753,
+            "axial_brane_coordinate": 3.0497400828471726,
+            "w": 0.2587313010002118
+          },
+          "chart_point": [
+            0.7869822485207101,
+            0.3158571045583602,
+            0.027525130258653743
+          ],
+          "label": [
+            0.759810586443039,
+            0.2909464723421222,
+            0.027631526106172057
+          ],
+          "material_side": "core",
+          "chi": 0.0,
+          "positive_order_vertices": 0,
+          "max_vertex_order": 0.0,
+          "chart_det": 0.007454096631924541,
+          "physical_Jinv": 0.00935286399622009,
+          "formal_W": 7771.23163825804,
+          "chi_W": 0.0,
+          "chi_Jinv_W": 0.0,
+          "grad_xi_norm": 0.4091001817740943,
+          "distance_from_old_corner": 0.2544253493021745,
+          "joined_unit_gauge_gradient_at_corner_vertex": [
+            {
+              "component": 0,
+              "role": "active_trace_free",
+              "signed": -0.048856453872028575
+            },
+            {
+              "component": 1,
+              "role": "active_trace_free",
+              "signed": 0.3969616552201553
+            },
+            {
+              "component": 2,
+              "role": "active_trace_free",
+              "signed": 0.0775797737650706
+            }
+          ],
+          "distance_from_peak_melted_gauge_gradient": 4.03273247982142
+        }
+      },
+      "original_corner_on_this_map": {
+        "cell": [
+          15,
+          9,
+          1
+        ],
+        "local": [
+          1,
+          1,
+          0
+        ],
+        "node": [
+          16,
+          10,
+          1
+        ],
+        "physical": {
+          "radius": 3.305321088517217,
+          "theta": 0.027525130258653743,
+          "cylindrical_radius": 0.09096790578125084,
+          "axial_brane_coordinate": 3.304069057739927,
+          "w": 0.2587313010002118
+        },
+        "chart_point": [
+          0.8520710059171598,
+          0.3158571045583602,
+          0.027525130258653743
+        ],
+        "label": [
+          0.819103196068014,
+          0.2844925351905387,
+          0.029479682068537825
+        ],
+        "material_side": "core",
+        "chi": 0.0,
+        "positive_order_vertices": 3,
+        "max_vertex_order": 0.001659207557112673,
+        "chart_det": 0.05962386720588776,
+        "physical_Jinv": 0.0787839397857586,
+        "formal_W": 441.14221627361064,
+        "chi_W": 0.0,
+        "chi_Jinv_W": 0.0,
+        "grad_xi_norm": 0.6848605143196708
+      },
+      "native_sampled_physical_minima": {
+        "strictly_melted": {
+          "cell": [
+            14,
+            10,
+            1
+          ],
+          "local": [
+            0.01578706109669064,
+            0.1127016653792583,
+            0.1127016653792583
+          ],
+          "chart": [
+            0.7875193822562484,
+            0.3194168667298769,
+            0.03233070270893903
+          ],
+          "chi": 0.0,
+          "Jinv": 0.09864269520561542,
+          "grad_xi_norm": 0.44322413564086227,
+          "W": 81.00525026218165,
+          "physical": {
+            "radius": 3.0516439801199695,
+            "theta": 0.03233070270893903,
+            "cylindrical_radius": 0.09864460708612696,
+            "axial_brane_coordinate": 3.050049216470985,
+            "w": 0.2616472458518423
+          },
+          "positive_order_vertices": 0
+        },
+        "positive_order": {
+          "cell": [
+            13,
+            10,
+            1
+          ],
+          "local": [
+            0.9876316194957269,
+            0.8872983346207417,
+            0.1127016653792583
+          ],
+          "chart": [
+            0.7865248379991023,
+            0.34388305285117043,
+            0.03233070270893903
+          ],
+          "chi": 8.984413219520888e-08,
+          "Jinv": 0.035717937928994185,
+          "grad_xi_norm": 0.4205688907408746,
+          "W": 571.6684973869711,
+          "physical": {
+            "radius": 3.0380326736528516,
+            "theta": 0.03233070270893903,
+            "cylindrical_radius": 0.09820462064369638,
+            "axial_brane_coordinate": 3.0364450231589113,
+            "w": 0.28168848625555776
+          },
+          "positive_order_vertices": 1
+        }
+      },
+      "crystal_energy": 0.3231416160907715,
+      "gauge": {
+        "unit_energy": 1.8445751966396793,
+        "harmonic": 1.3171646414706615,
+        "barrier": 0.527410555169018,
+        "corner_min": 0.007454096631924541,
+        "peak_melt_only": {
+          "component": 0,
+          "group": 29123,
+          "node": [
+            25,
+            11,
+            17
+          ],
+          "equivalent_nodes": [
+            [
+              25,
+              11,
+              17
+            ]
+          ],
+          "signed_unit_gradient": -5.931099111844418e-08,
+          "chi": 0.0,
+          "physical": {
+            "cylindrical_radius": 3.6501411521546743,
+            "axial_brane_coordinate": 1.1670148045816682,
+            "w": 0.28460443110718825
+          }
+        }
+      }
+    }
+  },
+  "split_kernel_sha256": "6b06f3bd992b230d69a21504e58acc7560dd3ce7044e6c6c3b796ae5a98865cf",
+  "pinned_source_sha256": {
+    "mouth_active_prism_orientation.py": "2df5305f1a63dedefb70683193539c336dcc8d0d46654b2e449d0ae4d25f604d",
+    "mouth_bonded_front_adjoint.py": "99c62d9c4d683ab36fc4d1d51a4890bddf5c2eb08cb80aea2a30cbb3438b18c2",
+    "mouth_bonded_front_feedback.py": "268ff750c5fe266c744ed2a213221da2c92d684e5a13968b6f76074fe2cad90c",
+    "mouth_bonded_material_motion.py": "abfe40bfaa82777f10202ce3a7600f4cbac147c7d7171e2a882646428669662f",
+    "mouth_bonded_material_residual.py": "1be69afac8dc9b19be113fa539b87d9f9235cc55a6e506f9f35cb611cbec7a2d",
+    "mouth_breathing_mobile_patch.py": "8a6e3e556d25d8bbfa09889fe5308161c65c743c8ce8c5940c3e767c9a41dca1",
+    "mouth_circulation_material.py": "5859590cdbcf3ce095770410a9d6d2a4e3b7996c45e953aa4775eb943cdea56a",
+    "mouth_closed_rim_endpoint.py": "8c050fe3ba57768879cdfaf8fc80401413f4ce6b410b0c926525c8cc4c1b42b0",
+    "mouth_closed_rim_surface_review.py": "3319b06f268254327cbb27af66d39d9ced3166e0ea83cda0a5c87d71ba03b1f4",
+    "mouth_closed_rim_work.py": "d9a824f5bd8ee85149b9ccb08033ca979f0b5dbfcb99e0763232e371212987d2",
+    "mouth_continuous_depth_mesh.py": "ddade788a3d0fd898e26d91702bfd8dc24d9cf39f0028002652666168a7ff014",
+    "mouth_conversion_shape_mode.py": "63ba9d32283deef446de5210e091cbe542af7a6451bfd5ecdfd7ef4b0010720c",
+    "mouth_cp10_label_condition.py": "2783f78669587108076c3881e1a3026a1af9036368ff56fd50fd31b51d359694",
+    "mouth_cp10_label_grid.py": "4aa1512c49764f26f5b8ae27d3b0a084da1d123e7256fd716ac31afa2a733230",
+    "mouth_cp10_label_orientation.py": "4df1acb27c66412ec70b1cf0717f1089c133b46440a7c73d84c85d973e0759d1",
+    "mouth_cp10_spatial_crystal.cpp": "db6d70ecacd887569435422c039127b647a4b01b422a9c5cdb1cafb1192e9d78",
+    "mouth_curved_steady.py": "3878e2914f925d01207718c0d67f0770ca1eed41497e345a72a2b8e3a348a7a5",
+    "mouth_disk_boundary_work.py": "4ccddc4326fc3c1d7bf859ea0ce6ea505f9e201c99a718dafa429b4c01ca87d1",
+    "mouth_disk_independent_review.py": "8c773ee8208089f5ec862a42ea96b2f28716e8e6ffd37e909629cead4421202b",
+    "mouth_disk_mesh_rematch.py": "28d062c38e71f7b0f73ba673b685b3e61d3138241e02547ad5090d782fe3d40c",
+    "mouth_disk_pillbox.py": "47d13fc5cce3a60d7aa4b6cdd4bf858018859d43815002d98b52a8c3d77efc68",
+    "mouth_eulerian_r4_spatial_cell.py": "4a3fe6fa896d1fa6a895402eaf98c9fd36864e4cdab45a90d4cb60efcd8bd775",
+    "mouth_exact_checkpoint_control.py": "71a1145c0714e856a957e2563bebcc57b7150eca54c8adb15a6761ea77a9cab1",
+    "mouth_exchange_carrier.py": "6dd6a6ae17b7f30445a29d5e40627373057637a6cbc67cdc75ce9ed58403fc83",
+    "mouth_exchange_carrier_density.py": "8d5f3cfc7a4ef569be0f8faba81777aaec14bc9e4d44a148f5b2fad4a4957d69",
+    "mouth_exchange_geometry.py": "1cabc9f23319f25df3924b1f1669cd12e89269934a2817da52fc2b47a6757017",
+    "mouth_exchange_interior.py": "41c4578c60f6d8e01af9530edbffe2a8599e8d9d83451b07c7ab8dee5ecfdfac",
+    "mouth_exchange_shear.py": "d7aaa11468de702b99beb912f41e7ebc1999943d73dd7201d88c378b20b8c27b",
+    "mouth_exit_witness.py": "d90d4dda95e190bcc1935c6575d7fffb816d172080cf70f7f269651024df4826",
+    "mouth_finite_bore_support.py": "68307b0049cb97df2690d49e98b5f5eb56ec0173ade59c3545c12621fc7cd71e",
+    "mouth_fixed_wall_angular.py": "ba653a2a7219255e6f6bc9541f0c2de08d4d3551d5ae947b086460f6488ef81b",
+    "mouth_free_shape_solid.cpp": "d37b1351e4576ccc5d460a4ae444c1abab9f89f1d83b1e1cb527d836b75a4a03",
+    "mouth_free_shape_solid.py": "b2b6a9aafcb036127bd751b5715e4d17ea61378ce2cb7744b3ff6b3e2ad2bcfd",
+    "mouth_internal_collar.py": "af0b22ce0ef10ecd3103ee47f6737e24b134afbc3e271110ffc53f68fea6e916",
+    "mouth_internal_collar_check.py": "b4ca4a698fe1b2444826080acba686e7d041293bdbc36a68f6712155358985fb",
+    "mouth_joined_angular_work.py": "15875cd778eeaaeb72aba8229b9dd59164ebc2dc9eac1aa5c196a5a60accd887",
+    "mouth_joined_front_audit.py": "08b6906b19d6c069a5ee65bdb97316f4797d104aca2717fafbf757d2e9aa392e",
+    "mouth_joined_front_stationarity.py": "041aee7267087dd43c36cf041ccfbc7299ba3c86db03a18420776aa179c7d221",
+    "mouth_joined_front_trace.py": "396abf8ac60018813e82e21e9cf4215fae8b8fb0df35dfaed7d0199199692265",
+    "mouth_joint_collar_release.py": "38f2dec937e5c635512fd27373c935d8955be7dcffb983d42fe8e42bd9154270",
+    "mouth_joint_endpoint_audit.py": "6b7b457ea5399fb9126915bc7e6c9cf4e2522ef960a8301b6b64d97220b94a8c",
+    "mouth_joint_polar_shape.py": "1bf3c4b39cdabb7af2683049f868d408f503c6e11f4f0119bf497b0f654eb5cd",
+    "mouth_last_ring_solid.py": "8118551daa17fe5260370082d0234a756e976040cfea004bd80f6496426268b1",
+    "mouth_last_rings_fluid.py": "bca5036ed8c6dcc760012345673fc8d29bfa8496981373aee9dcd733d917bb59",
+    "mouth_live_waist_active_wave.py": "f6548ac04e123db74449d291319d651b8ce67aee92e3e3b71007ea19ca5307f5",
+    "mouth_live_waist_fields.py": "96411e9af5538c5e7f0f770807ff993c0f9458cdf6dab68c87f5a5ea0ecfd13a",
+    "mouth_live_waist_order.py": "bd1062a832e2f4257a93378e5712fc2b6b28f9e133e486b99c237c84c6a0e875",
+    "mouth_live_waist_reopen.py": "5042d23940692680c6d46ef78e4f2bfa9d6ca98ddc3b238b1a94d911876e5492",
+    "mouth_live_waist_wave.py": "da3c942439db4cbfe46682b1975250144ecff014f2542c75c43b665f46299c45",
+    "mouth_live_waist_wave_location.py": "8bba123960546c43ff6f703cc1a227f4d33cfc0bb22daad4973b54149233c432",
+    "mouth_mobile_joined_fields.py": "4e721ccee2ecba3e71075ff293b5750bdf9521d1ece29aba7b5aecb18d3f29fc",
+    "mouth_neck_order_check.py": "5e876665bf831d8eae5ec501f569472474c238e94ecbb5bbde98de543568074c",
+    "mouth_polar_bonded.py": "38b484edee2d95f2f9115fcf3a3bd2f4016c68c928f8ea968596a6c27a629356",
+    "mouth_polar_exit_readout.py": "2b423c071a124e1f9183cd9407c447e1d4b0bdbc96fc78093f60221b573ec571",
+    "mouth_polar_joined.py": "e8263eb26e5993d06ad24f406cff0073cc8ae7f613359968fffc8e43d291b24d",
+    "mouth_polar_shape_endpoint_review.py": "088c768d81c114bafcdbc8b80f02665eadf97146a82aaa244e49a1610db5aaad",
+    "mouth_poly_bonded_core.py": "7f884fecfc302f32203dacf6905628bb80f8db2e31c43533eea1789633d79ac0",
+    "mouth_poly_shallow_release.py": "b10f4d9404f31c955772762ab7b00ee2b4cd2291042c46c86a15f97dda54dd31",
+    "mouth_polycrystal_material.py": "306f63c7fa3905853dc1e30b093f38f7980a618de227f47d1e6ec014debd1fdf",
+    "mouth_prism_support_decision.py": "34cb89537d5c872e03271ea213ffa8410c46924fa60c39da4c26f413a29b94e6",
+    "mouth_r4_barrier_held.py": "38a2981bb59c4a371af67644109940031b76b25f36e2aaff102ce691eb226690",
+    "mouth_r4_conforming_prisms.py": "a3641db42d259283af49dfc4ba0170439149ca538f753cf2132c3e8a83172e16",
+    "mouth_r4_eulerian_corner_audit.py": "62dd66d8b893bbcc2ffb2627f369a13c50b48504f85f1ca2c4439fc9cc0b7c19",
+    "mouth_r4_eulerian_relax_labels.py": "1609778fdced0346b8d3b89823d6086308f3794210e9245608b54a4b1615c8df",
+    "mouth_r4_eulerian_solid.cpp": "e798467944c93d1bb99534aa268d2221b8b4e66dcb133246e95c5debbbf96d74",
+    "mouth_r4_eulerian_solid.py": "51d34d88837b63e2d77dd603227e86393ea6b7a2dd0bba5b3a6707a12db8f38f",
+    "mouth_r4_fold_order.py": "146850323067570482c62cc47077ea43c3ca7af89d7b3ca64bbcbfa5af3e4114",
+    "mouth_r4_melt_barrier.cpp": "c94cea2d4c84ad7d37fa969c38458848d2a35d159879fc2c713f22ce6c141d0d",
+    "mouth_r4_melt_barrier.py": "8df396304cfec1b6f6c7f3745e644d4804842150c51f4319d50b5804a50ff9c1",
+    "mouth_r4_projected_held.py": "38fa5d0e0fbffa8e9571da0fc4c5d26d22c50c17194b2c63e1e2c2df8564f98c",
+    "mouth_r4_refinement_review.py": "28fb3bc6fc283cbe3e33aa25ee9f07b849ca5e53ad159425bd7b89fffa3efdf5",
+    "mouth_r4_stage2_outcome.py": "3c7283a847ffdb8f6b890dbc885b1043d341c491b32de6d6492b2ca64dacabfe",
+    "mouth_receiver_order_control.py": "0729ea9871c408a2cf1261d8134d8c328c4d96a43b0f5a8dd7d6052c11367b0d",
+    "mouth_receiver_order_equilibrium.py": "803f062b7094b2b5bc82ae1fcb3be9e55978c144b2d1ee1df89e6deaea2d1665",
+    "mouth_rim_pinned_comparison.py": "e9d2bda29ada58b90f5620a665f7b74a580609234deee5f2c36fdb59691b9065",
+    "mouth_sealed_shape_relax.py": "4791971472f6f8baef5ee5d7eba30c3a04c91ddb7251b7ac48c08a0ef1ae3a96",
+    "mouth_shallow_puncture_fields.py": "2d732c61dcd871fd8064e8fa1aab785d699f857d0137aefac32ee82550dfcc84",
+    "mouth_strained_wave.py": "e3e5c2cf6a11a0ef565c2693074c968eaf028fe11be4dcf59e86a26c1603d95a",
+    "mouth_supercore_front.py": "f35d283712acb983d188edfe217f944d1634897b8bf2b3cf3edf0b5cab807496",
+    "mouth_supercore_joined_front.py": "bd2dacdf0c2b6e5c2c22ec38926a971f09cc75764ee8d09437a7f89b908d2125",
+    "mouth_supercore_shape.py": "c4f3183fdbecabedd74f96f847cf136b1df73cd244f16312f9d07edc0cc43497",
+    "mouth_supercore_terminal_order.py": "e8bfd9b7fb058c9e446996f224b212cab3359cdfdd455c8e48aab02ca9d9836f",
+    "mouth_unified_puncture.py": "74a69caccce1c3f8803cf40b21420b47cf1bfae4e0d95404259fcb5500985a74",
+    "mouth_unified_transverse.py": "83b6f304afe36c898b48f072b64fcb1ff7c6d8803fa8e351c01f7cb2cf2830d6",
+    "mouth_waist_outer_order.py": "cc9c3ae474145babc837c8d95e617f593eec969710a33ef9bf09a8ec130df981",
+    "mouth_whole_r4_relax.py": "2727363201f216daff834d514c00be9b570b505b4816ae86a802b4649182ed90",
+    "mouth_wider_wound_carrier.py": "057c72903d6a4c13d5988912b76e9e04cb599b30af9d12ca3eb1bfb7157bff0e",
+    "mouth_winding_resolved_patch.py": "a938462c0aa93eeabb222db53bd9faf8e81280ff56819f8b5d49b048243f1597",
+    "mouth_wound_carrier.py": "d347c7ba79388585dd1d075abefb98f3fb4804612b6a1a786c62ebb941783175"
+  },
+  "script_sha256": "bdf56611ec5a132b7840d15cf9f0a6466d5f5dfde701d09ba244e0b2a0cc56e4"
+}

@@ -45,9 +45,14 @@ class MeltBarrier:
         source=Path(__file__).with_suffix('.cpp')
         library=output/'barrier.so'
         subprocess.run(['g++','-std=c++17','-O3','-fPIC','-shared',str(source),'-o',str(library)],check=True)
-        self.function=ct.CDLL(str(library.resolve())).melt_barrier
+        lib=ct.CDLL(str(library.resolve()))
+        self.function=lib.melt_barrier
         self.function.argtypes=[ct.c_int]+[ct.c_void_p]*7
         self.function.restype=ct.c_int
+        self.work_function=lib.melt_barrier_work
+        self.work_function.argtypes=[ct.c_int]+[ct.c_void_p]*6
+        self.work_function.restype=ct.c_int
+        self.extended_K=None
 
     def sample(self,labels):
         if any(labels[...,c].min()<ax[0]-2e-13 or labels[...,c].max()>ax[-1]+2e-13 for c,ax in enumerate(self.opt.axes)):
@@ -73,12 +78,35 @@ class MeltBarrier:
     def pre(self,grad):
         return np.concatenate([cm.extension.solve(part) for cm,part in zip(self.components,np.split(grad,self.cuts))])
 
-    def solve(self,start,name,output):
+    def local_work(self,old,new):
+        """Signed unit-gauge energy difference at two float64 label maps."""
+        if not (old.flags.c_contiguous and new.flags.c_contiguous
+                and old.dtype==new.dtype==np.float64):
+            raise ValueError('Local work needs contiguous float64 label maps')
+        value=np.zeros(1,np.longdouble)
+        args=(self.ids,self.width,self.weight,old,new,value)
+        if self.work_function(len(self.ids),*[a.ctypes.data for a in args]):
+            raise InfeasibleLabels('Invalid melted determinant in gauge work')
+        if self.extended_K is None:
+            self.extended_K=self.opt.K.astype(np.longdouble)
+        x=old.reshape(-1,3).astype(np.longdouble)
+        delta=new.reshape(-1,3).astype(np.longdouble)-x
+        mid=(x-self.opt.base.reshape(-1,3))+.5*delta
+        # Use the symmetric part for the exact stored quadratic form even
+        # when element assembly leaves the last bit of K slightly asymmetric.
+        harmonic=.5*np.sum(delta*((self.extended_K@mid)+(self.extended_K.T@mid)))
+        return harmonic+value[0]
+
+    def solve(self,start,name,output,*,outer_force=None):
         labels=start.copy()
         value,gr,parts,det=self.sample(labels)
         gradient=self.extract(gr,'dead')
         history=[]; alphas=[]; last=None
-        tolerance=3.e-8  # unscaled absolute residual; epsilon never enters the minimization
+        tolerance=3.e-8
+        if outer_force is not None:
+            if not np.isfinite(outer_force) or outer_force<=0:
+                raise ValueError('Use a positive finite outer force scale for adaptive gauge solves')
+            tolerance=min(1.e-5,1.e-3*outer_force)
         with (output/(name+'.jsonl')).open('x') as log:
             while True:
                 residual=absmax(gradient)
@@ -105,21 +133,22 @@ class MeltBarrier:
                     trial=labels+alpha*step
                     try:
                         nv,ng,nparts,ndet=self.sample(trial)
-                        dstep=trial-labels
-                        # Difference of d-log(d) evaluated at positive old/new
-                        # corners; this avoids subtracting the large total twice.
-                        rel=(ndet-det)/det
-                        if np.any(rel<=-1):raise InfeasibleLabels('Unresolved relative corner volume')
-                        dv=np.sum(self.weight[:,None]*((ndet-det)-np.log1p(rel)),dtype=np.longdouble)
-                        mid=((labels-self.opt.base)+.5*dstep).reshape(-1,3)
-                        dv+=np.sum(dstep.reshape(-1,3)*(self.opt.K@mid),dtype=np.longdouble)
+                        if outer_force is not None:
+                            dv=self.local_work(labels,trial)
+                        else:
+                            dstep=trial-labels
+                            rel=(ndet-det)/det
+                            if np.any(rel<=-1):raise InfeasibleLabels('Unresolved relative corner volume')
+                            dv=np.sum(self.weight[:,None]*((ndet-det)-np.log1p(rel)),dtype=np.longdouble)
+                            mid=((labels-self.opt.base)+.5*dstep).reshape(-1,3)
+                            dv+=np.sum(dstep.reshape(-1,3)*(self.opt.K@mid),dtype=np.longdouble)
                         if not dv<1.e-4*alpha*slope:raise InfeasibleLabels('No resolved Armijo descent')
                         orient=chart_orientation(self.opt.axes,trial,self.opt.active)
                     except InfeasibleLabels as e:
                         reject=str(e);alpha*=.5
                         if np.array_equal(labels+alpha*step,labels) or (-alpha*slope<1e-28 and alpha<1e-4):
                             return labels,dict(stationary=False,reason=reject,accepted_steps=len(alphas),
-                                alpha=alpha,residual=residual,**parts)
+                                alpha=alpha,residual=residual,target=tolerance,**parts)
                         continue
                     break
                 next_gradient=self.extract(ng,'dead')
@@ -130,7 +159,7 @@ class MeltBarrier:
                 labels,value,gr,parts,det,gradient=trial,nv,ng,nparts,ndet,next_gradient
                 alphas.append(alpha)
         return labels,dict(stationary=True,accepted_steps=len(alphas),min_alpha=min(alphas,default=None),last=last,
-                           residual=absmax(gradient),**parts)
+                           residual=absmax(gradient),target=tolerance,**parts)
 
 
 def run(scratch,case,output):

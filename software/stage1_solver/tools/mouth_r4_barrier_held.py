@@ -118,7 +118,7 @@ class BarrierHeldDriver(BarrierShapeDriver):
             raise ArithmeticError(f'Order/carrier rematch raised full energy: {info["order_step_energy"]}')
         return u,float(physical),load,info
 
-    def extend(self,barrier,labels):
+    def extend(self,barrier,labels,*,outer_force=None):
         opt=barrier.opt
         corrected=labels.copy()
         # A changed order mask can register a formerly independent dead-axis
@@ -136,7 +136,7 @@ class BarrierHeldDriver(BarrierShapeDriver):
         chart_orientation(opt.axes,corrected,opt.active)
         op=f'inner_{self.operation:07d}'
         self.operation+=1
-        result,inner=barrier.solve(corrected,op,self.folder)
+        result,inner=barrier.solve(corrected,op,self.folder,outer_force=outer_force)
         if not inner['stationary']:
             raise HeldStop('Melted inner solve failed stationarity',result,dict(inner=inner))
         if not np.array_equal(result[opt.stencil],labels[opt.stencil]):

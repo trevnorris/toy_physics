@@ -1,0 +1,114 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_inner_polish.py",
+    "_scratch/s11c/r4_projected_corner_held01",
+    "_scratch/s11c/r4_inner_work02/direction/direction.npz",
+    "research/pde_ledger_v3/_measurements/mouth_r4_inner_precision.json",
+    "_scratch/s11c/r4_inner_work02/polish",
+    "research/pde_ledger_v3/_measurements/mouth_r4_inner_polish.json"
+  ],
+  "input_sha256": {
+    "/var/projects/toy_physics/_scratch/s11c/r4_projected_corner_held01/primary/failed_trial.npz": "23172a606edb2b0707f3ebd132a42bae06e9bb336e4712ad34b154fe0d7839d1",
+    "/var/projects/toy_physics/_scratch/s11c/r4_inner_work02/direction/direction.npz": "84c8dd24ce62fb2a4f8c51dd191c32b3beda231c322af3d76d1ffd9a3135415c",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/mouth_r4_inner_precision.json": "cd830a79528768c6e1849fd43f09cc2413332860be4860e68d54ae2e802b3b31"
+  },
+  "source_sha256": {
+    "mouth_r4_inner_polish.py": "a88e90b88b24cea4576a92b238016ed9bed8c743c366f202a3b276c9717c5331",
+    "mouth_r4_melt_barrier.py": "9059e7b8479ce8ff182c5a6638d5b96ced4ef9819fd7c7262a27614f23f6f55a",
+    "mouth_r4_melt_barrier.cpp": "271e423f7dc7bb85287c8d47a9bd761ee4d6027640c10d8db32dc9d1c7d55dde"
+  },
+  "authority": "Diagnostic only, fixed order and active labels; output is not a resumed held state",
+  "reference_alpha": 0.0078125,
+  "work_native": -1.140016500441892e-18,
+  "work_independent": -1.1400165004429274e-18,
+  "work_absolute_discrepancy": 1.035379938102578e-30,
+  "analytic_slope": -5.35087096535874e-16,
+  "loose_scale": 0.07797064397780097,
+  "loose": {
+    "stationary": true,
+    "accepted_steps": 0,
+    "min_alpha": null,
+    "last": null,
+    "residual": 5.931099111844418e-08,
+    "target": 1e-05,
+    "harmonic": 1.3171646414706615,
+    "barrier": 0.527410555169018,
+    "corner_min": 0.007454096631924541
+  },
+  "terminal_scale": 3e-05,
+  "terminal": {
+    "stationary": true,
+    "accepted_steps": 2,
+    "min_alpha": 0.015625,
+    "last": {
+      "alpha": 0.015625,
+      "search_normalization": 1.0,
+      "delta": -2.0350593549917577e-18,
+      "chart_lower": 0.0013907601398197203
+    },
+    "residual": 1.858610979010855e-08,
+    "target": 3.0000000000000004e-08,
+    "harmonic": 1.3171646414715996,
+    "barrier": 0.5274105551680799,
+    "corner_min": 0.007454096631924541
+  },
+  "checks": {
+    "max_trace_motion": 0.0,
+    "crystal_energy_delta": 0.0,
+    "active_physical_force_max_difference": 0.0,
+    "direct_residual": 1.858610979010855e-08,
+    "chart": {
+      "chart_det_global_lower": 0.0013907601398197203,
+      "chart_lowest_cell": [
+        13,
+        10,
+        1
+      ],
+      "chart_det_active_lower": 0.0013907601398197203
+    },
+    "initial_to_polished_unit_work": -4.101350004587878e-18,
+    "final_corner_min": 0.007454096631924541
+  },
+  "journal": [
+    {
+      "i": 0,
+      "unit_energy": 1.8445751966396793,
+      "melt_residual": 5.931099111844418e-08,
+      "last": null,
+      "harmonic": 1.3171646414706615,
+      "barrier": 0.527410555169018,
+      "corner_min": 0.007454096631924541
+    },
+    {
+      "i": 1,
+      "unit_energy": 1.8445751966396797,
+      "melt_residual": 1.1094631555130796e-07,
+      "last": {
+        "alpha": 0.015625,
+        "search_normalization": 1.0,
+        "delta": -2.0662906495870485e-18,
+        "chart_lower": 0.0013907601398197203
+      },
+      "harmonic": 1.3171646414730247,
+      "barrier": 0.527410555166655,
+      "corner_min": 0.007454096631924541
+    },
+    {
+      "i": 2,
+      "unit_energy": 1.8445751966396795,
+      "melt_residual": 1.858610979010855e-08,
+      "last": {
+        "alpha": 0.015625,
+        "search_normalization": 1.0,
+        "delta": -2.0350593549917577e-18,
+        "chart_lower": 0.0013907601398197203
+      },
+      "harmonic": 1.3171646414715996,
+      "barrier": 0.5274105551680799,
+      "corner_min": 0.007454096631924541
+    }
+  ],
+  "polished_sha256": "d11b936ce51936379c032ad38618bd4745d4ee6f1a63206fb8c4b090366eee6a"
+}

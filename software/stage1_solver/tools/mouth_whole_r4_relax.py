@@ -251,6 +251,15 @@ class Release:
     def check_progress(self):
         pass
 
+    def begin_material_record(self, t, q, u, e, internal, info):
+        self.write_state(t, q, u, e, internal, info)
+
+    def complete_material_record(self, t, q, u, e, internal, info, values):
+        self.last.update(values)
+        atomic_json(self.args.folder/"latest.json", self.last)
+        log("residuals", **values)
+        self.check_progress()
+
     def material_update(self, trial, q, u):
         updated, steps, reason = relax_material(trial, q, u, self.history, 36)
         return updated, steps, reason, trial.match(updated, u)
@@ -284,17 +293,14 @@ class Release:
             if e>e0+1.e-9:
                 raise ArithmeticError(f"Material and coherent update raised the energy by {e-e0}")
             internal = t.b.residual(q, gq)
-            self.write_state(t, q, u, e, internal, info)
+            self.begin_material_record(t, q, u, e, internal, info)
             g, diag = self.work(self.x, q, u, e, STEP)
             surface = t.f.measure(u,load)
             values = dict(iteration=self.iteration, shape_force=(-g).tolist(),
                           fixed_material_shape_curvatures=diag.tolist(),
                           solid=internal, field=info, material_steps=steps,
                           material_stop=attempt, current=surface)
-            self.last.update(values)
-            atomic_json(self.args.folder/"latest.json", self.last)
-            log("residuals", **values)
-            self.check_progress()
+            self.complete_material_record(t, q, u, e, internal, info, values)
             if last_x is not None:
                 dx, dg = self.x-last_x, g-last_g
                 prod = dx@dg

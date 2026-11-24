@@ -1,0 +1,364 @@
+{
+  "source_commits": [
+    "bd380b11",
+    "faeb3192"
+  ],
+  "radius": 4,
+  "winding": 1,
+  "phase_drop": 0.4510084282857874,
+  "checkpoint10": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+  "rematched_start": "f87fdb65888ffd91294af657551bfa02bf390b2f9648b6421450fbeaabe3515d",
+  "historical_overlap": "59f7b260d66b2fc852c6cd9cadc34380750e6783580fd6990a697ee4f3de1364",
+  "code": {
+    "pin/mouth_backtrack_r4_release.py": "ae776b91da88be81c26ea77ee07170d434359e5030718c714e3187f1f3c9cba7",
+    "pin/mouth_feasible_crystal_step.py": "4ceaacbd0b2c14a3b147857435bcb82dae91f49bda99454ca13d9b61aac7fcd0",
+    "pin/mouth_ordered_j_bounds.cpp": "28f18037862b57ed56e657302a64979c1e63d32ab47a93781fb7915ddd903d47",
+    "pin/mouth_ordered_j_bounds.py": "b89446827f5261d46da9b0d2b9190b5a52af8faf74f36d4d79b6c9b871f17419",
+    "pin/mouth_whole_r4_relax.py": "2727363201f216daff834d514c00be9b570b505b4816ae86a802b4649182ed90"
+  },
+  "starting_J": {
+    "infimum_bounds": [
+      0.00012058322767900219,
+      0.07880106486525802
+    ],
+    "certified_chart_margin": 0.015625,
+    "physical_multiplier_lower_bound": 0.00771732657145614,
+    "upper_witness": {
+      "cell_t_x_angle": [
+        5,
+        17,
+        0
+      ],
+      "triangle": 0,
+      "barycentric": [
+        2.1671553440683056e-13,
+        0.8239702411767968,
+        0.17602975882298644
+      ],
+      "angular_fraction": 0.6832409359282874,
+      "chi": 9.042752616727818e-35,
+      "chart_J": 0.14796103789292778,
+      "placement_x_t_angle": [
+        0.9053254437869822,
+        0.24046632981916352,
+        0.1788588241008721
+      ],
+      "J_interval": [
+        0.078801064865258,
+        0.07880106486525802
+      ]
+    },
+    "prism_5_18_0": {
+      "cell_t_x_angle": [
+        5,
+        18,
+        0
+      ],
+      "triangle": 0,
+      "barycentric": [
+        0.4583333333333333,
+        0.3333333333333333,
+        0.20833333333333334
+      ],
+      "angular_fraction": 0.671875,
+      "chi": 2.8962482105810904e-07,
+      "J": 0.10635081801213064,
+      "W": 1.7187950742065217,
+      "chi_W": 4.978057158026231e-07,
+      "physical_r_w_theta": [
+        3.5732703865224735,
+        0.19602537596667238,
+        0.17588467052487053
+      ],
+      "principal_stretches": [
+        0.14522456136244744,
+        0.8183024617446659,
+        0.8183860106736885,
+        1.093524975598877
+      ]
+    },
+    "machine_zero_witness": false,
+    "machine_zero_threshold": 1.4210854715202004e-14,
+    "scope": "Continuum of each discrete prism where interpolated chi > 0, including one-sided boundary limits. Lower bound is conservative. Upper bound is a verified physical sample. An attained minimum is not assumed.",
+    "old_rejection_point": {
+      "cell_t_x_angle": [
+        5,
+        18,
+        0
+      ],
+      "triangle": 0,
+      "barycentric": [
+        0.4583333333333333,
+        0.3333333333333333,
+        0.20833333333333334
+      ],
+      "angular_fraction": 0.671875,
+      "chi": 1.9181843544347013e-07,
+      "J": -0.0018030791386219806,
+      "W": null,
+      "chi_W": null,
+      "physical_r_w_theta": [
+        3.575770283853607,
+        0.20061624497593594,
+        0.17588001135329262
+      ],
+      "principal_stretches": [
+        0.002255469858282734,
+        0.8188534869059793,
+        0.8189401197868769,
+        1.1921184533167601
+      ]
+    }
+  },
+  "controls": {
+    "first": {
+      "status": "advanced",
+      "steps": 1,
+      "min_alpha": 0.5,
+      "delta_total_energy": -0.012421874999999971,
+      "last_attempt": {
+        "iteration": 0,
+        "direction": "lbfgs",
+        "alpha": 1.0,
+        "solver_scale": 0.025,
+        "directional_work": -0.025,
+        "reason": "active_fold"
+      }
+    },
+    "tiny_stall": {
+      "status": "tiny_stall",
+      "steps": 2,
+      "min_alpha": 3.814697265625e-06,
+      "delta_total_energy": -1.9073246222679132e-11,
+      "last_attempt": {
+        "iteration": 1,
+        "direction": "lbfgs",
+        "alpha": 7.62939453125e-06,
+        "solver_scale": 7.62939453125e-06,
+        "directional_work": -7.629161702346273e-12,
+        "reason": "active_fold"
+      }
+    },
+    "all_infeasible": {
+      "status": "no_feasible_descent",
+      "steps": 0,
+      "min_alpha": null,
+      "delta_total_energy": 0.0,
+      "last_attempt": {
+        "iteration": 0,
+        "direction": "lbfgs",
+        "alpha": 1.1368683772161603e-13,
+        "solver_scale": 1.1368683772161603e-13,
+        "directional_work": -1.1368683772161602e-19,
+        "reason": "active_fold"
+      }
+    },
+    "stale_cache_safe": 1
+  },
+  "control_runs": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "_scratch/s11c/r4_crystal_step_controls01/check.py"
+      ],
+      "pool": "r4_feasible_controls",
+      "start": "2026-11-24T05:56:17.147471+00:00",
+      "end": "2026-11-24T05:56:17.587973+00:00",
+      "recorded_peak_bytes": 49487872,
+      "exit_code": 0,
+      "limits_verified": true
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "_scratch/s11c/r4_ordered_j01/smoke.py"
+      ],
+      "pool": "r4_ordered_j",
+      "start": "2026-11-24T05:59:10.012817+00:00",
+      "end": "2026-11-24T05:59:12.803647+00:00",
+      "recorded_peak_bytes": 140107776,
+      "exit_code": 0,
+      "limits_verified": true
+    }
+  ],
+  "source_evaluators": [
+    "software/stage1_solver/tools/mouth_feasible_crystal_step.py",
+    "software/stage1_solver/tools/mouth_ordered_j_bounds.py"
+  ],
+  "production_rejection": {
+    "kind": "crystal_search",
+    "checkpoint": 11,
+    "stage": "fixed_order",
+    "event": "crystal_overlap_rejected",
+    "iteration": 19,
+    "direction": "lbfgs",
+    "alpha": 1.0,
+    "solver_scale": 1.0,
+    "directional_work": -0.0011961520850577527,
+    "witness": {
+      "cell_t_x_angle": [
+        5,
+        18,
+        0
+      ],
+      "triangle": 0,
+      "barycentric": [
+        0.4583333333333333,
+        0.3333333333333333,
+        0.20833333333333334
+      ],
+      "angular_fraction": 0.671875,
+      "placement_x_t_angle": [
+        0.9145044362989125,
+        0.24462745596387353,
+        0.17588001135329262
+      ],
+      "chart_determinant": -0.003275078449899644,
+      "exact_determinant_sign": -1,
+      "order": 1.9181843544347013e-07,
+      "exact_order_positive": true
+    },
+    "reused_archived_rejection": true
+  },
+  "next_material_step": {
+    "kind": "crystal_search",
+    "checkpoint": 11,
+    "stage": "fixed_order",
+    "event": "crystal_step_accepted",
+    "iteration": 19,
+    "direction": "lbfgs",
+    "alpha": 0.125,
+    "solver_scale": 0.125,
+    "directional_work": -0.0001495190106322191,
+    "delta_total_energy": -0.00014446895655459424,
+    "tiny_without_meaningful_drop": false,
+    "crystal_energy": 0.17761436596840513,
+    "energy": 92185.47777492079
+  },
+  "original_direction_rejected_scales": [
+    {
+      "kind": "crystal_search",
+      "checkpoint": 11,
+      "stage": "fixed_order",
+      "event": "crystal_overlap_rejected",
+      "iteration": 19,
+      "direction": "lbfgs",
+      "alpha": 1.0,
+      "solver_scale": 1.0,
+      "directional_work": -0.0011961520850577527,
+      "witness": {
+        "cell_t_x_angle": [
+          5,
+          18,
+          0
+        ],
+        "triangle": 0,
+        "barycentric": [
+          0.4583333333333333,
+          0.3333333333333333,
+          0.20833333333333334
+        ],
+        "angular_fraction": 0.671875,
+        "placement_x_t_angle": [
+          0.9145044362989125,
+          0.24462745596387353,
+          0.17588001135329262
+        ],
+        "chart_determinant": -0.003275078449899644,
+        "exact_determinant_sign": -1,
+        "order": 1.9181843544347013e-07,
+        "exact_order_positive": true
+      },
+      "reused_archived_rejection": true
+    },
+    {
+      "kind": "crystal_search",
+      "checkpoint": 11,
+      "stage": "fixed_order",
+      "event": "crystal_overlap_rejected",
+      "iteration": 19,
+      "direction": "lbfgs",
+      "alpha": 0.5,
+      "solver_scale": 0.5,
+      "directional_work": -0.0005980760425288764,
+      "witness": {
+        "cell_t_x_angle": [
+          5,
+          18,
+          0
+        ],
+        "triangle": 0,
+        "barycentric": [
+          0.5416666666666666,
+          0.2708333333333333,
+          0.1875
+        ],
+        "angular_fraction": 0.6796875,
+        "placement_x_t_angle": [
+          0.9134056835738359,
+          0.2449998096960002,
+          0.17792465720400333
+        ],
+        "chart_determinant": -0.0015508564444892986,
+        "exact_determinant_sign": -1,
+        "order": 5.0415268218343856e-08,
+        "exact_order_positive": true
+      },
+      "reused_archived_rejection": false
+    },
+    {
+      "kind": "crystal_search",
+      "checkpoint": 11,
+      "stage": "fixed_order",
+      "event": "crystal_overlap_rejected",
+      "iteration": 19,
+      "direction": "lbfgs",
+      "alpha": 0.25,
+      "solver_scale": 0.25,
+      "directional_work": -0.0002990380212644382,
+      "witness": {
+        "cell_t_x_angle": [
+          5,
+          18,
+          0
+        ],
+        "triangle": 0,
+        "barycentric": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "angular_fraction": 0.6826171875,
+        "placement_x_t_angle": [
+          0.9265099040338493,
+          0.2405423532799258,
+          0.17868941516540587
+        ],
+        "chart_determinant": -0.00012131105239400006,
+        "exact_determinant_sign": -1,
+        "order": 3.8420901162893365e-08,
+        "exact_order_positive": true,
+        "exact_model": "((b0 0.0)\n (b1 1.0)\n (b2 0.0)\n (y (/ 699.0 1024.0))\n (px (/ 4375319316856221321033.0 4722366482869645213696.0))\n (pt (/ 35497785838740964143.0 147573952589676412928.0))\n (pa (/ 54005561921324263040223.0 302231454903657293676544.0))\n (detF (- (/ 42643702924601353766116191465297739073453987138449913815.0\n      351523641770916457855724996456944311542012718168519833812992.0)))\n (ord (/ 48124719934373479344743001556140293702905503326078199685242614795766818979.0\n   1252566141807522006389387749181509090882546774970807932197618870925463869582213120.0)))"
+      },
+      "reused_archived_rejection": false
+    }
+  ],
+  "following_material_step": {
+    "kind": "crystal_search",
+    "checkpoint": 11,
+    "stage": "fixed_order",
+    "event": "crystal_step_accepted",
+    "iteration": 20,
+    "direction": "lbfgs",
+    "alpha": 0.03125,
+    "solver_scale": 0.03125,
+    "directional_work": -8.252525001833449e-05,
+    "delta_total_energy": -8.151137807679842e-05,
+    "tiny_without_meaningful_drop": false,
+    "crystal_energy": 0.17753285459032833,
+    "energy": 92185.47769340941
+  },
+  "reviewed_scope": "Independent readback of iteration 19 confirmed the archived full proposal, the two smaller rejections in the same prism, and strict fixed-field descent on the eighth and subsequent thirty-second steps. These are internal crystal updates before the six-force checkpoint."
+}

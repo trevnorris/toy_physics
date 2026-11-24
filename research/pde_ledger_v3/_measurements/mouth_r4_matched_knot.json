@@ -1,0 +1,1007 @@
+{
+  "input_commit": "7b45bfec",
+  "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+  "phase_drop": 0.4510084282857874,
+  "prior_measurement_sha256": "83507e2952eed2d7c3f8e487db02be3474fa440ab4a9800bdd314b523dc6766e",
+  "sources": {
+    "r4_matched_boundary01/boundaries.json": {
+      "sha256": "6faac94a0124586471841e17ea2a24f09f8498536d646504097705152a0b6220",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_boundary_work.py",
+        "boundaries",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_matched_boundary01/boundaries.json"
+      ]
+    },
+    "r4_matched_boundary01/work.json": {
+      "sha256": "27336e95c6055ee6010d20a0bba897c8ebd4c928176b5baaf7919e6479b6bc55",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_boundary_work.py",
+        "work",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_matched_boundary01/work.json"
+      ]
+    },
+    "r4_order_transport01/signed_inverses.json": {
+      "sha256": "67e53b030d6774eb471f32bfd756e7034f20d260220aa48e18896aeb0c4583ec",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_signed_label_check.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_order_transport01/signed_inverses.json"
+      ]
+    },
+    "r4_order_transport01/degree_6/result.json": {
+      "sha256": "4b06b4ce92d31fe7c646962b079b82232630d635a1b97496093019bdf85f9fc2",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_order_depth_work.py",
+        "_scratch/s11c",
+        "6",
+        "_scratch/s11c/r4_order_transport01/degree_6"
+      ]
+    },
+    "r4_matched_knot01/1_6/readout.json": {
+      "sha256": "bc888029ec82815b6d8d542b1d382b21609c177ba1375977bfbedf3bdb337c6d",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_matched_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_matched_knot01/1_6",
+        "1",
+        "6"
+      ]
+    },
+    "r4_matched_knot01/2_6/readout.json": {
+      "sha256": "10e25f1fbd30a7203dd296108c895332ec70965d4e3239db80afb904206f2b68",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_matched_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_matched_knot01/2_6",
+        "2",
+        "6"
+      ]
+    },
+    "r4_matched_knot01/4_6/readout.json": {
+      "sha256": "a3bcf090b0e23060f6c3739d2b19f5e3dd5c27ee21f703dd811155e26c57755b",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_matched_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_matched_knot01/4_6",
+        "4",
+        "6"
+      ]
+    },
+    "r4_order_transport01/degree_8/result.json": {
+      "sha256": "0921c1b7255932c6c8cd2f0c6ae986213adf78528d810527ae99f608ac7857f1",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_order_depth_work.py",
+        "_scratch/s11c",
+        "8",
+        "_scratch/s11c/r4_order_transport01/degree_8"
+      ]
+    },
+    "r4_matched_knot01/1_8/readout.json": {
+      "sha256": "2b0bf4e478bbf0ef764624c6c6b809a6f04748733698b9110e9ba134c6a1813b",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_matched_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_matched_knot01/1_8",
+        "1",
+        "8"
+      ]
+    },
+    "r4_matched_knot01/2_8/readout.json": {
+      "sha256": "b8286c43f88cf750a45a7d092596a069acb5cd76aa12103d36cf72947c07544c",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_matched_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_matched_knot01/2_8",
+        "2",
+        "8"
+      ]
+    },
+    "r4_matched_knot01/4_8/readout.json": {
+      "sha256": "0f3d8cc9cec71e5f79d9d51b1ed8936a70f7ed8e1721fb090b2d5581f793a3df",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_cp10_matched_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_matched_knot01/4_8",
+        "4",
+        "8"
+      ]
+    }
+  },
+  "matched": {
+    "1_6": {
+      "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "labels_sha256": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+      "cxx_sha256": "1bdeba71c1c584cb43046ce222434a503f756f3c38e963949eeeb3318d91d6a0",
+      "factor": 1,
+      "degree": 6,
+      "coordinate_order": "native polar angle / normalized physical depth / horizontal affine triangle section",
+      "steps": [
+        {
+          "h": 4e-07,
+          "energy_minus": [
+            0.2065213730554022,
+            0.2008172206692375
+          ],
+          "energy_plus": [
+            0.20652139098701822,
+            0.2008172458668393
+          ],
+          "forces_native_projected": [
+            -0.022414519975073353,
+            -0.03149700218367355
+          ],
+          "projected_minus_native": -0.009082482208600199,
+          "summed_energy_fd_minus_paired_force": [
+            -5.6637163708961324e-11,
+            -7.961855480465019e-11
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794982073057119,
+          "shared_points": 14510466,
+          "signed_positive_order_evaluations": 28498896,
+          "min_Jinv_over_positive_samples": 0.6110322928788796
+        },
+        {
+          "h": 2e-07,
+          "energy_minus": [
+            0.20652137754566874,
+            0.20081722706762245
+          ],
+          "energy_plus": [
+            0.2065213865114768,
+            0.20081723966641554
+          ],
+          "forces_native_projected": [
+            -0.022414520054946114,
+            -0.03149698249334514
+          ],
+          "projected_minus_native": -0.009082462438399028,
+          "summed_energy_fd_minus_paired_force": [
+            -1.1554228060428606e-10,
+            -2.369606247332179e-10
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794980960295455,
+          "shared_points": 14510484,
+          "signed_positive_order_evaluations": 28498932,
+          "min_Jinv_over_positive_samples": 0.6110324151225361
+        }
+      ],
+      "completed": true
+    },
+    "2_6": {
+      "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "labels_sha256": "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+      "cxx_sha256": "1bdeba71c1c584cb43046ce222434a503f756f3c38e963949eeeb3318d91d6a0",
+      "factor": 2,
+      "degree": 6,
+      "coordinate_order": "native polar angle / normalized physical depth / horizontal affine triangle section",
+      "steps": [
+        {
+          "h": 4e-07,
+          "energy_minus": [
+            0.20651855383979248,
+            0.20277846841583286
+          ],
+          "energy_plus": [
+            0.20651857178626834,
+            0.20277849098281714
+          ],
+          "forces_native_projected": [
+            -0.02243309473004322,
+            -0.028208730211330062
+          ],
+          "projected_minus_native": -0.005775635481286841,
+          "summed_energy_fd_minus_paired_force": [
+            -9.614760376752685e-11,
+            -1.402564904495751e-10
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794982073057119,
+          "shared_points": 52692612,
+          "signed_positive_order_evaluations": 104191788,
+          "min_Jinv_over_positive_samples": 0.6109395138416052
+        },
+        {
+          "h": 2e-07,
+          "energy_minus": [
+            0.2065185583797783,
+            0.20277847408792735
+          ],
+          "energy_plus": [
+            0.20651856735301635,
+            0.20277848537141913
+          ],
+          "forces_native_projected": [
+            -0.022433094801398417,
+            -0.02820872905838155
+          ],
+          "projected_minus_native": -0.005775634256983134,
+          "summed_energy_fd_minus_paired_force": [
+            -3.0234816386642827e-10,
+            -3.9114879391011215e-10
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794980960295455,
+          "shared_points": 52677618,
+          "signed_positive_order_evaluations": 104161800,
+          "min_Jinv_over_positive_samples": 0.6109396360480358
+        }
+      ],
+      "completed": true
+    },
+    "4_6": {
+      "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "labels_sha256": "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35",
+      "cxx_sha256": "1bdeba71c1c584cb43046ce222434a503f756f3c38e963949eeeb3318d91d6a0",
+      "factor": 4,
+      "degree": 6,
+      "coordinate_order": "native polar angle / normalized physical depth / horizontal affine triangle section",
+      "steps": [
+        {
+          "h": 4e-07,
+          "energy_minus": [
+            0.20652043330978903,
+            0.20389737266834018
+          ],
+          "energy_plus": [
+            0.20652045124728724,
+            0.20389740191929095
+          ],
+          "forces_native_projected": [
+            -0.022421872430260822,
+            -0.03656368797151449
+          ],
+          "projected_minus_native": -0.014141815541253669,
+          "summed_energy_fd_minus_paired_force": [
+            -3.3098603025027984e-10,
+            -4.943148668168362e-10
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794982073057119,
+          "shared_points": 243374796,
+          "signed_positive_order_evaluations": 483538932,
+          "min_Jinv_over_positive_samples": 0.6108932628851398
+        },
+        {
+          "h": 2e-07,
+          "energy_minus": [
+            0.20652043781523377,
+            0.20389737998690644
+          ],
+          "energy_plus": [
+            0.20652044678398324,
+            0.20389739461238304
+          ],
+          "forces_native_projected": [
+            -0.022421872513998454,
+            -0.03656369009290082
+          ],
+          "projected_minus_native": -0.014141817578902368,
+          "summed_energy_fd_minus_paired_force": [
+            -1.149304606345991e-09,
+            -1.4260418540468223e-09
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794980960295454,
+          "shared_points": 243251442,
+          "signed_positive_order_evaluations": 483292224,
+          "min_Jinv_over_positive_samples": 0.6108933850730481
+        }
+      ],
+      "completed": true
+    },
+    "1_8": {
+      "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "labels_sha256": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+      "cxx_sha256": "1bdeba71c1c584cb43046ce222434a503f756f3c38e963949eeeb3318d91d6a0",
+      "factor": 1,
+      "degree": 8,
+      "coordinate_order": "native polar angle / normalized physical depth / horizontal affine triangle section",
+      "steps": [
+        {
+          "h": 4e-07,
+          "energy_minus": [
+            0.20651969179155882,
+            0.20080317889603538
+          ],
+          "energy_plus": [
+            0.20651970971634293,
+            0.20080320405873925
+          ],
+          "forces_native_projected": [
+            -0.022405979986629534,
+            -0.031453379659408955
+          ],
+          "projected_minus_native": -0.00904739967277942,
+          "summed_energy_fd_minus_paired_force": [
+            -1.4018662619630362e-10,
+            -1.7182768402568271e-10
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794982073057117,
+          "shared_points": 34375128,
+          "signed_positive_order_evaluations": 67513008,
+          "min_Jinv_over_positive_samples": 0.6100449314181651
+        },
+        {
+          "h": 2e-07,
+          "energy_minus": [
+            0.206519696262595,
+            0.20080318518587248
+          ],
+          "energy_plus": [
+            0.20651970522498717,
+            0.2008031977672283
+          ],
+          "forces_native_projected": [
+            -0.0224059800298077,
+            -0.031453388942668116
+          ],
+          "projected_minus_native": -0.009047408912860416,
+          "summed_energy_fd_minus_paired_force": [
+            -3.7456421644876947e-10,
+            -6.030199881101872e-10
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794980960295453,
+          "shared_points": 34375336,
+          "signed_positive_order_evaluations": 67513424,
+          "min_Jinv_over_positive_samples": 0.6100450534472371
+        }
+      ],
+      "completed": true
+    },
+    "2_8": {
+      "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "labels_sha256": "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+      "cxx_sha256": "1bdeba71c1c584cb43046ce222434a503f756f3c38e963949eeeb3318d91d6a0",
+      "factor": 2,
+      "degree": 8,
+      "coordinate_order": "native polar angle / normalized physical depth / horizontal affine triangle section",
+      "steps": [
+        {
+          "h": 4e-07,
+          "energy_minus": [
+            0.20651964504903975,
+            0.20277756086285068
+          ],
+          "energy_plus": [
+            0.2065196629865785,
+            0.2027775834367457
+          ],
+          "forces_native_projected": [
+            -0.02242192305986219,
+            -0.02821736840167467
+          ],
+          "projected_minus_native": -0.005795445341812477,
+          "summed_energy_fd_minus_paired_force": [
+            -3.9000462928595603e-10,
+            -3.870996752308731e-10
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794982073057117,
+          "shared_points": 124892264,
+          "signed_positive_order_evaluations": 246955024,
+          "min_Jinv_over_positive_samples": 0.6099946341385666
+        },
+        {
+          "h": 2e-07,
+          "energy_minus": [
+            0.20651964953303373,
+            0.2027775665266485
+          ],
+          "energy_plus": [
+            0.20651965850180345,
+            0.2027775778135964
+          ],
+          "forces_native_projected": [
+            -0.02242192313668095,
+            -0.028217368475245773
+          ],
+          "projected_minus_native": -0.005795445338564822,
+          "summed_energy_fd_minus_paired_force": [
+            -1.1805476075876786e-09,
+            -1.2849737177078602e-09
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794980960295453,
+          "shared_points": 124874520,
+          "signed_positive_order_evaluations": 246919792,
+          "min_Jinv_over_positive_samples": 0.6099947561475527
+        }
+      ],
+      "completed": true
+    },
+    "4_8": {
+      "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "labels_sha256": "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35",
+      "cxx_sha256": "1bdeba71c1c584cb43046ce222434a503f756f3c38e963949eeeb3318d91d6a0",
+      "factor": 4,
+      "degree": 8,
+      "coordinate_order": "native polar angle / normalized physical depth / horizontal affine triangle section",
+      "steps": [
+        {
+          "h": 4e-07,
+          "energy_minus": [
+            0.20652099014801356,
+            0.20389765080025152
+          ],
+          "energy_plus": [
+            0.20652100808722093,
+            0.2038976800523431
+          ],
+          "forces_native_projected": [
+            -0.022424007966472263,
+            -0.03656511305787191
+          ],
+          "projected_minus_native": -0.01414110509139965,
+          "summed_energy_fd_minus_paired_force": [
+            -1.2455131336019942e-09,
+            -1.4200436382338921e-09
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794982073057116,
+          "shared_points": 576912784,
+          "signed_positive_order_evaluations": 1146213472,
+          "min_Jinv_over_positive_samples": 0.6099695332598817
+        },
+        {
+          "h": 2e-07,
+          "energy_minus": [
+            0.20652099464359436,
+            0.2038976581206067
+          ],
+          "energy_plus": [
+            0.20652100361319872,
+            0.20389767274665405
+          ],
+          "forces_native_projected": [
+            -0.02242400802990196,
+            -0.036565114510955676
+          ],
+          "projected_minus_native": -0.014141106481053715,
+          "summed_energy_fd_minus_paired_force": [
+            -2.8821124410660648e-09,
+            -3.852740459997506e-09
+          ],
+          "material_chart_volume_through_global_order_bound": 0.5794980960295452,
+          "shared_points": 576597984,
+          "signed_positive_order_evaluations": 1145583872,
+          "min_Jinv_over_positive_samples": 0.609969655258812
+        }
+      ],
+      "completed": true
+    }
+  },
+  "order_work": {
+    "6": {
+      "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": [
+        "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+        "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+        "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35"
+      ],
+      "degree": 6,
+      "ordered_points": 42348006,
+      "rows": [
+        "native",
+        "1x",
+        "2x",
+        "4x"
+      ],
+      "columns": [
+        "geometric_stress",
+        "order_knot_work",
+        "sum_absolute_pointwise_order_work_error"
+      ],
+      "sums": [
+        [
+          -0.44127487095717044,
+          0.41886068748636146,
+          0.0
+        ],
+        [
+          -0.43191397995883857,
+          0.3639004057926099,
+          0.1247251086291157
+        ],
+        [
+          -0.43732451430362085,
+          0.3884528215968446,
+          0.08168798131282615
+        ],
+        [
+          -0.4398333477912496,
+          0.40422577905702395,
+          0.04304686882859697
+        ]
+      ],
+      "projected_minus_native": [
+        [
+          0.009360890998331872,
+          -0.054960281693751556
+        ],
+        [
+          0.0039503566535495915,
+          -0.030407865889516883
+        ],
+        [
+          0.0014415231659208327,
+          -0.014634908429337512
+        ]
+      ]
+    },
+    "8": {
+      "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "label_sha256": [
+        "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+        "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+        "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35"
+      ],
+      "degree": 8,
+      "ordered_points": 100391968,
+      "rows": [
+        "native",
+        "1x",
+        "2x",
+        "4x"
+      ],
+      "columns": [
+        "geometric_stress",
+        "order_knot_work",
+        "sum_absolute_pointwise_order_work_error"
+      ],
+      "sums": [
+        [
+          -0.4412765755194837,
+          0.4188921394751943,
+          0.0
+        ],
+        [
+          -0.4316949626322386,
+          0.3638235023090697,
+          0.12499792207226863
+        ],
+        [
+          -0.43714317130087565,
+          0.38809329474027854,
+          0.08212295531606642
+        ],
+        [
+          -0.43978749981015963,
+          0.4041680541620609,
+          0.043314760349964475
+        ]
+      ],
+      "projected_minus_native": [
+        [
+          0.009581612887245072,
+          -0.055068637166124645
+        ],
+        [
+          0.004133404218608028,
+          -0.030798844734915787
+        ],
+        [
+          0.0014890757093240503,
+          -0.014724085313133406
+        ]
+      ]
+    }
+  },
+  "summary": {
+    "1_6": {
+      "depth_residual": -0.009082462438399028,
+      "full_minus_half": -1.9770201170610235e-08,
+      "native_total": 0.15041631187603055,
+      "spatial_total": 0.14133384943763153,
+      "native_minus_archived": -0.00014857149392188962,
+      "independent_native_image_stress_delta": 0.009360890998331872,
+      "independent_native_image_order_delta": -0.054960281693751556
+    },
+    "2_6": {
+      "depth_residual": -0.005775634256983134,
+      "full_minus_half": -1.2243037070258644e-09,
+      "native_total": 0.15039773712957827,
+      "spatial_total": 0.14462210287259514,
+      "native_minus_archived": -0.00016714624037417192,
+      "independent_native_image_stress_delta": 0.0039503566535495915,
+      "independent_native_image_order_delta": -0.030407865889516883
+    },
+    "4_6": {
+      "depth_residual": -0.014141817578902368,
+      "full_minus_half": 2.037648699076966e-09,
+      "native_total": 0.1504089594169782,
+      "spatial_total": 0.13626714183807587,
+      "native_minus_archived": -0.00015592395297422956,
+      "independent_native_image_stress_delta": 0.0014415231659208327,
+      "independent_native_image_order_delta": -0.014634908429337512
+    },
+    "1_8": {
+      "depth_residual": -0.009047408912860416,
+      "full_minus_half": 9.240080995481792e-09,
+      "native_total": 0.15042485190116897,
+      "spatial_total": 0.14137744298830857,
+      "native_minus_archived": -0.00014003146878346917,
+      "independent_native_image_stress_delta": 0.009581612887245072,
+      "independent_native_image_order_delta": -0.055068637166124645
+    },
+    "2_8": {
+      "depth_residual": -0.005795445338564822,
+      "full_minus_half": -3.2476556166560755e-12,
+      "native_total": 0.15040890879429572,
+      "spatial_total": 0.1446134634557309,
+      "native_minus_archived": -0.0001559745756567199,
+      "independent_native_image_stress_delta": 0.004133404218608028,
+      "independent_native_image_order_delta": -0.030798844734915787
+    },
+    "4_8": {
+      "depth_residual": -0.014141106481053715,
+      "full_minus_half": 1.389654065431234e-09,
+      "native_total": 0.1504068239010747,
+      "spatial_total": 0.136265717420021,
+      "native_minus_archived": -0.00015805946887773037,
+      "independent_native_image_stress_delta": 0.0014890757093240503,
+      "independent_native_image_order_delta": -0.014724085313133406
+    }
+  },
+  "boundaries": {
+    "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "log_depth_step": 1e-05,
+    "feed_nodes": 567,
+    "bulk_nodes": 3361,
+    "groups": {
+      "all_six_blocks": {
+        "samples_per_shape": 155358,
+        "max_coordinate_delta": 3.552713678800501e-15,
+        "max_difference_of_signed_displacements": 7.105427357601002e-15,
+        "max_difference_of_central_velocity": 3.5527136788005004e-10,
+        "max_magnitude_of_legacy_velocity": 0.8291732707512508
+      },
+      "entrance_w0": {
+        "samples_per_shape": 2268,
+        "max_coordinate_delta": 0.0,
+        "max_difference_of_signed_displacements": 0.0,
+        "max_difference_of_central_velocity": 0.0,
+        "max_magnitude_of_legacy_velocity": 0.0
+      },
+      "clamped_entrance_ring": {
+        "samples_per_shape": 21,
+        "max_coordinate_delta": 0.0,
+        "max_difference_of_signed_displacements": 0.0,
+        "max_difference_of_central_velocity": 0.0,
+        "max_magnitude_of_legacy_velocity": 0.0
+      },
+      "lower_slab_face": {
+        "samples_per_shape": 1134,
+        "max_coordinate_delta": 0.0,
+        "max_difference_of_signed_displacements": 0.0,
+        "max_difference_of_central_velocity": 0.0,
+        "max_magnitude_of_legacy_velocity": 0.0
+      },
+      "exit_disk": {
+        "samples_per_shape": 1134,
+        "max_coordinate_delta": 4.440892098500626e-16,
+        "max_difference_of_signed_displacements": 1.1102230246251565e-16,
+        "max_difference_of_central_velocity": 5.551115123125782e-12,
+        "max_magnitude_of_legacy_velocity": 0.8191403557844533
+      },
+      "exit_rim": {
+        "samples_per_shape": 84,
+        "max_coordinate_delta": 4.440892098500626e-16,
+        "max_difference_of_signed_displacements": 1.1102230246251565e-16,
+        "max_difference_of_central_velocity": 5.551115123125782e-12,
+        "max_magnitude_of_legacy_velocity": 0.8191403557844533
+      },
+      "roof_bulk": {
+        "samples_per_shape": 1134,
+        "max_coordinate_delta": 1.7763568394002505e-15,
+        "max_difference_of_signed_displacements": 0.0,
+        "max_difference_of_central_velocity": 0.0,
+        "max_magnitude_of_legacy_velocity": 0.0
+      },
+      "radial_brane_cutoff_and_feed_port": {
+        "samples_per_shape": 567,
+        "max_coordinate_delta": 0.0,
+        "max_difference_of_signed_displacements": 0.0,
+        "max_difference_of_central_velocity": 0.0,
+        "max_magnitude_of_legacy_velocity": 0.0
+      },
+      "radial_bulk_cutoff": {
+        "samples_per_shape": 2310,
+        "max_coordinate_delta": 8.881784197001252e-16,
+        "max_difference_of_signed_displacements": 8.881784197001252e-16,
+        "max_difference_of_central_velocity": 4.4408920985006255e-11,
+        "max_magnitude_of_legacy_velocity": 0.8191403557900044
+      },
+      "whole_bulk_port": {
+        "samples_per_shape": 3444,
+        "max_coordinate_delta": 1.7763568394002505e-15,
+        "max_difference_of_signed_displacements": 8.881784197001252e-16,
+        "max_difference_of_central_velocity": 4.4408920985006255e-11,
+        "max_magnitude_of_legacy_velocity": 0.8191403557900044
+      },
+      "two_lateral_wall_faces": {
+        "samples_per_shape": 2310,
+        "max_coordinate_delta": 1.3322676295501878e-15,
+        "max_difference_of_signed_displacements": 1.3322676295501878e-15,
+        "max_difference_of_central_velocity": 6.661338147750939e-11,
+        "max_magnitude_of_legacy_velocity": 0.8291732707512508
+      },
+      "polar_axis": {
+        "samples_per_shape": 7398,
+        "max_coordinate_delta": 3.552713678800501e-15,
+        "max_difference_of_signed_displacements": 7.105427357601002e-15,
+        "max_difference_of_central_velocity": 3.5527136788005004e-10,
+        "max_magnitude_of_legacy_velocity": 0.8291732707486285
+      },
+      "equator": {
+        "samples_per_shape": 7398,
+        "max_coordinate_delta": 3.552713678800501e-15,
+        "max_difference_of_signed_displacements": 7.105427357601002e-15,
+        "max_difference_of_central_velocity": 3.5527136788005004e-10,
+        "max_magnitude_of_legacy_velocity": 0.8291732707486285
+      },
+      "radial_origin": {
+        "samples_per_shape": 2877,
+        "max_coordinate_delta": 8.881784197001252e-16,
+        "max_difference_of_signed_displacements": 8.881784197001252e-16,
+        "max_difference_of_central_velocity": 4.4408920985006255e-11,
+        "max_magnitude_of_legacy_velocity": 0.8191403557900044
+      }
+    },
+    "physical_support": "Depth varies the exit and wall; nodes can slide tangentially on the fixed outer radial cutoff. Both charts share every displacement. Counts include both traces where specified."
+  },
+  "production": {
+    "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "label_sha256": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+    "archive": {
+      "_scratch/s11c/r4_cp10_two_metric01/registry_total.json": "504940d99019dc1f62dac68ccdd78602046b98400ccbf4b9eaf92c2bfcefc890",
+      "/var/projects/toy_physics/_scratch/s11c/r4_cp10_two_metric_fields01/field.json": "f155ffcb0214cf47eaa15b5243b0446c9694e34acac113aa669c3a992455307a",
+      "/var/projects/toy_physics/_scratch/s11c/r4_cp10_spatial_crystal01/transport/registry.json": "09bc62e8a67f6da41e523b5e38bd0369685f65685696801380ff287f795e69ef",
+      "/var/projects/toy_physics/_scratch/s11c/r4_cp10_spatial_crystal01/readout/result.json": "58a4936da218feb4052b9460a97dec68d19a67beadd65bbc9853b7e3f1af3cf5",
+      "research/pde_ledger_v3/_measurements/mouth_r4_eulerian_reference.json": "f7ea490527e7e7598370b444178ab930bb20cbefb2c8527192f00ef51ae6b94f"
+    },
+    "convention": "Nodal label and order coefficients held on the production moving chart, epsilon=0. No re-inversion of the labels.",
+    "modes": [
+      "log_depth",
+      "scaled_log_exit",
+      "mean_width",
+      "depth_asymmetry",
+      "waist_profile",
+      "polar_equatorial"
+    ],
+    "analytic": [
+      0.25719447537718554,
+      -0.6391459883017998,
+      0.7116954974321981,
+      -0.6663107359953213,
+      0.4768943097573183,
+      0.009267680524575952
+    ],
+    "steps": [
+      1e-05,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0001
+    ],
+    "depth_bath_components": [
+      0.015466823123848299,
+      -0.02626024607620457,
+      0.22961879430569976,
+      1.27348243310621,
+      -1.3064821011710137,
+      0.3853676145944821,
+      -0.3983624721486285
+    ],
+    "depth_signed_crystal_energies": [
+      0.20091318522558246,
+      0.2009114979527128
+    ],
+    "central": [
+      0.25719448921796934,
+      -0.6391459993545573,
+      0.711695484140831,
+      -0.6663107358634862,
+      0.476894301243697,
+      0.009267680753050865
+    ],
+    "analytic_minus_central": [
+      -1.3840783796847944e-08,
+      1.1052757487028941e-08,
+      1.329136711802903e-08,
+      -1.3183509839365115e-10,
+      8.513621252426162e-09,
+      -2.2847491260025166e-10
+    ],
+    "max_abs_direct": 1.3840783796847944e-08,
+    "raw_archive": {
+      "0.0001": [
+        0.2571958383990766,
+        -0.6391459993545573,
+        0.711695484140831,
+        -0.6663107358634862,
+        0.476894301243697,
+        0.009267680753050865
+      ],
+      "5e-05": [
+        0.2571948450500668,
+        -0.6391460008275598,
+        0.7116954801925688,
+        -0.6663107368495791,
+        0.47689433920471686,
+        0.009267680542432766
+      ]
+    },
+    "archive_richardson": [
+      0.25719451393373016,
+      -0.6391460013185606,
+      0.7116954788764813,
+      -0.6663107371782767,
+      0.47689435185839013,
+      0.009267680472226732
+    ],
+    "max_abs_analytic_minus_richardson": 4.2101071850986216e-08
+  },
+  "signed_label_inversion": {
+    "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "grids": {
+      "1": {
+        "labels_sha256": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+        "nodes": 5006,
+        "probes": [
+          {
+            "h": -4e-07,
+            "max_abs_label_difference": 4.884981308350689e-15,
+            "max_difference_index": [
+              0,
+              5,
+              17
+            ],
+            "max_roundtrip": 1.6548277806193163e-16
+          },
+          {
+            "h": 4e-07,
+            "max_abs_label_difference": 5.10702591327572e-15,
+            "max_difference_index": [
+              0,
+              5,
+              18
+            ],
+            "max_roundtrip": 1.175825726390002e-16
+          },
+          {
+            "h": -2e-07,
+            "max_abs_label_difference": 1.3322676295501878e-15,
+            "max_difference_index": [
+              0,
+              5,
+              17
+            ],
+            "max_roundtrip": 1.1101144710341248e-16
+          },
+          {
+            "h": 2e-07,
+            "max_abs_label_difference": 1.3322676295501878e-15,
+            "max_difference_index": [
+              0,
+              5,
+              17
+            ],
+            "max_roundtrip": 1.654827850218252e-16
+          }
+        ]
+      },
+      "2": {
+        "labels_sha256": "7035bac5ab86126f5de9fed7d3a2c4b2e2335e83ac44fc6da5edfc989bad6fd2",
+        "nodes": 35905,
+        "probes": [
+          {
+            "h": -4e-07,
+            "max_abs_label_difference": 9.631184738623233e-15,
+            "max_difference_index": [
+              2,
+              14,
+              37
+            ],
+            "max_roundtrip": 1.6548277806193163e-16
+          },
+          {
+            "h": 4e-07,
+            "max_abs_label_difference": 9.631184738623233e-15,
+            "max_difference_index": [
+              2,
+              14,
+              37
+            ],
+            "max_roundtrip": 1.6649156295597123e-16
+          },
+          {
+            "h": -2e-07,
+            "max_abs_label_difference": 2.3592239273284576e-15,
+            "max_difference_index": [
+              2,
+              14,
+              37
+            ],
+            "max_roundtrip": 1.1866719832795934e-16
+          },
+          {
+            "h": 2e-07,
+            "max_abs_label_difference": 2.4147350785597155e-15,
+            "max_difference_index": [
+              2,
+              14,
+              37
+            ],
+            "max_roundtrip": 1.654827850218252e-16
+          }
+        ]
+      },
+      "4": {
+        "labels_sha256": "389937e2ee588bd9c704d9e7235317311c2ffa6e734734fdd5a4910b12545c35",
+        "nodes": 271385,
+        "probes": [
+          {
+            "h": -4e-07,
+            "max_abs_label_difference": 9.853229343548264e-15,
+            "max_difference_index": [
+              3,
+              28,
+              74
+            ],
+            "max_roundtrip": 1.6653808555941631e-16
+          },
+          {
+            "h": 4e-07,
+            "max_abs_label_difference": 9.825473767932635e-15,
+            "max_difference_index": [
+              3,
+              28,
+              74
+            ],
+            "max_roundtrip": 1.665199011666174e-16
+          },
+          {
+            "h": -2e-07,
+            "max_abs_label_difference": 2.4702462297909733e-15,
+            "max_difference_index": [
+              3,
+              28,
+              74
+            ],
+            "max_roundtrip": 1.5191239447474338e-16
+          },
+          {
+            "h": 2e-07,
+            "max_abs_label_difference": 2.4702462297909733e-15,
+            "max_difference_index": [
+              3,
+              28,
+              74
+            ],
+            "max_roundtrip": 1.6651806637911614e-16
+          }
+        ]
+      }
+    }
+  },
+  "common_bath_depth_force": 0.17283083193097667,
+  "archived_cp10_depth_force": 0.15056488336995244
+}

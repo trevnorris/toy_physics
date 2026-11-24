@@ -1,0 +1,635 @@
+{
+  "scope": "R4 held entrance, zero-PN, frozen geometry during internal descent. Stalled feasible state saved before whole-mouth checkpoint 11.",
+  "solver_commit": "368ab67f",
+  "start_sources": {
+    "pin/mouth_backtrack_r4_release.py": "ae776b91da88be81c26ea77ee07170d434359e5030718c714e3187f1f3c9cba7",
+    "pin/mouth_feasible_crystal_step.py": "4ceaacbd0b2c14a3b147857435bcb82dae91f49bda99454ca13d9b61aac7fcd0",
+    "pin/mouth_ordered_j_bounds.cpp": "28f18037862b57ed56e657302a64979c1e63d32ab47a93781fb7915ddd903d47",
+    "pin/mouth_ordered_j_bounds.py": "b89446827f5261d46da9b0d2b9190b5a52af8faf74f36d4d79b6c9b871f17419",
+    "pin/mouth_whole_r4_relax.py": "2727363201f216daff834d514c00be9b570b505b4816ae86a802b4649182ed90"
+  },
+  "held_radius": 4,
+  "phase_drop": 0.4510084282857874,
+  "winding": 1,
+  "order_energy": "unchanged",
+  "coarse_mesh": [
+    24,
+    24
+  ],
+  "shape_tolerance": 0.0004,
+  "material_tolerance": 3e-05,
+  "input_hashes": {
+    "last_checkpoint": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "cleared_full_shape": "f87fdb65888ffd91294af657551bfa02bf390b2f9648b6421450fbeaabe3515d"
+  },
+  "output_hashes": {
+    "stalled": "c99706009efdaf3ce94f5c8a626a737927ff2ce4705cb030c843b5862d908cef",
+    "stall_record": "0a230eaca6266a70d5162901326ddf5f26c3e22948eefbc4af551f885e2a136e",
+    "flow_readback": "a4f95050f197b7142cf7efaa3c3363df61b862af187a525ab90170a2cadbbbee",
+    "review": "575c4d7d16bca1fbd5653460af507728cee61ad5aa41e6f3e1c29392821bf3e0"
+  },
+  "last_accepted": {
+    "iteration": 10,
+    "sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "energy": 92185.53614224629
+  },
+  "completed_checkpoints_in_run": [],
+  "reason": "Repeated negligible interleaved energy descent",
+  "counts": {
+    "accepted": 32,
+    "overlap_rejections": 256
+  },
+  "acceptance_scope": "Fixed shape and spatial fields; every accepted crystal move passed whole ordered-support certification and strict Armijo energy decrease. Interleaved field energy is itemized separately.",
+  "branches": [
+    {
+      "stage": "fixed_order",
+      "status": "tiny_stall",
+      "count": 29,
+      "negligible_drop": 4.656612873077393e-10,
+      "minimum_alpha": 2.3283064365386963e-10,
+      "fixed_field_total_delta": -0.029333842004332256,
+      "rejection_counts": {
+        "active_fold": 166
+      },
+      "field_update": {
+        "stage": "after_fixed_order",
+        "energy_before": 92185.47766283262,
+        "delta_total_energy": -0.004305072710849345,
+        "raw_candidate_field_delta": -0.004305072710849345,
+        "field_work_error_estimate": 0.0,
+        "crystal_delta": -0.029333842004332256,
+        "order51603_before": 3.6403035309499604e-05,
+        "order51603_after": 0.0009462769252331458
+      },
+      "accepted": [
+        {
+          "iteration": 0,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.004157656941527026,
+          "delta_total_energy": -0.0032612614279891594
+        },
+        {
+          "iteration": 1,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.004599634296640922,
+          "delta_total_energy": -0.0028109687650873794
+        },
+        {
+          "iteration": 2,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.0012454586839507262,
+          "delta_total_energy": -0.0010053208305632333
+        },
+        {
+          "iteration": 3,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.002450281130937881,
+          "delta_total_energy": -0.001660910117398301
+        },
+        {
+          "iteration": 4,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.0014110180141688133,
+          "delta_total_energy": -0.0010621934869499139
+        },
+        {
+          "iteration": 5,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.001728606253903995,
+          "delta_total_energy": -0.0012524763993709553
+        },
+        {
+          "iteration": 6,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.0017170727157978366,
+          "delta_total_energy": -0.001300398313905271
+        },
+        {
+          "iteration": 7,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.0023177988342213385,
+          "delta_total_energy": -0.0016988780723992403
+        },
+        {
+          "iteration": 8,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.0024214053240413026,
+          "delta_total_energy": -0.0017674025130317017
+        },
+        {
+          "iteration": 9,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.002383740443160635,
+          "delta_total_energy": -0.0017148515567745326
+        },
+        {
+          "iteration": 10,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.0020873426531708887,
+          "delta_total_energy": -0.0015089303055201286
+        },
+        {
+          "iteration": 11,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.0018849043088681654,
+          "delta_total_energy": -0.0013616355273679825
+        },
+        {
+          "iteration": 12,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.0016820518615612615,
+          "delta_total_energy": -0.0012157754736130955
+        },
+        {
+          "iteration": 13,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.001523984512624622,
+          "delta_total_energy": -0.0011160249707874992
+        },
+        {
+          "iteration": 14,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.0015634290848298596,
+          "delta_total_energy": -0.0011611529604860782
+        },
+        {
+          "iteration": 15,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.001796779162276186,
+          "delta_total_energy": -0.0013296329241491989
+        },
+        {
+          "iteration": 16,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.001980451525387605,
+          "delta_total_energy": -0.0014423210384361118
+        },
+        {
+          "iteration": 17,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.00187636835533902,
+          "delta_total_energy": -0.001339631362492405
+        },
+        {
+          "iteration": 18,
+          "alpha": 1.0,
+          "solver_scale": 1.0,
+          "directional_work": -0.0014982240207046683,
+          "delta_total_energy": -0.001067518839070275
+        },
+        {
+          "iteration": 19,
+          "alpha": 0.125,
+          "solver_scale": 0.125,
+          "directional_work": -0.0001495190106322191,
+          "delta_total_energy": -0.00014446895655459424
+        },
+        {
+          "iteration": 20,
+          "alpha": 0.03125,
+          "solver_scale": 0.03125,
+          "directional_work": -8.252525001833449e-05,
+          "delta_total_energy": -8.151137807679842e-05
+        },
+        {
+          "iteration": 21,
+          "alpha": 0.0078125,
+          "solver_scale": 0.0078125,
+          "directional_work": -2.9457641871463972e-05,
+          "delta_total_energy": -2.9357359367626623e-05
+        },
+        {
+          "iteration": 22,
+          "alpha": 0.000244140625,
+          "solver_scale": 0.000244140625,
+          "directional_work": -1.1573218887432432e-06,
+          "delta_total_energy": -1.157192876827251e-06
+        },
+        {
+          "iteration": 23,
+          "alpha": 7.62939453125e-06,
+          "solver_scale": 7.62939453125e-06,
+          "directional_work": -4.2633235675713924e-08,
+          "delta_total_energy": -4.263309555385675e-08
+        },
+        {
+          "iteration": 24,
+          "alpha": 1.9073486328125e-06,
+          "solver_scale": 1.9073486328125e-06,
+          "directional_work": -1.2042849920850977e-08,
+          "delta_total_energy": -1.204284985623083e-08
+        },
+        {
+          "iteration": 25,
+          "alpha": 9.5367431640625e-07,
+          "solver_scale": 9.5367431640625e-07,
+          "directional_work": -6.627963405324764e-09,
+          "delta_total_energy": -6.627933341052383e-09
+        },
+        {
+          "iteration": 26,
+          "alpha": 1.1920928955078125e-07,
+          "solver_scale": 1.1920928955078125e-07,
+          "directional_work": -8.962822198692521e-10,
+          "delta_total_energy": -8.962700304149251e-10
+        },
+        {
+          "iteration": 27,
+          "alpha": 3.725290298461914e-09,
+          "solver_scale": 3.725290298461914e-09,
+          "directional_work": -2.99314515644026e-11,
+          "delta_total_energy": -2.993125192141122e-11
+        },
+        {
+          "iteration": 28,
+          "alpha": 2.3283064365386963e-10,
+          "solver_scale": 2.3283064365386963e-10,
+          "directional_work": -1.9810107417447632e-12,
+          "delta_total_energy": -1.9839130338539235e-12
+        }
+      ]
+    },
+    {
+      "stage": "interleaved",
+      "status": "advanced",
+      "count": 1,
+      "negligible_drop": 4.656612873077393e-10,
+      "minimum_alpha": 7.450580596923828e-09,
+      "fixed_field_total_delta": -4.810263298793416e-12,
+      "rejection_counts": {
+        "active_fold": 27
+      },
+      "field_update": {
+        "stage": "interleaved",
+        "energy_before": 92185.4733577599,
+        "delta_total_energy": -2.1245796233415604e-09,
+        "raw_candidate_field_delta": -2.1245796233415604e-09,
+        "field_work_error_estimate": 0.0,
+        "crystal_delta": -4.810263298793416e-12,
+        "order51603_before": 0.0009462769252331458,
+        "order51603_after": 0.0009473058302201118
+      },
+      "accepted": [
+        {
+          "iteration": 0,
+          "alpha": 7.450580596923828e-09,
+          "solver_scale": 7.450580596923828e-09,
+          "directional_work": -4.808524861082893e-12,
+          "delta_total_energy": -4.810263298793416e-12
+        }
+      ]
+    },
+    {
+      "stage": "interleaved",
+      "status": "advanced",
+      "count": 1,
+      "negligible_drop": 4.656612873077393e-10,
+      "minimum_alpha": 3.725290298461914e-09,
+      "fixed_field_total_delta": -2.4023005806839137e-12,
+      "rejection_counts": {
+        "active_fold": 28
+      },
+      "field_update": {
+        "stage": "interleaved",
+        "energy_before": 92185.47335775776,
+        "delta_total_energy": 0.0,
+        "raw_candidate_field_delta": 0.0,
+        "field_work_error_estimate": 0.0,
+        "crystal_delta": -2.4023005806839137e-12,
+        "order51603_before": 0.0009473058302201118,
+        "order51603_after": 0.0009473058302201118
+      },
+      "accepted": [
+        {
+          "iteration": 0,
+          "alpha": 3.725290298461914e-09,
+          "solver_scale": 3.725290298461914e-09,
+          "directional_work": -2.4048478350414328e-12,
+          "delta_total_energy": -2.4023005806839137e-12
+        }
+      ]
+    },
+    {
+      "stage": "interleaved",
+      "status": "advanced",
+      "count": 1,
+      "negligible_drop": 4.656612873077393e-10,
+      "minimum_alpha": 2.9103830456733704e-11,
+      "fixed_field_total_delta": -1.0177969578251123e-13,
+      "rejection_counts": {
+        "active_fold": 35
+      },
+      "field_update": {
+        "stage": "interleaved",
+        "energy_before": 92185.47335775776,
+        "delta_total_energy": 0.0,
+        "raw_candidate_field_delta": 0.0,
+        "field_work_error_estimate": 0.0,
+        "crystal_delta": -1.0177969578251123e-13,
+        "order51603_before": 0.0009473058302201118,
+        "order51603_after": 0.0009473058302201118
+      },
+      "accepted": [
+        {
+          "iteration": 0,
+          "alpha": 2.9103830456733704e-11,
+          "solver_scale": 2.9103830456733704e-11,
+          "directional_work": -1.0432275137055993e-13,
+          "delta_total_energy": -1.0177969578251123e-13
+        }
+      ]
+    }
+  ],
+  "trapped_point_original": {
+    "cell_t_x_angle": [
+      5,
+      18,
+      0
+    ],
+    "triangle": 0,
+    "barycentric": [
+      0.4583333333333333,
+      0.3333333333333333,
+      0.20833333333333334
+    ],
+    "angular_fraction": 0.671875,
+    "chi": 5.088302929107896e-06,
+    "J": 0.0036695553138277213,
+    "W": 5.230525575630874,
+    "chi_W": 2.6614498607256336e-05,
+    "physical_r_w_theta": [
+      3.5755819974154393,
+      0.2004457746918545,
+      0.1758801700296147
+    ],
+    "principal_stretches": [
+      0.004611645318932778,
+      0.8188111002871021,
+      0.8188975573942181,
+      1.1867090185561355
+    ]
+  },
+  "last_rejected_witness_on_feasible_state": {
+    "cell_t_x_angle": [
+      5,
+      18,
+      0
+    ],
+    "triangle": 0,
+    "barycentric": [
+      0.999999996216502,
+      3.725290298461914e-09,
+      5.820766091346741e-11
+    ],
+    "angular_fraction": 0.6832729216436064,
+    "chi": 9.793192735291951e-21,
+    "J": 7.412813899151272e-14,
+    "W": 29.83719575130825,
+    "chi_W": 2.922014086731958e-19,
+    "physical_r_w_theta": [
+      3.5531882069242084,
+      0.20214128358669872,
+      0.17885882410087225
+    ],
+    "principal_stretches": [
+      9.560042705654955e-14,
+      0.8100679533744864,
+      0.8101956210632864,
+      1.1814406826864547
+    ]
+  },
+  "global_infimum_bounds": [
+    0.0,
+    7.412813899151272e-14
+  ],
+  "certified_upper_witness": {
+    "cell_t_x_angle": [
+      5,
+      18,
+      0
+    ],
+    "triangle": 0,
+    "barycentric": [
+      0.999999996216502,
+      3.725290298461914e-09,
+      5.820766091346741e-11
+    ],
+    "angular_fraction": 0.6832729216436064,
+    "chi": 9.793192735291951e-21,
+    "chart_J": 1.38351790866332e-13,
+    "placement_x_t_angle": [
+      0.9089381108617283,
+      0.24648705769075419,
+      0.17885882410087225
+    ],
+    "J_interval": [
+      7.41281389915127e-14,
+      7.412813899151272e-14
+    ]
+  },
+  "original_automatic_bracket": [
+    0.0,
+    4.6111178417345915e-06
+  ],
+  "machine_zero_witness_threshold": 1.4210854715202004e-14,
+  "stop_trigger": "two consecutive negligible combined energy drops in interleaved updates",
+  "flow_material_readback": {
+    "stalled_snapshot_sha256": "c99706009efdaf3ce94f5c8a626a737927ff2ce4705cb030c843b5862d908cef",
+    "last_accepted_snapshot_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "status": "Fixed-shape diagnostic after hard stop, preceding checkpoint 11 signed probes.",
+    "radius": 4,
+    "winding": 1,
+    "phase_drop": 0.4510084282857874,
+    "exit": 3.2775726740152384,
+    "depth": 0.8200888333873811,
+    "energy": 92185.47335775776,
+    "solid_energy": 0.20024657124174416,
+    "material_residual": {
+      "material_force_max": 0.07769590555915157,
+      "material_force_site": [
+        1,
+        16,
+        3,
+        0
+      ],
+      "angular_sum_force_max": 0.2898400246123212,
+      "angular_sum_force_site": [
+        1,
+        16,
+        0
+      ],
+      "bond_force_max": 0.07769590555915157,
+      "last_free_ring_angular_sum": [
+        0.0,
+        0.0
+      ],
+      "last_free_ring_peak_per_direction": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "last_free_ring_reference": [
+        0.9583333333333333,
+        0.9853121128230744
+      ],
+      "last_free_ring_landed_depth_fraction": [
+        0.9717142567743352,
+        0.9717184697225854
+      ]
+    },
+    "certificate": {
+      "status": "certified",
+      "all_active_cells_oriented": true,
+      "witness": null,
+      "physical_radial_chart_derivative_lower_bound": 3.2403224393710977,
+      "counts": {
+        "total_prisms": 6912,
+        "positive_bernstein_prisms": 6781,
+        "exact_prisms": 131,
+        "exact_subprisms": 463,
+        "inactive_fold_enclosures": 145,
+        "max_depth_used": 12,
+        "active_fold_prisms": 0,
+        "unresolved_prisms": 0
+      }
+    },
+    "order51603": 0.0009473058302201118,
+    "flow": {
+      "feed": 10.573545763887278,
+      "bulk": 10.573545763887266,
+      "weak_disk": 10.573545763887198,
+      "incident_cut": 10.573545763887198,
+      "receiving_cut": 9.907524882433146,
+      "feed_bulk_mismatch": 1.2434497875801753e-14,
+      "disk_minus_feed": -7.993605777301127e-14,
+      "dense_subsonic_share": 0.6611090860566464,
+      "full_disk_zero_from": 0.28460443110735106,
+      "axis_zero_from": 0.18111191069964827
+    },
+    "cp10": {
+      "exit": 3.306377271246663,
+      "depth": 0.8191403557693495,
+      "shape_force": [
+        0.15056488336995244,
+        -0.6412364018615335,
+        0.7054993329802528,
+        -0.6668344576610252,
+        0.4656029341276735,
+        0.009007417247630656
+      ],
+      "flow": {
+        "feed": 10.708572690281159,
+        "bulk": 10.708572690181937,
+        "weak_disk": 10.70857112983345,
+        "incident_cut": 10.70857112983345,
+        "receiving_cut": 10.041874545957983,
+        "feed_bulk_mismatch": 9.922196397837979e-11,
+        "disk_minus_feed": -1.5604477088260182e-06,
+        "dense_subsonic_share": 0.6675622885530933,
+        "full_disk_zero_from": 0.28460443110718825,
+        "axis_zero_from": 0.18111191069964827
+      }
+    },
+    "cleared_shape": {
+      "exit": 3.2775726740152384,
+      "depth": 0.8200888333873811,
+      "flow": {
+        "feed": 10.573679952515585,
+        "bulk": 10.57367995251545,
+        "weak_disk": 10.573679952515604,
+        "incident_cut": 10.573679952515604,
+        "receiving_cut": 9.907651182748733,
+        "feed_bulk_mismatch": 1.3500311979441904e-13,
+        "disk_minus_feed": 1.9539925233402755e-14,
+        "dense_subsonic_share": 0.6611057104947653,
+        "full_disk_zero_from": 0.28460443110735106,
+        "axis_zero_from": 0.18111191069964827
+      }
+    }
+  },
+  "physical_scope": "No material or six-force equilibrium. Positive integrated current on the stored field. Sampling of the fully melted front is limited to saved depth sections.",
+  "independent_event_review": {
+    "accepted": 32,
+    "rejected": 256,
+    "certificate": {
+      "total_prisms": 6912,
+      "positive_bernstein_prisms": 6781,
+      "exact_prisms": 131,
+      "exact_subprisms": 463,
+      "inactive_fold_enclosures": 145,
+      "max_depth_used": 12,
+      "active_fold_prisms": 0,
+      "unresolved_prisms": 0
+    },
+    "signed_rejected_prisms": {
+      "[5, 18, 0]": 256
+    },
+    "flow_readback_scope": "Fixed shape and read-only field evaluation, feeding and bulk ports versus incident-disk fraction, sampled all-disk front and checkpoint-10 comparison checked independently."
+  },
+  "runs": {
+    "production": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PYTHONPATH=/var/projects/toy_physics/_scratch/s11c/r4_feasible_descent01/pin:/var/projects/toy_physics/_scratch/s11c/r4_exact_support01/driver:/var/projects/toy_physics/_scratch/s11c/r4_exact_support01/patch:/var/projects/toy_physics/_scratch/s11c/r4_melted_survival01/pin/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "-Bu",
+        "/var/projects/toy_physics/_scratch/s11c/r4_feasible_descent01/pin/mouth_backtrack_r4_release.py",
+        "/var/projects/toy_physics/_scratch/s11c/r4_melted_survival01",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_fulltrial01",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_cp10_controls01",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_support01",
+        "/var/projects/toy_physics/_scratch/s11c/r4_feasible_descent01/coarse"
+      ],
+      "started": "2026-11-24T06:00:19.583332+00:00",
+      "ended": "2026-11-24T06:36:48.748543+00:00",
+      "exit_code": 1,
+      "limit_reason": null,
+      "sampled_peak_bytes": 12660834304
+    },
+    "flow_readback": {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "software/stage1_solver/tools/mouth_r4_feasible_stall_readback.py",
+        "_scratch/s11c/r4_feasible_descent01",
+        "_scratch/s11c/r4_feasible_stall_readback01/readout.json"
+      ],
+      "started": "2026-11-24T06:38:43.760900+00:00",
+      "ended": "2026-11-24T06:39:12.357256+00:00",
+      "exit_code": 0,
+      "limit_reason": null,
+      "sampled_peak_bytes": 1953546240
+    },
+    "independent_stall_check": {
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "_scratch/s11c/r4_feasible_stall_referee01/check.py"
+      ],
+      "started": "2026-11-24T06:38:39.124796+00:00",
+      "ended": "2026-11-24T06:38:42.466478+00:00",
+      "exit_code": 0,
+      "limit_reason": null,
+      "sampled_peak_bytes": 142471168
+    }
+  }
+}

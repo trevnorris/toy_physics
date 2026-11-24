@@ -1,5 +1,7 @@
 # Can a shorter crystal displacement keep the radius-four throat open?
 
+The subsequent interleaved relaxation reached its hard stop before checkpoint 11. [Final material and flow measurements](mouth_r4_feasible_stall.md)
+
 The starting shape has exit radius 3.2775726740, depth 0.8200888334 and inward current 10.5736799525. Its spatial fields have settled on the proposed shape. Checkpoint 10 remains the reference for the six forces until the crystal displacement, field update and signed shape probes all finish. The entrance is held at radius 4 with one quantum of circulation, the original order energy and phase drop 0.4510084282857874. [Original shape step and overlap](mouth_r4_exact_support.md)
 
 ## What folded in the previous trial

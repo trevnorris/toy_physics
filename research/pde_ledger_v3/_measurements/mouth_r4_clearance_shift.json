@@ -1,0 +1,1553 @@
+{
+  "parent_commit": "344030b4",
+  "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+  "control_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+  "phase_drop": 0.4510084282857874,
+  "fluid_potential": "(n^5 - 5n + 4)/20",
+  "common_field_depth_force": 0.17283083193097667,
+  "convention": "Eulerian minus original material, F = -dE/dlogL. Remaining = total error minus explicit order-shift error.",
+  "geometry": "Same held CP10 geometry and order, half the native material displacements. One-quarter forward local cell width displacement of every interior normalized label-depth knot only. Order grid and domain endpoints identical for each signed motion.",
+  "h": 2e-07,
+  "labels": [
+    {
+      "level": 1,
+      "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "control_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+      "h": 2e-07,
+      "static_reference_sha256": "396a9e9667c5827b02f8cca1ef80fa10fe365dfd419ada695aafa65180fcdf6b",
+      "signed_reference_sha256": "3c5fb42477fcf6cc031fe9697f5ef8ac340bdca820b57e119bf62d2fbcdd2448",
+      "cases": {
+        "unshifted": {
+          "tests": {
+            "zero": {
+              "maximum_landing_error": 1.183050830576117e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 31185,
+              "max_depth_shift": 0.0,
+              "closed_faces_displacement": 0.0,
+              "active_max_abs_difference": 5.551115123125783e-17,
+              "active_equal": false,
+              "inactive_max_abs_difference": 0.02566623197372425
+            },
+            "minus": {
+              "maximum_landing_error": 1.2629209007105935e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 31185,
+              "max_depth_shift": 0.0,
+              "closed_faces_displacement": 0.0,
+              "active_max_abs_difference": 0.0,
+              "active_equal": true,
+              "inactive_max_abs_difference": 0.02566629049750313
+            },
+            "plus": {
+              "maximum_landing_error": 1.266197028108768e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 31185,
+              "max_depth_shift": 0.0,
+              "closed_faces_displacement": 0.0,
+              "active_max_abs_difference": 0.0,
+              "active_equal": true,
+              "inactive_max_abs_difference": 0.02566617344995692
+            }
+          },
+          "sha256": "d5d3148f191e5dee6d18f4b0e42f93dd512814353dc79ff25051b2735408c83e"
+        },
+        "shifted": {
+          "tests": {
+            "zero": {
+              "maximum_landing_error": 1.2236915582393426e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 31185,
+              "max_depth_shift": 0.013744808617629722,
+              "closed_faces_displacement": 0.0
+            },
+            "minus": {
+              "maximum_landing_error": 1.1102262065221185e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 31185,
+              "max_depth_shift": 0.013744770829887343,
+              "closed_faces_displacement": 0.0
+            },
+            "plus": {
+              "maximum_landing_error": 1.1581296530223082e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 31185,
+              "max_depth_shift": 0.013744846405408961,
+              "closed_faces_displacement": 0.0
+            }
+          },
+          "sha256": "5a055e6784f6389a62c4be3217003f2d065ef328223374c43f3907a67f566634"
+        }
+      }
+    },
+    {
+      "level": 2,
+      "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "control_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+      "h": 2e-07,
+      "static_reference_sha256": "66bb4acb6ad42473f2c1b4c071b48d1da7c480e33a3f7990a1ebdf3924f426f5",
+      "signed_reference_sha256": "cf9577efe2cf9a478aecd1670a78e8500df283f6e91c2300aeed2f4dbc066710",
+      "cases": {
+        "unshifted": {
+          "tests": {
+            "zero": {
+              "maximum_landing_error": 1.4961215852983946e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 236857,
+              "max_depth_shift": 0.0,
+              "closed_faces_displacement": 0.0,
+              "active_max_abs_difference": 0.0,
+              "active_equal": true,
+              "inactive_max_abs_difference": 0.02566623197372425
+            },
+            "minus": {
+              "maximum_landing_error": 1.5319890103682159e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 236857,
+              "max_depth_shift": 0.0,
+              "closed_faces_displacement": 0.0,
+              "active_max_abs_difference": 0.0,
+              "active_equal": true,
+              "inactive_max_abs_difference": 0.02566629049750313
+            },
+            "plus": {
+              "maximum_landing_error": 1.6120462714753132e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 236857,
+              "max_depth_shift": 0.0,
+              "closed_faces_displacement": 0.0,
+              "active_max_abs_difference": 0.0,
+              "active_equal": true,
+              "inactive_max_abs_difference": 0.02566617344995692
+            }
+          },
+          "sha256": "6407fcd1baea813cfc6a97e2e3cea44fd970f8f27fe7b05dcf51916d052054c8"
+        },
+        "shifted": {
+          "tests": {
+            "zero": {
+              "maximum_landing_error": 1.538565402294839e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 236857,
+              "max_depth_shift": 0.006872404308814861,
+              "closed_faces_displacement": 0.0
+            },
+            "minus": {
+              "maximum_landing_error": 1.4826323260854527e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 236857,
+              "max_depth_shift": 0.006872385414943727,
+              "closed_faces_displacement": 0.0
+            },
+            "plus": {
+              "maximum_landing_error": 1.5841433456276768e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 236857,
+              "max_depth_shift": 0.006872423202704425,
+              "closed_faces_displacement": 0.0
+            }
+          },
+          "sha256": "168ce440dcb81826d28d205c1abb8f7d145bee9cb85bce9a35616a6b8cce4049"
+        }
+      }
+    },
+    {
+      "level": 4,
+      "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+      "control_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+      "h": 2e-07,
+      "static_reference_sha256": "c618d1acf0cdb06e24863732217c46cf2a02397ef3dc0d6c70fe8590d9c61472",
+      "signed_reference_sha256": "d537bbad35f2a7fe0da03d7a977c4b76c1ec90d82bc654b7bc5f6ab13ffba213",
+      "cases": {
+        "unshifted": {
+          "tests": {
+            "zero": {
+              "maximum_landing_error": 1.943669563405498e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 1845585,
+              "max_depth_shift": 0.0,
+              "closed_faces_displacement": 0.0,
+              "active_max_abs_difference": 0.0,
+              "active_equal": true,
+              "inactive_max_abs_difference": 0.025693299876621722
+            },
+            "minus": {
+              "maximum_landing_error": 1.7572071052938354e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 1845585,
+              "max_depth_shift": 0.0,
+              "closed_faces_displacement": 0.0,
+              "active_max_abs_difference": 0.0,
+              "active_equal": true,
+              "inactive_max_abs_difference": 0.025693358455174342
+            },
+            "plus": {
+              "maximum_landing_error": 1.9591664447658216e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 1845585,
+              "max_depth_shift": 0.0,
+              "closed_faces_displacement": 0.0,
+              "active_max_abs_difference": 0.0,
+              "active_equal": true,
+              "inactive_max_abs_difference": 0.02569324129808076
+            }
+          },
+          "sha256": "2fa102df523221abe787b343349aa770575405c5629c3126f89e5177c3dfe895"
+        },
+        "shifted": {
+          "tests": {
+            "zero": {
+              "maximum_landing_error": 1.6465767276229923e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 1845585,
+              "max_depth_shift": 0.0034362021544074306,
+              "closed_faces_displacement": 0.0
+            },
+            "minus": {
+              "maximum_landing_error": 1.8258054251034295e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 1845585,
+              "max_depth_shift": 0.0034361927074718635,
+              "closed_faces_displacement": 0.0
+            },
+            "plus": {
+              "maximum_landing_error": 1.788383608755408e-16,
+              "registration_error": 4.440892098500626e-16,
+              "n_unique": 1845585,
+              "max_depth_shift": 0.0034362116013522126,
+              "closed_faces_displacement": 0.0
+            }
+          },
+          "sha256": "033af4711cc04130b143bca5b8942e19f27a0d089e7143081ca311a1989982db"
+        }
+      }
+    }
+  ],
+  "native_face_kinks": {
+    "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "control_sha256": "68e585c242a380fae25d5badaa295cf0eb85c7cc1a19c4a65a286614b59aa38d",
+    "internal_faces": 15840,
+    "max_chart_continuity_error": 0.0,
+    "statistic": "Unweighted face centers, Frobenius norm of one-sided inverse-label gradient difference in normalized chart coordinates. Support classes refer to both incident elements' material vertices sampled in the exact order field.",
+    "groups": {
+      "all_ordered_vertices": {
+        "faces": 3106,
+        "nonzero_above_1e_10": 3106,
+        "median": 0.007978697003117513,
+        "rms": 0.09946092415522378,
+        "grid_shift_gradient_change": {
+          "1": {
+            "rms": 0.04310368911963381,
+            "mean": 0.022286462688434924
+          },
+          "2": {
+            "rms": 0.03235290541045816,
+            "mean": 0.010526660923993736
+          },
+          "4": {
+            "rms": 0.03747657535618003,
+            "mean": 0.009302671656026678
+          }
+        },
+        "maximum_native_jump": {
+          "native_gradient_jump": 0.5568263616757436,
+          "grid_shift_change_in_gradient": 0.4174588365494954,
+          "positive_order_in_elements": true,
+          "min_vertex_order": 7.651009612134943e-05,
+          "max_vertex_order": 0.014999178933125506,
+          "chi_at_face": 0.002840674401628745,
+          "physical_r_w_theta": [
+            2.699511313574685,
+            0.15672541423852446,
+            1.1781218206886428
+          ],
+          "forward_chart_determinants": [
+            1.1614315011654288,
+            0.7061715149158612
+          ],
+          "native_left_inverse_gradient": [
+            [
+              0.9997536687383191,
+              0.07872341095878414,
+              -0.0003875380340882287
+            ],
+            [
+              -0.014723299409088664,
+              0.8602739996122668,
+              -0.005690781230538053
+            ],
+            [
+              6.932098796572039e-05,
+              -0.0006218907443445181,
+              0.9997548042765253
+            ]
+          ],
+          "native_right_inverse_gradient": [
+            [
+              1.000585192202688,
+              0.030137968485030427,
+              -6.614145086981204e-05
+            ],
+            [
+              -0.024215227283478524,
+              1.4148819396974817,
+              -0.009359557059130824
+            ],
+            [
+              5.4667733652137404e-05,
+              0.0002342905602277563,
+              0.9997491405687993
+            ]
+          ],
+          "unshifted_4x_gradient": [
+            [
+              0.9999447673690085,
+              0.04130641351997033,
+              -0.00033528238466695726
+            ],
+            [
+              -0.01690500022543251,
+              1.2873869364183954,
+              -0.0061171586026356195
+            ],
+            [
+              6.595739548842516e-05,
+              3.6613707040444865e-05,
+              0.9997651165941033
+            ]
+          ],
+          "shifted_4x_gradient": [
+            [
+              1.0003494202799956,
+              0.07773386277036787,
+              -8.088393051930431e-05
+            ],
+            [
+              -0.021519723271405056,
+              0.8715579727479345,
+              -0.009159778188298717
+            ],
+            [
+              5.914142859353433e-05,
+              -0.0006054235270775976,
+              0.9997508489688818
+            ]
+          ],
+          "material_prisms": [
+            [
+              3,
+              12,
+              4,
+              1
+            ],
+            [
+              4,
+              12,
+              4,
+              0
+            ]
+          ]
+        },
+        "strongest_shift_at_4x": {
+          "native_gradient_jump": 0.5568263616757436,
+          "grid_shift_change_in_gradient": 0.4174588365494954,
+          "positive_order_in_elements": true,
+          "min_vertex_order": 7.651009612134943e-05,
+          "max_vertex_order": 0.014999178933125506,
+          "chi_at_face": 0.002840674401628745,
+          "physical_r_w_theta": [
+            2.699511313574685,
+            0.15672541423852446,
+            1.1781218206886428
+          ],
+          "forward_chart_determinants": [
+            1.1614315011654288,
+            0.7061715149158612
+          ],
+          "native_left_inverse_gradient": [
+            [
+              0.9997536687383191,
+              0.07872341095878414,
+              -0.0003875380340882287
+            ],
+            [
+              -0.014723299409088664,
+              0.8602739996122668,
+              -0.005690781230538053
+            ],
+            [
+              6.932098796572039e-05,
+              -0.0006218907443445181,
+              0.9997548042765253
+            ]
+          ],
+          "native_right_inverse_gradient": [
+            [
+              1.000585192202688,
+              0.030137968485030427,
+              -6.614145086981204e-05
+            ],
+            [
+              -0.024215227283478524,
+              1.4148819396974817,
+              -0.009359557059130824
+            ],
+            [
+              5.4667733652137404e-05,
+              0.0002342905602277563,
+              0.9997491405687993
+            ]
+          ],
+          "unshifted_4x_gradient": [
+            [
+              0.9999447673690085,
+              0.04130641351997033,
+              -0.00033528238466695726
+            ],
+            [
+              -0.01690500022543251,
+              1.2873869364183954,
+              -0.0061171586026356195
+            ],
+            [
+              6.595739548842516e-05,
+              3.6613707040444865e-05,
+              0.9997651165941033
+            ]
+          ],
+          "shifted_4x_gradient": [
+            [
+              1.0003494202799956,
+              0.07773386277036787,
+              -8.088393051930431e-05
+            ],
+            [
+              -0.021519723271405056,
+              0.8715579727479345,
+              -0.009159778188298717
+            ],
+            [
+              5.914142859353433e-05,
+              -0.0006054235270775976,
+              0.9997508489688818
+            ]
+          ],
+          "material_prisms": [
+            [
+              3,
+              12,
+              4,
+              1
+            ],
+            [
+              4,
+              12,
+              4,
+              0
+            ]
+          ]
+        }
+      },
+      "mixed_support_vertices": {
+        "faces": 1075,
+        "nonzero_above_1e_10": 1075,
+        "median": 0.03947185239239344,
+        "rms": 0.22508614438269972,
+        "grid_shift_gradient_change": {
+          "1": {
+            "rms": 0.10418537015972062,
+            "mean": 0.07809283373477433
+          },
+          "2": {
+            "rms": 0.08210551865598985,
+            "mean": 0.045598011561008456
+          },
+          "4": {
+            "rms": 0.09282519977890347,
+            "mean": 0.03948602094380127
+          }
+        },
+        "maximum_native_jump": {
+          "native_gradient_jump": 0.911601764114032,
+          "grid_shift_change_in_gradient": 0.22336674047939223,
+          "positive_order_in_elements": true,
+          "min_vertex_order": 0.0,
+          "max_vertex_order": 0.005145905371177589,
+          "chi_at_face": 0.0,
+          "physical_r_w_theta": [
+            3.579781579828243,
+            0.18530260293591097,
+            1.1781051322283589
+          ],
+          "forward_chart_determinants": [
+            0.9713224896564088,
+            0.5340138353566358
+          ],
+          "native_left_inverse_gradient": [
+            [
+              0.9626498802526907,
+              0.07821361230979607,
+              -8.738689535946083e-05
+            ],
+            [
+              0.22570050401378494,
+              1.087877418145808,
+              -0.0008440454979231449
+            ],
+            [
+              0.00011810370565205513,
+              1.8640857325816463e-06,
+              0.9999339263926049
+            ]
+          ],
+          "native_right_inverse_gradient": [
+            [
+              0.9511548246931613,
+              0.022807394152747684,
+              -4.439917614371335e-05
+            ],
+            [
+              0.4105286435677582,
+              1.978749860532507,
+              -0.0015352418236101878
+            ],
+            [
+              0.00019977812388270337,
+              0.00039553513942190694,
+              0.9999336209571992
+            ]
+          ],
+          "unshifted_4x_gradient": [
+            [
+              0.9552024936237444,
+              0.058704477164091884,
+              -7.340223193263995e-05
+            ],
+            [
+              0.345448922909787,
+              1.401573413834016,
+              -0.0014050285942688312
+            ],
+            [
+              0.00017103709025434455,
+              0.00014047203552536303,
+              0.9999382463833664
+            ]
+          ],
+          "shifted_4x_gradient": [
+            [
+              0.9586137341502834,
+              0.04510059951999068,
+              -8.551081509544645e-05
+            ],
+            [
+              0.27467495039550194,
+              1.6129664193158164,
+              -0.0012293308186281937
+            ],
+            [
+              0.00014094030436950788,
+              0.00023443606096407166,
+              0.9999384476542064
+            ]
+          ],
+          "material_prisms": [
+            [
+              4,
+              18,
+              4,
+              1
+            ],
+            [
+              5,
+              18,
+              4,
+              0
+            ]
+          ]
+        },
+        "strongest_shift_at_4x": {
+          "native_gradient_jump": 0.7401797290504912,
+          "grid_shift_change_in_gradient": 0.5551367343375849,
+          "positive_order_in_elements": true,
+          "min_vertex_order": 0.0,
+          "max_vertex_order": 0.015387718136346002,
+          "chi_at_face": 0.0023824516950915224,
+          "physical_r_w_theta": [
+            3.4910756681791333,
+            0.16279351981552653,
+            0.3926898288333118
+          ],
+          "forward_chart_determinants": [
+            1.3435750685694405,
+            0.7002032934038707
+          ],
+          "native_left_inverse_gradient": [
+            [
+              0.9211586957463176,
+              0.0751135291367569,
+              0.00019374687096088852
+            ],
+            [
+              -0.058007441383090136,
+              0.8033213693480558,
+              0.0032769590649828653
+            ],
+            [
+              -0.00023430675847397188,
+              0.00020283173256366484,
+              0.9999193459368295
+            ]
+          ],
+          "native_right_inverse_gradient": [
+            [
+              0.922162801474336,
+              0.06120807891917321,
+              0.0001370228836727628
+            ],
+            [
+              -0.11130674872285926,
+              1.5414417128177773,
+              0.006287946003553121
+            ],
+            [
+              -0.00020787810049309864,
+              -0.00016316796011396276,
+              0.9999178529278587
+            ]
+          ],
+          "unshifted_4x_gradient": [
+            [
+              0.9213272327613122,
+              0.06354439028086034,
+              0.0002012507692494836
+            ],
+            [
+              -0.06695999353031112,
+              1.4174544194495393,
+              0.003548708015187363
+            ],
+            [
+              -0.00022987801452956091,
+              -0.00010156366497682257,
+              0.9999228772088544
+            ]
+          ],
+          "shifted_4x_gradient": [
+            [
+              0.9220803953430163,
+              0.07397342159151066,
+              0.00015076858165485874
+            ],
+            [
+              -0.10693581242335526,
+              0.863862780260348,
+              0.00591819781442382
+            ],
+            [
+              -0.0002100361072550072,
+              0.00017294351893681892,
+              0.9999199712030933
+            ]
+          ],
+          "material_prisms": [
+            [
+              3,
+              16,
+              1,
+              1
+            ],
+            [
+              4,
+              16,
+              1,
+              0
+            ]
+          ]
+        }
+      },
+      "fully_melted_vertices": {
+        "faces": 11659,
+        "nonzero_above_1e_10": 11654,
+        "median": 0.0014763544456518108,
+        "rms": 0.05029131135942594,
+        "grid_shift_gradient_change": {
+          "1": {
+            "rms": 0.02504006359102574,
+            "mean": 0.0059954759501189316
+          },
+          "2": {
+            "rms": 0.016343118424035658,
+            "mean": 0.0032943075663161934
+          },
+          "4": {
+            "rms": 0.01673921842953766,
+            "mean": 0.0023329593619628103
+          }
+        },
+        "maximum_native_jump": {
+          "native_gradient_jump": 0.8411211826301018,
+          "grid_shift_change_in_gradient": 0.21016566937376902,
+          "positive_order_in_elements": false,
+          "min_vertex_order": 0.0,
+          "max_vertex_order": 0.0,
+          "chi_at_face": 0.0,
+          "physical_r_w_theta": [
+            3.4555509079503377,
+            0.2031410525286597,
+            0.9162975220924215
+          ],
+          "forward_chart_determinants": [
+            0.5142670108577648,
+            0.8960261698765227
+          ],
+          "native_left_inverse_gradient": [
+            [
+              0.9884816786437508,
+              0.004267053356670078,
+              -2.7573532739126727e-05
+            ],
+            [
+              -0.17437659965950472,
+              1.9664217955006416,
+              -0.0017575532361023597
+            ],
+            [
+              -1.8599499049031135e-06,
+              -1.5855466441938345e-06,
+              0.9999995749037112
+            ]
+          ],
+          "native_right_inverse_gradient": [
+            [
+              0.989035386042595,
+              -0.0019770315695386044,
+              -2.1992679387284158e-05
+            ],
+            [
+              -0.10008204635674038,
+              1.1286119678815099,
+              -0.0010087335387517847
+            ],
+            [
+              -2.1768379965193754e-06,
+              1.987958351921374e-06,
+              0.9999995717097752
+            ]
+          ],
+          "unshifted_4x_gradient": [
+            [
+              0.9887063501442199,
+              0.0005562814396018467,
+              -1.9939711600747145e-05
+            ],
+            [
+              -0.14423208962585754,
+              1.468524034445984,
+              -0.0009721589795214092
+            ],
+            [
+              -1.988484100934329e-06,
+              5.379463701160603e-07,
+              0.9999996073774136
+            ]
+          ],
+          "shifted_4x_gradient": [
+            [
+              0.9884180302738255,
+              -0.0010907086515175024,
+              -2.36737398549014e-05
+            ],
+            [
+              -0.16262792192403275,
+              1.259172078129314,
+              -0.0013778735759822636
+            ],
+            [
+              -1.9302216376360093e-06,
+              1.419231336896587e-06,
+              0.999999592729867
+            ]
+          ],
+          "material_prisms": [
+            [
+              5,
+              16,
+              3,
+              1
+            ],
+            [
+              6,
+              16,
+              3,
+              0
+            ]
+          ]
+        },
+        "strongest_shift_at_4x": {
+          "native_gradient_jump": 0.6770628409231783,
+          "grid_shift_change_in_gradient": 0.5077981543445759,
+          "positive_order_in_elements": false,
+          "min_vertex_order": 0.0,
+          "max_vertex_order": 0.0,
+          "chi_at_face": 0.0,
+          "physical_r_w_theta": [
+            3.1047008447579043,
+            0.2015060811455777,
+            1.1780993542959355
+          ],
+          "forward_chart_determinants": [
+            0.5328285668880682,
+            0.837440082046475
+          ],
+          "native_left_inverse_gradient": [
+            [
+              1.0085628015402837,
+              0.0004759466094034516,
+              -6.533205019145575e-05
+            ],
+            [
+              -0.02564791832332492,
+              1.86086169055943,
+              0.0013719426788490708
+            ],
+            [
+              -8.785981578306158e-06,
+              0.0006067472801205576,
+              0.9999834843538801
+            ]
+          ],
+          "native_right_inverse_gradient": [
+            [
+              1.0087427850792514,
+              -0.01258259749443103,
+              -7.4959619005717e-05
+            ],
+            [
+              -0.01631871205696724,
+              1.1839895044606465,
+              0.0008729105127585227
+            ],
+            [
+              -1.3253450385588998e-06,
+              6.54474931753628e-05,
+              0.9999830852740971
+            ]
+          ],
+          "unshifted_4x_gradient": [
+            [
+              1.0085903346897798,
+              -0.010585346907568294,
+              -7.160504419378988e-05
+            ],
+            [
+              -0.024220905623002498,
+              1.287514831544204,
+              0.0010975636941735756
+            ],
+            [
+              -7.641491817977908e-06,
+              0.0001481913329115514,
+              0.9999790388265806
+            ]
+          ],
+          "shifted_4x_gradient": [
+            [
+              1.0087253196821493,
+              -0.0007913988444094855,
+              -7.72633675234502e-05
+            ],
+            [
+              -0.017224118927867238,
+              1.7951700394225152,
+              0.0007878834512178301
+            ],
+            [
+              -2.0485601908148965e-06,
+              0.0005541958790082901,
+              0.9999801680938436
+            ]
+          ],
+          "material_prisms": [
+            [
+              5,
+              14,
+              4,
+              1
+            ],
+            [
+              6,
+              14,
+              4,
+              0
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "source": {
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/labels_1/result.json": {
+      "sha256": "8ad1c7b156bf486c515b8a0d0f5aefae187c6d942cc14f7ee753f2829862b6ca",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_inverse.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "1"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/labels_2/result.json": {
+      "sha256": "e1b216097cc89df1fb2ed5f1c2bdd5b4df1f97e60f33a1d592857fc6f8c576c2",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_inverse.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "2"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/labels_4/result.json": {
+      "sha256": "c734de57af6f9939ac7e03dbe9bf3ea9ab6519d4580abb142e72b74a147e98df",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_inverse.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "4"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/kinks.json": {
+      "sha256": "f2b6c4615af0dce1f3232b786d1c461317a3d4e444a9c17894c2add5426dce0e",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_kinks.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01/kinks.json"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/sector_0/result.json": {
+      "sha256": "b9e66e6433e80a16a6b59a9a5c8ee949a7f79f4aca9bc1bd8ce012296ee7d62d",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "0"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/sector_1/result.json": {
+      "sha256": "5346cd86c4c42c1d02c24b0f5e61a518d4ec572dc4aa5896bdf4f8823f4f8911",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "1"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/sector_2/result.json": {
+      "sha256": "6993adea9c587483266432c3167f82398c65ee6a2b6bbd1dd3af17994071b636",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "2"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/sector_3/result.json": {
+      "sha256": "91bc76b286cd942339be840307384ddd454a9040702dba33e5f74c22c331bcf9",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "3"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/sector_4/result.json": {
+      "sha256": "38c5953e749563b1dc87d4b1394931e6268a13a531f185f093a4ac432d70295d",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "4"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/sector_5/result.json": {
+      "sha256": "b66b1dbd2eba1284cbbef814a1a5438807aacaf70a12fcc7e84da3e36fb9f693",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_depth.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "5"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/static_6/result.json": {
+      "sha256": "70053f637b7a1b51aaa7a3c8c6127e1cd787c9670a36429bc6d850886dd9741c",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_work.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "6"
+      ]
+    },
+    "/var/projects/toy_physics/_scratch/s11c/r4_clearance_shift01/static_8/result.json": {
+      "sha256": "f8ae2de9849b44a0b5c842c4d1dcfa59b4daa15d9813c5a2000cdca8e91209fb",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_shift_work.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_shift01",
+        "8"
+      ]
+    }
+  },
+  "ordered_regions": [
+    "outside seam neighborhood",
+    "within CP10 native \u03c7-front cell neighborhood"
+  ],
+  "code_sha256": {
+    "mouth_r4_shift_inverse.py": "1f916952153b072978e8794ae67b0b8ab69c6ff3f173c6b96db8623263463035",
+    "mouth_r4_shift_work.cpp": "cf82d70e2acdfc347fa1adbeb774a3aff873e18d450f1d7bc20a3890ec003509",
+    "mouth_r4_shift_work.py": "71e690f23f33f927cef8eddf00b449aeab524713251ea491e6cc98c2f6df9d4c",
+    "mouth_r4_shift_depth.py": "204069ae95d8a8209b19826e86745df69ad1a97fd73248f40ae91ea85bbe08f6",
+    "mouth_r4_shift_kinks.py": "462e3b644c129760c80bd7440a5c965fbdc98c0af7a04fe9fa630f1e98f4e405"
+  },
+  "rows": {
+    "unshifted_1_6": {
+      "energy": -0.001117192294763425,
+      "order": -0.01671364759187602,
+      "remaining": 0.01063748728328387,
+      "depth": -0.006076160308592149,
+      "raw": {
+        "force": [
+          0.8458248548528348,
+          0.8397486945442426
+        ],
+        "E": [
+          0.22260593952536764,
+          0.22148874723060422
+        ],
+        "order": [
+          0.36604107456549095,
+          0.34932742697361496
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": -0.0008943715894104143,
+          "order": -0.010818945518822981,
+          "depth": 0.01766527074152302,
+          "remaining": 0.028484216260346
+        },
+        {
+          "region": "seam",
+          "energy": -0.00022282070535301068,
+          "order": -0.0058947020730530375,
+          "depth": -0.023741431050115114,
+          "remaining": -0.017846728977062076
+        }
+      ],
+      "archival_depth_delta": 2.0816681711721685e-17,
+      "quadrature_points": 15174360,
+      "static_ordered_points": 44251650,
+      "min_sampled_Jinv": 0.6099013578233693
+    },
+    "shifted_1_6": {
+      "energy": -0.0007221006493495219,
+      "order": -0.010702129895288681,
+      "remaining": 0.01573405738350736,
+      "depth": 0.005031927488218679,
+      "raw": {
+        "force": [
+          0.8458289644691802,
+          0.8508608919573989
+        ],
+        "E": [
+          0.22260593952536764,
+          0.22188383887601812
+        ],
+        "order": [
+          0.36604107456549095,
+          0.35533894467020233
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": 0.0011120607325857956,
+          "order": -0.0018810801794701404,
+          "depth": 0.023575245596170302,
+          "remaining": 0.025456325775640443
+        },
+        {
+          "region": "seam",
+          "energy": -0.0018341613819353175,
+          "order": -0.00882104971581854,
+          "depth": -0.01854331810795165,
+          "remaining": -0.00972226839213311
+        }
+      ],
+      "archival_depth_delta": 0.011108087796810849,
+      "quadrature_points": 23084022,
+      "static_ordered_points": 44251650,
+      "min_sampled_Jinv": 0.6096959646096773
+    },
+    "unshifted_2_6": {
+      "energy": -0.00041467979062232915,
+      "order": -0.007467778045025769,
+      "remaining": 0.00956488385627055,
+      "depth": 0.0020971058112447816,
+      "raw": {
+        "force": [
+          0.8458290858015265,
+          0.8479261916127713
+        ],
+        "E": [
+          0.22260593952536764,
+          0.22219125973474532
+        ],
+        "order": [
+          0.36604107456549095,
+          0.3585732965204652
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": -8.741127176059571e-05,
+          "order": -0.0032315471882499724,
+          "depth": 0.007221148457982218,
+          "remaining": 0.01045269564623219
+        },
+        {
+          "region": "seam",
+          "energy": -0.00032726851886173344,
+          "order": -0.004236230856775797,
+          "depth": -0.0051240426467375755,
+          "remaining": -0.0008878117899617788
+        }
+      ],
+      "archival_depth_delta": 8.673617379884035e-17,
+      "quadrature_points": 54130338,
+      "static_ordered_points": 44251650,
+      "min_sampled_Jinv": 0.6098086049174168
+    },
+    "shifted_2_6": {
+      "energy": -0.0008634000603634749,
+      "order": -0.005338881296798603,
+      "remaining": -0.011448736151396743,
+      "depth": -0.016787617448195347,
+      "raw": {
+        "force": [
+          0.8458242869055962,
+          0.8290366694574008
+        ],
+        "E": [
+          0.22260593952536764,
+          0.22174253946500416
+        ],
+        "order": [
+          0.36604107456549095,
+          0.36070219326869235
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": -0.00043786729533493163,
+          "order": -0.0024970517496619993,
+          "depth": -0.012735424382975535,
+          "remaining": -0.010238372633313536
+        },
+        {
+          "region": "seam",
+          "energy": -0.0004255327650285433,
+          "order": -0.002841829547136604,
+          "depth": -0.00405219306521995,
+          "remaining": -0.001210363518083346
+        }
+      ],
+      "archival_depth_delta": -0.01888472325944004,
+      "quadrature_points": 91977600,
+      "static_ordered_points": 44251650,
+      "min_sampled_Jinv": 0.609603246028752
+    },
+    "unshifted_4_6": {
+      "energy": -0.000711096866988746,
+      "order": -0.004181217000788606,
+      "remaining": 0.00023547731673995154,
+      "depth": -0.003945739684048655,
+      "raw": {
+        "force": [
+          0.8458307364255362,
+          0.8418849967414875
+        ],
+        "E": [
+          0.22260593952536764,
+          0.2218948426583789
+        ],
+        "order": [
+          0.36604107456549095,
+          0.3618598575647024
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": -0.0004694826437002253,
+          "order": -0.001916703808463982,
+          "depth": -0.003991717484290447,
+          "remaining": -0.002075013675826465
+        },
+        {
+          "region": "seam",
+          "energy": -0.00024161422328852072,
+          "order": -0.0022645131923246242,
+          "depth": 4.597780024145903e-05,
+          "remaining": 0.0023104909925660833
+        }
+      ],
+      "archival_depth_delta": -7.28583859910259e-17,
+      "quadrature_points": 246846768,
+      "static_ordered_points": 44251650,
+      "min_sampled_Jinv": 0.609762367582524
+    },
+    "shifted_4_6": {
+      "energy": -0.0009134310216037667,
+      "order": -0.0037901681259631115,
+      "remaining": -0.005384116054061638,
+      "depth": -0.00917428418002475,
+      "raw": {
+        "force": [
+          0.8458290856548958,
+          0.836654801474871
+        ],
+        "E": [
+          0.22260593952536764,
+          0.22169250850376387
+        ],
+        "order": [
+          0.36604107456549095,
+          0.36225090643952784
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": -0.0006553039396823002,
+          "order": -0.002045831143032306,
+          "depth": -0.004791728184925792,
+          "remaining": -0.002745897041893486
+        },
+        {
+          "region": "seam",
+          "energy": -0.0002581270819214665,
+          "order": -0.0017443369829308053,
+          "depth": -0.004382555995099763,
+          "remaining": -0.0026382190121689575
+        }
+      ],
+      "archival_depth_delta": -0.005228544495976168,
+      "quadrature_points": 450432138,
+      "static_ordered_points": 44251650,
+      "min_sampled_Jinv": 0.6095570259440195
+    },
+    "unshifted_1_8": {
+      "energy": -0.0012719653195364562,
+      "order": -0.0168373364011479,
+      "remaining": 0.010800514407206613,
+      "depth": -0.006036821993941288,
+      "raw": {
+        "force": [
+          0.8458507865613717,
+          0.8398139645674304
+        ],
+        "E": [
+          0.22260624742869442,
+          0.22133428210915795
+        ],
+        "order": [
+          0.36596733897705236,
+          0.34913000257590443
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": -0.0010436860276042126,
+          "order": -0.010905908782426199,
+          "depth": 0.017688107087872273,
+          "remaining": 0.028594015870298473
+        },
+        {
+          "region": "seam",
+          "energy": -0.00022827929193224364,
+          "order": -0.005931427618721702,
+          "depth": -0.023724929081813617,
+          "remaining": -0.017793501463091915
+        }
+      ],
+      "archival_depth_delta": 2.7755575615628914e-17,
+      "quadrature_points": 35986000,
+      "static_ordered_points": 104897256,
+      "min_sampled_Jinv": 0.6093871382342292
+    },
+    "shifted_1_8": {
+      "energy": -0.0008795381066501948,
+      "order": -0.010821050388631598,
+      "remaining": 0.015839102207993366,
+      "depth": 0.0050180518193617685,
+      "raw": {
+        "force": [
+          0.8458390402391263,
+          0.850857092058488
+        ],
+        "E": [
+          0.22260624742869442,
+          0.22172670932204422
+        ],
+        "order": [
+          0.36596733897705236,
+          0.3551462885884208
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": 0.0009541814373841551,
+          "order": -0.001989871043821645,
+          "depth": 0.023581865278966607,
+          "remaining": 0.025571736322788252
+        },
+        {
+          "region": "seam",
+          "energy": -0.0018337195440343498,
+          "order": -0.008831179344809953,
+          "depth": -0.018563813459604978,
+          "remaining": -0.009732634114795025
+        }
+      ],
+      "archival_depth_delta": 0.011054873813303084,
+      "quadrature_points": 54729320,
+      "static_ordered_points": 104897256,
+      "min_sampled_Jinv": 0.6092677025231505
+    },
+    "unshifted_2_8": {
+      "energy": -0.0004919087352585998,
+      "order": -0.007580109582001587,
+      "remaining": 0.009703643904542897,
+      "depth": 0.0021235343225413095,
+      "raw": {
+        "force": [
+          0.8458291877805174,
+          0.8479527221030587
+        ],
+        "E": [
+          0.22260624742869442,
+          0.2221143386934358
+        ],
+        "order": [
+          0.36596733897705236,
+          0.35838722939505074
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": -0.00016321252179379853,
+          "order": -0.003322817040829207,
+          "depth": 0.007250448262703879,
+          "remaining": 0.010573265303533086
+        },
+        {
+          "region": "seam",
+          "energy": -0.00032869621346480124,
+          "order": -0.0042572925411723805,
+          "depth": -0.005126913940162764,
+          "remaining": -0.0008696213989903834
+        }
+      ],
+      "archival_depth_delta": -6.591949208711867e-17,
+      "quadrature_points": 128326120,
+      "static_ordered_points": 104897256,
+      "min_sampled_Jinv": 0.60933684256617
+    },
+    "shifted_2_8": {
+      "energy": -0.0009019016644371096,
+      "order": -0.005337398581033825,
+      "remaining": -0.011448784832965908,
+      "depth": -0.016786183413999733,
+      "raw": {
+        "force": [
+          0.8458302166464302,
+          0.8290440332324305
+        ],
+        "E": [
+          0.22260624742869442,
+          0.2217043457642573
+        ],
+        "order": [
+          0.36596733897705236,
+          0.36062994039601853
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": -0.0004744034570839939,
+          "order": -0.002469397640958354,
+          "depth": -0.012731796940786633,
+          "remaining": -0.010262399299828279
+        },
+        {
+          "region": "seam",
+          "energy": -0.0004274982073531157,
+          "order": -0.0028680009400754713,
+          "depth": -0.0040543864732136,
+          "remaining": -0.001186385533138129
+        }
+      ],
+      "archival_depth_delta": -0.01890971773654111,
+      "quadrature_points": 218029280,
+      "static_ordered_points": 104897256,
+      "min_sampled_Jinv": 0.6092174173507218
+    },
+    "unshifted_4_8": {
+      "energy": -0.0007441563557955728,
+      "order": -0.00426426435472807,
+      "remaining": 0.00032789024075322026,
+      "depth": -0.00393637411397485,
+      "raw": {
+        "force": [
+          0.8458298863855868,
+          0.8418935122716119
+        ],
+        "E": [
+          0.22260624742869442,
+          0.22186209107289884
+        ],
+        "order": [
+          0.36596733897705236,
+          0.3617030746223243
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": -0.0004982639530898558,
+          "order": -0.0019594323299585437,
+          "depth": -0.003982381280583591,
+          "remaining": -0.0020229489506250475
+        },
+        {
+          "region": "seam",
+          "energy": -0.000245892402705717,
+          "order": -0.0023048320247695264,
+          "depth": 4.60071666076034e-05,
+          "remaining": 0.00235083919137713
+        }
+      ],
+      "archival_depth_delta": 6.245004513516506e-17,
+      "quadrature_points": 585081192,
+      "static_ordered_points": 104897256,
+      "min_sampled_Jinv": 0.60931174269686
+    },
+    "shifted_4_8": {
+      "energy": -0.000849606018324487,
+      "order": -0.0036477550702182504,
+      "remaining": -0.005525648532010818,
+      "depth": -0.009173403602229069,
+      "raw": {
+        "force": [
+          0.8458297855450453,
+          0.8366563819428162
+        ],
+        "E": [
+          0.22260624742869442,
+          0.22175664141036994
+        ],
+        "order": [
+          0.36596733897705236,
+          0.3623195839068341
+        ]
+      },
+      "local": [
+        {
+          "region": "outside_seam",
+          "energy": -0.0005955516181214704,
+          "order": -0.0019227807133875285,
+          "depth": -0.004790598952432057,
+          "remaining": -0.0028678182390445284
+        },
+        {
+          "region": "seam",
+          "energy": -0.00025405440020301664,
+          "order": -0.0017249743568307219,
+          "depth": -0.0043828046497989825,
+          "remaining": -0.0026578302929682607
+        }
+      ],
+      "archival_depth_delta": -0.0052370294882541565,
+      "quadrature_points": 1067763320,
+      "static_ordered_points": 104897256,
+      "min_sampled_Jinv": 0.6091923227623921
+    }
+  },
+  "shift_minus_unshifted": {
+    "1_6": {
+      "energy": 0.00039509164541390307,
+      "order": 0.006011517696587337,
+      "remaining": 0.005096570100223491,
+      "depth": 0.011108087796810828
+    },
+    "2_6": {
+      "energy": -0.00044872026974114576,
+      "order": 0.002128896748227166,
+      "remaining": -0.021013620007667294,
+      "depth": -0.018884723259440128
+    },
+    "4_6": {
+      "energy": -0.00020233415461502063,
+      "order": 0.0003910488748254948,
+      "remaining": -0.00561959337080159,
+      "depth": -0.005228544495976095
+    },
+    "1_8": {
+      "energy": 0.00039242721288626145,
+      "order": 0.006016286012516303,
+      "remaining": 0.0050385878007867535,
+      "depth": 0.011054873813303057
+    },
+    "2_8": {
+      "energy": -0.0004099929291785098,
+      "order": 0.002242711000967762,
+      "remaining": -0.021152428737508805,
+      "depth": -0.018909717736541043
+    },
+    "4_8": {
+      "energy": -0.00010544966252891419,
+      "order": 0.0006165092845098197,
+      "remaining": -0.005853538772764039,
+      "depth": -0.005237029488254219
+    }
+  }
+}

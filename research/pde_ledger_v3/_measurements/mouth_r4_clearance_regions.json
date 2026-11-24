@@ -1,0 +1,149 @@
+{
+  "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+  "amplitude": 0.12,
+  "normalized_chart_cut": 0.8824969025845955,
+  "legacy_masks_sha256": "f12d3d66e5302fdd4408ed58e5f52d408b5f718ca1a1c20fa5eedece2f3cc6a4",
+  "masks_sha256": "9accf8221d8839d4aa81aa8c818903fe7bb1fc590246538cc22223f9b6b8a254",
+  "changed_native_cells": 1475,
+  "changed_active_native_cells": 155,
+  "weld_changed_including_C": 1563,
+  "normalized_inverse_chart_bounds": [
+    0.76,
+    1.12
+  ],
+  "normalized_cartesian_inverse_bounds": [
+    0.76,
+    1.4049280000000004
+  ],
+  "normalized_cartesian_forward_bounds": [
+    0.7117802478134109,
+    1.3157894736842106
+  ],
+  "normalized_cartesian_scope": "Radial 3D vector scaling plus normalized depth; independent of the two stored stress-free reference metrics.",
+  "synthetic_region_scope": "Exact image of the synthetic weld in held native chart, one cell halo; C uses CP10 order-front neighborhood and gets overlap priority.",
+  "active_cell_counts": [
+    2461,
+    340,
+    1199
+  ],
+  "physical_forward_J_sample": {
+    "ordered": [
+      0.39134712505166525,
+      1.6970953476032722
+    ],
+    "melted": [
+      0.1917829610573863,
+      0.9401646198500009
+    ],
+    "core": [
+      0.4284459012644799,
+      0.8312144157261988
+    ],
+    "collar": [
+      0.1917829610573863,
+      1.6970953476032722
+    ]
+  },
+  "sample_points": 224640,
+  "minimum_witnesses": {
+    "ordered": {
+      "chart": [
+        0.8854918975027931,
+        0.006674846010788324,
+        0.005816744447170244
+      ],
+      "J": 0.39134712505166525,
+      "side": "collar",
+      "independent_SVD": {
+        "J_inverse": 2.555276213842075,
+        "J": 0.3913471250516652,
+        "grad_xi_spectral_norm": 1.2339501370892731,
+        "W": 0.40808066913081065
+      }
+    },
+    "melted": {
+      "chart": [
+        0.9844981152990587,
+        0.998894355542106,
+        0.005816744447170244
+      ],
+      "J": 0.1917829610573863,
+      "side": "collar",
+      "independent_SVD": {
+        "J_inverse": 5.214227554348663,
+        "J": 0.19178296105738624,
+        "grad_xi_spectral_norm": 1.2235318344834982,
+        "W": 0.7626196065031833
+      }
+    },
+    "collar": {
+      "chart": [
+        0.9844981152990587,
+        0.998894355542106,
+        0.005816744447170244
+      ],
+      "J": 0.1917829610573863,
+      "side": "collar",
+      "independent_SVD": {
+        "J_inverse": 5.214227554348663,
+        "J": 0.19178296105738624,
+        "grad_xi_spectral_norm": 1.2235318344834982,
+        "W": 0.7626196065031833
+      }
+    },
+    "core": {
+      "chart": [
+        0.015943148129681273,
+        0.7345378368585356,
+        0.005816744447170244
+      ],
+      "J": 0.4284459012644799,
+      "side": "core",
+      "independent_SVD": {
+        "J_inverse": 2.3340169600145138,
+        "J": 0.42844590126447996,
+        "grad_xi_spectral_norm": 17.854948950943616,
+        "W": 0.23850979781055606
+      }
+    }
+  },
+  "whole_volume_bounds": {
+    "8": {
+      "current_over_4pi": 13.939039852466163,
+      "reference_over_4pi": 30.831066883872204,
+      "reference_collar_over_4pi": 16.083333333333332,
+      "average_J": 0.4521102012125861
+    },
+    "12": {
+      "current_over_4pi": 13.939039852465983,
+      "reference_over_4pi": 30.831066883872182,
+      "reference_collar_over_4pi": 16.083333333333332,
+      "average_J": 0.4521102012125806
+    }
+  },
+  "volume_scope": "Physical volume divided by the sum of the core and collar natural reference volumes. For every onto orientation-preserving map with this held boundary and these two fixed reference patches, this equals the reference-volume mean of the forward elastic J. The common angular factor 4*pi cancels.",
+  "runs": [
+    {
+      "script": "mouth_r4_clearance_regions.py",
+      "code_sha256": "61525f00bf7addd9228e377c3e128f488b25b3e8f610bad0e12f2f27412178ea",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_clearance_regions.py",
+        "_scratch/s11c",
+        "_scratch/s11c/r4_clearance_regions01"
+      ],
+      "stdout_sha256": "09f39385a0d93375b0e8c0216fab7652999220f9a24aeaa5399f20bb9cf49b89"
+    },
+    {
+      "script": "mouth_r4_clearance_volume.py",
+      "code_sha256": "942eecc8632c5e718cf47181c5ace55ccb6a2a798331074f0c9f402dd7e6cbea",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "_scratch/s11c/r4_clearance_regions01/ref_volume.py"
+      ],
+      "stdout_sha256": "8c67ae9acddb7ba65c6e45009dcb6f05d836967347f2621de8ecac12e1768809"
+    }
+  ]
+}

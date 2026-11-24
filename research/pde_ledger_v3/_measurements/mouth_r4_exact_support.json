@@ -1,6 +1,6 @@
 {
   "source_checkpoint": "f3538a34",
-  "scope": "24 x 24 R4, held entrance; original checkpoint and complete full shape proposal",
+  "scope": "Held 24 x 24 radius-four checkpoint, full shape proposal and first verified fixed-order crystal overlap",
   "phase_drop": 0.4510084282857874,
   "winding": 1,
   "entered_production_sources": {
@@ -593,6 +593,41 @@
       "exit_code": 0,
       "limits_verified": true,
       "outcome_sha256": "f8aa00b507870f2592e1fbb16cb2c4fb5f5ae45d3386159d832b8e5c0b09cb82"
+    },
+    "r4_exact_support01/guard": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PYTHONPATH=/var/projects/toy_physics/_scratch/s11c/r4_exact_support01/driver:/var/projects/toy_physics/_scratch/s11c/r4_exact_support01/patch:/var/projects/toy_physics/_scratch/s11c/r4_melted_survival01/pin/software/stage1_solver/tools",
+        "/usr/bin/python3",
+        "-Bu",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_support01/driver/mouth_exact_r4_release.py",
+        "/var/projects/toy_physics/_scratch/s11c/r4_melted_survival01",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_fulltrial01",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_cp10_controls01",
+        "/var/projects/toy_physics/_scratch/s11c/r4_exact_support01/coarse"
+      ],
+      "started": "2026-11-24T05:39:28.014855+00:00",
+      "ended": "2026-11-24T05:47:27.704075+00:00",
+      "sample_peak_bytes": 9121939456,
+      "exit_code": 1,
+      "limits_verified": true,
+      "outcome_sha256": "692aafd08f9f7673254c8582192209d564043d40929df8d6cbf20378b4c289ef"
+    },
+    "r4_cp10_site_referee/end_guard": {
+      "command": [
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/python3",
+        "-u",
+        "/var/projects/toy_physics/_scratch/s11c/r4_cp10_site_referee/endpoint.py"
+      ],
+      "started": "2026-11-24T05:47:27.790486+00:00",
+      "ended": "2026-11-24T05:47:28.589628+00:00",
+      "sample_peak_bytes": 116150272,
+      "exit_code": 0,
+      "limits_verified": true,
+      "outcome_sha256": "d8c8f578b8612737749073811f8e2876dee1f9cea1a67f0298d5cf5e8efa8559"
     }
   },
   "physical_replay_gate": {
@@ -644,5 +679,159 @@
       0.009007417247630656
     ],
     "basis_status": "certified"
+  },
+  "overlap": {
+    "kind": "material or shape displacement at fixed transported order",
+    "witness": {
+      "cell_t_x_angle": [
+        5,
+        18,
+        0
+      ],
+      "triangle": 0,
+      "barycentric": [
+        0.4583333333333333,
+        0.3333333333333333,
+        0.20833333333333334
+      ],
+      "angular_fraction": 0.671875,
+      "placement_x_t_angle": [
+        0.9145044362989125,
+        0.24462745596387353,
+        0.17588001135329262
+      ],
+      "chart_determinant": -0.003275078449899644,
+      "exact_determinant_sign": -1,
+      "order": 1.9181843544347013e-07,
+      "exact_order_positive": true
+    },
+    "x": [
+      0.03319070566760205,
+      -0.25660765321621926,
+      0.00276906790649518,
+      -0.07121343237552154,
+      0.07825106095352755,
+      0.024017335333098487
+    ],
+    "cell_index_order": "depth, radial, polar",
+    "radius": 4.0,
+    "exit": 3.2775726740152384,
+    "depth": 0.8200888333873811,
+    "proposal_type": "internal material line search and rematch",
+    "checkpoint_sha": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "saved_state_sha256": "59f7b260d66b2fc852c6cd9cadc34380750e6783580fd6990a697ee4f3de1364",
+    "order_variations": [
+      {
+        "joined_node": 48768,
+        "basis_weight_at_witness": 0.007468732966671031,
+        "order": 0.0,
+        "lower_bound_dE_dchi": 0.004266760635714,
+        "minus_lower_bound_dE_dchi": -0.004266760635714
+      },
+      {
+        "joined_node": 48903,
+        "basis_weight_at_witness": 0.13686006378369817,
+        "order": 0.0,
+        "lower_bound_dE_dchi": 0.006804394043615174,
+        "minus_lower_bound_dE_dchi": -0.006804394043615174
+      },
+      {
+        "joined_node": 48769,
+        "basis_weight_at_witness": 0.0228728739993523,
+        "order": 0.0,
+        "lower_bound_dE_dchi": 0.009950528774639795,
+        "minus_lower_bound_dE_dchi": -0.009950528774639795
+      },
+      {
+        "joined_node": 48904,
+        "basis_weight_at_witness": 0.4191317333792861,
+        "order": 0.0,
+        "lower_bound_dE_dchi": 0.017763007674608585,
+        "minus_lower_bound_dE_dchi": -0.017763007674608585
+      },
+      {
+        "joined_node": 51603,
+        "basis_weight_at_witness": 0.005269297843232695,
+        "order": 3.6403035309499604e-05,
+        "lower_bound_dE_dchi": -6.285407784388432e-05,
+        "minus_lower_bound_dE_dchi": 6.285407784388432e-05
+      },
+      {
+        "joined_node": 51738,
+        "basis_weight_at_witness": 0.09655673085893765,
+        "order": 0.0,
+        "lower_bound_dE_dchi": -0.00034099319497038743,
+        "minus_lower_bound_dE_dchi": 0.00034099319497038743
+      },
+      {
+        "joined_node": 51604,
+        "basis_weight_at_witness": 0.016137139481509712,
+        "order": 0.0,
+        "lower_bound_dE_dchi": 0.0037965149414519034,
+        "minus_lower_bound_dE_dchi": -0.0037965149414519034
+      },
+      {
+        "joined_node": 51739,
+        "basis_weight_at_witness": 0.2957034276873124,
+        "order": 0.0,
+        "lower_bound_dE_dchi": 0.006489807367271198,
+        "minus_lower_bound_dE_dchi": -0.006489807367271198
+      }
+    ],
+    "order_force_scope": "Signed joined nodal dE/dchi and its negative with zero lower bound for undefined W. Basis weights are evaluated at the displayed witness. All nodal derivatives are saved. Order drive at an inverted point has no unique constitutive value.",
+    "physical": {
+      "r_w_theta": [
+        3.5757702838536067,
+        0.200616244975936,
+        0.17588001135329262
+      ],
+      "chi": 1.9181843544347013e-07,
+      "reference_x_t_theta": [
+        0.9167686393307551,
+        0.21701388888888887,
+        0.17589646367755352
+      ],
+      "J": -0.0018030791386219804,
+      "density": 0.08858807910742757,
+      "principal_stretches": [
+        0.002255469858282734,
+        0.8188534869059793,
+        0.8189401197868769,
+        1.1921184533167601
+      ]
+    }
+  },
+  "issue": {
+    "error": "VerifiedOverlap",
+    "detail": "Verified positive order on nonpositive J: {'cell_t_x_angle': [5, 18, 0], 'triangle': 0, 'barycentric': [0.4583333333333333, 0.3333333333333333, 0.20833333333333334], 'angular_fraction': 0.671875, 'placement_x_t_angle': [0.9145044362989125, 0.24462745596387353, 0.17588001135329262], 'chart_determinant': -0.003275078449899644, 'exact_determinant_sign': -1, 'order': 1.9181843544347013e-07, 'exact_order_positive': True}",
+    "last": "parent checkpoint 10"
+  },
+  "review": {
+    "report_sha256": "eaeabf5029e131de70bcceaa659ffd7a4ef1c75d82a0b3948888afd2dc222e3c",
+    "review_script_sha256": "d9688c85379a7167b4ccccdfe36263cbf0e57a0cdaf65aca0736f7f4a24484f9",
+    "field_bytes_equal": true,
+    "shape_bytes_equal": true,
+    "crystal_coordinates_bytes_equal": false,
+    "reconstructed_chart_determinant": -0.003275078449899644,
+    "reconstructed_order": 1.9181843544347013e-07,
+    "reconstructed_physical_r_w_theta": [
+      3.5757702838536067,
+      0.200616244975936,
+      0.17588001135329262
+    ],
+    "sum_of_nodal_weights": 1.0,
+    "signed_derivative_readback": "All eight signs and weights checked against the saved joined order-derivative vector."
+  },
+  "stop": {
+    "last_accepted": "checkpoint 10",
+    "source_commit": "bd380b11",
+    "checkpoint_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "rejected_proposal_sha256": "59f7b260d66b2fc852c6cd9cadc34380750e6783580fd6990a697ee4f3de1364",
+    "joined_variations_sha256": "2c38b311c18ce598fed04e2e350b26ec6b7e2a151dc0506bd9f69bfa9de37edc",
+    "accepted_state_after_10": false,
+    "order_rematched_after_rejected_displacement": false,
+    "physical_reordering_force": "undefined on an inverted ordered element; the negatives of the recorded lower-bound derivatives are upper bounds on the ordering forces",
+    "peak_abs_crystal_coordinate_change_between_snapshots": 0.022515067018437154,
+    "free_release": false
   }
 }

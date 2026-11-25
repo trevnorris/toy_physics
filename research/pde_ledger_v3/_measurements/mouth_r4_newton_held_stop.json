@@ -1,0 +1,213 @@
+{
+  "accepted_step": 108,
+  "last_field_rematch": 100,
+  "state_sha256": {
+    "last_active": "a2210361aa5b38712de7db618b5220985e12f39f3a089351dfd3767bef0a7178",
+    "rematched": "63a2de2ae45c6c2b197573ac70b2f035142f538d59908bb068ceda87b0570542"
+  },
+  "source_manifest_sha256": "22a06d53f4b64bd6d6be19fc2c8c2f8d038909ebd5f7357c9a327941d386820b",
+  "parent_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+  "radius": 4,
+  "winding": 1,
+  "epsilon": 1e-08,
+  "phase_drop": 0.4510084282857874,
+  "shape": [
+    0.03203348161357326,
+    -0.22160765321621922,
+    0.0008870732843312349,
+    -0.0685819081404728,
+    0.0708792715906547,
+    0.02342688643280306
+  ],
+  "depth": 0.8191403557693495,
+  "exit_radius": 3.306377271246663,
+  "physical_fields_equal_last_rematch": true,
+  "total_energy": 92185.39080180653,
+  "physical_energy": 92185.39080173153,
+  "material": {
+    "elastic_energy": 0.3120447044574924,
+    "gauge_energy": 7.499958047772582e-08,
+    "min_Jinv_global": 0.0023139341638329348,
+    "min_Jinv_active": 0.43358711521538484,
+    "max_free_label_force": 0.09873119115384474,
+    "gradient_l2": 0.31018036716458774,
+    "max_unit_melt_residual": 447.3254685221683,
+    "chart": {
+      "chart_det_global_lower": 2.0525336733340053e-06,
+      "chart_lowest_cell": [
+        25,
+        11,
+        10
+      ],
+      "chart_det_active_lower": 0.0021257531624534354
+    },
+    "stationary": false,
+    "worst_free_active": {
+      "component": 1,
+      "group": 26672,
+      "chi": 0.20550515057407043,
+      "signed_force": -0.09873119115384474,
+      "node": [
+        24,
+        2,
+        10
+      ],
+      "radius": 3.9528073379158393,
+      "depth": 0.05174626019989946,
+      "theta": 0.6162109095189517
+    },
+    "worst_global": {
+      "cell": [
+        25,
+        10,
+        13
+      ],
+      "local": [
+        0.1127016653792583,
+        0.1127016653792583,
+        0.8872983346207417
+      ],
+      "chart": [
+        0.9986874284990818,
+        0.3194168667298769,
+        0.9601016690607929
+      ],
+      "chi": 0.0,
+      "Jinv": 0.0023139341638329348,
+      "grad_xi_norm": 0.9303756292574253,
+      "W": 100618.06551276575
+    },
+    "worst_active": {
+      "cell": [
+        25,
+        9,
+        9
+      ],
+      "local": [
+        0.8872983346207417,
+        0.8872983346207417,
+        0.1127016653792583
+      ],
+      "chart": [
+        0.9998332815600899,
+        0.312297342387719,
+        0.5437188506248328
+      ],
+      "chi": 2.4215834023920176e-05,
+      "Jinv": 0.43358711521538484,
+      "grad_xi_norm": 1.1392491786187129,
+      "W": 1.4757389850780072
+    }
+  },
+  "total_minus_logged": 0.0,
+  "material_minus_logged": {
+    "elastic_energy": 0.0,
+    "gauge_energy": 0.0,
+    "min_Jinv_global": 0.0,
+    "min_Jinv_active": 0.0,
+    "max_free_label_force": 0.0,
+    "gradient_l2": 0.0,
+    "max_unit_melt_residual": 0.0,
+    "chart_det_global_lower": 0.0
+  },
+  "field": {
+    "physical_energy": 92185.39080173153,
+    "unit_gauge": 7.499958047772584,
+    "gauge_energy": 7.499958047772584e-08,
+    "phase_raw": 8.718711169697357e-11,
+    "amplitude_raw": 6.940833999936267e-10,
+    "order_raw": 0.34959525648184164,
+    "order_kkt": 0.00137832287734673,
+    "order_projected": 0.0001528696370190822,
+    "carrier_metric": 2.2570826694020438e-10,
+    "shared_work_error": -1.4432899320127035e-15,
+    "order_knot_transport": [
+      {
+        "free_interior": 0.0006170181239389524,
+        "lower_obstacle": 2.830170725876223e-16,
+        "upper_obstacle": -0.0,
+        "total": 0.0006170181239392354
+      },
+      {
+        "free_interior": 0.0010636956993097175,
+        "lower_obstacle": -0.03717749115366742,
+        "upper_obstacle": -0.0,
+        "total": -0.0361137954543577
+      }
+    ]
+  },
+  "current": {
+    "feed_current": 10.707729096802119,
+    "bulk_current": 10.707729096801858,
+    "weak_disk_current": 10.707729085719713,
+    "incident_slice_current": 10.707729085719716,
+    "receiving_slice_current": 10.041076756342735,
+    "positive_slice_current": 10.707729085719716,
+    "port_error": 2.611244553918368e-13,
+    "disk_minus_feed_current": -1.1082406103923859e-08,
+    "dense_total_subsonic_share": 0.6675896192162908,
+    "total_axial_stress": -26.582875402667447
+  },
+  "sampled_full_melt_front": 0.3363506918035118,
+  "limiting_cell": {
+    "cell": [
+      25,
+      11,
+      10
+    ],
+    "local": [
+      0.0,
+      0.0,
+      0.3984375
+    ],
+    "chart": [
+      0.9985207100591716,
+      0.34744281502268715,
+      0.6499242861420276
+    ],
+    "physical": {
+      "radius": 3.8510633140555273,
+      "theta": 0.6499242861420276,
+      "cylindrical_radius": 2.3303790374081053,
+      "axial_brane_coordinate": 3.065945562281433,
+      "w": 0.28460443110718825
+    },
+    "chi": 0.0,
+    "vertex_chi": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "accepted_chart_det_exact": "480496783209984900425913079694631170957/197225928322395049892373147221992899929856000",
+    "accepted_chart_det": 2.4362759364201934e-06,
+    "accepted_physical_Jinv": 3.5230118985301687e-06,
+    "accepted_det_minus_global_lower": 3.8374226308618785e-07,
+    "rejected_trial": {
+      "alpha": 0.0001220703125,
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "site": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "cell": [
+          25,
+          11,
+          10
+        ],
+        "chart_fractions": [
+          0.0,
+          0.0,
+          0.3984375
+        ],
+        "chart_det": -2.8684134090568403e-07,
+        "chart_lower": -6.42576702326975e-07,
+        "roundoff_margin": 9.282089337569046e-14,
+        "subdivisions": 7
+      }
+    },
+    "accepted_minus_rejected_chart_det": 2.7231172773258774e-06
+  }
+}

@@ -12,7 +12,7 @@
 
 Time fell from 803.95 to **75.85 seconds per accepted step** including the 311.75-second field update, or **113.28 seconds per step** including one-time geometry setup. All five conjugate-gradient searches encountered nonpositive curvature and used the specified descent fallback. The final minimum sampled inverse determinant was 0.01863644 in fully melted material and 0.35957709 in ordered material. The chart-wide lower bound was positive at 0.0003037594. The unscaled melted-label residual was 52.4763, and the active-crystal target remains 0.000030. [Signed steps, timings and rematched endpoint](../../../research/pde_ledger_v3/_measurements/mouth_r4_newton_benchmark.json)
 
-Independent review concluded, “Scoped pass for Part 4 from the saved, rematched step‑34 state at fixed radius 4.” The primary ε = 10⁻⁸ convergence run starts from that state. Its verified stationary endpoint is the warm start for ε = 10⁻¹⁰. Both endpoints must pass the all-node one-sided work and signed six-force checks before comparison. All six shape coordinates are held for review. The benchmark code and historical timing audit are in `d01cba0b` and `0786cf4b`.
+Independent review concluded, “Scoped pass for Part 4 from the saved, rematched step‑34 state at fixed radius 4.” The primary ε = 10⁻⁸ convergence run started from that state and reached accepted step 108. The benchmark code and historical timing audit are in `d01cba0b` and `0786cf4b`. [Subsequent held run and stop decision](mouth_r4_newton_stop.md)
 
 <details>
 <summary>Step-29 baseline, timing attribution, force locations and frozen-evaluator audit</summary>

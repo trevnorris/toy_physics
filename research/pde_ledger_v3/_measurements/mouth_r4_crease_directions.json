@@ -1,0 +1,173 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_crease_directions.py",
+    "_scratch/s11c/r4_segmented_held01",
+    "_scratch/s11c/r4_crease167_01/directions"
+  ],
+  "script_sha256": "d8c665074023532cdcdde2f3d6a0bc45bf801c88b0270f408ec771bad8b8289a",
+  "state_sha256": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694",
+  "pin_sha256": "73d210aa27cab48ba075b3491fcfbb39743107417add15f6b95863be8c4f02f1",
+  "directions_sha256": "20ddac5b6b854586d6be1dace6d36e340646744da838291d98a8d2f785527095",
+  "issue_sha256": "c5ba407d563098997e83e4b1a66920a9d01a4673ca598e17f675c1403820df45",
+  "jacobi_anchor": 151,
+  "anchor_sha256": "3fd6ca95777a47f75539aa7caff5cab1b2afa89432b3a1e13d2549e6c1ff62ed",
+  "inverse_diagonal": {
+    "colors_by_component": [
+      8,
+      8,
+      8
+    ],
+    "hvp_calls": 24,
+    "negative_diagonal": 33,
+    "zero_diagonal": 0,
+    "floored": 0,
+    "minimum_relative_step": 9.5367431640625e-07,
+    "active_range": [
+      -1462.569353706566,
+      710.6850315128503
+    ],
+    "melted_range": [
+      6.950892090698084e-11,
+      2.6874888772636254
+    ],
+    "chart_at_assembly": 2.1505383532627896e-05,
+    "rebuilt": false
+  },
+  "two_cg_curvatures": [
+    0.0017643158450633058,
+    -5.458927133756621
+  ],
+  "cg_first_step": 0.877228104493072,
+  "retained_corner_count": 6,
+  "slopes": {
+    "newton": -0.0013576865334395387,
+    "pj": -0.0015477006795445957
+  },
+  "terminal_banks": {
+    "newton": {
+      "slope": -0.0013576865334395387,
+      "alpha": 0.0001220703125,
+      "crystal": 5.267065532055248e-07,
+      "gauge": 3.342951653573309e-13,
+      "delta": 5.267068875006902e-07,
+      "archived_delta": 5.267068875006902e-07,
+      "work_error": 0.0,
+      "projected_sites": [
+        {
+          "cell": [
+            25,
+            10,
+            9
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "det": 0.0037833266182554456,
+          "rate_before_projection": -0.14325821759464247
+        },
+        {
+          "cell": [
+            25,
+            10,
+            9
+          ],
+          "local": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "det": 0.00236629245243976,
+          "rate_before_projection": -0.07644914624107398
+        },
+        {
+          "cell": [
+            25,
+            10,
+            7
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "det": 0.0035530439345920453,
+          "rate_before_projection": -0.1423021381157864
+        }
+      ]
+    },
+    "pj": {
+      "slope": -0.0015477006795445957,
+      "alpha": 0.0001220703125,
+      "crystal": 7.515709002370308e-07,
+      "gauge": 3.810850718426194e-13,
+      "delta": 7.515712813221026e-07,
+      "archived_delta": 7.515712813221026e-07,
+      "work_error": 0.0,
+      "projected_sites": [
+        {
+          "cell": [
+            25,
+            10,
+            9
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "det": 0.0037833266182554456,
+          "rate_before_projection": -0.16330782935577254
+        },
+        {
+          "cell": [
+            25,
+            10,
+            9
+          ],
+          "local": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "det": 0.00236629245243976,
+          "rate_before_projection": -0.08714853736389581
+        },
+        {
+          "cell": [
+            25,
+            10,
+            7
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "det": 0.0035530439345920453,
+          "rate_before_projection": -0.16221794238799406
+        }
+      ]
+    }
+  },
+  "radius": 4,
+  "epsilon": 1e-08,
+  "optimization_steps": 0,
+  "passed": true,
+  "guard": {
+    "exitCode": 0,
+    "wallSeconds": 72.810343189165,
+    "unit": "s11c-guard-3a21fc61c202",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 72.73755068005994,
+      "childPid": 3051716
+    }
+  }
+}

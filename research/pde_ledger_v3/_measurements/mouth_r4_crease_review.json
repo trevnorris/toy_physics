@@ -1,0 +1,147 @@
+{
+  "scope": "Independent scientific review on the frozen step-166 state at the primary gauge for Part 1. Direct physical-ray work uses the pre-existing material sampler and one-sided extended-precision differences, independent of the new analytic directional derivative.",
+  "verdict": "Part 1 clears Branch 1 for the frozen step-166 projected-Jacobi direction. The derivative agrees below the first reference-plane crossing. The two incident rays account for the sign reversal in the global one-sided slope at ξₜ = 1/12. This clears the smooth collar implementation and its two-gauge pre-resume audits.",
+  "source_commit": "ec9fa56b",
+  "evidence_sha256": {
+    "directions/result.json": "64c94325cf915621a78b0108c92ab04487cfb3e1e465d51791332f71a7332a99",
+    "crossings/result.json": "1a9ddb5a55b69906d6f56ac6fec1526a321495b6701d19ea84b757790625a011",
+    "crossings_extension/result.json": "17169735f91b6fb23885dfb9623082be8ed7f131f85ca550b42393552fb2f960",
+    "ray_signatures/result.json": "00a88365103f29bd7b4c61b427265860c6d10b3caa26fc5e78d8a154a0e15566",
+    "ladder/result.json": "ec78ffab1db2d1e63e374e8c96912ac2da534af1eb9e24d9e8ee8d5a02d579b7",
+    "review_rays/result.json": "0dc496e58916b2541e00ba641812be9a50d5008902d05486cad2e22b67f08df1",
+    "boundary_traces/result.json": "420fa0c22a7fc449c5c73c274728538822ec7d538539d8be52ef2ccdb35e6b61"
+  },
+  "direct_energy_probe": {
+    "state_sha256": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694",
+    "crossing_sha256": "1a9ddb5a55b69906d6f56ac6fec1526a321495b6701d19ea84b757790625a011",
+    "script_sha256": "a8b3a100532858066bdf6586ec3b53ab5657b89fae7c61f2a382bbfd8c593f7f",
+    "direction_sha256": "20ddac5b6b854586d6be1dace6d36e340646744da838291d98a8d2f785527095",
+    "ray": [
+      1,
+      0
+    ],
+    "alpha": 6.63986080497945e-05,
+    "relative_offsets": [
+      -0.0002,
+      -0.0001,
+      0.0001,
+      0.0002,
+      -2e-05,
+      -1e-05,
+      1e-05,
+      2e-05
+    ],
+    "triangle_keys": [
+      "eta",
+      "t",
+      "upper"
+    ],
+    "measured": "Physical energy of the two incident quadrature rays only, sampled through depth_cell_trace.",
+    "cells": [
+      {
+        "cell": [
+          23,
+          2,
+          17
+        ],
+        "bank": [
+          {
+            "halfwidth": 6.63986080497945e-09,
+            "before": -1.861797304136715e-05,
+            "after": 0.01724464175800572
+          },
+          {
+            "halfwidth": 6.63986080497945e-10,
+            "before": -1.8617970968513726e-05,
+            "after": 0.017244799544557043
+          }
+        ],
+        "reference_triangles_before": [
+          [
+            6,
+            0,
+            1
+          ],
+          [
+            6,
+            0,
+            1
+          ]
+        ],
+        "reference_triangles_after": [
+          [
+            6,
+            0,
+            1
+          ],
+          [
+            6,
+            0,
+            1
+          ],
+          [
+            6,
+            1,
+            0
+          ]
+        ]
+      },
+      {
+        "cell": [
+          24,
+          2,
+          17
+        ],
+        "bank": [
+          {
+            "halfwidth": 6.63986080497945e-09,
+            "before": -1.280757767577954e-05,
+            "after": 9.420591893869742e-05
+          },
+          {
+            "halfwidth": 6.63986080497945e-10,
+            "before": -1.2807577470599565e-05,
+            "after": 9.420593446796862e-05
+          }
+        ],
+        "reference_triangles_before": [
+          [
+            6,
+            0,
+            1
+          ]
+        ],
+        "reference_triangles_after": [
+          [
+            6,
+            1,
+            0
+          ],
+          [
+            6,
+            0,
+            1
+          ]
+        ]
+      }
+    ],
+    "pair": [
+      {
+        "halfwidth": 6.63986080497945e-09,
+        "before": -3.1425550717395845e-05,
+        "after": 0.01733884767694448,
+        "jump": 0.017370273227661874
+      },
+      {
+        "halfwidth": 6.63986080497945e-10,
+        "before": -3.142554843911329e-05,
+        "after": 0.017339005479025636,
+        "jump": 0.017370431027464748
+      }
+    ]
+  },
+  "global_before": -0.001547583695416549,
+  "global_after": 0.015822853174232942,
+  "difference_global_jump_minus_independent_ray_jump": 5.842184742921308e-09,
+  "scope_of_endpoint_test": "The course of accumulated work is continuous at the crossing and becomes positive by 1.1 times the crossing fraction. The rejected Newton fraction was reproduced separately; the full ladder measures projected Jacobi."
+}

@@ -1,0 +1,648 @@
+{
+  "through_archived_step": {
+    "result": {
+      "state_sha256": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694",
+      "directions_sha256": "20ddac5b6b854586d6be1dace6d36e340646744da838291d98a8d2f785527095",
+      "tool_sha256": "da710ddfec8b5fa418844d565214f1538df595b7ad213f0230ae630506c41ed0",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_collar_crossings.py",
+        "_scratch/s11c/r4_crease167_01"
+      ],
+      "alpha_cap": 0.0001220703125,
+      "alpha_cross": 6.63986080497945e-05,
+      "first": {
+        "alpha": 6.63986080497945e-05,
+        "cell": [
+          23,
+          2,
+          17
+        ],
+        "cells": [
+          [
+            23,
+            2,
+            17
+          ],
+          [
+            24,
+            2,
+            17
+          ]
+        ],
+        "local": [
+          1.0,
+          0.5,
+          0.1127016653792583
+        ],
+        "ray": [
+          1,
+          0
+        ],
+        "knot": "endpoint",
+        "types": [
+          "ray endpoint"
+        ],
+        "plane": 0.08333333333333333,
+        "material_x_t_theta": [
+          0.9928965864418638,
+          0.08333333333333333,
+          1.272752431641853
+        ],
+        "r_w_theta": [
+          3.9459368327059243,
+          0.06468282524987433,
+          1.2727530995783605
+        ],
+        "meridional_angular_distance_to_peak": 1.1707133250108246,
+        "absolute_depth_distance_to_peak": 0.012936565049974869,
+        "ordered_cell": true,
+        "chi": 0.15796927064212765
+      },
+      "first_all_geometry": {
+        "alpha": 6.63986080497945e-05,
+        "cell": [
+          23,
+          2,
+          17
+        ],
+        "cells": [
+          [
+            23,
+            2,
+            17
+          ],
+          [
+            24,
+            2,
+            17
+          ]
+        ],
+        "local": [
+          1.0,
+          0.5,
+          0.1127016653792583
+        ],
+        "ray": [
+          1,
+          0
+        ],
+        "knot": "endpoint",
+        "types": [
+          "ray endpoint"
+        ],
+        "plane": 0.08333333333333333,
+        "material_x_t_theta": [
+          0.9928965864418638,
+          0.08333333333333333,
+          1.272752431641853
+        ],
+        "r_w_theta": [
+          3.9459368327059243,
+          0.06468282524987433,
+          1.2727530995783605
+        ],
+        "meridional_angular_distance_to_peak": 1.1707133250108246,
+        "absolute_depth_distance_to_peak": 0.012936565049974869,
+        "ordered_cell": true,
+        "chi": 0.15796927064212765
+      },
+      "peak": {
+        "component": 1,
+        "group": 26703,
+        "chi": 0.114487526371181,
+        "signed_force": -0.1046051670323409,
+        "node": [
+          24,
+          3,
+          20
+        ],
+        "radius": 3.9385786968906356,
+        "depth": 0.0776193902998492,
+        "theta": 1.5707963267948966
+      },
+      "planes": [
+        0.041666666666666664,
+        0.08333333333333333,
+        0.125,
+        0.16666666666666666,
+        0.20833333333333331,
+        0.25,
+        0.29166666666666663,
+        0.3333333333333333,
+        0.375,
+        0.41666666666666663,
+        0.4583333333333333,
+        0.5,
+        0.5416666666666666,
+        0.5833333333333333,
+        0.625,
+        0.6666666666666666,
+        0.7083333333333333,
+        0.75,
+        0.7916666666666666,
+        0.8333333333333333,
+        0.875,
+        0.9166666666666666,
+        0.9583333333333333
+      ],
+      "registry_depth_planes": [
+        0.0,
+        0.08333333333333333,
+        0.16666666666666666,
+        0.25,
+        0.3333333333333333,
+        0.41666666666666663,
+        0.5,
+        0.5833333333333333,
+        0.6666666666666666,
+        0.75,
+        0.8333333333333333,
+        0.9166666666666666,
+        1.0
+      ],
+      "weld": 0.8824969025845955,
+      "active_cell_count": 6312,
+      "total_cell_count": 28080,
+      "diagnostics": {
+        "ray_axial_plane_candidates": 5630,
+        "split_levels_examined": 12008,
+        "roots_at_baseline": 0
+      },
+      "ray_endpoint_incidents_identically_on_plane": 0,
+      "definition": "Unique physical shared ray endpoints or interior intersections with each distinct radial/angular cut, restricted to the collar side. Events counted on active cells even for zero order at a shared face. Coincident native and material axial planes counted once; tangent contacts and motion along the plane excluded.",
+      "all_events": [
+        {
+          "alpha": 6.63986080497945e-05,
+          "cell": [
+            23,
+            2,
+            17
+          ],
+          "cells": [
+            [
+              23,
+              2,
+              17
+            ],
+            [
+              24,
+              2,
+              17
+            ]
+          ],
+          "local": [
+            1.0,
+            0.5,
+            0.1127016653792583
+          ],
+          "ray": [
+            1,
+            0
+          ],
+          "knot": "endpoint",
+          "types": [
+            "ray endpoint"
+          ],
+          "plane": 0.08333333333333333,
+          "material_x_t_theta": [
+            0.9928965864418638,
+            0.08333333333333333,
+            1.272752431641853
+          ],
+          "r_w_theta": [
+            3.9459368327059243,
+            0.06468282524987433,
+            1.2727530995783605
+          ],
+          "meridional_angular_distance_to_peak": 1.1707133250108246,
+          "absolute_depth_distance_to_peak": 0.012936565049974869,
+          "ordered_cell": true,
+          "chi": 0.15796927064212765
+        }
+      ],
+      "ladder": [
+        {
+          "alpha": 6.63986080497945e-08,
+          "multiple": 0.001,
+          "crossings": 0,
+          "all_geometry_crossings": 0
+        },
+        {
+          "alpha": 6.63986080497945e-07,
+          "multiple": 0.01,
+          "crossings": 0,
+          "all_geometry_crossings": 0
+        },
+        {
+          "alpha": 6.63986080497945e-06,
+          "multiple": 0.1,
+          "crossings": 0,
+          "all_geometry_crossings": 0
+        },
+        {
+          "alpha": 3.319930402489725e-05,
+          "multiple": 0.5,
+          "crossings": 0,
+          "all_geometry_crossings": 0
+        },
+        {
+          "alpha": 5.975874724481505e-05,
+          "multiple": 0.9,
+          "crossings": 0,
+          "all_geometry_crossings": 0
+        },
+        {
+          "alpha": 7.303846885477395e-05,
+          "multiple": 1.1,
+          "crossings": 1,
+          "all_geometry_crossings": 1
+        },
+        {
+          "alpha": 0.0001220703125,
+          "multiple": null,
+          "crossings": 1,
+          "all_geometry_crossings": 1
+        }
+      ]
+    },
+    "sha256": "1a9ddb5a55b69906d6f56ac6fec1526a321495b6701d19ea84b757790625a011",
+    "guard": {
+      "exitCode": 0,
+      "wallSeconds": 4.076025917194784,
+      "unit": "s11c-guard-7e1d34fe1829",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 4.003175052814186,
+        "childPid": 3052690
+      }
+    },
+    "invocation": [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_collar_crossings.py",
+      "_scratch/s11c/r4_crease167_01"
+    ]
+  },
+  "above_archived_step": {
+    "result": {
+      "state_sha256": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694",
+      "directions_sha256": "20ddac5b6b854586d6be1dace6d36e340646744da838291d98a8d2f785527095",
+      "tool_sha256": "e2dae0b5db50df29bbe913fac76dfbacfba65bb2e62cfcfb849e7c1b5e3493cd",
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_collar_crossings.py",
+        "_scratch/s11c/r4_crease167_01",
+        "--extension"
+      ],
+      "interval_left_open": 0.0001220703125,
+      "interval_right_closed": 0.000265594432199178,
+      "alpha_cap": 0.0001220703125,
+      "alpha_cross": 6.63986080497945e-05,
+      "first": {
+        "alpha": 6.63986080497945e-05,
+        "cell": [
+          23,
+          2,
+          17
+        ],
+        "cells": [
+          [
+            23,
+            2,
+            17
+          ],
+          [
+            24,
+            2,
+            17
+          ]
+        ],
+        "local": [
+          1.0,
+          0.5,
+          0.1127016653792583
+        ],
+        "ray": [
+          1,
+          0
+        ],
+        "knot": "endpoint",
+        "types": [
+          "ray endpoint"
+        ],
+        "plane": 0.08333333333333333,
+        "material_x_t_theta": [
+          0.9928965864418638,
+          0.08333333333333333,
+          1.272752431641853
+        ],
+        "r_w_theta": [
+          3.9459368327059243,
+          0.06468282524987433,
+          1.2727530995783605
+        ],
+        "meridional_angular_distance_to_peak": 1.1707133250108246,
+        "absolute_depth_distance_to_peak": 0.012936565049974869,
+        "ordered_cell": true,
+        "chi": 0.15796927064212765
+      },
+      "first_all_geometry": null,
+      "peak": {
+        "component": 1,
+        "group": 26703,
+        "chi": 0.114487526371181,
+        "signed_force": -0.1046051670323409,
+        "node": [
+          24,
+          3,
+          20
+        ],
+        "radius": 3.9385786968906356,
+        "depth": 0.0776193902998492,
+        "theta": 1.5707963267948966
+      },
+      "planes": [
+        0.041666666666666664,
+        0.08333333333333333,
+        0.125,
+        0.16666666666666666,
+        0.20833333333333331,
+        0.25,
+        0.29166666666666663,
+        0.3333333333333333,
+        0.375,
+        0.41666666666666663,
+        0.4583333333333333,
+        0.5,
+        0.5416666666666666,
+        0.5833333333333333,
+        0.625,
+        0.6666666666666666,
+        0.7083333333333333,
+        0.75,
+        0.7916666666666666,
+        0.8333333333333333,
+        0.875,
+        0.9166666666666666,
+        0.9583333333333333
+      ],
+      "registry_depth_planes": [
+        0.0,
+        0.08333333333333333,
+        0.16666666666666666,
+        0.25,
+        0.3333333333333333,
+        0.41666666666666663,
+        0.5,
+        0.5833333333333333,
+        0.6666666666666666,
+        0.75,
+        0.8333333333333333,
+        0.9166666666666666,
+        1.0
+      ],
+      "weld": 0.8824969025845955,
+      "active_cell_count": 6312,
+      "total_cell_count": 28080,
+      "diagnostics": {
+        "ray_axial_plane_candidates": 5630,
+        "split_levels_examined": 12008,
+        "roots_at_baseline": 0
+      },
+      "ray_endpoint_incidents_identically_on_plane": 0,
+      "definition": "Unique physical shared ray endpoints or interior intersections with each distinct radial/angular cut, restricted to the collar side. Events counted on active cells even for zero order at a shared face. Coincident native and material axial planes counted once; tangent contacts and motion along the plane excluded.",
+      "all_events": [],
+      "ladder": [
+        {
+          "alpha": 0.000132797216099589,
+          "multiple": 2,
+          "crossings": 1,
+          "all_geometry_crossings": 1
+        },
+        {
+          "alpha": 0.000265594432199178,
+          "multiple": 4,
+          "crossings": 1,
+          "all_geometry_crossings": 1
+        }
+      ],
+      "prior_sha256": "1a9ddb5a55b69906d6f56ac6fec1526a321495b6701d19ea84b757790625a011"
+    },
+    "sha256": "17169735f91b6fb23885dfb9623082be8ed7f131f85ca550b42393552fb2f960",
+    "guard": {
+      "exitCode": 0,
+      "wallSeconds": 3.9946551551111042,
+      "unit": "s11c-guard-c83863f29aeb",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 3.921339220367372,
+        "childPid": 3053506
+      }
+    },
+    "invocation": [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_collar_crossings.py",
+      "_scratch/s11c/r4_crease167_01",
+      "--extension"
+    ]
+  },
+  "production_ray_signatures": {
+    "result": {
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_collar_ray_signature.py",
+        "_scratch/s11c/r4_crease167_01"
+      ],
+      "source_files": {
+        "mouth_r4_collar_ray_signature.py": "e9a710e1ac47300b54a26b361a93139b21c38f1dd114161b9f910261ff44d6e0",
+        "mouth_r4_collar_ray_signature.hpp": "2861c83eb882054b4da7d86662b0fc77baa637587514cecc4687dce62fcccf37",
+        "mouth_r4_segmented_endpoint_forces.hpp": "6aa89c9e60eaaec3170e54c16173750692688a259a1e00df597b880dde745601"
+      },
+      "exact_first_root_from_binary_inputs": {
+        "numerator": "540732524066590347772903002112",
+        "denominator": "8143732827367063207504266948377307",
+        "depth_offset": -8.136038750030765e-07,
+        "depth_velocity": 0.012253327274465277,
+        "root": 6.63986080497945e-05
+      },
+      "events_primary": "1a9ddb5a55b69906d6f56ac6fec1526a321495b6701d19ea84b757790625a011",
+      "events_extension": "17169735f91b6fb23885dfb9623082be8ed7f131f85ca550b42393552fb2f960",
+      "active_cells": 6312,
+      "physical_triangle_signatures": [
+        {
+          "alpha": 6.63986080497945e-08,
+          "multiple": 0.001,
+          "changed_cell_rays": 0,
+          "all_cell_rays": []
+        },
+        {
+          "alpha": 6.63986080497945e-07,
+          "multiple": 0.01,
+          "changed_cell_rays": 0,
+          "all_cell_rays": []
+        },
+        {
+          "alpha": 6.63986080497945e-06,
+          "multiple": 0.1,
+          "changed_cell_rays": 0,
+          "all_cell_rays": []
+        },
+        {
+          "alpha": 3.319930402489725e-05,
+          "multiple": 0.5,
+          "changed_cell_rays": 0,
+          "all_cell_rays": []
+        },
+        {
+          "alpha": 5.975874724481505e-05,
+          "multiple": 0.9,
+          "changed_cell_rays": 0,
+          "all_cell_rays": []
+        },
+        {
+          "alpha": 6.633220944174471e-05,
+          "multiple": 0.9990000000000001,
+          "changed_cell_rays": 0,
+          "all_cell_rays": []
+        },
+        {
+          "alpha": 6.646500665784429e-05,
+          "multiple": 1.001,
+          "changed_cell_rays": 2,
+          "all_cell_rays": [
+            [
+              23,
+              2,
+              17,
+              1,
+              0
+            ],
+            [
+              24,
+              2,
+              17,
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "alpha": 7.303846885477395e-05,
+          "multiple": 1.1,
+          "changed_cell_rays": 2,
+          "all_cell_rays": [
+            [
+              23,
+              2,
+              17,
+              1,
+              0
+            ],
+            [
+              24,
+              2,
+              17,
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "alpha": 0.0001220703125,
+          "multiple": 1.8384468603386304,
+          "changed_cell_rays": 2,
+          "all_cell_rays": [
+            [
+              23,
+              2,
+              17,
+              1,
+              0
+            ],
+            [
+              24,
+              2,
+              17,
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "alpha": 0.000132797216099589,
+          "multiple": 2.0,
+          "changed_cell_rays": 2,
+          "all_cell_rays": [
+            [
+              23,
+              2,
+              17,
+              1,
+              0
+            ],
+            [
+              24,
+              2,
+              17,
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "alpha": 0.000265594432199178,
+          "multiple": 4.0,
+          "changed_cell_rays": 2,
+          "all_cell_rays": [
+            [
+              23,
+              2,
+              17,
+              1,
+              0
+            ],
+            [
+              24,
+              2,
+              17,
+              1,
+              0
+            ]
+          ]
+        }
+      ],
+      "interpretation": "At each tested alpha, compare actual sequences of collar reference triangles against zero, on every active production ray using extended-precision production cuts. One shared physical endpoint can change two incident cell rays. Counts can include changes of other radial or diagonal physical branches."
+    },
+    "sha256": "00a88365103f29bd7b4c61b427265860c6d10b3caa26fc5e78d8a154a0e15566",
+    "guard": {
+      "exitCode": 0,
+      "wallSeconds": 7.944136604201049,
+      "unit": "s11c-guard-0de46d4b797f",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 7.872436988633126,
+        "childPid": 3054518
+      }
+    },
+    "invocation": [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_collar_ray_signature.py",
+      "_scratch/s11c/r4_crease167_01"
+    ]
+  }
+}

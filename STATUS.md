@@ -2,6 +2,8 @@
 
 ## Common-medium research
 
+**A single crossing of the collar reference plane explains the uphill projected-Jacobi trial at radius 4.** The measured slope agrees with the gradient below the crossing. At the crossing it changes from −0.00154758 to +0.01582285. The independently measured work of the two incident rays accounts for that change. Step 166 stays held during the smooth-reference boundary and derivative audits. [Signed work, location and independent review](software/stage1_solver/reports/mouth_r4_collar_crease.md)
+
 **Radius 4 stopped at step 167 with an open, positively oriented held shape.** The primary accepted 58 energy-lowering crystal steps. Its final crystal residual was 0.10460517 against 0.000030. Both search directions raised energy at every orientation-admitted fraction. The entrance showed repeated sampling across collar plane ξₜ = 1/12, but the fraction tests did not identify which cells supplied the positive work. The secondary gauge and stationary six-force comparison were not reached. [Reviewed numerical stop and saved-state readback](software/stage1_solver/reports/mouth_r4_segmented_held_stop.md)
 
 **Radius 4 cleared Gate 2 at both gauges and resumed the held-shape Newton–CG solve from step 108.** Integrating log-depth work across both collar-face crossings reproduced the wide energy change within 1.06 × 10⁻⁹ in force units. The physical and whole-cell checks returned the same +6.47413327 × 10⁻⁸ bound and rejected the deliberately inverted edge. The open question is whether the two gauge strengths reach the 0.000030 internal target and agree on the six stationary forces. [Reviewed gate and measurements](software/stage1_solver/reports/mouth_r4_segmented_clearance.md)

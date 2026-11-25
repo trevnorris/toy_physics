@@ -151,7 +151,7 @@ def read_fields(driver, t, solid, labels, fields):
     return energy,load,info
 
 
-def coherent(driver,t,solid,labels,fields):
+def coherent(driver,t,solid,labels,fields,*,field_target=FIELD_TOL,raw_target=FORCE_TOL):
     """Rematch chi, amplitude and phase with the active and melted labels fixed."""
     m=t.model
     u=t.transported(fields)
@@ -165,13 +165,13 @@ def coherent(driver,t,solid,labels,fields):
     order_solver=SmoothOrder(t,labels,driver.epsilon)
     physical,info=state(driver,t,order_solver,u,exchange)
     before,old_gauge=physical,info['gauge_energy']
-    order_tol,carrier_tol=2e-9,8e-8
+    order_tol,carrier_tol=min(2e-9,field_target/2),min(8e-8,field_target/2)
     iterations=[]
-    while max(info[k] for k in ('order_kkt','order_projected','carrier_metric'))>=FIELD_TOL or max(
-            info[k] for k in ('phase_raw','amplitude_raw'))>FORCE_TOL:
-        if info['order_kkt']>=FIELD_TOL and info['order_projected']<order_tol:
+    while max(info[k] for k in ('order_kkt','order_projected','carrier_metric'))>=field_target or max(
+            info[k] for k in ('phase_raw','amplitude_raw'))>raw_target:
+        if info['order_kkt']>=field_target and info['order_projected']<order_tol:
             order_tol=min(order_tol,.5*info['order_projected'])
-        if max(info[k] for k in ('phase_raw','amplitude_raw'))>FORCE_TOL:
+        if max(info[k] for k in ('phase_raw','amplitude_raw'))>raw_target:
             carrier_tol=min(carrier_tol,.5*info['carrier_metric'])
         os,_=ContinuousTrial.solve_order(order_solver,u,joined,False,order_tol)
         cs,_=t.carrier(u,False,carrier_tol)

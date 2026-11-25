@@ -290,8 +290,10 @@ def difference_profile(study, first, second):
     return dict(file=output.name,sha256=digest(output),maximum_absolute_difference=witnesses)
 
 
-def compare(study):
-    primary,first,labels_a=certified_state(study,'primary',1e-8,EXPECTED['held_stop'])
+def compare(study, *, primary_initial=None):
+    if primary_initial is None:
+        primary_initial=EXPECTED['held_stop']
+    primary,first,labels_a=certified_state(study,'primary',1e-8,primary_initial)
     secondary,second,labels_b=certified_state(study,'secondary',1e-10,primary['state_sha256'])
     if primary['shape']!=secondary['shape'] or primary['depth_knots']!=secondary['depth_knots']:
         raise ValueError('Held shapes differ between the two gauge equilibria')

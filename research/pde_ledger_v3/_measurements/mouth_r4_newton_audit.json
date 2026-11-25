@@ -1,0 +1,491 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_newton_audit.py",
+    "audit",
+    "_scratch/s11c/r4_newton_held01",
+    "--output",
+    "research/pde_ledger_v3/_measurements/mouth_r4_newton_audit.json"
+  ],
+  "source_sha256": "2c6e24c36a0d1ee2c9d00439e10f9ab5a9d64fc5afa7d3caeaa9b675cf3054c0",
+  "newton_source_sha256": "96a34bd1073cab1115219517d37893fb55b121b110355ed7be1f3bef7f076dcc",
+  "base_solver": "393aec91",
+  "limits": {
+    "relative_product": 0.0001,
+    "relative_reference_convergence": 1e-05,
+    "relative_transpose": 1e-05
+  },
+  "sectors": {
+    "ordered": {
+      "location": {
+        "node": [
+          9,
+          3,
+          12
+        ],
+        "radius": 2.268617238977148,
+        "depth": 0.0776193902998492,
+        "theta": 0.788177558237136,
+        "chi": 0.16240966032539134,
+        "patch_order_min": 0.08784941137994837,
+        "patch_order_max": 0.279392151324339,
+        "registered_widths": [
+          0.04881656804733725,
+          0.03158571045574879,
+          0.0873526838602684
+        ]
+      },
+      "directions": {
+        "u": {
+          "reference_norm_l2": 5.842977601348887,
+          "native_norm_l2": 5.842977605407901,
+          "reference_widths": [
+            1.52587890625e-05,
+            3.814697265625e-06,
+            9.5367431640625e-07
+          ],
+          "relative_successive_differences": [
+            1.5747845312956253e-10,
+            9.663754474471064e-12
+          ],
+          "native_minus_reference_linf": 2.9652889033116026e-09,
+          "native_minus_reference_relative_l2": 7.578421818116873e-10
+        },
+        "v": {
+          "reference_norm_l2": 3.752890598851744,
+          "native_norm_l2": 3.752890594582658,
+          "reference_widths": [
+            1.52587890625e-05,
+            3.814697265625e-06,
+            9.5367431640625e-07
+          ],
+          "relative_successive_differences": [
+            2.002474218749925e-10,
+            1.2537934289627933e-11
+          ],
+          "native_minus_reference_linf": 3.348501476096999e-09,
+          "native_minus_reference_relative_l2": 1.1994707847248418e-09
+        }
+      },
+      "production_symmetry": {
+        "uHv": 0.04473755064674477,
+        "vHu": 0.04473755084063309,
+        "difference": -1.9388832206423956e-10,
+        "relative": 4.333905598787039e-09
+      },
+      "promoted_symmetry": {
+        "uHv": 0.04473755075501519,
+        "vHu": 0.04473755075503648,
+        "difference": -2.1288526497187377e-14,
+        "relative": 4.758536428101341e-13
+      },
+      "passed": true
+    },
+    "front": {
+      "location": {
+        "node": [
+          12,
+          11,
+          12
+        ],
+        "radius": 2.7331277538782985,
+        "depth": 0.28460443110718825,
+        "theta": 0.788177558237136,
+        "chi": 0.0006159731447124447,
+        "patch_order_min": 0.0,
+        "patch_order_max": 0.0016157161914893978,
+        "registered_widths": [
+          0.03994082840236679,
+          0.031585710464326955,
+          0.0873526838602684
+        ]
+      },
+      "directions": {
+        "u": {
+          "reference_norm_l2": 0.02612438118796364,
+          "native_norm_l2": 0.026124381216241215,
+          "reference_widths": [
+            1.52587890625e-05,
+            3.814697265625e-06,
+            9.5367431640625e-07
+          ],
+          "relative_successive_differences": [
+            1.4930681733709235e-10,
+            9.053755431276883e-12
+          ],
+          "native_minus_reference_linf": 1.755636608313793e-11,
+          "native_minus_reference_relative_l2": 1.1057100751449364e-09
+        },
+        "v": {
+          "reference_norm_l2": 0.01740706499309653,
+          "native_norm_l2": 0.017407065001185062,
+          "reference_widths": [
+            1.52587890625e-05,
+            3.814697265625e-06,
+            9.5367431640625e-07
+          ],
+          "relative_successive_differences": [
+            2.0984068843873185e-10,
+            1.3052133384301379e-11
+          ],
+          "native_minus_reference_linf": 7.2515283708329825e-12,
+          "native_minus_reference_relative_l2": 7.404841363282937e-10
+        }
+      },
+      "production_symmetry": {
+        "uHv": -0.00010491555058043516,
+        "vHu": -0.00010491555080795726,
+        "difference": 2.275221027206453e-13,
+        "relative": 2.1686213432469445e-09
+      },
+      "promoted_symmetry": {
+        "uHv": -0.00010491555080865901,
+        "vHu": -0.00010491555080931002,
+        "difference": 6.510091944689211e-16,
+        "relative": 6.205078174275302e-12
+      },
+      "passed": true
+    },
+    "melted": {
+      "location": {
+        "node": [
+          10,
+          18,
+          12
+        ],
+        "radius": 2.289548815480594,
+        "depth": 0.4657180629612028,
+        "theta": 0.788177558237136,
+        "chi": 0.0,
+        "patch_order_min": 0.0,
+        "patch_order_max": 0.0,
+        "registered_widths": [
+          0.04585798816568054,
+          0.0315873082996595,
+          0.0873526838602684
+        ]
+      },
+      "directions": {
+        "u": {
+          "reference_norm_l2": 3.50209315963054e-08,
+          "native_norm_l2": 3.5020931596290185e-08,
+          "reference_widths": [
+            1.52587890625e-05,
+            3.814697265625e-06,
+            9.5367431640625e-07
+          ],
+          "relative_successive_differences": [
+            1.493896894250593e-10,
+            9.440284989972517e-12
+          ],
+          "native_minus_reference_linf": 1.2364695796442658e-20,
+          "native_minus_reference_relative_l2": 6.035140997657268e-13
+        },
+        "v": {
+          "reference_norm_l2": 2.901323724333986e-08,
+          "native_norm_l2": 2.901323724333976e-08,
+          "reference_widths": [
+            1.52587890625e-05,
+            3.814697265625e-06,
+            9.5367431640625e-07
+          ],
+          "relative_successive_differences": [
+            1.2493760524589664e-10,
+            8.317788533797866e-12
+          ],
+          "native_minus_reference_linf": 1.6598206171489053e-20,
+          "native_minus_reference_relative_l2": 7.353337997654433e-13
+        }
+      },
+      "production_symmetry": {
+        "uHv": -4.977613643946377e-10,
+        "vHu": -4.977613643946376e-10,
+        "difference": -1.0339757656912846e-25,
+        "relative": 2.077251951743532e-16
+      },
+      "promoted_symmetry": {
+        "uHv": -4.977613643935341e-10,
+        "vHu": -4.977613643952205e-10,
+        "difference": 1.6864144738424852e-21,
+        "relative": 3.387997933289734e-12
+      },
+      "passed": true
+    }
+  },
+  "state_sha256": "d2e764212c08bdcacfbc18121812ceb484f2eaffcd0b44f46991a9cf03120202",
+  "invariance": {
+    "material": {
+      "gauge_energy": 0.0,
+      "elastic_energy": 0.0,
+      "max_free_label_force": 0.0,
+      "min_Jinv_active": 0.0,
+      "min_Jinv_global": 0.0
+    },
+    "field": {
+      "order_raw": 0.0,
+      "order_kkt": 0.0,
+      "order_projected": 0.0,
+      "amplitude_raw": 0.0,
+      "phase_raw": 0.0,
+      "carrier_metric": 0.0
+    },
+    "current": {
+      "feed_current": 0.0,
+      "bulk_current": 0.0,
+      "weak_disk_current": 0.0,
+      "incident_slice_current": 0.0,
+      "receiving_slice_current": 0.0,
+      "positive_slice_current": 0.0,
+      "port_error": 0.0,
+      "disk_minus_feed_current": 0.0,
+      "dense_total_subsonic_share": 0.0,
+      "total_axial_stress": 0.0
+    },
+    "active_gradient_max_abs": 0.0,
+    "total_energy": 0.0,
+    "crystal_plus_gauge": 0.0,
+    "passed": true
+  },
+  "positivity_controls": {
+    "ordered": {
+      "cell": [
+        9,
+        3,
+        12
+      ],
+      "chart_det_center": -0.8061280797314039,
+      "reason": "Nonpositive or roundoff-unresolved chart determinant"
+    },
+    "melted": {
+      "cell": [
+        10,
+        18,
+        12
+      ],
+      "chart_det_center": -1.0725805403752906,
+      "reason": "Nonpositive or roundoff-unresolved chart determinant"
+    }
+  },
+  "baseline": {
+    "state_sha256": "d2e764212c08bdcacfbc18121812ceb484f2eaffcd0b44f46991a9cf03120202",
+    "old_step": 29,
+    "old_logged_differences": {
+      "gauge_energy": 0.0,
+      "elastic_energy": 0.0,
+      "max_free_label_force": 0.0,
+      "min_Jinv_active": 0.0,
+      "min_Jinv_global": 0.0
+    },
+    "material": {
+      "gauge_energy": 4.9558578274692115e-08,
+      "elastic_energy": 0.318747421489235,
+      "max_free_label_force": 0.2970618847396134,
+      "min_Jinv_active": 0.19500417322355368,
+      "min_Jinv_global": 0.09535070241382033
+    },
+    "total_energy": 92185.40445819321,
+    "physical_energy": 92185.40445814365,
+    "field": {
+      "physical_energy": 92185.40445814365,
+      "unit_gauge": 4.955857827469211,
+      "gauge_energy": 4.9558578274692115e-08,
+      "phase_raw": 8.010253087391349e-11,
+      "amplitude_raw": 3.075864703134298e-08,
+      "order_raw": 0.34959525648184164,
+      "order_kkt": 0.0003746327942146928,
+      "order_projected": 6.207327910860445e-05,
+      "carrier_metric": 4.046805343447779e-08,
+      "shared_work_error": 5.551115123125783e-16,
+      "order_knot_transport": [
+        {
+          "free_interior": 0.0008336715776881628,
+          "lower_obstacle": 2.708814708225358e-16,
+          "upper_obstacle": -0.0,
+          "total": 0.0008336715776884337
+        },
+        {
+          "free_interior": 0.0015549368201032599,
+          "lower_obstacle": -0.02158890283203603,
+          "upper_obstacle": -0.0,
+          "total": -0.02003396601193277
+        }
+      ]
+    },
+    "current": {
+      "feed_current": 10.707749478162654,
+      "bulk_current": 10.707749478162762,
+      "weak_disk_current": 10.707749478162635,
+      "incident_slice_current": 10.707749478162635,
+      "receiving_slice_current": 10.04109615302014,
+      "positive_slice_current": 10.707749478162635,
+      "port_error": 1.0835776720341528e-13,
+      "disk_minus_feed_current": -1.9539925233402755e-14,
+      "dense_total_subsonic_share": 0.667588980504547,
+      "total_axial_stress": -26.582872414466557
+    },
+    "full_melt_front": 0.3363506918035118,
+    "active_gradient_l2": 0.7607605310695462,
+    "active_gradient_count": 18188,
+    "top5_nodes_by_vector_norm": [
+      {
+        "node": [
+          23,
+          3,
+          18
+        ],
+        "radius": 3.909361221514542,
+        "depth": 0.0776193902998492,
+        "theta": 1.362533738092426,
+        "chi": 0.11195118186808138,
+        "signed_components": [
+          0.011451756195567188,
+          -0.2970618847396134,
+          3.274928073492021e-05
+        ],
+        "l2": 0.2972825375926569
+      },
+      {
+        "node": [
+          23,
+          2,
+          18
+        ],
+        "radius": 3.923385809763811,
+        "depth": 0.05174626019989946,
+        "theta": 1.362533738092426,
+        "chi": 0.19612680466809299,
+        "signed_components": [
+          -0.0009515344839748325,
+          -0.2930363977940936,
+          1.7399825736353917e-05
+        ],
+        "l2": 0.29303794319638266
+      },
+      {
+        "node": [
+          24,
+          3,
+          17
+        ],
+        "radius": 3.938752283000779,
+        "depth": 0.0776193902998492,
+        "theta": 1.2613494632989424,
+        "chi": 0.11268011516609937,
+        "signed_components": [
+          0.009507123888176372,
+          -0.19815494142377957,
+          1.3476824478489002e-05
+        ],
+        "l2": 0.1983828782856813
+      },
+      {
+        "node": [
+          24,
+          2,
+          17
+        ],
+        "radius": 3.952797298075221,
+        "depth": 0.05174626019989946,
+        "theta": 1.2613494632989424,
+        "chi": 0.19728324144198903,
+        "signed_components": [
+          -0.016127646630776947,
+          -0.19422411705104714,
+          3.102670188702025e-05
+        ],
+        "l2": 0.19489255910055236
+      },
+      {
+        "node": [
+          23,
+          3,
+          15
+        ],
+        "radius": 3.909712234852333,
+        "depth": 0.0776193902998492,
+        "theta": 1.0652525502985477,
+        "chi": 0.1132928282655929,
+        "signed_components": [
+          0.004599301802755981,
+          -0.10871716867594436,
+          -3.063417523185517e-05
+        ],
+        "l2": 0.10881441669392555
+      }
+    ],
+    "top5_scalar_forces": [
+      {
+        "node": [
+          23,
+          3,
+          18
+        ],
+        "group": 25546,
+        "component": 1,
+        "signed_force": -0.2970618847396134,
+        "chi": 0.11195118186808138,
+        "radius": 3.909361221514542,
+        "depth": 0.0776193902998492,
+        "theta": 1.362533738092426
+      },
+      {
+        "node": [
+          23,
+          2,
+          18
+        ],
+        "group": 25525,
+        "component": 1,
+        "signed_force": -0.2930363977940936,
+        "chi": 0.19612680466809299,
+        "radius": 3.923385809763811,
+        "depth": 0.05174626019989946,
+        "theta": 1.362533738092426
+      },
+      {
+        "node": [
+          24,
+          3,
+          17
+        ],
+        "group": 26700,
+        "component": 1,
+        "signed_force": -0.19815494142377957,
+        "chi": 0.11268011516609937,
+        "radius": 3.938752283000779,
+        "depth": 0.0776193902998492,
+        "theta": 1.2613494632989424
+      },
+      {
+        "node": [
+          24,
+          2,
+          17
+        ],
+        "group": 26679,
+        "component": 1,
+        "signed_force": -0.19422411705104714,
+        "chi": 0.19728324144198903,
+        "radius": 3.952797298075221,
+        "depth": 0.05174626019989946,
+        "theta": 1.2613494632989424
+      },
+      {
+        "node": [
+          23,
+          3,
+          15
+        ],
+        "group": 25543,
+        "component": 1,
+        "signed_force": -0.10871716867594436,
+        "chi": 0.1132928282655929,
+        "radius": 3.909712234852333,
+        "depth": 0.0776193902998492,
+        "theta": 1.0652525502985477
+      }
+    ]
+  },
+  "passed": true
+}

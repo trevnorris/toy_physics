@@ -1,0 +1,1512 @@
+{
+  "production_commit": "63db8cc000c09f250ab570459bc3ee1c3fe0bf56",
+  "radius": 4,
+  "winding": 1,
+  "start_state_file": "_scratch/s11c/r4_adaptive382_01/primary/matched_00392.npz",
+  "start_state_sha256": "9482e6a9ba6d33242526c648bea828d62202bf9c8a1aa6e6243c4c6d1e3a7aa2",
+  "starting_primary_peak": 5.684466664200679e-05,
+  "target_internal": 3e-05,
+  "upper_primary_step": 432,
+  "primary_additional_crystal_steps": 3,
+  "secondary_additional_crystal_steps": 0,
+  "secondary_preparation": "Field rematch at the primary endpoint, followed by native residual, sign, orientation and signed shape-work audits.",
+  "partial_burst": false,
+  "cycle_ledger": [
+    {
+      "step": 393,
+      "post_force": 3.257692001732512e-05,
+      "post_node": {
+        "component": 0,
+        "group": 15328,
+        "chi": 0.0,
+        "signed_force": 3.257692001732512e-05,
+        "node": [
+          13,
+          14,
+          19
+        ],
+        "radius": 2.8379302353666733,
+        "depth": 0.3622238246143633,
+        "theta": 1.4657055899195157
+      },
+      "post_field": {
+        "order_projected": 5.144829007264207e-12,
+        "order_kkt": 1.715250164124882e-11,
+        "amplitude_raw": 3.647476607695436e-09,
+        "phase_raw": 7.259181179341406e-11,
+        "carrier_metric": 4.000416756426689e-09
+      },
+      "post_field_residual": 4.000416756426689e-09,
+      "total_energy": 92185.38323654483,
+      "crystal_energy": 0.30715261147629536,
+      "gauge_energy": 9.914609089472994e-08,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 1.1970516221002001e-05,
+        "cell": [
+          25,
+          10,
+          9
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 2.0637117957071227e-05,
+        "limiting_chart_lower": 2.0637117957071227e-05,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9999533677823537,
+        "global_xi_r_over_x_lower": 0.9390862558728357,
+        "global_sine_ratio_lower": 0.9571952440940004,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.707716587737865,
+        "bulk_current": 10.707716587737984,
+        "port_error": 1.1901590823981678e-13,
+        "weak_disk_current": 10.707716587737925,
+        "incident_slice_current": 10.707716587737925,
+        "receiving_slice_current": 10.041065047355367,
+        "positive_slice_current": 10.707716587737925,
+        "dense_total_subsonic_share": 0.6675898974785126,
+        "total_axial_stress": -26.582877894745128,
+        "disk_minus_feed_current": 6.039613253960852e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51359,
+      "positive_zero": 51359,
+      "max_gauge_over_positive": 1.6217446389580578e-10,
+      "cycle": 1,
+      "crystal_steps": 1,
+      "start_force": 5.684466664200679e-05,
+      "pre_force": 3.007409944355396e-05,
+      "pre_order_kkt": 0.00036545312770168117,
+      "rebound": 2.502820573771161e-06,
+      "crystal_work": -8.174644755562258e-07,
+      "rematch_work": -3.675814369863163e-08,
+      "cycle_work": -8.542226192548574e-07,
+      "direct_total_change": -8.542265277355909e-07,
+      "steps": [
+        {
+          "step": 393,
+          "force": 3.007409944355396e-05,
+          "constrained_order": 0.00036545312770168117,
+          "trigger_threshold": 6.014819888710792e-05,
+          "trigger": "order_residual",
+          "delta_energy": -8.174644755562258e-07,
+          "alpha": 0.5,
+          "chart_lower": 2.0637117957071227e-05,
+          "min_sampled_physical_Jinv": 0.00045209216648340884,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 21,
+          "cg_residual_divergence": false,
+          "projection_calls": 12,
+          "projection_fallbacks": 0
+        }
+      ],
+      "off_to_on": 38,
+      "on_to_off": 36,
+      "previous_toggles_reversed": null,
+      "previous_toggle_reversal_fraction": null,
+      "previous_toggles_stayed": null,
+      "elapsed_seconds": 152.9831094108522,
+      "checkpoint_sha256": "1cacf4035b966349aa69fd5e7e89a634c5802331f3fccfd1bd294b53af4ed23f",
+      "post_force_l2": 0.00014852855125809642,
+      "motion": {
+        "persistent_ordered_dofs": 20076,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.018552872565543055,
+        "persistent_l2": 0.018552872565543055,
+        "melt_l2": 0.03125256389442212,
+        "chi_l2": 0.00016358638120632954,
+        "ordered_cos": null,
+        "persistent_cos": null,
+        "chi_cos": null
+      }
+    },
+    {
+      "step": 395,
+      "post_force": 1.6913186196217433e-05,
+      "post_node": {
+        "component": 0,
+        "group": 15328,
+        "chi": 0.0,
+        "signed_force": 1.6913186196217433e-05,
+        "node": [
+          13,
+          14,
+          19
+        ],
+        "radius": 2.8379302353666733,
+        "depth": 0.3622238246143633,
+        "theta": 1.4657055899195157
+      },
+      "post_field": {
+        "order_projected": 4.0023725165257845e-12,
+        "order_kkt": 3.001332515850663e-11,
+        "amplitude_raw": 3.655586613363765e-09,
+        "phase_raw": 7.48227230736411e-11,
+        "carrier_metric": 4.013413466228421e-09
+      },
+      "post_field_residual": 4.013413466228421e-09,
+      "total_energy": 92185.38323628501,
+      "crystal_energy": 0.30715233478933646,
+      "gauge_energy": 9.90719913665563e-08,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 1.2015261808214676e-05,
+        "cell": [
+          25,
+          10,
+          9
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 2.0714260088009454e-05,
+        "limiting_chart_lower": 2.0714260088009454e-05,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9999533227435808,
+        "global_xi_r_over_x_lower": 0.9394889285020764,
+        "global_sine_ratio_lower": 0.9757494581856263,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.70771658765985,
+        "bulk_current": 10.707716587659817,
+        "port_error": 3.197442310920451e-14,
+        "weak_disk_current": 10.707716587659862,
+        "incident_slice_current": 10.707716587659862,
+        "receiving_slice_current": 10.041065047276213,
+        "positive_slice_current": 10.707716587659862,
+        "dense_total_subsonic_share": 0.6675898974908858,
+        "total_axial_stress": -26.582877894743568,
+        "disk_minus_feed_current": 1.2434497875801753e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51359,
+      "positive_zero": 51359,
+      "max_gauge_over_positive": 2.2500757924078738e-10,
+      "cycle": 2,
+      "crystal_steps": 2,
+      "start_force": 3.257692001732512e-05,
+      "pre_force": 1.6547508017205034e-05,
+      "pre_order_kkt": 0.00010427318621004331,
+      "rebound": 3.656781790123992e-07,
+      "crystal_work": -2.5665429882771534e-07,
+      "rematch_work": -3.1723190283408913e-09,
+      "cycle_work": -2.598266178560562e-07,
+      "direct_total_change": -2.5982444640249014e-07,
+      "steps": [
+        {
+          "step": 394,
+          "force": 3.206765883028712e-05,
+          "constrained_order": 4.238200676954919e-06,
+          "trigger_threshold": 6.413531766057425e-05,
+          "trigger": null,
+          "delta_energy": -1.047685235523778e-08,
+          "alpha": 0.015625,
+          "chart_lower": 2.0592579985694493e-05,
+          "min_sampled_physical_Jinv": 0.00045210833722040015,
+          "cg_reason": "nonpositive curvature",
+          "cg_iterations": 27,
+          "cg_residual_divergence": false,
+          "projection_calls": 3,
+          "projection_fallbacks": 0
+        },
+        {
+          "step": 395,
+          "force": 1.6547508017205034e-05,
+          "constrained_order": 0.00010427318621004331,
+          "trigger_threshold": 3.309501603441007e-05,
+          "trigger": "crystal_target",
+          "delta_energy": -2.4617744647247757e-07,
+          "alpha": 0.5,
+          "chart_lower": 2.0714260088009454e-05,
+          "min_sampled_physical_Jinv": 0.00045209403739029875,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 75,
+          "cg_residual_divergence": false,
+          "projection_calls": 6,
+          "projection_fallbacks": 0
+        }
+      ],
+      "off_to_on": 33,
+      "on_to_off": 33,
+      "previous_toggles_reversed": 66,
+      "previous_toggle_reversal_fraction": 0.8918918918918919,
+      "previous_toggles_stayed": 8,
+      "elapsed_seconds": 199.96696883719414,
+      "checkpoint_sha256": "9e7dbab575f2bb4a63c28192a8b65e3f078afdbcbd714e6e3063391b3e7f9f0b",
+      "post_force_l2": 7.828778759118294e-05,
+      "motion": {
+        "persistent_ordered_dofs": 20076,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.018930884605517034,
+        "persistent_l2": 0.018930884605517034,
+        "melt_l2": 0.025175804839119197,
+        "chi_l2": 0.00013059994897123367,
+        "ordered_cos": 0.14118585806667844,
+        "persistent_cos": 0.14118585806667844,
+        "chi_cos": 0.7460826732760615
+      }
+    }
+  ],
+  "endpoints": {
+    "primary": {
+      "case": "primary",
+      "outer": 395,
+      "initial_sha256": "9482e6a9ba6d33242526c648bea828d62202bf9c8a1aa6e6243c4c6d1e3a7aa2",
+      "state_sha256": "67a1cd2b52d258e44c96f0a7c1a2b4b7e96cca133f943860ce7748728d60c738",
+      "epsilon": 1e-08,
+      "shape": [
+        0.03203348161357326,
+        -0.22160765321621922,
+        0.0008870732843312349,
+        -0.0685819081404728,
+        0.0708792715906547,
+        0.02342688643280306
+      ],
+      "phase_drop": 0.4510084282857874,
+      "depth": 0.8191403557693495,
+      "exit_radius": 3.306377271246663,
+      "physical_energy": 92185.38323618594,
+      "total_energy": 92185.38323628501,
+      "crystal_energy": 0.30715233478933646,
+      "gauge_energy": 9.90719913665563e-08,
+      "gauge_to_crystal": 3.2255001881885687e-07,
+      "native_residuals": {
+        "label": 1.6913186196217433e-05,
+        "melted_label": 5.516050712909089e-08,
+        "unit_melt": 5.516050712909089,
+        "order_projected": 4.0023725165257845e-12,
+        "order_kkt": 3.001332515850663e-11,
+        "amplitude_raw": 3.655586613363765e-09,
+        "phase_raw": 7.48227230736411e-11,
+        "carrier_metric": 4.013413466228421e-09
+      },
+      "orientation": {
+        "chart_det_global_lower": 2.0714260088009454e-05,
+        "chart_lowest_cell": [
+          25,
+          10,
+          9
+        ],
+        "chart_det_active_lower": 0.0005914633138368,
+        "physical_certificate": {
+          "physical_global_lower": 1.2015261808214676e-05,
+          "cell": [
+            25,
+            10,
+            9
+          ],
+          "cell_count": 28080,
+          "chart_global_lower": 2.0714260088009454e-05,
+          "limiting_chart_lower": 2.0714260088009454e-05,
+          "limiting_radial_metric_lower": 0.5800749156763813,
+          "limiting_sine_ratio_lower": 0.9999533227435808,
+          "global_xi_r_over_x_lower": 0.9394889285020764,
+          "global_sine_ratio_lower": 0.9757494581856263,
+          "angular_rule": "concavity",
+          "collar_patch_determinant_lower": 0.4892248970224547,
+          "collar_S_lower": 3.9998642234235255,
+          "physical_profile_bounds": [
+            3.3063771490447995,
+            4.000000150947135
+          ],
+          "reference_core_profile_lower": 3.97520746439121,
+          "core_metric_lower": 1.1638699165377784,
+          "collar_metric_lower": 0.5800749156763813,
+          "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+          "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+        }
+      },
+      "min_sampled_physical_Jinv": 0.00045209403739029875,
+      "min_sampled_ordered_Jinv": 0.4235603700675754,
+      "smallest_accepted_active_fraction": 0.015625,
+      "order_boundary": {
+        "former": [
+          {
+            "node": 36353,
+            "after": 0.00043484095049945966,
+            "material_grid": [
+              [
+                13,
+                12,
+                16
+              ]
+            ],
+            "physical_slope": 9.441469708404827e-14,
+            "gauge_slope": -6.589954330357805e-14,
+            "total_slope": 2.8515153780470224e-14,
+            "physical_plus_step": 6.6783313042864076e-18,
+            "gauge_plus_step": -6.589956504022492e-23,
+            "total_plus_step": 6.6782654047213676e-18
+          },
+          {
+            "node": 45532,
+            "after": 0.0006237400793192619,
+            "material_grid": [
+              [
+                17,
+                11,
+                0
+              ]
+            ],
+            "physical_slope": 9.692671251934443e-17,
+            "gauge_slope": -1.1038308588041164e-16,
+            "total_slope": -1.3456373361067213e-17,
+            "physical_plus_step": 8.094156964593474e-21,
+            "gauge_plus_step": -1.1038310709064478e-25,
+            "total_plus_step": 8.094046581486384e-21
+          },
+          {
+            "node": 62811,
+            "after": 0.0004579089158698061,
+            "material_grid": [
+              [
+                23,
+                10,
+                2
+              ]
+            ],
+            "physical_slope": 8.651195689851275e-16,
+            "gauge_slope": -9.066636981215973e-16,
+            "total_slope": -4.1544129136469695e-17,
+            "physical_plus_step": 1.7106145628938763e-19,
+            "gauge_plus_step": -9.066639910581575e-25,
+            "total_plus_step": 1.7106054962539658e-19
+          }
+        ],
+        "increment": 1e-09,
+        "free_zero": 51359,
+        "physical": {
+          "positive": 51359,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "total": {
+          "positive": 51359,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "gauge": {
+          "positive": 0,
+          "zero": 28170,
+          "negative": 23189,
+          "nonfinite": 0
+        },
+        "long_double_mantissa_bits": 63,
+        "min_physical": {
+          "node": 241,
+          "material_grid": [],
+          "depth": 0.930568927197921,
+          "physical": 8.312245827281049e-22,
+          "gauge": 0.0,
+          "total": 8.312245827281049e-22,
+          "physical_slope": 2.507147363454847e-47,
+          "gauge_slope": 0.0
+        },
+        "min_total": {
+          "node": 241,
+          "material_grid": [],
+          "depth": 0.930568927197921,
+          "physical": 8.312245827281049e-22,
+          "gauge": 0.0,
+          "total": 8.312245827281049e-22,
+          "physical_slope": 2.507147363454847e-47,
+          "gauge_slope": 0.0
+        },
+        "worst_fraction": {
+          "node": 38109,
+          "material_grid": [
+            [
+              14,
+              13,
+              8
+            ]
+          ],
+          "depth": 0.3363506918035118,
+          "physical": 2.0782519879935763e-14,
+          "gauge": -4.676224488707885e-24,
+          "total": 2.0782519875259538e-14,
+          "physical_slope": 2.077992465662445e-05,
+          "gauge_slope": -4.676217448909286e-15
+        },
+        "max_abs_gauge_over_positive_physical": 2.2500757924078738e-10,
+        "nonpositive": [],
+        "native_physical_slope_max_error": 2.008484524529397e-17,
+        "physical_energy": 92185.38323618594,
+        "unit_gauge": 9.90719913665563,
+        "passed": true,
+        "work_sha256": "f5dc059ba251f2a6a51ea3c867e135c4d4445e16d53f3a0aee7f7dfd261eca65",
+        "gauge_energy_difference": 0.0
+      },
+      "sampled_melted_front": 0.3622238246143633,
+      "order_max_by_depth": [
+        0.6376452812177967,
+        0.47948044967299247,
+        0.32525182950084236,
+        0.2010942166661712,
+        0.11588087775296725,
+        0.06373917656187832,
+        0.03409449667920965,
+        0.01795275390160306,
+        0.009371379073465998,
+        0.0048662305011902265,
+        0.002513846655263651,
+        0.0012834624189617771,
+        0.0006286368678332979,
+        0.0002564963760331722,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "depth_knots": [
+        0.0,
+        0.025873130099949734,
+        0.05174626019989947,
+        0.0776193902998492,
+        0.10349252039979893,
+        0.12936565049974866,
+        0.1552387805996984,
+        0.18111191069964827,
+        0.20698504079960056,
+        0.23285817089959887,
+        0.2587313010002118,
+        0.28460443110718825,
+        0.3104775612675553,
+        0.3363506918035118,
+        0.3622238246143633,
+        0.38809696954067013,
+        0.413970172170337,
+        0.4398436240028237,
+        0.4657180629612028,
+        0.4915961231381077,
+        0.5174865898092327,
+        0.5434170682884087,
+        0.5694701053312587,
+        0.5958845618064506,
+        0.6233542265464157,
+        0.654104646085242,
+        0.6991403557693495,
+        0.7034260700550639,
+        0.7077117843407781,
+        0.7119974986264924,
+        0.7162832129122066,
+        0.720568927197921,
+        0.7248546414836352,
+        0.7291403557693495,
+        0.7334260700550638,
+        0.7377117843407781,
+        0.7419974986264923,
+        0.7462832129122067,
+        0.750568927197921,
+        0.7548546414836352,
+        0.7591403557693496,
+        0.7634260700550638,
+        0.7677117843407781,
+        0.7719974986264924,
+        0.7762832129122067,
+        0.7805689271979209,
+        0.7848546414836353,
+        0.7891403557693495,
+        0.7934260700550638,
+        0.797711784340778,
+        0.8019974986264924,
+        0.8062832129122066,
+        0.810568927197921,
+        0.8148546414836353,
+        0.8191403557693495
+      ],
+      "current": {
+        "feed_current": 10.70771658765985,
+        "bulk_current": 10.707716587659817,
+        "port_error": 3.197442310920451e-14,
+        "weak_disk_current": 10.707716587659862,
+        "incident_slice_current": 10.707716587659862,
+        "receiving_slice_current": 10.041065047276213,
+        "positive_slice_current": 10.707716587659862,
+        "dense_total_subsonic_share": 0.6675898974908858,
+        "total_axial_stress": -26.582877894743568,
+        "disk_minus_feed_current": 1.2434497875801753e-14
+      },
+      "shape_forces": [
+        -0.00665626202976338,
+        -0.6382708552237489,
+        0.660848084466227,
+        -0.5279987416325249,
+        0.618248729086325,
+        0.006866546231808025
+      ],
+      "shape_audit": {
+        "rows": [
+          {
+            "mode": "log_depth",
+            "analytic": -0.00665626202976338,
+            "elastic": 0.05847656316026667,
+            "bath": -0.06513281636696862,
+            "unit_gauge": -0.8823061435496582,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": -0.00665626039018042,
+                "minus_analytic": 1.6395829597691407e-09,
+                "crystal": 0.05847656318934968,
+                "bath": -0.0651328147564687,
+                "unit_gauge": -0.8823061393911641,
+                "negative": -0.006527017076819996,
+                "positive": -0.0067855037035408445
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": -0.006656257590878909,
+                "minus_analytic": 4.438884471153958e-09,
+                "crystal": 0.05847656316128267,
+                "bath": -0.06513281192910014,
+                "unit_gauge": -0.8823061435007882,
+                "negative": -0.0066239552531657375,
+                "positive": -0.00668855992859208
+              }
+            ]
+          },
+          {
+            "mode": "scaled_log_exit",
+            "analytic": -0.6382708552237489,
+            "elastic": 0.10615504690217459,
+            "bath": -0.7444258959842386,
+            "unit_gauge": -0.6141684860460217,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": -0.6382708552169957,
+                "minus_analytic": 6.7532906892521505e-12,
+                "crystal": 0.1061550468918396,
+                "bath": -0.7444258959671504,
+                "unit_gauge": -0.6141684860516957,
+                "negative": -0.6382519177678408,
+                "positive": -0.6382897926661504
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": -0.6382708552174129,
+                "minus_analytic": 6.336043994158158e-12,
+                "crystal": 0.1061550469015427,
+                "bath": -0.7444258959772707,
+                "unit_gauge": -0.6141684860463031,
+                "negative": -0.6382661273550305,
+                "positive": -0.6382755830797953
+              }
+            ]
+          },
+          {
+            "mode": "mean_width",
+            "analytic": 0.660848084466227,
+            "elastic": 0.41028355635777325,
+            "bath": 0.2505645772576107,
+            "unit_gauge": -4.914915700872202,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": 0.6608480838231391,
+                "minus_analytic": -6.430879176074801e-10,
+                "crystal": 0.41028355635758385,
+                "bath": 0.2505645766147122,
+                "unit_gauge": -4.914915700883815,
+                "negative": 0.6611681666654893,
+                "positive": 0.6605280009807888
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": 0.6608480875565714,
+                "minus_analytic": 3.090344509047889e-09,
+                "crystal": 0.4102835563577448,
+                "bath": 0.2505645803479837,
+                "unit_gauge": -4.914915700872846,
+                "negative": 0.6609281037551874,
+                "positive": 0.6607680713579555
+              }
+            ]
+          },
+          {
+            "mode": "depth_asymmetry",
+            "analytic": -0.5279987416325249,
+            "elastic": -0.23889984634604255,
+            "bath": -0.2890989361422229,
+            "unit_gauge": 4.085574045311669,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": -0.5279987421958706,
+                "minus_analytic": -5.633456532207551e-10,
+                "crystal": -0.23889984634597616,
+                "bath": -0.2890989367056349,
+                "unit_gauge": 4.0855740453134155,
+                "negative": -0.5277827312188675,
+                "positive": -0.5282147531728737
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": -0.5279987412085295,
+                "minus_analytic": 4.2399538545921656e-10,
+                "crystal": -0.23889984634602662,
+                "bath": -0.2890989357182434,
+                "unit_gauge": 4.085574045311732,
+                "negative": -0.5279447471260383,
+                "positive": -0.5280527352910208
+              }
+            ]
+          },
+          {
+            "mode": "waist_profile",
+            "analytic": 0.618248729086325,
+            "elastic": 0.2847974589641475,
+            "bath": 0.3334513050375332,
+            "unit_gauge": -3.491535565115692,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": 0.6182487286213875,
+                "minus_analytic": -4.649375357911219e-10,
+                "crystal": 0.28479745896410474,
+                "bath": 0.3334513045726384,
+                "unit_gauge": -3.491535565137986,
+                "negative": 0.6183169763231028,
+                "positive": 0.618180480919672
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": 0.6182487324218754,
+                "minus_analytic": 3.3355504006635575e-09,
+                "crystal": 0.28479745896412606,
+                "bath": 0.333451308373105,
+                "unit_gauge": -3.4915355651171205,
+                "negative": 0.6182657908057166,
+                "positive": 0.6182316740380341
+              }
+            ]
+          },
+          {
+            "mode": "polar_equatorial",
+            "analytic": 0.006866546231808025,
+            "elastic": -0.009910025611254326,
+            "bath": 0.016776572419608702,
+            "unit_gauge": -0.05765463501344297,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": 0.006866546707459051,
+                "minus_analytic": 4.756510253522404e-10,
+                "crystal": -0.009910025611254399,
+                "bath": 0.0167765728952598,
+                "unit_gauge": -0.057654635013084016,
+                "negative": 0.006883343014443758,
+                "positive": 0.006849750400474344
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": 0.0068665471731860035,
+                "minus_analytic": 9.413779773798028e-10,
+                "crystal": -0.009910025611254904,
+                "bath": 0.016776573360987257,
+                "unit_gauge": -0.05765463501340949,
+                "negative": 0.0068707417066036875,
+                "positive": 0.006862352639768319
+              }
+            ]
+          }
+        ],
+        "threshold": 1e-07,
+        "passed": true,
+        "six_total": [
+          -0.00665626202976338,
+          -0.6382708552237489,
+          0.660848084466227,
+          -0.5279987416325249,
+          0.618248729086325,
+          0.006866546231808025
+        ]
+      },
+      "cp10_comparison": {
+        "mean_width": {
+          "cp10": 0.705499,
+          "now": 0.660848084466227
+        },
+        "scaled_log_exit": {
+          "cp10": -0.641236,
+          "now": -0.6382708552237489
+        }
+      },
+      "checks": {
+        "native": true,
+        "orientation": true,
+        "signed_work": true,
+        "six_forces": true,
+        "current": true,
+        "physical_orientation": true
+      },
+      "passed": true,
+      "state_file": "_scratch/s11c/r4_adaptive392_01/primary/stationary_state.npz",
+      "free_label_force_l2": 7.828778759118294e-05,
+      "fixed_state_verification": {
+        "max_internal": 1.6913186196217433e-05,
+        "max_fields": 4.013413466228421e-09,
+        "max_shape_fd_error": 4.438884471153958e-09,
+        "physical_Jinv_lower": 1.2015261808214676e-05,
+        "free_zero": 51359,
+        "current_gap": 3.197442310920451e-14
+      }
+    },
+    "secondary": {
+      "case": "secondary",
+      "outer": 395,
+      "initial_sha256": "67a1cd2b52d258e44c96f0a7c1a2b4b7e96cca133f943860ce7748728d60c738",
+      "state_sha256": "89a5c987e1ff0be1447774ff3cfc159f493689bfdf0ea2d650418499cdc1bbb2",
+      "epsilon": 1e-10,
+      "shape": [
+        0.03203348161357326,
+        -0.22160765321621922,
+        0.0008870732843312349,
+        -0.0685819081404728,
+        0.0708792715906547,
+        0.02342688643280306
+      ],
+      "phase_drop": 0.4510084282857874,
+      "depth": 0.8191403557693495,
+      "exit_radius": 3.306377271246663,
+      "physical_energy": 92185.38323618594,
+      "total_energy": 92185.38323618693,
+      "crystal_energy": 0.30715233478933646,
+      "gauge_energy": 9.907199136655629e-10,
+      "gauge_to_crystal": 3.2255001881885682e-09,
+      "native_residuals": {
+        "label": 1.6906053142151423e-05,
+        "melted_label": 5.516050712909089e-10,
+        "unit_melt": 5.516050712909089,
+        "order_projected": 4.000166192209831e-12,
+        "order_kkt": 3.160678396928735e-11,
+        "amplitude_raw": 3.655586613363765e-09,
+        "phase_raw": 7.48227230736411e-11,
+        "carrier_metric": 4.013413466228421e-09
+      },
+      "orientation": {
+        "chart_det_global_lower": 2.0714260088009454e-05,
+        "chart_lowest_cell": [
+          25,
+          10,
+          9
+        ],
+        "chart_det_active_lower": 0.0005914633138368,
+        "physical_certificate": {
+          "physical_global_lower": 1.2015261808214676e-05,
+          "cell": [
+            25,
+            10,
+            9
+          ],
+          "cell_count": 28080,
+          "chart_global_lower": 2.0714260088009454e-05,
+          "limiting_chart_lower": 2.0714260088009454e-05,
+          "limiting_radial_metric_lower": 0.5800749156763813,
+          "limiting_sine_ratio_lower": 0.9999533227435808,
+          "global_xi_r_over_x_lower": 0.9394889285020764,
+          "global_sine_ratio_lower": 0.9757494581856263,
+          "angular_rule": "concavity",
+          "collar_patch_determinant_lower": 0.4892248970224547,
+          "collar_S_lower": 3.9998642234235255,
+          "physical_profile_bounds": [
+            3.3063771490447995,
+            4.000000150947135
+          ],
+          "reference_core_profile_lower": 3.97520746439121,
+          "core_metric_lower": 1.1638699165377784,
+          "collar_metric_lower": 0.5800749156763813,
+          "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+          "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+        }
+      },
+      "min_sampled_physical_Jinv": 0.00045209403739029875,
+      "min_sampled_ordered_Jinv": 0.4235603700675754,
+      "smallest_accepted_active_fraction": null,
+      "order_boundary": {
+        "former": [
+          {
+            "node": 36353,
+            "after": 0.00043484095049945966,
+            "material_grid": [
+              [
+                13,
+                12,
+                16
+              ]
+            ],
+            "physical_slope": 9.441469708404827e-14,
+            "gauge_slope": -6.589954330357805e-16,
+            "total_slope": 9.375570165101249e-14,
+            "physical_plus_step": 6.6783313042864076e-18,
+            "gauge_plus_step": -6.589956504022492e-25,
+            "total_plus_step": 6.6783306452907574e-18
+          },
+          {
+            "node": 45532,
+            "after": 0.0006237400793192619,
+            "material_grid": [
+              [
+                17,
+                11,
+                0
+              ]
+            ],
+            "physical_slope": 9.692671251934443e-17,
+            "gauge_slope": -1.1038308588041165e-18,
+            "total_slope": 9.582288166054031e-17,
+            "physical_plus_step": 8.094156964593474e-21,
+            "gauge_plus_step": -1.1038310709064477e-27,
+            "total_plus_step": 8.094155860762403e-21
+          },
+          {
+            "node": 62811,
+            "after": 0.0004579089158698061,
+            "material_grid": [
+              [
+                23,
+                10,
+                2
+              ]
+            ],
+            "physical_slope": 8.651195689851275e-16,
+            "gauge_slope": -9.066636981215972e-18,
+            "total_slope": 8.560529320039115e-16,
+            "physical_plus_step": 1.7106145628938763e-19,
+            "gauge_plus_step": -9.066639910581576e-27,
+            "total_plus_step": 1.7106144722274773e-19
+          }
+        ],
+        "increment": 1e-09,
+        "free_zero": 51359,
+        "physical": {
+          "positive": 51359,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "total": {
+          "positive": 51359,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "gauge": {
+          "positive": 0,
+          "zero": 28170,
+          "negative": 23189,
+          "nonfinite": 0
+        },
+        "long_double_mantissa_bits": 63,
+        "min_physical": {
+          "node": 241,
+          "material_grid": [],
+          "depth": 0.930568927197921,
+          "physical": 8.312245827281049e-22,
+          "gauge": 0.0,
+          "total": 8.312245827281049e-22,
+          "physical_slope": 2.507147363454847e-47,
+          "gauge_slope": 0.0
+        },
+        "min_total": {
+          "node": 241,
+          "material_grid": [],
+          "depth": 0.930568927197921,
+          "physical": 8.312245827281049e-22,
+          "gauge": 0.0,
+          "total": 8.312245827281049e-22,
+          "physical_slope": 2.507147363454847e-47,
+          "gauge_slope": 0.0
+        },
+        "worst_fraction": {
+          "node": 38109,
+          "material_grid": [
+            [
+              14,
+              13,
+              8
+            ]
+          ],
+          "depth": 0.3363506918035118,
+          "physical": 2.0782519879935763e-14,
+          "gauge": -4.676224488707885e-26,
+          "total": 2.0782519879889e-14,
+          "physical_slope": 2.077992465662445e-05,
+          "gauge_slope": -4.676217448909286e-17
+        },
+        "max_abs_gauge_over_positive_physical": 2.250075792407874e-12,
+        "nonpositive": [],
+        "native_physical_slope_max_error": 2.008484524529397e-17,
+        "physical_energy": 92185.38323618594,
+        "unit_gauge": 9.90719913665563,
+        "passed": true,
+        "work_sha256": "5bfa48ede4e6744982b9982510b2c209d775b2a302ec9db1eca5ce6d43c6c17e",
+        "gauge_energy_difference": 0.0
+      },
+      "sampled_melted_front": 0.3622238246143633,
+      "order_max_by_depth": [
+        0.6376452812177967,
+        0.47948044967299247,
+        0.32525182950084236,
+        0.2010942166661712,
+        0.11588087775296725,
+        0.06373917656187832,
+        0.03409449667920965,
+        0.01795275390160306,
+        0.009371379073465998,
+        0.0048662305011902265,
+        0.002513846655263651,
+        0.0012834624189617771,
+        0.0006286368678332979,
+        0.0002564963760331722,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "depth_knots": [
+        0.0,
+        0.025873130099949734,
+        0.05174626019989947,
+        0.0776193902998492,
+        0.10349252039979893,
+        0.12936565049974866,
+        0.1552387805996984,
+        0.18111191069964827,
+        0.20698504079960056,
+        0.23285817089959887,
+        0.2587313010002118,
+        0.28460443110718825,
+        0.3104775612675553,
+        0.3363506918035118,
+        0.3622238246143633,
+        0.38809696954067013,
+        0.413970172170337,
+        0.4398436240028237,
+        0.4657180629612028,
+        0.4915961231381077,
+        0.5174865898092327,
+        0.5434170682884087,
+        0.5694701053312587,
+        0.5958845618064506,
+        0.6233542265464157,
+        0.654104646085242,
+        0.6991403557693495,
+        0.7034260700550639,
+        0.7077117843407781,
+        0.7119974986264924,
+        0.7162832129122066,
+        0.720568927197921,
+        0.7248546414836352,
+        0.7291403557693495,
+        0.7334260700550638,
+        0.7377117843407781,
+        0.7419974986264923,
+        0.7462832129122067,
+        0.750568927197921,
+        0.7548546414836352,
+        0.7591403557693496,
+        0.7634260700550638,
+        0.7677117843407781,
+        0.7719974986264924,
+        0.7762832129122067,
+        0.7805689271979209,
+        0.7848546414836353,
+        0.7891403557693495,
+        0.7934260700550638,
+        0.797711784340778,
+        0.8019974986264924,
+        0.8062832129122066,
+        0.810568927197921,
+        0.8148546414836353,
+        0.8191403557693495
+      ],
+      "current": {
+        "feed_current": 10.70771658765985,
+        "bulk_current": 10.707716587659817,
+        "port_error": 3.197442310920451e-14,
+        "weak_disk_current": 10.707716587659862,
+        "incident_slice_current": 10.707716587659862,
+        "receiving_slice_current": 10.041065047276213,
+        "positive_slice_current": 10.707716587659862,
+        "dense_total_subsonic_share": 0.6675898974908858,
+        "total_axial_stress": -26.582877894743568,
+        "disk_minus_feed_current": 1.2434497875801753e-14
+      },
+      "shape_forces": [
+        -0.006656253294932558,
+        -0.6382708491434809,
+        0.6608481331238925,
+        -0.527998782079708,
+        0.6182487636525271,
+        0.006866546802588912
+      ],
+      "shape_audit": {
+        "rows": [
+          {
+            "mode": "log_depth",
+            "analytic": -0.006656253294932558,
+            "elastic": 0.05847656316026667,
+            "bath": -0.06513281636696862,
+            "unit_gauge": -0.8823061435496582,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": -0.00665625165534964,
+                "minus_analytic": 1.6395829185999513e-09,
+                "crystal": 0.05847656318934968,
+                "bath": -0.0651328147564687,
+                "unit_gauge": -0.8823061393911641,
+                "negative": -0.006527008343517743,
+                "positive": -0.0067854949671815375
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": -0.006656248856048088,
+                "minus_analytic": 4.438884470669878e-09,
+                "crystal": 0.05847656316128267,
+                "bath": -0.06513281192910014,
+                "unit_gauge": -0.8823061435007882,
+                "negative": -0.006623946518717052,
+                "positive": -0.0066885511933791235
+              }
+            ]
+          },
+          {
+            "mode": "scaled_log_exit",
+            "analytic": -0.6382708491434809,
+            "elastic": 0.10615504690217459,
+            "bath": -0.7444258959842386,
+            "unit_gauge": -0.6141684860460217,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": -0.6382708491367276,
+                "minus_analytic": 6.753290743462259e-12,
+                "crystal": 0.1061550468918396,
+                "bath": -0.7444258959671504,
+                "unit_gauge": -0.6141684860516957,
+                "negative": -0.6382519116876191,
+                "positive": -0.6382897865858362
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": -0.6382708491371448,
+                "minus_analytic": 6.336043994158158e-12,
+                "crystal": 0.1061550469015427,
+                "bath": -0.7444258959772707,
+                "unit_gauge": -0.6141684860463031,
+                "negative": -0.638266121274774,
+                "positive": -0.6382755769995156
+              }
+            ]
+          },
+          {
+            "mode": "mean_width",
+            "analytic": 0.6608481331238925,
+            "elastic": 0.41028355635777325,
+            "bath": 0.2505645772576107,
+            "unit_gauge": -4.914915700872202,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": 0.6608481324808045,
+                "minus_analytic": -6.430879174448498e-10,
+                "crystal": 0.41028355635758385,
+                "bath": 0.2505645766147122,
+                "unit_gauge": -4.914915700883815,
+                "negative": 0.6611682153229752,
+                "positive": 0.6605280496386339
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": 0.6608481362142369,
+                "minus_analytic": 3.090344509102099e-09,
+                "crystal": 0.4102835563577448,
+                "bath": 0.2505645803479837,
+                "unit_gauge": -4.914915700872846,
+                "negative": 0.660928152412808,
+                "positive": 0.6607681200156659
+              }
+            ]
+          },
+          {
+            "mode": "depth_asymmetry",
+            "analytic": -0.527998782079708,
+            "elastic": -0.23889984634604255,
+            "bath": -0.2890989361422229,
+            "unit_gauge": 4.085574045311669,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": -0.5279987826430537,
+                "minus_analytic": -5.633456532207551e-10,
+                "crystal": -0.23889984634597616,
+                "bath": -0.2890989367056349,
+                "unit_gauge": 4.0855740453134155,
+                "negative": -0.5277827716661803,
+                "positive": -0.5282147936199271
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": -0.5279987816557127,
+                "minus_analytic": 4.2399538545921656e-10,
+                "crystal": -0.23889984634602662,
+                "bath": -0.2890989357182434,
+                "unit_gauge": 4.085574045311732,
+                "negative": -0.5279447875732538,
+                "positive": -0.5280527757381714
+              }
+            ]
+          },
+          {
+            "mode": "waist_profile",
+            "analytic": 0.6182487636525271,
+            "elastic": 0.2847974589641475,
+            "bath": 0.3334513050375332,
+            "unit_gauge": -3.491535565115692,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": 0.6182487631875896,
+                "minus_analytic": -4.6493753552007133e-10,
+                "crystal": 0.28479745896410474,
+                "bath": 0.3334513045726384,
+                "unit_gauge": -3.491535565137986,
+                "negative": 0.6183170108889658,
+                "positive": 0.6181805154862132
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": 0.6182487669880775,
+                "minus_analytic": 3.3355504007177676e-09,
+                "crystal": 0.28479745896412606,
+                "bath": 0.333451308373105,
+                "unit_gauge": -3.4915355651171205,
+                "negative": 0.6182658253718339,
+                "positive": 0.618231708604321
+              }
+            ]
+          },
+          {
+            "mode": "polar_equatorial",
+            "analytic": 0.006866546802588912,
+            "elastic": -0.009910025611254326,
+            "bath": 0.016776572419608702,
+            "unit_gauge": -0.05765463501344297,
+            "central": [
+              {
+                "h": 3.814697265625e-06,
+                "central": 0.006866547278239938,
+                "minus_analytic": 4.756510253484288e-10,
+                "crystal": -0.009910025611254399,
+                "bath": 0.0167765728952598,
+                "unit_gauge": -0.057654635013084016,
+                "negative": 0.006883343585118624,
+                "positive": 0.006849750971361251
+              },
+              {
+                "h": 9.5367431640625e-07,
+                "central": 0.00686654774396689,
+                "minus_analytic": 9.413779773793793e-10,
+                "crystal": -0.009910025611254904,
+                "bath": 0.016776573360987257,
+                "unit_gauge": -0.05765463501340949,
+                "negative": 0.006870742277358069,
+                "positive": 0.00686235321057571
+              }
+            ]
+          }
+        ],
+        "threshold": 1e-07,
+        "passed": true,
+        "six_total": [
+          -0.006656253294932558,
+          -0.6382708491434809,
+          0.6608481331238925,
+          -0.527998782079708,
+          0.6182487636525271,
+          0.006866546802588912
+        ]
+      },
+      "cp10_comparison": {
+        "mean_width": {
+          "cp10": 0.705499,
+          "now": 0.6608481331238925
+        },
+        "scaled_log_exit": {
+          "cp10": -0.641236,
+          "now": -0.6382708491434809
+        }
+      },
+      "checks": {
+        "native": true,
+        "orientation": true,
+        "signed_work": true,
+        "six_forces": true,
+        "current": true,
+        "physical_orientation": true
+      },
+      "passed": true,
+      "state_file": "_scratch/s11c/r4_adaptive392_01/secondary/stationary_state.npz",
+      "free_label_force_l2": 8.101011244748155e-05,
+      "fixed_state_verification": {
+        "max_internal": 1.6906053142151423e-05,
+        "max_fields": 4.013413466228421e-09,
+        "max_shape_fd_error": 4.438884470669878e-09,
+        "physical_Jinv_lower": 1.2015261808214676e-05,
+        "free_zero": 51359,
+        "current_gap": 3.197442310920451e-14
+      }
+    }
+  },
+  "paired_comparison": {
+    "input_states": {
+      "primary": "67a1cd2b52d258e44c96f0a7c1a2b4b7e96cca133f943860ce7748728d60c738",
+      "secondary": "89a5c987e1ff0be1447774ff3cfc159f493689bfdf0ea2d650418499cdc1bbb2"
+    },
+    "energies_and_orientation": {
+      "total_energy": 9.807990863919258e-08,
+      "physical_energy": 0.0,
+      "crystal_energy": 0.0,
+      "gauge_energy": 9.808127145289074e-08,
+      "gauge_to_crystal": 3.193245186306683e-07,
+      "min_sampled_physical_Jinv": 0.0,
+      "min_sampled_ordered_Jinv": 0.0
+    },
+    "current": {
+      "feed_current": 0.0,
+      "bulk_current": 0.0,
+      "weak_disk_current": 0.0,
+      "incident_slice_current": 0.0,
+      "receiving_slice_current": 0.0,
+      "positive_slice_current": 0.0,
+      "port_error": 0.0,
+      "disk_minus_feed_current": 0.0,
+      "dense_total_subsonic_share": 0.0,
+      "total_axial_stress": 0.0
+    },
+    "shape_force_delta": {
+      "log_depth": -8.734830821317818e-09,
+      "scaled_log_exit": -6.08026806681039e-09,
+      "mean_width": -4.865766545236738e-08,
+      "depth_asymmetry": 4.044718304729855e-08,
+      "waist_profile": -3.4566202122832124e-08,
+      "polar_equatorial": -5.707808869645503e-10
+    },
+    "max_absolute_order_difference": 0.0,
+    "order_difference_node": 0,
+    "support_difference_full_array_count": 0,
+    "maximum_order_in_support_difference": 0.0,
+    "sampled_front": [
+      0.3622238246143633,
+      0.3622238246143633
+    ],
+    "native_residuals": [
+      {
+        "label": 1.6913186196217433e-05,
+        "melted_label": 5.516050712909089e-08,
+        "unit_melt": 5.516050712909089,
+        "order_projected": 4.0023725165257845e-12,
+        "order_kkt": 3.001332515850663e-11,
+        "amplitude_raw": 3.655586613363765e-09,
+        "phase_raw": 7.48227230736411e-11,
+        "carrier_metric": 4.013413466228421e-09
+      },
+      {
+        "label": 1.6906053142151423e-05,
+        "melted_label": 5.516050712909089e-10,
+        "unit_melt": 5.516050712909089,
+        "order_projected": 4.000166192209831e-12,
+        "order_kkt": 3.160678396928735e-11,
+        "amplitude_raw": 3.655586613363765e-09,
+        "phase_raw": 7.48227230736411e-11,
+        "carrier_metric": 4.013413466228421e-09
+      }
+    ],
+    "limits": {
+      "energy": 1e-06,
+      "force_order_current": 3e-05,
+      "front": "same physical cross-section"
+    },
+    "signed_differences": "primary (1e-8) minus secondary (1e-10)",
+    "checks": {
+      "energy": true,
+      "current": true,
+      "order": true,
+      "front": true,
+      "support": true,
+      "stationary_shape_forces": true
+    },
+    "status": "Held for independent review",
+    "passed": true
+  },
+  "checkpoint10": {
+    "file": "research/pde_ledger_v3/_measurements/mouth_r4_checkpoint10_boundary.json",
+    "measurement_sha256": "0a742c9440362d0f5e00b637dcd77537170f3e5a6c32cd9ef4caca6dd2c1a374",
+    "state_sha256": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "force_order": [
+      "log_depth",
+      "scaled_log_exit",
+      "mean_width",
+      "depth_asymmetry",
+      "waist_profile",
+      "polar_equatorial"
+    ],
+    "forces": [
+      0.15056488336995244,
+      -0.6412364018615335,
+      0.7054993329802528,
+      -0.6668344576610252,
+      0.4656029341276735,
+      0.009007417247630656
+    ]
+  },
+  "signed_force_convention": "Negative derivative of total energy with respect to the indicated shape coordinate at the held state.",
+  "verified_readback": {
+    "source_pin_count": 1181,
+    "source_manifest_sha256": "bfe9c1e8897cd679f082ff930b4e9299d2adbcbc27a3e815db7fc1db294aebe0",
+    "source_commit": "63db8cc000c09f250ab570459bc3ee1c3fe0bf56",
+    "origin_sha256": "9482e6a9ba6d33242526c648bea828d62202bf9c8a1aa6e6243c4c6d1e3a7aa2",
+    "cp10_measurement_sha256": "83507e2952eed2d7c3f8e487db02be3474fa440ab4a9800bdd314b523dc6766e",
+    "step_arrays": {
+      "step_00393.npz": "1585c7ef5bfb678877efcc082fc4459c14d3c11cd4ac5cd9fe91af7045e3f7cd",
+      "step_00394.npz": "23aeeb4ffc482ba9241e8b685788f4913af1d1105428603ed44583d03f8d7ab4",
+      "step_00395.npz": "f5387ba4f58a5a4ac2c4a6e0d97f17c908cdcf5daeedd3ee5ec42182b93de85e"
+    },
+    "matched_arrays": {
+      "primary/matched_00393.npz": "1cacf4035b966349aa69fd5e7e89a634c5802331f3fccfd1bd294b53af4ed23f",
+      "primary/matched_00395.npz": "9e7dbab575f2bb4a63c28192a8b65e3f078afdbcbd714e6e3063391b3e7f9f0b",
+      "secondary/matched_00395.npz": "172e00a84b769897139ef7f146e8cddbcb62f3d0e672c70bf46cb69f71260dc6"
+    },
+    "sign_banks": {
+      "primary/matched_00393.npz": "f0620395a46271cdd963f93f7de3ba1684d12696574d49acf75d079b3fa478e8",
+      "primary/matched_00395.npz": "f5dc059ba251f2a6a51ea3c867e135c4d4445e16d53f3a0aee7f7dfd261eca65",
+      "secondary/matched_00395.npz": "5bfa48ede4e6744982b9982510b2c209d775b2a302ec9db1eca5ce6d43c6c17e"
+    },
+    "native_fixed_state_evaluation": {
+      "primary": {
+        "max_internal": 1.6913186196217433e-05,
+        "max_fields": 4.013413466228421e-09,
+        "max_shape_fd_error": 4.438884471153958e-09,
+        "physical_Jinv_lower": 1.2015261808214676e-05,
+        "free_zero": 51359,
+        "current_gap": 3.197442310920451e-14
+      },
+      "secondary": {
+        "max_internal": 1.6906053142151423e-05,
+        "max_fields": 4.013413466228421e-09,
+        "max_shape_fd_error": 4.438884470669878e-09,
+        "physical_Jinv_lower": 1.2015261808214676e-05,
+        "free_zero": 51359,
+        "current_gap": 3.197442310920451e-14
+      }
+    },
+    "unchanged_across_gauges": [
+      "labels",
+      "order",
+      "carrier_amplitude",
+      "carrier_phase",
+      "shape"
+    ],
+    "max_abs_six_difference": 4.865766545236738e-08
+  },
+  "independent_review": "Scoped clear for paired internal stationarity at the held radius-4 shape. Both target gauges pass native force, work-sign, flow and whole-body orientation checks at step 395. All six boundary forces retain measurable signed work, so shape equilibrium and free release remain open."
+}

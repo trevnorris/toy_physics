@@ -2,6 +2,8 @@
 
 ## Common-medium research
 
+**Paired internal equilibrium at held radius 4 passed at step 395.** Peak internal residuals were 0.00001691319 and 0.00001690605 at the two gauges. Both admit the same carrier and order fields with inward current 10.70771659 and positive orientation throughout. The six held shape forces agree within 4.87 × 10⁻⁸. The exit still favors narrowing (−0.638270855), and the middle favors widening (+0.660848084). All six locks remain engaged for review. [Endpoint comparison, six forces and independent review](software/stage1_solver/reports/mouth_r4_held_pair395.md)
+
 **The held radius-4 benchmark paused after step 392.** Exact-Hessian CG met its forcing tolerance in ten energy-lowering, positively oriented steps. Fresh field updates raised the crystal force on all ten cycles. Its matched value reached 0.00003307470, rose twice and ended at 0.00005684467 against 0.000030. The secondary gauge and all six shape coordinates remain gated. [Cycle ledger, endpoint and review](software/stage1_solver/reports/mouth_r4_adaptive_cycles.md)
 
 **The repaired radius-4 primary stopped in the Newton linear solve at attempted step 383.** All 94 crystal steps after step 288 lowered energy and preserved orientation. The last accepted peak crystal force was 0.00008798533 against the 0.000030 target. Re-equilibrating the order and carrier fields raised the crystal residual on all three occasions it first crossed the target. The paired gauge and stationary six-force comparison remain pending. All six shape coordinates are held. [Stop diagnosis, flow and independent review](software/stage1_solver/reports/mouth_r4_projector_held_stop.md)

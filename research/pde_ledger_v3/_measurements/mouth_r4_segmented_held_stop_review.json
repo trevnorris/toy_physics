@@ -1,0 +1,299 @@
+{
+  "verdict": "Verified a numerical step-167 line-search stop on the primary held shape. Step 166 is feasible and above the internal target. The paired stationary readout remains unavailable.",
+  "source_commit": "05a1b666",
+  "original_guard": {
+    "exitCode": 1,
+    "wallSeconds": 1704.3675420666113,
+    "unit": "s11c-guard-de2139bdb1f4",
+    "stderrBytes": 906,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 1,
+      "guardReason": null,
+      "wallSeconds": 1704.2974432203919,
+      "childPid": 3040171
+    }
+  },
+  "independent_readback_command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "_scratch/s11c/r4_segmented_held01/independent_stop_review.py"
+  ],
+  "script_sha256": "bcfcc9e9710d30d6c83a93477164a2660fa89508cc36bf949738b3aab272af74",
+  "evidence_sha256": {
+    "last_accepted_npz": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694",
+    "primary/ISSUE.json": "c5ba407d563098997e83e4b1a66920a9d01a4673ca598e17f675c1403820df45",
+    "PAIRED_ISSUE.json": "abf69ccbb75541f9188214a7a324e53539136121b6341d91be4edf086f94d856",
+    "primary_guard/outcome.json": "20bbd5b87404872623c16b5d55a4db25d61b80f6bbee73a7350bc8d252533d7a",
+    "primary_guard/stdout": "653570524e846c9e7d3bea36115e845bcae8c3c3ea2df2cf6e18e4e1c43992fa",
+    "primary/matched_00148.npz": "f4c77e9dbb19b703e6a2eac3e6ab4a426b23640ecf8c7ca4761d330bcb1f93e7",
+    "held_pin/manifest.json": "73d210aa27cab48ba075b3491fcfbb39743107417add15f6b95863be8c4f02f1"
+  },
+  "first_last": [
+    109,
+    166
+  ],
+  "accepted": 58,
+  "work": -0.001536108140032102,
+  "rematch_energy_delta": -1.193860953208059e-05,
+  "net_energy_delta": -0.0015480467554880306,
+  "minimum_alpha": 0.000244140625,
+  "minimum_trajectory_chart_bound": 1.6023863961919892e-07,
+  "best_fixed_field": {
+    "step": 123,
+    "magnitude": 0.043749513942543436,
+    "signed": -0.043749513942543436,
+    "alpha": 0.03125,
+    "chart_bound": 2.9257193608548404e-05,
+    "energy": 92185.39021995943,
+    "near_reversals": 0
+  },
+  "best_fresh": [
+    0.09881032647699539,
+    108
+  ],
+  "cg_reasons": {
+    "nonpositive curvature": 58
+  },
+  "reference_events": {
+    "nodes": 14,
+    "ray_endpoints": 639,
+    "reversals": 421,
+    "one_twelfth": 517,
+    "peak_neighborhood_crossings": 78,
+    "peak_neighborhood_reversals": 58
+  },
+  "steps_with_near_force_reversals": [
+    114,
+    117,
+    118,
+    119,
+    120,
+    122,
+    124,
+    125,
+    131,
+    133,
+    136,
+    137,
+    139,
+    141,
+    142,
+    143,
+    144,
+    148,
+    151,
+    152,
+    154,
+    156,
+    159,
+    161,
+    162,
+    164,
+    165
+  ],
+  "target": 3e-05,
+  "boundary_work_at_fresh_fields": {
+    "108": {
+      "n": 52061,
+      "min_work": 8.312245825522584e-22,
+      "ratio": 7.564486378331696e-11,
+      "current": {
+        "feed_current": 10.707728693785093,
+        "bulk_current": 10.707728693784606,
+        "port_error": 4.867217739956686e-13,
+        "weak_disk_current": 10.707728686532223,
+        "incident_slice_current": 10.707728686532223,
+        "receiving_slice_current": 10.041076379567153,
+        "positive_slice_current": 10.707728686532223,
+        "dense_total_subsonic_share": 0.6675896369698388,
+        "total_axial_stress": -26.582875473035074,
+        "disk_minus_feed_current": -7.252870304341741e-09
+      },
+      "front": 0.3363506918035118,
+      "field": {
+        "order_projected": 9.548067336773158e-10,
+        "order_kkt": 1.94581081824915e-09,
+        "amplitude_raw": 7.391490673974799e-10,
+        "phase_raw": 6.157430102360535e-11,
+        "carrier_metric": 2.5054138189970097e-10
+      },
+      "crystal": 0.09881032647699539
+    },
+    "128": {
+      "n": 52040,
+      "min_work": 8.31224582583541e-22,
+      "ratio": 8.814339728144628e-10,
+      "current": {
+        "feed_current": 10.707727640194031,
+        "bulk_current": 10.707727640192974,
+        "port_error": 1.056932319443149e-12,
+        "weak_disk_current": 10.707727616743808,
+        "incident_slice_current": 10.707727616743808,
+        "receiving_slice_current": 10.041075362069439,
+        "positive_slice_current": 10.707727616743808,
+        "dense_total_subsonic_share": 0.6675896716781642,
+        "total_axial_stress": -26.582875631675037,
+        "disk_minus_feed_current": -2.3450223096688205e-08
+      },
+      "front": 0.3363506918035118,
+      "field": {
+        "order_projected": 2.820341016285255e-09,
+        "order_kkt": 6.965542469003236e-09,
+        "amplitude_raw": 7.43283620678011e-10,
+        "phase_raw": 1.5400695389106156e-10,
+        "carrier_metric": 5.571220395733199e-10
+      },
+      "crystal": 0.12112129611074052
+    },
+    "148": {
+      "n": 51993,
+      "min_work": 8.312245826011397e-22,
+      "ratio": 2.1371400131268772e-10,
+      "current": {
+        "feed_current": 10.707726868384231,
+        "bulk_current": 10.707726868383336,
+        "port_error": 8.952838470577262e-13,
+        "weak_disk_current": 10.707726854279883,
+        "incident_slice_current": 10.707726854279883,
+        "receiving_slice_current": 10.041074641245133,
+        "positive_slice_current": 10.707726854279883,
+        "dense_total_subsonic_share": 0.6675896958531035,
+        "total_axial_stress": -26.582875760550415,
+        "disk_minus_feed_current": -1.4104347911825244e-08
+      },
+      "front": 0.3363506918035118,
+      "field": {
+        "order_projected": 1.740814215001052e-09,
+        "order_kkt": 3.997571918557415e-09,
+        "amplitude_raw": 7.853639281135719e-10,
+        "phase_raw": 8.929163875306956e-11,
+        "carrier_metric": 3.9699024831226407e-10
+      },
+      "crystal": 0.36399480876942536
+    }
+  },
+  "final_chart_certificate_from_archived_python": {
+    "chart_det_global_lower": 3.0817260030210546e-05,
+    "chart_lowest_cell": [
+      25,
+      11,
+      9
+    ],
+    "chart_det_active_lower": 0.0012803523406555988
+  },
+  "final_independent_order": 0.114487526371181,
+  "final_peak": {
+    "component": 1,
+    "group": 26703,
+    "chi": 0.114487526371181,
+    "signed_force": -0.1046051670323409,
+    "node": [
+      24,
+      3,
+      20
+    ],
+    "radius": 3.9385786968906356,
+    "depth": 0.0776193902998492,
+    "theta": 1.5707963267948966
+  },
+  "final_worst_sampled": {
+    "cell": [
+      25,
+      10,
+      11
+    ],
+    "local": [
+      0.1127016653792583,
+      0.1127016653792583,
+      0.1127016653792583
+    ],
+    "chart": [
+      0.9986874284990818,
+      0.3194168667298769,
+      0.7106696673232676
+    ],
+    "chi": 0.0,
+    "Jinv": 0.0013011853344358712,
+    "grad_xi_norm": 0.9857918572474523,
+    "W": 339542.8965292171
+  },
+  "last": {
+    "step": 166,
+    "magnitude": 0.1046051670323409,
+    "signed": -0.1046051670323409,
+    "alpha": 0.00048828125,
+    "chart_bound": 3.0817260030210546e-05,
+    "energy": 92185.38925301637,
+    "near_reversals": 0
+  },
+  "rejected": {
+    "newton": {
+      "count_by_predicate": {
+        "Label leaves the saved material domain": 4,
+        "Nonpositive or roundoff-unresolved chart determinant": 1,
+        "Insufficient resolved signed work": 9
+      },
+      "minimum_alpha": 0.0001220703125,
+      "signed_work_at_minimum": 5.267068875006902e-07,
+      "smallest_resolved_positive_trial_work": 5.267068875006902e-07,
+      "inversions": [
+        {
+          "alpha": 0.0625,
+          "reason": "Nonpositive or roundoff-unresolved chart determinant",
+          "site": {
+            "reason": "Nonpositive or roundoff-unresolved chart determinant",
+            "code": 2,
+            "cell": [
+              25,
+              10,
+              7
+            ],
+            "chart_fractions": [
+              0.0,
+              1.0,
+              1.0
+            ],
+            "chart_det": -0.0019140408415956752,
+            "chart_lower": -0.0019140408416966257,
+            "roundoff_margin": 1.0095049095238626e-13,
+            "subdivisions": 0
+          }
+        }
+      ]
+    },
+    "jacobi": {
+      "count_by_predicate": {
+        "Label leaves the saved material domain": 5,
+        "Insufficient resolved signed work": 9
+      },
+      "minimum_alpha": 0.0001220703125,
+      "signed_work_at_minimum": 7.515712813221026e-07,
+      "smallest_resolved_positive_trial_work": 7.515712813221026e-07,
+      "inversions": []
+    }
+  },
+  "failed_cg": "nonpositive curvature",
+  "failed_cg_iterations": 2,
+  "shared_state_evidence": "The 58 saved fixed-field states preserve all six shape coordinates and are unchanged in carrier and order within each burst. The Python Bernstein readback independently covered every cell at step 166.",
+  "independent_readback_guard": {
+    "exitCode": 0,
+    "wallSeconds": 4.618044380098581,
+    "unit": "s11c-guard-f9ff55cae01f",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 4.51779082743451,
+      "childPid": 3046697
+    }
+  },
+  "ancillary_source_review": {
+    "evidence": {
+      "mouth_r4_segmented_stop_chatter.json": "000f524238ec15d4d649bea62546948a29b851dc7c774321d5038c1a1b66ee25",
+      "mouth_r4_segmented_stop_local.json": "e1dffc197eea1402637114d48aa59bfa098c4b92baac72120f3a50ae4bc9f92b"
+    },
+    "scope": "The same-plane event reader keys history by tracked site, ray bank, and reference plane, clearing inactive histories. All 421 saved-state recrossings are at quadrature-ray endpoints of the 1/12 plane. The static residual readback uses the fixed fields from step 148 with the accepted labels at step 166. It preserves the flow readouts and resolves a new order KKT residual of 0.0012619818071014312. No rejected-trial label or signed per-cell energy path establishes why both small steps cost energy."
+  }
+}

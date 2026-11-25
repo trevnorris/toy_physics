@@ -1,0 +1,1728 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_segmented_stop_chatter.py",
+    "_scratch/s11c/r4_segmented_held01",
+    "research/pde_ledger_v3/_measurements/mouth_r4_segmented_stop_chatter.json"
+  ],
+  "evidence": {
+    "sha256": "13c381287eb4cf428985d4dc6279780cfffd77b5e18c15b23463d952b8596d1d",
+    "runner_sha256": "bf20131d8ba9ff29c7e692d50cf17082e790256b4f8c580a8a1408c9e18a516a",
+    "source_step_108": "d21586ba828f891f67e4601e8a6145a0cf7f25f003273852b159c0094da63837",
+    "accepted_states": {
+      "step_00109.json": "df15b8b789426d913f42c47dc1dce16d35002b429852283854d30c11af123678",
+      "step_00110.json": "8cab74e6953d093fbc1f0cd40f3fa1d1e96d1b1ec4972f131c4e1ba3692b62c3",
+      "step_00111.json": "81ef6ea6aa0a1f42836bb072a0a72bbba5fa6de9a56852f9e5d59f0414c39c8a",
+      "step_00112.json": "6b9ee6357cc7239918f8166be773350a82379a922d177e102ae472765ed1b10a",
+      "step_00113.json": "267f1d2b056234c60123b0f1233782c1845c462918303a3e180a2b260efebaa3",
+      "step_00114.json": "b646693ea66565de52e59f08304d1c8081222b29efa2380956adaf8fdb92319f",
+      "step_00115.json": "468c71e3ab6c5aad6c8c1042498fec91fdb89fefbded9445884cfad6bdc354d4",
+      "step_00116.json": "9f712213b3905fe7361b372cbcb27ffc5b8390ac3b835207b225fc406b4c84f8",
+      "step_00117.json": "2b0a7a2fb96caf8eef004b3cba327b06065862972f3d7c98a736df6e25a44734",
+      "step_00118.json": "b00c61ff3c37b555707f4fc56b1912f9d6859c98b8f955fda5b2655493b1d0b3",
+      "step_00119.json": "784f2282fb345935d722fbe578ce1aa4bd8023c7b6c1c2f4fd83b7c45b794e6a",
+      "step_00120.json": "72c146e8f47590ce63ef771c1d1bd0abea5abef5fc396a79483bc3f11e50ac6a",
+      "step_00121.json": "5ee312fb72ad6b35ac74edf9ca4e0fa7be77624caeb3f0dc7003cbd71b294384",
+      "step_00122.json": "3880bc0da192115217c6ab7f103f88004e131386b495f8b656f5666d2cc5158f",
+      "step_00123.json": "35761ca106186a6febba1dc1df0a2d64e0585172087690162f71acadb6e161d6",
+      "step_00124.json": "81fd11ce69d53ea6c663d036855553e727391330fb24cdcfe9161e129461cb0f",
+      "step_00125.json": "76b2f7d11582448e0fca35d038777132dc72fc1519bca1cf81b09b11d9abb3a7",
+      "step_00126.json": "f6be14e9ca41afcddeeeca40434f70b0c5322858d9fdf9203e72d64bc175f761",
+      "step_00127.json": "81900e561b67367c9e876353de674ec50b22cf66a6fbe07cc6f6caccc325ba2b",
+      "step_00128.json": "eb295cea681f3de7a0119ca19f7ee9091d814e86e15b6f1bdc6612994d8415bb",
+      "matched_00128.json": "ffbed84997ed7f3abfae2391b3b90dd69e20e1e8ee183df2e3d38bfdf51c695f",
+      "step_00129.json": "5f405c737b54c644fa9021fe0779799288bcb253220b240a56c4df61b13f1f53",
+      "step_00130.json": "297ddeb246a0986fbb22643d415803fd51ac10940f476992d79603d7b544a113",
+      "step_00131.json": "1444caab40f0fa1d20a5428d85425403518686b2527995859eead3bfdb4b13f1",
+      "step_00132.json": "3900f505499278931d3b390c165d6994b75eac1d17a0f750c35baa726b2abce9",
+      "step_00133.json": "91ea4d0621205b9f717348826af417c72ca50ef0eb70b9f5ce8d728ff4d1bf68",
+      "step_00134.json": "c2ae1de1eb0927dbc6c51d4936578fdf2524625c799297ed8897bb25b7e9ae31",
+      "step_00135.json": "31d3a7aba857aed98870f2485ab110d01483c7418069e701c4671b88c1f9e068",
+      "step_00136.json": "75ce1cd304d20b1f27024623dadb01cceeecc2351f9c985ac901c48cc346dd90",
+      "step_00137.json": "ffd9a321d2960a1fcaa36857ce078e5cacae2c565b374c9bc0e5e854d19a171d",
+      "step_00138.json": "3a6e8eec1aacf72f4e95498e180c8da03ec4536f10c7ac6738c4d18c7bae0ef7",
+      "step_00139.json": "12ca24851ed30bc8b676686e611304381f7101d2e204ea11fbfaa75daaf751f1",
+      "step_00140.json": "c0f69cc72dd3131d0e867ad301442d2b58b2138901de08e81863d0957de1356f",
+      "step_00141.json": "659c78c6bd8d8be053dd00257fba3e5e40dabf4b7f929cca914adca059ecbbb6",
+      "step_00142.json": "4173c886c9c3a6741314d559ce4294f11fcf33cff26ddf339fe4d389f7ace6d9",
+      "step_00143.json": "d8021ac10fbd7dc431fa96e1996836220ad9b5f9e5b3cd9c717e94b162ac6446",
+      "step_00144.json": "a1306df293f9acf50a418ff2312508ada6ae7a793dfcd3ed1f64c3976432db08",
+      "step_00145.json": "9913858af0ebdb4205eafbeef1fd0ceeb38e3ab4ba4293329ffaa62d4b56a80e",
+      "step_00146.json": "e5d222c1d5fc9342695e0286789a34ad66c67cb183301631405cc1e1b8c1ddea",
+      "step_00147.json": "f9d4abe870585481a54a3b389166590983ed4320f4d027f4d2b1fba8ebf549db",
+      "step_00148.json": "cb00497f7d45d6f4507b3eebee526c25a25c098e335157bf2fbbcdfc55840080",
+      "matched_00148.json": "f4c77e9dbb19b703e6a2eac3e6ab4a426b23640ecf8c7ca4761d330bcb1f93e7",
+      "step_00149.json": "289d0d4067d64274d8ddb48e162c75d65a53992567179166255472f407e7307a",
+      "step_00150.json": "aa410bebb683f64f968debbb80e11e5179620ab4fabefecaa56d00174e39ad52",
+      "step_00151.json": "3fd6ca95777a47f75539aa7caff5cab1b2afa89432b3a1e13d2549e6c1ff62ed",
+      "step_00152.json": "90e77c89de5ca7eb5f9d22f5df36a04488a258a783c20726a224625bb37f1243",
+      "step_00153.json": "78e717608f734ec25c0acd18cf65f9907b1334dd73125c6ab740f6f6fb964717",
+      "step_00154.json": "d964f44342b66ceb79b7060fd3f7d14e2b60f8dbb7f300db392960865e1f88db",
+      "step_00155.json": "53a7592dc546aefe80de017e8dd849875756b6243d3cb37a06818294f3b9f871",
+      "step_00156.json": "f64ef960f17198515e19d32e48d92016eac1df9e98cd732a21974bf441680065",
+      "step_00157.json": "0e2ef3f27ca73c532bd49637fe5f5d4d4108fe1ff1fa797f7d6a2572ef6de031",
+      "step_00158.json": "e949358c277d5146b6d305e8bd1e90af029cbb9ed3b6f4d3312c430d9487d1b6",
+      "step_00159.json": "b91abe69f1cc0f358a2a7402c8a739e29e5236b11248b07d994259166073a80f",
+      "step_00160.json": "da02fa0f36deb07d9553979eae24d4ff574d6693b2dbd8f353090e7db60ffeb7",
+      "step_00161.json": "f54682cbf024fcf4a0d442008f7d89dd18c5d9106744cbcb180cf0e959827792",
+      "step_00162.json": "df32d4031a6b132bab2d531ea0d97ec725dd82d4073fda12256f4f19869ab2a7",
+      "step_00163.json": "574a9e2f66752499132fa6661da4441d544e633a984d3b7005401e5dd0b644c7",
+      "step_00164.json": "a30d3d42e41601f77585b2313820e2c3cc6d0a399fb9102ede4395fcc78a8f3f",
+      "step_00165.json": "46a62331d2672f98886b5f94a59986380924647a900dcb8544574b05132b27b7",
+      "step_00166.json": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694"
+    }
+  },
+  "definition": "A recrossing is opposite signed traversal of the same reference depth by the same continuously tracked ordered collar node or quadrature-ray endpoint. Near means at most one material-grid index away in each direction. Between saved endpoints only net changes are identifiable.",
+  "all": {
+    "ray_first_cross": 218,
+    "ray_recross": 421,
+    "node_first_cross": 14,
+    "total": 653,
+    "distinct_site_plane": 232
+  },
+  "per_plane": [
+    {
+      "xi_t": 0.08333333333333333,
+      "recross": 421
+    }
+  ],
+  "during_field_rematch": {
+    "total": 0,
+    "distinct_site_plane": 0
+  },
+  "one_twelfth": {
+    "ray_first_cross": 96,
+    "ray_recross": 421,
+    "total": 517,
+    "distinct_site_plane": 96
+  },
+  "recross_near_instantaneous_peak": {
+    "ray_recross": 58,
+    "total": 58,
+    "distinct_site_plane": 24
+  },
+  "recross_near_last_peak": {
+    "ray_recross": 22,
+    "total": 22,
+    "distinct_site_plane": 3
+  },
+  "one_twelfth_recross_near_peak": [
+    {
+      "step": 114,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        23,
+        2,
+        8
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 113,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 117,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        23,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 116,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 117,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 110,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 117,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 110,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 117,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        23,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 116,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 117,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 110,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 117,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        23,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 116,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 117,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 110,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 118,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 117,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 118,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 117,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 118,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        23,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 117,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 119,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 117,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 119,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 117,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 119,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        23,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 118,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 120,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 119,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 120,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 118,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 120,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 117,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 122,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 118,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 122,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 119,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 122,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 120,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 124,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        19
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 121,
+      "near_peak": true,
+      "near_last_peak": true
+    },
+    {
+      "step": 125,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        18
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 124,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 131,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 121,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 131,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        23,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 130,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 131,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 123,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 133,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        19
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 124,
+      "near_peak": true,
+      "near_last_peak": true
+    },
+    {
+      "step": 136,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 121,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 136,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 126,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 137,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 136,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 137,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        18
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 125,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 137,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        19
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 133,
+      "near_peak": true,
+      "near_last_peak": true
+    },
+    {
+      "step": 139,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        13
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 136,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 141,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        23,
+        2,
+        14
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 136,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 142,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        19
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 138,
+      "near_peak": true,
+      "near_last_peak": true
+    },
+    {
+      "step": 143,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        13
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 136,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 144,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        19
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 143,
+      "near_peak": true,
+      "near_last_peak": true
+    },
+    {
+      "step": 148,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        14
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 142,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 148,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        13
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 146,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 151,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        14
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 148,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 151,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        13
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 148,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 152,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 151,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 152,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 151,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 152,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 121,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 154,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        13
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 151,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 156,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 153,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 156,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 153,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 156,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 153,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 159,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 157,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 159,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 121,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 159,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 5,
+      "site": [
+        24,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 157,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 159,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 157,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 159,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        17
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 157,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 161,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        24,
+        2,
+        16
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 132,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 161,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 132,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 162,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        24,
+        2,
+        15
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 161,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 164,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        23,
+        2,
+        19
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 159,
+      "near_peak": true,
+      "near_last_peak": true
+    },
+    {
+      "step": 164,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 6,
+      "site": [
+        23,
+        2,
+        18
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": 1,
+      "recross": true,
+      "previous_step": 151,
+      "near_peak": true,
+      "near_last_peak": false
+    },
+    {
+      "step": 165,
+      "stage": "fixed_order",
+      "kind": "ray",
+      "rule_bank": 4,
+      "site": [
+        23,
+        2,
+        19
+      ],
+      "plane": 1,
+      "xi_t": 0.08333333333333333,
+      "direction": -1,
+      "recross": true,
+      "previous_step": 164,
+      "near_peak": true,
+      "near_last_peak": true
+    }
+  ],
+  "last_reversal": {
+    "step": 165,
+    "stage": "fixed_order",
+    "kind": "ray",
+    "rule_bank": 6,
+    "site": [
+      24,
+      2,
+      13
+    ],
+    "plane": 1,
+    "xi_t": 0.08333333333333333,
+    "direction": -1,
+    "recross": true,
+    "previous_step": 164,
+    "near_peak": false,
+    "near_last_peak": false
+  },
+  "last_cross": {
+    "step": 165,
+    "stage": "fixed_order",
+    "kind": "ray",
+    "rule_bank": 6,
+    "site": [
+      24,
+      2,
+      13
+    ],
+    "plane": 1,
+    "xi_t": 0.08333333333333333,
+    "direction": -1,
+    "recross": true,
+    "previous_step": 164,
+    "near_peak": false,
+    "near_last_peak": false
+  },
+  "one_twelfth_last_reversal": {
+    "step": 165,
+    "stage": "fixed_order",
+    "kind": "ray",
+    "rule_bank": 6,
+    "site": [
+      24,
+      2,
+      13
+    ],
+    "plane": 1,
+    "xi_t": 0.08333333333333333,
+    "direction": -1,
+    "recross": true,
+    "previous_step": 164,
+    "near_peak": false,
+    "near_last_peak": false
+  },
+  "distinct_recrossed_sites": 91,
+  "final_peak_node": [
+    24,
+    3,
+    20
+  ],
+  "counts_by_step": [
+    {
+      "step": 109,
+      "all": {
+        "ray_first_cross": 12
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 0
+    },
+    {
+      "step": 110,
+      "all": {
+        "ray_first_cross": 4,
+        "ray_recross": 8
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 8
+    },
+    {
+      "step": 111,
+      "all": {
+        "ray_first_cross": 4
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 0
+    },
+    {
+      "step": 112,
+      "all": {
+        "node_first_cross": 3,
+        "ray_first_cross": 12,
+        "ray_recross": 2
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 2
+    },
+    {
+      "step": 113,
+      "all": {
+        "node_first_cross": 1,
+        "ray_first_cross": 8,
+        "ray_recross": 1
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 1
+    },
+    {
+      "step": 114,
+      "all": {
+        "ray_first_cross": 8,
+        "ray_recross": 4
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 4
+    },
+    {
+      "step": 115,
+      "all": {
+        "ray_recross": 7,
+        "ray_first_cross": 1
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 7
+    },
+    {
+      "step": 116,
+      "all": {
+        "ray_first_cross": 5,
+        "ray_recross": 5
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 5
+    },
+    {
+      "step": 117,
+      "all": {
+        "ray_first_cross": 3,
+        "ray_recross": 13
+      },
+      "near_peak_recross": 7,
+      "one_twelfth_recross": 13
+    },
+    {
+      "step": 118,
+      "all": {
+        "node_first_cross": 1,
+        "ray_first_cross": 19,
+        "ray_recross": 13
+      },
+      "near_peak_recross": 3,
+      "one_twelfth_recross": 13
+    },
+    {
+      "step": 119,
+      "all": {
+        "node_first_cross": 3,
+        "ray_first_cross": 3,
+        "ray_recross": 13
+      },
+      "near_peak_recross": 3,
+      "one_twelfth_recross": 13
+    },
+    {
+      "step": 120,
+      "all": {
+        "node_first_cross": 1,
+        "ray_first_cross": 21,
+        "ray_recross": 13
+      },
+      "near_peak_recross": 3,
+      "one_twelfth_recross": 13
+    },
+    {
+      "step": 121,
+      "all": {
+        "node_first_cross": 1,
+        "ray_first_cross": 8,
+        "ray_recross": 24
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 24
+    },
+    {
+      "step": 122,
+      "all": {
+        "ray_first_cross": 6,
+        "ray_recross": 7
+      },
+      "near_peak_recross": 3,
+      "one_twelfth_recross": 7
+    },
+    {
+      "step": 123,
+      "all": {
+        "ray_first_cross": 3,
+        "ray_recross": 11
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 11
+    },
+    {
+      "step": 124,
+      "all": {
+        "node_first_cross": 2,
+        "ray_first_cross": 16,
+        "ray_recross": 16
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 16
+    },
+    {
+      "step": 125,
+      "all": {
+        "node_first_cross": 1,
+        "ray_first_cross": 7,
+        "ray_recross": 9
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 9
+    },
+    {
+      "step": 126,
+      "all": {
+        "ray_first_cross": 1,
+        "ray_recross": 9
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 9
+    },
+    {
+      "step": 127,
+      "all": {
+        "ray_recross": 3
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 3
+    },
+    {
+      "step": 128,
+      "all": {},
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 0
+    },
+    {
+      "step": 129,
+      "all": {
+        "ray_first_cross": 5,
+        "ray_recross": 6
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 6
+    },
+    {
+      "step": 130,
+      "all": {
+        "ray_recross": 8,
+        "ray_first_cross": 1
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 8
+    },
+    {
+      "step": 131,
+      "all": {
+        "ray_first_cross": 7,
+        "ray_recross": 8
+      },
+      "near_peak_recross": 3,
+      "one_twelfth_recross": 8
+    },
+    {
+      "step": 132,
+      "all": {
+        "ray_first_cross": 5,
+        "ray_recross": 14
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 14
+    },
+    {
+      "step": 133,
+      "all": {
+        "ray_first_cross": 2,
+        "ray_recross": 10
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 10
+    },
+    {
+      "step": 134,
+      "all": {
+        "ray_recross": 5
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 5
+    },
+    {
+      "step": 135,
+      "all": {
+        "ray_recross": 2
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 2
+    },
+    {
+      "step": 136,
+      "all": {
+        "ray_first_cross": 11,
+        "ray_recross": 21
+      },
+      "near_peak_recross": 2,
+      "one_twelfth_recross": 21
+    },
+    {
+      "step": 137,
+      "all": {
+        "ray_first_cross": 6,
+        "ray_recross": 10
+      },
+      "near_peak_recross": 3,
+      "one_twelfth_recross": 10
+    },
+    {
+      "step": 138,
+      "all": {
+        "ray_recross": 7,
+        "ray_first_cross": 1
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 7
+    },
+    {
+      "step": 139,
+      "all": {
+        "ray_recross": 2
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 2
+    },
+    {
+      "step": 140,
+      "all": {
+        "ray_first_cross": 1
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 0
+    },
+    {
+      "step": 141,
+      "all": {
+        "ray_first_cross": 3,
+        "ray_recross": 6
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 6
+    },
+    {
+      "step": 142,
+      "all": {
+        "ray_recross": 4,
+        "ray_first_cross": 1
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 4
+    },
+    {
+      "step": 143,
+      "all": {
+        "ray_recross": 4
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 4
+    },
+    {
+      "step": 144,
+      "all": {
+        "ray_recross": 2,
+        "ray_first_cross": 1
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 2
+    },
+    {
+      "step": 145,
+      "all": {
+        "ray_first_cross": 1,
+        "ray_recross": 3
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 3
+    },
+    {
+      "step": 146,
+      "all": {
+        "ray_first_cross": 1,
+        "ray_recross": 1
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 1
+    },
+    {
+      "step": 147,
+      "all": {
+        "ray_recross": 2,
+        "ray_first_cross": 2
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 2
+    },
+    {
+      "step": 148,
+      "all": {
+        "ray_first_cross": 6,
+        "ray_recross": 16
+      },
+      "near_peak_recross": 2,
+      "one_twelfth_recross": 16
+    },
+    {
+      "step": 149,
+      "all": {
+        "ray_first_cross": 3,
+        "ray_recross": 9
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 9
+    },
+    {
+      "step": 150,
+      "all": {
+        "ray_first_cross": 2,
+        "ray_recross": 4
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 4
+    },
+    {
+      "step": 151,
+      "all": {
+        "ray_first_cross": 5,
+        "ray_recross": 19
+      },
+      "near_peak_recross": 2,
+      "one_twelfth_recross": 19
+    },
+    {
+      "step": 152,
+      "all": {
+        "ray_recross": 5,
+        "ray_first_cross": 1
+      },
+      "near_peak_recross": 3,
+      "one_twelfth_recross": 5
+    },
+    {
+      "step": 153,
+      "all": {
+        "ray_recross": 7
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 7
+    },
+    {
+      "step": 154,
+      "all": {
+        "ray_first_cross": 3,
+        "ray_recross": 6
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 6
+    },
+    {
+      "step": 155,
+      "all": {
+        "ray_recross": 6
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 6
+    },
+    {
+      "step": 156,
+      "all": {
+        "ray_recross": 5,
+        "ray_first_cross": 1
+      },
+      "near_peak_recross": 3,
+      "one_twelfth_recross": 5
+    },
+    {
+      "step": 157,
+      "all": {
+        "ray_recross": 5
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 5
+    },
+    {
+      "step": 158,
+      "all": {
+        "ray_recross": 2
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 2
+    },
+    {
+      "step": 159,
+      "all": {
+        "ray_recross": 9
+      },
+      "near_peak_recross": 5,
+      "one_twelfth_recross": 9
+    },
+    {
+      "step": 160,
+      "all": {
+        "ray_recross": 5,
+        "ray_first_cross": 1
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 5
+    },
+    {
+      "step": 161,
+      "all": {
+        "ray_first_cross": 2,
+        "ray_recross": 8
+      },
+      "near_peak_recross": 2,
+      "one_twelfth_recross": 8
+    },
+    {
+      "step": 162,
+      "all": {
+        "ray_recross": 2
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 2
+    },
+    {
+      "step": 163,
+      "all": {
+        "ray_recross": 3,
+        "ray_first_cross": 2
+      },
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 3
+    },
+    {
+      "step": 164,
+      "all": {
+        "node_first_cross": 1,
+        "ray_first_cross": 3,
+        "ray_recross": 24
+      },
+      "near_peak_recross": 2,
+      "one_twelfth_recross": 24
+    },
+    {
+      "step": 165,
+      "all": {
+        "ray_recross": 13
+      },
+      "near_peak_recross": 1,
+      "one_twelfth_recross": 13
+    },
+    {
+      "step": 166,
+      "all": {},
+      "near_peak_recross": 0,
+      "one_twelfth_recross": 0
+    }
+  ]
+}

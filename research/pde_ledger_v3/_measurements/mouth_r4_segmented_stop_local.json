@@ -1,0 +1,675 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_segmented_stop_local.py",
+    "_scratch/s11c/r4_segmented_held01",
+    "_scratch/s11c/r4_segmented_held01/closure_local.json"
+  ],
+  "script_sha256": "527fd0328d9542352f873da9aa5f2ddf0363163557fe25cd45f6579082a642d1",
+  "pin_sha256": "73d210aa27cab48ba075b3491fcfbb39743107417add15f6b95863be8c4f02f1",
+  "saved_states": {
+    "matched_148": "f4c77e9dbb19b703e6a2eac3e6ab4a426b23640ecf8c7ca4761d330bcb1f93e7",
+    "accepted_166": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694"
+  },
+  "source_issue_sha256": "c5ba407d563098997e83e4b1a66920a9d01a4673ca598e17f675c1403820df45",
+  "fixed_shape": [
+    0.03203348161357326,
+    -0.22160765321621922,
+    0.0008870732843312349,
+    -0.0685819081404728,
+    0.0708792715906547,
+    0.02342688643280306
+  ],
+  "field_arrays_identical": true,
+  "field_at_last_match": {
+    "kind": "held_fresh_fields",
+    "case": "primary",
+    "step": 148,
+    "physical_energy": 92185.3894472297,
+    "total_energy": 92185.38944730736,
+    "native_label": 0.36399480876942536,
+    "field": {
+      "order_projected": 1.740814215001052e-09,
+      "order_kkt": 3.997571918557415e-09,
+      "amplitude_raw": 7.853639281135719e-10,
+      "phase_raw": 8.929163875306956e-11,
+      "carrier_metric": 3.9699024831226407e-10
+    },
+    "current": {
+      "feed_current": 10.707726868384231,
+      "bulk_current": 10.707726868383336,
+      "port_error": 8.952838470577262e-13,
+      "weak_disk_current": 10.707726854279883,
+      "incident_slice_current": 10.707726854279883,
+      "receiving_slice_current": 10.041074641245133,
+      "positive_slice_current": 10.707726854279883,
+      "dense_total_subsonic_share": 0.6675896958531035,
+      "total_axial_stress": -26.582875760550415,
+      "disk_minus_feed_current": -1.4104347911825244e-08
+    },
+    "front": 0.3363506918035118
+  },
+  "unrematched_fields_166": {
+    "order_kkt": 0.0012619818071014312,
+    "order_kkt_node": 39323,
+    "order_at_peak": 0.00027865072640728125,
+    "signed_order_derivative": -0.0012619818071014312,
+    "order_kkt_node_depth": 0.3104775612675553,
+    "order_projected": 0.00017324958557726145,
+    "amplitude_raw": 7.853639281135719e-10,
+    "phase_raw": 8.929163875306956e-11
+  },
+  "total_energy": 92185.38925301639,
+  "gauge_energy": 7.838498545004389e-08,
+  "physical_energy": 92185.389252938,
+  "shared_work_error": -8.326672684688674e-16,
+  "flow_at_166": {
+    "feed_current": 10.707726868384231,
+    "bulk_current": 10.707726868383336,
+    "weak_disk_current": 10.707726854279883,
+    "incident_slice_current": 10.707726854279883,
+    "receiving_slice_current": 10.041074641245133,
+    "positive_slice_current": 10.707726854279883,
+    "port_error": 8.952838470577262e-13,
+    "disk_minus_feed_current": -1.4104347911825244e-08,
+    "dense_total_subsonic_share": 0.6675896958531035,
+    "total_axial_stress": -26.582875760550415
+  },
+  "front": 0.3363506918035118,
+  "accepted_peak": {
+    "component": 1,
+    "group": 26703,
+    "chi": 0.114487526371181,
+    "signed_force": -0.1046051670323409,
+    "node": [
+      24,
+      3,
+      20
+    ],
+    "radius": 3.9385786968906356,
+    "depth": 0.0776193902998492,
+    "theta": 1.5707963267948966
+  },
+  "accepted_peak_incident_elements": [
+    {
+      "cell": [
+        24,
+        3,
+        19
+      ],
+      "local": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "material_side": "collar",
+      "physical_chart": [
+        0.9940828402366864,
+        0.0947571313672464,
+        1.5707963267948966
+      ],
+      "physical": {
+        "radius": 3.9385786968906356,
+        "theta": 1.5707963267948966,
+        "cylindrical_radius": 3.9385786968906356,
+        "axial_brane_coordinate": 2.4116838971685354e-16,
+        "w": 0.0776193902998492
+      },
+      "label": [
+        0.9931653424673544,
+        0.0984248592560734,
+        1.5707963267948966
+      ],
+      "distance_from_weld_in_label": 0.11066843988275898,
+      "chi": 0.114487526371181,
+      "max_vertex_chi": 0.11475645667866824,
+      "positive_vertices": 8,
+      "chart_det": 1.1958658770823036,
+      "Jinv": 1.1310592694011166,
+      "J": 0.8841269658039131,
+      "W_formal": 0.054518912259656424,
+      "chi_W": 0.006241735405055518,
+      "chi_Jinv_W": 0.007059772687037176,
+      "grad_xi_frobenius": 1.294820982966299,
+      "grad_xi_spectral": 1.2340525962771427,
+      "condition_F": 1.3746095171265797,
+      "min_singular_Finv": 0.8874581214901155,
+      "max_singular_Finv": 1.2199083798515893
+    },
+    {
+      "cell": [
+        24,
+        2,
+        19
+      ],
+      "local": [
+        0.0,
+        1.0,
+        1.0
+      ],
+      "material_side": "collar",
+      "physical_chart": [
+        0.9940828402366864,
+        0.0947571313672464,
+        1.5707963267948966
+      ],
+      "physical": {
+        "radius": 3.9385786968906356,
+        "theta": 1.5707963267948966,
+        "cylindrical_radius": 3.9385786968906356,
+        "axial_brane_coordinate": 2.4116838971685354e-16,
+        "w": 0.0776193902998492
+      },
+      "label": [
+        0.9931653424673544,
+        0.0984248592560734,
+        1.5707963267948966
+      ],
+      "distance_from_weld_in_label": 0.11066843988275898,
+      "chi": 0.114487526371181,
+      "max_vertex_chi": 0.2005057755300095,
+      "positive_vertices": 8,
+      "chart_det": 1.1073622580147435,
+      "Jinv": 1.047351856521219,
+      "J": 0.9547889696987808,
+      "W_formal": 0.18982091387639294,
+      "chi_W": 0.021732126883225213,
+      "chi_Jinv_W": 0.02276118343730062,
+      "grad_xi_frobenius": 1.1944949359197286,
+      "grad_xi_spectral": 1.1272424446335487,
+      "condition_F": 1.8317349046326483,
+      "min_singular_Finv": 0.7397925432187699,
+      "max_singular_Finv": 1.3551038236007777
+    },
+    {
+      "cell": [
+        23,
+        3,
+        19
+      ],
+      "local": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "material_side": "collar",
+      "physical_chart": [
+        0.9940828402366864,
+        0.0947571313672464,
+        1.5707963267948966
+      ],
+      "physical": {
+        "radius": 3.9385786968906356,
+        "theta": 1.5707963267948966,
+        "cylindrical_radius": 3.9385786968906356,
+        "axial_brane_coordinate": 2.4116838971685354e-16,
+        "w": 0.0776193902998492
+      },
+      "label": [
+        0.9931653424673544,
+        0.0984248592560734,
+        1.5707963267948966
+      ],
+      "distance_from_weld_in_label": 0.11066843988275898,
+      "chi": 0.114487526371181,
+      "max_vertex_chi": 0.11455396379716729,
+      "positive_vertices": 8,
+      "chart_det": 1.1870744523327792,
+      "Jinv": 1.122744271335905,
+      "J": 0.8906747738825184,
+      "W_formal": 0.05845259228035893,
+      "chi_W": 0.006692092700161483,
+      "chi_Jinv_W": 0.0075135087423551334,
+      "grad_xi_frobenius": 1.325571633934505,
+      "grad_xi_spectral": 1.2686614596184713,
+      "condition_F": 1.394785166125759,
+      "min_singular_Finv": 0.8777718122761561,
+      "max_singular_Finv": 1.2243031030061071
+    },
+    {
+      "cell": [
+        23,
+        2,
+        19
+      ],
+      "local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_side": "collar",
+      "physical_chart": [
+        0.9940828402366864,
+        0.0947571313672464,
+        1.5707963267948966
+      ],
+      "physical": {
+        "radius": 3.9385786968906356,
+        "theta": 1.5707963267948966,
+        "cylindrical_radius": 3.9385786968906356,
+        "axial_brane_coordinate": 2.4116838971685354e-16,
+        "w": 0.0776193902998492
+      },
+      "label": [
+        0.9931653424673544,
+        0.0984248592560734,
+        1.5707963267948966
+      ],
+      "distance_from_weld_in_label": 0.11066843988275898,
+      "chi": 0.114487526371181,
+      "max_vertex_chi": 0.20018678460952566,
+      "positive_vertices": 8,
+      "chart_det": 1.0859242592206397,
+      "Jinv": 1.0270756301331554,
+      "J": 0.9736381340002731,
+      "W_formal": 0.20775120404250483,
+      "chi_W": 0.023784921451460876,
+      "chi_Jinv_W": 0.024428913187426782,
+      "grad_xi_frobenius": 1.2241241038726793,
+      "grad_xi_spectral": 1.1623683746789386,
+      "condition_F": 1.871722466562254,
+      "min_singular_Finv": 0.724728672712939,
+      "max_singular_Finv": 1.3564909388786508
+    }
+  ],
+  "failed_inversion_trials": [
+    {
+      "alpha": 0.0625,
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "site": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "code": 2,
+        "cell": [
+          25,
+          10,
+          7
+        ],
+        "chart_fractions": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "chart_det": -0.0019140408415956752,
+        "chart_lower": -0.0019140408416966257,
+        "roundoff_margin": 1.0095049095238626e-13,
+        "subdivisions": 0
+      }
+    }
+  ],
+  "accepted_state_at_inversion_witness": [
+    {
+      "cell": [
+        25,
+        10,
+        7
+      ],
+      "local": [
+        0.0,
+        1.0,
+        1.0
+      ],
+      "material_side": "collar",
+      "physical_chart": [
+        0.9985207100591716,
+        0.34744281502268715,
+        0.45593283009518676
+      ],
+      "physical": {
+        "radius": 3.8570831191112642,
+        "theta": 0.45593283009518676,
+        "cylindrical_radius": 1.698273880173766,
+        "axial_brane_coordinate": 3.4630847543270753,
+        "w": 0.28460443110718825
+      },
+      "label": [
+        0.9999921454706407,
+        0.34404153835537254,
+        0.45464882346092084
+      ],
+      "distance_from_weld_in_label": 0.11749524288604529,
+      "chi": 0.0,
+      "max_vertex_chi": 0.0,
+      "positive_vertices": 0,
+      "chart_det": 0.002841572305165031,
+      "Jinv": 0.004072579552031507,
+      "J": 245.5446203625843,
+      "W_formal": 78301.50098928374,
+      "chi_W": 0.0,
+      "chi_Jinv_W": 0.0,
+      "grad_xi_frobenius": 1.4500826900880353,
+      "grad_xi_spectral": 1.4186601026866001,
+      "condition_F": 569.2637734653276,
+      "min_singular_Finv": 0.002809228769025808,
+      "max_singular_Finv": 1.5991921695829885
+    }
+  ],
+  "terminal_trials": [
+    {
+      "alpha": 1.0,
+      "reason": "Label leaves the saved material domain",
+      "site": {
+        "reason": "Label leaves the saved material domain",
+        "component": 0,
+        "lowest": 0.0,
+        "highest": 1.000233272635681
+      }
+    },
+    {
+      "alpha": 0.5,
+      "reason": "Label leaves the saved material domain",
+      "site": {
+        "reason": "Label leaves the saved material domain",
+        "component": 0,
+        "lowest": 0.0,
+        "highest": 1.00005266681064
+      }
+    },
+    {
+      "alpha": 0.25,
+      "reason": "Label leaves the saved material domain",
+      "site": {
+        "reason": "Label leaves the saved material domain",
+        "component": 0,
+        "lowest": 0.0,
+        "highest": 1.0000224061406404
+      }
+    },
+    {
+      "alpha": 0.125,
+      "reason": "Label leaves the saved material domain",
+      "site": {
+        "reason": "Label leaves the saved material domain",
+        "component": 0,
+        "lowest": 0.0,
+        "highest": 1.0000072758056406
+      }
+    },
+    {
+      "alpha": 0.0625,
+      "reason": "Nonpositive or roundoff-unresolved chart determinant",
+      "site": {
+        "reason": "Nonpositive or roundoff-unresolved chart determinant",
+        "code": 2,
+        "cell": [
+          25,
+          10,
+          7
+        ],
+        "chart_fractions": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "chart_det": -0.0019140408415956752,
+        "chart_lower": -0.0019140408416966257,
+        "roundoff_margin": 1.0095049095238626e-13,
+        "subdivisions": 0
+      }
+    },
+    {
+      "alpha": 0.03125,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 0.00013078777272443535
+      }
+    },
+    {
+      "alpha": 0.015625,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 0.00010667772529310149
+      }
+    },
+    {
+      "alpha": 0.0078125,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 7.98628711323798e-05
+      }
+    },
+    {
+      "alpha": 0.00390625,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 5.227384105587554e-05
+      }
+    },
+    {
+      "alpha": 0.001953125,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 2.9555774747587262e-05
+      }
+    },
+    {
+      "alpha": 0.0009765625,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 1.533847880487953e-05
+      }
+    },
+    {
+      "alpha": 0.00048828125,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 6.864521672240385e-06
+      }
+    },
+    {
+      "alpha": 0.000244140625,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 2.0561756272141804e-06
+      }
+    },
+    {
+      "alpha": 0.0001220703125,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 5.267068875006902e-07
+      }
+    },
+    {
+      "alpha": 1.0,
+      "reason": "Label leaves the saved material domain",
+      "site": {
+        "reason": "Label leaves the saved material domain",
+        "component": 0,
+        "lowest": 0.0,
+        "highest": 1.0002917465511707
+      }
+    },
+    {
+      "alpha": 0.5,
+      "reason": "Label leaves the saved material domain",
+      "site": {
+        "reason": "Label leaves the saved material domain",
+        "component": 0,
+        "lowest": 0.0,
+        "highest": 1.000061137035878
+      }
+    },
+    {
+      "alpha": 0.25,
+      "reason": "Label leaves the saved material domain",
+      "site": {
+        "reason": "Label leaves the saved material domain",
+        "component": 0,
+        "lowest": 0.0,
+        "highest": 1.0000266412532595
+      }
+    },
+    {
+      "alpha": 0.125,
+      "reason": "Label leaves the saved material domain",
+      "site": {
+        "reason": "Label leaves the saved material domain",
+        "component": 0,
+        "lowest": 0.0,
+        "highest": 1.00000939336195
+      }
+    },
+    {
+      "alpha": 0.0625,
+      "reason": "Label leaves the saved material domain",
+      "site": {
+        "reason": "Label leaves the saved material domain",
+        "component": 0,
+        "lowest": 0.0,
+        "highest": 1.0000007694162953
+      }
+    },
+    {
+      "alpha": 0.03125,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 0.00013522375251915942
+      }
+    },
+    {
+      "alpha": 0.015625,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 0.00011193921745276014
+      }
+    },
+    {
+      "alpha": 0.0078125,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 8.467290556585065e-05
+      }
+    },
+    {
+      "alpha": 0.00390625,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 5.7581196471982275e-05
+      }
+    },
+    {
+      "alpha": 0.001953125,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 3.284792665187868e-05
+      }
+    },
+    {
+      "alpha": 0.0009765625,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 1.72287342583997e-05
+      }
+    },
+    {
+      "alpha": 0.00048828125,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 8.24224769229405e-06
+      }
+    },
+    {
+      "alpha": 0.000244140625,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 2.453895962382343e-06
+      }
+    },
+    {
+      "alpha": 0.0001220703125,
+      "reason": "Insufficient resolved signed work",
+      "site": {
+        "reason": "Insufficient resolved signed work",
+        "delta": 7.515712813221026e-07
+      }
+    }
+  ],
+  "global_orientation": {
+    "chart_det_global_lower": 3.0817260030210546e-05,
+    "chart_lowest_cell": [
+      25,
+      11,
+      9
+    ],
+    "chart_det_active_lower": 0.0012803523406555988
+  },
+  "energy_convention": "W_formal is the crystal law at the label map; chi_Jinv_W is its physical-volume energy density.",
+  "radial_trial_extrema": {
+    "method": "For one unchanged direction the radial trial maximum is the maximum of affine functions of step fraction. Three or more collinear maxima on an interval identify the same line. Its intercept matches one saved nodal value.",
+    "points": [
+      {
+        "direction": "Newton",
+        "alphas": [
+          0.5,
+          0.25,
+          0.125
+        ],
+        "maxima": [
+          1.00005266681064,
+          1.0000224061406404,
+          1.0000072758056406
+        ],
+        "linear_max_slope": 0.00012104267999824003,
+        "extrapolated_origin": 0.9999921454706409,
+        "single_candidate": [
+          25,
+          11,
+          8
+        ],
+        "accepted_xi_r": 0.9999921454706407,
+        "next_closest_distance": 1.135258837270392e-06,
+        "largest_line_error": 0.0
+      },
+      {
+        "direction": "Jacobi",
+        "alphas": [
+          0.5,
+          0.25,
+          0.125,
+          0.0625
+        ],
+        "maxima": [
+          1.000061137035878,
+          1.0000266412532595,
+          1.00000939336195,
+          1.0000007694162953
+        ],
+        "linear_max_slope": 0.00013798313047479787,
+        "extrapolated_origin": 0.9999921454706406,
+        "single_candidate": [
+          25,
+          11,
+          8
+        ],
+        "accepted_xi_r": 0.9999921454706407,
+        "next_closest_distance": 1.1352588374607237e-06,
+        "largest_line_error": 9.519295074422729e-17
+      }
+    ],
+    "command": [
+      "/usr/bin/python3",
+      "-Bu",
+      "_scratch/s11c/r4_segmented_held01/read_trial_extrema.py"
+    ],
+    "script_sha256": "dc76933e4aef219aef170985b5389997abc423ee0d653b8d52d45752a6b3e224",
+    "readback_script": "\"\"\"Identify a persistent radial maximizer from three collinear saved trial extrema.\"\"\"\nimport numpy as np,json,sys\nfrom pathlib import Path\np=Path(__file__).resolve().parent\ncase=p/'primary'\nwith np.load(case/'step_00166.npz') as a:r=a['labels'][...,0]\ntr=json.loads((case/'ISSUE.json').read_bytes())['witness']['tests']\nrows=[]\nfor k,test in [('Newton',tr[:14]),('Jacobi',tr[14:])]:\n    points=[(e['alpha'],e['site']['highest']) for e in test if e['reason']=='Label leaves the saved material domain']\n    # Three or more collinear points of the maximum of affine nodal motions\n    # share a maximizing line on their interval. The unprojected direction\n    # is unchanged during these domain-only rejections.\n    sel=np.array(points[1:],np.longdouble)\n    a,b=sel[0],sel[-1]\n    slope=(a[1]-b[1])/(a[0]-b[0])\n    root=b[1]-slope*b[0]\n    residual=np.max(abs(sel[:,1]-(root+slope*sel[:,0])))\n    diff=abs(r.astype(np.longdouble)-root)\n    ids=np.argwhere(diff<2e-14)\n    gap=np.min(diff[diff>=2e-14])\n    assert len(ids)==1 and residual<2e-15 and gap>2e-12\n    item=dict(direction=k,alphas=sel[:,0].astype(float).tolist(),maxima=sel[:,1].astype(float).tolist(),\n              linear_max_slope=float(slope),extrapolated_origin=float(root),single_candidate=ids.tolist()[0],\n              accepted_xi_r=float(r[tuple(ids[0])]),next_closest_distance=float(gap),largest_line_error=float(residual))\n    rows.append(item)\n(p/'closure_radial_maxima.json').write_text(json.dumps(rows,indent=2)+'\\n')\nprint(json.dumps(rows))\n"
+  }
+}

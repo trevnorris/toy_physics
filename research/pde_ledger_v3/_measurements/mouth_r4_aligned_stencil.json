@@ -1,0 +1,147 @@
+{
+  "command": [
+    "python3",
+    "software/stage1_solver/tools/mouth_r4_aligned_stencil_check.py"
+  ],
+  "script_sha256": "6ec2651ba6bcce49b1ce6966d57e6b6d18252e2852821f037863668f5b7dc428",
+  "stencil_sha256": "cfca7a91b156cdc9a1a8675fbbed14e8271aa458ca06537136daeff2b478926f",
+  "edge_oracle_sha256": "700c82c2425eda23de45e79081ae550f190985f484ae21fdf484bfaacfa02e70",
+  "synthetic_curvature": [
+    {
+      "margin": 0.0001,
+      "old_and_aligned_slopes": [
+        -3.8327013610506118,
+        -411.03182428265404
+      ],
+      "analytic_slopes": [
+        -3.8327013610506118,
+        -411.03182428265404
+      ],
+      "analytic_minus_complex_relative": 1.8431436932253575e-17,
+      "signed_old_and_aligned": [
+        [
+          28.52315246364201,
+          3706263.2253762926
+        ],
+        [
+          28.523152463633128,
+          3706260.5762777496
+        ]
+      ],
+      "margin_squared_times_aligned": 0.0370626057627775
+    },
+    {
+      "margin": 1e-06,
+      "old_and_aligned_slopes": [
+        -3.8355269949931228,
+        -37077.95313163007
+      ],
+      "analytic_slopes": [
+        -3.8355269949931228,
+        -37077.95313163065
+      ],
+      "analytic_minus_complex_relative": 1.5776334232053824e-14,
+      "signed_old_and_aligned": [
+        [
+          28.560374250252707,
+          37037074946.62583
+        ],
+        [
+          28.560374250030662,
+          37037048455.59311
+        ]
+      ],
+      "margin_squared_times_aligned": 0.03703704845559311
+    },
+    {
+      "margin": 1e-08,
+      "old_and_aligned_slopes": [
+        -3.835555269948068,
+        -3703744.6223632605
+      ],
+      "analytic_slopes": [
+        -3.835555269948068,
+        -3703744.6223609443
+      ],
+      "analytic_minus_complex_relative": 6.253358291255506e-13,
+      "signed_old_and_aligned": [
+        [
+          28.56074685642085,
+          370370723372307.44
+        ],
+        [
+          28.56074687862531,
+          370370459650940.44
+        ]
+      ],
+      "margin_squared_times_aligned": 0.037037045965094044
+    }
+  ],
+  "state_sha256": "a2210361aa5b38712de7db618b5220985e12f39f3a089351dfd3767bef0a7178",
+  "determinant_weight_sum": 216,
+  "affine_mean_difference": 0.0,
+  "synthetic": [
+    {
+      "analytic_min": 1e-05,
+      "fixed_min": 0.015635,
+      "moving_min": 1.0000028441855553e-05,
+      "max_direct_error": 8.175853174474126e-21
+    },
+    {
+      "analytic_min": 0.0,
+      "fixed_min": 0.015625,
+      "moving_min": 0.0,
+      "max_direct_error": 0.0
+    },
+    {
+      "analytic_min": -1e-05,
+      "fixed_min": 0.015615,
+      "moving_min": -9.999971552966316e-06,
+      "max_direct_error": 5.421010862427522e-20
+    }
+  ],
+  "saved": {
+    "step": 108,
+    "cell": [
+      25,
+      11,
+      10
+    ],
+    "old_corner_min": 0.007286366560095085,
+    "fixed_lobatto_min": 0.0006105440266320445,
+    "blocking_edge_midpoint": 0.0006105440266320445,
+    "moving_fraction": 0.3992740167914052,
+    "moving_determinant": 2.3960287766068493e-06,
+    "direct_determinant": 2.3960287766068527e-06,
+    "stationary_minimum": 2.3960118803428543e-06,
+    "frozen_corner_mean": 1.6543105675294467,
+    "frozen_aligned_mean": 0.8745458424660527,
+    "local_stiffness": {
+      "vertex": [
+        0,
+        0,
+        0
+      ],
+      "component": 0,
+      "unit_change_to_stationary_edge_det": -361.33790486194465,
+      "signed_old_and_aligned_opening_slopes": [
+        -27.44300775825761,
+        -3886.8662839856006
+      ],
+      "widths": [
+        2.3398553518973186e-09,
+        1.1699276759486593e-09
+      ],
+      "signed_old_and_aligned": [
+        [
+          4206.9039395030595,
+          1612980402.2833579
+        ],
+        [
+          4206.903974717157,
+          1612979262.0370326
+        ]
+      ]
+    }
+  }
+}

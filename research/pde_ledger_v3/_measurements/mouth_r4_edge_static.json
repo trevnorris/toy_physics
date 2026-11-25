@@ -1,0 +1,273 @@
+{
+  "step": 108,
+  "state_sha256": "a2210361aa5b38712de7db618b5220985e12f39f3a089351dfd3767bef0a7178",
+  "physical_work_sha256": "8b1dda3f45b3afffbd0ffab38bef3c17a5f40af3f4d02cf82ce8069d1bec895c",
+  "shape_modes": [
+    "log_depth",
+    "scaled_log_exit",
+    "mean_width",
+    "depth_asymmetry",
+    "waist_profile",
+    "polar_equatorial"
+  ],
+  "free_zero": 52268,
+  "physical_total_native_extended": 92185.39080173153,
+  "elastic_energy": 0.3120447044574924,
+  "unit_gauge_energy_change": -0.1445484946727082,
+  "unit_shape_force_changes": [
+    -0.054404146654629684,
+    0.03113534122919905,
+    0.09834771950244672,
+    -0.03103707493038197,
+    0.08752457776017986,
+    -0.01547782554499061
+  ],
+  "central_unit_shape_force_changes": [
+    -0.05440414276017691,
+    0.031135341228946345,
+    0.09834771950272625,
+    -0.031037074930736708,
+    0.08752457776017764,
+    -0.015477825544621737
+  ],
+  "invariance": {
+    "elastic_vs_archived": 0.0,
+    "physical_total_vs_archived": 0.0,
+    "elastic_before_minus_after": 0.0,
+    "all_physical_crystal_forces_max_abs": 0.0,
+    "currents_vs_archived": {
+      "feed_current": 0.0,
+      "bulk_current": 0.0,
+      "weak_disk_current": 0.0,
+      "incident_slice_current": 0.0,
+      "receiving_slice_current": 0.0,
+      "positive_slice_current": 0.0,
+      "port_error": 0.0,
+      "disk_minus_feed_current": 0.0,
+      "dense_total_subsonic_share": 0.0,
+      "total_axial_stress": 0.0
+    }
+  },
+  "comparisons": {
+    "1e-08": {
+      "old_gauge": 7.499958047772584e-08,
+      "new_gauge": 7.355409553099875e-08,
+      "change_gauge": -1.445484946727082e-09,
+      "signed_shape_force_changes": [
+        -5.440414665462968e-10,
+        3.113534122919905e-10,
+        9.834771950244672e-10,
+        -3.1037074930381974e-10,
+        8.752457776017985e-10,
+        -1.547782554499061e-10
+      ],
+      "central_shape_change_errors": [
+        3.8944527741557877e-17,
+        -2.527041076394454e-21,
+        2.795264020249988e-21,
+        -3.547370730494492e-21,
+        -2.220446049250313e-23,
+        3.6887333465518424e-21
+      ],
+      "all_node_positive": false,
+      "positive": 52265,
+      "zero": 0,
+      "negative": 3,
+      "failures": [
+        {
+          "node": 36353,
+          "physical": -1.378316197627957e-12,
+          "gauge": -2.3167854499864553e-23,
+          "total": -1.3783161976511249e-12
+        },
+        {
+          "node": 45532,
+          "physical": -1.75634357319082e-17,
+          "gauge": -3.527248231653484e-26,
+          "total": -1.756343576718068e-17
+        },
+        {
+          "node": 62811,
+          "physical": -3.9370844786196714e-14,
+          "gauge": -2.928341754561246e-25,
+          "total": -3.937084478648955e-14
+        }
+      ],
+      "max_abs_gauge_over_positive_physical": 6.928269617570619e-11
+    },
+    "1e-10": {
+      "old_gauge": 7.499958047772584e-10,
+      "new_gauge": 7.355409553099875e-10,
+      "change_gauge": -1.4454849467270819e-11,
+      "signed_shape_force_changes": [
+        -5.440414665462968e-12,
+        3.113534122919905e-12,
+        9.834771950244673e-12,
+        -3.1037074930381972e-12,
+        8.752457776017986e-12,
+        -1.5477825544990612e-12
+      ],
+      "central_shape_change_errors": [
+        3.894452774155788e-19,
+        -2.527041076394454e-23,
+        2.795264020249988e-23,
+        -3.5473707304944925e-23,
+        -2.220446049250313e-25,
+        3.688733346551843e-23
+      ],
+      "all_node_positive": false,
+      "positive": 52265,
+      "zero": 0,
+      "negative": 3,
+      "failures": [
+        {
+          "node": 36353,
+          "physical": -1.378316197627957e-12,
+          "gauge": -2.3167854499864553e-25,
+          "total": -1.3783161976281888e-12
+        },
+        {
+          "node": 45532,
+          "physical": -1.75634357319082e-17,
+          "gauge": -3.5272482316534842e-28,
+          "total": -1.7563435732260924e-17
+        },
+        {
+          "node": 62811,
+          "physical": -3.9370844786196714e-14,
+          "gauge": -2.928341754561246e-27,
+          "total": -3.937084478619964e-14
+        }
+      ],
+      "max_abs_gauge_over_positive_physical": 6.928269617570619e-13
+    }
+  },
+  "crystal_and_field_rematches": [
+    {
+      "kind": "newton_step",
+      "outer": 90,
+      "max_force": 0.01756027735736903,
+      "alpha": 0.0078125
+    },
+    {
+      "kind": "newton_step",
+      "outer": 91,
+      "max_force": 0.07988533719052188,
+      "alpha": 0.0009765625
+    },
+    {
+      "kind": "newton_step",
+      "outer": 92,
+      "max_force": 0.04810912937650836,
+      "alpha": 1.0
+    },
+    {
+      "kind": "newton_step",
+      "outer": 93,
+      "max_force": 0.18273947992421855,
+      "alpha": 0.0625
+    },
+    {
+      "kind": "newton_step",
+      "outer": 94,
+      "max_force": 0.5799519662776346,
+      "alpha": 0.0625
+    },
+    {
+      "kind": "newton_rematched",
+      "outer": 94,
+      "active_force": 0.5810585365495137,
+      "field_residual": 6.456675649200698e-10
+    },
+    {
+      "kind": "newton_step",
+      "outer": 95,
+      "max_force": 0.538612276000308,
+      "alpha": 0.0078125
+    },
+    {
+      "kind": "newton_step",
+      "outer": 96,
+      "max_force": 0.5127949305672632,
+      "alpha": 0.03125
+    },
+    {
+      "kind": "newton_step",
+      "outer": 97,
+      "max_force": 0.5124630813304191,
+      "alpha": 1.0
+    },
+    {
+      "kind": "newton_step",
+      "outer": 98,
+      "max_force": 0.4809137851414269,
+      "alpha": 0.03125
+    },
+    {
+      "kind": "newton_step",
+      "outer": 99,
+      "max_force": 0.5359374074102737,
+      "alpha": 0.03125
+    },
+    {
+      "kind": "newton_step",
+      "outer": 100,
+      "max_force": 0.10220771630465429,
+      "alpha": 0.125
+    },
+    {
+      "kind": "newton_rematched",
+      "outer": 100,
+      "active_force": 0.10225412205978761,
+      "field_residual": 3.777741841189071e-09
+    },
+    {
+      "kind": "newton_step",
+      "outer": 101,
+      "max_force": 0.7737686568189314,
+      "alpha": 0.0625
+    },
+    {
+      "kind": "newton_step",
+      "outer": 102,
+      "max_force": 0.8812114581138127,
+      "alpha": 1.0
+    },
+    {
+      "kind": "newton_step",
+      "outer": 103,
+      "max_force": 0.5626889679732727,
+      "alpha": 1.0
+    },
+    {
+      "kind": "newton_step",
+      "outer": 104,
+      "max_force": 0.12518840894221156,
+      "alpha": 0.015625
+    },
+    {
+      "kind": "newton_step",
+      "outer": 105,
+      "max_force": 0.15525323683422462,
+      "alpha": 0.5
+    },
+    {
+      "kind": "newton_step",
+      "outer": 106,
+      "max_force": 0.09843745844558636,
+      "alpha": 0.015625
+    },
+    {
+      "kind": "newton_step",
+      "outer": 107,
+      "max_force": 0.09863769129404348,
+      "alpha": 0.00048828125
+    },
+    {
+      "kind": "newton_step",
+      "outer": 108,
+      "max_force": 0.09873119115384474,
+      "alpha": 0.000244140625
+    }
+  ]
+}

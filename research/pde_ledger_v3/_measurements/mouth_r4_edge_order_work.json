@@ -1,0 +1,67 @@
+{
+  "state_sha256": "a2210361aa5b38712de7db618b5220985e12f39f3a089351dfd3767bef0a7178",
+  "source_manifest_sha256": "22a06d53f4b64bd6d6be19fc2c8c2f8d038909ebd5f7357c9a327941d386820b",
+  "frozen_physical_energy": 92185.39080169455,
+  "increment": 1e-09,
+  "free_zero": 52268,
+  "positive": 52265,
+  "negative": 3,
+  "zero": 0,
+  "min_physical_work": -1.378316197627957e-12,
+  "worst_node": 36353,
+  "derivative_max_error": 2.7708141770582673e-17,
+  "nonpositive_nodes": {
+    "36353": {
+      "material_grid": [
+        [
+          13,
+          12,
+          16
+        ]
+      ],
+      "work": -1.378316197627957e-12,
+      "derivative": -0.0013783228773225735,
+      "old_stencil_unit_gauge_work": -2.4156572950008358e-15
+    },
+    "45532": {
+      "material_grid": [
+        [
+          17,
+          11,
+          0
+        ]
+      ],
+      "work": -1.75634357319082e-17,
+      "derivative": -1.757153165466279e-08,
+      "old_stencil_unit_gauge_work": -4.337453689787868e-18
+    },
+    "62811": {
+      "material_grid": [
+        [
+          23,
+          10,
+          2
+        ]
+      ],
+      "work": -3.9370844786196714e-14,
+      "derivative": -3.937101586541917e-05,
+      "old_stencil_unit_gauge_work": -3.400781829090463e-17
+    }
+  },
+  "vertex_gauge": {
+    "1e-08": {
+      "negative": 3,
+      "zero": 0,
+      "min_total": -1.3783161976521136e-12,
+      "worst_node": 36353,
+      "max_abs_gauge_over_positive_physical": 7.024760000022294e-11
+    },
+    "1e-10": {
+      "negative": 3,
+      "zero": 0,
+      "min_total": -1.3783161976281987e-12,
+      "worst_node": 36353,
+      "max_abs_gauge_over_positive_physical": 7.024760000022294e-13
+    }
+  }
+}

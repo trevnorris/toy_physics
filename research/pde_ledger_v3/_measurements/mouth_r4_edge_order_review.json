@@ -1,0 +1,96 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "/var/projects/toy_physics/_scratch/s11c/r4_edge_recovery01/review_order_witness.py"
+  ],
+  "mpmath_digits": 65,
+  "increment": 1e-09,
+  "selected_joined_nodes": [
+    36353,
+    45532,
+    62811
+  ],
+  "step": {
+    "100": {
+      "36353": {
+        "touched_quadrature": 64,
+        "bath": -5.470755833272018e-12,
+        "exterior": 0.0,
+        "interior_crystal": 6.407226728128339e-12,
+        "physical": 9.364708948563214e-13,
+        "old_stencil_unit_gauge": -2.409147401028824e-15,
+        "old_total": {
+          "1e-08": 9.3647089483223e-13,
+          "1e-10": 9.364708948560805e-13
+        }
+      },
+      "45532": {
+        "touched_quadrature": 32,
+        "bath": -9.374482259739234e-15,
+        "exterior": 0.0,
+        "interior_crystal": 1.3559413772184221e-14,
+        "physical": 4.184931512444987e-15,
+        "old_stencil_unit_gauge": -4.647380295353494e-18,
+        "old_total": {
+          "1e-08": 4.184931512398513e-15,
+          "1e-10": 4.184931512444523e-15
+        }
+      },
+      "62811": {
+        "touched_quadrature": 64,
+        "bath": -2.190247504971468e-13,
+        "exterior": 0.0,
+        "interior_crystal": 2.370941647851922e-13,
+        "physical": 1.8069414288045388e-14,
+        "old_stencil_unit_gauge": -3.687006093947551e-17,
+        "old_total": {
+          "1e-08": 1.8069414287676687e-14,
+          "1e-10": 1.8069414288041702e-14
+        }
+      }
+    },
+    "108": {
+      "36353": {
+        "touched_quadrature": 64,
+        "bath": -5.470755833272018e-12,
+        "exterior": 0.0,
+        "interior_crystal": 4.09243963564406e-12,
+        "physical": -1.3783161976279582e-12,
+        "old_stencil_unit_gauge": -2.4156572950008354e-15,
+        "old_total": {
+          "1e-08": -1.3783161976521146e-12,
+          "1e-10": -1.3783161976281997e-12
+        }
+      },
+      "45532": {
+        "touched_quadrature": 32,
+        "bath": -9.374482259739234e-15,
+        "exterior": 0.0,
+        "interior_crystal": 9.356918824007327e-15,
+        "physical": -1.7563435731906587e-17,
+        "old_stencil_unit_gauge": -4.337453689787869e-18,
+        "old_total": {
+          "1e-08": -1.7563435775281124e-17,
+          "1e-10": -1.7563435732340334e-17
+        }
+      },
+      "62811": {
+        "touched_quadrature": 64,
+        "bath": -2.190247504971468e-13,
+        "exterior": 0.0,
+        "interior_crystal": 1.796539057109503e-13,
+        "physical": -3.937084478619651e-14,
+        "old_stencil_unit_gauge": -3.400781829090463e-17,
+        "old_total": {
+          "1e-08": -3.937084478653659e-14,
+          "1e-10": -3.9370844786199913e-14
+        }
+      }
+    }
+  },
+  "state_sha256": {
+    "100": "63a2de2ae45c6c2b197573ac70b2f035142f538d59908bb068ceda87b0570542",
+    "108": "a2210361aa5b38712de7db618b5220985e12f39f3a089351dfd3767bef0a7178"
+  }
+}

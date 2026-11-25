@@ -1,0 +1,627 @@
+{
+  "step": 108,
+  "state_sha256": "a2210361aa5b38712de7db618b5220985e12f39f3a089351dfd3767bef0a7178",
+  "source_manifest_sha256": "22a06d53f4b64bd6d6be19fc2c8c2f8d038909ebd5f7357c9a327941d386820b",
+  "governing_script_sha256": "a1f6030edd8949637b3ff5d4d6a90a9e343a6b3131cb767e6dabd09d2a54f7b6",
+  "source_commit": "1f46c4ad",
+  "inputs_sha256": {
+    "supercore_joined_front01/adopt309/state.npz": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+    "r4_whole_mouth01/coarse/endpoint.json": "c96d269556664836d1cf84e8bf78ac5914b0ac26ef0eb6b6e84b61731b4d26b9",
+    "r4_melted_survival01/coarse/state_00010.npz": "51727c2d48eea199c29bacbfd4bf07b7b11a3e997a737ebcc8c2f69925cd112b",
+    "r4_cp10_labels01/labels.npz": "d40b285faa21ce8c6a6e173ce5f8f3e237d78d1df83807cb82b9711ab74146f5",
+    "r4_newton_held01/primary/last_active.npz": "a2210361aa5b38712de7db618b5220985e12f39f3a089351dfd3767bef0a7178",
+    "r4_newton_held01/primary/last_active.json": "3e858411c07bafde61f5ea93faa6d20f803f54a46a1420bf9756c9ca36c5ac50"
+  },
+  "epsilon": 1e-08,
+  "entrance_node": [
+    24,
+    2,
+    10
+  ],
+  "packed_entrance_index": 53508,
+  "entrance_diagonal_curvature": -1678.5941902526067,
+  "single_coordinate_displacement": -5.88177843859849e-05,
+  "local_energy_abs_force_gradient_cosine": -0.7430615979055512,
+  "local_group_count": 81,
+  "entrance_unit_fraction_displacement": 5.270555147918786e-06,
+  "entrance_abs_force_linear_rate_from_Hd": -0.04936559557692237,
+  "entrance_abs_force_linear_rate_from_He_i": -0.04936559248429258,
+  "cell": [
+    25,
+    11,
+    10
+  ],
+  "edge_polynomial_ascending": [
+    0.0095542360102379,
+    -0.04784805086678742,
+    0.05992133379915142
+  ],
+  "exact_edge_polynomial_ascending": [
+    "4600446939771546760148161796385864919651/481508614068347289776301628959943603344375",
+    "-138235491952431563009657441571150126529183/2889051684410083738657809773759661620066250",
+    "151430622670340571596000264/2527157075273332171518723975"
+  ],
+  "exact_edge_minimum": "4793371098113626833169252169585407367684848105013690284805643919708910965778111/2000562325019743048985955475229294004237221854767100516583887044084894135573966000000",
+  "exact_minimizing_edge_fraction": "138235491952431563009657441571150126529183/346231660689074592075002768538007437448800",
+  "minimizing_edge_fraction": 0.399257224707046,
+  "edge_minimum": 2.3960118803428543e-06,
+  "physical_Jinv_at_edge_minimum": 3.464805497006419e-06,
+  "reference_side": "collar",
+  "vertices": [
+    {
+      "node": [
+        25,
+        11,
+        10
+      ],
+      "chi": 0.0,
+      "incident_cell_count": 8,
+      "incident_positive_order_cells": [],
+      "groups": [
+        {
+          "component": 0,
+          "group": 29116,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        },
+        {
+          "component": 1,
+          "group": 28016,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        },
+        {
+          "component": 2,
+          "group": 28356,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        }
+      ],
+      "minimum_derivative": [
+        -361.33790486194465,
+        -15.751104800786878,
+        -0.18473536806463386
+      ],
+      "physical_Jinv_fixed_site_derivative": [
+        -522.520604851304,
+        -22.777230340728238,
+        -0.267137883221567
+      ]
+    },
+    {
+      "node": [
+        25,
+        11,
+        11
+      ],
+      "chi": 0.0,
+      "incident_cell_count": 8,
+      "incident_positive_order_cells": [],
+      "groups": [
+        {
+          "component": 0,
+          "group": 29117,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        },
+        {
+          "component": 1,
+          "group": 28017,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        },
+        {
+          "component": 2,
+          "group": 28357,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        }
+      ],
+      "minimum_derivative": [
+        -254.49519728899793,
+        -11.093717447207117,
+        -0.1300644570832271
+      ],
+      "physical_Jinv_fixed_site_derivative": [
+        -368.01836320710805,
+        -16.04231327426434,
+        -0.18808073471383133
+      ]
+    },
+    {
+      "node": [
+        25,
+        12,
+        10
+      ],
+      "chi": 0.0,
+      "incident_cell_count": 8,
+      "incident_positive_order_cells": [],
+      "groups": [
+        {
+          "component": 0,
+          "group": 29137,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        },
+        {
+          "component": 1,
+          "group": 28037,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        },
+        {
+          "component": 2,
+          "group": 28377,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        }
+      ],
+      "minimum_derivative": [
+        12.067617086605518,
+        0.5260914787759423,
+        0.006169965850264253
+      ],
+      "physical_Jinv_fixed_site_derivative": [
+        17.450642194418652,
+        0.760766114118887,
+        0.008922214355330511
+      ]
+    },
+    {
+      "node": [
+        25,
+        12,
+        11
+      ],
+      "chi": 0.0,
+      "incident_cell_count": 8,
+      "incident_positive_order_cells": [],
+      "groups": [
+        {
+          "component": 0,
+          "group": 29138,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        },
+        {
+          "component": 1,
+          "group": 28038,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        },
+        {
+          "component": 2,
+          "group": 28378,
+          "status": "free_melt_only",
+          "registered_nodes": 1
+        }
+      ],
+      "minimum_derivative": [
+        8.020210154796942,
+        0.3496435286394898,
+        0.004100596034155332
+      ],
+      "physical_Jinv_fixed_site_derivative": [
+        11.597800686827476,
+        0.5056096883165183,
+        0.005929756774875037
+      ]
+    },
+    {
+      "node": [
+        26,
+        11,
+        10
+      ],
+      "chi": 0.0,
+      "incident_cell_count": 4,
+      "incident_positive_order_cells": [],
+      "groups": [
+        {
+          "component": 0,
+          "group": 30271,
+          "status": "held",
+          "registered_nodes": 1
+        },
+        {
+          "component": 1,
+          "group": 29171,
+          "status": "held",
+          "registered_nodes": 1
+        },
+        {
+          "component": 2,
+          "group": 29511,
+          "status": "held",
+          "registered_nodes": 1
+        }
+      ],
+      "minimum_derivative": [
+        357.88966981682097,
+        15.600741540730008,
+        0.18294375477079838
+      ],
+      "physical_Jinv_fixed_site_derivative": [
+        517.534201510593,
+        22.559794252757627,
+        0.26454982647337894
+      ]
+    },
+    {
+      "node": [
+        26,
+        11,
+        11
+      ],
+      "chi": 0.0,
+      "incident_cell_count": 4,
+      "incident_positive_order_cells": [],
+      "groups": [
+        {
+          "component": 0,
+          "group": 30272,
+          "status": "held",
+          "registered_nodes": 1
+        },
+        {
+          "component": 1,
+          "group": 29172,
+          "status": "held",
+          "registered_nodes": 1
+        },
+        {
+          "component": 2,
+          "group": 29512,
+          "status": "held",
+          "registered_nodes": 1
+        }
+      ],
+      "minimum_derivative": [
+        237.85560509271914,
+        10.368345699848557,
+        0.12158550849264298
+      ],
+      "physical_Jinv_fixed_site_derivative": [
+        343.9563112271023,
+        14.993373559799547,
+        0.17582138955060145
+      ]
+    },
+    {
+      "node": [
+        26,
+        12,
+        10
+      ],
+      "chi": 0.0,
+      "incident_cell_count": 4,
+      "incident_positive_order_cells": [],
+      "groups": [
+        {
+          "component": 0,
+          "group": 30292,
+          "status": "held",
+          "registered_nodes": 1
+        },
+        {
+          "component": 1,
+          "group": 29192,
+          "status": "held",
+          "registered_nodes": 1
+        },
+        {
+          "component": 2,
+          "group": 29532,
+          "status": "held",
+          "registered_nodes": 1
+        }
+      ],
+      "minimum_derivative": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "physical_Jinv_fixed_site_derivative": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "node": [
+        26,
+        12,
+        11
+      ],
+      "chi": 0.0,
+      "incident_cell_count": 4,
+      "incident_positive_order_cells": [],
+      "groups": [
+        {
+          "component": 0,
+          "group": 30293,
+          "status": "held",
+          "registered_nodes": 1
+        },
+        {
+          "component": 1,
+          "group": 29193,
+          "status": "held",
+          "registered_nodes": 1
+        },
+        {
+          "component": 2,
+          "group": 29533,
+          "status": "held",
+          "registered_nodes": 1
+        }
+      ],
+      "minimum_derivative": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "physical_Jinv_fixed_site_derivative": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "packed_normal_check_max_error": 2.842170943040401e-14,
+  "native_chart_det_minus_exact": -3.2106783865674254e-18,
+  "width_scaled_melt_normal_squared": 0.798951778233353,
+  "before": {
+    "elastic_energy": 0.3120447044574924,
+    "gauge_energy": 7.499958047772582e-08,
+    "max_free_label_force": 0.09873119115384474,
+    "worst_free_active": {
+      "component": 1,
+      "group": 26672,
+      "chi": 0.20550515057407043,
+      "signed_force": -0.09873119115384474,
+      "node": [
+        24,
+        2,
+        10
+      ],
+      "radius": 3.9528073379158393,
+      "depth": 0.05174626019989946,
+      "theta": 0.6162109095189517
+    },
+    "gradient_l2": 0.31018036716458774,
+    "min_Jinv_global": 0.0023139341638329348,
+    "min_Jinv_active": 0.43358711521538484,
+    "max_unit_melt_residual": 447.3254685221683,
+    "chart": {
+      "chart_det_global_lower": 2.0525336733340053e-06,
+      "chart_lowest_cell": [
+        25,
+        11,
+        10
+      ],
+      "chart_det_active_lower": 0.0021257531624534354
+    }
+  },
+  "tests": {
+    "single_coordinate_control": {
+      "gradient_dot_direction": -5.807149913458299e-06,
+      "edge_minimum_derivative": 0.0,
+      "changed_packed_active": 1,
+      "changed_packed_melt_only": 0,
+      "trials": [
+        {
+          "alpha": 1.0,
+          "edge_minimum": 2.3960118803428543e-06,
+          "edge_minimum_delta": 0.0,
+          "minimizing_edge_fraction": 0.399257224707046,
+          "elastic_work": -1.0021664358372817e-06,
+          "gauge_work": -3.6349697617176647e-14,
+          "joint_work": -1.0021664721869794e-06,
+          "direct_joint_difference": -1.0021664721970858e-06,
+          "physical_Jinv_at_edge_minimum": 3.464805497006419e-06,
+          "entrance_signed_force": 0.005360028028009022,
+          "after": {
+            "elastic_energy": 0.31204370229105655,
+            "gauge_energy": 7.49995441280282e-08,
+            "max_free_label_force": 0.08680905641908891,
+            "worst_free_active": {
+              "component": 1,
+              "group": 26676,
+              "chi": 0.20275913012056088,
+              "signed_force": -0.08680905641908891,
+              "node": [
+                24,
+                2,
+                14
+              ],
+              "radius": 3.9528012623230344,
+              "depth": 0.05174626019989946,
+              "theta": 0.970514952943746
+            },
+            "gradient_l2": 0.2761912651189857,
+            "min_Jinv_global": 0.0023139341638329348,
+            "min_Jinv_active": 0.43358711521538484,
+            "max_unit_melt_residual": 447.3254685221683,
+            "chart": {
+              "chart_det_global_lower": 2.0525336733340053e-06,
+              "chart_lowest_cell": [
+                25,
+                11,
+                10
+              ],
+              "chart_det_active_lower": 0.0021257531624534354
+            }
+          },
+          "active_stencil_unchanged": false,
+          "armijo": true
+        }
+      ]
+    },
+    "entrance_neighborhood": {
+      "gradient_dot_direction": -3.2479881878202062e-06,
+      "edge_minimum_derivative": 0.0,
+      "changed_packed_active": 81,
+      "changed_packed_melt_only": 0,
+      "trials": [
+        {
+          "alpha": 1.0,
+          "edge_minimum": 2.3960118803428543e-06,
+          "edge_minimum_delta": 0.0,
+          "minimizing_edge_fraction": 0.399257224707046,
+          "elastic_work": -3.7550608936731678e-06,
+          "gauge_work": -3.575941788839965e-14,
+          "joint_work": -3.7550609294325855e-06,
+          "direct_joint_difference": -3.755060929422349e-06,
+          "physical_Jinv_at_edge_minimum": 3.464805497006419e-06,
+          "entrance_signed_force": -0.06499535384431972,
+          "after": {
+            "elastic_energy": 0.3120409493965987,
+            "gauge_energy": 7.499954471830794e-08,
+            "max_free_label_force": 0.08680905641908891,
+            "worst_free_active": {
+              "component": 1,
+              "group": 26676,
+              "chi": 0.20275913012056088,
+              "signed_force": -0.08680905641908891,
+              "node": [
+                24,
+                2,
+                14
+              ],
+              "radius": 3.9528012623230344,
+              "depth": 0.05174626019989946,
+              "theta": 0.970514952943746
+            },
+            "gradient_l2": 0.2965459668432108,
+            "min_Jinv_global": 0.0023139341638329348,
+            "min_Jinv_active": 0.43358711521538484,
+            "max_unit_melt_residual": 447.3254685221683,
+            "chart": {
+              "chart_det_global_lower": 2.0525336733340053e-06,
+              "chart_lowest_cell": [
+                25,
+                11,
+                10
+              ],
+              "chart_det_active_lower": 0.0021257531624534354
+            }
+          },
+          "active_stencil_unchanged": false,
+          "armijo": true
+        }
+      ],
+      "successful_fraction": 1.0
+    },
+    "melt_only_control": {
+      "gradient_dot_direction": -3.1147996271822876e-15,
+      "edge_minimum_derivative": 2.3960118803428547e-06,
+      "changed_packed_active": 0,
+      "changed_packed_melt_only": 12,
+      "trials": [
+        {
+          "alpha": 1.0,
+          "edge_minimum": 4.792023372948372e-06,
+          "edge_minimum_delta": 2.396011492605518e-06,
+          "minimizing_edge_fraction": 0.39925478327653363,
+          "elastic_work": 0.0,
+          "gauge_work": -3.114467563708625e-15,
+          "joint_work": -3.114467563708625e-15,
+          "direct_joint_difference": -3.1086244689504383e-15,
+          "physical_Jinv_at_edge_minimum": 6.929610347543427e-06,
+          "entrance_signed_force": -0.09873119115384474,
+          "after": {
+            "elastic_energy": 0.3120447044574924,
+            "gauge_energy": 7.499957736325827e-08,
+            "max_free_label_force": 0.09873119115384474,
+            "worst_free_active": {
+              "component": 1,
+              "group": 26672,
+              "chi": 0.20550515057407043,
+              "signed_force": -0.09873119115384474,
+              "node": [
+                24,
+                2,
+                10
+              ],
+              "radius": 3.9528073379158393,
+              "depth": 0.05174626019989946,
+              "theta": 0.6162109095189517
+            },
+            "gradient_l2": 0.3101803671645783,
+            "min_Jinv_global": 0.0023139341638329348,
+            "min_Jinv_active": 0.43358711521538484,
+            "max_unit_melt_residual": 447.3254685221683,
+            "chart": {
+              "chart_det_global_lower": 1.1747613259099262e-06,
+              "chart_lowest_cell": [
+                25,
+                11,
+                10
+              ],
+              "chart_det_active_lower": 0.0021257531624534354
+            }
+          },
+          "active_stencil_unchanged": true,
+          "armijo": true
+        }
+      ]
+    },
+    "entrance_plus_melt": {
+      "gradient_dot_direction": -3.247988190935006e-06,
+      "edge_minimum_derivative": 2.3960118803428547e-06,
+      "changed_packed_active": 81,
+      "changed_packed_melt_only": 12,
+      "trials": [
+        {
+          "alpha": 1.0,
+          "edge_minimum": 4.792023372948372e-06,
+          "edge_minimum_delta": 2.396011492605518e-06,
+          "minimizing_edge_fraction": 0.39925478327653363,
+          "elastic_work": -3.7550608936731678e-06,
+          "gauge_work": -3.887388545210827e-14,
+          "joint_work": -3.7550609325470533e-06,
+          "direct_joint_difference": -3.7550609325864848e-06,
+          "physical_Jinv_at_edge_minimum": 6.929610347543427e-06,
+          "entrance_signed_force": -0.06499535384431972,
+          "after": {
+            "elastic_energy": 0.3120409493965987,
+            "gauge_energy": 7.499954160384038e-08,
+            "max_free_label_force": 0.08680905641908891,
+            "worst_free_active": {
+              "component": 1,
+              "group": 26676,
+              "chi": 0.20275913012056088,
+              "signed_force": -0.08680905641908891,
+              "node": [
+                24,
+                2,
+                14
+              ],
+              "radius": 3.9528012623230344,
+              "depth": 0.05174626019989946,
+              "theta": 0.970514952943746
+            },
+            "gradient_l2": 0.29654596684320095,
+            "min_Jinv_global": 0.0023139341638329348,
+            "min_Jinv_active": 0.43358711521538484,
+            "max_unit_melt_residual": 447.3254685221683,
+            "chart": {
+              "chart_det_global_lower": 1.1747613259099262e-06,
+              "chart_lowest_cell": [
+                25,
+                11,
+                10
+              ],
+              "chart_det_active_lower": 0.0021257531624534354
+            }
+          },
+          "active_stencil_unchanged": false,
+          "armijo": true
+        }
+      ],
+      "successful_fraction": 1.0
+    }
+  }
+}

@@ -2,6 +2,8 @@
 
 ## Common-medium research
 
+**The step-288 numerical stop has a verified feasible direction.** Starting from the preserved radius-4 step 287, the four-row projection returned a direction that violated one orientation constraint. An independent joint solve protecting five sites lowered total energy by 0.00010131370 on a quarter-step trial with a certified positive physical inverse determinant over all 28,080 cells. The diagnostic accepted zero steps. Production projection repair and held equilibrium are open. [Corner dossier, projection failure and independent check](software/stage1_solver/reports/mouth_r4_step288_projection.md)
+
 **The held radius-4 primary reached step 287 on the approved C² collar.** Both gauges passed the step-166 pre-descent audits. The primary accepted 121 energy-lowering steps before the projection of its next crystal displacement failed. Its lowest peak crystal force was 0.04602958 against the 0.000030 target. The last fresh fields carried 10.70771691 inward current. Radius 4 stays held and radius 3 stays blind. [Numerical stop and independent review](software/stage1_solver/reports/mouth_r4_cubic_held_stop.md) · [Standing cubic reference](software/stage1_solver/reports/mouth_r4_bicubic_reference.md)
 
 **A single crossing of the collar reference plane explains the uphill projected-Jacobi trial at radius 4.** The measured slope agrees with the gradient below the crossing. At the crossing it changes from −0.00154758 to +0.01582285. The independently measured work of the two incident rays accounts for that change. Step 166 stays held during the smooth-reference boundary and derivative audits. [Signed work, location and independent review](software/stage1_solver/reports/mouth_r4_collar_crease.md)

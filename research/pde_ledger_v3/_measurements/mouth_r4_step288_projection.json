@@ -1,0 +1,1596 @@
+{
+  "scope": "Read-only step-288 diagnostic, zero new accepted steps.",
+  "source_commit": "f28f283f",
+  "projection_script_sha256": "e424898a208af6ec417d95e5b5814032ef089caf78c53b0737c8496e309f3eb4",
+  "projection": {
+    "accepted_steps": 0,
+    "source_commit": "f28f283f",
+    "epsilon": 1e-08,
+    "step_287_peak_force": 0.04602957770136634,
+    "failure": {
+      "reproduction": {
+        "max_label_difference": 0.0,
+        "step_fraction": 0.0078125,
+        "iterations": 8,
+        "work": -3.6625103882280213e-06,
+        "backtracks": 7,
+        "peak_force": 0.04602957770136634,
+        "matching_rejections": true,
+        "source_hashes": [
+          "530dc77673a9c71ada3fd369bed01922098beb2727adbe9941308aae78886282",
+          "5683615a04966ef35ba992026c8990965005c13bfec8e6d440534ade1e4b46c0"
+        ]
+      },
+      "direction": "Newton",
+      "retained_sites": [
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.25,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.5
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.625
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            4
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "trial_fraction": 0.0625,
+      "newly_witnessed": {
+        "cell": [
+          25,
+          10,
+          4
+        ],
+        "local": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "failed_row_site": {
+        "cell": [
+          25,
+          10,
+          6
+        ],
+        "local": [
+          0.0,
+          1.0,
+          0.625
+        ]
+      },
+      "rejections": [
+        {
+          "alpha": 1.0,
+          "reason": "Label leaves the saved material domain",
+          "site": {
+            "reason": "Label leaves the saved material domain",
+            "component": 0,
+            "lowest": 0.0,
+            "highest": 1.0069932173924028
+          }
+        },
+        {
+          "alpha": 0.5,
+          "reason": "Label leaves the saved material domain",
+          "site": {
+            "reason": "Label leaves the saved material domain",
+            "component": 0,
+            "lowest": 0.0,
+            "highest": 1.0021443490175013
+          }
+        },
+        {
+          "alpha": 0.25,
+          "reason": "Label leaves the saved material domain",
+          "site": {
+            "reason": "Label leaves the saved material domain",
+            "component": 0,
+            "lowest": 0.0,
+            "highest": 1.0000310467859723
+          }
+        },
+        {
+          "alpha": 0.125,
+          "reason": "Label leaves the saved material domain",
+          "site": {
+            "reason": "Label leaves the saved material domain",
+            "component": 0,
+            "lowest": 0.0,
+            "highest": 1.0000095249039151
+          }
+        },
+        {
+          "alpha": 0.0625,
+          "reason": "Nonpositive or roundoff-unresolved chart determinant",
+          "site": {
+            "reason": "Nonpositive or roundoff-unresolved chart determinant",
+            "code": 2,
+            "cell": [
+              25,
+              10,
+              4
+            ],
+            "chart_fractions": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "chart_det": -0.00032899717594049674,
+            "chart_lower": -0.0008200061234608897,
+            "roundoff_margin": 1.1239096152674477e-13,
+            "subdivisions": 0
+          }
+        }
+      ],
+      "min_normalized_slack": -2.475421007848744e-07,
+      "normalized_slacks": [
+        9.486769009248164e-20,
+        3.006966962752766e-20,
+        -2.475421007848744e-07,
+        -2.752857078576476e-21
+      ],
+      "extended_slack": [
+        9.634338030527624e-20,
+        3.0192783829478816e-20,
+        -2.4754210078487444e-07,
+        -2.8555890332464408e-21
+      ],
+      "permitted_negative_slack": -1e-10,
+      "raw_slacks": [
+        -0.00015155041465654976,
+        -3.3769514182745456e-06,
+        -3.2387702697224796e-06,
+        -0.00017670557419914004
+      ],
+      "multipliers": [
+        8.350167224388571e-07,
+        0.00024224560927742946,
+        0.0007964481289361526,
+        4.31638245239626e-06
+      ],
+      "eigenvalues": [
+        0.00016616721334432728,
+        0.00642392657841699,
+        40.79289837499452,
+        177.7156748498216
+      ],
+      "threshold": 1.5784322724405584e-13,
+      "retained_rank": 4,
+      "dropped_rhs_component": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gram_residual": [
+        5.421010862427522e-20,
+        3.091670257478196e-20,
+        -2.475421007848743e-07,
+        0.0
+      ],
+      "cg_iterations": 8,
+      "cg_reason": "CG forcing attained",
+      "gradient_dot_raw": -0.0004632788420634358
+    },
+    "joint": {
+      "feasible_descent": true,
+      "alpha": 0.25,
+      "slope": -0.0004632774462935319,
+      "physical_work": -0.00010131418082282018,
+      "gauge_work": 4.772863770292723e-10,
+      "total_work": -0.00010131370353644314,
+      "armijo_rhs": -1.1581936157338299e-08,
+      "peak_force": 0.034479169454073,
+      "chart": {
+        "chart_det_global_lower": 1.4727821942628278e-07,
+        "chart_lowest_cell": [
+          25,
+          10,
+          6
+        ],
+        "chart_det_active_lower": 0.0007538952816655456
+      },
+      "sampled_physical_min": 0.0006925723470521839,
+      "physical_certificate": {
+        "physical_global_lower": 8.543240071466851e-08,
+        "cell": [
+          25,
+          10,
+          6
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 1.4727821942628278e-07,
+        "limiting_chart_lower": 1.4727821942628278e-07,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9999999999999999,
+        "global_xi_r_over_x_lower": 0.9469938353317662,
+        "global_sine_ratio_lower": 0.95929589809637,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "constraints": [
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.25,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.5
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.625
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            4
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        }
+      ],
+      "projection": {
+        "active_rows": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "slacks": [
+          3.9992572999369304e-13,
+          1.8001204759401258e-07,
+          1.5917796223877763e-15,
+          1.9161713701504258e-13,
+          1.5179307883509512e-12
+        ],
+        "margin_in_scaled_rows": 3e-14,
+        "precision_digits": 70,
+        "scaled_condition": 6.1478720940163365,
+        "support_dofs": 30
+      },
+      "trials": [
+        {
+          "alpha": 1.0,
+          "valid": false,
+          "reason": "Label leaves the saved material domain",
+          "site": {
+            "reason": "Label leaves the saved material domain",
+            "component": 0,
+            "lowest": 0.0,
+            "highest": 1.0069932395177628
+          }
+        },
+        {
+          "alpha": 0.5,
+          "valid": false,
+          "reason": "Label leaves the saved material domain",
+          "site": {
+            "reason": "Label leaves the saved material domain",
+            "component": 0,
+            "lowest": 0.0,
+            "highest": 1.0021443600801814
+          }
+        },
+        {
+          "alpha": 0.25,
+          "valid": false,
+          "reason": "Label leaves the saved material domain",
+          "site": {
+            "reason": "Label leaves the saved material domain",
+            "component": 0,
+            "lowest": 0.0,
+            "highest": 1.0000047225110078
+          }
+        },
+        {
+          "alpha": 0.125,
+          "valid": false,
+          "reason": "Nonpositive or roundoff-unresolved chart determinant",
+          "site": {
+            "reason": "Nonpositive or roundoff-unresolved chart determinant",
+            "code": 2,
+            "cell": [
+              25,
+              10,
+              3
+            ],
+            "chart_fractions": [
+              0.0,
+              0.5,
+              1.0
+            ],
+            "chart_det": -0.005171492994337206,
+            "chart_lower": -0.0068467364865062,
+            "roundoff_margin": 2.0117532644512039e-13,
+            "subdivisions": 1
+          }
+        },
+        {
+          "alpha": 1.0,
+          "valid": false,
+          "reason": "Label leaves the saved material domain",
+          "site": {
+            "reason": "Label leaves the saved material domain",
+            "component": 0,
+            "lowest": 0.0,
+            "highest": 1.0069939147645637
+          }
+        },
+        {
+          "alpha": 0.5,
+          "valid": false,
+          "reason": "Label leaves the saved material domain",
+          "site": {
+            "reason": "Label leaves the saved material domain",
+            "component": 0,
+            "lowest": 0.0,
+            "highest": 1.0021446977035817
+          }
+        },
+        {
+          "alpha": 0.25,
+          "valid": true,
+          "signed_work": -0.00010131370353644314,
+          "strict_armijo": true
+        }
+      ]
+    }
+  },
+  "cells": {
+    "cells": [
+      {
+        "cell": [
+          25,
+          10,
+          3
+        ],
+        "vertices": [
+          {
+            "index": [
+              25,
+              10,
+              3
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              25,
+              10,
+              4
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              25,
+              11,
+              3
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          },
+          {
+            "index": [
+              25,
+              11,
+              4
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          },
+          {
+            "index": [
+              26,
+              10,
+              3
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              26,
+              10,
+              4
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              26,
+              11,
+              3
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          },
+          {
+            "index": [
+              26,
+              11,
+              4
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          }
+        ],
+        "chi_range": [
+          0.0,
+          0.0
+        ],
+        "all_vertices_melted": true,
+        "certified_chart_lower": 0.004158405613350701,
+        "certified_physical_lower": 0.0022961410227722006,
+        "estimated_chart_minimum": {
+          "local": [
+            0.0,
+            0.23141583949706954,
+            1.0
+          ],
+          "chart_det": 0.006661409363755422,
+          "physical_Jinv": 0.009139252275120104,
+          "chi": 0.0,
+          "r": 3.875131006313438,
+          "w": 0.2647187531243346,
+          "theta": 0.17885882410087228
+        },
+        "estimated_physical_minimum": {
+          "local": [
+            0.0,
+            0.2302792530753267,
+            1.0
+          ],
+          "chart_det": 0.006661461389722695,
+          "physical_Jinv": 0.009139180889780116,
+          "chi": 0.0,
+          "r": 3.875148313499998,
+          "w": 0.2646893460759671,
+          "theta": 0.17885882410087228
+        },
+        "witnesses": [
+          {
+            "step": 287,
+            "alpha": 0.0625,
+            "cell": [
+              25,
+              10,
+              3
+            ],
+            "local": [
+              0.25,
+              0.0,
+              1.0
+            ],
+            "chart_det": 0.007535839369933085,
+            "physical_Jinv": 0.010294497890405794,
+            "chi": 0.0,
+            "r": 3.8800498245416777,
+            "w": 0.2587313010002118,
+            "theta": 0.17885882410087228
+          },
+          {
+            "step": 288,
+            "role": "retained",
+            "cell": [
+              25,
+              10,
+              3
+            ],
+            "local": [
+              0.25,
+              0.0,
+              1.0
+            ],
+            "chart_det": 0.007535839369933085,
+            "physical_Jinv": 0.010294497890405794,
+            "chi": 0.0,
+            "r": 3.8800498245416777,
+            "w": 0.2587313010002118,
+            "theta": 0.17885882410087228
+          },
+          {
+            "step": 288,
+            "role": "joint_probe_added",
+            "cell": [
+              25,
+              10,
+              3
+            ],
+            "local": [
+              0.0,
+              0.5,
+              1.0
+            ],
+            "chart_det": 0.00956642645214431,
+            "physical_Jinv": 0.01317411973210786,
+            "chi": 0.0,
+            "r": 3.8709603594062787,
+            "w": 0.2716678660537,
+            "theta": 0.17885882410087228
+          }
+        ]
+      },
+      {
+        "cell": [
+          25,
+          10,
+          4
+        ],
+        "vertices": [
+          {
+            "index": [
+              25,
+              10,
+              4
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              25,
+              10,
+              5
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              25,
+              11,
+              4
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          },
+          {
+            "index": [
+              25,
+              11,
+              5
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          },
+          {
+            "index": [
+              26,
+              10,
+              4
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              26,
+              10,
+              5
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              26,
+              11,
+              4
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          },
+          {
+            "index": [
+              26,
+              11,
+              5
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          }
+        ],
+        "chi_range": [
+          0.0,
+          0.0
+        ],
+        "all_vertices_melted": true,
+        "certified_chart_lower": 0.0014566044449794804,
+        "certified_physical_lower": 0.0008042912430985244,
+        "estimated_chart_minimum": {
+          "local": [
+            0.0,
+            1.0,
+            1.0
+          ],
+          "chart_det": 0.0014566044450919175,
+          "physical_Jinv": 0.002010581795252217,
+          "chi": 0.0,
+          "r": 3.8618537956017556,
+          "w": 0.28460443110718825,
+          "theta": 0.2417346402795315
+        },
+        "estimated_physical_minimum": {
+          "local": [
+            0.0,
+            1.0,
+            1.0
+          ],
+          "chart_det": 0.0014566044450919175,
+          "physical_Jinv": 0.002010581795252217,
+          "chi": 0.0,
+          "r": 3.8618537956017556,
+          "w": 0.28460443110718825,
+          "theta": 0.2417346402795315
+        },
+        "witnesses": [
+          {
+            "step": 288,
+            "role": "retained",
+            "cell": [
+              25,
+              10,
+              4
+            ],
+            "local": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "chart_det": 0.006083204203204332,
+            "physical_Jinv": 0.008335791935709677,
+            "chi": 0.0,
+            "r": 3.877712836928864,
+            "w": 0.2587313010002118,
+            "theta": 0.2417346402795315
+          },
+          {
+            "step": 288,
+            "role": "newly_witnessed",
+            "cell": [
+              25,
+              10,
+              4
+            ],
+            "local": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "chart_det": 0.006083204203204332,
+            "physical_Jinv": 0.008335791935709677,
+            "chi": 0.0,
+            "r": 3.877712836928864,
+            "w": 0.2587313010002118,
+            "theta": 0.2417346402795315
+          }
+        ]
+      },
+      {
+        "cell": [
+          25,
+          10,
+          6
+        ],
+        "vertices": [
+          {
+            "index": [
+              25,
+              10,
+              6
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              25,
+              10,
+              7
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              25,
+              11,
+              6
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          },
+          {
+            "index": [
+              25,
+              11,
+              7
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          },
+          {
+            "index": [
+              26,
+              10,
+              6
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              26,
+              10,
+              7
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": true
+          },
+          {
+            "index": [
+              26,
+              11,
+              6
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          },
+          {
+            "index": [
+              26,
+              11,
+              7
+            ],
+            "chi": 0.0,
+            "incident_to_ordered_element": false
+          }
+        ],
+        "chi_range": [
+          0.0,
+          0.0
+        ],
+        "all_vertices_melted": true,
+        "certified_chart_lower": 7.084565677230213e-07,
+        "certified_physical_lower": 4.1095410096212737e-07,
+        "estimated_chart_minimum": {
+          "local": [
+            0.0,
+            1.0,
+            0.6306298768969487
+          ],
+          "chart_det": 2.0306595513702705e-06,
+          "physical_Jinv": 2.853773762058675e-06,
+          "chi": 0.0,
+          "r": 3.8596507891011225,
+          "w": 0.28460443110718825,
+          "theta": 0.35430443544857904
+        },
+        "estimated_physical_minimum": {
+          "local": [
+            0.0,
+            1.0,
+            0.6306264338527988
+          ],
+          "chart_det": 2.0306595746904796e-06,
+          "physical_Jinv": 2.853773729316859e-06,
+          "chi": 0.0,
+          "r": 3.8596507947002943,
+          "w": 0.28460443110718825,
+          "theta": 0.3543041891693175
+        },
+        "witnesses": [
+          {
+            "step": 287,
+            "alpha": 0.03125,
+            "cell": [
+              25,
+              10,
+              6
+            ],
+            "local": [
+              0.0,
+              1.0,
+              0.5
+            ],
+            "chart_det": 3.560353829233851e-05,
+            "physical_Jinv": 4.9991546738059194e-05,
+            "chi": 0.0,
+            "r": 3.859860894855223,
+            "w": 0.28460443110718825,
+            "theta": 0.3449605443406559
+          },
+          {
+            "step": 287,
+            "alpha": 0.015625,
+            "cell": [
+              25,
+              10,
+              6
+            ],
+            "local": [
+              0.0,
+              1.0,
+              0.625
+            ],
+            "chart_det": 2.093018862414522e-06,
+            "physical_Jinv": 2.941299578684861e-06,
+            "chi": 0.0,
+            "r": 3.859659940260092,
+            "w": 0.28460443110718825,
+            "theta": 0.3539017331118265
+          },
+          {
+            "step": 288,
+            "role": "retained",
+            "cell": [
+              25,
+              10,
+              6
+            ],
+            "local": [
+              0.0,
+              1.0,
+              0.5
+            ],
+            "chart_det": 3.560353829233851e-05,
+            "physical_Jinv": 4.9991546738059194e-05,
+            "chi": 0.0,
+            "r": 3.859860894855223,
+            "w": 0.28460443110718825,
+            "theta": 0.3449605443406559
+          },
+          {
+            "step": 288,
+            "role": "retained",
+            "cell": [
+              25,
+              10,
+              6
+            ],
+            "local": [
+              0.0,
+              1.0,
+              0.625
+            ],
+            "chart_det": 2.093018862414522e-06,
+            "physical_Jinv": 2.941299578684861e-06,
+            "chi": 0.0,
+            "r": 3.859659940260092,
+            "w": 0.28460443110718825,
+            "theta": 0.3539017331118265
+          },
+          {
+            "step": 288,
+            "role": "failed_row_site",
+            "cell": [
+              25,
+              10,
+              6
+            ],
+            "local": [
+              0.0,
+              1.0,
+              0.625
+            ],
+            "chart_det": 2.093018862414522e-06,
+            "physical_Jinv": 2.941299578684861e-06,
+            "chi": 0.0,
+            "r": 3.859659940260092,
+            "w": 0.28460443110718825,
+            "theta": 0.3539017331118265
+          }
+        ]
+      }
+    ],
+    "shared": [
+      {
+        "cells": [
+          [
+            25,
+            10,
+            3
+          ],
+          [
+            25,
+            10,
+            4
+          ]
+        ],
+        "shared_vertices": [
+          [
+            25,
+            10,
+            4
+          ],
+          [
+            25,
+            11,
+            4
+          ],
+          [
+            26,
+            10,
+            4
+          ],
+          [
+            26,
+            11,
+            4
+          ]
+        ]
+      },
+      {
+        "cells": [
+          [
+            25,
+            10,
+            3
+          ],
+          [
+            25,
+            10,
+            6
+          ]
+        ],
+        "shared_vertices": []
+      },
+      {
+        "cells": [
+          [
+            25,
+            10,
+            4
+          ],
+          [
+            25,
+            10,
+            6
+          ]
+        ],
+        "shared_vertices": []
+      }
+    ],
+    "minima": "Certified positive lower bounds per cell. Numerical minima use a 9x9x9 closed-cell grid, given witnesses and bounded multistart minimization. A measured value upper-bounds the actual cell minimum up to floating-point roundoff.",
+    "accepted_state_sha256": "5683615a04966ef35ba992026c8990965005c13bfec8e6d440534ade1e4b46c0",
+    "script_sha256": "7432b65f6969af97a8bb179b8e2cf7dab6738121d424ae802174401020564d04",
+    "case": "accepted step 287",
+    "rejected_trial": {
+      "label_sha256": "97241df22ff3fd5f91e62dee3cf4fe055f6cdb9c03c0dda3ce087fd353d7c989",
+      "failure_sha256": "4b49e12019ada982a823c904aeccd9c928348a8f1ebcdd1ee389ef7985c5b5e0",
+      "alpha": 0.0625,
+      "new_witness": {
+        "cell": [
+          25,
+          10,
+          4
+        ],
+        "local": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "chart_det": -0.0003289971759404969,
+        "physical_Jinv": -0.00045075089092621337,
+        "chi": 0.0,
+        "r": 3.877712836928864,
+        "w": 0.2587313010002118,
+        "theta": 0.2417346402795315
+      },
+      "production_chart_det": -0.00032899717594049674,
+      "sites": [
+        {
+          "step": 287,
+          "alpha": 0.0625,
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.25,
+            0.0,
+            1.0
+          ],
+          "chart_det": 0.006941117093445393,
+          "physical_Jinv": 0.009482634312286107,
+          "chi": 0.0,
+          "r": 3.8800498245416777,
+          "w": 0.2587313010002118,
+          "theta": 0.17885882410087228
+        },
+        {
+          "step": 287,
+          "alpha": 0.03125,
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.5
+          ],
+          "chart_det": 4.027842642677645e-05,
+          "physical_Jinv": 5.658494196707392e-05,
+          "chi": 0.0,
+          "r": 3.859860894855223,
+          "w": 0.28460443110718825,
+          "theta": 0.3449605443406559
+        },
+        {
+          "step": 287,
+          "alpha": 0.015625,
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.625
+          ],
+          "chart_det": 2.200048724670877e-06,
+          "physical_Jinv": 3.0931460188404773e-06,
+          "chi": 0.0,
+          "r": 3.859659940260092,
+          "w": 0.28460443110718825,
+          "theta": 0.3539017331118265
+        },
+        {
+          "step": 288,
+          "role": "retained",
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.25,
+            0.0,
+            1.0
+          ],
+          "chart_det": 0.006941117093445393,
+          "physical_Jinv": 0.009482634312286107,
+          "chi": 0.0,
+          "r": 3.8800498245416777,
+          "w": 0.2587313010002118,
+          "theta": 0.17885882410087228
+        },
+        {
+          "step": 288,
+          "role": "retained",
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.5
+          ],
+          "chart_det": 4.027842642677645e-05,
+          "physical_Jinv": 5.658494196707392e-05,
+          "chi": 0.0,
+          "r": 3.859860894855223,
+          "w": 0.28460443110718825,
+          "theta": 0.3449605443406559
+        },
+        {
+          "step": 288,
+          "role": "retained",
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.625
+          ],
+          "chart_det": 2.200048724670877e-06,
+          "physical_Jinv": 3.0931460188404773e-06,
+          "chi": 0.0,
+          "r": 3.859659940260092,
+          "w": 0.28460443110718825,
+          "theta": 0.3539017331118265
+        },
+        {
+          "step": 288,
+          "role": "retained",
+          "cell": [
+            25,
+            10,
+            4
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "chart_det": -0.0003289971759404969,
+          "physical_Jinv": -0.00045075089092621337,
+          "chi": 0.0,
+          "r": 3.877712836928864,
+          "w": 0.2587313010002118,
+          "theta": 0.2417346402795315
+        },
+        {
+          "step": 288,
+          "role": "newly_witnessed",
+          "cell": [
+            25,
+            10,
+            4
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "chart_det": -0.0003289971759404969,
+          "physical_Jinv": -0.00045075089092621337,
+          "chi": 0.0,
+          "r": 3.877712836928864,
+          "w": 0.2587313010002118,
+          "theta": 0.2417346402795315
+        },
+        {
+          "step": 288,
+          "role": "failed_row_site",
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.625
+          ],
+          "chart_det": 2.200048724670877e-06,
+          "physical_Jinv": 3.0931460188404773e-06,
+          "chi": 0.0,
+          "r": 3.859659940260092,
+          "w": 0.28460443110718825,
+          "theta": 0.3539017331118265
+        },
+        {
+          "step": 288,
+          "role": "joint_probe_added",
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.0,
+            0.5,
+            1.0
+          ],
+          "chart_det": 0.000411143240843021,
+          "physical_Jinv": 0.0005643202121842183,
+          "chi": 0.0,
+          "r": 3.8709603594062787,
+          "w": 0.2716678660537,
+          "theta": 0.17885882410087228
+        }
+      ],
+      "sampled_cell_minima": [
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "estimated_chart_minimum": {
+            "local": [
+              0.0,
+              0.4385660494649212,
+              1.0
+            ],
+            "chart_det": 0.00022472657463976306,
+            "physical_Jinv": 0.0003083130850529455,
+            "chi": 0.0,
+            "r": 3.8719286836520763,
+            "w": 0.27007837745852037,
+            "theta": 0.17885882410087228
+          },
+          "estimated_physical_minimum": {
+            "local": [
+              0.0,
+              0.4385496132761627,
+              1.0
+            ],
+            "chart_det": 0.00022472658807894507,
+            "physical_Jinv": 0.0003083130667297561,
+            "chi": 0.0,
+            "r": 3.871928941567451,
+            "w": 0.2700779522028702,
+            "theta": 0.17885882410087228
+          }
+        },
+        {
+          "cell": [
+            25,
+            10,
+            4
+          ],
+          "estimated_chart_minimum": {
+            "local": [
+              0.0,
+              0.0,
+              0.7638623046765528
+            ],
+            "chart_det": -0.0004449429002845282,
+            "physical_Jinv": -0.000609348143118004,
+            "chi": 0.0,
+            "r": 3.8779439567537164,
+            "w": 0.2587313010002118,
+            "theta": 0.2268872899555222
+          },
+          "estimated_physical_minimum": {
+            "local": [
+              0.0,
+              0.0,
+              0.7640500627684885
+            ],
+            "chart_det": -0.00044494282697662513,
+            "physical_Jinv": -0.0006093482435011158,
+            "chi": 0.0,
+            "r": 3.877943778384376,
+            "w": 0.2587313010002118,
+            "theta": 0.22689909539879682
+          }
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "estimated_chart_minimum": {
+            "local": [
+              0.0,
+              1.0,
+              0.6393655409726985
+            ],
+            "chart_det": 1.7911174776519567e-06,
+            "physical_Jinv": 2.5184378179486364e-06,
+            "chi": 0.0,
+            "r": 3.859636572569606,
+            "w": 0.28460443110718825,
+            "theta": 0.35492929322092154
+          },
+          "estimated_physical_minimum": {
+            "local": [
+              0.0,
+              1.0,
+              0.6393627250094387
+            ],
+            "chart_det": 1.791117493281024e-06,
+            "physical_Jinv": 2.5184377955499576e-06,
+            "chi": 0.0,
+            "r": 3.8596365771556758,
+            "w": 0.28460443110718825,
+            "theta": 0.3549290917964489
+          }
+        }
+      ]
+    },
+    "joint_result_sha256": "6ea17a65d8419633e8139b0d1d220eab0b522a79b6c1eb7d98a5e0913f1a6e5e",
+    "supplemental_sites": [
+      {
+        "step": 288,
+        "role": "joint_probe_added",
+        "cell": [
+          25,
+          10,
+          3
+        ],
+        "local": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    ],
+    "original_dossier_sha256": "ac0b772ede974b111ba0376c2186c96874d10ccc26d3ef11444ce1f6183e4704"
+  },
+  "independent_review": {
+    "source_sha256": {
+      "failure.json": "4b49e12019ada982a823c904aeccd9c928348a8f1ebcdd1ee389ef7985c5b5e0",
+      "local_projection.npz": "8f73f4df885c9a2f29d849c4eccb3b7261158d496ce9c603a8733f9773b2dc80",
+      "result.json": "6ea17a65d8419633e8139b0d1d220eab0b522a79b6c1eb7d98a5e0913f1a6e5e"
+    },
+    "retained_sites": [
+      {
+        "cell": [
+          25,
+          10,
+          3
+        ],
+        "local": [
+          0.25,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "cell": [
+          25,
+          10,
+          6
+        ],
+        "local": [
+          0.0,
+          1.0,
+          0.5
+        ]
+      },
+      {
+        "cell": [
+          25,
+          10,
+          6
+        ],
+        "local": [
+          0.0,
+          1.0,
+          0.625
+        ]
+      },
+      {
+        "cell": [
+          25,
+          10,
+          4
+        ],
+        "local": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    ],
+    "participating": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "raw_normals_shape": [
+      4,
+      27
+    ],
+    "failing_row": 2,
+    "permitted": -1e-10,
+    "high_precision_slacks_binary64_multipliers": [
+      1.1097608972631256e-19,
+      3.032432712207141e-20,
+      -2.4754210078487433e-07,
+      -5.9239634244964906e-21
+    ],
+    "error_vs_extended": 1.4632709421036332e-20,
+    "full_gram_eigenvalues_90d": [
+      0.00016616721334437818,
+      0.006423926578417059,
+      40.79289837499453,
+      177.71567484982165
+    ],
+    "eigen_cut": 1.5784322724405589e-13,
+    "dropped": [],
+    "fullKKT_active": [
+      0,
+      2,
+      3
+    ],
+    "fullKKT_slacks": [
+      0.0,
+      1.8001204584584847e-07,
+      0.0,
+      0.0
+    ],
+    "truncatedKKT_active": [
+      0,
+      2,
+      3
+    ],
+    "worst_full_slack_if_exact_truncated_solution": 0.0,
+    "archived_multipliers_slack_in_exact_truncated_problem": [
+      1.1097608972631256e-19,
+      3.032432712207141e-20,
+      -2.4754210078487433e-07,
+      -5.9239634244964906e-21
+    ],
+    "bad_row_full_minus_truncated": 4.153583261882918e-93,
+    "bad_row_dropped_b": 0.0,
+    "retained_sites_added_in_joint_test": 1,
+    "joint_feasible": true,
+    "joint_alpha": 0.25,
+    "joint_work": -0.00010131370353644314,
+    "all_accepted": 0,
+    "original_scipy_nnls": {
+      "multipliers": [
+        8.350167224388571e-07,
+        0.00024224560927742946,
+        0.0007964481289361526,
+        4.31638245239626e-06
+      ],
+      "objective_original_residual": 1.4720522166263061e-05,
+      "physical_slacks": [
+        5.421010862427522e-20,
+        3.091670257478196e-20,
+        -2.475421007848743e-07,
+        0.0
+      ],
+      "recomputed_nnls_residual": 1.4720522166263061e-05,
+      "reported_solver_residual": 0.0
+    },
+    "nnls_reversed_equations": {
+      "multipliers": [
+        8.350167224388574e-07,
+        0.0,
+        0.0011504208668040557,
+        4.316382452396262e-06
+      ],
+      "objective_original_residual": 9.244646557432202e-06,
+      "physical_slacks": [
+        1.0842021724855044e-19,
+        1.8001204584584873e-07,
+        -4.235164736271502e-22,
+        5.421010862427522e-20
+      ],
+      "recomputed_nnls_residual": 9.244646557432202e-06,
+      "reported_solver_residual": 9.244646557432198e-06
+    },
+    "full_coordinate_check": "full-matrix checks 81125 0.0 0.0",
+    "maximum_equalities_and_input_condition_record": "reference archived [8.350167224388571e-07, 0.00024224560927742946, 0.0007964481289361526, 4.31638245239626e-06] scipy 1.15.3 cond 1034.1658658968074 B [[-0.0, 0.008387150169552694, -0.009788918498879208, 0.0], [0.0, -0.06086425753760206, -0.0521485257012453, 0.0], [-0.034129613165147496, 0.0, 0.0, 6.386840654384585], [-13.330813937094046, 0.0, 0.0, -0.0712363980048938]] rhs [-2.0347332536339024e-05, -5.828720656971668e-05, 2.7539548129113406e-05, -1.1438936099514745e-05]",
+    "scope": "Read-only step 288. Two bank checks verify direct primal feasibility, strict Armijo work, whole-cell lower bound, and agreement with independently enumerated KKT constraints.",
+    "verdict": "Scoped clear for a feasible, energy-lowering zero-step trial and a numerical four-row projection failure. Convergence under subsequent steps remains open."
+  },
+  "commands": [
+    [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_step288_projection.py",
+      "_scratch/s11c/r4_cubic_held01",
+      "_scratch/s11c/r4_step288_projection01"
+    ],
+    [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_step288_cells.py",
+      "_scratch/s11c",
+      "_scratch/s11c/r4_step288_cells01/signed.json",
+      "--failure",
+      "_scratch/s11c/r4_step288_projection01/failure.json"
+    ],
+    [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_step288_cells.py",
+      "_scratch/s11c",
+      "_scratch/s11c/r4_step288_cells01/complete.json",
+      "--failure",
+      "_scratch/s11c/r4_step288_projection01/failure.json",
+      "--supplement",
+      "_scratch/s11c/r4_step288_cells01/signed.json"
+    ],
+    [
+      "/usr/bin/python3",
+      "-Bu",
+      "_scratch/s11c/r4_step288_review01/review.py"
+    ],
+    [
+      "/usr/bin/python3",
+      "-Bu",
+      "_scratch/s11c/r4_step288_review01/nnls_probe.py"
+    ]
+  ],
+  "primary_stdout": "rejected row {'cell': [25, 10, 6], 'local': [0.0, 1.0, 0.625]} new witness {'cell': [25, 10, 4], 'local': [0.0, 0.0, 1.0]} joint descent True accepted steps 0"
+}

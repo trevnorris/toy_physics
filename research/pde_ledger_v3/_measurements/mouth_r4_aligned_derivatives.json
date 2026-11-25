@@ -1,0 +1,4534 @@
+{
+  "guard_source_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "passed": false,
+  "convention": "Signed shape forces are minus the directional total energy slope in each held-mode coordinate. Derivative errors are central minus analytic. The order bank checks physical plus epsilon-weighted gauge derivatives, two-sided algebraic extensions at bounds, and extrapolated admissible one-sided slopes. Raw matched order force is unconstrained. KKT clips gradients by the admissible direction at the bounds. The solver also reports its native projected order residual.",
+  "interpretation": "Both wide log-depth probes exceed the 1e-7 tolerance. Their discrepancies are dominated by the physical crystal secant at width 2^-18. Both narrow log-depth probes and both widths for the other five modes meet tolerance. The widths bracket a change in finite-step behavior. The saved energy evaluations include moving material cuts and do not isolate a particular crossing. The two-width shape gate therefore fails.",
+  "sources": {
+    "mouth_active_prism_orientation.py": "2df5305f1a63dedefb70683193539c336dcc8d0d46654b2e449d0ae4d25f604d",
+    "mouth_attachment_impact.cpp": "c52aa4c4c9cf173dfac4ca1a16a0ea0a6a6d8d2f45049546cbc39b2a85ac40c1",
+    "mouth_bonded_front_adjoint.py": "99c62d9c4d683ab36fc4d1d51a4890bddf5c2eb08cb80aea2a30cbb3438b18c2",
+    "mouth_bonded_front_feedback.py": "268ff750c5fe266c744ed2a213221da2c92d684e5a13968b6f76074fe2cad90c",
+    "mouth_bonded_material_motion.py": "abfe40bfaa82777f10202ce3a7600f4cbac147c7d7171e2a882646428669662f",
+    "mouth_bonded_material_residual.py": "1be69afac8dc9b19be113fa539b87d9f9235cc55a6e506f9f35cb611cbec7a2d",
+    "mouth_brace_grip.cpp": "6771574400c418d84b3f35eda499ff8944560a579bdd1729af9e52916d136383",
+    "mouth_breathing_mobile_patch.py": "8a6e3e556d25d8bbfa09889fe5308161c65c743c8ce8c5940c3e767c9a41dca1",
+    "mouth_bulk_cut_hold.cpp": "2ba5ada75af58e525583080c633291b487fd04e628db967b71c00676e1e8c93a",
+    "mouth_bulk_isotropic_4d.cpp": "986b1e09129a101bfeaf01a9ecc53e8f88c62577dc30bf279483a0907033414d",
+    "mouth_bulk_thermal_cell.cpp": "96c55ab57e112d3cb49a5f102aa1713029b5fdbeb3aacb686149e81c6ded751b",
+    "mouth_circulation_material.py": "5859590cdbcf3ce095770410a9d6d2a4e3b7996c45e953aa4775eb943cdea56a",
+    "mouth_closed_rim_endpoint.py": "8c050fe3ba57768879cdfaf8fc80401413f4ce6b410b0c926525c8cc4c1b42b0",
+    "mouth_closed_rim_surface_review.py": "3319b06f268254327cbb27af66d39d9ced3166e0ea83cda0a5c87d71ba03b1f4",
+    "mouth_closed_rim_work.py": "d9a824f5bd8ee85149b9ccb08033ca979f0b5dbfcb99e0763232e371212987d2",
+    "mouth_continuous_depth_mesh.py": "ddade788a3d0fd898e26d91702bfd8dc24d9cf39f0028002652666168a7ff014",
+    "mouth_continuous_evidence.py": "9a88f99d5fb3f4a26531e7c06d906a4233ea17ae008a1face8c4af3089e06467",
+    "mouth_continuous_order.py": "ebbd8fc308d8a0292502293b70ac42ca2b70d349d307c70e87f8c4eb5970de54",
+    "mouth_continuous_shape_relax.py": "d87e13f3469b93cfbfd0743c351afd240fc0a9a30e36e19ce87bd621a49f830c",
+    "mouth_conversion_shape_mode.py": "63ba9d32283deef446de5210e091cbe542af7a6451bfd5ecdfd7ef4b0010720c",
+    "mouth_cp10_bucket_intersection.cpp": "49b5a51de9436224158e552f06630b2115c466b8b918c233a71766b1cc86c644",
+    "mouth_cp10_bucket_transport.hpp": "ad97aadf27b528a3619847d9fc866d335bcea806c1138f39b8f672c4d721e28a",
+    "mouth_cp10_bucket_work.cpp": "5a67ae87309ade2da54d182e37e11f0726e9016aee397b6e11d9f498e95c60d5",
+    "mouth_cp10_field_shape.py": "15c0f32b727f65e10b3b4728810783d04a0e6961064ad59b4081ec28aaca92a5",
+    "mouth_cp10_imaged_labels.cpp": "425de74c109ba247861e090ff1a7b050055bdd897d6c4d24d2ce037d3d4f3206",
+    "mouth_cp10_label_condition.py": "2783f78669587108076c3881e1a3026a1af9036368ff56fd50fd31b51d359694",
+    "mouth_cp10_label_gauge.py": "a15fed84e4705053c76247baf6e1bfc0897ab195f7fa6b9114bd6310c8e2f7fd",
+    "mouth_cp10_label_grid.py": "4aa1512c49764f26f5b8ae27d3b0a084da1d123e7256fd716ac31afa2a733230",
+    "mouth_cp10_label_orientation.py": "4df1acb27c66412ec70b1cf0717f1089c133b46440a7c73d84c85d973e0759d1",
+    "mouth_cp10_matched_depth.cpp": "1bdeba71c1c584cb43046ce222434a503f756f3c38e963949eeeb3318d91d6a0",
+    "mouth_cp10_nested_energy.cpp": "6de24f820ada5b553bdc2c03010ffa43b0b0fffe08b1be9466d694fe536efa60",
+    "mouth_cp10_nested_energy_depth.cpp": "4acae3f56c2d2790dd0d0709220cc96b20e0e463239437034388cf1cf00e522a",
+    "mouth_cp10_nested_forces.py": "9c6fed0caf18134cebf877650eb954493ee0a3c5b68fa4416f39fbb2499414f1",
+    "mouth_cp10_order_depth_work.cpp": "97cfaecdd993ff6217d69bc2796594ffd735cd69d7194921a0e4a60e3db09dc7",
+    "mouth_cp10_spatial_crystal.cpp": "db6d70ecacd887569435422c039127b647a4b01b422a9c5cdb1cafb1192e9d78",
+    "mouth_cp10_spatial_crystal.py": "34d1c0c1867ec1152d6cd88c10fb0e6550c9a93817f68f4c04014efc6e0274a6",
+    "mouth_curved_steady.py": "3878e2914f925d01207718c0d67f0770ca1eed41497e345a72a2b8e3a348a7a5",
+    "mouth_dense_budget.hpp": "9e28087fda89ee1b31e44f1ca192961e57dfccacd10c9b70cedd0568bac25343",
+    "mouth_dense_interface.cpp": "40effb3eb2aa232ab86a4db187fafb1e90d48d074ebf5a95a5115117cf0491fb",
+    "mouth_disk_boundary_work.py": "4ccddc4326fc3c1d7bf859ea0ce6ea505f9e201c99a718dafa429b4c01ca87d1",
+    "mouth_disk_independent_review.py": "8c773ee8208089f5ec862a42ea96b2f28716e8e6ffd37e909629cead4421202b",
+    "mouth_disk_mesh_rematch.py": "28d062c38e71f7b0f73ba673b685b3e61d3138241e02547ad5090d782fe3d40c",
+    "mouth_disk_pillbox.py": "47d13fc5cce3a60d7aa4b6cdd4bf858018859d43815002d98b52a8c3d77efc68",
+    "mouth_entrance_tag_transport.cpp": "2a71a9d0b3a90cd3f2ae7fdc1403a8f18993d5eaa80f8fb8a640075866c9bec4",
+    "mouth_eulerian_r4_spatial_cell.py": "4a3fe6fa896d1fa6a895402eaf98c9fd36864e4cdab45a90d4cb60efcd8bd775",
+    "mouth_exact_checkpoint_control.py": "71a1145c0714e856a957e2563bebcc57b7150eca54c8adb15a6761ea77a9cab1",
+    "mouth_exchange_carrier.py": "6dd6a6ae17b7f30445a29d5e40627373057637a6cbc67cdc75ce9ed58403fc83",
+    "mouth_exchange_carrier_density.py": "8d5f3cfc7a4ef569be0f8faba81777aaec14bc9e4d44a148f5b2fad4a4957d69",
+    "mouth_exchange_geometry.py": "1cabc9f23319f25df3924b1f1669cd12e89269934a2817da52fc2b47a6757017",
+    "mouth_exchange_interior.py": "41c4578c60f6d8e01af9530edbffe2a8599e8d9d83451b07c7ab8dee5ecfdfac",
+    "mouth_exchange_shear.py": "d7aaa11468de702b99beb912f41e7ebc1999943d73dd7201d88c378b20b8c27b",
+    "mouth_exit_witness.py": "d90d4dda95e190bcc1935c6575d7fffb816d172080cf70f7f269651024df4826",
+    "mouth_finite_bore_support.py": "68307b0049cb97df2690d49e98b5f5eb56ec0173ade59c3545c12621fc7cd71e",
+    "mouth_fixed_wall_angular.py": "ba653a2a7219255e6f6bc9541f0c2de08d4d3551d5ae947b086460f6488ef81b",
+    "mouth_free_shape_solid.cpp": "d37b1351e4576ccc5d460a4ae444c1abab9f89f1d83b1e1cb527d836b75a4a03",
+    "mouth_free_shape_solid.py": "b2b6a9aafcb036127bd751b5715e4d17ea61378ce2cb7744b3ff6b3e2ad2bcfd",
+    "mouth_internal_collar.py": "af0b22ce0ef10ecd3103ee47f6737e24b134afbc3e271110ffc53f68fea6e916",
+    "mouth_internal_collar_check.py": "b4ca4a698fe1b2444826080acba686e7d041293bdbc36a68f6712155358985fb",
+    "mouth_inverse_material_energy.cpp": "9148cee1025034797e30e7fb614f1ecfdc47e8c308ca1e5d34b0c299d6e21611",
+    "mouth_joined_angular_work.py": "15875cd778eeaaeb72aba8229b9dd59164ebc2dc9eac1aa5c196a5a60accd887",
+    "mouth_joined_front_audit.py": "08b6906b19d6c069a5ee65bdb97316f4797d104aca2717fafbf757d2e9aa392e",
+    "mouth_joined_front_stationarity.py": "041aee7267087dd43c36cf041ccfbc7299ba3c86db03a18420776aa179c7d221",
+    "mouth_joined_front_trace.py": "396abf8ac60018813e82e21e9cf4215fae8b8fb0df35dfaed7d0199199692265",
+    "mouth_joint_collar_release.py": "38f2dec937e5c635512fd27373c935d8955be7dcffb983d42fe8e42bd9154270",
+    "mouth_joint_endpoint_audit.py": "6b7b457ea5399fb9126915bc7e6c9cf4e2522ef960a8301b6b64d97220b94a8c",
+    "mouth_joint_polar_shape.py": "1bf3c4b39cdabb7af2683049f868d408f503c6e11f4f0119bf497b0f654eb5cd",
+    "mouth_last_ring_solid.py": "8118551daa17fe5260370082d0234a756e976040cfea004bd80f6496426268b1",
+    "mouth_last_rings_fluid.py": "bca5036ed8c6dcc760012345673fc8d29bfa8496981373aee9dcd733d917bb59",
+    "mouth_live_waist_active_wave.py": "f6548ac04e123db74449d291319d651b8ce67aee92e3e3b71007ea19ca5307f5",
+    "mouth_live_waist_fields.py": "96411e9af5538c5e7f0f770807ff993c0f9458cdf6dab68c87f5a5ea0ecfd13a",
+    "mouth_live_waist_order.py": "bd1062a832e2f4257a93378e5712fc2b6b28f9e133e486b99c237c84c6a0e875",
+    "mouth_live_waist_reopen.py": "5042d23940692680c6d46ef78e4f2bfa9d6ca98ddc3b238b1a94d911876e5492",
+    "mouth_live_waist_wave.py": "da3c942439db4cbfe46682b1975250144ecff014f2542c75c43b665f46299c45",
+    "mouth_live_waist_wave_location.py": "8bba123960546c43ff6f703cc1a227f4d33cfc0bb22daad4973b54149233c432",
+    "mouth_middepth_bend_wall.cpp": "ae33b7f9abf25ab981d01195999c9e16b0fa419ea96130f35d976ad5c1560c8b",
+    "mouth_middepth_rearrangement.cpp": "8b91cb948ba4f8c9ab82dfe4b2d45e40a4115eb9074e9ef38706113899946717",
+    "mouth_mobile_joined_fields.py": "4e721ccee2ecba3e71075ff293b5750bdf9521d1ece29aba7b5aecb18d3f29fc",
+    "mouth_mobile_lining.cpp": "5826b00421e069aa931c22837e76f5445f592272dc96a82c1a7ec19a12665925",
+    "mouth_neck_order_check.py": "5e876665bf831d8eae5ec501f569472474c238e94ecbb5bbde98de543568074c",
+    "mouth_ordered_j_bounds.cpp": "28f18037862b57ed56e657302a64979c1e63d32ab47a93781fb7915ddd903d47",
+    "mouth_polar_bonded.py": "38b484edee2d95f2f9115fcf3a3bd2f4016c68c928f8ea968596a6c27a629356",
+    "mouth_polar_exit_readout.py": "2b423c071a124e1f9183cd9407c447e1d4b0bdbc96fc78093f60221b573ec571",
+    "mouth_polar_joined.py": "e8263eb26e5993d06ad24f406cff0073cc8ae7f613359968fffc8e43d291b24d",
+    "mouth_polar_shape_endpoint_review.py": "088c768d81c114bafcdbc8b80f02665eadf97146a82aaa244e49a1610db5aaad",
+    "mouth_poly_bonded_core.py": "7f884fecfc302f32203dacf6905628bb80f8db2e31c43533eea1789633d79ac0",
+    "mouth_poly_shallow_release.py": "b10f4d9404f31c955772762ab7b00ee2b4cd2291042c46c86a15f97dda54dd31",
+    "mouth_polycrystal_material.py": "306f63c7fa3905853dc1e30b093f38f7980a618de227f47d1e6ec014debd1fdf",
+    "mouth_prism_support_decision.py": "34cb89537d5c872e03271ea213ffa8410c46924fa60c39da4c26f413a29b94e6",
+    "mouth_r4_aligned_crystal.py": "252e8cdc53da3013e0664363ecd9e62ea7b8b1ed4ada5fd09dd4c1a86b7893e2",
+    "mouth_r4_aligned_derivatives.py": "33f7822498ddb2058cbc56696f43a83803506ef52f3df910dd6dcd2c4274d5ee",
+    "mouth_r4_aligned_stencil.cpp": "1d3c86f2f059827016e0581d413981473f4dd4fea0bbd84704a135f2dd927130",
+    "mouth_r4_aligned_stencil.py": "cfca7a91b156cdc9a1a8675fbbed14e8271aa458ca06537136daeff2b478926f",
+    "mouth_r4_barrier_held.py": "799c27356c68d5a376a1de8ae7b5a6fa57e43dadb6a88881d3d17ea7065a1376",
+    "mouth_r4_barrier_shape.py": "71c432d20973c43bdebbbed4ad41e1f2f8b00526f42a26fe1f53924d147cf264",
+    "mouth_r4_clearance_shapes.cpp": "398ea9da2ba6441e5370ee4a7418d0d3806ff35f9e3fb5123d0c25064e04f4a1",
+    "mouth_r4_conforming_prisms.py": "a3641db42d259283af49dfc4ba0170439149ca538f753cf2132c3e8a83172e16",
+    "mouth_r4_corner_projection.py": "30536d280f681a2c362896c792bde8dd9b37162fefe4377dec5c99d0059f257e",
+    "mouth_r4_eulerian_relax_labels.py": "1609778fdced0346b8d3b89823d6086308f3794210e9245608b54a4b1615c8df",
+    "mouth_r4_eulerian_release.py": "ec4860bbc44d97a853cc396c2522490e9b92b1081e57986650887044acb55bf8",
+    "mouth_r4_eulerian_solid.cpp": "e798467944c93d1bb99534aa268d2221b8b4e66dcb133246e95c5debbbf96d74",
+    "mouth_r4_eulerian_solid.py": "51d34d88837b63e2d77dd603227e86393ea6b7a2dd0bba5b3a6707a12db8f38f",
+    "mouth_r4_fold_constitutive.cpp": "25f40f4319dea610fa3ff8eaa98e08ff85cb83ede54defb6a61fa8d4896e3d6e",
+    "mouth_r4_fold_order.py": "146850323067570482c62cc47077ea43c3ca7af89d7b3ca64bbcbfa5af3e4114",
+    "mouth_r4_full_label_precision.py": "22789ba7088f42599e449ced463ebdd38ea132031e74bfd1690544b11f6c062e",
+    "mouth_r4_full_label_work.cpp": "a5715692dd1829c34eb2b96aad656b1759cba0d88ed2dc5e3e63941789da09a7",
+    "mouth_r4_full_label_work.py": "1049781b477ae3f23fd1415454fc82270abf511f9e5cf6a22d51a865633d3ab7",
+    "mouth_r4_harmonic_shape.py": "2ff8254b768e4c6abe49f53102a4be8f094ecf69040002d91fba8f7ac2c4bd30",
+    "mouth_r4_inverse_shape_work.cpp": "287190b0d6f493db7d217c21804d97c58565ac0bd9a170ee5f139ddf06d21513",
+    "mouth_r4_label_quad_bridge.hpp": "23be8c6cb6f35af3f41fda7ebb64421678f88731df624fe20f9f207ab29acfc9",
+    "mouth_r4_melt_barrier.cpp": "271e423f7dc7bb85287c8d47a9bd761ee4d6027640c10d8db32dc9d1c7d55dde",
+    "mouth_r4_melt_barrier.py": "9059e7b8479ce8ff182c5a6638d5b96ced4ef9819fd7c7262a27614f23f6f55a",
+    "mouth_r4_newton_crystal.cpp": "541733e7dbb43e039e4b6bcb6dbffd8b5dc40013ecdfb013d431977e8fdd7887",
+    "mouth_r4_newton_crystal.py": "09407f17fe8bd13a5df728a3a9123ae44b10387c8b48e1270bf8e50f6c705cdb",
+    "mouth_r4_newton_stop.py": "f710eafd5ef56ad4d4e2c7863e9f5df4c3ef3427de26fb773f8119e8e448676d",
+    "mouth_r4_projected_fields.py": "d90e1612244590ef575783173f01b8bdf2f391018ebab383c5dd12768aead862",
+    "mouth_r4_projected_held.py": "5c6574d0a5a86b9c701d8a21cdbe82e5d8c0f26a016dfa8bf5f04780863bf116",
+    "mouth_r4_refined_solid.cpp": "b29f9855d37510787e28388710b3db978d3fe59bf658de44d8d14ef131e05ad7",
+    "mouth_r4_refinement_review.py": "28fb3bc6fc283cbe3e33aa25ee9f07b849ca5e53ad159425bd7b89fffa3efdf5",
+    "mouth_r4_ring_work.cpp": "0bbf6008094acc81f8f94992a0ff0972da994ccee972652f981cf95afaf10735",
+    "mouth_r4_shift_work.cpp": "cf82d70e2acdfc347fa1adbeb774a3aff873e18d450f1d7bc20a3890ec003509",
+    "mouth_r4_smooth_depth.cpp": "137041a7cfde7df9a5aa71ba3d8885614bcf8f915dfc7665cce67fc8cca4c1e6",
+    "mouth_r4_smooth_fields.py": "98193cad4635fae14ef23d18679ae9d676aba32f2357cbe7f43cbb8be02dd0b0",
+    "mouth_r4_smooth_held.py": "999e5151cd71ca0f54aa3bd4da004f987d8161efccebd5c02deeffe336a562d1",
+    "mouth_r4_smooth_label_derivatives.py": "3fdef30f3b3615ac6b90f39aabfeaea7e59fc588f2225bb25158dbc9f924a927",
+    "mouth_r4_smooth_points.hpp": "4d7d2a0ba6298e4096b49e7b39af49c1c7bb4a12ac582db1ee90e644fd12a37e",
+    "mouth_r4_smooth_static.py": "5f461284fd7b0e344927531d3a837ab0a73bb1d6c304b72b4cd09c3e27cbbff0",
+    "mouth_r4_stage2_outcome.py": "3c7283a847ffdb8f6b890dbc885b1043d341c491b32de6d6492b2ca64dacabfe",
+    "mouth_r4_unfolded_shape_work.cpp": "2968251566a3d8ff6d09f80edb0d06c05d95593a987d607eeeb83cdee99d9352",
+    "mouth_receiver_junction.cpp": "7df21da55b8ef45f7a4eb00c2c8ab123fdbe0e9fc6c4b047a4f1a31c9abf2e13",
+    "mouth_receiver_order_control.py": "0729ea9871c408a2cf1261d8134d8c328c4d96a43b0f5a8dd7d6052c11367b0d",
+    "mouth_receiver_order_equilibrium.py": "803f062b7094b2b5bc82ae1fcb3be9e55978c144b2d1ee1df89e6deaea2d1665",
+    "mouth_receiver_relax.cpp": "9a2899b93b968be10368a6d47cc5e61230ae8900fa59886564d592ab8609d354",
+    "mouth_rim_pinned_comparison.py": "e9d2bda29ada58b90f5620a665f7b74a580609234deee5f2c36fdb59691b9065",
+    "mouth_sealed_shape_relax.py": "4791971472f6f8baef5ee5d7eba30c3a04c91ddb7251b7ac48c08a0ef1ae3a96",
+    "mouth_shallow_puncture_fields.py": "2d732c61dcd871fd8064e8fa1aab785d699f857d0137aefac32ee82550dfcc84",
+    "mouth_strained_wave.py": "e3e5c2cf6a11a0ef565c2693074c968eaf028fe11be4dcf59e86a26c1603d95a",
+    "mouth_supercore_front.py": "f35d283712acb983d188edfe217f944d1634897b8bf2b3cf3edf0b5cab807496",
+    "mouth_supercore_joined_front.py": "bd2dacdf0c2b6e5c2c22ec38926a971f09cc75764ee8d09437a7f89b908d2125",
+    "mouth_supercore_shape.py": "c4f3183fdbecabedd74f96f847cf136b1df73cd244f16312f9d07edc0cc43497",
+    "mouth_supercore_terminal_order.py": "e8bfd9b7fb058c9e446996f224b212cab3359cdfdd455c8e48aab02ca9d9836f",
+    "mouth_unified_puncture.py": "74a69caccce1c3f8803cf40b21420b47cf1bfae4e0d95404259fcb5500985a74",
+    "mouth_unified_transverse.py": "83b6f304afe36c898b48f072b64fcb1ff7c6d8803fa8e351c01f7cb2cf2830d6",
+    "mouth_waist_outer_order.py": "cc9c3ae474145babc837c8d95e617f593eec969710a33ef9bf09a8ec130df981",
+    "mouth_wave_material_transport.cpp": "0ab96659d0f0196511c02ced37871b95ab1e17281d5b6d7a4e5a45d4f656d497",
+    "mouth_whole_r4_relax.py": "2727363201f216daff834d514c00be9b570b505b4816ae86a802b4649182ed90",
+    "mouth_wider_wound_carrier.py": "057c72903d6a4c13d5988912b76e9e04cb599b30af9d12ca3eb1bfb7157bff0e",
+    "mouth_winding_resolved_patch.py": "a938462c0aa93eeabb222db53bd9faf8e81280ff56819f8b5d49b048243f1597",
+    "mouth_wound_carrier.py": "d347c7ba79388585dd1d075abefb98f3fb4804612b6a1a786c62ebb941783175",
+    "neutral_patch_order_hold.cpp": "6224e323c8c86ef0192a4fd464620772eaaaa6b4bfd7200acea912d83a9372b3",
+    "neutral_patch_warm_neighbor_torque.cpp": "1cdadec3d3353b9f77dc0e8d74ffa098041d07e0b273f63973cf1335d7039685",
+    "mouth_r4_smooth_order_boundary.py": "8e60f7b3298d09cc01634732be858f6e8904d5016adde6a70450b2a4229b630a",
+    "mouth_r4_smooth_order_derivatives.py": "fd83c9893c9b6549fd92fac1d26b783dff073180a88a5373f17a36b239d6bee9",
+    "mouth_r4_barrier_gradient.py": "a67a232e6003321d6dc159db1292e3533a8b48932bece16e1ef24a85adff20ae",
+    "mouth_r4_depth_precision.py": "bc630b448f92194cbc0e83698178309f66388a4339ebd968766b7f755364be63",
+    "mouth_r4_eulerian_corner_audit.py": "62dd66d8b893bbcc2ffb2627f369a13c50b48504f85f1ca2c4439fc9cc0b7c19",
+    "mouth_r4_harmonic_gradient.py": "e9c331389472bba636e967651d13262fa363823cd58dd163f7563470e1266570",
+    "mouth_r4_slaved_melt.py": "8b822e47eb8879eb64748c66c64147cf4753bfd55117cd7bd3f5c03df5287352",
+    "mouth_r4_smooth_endpoint.py": "80b858ef75fc2b4e5c53e2ca87f863663eb0548336918f4ba06197d90d1d0c9a"
+  },
+  "cases": {
+    "primary": {
+      "epsilon": 1e-08,
+      "state_sha256": "d21586ba828f891f67e4601e8a6145a0cf7f25f003273852b159c0094da63837",
+      "summary": {
+        "labels_checked": 81125,
+        "tail_labels_checked": 39,
+        "largest_label_error": 4.8291629253291213e-11,
+        "largest_tail_label_error": 3.1913238721501534e-11,
+        "order_checked": 143648,
+        "free_lower": 52061,
+        "free_upper": 105,
+        "interior": 91482,
+        "largest_central_order_error": 1.6058994412038174e-12,
+        "feasible_bound_extrapolated": {
+          "lower": {
+            "max_abs": 1.0147807615913662e-12,
+            "signed_error": 1.0147807615913662e-12,
+            "direct": 0.09572869658717169,
+            "analytic": 0.09572869658615692,
+            "physical": 0.09572869658615712,
+            "unit_gauge": -2.125788286943948e-08,
+            "node": 69966
+          },
+          "upper": {
+            "max_abs": 3.592052272133432e-16,
+            "signed_error": -3.592052272133432e-16,
+            "direct": -2.160554823423496e-07,
+            "analytic": -2.1605548198314437e-07,
+            "physical": -2.1605548198314437e-07,
+            "unit_gauge": 0.0,
+            "node": 144451
+          }
+        },
+        "six_total_forces": [
+          0.08005341960989384,
+          -0.5473590256343419,
+          0.9989052547619287,
+          -0.7112035432969578,
+          0.8544650603152636,
+          -0.007798676659532728
+        ],
+        "largest_shape_error": 0.00029013507741883974,
+        "native_log_depth_force": 0.08005341960989384,
+        "log_depth_signed_projections": [
+          {
+            "h": 3.814697265625e-06,
+            "positive": 0.07990361186255297,
+            "negative": 0.08078349751207241,
+            "central": 0.08034355468731269,
+            "central_minus_native": 0.00029013507741883974,
+            "signed_crystal_minus_native": 0.00029013231470695344,
+            "signed_bath_minus_native": 2.7636966534738683e-09,
+            "epsilon_times_signed_unit_gauge_minus_native": -9.84757150033211e-13
+          },
+          {
+            "h": 9.5367431640625e-07,
+            "positive": 0.08001597012796974,
+            "negative": 0.08009087080394788,
+            "central": 0.08005342046595881,
+            "central_minus_native": 8.560649583484671e-10,
+            "signed_crystal_minus_native": -7.765177389984501e-11,
+            "signed_bath_minus_native": 9.337782144736018e-10,
+            "epsilon_times_signed_unit_gauge_minus_native": -6.148709509545825e-14
+          }
+        ],
+        "shape_rows_outside_limit": [
+          {
+            "mode": "log_depth",
+            "h": 3.814697265625e-06,
+            "central_minus_native": 0.00029013507741883974
+          }
+        ],
+        "matched_order_residuals": {
+          "order_raw": 0.34959525648184164,
+          "order_kkt": 1.94581081824915e-09,
+          "order_projected": 9.548067336773158e-10
+        }
+      },
+      "passed": false,
+      "sectors": {
+        "label0": {
+          "component": 0,
+          "checks": {
+            "all": {
+              "count": 27825,
+              "max_abs_by_width": [
+                4.8291629253291213e-11,
+                1.198456015065329e-11
+              ],
+              "worst": {
+                "group": 28935,
+                "node": [
+                  25,
+                  2,
+                  18
+                ],
+                "analytic": 0.0005220325079921426,
+                "physical": 0.0005220346224798145,
+                "unit_gauge": -0.21144876720161904,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    0.0005151776345526286,
+                    0.000528887478014915
+                  ],
+                  [
+                    0.0005186050589882571,
+                    0.0005254599809651482
+                  ]
+                ],
+                "central_minus_analytic": [
+                  4.8291629253291213e-11,
+                  1.198456015065329e-11
+                ],
+                "tail": false
+              }
+            },
+            "active": {
+              "count": 6409,
+              "max_abs_by_width": [
+                4.8291629253291213e-11,
+                1.198456015065329e-11
+              ],
+              "worst": {
+                "group": 28935,
+                "node": [
+                  25,
+                  2,
+                  18
+                ],
+                "analytic": 0.0005220325079921426,
+                "physical": 0.0005220346224798145,
+                "unit_gauge": -0.21144876720161904,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    0.0005151776345526286,
+                    0.000528887478014915
+                  ],
+                  [
+                    0.0005186050589882571,
+                    0.0005254599809651482
+                  ]
+                ],
+                "central_minus_analytic": [
+                  4.8291629253291213e-11,
+                  1.198456015065329e-11
+                ],
+                "tail": false
+              }
+            },
+            "fully_melted": {
+              "count": 21416,
+              "max_abs_by_width": [
+                3.1913238721501534e-11,
+                7.978305160833976e-12
+              ],
+              "worst": {
+                "group": 29116,
+                "node": [
+                  25,
+                  11,
+                  10
+                ],
+                "analytic": 2.01755974867767e-05,
+                "physical": 0.0,
+                "unit_gauge": 2017.55974867767,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    2.015381668236263e-05,
+                    2.0197442117668217e-05
+                  ],
+                  [
+                    2.0164699125955304e-05,
+                    2.0186511804208422e-05
+                  ]
+                ],
+                "central_minus_analytic": [
+                  3.1913238721501534e-11,
+                  7.978305160833976e-12
+                ],
+                "tail": true
+              }
+            },
+            "small_J_tail": {
+              "count": 13,
+              "max_abs_by_width": [
+                3.1913238721501534e-11,
+                7.978305160833976e-12
+              ],
+              "worst": {
+                "group": 29116,
+                "node": [
+                  25,
+                  11,
+                  10
+                ],
+                "analytic": 2.01755974867767e-05,
+                "physical": 0.0,
+                "unit_gauge": 2017.55974867767,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    2.015381668236263e-05,
+                    2.0197442117668217e-05
+                  ],
+                  [
+                    2.0164699125955304e-05,
+                    2.0186511804208422e-05
+                  ]
+                ],
+                "central_minus_analytic": [
+                  3.1913238721501534e-11,
+                  7.978305160833976e-12
+                ],
+                "tail": true
+              }
+            }
+          },
+          "threshold": 1e-10,
+          "passed": true,
+          "failures": [],
+          "colors": 8,
+          "narrow": 27,
+          "additional_fine": 0,
+          "narrow_widths": [
+            1.4551915228366852e-11,
+            7.275957614183426e-12
+          ],
+          "additional_widths": [
+            1.8189894035458565e-12,
+            9.094947017729282e-13
+          ],
+          "tail_cells": 5,
+          "tail_threshold": 0.001,
+          "minimum_sampled_determinant": 2.3960287766068506e-06,
+          "minimum_signed_whole_chart_bound": 2.0473033456343985e-06,
+          "gauge_cell_anchor_max": 1.291725244562808e-20,
+          "physical_anchor_difference": 3.21845414902322e-16,
+          "raw_sha256": "e7dc5ef3cc823eb53810f3c700f0154dfa7f9558ae9f55358ea5fdd02faf066d",
+          "mantissa_bits": 63
+        },
+        "label1": {
+          "component": 1,
+          "checks": {
+            "all": {
+              "count": 27878,
+              "max_abs_by_width": [
+                5.621041392763009e-12,
+                6.048128361590414e-12
+              ],
+              "worst": {
+                "group": 18574,
+                "node": [
+                  17,
+                  1,
+                  18
+                ],
+                "analytic": -0.0017867511144212711,
+                "physical": -0.0017867529572989868,
+                "unit_gauge": 0.1842877715763983,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    -0.001788781228020061,
+                    -0.0017847210039172948
+                  ],
+                  [
+                    -0.0017877661689461135,
+                    -0.0017857360478001718
+                  ]
+                ],
+                "central_minus_analytic": [
+                  -1.5474069486326418e-12,
+                  6.048128361590414e-12
+                ],
+                "tail": false
+              }
+            },
+            "active": {
+              "count": 6422,
+              "max_abs_by_width": [
+                5.621041392763009e-12,
+                6.048128361590414e-12
+              ],
+              "worst": {
+                "group": 18574,
+                "node": [
+                  17,
+                  1,
+                  18
+                ],
+                "analytic": -0.0017867511144212711,
+                "physical": -0.0017867529572989868,
+                "unit_gauge": 0.1842877715763983,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    -0.001788781228020061,
+                    -0.0017847210039172948
+                  ],
+                  [
+                    -0.0017877661689461135,
+                    -0.0017857360478001718
+                  ]
+                ],
+                "central_minus_analytic": [
+                  -1.5474069486326418e-12,
+                  6.048128361590414e-12
+                ],
+                "tail": false
+              }
+            },
+            "fully_melted": {
+              "count": 21456,
+              "max_abs_by_width": [
+                2.6331203356599887e-15,
+                6.530048507480402e-16
+              ],
+              "worst": {
+                "group": 28016,
+                "node": [
+                  25,
+                  11,
+                  10
+                ],
+                "analytic": 8.748609569958841e-07,
+                "physical": 0.0,
+                "unit_gauge": 87.4860956995884,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    8.748195136741197e-07,
+                    8.749024055838891e-07
+                  ],
+                  [
+                    8.748402346645162e-07,
+                    8.748816806332615e-07
+                  ]
+                ],
+                "central_minus_analytic": [
+                  2.6331203356599887e-15,
+                  6.530048507480402e-16
+                ],
+                "tail": true
+              }
+            },
+            "small_J_tail": {
+              "count": 13,
+              "max_abs_by_width": [
+                2.6331203356599887e-15,
+                6.530048507480402e-16
+              ],
+              "worst": {
+                "group": 28016,
+                "node": [
+                  25,
+                  11,
+                  10
+                ],
+                "analytic": 8.748609569958841e-07,
+                "physical": 0.0,
+                "unit_gauge": 87.4860956995884,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    8.748195136741197e-07,
+                    8.749024055838891e-07
+                  ],
+                  [
+                    8.748402346645162e-07,
+                    8.748816806332615e-07
+                  ]
+                ],
+                "central_minus_analytic": [
+                  2.6331203356599887e-15,
+                  6.530048507480402e-16
+                ],
+                "tail": true
+              }
+            }
+          },
+          "threshold": 1e-10,
+          "passed": true,
+          "failures": [],
+          "colors": 8,
+          "narrow": 39,
+          "additional_fine": 0,
+          "narrow_widths": [
+            1.4551915228366852e-11,
+            7.275957614183426e-12
+          ],
+          "additional_widths": [
+            1.8189894035458565e-12,
+            9.094947017729282e-13
+          ],
+          "tail_cells": 5,
+          "tail_threshold": 0.001,
+          "minimum_sampled_determinant": 2.3960287766068506e-06,
+          "minimum_signed_whole_chart_bound": 2.0523049103742853e-06,
+          "gauge_cell_anchor_max": 1.291725244562808e-20,
+          "physical_anchor_difference": 3.21845414902322e-16,
+          "raw_sha256": "9c5235c9857a0554623b756f924b5b96e593792f95355da246039ec077468836",
+          "mantissa_bits": 63
+        },
+        "label2": {
+          "component": 2,
+          "checks": {
+            "all": {
+              "count": 25422,
+              "max_abs_by_width": [
+                2.4867592728970675e-13,
+                1.0653807280325401e-13
+              ],
+              "worst": {
+                "group": 20070,
+                "node": [
+                  18,
+                  1,
+                  19
+                ],
+                "analytic": -1.5535595084127262e-05,
+                "physical": -1.5535595853278755e-05,
+                "unit_gauge": 7.691514924904821e-05,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    -3.1417625716877265e-05,
+                    3.464357474880316e-07
+                  ],
+                  [
+                    -2.347661035700319e-05,
+                    -7.594579598175189e-06
+                  ]
+                ],
+                "central_minus_analytic": [
+                  9.94326453346307e-14,
+                  1.0653807280325401e-13
+                ],
+                "tail": false
+              }
+            },
+            "active": {
+              "count": 6048,
+              "max_abs_by_width": [
+                2.4867592728970675e-13,
+                1.0653807280325401e-13
+              ],
+              "worst": {
+                "group": 20070,
+                "node": [
+                  18,
+                  1,
+                  19
+                ],
+                "analytic": -1.5535595084127262e-05,
+                "physical": -1.5535595853278755e-05,
+                "unit_gauge": 7.691514924904821e-05,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    -3.1417625716877265e-05,
+                    3.464357474880316e-07
+                  ],
+                  [
+                    -2.347661035700319e-05,
+                    -7.594579598175189e-06
+                  ]
+                ],
+                "central_minus_analytic": [
+                  9.94326453346307e-14,
+                  1.0653807280325401e-13
+                ],
+                "tail": false
+              }
+            },
+            "fully_melted": {
+              "count": 19374,
+              "max_abs_by_width": [
+                8.230100809436232e-18,
+                7.622480631712044e-18
+              ],
+              "worst": {
+                "group": 28357,
+                "node": [
+                  25,
+                  11,
+                  11
+                ],
+                "analytic": 6.9086190804400705e-09,
+                "physical": 0.0,
+                "unit_gauge": 0.690861908044007,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    6.9086162617895754e-09,
+                    6.9086219077871646e-09
+                  ],
+                  [
+                    6.908617683948251e-09,
+                    6.9086204921768515e-09
+                  ]
+                ],
+                "central_minus_analytic": [
+                  4.348299705329503e-18,
+                  7.622480631712044e-18
+                ],
+                "tail": true
+              }
+            },
+            "small_J_tail": {
+              "count": 13,
+              "max_abs_by_width": [
+                8.230100809436232e-18,
+                7.622480631712044e-18
+              ],
+              "worst": {
+                "group": 28357,
+                "node": [
+                  25,
+                  11,
+                  11
+                ],
+                "analytic": 6.9086190804400705e-09,
+                "physical": 0.0,
+                "unit_gauge": 0.690861908044007,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    6.9086162617895754e-09,
+                    6.9086219077871646e-09
+                  ],
+                  [
+                    6.908617683948251e-09,
+                    6.9086204921768515e-09
+                  ]
+                ],
+                "central_minus_analytic": [
+                  4.348299705329503e-18,
+                  7.622480631712044e-18
+                ],
+                "tail": true
+              }
+            }
+          },
+          "threshold": 1e-10,
+          "passed": true,
+          "failures": [],
+          "colors": 8,
+          "narrow": 13,
+          "additional_fine": 0,
+          "narrow_widths": [
+            1.4551915228366852e-11,
+            7.275957614183426e-12
+          ],
+          "additional_widths": [
+            1.8189894035458565e-12,
+            9.094947017729282e-13
+          ],
+          "tail_cells": 5,
+          "tail_threshold": 0.001,
+          "minimum_sampled_determinant": 2.3960287766068506e-06,
+          "minimum_signed_whole_chart_bound": 2.0525309802364225e-06,
+          "gauge_cell_anchor_max": 1.291725244562808e-20,
+          "physical_anchor_difference": 3.21845414902322e-16,
+          "raw_sha256": "aadbe3affcdfd784060ebd4c1a436b606971ac98f717854fd0913e8bea76c600",
+          "mantissa_bits": 63
+        },
+        "order": {
+          "checks": {
+            "all": {
+              "count": 143648,
+              "widths": [
+                {
+                  "h": 1e-08,
+                  "central": {
+                    "max_abs": 1.4339042833795914e-11,
+                    "signed_error": -1.4339042833795914e-11,
+                    "direct": -1.4339042833795914e-11,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "negative": {
+                    "max_abs": 0.0017050641671361947,
+                    "signed_error": -0.0017050641671361947,
+                    "direct": -0.0017050641671361947,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 0.0017050641384581092,
+                    "signed_error": 0.0017050641384581092,
+                    "direct": 0.0017050641384581092,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  }
+                },
+                {
+                  "h": 1e-09,
+                  "central": {
+                    "max_abs": 1.6058768897986297e-12,
+                    "signed_error": -1.6058768897986297e-12,
+                    "direct": 1.2491290987681758e-11,
+                    "analytic": 1.4097167877480388e-11,
+                    "physical": 1.4097167877480388e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144071
+                  },
+                  "negative": {
+                    "max_abs": 0.00017050641542310562,
+                    "signed_error": -0.00017050641542310562,
+                    "direct": -0.00017050641542310562,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 0.00017050641513632477,
+                    "signed_error": 0.00017050641513632477,
+                    "direct": 0.00017050641513632477,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  }
+                },
+                {
+                  "h": 1e-10,
+                  "central": {
+                    "max_abs": 1.6058994412038174e-12,
+                    "signed_error": -1.6058994412038174e-12,
+                    "direct": 1.249126843627657e-11,
+                    "analytic": 1.4097167877480388e-11,
+                    "physical": 1.4097167877480388e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144071
+                  },
+                  "negative": {
+                    "max_abs": 1.7050641529405422e-05,
+                    "signed_error": -1.7050641529405422e-05,
+                    "direct": -1.7050641529405422e-05,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 1.7050641526537616e-05,
+                    "signed_error": 1.7050641526537616e-05,
+                    "direct": 1.7050641526537616e-05,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  }
+                }
+              ]
+            },
+            "lower": {
+              "count": 52061,
+              "widths": [
+                {
+                  "h": 1e-08,
+                  "central": {
+                    "max_abs": 1.4339042833795914e-11,
+                    "signed_error": -1.4339042833795914e-11,
+                    "direct": -1.4339042833795914e-11,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "negative": {
+                    "max_abs": 0.0017050641671361947,
+                    "signed_error": -0.0017050641671361947,
+                    "direct": -0.0017050641671361947,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 0.0017050641384581092,
+                    "signed_error": 0.0017050641384581092,
+                    "direct": 0.0017050641384581092,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  }
+                },
+                {
+                  "h": 1e-09,
+                  "central": {
+                    "max_abs": 1.0147806328423582e-12,
+                    "signed_error": 1.0147806328423582e-12,
+                    "direct": 0.09572869658717169,
+                    "analytic": 0.09572869658615692,
+                    "physical": 0.09572869658615712,
+                    "unit_gauge": -2.125788286943948e-08,
+                    "node": 69966
+                  },
+                  "negative": {
+                    "max_abs": 0.00017050641542310562,
+                    "signed_error": -0.00017050641542310562,
+                    "direct": -0.00017050641542310562,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 0.00017050641513632477,
+                    "signed_error": 0.00017050641513632477,
+                    "direct": 0.00017050641513632477,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "feasible_extrapolated": {
+                    "max_abs": 1.4339042796791162e-12,
+                    "signed_error": 1.4339042796791162e-12,
+                    "direct": 1.4339042796791162e-12,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  }
+                },
+                {
+                  "h": 1e-10,
+                  "central": {
+                    "max_abs": 1.0147807548151026e-12,
+                    "signed_error": 1.0147807548151026e-12,
+                    "direct": 0.09572869658717169,
+                    "analytic": 0.09572869658615692,
+                    "physical": 0.09572869658615712,
+                    "unit_gauge": -2.125788286943948e-08,
+                    "node": 69966
+                  },
+                  "negative": {
+                    "max_abs": 1.7050641529405422e-05,
+                    "signed_error": -1.7050641529405422e-05,
+                    "direct": -1.7050641529405422e-05,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 1.7050641526537616e-05,
+                    "signed_error": 1.7050641526537616e-05,
+                    "direct": 1.7050641526537616e-05,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "feasible_extrapolated": {
+                    "max_abs": 1.0147807615913662e-12,
+                    "signed_error": 1.0147807615913662e-12,
+                    "direct": 0.09572869658717169,
+                    "analytic": 0.09572869658615692,
+                    "physical": 0.09572869658615712,
+                    "unit_gauge": -2.125788286943948e-08,
+                    "node": 69966
+                  }
+                }
+              ]
+            },
+            "interior": {
+              "count": 91482,
+              "widths": [
+                {
+                  "h": 1e-08,
+                  "central": {
+                    "max_abs": 1.5963740745972288e-12,
+                    "signed_error": -1.5963740745972288e-12,
+                    "direct": 1.2500793802883159e-11,
+                    "analytic": 1.4097167877480388e-11,
+                    "physical": 1.4097167877480388e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144071
+                  },
+                  "negative": {
+                    "max_abs": 0.0012462886079912527,
+                    "signed_error": -0.0012462886079912527,
+                    "direct": -0.0012462886329313028,
+                    "analytic": -2.4940050025179517e-11,
+                    "physical": -2.4940050025179517e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  },
+                  "positive": {
+                    "max_abs": 0.0012462886083609015,
+                    "signed_error": 0.0012462886083609015,
+                    "direct": 0.0012462885834208515,
+                    "analytic": -2.4940050025179517e-11,
+                    "physical": -2.4940050025179517e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  }
+                },
+                {
+                  "h": 1e-09,
+                  "central": {
+                    "max_abs": 1.6058768897986297e-12,
+                    "signed_error": -1.6058768897986297e-12,
+                    "direct": 1.2491290987681758e-11,
+                    "analytic": 1.4097167877480388e-11,
+                    "physical": 1.4097167877480388e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144071
+                  },
+                  "negative": {
+                    "max_abs": 0.000124628860636522,
+                    "signed_error": -0.000124628860636522,
+                    "direct": -0.00012462888557657203,
+                    "analytic": -2.4940050025179517e-11,
+                    "physical": -2.4940050025179517e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  },
+                  "positive": {
+                    "max_abs": 0.00012462886099867676,
+                    "signed_error": 0.00012462886099867676,
+                    "direct": 0.00012462883605862674,
+                    "analytic": -2.4940050025179517e-11,
+                    "physical": -2.4940050025179517e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  }
+                },
+                {
+                  "h": 1e-10,
+                  "central": {
+                    "max_abs": 1.6058994412038174e-12,
+                    "signed_error": -1.6058994412038174e-12,
+                    "direct": 1.249126843627657e-11,
+                    "analytic": 1.4097167877480388e-11,
+                    "physical": 1.4097167877480388e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144071
+                  },
+                  "negative": {
+                    "max_abs": 1.2462885900621501e-05,
+                    "signed_error": -1.2462885900621501e-05,
+                    "direct": -1.2462910840671526e-05,
+                    "analytic": -2.4940050025179517e-11,
+                    "physical": -2.4940050025179517e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  },
+                  "positive": {
+                    "max_abs": 1.2462886262887274e-05,
+                    "signed_error": 1.2462886262887274e-05,
+                    "direct": 1.2462861322837249e-05,
+                    "analytic": -2.4940050025179517e-11,
+                    "physical": -2.4940050025179517e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  }
+                }
+              ]
+            },
+            "upper": {
+              "count": 105,
+              "widths": [
+                {
+                  "h": 1e-08,
+                  "central": {
+                    "max_abs": 3.5920525542454476e-13,
+                    "signed_error": 3.5920525542454476e-13,
+                    "direct": -2.1605512277788894e-07,
+                    "analytic": -2.1605548198314437e-07,
+                    "physical": -2.1605548198314437e-07,
+                    "unit_gauge": 0.0,
+                    "node": 144451
+                  },
+                  "negative": {
+                    "max_abs": 8.041636209730925e-05,
+                    "signed_error": -8.041636209730925e-05,
+                    "direct": -8.62313770839664e-05,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  },
+                  "positive": {
+                    "max_abs": 8.041636270077432e-05,
+                    "signed_error": 8.041636270077432e-05,
+                    "direct": 7.460134771411717e-05,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  }
+                },
+                {
+                  "h": 1e-09,
+                  "central": {
+                    "max_abs": 3.592052581757475e-15,
+                    "signed_error": 3.592052581757475e-15,
+                    "direct": -2.1605547839109179e-07,
+                    "analytic": -2.1605548198314437e-07,
+                    "physical": -2.1605548198314437e-07,
+                    "unit_gauge": 0.0,
+                    "node": 144451
+                  },
+                  "negative": {
+                    "max_abs": 8.041636236886726e-06,
+                    "signed_error": -8.041636236886726e-06,
+                    "direct": -1.3856651223543875e-05,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  },
+                  "positive": {
+                    "max_abs": 8.041636242921632e-06,
+                    "signed_error": 8.041636242921632e-06,
+                    "direct": 2.226621256264482e-06,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  },
+                  "feasible_extrapolated": {
+                    "max_abs": 3.592052541842133e-14,
+                    "signed_error": -3.592052541842133e-14,
+                    "direct": -2.1605551790366979e-07,
+                    "analytic": -2.1605548198314437e-07,
+                    "physical": -2.1605548198314437e-07,
+                    "unit_gauge": 0.0,
+                    "node": 144451
+                  }
+                },
+                {
+                  "h": 1e-10,
+                  "central": {
+                    "max_abs": 3.592055363979465e-17,
+                    "signed_error": 3.592055363979465e-17,
+                    "direct": -2.1605548194722383e-07,
+                    "analytic": -2.1605548198314437e-07,
+                    "physical": -2.1605548198314437e-07,
+                    "unit_gauge": 0.0,
+                    "node": 144451
+                  },
+                  "negative": {
+                    "max_abs": 8.041636239601155e-07,
+                    "signed_error": -8.041636239601155e-07,
+                    "direct": -6.619178610617265e-06,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  },
+                  "positive": {
+                    "max_abs": 8.041636240207202e-07,
+                    "signed_error": 8.041636240207202e-07,
+                    "direct": -5.010851362636429e-06,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  },
+                  "feasible_extrapolated": {
+                    "max_abs": 3.592052272133432e-16,
+                    "signed_error": -3.592052272133432e-16,
+                    "direct": -2.160554823423496e-07,
+                    "analytic": -2.1605548198314437e-07,
+                    "physical": -2.1605548198314437e-07,
+                    "unit_gauge": 0.0,
+                    "node": 144451
+                  }
+                }
+              ]
+            },
+            "small_J_tail": {
+              "count": 26,
+              "widths": [
+                {
+                  "h": 1e-08,
+                  "central": {
+                    "max_abs": 1.0147730027695694e-12,
+                    "signed_error": 1.0147730027695694e-12,
+                    "direct": 0.09572869658717169,
+                    "analytic": 0.09572869658615692,
+                    "physical": 0.09572869658615712,
+                    "unit_gauge": -2.125788286943948e-08,
+                    "node": 69966
+                  },
+                  "negative": {
+                    "max_abs": 8.776436125797069e-08,
+                    "signed_error": -8.776436125797069e-08,
+                    "direct": 0.02644056228907715,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  },
+                  "positive": {
+                    "max_abs": 8.776439160534007e-08,
+                    "signed_error": 8.776439160534007e-08,
+                    "direct": 0.02644073781783001,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  }
+                },
+                {
+                  "h": 1e-09,
+                  "central": {
+                    "max_abs": 1.0147806328423582e-12,
+                    "signed_error": 1.0147806328423582e-12,
+                    "direct": 0.09572869658717169,
+                    "analytic": 0.09572869658615692,
+                    "physical": 0.09572869658615712,
+                    "unit_gauge": -2.125788286943948e-08,
+                    "node": 69966
+                  },
+                  "negative": {
+                    "max_abs": 8.776422463188156e-09,
+                    "signed_error": -8.776422463188156e-09,
+                    "direct": 0.026440641277015942,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  },
+                  "positive": {
+                    "max_abs": 8.776452823144445e-09,
+                    "signed_error": 8.776452823144445e-09,
+                    "direct": 0.026440658829891227,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  }
+                },
+                {
+                  "h": 1e-10,
+                  "central": {
+                    "max_abs": 1.0147807548151026e-12,
+                    "signed_error": 1.0147807548151026e-12,
+                    "direct": 0.09572869658717169,
+                    "analytic": 0.09572869658615692,
+                    "physical": 0.09572869658615712,
+                    "unit_gauge": -2.125788286943948e-08,
+                    "node": 69966
+                  },
+                  "negative": {
+                    "max_abs": 8.776285842672501e-10,
+                    "signed_error": -8.776285842672501e-10,
+                    "direct": 0.02644064917580982,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  },
+                  "positive": {
+                    "max_abs": 8.776589443675346e-10,
+                    "signed_error": 8.776589443675346e-10,
+                    "direct": 0.02644065093109735,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  }
+                }
+              ]
+            }
+          },
+          "threshold": 1e-07,
+          "passed": true,
+          "unit_gauge_energy_difference": 1.1362438767648086e-16,
+          "tail_threshold": 0.001,
+          "raw_sha256": "fb3c0ec7718ce7135390d1fa1c9daabba6f30869a213a076e23ef4245ec6eb26",
+          "mantissa_bits": 63
+        },
+        "shape": {
+          "rows": [
+            {
+              "mode": "log_depth",
+              "analytic": 0.08005341960989384,
+              "elastic": 0.1408573387359979,
+              "bath": -0.06080389416016701,
+              "unit_gauge": -2.4965937040682626,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": 0.08034355468731269,
+                  "minus_analytic": 0.00029013507741883974,
+                  "crystal": 0.14114747105070485,
+                  "bath": -0.060803891396470355,
+                  "unit_gauge": -2.496692179783266,
+                  "negative": 0.08078349751207241,
+                  "positive": 0.07990361186255297
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": 0.08005342046595881,
+                  "minus_analytic": 8.560649583484671e-10,
+                  "crystal": 0.14085733865834613,
+                  "bath": -0.060803893226388794,
+                  "unit_gauge": -2.496599852777772,
+                  "negative": 0.08009087080394788,
+                  "positive": 0.08001597012796974
+                }
+              ]
+            },
+            {
+              "mode": "scaled_log_exit",
+              "analytic": -0.5473590256343419,
+              "elastic": 0.19835824416745912,
+              "bath": -0.7457172619780212,
+              "unit_gauge": -0.7823779732843495,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": -0.5473590257306953,
+                  "minus_analytic": -9.6353374064162e-11,
+                  "crystal": 0.19835824415721037,
+                  "bath": -0.7457172620641259,
+                  "unit_gauge": -0.7823779732871542,
+                  "negative": -0.5473402444202715,
+                  "positive": -0.547377807041119
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": -0.5473590294558142,
+                  "minus_analytic": -3.8214722942607644e-09,
+                  "crystal": 0.1983582441668391,
+                  "bath": -0.7457172657988735,
+                  "unit_gauge": -0.7823779732844554,
+                  "negative": -0.5473543355066807,
+                  "positive": -0.5473637234049477
+                }
+              ]
+            },
+            {
+              "mode": "mean_width",
+              "analytic": 0.9989052547619287,
+              "elastic": 0.7523994229192065,
+              "bath": 0.24650587118122602,
+              "unit_gauge": -3.933850378404229,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": 0.9989052547218294,
+                  "minus_analytic": -4.0099267602147076e-11,
+                  "crystal": 0.7523994229190275,
+                  "bath": 0.24650587114130573,
+                  "unit_gauge": -3.9338503784104506,
+                  "negative": 0.9992236979215754,
+                  "positive": 0.9985868115220835
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": 0.9989052519351344,
+                  "minus_analytic": -2.8267944094978632e-09,
+                  "crystal": 0.7523994229191839,
+                  "bath": 0.2465058683544541,
+                  "unit_gauge": -3.9338503784045527,
+                  "negative": 0.9989848617157528,
+                  "positive": 0.9988256421545157
+                }
+              ]
+            },
+            {
+              "mode": "depth_asymmetry",
+              "analytic": -0.7112035432969578,
+              "elastic": -0.42283546973427943,
+              "bath": -0.2883680997929098,
+              "unit_gauge": 2.623023138549163,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": -0.7112035435485029,
+                  "minus_analytic": -2.5154511600847945e-10,
+                  "crystal": -0.42283546973421926,
+                  "bath": -0.2883681000445151,
+                  "unit_gauge": 2.623023138550079,
+                  "negative": -0.7109882780922749,
+                  "positive": -0.711418809004731
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": -0.7112035467518183,
+                  "minus_analytic": -3.454860470679475e-09,
+                  "crystal": -0.4228354697342765,
+                  "bath": -0.2883681032477732,
+                  "unit_gauge": 2.6230231385491747,
+                  "negative": -0.7111497326490606,
+                  "positive": -0.711257360854576
+                }
+              ]
+            },
+            {
+              "mode": "waist_profile",
+              "analytic": 0.8544650603152636,
+              "elastic": 0.5260752885997373,
+              "bath": 0.32838980125938577,
+              "unit_gauge": -2.9543859445002965,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": 0.8544650604822032,
+                  "minus_analytic": 1.6693951494610448e-10,
+                  "crystal": 0.5260752885997004,
+                  "bath": 0.3283898014263622,
+                  "unit_gauge": -2.954385944511061,
+                  "negative": 0.8545325061101128,
+                  "positive": 0.8543976148542936
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": 0.8544650624186048,
+                  "minus_analytic": 2.1033410989475254e-09,
+                  "crystal": 0.5260752885997283,
+                  "bath": 0.32838980336273593,
+                  "unit_gauge": -2.9543859445010083,
+                  "negative": 0.8544819221429728,
+                  "positive": 0.8544482026942366
+                }
+              ]
+            },
+            {
+              "mode": "polar_equatorial",
+              "analytic": -0.007798676659532728,
+              "elastic": -0.02521719817429442,
+              "bath": 0.01741852175159869,
+              "unit_gauge": -0.02368369996322547,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": -0.007798677247290335,
+                  "minus_analytic": -5.87757607060887e-10,
+                  "crystal": -0.02521719817429624,
+                  "bath": 0.017418521163842904,
+                  "unit_gauge": -0.023683699962766536,
+                  "negative": -0.007782141167401769,
+                  "positive": -0.007815213327178902
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": -0.0077986772467050994,
+                  "minus_analytic": -5.871723711089495e-10,
+                  "crystal": -0.02521719817429276,
+                  "bath": 0.01741852116442466,
+                  "unit_gauge": -0.02368369996318866,
+                  "negative": -0.007794542066832336,
+                  "positive": -0.007802812426577862
+                }
+              ]
+            }
+          ],
+          "threshold": 1e-07,
+          "passed": false,
+          "mantissa_bits": 63
+        }
+      },
+      "runs": {
+        "label0": {
+          "guard": "_scratch/s11c/r4_rematch39_01/derivatives/primary_label0_guard",
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/signed_pin/software/stage1_solver/tools/mouth_r4_aligned_derivatives.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "primary",
+            "label0",
+            "_scratch/s11c/r4_rematch39_01/derivatives/primary_label0"
+          ],
+          "start_utc": "2026-11-25T02:59:07.071597+00:00",
+          "guard_outcome_written_utc": "2026-11-25T03:00:45.367180+00:00",
+          "wall_seconds": 98.10645001195371,
+          "peak_bytes": 2797756416,
+          "exit_code": 0,
+          "stdout_path": "_scratch/s11c/r4_rematch39_01/derivatives/primary_label0_guard/stdout",
+          "stdout_size": 18116,
+          "stdout_sha256": "2da0f892e2c3ce16179394630552adb97f443e00d2dee16914d3caddd5f5774c",
+          "sources": [
+            "mouth_active_prism_orientation.py",
+            "mouth_attachment_impact.cpp",
+            "mouth_bonded_front_adjoint.py",
+            "mouth_bonded_front_feedback.py",
+            "mouth_bonded_material_motion.py",
+            "mouth_bonded_material_residual.py",
+            "mouth_brace_grip.cpp",
+            "mouth_breathing_mobile_patch.py",
+            "mouth_bulk_cut_hold.cpp",
+            "mouth_bulk_isotropic_4d.cpp",
+            "mouth_bulk_thermal_cell.cpp",
+            "mouth_circulation_material.py",
+            "mouth_closed_rim_endpoint.py",
+            "mouth_closed_rim_surface_review.py",
+            "mouth_closed_rim_work.py",
+            "mouth_continuous_depth_mesh.py",
+            "mouth_continuous_evidence.py",
+            "mouth_continuous_order.py",
+            "mouth_continuous_shape_relax.py",
+            "mouth_conversion_shape_mode.py",
+            "mouth_cp10_bucket_intersection.cpp",
+            "mouth_cp10_bucket_transport.hpp",
+            "mouth_cp10_bucket_work.cpp",
+            "mouth_cp10_field_shape.py",
+            "mouth_cp10_imaged_labels.cpp",
+            "mouth_cp10_label_condition.py",
+            "mouth_cp10_label_gauge.py",
+            "mouth_cp10_label_grid.py",
+            "mouth_cp10_label_orientation.py",
+            "mouth_cp10_matched_depth.cpp",
+            "mouth_cp10_nested_energy.cpp",
+            "mouth_cp10_nested_energy_depth.cpp",
+            "mouth_cp10_nested_forces.py",
+            "mouth_cp10_order_depth_work.cpp",
+            "mouth_cp10_spatial_crystal.cpp",
+            "mouth_cp10_spatial_crystal.py",
+            "mouth_curved_steady.py",
+            "mouth_dense_budget.hpp",
+            "mouth_dense_interface.cpp",
+            "mouth_disk_boundary_work.py",
+            "mouth_disk_independent_review.py",
+            "mouth_disk_mesh_rematch.py",
+            "mouth_disk_pillbox.py",
+            "mouth_entrance_tag_transport.cpp",
+            "mouth_eulerian_r4_spatial_cell.py",
+            "mouth_exact_checkpoint_control.py",
+            "mouth_exchange_carrier.py",
+            "mouth_exchange_carrier_density.py",
+            "mouth_exchange_geometry.py",
+            "mouth_exchange_interior.py",
+            "mouth_exchange_shear.py",
+            "mouth_exit_witness.py",
+            "mouth_finite_bore_support.py",
+            "mouth_fixed_wall_angular.py",
+            "mouth_free_shape_solid.cpp",
+            "mouth_free_shape_solid.py",
+            "mouth_internal_collar.py",
+            "mouth_internal_collar_check.py",
+            "mouth_inverse_material_energy.cpp",
+            "mouth_joined_angular_work.py",
+            "mouth_joined_front_audit.py",
+            "mouth_joined_front_stationarity.py",
+            "mouth_joined_front_trace.py",
+            "mouth_joint_collar_release.py",
+            "mouth_joint_endpoint_audit.py",
+            "mouth_joint_polar_shape.py",
+            "mouth_last_ring_solid.py",
+            "mouth_last_rings_fluid.py",
+            "mouth_live_waist_active_wave.py",
+            "mouth_live_waist_fields.py",
+            "mouth_live_waist_order.py",
+            "mouth_live_waist_reopen.py",
+            "mouth_live_waist_wave.py",
+            "mouth_live_waist_wave_location.py",
+            "mouth_middepth_bend_wall.cpp",
+            "mouth_middepth_rearrangement.cpp",
+            "mouth_mobile_joined_fields.py",
+            "mouth_mobile_lining.cpp",
+            "mouth_neck_order_check.py",
+            "mouth_ordered_j_bounds.cpp",
+            "mouth_polar_bonded.py",
+            "mouth_polar_exit_readout.py",
+            "mouth_polar_joined.py",
+            "mouth_polar_shape_endpoint_review.py",
+            "mouth_poly_bonded_core.py",
+            "mouth_poly_shallow_release.py",
+            "mouth_polycrystal_material.py",
+            "mouth_prism_support_decision.py",
+            "mouth_r4_aligned_crystal.py",
+            "mouth_r4_aligned_derivatives.py",
+            "mouth_r4_aligned_stencil.cpp",
+            "mouth_r4_aligned_stencil.py",
+            "mouth_r4_barrier_held.py",
+            "mouth_r4_barrier_shape.py",
+            "mouth_r4_clearance_shapes.cpp",
+            "mouth_r4_conforming_prisms.py",
+            "mouth_r4_corner_projection.py",
+            "mouth_r4_eulerian_relax_labels.py",
+            "mouth_r4_eulerian_release.py",
+            "mouth_r4_eulerian_solid.cpp",
+            "mouth_r4_eulerian_solid.py",
+            "mouth_r4_fold_constitutive.cpp",
+            "mouth_r4_fold_order.py",
+            "mouth_r4_full_label_precision.py",
+            "mouth_r4_full_label_work.cpp",
+            "mouth_r4_full_label_work.py",
+            "mouth_r4_harmonic_shape.py",
+            "mouth_r4_inverse_shape_work.cpp",
+            "mouth_r4_label_quad_bridge.hpp",
+            "mouth_r4_melt_barrier.cpp",
+            "mouth_r4_melt_barrier.py",
+            "mouth_r4_newton_crystal.cpp",
+            "mouth_r4_newton_crystal.py",
+            "mouth_r4_newton_stop.py",
+            "mouth_r4_projected_fields.py",
+            "mouth_r4_projected_held.py",
+            "mouth_r4_refined_solid.cpp",
+            "mouth_r4_refinement_review.py",
+            "mouth_r4_ring_work.cpp",
+            "mouth_r4_shift_work.cpp",
+            "mouth_r4_smooth_depth.cpp",
+            "mouth_r4_smooth_fields.py",
+            "mouth_r4_smooth_held.py",
+            "mouth_r4_smooth_label_derivatives.py",
+            "mouth_r4_smooth_points.hpp",
+            "mouth_r4_smooth_static.py",
+            "mouth_r4_stage2_outcome.py",
+            "mouth_r4_unfolded_shape_work.cpp",
+            "mouth_receiver_junction.cpp",
+            "mouth_receiver_order_control.py",
+            "mouth_receiver_order_equilibrium.py",
+            "mouth_receiver_relax.cpp",
+            "mouth_rim_pinned_comparison.py",
+            "mouth_sealed_shape_relax.py",
+            "mouth_shallow_puncture_fields.py",
+            "mouth_strained_wave.py",
+            "mouth_supercore_front.py",
+            "mouth_supercore_joined_front.py",
+            "mouth_supercore_shape.py",
+            "mouth_supercore_terminal_order.py",
+            "mouth_unified_puncture.py",
+            "mouth_unified_transverse.py",
+            "mouth_waist_outer_order.py",
+            "mouth_wave_material_transport.cpp",
+            "mouth_whole_r4_relax.py",
+            "mouth_wider_wound_carrier.py",
+            "mouth_winding_resolved_patch.py",
+            "mouth_wound_carrier.py",
+            "neutral_patch_order_hold.cpp",
+            "neutral_patch_warm_neighbor_torque.cpp"
+          ],
+          "record_sha256": "536ef838724498386dc0628497e308faf67c0b1330fc4154dd1f2b14685bc07f"
+        },
+        "label1": {
+          "guard": "_scratch/s11c/r4_rematch39_01/derivatives/primary_label1_guard",
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/signed_pin/software/stage1_solver/tools/mouth_r4_aligned_derivatives.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "primary",
+            "label1",
+            "_scratch/s11c/r4_rematch39_01/derivatives/primary_label1"
+          ],
+          "start_utc": "2026-11-25T02:59:07.065473+00:00",
+          "guard_outcome_written_utc": "2026-11-25T03:00:23.911588+00:00",
+          "wall_seconds": 76.74348865589127,
+          "peak_bytes": 2798256128,
+          "exit_code": 0,
+          "stdout_path": "_scratch/s11c/r4_rematch39_01/derivatives/primary_label1_guard/stdout",
+          "stdout_size": 18120,
+          "stdout_sha256": "d85f89b96d20112c61a514b1acd1c490a3ffd9d87fd999eb3ca07fa9c5de989f",
+          "sources": [
+            "mouth_active_prism_orientation.py",
+            "mouth_attachment_impact.cpp",
+            "mouth_bonded_front_adjoint.py",
+            "mouth_bonded_front_feedback.py",
+            "mouth_bonded_material_motion.py",
+            "mouth_bonded_material_residual.py",
+            "mouth_brace_grip.cpp",
+            "mouth_breathing_mobile_patch.py",
+            "mouth_bulk_cut_hold.cpp",
+            "mouth_bulk_isotropic_4d.cpp",
+            "mouth_bulk_thermal_cell.cpp",
+            "mouth_circulation_material.py",
+            "mouth_closed_rim_endpoint.py",
+            "mouth_closed_rim_surface_review.py",
+            "mouth_closed_rim_work.py",
+            "mouth_continuous_depth_mesh.py",
+            "mouth_continuous_evidence.py",
+            "mouth_continuous_order.py",
+            "mouth_continuous_shape_relax.py",
+            "mouth_conversion_shape_mode.py",
+            "mouth_cp10_bucket_intersection.cpp",
+            "mouth_cp10_bucket_transport.hpp",
+            "mouth_cp10_bucket_work.cpp",
+            "mouth_cp10_field_shape.py",
+            "mouth_cp10_imaged_labels.cpp",
+            "mouth_cp10_label_condition.py",
+            "mouth_cp10_label_gauge.py",
+            "mouth_cp10_label_grid.py",
+            "mouth_cp10_label_orientation.py",
+            "mouth_cp10_matched_depth.cpp",
+            "mouth_cp10_nested_energy.cpp",
+            "mouth_cp10_nested_energy_depth.cpp",
+            "mouth_cp10_nested_forces.py",
+            "mouth_cp10_order_depth_work.cpp",
+            "mouth_cp10_spatial_crystal.cpp",
+            "mouth_cp10_spatial_crystal.py",
+            "mouth_curved_steady.py",
+            "mouth_dense_budget.hpp",
+            "mouth_dense_interface.cpp",
+            "mouth_disk_boundary_work.py",
+            "mouth_disk_independent_review.py",
+            "mouth_disk_mesh_rematch.py",
+            "mouth_disk_pillbox.py",
+            "mouth_entrance_tag_transport.cpp",
+            "mouth_eulerian_r4_spatial_cell.py",
+            "mouth_exact_checkpoint_control.py",
+            "mouth_exchange_carrier.py",
+            "mouth_exchange_carrier_density.py",
+            "mouth_exchange_geometry.py",
+            "mouth_exchange_interior.py",
+            "mouth_exchange_shear.py",
+            "mouth_exit_witness.py",
+            "mouth_finite_bore_support.py",
+            "mouth_fixed_wall_angular.py",
+            "mouth_free_shape_solid.cpp",
+            "mouth_free_shape_solid.py",
+            "mouth_internal_collar.py",
+            "mouth_internal_collar_check.py",
+            "mouth_inverse_material_energy.cpp",
+            "mouth_joined_angular_work.py",
+            "mouth_joined_front_audit.py",
+            "mouth_joined_front_stationarity.py",
+            "mouth_joined_front_trace.py",
+            "mouth_joint_collar_release.py",
+            "mouth_joint_endpoint_audit.py",
+            "mouth_joint_polar_shape.py",
+            "mouth_last_ring_solid.py",
+            "mouth_last_rings_fluid.py",
+            "mouth_live_waist_active_wave.py",
+            "mouth_live_waist_fields.py",
+            "mouth_live_waist_order.py",
+            "mouth_live_waist_reopen.py",
+            "mouth_live_waist_wave.py",
+            "mouth_live_waist_wave_location.py",
+            "mouth_middepth_bend_wall.cpp",
+            "mouth_middepth_rearrangement.cpp",
+            "mouth_mobile_joined_fields.py",
+            "mouth_mobile_lining.cpp",
+            "mouth_neck_order_check.py",
+            "mouth_ordered_j_bounds.cpp",
+            "mouth_polar_bonded.py",
+            "mouth_polar_exit_readout.py",
+            "mouth_polar_joined.py",
+            "mouth_polar_shape_endpoint_review.py",
+            "mouth_poly_bonded_core.py",
+            "mouth_poly_shallow_release.py",
+            "mouth_polycrystal_material.py",
+            "mouth_prism_support_decision.py",
+            "mouth_r4_aligned_crystal.py",
+            "mouth_r4_aligned_derivatives.py",
+            "mouth_r4_aligned_stencil.cpp",
+            "mouth_r4_aligned_stencil.py",
+            "mouth_r4_barrier_held.py",
+            "mouth_r4_barrier_shape.py",
+            "mouth_r4_clearance_shapes.cpp",
+            "mouth_r4_conforming_prisms.py",
+            "mouth_r4_corner_projection.py",
+            "mouth_r4_eulerian_relax_labels.py",
+            "mouth_r4_eulerian_release.py",
+            "mouth_r4_eulerian_solid.cpp",
+            "mouth_r4_eulerian_solid.py",
+            "mouth_r4_fold_constitutive.cpp",
+            "mouth_r4_fold_order.py",
+            "mouth_r4_full_label_precision.py",
+            "mouth_r4_full_label_work.cpp",
+            "mouth_r4_full_label_work.py",
+            "mouth_r4_harmonic_shape.py",
+            "mouth_r4_inverse_shape_work.cpp",
+            "mouth_r4_label_quad_bridge.hpp",
+            "mouth_r4_melt_barrier.cpp",
+            "mouth_r4_melt_barrier.py",
+            "mouth_r4_newton_crystal.cpp",
+            "mouth_r4_newton_crystal.py",
+            "mouth_r4_newton_stop.py",
+            "mouth_r4_projected_fields.py",
+            "mouth_r4_projected_held.py",
+            "mouth_r4_refined_solid.cpp",
+            "mouth_r4_refinement_review.py",
+            "mouth_r4_ring_work.cpp",
+            "mouth_r4_shift_work.cpp",
+            "mouth_r4_smooth_depth.cpp",
+            "mouth_r4_smooth_fields.py",
+            "mouth_r4_smooth_held.py",
+            "mouth_r4_smooth_label_derivatives.py",
+            "mouth_r4_smooth_points.hpp",
+            "mouth_r4_smooth_static.py",
+            "mouth_r4_stage2_outcome.py",
+            "mouth_r4_unfolded_shape_work.cpp",
+            "mouth_receiver_junction.cpp",
+            "mouth_receiver_order_control.py",
+            "mouth_receiver_order_equilibrium.py",
+            "mouth_receiver_relax.cpp",
+            "mouth_rim_pinned_comparison.py",
+            "mouth_sealed_shape_relax.py",
+            "mouth_shallow_puncture_fields.py",
+            "mouth_strained_wave.py",
+            "mouth_supercore_front.py",
+            "mouth_supercore_joined_front.py",
+            "mouth_supercore_shape.py",
+            "mouth_supercore_terminal_order.py",
+            "mouth_unified_puncture.py",
+            "mouth_unified_transverse.py",
+            "mouth_waist_outer_order.py",
+            "mouth_wave_material_transport.cpp",
+            "mouth_whole_r4_relax.py",
+            "mouth_wider_wound_carrier.py",
+            "mouth_winding_resolved_patch.py",
+            "mouth_wound_carrier.py",
+            "neutral_patch_order_hold.cpp",
+            "neutral_patch_warm_neighbor_torque.cpp"
+          ],
+          "record_sha256": "73546abc7a0216ec18b9ff321fe9afbaf8edc336bb843ab4e9909b0e276e9fee"
+        },
+        "label2": {
+          "guard": "_scratch/s11c/r4_rematch39_01/derivatives/primary_label2_guard",
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/signed_pin/software/stage1_solver/tools/mouth_r4_aligned_derivatives.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "primary",
+            "label2",
+            "_scratch/s11c/r4_rematch39_01/derivatives/primary_label2"
+          ],
+          "start_utc": "2026-11-25T03:00:23.964083+00:00",
+          "guard_outcome_written_utc": "2026-11-25T03:01:34.256939+00:00",
+          "wall_seconds": 70.22073950897902,
+          "peak_bytes": 2792902656,
+          "exit_code": 0,
+          "stdout_path": "_scratch/s11c/r4_rematch39_01/derivatives/primary_label2_guard/stdout",
+          "stdout_size": 18138,
+          "stdout_sha256": "b67b500b7f9a2a3f801caba32b55765b5e85b1d42e039567f6f7fccf7bc6bbd3",
+          "sources": [
+            "mouth_active_prism_orientation.py",
+            "mouth_attachment_impact.cpp",
+            "mouth_bonded_front_adjoint.py",
+            "mouth_bonded_front_feedback.py",
+            "mouth_bonded_material_motion.py",
+            "mouth_bonded_material_residual.py",
+            "mouth_brace_grip.cpp",
+            "mouth_breathing_mobile_patch.py",
+            "mouth_bulk_cut_hold.cpp",
+            "mouth_bulk_isotropic_4d.cpp",
+            "mouth_bulk_thermal_cell.cpp",
+            "mouth_circulation_material.py",
+            "mouth_closed_rim_endpoint.py",
+            "mouth_closed_rim_surface_review.py",
+            "mouth_closed_rim_work.py",
+            "mouth_continuous_depth_mesh.py",
+            "mouth_continuous_evidence.py",
+            "mouth_continuous_order.py",
+            "mouth_continuous_shape_relax.py",
+            "mouth_conversion_shape_mode.py",
+            "mouth_cp10_bucket_intersection.cpp",
+            "mouth_cp10_bucket_transport.hpp",
+            "mouth_cp10_bucket_work.cpp",
+            "mouth_cp10_field_shape.py",
+            "mouth_cp10_imaged_labels.cpp",
+            "mouth_cp10_label_condition.py",
+            "mouth_cp10_label_gauge.py",
+            "mouth_cp10_label_grid.py",
+            "mouth_cp10_label_orientation.py",
+            "mouth_cp10_matched_depth.cpp",
+            "mouth_cp10_nested_energy.cpp",
+            "mouth_cp10_nested_energy_depth.cpp",
+            "mouth_cp10_nested_forces.py",
+            "mouth_cp10_order_depth_work.cpp",
+            "mouth_cp10_spatial_crystal.cpp",
+            "mouth_cp10_spatial_crystal.py",
+            "mouth_curved_steady.py",
+            "mouth_dense_budget.hpp",
+            "mouth_dense_interface.cpp",
+            "mouth_disk_boundary_work.py",
+            "mouth_disk_independent_review.py",
+            "mouth_disk_mesh_rematch.py",
+            "mouth_disk_pillbox.py",
+            "mouth_entrance_tag_transport.cpp",
+            "mouth_eulerian_r4_spatial_cell.py",
+            "mouth_exact_checkpoint_control.py",
+            "mouth_exchange_carrier.py",
+            "mouth_exchange_carrier_density.py",
+            "mouth_exchange_geometry.py",
+            "mouth_exchange_interior.py",
+            "mouth_exchange_shear.py",
+            "mouth_exit_witness.py",
+            "mouth_finite_bore_support.py",
+            "mouth_fixed_wall_angular.py",
+            "mouth_free_shape_solid.cpp",
+            "mouth_free_shape_solid.py",
+            "mouth_internal_collar.py",
+            "mouth_internal_collar_check.py",
+            "mouth_inverse_material_energy.cpp",
+            "mouth_joined_angular_work.py",
+            "mouth_joined_front_audit.py",
+            "mouth_joined_front_stationarity.py",
+            "mouth_joined_front_trace.py",
+            "mouth_joint_collar_release.py",
+            "mouth_joint_endpoint_audit.py",
+            "mouth_joint_polar_shape.py",
+            "mouth_last_ring_solid.py",
+            "mouth_last_rings_fluid.py",
+            "mouth_live_waist_active_wave.py",
+            "mouth_live_waist_fields.py",
+            "mouth_live_waist_order.py",
+            "mouth_live_waist_reopen.py",
+            "mouth_live_waist_wave.py",
+            "mouth_live_waist_wave_location.py",
+            "mouth_middepth_bend_wall.cpp",
+            "mouth_middepth_rearrangement.cpp",
+            "mouth_mobile_joined_fields.py",
+            "mouth_mobile_lining.cpp",
+            "mouth_neck_order_check.py",
+            "mouth_ordered_j_bounds.cpp",
+            "mouth_polar_bonded.py",
+            "mouth_polar_exit_readout.py",
+            "mouth_polar_joined.py",
+            "mouth_polar_shape_endpoint_review.py",
+            "mouth_poly_bonded_core.py",
+            "mouth_poly_shallow_release.py",
+            "mouth_polycrystal_material.py",
+            "mouth_prism_support_decision.py",
+            "mouth_r4_aligned_crystal.py",
+            "mouth_r4_aligned_derivatives.py",
+            "mouth_r4_aligned_stencil.cpp",
+            "mouth_r4_aligned_stencil.py",
+            "mouth_r4_barrier_held.py",
+            "mouth_r4_barrier_shape.py",
+            "mouth_r4_clearance_shapes.cpp",
+            "mouth_r4_conforming_prisms.py",
+            "mouth_r4_corner_projection.py",
+            "mouth_r4_eulerian_relax_labels.py",
+            "mouth_r4_eulerian_release.py",
+            "mouth_r4_eulerian_solid.cpp",
+            "mouth_r4_eulerian_solid.py",
+            "mouth_r4_fold_constitutive.cpp",
+            "mouth_r4_fold_order.py",
+            "mouth_r4_full_label_precision.py",
+            "mouth_r4_full_label_work.cpp",
+            "mouth_r4_full_label_work.py",
+            "mouth_r4_harmonic_shape.py",
+            "mouth_r4_inverse_shape_work.cpp",
+            "mouth_r4_label_quad_bridge.hpp",
+            "mouth_r4_melt_barrier.cpp",
+            "mouth_r4_melt_barrier.py",
+            "mouth_r4_newton_crystal.cpp",
+            "mouth_r4_newton_crystal.py",
+            "mouth_r4_newton_stop.py",
+            "mouth_r4_projected_fields.py",
+            "mouth_r4_projected_held.py",
+            "mouth_r4_refined_solid.cpp",
+            "mouth_r4_refinement_review.py",
+            "mouth_r4_ring_work.cpp",
+            "mouth_r4_shift_work.cpp",
+            "mouth_r4_smooth_depth.cpp",
+            "mouth_r4_smooth_fields.py",
+            "mouth_r4_smooth_held.py",
+            "mouth_r4_smooth_label_derivatives.py",
+            "mouth_r4_smooth_points.hpp",
+            "mouth_r4_smooth_static.py",
+            "mouth_r4_stage2_outcome.py",
+            "mouth_r4_unfolded_shape_work.cpp",
+            "mouth_receiver_junction.cpp",
+            "mouth_receiver_order_control.py",
+            "mouth_receiver_order_equilibrium.py",
+            "mouth_receiver_relax.cpp",
+            "mouth_rim_pinned_comparison.py",
+            "mouth_sealed_shape_relax.py",
+            "mouth_shallow_puncture_fields.py",
+            "mouth_strained_wave.py",
+            "mouth_supercore_front.py",
+            "mouth_supercore_joined_front.py",
+            "mouth_supercore_shape.py",
+            "mouth_supercore_terminal_order.py",
+            "mouth_unified_puncture.py",
+            "mouth_unified_transverse.py",
+            "mouth_waist_outer_order.py",
+            "mouth_wave_material_transport.cpp",
+            "mouth_whole_r4_relax.py",
+            "mouth_wider_wound_carrier.py",
+            "mouth_winding_resolved_patch.py",
+            "mouth_wound_carrier.py",
+            "neutral_patch_order_hold.cpp",
+            "neutral_patch_warm_neighbor_torque.cpp"
+          ],
+          "record_sha256": "2b7ce8f6b9edd7960cc44df47e8e5ebce879a2b35780aac3bc3c4cecf0cb9d13"
+        },
+        "order": {
+          "guard": "_scratch/s11c/r4_rematch39_01/derivatives/primary_order_guard",
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/signed_pin/software/stage1_solver/tools/mouth_r4_aligned_derivatives.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "primary",
+            "order",
+            "_scratch/s11c/r4_rematch39_01/derivatives/primary_order"
+          ],
+          "start_utc": "2026-11-25T03:01:34.052085+00:00",
+          "guard_outcome_written_utc": "2026-11-25T03:03:01.065959+00:00",
+          "wall_seconds": 86.93152727931738,
+          "peak_bytes": 2369191936,
+          "exit_code": 0,
+          "stdout_path": "_scratch/s11c/r4_rematch39_01/derivatives/primary_order_guard/stdout",
+          "stdout_size": 27466,
+          "stdout_sha256": "e54f0f4a8362e0aabfccc3b77fed79bab9dbebee527ec2e155b05e883d303ab1",
+          "sources": [
+            "mouth_active_prism_orientation.py",
+            "mouth_attachment_impact.cpp",
+            "mouth_bonded_front_adjoint.py",
+            "mouth_bonded_front_feedback.py",
+            "mouth_bonded_material_motion.py",
+            "mouth_bonded_material_residual.py",
+            "mouth_brace_grip.cpp",
+            "mouth_breathing_mobile_patch.py",
+            "mouth_bulk_cut_hold.cpp",
+            "mouth_bulk_isotropic_4d.cpp",
+            "mouth_bulk_thermal_cell.cpp",
+            "mouth_circulation_material.py",
+            "mouth_closed_rim_endpoint.py",
+            "mouth_closed_rim_surface_review.py",
+            "mouth_closed_rim_work.py",
+            "mouth_continuous_depth_mesh.py",
+            "mouth_continuous_evidence.py",
+            "mouth_continuous_order.py",
+            "mouth_continuous_shape_relax.py",
+            "mouth_conversion_shape_mode.py",
+            "mouth_cp10_bucket_intersection.cpp",
+            "mouth_cp10_bucket_transport.hpp",
+            "mouth_cp10_bucket_work.cpp",
+            "mouth_cp10_field_shape.py",
+            "mouth_cp10_imaged_labels.cpp",
+            "mouth_cp10_label_condition.py",
+            "mouth_cp10_label_gauge.py",
+            "mouth_cp10_label_grid.py",
+            "mouth_cp10_label_orientation.py",
+            "mouth_cp10_matched_depth.cpp",
+            "mouth_cp10_nested_energy.cpp",
+            "mouth_cp10_nested_energy_depth.cpp",
+            "mouth_cp10_nested_forces.py",
+            "mouth_cp10_order_depth_work.cpp",
+            "mouth_cp10_spatial_crystal.cpp",
+            "mouth_cp10_spatial_crystal.py",
+            "mouth_curved_steady.py",
+            "mouth_dense_budget.hpp",
+            "mouth_dense_interface.cpp",
+            "mouth_disk_boundary_work.py",
+            "mouth_disk_independent_review.py",
+            "mouth_disk_mesh_rematch.py",
+            "mouth_disk_pillbox.py",
+            "mouth_entrance_tag_transport.cpp",
+            "mouth_eulerian_r4_spatial_cell.py",
+            "mouth_exact_checkpoint_control.py",
+            "mouth_exchange_carrier.py",
+            "mouth_exchange_carrier_density.py",
+            "mouth_exchange_geometry.py",
+            "mouth_exchange_interior.py",
+            "mouth_exchange_shear.py",
+            "mouth_exit_witness.py",
+            "mouth_finite_bore_support.py",
+            "mouth_fixed_wall_angular.py",
+            "mouth_free_shape_solid.cpp",
+            "mouth_free_shape_solid.py",
+            "mouth_internal_collar.py",
+            "mouth_internal_collar_check.py",
+            "mouth_inverse_material_energy.cpp",
+            "mouth_joined_angular_work.py",
+            "mouth_joined_front_audit.py",
+            "mouth_joined_front_stationarity.py",
+            "mouth_joined_front_trace.py",
+            "mouth_joint_collar_release.py",
+            "mouth_joint_endpoint_audit.py",
+            "mouth_joint_polar_shape.py",
+            "mouth_last_ring_solid.py",
+            "mouth_last_rings_fluid.py",
+            "mouth_live_waist_active_wave.py",
+            "mouth_live_waist_fields.py",
+            "mouth_live_waist_order.py",
+            "mouth_live_waist_reopen.py",
+            "mouth_live_waist_wave.py",
+            "mouth_live_waist_wave_location.py",
+            "mouth_middepth_bend_wall.cpp",
+            "mouth_middepth_rearrangement.cpp",
+            "mouth_mobile_joined_fields.py",
+            "mouth_mobile_lining.cpp",
+            "mouth_neck_order_check.py",
+            "mouth_ordered_j_bounds.cpp",
+            "mouth_polar_bonded.py",
+            "mouth_polar_exit_readout.py",
+            "mouth_polar_joined.py",
+            "mouth_polar_shape_endpoint_review.py",
+            "mouth_poly_bonded_core.py",
+            "mouth_poly_shallow_release.py",
+            "mouth_polycrystal_material.py",
+            "mouth_prism_support_decision.py",
+            "mouth_r4_aligned_derivatives.py",
+            "mouth_r4_aligned_stencil.cpp",
+            "mouth_r4_aligned_stencil.py",
+            "mouth_r4_barrier_held.py",
+            "mouth_r4_barrier_shape.py",
+            "mouth_r4_clearance_shapes.cpp",
+            "mouth_r4_conforming_prisms.py",
+            "mouth_r4_corner_projection.py",
+            "mouth_r4_eulerian_relax_labels.py",
+            "mouth_r4_eulerian_release.py",
+            "mouth_r4_eulerian_solid.cpp",
+            "mouth_r4_eulerian_solid.py",
+            "mouth_r4_fold_constitutive.cpp",
+            "mouth_r4_fold_order.py",
+            "mouth_r4_full_label_precision.py",
+            "mouth_r4_full_label_work.cpp",
+            "mouth_r4_full_label_work.py",
+            "mouth_r4_harmonic_shape.py",
+            "mouth_r4_inverse_shape_work.cpp",
+            "mouth_r4_label_quad_bridge.hpp",
+            "mouth_r4_melt_barrier.cpp",
+            "mouth_r4_melt_barrier.py",
+            "mouth_r4_newton_crystal.cpp",
+            "mouth_r4_newton_stop.py",
+            "mouth_r4_projected_fields.py",
+            "mouth_r4_projected_held.py",
+            "mouth_r4_refined_solid.cpp",
+            "mouth_r4_refinement_review.py",
+            "mouth_r4_ring_work.cpp",
+            "mouth_r4_shift_work.cpp",
+            "mouth_r4_smooth_depth.cpp",
+            "mouth_r4_smooth_fields.py",
+            "mouth_r4_smooth_held.py",
+            "mouth_r4_smooth_label_derivatives.py",
+            "mouth_r4_smooth_order_boundary.py",
+            "mouth_r4_smooth_order_derivatives.py",
+            "mouth_r4_smooth_points.hpp",
+            "mouth_r4_smooth_static.py",
+            "mouth_r4_stage2_outcome.py",
+            "mouth_r4_unfolded_shape_work.cpp",
+            "mouth_receiver_junction.cpp",
+            "mouth_receiver_order_control.py",
+            "mouth_receiver_order_equilibrium.py",
+            "mouth_receiver_relax.cpp",
+            "mouth_rim_pinned_comparison.py",
+            "mouth_sealed_shape_relax.py",
+            "mouth_shallow_puncture_fields.py",
+            "mouth_strained_wave.py",
+            "mouth_supercore_front.py",
+            "mouth_supercore_joined_front.py",
+            "mouth_supercore_shape.py",
+            "mouth_supercore_terminal_order.py",
+            "mouth_unified_puncture.py",
+            "mouth_unified_transverse.py",
+            "mouth_waist_outer_order.py",
+            "mouth_wave_material_transport.cpp",
+            "mouth_whole_r4_relax.py",
+            "mouth_wider_wound_carrier.py",
+            "mouth_winding_resolved_patch.py",
+            "mouth_wound_carrier.py",
+            "neutral_patch_order_hold.cpp",
+            "neutral_patch_warm_neighbor_torque.cpp"
+          ],
+          "record_sha256": "58f54a61a6da6321c5fd40511777f8996559e2374450e0ea8c5065c36413e153"
+        },
+        "shape": {
+          "guard": "_scratch/s11c/r4_rematch39_01/derivatives/primary_shape_guard",
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/signed_pin/software/stage1_solver/tools/mouth_r4_aligned_derivatives.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "primary",
+            "shape",
+            "_scratch/s11c/r4_rematch39_01/derivatives/primary_shape"
+          ],
+          "start_utc": "2026-11-25T03:02:15.527357+00:00",
+          "guard_outcome_written_utc": "2026-11-25T03:03:44.292697+00:00",
+          "wall_seconds": 88.69482618616894,
+          "peak_bytes": 1818841088,
+          "exit_code": 1,
+          "stdout_path": "_scratch/s11c/r4_rematch39_01/derivatives/primary_shape_guard/stdout",
+          "stdout_size": 20391,
+          "stdout_sha256": "6a25f63cf0451f37a0628783dd2065b8d4505a34e2b3d7ae65d0bf0c31d65cb5",
+          "sources": [
+            "mouth_active_prism_orientation.py",
+            "mouth_attachment_impact.cpp",
+            "mouth_bonded_front_adjoint.py",
+            "mouth_bonded_front_feedback.py",
+            "mouth_bonded_material_motion.py",
+            "mouth_bonded_material_residual.py",
+            "mouth_brace_grip.cpp",
+            "mouth_breathing_mobile_patch.py",
+            "mouth_bulk_cut_hold.cpp",
+            "mouth_bulk_isotropic_4d.cpp",
+            "mouth_bulk_thermal_cell.cpp",
+            "mouth_circulation_material.py",
+            "mouth_closed_rim_endpoint.py",
+            "mouth_closed_rim_surface_review.py",
+            "mouth_closed_rim_work.py",
+            "mouth_continuous_depth_mesh.py",
+            "mouth_continuous_evidence.py",
+            "mouth_continuous_order.py",
+            "mouth_continuous_shape_relax.py",
+            "mouth_conversion_shape_mode.py",
+            "mouth_cp10_bucket_intersection.cpp",
+            "mouth_cp10_bucket_transport.hpp",
+            "mouth_cp10_bucket_work.cpp",
+            "mouth_cp10_field_shape.py",
+            "mouth_cp10_imaged_labels.cpp",
+            "mouth_cp10_label_condition.py",
+            "mouth_cp10_label_gauge.py",
+            "mouth_cp10_label_grid.py",
+            "mouth_cp10_label_orientation.py",
+            "mouth_cp10_matched_depth.cpp",
+            "mouth_cp10_nested_energy.cpp",
+            "mouth_cp10_nested_energy_depth.cpp",
+            "mouth_cp10_nested_forces.py",
+            "mouth_cp10_order_depth_work.cpp",
+            "mouth_cp10_spatial_crystal.cpp",
+            "mouth_cp10_spatial_crystal.py",
+            "mouth_curved_steady.py",
+            "mouth_dense_budget.hpp",
+            "mouth_dense_interface.cpp",
+            "mouth_disk_boundary_work.py",
+            "mouth_disk_independent_review.py",
+            "mouth_disk_mesh_rematch.py",
+            "mouth_disk_pillbox.py",
+            "mouth_entrance_tag_transport.cpp",
+            "mouth_eulerian_r4_spatial_cell.py",
+            "mouth_exact_checkpoint_control.py",
+            "mouth_exchange_carrier.py",
+            "mouth_exchange_carrier_density.py",
+            "mouth_exchange_geometry.py",
+            "mouth_exchange_interior.py",
+            "mouth_exchange_shear.py",
+            "mouth_exit_witness.py",
+            "mouth_finite_bore_support.py",
+            "mouth_fixed_wall_angular.py",
+            "mouth_free_shape_solid.cpp",
+            "mouth_free_shape_solid.py",
+            "mouth_internal_collar.py",
+            "mouth_internal_collar_check.py",
+            "mouth_inverse_material_energy.cpp",
+            "mouth_joined_angular_work.py",
+            "mouth_joined_front_audit.py",
+            "mouth_joined_front_stationarity.py",
+            "mouth_joined_front_trace.py",
+            "mouth_joint_collar_release.py",
+            "mouth_joint_endpoint_audit.py",
+            "mouth_joint_polar_shape.py",
+            "mouth_last_ring_solid.py",
+            "mouth_last_rings_fluid.py",
+            "mouth_live_waist_active_wave.py",
+            "mouth_live_waist_fields.py",
+            "mouth_live_waist_order.py",
+            "mouth_live_waist_reopen.py",
+            "mouth_live_waist_wave.py",
+            "mouth_live_waist_wave_location.py",
+            "mouth_middepth_bend_wall.cpp",
+            "mouth_middepth_rearrangement.cpp",
+            "mouth_mobile_joined_fields.py",
+            "mouth_mobile_lining.cpp",
+            "mouth_neck_order_check.py",
+            "mouth_ordered_j_bounds.cpp",
+            "mouth_polar_bonded.py",
+            "mouth_polar_exit_readout.py",
+            "mouth_polar_joined.py",
+            "mouth_polar_shape_endpoint_review.py",
+            "mouth_poly_bonded_core.py",
+            "mouth_poly_shallow_release.py",
+            "mouth_polycrystal_material.py",
+            "mouth_prism_support_decision.py",
+            "mouth_r4_aligned_crystal.py",
+            "mouth_r4_aligned_derivatives.py",
+            "mouth_r4_aligned_stencil.cpp",
+            "mouth_r4_aligned_stencil.py",
+            "mouth_r4_barrier_gradient.py",
+            "mouth_r4_barrier_held.py",
+            "mouth_r4_barrier_shape.py",
+            "mouth_r4_clearance_shapes.cpp",
+            "mouth_r4_conforming_prisms.py",
+            "mouth_r4_corner_projection.py",
+            "mouth_r4_depth_precision.py",
+            "mouth_r4_eulerian_corner_audit.py",
+            "mouth_r4_eulerian_relax_labels.py",
+            "mouth_r4_eulerian_release.py",
+            "mouth_r4_eulerian_solid.cpp",
+            "mouth_r4_eulerian_solid.py",
+            "mouth_r4_fold_constitutive.cpp",
+            "mouth_r4_fold_order.py",
+            "mouth_r4_full_label_precision.py",
+            "mouth_r4_full_label_work.cpp",
+            "mouth_r4_full_label_work.py",
+            "mouth_r4_harmonic_gradient.py",
+            "mouth_r4_harmonic_shape.py",
+            "mouth_r4_inverse_shape_work.cpp",
+            "mouth_r4_label_quad_bridge.hpp",
+            "mouth_r4_melt_barrier.cpp",
+            "mouth_r4_melt_barrier.py",
+            "mouth_r4_newton_crystal.cpp",
+            "mouth_r4_newton_crystal.py",
+            "mouth_r4_newton_stop.py",
+            "mouth_r4_projected_fields.py",
+            "mouth_r4_projected_held.py",
+            "mouth_r4_refined_solid.cpp",
+            "mouth_r4_refinement_review.py",
+            "mouth_r4_ring_work.cpp",
+            "mouth_r4_shift_work.cpp",
+            "mouth_r4_slaved_melt.py",
+            "mouth_r4_smooth_depth.cpp",
+            "mouth_r4_smooth_endpoint.py",
+            "mouth_r4_smooth_fields.py",
+            "mouth_r4_smooth_held.py",
+            "mouth_r4_smooth_label_derivatives.py",
+            "mouth_r4_smooth_order_boundary.py",
+            "mouth_r4_smooth_points.hpp",
+            "mouth_r4_smooth_static.py",
+            "mouth_r4_stage2_outcome.py",
+            "mouth_r4_unfolded_shape_work.cpp",
+            "mouth_receiver_junction.cpp",
+            "mouth_receiver_order_control.py",
+            "mouth_receiver_order_equilibrium.py",
+            "mouth_receiver_relax.cpp",
+            "mouth_rim_pinned_comparison.py",
+            "mouth_sealed_shape_relax.py",
+            "mouth_shallow_puncture_fields.py",
+            "mouth_strained_wave.py",
+            "mouth_supercore_front.py",
+            "mouth_supercore_joined_front.py",
+            "mouth_supercore_shape.py",
+            "mouth_supercore_terminal_order.py",
+            "mouth_unified_puncture.py",
+            "mouth_unified_transverse.py",
+            "mouth_waist_outer_order.py",
+            "mouth_wave_material_transport.cpp",
+            "mouth_whole_r4_relax.py",
+            "mouth_wider_wound_carrier.py",
+            "mouth_winding_resolved_patch.py",
+            "mouth_wound_carrier.py",
+            "neutral_patch_order_hold.cpp",
+            "neutral_patch_warm_neighbor_torque.cpp"
+          ],
+          "record_sha256": "2f8e0ba338b4d395bbbdb937fbab12bf455cba8ac479904008d774a0aeade2e1"
+        }
+      }
+    },
+    "secondary": {
+      "epsilon": 1e-10,
+      "state_sha256": "e2c2e2afb9af55e972b57a46b22527a0ba9983fbab173446b17164457564ed10",
+      "summary": {
+        "labels_checked": 81125,
+        "tail_labels_checked": 39,
+        "largest_label_error": 4.8291275609281013e-11,
+        "largest_tail_label_error": 3.1913238721501537e-13,
+        "order_checked": 143648,
+        "free_lower": 52061,
+        "free_upper": 105,
+        "interior": 91482,
+        "largest_central_order_error": 2.3964788486985356e-12,
+        "feasible_bound_extrapolated": {
+          "lower": {
+            "max_abs": 1.0147756522886284e-12,
+            "signed_error": 1.0147756522886284e-12,
+            "direct": 0.09572869659172943,
+            "analytic": 0.09572869659071466,
+            "physical": 0.09572869659071466,
+            "unit_gauge": -2.1257882122913788e-08,
+            "node": 69966
+          },
+          "upper": {
+            "max_abs": 3.592052272133432e-16,
+            "signed_error": -3.592052272133432e-16,
+            "direct": -2.160554823423496e-07,
+            "analytic": -2.1605548198314437e-07,
+            "physical": -2.1605548198314437e-07,
+            "unit_gauge": 0.0,
+            "node": 144451
+          }
+        },
+        "six_total_forces": [
+          0.08005344490900257,
+          -0.5473590190112559,
+          0.9989052897799315,
+          -0.7112035676402889,
+          0.8544650860296478,
+          -0.007798676151683635
+        ],
+        "largest_shape_error": 0.0002901353730343654,
+        "native_log_depth_force": 0.08005344490900257,
+        "log_depth_signed_projections": [
+          {
+            "h": 3.814697265625e-06,
+            "positive": 0.07990363795806626,
+            "negative": 0.08078352260600759,
+            "central": 0.08034358028203693,
+            "central_minus_native": 0.0002901353730343654,
+            "signed_crystal_minus_native": 0.0002901323139754275,
+            "signed_bath_minus_native": 3.0590687899456626e-09,
+            "epsilon_times_signed_unit_gauge_minus_native": -9.8475715002877e-15
+          },
+          {
+            "h": 9.5367431640625e-07,
+            "positive": 0.08001599526595342,
+            "negative": 0.08009089592572681,
+            "central": 0.08005344559584011,
+            "central_minus_native": 6.868375449279023e-10,
+            "signed_crystal_minus_native": -7.765010856530807e-11,
+            "signed_bath_minus_native": 7.644882643598194e-10,
+            "epsilon_times_signed_unit_gauge_minus_native": -6.148709506437201e-16
+          }
+        ],
+        "shape_rows_outside_limit": [
+          {
+            "mode": "log_depth",
+            "h": 3.814697265625e-06,
+            "central_minus_native": 0.0002901353730343654
+          }
+        ],
+        "matched_order_residuals": {
+          "order_raw": 0.34959525648184164,
+          "order_kkt": 1.945791172169074e-09,
+          "order_projected": 9.547972967816065e-10
+        }
+      },
+      "passed": false,
+      "sectors": {
+        "label0": {
+          "component": 0,
+          "checks": {
+            "all": {
+              "count": 27825,
+              "max_abs_by_width": [
+                4.8291275609281013e-11,
+                1.1986150030371566e-11
+              ],
+              "worst": {
+                "group": 28935,
+                "node": [
+                  25,
+                  2,
+                  18
+                ],
+                "analytic": 0.0005220346093247885,
+                "physical": 0.0005220346304696653,
+                "unit_gauge": -0.21144876729358938,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    0.0005151797360436935,
+                    0.0005288895791884349
+                  ],
+                  [
+                    0.0005186071604021291,
+                    0.0005254620822197481
+                  ]
+                ],
+                "central_minus_analytic": [
+                  4.8291275609281013e-11,
+                  1.1986150030371566e-11
+                ],
+                "tail": false
+              }
+            },
+            "active": {
+              "count": 6409,
+              "max_abs_by_width": [
+                4.8291275609281013e-11,
+                1.1986150030371566e-11
+              ],
+              "worst": {
+                "group": 28935,
+                "node": [
+                  25,
+                  2,
+                  18
+                ],
+                "analytic": 0.0005220346093247885,
+                "physical": 0.0005220346304696653,
+                "unit_gauge": -0.21144876729358938,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    0.0005151797360436935,
+                    0.0005288895791884349
+                  ],
+                  [
+                    0.0005186071604021291,
+                    0.0005254620822197481
+                  ]
+                ],
+                "central_minus_analytic": [
+                  4.8291275609281013e-11,
+                  1.1986150030371566e-11
+                ],
+                "tail": false
+              }
+            },
+            "fully_melted": {
+              "count": 21416,
+              "max_abs_by_width": [
+                5.51164532409168e-13,
+                1.3777807996117331e-13
+              ],
+              "worst": {
+                "group": 29102,
+                "node": [
+                  25,
+                  10,
+                  17
+                ],
+                "analytic": 1.623728839292076e-08,
+                "physical": 0.0,
+                "unit_gauge": 162.37288392920763,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    1.6171840502714543e-08,
+                    1.63038386121918e-08
+                  ],
+                  [
+                    1.6204428840513935e-08,
+                    1.6270423501487513e-08
+                  ]
+                ],
+                "central_minus_analytic": [
+                  5.51164532409168e-13,
+                  1.3777807996117331e-13
+                ],
+                "tail": false
+              }
+            },
+            "small_J_tail": {
+              "count": 13,
+              "max_abs_by_width": [
+                3.1913238721501537e-13,
+                7.978305160833977e-14
+              ],
+              "worst": {
+                "group": 29116,
+                "node": [
+                  25,
+                  11,
+                  10
+                ],
+                "analytic": 2.0175597486776703e-07,
+                "physical": 0.0,
+                "unit_gauge": 2017.55974867767,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    2.015381668236263e-07,
+                    2.0197442117668215e-07
+                  ],
+                  [
+                    2.0164699125955305e-07,
+                    2.0186511804208422e-07
+                  ]
+                ],
+                "central_minus_analytic": [
+                  3.1913238721501537e-13,
+                  7.978305160833977e-14
+                ],
+                "tail": true
+              }
+            }
+          },
+          "threshold": 1e-10,
+          "passed": true,
+          "failures": [],
+          "colors": 8,
+          "narrow": 26,
+          "additional_fine": 0,
+          "narrow_widths": [
+            1.4551915228366852e-11,
+            7.275957614183426e-12
+          ],
+          "additional_widths": [
+            1.8189894035458565e-12,
+            9.094947017729282e-13
+          ],
+          "tail_cells": 5,
+          "tail_threshold": 0.001,
+          "minimum_sampled_determinant": 2.3960287766068506e-06,
+          "minimum_signed_whole_chart_bound": 2.0473033456343985e-06,
+          "gauge_cell_anchor_max": 1.291725244562808e-20,
+          "physical_anchor_difference": 3.2607380337501546e-16,
+          "raw_sha256": "b4a4cfb10d8e0c85e0c3f1522b06e3e16ea5de10de9b1ab48373ebf8d31c6e93",
+          "mantissa_bits": 63
+        },
+        "label1": {
+          "component": 1,
+          "checks": {
+            "all": {
+              "count": 27878,
+              "max_abs_by_width": [
+                5.621088663976274e-12,
+                6.191768452128867e-12
+              ],
+              "worst": {
+                "group": 18574,
+                "node": [
+                  17,
+                  1,
+                  18
+                ],
+                "analytic": -0.0017867529379986618,
+                "physical": -0.001786752956427439,
+                "unit_gauge": 0.18428777128144622,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    -0.0017887830515872195,
+                    -0.0017847228274879773
+                  ],
+                  [
+                    -0.001787767992432024,
+                    -0.0017857378711817627
+                  ]
+                ],
+                "central_minus_analytic": [
+                  -1.5389365129238815e-12,
+                  6.191768452128867e-12
+                ],
+                "tail": false
+              }
+            },
+            "active": {
+              "count": 6422,
+              "max_abs_by_width": [
+                5.621088663976274e-12,
+                6.191768452128867e-12
+              ],
+              "worst": {
+                "group": 18574,
+                "node": [
+                  17,
+                  1,
+                  18
+                ],
+                "analytic": -0.0017867529379986618,
+                "physical": -0.001786752956427439,
+                "unit_gauge": 0.18428777128144622,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    -0.0017887830515872195,
+                    -0.0017847228274879773
+                  ],
+                  [
+                    -0.001787767992432024,
+                    -0.0017857378711817627
+                  ]
+                ],
+                "central_minus_analytic": [
+                  -1.5389365129238815e-12,
+                  6.191768452128867e-12
+                ],
+                "tail": false
+              }
+            },
+            "fully_melted": {
+              "count": 21456,
+              "max_abs_by_width": [
+                2.6331203356599886e-17,
+                6.530048507480402e-18
+              ],
+              "worst": {
+                "group": 28016,
+                "node": [
+                  25,
+                  11,
+                  10
+                ],
+                "analytic": 8.74860956995884e-09,
+                "physical": 0.0,
+                "unit_gauge": 87.4860956995884,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    8.748195136741197e-09,
+                    8.74902405583889e-09
+                  ],
+                  [
+                    8.748402346645162e-09,
+                    8.748816806332616e-09
+                  ]
+                ],
+                "central_minus_analytic": [
+                  2.6331203356599886e-17,
+                  6.530048507480402e-18
+                ],
+                "tail": true
+              }
+            },
+            "small_J_tail": {
+              "count": 13,
+              "max_abs_by_width": [
+                2.6331203356599886e-17,
+                6.530048507480402e-18
+              ],
+              "worst": {
+                "group": 28016,
+                "node": [
+                  25,
+                  11,
+                  10
+                ],
+                "analytic": 8.74860956995884e-09,
+                "physical": 0.0,
+                "unit_gauge": 87.4860956995884,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    8.748195136741197e-09,
+                    8.74902405583889e-09
+                  ],
+                  [
+                    8.748402346645162e-09,
+                    8.748816806332616e-09
+                  ]
+                ],
+                "central_minus_analytic": [
+                  2.6331203356599886e-17,
+                  6.530048507480402e-18
+                ],
+                "tail": true
+              }
+            }
+          },
+          "threshold": 1e-10,
+          "passed": true,
+          "failures": [],
+          "colors": 8,
+          "narrow": 39,
+          "additional_fine": 0,
+          "narrow_widths": [
+            1.4551915228366852e-11,
+            7.275957614183426e-12
+          ],
+          "additional_widths": [
+            1.8189894035458565e-12,
+            9.094947017729282e-13
+          ],
+          "tail_cells": 5,
+          "tail_threshold": 0.001,
+          "minimum_sampled_determinant": 2.3960287766068506e-06,
+          "minimum_signed_whole_chart_bound": 2.0523049103742853e-06,
+          "gauge_cell_anchor_max": 1.291725244562808e-20,
+          "physical_anchor_difference": 3.2607380337501546e-16,
+          "raw_sha256": "47fb294e1e0d5947d79e557bd713e86120327b790e0200819ccf340ac70d18b9",
+          "mantissa_bits": 63
+        },
+        "label2": {
+          "component": 2,
+          "checks": {
+            "all": {
+              "count": 25422,
+              "max_abs_by_width": [
+                2.556355395923257e-13,
+                1.2124584783464012e-13
+              ],
+              "worst": {
+                "group": 20069,
+                "node": [
+                  18,
+                  1,
+                  18
+                ],
+                "analytic": 4.59415634939669e-05,
+                "physical": 4.5941563395758777e-05,
+                "unit_gauge": 0.0009820812655846288,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    3.0549728258594835e-05,
+                    6.133339890965817e-05
+                  ],
+                  [
+                    3.824564582765785e-05,
+                    5.3637481402767654e-05
+                  ]
+                ],
+                "central_minus_analytic": [
+                  9.01596031438923e-14,
+                  1.2124584783464012e-13
+                ],
+                "tail": false
+              }
+            },
+            "active": {
+              "count": 6048,
+              "max_abs_by_width": [
+                2.556355395923257e-13,
+                1.2124584783464012e-13
+              ],
+              "worst": {
+                "group": 20069,
+                "node": [
+                  18,
+                  1,
+                  18
+                ],
+                "analytic": 4.59415634939669e-05,
+                "physical": 4.5941563395758777e-05,
+                "unit_gauge": 0.0009820812655846288,
+                "widths": [
+                  5.960464477539063e-08,
+                  2.9802322387695312e-08
+                ],
+                "negative_positive": [
+                  [
+                    3.0549728258594835e-05,
+                    6.133339890965817e-05
+                  ],
+                  [
+                    3.824564582765785e-05,
+                    5.3637481402767654e-05
+                  ]
+                ],
+                "central_minus_analytic": [
+                  9.01596031438923e-14,
+                  1.2124584783464012e-13
+                ],
+                "tail": false
+              }
+            },
+            "fully_melted": {
+              "count": 19374,
+              "max_abs_by_width": [
+                8.230100809436233e-20,
+                7.622480631712045e-20
+              ],
+              "worst": {
+                "group": 28357,
+                "node": [
+                  25,
+                  11,
+                  11
+                ],
+                "analytic": 6.90861908044007e-11,
+                "physical": 0.0,
+                "unit_gauge": 0.690861908044007,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    6.908616261789576e-11,
+                    6.908621907787165e-11
+                  ],
+                  [
+                    6.908617683948251e-11,
+                    6.908620492176852e-11
+                  ]
+                ],
+                "central_minus_analytic": [
+                  4.3482997053295033e-20,
+                  7.622480631712045e-20
+                ],
+                "tail": true
+              }
+            },
+            "small_J_tail": {
+              "count": 13,
+              "max_abs_by_width": [
+                3.5554513901680314e-19,
+                3.3262587253212536e-19
+              ],
+              "worst": {
+                "group": 28337,
+                "node": [
+                  25,
+                  10,
+                  12
+                ],
+                "analytic": 1.723050063447474e-08,
+                "physical": 1.723127225654556e-08,
+                "unit_gauge": -0.007716220708164176,
+                "widths": [
+                  1.4551915228366852e-11,
+                  7.275957614183426e-12
+                ],
+                "negative_positive": [
+                  [
+                    1.7230474750090564e-08,
+                    1.7230526518147827e-08
+                  ],
+                  [
+                    1.7230487692131985e-08,
+                    1.7230513576152248e-08
+                  ]
+                ],
+                "central_minus_analytic": [
+                  -3.5554513901680314e-19,
+                  -3.3262587253212536e-19
+                ],
+                "tail": true
+              }
+            }
+          },
+          "threshold": 1e-10,
+          "passed": true,
+          "failures": [],
+          "colors": 8,
+          "narrow": 13,
+          "additional_fine": 0,
+          "narrow_widths": [
+            1.4551915228366852e-11,
+            7.275957614183426e-12
+          ],
+          "additional_widths": [
+            1.8189894035458565e-12,
+            9.094947017729282e-13
+          ],
+          "tail_cells": 5,
+          "tail_threshold": 0.001,
+          "minimum_sampled_determinant": 2.3960287766068506e-06,
+          "minimum_signed_whole_chart_bound": 2.0525309802364225e-06,
+          "gauge_cell_anchor_max": 1.291725244562808e-20,
+          "physical_anchor_difference": 3.2607380337501546e-16,
+          "raw_sha256": "3e65f09a2edca075c210296d3c1be83fc9dddf48e80a5e84499ffa71a390f024",
+          "mantissa_bits": 63
+        },
+        "order": {
+          "checks": {
+            "all": {
+              "count": 143648,
+              "widths": [
+                {
+                  "h": 1e-08,
+                  "central": {
+                    "max_abs": 1.4339042833795914e-11,
+                    "signed_error": -1.4339042833795914e-11,
+                    "direct": -1.4339042833795914e-11,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "negative": {
+                    "max_abs": 0.0017050641671361947,
+                    "signed_error": -0.0017050641671361947,
+                    "direct": -0.0017050641671361947,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 0.0017050641384581092,
+                    "signed_error": 0.0017050641384581092,
+                    "direct": 0.0017050641384581092,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  }
+                },
+                {
+                  "h": 1e-09,
+                  "central": {
+                    "max_abs": 2.3962429263058027e-12,
+                    "signed_error": -2.3962429263058027e-12,
+                    "direct": -1.0126947891375693e-11,
+                    "analytic": -7.73070496506989e-12,
+                    "physical": -7.73070496506989e-12,
+                    "unit_gauge": 0.0,
+                    "node": 144341
+                  },
+                  "negative": {
+                    "max_abs": 0.00017050641542310562,
+                    "signed_error": -0.00017050641542310562,
+                    "direct": -0.00017050641542310562,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 0.00017050641513632477,
+                    "signed_error": 0.00017050641513632477,
+                    "direct": 0.00017050641513632477,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  }
+                },
+                {
+                  "h": 1e-10,
+                  "central": {
+                    "max_abs": 2.3964788486985356e-12,
+                    "signed_error": -2.3964788486985356e-12,
+                    "direct": -1.0127183813768426e-11,
+                    "analytic": -7.73070496506989e-12,
+                    "physical": -7.73070496506989e-12,
+                    "unit_gauge": 0.0,
+                    "node": 144341
+                  },
+                  "negative": {
+                    "max_abs": 1.7050641529405422e-05,
+                    "signed_error": -1.7050641529405422e-05,
+                    "direct": -1.7050641529405422e-05,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 1.7050641526537616e-05,
+                    "signed_error": 1.7050641526537616e-05,
+                    "direct": 1.7050641526537616e-05,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  }
+                }
+              ]
+            },
+            "lower": {
+              "count": 52061,
+              "widths": [
+                {
+                  "h": 1e-08,
+                  "central": {
+                    "max_abs": 1.4339042833795914e-11,
+                    "signed_error": -1.4339042833795914e-11,
+                    "direct": -1.4339042833795914e-11,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "negative": {
+                    "max_abs": 0.0017050641671361947,
+                    "signed_error": -0.0017050641671361947,
+                    "direct": -0.0017050641671361947,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 0.0017050641384581092,
+                    "signed_error": 0.0017050641384581092,
+                    "direct": 0.0017050641384581092,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  }
+                },
+                {
+                  "h": 1e-09,
+                  "central": {
+                    "max_abs": 1.0147755709734654e-12,
+                    "signed_error": 1.0147755709734654e-12,
+                    "direct": 0.09572869659172943,
+                    "analytic": 0.09572869659071466,
+                    "physical": 0.09572869659071466,
+                    "unit_gauge": -2.1257882122913788e-08,
+                    "node": 69966
+                  },
+                  "negative": {
+                    "max_abs": 0.00017050641542310562,
+                    "signed_error": -0.00017050641542310562,
+                    "direct": -0.00017050641542310562,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 0.00017050641513632477,
+                    "signed_error": 0.00017050641513632477,
+                    "direct": 0.00017050641513632477,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "feasible_extrapolated": {
+                    "max_abs": 1.4339042796791162e-12,
+                    "signed_error": 1.4339042796791162e-12,
+                    "direct": 1.4339042796791162e-12,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  }
+                },
+                {
+                  "h": 1e-10,
+                  "central": {
+                    "max_abs": 1.0147756455123648e-12,
+                    "signed_error": 1.0147756455123648e-12,
+                    "direct": 0.09572869659172943,
+                    "analytic": 0.09572869659071466,
+                    "physical": 0.09572869659071466,
+                    "unit_gauge": -2.1257882122913788e-08,
+                    "node": 69966
+                  },
+                  "negative": {
+                    "max_abs": 1.7050641529405422e-05,
+                    "signed_error": -1.7050641529405422e-05,
+                    "direct": -1.7050641529405422e-05,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "positive": {
+                    "max_abs": 1.7050641526537616e-05,
+                    "signed_error": 1.7050641526537616e-05,
+                    "direct": 1.7050641526537616e-05,
+                    "analytic": 3.2573710231916966e-172,
+                    "physical": 3.2573710231916966e-172,
+                    "unit_gauge": 0.0,
+                    "node": 144583
+                  },
+                  "feasible_extrapolated": {
+                    "max_abs": 1.0147756522886284e-12,
+                    "signed_error": 1.0147756522886284e-12,
+                    "direct": 0.09572869659172943,
+                    "analytic": 0.09572869659071466,
+                    "physical": 0.09572869659071466,
+                    "unit_gauge": -2.1257882122913788e-08,
+                    "node": 69966
+                  }
+                }
+              ]
+            },
+            "interior": {
+              "count": 91482,
+              "widths": [
+                {
+                  "h": 1e-08,
+                  "central": {
+                    "max_abs": 2.3857651965109028e-12,
+                    "signed_error": -2.3857651965109028e-12,
+                    "direct": -1.0116470161580793e-11,
+                    "analytic": -7.73070496506989e-12,
+                    "physical": -7.73070496506989e-12,
+                    "unit_gauge": 0.0,
+                    "node": 144341
+                  },
+                  "negative": {
+                    "max_abs": 0.0012462886081501257,
+                    "signed_error": -0.0012462886081501257,
+                    "direct": -0.001246288587288591,
+                    "analytic": 2.086153472191654e-11,
+                    "physical": 2.086153472191654e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  },
+                  "positive": {
+                    "max_abs": 0.0012462886082020286,
+                    "signed_error": 0.0012462886082020286,
+                    "direct": 0.0012462886290635633,
+                    "analytic": 2.086153472191654e-11,
+                    "physical": 2.086153472191654e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  }
+                },
+                {
+                  "h": 1e-09,
+                  "central": {
+                    "max_abs": 2.3962429263058027e-12,
+                    "signed_error": -2.3962429263058027e-12,
+                    "direct": -1.0126947891375693e-11,
+                    "analytic": -7.73070496506989e-12,
+                    "physical": -7.73070496506989e-12,
+                    "unit_gauge": 0.0,
+                    "node": 144341
+                  },
+                  "negative": {
+                    "max_abs": 0.00012462886079550595,
+                    "signed_error": -0.00012462886079550595,
+                    "direct": -0.00012462883993397122,
+                    "analytic": 2.086153472191654e-11,
+                    "physical": 2.086153472191654e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  },
+                  "positive": {
+                    "max_abs": 0.0001246288608400259,
+                    "signed_error": 0.0001246288608400259,
+                    "direct": 0.0001246288817015606,
+                    "analytic": 2.086153472191654e-11,
+                    "physical": 2.086153472191654e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  }
+                },
+                {
+                  "h": 1e-10,
+                  "central": {
+                    "max_abs": 2.3964788486985356e-12,
+                    "signed_error": -2.3964788486985356e-12,
+                    "direct": -1.0127183813768426e-11,
+                    "analytic": -7.73070496506989e-12,
+                    "physical": -7.73070496506989e-12,
+                    "unit_gauge": 0.0,
+                    "node": 144341
+                  },
+                  "negative": {
+                    "max_abs": 1.2462886059327882e-05,
+                    "signed_error": -1.2462886059327882e-05,
+                    "direct": -1.246286519779316e-05,
+                    "analytic": 2.086153472191654e-11,
+                    "physical": 2.086153472191654e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  },
+                  "positive": {
+                    "max_abs": 1.2462886103903337e-05,
+                    "signed_error": 1.2462886103903337e-05,
+                    "direct": 1.2462906965438059e-05,
+                    "analytic": 2.086153472191654e-11,
+                    "physical": 2.086153472191654e-11,
+                    "unit_gauge": 0.0,
+                    "node": 144475
+                  }
+                }
+              ]
+            },
+            "upper": {
+              "count": 105,
+              "widths": [
+                {
+                  "h": 1e-08,
+                  "central": {
+                    "max_abs": 3.5920525542454476e-13,
+                    "signed_error": 3.5920525542454476e-13,
+                    "direct": -2.1605512277788894e-07,
+                    "analytic": -2.1605548198314437e-07,
+                    "physical": -2.1605548198314437e-07,
+                    "unit_gauge": 0.0,
+                    "node": 144451
+                  },
+                  "negative": {
+                    "max_abs": 8.041636209730925e-05,
+                    "signed_error": -8.041636209730925e-05,
+                    "direct": -8.62313770839664e-05,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  },
+                  "positive": {
+                    "max_abs": 8.041636270077432e-05,
+                    "signed_error": 8.041636270077432e-05,
+                    "direct": 7.460134771411717e-05,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  }
+                },
+                {
+                  "h": 1e-09,
+                  "central": {
+                    "max_abs": 3.592052581757475e-15,
+                    "signed_error": 3.592052581757475e-15,
+                    "direct": -2.1605547839109179e-07,
+                    "analytic": -2.1605548198314437e-07,
+                    "physical": -2.1605548198314437e-07,
+                    "unit_gauge": 0.0,
+                    "node": 144451
+                  },
+                  "negative": {
+                    "max_abs": 8.041636236886726e-06,
+                    "signed_error": -8.041636236886726e-06,
+                    "direct": -1.3856651223543875e-05,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  },
+                  "positive": {
+                    "max_abs": 8.041636242921632e-06,
+                    "signed_error": 8.041636242921632e-06,
+                    "direct": 2.226621256264482e-06,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  },
+                  "feasible_extrapolated": {
+                    "max_abs": 3.592052541842133e-14,
+                    "signed_error": -3.592052541842133e-14,
+                    "direct": -2.1605551790366979e-07,
+                    "analytic": -2.1605548198314437e-07,
+                    "physical": -2.1605548198314437e-07,
+                    "unit_gauge": 0.0,
+                    "node": 144451
+                  }
+                },
+                {
+                  "h": 1e-10,
+                  "central": {
+                    "max_abs": 3.592055363979465e-17,
+                    "signed_error": 3.592055363979465e-17,
+                    "direct": -2.1605548194722383e-07,
+                    "analytic": -2.1605548198314437e-07,
+                    "physical": -2.1605548198314437e-07,
+                    "unit_gauge": 0.0,
+                    "node": 144451
+                  },
+                  "negative": {
+                    "max_abs": 8.041636239601155e-07,
+                    "signed_error": -8.041636239601155e-07,
+                    "direct": -6.619178610617265e-06,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  },
+                  "positive": {
+                    "max_abs": 8.041636240207202e-07,
+                    "signed_error": 8.041636240207202e-07,
+                    "direct": -5.010851362636429e-06,
+                    "analytic": -5.8150149866571495e-06,
+                    "physical": -5.8150149866571495e-06,
+                    "unit_gauge": 0.0,
+                    "node": 144455
+                  },
+                  "feasible_extrapolated": {
+                    "max_abs": 3.592052272133432e-16,
+                    "signed_error": -3.592052272133432e-16,
+                    "direct": -2.160554823423496e-07,
+                    "analytic": -2.1605548198314437e-07,
+                    "physical": -2.1605548198314437e-07,
+                    "unit_gauge": 0.0,
+                    "node": 144451
+                  }
+                }
+              ]
+            },
+            "small_J_tail": {
+              "count": 26,
+              "widths": [
+                {
+                  "h": 1e-08,
+                  "central": {
+                    "max_abs": 1.0147683610290184e-12,
+                    "signed_error": 1.0147683610290184e-12,
+                    "direct": 0.09572869659172943,
+                    "analytic": 0.09572869659071466,
+                    "physical": 0.09572869659071466,
+                    "unit_gauge": -2.1257882122913788e-08,
+                    "node": 69966
+                  },
+                  "negative": {
+                    "max_abs": 8.776436125797069e-08,
+                    "signed_error": -8.776436125797069e-08,
+                    "direct": 0.02644056228907715,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  },
+                  "positive": {
+                    "max_abs": 8.77643916055603e-08,
+                    "signed_error": 8.77643916055603e-08,
+                    "direct": 0.02644073781783001,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  }
+                },
+                {
+                  "h": 1e-09,
+                  "central": {
+                    "max_abs": 1.0147755709734654e-12,
+                    "signed_error": 1.0147755709734654e-12,
+                    "direct": 0.09572869659172943,
+                    "analytic": 0.09572869659071466,
+                    "physical": 0.09572869659071466,
+                    "unit_gauge": -2.1257882122913788e-08,
+                    "node": 69966
+                  },
+                  "negative": {
+                    "max_abs": 8.776422463188156e-09,
+                    "signed_error": -8.776422463188156e-09,
+                    "direct": 0.026440641277015942,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  },
+                  "positive": {
+                    "max_abs": 8.776452823166468e-09,
+                    "signed_error": 8.776452823166468e-09,
+                    "direct": 0.026440658829891227,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  }
+                },
+                {
+                  "h": 1e-10,
+                  "central": {
+                    "max_abs": 1.0147756455123648e-12,
+                    "signed_error": 1.0147756455123648e-12,
+                    "direct": 0.09572869659172943,
+                    "analytic": 0.09572869659071466,
+                    "physical": 0.09572869659071466,
+                    "unit_gauge": -2.1257882122913788e-08,
+                    "node": 69966
+                  },
+                  "negative": {
+                    "max_abs": 8.776285842672501e-10,
+                    "signed_error": -8.776285842672501e-10,
+                    "direct": 0.02644064917580982,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  },
+                  "positive": {
+                    "max_abs": 8.776589443692287e-10,
+                    "signed_error": 8.776589443692287e-10,
+                    "direct": 0.02644065093109735,
+                    "analytic": 0.026440650053438406,
+                    "physical": 0.026440650053438406,
+                    "unit_gauge": 0.0,
+                    "node": 73072
+                  }
+                }
+              ]
+            }
+          },
+          "threshold": 1e-07,
+          "passed": true,
+          "unit_gauge_energy_difference": 1.1449174941446927e-16,
+          "tail_threshold": 0.001,
+          "raw_sha256": "f3377c813ed30b50ff8711a875dfc1ab0c9b44700848049e7ce9754cbecde78e",
+          "mantissa_bits": 63
+        },
+        "shape": {
+          "rows": [
+            {
+              "mode": "log_depth",
+              "analytic": 0.08005344490900257,
+              "elastic": 0.14085733815157817,
+              "bath": -0.060803892992916234,
+              "unit_gauge": -2.4965937053682343,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": 0.08034358028203693,
+                  "minus_analytic": 0.0002901353730343654,
+                  "crystal": 0.1411474704655536,
+                  "bath": -0.060803889933847444,
+                  "unit_gauge": -2.496692181083237,
+                  "negative": 0.08078352260600759,
+                  "positive": 0.07990363795806626
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": 0.08005344559584011,
+                  "minus_analytic": 6.868375449279023e-10,
+                  "crystal": 0.14085733807392806,
+                  "bath": -0.06080389222842797,
+                  "unit_gauge": -2.4965998540777408,
+                  "negative": 0.08009089592572681,
+                  "positive": 0.08001599526595342
+                }
+              ]
+            },
+            {
+              "mode": "scaled_log_exit",
+              "analytic": -0.5473590190112559,
+              "elastic": 0.19835824329788523,
+              "bath": -0.7457172622309034,
+              "unit_gauge": -0.7823779733323899,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": -0.547359018964397,
+                  "minus_analytic": 4.685895980049634e-11,
+                  "crystal": 0.19835824328763724,
+                  "bath": -0.7457172621737964,
+                  "unit_gauge": -0.7823779733351947,
+                  "negative": -0.5473402362562937,
+                  "positive": -0.5473778016725002
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": -0.5473590250180502,
+                  "minus_analytic": -6.006794318240763e-09,
+                  "crystal": 0.19835824329725651,
+                  "bath": -0.745717268237069,
+                  "unit_gauge": -0.7823779733325024,
+                  "negative": -0.5473543329287198,
+                  "positive": -0.5473637171073806
+                }
+              ]
+            },
+            {
+              "mode": "mean_width",
+              "analytic": 0.9989052897799315,
+              "elastic": 0.752399419659601,
+              "bath": 0.24650587051371564,
+              "unit_gauge": -3.9338503786166923,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": 0.9989052901627083,
+                  "minus_analytic": 3.8277678514895067e-10,
+                  "crystal": 0.7523994196594227,
+                  "bath": 0.24650587089667075,
+                  "unit_gauge": -3.9338503786229135,
+                  "negative": 0.9992237333610383,
+                  "positive": 0.9985868469643784
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": 0.9989052929632641,
+                  "minus_analytic": 3.183332508564004e-09,
+                  "crystal": 0.7523994196595816,
+                  "bath": 0.24650587369706756,
+                  "unit_gauge": -3.933850378617016,
+                  "negative": 0.9989848990187059,
+                  "positive": 0.9988256869078223
+                }
+              ]
+            },
+            {
+              "mode": "depth_asymmetry",
+              "analytic": -0.7112035676402889,
+              "elastic": -0.42283546795327476,
+              "bath": -0.28836809994931645,
+              "unit_gauge": 2.623023138726084,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": -0.7112035680804493,
+                  "minus_analytic": -4.4016042270418956e-10,
+                  "crystal": -0.4228354679532152,
+                  "bath": -0.2883681003895364,
+                  "unit_gauge": 2.6230231387270004,
+                  "negative": -0.7109883021592428,
+                  "positive": -0.7114188340016558
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": -0.7112035624372075,
+                  "minus_analytic": 5.203081349450245e-09,
+                  "crystal": -0.4228354679532757,
+                  "bath": -0.28836809474623415,
+                  "unit_gauge": 2.6230231387260963,
+                  "negative": -0.7111497446077718,
+                  "positive": -0.7112573802666433
+                }
+              ]
+            },
+            {
+              "mode": "waist_profile",
+              "analytic": 0.8544650860296478,
+              "elastic": 0.5260752862828595,
+              "bath": 0.3283898000422269,
+              "unit_gauge": -2.9543859445636205,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": 0.8544650862305235,
+                  "minus_analytic": 2.0087574382739518e-10,
+                  "crystal": 0.5260752862828214,
+                  "bath": 0.3283898002431407,
+                  "unit_gauge": -2.9543859445743856,
+                  "negative": 0.8545325323235107,
+                  "positive": 0.8543976401375364
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": 0.8544650877004811,
+                  "minus_analytic": 1.6708333210372316e-09,
+                  "crystal": 0.5260752862828508,
+                  "bath": 0.32838980171306886,
+                  "unit_gauge": -2.9543859445643306,
+                  "negative": 0.8544819511501472,
+                  "positive": 0.854448224250815
+                }
+              ]
+            },
+            {
+              "mode": "polar_equatorial",
+              "analytic": -0.007798676151683635,
+              "elastic": -0.025217198075235103,
+              "bath": 0.017418521925919837,
+              "unit_gauge": -0.023683699963919627,
+              "central": [
+                {
+                  "h": 3.814697265625e-06,
+                  "central": -0.0077986758135046704,
+                  "minus_analytic": 3.3817896491031047e-10,
+                  "crystal": -0.025217198075236424,
+                  "bath": 0.017418522264100122,
+                  "unit_gauge": -0.02368369996345977,
+                  "negative": -0.0077821388024634725,
+                  "positive": -0.007815212824545868
+                },
+                {
+                  "h": 9.5367431640625e-07,
+                  "central": -0.007798678606795012,
+                  "minus_analytic": -2.455111376872788e-09,
+                  "crystal": -0.025217198075235387,
+                  "bath": 0.017418519470808747,
+                  "unit_gauge": -0.023683699963880034,
+                  "negative": -0.007794541564028408,
+                  "positive": -0.007802815649561617
+                }
+              ]
+            }
+          ],
+          "threshold": 1e-07,
+          "passed": false,
+          "mantissa_bits": 63
+        }
+      },
+      "runs": {
+        "label0": {
+          "guard": "_scratch/s11c/r4_rematch39_01/derivatives/secondary_label0_guard",
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/signed_pin/software/stage1_solver/tools/mouth_r4_aligned_derivatives.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "secondary",
+            "label0",
+            "_scratch/s11c/r4_rematch39_01/derivatives/secondary_label0"
+          ],
+          "start_utc": "2026-11-25T02:59:07.061244+00:00",
+          "guard_outcome_written_utc": "2026-11-25T03:00:18.406370+00:00",
+          "wall_seconds": 71.30136826774105,
+          "peak_bytes": 2788331520,
+          "exit_code": 0,
+          "stdout_path": "_scratch/s11c/r4_rematch39_01/derivatives/secondary_label0_guard/stdout",
+          "stdout_size": 18133,
+          "stdout_sha256": "ecf02f49250284d7c118a07e25fbca45df1057eb89ca5d6e506979895d824d0d",
+          "sources": [
+            "mouth_active_prism_orientation.py",
+            "mouth_attachment_impact.cpp",
+            "mouth_bonded_front_adjoint.py",
+            "mouth_bonded_front_feedback.py",
+            "mouth_bonded_material_motion.py",
+            "mouth_bonded_material_residual.py",
+            "mouth_brace_grip.cpp",
+            "mouth_breathing_mobile_patch.py",
+            "mouth_bulk_cut_hold.cpp",
+            "mouth_bulk_isotropic_4d.cpp",
+            "mouth_bulk_thermal_cell.cpp",
+            "mouth_circulation_material.py",
+            "mouth_closed_rim_endpoint.py",
+            "mouth_closed_rim_surface_review.py",
+            "mouth_closed_rim_work.py",
+            "mouth_continuous_depth_mesh.py",
+            "mouth_continuous_evidence.py",
+            "mouth_continuous_order.py",
+            "mouth_continuous_shape_relax.py",
+            "mouth_conversion_shape_mode.py",
+            "mouth_cp10_bucket_intersection.cpp",
+            "mouth_cp10_bucket_transport.hpp",
+            "mouth_cp10_bucket_work.cpp",
+            "mouth_cp10_field_shape.py",
+            "mouth_cp10_imaged_labels.cpp",
+            "mouth_cp10_label_condition.py",
+            "mouth_cp10_label_gauge.py",
+            "mouth_cp10_label_grid.py",
+            "mouth_cp10_label_orientation.py",
+            "mouth_cp10_matched_depth.cpp",
+            "mouth_cp10_nested_energy.cpp",
+            "mouth_cp10_nested_energy_depth.cpp",
+            "mouth_cp10_nested_forces.py",
+            "mouth_cp10_order_depth_work.cpp",
+            "mouth_cp10_spatial_crystal.cpp",
+            "mouth_cp10_spatial_crystal.py",
+            "mouth_curved_steady.py",
+            "mouth_dense_budget.hpp",
+            "mouth_dense_interface.cpp",
+            "mouth_disk_boundary_work.py",
+            "mouth_disk_independent_review.py",
+            "mouth_disk_mesh_rematch.py",
+            "mouth_disk_pillbox.py",
+            "mouth_entrance_tag_transport.cpp",
+            "mouth_eulerian_r4_spatial_cell.py",
+            "mouth_exact_checkpoint_control.py",
+            "mouth_exchange_carrier.py",
+            "mouth_exchange_carrier_density.py",
+            "mouth_exchange_geometry.py",
+            "mouth_exchange_interior.py",
+            "mouth_exchange_shear.py",
+            "mouth_exit_witness.py",
+            "mouth_finite_bore_support.py",
+            "mouth_fixed_wall_angular.py",
+            "mouth_free_shape_solid.cpp",
+            "mouth_free_shape_solid.py",
+            "mouth_internal_collar.py",
+            "mouth_internal_collar_check.py",
+            "mouth_inverse_material_energy.cpp",
+            "mouth_joined_angular_work.py",
+            "mouth_joined_front_audit.py",
+            "mouth_joined_front_stationarity.py",
+            "mouth_joined_front_trace.py",
+            "mouth_joint_collar_release.py",
+            "mouth_joint_endpoint_audit.py",
+            "mouth_joint_polar_shape.py",
+            "mouth_last_ring_solid.py",
+            "mouth_last_rings_fluid.py",
+            "mouth_live_waist_active_wave.py",
+            "mouth_live_waist_fields.py",
+            "mouth_live_waist_order.py",
+            "mouth_live_waist_reopen.py",
+            "mouth_live_waist_wave.py",
+            "mouth_live_waist_wave_location.py",
+            "mouth_middepth_bend_wall.cpp",
+            "mouth_middepth_rearrangement.cpp",
+            "mouth_mobile_joined_fields.py",
+            "mouth_mobile_lining.cpp",
+            "mouth_neck_order_check.py",
+            "mouth_ordered_j_bounds.cpp",
+            "mouth_polar_bonded.py",
+            "mouth_polar_exit_readout.py",
+            "mouth_polar_joined.py",
+            "mouth_polar_shape_endpoint_review.py",
+            "mouth_poly_bonded_core.py",
+            "mouth_poly_shallow_release.py",
+            "mouth_polycrystal_material.py",
+            "mouth_prism_support_decision.py",
+            "mouth_r4_aligned_crystal.py",
+            "mouth_r4_aligned_derivatives.py",
+            "mouth_r4_aligned_stencil.cpp",
+            "mouth_r4_aligned_stencil.py",
+            "mouth_r4_barrier_held.py",
+            "mouth_r4_barrier_shape.py",
+            "mouth_r4_clearance_shapes.cpp",
+            "mouth_r4_conforming_prisms.py",
+            "mouth_r4_corner_projection.py",
+            "mouth_r4_eulerian_relax_labels.py",
+            "mouth_r4_eulerian_release.py",
+            "mouth_r4_eulerian_solid.cpp",
+            "mouth_r4_eulerian_solid.py",
+            "mouth_r4_fold_constitutive.cpp",
+            "mouth_r4_fold_order.py",
+            "mouth_r4_full_label_precision.py",
+            "mouth_r4_full_label_work.cpp",
+            "mouth_r4_full_label_work.py",
+            "mouth_r4_harmonic_shape.py",
+            "mouth_r4_inverse_shape_work.cpp",
+            "mouth_r4_label_quad_bridge.hpp",
+            "mouth_r4_melt_barrier.cpp",
+            "mouth_r4_melt_barrier.py",
+            "mouth_r4_newton_crystal.cpp",
+            "mouth_r4_newton_crystal.py",
+            "mouth_r4_newton_stop.py",
+            "mouth_r4_projected_fields.py",
+            "mouth_r4_projected_held.py",
+            "mouth_r4_refined_solid.cpp",
+            "mouth_r4_refinement_review.py",
+            "mouth_r4_ring_work.cpp",
+            "mouth_r4_shift_work.cpp",
+            "mouth_r4_smooth_depth.cpp",
+            "mouth_r4_smooth_fields.py",
+            "mouth_r4_smooth_held.py",
+            "mouth_r4_smooth_label_derivatives.py",
+            "mouth_r4_smooth_points.hpp",
+            "mouth_r4_smooth_static.py",
+            "mouth_r4_stage2_outcome.py",
+            "mouth_r4_unfolded_shape_work.cpp",
+            "mouth_receiver_junction.cpp",
+            "mouth_receiver_order_control.py",
+            "mouth_receiver_order_equilibrium.py",
+            "mouth_receiver_relax.cpp",
+            "mouth_rim_pinned_comparison.py",
+            "mouth_sealed_shape_relax.py",
+            "mouth_shallow_puncture_fields.py",
+            "mouth_strained_wave.py",
+            "mouth_supercore_front.py",
+            "mouth_supercore_joined_front.py",
+            "mouth_supercore_shape.py",
+            "mouth_supercore_terminal_order.py",
+            "mouth_unified_puncture.py",
+            "mouth_unified_transverse.py",
+            "mouth_waist_outer_order.py",
+            "mouth_wave_material_transport.cpp",
+            "mouth_whole_r4_relax.py",
+            "mouth_wider_wound_carrier.py",
+            "mouth_winding_resolved_patch.py",
+            "mouth_wound_carrier.py",
+            "neutral_patch_order_hold.cpp",
+            "neutral_patch_warm_neighbor_torque.cpp"
+          ],
+          "record_sha256": "e8986526023eb8869dc6c34512f7bf6dc42a42099a1c6a7709b4c9f684e4ecdc"
+        },
+        "label1": {
+          "guard": "_scratch/s11c/r4_rematch39_01/derivatives/secondary_label1_guard",
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/signed_pin/software/stage1_solver/tools/mouth_r4_aligned_derivatives.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "secondary",
+            "label1",
+            "_scratch/s11c/r4_rematch39_01/derivatives/secondary_label1"
+          ],
+          "start_utc": "2026-11-25T03:00:18.465955+00:00",
+          "guard_outcome_written_utc": "2026-11-25T03:01:34.007493+00:00",
+          "wall_seconds": 75.47487305477262,
+          "peak_bytes": 2797207552,
+          "exit_code": 0,
+          "stdout_path": "_scratch/s11c/r4_rematch39_01/derivatives/secondary_label1_guard/stdout",
+          "stdout_size": 18124,
+          "stdout_sha256": "a22575ffb99f4dad1923916c48619533071e4e7b9cb1145d407fd50288c99b84",
+          "sources": [
+            "mouth_active_prism_orientation.py",
+            "mouth_attachment_impact.cpp",
+            "mouth_bonded_front_adjoint.py",
+            "mouth_bonded_front_feedback.py",
+            "mouth_bonded_material_motion.py",
+            "mouth_bonded_material_residual.py",
+            "mouth_brace_grip.cpp",
+            "mouth_breathing_mobile_patch.py",
+            "mouth_bulk_cut_hold.cpp",
+            "mouth_bulk_isotropic_4d.cpp",
+            "mouth_bulk_thermal_cell.cpp",
+            "mouth_circulation_material.py",
+            "mouth_closed_rim_endpoint.py",
+            "mouth_closed_rim_surface_review.py",
+            "mouth_closed_rim_work.py",
+            "mouth_continuous_depth_mesh.py",
+            "mouth_continuous_evidence.py",
+            "mouth_continuous_order.py",
+            "mouth_continuous_shape_relax.py",
+            "mouth_conversion_shape_mode.py",
+            "mouth_cp10_bucket_intersection.cpp",
+            "mouth_cp10_bucket_transport.hpp",
+            "mouth_cp10_bucket_work.cpp",
+            "mouth_cp10_field_shape.py",
+            "mouth_cp10_imaged_labels.cpp",
+            "mouth_cp10_label_condition.py",
+            "mouth_cp10_label_gauge.py",
+            "mouth_cp10_label_grid.py",
+            "mouth_cp10_label_orientation.py",
+            "mouth_cp10_matched_depth.cpp",
+            "mouth_cp10_nested_energy.cpp",
+            "mouth_cp10_nested_energy_depth.cpp",
+            "mouth_cp10_nested_forces.py",
+            "mouth_cp10_order_depth_work.cpp",
+            "mouth_cp10_spatial_crystal.cpp",
+            "mouth_cp10_spatial_crystal.py",
+            "mouth_curved_steady.py",
+            "mouth_dense_budget.hpp",
+            "mouth_dense_interface.cpp",
+            "mouth_disk_boundary_work.py",
+            "mouth_disk_independent_review.py",
+            "mouth_disk_mesh_rematch.py",
+            "mouth_disk_pillbox.py",
+            "mouth_entrance_tag_transport.cpp",
+            "mouth_eulerian_r4_spatial_cell.py",
+            "mouth_exact_checkpoint_control.py",
+            "mouth_exchange_carrier.py",
+            "mouth_exchange_carrier_density.py",
+            "mouth_exchange_geometry.py",
+            "mouth_exchange_interior.py",
+            "mouth_exchange_shear.py",
+            "mouth_exit_witness.py",
+            "mouth_finite_bore_support.py",
+            "mouth_fixed_wall_angular.py",
+            "mouth_free_shape_solid.cpp",
+            "mouth_free_shape_solid.py",
+            "mouth_internal_collar.py",
+            "mouth_internal_collar_check.py",
+            "mouth_inverse_material_energy.cpp",
+            "mouth_joined_angular_work.py",
+            "mouth_joined_front_audit.py",
+            "mouth_joined_front_stationarity.py",
+            "mouth_joined_front_trace.py",
+            "mouth_joint_collar_release.py",
+            "mouth_joint_endpoint_audit.py",
+            "mouth_joint_polar_shape.py",
+            "mouth_last_ring_solid.py",
+            "mouth_last_rings_fluid.py",
+            "mouth_live_waist_active_wave.py",
+            "mouth_live_waist_fields.py",
+            "mouth_live_waist_order.py",
+            "mouth_live_waist_reopen.py",
+            "mouth_live_waist_wave.py",
+            "mouth_live_waist_wave_location.py",
+            "mouth_middepth_bend_wall.cpp",
+            "mouth_middepth_rearrangement.cpp",
+            "mouth_mobile_joined_fields.py",
+            "mouth_mobile_lining.cpp",
+            "mouth_neck_order_check.py",
+            "mouth_ordered_j_bounds.cpp",
+            "mouth_polar_bonded.py",
+            "mouth_polar_exit_readout.py",
+            "mouth_polar_joined.py",
+            "mouth_polar_shape_endpoint_review.py",
+            "mouth_poly_bonded_core.py",
+            "mouth_poly_shallow_release.py",
+            "mouth_polycrystal_material.py",
+            "mouth_prism_support_decision.py",
+            "mouth_r4_aligned_crystal.py",
+            "mouth_r4_aligned_derivatives.py",
+            "mouth_r4_aligned_stencil.cpp",
+            "mouth_r4_aligned_stencil.py",
+            "mouth_r4_barrier_held.py",
+            "mouth_r4_barrier_shape.py",
+            "mouth_r4_clearance_shapes.cpp",
+            "mouth_r4_conforming_prisms.py",
+            "mouth_r4_corner_projection.py",
+            "mouth_r4_eulerian_relax_labels.py",
+            "mouth_r4_eulerian_release.py",
+            "mouth_r4_eulerian_solid.cpp",
+            "mouth_r4_eulerian_solid.py",
+            "mouth_r4_fold_constitutive.cpp",
+            "mouth_r4_fold_order.py",
+            "mouth_r4_full_label_precision.py",
+            "mouth_r4_full_label_work.cpp",
+            "mouth_r4_full_label_work.py",
+            "mouth_r4_harmonic_shape.py",
+            "mouth_r4_inverse_shape_work.cpp",
+            "mouth_r4_label_quad_bridge.hpp",
+            "mouth_r4_melt_barrier.cpp",
+            "mouth_r4_melt_barrier.py",
+            "mouth_r4_newton_crystal.cpp",
+            "mouth_r4_newton_crystal.py",
+            "mouth_r4_newton_stop.py",
+            "mouth_r4_projected_fields.py",
+            "mouth_r4_projected_held.py",
+            "mouth_r4_refined_solid.cpp",
+            "mouth_r4_refinement_review.py",
+            "mouth_r4_ring_work.cpp",
+            "mouth_r4_shift_work.cpp",
+            "mouth_r4_smooth_depth.cpp",
+            "mouth_r4_smooth_fields.py",
+            "mouth_r4_smooth_held.py",
+            "mouth_r4_smooth_label_derivatives.py",
+            "mouth_r4_smooth_points.hpp",
+            "mouth_r4_smooth_static.py",
+            "mouth_r4_stage2_outcome.py",
+            "mouth_r4_unfolded_shape_work.cpp",
+            "mouth_receiver_junction.cpp",
+            "mouth_receiver_order_control.py",
+            "mouth_receiver_order_equilibrium.py",
+            "mouth_receiver_relax.cpp",
+            "mouth_rim_pinned_comparison.py",
+            "mouth_sealed_shape_relax.py",
+            "mouth_shallow_puncture_fields.py",
+            "mouth_strained_wave.py",
+            "mouth_supercore_front.py",
+            "mouth_supercore_joined_front.py",
+            "mouth_supercore_shape.py",
+            "mouth_supercore_terminal_order.py",
+            "mouth_unified_puncture.py",
+            "mouth_unified_transverse.py",
+            "mouth_waist_outer_order.py",
+            "mouth_wave_material_transport.cpp",
+            "mouth_whole_r4_relax.py",
+            "mouth_wider_wound_carrier.py",
+            "mouth_winding_resolved_patch.py",
+            "mouth_wound_carrier.py",
+            "neutral_patch_order_hold.cpp",
+            "neutral_patch_warm_neighbor_torque.cpp"
+          ],
+          "record_sha256": "f2a74bfe4b63bb1c535bab066f50f97c383da308fde254158f6c25c4312b6c64"
+        },
+        "label2": {
+          "guard": "_scratch/s11c/r4_rematch39_01/derivatives/secondary_label2_guard",
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/signed_pin/software/stage1_solver/tools/mouth_r4_aligned_derivatives.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "secondary",
+            "label2",
+            "_scratch/s11c/r4_rematch39_01/derivatives/secondary_label2"
+          ],
+          "start_utc": "2026-11-25T03:00:45.410721+00:00",
+          "guard_outcome_written_utc": "2026-11-25T03:02:15.484267+00:00",
+          "wall_seconds": 90.00263488618657,
+          "peak_bytes": 2801504256,
+          "exit_code": 0,
+          "stdout_path": "_scratch/s11c/r4_rematch39_01/derivatives/secondary_label2_guard/stdout",
+          "stdout_size": 18156,
+          "stdout_sha256": "ab395133b29763476c08b10b88c71af48c0f6889dcc2b69b90f7e277a63af085",
+          "sources": [
+            "mouth_active_prism_orientation.py",
+            "mouth_attachment_impact.cpp",
+            "mouth_bonded_front_adjoint.py",
+            "mouth_bonded_front_feedback.py",
+            "mouth_bonded_material_motion.py",
+            "mouth_bonded_material_residual.py",
+            "mouth_brace_grip.cpp",
+            "mouth_breathing_mobile_patch.py",
+            "mouth_bulk_cut_hold.cpp",
+            "mouth_bulk_isotropic_4d.cpp",
+            "mouth_bulk_thermal_cell.cpp",
+            "mouth_circulation_material.py",
+            "mouth_closed_rim_endpoint.py",
+            "mouth_closed_rim_surface_review.py",
+            "mouth_closed_rim_work.py",
+            "mouth_continuous_depth_mesh.py",
+            "mouth_continuous_evidence.py",
+            "mouth_continuous_order.py",
+            "mouth_continuous_shape_relax.py",
+            "mouth_conversion_shape_mode.py",
+            "mouth_cp10_bucket_intersection.cpp",
+            "mouth_cp10_bucket_transport.hpp",
+            "mouth_cp10_bucket_work.cpp",
+            "mouth_cp10_field_shape.py",
+            "mouth_cp10_imaged_labels.cpp",
+            "mouth_cp10_label_condition.py",
+            "mouth_cp10_label_gauge.py",
+            "mouth_cp10_label_grid.py",
+            "mouth_cp10_label_orientation.py",
+            "mouth_cp10_matched_depth.cpp",
+            "mouth_cp10_nested_energy.cpp",
+            "mouth_cp10_nested_energy_depth.cpp",
+            "mouth_cp10_nested_forces.py",
+            "mouth_cp10_order_depth_work.cpp",
+            "mouth_cp10_spatial_crystal.cpp",
+            "mouth_cp10_spatial_crystal.py",
+            "mouth_curved_steady.py",
+            "mouth_dense_budget.hpp",
+            "mouth_dense_interface.cpp",
+            "mouth_disk_boundary_work.py",
+            "mouth_disk_independent_review.py",
+            "mouth_disk_mesh_rematch.py",
+            "mouth_disk_pillbox.py",
+            "mouth_entrance_tag_transport.cpp",
+            "mouth_eulerian_r4_spatial_cell.py",
+            "mouth_exact_checkpoint_control.py",
+            "mouth_exchange_carrier.py",
+            "mouth_exchange_carrier_density.py",
+            "mouth_exchange_geometry.py",
+            "mouth_exchange_interior.py",
+            "mouth_exchange_shear.py",
+            "mouth_exit_witness.py",
+            "mouth_finite_bore_support.py",
+            "mouth_fixed_wall_angular.py",
+            "mouth_free_shape_solid.cpp",
+            "mouth_free_shape_solid.py",
+            "mouth_internal_collar.py",
+            "mouth_internal_collar_check.py",
+            "mouth_inverse_material_energy.cpp",
+            "mouth_joined_angular_work.py",
+            "mouth_joined_front_audit.py",
+            "mouth_joined_front_stationarity.py",
+            "mouth_joined_front_trace.py",
+            "mouth_joint_collar_release.py",
+            "mouth_joint_endpoint_audit.py",
+            "mouth_joint_polar_shape.py",
+            "mouth_last_ring_solid.py",
+            "mouth_last_rings_fluid.py",
+            "mouth_live_waist_active_wave.py",
+            "mouth_live_waist_fields.py",
+            "mouth_live_waist_order.py",
+            "mouth_live_waist_reopen.py",
+            "mouth_live_waist_wave.py",
+            "mouth_live_waist_wave_location.py",
+            "mouth_middepth_bend_wall.cpp",
+            "mouth_middepth_rearrangement.cpp",
+            "mouth_mobile_joined_fields.py",
+            "mouth_mobile_lining.cpp",
+            "mouth_neck_order_check.py",
+            "mouth_ordered_j_bounds.cpp",
+            "mouth_polar_bonded.py",
+            "mouth_polar_exit_readout.py",
+            "mouth_polar_joined.py",
+            "mouth_polar_shape_endpoint_review.py",
+            "mouth_poly_bonded_core.py",
+            "mouth_poly_shallow_release.py",
+            "mouth_polycrystal_material.py",
+            "mouth_prism_support_decision.py",
+            "mouth_r4_aligned_crystal.py",
+            "mouth_r4_aligned_derivatives.py",
+            "mouth_r4_aligned_stencil.cpp",
+            "mouth_r4_aligned_stencil.py",
+            "mouth_r4_barrier_held.py",
+            "mouth_r4_barrier_shape.py",
+            "mouth_r4_clearance_shapes.cpp",
+            "mouth_r4_conforming_prisms.py",
+            "mouth_r4_corner_projection.py",
+            "mouth_r4_eulerian_relax_labels.py",
+            "mouth_r4_eulerian_release.py",
+            "mouth_r4_eulerian_solid.cpp",
+            "mouth_r4_eulerian_solid.py",
+            "mouth_r4_fold_constitutive.cpp",
+            "mouth_r4_fold_order.py",
+            "mouth_r4_full_label_precision.py",
+            "mouth_r4_full_label_work.cpp",
+            "mouth_r4_full_label_work.py",
+            "mouth_r4_harmonic_shape.py",
+            "mouth_r4_inverse_shape_work.cpp",
+            "mouth_r4_label_quad_bridge.hpp",
+            "mouth_r4_melt_barrier.cpp",
+            "mouth_r4_melt_barrier.py",
+            "mouth_r4_newton_crystal.cpp",
+            "mouth_r4_newton_crystal.py",
+            "mouth_r4_newton_stop.py",
+            "mouth_r4_projected_fields.py",
+            "mouth_r4_projected_held.py",
+            "mouth_r4_refined_solid.cpp",
+            "mouth_r4_refinement_review.py",
+            "mouth_r4_ring_work.cpp",
+            "mouth_r4_shift_work.cpp",
+            "mouth_r4_smooth_depth.cpp",
+            "mouth_r4_smooth_fields.py",
+            "mouth_r4_smooth_held.py",
+            "mouth_r4_smooth_label_derivatives.py",
+            "mouth_r4_smooth_points.hpp",
+            "mouth_r4_smooth_static.py",
+            "mouth_r4_stage2_outcome.py",
+            "mouth_r4_unfolded_shape_work.cpp",
+            "mouth_receiver_junction.cpp",
+            "mouth_receiver_order_control.py",
+            "mouth_receiver_order_equilibrium.py",
+            "mouth_receiver_relax.cpp",
+            "mouth_rim_pinned_comparison.py",
+            "mouth_sealed_shape_relax.py",
+            "mouth_shallow_puncture_fields.py",
+            "mouth_strained_wave.py",
+            "mouth_supercore_front.py",
+            "mouth_supercore_joined_front.py",
+            "mouth_supercore_shape.py",
+            "mouth_supercore_terminal_order.py",
+            "mouth_unified_puncture.py",
+            "mouth_unified_transverse.py",
+            "mouth_waist_outer_order.py",
+            "mouth_wave_material_transport.cpp",
+            "mouth_whole_r4_relax.py",
+            "mouth_wider_wound_carrier.py",
+            "mouth_winding_resolved_patch.py",
+            "mouth_wound_carrier.py",
+            "neutral_patch_order_hold.cpp",
+            "neutral_patch_warm_neighbor_torque.cpp"
+          ],
+          "record_sha256": "f55a29aae6e1e87ae2c10317826642a39c2746060486b50bab68e72640f836eb"
+        },
+        "order": {
+          "guard": "_scratch/s11c/r4_rematch39_01/derivatives/secondary_order_guard",
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/signed_pin/software/stage1_solver/tools/mouth_r4_aligned_derivatives.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "secondary",
+            "order",
+            "_scratch/s11c/r4_rematch39_01/derivatives/secondary_order"
+          ],
+          "start_utc": "2026-11-25T03:01:34.299955+00:00",
+          "guard_outcome_written_utc": "2026-11-25T03:03:04.147641+00:00",
+          "wall_seconds": 89.78569913096726,
+          "peak_bytes": 2370809856,
+          "exit_code": 0,
+          "stdout_path": "_scratch/s11c/r4_rematch39_01/derivatives/secondary_order_guard/stdout",
+          "stdout_size": 27448,
+          "stdout_sha256": "0ff409c069276823ffb1e765a58c1a1e9862727b9ffe38d9fa4ec65e071213ae",
+          "sources": [
+            "mouth_active_prism_orientation.py",
+            "mouth_attachment_impact.cpp",
+            "mouth_bonded_front_adjoint.py",
+            "mouth_bonded_front_feedback.py",
+            "mouth_bonded_material_motion.py",
+            "mouth_bonded_material_residual.py",
+            "mouth_brace_grip.cpp",
+            "mouth_breathing_mobile_patch.py",
+            "mouth_bulk_cut_hold.cpp",
+            "mouth_bulk_isotropic_4d.cpp",
+            "mouth_bulk_thermal_cell.cpp",
+            "mouth_circulation_material.py",
+            "mouth_closed_rim_endpoint.py",
+            "mouth_closed_rim_surface_review.py",
+            "mouth_closed_rim_work.py",
+            "mouth_continuous_depth_mesh.py",
+            "mouth_continuous_evidence.py",
+            "mouth_continuous_order.py",
+            "mouth_continuous_shape_relax.py",
+            "mouth_conversion_shape_mode.py",
+            "mouth_cp10_bucket_intersection.cpp",
+            "mouth_cp10_bucket_transport.hpp",
+            "mouth_cp10_bucket_work.cpp",
+            "mouth_cp10_field_shape.py",
+            "mouth_cp10_imaged_labels.cpp",
+            "mouth_cp10_label_condition.py",
+            "mouth_cp10_label_gauge.py",
+            "mouth_cp10_label_grid.py",
+            "mouth_cp10_label_orientation.py",
+            "mouth_cp10_matched_depth.cpp",
+            "mouth_cp10_nested_energy.cpp",
+            "mouth_cp10_nested_energy_depth.cpp",
+            "mouth_cp10_nested_forces.py",
+            "mouth_cp10_order_depth_work.cpp",
+            "mouth_cp10_spatial_crystal.cpp",
+            "mouth_cp10_spatial_crystal.py",
+            "mouth_curved_steady.py",
+            "mouth_dense_budget.hpp",
+            "mouth_dense_interface.cpp",
+            "mouth_disk_boundary_work.py",
+            "mouth_disk_independent_review.py",
+            "mouth_disk_mesh_rematch.py",
+            "mouth_disk_pillbox.py",
+            "mouth_entrance_tag_transport.cpp",
+            "mouth_eulerian_r4_spatial_cell.py",
+            "mouth_exact_checkpoint_control.py",
+            "mouth_exchange_carrier.py",
+            "mouth_exchange_carrier_density.py",
+            "mouth_exchange_geometry.py",
+            "mouth_exchange_interior.py",
+            "mouth_exchange_shear.py",
+            "mouth_exit_witness.py",
+            "mouth_finite_bore_support.py",
+            "mouth_fixed_wall_angular.py",
+            "mouth_free_shape_solid.cpp",
+            "mouth_free_shape_solid.py",
+            "mouth_internal_collar.py",
+            "mouth_internal_collar_check.py",
+            "mouth_inverse_material_energy.cpp",
+            "mouth_joined_angular_work.py",
+            "mouth_joined_front_audit.py",
+            "mouth_joined_front_stationarity.py",
+            "mouth_joined_front_trace.py",
+            "mouth_joint_collar_release.py",
+            "mouth_joint_endpoint_audit.py",
+            "mouth_joint_polar_shape.py",
+            "mouth_last_ring_solid.py",
+            "mouth_last_rings_fluid.py",
+            "mouth_live_waist_active_wave.py",
+            "mouth_live_waist_fields.py",
+            "mouth_live_waist_order.py",
+            "mouth_live_waist_reopen.py",
+            "mouth_live_waist_wave.py",
+            "mouth_live_waist_wave_location.py",
+            "mouth_middepth_bend_wall.cpp",
+            "mouth_middepth_rearrangement.cpp",
+            "mouth_mobile_joined_fields.py",
+            "mouth_mobile_lining.cpp",
+            "mouth_neck_order_check.py",
+            "mouth_ordered_j_bounds.cpp",
+            "mouth_polar_bonded.py",
+            "mouth_polar_exit_readout.py",
+            "mouth_polar_joined.py",
+            "mouth_polar_shape_endpoint_review.py",
+            "mouth_poly_bonded_core.py",
+            "mouth_poly_shallow_release.py",
+            "mouth_polycrystal_material.py",
+            "mouth_prism_support_decision.py",
+            "mouth_r4_aligned_derivatives.py",
+            "mouth_r4_aligned_stencil.cpp",
+            "mouth_r4_aligned_stencil.py",
+            "mouth_r4_barrier_held.py",
+            "mouth_r4_barrier_shape.py",
+            "mouth_r4_clearance_shapes.cpp",
+            "mouth_r4_conforming_prisms.py",
+            "mouth_r4_corner_projection.py",
+            "mouth_r4_eulerian_relax_labels.py",
+            "mouth_r4_eulerian_release.py",
+            "mouth_r4_eulerian_solid.cpp",
+            "mouth_r4_eulerian_solid.py",
+            "mouth_r4_fold_constitutive.cpp",
+            "mouth_r4_fold_order.py",
+            "mouth_r4_full_label_precision.py",
+            "mouth_r4_full_label_work.cpp",
+            "mouth_r4_full_label_work.py",
+            "mouth_r4_harmonic_shape.py",
+            "mouth_r4_inverse_shape_work.cpp",
+            "mouth_r4_label_quad_bridge.hpp",
+            "mouth_r4_melt_barrier.cpp",
+            "mouth_r4_melt_barrier.py",
+            "mouth_r4_newton_crystal.cpp",
+            "mouth_r4_newton_stop.py",
+            "mouth_r4_projected_fields.py",
+            "mouth_r4_projected_held.py",
+            "mouth_r4_refined_solid.cpp",
+            "mouth_r4_refinement_review.py",
+            "mouth_r4_ring_work.cpp",
+            "mouth_r4_shift_work.cpp",
+            "mouth_r4_smooth_depth.cpp",
+            "mouth_r4_smooth_fields.py",
+            "mouth_r4_smooth_held.py",
+            "mouth_r4_smooth_label_derivatives.py",
+            "mouth_r4_smooth_order_boundary.py",
+            "mouth_r4_smooth_order_derivatives.py",
+            "mouth_r4_smooth_points.hpp",
+            "mouth_r4_smooth_static.py",
+            "mouth_r4_stage2_outcome.py",
+            "mouth_r4_unfolded_shape_work.cpp",
+            "mouth_receiver_junction.cpp",
+            "mouth_receiver_order_control.py",
+            "mouth_receiver_order_equilibrium.py",
+            "mouth_receiver_relax.cpp",
+            "mouth_rim_pinned_comparison.py",
+            "mouth_sealed_shape_relax.py",
+            "mouth_shallow_puncture_fields.py",
+            "mouth_strained_wave.py",
+            "mouth_supercore_front.py",
+            "mouth_supercore_joined_front.py",
+            "mouth_supercore_shape.py",
+            "mouth_supercore_terminal_order.py",
+            "mouth_unified_puncture.py",
+            "mouth_unified_transverse.py",
+            "mouth_waist_outer_order.py",
+            "mouth_wave_material_transport.cpp",
+            "mouth_whole_r4_relax.py",
+            "mouth_wider_wound_carrier.py",
+            "mouth_winding_resolved_patch.py",
+            "mouth_wound_carrier.py",
+            "neutral_patch_order_hold.cpp",
+            "neutral_patch_warm_neighbor_torque.cpp"
+          ],
+          "record_sha256": "d7d04fd51ffda0f7dfccb803a0385d9e6010d6a92f53bce427a23819d0fa7946"
+        },
+        "shape": {
+          "guard": "_scratch/s11c/r4_rematch39_01/derivatives/secondary_shape_guard",
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/signed_pin/software/stage1_solver/tools/mouth_r4_aligned_derivatives.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "secondary",
+            "shape",
+            "_scratch/s11c/r4_rematch39_01/derivatives/secondary_shape"
+          ],
+          "start_utc": "2026-11-25T03:03:01.112025+00:00",
+          "guard_outcome_written_utc": "2026-11-25T03:04:03.834812+00:00",
+          "wall_seconds": 62.66121631907299,
+          "peak_bytes": 1809784832,
+          "exit_code": 1,
+          "stdout_path": "_scratch/s11c/r4_rematch39_01/derivatives/secondary_shape_guard/stdout",
+          "stdout_size": 20404,
+          "stdout_sha256": "38269d2b162c487399c2d7af04b87d4a113beaa5b1c2794df688a8e7d0b19820",
+          "sources": [
+            "mouth_active_prism_orientation.py",
+            "mouth_attachment_impact.cpp",
+            "mouth_bonded_front_adjoint.py",
+            "mouth_bonded_front_feedback.py",
+            "mouth_bonded_material_motion.py",
+            "mouth_bonded_material_residual.py",
+            "mouth_brace_grip.cpp",
+            "mouth_breathing_mobile_patch.py",
+            "mouth_bulk_cut_hold.cpp",
+            "mouth_bulk_isotropic_4d.cpp",
+            "mouth_bulk_thermal_cell.cpp",
+            "mouth_circulation_material.py",
+            "mouth_closed_rim_endpoint.py",
+            "mouth_closed_rim_surface_review.py",
+            "mouth_closed_rim_work.py",
+            "mouth_continuous_depth_mesh.py",
+            "mouth_continuous_evidence.py",
+            "mouth_continuous_order.py",
+            "mouth_continuous_shape_relax.py",
+            "mouth_conversion_shape_mode.py",
+            "mouth_cp10_bucket_intersection.cpp",
+            "mouth_cp10_bucket_transport.hpp",
+            "mouth_cp10_bucket_work.cpp",
+            "mouth_cp10_field_shape.py",
+            "mouth_cp10_imaged_labels.cpp",
+            "mouth_cp10_label_condition.py",
+            "mouth_cp10_label_gauge.py",
+            "mouth_cp10_label_grid.py",
+            "mouth_cp10_label_orientation.py",
+            "mouth_cp10_matched_depth.cpp",
+            "mouth_cp10_nested_energy.cpp",
+            "mouth_cp10_nested_energy_depth.cpp",
+            "mouth_cp10_nested_forces.py",
+            "mouth_cp10_order_depth_work.cpp",
+            "mouth_cp10_spatial_crystal.cpp",
+            "mouth_cp10_spatial_crystal.py",
+            "mouth_curved_steady.py",
+            "mouth_dense_budget.hpp",
+            "mouth_dense_interface.cpp",
+            "mouth_disk_boundary_work.py",
+            "mouth_disk_independent_review.py",
+            "mouth_disk_mesh_rematch.py",
+            "mouth_disk_pillbox.py",
+            "mouth_entrance_tag_transport.cpp",
+            "mouth_eulerian_r4_spatial_cell.py",
+            "mouth_exact_checkpoint_control.py",
+            "mouth_exchange_carrier.py",
+            "mouth_exchange_carrier_density.py",
+            "mouth_exchange_geometry.py",
+            "mouth_exchange_interior.py",
+            "mouth_exchange_shear.py",
+            "mouth_exit_witness.py",
+            "mouth_finite_bore_support.py",
+            "mouth_fixed_wall_angular.py",
+            "mouth_free_shape_solid.cpp",
+            "mouth_free_shape_solid.py",
+            "mouth_internal_collar.py",
+            "mouth_internal_collar_check.py",
+            "mouth_inverse_material_energy.cpp",
+            "mouth_joined_angular_work.py",
+            "mouth_joined_front_audit.py",
+            "mouth_joined_front_stationarity.py",
+            "mouth_joined_front_trace.py",
+            "mouth_joint_collar_release.py",
+            "mouth_joint_endpoint_audit.py",
+            "mouth_joint_polar_shape.py",
+            "mouth_last_ring_solid.py",
+            "mouth_last_rings_fluid.py",
+            "mouth_live_waist_active_wave.py",
+            "mouth_live_waist_fields.py",
+            "mouth_live_waist_order.py",
+            "mouth_live_waist_reopen.py",
+            "mouth_live_waist_wave.py",
+            "mouth_live_waist_wave_location.py",
+            "mouth_middepth_bend_wall.cpp",
+            "mouth_middepth_rearrangement.cpp",
+            "mouth_mobile_joined_fields.py",
+            "mouth_mobile_lining.cpp",
+            "mouth_neck_order_check.py",
+            "mouth_ordered_j_bounds.cpp",
+            "mouth_polar_bonded.py",
+            "mouth_polar_exit_readout.py",
+            "mouth_polar_joined.py",
+            "mouth_polar_shape_endpoint_review.py",
+            "mouth_poly_bonded_core.py",
+            "mouth_poly_shallow_release.py",
+            "mouth_polycrystal_material.py",
+            "mouth_prism_support_decision.py",
+            "mouth_r4_aligned_crystal.py",
+            "mouth_r4_aligned_derivatives.py",
+            "mouth_r4_aligned_stencil.cpp",
+            "mouth_r4_aligned_stencil.py",
+            "mouth_r4_barrier_gradient.py",
+            "mouth_r4_barrier_held.py",
+            "mouth_r4_barrier_shape.py",
+            "mouth_r4_clearance_shapes.cpp",
+            "mouth_r4_conforming_prisms.py",
+            "mouth_r4_corner_projection.py",
+            "mouth_r4_depth_precision.py",
+            "mouth_r4_eulerian_corner_audit.py",
+            "mouth_r4_eulerian_relax_labels.py",
+            "mouth_r4_eulerian_release.py",
+            "mouth_r4_eulerian_solid.cpp",
+            "mouth_r4_eulerian_solid.py",
+            "mouth_r4_fold_constitutive.cpp",
+            "mouth_r4_fold_order.py",
+            "mouth_r4_full_label_precision.py",
+            "mouth_r4_full_label_work.cpp",
+            "mouth_r4_full_label_work.py",
+            "mouth_r4_harmonic_gradient.py",
+            "mouth_r4_harmonic_shape.py",
+            "mouth_r4_inverse_shape_work.cpp",
+            "mouth_r4_label_quad_bridge.hpp",
+            "mouth_r4_melt_barrier.cpp",
+            "mouth_r4_melt_barrier.py",
+            "mouth_r4_newton_crystal.cpp",
+            "mouth_r4_newton_crystal.py",
+            "mouth_r4_newton_stop.py",
+            "mouth_r4_projected_fields.py",
+            "mouth_r4_projected_held.py",
+            "mouth_r4_refined_solid.cpp",
+            "mouth_r4_refinement_review.py",
+            "mouth_r4_ring_work.cpp",
+            "mouth_r4_shift_work.cpp",
+            "mouth_r4_slaved_melt.py",
+            "mouth_r4_smooth_depth.cpp",
+            "mouth_r4_smooth_endpoint.py",
+            "mouth_r4_smooth_fields.py",
+            "mouth_r4_smooth_held.py",
+            "mouth_r4_smooth_label_derivatives.py",
+            "mouth_r4_smooth_order_boundary.py",
+            "mouth_r4_smooth_points.hpp",
+            "mouth_r4_smooth_static.py",
+            "mouth_r4_stage2_outcome.py",
+            "mouth_r4_unfolded_shape_work.cpp",
+            "mouth_receiver_junction.cpp",
+            "mouth_receiver_order_control.py",
+            "mouth_receiver_order_equilibrium.py",
+            "mouth_receiver_relax.cpp",
+            "mouth_rim_pinned_comparison.py",
+            "mouth_sealed_shape_relax.py",
+            "mouth_shallow_puncture_fields.py",
+            "mouth_strained_wave.py",
+            "mouth_supercore_front.py",
+            "mouth_supercore_joined_front.py",
+            "mouth_supercore_shape.py",
+            "mouth_supercore_terminal_order.py",
+            "mouth_unified_puncture.py",
+            "mouth_unified_transverse.py",
+            "mouth_waist_outer_order.py",
+            "mouth_wave_material_transport.cpp",
+            "mouth_whole_r4_relax.py",
+            "mouth_wider_wound_carrier.py",
+            "mouth_winding_resolved_patch.py",
+            "mouth_wound_carrier.py",
+            "neutral_patch_order_hold.cpp",
+            "neutral_patch_warm_neighbor_torque.cpp"
+          ],
+          "record_sha256": "c4c0db0679d059428d354c408f42e6122c73c3a117f1c947f4857bf610bc47ef"
+        }
+      }
+    }
+  }
+}

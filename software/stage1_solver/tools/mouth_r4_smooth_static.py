@@ -30,6 +30,26 @@ class Gauge:
         self.order = order.ravel()[self.ids]
         self.base = np.stack(np.meshgrid(*self.axes,indexing='ij'),axis=-1)
 
+    def cell_barrier(self, offsets, widths, gradient):
+        """Cell mean and optional nodal derivative on the transported chart."""
+        from mouth_cp10_label_gauge import gradient_basis
+        dtype = offsets.dtype
+        barrier = np.zeros(len(offsets),dtype=dtype)
+        barrier_grad = np.zeros_like(offsets) if gradient else None
+        identity = np.eye(3,dtype=dtype)
+        for vertex in BITS:
+            basis = gradient_basis(vertex).astype(dtype)
+            D = (offsets.transpose(0,2,1) @ basis)/widths[:,None,:]+identity
+            col = D.transpose(0,2,1)
+            cofactor = np.stack([np.cross(col[:,(k+1)%3],col[:,(k+2)%3]) for k in range(3)],axis=2)
+            det = np.sum(D[:,:,0]*cofactor[:,:,0],axis=1)
+            if np.min(det.real)<=0:
+                raise ValueError('Nonpositive corner Jacobian')
+            barrier += (det-1-np.log(det))/8
+            if gradient:
+                barrier_grad += ((1-1/det)/8)[:,None,None]*(basis @ (cofactor/widths[:,None,:]).transpose(0,2,1))
+        return barrier, barrier_grad
+
     def evaluate(self, labels, dq, *, enabled=None, gradient=False):
         from mouth_cp10_label_gauge import depth_grid, gradient_basis, profile
         # Promote the determinants, volume, field and signed sums upstream.
@@ -46,20 +66,7 @@ class Gauge:
         # Shape motion fixes xi minus the normalized background coordinate.
         off = labels.astype(dtype).reshape(-1,3)[ids]-self.base.reshape(-1,3)[ids].astype(dtype)
         offsets = off-off[:,:1]
-        barrier = np.zeros(len(cells),dtype=dtype)
-        barrier_grad = np.zeros_like(off) if gradient else None
-        identity = np.eye(3,dtype=dtype)
-        for vertex in BITS:
-            basis = gradient_basis(vertex).astype(dtype)
-            D = (offsets.transpose(0,2,1) @ basis)/widths[:,None,:]+identity
-            col = D.transpose(0,2,1)
-            cofactor = np.stack([np.cross(col[:,(k+1)%3],col[:,(k+2)%3]) for k in range(3)],axis=2)
-            det = np.sum(D[:,:,0]*cofactor[:,:,0],axis=1)
-            if np.min(det.real)<=0:
-                raise ValueError('Nonpositive corner Jacobian')
-            barrier += (det-1-np.log(det))/8
-            if gradient:
-                barrier_grad += ((1-1/det)/8)[:,None,None]*(basis @ (cofactor/widths[:,None,:]).transpose(0,2,1))
+        barrier, barrier_grad = self.cell_barrier(offsets, widths, gradient)
         energy = np.zeros(len(cells),dtype=dtype)
         grad = np.zeros_like(off) if gradient else None
         for q in RULE:

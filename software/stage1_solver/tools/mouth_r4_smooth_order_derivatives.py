@@ -15,7 +15,7 @@ from mouth_r4_smooth_order_boundary import LD, PhysicalOrderEnergy, gauge_coeffi
 
 class GaugeOrderBanks:
     """Independent two-sided gauge work with other coordinates held fixed."""
-    def __init__(self, trial, labels, fields):
+    def __init__(self, trial, labels, fields, *, barrier=None):
         from mouth_cp10_label_condition import physical_frame
         from mouth_cp10_label_gauge import VERTICES, gradient_basis
         from mouth_r4_eulerian_release import block_axes
@@ -28,18 +28,21 @@ class GaugeOrderBanks:
         widths=np.column_stack([np.diff(a)[cells[:,i]] for i,a in enumerate(axes)])
         corner_chart=lo[:,None,:]+VERTICES[None,:,:]*widths[:,None,:]
         offset=state-corner_chart.astype(LD)
-        density=np.zeros(len(cells),dtype=LD)
-        for k,p in enumerate(VERTICES):
-            edges=[]
-            for i in range(3):
-                v=p.copy()
-                v[i]=1-v[i]
-                other=int(v@np.array([4,2,1]))
-                edges.append((1-2*p[i])*(state[:,other]-state[:,k])/widths[:,i,None])
-            d=np.sum(edges[0]*np.cross(edges[1],edges[2]),axis=1)
-            if np.any(d<=0):
-                raise ValueError('Negative corner determinant')
-            density+=((d-1)-np.log1p(d-1))/8
+        if barrier is None:
+            density=np.zeros(len(cells),dtype=LD)
+            for k,p in enumerate(VERTICES):
+                edges=[]
+                for i in range(3):
+                    v=p.copy()
+                    v[i]=1-v[i]
+                    other=int(v@np.array([4,2,1]))
+                    edges.append((1-2*p[i])*(state[:,other]-state[:,k])/widths[:,i,None])
+                d=np.sum(edges[0]*np.cross(edges[1],edges[2]),axis=1)
+                if np.any(d<=0):
+                    raise ValueError('Negative corner determinant')
+                density+=((d-1)-np.log1p(d-1))/8
+        else:
+            density=barrier(state,widths)
         matrices=[]
         energy=[]
         points=fields[2,trial.first]

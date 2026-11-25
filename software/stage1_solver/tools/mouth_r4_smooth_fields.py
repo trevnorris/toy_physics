@@ -19,7 +19,8 @@ from mouth_whole_r4_relax import FIELD_TOL
 
 class GaugeGeometry:
     """Held physical quadrature shared by every label/order update."""
-    def __init__(self, trial):
+    def __init__(self, trial, *, aligned=False):
+        self.aligned = aligned
         axes = block_axes(trial.b)
         nodes = trial.number[trial.b.ids.transpose(0,2,1)]
         self.base = np.stack(np.meshgrid(*axes, indexing='ij'), axis=-1)
@@ -45,13 +46,18 @@ class GaugeGeometry:
         """Per-Gauss-point physical four-volume times the unweighted unit gauge."""
         points = labels.reshape(-1,3)[self.ids]
         offsets = (labels-self.base).reshape(-1,3)[self.ids]
-        barrier = np.zeros(len(points))
-        for v in VERTICES:
-            deriv = (points-points[:,:1]).transpose(0,2,1)@gradient_basis(v)/self.widths[:,None,:]
-            det = np.linalg.det(deriv)
-            if np.any(det <= 0.) or not np.isfinite(det).all():
-                raise ValueError('Nonpositive or nonfinite corner in the held gauge')
-            barrier += (det-1-np.log(det))/8
+        if self.aligned:
+            from mouth_r4_aligned_stencil import barrier_means
+            _, mean = barrier_means(points, self.widths)
+            barrier = np.asarray(mean, dtype=float)
+        else:
+            barrier = np.zeros(len(points))
+            for v in VERTICES:
+                deriv = (points-points[:,:1]).transpose(0,2,1)@gradient_basis(v)/self.widths[:,None,:]
+                det = np.linalg.det(deriv)
+                if np.any(det <= 0.) or not np.isfinite(det).all():
+                    raise ValueError('Nonpositive or nonfinite corner in the held gauge')
+                barrier += (det-1-np.log(det))/8
         work = []
         for volume,basis in zip(self.volume,self.physical_gradients):
             grad = offsets.transpose(0,2,1)@basis

@@ -106,6 +106,9 @@ class WeightedGauge:
 
 
 class JointCrystal:
+    gauge_class = Gauge
+    weighted_class = WeightedGauge
+
     def __init__(self,driver,trial,solid,labels,order):
         self.trial,self.solid,self.order=trial,solid,order
         self.epsilon=driver.epsilon
@@ -113,8 +116,8 @@ class JointCrystal:
         self.components=self.opt._components()
         self.cuts=np.cumsum([np.count_nonzero(~cm.held) for cm in self.components])[:-1]
         self.active=np.concatenate([cm.free[~cm.held] for cm in self.components])
-        self.gauge=Gauge(trial,driver.reference_depth,order)
-        self.weighted=WeightedGauge(trial,order)
+        self.gauge=self.gauge_class(trial,driver.reference_depth,order)
+        self.weighted=self.weighted_class(trial,order)
         self.initial_force=None
         self.previous_norm=None
         self.tight=[]

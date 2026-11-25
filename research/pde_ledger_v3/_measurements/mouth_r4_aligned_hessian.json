@@ -1,0 +1,1381 @@
+{
+  "stencil_points": 39,
+  "source_commit": "0afc9e1e",
+  "evaluator_manifest_sha256": {
+    "hessian": "eca043590008b39513edcbb3b60b301c8329902b75d5688b5ce3312fa2fec454",
+    "labels": "0fdfc36776e577b3872779512d1a0c47da706901a70f75b799e08305cae08773"
+  },
+  "scope": "Fixed-label readout and Hessian tests on each freshly field-rematched R4 step-108 state",
+  "strengths": {
+    "primary": {
+      "labels": {
+        "command": [
+          "/usr/bin/python3",
+          "-Bu",
+          "_scratch/s11c/r4_rematch39_01/labels_pin/software/stage1_solver/tools/mouth_r4_aligned_hessian.py",
+          "_scratch/s11c/r4_rematch39_01",
+          "primary",
+          "labels"
+        ],
+        "stdout_sha256": "1e9435715e54eb2bd079f9d3b225468f895525ff1e86db8cf31d126a996b7b1d",
+        "memory_max_bytes": 5368709120,
+        "exit_code": 0,
+        "measurement": {
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/labels_pin/software/stage1_solver/tools/mouth_r4_aligned_hessian.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "primary",
+            "labels"
+          ],
+          "source_sha256": {
+            "mouth_r4_aligned_hessian.py": "9f0e7b6f6aed857e45de36bc05462fe7f676c270e5a9fabb036fe1b1ee604376",
+            "mouth_r4_aligned_crystal.py": "252e8cdc53da3013e0664363ecd9e62ea7b8b1ed4ada5fd09dd4c1a86b7893e2",
+            "mouth_r4_aligned_stencil.cpp": "1d3c86f2f059827016e0581d413981473f4dd4fea0bbd84704a135f2dd927130",
+            "mouth_r4_aligned_stencil.py": "cfca7a91b156cdc9a1a8675fbbed14e8271aa458ca06537136daeff2b478926f",
+            "mouth_r4_newton_crystal.py": "09407f17fe8bd13a5df728a3a9123ae44b10387c8b48e1270bf8e50f6c705cdb",
+            "mouth_r4_newton_audit.py": "2c6e24c36a0d1ee2c9d00439e10f9ab5a9d64fc5afa7d3caeaa9b675cf3054c0",
+            "mouth_r4_smooth_static.py": "5f461284fd7b0e344927531d3a837ab0a73bb1d6c304b72b4cd09c3e27cbbff0",
+            "mouth_r4_smooth_fields.py": "98193cad4635fae14ef23d18679ae9d676aba32f2357cbe7f43cbb8be02dd0b0"
+          },
+          "state_sha256": "d21586ba828f891f67e4601e8a6145a0cf7f25f003273852b159c0094da63837",
+          "epsilon": 1e-08,
+          "held_shape": [
+            0.03203348161357326,
+            -0.22160765321621922,
+            0.0008870732843312349,
+            -0.0685819081404728,
+            0.0708792715906547,
+            0.02342688643280306
+          ],
+          "material": {
+            "min_Jinv_global": 0.0023139341638329348,
+            "min_Jinv_active": 0.43358711521538484,
+            "min_chart_Jinv_bound": 2.052533656659169e-06,
+            "min_chart_Jinv_active_bound": 0.002125753162790358,
+            "max_Jinv_sampled": 10.801372146674993,
+            "worst_global": {
+              "cell": [
+                25,
+                10,
+                13
+              ],
+              "local": [
+                0.1127016653792583,
+                0.1127016653792583,
+                0.8872983346207417
+              ],
+              "chart": [
+                0.9986874284990818,
+                0.3194168667298769,
+                0.9601016690607929
+              ],
+              "chi": 0.0,
+              "Jinv": 0.0023139341638329348,
+              "grad_xi_norm": 0.9303756292574253,
+              "W": 100618.06551276575
+            },
+            "worst_active": {
+              "cell": [
+                25,
+                9,
+                9
+              ],
+              "local": [
+                0.8872983346207417,
+                0.8872983346207417,
+                0.1127016653792583
+              ],
+              "chart": [
+                0.9998332815600899,
+                0.312297342387719,
+                0.5437188506248328
+              ],
+              "chi": 2.3750225704097205e-05,
+              "Jinv": 0.43358711521538484,
+              "grad_xi_norm": 1.1392491786187129,
+              "W": 1.4757389850780072
+            },
+            "intact_by_depth": [
+              {
+                "peak_W": 0.0004888247085165828,
+                "physical_depth": 0.0029159448508385504,
+                "chi": 0.5079127968371037,
+                "Jinv": 0.9940574019931474
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "chart": {
+              "chart_det_global_lower": 2.0525336733340053e-06,
+              "chart_lowest_cell": [
+                25,
+                11,
+                10
+              ],
+              "chart_det_active_lower": 0.0021257531624534354
+            },
+            "elastic_energy": 0.31214886788071583,
+            "gauge_energy": 7.355272185010832e-08,
+            "unit_gauge_energy": 7.355272185010831,
+            "gauge_to_elastic": 2.3563347305880878e-07,
+            "max_free_label_force": 0.09881032647699539,
+            "max_free_elastic_force": 0.09881032585814686,
+            "max_unit_melt_residual": 2017.55974867767,
+            "max_dead_elastic_force": 0.0,
+            "gradient_l2": 0.3103212747714139,
+            "stationary": false,
+            "worst_free_active": {
+              "component": 1,
+              "group": 26672,
+              "chi": 0.20565269584753945,
+              "signed_force": -0.09881032647699539,
+              "node": [
+                24,
+                2,
+                10
+              ],
+              "radius": 3.9528073379158393,
+              "depth": 0.05174626019989946,
+              "theta": 0.6162109095189517
+            }
+          },
+          "label_minus_field_gauge_energy": -1.3234889800848443e-23,
+          "passed": true
+        }
+      },
+      "hessian": {
+        "command": [
+          "/usr/bin/python3",
+          "-Bu",
+          "_scratch/s11c/r4_rematch39_01/hessian_pin/software/stage1_solver/tools/mouth_r4_aligned_hessian.py",
+          "_scratch/s11c/r4_rematch39_01",
+          "primary",
+          "hessian"
+        ],
+        "stdout_sha256": "aae0f8a1ee2f87a407d167ae4a1dae19d92fdc8c841566d40f6e75746502363e",
+        "memory_max_bytes": 5368709120,
+        "exit_code": 1,
+        "measurement": {
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/hessian_pin/software/stage1_solver/tools/mouth_r4_aligned_hessian.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "primary",
+            "hessian"
+          ],
+          "source_sha256": {
+            "mouth_r4_aligned_hessian.py": "26dc09d7b437fee47ca1811e879425c84c8c2930e35ea452f3ef1812a7f4fa70",
+            "mouth_r4_aligned_crystal.py": "252e8cdc53da3013e0664363ecd9e62ea7b8b1ed4ada5fd09dd4c1a86b7893e2",
+            "mouth_r4_aligned_stencil.cpp": "1d3c86f2f059827016e0581d413981473f4dd4fea0bbd84704a135f2dd927130",
+            "mouth_r4_aligned_stencil.py": "cfca7a91b156cdc9a1a8675fbbed14e8271aa458ca06537136daeff2b478926f",
+            "mouth_r4_newton_crystal.py": "09407f17fe8bd13a5df728a3a9123ae44b10387c8b48e1270bf8e50f6c705cdb",
+            "mouth_r4_newton_audit.py": "2c6e24c36a0d1ee2c9d00439e10f9ab5a9d64fc5afa7d3caeaa9b675cf3054c0",
+            "mouth_r4_smooth_static.py": "5f461284fd7b0e344927531d3a837ab0a73bb1d6c304b72b4cd09c3e27cbbff0",
+            "mouth_r4_smooth_fields.py": "98193cad4635fae14ef23d18679ae9d676aba32f2357cbe7f43cbb8be02dd0b0"
+          },
+          "state_sha256": "d21586ba828f891f67e4601e8a6145a0cf7f25f003273852b159c0094da63837",
+          "epsilon": 1e-08,
+          "held_shape": [
+            0.03203348161357326,
+            -0.22160765321621922,
+            0.0008870732843312349,
+            -0.0685819081404728,
+            0.0708792715906547,
+            0.02342688643280306
+          ],
+          "limits": {
+            "relative_product": 0.0001,
+            "relative_reference_halving": 1e-05,
+            "relative_symmetry": 1e-05
+          },
+          "mantissa": 64,
+          "sites": {
+            "ordered": {
+              "location": {
+                "node": [
+                  9,
+                  3,
+                  12
+                ],
+                "radius": 2.268617238977148,
+                "depth": 0.0776193902998492,
+                "theta": 0.788177558237136,
+                "chi": 0.16810801734019898,
+                "patch_order_min": 0.09135982459835681,
+                "patch_order_max": 0.28748164759150857,
+                "registered_widths": [
+                  0.04881656804733725,
+                  0.03158571045574879,
+                  0.0873526838602684
+                ]
+              },
+              "directions": {
+                "u": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    1.5618908207725384e-10,
+                    9.645078578835968e-12
+                  ],
+                  "relative_Hv_error": 8.920985164493639e-10,
+                  "reference_l2": 6.001016461677194,
+                  "production_l2": 6.001016466667884,
+                  "error_linf": 3.520455926775412e-09,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 8,
+                  "production_secant": {
+                    "h": 9.5367431640625e-07,
+                    "relative_step": 9.5367431640625e-07
+                  }
+                },
+                "v": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    1.9842145801304425e-10,
+                    1.246375468251105e-11
+                  ],
+                  "relative_Hv_error": 5.066657373001127e-10,
+                  "reference_l2": 3.8593132398652745,
+                  "production_l2": 3.8593132390373412,
+                  "error_linf": 1.1627836471461706e-09,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 8,
+                  "production_secant": {
+                    "h": 1.121969784007353e-06,
+                    "relative_step": 9.5367431640625e-07
+                  }
+                }
+              },
+              "passed": true,
+              "production_symmetry": {
+                "uHv": 0.04609130737733737,
+                "vHu": 0.046091307411261176,
+                "relative": 7.360131467805623e-10
+              },
+              "promoted_reference_symmetry": {
+                "uHv": 0.04609130732552173,
+                "vHu": 0.04609130732551203,
+                "relative": 2.1046427711740977e-13
+              }
+            },
+            "front": {
+              "location": {
+                "node": [
+                  13,
+                  11,
+                  12
+                ],
+                "radius": 2.887117717805394,
+                "depth": 0.28460443110718825,
+                "theta": 0.788177558237136,
+                "chi": 0.0007937539138578977,
+                "patch_order_min": 0.0,
+                "patch_order_max": 0.0017241327851225015,
+                "registered_widths": [
+                  0.03698224852071008,
+                  0.031585710464326955,
+                  0.0873526838602684
+                ]
+              },
+              "directions": {
+                "u": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    1.6061323129977657e-10,
+                    1.0363162674001584e-11
+                  ],
+                  "relative_Hv_error": 7.621990509828632e-10,
+                  "reference_l2": 0.03423137837903603,
+                  "production_l2": 0.03423137839950313,
+                  "error_linf": 1.7504300092729963e-11,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 8,
+                  "production_secant": {
+                    "h": 9.5367431640625e-07,
+                    "relative_step": 9.5367431640625e-07
+                  }
+                },
+                "v": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    2.2450851735696555e-10,
+                    1.4358058926270977e-11
+                  ],
+                  "relative_Hv_error": 1.2235418409129493e-09,
+                  "reference_l2": 0.023070603155861066,
+                  "production_l2": 0.023070603130787806,
+                  "error_linf": 1.6177344186463216e-11,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 8,
+                  "production_secant": {
+                    "h": 1.121969784007353e-06,
+                    "relative_step": 9.5367431640625e-07
+                  }
+                }
+              },
+              "passed": true,
+              "production_symmetry": {
+                "uHv": -0.00028905221470975007,
+                "vHu": -0.0002890522154140849,
+                "relative": 2.43670442017502e-09
+              },
+              "promoted_reference_symmetry": {
+                "uHv": -0.0002890522146680778,
+                "vHu": -0.0002890522146684338,
+                "relative": 1.2316037216458402e-12
+              }
+            },
+            "melted": {
+              "location": {
+                "node": [
+                  10,
+                  18,
+                  12
+                ],
+                "radius": 2.289548815480594,
+                "depth": 0.4657180629612028,
+                "theta": 0.788177558237136,
+                "chi": 0.0,
+                "patch_order_min": 0.0,
+                "patch_order_max": 0.0,
+                "registered_widths": [
+                  0.04585798816568054,
+                  0.0315873082996595,
+                  0.0873526838602684
+                ]
+              },
+              "directions": {
+                "u": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    3.6957920227307386e-11,
+                    2.3945704534366554e-12
+                  ],
+                  "relative_Hv_error": 3.092535852655363e-13,
+                  "reference_l2": 3.0778493746527056e-08,
+                  "production_l2": 3.077849374652276e-08,
+                  "error_linf": 6.7663374106837664e-21,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 0,
+                  "production_secant": {
+                    "h": null,
+                    "relative_step": 0.0
+                  }
+                },
+                "v": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    3.1405454570389103e-11,
+                    2.4736546167492e-12
+                  ],
+                  "relative_Hv_error": 7.153753628485538e-13,
+                  "reference_l2": 2.439383162317568e-08,
+                  "production_l2": 2.4393831623183046e-08,
+                  "error_linf": 8.797892995114002e-21,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 0,
+                  "production_secant": {
+                    "h": null,
+                    "relative_step": 0.0
+                  }
+                }
+              },
+              "passed": true,
+              "production_symmetry": {
+                "uHv": -4.855238486978266e-10,
+                "vHu": -4.855238486978265e-10,
+                "relative": 2.1296086041178084e-16
+              },
+              "promoted_reference_symmetry": {
+                "uHv": -4.855238486969008e-10,
+                "vHu": -4.85523848698254e-10,
+                "relative": 2.787018780206523e-12
+              }
+            },
+            "limiting_edge": {
+              "location": {
+                "cell": [
+                  25,
+                  11,
+                  10
+                ],
+                "edge_start": [
+                  0,
+                  0,
+                  0
+                ],
+                "edge_end": [
+                  0,
+                  0,
+                  1
+                ],
+                "fraction": 0.399257224707046,
+                "chart_minimum": 2.3960118803428543e-06,
+                "moving_nodes": [
+                  {
+                    "node": [
+                      25,
+                      11,
+                      10
+                    ],
+                    "packed_index": 26932,
+                    "group": 29116,
+                    "melt_only": true,
+                    "direction": -6.630945295535191e-09,
+                    "dJ_dxi": -361.33790486194465
+                  },
+                  {
+                    "node": [
+                      25,
+                      11,
+                      11
+                    ],
+                    "packed_index": 26933,
+                    "group": 29117,
+                    "melt_only": true,
+                    "direction": -9.414762659045418e-09,
+                    "dJ_dxi": -254.49519728899793
+                  }
+                ]
+              },
+              "directions": {
+                "u": {
+                  "steps": [
+                    0.001953125,
+                    0.0009765625,
+                    0.00048828125
+                  ],
+                  "relative_successive_differences": [
+                    2.861161981944268e-06,
+                    7.069168622737529e-07
+                  ],
+                  "relative_Hv_error": 2.4639686485432277e-07,
+                  "reference_l2": 2.43497520778295e-05,
+                  "production_l2": 2.434974607812693e-05,
+                  "error_linf": 4.898125098063994e-12,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 0,
+                  "production_secant": {
+                    "h": null,
+                    "relative_step": 0.0
+                  }
+                },
+                "v": {
+                  "steps": [
+                    0.001953125,
+                    0.0009765625,
+                    0.00048828125
+                  ],
+                  "relative_successive_differences": [
+                    2.8642074130420405e-06,
+                    7.15312802097751e-07
+                  ],
+                  "relative_Hv_error": 2.3600702739528936e-07,
+                  "reference_l2": 2.4349366295240325e-05,
+                  "production_l2": 2.4349360548618762e-05,
+                  "error_linf": 4.691006785762734e-12,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 0,
+                  "production_secant": {
+                    "h": null,
+                    "relative_step": 0.0
+                  }
+                }
+              },
+              "passed": true,
+              "production_symmetry": {
+                "uHv": 1.3179873343676946e-13,
+                "vHu": 1.3179873343676944e-13,
+                "relative": 1.9153104365136398e-16
+              },
+              "promoted_reference_symmetry": {
+                "uHv": 1.3179876454257883e-13,
+                "vHu": 1.317987659114857e-13,
+                "relative": 1.038634057759807e-08
+              }
+            }
+          },
+          "orientation": {
+            "cell": [
+              25,
+              11,
+              10
+            ],
+            "perturbed_radial_node": {
+              "node": [
+                25,
+                11,
+                10
+              ],
+              "packed_index": 26932,
+              "group": 29116,
+              "melt_only": true,
+              "direction": -6.630945295535191e-09,
+              "dJ_dxi": -361.33790486194465
+            },
+            "samples": [
+              {
+                "parameter": 0.0,
+                "all_27_fixed_minimum": 0.0006105440266320444,
+                "eight_corner_minimum": 0.007286366560095084,
+                "moving_fraction": 0.3992740167914052,
+                "moving_J": 2.3960287766068527e-06,
+                "local_unit_opening_gradient": -0.009312977793733574,
+                "whole_chart_lower": 2.0525336733340053e-06,
+                "admitted": true,
+                "total_opening_gradient": -1.337832832395536e-13,
+                "total_opening_force": 1.337832832395536e-13,
+                "passed": true
+              },
+              {
+                "parameter": -0.75,
+                "all_27_fixed_minimum": 0.0006090559570525049,
+                "eight_corner_minimum": 0.007286366560095084,
+                "moving_fraction": 0.39923571282788406,
+                "moving_J": 5.989644202807169e-07,
+                "local_unit_opening_gradient": -0.03709491516056634,
+                "whole_chart_lower": 2.650361409327952e-07,
+                "admitted": true,
+                "total_opening_gradient": -5.292636943568973e-13,
+                "total_opening_force": 5.292636943568973e-13,
+                "passed": true,
+                "signed_gauge_work": 1.8421470441008538e-13,
+                "direct_gauge_work": 1.8421470441008621e-13,
+                "relative_work_error": 4.473154221058794e-15
+              },
+              {
+                "parameter": -0.95,
+                "all_27_fixed_minimum": 0.0006086591385001757,
+                "eight_corner_minimum": 0.007286366560095084,
+                "moving_fraction": 0.39922549658019163,
+                "moving_J": 1.1973709045030746e-07,
+                "local_unit_opening_gradient": -0.185347628770123,
+                "whole_chart_lower": 6.474133271885605e-08,
+                "admitted": false,
+                "physical_rejection": {
+                  "reason": "unresolved chart orientation bound",
+                  "code": 3,
+                  "chart_bound": -2.7382330585420528e-08,
+                  "cell": [
+                    25,
+                    11,
+                    10
+                  ],
+                  "local": [
+                    0.0,
+                    0.0,
+                    0.3984375
+                  ],
+                  "chi": 0.0
+                },
+                "passed": false,
+                "signed_gauge_work": 3.9680667545882225e-13,
+                "direct_gauge_work": 3.9680667545882523e-13,
+                "relative_work_error": 7.515793369782024e-15
+              },
+              {
+                "parameter": -4.0,
+                "all_27_fixed_minimum": 0.0006026076555190206,
+                "eight_corner_minimum": 0.007286366560095084,
+                "moving_fraction": 0.3990696017975949,
+                "moving_J": -7.189009620586265e-06,
+                "whole_cell_rejection": {
+                  "reason": "Nonpositive or roundoff-unresolved chart determinant",
+                  "cell": [
+                    25,
+                    11,
+                    10
+                  ],
+                  "chart_fractions": [
+                    0.0,
+                    0.0,
+                    0.40625
+                  ],
+                  "chart_det": -4.143069203797997e-06,
+                  "chart_lower": -4.143069296616012e-06,
+                  "roundoff_margin": 9.281801524595499e-14,
+                  "subdivisions": 5
+                },
+                "aligned_rejection": {
+                  "reason": "Nonpositive or unresolved aligned determinant",
+                  "selected_cell_index": 0,
+                  "stencil_index": 27
+                },
+                "passed": true
+              }
+            ],
+            "resolved_positive_chart_count": 3,
+            "positive_jointly_admitted_count": 2,
+            "all_positive_chart_probes_admitted": false,
+            "untouched_restoring_force": true,
+            "stronger_restoring_gradient": true,
+            "passed": false
+          },
+          "passed": false
+        }
+      }
+    },
+    "secondary": {
+      "labels": {
+        "command": [
+          "/usr/bin/python3",
+          "-Bu",
+          "_scratch/s11c/r4_rematch39_01/labels_pin/software/stage1_solver/tools/mouth_r4_aligned_hessian.py",
+          "_scratch/s11c/r4_rematch39_01",
+          "secondary",
+          "labels"
+        ],
+        "stdout_sha256": "b40d2628d4971cd961319e3dc5ca13ace23c6ee81aa5e27de557dd41d5a8db4e",
+        "memory_max_bytes": 5368709120,
+        "exit_code": 0,
+        "measurement": {
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/labels_pin/software/stage1_solver/tools/mouth_r4_aligned_hessian.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "secondary",
+            "labels"
+          ],
+          "source_sha256": {
+            "mouth_r4_aligned_hessian.py": "9f0e7b6f6aed857e45de36bc05462fe7f676c270e5a9fabb036fe1b1ee604376",
+            "mouth_r4_aligned_crystal.py": "252e8cdc53da3013e0664363ecd9e62ea7b8b1ed4ada5fd09dd4c1a86b7893e2",
+            "mouth_r4_aligned_stencil.cpp": "1d3c86f2f059827016e0581d413981473f4dd4fea0bbd84704a135f2dd927130",
+            "mouth_r4_aligned_stencil.py": "cfca7a91b156cdc9a1a8675fbbed14e8271aa458ca06537136daeff2b478926f",
+            "mouth_r4_newton_crystal.py": "09407f17fe8bd13a5df728a3a9123ae44b10387c8b48e1270bf8e50f6c705cdb",
+            "mouth_r4_newton_audit.py": "2c6e24c36a0d1ee2c9d00439e10f9ab5a9d64fc5afa7d3caeaa9b675cf3054c0",
+            "mouth_r4_smooth_static.py": "5f461284fd7b0e344927531d3a837ab0a73bb1d6c304b72b4cd09c3e27cbbff0",
+            "mouth_r4_smooth_fields.py": "98193cad4635fae14ef23d18679ae9d676aba32f2357cbe7f43cbb8be02dd0b0"
+          },
+          "state_sha256": "e2c2e2afb9af55e972b57a46b22527a0ba9983fbab173446b17164457564ed10",
+          "epsilon": 1e-10,
+          "held_shape": [
+            0.03203348161357326,
+            -0.22160765321621922,
+            0.0008870732843312349,
+            -0.0685819081404728,
+            0.0708792715906547,
+            0.02342688643280306
+          ],
+          "material": {
+            "min_Jinv_global": 0.0023139341638329348,
+            "min_Jinv_active": 0.43358711521538484,
+            "min_chart_Jinv_bound": 2.052533656659169e-06,
+            "min_chart_Jinv_active_bound": 0.002125753162790358,
+            "max_Jinv_sampled": 10.801372146674993,
+            "worst_global": {
+              "cell": [
+                25,
+                10,
+                13
+              ],
+              "local": [
+                0.1127016653792583,
+                0.1127016653792583,
+                0.8872983346207417
+              ],
+              "chart": [
+                0.9986874284990818,
+                0.3194168667298769,
+                0.9601016690607929
+              ],
+              "chi": 0.0,
+              "Jinv": 0.0023139341638329348,
+              "grad_xi_norm": 0.9303756292574253,
+              "W": 100618.06551276575
+            },
+            "worst_active": {
+              "cell": [
+                25,
+                9,
+                9
+              ],
+              "local": [
+                0.8872983346207417,
+                0.8872983346207417,
+                0.1127016653792583
+              ],
+              "chart": [
+                0.9998332815600899,
+                0.312297342387719,
+                0.5437188506248328
+              ],
+              "chi": 2.3750225499857893e-05,
+              "Jinv": 0.43358711521538484,
+              "grad_xi_norm": 1.1392491786187129,
+              "W": 1.4757389850780072
+            },
+            "intact_by_depth": [
+              {
+                "peak_W": 0.0004888247085165828,
+                "physical_depth": 0.0029159448508385504,
+                "chi": 0.5079127953879733,
+                "Jinv": 0.9940574019931474
+              },
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "chart": {
+              "chart_det_global_lower": 2.0525336733340053e-06,
+              "chart_lowest_cell": [
+                25,
+                11,
+                10
+              ],
+              "chart_det_active_lower": 0.0021257531624534354
+            },
+            "elastic_energy": 0.3121488669667658,
+            "gauge_energy": 7.355272186433013e-10,
+            "unit_gauge_energy": 7.355272186433013,
+            "gauge_to_elastic": 2.356334737942881e-09,
+            "max_free_label_force": 0.0988103256076309,
+            "max_free_elastic_force": 0.09881032560144241,
+            "max_unit_melt_residual": 2017.55974867767,
+            "max_dead_elastic_force": 0.0,
+            "gradient_l2": 0.3103212754574972,
+            "stationary": false,
+            "worst_free_active": {
+              "component": 1,
+              "group": 26672,
+              "chi": 0.2056526953542796,
+              "signed_force": -0.0988103256076309,
+              "node": [
+                24,
+                2,
+                10
+              ],
+              "radius": 3.9528073379158393,
+              "depth": 0.05174626019989946,
+              "theta": 0.6162109095189517
+            }
+          },
+          "label_minus_field_gauge_energy": -1.0339757656912846e-25,
+          "passed": true
+        }
+      },
+      "hessian": {
+        "command": [
+          "/usr/bin/python3",
+          "-Bu",
+          "_scratch/s11c/r4_rematch39_01/hessian_pin/software/stage1_solver/tools/mouth_r4_aligned_hessian.py",
+          "_scratch/s11c/r4_rematch39_01",
+          "secondary",
+          "hessian"
+        ],
+        "stdout_sha256": "7a63e564af474df066ebb2c8254ee9de064d13104de2dc6f622d587ce59be907",
+        "memory_max_bytes": 5368709120,
+        "exit_code": 1,
+        "measurement": {
+          "command": [
+            "/usr/bin/python3",
+            "-Bu",
+            "_scratch/s11c/r4_rematch39_01/hessian_pin/software/stage1_solver/tools/mouth_r4_aligned_hessian.py",
+            "_scratch/s11c/r4_rematch39_01",
+            "secondary",
+            "hessian"
+          ],
+          "source_sha256": {
+            "mouth_r4_aligned_hessian.py": "26dc09d7b437fee47ca1811e879425c84c8c2930e35ea452f3ef1812a7f4fa70",
+            "mouth_r4_aligned_crystal.py": "252e8cdc53da3013e0664363ecd9e62ea7b8b1ed4ada5fd09dd4c1a86b7893e2",
+            "mouth_r4_aligned_stencil.cpp": "1d3c86f2f059827016e0581d413981473f4dd4fea0bbd84704a135f2dd927130",
+            "mouth_r4_aligned_stencil.py": "cfca7a91b156cdc9a1a8675fbbed14e8271aa458ca06537136daeff2b478926f",
+            "mouth_r4_newton_crystal.py": "09407f17fe8bd13a5df728a3a9123ae44b10387c8b48e1270bf8e50f6c705cdb",
+            "mouth_r4_newton_audit.py": "2c6e24c36a0d1ee2c9d00439e10f9ab5a9d64fc5afa7d3caeaa9b675cf3054c0",
+            "mouth_r4_smooth_static.py": "5f461284fd7b0e344927531d3a837ab0a73bb1d6c304b72b4cd09c3e27cbbff0",
+            "mouth_r4_smooth_fields.py": "98193cad4635fae14ef23d18679ae9d676aba32f2357cbe7f43cbb8be02dd0b0"
+          },
+          "state_sha256": "e2c2e2afb9af55e972b57a46b22527a0ba9983fbab173446b17164457564ed10",
+          "epsilon": 1e-10,
+          "held_shape": [
+            0.03203348161357326,
+            -0.22160765321621922,
+            0.0008870732843312349,
+            -0.0685819081404728,
+            0.0708792715906547,
+            0.02342688643280306
+          ],
+          "limits": {
+            "relative_product": 0.0001,
+            "relative_reference_halving": 1e-05,
+            "relative_symmetry": 1e-05
+          },
+          "mantissa": 64,
+          "sites": {
+            "ordered": {
+              "location": {
+                "node": [
+                  9,
+                  3,
+                  12
+                ],
+                "radius": 2.268617238977148,
+                "depth": 0.0776193902998492,
+                "theta": 0.788177558237136,
+                "chi": 0.16810801628884203,
+                "patch_order_min": 0.09135982398831269,
+                "patch_order_max": 0.2874816460245645,
+                "registered_widths": [
+                  0.04881656804733725,
+                  0.03158571045574879,
+                  0.0873526838602684
+                ]
+              },
+              "directions": {
+                "u": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    1.561890502178961e-10,
+                    9.645467803133476e-12
+                  ],
+                  "relative_Hv_error": 8.921025249000207e-10,
+                  "reference_l2": 6.001016399165137,
+                  "production_l2": 6.001016404156447,
+                  "error_linf": 3.5186982216828255e-09,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 8,
+                  "production_secant": {
+                    "h": 9.5367431640625e-07,
+                    "relative_step": 9.5367431640625e-07
+                  }
+                },
+                "v": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    1.9842142131566831e-10,
+                    1.2463917088657188e-11
+                  ],
+                  "relative_Hv_error": 5.065734870223349e-10,
+                  "reference_l2": 3.8593131974885875,
+                  "production_l2": 3.8593131966613523,
+                  "error_linf": 1.162181018088404e-09,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 8,
+                  "production_secant": {
+                    "h": 1.121969784007353e-06,
+                    "relative_step": 9.5367431640625e-07
+                  }
+                }
+              },
+              "passed": true,
+              "production_symmetry": {
+                "uHv": 0.04609130756845149,
+                "vHu": 0.046091307602201606,
+                "relative": 7.322446589295259e-10
+              },
+              "promoted_reference_symmetry": {
+                "uHv": 0.04609130751646541,
+                "vHu": 0.04609130751645571,
+                "relative": 2.1046427624551387e-13
+              }
+            },
+            "front": {
+              "location": {
+                "node": [
+                  13,
+                  11,
+                  12
+                ],
+                "radius": 2.887117717805394,
+                "depth": 0.28460443110718825,
+                "theta": 0.788177558237136,
+                "chi": 0.0007937539082778948,
+                "patch_order_min": 0.0,
+                "patch_order_max": 0.001724132772857923,
+                "registered_widths": [
+                  0.03698224852071008,
+                  0.031585710464326955,
+                  0.0873526838602684
+                ]
+              },
+              "directions": {
+                "u": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    1.6061349256681443e-10,
+                    1.0361665297930865e-11
+                  ],
+                  "relative_Hv_error": 7.610915919718877e-10,
+                  "reference_l2": 0.03423134235981672,
+                  "production_l2": 0.0342313423802621,
+                  "error_linf": 1.7504143967617125e-11,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 8,
+                  "production_secant": {
+                    "h": 9.5367431640625e-07,
+                    "relative_step": 9.5367431640625e-07
+                  }
+                },
+                "v": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    2.2450829457919343e-10,
+                    1.4354344934015268e-11
+                  ],
+                  "relative_Hv_error": 1.2085193275445483e-09,
+                  "reference_l2": 0.023070575792667972,
+                  "production_l2": 0.023070575767800548,
+                  "error_linf": 1.5904489530926824e-11,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 8,
+                  "production_secant": {
+                    "h": 1.121969784007353e-06,
+                    "relative_step": 9.5367431640625e-07
+                  }
+                }
+              },
+              "passed": true,
+              "production_symmetry": {
+                "uHv": -0.0002890513775610024,
+                "vHu": -0.00028905137827617966,
+                "relative": 2.4742219553898025e-09
+              },
+              "promoted_reference_symmetry": {
+                "uHv": -0.00028905137752934776,
+                "vHu": -0.00028905137752970554,
+                "relative": 1.2377962699155345e-12
+              }
+            },
+            "melted": {
+              "location": {
+                "node": [
+                  10,
+                  18,
+                  12
+                ],
+                "radius": 2.289548815480594,
+                "depth": 0.4657180629612028,
+                "theta": 0.788177558237136,
+                "chi": 0.0,
+                "patch_order_min": 0.0,
+                "patch_order_max": 0.0,
+                "registered_widths": [
+                  0.04585798816568054,
+                  0.0315873082996595,
+                  0.0873526838602684
+                ]
+              },
+              "directions": {
+                "u": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    3.69579501814368e-11,
+                    2.3944887611319236e-12
+                  ],
+                  "relative_Hv_error": 3.092197437754788e-13,
+                  "reference_l2": 3.0778493746527063e-10,
+                  "production_l2": 3.077849374652277e-10,
+                  "error_linf": 6.76478644703523e-23,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 0,
+                  "production_secant": {
+                    "h": null,
+                    "relative_step": 0.0
+                  }
+                },
+                "v": {
+                  "steps": [
+                    1.52587890625e-05,
+                    3.814697265625e-06,
+                    9.5367431640625e-07
+                  ],
+                  "relative_successive_differences": [
+                    3.1405350489427817e-11,
+                    2.473371750592438e-12
+                  ],
+                  "relative_Hv_error": 7.150262450836437e-13,
+                  "reference_l2": 2.439383162317569e-10,
+                  "production_l2": 2.439383162318304e-10,
+                  "error_linf": 8.796548826618604e-23,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 0,
+                  "production_secant": {
+                    "h": null,
+                    "relative_step": 0.0
+                  }
+                }
+              },
+              "passed": true,
+              "production_symmetry": {
+                "uHv": -4.855238486978265e-12,
+                "vHu": -4.855238486978265e-12,
+                "relative": 0.0
+              },
+              "promoted_reference_symmetry": {
+                "uHv": -4.855238486969008e-12,
+                "vHu": -4.85523848698254e-12,
+                "relative": 2.7871252606367286e-12
+              }
+            },
+            "limiting_edge": {
+              "location": {
+                "cell": [
+                  25,
+                  11,
+                  10
+                ],
+                "edge_start": [
+                  0,
+                  0,
+                  0
+                ],
+                "edge_end": [
+                  0,
+                  0,
+                  1
+                ],
+                "fraction": 0.399257224707046,
+                "chart_minimum": 2.3960118803428543e-06,
+                "moving_nodes": [
+                  {
+                    "node": [
+                      25,
+                      11,
+                      10
+                    ],
+                    "packed_index": 26932,
+                    "group": 29116,
+                    "melt_only": true,
+                    "direction": -6.630945295535191e-09,
+                    "dJ_dxi": -361.33790486194465
+                  },
+                  {
+                    "node": [
+                      25,
+                      11,
+                      11
+                    ],
+                    "packed_index": 26933,
+                    "group": 29117,
+                    "melt_only": true,
+                    "direction": -9.414762659045418e-09,
+                    "dJ_dxi": -254.49519728899793
+                  }
+                ]
+              },
+              "directions": {
+                "u": {
+                  "steps": [
+                    0.001953125,
+                    0.0009765625,
+                    0.00048828125
+                  ],
+                  "relative_successive_differences": [
+                    2.8611619817850215e-06,
+                    7.069168624297225e-07
+                  ],
+                  "relative_Hv_error": 2.463968647426811e-07,
+                  "reference_l2": 2.43497520778295e-07,
+                  "production_l2": 2.4349746078126934e-07,
+                  "error_linf": 4.898125097111082e-14,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 0,
+                  "production_secant": {
+                    "h": null,
+                    "relative_step": 0.0
+                  }
+                },
+                "v": {
+                  "steps": [
+                    0.001953125,
+                    0.0009765625,
+                    0.00048828125
+                  ],
+                  "relative_successive_differences": [
+                    2.8642074130031414e-06,
+                    7.153128021561559e-07
+                  ],
+                  "relative_Hv_error": 2.3600702747683285e-07,
+                  "reference_l2": 2.434936629524032e-07,
+                  "production_l2": 2.4349360548618767e-07,
+                  "error_linf": 4.691006787668558e-14,
+                  "incident_cells": 8,
+                  "incident_ordered_cells": 0,
+                  "production_secant": {
+                    "h": null,
+                    "relative_step": 0.0
+                  }
+                }
+              },
+              "passed": true,
+              "production_symmetry": {
+                "uHv": 1.3179873343676945e-15,
+                "vHu": 1.3179873343676947e-15,
+                "relative": 1.496336278526281e-16
+              },
+              "promoted_reference_symmetry": {
+                "uHv": 1.3179876454257882e-15,
+                "vHu": 1.3179876591148568e-15,
+                "relative": 1.0386340481832573e-08
+              }
+            }
+          },
+          "orientation": {
+            "cell": [
+              25,
+              11,
+              10
+            ],
+            "perturbed_radial_node": {
+              "node": [
+                25,
+                11,
+                10
+              ],
+              "packed_index": 26932,
+              "group": 29116,
+              "melt_only": true,
+              "direction": -6.630945295535191e-09,
+              "dJ_dxi": -361.33790486194465
+            },
+            "samples": [
+              {
+                "parameter": 0.0,
+                "all_27_fixed_minimum": 0.0006105440266320444,
+                "eight_corner_minimum": 0.007286366560095084,
+                "moving_fraction": 0.3992740167914052,
+                "moving_J": 2.3960287766068527e-06,
+                "local_unit_opening_gradient": -0.009312977793733574,
+                "whole_chart_lower": 2.0525336733340053e-06,
+                "admitted": true,
+                "total_opening_gradient": -1.3378328323955359e-15,
+                "total_opening_force": 1.3378328323955359e-15,
+                "passed": true
+              },
+              {
+                "parameter": -0.75,
+                "all_27_fixed_minimum": 0.0006090559570525049,
+                "eight_corner_minimum": 0.007286366560095084,
+                "moving_fraction": 0.39923571282788406,
+                "moving_J": 5.989644202807169e-07,
+                "local_unit_opening_gradient": -0.03709491516056634,
+                "whole_chart_lower": 2.650361409327952e-07,
+                "admitted": true,
+                "total_opening_gradient": -5.2926369435689745e-15,
+                "total_opening_force": 5.2926369435689745e-15,
+                "passed": true,
+                "signed_gauge_work": 1.842147044100854e-15,
+                "direct_gauge_work": 1.842147044100862e-15,
+                "relative_work_error": 4.473154221058794e-15
+              },
+              {
+                "parameter": -0.95,
+                "all_27_fixed_minimum": 0.0006086591385001757,
+                "eight_corner_minimum": 0.007286366560095084,
+                "moving_fraction": 0.39922549658019163,
+                "moving_J": 1.1973709045030746e-07,
+                "local_unit_opening_gradient": -0.185347628770123,
+                "whole_chart_lower": 6.474133271885605e-08,
+                "admitted": false,
+                "physical_rejection": {
+                  "reason": "unresolved chart orientation bound",
+                  "code": 3,
+                  "chart_bound": -2.7382330585420528e-08,
+                  "cell": [
+                    25,
+                    11,
+                    10
+                  ],
+                  "local": [
+                    0.0,
+                    0.0,
+                    0.3984375
+                  ],
+                  "chi": 0.0
+                },
+                "passed": false,
+                "signed_gauge_work": 3.968066754588222e-15,
+                "direct_gauge_work": 3.968066754588252e-15,
+                "relative_work_error": 7.515793369782024e-15
+              },
+              {
+                "parameter": -4.0,
+                "all_27_fixed_minimum": 0.0006026076555190206,
+                "eight_corner_minimum": 0.007286366560095084,
+                "moving_fraction": 0.3990696017975949,
+                "moving_J": -7.189009620586265e-06,
+                "whole_cell_rejection": {
+                  "reason": "Nonpositive or roundoff-unresolved chart determinant",
+                  "cell": [
+                    25,
+                    11,
+                    10
+                  ],
+                  "chart_fractions": [
+                    0.0,
+                    0.0,
+                    0.40625
+                  ],
+                  "chart_det": -4.143069203797997e-06,
+                  "chart_lower": -4.143069296616012e-06,
+                  "roundoff_margin": 9.281801524595499e-14,
+                  "subdivisions": 5
+                },
+                "aligned_rejection": {
+                  "reason": "Nonpositive or unresolved aligned determinant",
+                  "selected_cell_index": 0,
+                  "stencil_index": 27
+                },
+                "passed": true
+              }
+            ],
+            "resolved_positive_chart_count": 3,
+            "positive_jointly_admitted_count": 2,
+            "all_positive_chart_probes_admitted": false,
+            "untouched_restoring_force": true,
+            "stronger_restoring_gradient": true,
+            "passed": false
+          },
+          "passed": false
+        }
+      }
+    }
+  }
+}

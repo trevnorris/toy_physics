@@ -47,10 +47,12 @@ def promoted_bath(bath, trial, reference, dx):
     return parts
 
 
-def shape_work(driver, t, solid, order, energy, label_gradient):
+def shape_work(driver, t, solid, order, energy, label_gradient, *, gauge=None, energy_gauge=None):
     labels = driver.labels
     epsilon = driver.epsilon
-    gauge = Gauge(t,driver.reference_depth,order)
+    if gauge is None:
+        gauge = Gauge(t,driver.reference_depth,order)
+    signed_gauge = gauge if energy_gauge is None else energy_gauge
     bath = Bath(t,driver.base,driver.fields,driver.reference_depth)
     length = LD(t.shape.length)
     depth = gauge.axes[1]
@@ -86,8 +88,11 @@ def shape_work(driver, t, solid, order, energy, label_gradient):
             shape[1:4] += dx[2:5]/4
             xi = labels.astype(LD)
             xi[...,1] += dt[None,:,None]
+            if energy_gauge is not None:
+                signed_axes = (gauge.axes[0], origin+dt, gauge.axes[2])
+                chart_orientation(signed_axes,xi,active.reshape(tuple(n-1 for n in order.shape)))
             return (banks.energy(xi,active),promoted_bath(bath,t,driver.reference_depth,dx),
-                    gauge.evaluate(labels,dx))
+                    signed_gauge.evaluate(labels,dx))
 
         base = energies(zero)
         if abs(np.sum(base[0])-energy)>1e-11:
@@ -105,6 +110,10 @@ def shape_work(driver, t, solid, order, energy, label_gradient):
                 central = cs+bs+epsilon*gs
                 signed.append(dict(h=float(h),central=float(central),minus_analytic=float(central-force),
                                    crystal=float(cs),bath=float(bs),unit_gauge=float(gs)))
+                if energy_gauge is not None:
+                    for name, bank, step in [('negative',minus,-h),('positive',plus,h)]:
+                        slopes = [np.sum(origin-side,dtype=LD)/step for origin,side in zip(base,bank)]
+                        signed[-1][name] = float(slopes[0]+slopes[1]+epsilon*slopes[2])
             rows.append(dict(mode=MODES[i],analytic=float(force),elastic=float(elastic[i]),
                              bath=float(ext),unit_gauge=float(reg),central=signed))
     return rows

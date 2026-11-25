@@ -1,0 +1,329 @@
+{
+  "source_sha256": "7c23ae8f425b1de3c6f24f94314e97e7edad3d3d372f69e70f1892f6efff2cd9",
+  "label_hashes": {
+    "last_active": "a2210361aa5b38712de7db618b5220985e12f39f3a089351dfd3767bef0a7178",
+    "rematched": "63a2de2ae45c6c2b197573ac70b2f035142f538d59908bb068ceda87b0570542"
+  },
+  "previous_study": "r4_newton_held01",
+  "meaning": "The interval encloses the value of the certified lower bound, not the true physical minimum. At a field-update row it applies after that update. The sampled physical inverse determinant applies on the accepted crystal step. CG truncation on its first iteration selects scaled steepest descent. Additional line-search fallback is not logged for each step. The limiting edge is reconstructed at the two stored label maps only.",
+  "rows": [
+    {
+      "step": 90,
+      "active_Linf": 0.01756027735736903,
+      "joint_L2": 0.17613372638041014,
+      "alpha": 0.0078125,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": false,
+      "physical_Jinv_min_sampled": 0.0021559753520422943,
+      "chart_lower_bound_interval": [
+        0.00026436638468670055,
+        0.0010574655387468022
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 91,
+      "active_Linf": 0.07988533719052188,
+      "joint_L2": 0.22177674075449988,
+      "alpha": 0.0009765625,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": false,
+      "physical_Jinv_min_sampled": 0.0021421476210551796,
+      "chart_lower_bound_interval": [
+        0.00026436638468670055,
+        0.0010574655387468022
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 92,
+      "active_Linf": 0.04810912937650836,
+      "joint_L2": 0.18780589977519704,
+      "alpha": 1.0,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": false,
+      "physical_Jinv_min_sampled": 0.002141498670366425,
+      "chart_lower_bound_interval": [
+        0.00026436638468670055,
+        0.0010574655387468022
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 93,
+      "active_Linf": 0.18273947992421855,
+      "joint_L2": 0.3650448465499872,
+      "alpha": 0.0625,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": true,
+      "physical_Jinv_min_sampled": 0.0021057737194041834,
+      "chart_lower_bound_interval": [
+        0.00026436638468670055,
+        0.0010574655387468022
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 94,
+      "active_Linf": 0.5799519662776346,
+      "joint_L2": 1.2231307806313478,
+      "alpha": 0.0625,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": true,
+      "physical_Jinv_min_sampled": 0.0020706845536148364,
+      "chart_lower_bound_interval": [
+        0.0003600613665704813,
+        0.0003600613665704813
+      ],
+      "field_update": {
+        "kind": "newton_rematched",
+        "outer": 94,
+        "energy": 92185.39138089989,
+        "active_force": 0.5810585365495137,
+        "field_residual": 6.456675649200698e-10,
+        "seconds": 230.60863500414416
+      },
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 95,
+      "active_Linf": 0.538612276000308,
+      "joint_L2": 1.1484300400486882,
+      "alpha": 0.0078125,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": false,
+      "physical_Jinv_min_sampled": 0.0020858900531158004,
+      "chart_lower_bound_interval": [
+        0.00018003068328524064,
+        0.0007201227331409626
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 96,
+      "active_Linf": 0.5127949305672632,
+      "joint_L2": 1.238632787326813,
+      "alpha": 0.03125,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": true,
+      "physical_Jinv_min_sampled": 0.002099164594448126,
+      "chart_lower_bound_interval": [
+        0.00018003068328524064,
+        0.0007201227331409626
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 97,
+      "active_Linf": 0.5124630813304191,
+      "joint_L2": 1.182920567139546,
+      "alpha": 1.0,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": false,
+      "physical_Jinv_min_sampled": 0.0020994224187381684,
+      "chart_lower_bound_interval": [
+        0.00018003068328524064,
+        0.0007201227331409626
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 98,
+      "active_Linf": 0.4809137851414269,
+      "joint_L2": 1.1950277912118579,
+      "alpha": 0.03125,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": true,
+      "physical_Jinv_min_sampled": 0.0021132047323245804,
+      "chart_lower_bound_interval": [
+        0.00018003068328524064,
+        0.0007201227331409626
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 99,
+      "active_Linf": 0.5359374074102737,
+      "joint_L2": 1.317719868877053,
+      "alpha": 0.03125,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": true,
+      "physical_Jinv_min_sampled": 0.002127425413250606,
+      "chart_lower_bound_interval": [
+        0.00018003068328524064,
+        0.0007201227331409626
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 100,
+      "active_Linf": 0.10220771630465429,
+      "joint_L2": 0.3398525106812881,
+      "alpha": 0.125,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": true,
+      "physical_Jinv_min_sampled": 0.002185591775499341,
+      "chart_lower_bound_interval": [
+        0.0004825817003803301,
+        0.0004825817003803301
+      ],
+      "field_update": {
+        "kind": "newton_rematched",
+        "outer": 100,
+        "energy": 92185.39106236771,
+        "active_force": 0.10225412205978761,
+        "field_residual": 3.777741841189071e-09,
+        "seconds": 168.83778876299039
+      },
+      "limiting_edge_minimum": 0.009769474600498727
+    },
+    {
+      "step": 101,
+      "active_Linf": 0.7737686568189314,
+      "joint_L2": 1.6958923436811755,
+      "alpha": 0.0625,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": true,
+      "physical_Jinv_min_sampled": 0.002240086020071644,
+      "chart_lower_bound_interval": [
+        0.00024129085019016506,
+        0.0009651634007606602
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 102,
+      "active_Linf": 0.8812114581138127,
+      "joint_L2": 1.7375951434453853,
+      "alpha": 1.0,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": false,
+      "physical_Jinv_min_sampled": 0.002240259549867984,
+      "chart_lower_bound_interval": [
+        0.00024129085019016506,
+        0.0009651634007606602
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 103,
+      "active_Linf": 0.5626889679732727,
+      "joint_L2": 1.1902068254218081,
+      "alpha": 1.0,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": false,
+      "physical_Jinv_min_sampled": 0.002240445728186551,
+      "chart_lower_bound_interval": [
+        0.00024129085019016506,
+        0.0009651634007606602
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 104,
+      "active_Linf": 0.12518840894221156,
+      "joint_L2": 0.3062365539807189,
+      "alpha": 0.015625,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": true,
+      "physical_Jinv_min_sampled": 0.00225396860989434,
+      "chart_lower_bound_interval": [
+        0.00024129085019016506,
+        0.0009651634007606602
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 105,
+      "active_Linf": 0.15525323683422462,
+      "joint_L2": 0.35844629511995496,
+      "alpha": 0.5,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": false,
+      "physical_Jinv_min_sampled": 0.0022990354443539374,
+      "chart_lower_bound_interval": [
+        0.00024129085019016506,
+        0.0009651634007606602
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 106,
+      "active_Linf": 0.09843745844558636,
+      "joint_L2": 0.310076019992615,
+      "alpha": 0.015625,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": true,
+      "physical_Jinv_min_sampled": 0.002312426670595429,
+      "chart_lower_bound_interval": [
+        2.534716465436929e-05,
+        2.534716465436929e-05
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 107,
+      "active_Linf": 0.09863769129404348,
+      "joint_L2": 0.3101416004922833,
+      "alpha": 0.00048828125,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": false,
+      "physical_Jinv_min_sampled": 0.0023134561987760527,
+      "chart_lower_bound_interval": [
+        2.664792815617128e-06,
+        2.664792815617128e-06
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": null
+    },
+    {
+      "step": 108,
+      "active_Linf": 0.09873119115384474,
+      "joint_L2": 0.31018036716458774,
+      "alpha": 0.000244140625,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "scaled_diagonal_on_first_nonpositive_curvature": false,
+      "physical_Jinv_min_sampled": 0.0023139341638329348,
+      "chart_lower_bound_interval": [
+        2.0525336733340053e-06,
+        2.0525336733340053e-06
+      ],
+      "field_update": null,
+      "limiting_edge_minimum": 2.3960118803428543e-06
+    }
+  ]
+}

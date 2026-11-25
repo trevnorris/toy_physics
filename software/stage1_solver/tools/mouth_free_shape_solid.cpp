@@ -7,8 +7,19 @@
 #include <limits>
 #include <vector>
 
-using Vec = std::array<double,3>;
-using Mat = std::array<Vec,3>;
+template<class T> using Vector3 = std::array<T,3>;
+template<class T> using Matrix3 = std::array<Vector3<T>,3>;
+using Vec = Vector3<double>;
+using Mat = Matrix3<double>;
+
+// The binary64 and forward-mode assemblies use the same constitutive expressions.
+// Scalar overloads for Jet are found by argument-dependent lookup.
+inline double scalar_value(double x){return x;}
+inline double scalar_log(double x){return std::log(x);}
+inline double scalar_abs(double x){return std::abs(x);}
+inline double scalar_sin(double x){return std::sin(x);}
+inline double scalar_cos(double x){return std::cos(x);}
+inline double scalar_sqrt(double x){return std::sqrt(x);}
 constexpr double pi=3.14159265358979323846;
 struct Grid { int n; const double *v; };
 struct Data {
@@ -27,32 +38,34 @@ struct Results {
 int cell(Grid g,double p) {
     return std::clamp(int(std::upper_bound(g.v,g.v+g.n,p)-g.v)-1,0,g.n-2);
 }
-double dot(const Vec &v,const Vec &w) {return v[0]*w[0]+v[1]*w[1]+v[2]*w[2];}
-Vec cross(const Vec &v,const Vec &w) {return {v[1]*w[2]-v[2]*w[1],v[2]*w[0]-v[0]*w[2],v[0]*w[1]-v[1]*w[0]};}
-Mat transpose(const Mat &b) {Mat c;for(int i=0;i<3;i++)for(int j=0;j<3;j++)c[i][j]=b[j][i];return c;}
-Mat product(const Mat &a,const Mat &b) {
-    Mat bt=transpose(b),c;
+template<class T> T dot(const Vector3<T> &v,const Vector3<T> &w) {return v[0]*w[0]+v[1]*w[1]+v[2]*w[2];}
+template<class T> Vector3<T> cross(const Vector3<T> &v,const Vector3<T> &w) {return {v[1]*w[2]-v[2]*w[1],v[2]*w[0]-v[0]*w[2],v[0]*w[1]-v[1]*w[0]};}
+template<class T> Matrix3<T> transpose(const Matrix3<T> &b) {Matrix3<T> c;for(int i=0;i<3;i++)for(int j=0;j<3;j++)c[i][j]=b[j][i];return c;}
+template<class T> Matrix3<T> product(const Matrix3<T> &a,const Matrix3<T> &b) {
+    Matrix3<T> bt=transpose(b),c;
     for(int i=0;i<3;i++)for(int j=0;j<3;j++)c[i][j]=dot(a[i],bt[j]);
     return c;
 }
-double determinant(const Mat &a) {return dot(a[0],cross(a[1],a[2]));}
-Mat cofactor(const Mat &a) {return {cross(a[1],a[2]),cross(a[2],a[0]),cross(a[0],a[1])};}
-double norm2(const Mat &a) {return dot(a[0],a[0])+dot(a[1],a[1])+dot(a[2],a[2]);}
-struct Profile {double b,bt,btt;};
-Profile profile(const Data &d,double t,bool ref=false) {
+template<class T> T determinant(const Matrix3<T> &a) {return dot(a[0],cross(a[1],a[2]));}
+template<class T> Matrix3<T> cofactor(const Matrix3<T> &a) {return {cross(a[1],a[2]),cross(a[2],a[0]),cross(a[0],a[1])};}
+template<class T> T norm2(const Matrix3<T> &a) {return dot(a[0],a[0])+dot(a[1],a[1])+dot(a[2],a[2]);}
+template<class T> struct ProfileFor {T b,bt,btt;};
+using Profile = ProfileFor<double>;
+template<class T> ProfileFor<T> profile(const Data &d,T t,bool ref=false) {
     // scipy CubicHermiteSpline coefficients are in normalized t on uniform knots.
-    const int n=d.spline_n, i=std::clamp(int(t*n),0,n-1);
+    const int n=d.spline_n, i=std::clamp(int(scalar_value(t)*n),0,n-1);
     const double *c=d.spline+4*i;
-    double h=t-double(i)/n;
+    T h=t-double(i)/n;
     const double *v=d.shape+(ref?4:0);
-    const double e=v[0], m=v[1], a=v[2], extra=v[3], prod=t*(1-t);
+    const double e=v[0], m=v[1], a=v[2], extra=v[3];
+    const T prod=t*(1-t);
     return {4*((((c[0]*h+c[1])*h+c[2])*h+c[3])+e*t+4*prod*(m+a*(2*t-1))+16*extra*prod*prod),
             4*((3*c[0]*h+2*c[1])*h+c[2]+e+4*m*(1-2*t)+4*a*(-6*t*t+6*t-1)+32*extra*prod*(1-2*t)),
             4*(6*c[0]*h+2*c[1]-8*m+4*a*(6-12*t)+32*extra*(1-6*prod))};
 }
-struct Map {double R; Vec grad; Mat hess;};
-Map radius(const Data &d,const Vec &X) {
-    double x=X[0],t=X[1],a=X[2];
+template<class T> struct WallMap {T R; Vector3<T> grad; Matrix3<T> hess;};
+using Map = WallMap<double>;
+template<class T> WallMap<T> radial_map(const Data &d,T x,double t,double a) {
     auto b=profile(d,t);
     double y=(t-.06)/.56, f=0,ft=0,ftt=0;
     if(y>0 && y<1) {
@@ -61,54 +74,56 @@ Map radius(const Data &d,const Vec &X) {
         ftt=32*(1-6*y+6*y*y)/(.56*.56)*d.epsilon;
     }
     double co=std::cos(a),sn=std::sin(a), p=(3*co*co-1)/2, pa=-3*sn*co, paa=3*(sn*sn-co*co);
-    double x2=x*x,x3=x2*x;
-    Map r{};r.R=x*b.b+x3*f*p;
+    T x2=x*x,x3=x2*x;
+    WallMap<T> r{};r.R=x*b.b+x3*f*p;
     r.grad={b.b+3*x2*f*p,x*b.bt+x3*ft*p,x3*f*pa};
-    r.hess={Vec{6*x*f*p,b.bt+3*x2*ft*p,3*x2*f*pa},
-            Vec{b.bt+3*x2*ft*p,x*b.btt+x3*ftt*p,x3*ft*pa},
-            Vec{3*x2*f*pa,x3*ft*pa,x3*f*paa}};
+    r.hess={Vector3<T>{6*x*f*p,b.bt+3*x2*ft*p,3*x2*f*pa},
+            Vector3<T>{b.bt+3*x2*ft*p,x*b.btt+x3*ftt*p,x3*ft*pa},
+            Vector3<T>{3*x2*f*pa,x3*ft*pa,x3*f*paa}};
     return r;
 }
-struct Ref { double S,Sx,det2,logVx; Mat inv,H; Vec s_hess{},z_hess{}; };
+Map radius(const Data &d,const Vec &X){return radial_map(d,X[0],X[1],X[2]);}
+template<class T> struct RefFrame {T S,Sx,det2,logVx; Matrix3<T> inv,H; Vector3<T> s_hess{},z_hess{};};
+using Ref = RefFrame<double>;
 
 // The two coordinates of the natural collar are bicubic in eta and t.
 // Horner evaluation returns the scalar value, first derivatives and Hessian.
-struct CollarJet {double value, x, t, xx, xt, tt;};
-CollarJet collar_jet(const double *p,double u,double v,double de,double dt,double eta_x,double x) {
-    double val[4],du[4],duu[4];
+template<class T> struct CollarJet {T value, x, t, xx, xt, tt;};
+template<class T> CollarJet<T> collar_jet(const double *p,T u,T v,double de,double dt,T eta_x,T x) {
+    T val[4],du[4],duu[4];
     for(int k=0;k<4;k++){
         const double *q=p+4*k;
         val[k]=((q[3]*u+q[2])*u+q[1])*u+q[0];
         du[k]=(3*q[3]*u+2*q[2])*u+q[1];
         duu[k]=6*q[3]*u+2*q[2];
     }
-    auto eval=[&](const double *r){return ((r[3]*v+r[2])*v+r[1])*v+r[0];};
-    auto slope=[&](const double *r){return (3*r[3]*v+2*r[2])*v+r[1];};
-    const double scale=eta_x/de, sx=eval(du)*scale;
+    auto eval=[&](const T *r){return ((r[3]*v+r[2])*v+r[1])*v+r[0];};
+    auto slope=[&](const T *r){return (3*r[3]*v+2*r[2])*v+r[1];};
+    const T scale=eta_x/de, sx=eval(du)*scale;
     return {eval(val),sx,slope(val)/dt,eval(duu)*scale*scale-sx/x,
             slope(du)*scale/dt,(6*val[3]*v+2*val[2])/(dt*dt)};
 }
-Ref reference(const Data &d,double x,double t,const Profile &initial,bool core) {
-    double sx,st,tx,tt,S,sxx,stx,txx,ttx,stt=0.,ttt=0.;
+template<class T> RefFrame<T> natural_frame(const Data &d,T x,T t,const ProfileFor<T> &initial,bool core) {
+    T sx,st,tx,tt,S,sxx,stx,txx,ttx,stt=0.,ttt=0.;
     if(core) {
         sx=initial.b*d.core_ratio;st=x*initial.bt*d.core_ratio;
         S=x*sx;tx=0;tt=d.ref_length;sxx=txx=ttx=0;stx=initial.bt*d.core_ratio;
     } else if(d.collar_coeff) {
-        const double e=-std::log(x)/d.pressure;
+        const T e=-scalar_log(x)/d.pressure;
         const int midpoint=(d.reg_e.n-1)/2, count=d.reg_e.n-1-midpoint;
-        const int i=std::max(midpoint,cell(d.reg_e,e)), j=cell(d.reg_t,t);
+        const int i=std::max(midpoint,cell(d.reg_e,scalar_value(e))), j=cell(d.reg_t,scalar_value(t));
         const double de=d.reg_e.v[i+1]-d.reg_e.v[i],dt=d.reg_t.v[j+1]-d.reg_t.v[j];
-        const double u=(e-d.reg_e.v[i])/de,v=(t-d.reg_t.v[j])/dt,ex=-1./(d.pressure*x);
+        const T u=(e-d.reg_e.v[i])/de,v=(t-d.reg_t.v[j])/dt,ex=-1./(d.pressure*x);
         const double *c=d.collar_coeff+32*(j*count+i-midpoint);
-        CollarJet s=collar_jet(c,u,v,de,dt,ex,x),z=collar_jet(c+16,u,v,de,dt,ex,x);
+        auto s=collar_jet(c,u,v,de,dt,ex,x),z=collar_jet(c+16,u,v,de,dt,ex,x);
         S=4+s.value;sx=s.x;st=s.t;sxx=s.xx;stx=s.xt;stt=s.tt;
         tx=z.x;tt=z.t;txx=z.xx;ttx=z.xt;ttt=z.tt;
     } else {
-        double e=-std::log(x)/d.pressure;
-        int i=cell(d.reg_e,e), j=cell(d.reg_t,t), ne=d.reg_e.n;
+        T e=-scalar_log(x)/d.pressure;
+        int i=cell(d.reg_e,scalar_value(e)), j=cell(d.reg_t,scalar_value(t)), ne=d.reg_e.n;
         double de=d.reg_e.v[i+1]-d.reg_e.v[i],dt=d.reg_t.v[j+1]-d.reg_t.v[j];
-        double u=(e-d.reg_e.v[i])/de,v=(t-d.reg_t.v[j])/dt;
-        bool up=u+v>1.;int base=j*ne+i;
+        T u=(e-d.reg_e.v[i])/de,v=(t-d.reg_t.v[j])/dt;
+        bool up=scalar_value(u+v)>1.;int base=j*ne+i;
         const double *p=d.labels+2*(base+(up?ne+1:0)),
                      *r=d.labels+2*(base+(up?ne:1)),*z=d.labels+2*(base+(up?1:ne));
         double sgn=up?-1.:1.;if(up){u=1-u;v=1-v;}
@@ -117,14 +132,17 @@ Ref reference(const Data &d,double x,double t,const Profile &initial,bool core) 
         st=(z[0]-p[0])*sgn/dt;tt=(z[1]-p[1])*sgn/dt;
         sxx=-sx/x;txx=-tx/x;stx=ttx=0;
     }
-    Ref out{};out.S=S;out.Sx=sx;out.s_hess={sxx,stx,stt};out.z_hess={txx,ttx,ttt};
-    double det=sx*tt-st*tx;
-    out.det2=std::abs(det);
-    out.inv={Vec{tt/det,-st/det,0},Vec{-tx/det,sx/det,0},Vec{0,0,1/S}};
+    RefFrame<T> out{};out.S=S;out.Sx=sx;out.s_hess={sxx,stx,stt};out.z_hess={txx,ttx,ttt};
+    T det=sx*tt-st*tx;
+    out.det2=scalar_abs(det);
+    out.inv={Vector3<T>{tt/det,-st/det,0},Vector3<T>{-tx/det,sx/det,0},Vector3<T>{0,0,1/S}};
     // H = (d Gref/dx) inv(Gref). It acts on the right of F.
-    out.H=product(Mat{Vec{sxx,stx,0},Vec{txx,ttx,0},Vec{0,0,sx}},out.inv);
+    out.H=product(Matrix3<T>{Vector3<T>{sxx,stx,0},Vector3<T>{txx,ttx,0},Vector3<T>{0,0,sx}},out.inv);
     out.logVx=out.H[0][0]+out.H[1][1]+2*sx/S;
     return out;
+}
+Ref reference(const Data &d,double x,double t,const Profile &initial,bool core){
+    return natural_frame(d,x,t,initial,core);
 }
 struct TriSlice {
     // The parent has six functions. A conforming edge refinement may add

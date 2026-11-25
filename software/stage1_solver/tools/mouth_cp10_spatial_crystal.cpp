@@ -2,24 +2,25 @@
 #include "mouth_free_shape_solid.cpp"
 
 namespace {
-Mat invert(const Mat &m) {
-    Mat q=transpose(cofactor(m));
-    double d=determinant(m);
-    for (auto &row:q) for(double &v:row) v/=d;
+template<class T> Matrix3<T> invert(const Matrix3<T> &m) {
+    Matrix3<T> q=transpose(cofactor(m));
+    T d=determinant(m);
+    for (auto &row:q) for(T &v:row) v=v/d;
     return q;
 }
-Mat physical_basis(const Map &r,double length,const Vec &widths) {
-    Mat c={r.grad,Vec{0,length,0},Vec{0,0,r.R}};
+template<class T> Matrix3<T> physical_basis(const WallMap<T> &r,double length,const Vec &widths) {
+    Matrix3<T> c={r.grad,Vector3<T>{0,length,0},Vector3<T>{0,0,r.R}};
     for(auto &row:c) for(int i=0;i<3;i++)row[i]*=widths[i];
     return c;
 }
-struct Landed {
-    Vec xi{}; Mat D{}; double chi=0.;
+template<class T> struct LabelSample {
+    Vector3<T> xi{}; Matrix3<T> D{}; T chi=0.;
 };
-struct Q1 {
-    Vec labels[2][2][2]; double order[2][2][2];
-    Landed at(double u,double v,double w) const {
-        Landed p{};
+using Landed = LabelSample<double>;
+template<class T> struct LabelCell {
+    Vector3<T> labels[2][2][2]; double order[2][2][2];
+    LabelSample<T> at(double u,double v,double w) const {
+        LabelSample<T> p{};
         for(int i=0;i<2;i++) for(int j=0;j<2;j++) for(int k=0;k<2;k++){
             const double x=i?u:1-u, t=j?v:1-v, a=k?w:1-w, h=x*t*a;
             const Vec g={(2*i-1)*t*a,(2*j-1)*x*a,(2*k-1)*x*t};
@@ -32,6 +33,7 @@ struct Q1 {
         return p;
     }
 };
+using Q1 = LabelCell<double>;
 struct Geometry {
     Data d; std::array<double,3> lo,width;
 };

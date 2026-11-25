@@ -1,0 +1,554 @@
+{
+  "invariance": {
+    "passed": true,
+    "state_sha256": "346fc15d7dc678db51b420bbfde7e07ba8cbffac68aabc9d5cdbd4dd4b149f4c",
+    "reference_sha256": "472c29c73893e75ccba8de1cf33d7bb9bbd2f93477ab425cd38289250d77fe71",
+    "force_counts": {
+      "physical_nodal": 93555,
+      "physical_free": 81144,
+      "total_free": 81144,
+      "physical_order_load": 31185
+    },
+    "force_max_abs_delta": {
+      "physical_nodal": 0.0,
+      "physical_free": 0.0,
+      "total_free": 0.0,
+      "physical_order_load": 0.0,
+      "total_free_vs_archived_cg_rhs": 0.0
+    },
+    "scalar_deltas": {
+      "total_energy": 0.0,
+      "physical_energy": 0.0,
+      "crystal_energy": 0.0,
+      "gauge_energy": 0.0,
+      "peak_active": 0.0
+    },
+    "currents": {
+      "feed_current": 10.707716628605539,
+      "bulk_current": 10.70771662860558,
+      "weak_disk_current": 10.707716628605548,
+      "incident_slice_current": 10.707716628605548,
+      "receiving_slice_current": 10.041065085980554,
+      "positive_slice_current": 10.707716628605548,
+      "port_error": 4.085620730620576e-14,
+      "disk_minus_feed_current": 8.881784197001252e-15,
+      "dense_total_subsonic_share": 0.6675898947392895,
+      "total_axial_stress": -26.582877887101112
+    },
+    "current_deltas": {
+      "feed_current": 0.0,
+      "bulk_current": 0.0,
+      "weak_disk_current": 0.0,
+      "incident_slice_current": 0.0,
+      "receiving_slice_current": 0.0,
+      "positive_slice_current": 0.0,
+      "port_error": 0.0,
+      "disk_minus_feed_current": 0.0,
+      "dense_total_subsonic_share": 0.0,
+      "total_axial_stress": 0.0
+    },
+    "field_deltas": {
+      "physical_energy": 0.0,
+      "unit_gauge": 0.0,
+      "gauge_energy": 0.0,
+      "phase_raw": 0.0,
+      "amplitude_raw": 0.0,
+      "order_raw": 0.0,
+      "order_kkt": 0.0,
+      "order_projected": 0.0,
+      "carrier_metric": 0.0,
+      "shared_work_error": 0.0
+    },
+    "complete_readout_equal": true,
+    "frozen": {
+      "total_energy": 92185.38326662472,
+      "physical_energy": 92185.38326652849,
+      "crystal_energy": 0.3071402521934724,
+      "gauge_energy": 9.623293024685807e-08,
+      "peak_active": 8.798533396107421e-05,
+      "peak_node": {
+        "component": 0,
+        "group": 29057,
+        "chi": 0.0,
+        "signed_force": -8.798533396107421e-05,
+        "node": [
+          25,
+          8,
+          14
+        ],
+        "radius": 3.8859275454437556,
+        "depth": 0.2069850407996006,
+        "theta": 0.970514952943746
+      },
+      "field": {
+        "physical_energy": 92185.38326652849,
+        "unit_gauge": 9.62329302468581,
+        "gauge_energy": 9.623293024685809e-08,
+        "phase_raw": 8.979275179302193e-11,
+        "amplitude_raw": 2.172395806910351e-09,
+        "order_raw": 0.38624204013289093,
+        "order_kkt": 0.0021418348746580266,
+        "order_projected": 0.0002671322683214156,
+        "carrier_metric": 2.2280689520054942e-09,
+        "shared_work_error": -2.7755575615628914e-16,
+        "order_knot_transport": [
+          {
+            "free_interior": 1.445904170285963e-05,
+            "lower_obstacle": 2.9019617425311824e-16,
+            "upper_obstacle": -0.0,
+            "total": 1.4459041703149828e-05
+          },
+          {
+            "free_interior": -1.7987230984998912e-05,
+            "lower_obstacle": -0.0363454525170235,
+            "upper_obstacle": -0.0,
+            "total": -0.0363634397480085
+          }
+        ]
+      },
+      "chart": {
+        "chart_det_global_lower": 7.690322930976627e-07,
+        "chart_lowest_cell": [
+          25,
+          10,
+          9
+        ],
+        "chart_det_active_lower": 0.0005949265521395255
+      },
+      "min_Jinv": 0.0004514965750855049,
+      "front": 0.3622238246143633,
+      "current": {
+        "feed_current": 10.707716628605539,
+        "bulk_current": 10.70771662860558,
+        "weak_disk_current": 10.707716628605548,
+        "incident_slice_current": 10.707716628605548,
+        "receiving_slice_current": 10.041065085980554,
+        "positive_slice_current": 10.707716628605548,
+        "port_error": 4.085620730620576e-14,
+        "disk_minus_feed_current": 8.881784197001252e-15,
+        "dense_total_subsonic_share": 0.6675898947392895,
+        "total_axial_stress": -26.582877887101112
+      }
+    },
+    "accepted_steps": 0
+  },
+  "algebra": {
+    "errors": {
+      "add": 6.649273094452398e-16,
+      "subtract": 2.3556302400669105e-14,
+      "symmetry": 2.088056361145881e-18
+    },
+    "limits": {
+      "add": 1e-12,
+      "subtract": 1e-12,
+      "symmetry": 1e-12
+    },
+    "passed": true,
+    "vector_sha256": "b3a633b19af74acfac934330415fe165427f5a319e6cf4c6f3aaa698233d57d0",
+    "state_sha256": "346fc15d7dc678db51b420bbfde7e07ba8cbffac68aabc9d5cdbd4dd4b149f4c",
+    "implementation": {
+      "h": null,
+      "relative_step": 0.0,
+      "method": "forward_tangent"
+    },
+    "accepted_steps": 0
+  },
+  "cg_gate": {
+    "state_sha256": "346fc15d7dc678db51b420bbfde7e07ba8cbffac68aabc9d5cdbd4dd4b149f4c",
+    "accepted_steps": 0,
+    "passed": true,
+    "metrics": {
+      "cg_iterations": 29,
+      "eta": 0.018404342361420984,
+      "reason": "CG forcing attained",
+      "replacements": [],
+      "explicit": 0.01711870515041708,
+      "recursive": 0.01711870515041706,
+      "jacobi": {
+        "colors_by_component": [
+          8,
+          8,
+          8
+        ],
+        "hvp_calls": 24,
+        "negative_diagonal": 0,
+        "zero_diagonal": 0,
+        "floored": 0,
+        "minimum_relative_step": 9.5367431640625e-07,
+        "active_range": [
+          3.559106837107046e-08,
+          711.7430211684791
+        ],
+        "melted_range": [
+          6.950651399140243e-11,
+          4.2488394020021865
+        ],
+        "chart_at_assembly": 7.690322930976627e-07,
+        "rebuilt": true
+      }
+    },
+    "tolerance_checks": [
+      {
+        "iteration": 29,
+        "recursive": 0.01711870515041706,
+        "direct": 0.01711870515041708,
+        "normalized_vector_gap": 1.4319917848364876e-15
+      }
+    ],
+    "operator_calls": 30,
+    "per_call_seconds": [
+      0.5937657048925757,
+      0.5926132523454726,
+      0.599352614954114,
+      0.6216179612092674,
+      0.5969232469797134,
+      0.6038586487993598,
+      0.6160739026963711,
+      0.595829114317894,
+      0.5933851762674749,
+      0.629031085409224,
+      0.615654821973294,
+      0.5917500099167228,
+      0.5937326923012733,
+      0.6178180081769824,
+      0.5937732290476561,
+      0.5958601222373545,
+      0.6355215618386865,
+      0.6155056338757277,
+      0.5976907392032444,
+      0.610701214056462,
+      0.6001844345591962,
+      0.624245819170028,
+      0.6180974179878831,
+      0.6163839981891215,
+      0.6481414600275457,
+      0.5918454211205244,
+      0.5905424957163632,
+      0.611829549074173,
+      0.6236633961088955,
+      0.6006580898538232
+    ],
+    "preconditioner_calls": 24,
+    "preconditioner_product_seconds": [
+      0.5317522170953453,
+      0.5278823557309806,
+      0.5541181722655892,
+      0.5611291630193591,
+      0.6103572752326727,
+      0.6336337188258767,
+      0.7139278692193329,
+      0.6110058319754899,
+      0.5825502420775592,
+      0.5728159761056304,
+      0.5533511857502162,
+      0.5623508100397885,
+      0.613917532376945,
+      0.5729916240088642,
+      0.5940722390078008,
+      0.5934579861350358,
+      0.4856146043166518,
+      0.5415548849850893,
+      0.5366561468690634,
+      0.6282238299027085,
+      0.5068023200146854,
+      0.560998200904578,
+      0.5309222219511867,
+      0.5836210767738521
+    ],
+    "median_seconds": 0.6022583693265915,
+    "archived_median_seconds": 1.0687327338171992,
+    "timing_ratio": 0.5635257069141146
+  },
+  "reference": {
+    "state_sha256": "346fc15d7dc678db51b420bbfde7e07ba8cbffac68aabc9d5cdbd4dd4b149f4c",
+    "vectors_sha256": "b3a633b19af74acfac934330415fe165427f5a319e6cf4c6f3aaa698233d57d0",
+    "records": {
+      "u": {
+        "widths": [
+          2.997116919021325e-10,
+          3.746396148776656e-11
+        ],
+        "selected_cells": 6521,
+        "full_width_spread": 8.414813636779105e-17,
+        "free_width_spread": 8.968434105998249e-17,
+        "full_nodal_norm": 0.00014676435209860694,
+        "free_norm": 0.00012473022543091206,
+        "bank_sha256": "7290196d73b56a3da9a518257d95be0543ece33d3ee829428033d6b79ccc7ebf"
+      },
+      "v": {
+        "widths": [
+          2.9958785023071555e-10,
+          3.744848127883944e-11
+        ],
+        "selected_cells": 6521,
+        "full_width_spread": 7.323265507214591e-17,
+        "free_width_spread": 7.610458203582978e-17,
+        "full_nodal_norm": 0.00014682478007267143,
+        "free_norm": 0.0001247305233179856,
+        "bank_sha256": "091662a81e6a1966b52f426094c8838a99391c67c1aea0a6b128a7c2184a1839"
+      },
+      "v_minus_u": {
+        "widths": [
+          7.250385144081954e-07,
+          9.062981430102443e-08
+        ],
+        "selected_cells": 6521,
+        "full_width_spread": 5.9559604206446225e-18,
+        "free_width_spread": 5.964503096204038e-18,
+        "full_nodal_norm": 4.644767571804471e-06,
+        "free_norm": 4.141767521276676e-06,
+        "bank_sha256": "b790f07d86d8c7c0f108a99e848148c9316dfaf94f9d7967f67ea1a699dbe568"
+      },
+      "weld1": {
+        "cell": [
+          17,
+          1,
+          1
+        ],
+        "chi_vertex_range": [
+          0.20415417678142478,
+          0.3355335407499998
+        ],
+        "eligible_cells": 198,
+        "weld": 0.8824969025845955,
+        "weld_cut_fractions": [
+          0.10018540245968185,
+          0.10018620455427084,
+          0.10018700664762765,
+          0.11740608334332113,
+          0.11740708150524777,
+          0.11740807966555111,
+          0.1345121993868411,
+          0.1345133906665364,
+          0.13451458194418167
+        ],
+        "signed_weld_cut_speed": [
+          -1.07520285631932,
+          -1.0144397831766487,
+          -0.9536768143095894,
+          -1.1540529135455977,
+          -1.0936166877403966,
+          -1.0331805743324687,
+          -1.232038299064902,
+          -1.1719259116310328,
+          -1.111813644558671
+        ],
+        "widths": [
+          1.2845828615385911e-09,
+          1.605728576923239e-10
+        ],
+        "selected_cells": 27,
+        "full_width_spread": 6.5865367509995e-18,
+        "free_width_spread": 8.481820705448896e-18,
+        "full_nodal_norm": 1.2004887773367003,
+        "free_norm": 0.9321270187266432,
+        "bank_sha256": "72096807dccf47d13604292d2062964c63cfd5183c3af5b34a8e5d764355da88"
+      },
+      "weld2": {
+        "cell": [
+          17,
+          4,
+          12
+        ],
+        "chi_vertex_range": [
+          0.033252714304166604,
+          0.06603693403602776
+        ],
+        "eligible_cells": 198,
+        "weld": 0.8824969025845955,
+        "weld_cut_fractions": [
+          0.29672134170986114,
+          0.2983566757316206,
+          0.29999214869078455,
+          0.33192460928879186,
+          0.33409538986594517,
+          0.33626636241327695,
+          0.36652080876341075,
+          0.36921792325643055,
+          0.3719152854737377
+        ],
+        "signed_weld_cut_speed": [
+          -1.083450121665497,
+          -1.0288729990567331,
+          -0.9743132763813072,
+          -1.157692668544015,
+          -1.1039831781408294,
+          -1.0502979366075254,
+          -1.2298559011700587,
+          -1.1769831088320588,
+          -1.1241411801203594
+        ],
+        "widths": [
+          1.0956736171946806e-09,
+          1.3695920214933508e-10
+        ],
+        "selected_cells": 27,
+        "full_width_spread": 6.316515211612124e-18,
+        "free_width_spread": 6.316515211612124e-18,
+        "full_nodal_norm": 9.130276515328472,
+        "free_norm": 9.130276515328472,
+        "bank_sha256": "f22e513d392c2124d34a064893c7043e2bd7878d9f3cede85e87211f003ddf88"
+      },
+      "weld3": {
+        "cell": [
+          17,
+          8,
+          6
+        ],
+        "chi_vertex_range": [
+          0.0015988826324437122,
+          0.005014998356368903
+        ],
+        "eligible_cells": 198,
+        "weld": 0.8824969025845955,
+        "weld_cut_fractions": [
+          0.6209717554966783,
+          0.6245676566839059,
+          0.6281638379290214,
+          0.6638104717325521,
+          0.6675881923420206,
+          0.6713664475523033,
+          0.7057367909200007,
+          0.7096951088040216,
+          0.7136542333865085
+        ],
+        "signed_weld_cut_speed": [
+          -1.210092170102174,
+          -1.1634027167028964,
+          -1.116754056811851,
+          -1.2814623098843045,
+          -1.2356374634936553,
+          -1.189852424100684,
+          -1.350201350536047,
+          -1.30521803823015,
+          -1.2602736624101845
+        ],
+        "widths": [
+          9.552026406312601e-10,
+          1.1940033007890752e-10
+        ],
+        "selected_cells": 27,
+        "full_width_spread": 2.8844371451973587e-18,
+        "free_width_spread": 2.8844371451973587e-18,
+        "full_nodal_norm": 0.19215083219731388,
+        "free_norm": 0.19215083219731388,
+        "bank_sha256": "9c70c8fb2dba8990f1b7bc74fc7cd073175062f9f07f8e1821992ac1826ca85b"
+      },
+      "weld4": {
+        "cell": [
+          18,
+          11,
+          18
+        ],
+        "chi_vertex_range": [
+          0.0,
+          0.000168244939230695
+        ],
+        "eligible_cells": 198,
+        "weld": 0.8824969025845955,
+        "weld_cut_fractions": [
+          0.30513084744833646,
+          0.308841539479747,
+          0.312551840582507,
+          0.3866388093378602,
+          0.3902554026786909,
+          0.39387384920609675,
+          0.46385173213549485,
+          0.46742558087440084,
+          0.47100335487120826
+        ],
+        "signed_weld_cut_speed": [
+          -1.0764731364007338,
+          -1.0300168142441184,
+          -0.9836154694945268,
+          -1.160820815948271,
+          -1.1164070740092256,
+          -1.0720195039915272,
+          -1.2367902586171717,
+          -1.1943632117048064,
+          -1.1519379207289047
+        ],
+        "widths": [
+          8.466568860140713e-10,
+          1.0583211075175892e-10
+        ],
+        "selected_cells": 18,
+        "full_width_spread": 9.031523424773744e-19,
+        "free_width_spread": 9.097000737670932e-19,
+        "full_nodal_norm": 0.0450174124076138,
+        "free_norm": 0.04469339141618649,
+        "bank_sha256": "a6ef14762d791ef7d932e67e88aa711bbc44b9f71222111dc83f1513791ad84b"
+      }
+    },
+    "scalar_mantissa": 113,
+    "oracle_source_sha256": "949f856e2cd720eb4b362ce159de8119005017fdf47d509eebe75629ae1fd0ff",
+    "accepted_steps": 0
+  },
+  "comparison": {
+    "rows": {
+      "u": {
+        "full_relative": 1.5617023930679776e-14,
+        "free_relative": 1.7553072198463104e-14,
+        "max_absolute": 1.2294153833804135e-18,
+        "free_width_spread": 8.968434105998249e-17,
+        "full_width_spread": 8.414813636779105e-17
+      },
+      "v": {
+        "full_relative": 1.561085889388145e-14,
+        "free_relative": 1.7560865314268252e-14,
+        "max_absolute": 1.2290977460251932e-18,
+        "free_width_spread": 7.610458203582978e-17,
+        "full_width_spread": 7.323265507214591e-17
+      },
+      "v_minus_u": {
+        "full_relative": 1.2388196845433178e-14,
+        "free_relative": 1.0537224054736431e-14,
+        "max_absolute": 2.4881592825595072e-20,
+        "free_width_spread": 5.964503096204038e-18,
+        "full_width_spread": 5.9559604206446225e-18
+      },
+      "weld1": {
+        "full_relative": 1.1371051758094828e-15,
+        "free_relative": 1.1925648898700008e-15,
+        "max_absolute": 4.718447854656915e-16,
+        "free_width_spread": 8.481820705448896e-18,
+        "full_width_spread": 6.5865367509995e-18
+      },
+      "weld2": {
+        "full_relative": 1.5640024979958229e-15,
+        "free_relative": 1.5640024979958229e-15,
+        "max_absolute": 5.329070518200751e-15,
+        "free_width_spread": 6.316515211612124e-18,
+        "full_width_spread": 6.316515211612124e-18
+      },
+      "weld3": {
+        "full_relative": 1.8614811163522664e-15,
+        "free_relative": 1.8614811163522664e-15,
+        "max_absolute": 1.1796119636642288e-16,
+        "free_width_spread": 2.8844371451973587e-18,
+        "full_width_spread": 2.8844371451973587e-18
+      },
+      "weld4": {
+        "full_relative": 2.7772276742842937e-15,
+        "free_relative": 2.7898154237107134e-15,
+        "max_absolute": 4.2934406030425976e-17,
+        "free_width_spread": 9.097000737670932e-19,
+        "full_width_spread": 9.031523424773744e-19
+      }
+    },
+    "passed": true,
+    "accepted_steps": 0,
+    "state_sha256": "346fc15d7dc678db51b420bbfde7e07ba8cbffac68aabc9d5cdbd4dd4b149f4c",
+    "reference_physical_subtractivity": 3.933442727085806e-15
+  },
+  "archive_revisions": [
+    "ba838359",
+    "578a5526"
+  ],
+  "verdict": "Phase 1 passes all four zero-step gates on saved R4 step 382.",
+  "provenance": {
+    "controls": "mouth_r4_step383_exact_gate.py reference/frozen/cg and mouth_r4_physical_hv_reference.py reference/compare",
+    "review": "Independent source and numerical review, including original force bank, weld crossings and matrix-free CG. Production step acceptance disabled.",
+    "timing_scope": "30 joint products in CG, excluding 24 Jacobi products. The historical preconditioner minimum_relative_step sentinel in the replay was corrected for display only; each exact action has h=null, relative_step=0."
+  }
+}

@@ -20,8 +20,10 @@ class InvalidSpatialCrystal(ValueError):
 
 @lru_cache(maxsize=1)
 def _library():
-    source=Path(__file__).with_suffix('.cpp')
-    files=[source,source.with_name('mouth_cp10_spatial_crystal.cpp'),source.with_name('mouth_free_shape_solid.cpp')]
+    source=Path(__file__).with_name('mouth_r4_crystal_tangent.cpp')
+    files=[source]+[source.with_name(name) for name in (
+        'mouth_r4_eulerian_solid.cpp','mouth_cp10_spatial_crystal.cpp',
+        'mouth_free_shape_solid.cpp','mouth_r4_smooth_points.hpp')]
     key=sha256(b''.join(p.read_bytes() for p in files)).hexdigest()
     folder=source.parents[3]/'_scratch'/'s11c'/'r4_eulerian_crystal_build'
     folder.mkdir(parents=True,exist_ok=True)
@@ -41,6 +43,9 @@ def _library():
     f=lib.r4_eulerian_material
     f.argtypes=[ct.POINTER(Data),Pointer,Pointer,Grid]+[Pointer]*6
     f.restype=ct.c_int
+    hv=lib.r4_physical_label_hvp
+    hv.argtypes=[ct.POINTER(Data),Pointer,Pointer,Pointer,Grid,Pointer,Pointer,ct.POINTER(ct.c_int)]
+    hv.restype=ct.c_int
     return lib
 
 
@@ -83,6 +88,25 @@ class SpatialCrystal:
         self.weights=np.ascontiguousarray(gw/2)
         self.rule=Grid(len(gp),pointer(self.points))
         self.function=_kernel()
+
+    def hessian_action(self,labels,order,nodal_v):
+        """Binary64 forward tangent of the welded cubic's physical label gradient."""
+        labels,order,direction=(np.ascontiguousarray(x,dtype=np.float64) for x in
+                                (labels,order,nodal_v))
+        if labels.shape!=self.shape+(3,) or direction.shape!=labels.shape or order.shape!=self.shape:
+            raise ValueError('Hessian action requires full nodal labels, order and direction')
+        if not all(np.isfinite(x).all() for x in (labels,direction,order)) or order.min()<0 or order.max()>1:
+            raise ValueError('Invalid order or nonfinite crystal Hessian input')
+        if any(labels[...,k].min()<ax[0]-2.e-13 or labels[...,k].max()>ax[-1]+2.e-13
+               for k,ax in enumerate(self.axes)):
+            raise InvalidSpatialCrystal('Label leaves the registered chart',{'code':'label_domain'})
+        result=np.zeros_like(labels)
+        cell=(ct.c_int*3)()
+        rc=_library().r4_physical_label_hvp(ct.byref(self.body.data),pointer(labels),pointer(order),
+            pointer(direction),self.rule,pointer(self.weights),pointer(result),cell)
+        if rc or not np.isfinite(result).all():
+            raise InvalidSpatialCrystal('Invalid physical crystal Hessian action',dict(code=rc,cell=list(cell)))
+        return result
 
     def evaluate(self,labels,order,gradient=True):
         labels=np.ascontiguousarray(labels,dtype=np.float64)

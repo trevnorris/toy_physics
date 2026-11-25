@@ -239,7 +239,14 @@ class JointCrystal:
         return elastic+m['gauge_energy'],gradient,m
 
     def hvp(self,labels,v,relative_step=None):
-        """Use active support alone to scale the physical secant; the melted block is analytic."""
+        """Differentiate the cubic crystal and the gauge at the same base state."""
+        if self.solid.body.data.collar_coeff:
+            u=self.lift(v)
+            result=self.solid.hessian_action(labels,self.order,u)
+            result+=self.epsilon*self.weighted.tangent(labels,u)
+            self.last_hvp=dict(h=None,relative_step=0.,method='forward_tangent')
+            return self.reduce(result)
+        # The original triangular registry has separate internal face switches.
         rel=RELATIVE_STEP if relative_step is None else float(relative_step)
         if rel<=0 or not np.isfinite(rel):
             raise ValueError('Expected positive finite cell-relative derivative width')
@@ -278,7 +285,7 @@ class JointCrystal:
         diagonal=np.empty_like(self.width)
         cursor=0
         colors=[]
-        hmin=RELATIVE_STEP
+        hmin=0. if self.solid.body.data.collar_coeff else RELATIVE_STEP
         for cm in self.components:
             groups=np.flatnonzero(~cm.held)
             color=coloring(cm,self.weighted.ids)

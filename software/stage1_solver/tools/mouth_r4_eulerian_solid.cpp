@@ -160,35 +160,36 @@ int orientation(const Q1 &q,const Vec &width,Orientation &proof){
     return certify_net(net,{0.,0.,0.},1.,0,proof);
 }
 
-struct PointWork {double unit=0.,flux=0.,Jinv=0.,grad_norm=0.,W=0.; Vec value{}; Mat tangent{};};
-PointWork material(const Geometry& g,const Vec&local,const Landed&p,bool need_gradient){
-    PointWork out{};Vec pos{};for(int k=0;k<3;k++)pos[k]=g.lo[k]+g.width[k]*local[k];
-    const auto &d=g.d;const bool core=p.xi[0]<=d.x.v[(d.x.n-1)*2/3];
-    const auto prof=profile(d,p.xi[1],true);const Ref ref=reference(d,p.xi[0],p.xi[1],prof,core);
-    const double sn=std::sin(p.xi[2]);
-    if(!(ref.S>0 && ref.det2>0 && sn>0))throw std::domain_error("reference chart");
-    const auto wall=radius(d,pos);const Mat C=physical_basis(wall,d.length,g.width);
-    const double detD=determinant(p.D),volume=4*pi*detD*ref.det2*ref.S*ref.S*sn;
-    const Mat di=invert(p.D),bi=product(di,ref.inv),F=product(C,bi);
-    const double hoop=wall.R*std::sin(pos[2])/(ref.S*sn);
-    const double J=determinant(C)*hoop/(detD*ref.S*ref.det2);
-    if(!(volume>0 && J>0 && std::isfinite(J)))throw std::domain_error("oriented volume");
-    out.Jinv=1./J;out.W=.5*(norm2(F)+hoop*hoop-4.)-std::log(J)+.25*(J-1.)*(J-1.);
+template<class T> struct MaterialWork {T unit=0.,flux=0.,Jinv=0.,grad_norm=0.,W=0.; Vector3<T> value{}; Matrix3<T> tangent{};};
+using PointWork = MaterialWork<double>;
+template<class T> MaterialWork<T> material(const Geometry& g,const Vector3<T>&local,const LabelSample<T>&p,bool need_gradient){
+    MaterialWork<T> out{};Vector3<T> pos{};for(int k=0;k<3;k++)pos[k]=g.lo[k]+g.width[k]*local[k];
+    const auto &d=g.d;const bool core=scalar_value(p.xi[0])<=d.x.v[(d.x.n-1)*2/3];
+    const auto prof=profile(d,p.xi[1],true);const auto ref=natural_frame(d,p.xi[0],p.xi[1],prof,core);
+    const T sn=scalar_sin(p.xi[2]);
+    if(!(scalar_value(ref.S)>0 && scalar_value(ref.det2)>0 && scalar_value(sn)>0))throw std::domain_error("reference chart");
+    const auto wall=radial_map(d,pos[0],scalar_value(pos[1]),scalar_value(pos[2]));const Matrix3<T> C=physical_basis(wall,d.length,g.width);
+    const T detD=determinant(p.D),volume=4*pi*detD*ref.det2*ref.S*ref.S*sn;
+    const Matrix3<T> di=invert(p.D),bi=product(di,ref.inv),F=product(C,bi);
+    const T hoop=wall.R*scalar_sin(pos[2])/(ref.S*sn);
+    const T J=determinant(C)*hoop/(detD*ref.S*ref.det2);
+    if(!(scalar_value(volume)>0 && scalar_value(J)>0 && std::isfinite(scalar_value(J))))throw std::domain_error("oriented volume");
+    out.Jinv=1./J;out.W=.5*(norm2(F)+hoop*hoop-4.)-scalar_log(J)+.25*(J-1.)*(J-1.);
     out.unit=volume*out.W;
     // Gradient norm in the orthonormal meridional physical frame of the current state.
-    const Mat grad=product(p.D,invert(C));out.grad_norm=std::sqrt(norm2(grad));
+    const Matrix3<T> grad=product(p.D,invert(C));out.grad_norm=scalar_sqrt(norm2(grad));
     if(!need_gradient)return out;
-    const double load=p.chi*volume,vcoef=out.W+1.-.5*J*(J-1.);
-    Mat s=product(transpose(F),F);
+    const T load=p.chi*volume,vcoef=out.W+1.-.5*J*(J-1.);
+    Matrix3<T> s=product(transpose(F),F);
     for(int i=0;i<3;i++)for(int j=0;j<3;j++)s[i][j]=(i==j?vcoef:0.)-s[i][j];
-    const Mat gradB=product(s,transpose(bi)),gradH=product(gradB,transpose(p.D));
-    const Mat H=invert(ref.inv);
+    const Matrix3<T> gradB=product(s,transpose(bi)),gradH=product(gradB,transpose(p.D));
+    const Matrix3<T> H=invert(ref.inv);
     out.tangent=product(transpose(H),gradB);
-    for(auto &r:out.tangent)for(double &z:r)z*=load;
-    const double ss=ref.S,sx=H[0][0],st=H[0][1],polar=gradH[2][2]+(vcoef-hoop*hoop)/ss;
-    out.value={polar*sx,polar*st,(vcoef-hoop*hoop)*std::cos(p.xi[2])/sn};
+    for(auto &r:out.tangent)for(T &z:r)z*=load;
+    const T ss=ref.S,sx=H[0][0],st=H[0][1],polar=gradH[2][2]+(vcoef-hoop*hoop)/ss;
+    out.value={polar*sx,polar*st,(vcoef-hoop*hoop)*scalar_cos(p.xi[2])/sn};
     if(core){
-        const double slope=d.core_ratio*prof.bt;
+        const T slope=d.core_ratio*prof.bt;
         out.value[0]+=gradH[0][1]*slope;
         out.value[1]+=gradH[0][0]*slope+gradH[0][1]*p.xi[0]*d.core_ratio*prof.btt;
     }else if(d.collar_coeff){
@@ -197,15 +198,71 @@ PointWork material(const Geometry& g,const Vec&local,const Landed&p,bool need_gr
                          +gradH[1][0]*ref.z_hess[i]+gradH[1][1]*ref.z_hess[i+1];
         }
     }else out.value[0]-=(gradH[0][0]*sx+gradH[1][0]*H[1][0])/p.xi[0];
-    for(double &v:out.value)v*=load;
-    const double rateR=wall.grad[0]*g.width[0]/wall.R;
-    const Mat gradC=product(F,transpose(bi));
-    double moving=hoop*hoop*rateR+(-1.+.5*J*(J-1.))*(wall.hess[0][0]/wall.grad[0]*g.width[0]+2.*rateR);
+    for(T &v:out.value)v*=load;
+    const T rateR=wall.grad[0]*g.width[0]/wall.R;
+    const Matrix3<T> gradC=product(F,transpose(bi));
+    T moving=hoop*hoop*rateR+(-1.+.5*J*(J-1.))*(wall.hess[0][0]/wall.grad[0]*g.width[0]+2.*rateR);
     for(int k=0;k<3;k++)moving+=gradC[0][k]*wall.hess[k][0]*g.width[0]*g.width[k];
     moving+=gradC[2][2]*wall.grad[0]*g.width[0]*g.width[2];
     out.flux=load*moving;
     return out;
 }
+
+// Differentiate this same discrete first variation for Newton products. The cut
+// changes both segment widths and abscissae; its adjoint includes the moving
+// order sample, physical frame, and gradient of the implicit radial root.
+template<class S,class CutsType,class Split,class Sample,class AddLoad,class AddGradient>
+int integrate_cell(const Geometry& g,const LabelCell<S>& q,const int (&ids)[2][2][2],
+                   Grid rule,const double* weights,double weld,bool need,CutsType& cuts,
+                   std::vector<S>& cut_work,Split split,Sample sample,AddLoad add_load,
+                   AddGradient add_gradient){
+    for(int T=0;T<rule.n;T++)for(int A=0;A<rule.n;A++){
+        double v=rule.v[T],a=rule.v[A],wa=weights[T]*weights[A];
+        double bta[2][2],bt[2][2],ba[2][2];
+        for(int Z=0;Z<2;Z++)for(int K=0;K<2;K++){
+            bta[Z][K]=(Z?v:1-v)*(K?a:1-a);bt[Z][K]=(2*Z-1)*(K?a:1-a);ba[Z][K]=(Z?v:1-v)*(2*K-1);
+        }
+        const auto l=q.at(0,v,a),r=q.at(1,v,a);Vector3<S> delta{};Matrix3<S> dD{};
+        for(int c=0;c<3;c++){delta[c]=r.xi[c]-l.xi[c];for(int h=0;h<3;h++)dD[c][h]=r.D[c][h]-l.D[c][h];}
+        const S dc=r.chi-l.chi;
+        split(cuts,g.d,l.xi,r.xi,weld);cut_work.assign(cuts.size(),0.);
+        for(size_t z=1;z<cuts.size();z++){
+            const S du=cuts[z].u-cuts[z-1].u;if(!(scalar_value(du)>0))continue;
+            for(int XG=0;XG<rule.n;XG++){
+                const double f=rule.v[XG],w=wa*weights[XG];
+                const S u=cuts[z-1].u+du*f,wt=w*du;
+                auto p=l;p.chi+=u*dc;
+                for(int c=0;c<3;c++){p.xi[c]+=u*delta[c];for(int h=0;h<3;h++)p.D[c][h]+=u*dD[c][h];}
+                MaterialWork<S> state;
+                try{state=material(g,{u,v,a},p,need);}catch(std::domain_error&){return 4;}
+                if(!std::isfinite(scalar_value(state.unit+state.grad_norm)))return 5;
+                sample(state,p,wt,u,v,a);
+                S tangent_u=state.flux+dot(state.value,delta)+state.unit*dc;
+                if(need){
+                    for(int c=0;c<3;c++)tangent_u+=dot(state.tangent[c],dD[c]);
+                    cut_work[z-1]+=w*(-state.unit*p.chi+du*(1-f)*tangent_u);
+                    cut_work[z]+=w*(state.unit*p.chi+du*f*tangent_u);
+                }
+                for(int XX=0;XX<2;XX++)for(int Z=0;Z<2;Z++)for(int K=0;K<2;K++){
+                    int idx=ids[XX][Z][K];const S bx=XX?u:1-u,sh=bx*bta[Z][K];
+                    add_load(idx,wt*sh*state.unit);
+                    if(need){Vector3<S> ds{(2*XX-1)*bta[Z][K],bx*bt[Z][K],bx*ba[Z][K]};
+                        for(int c=0;c<3;c++)add_gradient(3*idx+c,wt*(dot(state.tangent[c],ds)+state.value[c]*sh));}
+                }
+            }
+        }
+        if(need)for(size_t n=1;n+1<cuts.size();n++){
+            const auto &cut=cuts[n];const S denom=dot(cut.normal,delta);
+            if(scalar_value(denom)==0){if(scalar_value(cut_work[n])!=0)return 6;continue;}
+            const S adj=-cut_work[n]/denom;
+            for(int X=0;X<2;X++)for(int Z=0;Z<2;Z++)for(int K=0;K<2;K++){
+                S factor=adj*bta[Z][K]*(X?cut.u:1-cut.u);int idx=ids[X][Z][K];
+                for(int c=0;c<3;c++)add_gradient(3*idx+c,factor*cut.normal[c]);}
+        }
+    }
+    return 0;
+}
+
 }
 
 // Standalone whole-chart entry. Physics and guard call the same cell predicate.
@@ -260,58 +317,21 @@ extern "C" int r4_eulerian_material(const Data*dp,const double *labels,const dou
         diagnostics[2]=std::min(diagnostics[2],proof.lower);
         if(has_order)diagnostics[3]=std::min(diagnostics[3],proof.lower);
         const bool need=has_order&&grad;
-        for(int T=0;T<rule.n;T++)for(int A=0;A<rule.n;A++){
-            double v=rule.v[T],a=rule.v[A],wa=weights[T]*weights[A];
-            double bta[2][2],bt[2][2],ba[2][2];
-            for(int Z=0;Z<2;Z++)for(int K=0;K<2;K++){
-                bta[Z][K]=(Z?v:1-v)*(K?a:1-a);bt[Z][K]=(2*Z-1)*(K?a:1-a);ba[Z][K]=(Z?v:1-v)*(2*K-1);
+        auto sample=[&](const PointWork&state,const Landed&p,double wt,double u,double v,double a){
+            if(state.Jinv<diagnostics[0]){diagnostics[0]=state.Jinv;diagnostics[5]=i;diagnostics[6]=j;diagnostics[7]=k;
+                diagnostics[8]=u;diagnostics[9]=v;diagnostics[10]=a;diagnostics[11]=p.chi;diagnostics[12]=state.grad_norm;diagnostics[13]=state.W;}
+            if(p.chi>0&&state.Jinv<diagnostics[1]){diagnostics[1]=state.Jinv;diagnostics[14]=i;diagnostics[15]=j;diagnostics[16]=k;
+                diagnostics[17]=u;diagnostics[18]=v;diagnostics[19]=a;diagnostics[20]=p.chi;diagnostics[21]=state.grad_norm;diagnostics[22]=state.W;}
+            if(p.chi>=.5 && state.W>intact[4*j]){
+                intact[4*j]=state.W;intact[4*j+1]=d.length*(g.lo[1]+v*g.width[1]);
+                intact[4*j+2]=p.chi;intact[4*j+3]=state.Jinv;
             }
-            const Landed l=q.at(0,v,a),r=q.at(1,v,a);Vec delta{};Mat dD{};
-            for(int c=0;c<3;c++){delta[c]=r.xi[c]-l.xi[c];for(int h=0;h<3;h++)dD[c][h]=r.D[c][h]-l.D[c][h];}
-            const double dc=r.chi-l.chi;
-            radial_cuts(cuts,d,l.xi,r.xi,weld);cut_work.assign(cuts.size(),0.);
-            for(size_t z=1;z<cuts.size();z++){
-                const double du=cuts[z].u-cuts[z-1].u;if(!(du>0))continue;
-                for(int XG=0;XG<rule.n;XG++){
-                    const double f=rule.v[XG],u=cuts[z-1].u+du*f,w=wa*weights[XG],wt=w*du;
-                    auto p=l;p.chi+=u*dc;
-                    for(int c=0;c<3;c++){p.xi[c]+=u*delta[c];for(int h=0;h<3;h++)p.D[c][h]+=u*dD[c][h];}
-                    PointWork state;
-                    try{state=material(g,{u,v,a},p,need);}catch(std::domain_error&){return 4;}
-                    if(!std::isfinite(state.unit+state.grad_norm))return 5;
-                    if(state.Jinv<diagnostics[0]){diagnostics[0]=state.Jinv;diagnostics[5]=i;diagnostics[6]=j;diagnostics[7]=k;
-                        diagnostics[8]=u;diagnostics[9]=v;diagnostics[10]=a;diagnostics[11]=p.chi;diagnostics[12]=state.grad_norm;diagnostics[13]=state.W;}
-                    if(p.chi>0&&state.Jinv<diagnostics[1]){diagnostics[1]=state.Jinv;diagnostics[14]=i;diagnostics[15]=j;diagnostics[16]=k;
-                        diagnostics[17]=u;diagnostics[18]=v;diagnostics[19]=a;diagnostics[20]=p.chi;diagnostics[21]=state.grad_norm;diagnostics[22]=state.W;}
-                    if(p.chi>=.5 && state.W>intact[4*j]){
-                        intact[4*j]=state.W;intact[4*j+1]=d.length*(g.lo[1]+v*g.width[1]);
-                        intact[4*j+2]=p.chi;intact[4*j+3]=state.Jinv;
-                    }
-                    diagnostics[4]=std::min(diagnostics[4],1./state.Jinv);
-                    energy+=wt*p.chi*state.unit;
-                    double tangent_u=state.flux+dot(state.value,delta)+state.unit*dc;
-                    if(need){
-                        for(int c=0;c<3;c++)tangent_u+=dot(state.tangent[c],dD[c]);
-                        cut_work[z-1]+=w*(-state.unit*p.chi+du*(1-f)*tangent_u);
-                        cut_work[z]+=w*(state.unit*p.chi+du*f*tangent_u);
-                    }
-                    for(int XX=0;XX<2;XX++)for(int Z=0;Z<2;Z++)for(int K=0;K<2;K++){
-                        int idx=ids[XX][Z][K];const double bx=XX?u:1-u,sh=bx*bta[Z][K];
-                        loads[idx]+=wt*sh*state.unit;
-                        if(need){Vec ds{(2*XX-1)*bta[Z][K],bx*bt[Z][K],bx*ba[Z][K]};
-                            for(int c=0;c<3;c++)grad[3*idx+c]+=wt*(dot(state.tangent[c],ds)+state.value[c]*sh);}
-                    }
-                }
-            }
-            if(need)for(size_t n=1;n+1<cuts.size();n++){
-                const Cut &cut=cuts[n];const double denom=dot(cut.normal,delta);
-                if(denom==0){if(cut_work[n]!=0)return 6;continue;}
-                const double adj=-cut_work[n]/denom;
-                for(int X=0;X<2;X++)for(int Z=0;Z<2;Z++)for(int K=0;K<2;K++){
-                    double factor=adj*bta[Z][K]*(X?cut.u:1-cut.u);int idx=ids[X][Z][K];
-                    for(int c=0;c<3;c++)grad[3*idx+c]+=factor*cut.normal[c];}
-            }
-        }
+            diagnostics[4]=std::min(diagnostics[4],1./state.Jinv);
+            energy+=wt*p.chi*state.unit;
+        };
+        rc=integrate_cell(g,q,ids,rule,weights,weld,need,cuts,cut_work,radial_cuts,sample,
+            [&](int n,double x){loads[n]+=x;},[&](int n,double x){grad[n]+=x;});
+        if(rc)return rc;
     }
     *output=double(energy);return 0;
 }

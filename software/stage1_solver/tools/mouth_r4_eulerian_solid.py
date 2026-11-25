@@ -19,7 +19,7 @@ class InvalidSpatialCrystal(ValueError):
 
 
 @lru_cache(maxsize=1)
-def _kernel():
+def _library():
     source=Path(__file__).with_suffix('.cpp')
     files=[source,source.with_name('mouth_cp10_spatial_crystal.cpp'),source.with_name('mouth_free_shape_solid.cpp')]
     key=sha256(b''.join(p.read_bytes() for p in files)).hexdigest()
@@ -34,10 +34,40 @@ def _kernel():
             os.replace(name,so)
         finally:
             Path(name).unlink(missing_ok=True)
-    f=ct.CDLL(str(so)).r4_eulerian_material
+    lib=ct.CDLL(str(so))
+    chart=lib.r4_chart_orientation
+    chart.argtypes=[Grid,Grid,Grid,Pointer,ct.c_void_p,Pointer]
+    chart.restype=ct.c_int
+    f=lib.r4_eulerian_material
     f.argtypes=[ct.POINTER(Data),Pointer,Pointer,Grid]+[Pointer]*6
     f.restype=ct.c_int
-    return f
+    return lib
+
+
+def _kernel():
+    return _library().r4_eulerian_material
+
+
+def chart_bounds(axes, labels, active):
+    buffers=tuple(np.ascontiguousarray(a,dtype=float) for a in axes)
+    labels=np.ascontiguousarray(labels,dtype=float)
+    cells=np.ascontiguousarray(active,dtype=np.uint8)
+    if (len(buffers)!=3 or any(a.ndim!=1 or a.size<2 or not np.isfinite(a).all()
+                               or not np.all(np.diff(a)>0) for a in buffers)):
+        raise ValueError('The label axes must be finite and strictly increasing')
+    dims=tuple(len(a) for a in buffers)
+    if labels.shape!=dims+(3,) or cells.shape!=tuple(n-1 for n in dims):
+        raise ValueError('Label or active cell shape differs from chart axes')
+    grids=[Grid(len(a),pointer(a)) for a in buffers]
+    out=np.zeros(11)
+    rc=_library().r4_chart_orientation(*grids,pointer(labels),cells.ctypes.data,pointer(out))
+    cell=out[2:5].astype(int).tolist()
+    if rc:
+        raise InvalidSpatialCrystal('Nonpositive or roundoff-unresolved chart determinant',
+            dict(code=rc,cell=cell,chart_fractions=out[5:8].tolist(),chart_det=float(out[8]),
+                 chart_lower=float(out[0]),roundoff_margin=float(out[9]),subdivisions=int(out[10])))
+    return dict(chart_det_global_lower=float(out[0]),chart_lowest_cell=cell,
+                chart_det_active_lower=float(out[1]) if cells.any() else None)
 
 
 class SpatialCrystal:
@@ -61,7 +91,7 @@ class SpatialCrystal:
             raise ValueError('Expected registered chart labels and full spatial order')
         if not np.isfinite(order).all() or order.min()<0 or order.max()>1:
             raise ValueError('Order outside the unit interval')
-        if any(labels[...,k].min()<ax[0]-1.e-12 or labels[...,k].max()>ax[-1]+1.e-12 for k,ax in enumerate(self.axes)):
+        if any(labels[...,k].min()<ax[0]-2.e-13 or labels[...,k].max()>ax[-1]+2.e-13 for k,ax in enumerate(self.axes)):
             raise InvalidSpatialCrystal('Label leaves the registered chart',{'code':'label_domain'})
         grad=np.zeros_like(labels) if gradient else None
         load=np.zeros_like(order);energy=np.zeros(1);diagnostics=np.zeros(23)

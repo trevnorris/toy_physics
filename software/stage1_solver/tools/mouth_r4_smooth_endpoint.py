@@ -47,7 +47,8 @@ def promoted_bath(bath, trial, reference, dx):
     return parts
 
 
-def shape_work(driver, t, solid, order, energy, label_gradient, *, gauge=None, energy_gauge=None):
+def shape_work(driver, t, solid, order, energy, label_gradient, *, gauge=None, energy_gauge=None,
+               depth_stencil=None):
     labels = driver.labels
     epsilon = driver.epsilon
     if gauge is None:
@@ -98,13 +99,19 @@ def shape_work(driver, t, solid, order, energy, label_gradient, *, gauge=None, e
         if abs(np.sum(base[0])-energy)>1e-11:
             raise ArithmeticError('Promoted finite-difference crystal anchor differs')
         rows = []
+        depth_test = None
+        if depth_stencil is not None:
+            depth_test = depth_stencil(tmp, banks, labels, length, driver.reference_depth, active)
         for i,unit in enumerate(np.eye(6,dtype=LD)):
             tangent = unit.astype(np.clongdouble)*1.e-24j
             ext = -np.sum(promoted_bath(bath,t,driver.reference_depth,tangent)).imag/LD(1.e-24)
             reg = -np.sum(gauge.evaluate(labels,tangent)).imag/LD(1.e-24)
             force = elastic[i]+ext+epsilon*reg
             signed = []
-            for h in (LD(2)**-18, LD(2)**-20):
+            widths = (LD(2)**-18, LD(2)**-20)
+            if i == 0 and depth_test is not None:
+                widths = sorted(set(widths).union(depth_test['selected_widths']), reverse=True)
+            for h in widths:
                 minus,plus = energies(-h*unit),energies(h*unit)
                 cs,bs,gs = [np.sum(m-p,dtype=LD)/(2*h) for m,p in zip(minus,plus)]
                 central = cs+bs+epsilon*gs
@@ -116,6 +123,8 @@ def shape_work(driver, t, solid, order, energy, label_gradient, *, gauge=None, e
                         signed[-1][name] = float(slopes[0]+slopes[1]+epsilon*slopes[2])
             rows.append(dict(mode=MODES[i],analytic=float(force),elastic=float(elastic[i]),
                              bath=float(ext),unit_gauge=float(reg),central=signed))
+            if i == 0 and depth_test is not None:
+                rows[-1]['material_branches'] = depth_test
     return rows
 
 
@@ -246,7 +255,7 @@ def certified_state(study, name, epsilon, initial):
         return observed, data['field'], data['labels']
 
 
-def difference_profile(study, first, second):
+def difference_profile(study, first, second, *, aligned=False):
     from mouth_cp10_label_condition import physical_frame, reference_frame
     from mouth_cp10_label_grid import get_cp10
     from mouth_cp10_label_orientation import basis_and_grad
@@ -258,14 +267,21 @@ def difference_profile(study, first, second):
 
     def gather(fields,labels):
         order=np.broadcast_to(fields[2,body.ids].transpose(0,2,1)[...,None],labels.shape)
-        # Pointwise gauge density carries the eight-corner mean barrier per cell.
-        barrier=0.
-        for vertex in BITS:
-            _, grad=basis_and_grad(labels,axes,vertex)
-            det=np.linalg.det(grad)
-            if np.any(det<=0):
-                raise ValueError('Inverted corner on independently certified pair')
-            barrier=barrier+(det-1-np.log(det))/8
+        if aligned:
+            from mouth_r4_aligned_stencil import VERTICES, barrier_means
+            cells = np.indices(tuple(len(axis)-1 for axis in axes)).reshape(3,-1).T
+            corners = np.stack([labels[tuple((cells+v).T)] for v in VERTICES],axis=1)
+            widths = np.column_stack([np.diff(ax)[cells[:,i]] for i,ax in enumerate(axes)])
+            barrier = np.asarray(barrier_means(corners,widths)[1],float).reshape(labels.shape[0]-1,
+                        labels.shape[1]-1,labels.shape[2]-1)
+        else:
+            barrier=0.
+            for vertex in BITS:
+                _, grad=basis_and_grad(labels,axes,vertex)
+                det=np.linalg.det(grad)
+                if np.any(det<=0):
+                    raise ValueError('Inverted corner on independently certified pair')
+                barrier=barrier+(det-1-np.log(det))/8
         records=[]
         for pt in RULE:
             label,grad=basis_and_grad(labels,axes,pt)
@@ -299,7 +315,7 @@ def difference_profile(study, first, second):
     return dict(file=output.name,sha256=digest(output),maximum_absolute_difference=witnesses)
 
 
-def compare(study, *, primary_initial=None):
+def compare(study, *, primary_initial=None, aligned=False):
     if primary_initial is None:
         primary_initial=EXPECTED['held_stop']
     primary,first,labels_a=certified_state(study,'primary',1e-8,primary_initial)
@@ -336,7 +352,7 @@ def compare(study, *, primary_initial=None):
                 status='Held for independent review' if all(checks.values()) else 'Gauge split at held shape',
                 passed=all(checks.values()))
     if not result['passed']:
-        result['local_profile']=difference_profile(study,(first,labels_a),(second,labels_b))
+        result['local_profile']=difference_profile(study,(first,labels_a),(second,labels_b),aligned=aligned)
     atomic_json(study/'paired_held.json',result)
     if not result['passed']:
         raise ArithmeticError('Held gauge endpoints differ; see paired_held.json')

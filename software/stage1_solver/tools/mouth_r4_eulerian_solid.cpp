@@ -61,26 +61,100 @@ void radial_cuts(Cuts& cuts,const Data&d,const Vec &l,const Vec&r,double weld){
 // det(dxi/d physical chart) is degree <=2 in each local coordinate. Use
 // tri-quadratic Bernstein coefficients to certify orientation on the WHOLE cell.
 // Actual nonpositive samples and inconclusive positive samples have distinct codes.
-int orientation(const Q1&q,const Vec &lo,const Vec &span,double volume,int depth,double &floor,Vec &witness){
-    double c[3][3][3];
-    for(int a=0;a<3;a++)for(int b=0;b<3;b++)for(int z=0;z<3;z++){
-        const Vec f{lo[0]+.5*a*span[0],lo[1]+.5*b*span[1],lo[2]+.5*z*span[2]};
-        const double j=determinant(q.at(f[0],f[1],f[2]).D)/volume;
-        if(!(j>0.)){floor=j;witness=f;return 2;}
-        c[a][b][z]=j;
+using Net = std::array<double,27>;
+struct Orientation {
+    double lower=std::numeric_limits<double>::infinity(), witness=0., margin=0.;
+    Vec where{};
+    int depth=0;
+};
+
+// De Casteljau preserves the convex-hull enclosure on both half intervals.
+void split_net(const Net &in, int axis, Net &left, Net &right){
+    const int stride=axis==0?9:axis==1?3:1;
+    for(int n=0;n<27;n++){
+        if((n/stride)%3!=0)continue;
+        const double a=in[n], b=in[n+stride], c=in[n+2*stride];
+        const double ab=(a+b)*.5, bc=(b+c)*.5, mid=(ab+bc)*.5;
+        left[n]=a; left[n+stride]=ab; left[n+2*stride]=mid;
+        right[n]=mid; right[n+stride]=bc; right[n+2*stride]=c;
     }
-    for(int i=0;i<3;i++)for(int j=0;j<3;j++)c[i][j][1]=2*c[i][j][1]-.5*(c[i][j][0]+c[i][j][2]);
-    for(int i=0;i<3;i++)for(int j=0;j<3;j++)c[i][1][j]=2*c[i][1][j]-.5*(c[i][0][j]+c[i][2][j]);
-    for(int i=0;i<3;i++)for(int j=0;j<3;j++)c[1][i][j]=2*c[1][i][j]-.5*(c[0][i][j]+c[2][i][j]);
-    double lower=c[0][0][0];for(auto &r:c)for(auto &s:r)for(double v:s)lower=std::min(lower,v);
-    if(lower>0){floor=std::min(floor,lower);return 0;}
-    if(depth==8){floor=lower;witness=lo;return 3;}
-    Vec half{};for(int k=0;k<3;k++)half[k]=span[k]/2;
-    for(int i=0;i<2;i++)for(int j=0;j<2;j++)for(int k=0;k<2;k++){
-        const Vec sub{lo[0]+i*half[0],lo[1]+j*half[1],lo[2]+k*half[2]};
-        int rc=orientation(q,sub,half,volume,depth+1,floor,witness);if(rc)return rc;
-    }return 0;
 }
+
+int certify_net(const Net &net,const Vec &lo,double span,int depth,Orientation &proof){
+    const double lower=*std::min_element(net.begin(),net.end())-proof.margin;
+    if(lower>0.){
+        proof.lower=std::min(proof.lower,lower);
+        return 0;
+    }
+    int corner=0;
+    for(int i=0;i<3;i+=2)for(int j=0;j<3;j+=2)for(int k=0;k<3;k+=2){
+        const int n=9*i+3*j+k;
+        if(net[n]<net[corner])corner=n;
+    }
+    if(net[corner]<=proof.margin || depth==12){
+        proof.witness=net[corner]; proof.lower=lower; proof.depth=depth;
+        proof.where={lo[0]+(corner/9)*span*.5, lo[1]+((corner/3)%3)*span*.5, lo[2]+(corner%3)*span*.5};
+        return proof.witness<=0.?2:3;
+    }
+    const double half=span*.5;
+    Net xs[2],ys[2],zs[2];
+    split_net(net,0,xs[0],xs[1]);
+    for(int i=1;i>=0;i--){
+        split_net(xs[i],1,ys[0],ys[1]);
+        for(int j=1;j>=0;j--){
+            split_net(ys[j],2,zs[0],zs[1]);
+            for(int k=1;k>=0;k--){
+                int rc=certify_net(zs[k],{lo[0]+i*half,lo[1]+j*half,lo[2]+k*half},half,depth+1,proof);
+                if(rc)return rc;
+            }
+        }
+    }
+    return 0;
+}
+
+int orientation(const Q1 &q,const Vec &width,Orientation &proof){
+    // Form columns from edge differences. This removes the constant label
+    // before any interpolation and keeps the margin invariant under translation.
+    Vec columns[3][3][3];
+    double scale=1.;
+    for(int axis=0;axis<3;axis++){
+        const int d1=(axis==0)?1:0, d2=(axis==2)?1:2;
+        Vec edge[2][2];
+        double largest=0.;
+        for(int i=0;i<2;i++)for(int j=0;j<2;j++){
+            int b[3]={0,0,0}; b[d1]=i; b[d2]=j;
+            const Vec &a=q.labels[b[0]][b[1]][b[2]];
+            b[axis]=1;
+            const Vec &z=q.labels[b[0]][b[1]][b[2]];
+            for(int c=0;c<3;c++)edge[i][j][c]=(z[c]-a[c])/width[axis];
+            largest=std::max(largest,std::sqrt(dot(edge[i][j],edge[i][j])));
+        }
+        scale*=largest;
+        for(int i=0;i<3;i++)for(int j=0;j<3;j++){
+            const double u=i*.5,v=j*.5;
+            for(int c=0;c<3;c++)columns[axis][i][j][c]=
+                (1-u)*((1-v)*edge[0][0][c]+v*edge[0][1][c])+
+                    u*((1-v)*edge[1][0][c]+v*edge[1][1][c]);
+        }
+    }
+    // Inputs are binary64 spatial labels. Keep the same guard in promoted
+    // derivative readers evaluating these saved labels.
+    proof.margin=128*0x1p-52*scale;
+    Net net;
+    for(int i=0;i<3;i++)for(int j=0;j<3;j++)for(int k=0;k<3;k++){
+        const double value=dot(columns[0][j][k],cross(columns[1][i][k],columns[2][i][j]));
+        if(!std::isfinite(value)){
+            proof.lower=value; proof.witness=value; proof.where={.5*i,.5*j,.5*k};
+            return 3;
+        }
+        net[9*i+3*j+k]=value;
+    }
+    for(int stride: {9,3,1})for(int n=0;n<27;n++)if((n/stride)%3==0){
+        net[n+stride]=2*net[n+stride]-.5*(net[n]+net[n+2*stride]);
+    }
+    return certify_net(net,{0.,0.,0.},1.,0,proof);
+}
+
 struct PointWork {double unit=0.,flux=0.,Jinv=0.,grad_norm=0.,W=0.; Vec value{}; Mat tangent{};};
 PointWork material(const Geometry& g,const Vec&local,const Landed&p,bool need_gradient){
     PointWork out{};Vec pos{};for(int k=0;k<3;k++)pos[k]=g.lo[k]+g.width[k]*local[k];
@@ -124,6 +198,34 @@ PointWork material(const Geometry& g,const Vec&local,const Landed&p,bool need_gr
 }
 }
 
+// Standalone whole-chart entry. Physics and guard call the same cell predicate.
+extern "C" int r4_chart_orientation(Grid x,Grid t,Grid a,const double *labels,
+                                      const unsigned char *active,double *out){
+    const Grid axes[]={x,t,a};
+    out[0]=out[1]=std::numeric_limits<double>::infinity();
+    for(int i=0;i<x.n-1;i++)for(int j=0;j<t.n-1;j++)for(int k=0;k<a.n-1;k++){
+        const int cell=(i*(t.n-1)+j)*(a.n-1)+k;
+        Q1 q{};
+        for(int u=0;u<2;u++)for(int v=0;v<2;v++)for(int w=0;w<2;w++){
+            const int n=((i+u)*t.n+j+v)*a.n+k+w;
+            for(int c=0;c<3;c++)q.labels[u][v][w][c]=labels[3*n+c];
+        }
+        const int index[]={i,j,k};
+        Vec width;
+        for(int c=0;c<3;c++)width[c]=axes[c].v[index[c]+1]-axes[c].v[index[c]];
+        euler::Orientation proof;
+        const int rc=euler::orientation(q,width,proof);
+        if(rc || proof.lower<out[0]){
+            out[0]=proof.lower; out[2]=i; out[3]=j; out[4]=k;
+            for(int c=0;c<3;c++)out[5+c]=proof.where[c];
+            out[8]=proof.witness; out[9]=proof.margin; out[10]=proof.depth;
+        }
+        if(rc)return rc;
+        if(active[cell])out[1]=std::min(out[1],proof.lower);
+    }
+    return 0;
+}
+
 extern "C" int r4_eulerian_material(const Data*dp,const double *labels,const double *order,
            Grid rule,const double *weights,double *output,double *grad,double *loads,double *diagnostics,double *intact){
     using namespace euler;const Data &d=*dp;const int nx=d.field_x.n,nt=d.field_t.n,na=d.field_a.n;
@@ -139,11 +241,14 @@ extern "C" int r4_eulerian_material(const Data*dp,const double *labels,const dou
         }
         Geometry g{d,{d.field_x.v[i],d.field_t.v[j],d.field_a.v[k]},
                    {d.field_x.v[i+1]-d.field_x.v[i],d.field_t.v[j+1]-d.field_t.v[j],d.field_a.v[k+1]-d.field_a.v[k]}};
-        double floor=std::numeric_limits<double>::infinity();Vec where{};
-        int rc=orientation(q,{0.,0.,0.},{1.,1.,1.},g.width[0]*g.width[1]*g.width[2],0,floor,where);
-        if(rc){diagnostics[2]=floor;diagnostics[5]=i;diagnostics[6]=j;diagnostics[7]=k;
-            for(int a=0;a<3;a++)diagnostics[8+a]=where[a];diagnostics[11]=q.at(where[0],where[1],where[2]).chi;return rc;}
-        diagnostics[2]=std::min(diagnostics[2],floor);if(has_order)diagnostics[3]=std::min(diagnostics[3],floor);
+        Orientation proof;
+        int rc=orientation(q,g.width,proof);
+        if(rc){diagnostics[2]=proof.lower;diagnostics[5]=i;diagnostics[6]=j;diagnostics[7]=k;
+            for(int a=0;a<3;a++)diagnostics[8+a]=proof.where[a];
+            diagnostics[11]=q.at(proof.where[0],proof.where[1],proof.where[2]).chi;
+            return rc;}
+        diagnostics[2]=std::min(diagnostics[2],proof.lower);
+        if(has_order)diagnostics[3]=std::min(diagnostics[3],proof.lower);
         const bool need=has_order&&grad;
         for(int T=0;T<rule.n;T++)for(int A=0;A<rule.n;A++){
             double v=rule.v[T],a=rule.v[A],wa=weights[T]*weights[A];

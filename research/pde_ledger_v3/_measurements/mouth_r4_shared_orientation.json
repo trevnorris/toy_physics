@@ -1,0 +1,303 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_shared_certificate_check.py",
+    "_scratch/s11c/r4_rematch39_01",
+    "_scratch/s11c/r4_segmented_held01/orientation_controls"
+  ],
+  "prior_exact_certificate_sha256": "d1aca907dff3e93a9d0e1b10d089bf9f6eeb9fdaa3f88ed181cf982f805976f3",
+  "source_sha256": {
+    "mouth_r4_eulerian_solid.cpp": "32d71f505b3fe423e8fb87b17cadfc7ac9a0069e64a3d5d289fa65ae3ba73592",
+    "mouth_r4_eulerian_solid.py": "1ba4d87d34d0b15876236c334cf6f528da02e7895750e720ac784af5666510cd",
+    "mouth_r4_full_label_work.cpp": "e2b7806ec5bb3e9fbc9083d3857edec1d3adc7657ee9996fba441c2aa01e91df",
+    "mouth_r4_eulerian_relax_labels.py": "5706ecc2ade1cdad72f74ac8663d457b8876efbc347f237deb06a32108d1697b",
+    "mouth_r4_shared_certificate_check.py": "6700e4bf6d72aa3a508ac487a261499c01659e450202092ccc55a7aa119f6a9a"
+  },
+  "gauges": {
+    "primary": {
+      "passed": true,
+      "state_sha256": "d21586ba828f891f67e4601e8a6145a0cf7f25f003273852b159c0094da63837",
+      "epsilon": 1e-08,
+      "energy_and_field": {
+        "total": 92185.39080106313,
+        "physical": 92185.39080098957,
+        "elastic": 0.31214886788071583,
+        "gauge": 7.355272185010832e-08,
+        "peak_active_label_force": 0.09881032647699539,
+        "field_residuals": {
+          "order_projected": 9.548067336773158e-10,
+          "order_kkt": 1.94581081824915e-09,
+          "amplitude_raw": 7.391490673974799e-10,
+          "phase_raw": 6.157430102360535e-11,
+          "carrier_metric": 2.5054138189970097e-10
+        },
+        "currents": {
+          "feed_current": 10.707728693785093,
+          "bulk_current": 10.707728693784606,
+          "weak_disk_current": 10.707728686532223,
+          "incident_slice_current": 10.707728686532223,
+          "receiving_slice_current": 10.041076379567153,
+          "positive_slice_current": 10.707728686532223,
+          "port_error": 4.867217739956686e-13,
+          "disk_minus_feed_current": -7.252870304341741e-09,
+          "dense_total_subsonic_share": 0.6675896369698388,
+          "total_axial_stress": -26.582875473035074
+        }
+      },
+      "invariance_delta": {
+        "state": {
+          "elastic_energy": 0.0,
+          "all_elastic_label_gradient_max": 0.0,
+          "all_elastic_order_load_max": 0.0,
+          "total_energy": 0.0,
+          "gauge_energy": 0.0,
+          "physical_energy": 0.0,
+          "peak_active_label_force": 0.0
+        },
+        "field": {
+          "order_projected": 0.0,
+          "order_kkt": 0.0,
+          "amplitude_raw": 0.0,
+          "phase_raw": 0.0,
+          "carrier_metric": 0.0
+        },
+        "currents": {
+          "feed_current": 0.0,
+          "bulk_current": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "port_error": 0.0,
+          "disk_minus_feed_current": 0.0,
+          "dense_total_subsonic_share": 0.0,
+          "total_axial_stress": 0.0
+        }
+      },
+      "positive": {
+        "label_sha256": "c5c525fecfe6fa52da6658283c48a3cdb869c905028c9b095038dbc91c6a50ff",
+        "physical_lower": 6.474133271946422e-08,
+        "standalone": {
+          "chart_det_global_lower": 6.474133271946422e-08,
+          "chart_lowest_cell": [
+            25,
+            11,
+            10
+          ],
+          "chart_det_active_lower": 0.0021257531624534354
+        },
+        "coupled_lower": 6.474133271946422e-08,
+        "prior_python_lower": 6.474133271885605e-08,
+        "analytic_exact_rational_lower": 6.474142553634337e-08,
+        "difference_from_prior_bound": 6.081696561285876e-19,
+        "edge_min": 1.1973709045030746e-07,
+        "local_unit_opening_slope": -0.185347628770123,
+        "passed": true
+      },
+      "negative": {
+        "vertices_and_midpoints_min": 0.0006026076555190206,
+        "quadratic_edge_sample": -7.189009620586265e-06,
+        "sample_fraction": 0.3990696017975949,
+        "chart": {
+          "reason": "Nonpositive or roundoff-unresolved chart determinant",
+          "code": 2,
+          "cell": [
+            25,
+            11,
+            10
+          ],
+          "chart_fractions": [
+            0.0,
+            0.0,
+            0.40625
+          ],
+          "chart_det": -4.143069203797401e-06,
+          "chart_lower": -4.143069296615416e-06,
+          "roundoff_margin": 9.281801524595499e-14,
+          "subdivisions": 5
+        },
+        "physical": {
+          "reason": "nonpositive sampled chart determinant",
+          "code": 2,
+          "chart_bound": -4.143069296615416e-06,
+          "cell": [
+            25,
+            11,
+            10
+          ],
+          "local": [
+            0.0,
+            0.0,
+            0.40625
+          ],
+          "chi": 0.0
+        },
+        "barrier": {
+          "reason": "Nonpositive or unresolved aligned determinant",
+          "selected_cell_index": 0,
+          "stencil_index": 27
+        },
+        "passed": true
+      }
+    },
+    "secondary": {
+      "passed": true,
+      "state_sha256": "e2c2e2afb9af55e972b57a46b22527a0ba9983fbab173446b17164457564ed10",
+      "epsilon": 1e-10,
+      "energy_and_field": {
+        "total": 92185.39080099031,
+        "physical": 92185.39080098957,
+        "elastic": 0.3121488669667658,
+        "gauge": 7.355272186433013e-10,
+        "peak_active_label_force": 0.0988103256076309,
+        "field_residuals": {
+          "order_projected": 9.547972967816065e-10,
+          "order_kkt": 1.945791172169074e-09,
+          "amplitude_raw": 7.39149058641515e-10,
+          "phase_raw": 6.974704521955075e-11,
+          "carrier_metric": 2.505395508764221e-10
+        },
+        "currents": {
+          "feed_current": 10.70772869378852,
+          "bulk_current": 10.70772869378813,
+          "weak_disk_current": 10.70772868653579,
+          "incident_slice_current": 10.70772868653579,
+          "receiving_slice_current": 10.04107637957046,
+          "positive_slice_current": 10.70772868653579,
+          "port_error": 3.8902214782865485e-13,
+          "disk_minus_feed_current": -7.252729972151428e-09,
+          "dense_total_subsonic_share": 0.6675896369697062,
+          "total_axial_stress": -26.58287547303457
+        }
+      },
+      "invariance_delta": {
+        "state": {
+          "elastic_energy": 0.0,
+          "all_elastic_label_gradient_max": 0.0,
+          "all_elastic_order_load_max": 0.0,
+          "total_energy": 0.0,
+          "gauge_energy": 0.0,
+          "physical_energy": 0.0,
+          "peak_active_label_force": 0.0
+        },
+        "field": {
+          "order_projected": 0.0,
+          "order_kkt": 0.0,
+          "amplitude_raw": 0.0,
+          "phase_raw": 0.0,
+          "carrier_metric": 0.0
+        },
+        "currents": {
+          "feed_current": 0.0,
+          "bulk_current": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "port_error": 0.0,
+          "disk_minus_feed_current": 0.0,
+          "dense_total_subsonic_share": 0.0,
+          "total_axial_stress": 0.0
+        }
+      },
+      "positive": {
+        "label_sha256": "c5c525fecfe6fa52da6658283c48a3cdb869c905028c9b095038dbc91c6a50ff",
+        "physical_lower": 6.474133271946422e-08,
+        "standalone": {
+          "chart_det_global_lower": 6.474133271946422e-08,
+          "chart_lowest_cell": [
+            25,
+            11,
+            10
+          ],
+          "chart_det_active_lower": 0.0021257531624534354
+        },
+        "coupled_lower": 6.474133271946422e-08,
+        "prior_python_lower": 6.474133271885605e-08,
+        "analytic_exact_rational_lower": 6.474142553634337e-08,
+        "difference_from_prior_bound": 6.081696561285876e-19,
+        "edge_min": 1.1973709045030746e-07,
+        "local_unit_opening_slope": -0.185347628770123,
+        "passed": true
+      },
+      "negative": {
+        "vertices_and_midpoints_min": 0.0006026076555190206,
+        "quadratic_edge_sample": -7.189009620586265e-06,
+        "sample_fraction": 0.3990696017975949,
+        "chart": {
+          "reason": "Nonpositive or roundoff-unresolved chart determinant",
+          "code": 2,
+          "cell": [
+            25,
+            11,
+            10
+          ],
+          "chart_fractions": [
+            0.0,
+            0.0,
+            0.40625
+          ],
+          "chart_det": -4.143069203797401e-06,
+          "chart_lower": -4.143069296615416e-06,
+          "roundoff_margin": 9.281801524595499e-14,
+          "subdivisions": 5
+        },
+        "physical": {
+          "reason": "nonpositive sampled chart determinant",
+          "code": 2,
+          "chart_bound": -4.143069296615416e-06,
+          "cell": [
+            25,
+            11,
+            10
+          ],
+          "local": [
+            0.0,
+            0.0,
+            0.40625
+          ],
+          "chi": 0.0
+        },
+        "barrier": {
+          "reason": "Nonpositive or unresolved aligned determinant",
+          "selected_cell_index": 0,
+          "stencil_index": 27
+        },
+        "passed": true
+      }
+    }
+  },
+  "passed": true,
+  "run": {
+    "command": [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_shared_certificate_check.py",
+      "_scratch/s11c/r4_rematch39_01",
+      "_scratch/s11c/r4_segmented_held01/orientation_controls"
+    ],
+    "started_utc": "2026-11-25T03:44:48.865319+00:00",
+    "last_sample_utc": "2026-11-25T03:51:25.250671+00:00",
+    "wall_seconds": 396.3589322678745,
+    "exit_code": 0,
+    "peak_memory_bytes": 12777701376,
+    "cache_source_validation": "recompiled the original physical kernel from blobs pinned by 974127ee",
+    "result_sha256": "45daab8e813bd7ba3c95b3354a71333fb1a69cab025d0249c9caac42381b33f8",
+    "stdout": {
+      "path": "_scratch/s11c/r4_segmented_held01/orientation_controls_guard/stdout",
+      "bytes": 6771,
+      "sha256": "c2a2455fb5ecf0f424bd539ea5953416c0cf6bac58ed14d9669b96aea4490787"
+    },
+    "historic_readouts": {
+      "_scratch/s11c/r4_rematch39_01/primary/rematched.json": "f40275cff348e343744e51a08293fd4f93a30ee9da30565c01760dc0211cd9b0",
+      "_scratch/s11c/r4_rematch39_01/primary/labels.json": "f9de2fad1f49ad016ace5e3a35d607ebc6cfd6430091881414920e853d8cfa27",
+      "_scratch/s11c/r4_rematch39_01/primary/hessian.json": "a81e1ff713debb84f85bb49e99906dd43d554af80744980e2ba288032b3e6afe",
+      "_scratch/s11c/r4_rematch39_01/primary/gate1.json": "7c14c4ab99ba750183d972259a2d45618e0a80de521f0a28cf816258c731bb60",
+      "_scratch/s11c/r4_rematch39_01/secondary/rematched.json": "bd42ad6ceb74f7e677af61cfbe0e46d369d2f189d5fbe757ec5d4da0112d732b",
+      "_scratch/s11c/r4_rematch39_01/secondary/labels.json": "a3fb8e338b9f83fb12efa930b94c887f32c4e60e074de9d903e6c034ceac6ef9",
+      "_scratch/s11c/r4_rematch39_01/secondary/hessian.json": "1f170afaebefa80db5e8b44b249b47c6f192a471e6941bc949adc0c009c52d61",
+      "_scratch/s11c/r4_rematch39_01/secondary/gate1.json": "0d440458614361c4e48c7a403866d85fdf0c4bcd141bf039f4f33c22604c7c56"
+    }
+  }
+}

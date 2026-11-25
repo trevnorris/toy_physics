@@ -1,0 +1,291 @@
+{
+  "passed": true,
+  "verdict": "Cleared for held step 109 on the two Gate-1 states. The segmented depth work and shared whole-cell orientation certificate pass both gauges.",
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "/var/projects/toy_physics/_scratch/s11c/r4_segmented_held01/independent_gate_readback.py",
+    "orientation_controls"
+  ],
+  "script_sha256": "011a746ed9ecfe3020d5fa4613636712df8bbc85d2e4e5762c6e1648789c0604",
+  "gauges": {
+    "primary": {
+      "intervals": [
+        {
+          "interval": [
+            -3.814697265625e-06,
+            -3.599849564896518e-06
+          ],
+          "midpoint_energy_derivative": -0.08828775525634161,
+          "inner_FD": -0.08828771838566914,
+          "energy_change": -1.8968420485032863e-08,
+          "gauss_work": -1.896842121940797e-08,
+          "midpoint_vs_two_edge_secant_max": 3.4176353140674925e-09,
+          "midpoint_vs_separate_FD_max": 3.6939484811260304e-08,
+          "gauss_vs_secant_max": 3.4181194604276477e-09
+        },
+        {
+          "interval": [
+            -3.599849564896518e-06,
+            -2.1169319724294257e-06
+          ],
+          "midpoint_energy_derivative": -0.08061980499840868,
+          "inner_FD": -0.08061979910462409,
+          "energy_change": -1.1955252995071973e-07,
+          "gauss_work": -1.1955252717292275e-07,
+          "midpoint_vs_two_edge_secant_max": 1.928481708295105e-09,
+          "midpoint_vs_separate_FD_max": 5.893784585375705e-09,
+          "gauss_vs_secant_max": 1.8731971341081916e-09
+        },
+        {
+          "interval": [
+            -2.1169319724294257e-06,
+            3.814697265625e-06
+          ],
+          "midpoint_energy_derivative": -0.07998674579240624,
+          "inner_FD": -0.07998674565016003,
+          "energy_change": -4.7445172631681613e-07,
+          "gauss_work": -4.744517225502671e-07,
+          "midpoint_vs_two_edge_secant_max": 1.8444104443167224e-09,
+          "midpoint_vs_separate_FD_max": 4.895665539628169e-10,
+          "gauss_vs_secant_max": 6.374681458188507e-10
+        }
+      ],
+      "full_analytic_work": -6.129726709425978e-07,
+      "archived_wide_energy_delta": -6.129726767525687e-07,
+      "full_work_vs_archived_delta_force_units": 7.615245118525182e-10,
+      "maximum_over_components_and_crossing_cells": 7.669254558674565e-10,
+      "one_point_midpoint_rule_vs_archived_max": 1.7199956593915648e-09,
+      "wide_endpoint_vs_archived_max": 8.023096076392733e-18,
+      "unsplit_single_derivative_error": 0.00029013507741884603,
+      "current": {
+        "feed_current": 10.707728693785093,
+        "bulk_current": 10.707728693784606,
+        "weak_disk_current": 10.707728686532223,
+        "incident_slice_current": 10.707728686532223,
+        "receiving_slice_current": 10.041076379567153,
+        "positive_slice_current": 10.707728686532223,
+        "port_error": 4.867217739956686e-13,
+        "disk_minus_feed_current": -7.252870304341741e-09,
+        "dense_total_subsonic_share": 0.6675896369698388,
+        "total_axial_stress": -26.582875473035074
+      },
+      "field_residuals": {
+        "order_projected": 9.548067336773158e-10,
+        "order_kkt": 1.94581081824915e-09,
+        "amplitude_raw": 7.391490673974799e-10,
+        "phase_raw": 6.157430102360535e-11,
+        "carrier_metric": 2.5054138189970097e-10
+      },
+      "signs": {
+        "positive": 52061,
+        "zero": 0,
+        "negative": 0,
+        "nonfinite": 0
+      },
+      "label_force": 0.09881032647699539,
+      "invariance": {
+        "state": {
+          "elastic_energy": 0.0,
+          "all_elastic_label_gradient_max": 0.0,
+          "all_elastic_order_load_max": 0.0,
+          "total_energy": 0.0,
+          "gauge_energy": 0.0,
+          "physical_energy": 0.0,
+          "peak_active_label_force": 0.0
+        },
+        "field": {
+          "order_projected": 0.0,
+          "order_kkt": 0.0,
+          "amplitude_raw": 0.0,
+          "phase_raw": 0.0,
+          "carrier_metric": 0.0
+        },
+        "currents": {
+          "feed_current": 0.0,
+          "bulk_current": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "port_error": 0.0,
+          "disk_minus_feed_current": 0.0,
+          "dense_total_subsonic_share": 0.0,
+          "total_axial_stress": 0.0
+        }
+      },
+      "certificate_bound": 6.474133271946422e-08,
+      "rational_reference_lower": 6.474142553634337e-08,
+      "positive_bound_difference": 9.281687914628949e-14,
+      "negative_witness": -4.143069203795669e-06,
+      "negative_edge": -7.189009620586265e-06,
+      "positive_fixed27_min": 0.0006026076555190206
+    },
+    "secondary": {
+      "intervals": [
+        {
+          "interval": [
+            -3.814697265625e-06,
+            -3.599849564896518e-06
+          ],
+          "midpoint_energy_derivative": -0.08828778047159161,
+          "inner_FD": -0.0882877434330028,
+          "energy_change": -1.8968425861991253e-08,
+          "gauss_work": -1.89684266368466e-08,
+          "midpoint_vs_two_edge_secant_max": 3.6060482969081046e-09,
+          "midpoint_vs_separate_FD_max": 3.7107405252700953e-08,
+          "gauss_vs_secant_max": 3.606533115432949e-09
+        },
+        {
+          "interval": [
+            -3.599849564896518e-06,
+            -2.1169319724294257e-06
+          ],
+          "midpoint_energy_derivative": -0.08061983024688178,
+          "inner_FD": -0.08061982717576298,
+          "energy_change": -1.195525706944353e-07,
+          "gauss_work": -1.1955256461437718e-07,
+          "midpoint_vs_two_edge_secant_max": 4.155354395552038e-09,
+          "midpoint_vs_separate_FD_max": 3.071118803710249e-09,
+          "gauss_vs_secant_max": 4.100064723273715e-09
+        },
+        {
+          "interval": [
+            -2.1169319724294257e-06,
+            3.814697265625e-06
+          ],
+          "midpoint_energy_derivative": -0.0799867711069097,
+          "inner_FD": -0.07998677154365542,
+          "energy_change": -4.744518754683913e-07,
+          "gauss_work": -4.7445187271011354e-07,
+          "midpoint_vs_two_edge_secant_max": 1.6744271396291522e-09,
+          "midpoint_vs_separate_FD_max": 9.263172104367889e-10,
+          "gauss_vs_secant_max": 4.674848571808608e-10
+        }
+      ],
+      "full_analytic_work": -6.129728639613373e-07,
+      "archived_wide_energy_delta": -6.129728720248179e-07,
+      "full_work_vs_archived_delta_force_units": 1.05689652732735e-09,
+      "maximum_over_components_and_crossing_cells": 1.0622976040486343e-09,
+      "one_point_midpoint_rule_vs_archived_max": 2.0153677937220598e-09,
+      "wide_endpoint_vs_archived_max": 6.938893903907228e-18,
+      "unsplit_single_derivative_error": 0.0002901353730343642,
+      "current": {
+        "feed_current": 10.70772869378852,
+        "bulk_current": 10.70772869378813,
+        "weak_disk_current": 10.70772868653579,
+        "incident_slice_current": 10.70772868653579,
+        "receiving_slice_current": 10.04107637957046,
+        "positive_slice_current": 10.70772868653579,
+        "port_error": 3.8902214782865485e-13,
+        "disk_minus_feed_current": -7.252729972151428e-09,
+        "dense_total_subsonic_share": 0.6675896369697062,
+        "total_axial_stress": -26.58287547303457
+      },
+      "field_residuals": {
+        "order_projected": 9.547972967816065e-10,
+        "order_kkt": 1.945791172169074e-09,
+        "amplitude_raw": 7.39149058641515e-10,
+        "phase_raw": 6.974704521955075e-11,
+        "carrier_metric": 2.505395508764221e-10
+      },
+      "signs": {
+        "positive": 52061,
+        "zero": 0,
+        "negative": 0,
+        "nonfinite": 0
+      },
+      "label_force": 0.0988103256076309,
+      "invariance": {
+        "state": {
+          "elastic_energy": 0.0,
+          "all_elastic_label_gradient_max": 0.0,
+          "all_elastic_order_load_max": 0.0,
+          "total_energy": 0.0,
+          "gauge_energy": 0.0,
+          "physical_energy": 0.0,
+          "peak_active_label_force": 0.0
+        },
+        "field": {
+          "order_projected": 0.0,
+          "order_kkt": 0.0,
+          "amplitude_raw": 0.0,
+          "phase_raw": 0.0,
+          "carrier_metric": 0.0
+        },
+        "currents": {
+          "feed_current": 0.0,
+          "bulk_current": 0.0,
+          "weak_disk_current": 0.0,
+          "incident_slice_current": 0.0,
+          "receiving_slice_current": 0.0,
+          "positive_slice_current": 0.0,
+          "port_error": 0.0,
+          "disk_minus_feed_current": 0.0,
+          "dense_total_subsonic_share": 0.0,
+          "total_axial_stress": 0.0
+        }
+      },
+      "certificate_bound": 6.474133271946422e-08,
+      "rational_reference_lower": 6.474142553634337e-08,
+      "positive_bound_difference": 9.281687914628949e-14,
+      "negative_witness": -4.143069203795669e-06,
+      "negative_edge": -7.189009620586265e-06,
+      "positive_fixed27_min": 0.0006026076555190206
+    }
+  },
+  "evidence": {
+    "research/pde_ledger_v3/_measurements/mouth_r4_depth_cell_geometry.json": "8dcdb25e1c1702733e465fbd32828c4b2673360bffd822e1263893d1c27fb47f",
+    "research/pde_ledger_v3/_measurements/mouth_r4_depth_cert.json": "d1aca907dff3e93a9d0e1b10d089bf9f6eeb9fdaa3f88ed181cf982f805976f3",
+    "research/pde_ledger_v3/_measurements/mouth_r4_newton_edge.json": "700c82c2425eda23de45e79081ae550f190985f484ae21fdf484bfaacfa02e70",
+    "research/pde_ledger_v3/_measurements/mouth_r4_segmented_depth.json": "800043e8a1dece298906dec2e9c11fc0bd3ffbd7e26a912ca346d2d555b67c90",
+    "_scratch/s11c/r4_segmented_held01/orientation_controls/result.json": "45daab8e813bd7ba3c95b3354a71333fb1a69cab025d0249c9caac42381b33f8",
+    "_scratch/s11c/r4_segmented_held01/orientation_controls_guard/outcome.json": "6f145ad170b6c0d48404aea3658df6017fdb66ee2f4ddd2abd8762127b17d011",
+    "_scratch/s11c/r4_segmented_held01/orientation_controls_guard/limit-validation.json": "ce29905b5748cf2036ff264d8536973d2fc103b09820328066d81441d0a75b9b",
+    "software/stage1_solver/tools/mouth_r4_eulerian_solid.cpp": "32d71f505b3fe423e8fb87b17cadfc7ac9a0069e64a3d5d289fa65ae3ba73592",
+    "software/stage1_solver/tools/mouth_r4_eulerian_solid.py": "1ba4d87d34d0b15876236c334cf6f528da02e7895750e720ac784af5666510cd",
+    "software/stage1_solver/tools/mouth_r4_full_label_work.cpp": "e2b7806ec5bb3e9fbc9083d3857edec1d3adc7657ee9996fba441c2aa01e91df",
+    "software/stage1_solver/tools/mouth_r4_eulerian_relax_labels.py": "5706ecc2ade1cdad72f74ac8663d457b8876efbc347f237deb06a32108d1697b",
+    "software/stage1_solver/tools/mouth_r4_shared_certificate_check.py": "6700e4bf6d72aa3a508ac487a261499c01659e450202092ccc55a7aa119f6a9a",
+    "_scratch/s11c/r4_segmented_held01/independent_depth_guard/outcome.json": "df54a21d24992449638223c05a82614a90a9b63413b7d8c396e873056c5f5482",
+    "_scratch/s11c/r4_segmented_held01/independent_depth_guard/limit-validation.json": "444d1c6415114720d06793fbf17c6f69c915946dc15caad9d2ed91fc3d0413fc",
+    "_scratch/s11c/r4_segmented_held01/independent_depth.json": "e387c6b653dd4ba3234733cbeaef46ece27572d7ac22853b9331236a221c48c6",
+    "_scratch/s11c/r4_segmented_held01/depth_primary_guard/outcome.json": "7cffd212b8986a4e23ee5e0eb84b623f2385773e7b6202ad44f8732f749a15b6",
+    "_scratch/s11c/r4_segmented_held01/depth_primary_guard/limit-validation.json": "934a631981d6f5f92abbc1450ee82e3a4fcd5b9ec4c253fcb1b43a7ddfb57921",
+    "_scratch/s11c/r4_segmented_held01/depth_primary/result.json": "c27146b44ef03e977f0c3a9533d6c27966ba2a9f4a1a0138be299ef5d6618760",
+    "software/stage1_solver/tools/mouth_r4_segmented_depth.py": "6239f3e768ff6992829432456ee8df65ada73a24026c7d3fd9c549f65af3a365",
+    "software/stage1_solver/tools/mouth_r4_depth_cell_work.hpp": "6ac179cac531df65de5db454377f269b792bf6d9280ad557a230d4c1dc6b5785",
+    "_scratch/s11c/r4_rematch39_01/primary/rematched.json": "f40275cff348e343744e51a08293fd4f93a30ee9da30565c01760dc0211cd9b0",
+    "_scratch/s11c/r4_rematch39_01/primary/labels.json": "f9de2fad1f49ad016ace5e3a35d607ebc6cfd6430091881414920e853d8cfa27",
+    "_scratch/s11c/r4_rematch39_01/primary/gate1.json": "7c14c4ab99ba750183d972259a2d45618e0a80de521f0a28cf816258c731bb60",
+    "_scratch/s11c/r4_rematch39_01/primary/rematched.npz": "d21586ba828f891f67e4601e8a6145a0cf7f25f003273852b159c0094da63837",
+    "_scratch/s11c/r4_rematch39_01/derivatives/primary_shape/record.json": "2f8e0ba338b4d395bbbdb937fbab12bf455cba8ac479904008d774a0aeade2e1",
+    "_scratch/s11c/r4_depth_cert01/primary/cells.npz": "5ccbd42b225897ba6de90c7df1dc9c5a1db0e7186a6e2c3743615530b8a6499a",
+    "_scratch/s11c/r4_segmented_held01/depth_secondary_guard/outcome.json": "7d2f71c35b734f1cf367281165ea4d68d47fa857648b0256bed52edad4798839",
+    "_scratch/s11c/r4_segmented_held01/depth_secondary_guard/limit-validation.json": "530fba95f9b56a008e321751c2ebefa39cf48b5b450a2d7be4a184a060169b00",
+    "_scratch/s11c/r4_segmented_held01/depth_secondary/result.json": "596a6530d2609a917bc7ec0829a772d9c36d694848f8c0bcd39b0254ea17539b",
+    "_scratch/s11c/r4_rematch39_01/secondary/rematched.json": "bd42ad6ceb74f7e677af61cfbe0e46d369d2f189d5fbe757ec5d4da0112d732b",
+    "_scratch/s11c/r4_rematch39_01/secondary/labels.json": "a3fb8e338b9f83fb12efa930b94c887f32c4e60e074de9d903e6c034ceac6ef9",
+    "_scratch/s11c/r4_rematch39_01/secondary/gate1.json": "0d440458614361c4e48c7a403866d85fdf0c4bcd141bf039f4f33c22604c7c56",
+    "_scratch/s11c/r4_rematch39_01/secondary/rematched.npz": "e2c2e2afb9af55e972b57a46b22527a0ba9983fbab173446b17164457564ed10",
+    "_scratch/s11c/r4_rematch39_01/derivatives/secondary_shape/record.json": "c4c0db0679d059428d354c408f42e6122c73c3a117f1c947f4857bf610bc47ef",
+    "_scratch/s11c/r4_depth_cert01/secondary/cells.npz": "d366e5e4b4d33f4d5284073148364a17cb71f3ee903effdb7f2cf04d8856affd",
+    "_scratch/s11c/r4_segmented_held01/independent_gate_readback.py": "011a746ed9ecfe3020d5fa4613636712df8bbc85d2e4e5762c6e1648789c0604",
+    "_scratch/s11c/r4_segmented_held01/review_guard/outcome.json": "74e9a52dd895625164eeb5cf93b99a741b403602e1d07e208ee4b7c70a111104",
+    "_scratch/s11c/r4_segmented_held01/review_guard/stdout": "a9949953be97a59d3981a9338c99fa93fe42ec8fc216f56ffcbe72af5bc4dfa5"
+  },
+  "guard_result": {
+    "exitCode": 0,
+    "wallSeconds": 0.24209801899269223,
+    "unit": "s11c-guard-aceee014a218",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 0.16647805692628026,
+      "childPid": 3040143
+    }
+  },
+  "review_scope": "Independent per-interval work and pointwise folded-trial determinants reconstructed from saved sources. Both frozen epsilons and both production certificate clients. Descent and endpoint physics are outside this pre-descent review."
+}

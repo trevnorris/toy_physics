@@ -65,7 +65,6 @@ extern "C" int r4_cell_work(const Data *data,const double *labels,const double *
     const double *weights,const int *enabled,long double *values,double *min_orientation){
     const auto &d=*data;const Grid axes[]={d.field_x,d.field_t,d.field_a};
     const int nt=d.field_t.n,na=d.field_a.n;
-    const Vec lo{0,0,0},span{1,1,1};
     *min_orientation=std::numeric_limits<double>::infinity();
     for(int i=0;i<axes[0].n-1;i++)for(int j=0;j<nt-1;j++)for(int k=0;k<na-1;k++){
         const int cell=(i*(nt-1)+j)*(na-1)+k;
@@ -78,10 +77,10 @@ extern "C" int r4_cell_work(const Data *data,const double *labels,const double *
             q.order[x][t][a]=order[id];active|=order[id]>0;
             for(int c=0;c<3;c++)q.labels[x][t][a][c]=labels[3*id+c];
         }
-        Vec witness{};double floor=std::numeric_limits<double>::infinity();
-        int rc=euler::orientation(q,lo,span,g.width[0]*g.width[1]*g.width[2],0,floor,witness);
+        euler::Orientation proof;
+        int rc=euler::orientation(q,g.width,proof);
         if(rc)return rc;
-        *min_orientation=std::min(*min_orientation,floor);
+        *min_orientation=std::min(*min_orientation,proof.lower);
         try{values[cell]=active?crystal_energy(g,q,rule,weights):gauge_energy(g,q);}
         catch(std::domain_error&){return 4;}
     }

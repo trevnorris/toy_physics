@@ -1,0 +1,73 @@
+{
+  "selected_widths": [
+    1.9073486328125e-06,
+    9.5367431640625e-07
+  ],
+  "probes": [
+    {
+      "h": 3.814697265625e-06,
+      "minus": {
+        "changed_rays": 4,
+        "first_cell_and_ray": [
+          22,
+          2,
+          1,
+          1,
+          2
+        ]
+      },
+      "plus": {
+        "changed_rays": 0,
+        "first_cell_and_ray": null
+      }
+    },
+    {
+      "h": 1.9073486328125e-06,
+      "minus": {
+        "changed_rays": 0,
+        "first_cell_and_ray": null
+      },
+      "plus": {
+        "changed_rays": 0,
+        "first_cell_and_ray": null
+      }
+    },
+    {
+      "h": 9.5367431640625e-07,
+      "minus": {
+        "changed_rays": 0,
+        "first_cell_and_ray": null
+      },
+      "plus": {
+        "changed_rays": 0,
+        "first_cell_and_ray": null
+      }
+    }
+  ],
+  "active_cells": 6290,
+  "selection": "Two successive widths whose signed banks retain every active ray branch at its quadrature points.",
+  "baseline_commit": "974127ee",
+  "state_sha256": "d21586ba828f891f67e4601e8a6145a0cf7f25f003273852b159c0094da63837",
+  "source": {
+    "mouth_r4_segmented_endpoint_forces.hpp": "6aa89c9e60eaaec3170e54c16173750692688a259a1e00df597b880dde745601",
+    "mouth_r4_segmented_endpoint_forces.py": "ba0c2df7b1645e2b2356d4ec106a9a6beeb24d464f4ee83b45567a4860bf68a5"
+  },
+  "guard": {
+    "exitCode": 0,
+    "wallSeconds": 8.8651012070477,
+    "unit": "s11c-guard-8b99cc33d65e",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 8.771559745073318,
+      "childPid": 3036327
+    }
+  },
+  "provenance": [
+    "/usr/bin/python3",
+    "-Bu",
+    "_scratch/s11c/r4_segmented_held01/check_reference_faces.py"
+  ]
+}

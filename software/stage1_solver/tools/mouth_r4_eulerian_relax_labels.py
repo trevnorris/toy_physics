@@ -5,14 +5,13 @@ only the native registry, polar regularity and the zero-order harmonic gauge
 are imposed. Strictly melted, unconstrained degrees of freedom are eliminated
 by their unweighted harmonic equation. Gauge strength never enters that solve.
 """
-from itertools import product
 
 import numpy as np
 from scipy import sparse
 from scipy.sparse.linalg import splu
 
 from mouth_cp10_label_grid import BITS, matrix_for
-from mouth_r4_eulerian_solid import InvalidSpatialCrystal
+from mouth_r4_eulerian_solid import InvalidSpatialCrystal, chart_bounds
 
 
 FORCE_TOL = 3.e-5
@@ -92,39 +91,10 @@ def chart_orientation(axes, labels, active):
         if coord.min() < axis[0]-2.e-13 or coord.max() > axis[-1]+2.e-13:
             raise InfeasibleLabels('Label leaves the saved material domain',
                 component=d, lowest=float(coord.min()), highest=float(coord.max()))
-    dims = active.shape
-    vertices = {b:labels[slices(b,dims)] for b in BITS}
-    cols = []
-    norm_product = np.ones(dims)
-    for d, axis in enumerate(axes):
-        tangents = [k for k in range(3) if k != d]
-        width = np.diff(axis).reshape(tuple(len(axis)-1 if k==d else 1 for k in range(3))+(1,))
-        corners = []
-        for l,m in product(range(2),repeat=2):
-            b = [0,0,0]; b[tangents[0]]=l; b[tangents[1]]=m
-            start = vertices[tuple(b)]; b[d] = 1
-            corners.append((vertices[tuple(b)]-start)/width)
-        rows = []
-        for u,v in product((0.,.5,1.),repeat=2):
-            rows.append((1-u)*((1-v)*corners[0]+v*corners[1])
-                        + u*((1-v)*corners[2]+v*corners[3]))
-        cols.append(rows)
-        norm_product *= np.maximum.reduce([np.sqrt(np.sum(c*c,axis=-1)) for c in corners])
-    bern = np.empty(dims+(3,3,3))
-    for i,j,k in product(range(3),repeat=3):
-        x,y,z = cols[0][3*j+k], cols[1][3*i+k], cols[2][3*i+j]
-        bern[...,i,j,k] = np.einsum('...i,...i->...', x, np.cross(y,z))
-    for d in (3,4,5):
-        b = np.moveaxis(bern,d,-1)
-        b[...,1] = 2*b[...,1]-.5*(b[...,0]+b[...,2])
-    margin = 128*UROUND*np.maximum(norm_product,np.finfo(float).tiny)
-    lower = bern.min(axis=(-1,-2,-3))-margin
-    for row in np.argwhere(lower<=0):
-        c = tuple(row)
-        lower[c] = certify_subcell(bern[c],margin[c],row.tolist())
-    idx = np.unravel_index(lower.argmin(), dims)
-    return dict(chart_det_global_lower=float(lower[idx]),chart_lowest_cell=list(map(int,idx)),
-                chart_det_active_lower=float(lower[active].min()) if active.any() else None)
+    try:
+        return chart_bounds(axes,labels,active)
+    except InvalidSpatialCrystal as exc:
+        raise InfeasibleLabels(str(exc),**exc.diagnostics) from exc
 
 
 class Component:
@@ -239,11 +209,6 @@ class LabelRelaxation:
         # including faces and exact-zero-order cells, prior to integration.
         if physical['min_chart_Jinv_bound'] <= 0 or physical['min_Jinv_global'] <= 0:
             raise InfeasibleLabels('Invalid signed physical volume', **physical)
-        # At determinant scales approaching the square root of roundoff,
-        # independently test whole-cell orientation including cancellation
-        # margins before permitting a step to cross a numerical fold.
-        if physical['min_chart_Jinv_bound'] < np.sqrt(UROUND):
-            chart_orientation(self.axes,labels,self.active)
         if not np.isfinite(energy) or not np.isfinite(elastic_grad).all():
             raise ArithmeticError('Nonfinite elastic energy or derivative at oriented labels')
         delta = (labels-self.base).reshape(-1,3)

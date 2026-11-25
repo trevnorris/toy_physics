@@ -58,7 +58,7 @@ class Data(ct.Structure):
         + [(s, Pointer) for s in 'weights labels base correction offset spline shape'.split()]
         + [('spline_n', ct.c_int), ('diagnose', ct.c_int)]
         + [(s, ct.c_double) for s in 'length ref_length pressure core_ratio epsilon'.split()]
-        + [('exact_melt_support', ct.c_int)])
+        + [('exact_melt_support', ct.c_int), ('collar_coeff', Pointer)])
 
 
 class Results(ct.Structure):

@@ -24,6 +24,11 @@ void sorted(Cuts &cuts){
 }
 void radial_cuts(Cuts& cuts,const Data&d,const Vec &l,const Vec&r,double weld){
     cuts.clear();cuts.push_back({0.,zero});cuts.push_back({1.,zero});
+    if(d.collar_coeff){
+        add_face(cuts,l[0],r[0],weld,0);
+        if(cuts.size()>2)std::swap(cuts[1],cuts[2]);
+        return;
+    }
     // Native cell planes reproduce the production evaluator's quadrature. Registry
     // radial, depth and diagonal faces are genuine jumps of the reference metric.
     grid_faces(cuts,d.x,l[0],r[0],0);grid_faces(cuts,d.t,l[1],r[1],1);
@@ -186,6 +191,11 @@ PointWork material(const Geometry& g,const Vec&local,const Landed&p,bool need_gr
         const double slope=d.core_ratio*prof.bt;
         out.value[0]+=gradH[0][1]*slope;
         out.value[1]+=gradH[0][0]*slope+gradH[0][1]*p.xi[0]*d.core_ratio*prof.btt;
+    }else if(d.collar_coeff){
+        for(int i=0;i<2;i++){
+            out.value[i]+=gradH[0][0]*ref.s_hess[i]+gradH[0][1]*ref.s_hess[i+1]
+                         +gradH[1][0]*ref.z_hess[i]+gradH[1][1]*ref.z_hess[i+1];
+        }
     }else out.value[0]-=(gradH[0][0]*sx+gradH[1][0]*H[1][0])/p.xi[0];
     for(double &v:out.value)v*=load;
     const double rateR=wall.grad[0]*g.width[0]/wall.R;

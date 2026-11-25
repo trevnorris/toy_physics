@@ -94,7 +94,14 @@ extern "C" int cp10_spatial_integral(const Data *ds,int ns,const double *t_deriv
             double v=nodes[T],w=nodes[A];
             Landed l=q.at(0.,v,w),r=q.at(1.,v,w);
             std::vector<double> cuts={0.,1.};
-            if(!melted){
+            if(d.collar_coeff){
+                // The only discontinuous reference geometry in the smooth map is the weld.
+                const double dr=r.xi[0]-l.xi[0];
+                if(dr!=0){
+                    double h=(cut-l.xi[0])/dr;
+                    if(h>0 && h<1)cuts.insert(cuts.begin()+1,h);
+                }
+            }else if(!melted){
                 // At fixed spatial depth and angle each label is affine along this radial line.
                 // Split the true weld at xi_r=cut and the material-element coordinate switches.
                 const Grid axes[]={d.x,d.t,d.a,d.reg_t};

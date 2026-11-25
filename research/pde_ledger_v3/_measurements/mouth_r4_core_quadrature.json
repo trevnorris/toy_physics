@@ -1,0 +1,50 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_core_quadrature.py",
+    "_scratch/s11c/r4_crease167_01",
+    "_scratch/s11c/r4_crease167_01/core_quadrature"
+  ],
+  "stdout": {
+    "step166_sha256": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694",
+    "scope": "only positive-order physical crystal work inside the unchanged core",
+    "radial_endpoint_nextafter": {
+      "chart": [
+        1.0,
+        1.0000000000000002
+      ],
+      "frame_max_abs": 4.440892098500626e-15,
+      "hoop_max_abs": 8.881784197001252e-16
+    },
+    "groups": {
+      "core_only_rays": {
+        "<rays>": 39611.0,
+        "legacy_segments": 75281.0,
+        "smooth_segments": 39611.0,
+        "legacy_core_energy": 0.008373428964745489,
+        "smooth_core_energy": 0.008373428933505409,
+        "smooth_minus_legacy": -3.124007989146189e-11,
+        "summed_absolute_ray_shift": 3.1672079302235534e-11
+      },
+      "weld_crossing_ray_core_portion": {
+        "<rays>": 2009.0,
+        "legacy_segments": 2108.0,
+        "smooth_segments": 2009.0,
+        "legacy_core_energy": 0.0009743253144408584,
+        "smooth_core_energy": 0.0009743253147366949,
+        "smooth_minus_legacy": 2.958365123822769e-13,
+        "summed_absolute_ray_shift": 2.959093971152464e-13
+      },
+      "both": {
+        "<rays>": 41620.0,
+        "legacy_segments": 77389.0,
+        "smooth_segments": 41620.0,
+        "legacy_core_energy": 0.009347754279186347,
+        "smooth_core_energy": 0.009347754248242104,
+        "smooth_minus_legacy": -3.094424337907962e-11,
+        "summed_absolute_ray_shift": 3.1967988699350785e-11
+      }
+    }
+  }
+}

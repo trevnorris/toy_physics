@@ -17,6 +17,7 @@ struct Data {
     int spline_n, diagnose;
     double length, ref_length, pressure, core_ratio, epsilon;
     int exact_melt_support;
+    const double *collar_coeff; // null selects the legacy registered triangles
 };
 struct Results {
     double *gradient,*load,*stats;
@@ -68,12 +69,40 @@ Map radius(const Data &d,const Vec &X) {
             Vec{3*x2*f*pa,x3*ft*pa,x3*f*paa}};
     return r;
 }
-struct Ref { double S,Sx,det2,logVx; Mat inv,H; };
+struct Ref { double S,Sx,det2,logVx; Mat inv,H; Vec s_hess{},z_hess{}; };
+
+// The two coordinates of the natural collar are bicubic in eta and t.
+// Horner evaluation returns the scalar value, first derivatives and Hessian.
+struct CollarJet {double value, x, t, xx, xt, tt;};
+CollarJet collar_jet(const double *p,double u,double v,double de,double dt,double eta_x,double x) {
+    double val[4],du[4],duu[4];
+    for(int k=0;k<4;k++){
+        const double *q=p+4*k;
+        val[k]=((q[3]*u+q[2])*u+q[1])*u+q[0];
+        du[k]=(3*q[3]*u+2*q[2])*u+q[1];
+        duu[k]=6*q[3]*u+2*q[2];
+    }
+    auto eval=[&](const double *r){return ((r[3]*v+r[2])*v+r[1])*v+r[0];};
+    auto slope=[&](const double *r){return (3*r[3]*v+2*r[2])*v+r[1];};
+    const double scale=eta_x/de, sx=eval(du)*scale;
+    return {eval(val),sx,slope(val)/dt,eval(duu)*scale*scale-sx/x,
+            slope(du)*scale/dt,(6*val[3]*v+2*val[2])/(dt*dt)};
+}
 Ref reference(const Data &d,double x,double t,const Profile &initial,bool core) {
-    double sx,st,tx,tt,S,sxx,stx,txx,ttx;
+    double sx,st,tx,tt,S,sxx,stx,txx,ttx,stt=0.,ttt=0.;
     if(core) {
         sx=initial.b*d.core_ratio;st=x*initial.bt*d.core_ratio;
         S=x*sx;tx=0;tt=d.ref_length;sxx=txx=ttx=0;stx=initial.bt*d.core_ratio;
+    } else if(d.collar_coeff) {
+        const double e=-std::log(x)/d.pressure;
+        const int midpoint=(d.reg_e.n-1)/2, count=d.reg_e.n-1-midpoint;
+        const int i=std::max(midpoint,cell(d.reg_e,e)), j=cell(d.reg_t,t);
+        const double de=d.reg_e.v[i+1]-d.reg_e.v[i],dt=d.reg_t.v[j+1]-d.reg_t.v[j];
+        const double u=(e-d.reg_e.v[i])/de,v=(t-d.reg_t.v[j])/dt,ex=-1./(d.pressure*x);
+        const double *c=d.collar_coeff+32*(j*count+i-midpoint);
+        CollarJet s=collar_jet(c,u,v,de,dt,ex,x),z=collar_jet(c+16,u,v,de,dt,ex,x);
+        S=4+s.value;sx=s.x;st=s.t;sxx=s.xx;stx=s.xt;stt=s.tt;
+        tx=z.x;tt=z.t;txx=z.xx;ttx=z.xt;ttt=z.tt;
     } else {
         double e=-std::log(x)/d.pressure;
         int i=cell(d.reg_e,e), j=cell(d.reg_t,t), ne=d.reg_e.n;
@@ -88,7 +117,7 @@ Ref reference(const Data &d,double x,double t,const Profile &initial,bool core) 
         st=(z[0]-p[0])*sgn/dt;tt=(z[1]-p[1])*sgn/dt;
         sxx=-sx/x;txx=-tx/x;stx=ttx=0;
     }
-    Ref out{};out.S=S;out.Sx=sx;
+    Ref out{};out.S=S;out.Sx=sx;out.s_hess={sxx,stx,stt};out.z_hess={txx,ttx,ttt};
     double det=sx*tt-st*tx;
     out.det2=std::abs(det);
     out.inv={Vec{tt/det,-st/det,0},Vec{-tx/det,sx/det,0},Vec{0,0,1/S}};

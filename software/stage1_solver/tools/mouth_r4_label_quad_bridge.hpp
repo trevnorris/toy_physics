@@ -4,7 +4,7 @@ struct InputGrid {int n;const long double *v;};
 struct InputData {
     InputGrid x,t,a,depth_edges,angle_edges,base_x,base_t,field_x,field_t,field_a,cut_x,cut_t,cut_a,reg_e,reg_t,gauss;
     const long double *weights,*labels,*base,*correction,*offset,*spline,*shape;
-    int spline_n,diagnose;long double length,ref_length,pressure,core_ratio,epsilon;int exact_melt_support;
+    int spline_n,diagnose;long double length,ref_length,pressure,core_ratio,epsilon;int exact_melt_support;const long double *collar_coeff;
 };
 extern "C" int high_precision_banks(const InputData *h,const long double *ys,const long double *chi,InputGrid rule,
     const long double *wt,const int *enabled,long double *out,long double *lower){
@@ -19,6 +19,10 @@ extern "C" int high_precision_banks(const InputData *h,const long double *ys,con
         d.labels=copy(8,{2*d.reg_e.n*d.reg_t.n,h->labels}).v;
         d.spline_n=h->spline_n;d.spline=copy(9,{4*h->spline_n,h->spline}).v;
         d.shape=copy(10,{8,h->shape}).v;
+        if(h->collar_coeff){
+            const int cells=(d.reg_e.n-1)/2*(d.reg_t.n-1);
+            d.collar_coeff=copy(11,{32*cells,h->collar_coeff}).v;
+        }
         d.length=h->length;d.ref_length=h->ref_length;d.epsilon=h->epsilon;
         d.pressure=h->pressure;d.core_ratio=h->core_ratio;
     }

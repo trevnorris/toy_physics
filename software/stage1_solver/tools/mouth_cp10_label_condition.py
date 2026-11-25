@@ -40,14 +40,31 @@ def reference_frame(body, ref, points):
     frame[...,0,1] = x * ref.length * slope * scale
     frame[...,1,1] = ref.length
     frame[...,2,2] = x * radius * scale
-    collar = x >= body.cut
+    smooth='collar_coeff' in body.buffers
+    collar = x > body.cut if smooth else x >= body.cut
     xx, tt = x[collar], t[collar]
     tr, er = body.buffers['reg_t'], body.buffers['reg_e']
     e = -np.log(xx)/body.data.pressure
     j = np.clip(np.searchsorted(tr, tt, side='right') - 1, 0, len(tr)-2)
-    i = np.clip(np.searchsorted(er, e, side='right') - 1, 0, len(er)-2)
+    first_collar_cell = (len(er)-1)//2 if smooth else 0
+    i = np.clip(np.searchsorted(er, e, side='right') - 1, first_collar_cell, len(er)-2)
     dt, de = np.diff(tr)[j], np.diff(er)[i]
     u, v = (e - er[i])/de, (tt - tr[j])/dt
+    if smooth:
+        coeff=body.buffers['collar_coeff'][j,i-(len(er)-1)//2]
+        def powers(y):
+            return np.stack([np.ones_like(y),y,y*y,y*y*y],axis=1)
+        def deriv(y):
+            return np.stack([np.zeros_like(y),np.ones_like(y),2*y,3*y*y],axis=1)
+        def apply(tpoly,epoly):
+            return np.einsum('ni,nvij,nj->nv',tpoly,coeff,epoly)
+        ev,tv=powers(u),powers(v)
+        f=np.zeros((len(xx),3,3))
+        f[:,:2,0]=apply(tv,deriv(u))/(-de*body.data.pressure*xx)[:,None]
+        f[:,:2,1]=apply(deriv(v),ev)/dt[:,None]
+        f[:,2,2]=4+apply(tv,ev)[:,0]
+        frame[collar]=f
+        return frame,frame[...,2,2]*np.sin(a)
     hi = (u + v > 1).astype(int)
     sc = 1 - 2*hi
     labels = body.buffers['labels'].reshape(len(tr), len(er), 2)

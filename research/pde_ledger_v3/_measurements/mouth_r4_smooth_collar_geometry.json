@@ -1,0 +1,285 @@
+{
+  "bicubic_geometry": {
+    "command": [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_smooth_collar_reference.py",
+      "_scratch/s11c",
+      "_scratch/s11c/r4_crease167_01/bicubic_geometry/result.json"
+    ],
+    "stdout": {
+      "step166_sha256": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694",
+      "registry_sha256": "173176dbfafaecbd78df228fe22289ce67ef41fe3661815f60b64f3d57b18101",
+      "boundaries": {
+        "weld": {
+          "number_segments": 12,
+          "anchor": [
+            4.5,
+            0.08333333333333333
+          ],
+          "label": 0.08333333333333333,
+          "derivative_left": [
+            0.0,
+            1.0
+          ],
+          "derivative_right": [
+            0.0,
+            1.0
+          ],
+          "max_jump": 0.0,
+          "minimax_tangent_discrepancy": 0.0,
+          "max_unit_tangent_jump": 0.0,
+          "stored_curve_is_straight": true,
+          "fixed_label_position_delta_clamped_cubic": 5.551115123125783e-17,
+          "max_anchor_position_delta_clamped_cubic": 0.0,
+          "parameter_direction": "normalized axial label"
+        },
+        "lateral_wall": {
+          "number_segments": 12,
+          "anchor": [
+            4.0,
+            0.5680719829993403
+          ],
+          "label": 0.6666666666666666,
+          "derivative_left": [
+            0.0,
+            1.0650808032960923
+          ],
+          "derivative_right": [
+            0.0,
+            1.168617464254452
+          ],
+          "max_jump": 0.10353666095835967,
+          "minimax_tangent_discrepancy": 0.051768330479179836,
+          "max_unit_tangent_jump": 0.0,
+          "stored_curve_is_straight": true,
+          "fixed_label_position_delta_clamped_cubic": 0.0010895383424125438,
+          "max_anchor_position_delta_clamped_cubic": 0.0,
+          "parameter_direction": "normalized axial label"
+        },
+        "entrance": {
+          "number_segments": 6,
+          "anchor": [
+            4.38726736143076,
+            0.0
+          ],
+          "label": 0.41666666666666663,
+          "derivative_left": [
+            1.1132445463898324,
+            0.0
+          ],
+          "derivative_right": [
+            1.3527916628308845,
+            0.0
+          ],
+          "max_jump": 0.2395471164410521,
+          "minimax_tangent_discrepancy": 0.11977355822052604,
+          "max_unit_tangent_jump": 0.0,
+          "stored_curve_is_straight": true,
+          "fixed_label_position_delta_clamped_cubic": 0.0022262408284365875,
+          "max_anchor_position_delta_clamped_cubic": 0.0,
+          "parameter_direction": "eta"
+        },
+        "exit": {
+          "number_segments": 6,
+          "anchor": [
+            4.139037343276411,
+            1.0
+          ],
+          "label": 0.08333333333333326,
+          "derivative_left": [
+            1.6684481193169327,
+            0.0
+          ],
+          "derivative_right": [
+            1.1755394646855488,
+            0.0
+          ],
+          "max_jump": 0.4929086546313839,
+          "minimax_tangent_discrepancy": 0.24645432731569195,
+          "max_unit_tangent_jump": 0.0,
+          "stored_curve_is_straight": true,
+          "fixed_label_position_delta_clamped_cubic": 0.004703216012956091,
+          "max_anchor_position_delta_clamped_cubic": 0.0,
+          "parameter_direction": "eta"
+        }
+      },
+      "chart": "S=4+stored radial label; T=stored axial label, from the production natural reference",
+      "exact_parameterized_C1_compatible": false,
+      "registered_map_det_bernstein_bounds": [
+        0.48942599446455887,
+        2.415082288261566
+      ],
+      "dS_deta_dT_dt_bernstein_lower": [
+        0.5875196121345002,
+        0.6987486091718104
+      ],
+      "method": "tensor clamped cubic through all registered collar nodes, exact endpoint secants",
+      "knot_max_abs": 1.1102230246251565e-16,
+      "weld_polynomial_max_sum_abs": 1.7867651802561113e-16,
+      "full_face_jump_coefficient_l1_bounds_for_normal_order_0_1_2": [
+        1.421931149214739e-16,
+        1.708702623837155e-15,
+        2.1976864772454974e-13
+      ],
+      "cells": 72
+    }
+  },
+  "bicubic_boundary_extrema": {
+    "command": [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_smooth_collar_reference.py",
+      "_scratch/s11c",
+      "_scratch/s11c/r4_crease167_01/bicubic_boundary_extrema/result.json",
+      "--boundary-extrema"
+    ],
+    "stdout": {
+      "bounds": "along-boundary extrema from derivative roots on every bicubic boundary segment",
+      "boundaries": {
+        "weld": {
+          "max_along_boundary_position_shift": 1.1661271991439404e-16,
+          "position_witness_label": 0.8333333333333333,
+          "max_parameterized_tangent_shift": 4.735795089416681e-16,
+          "tangent_witness_label": 0.25,
+          "max_transverse_shift_coefficient_bound": 1.4051260155412137e-16
+        },
+        "lateral_wall": {
+          "max_along_boundary_position_shift": 0.0010895388960459875,
+          "position_witness_label": 0.7083630348219494,
+          "max_parameterized_tangent_shift": 0.052372400087654,
+          "tangent_witness_label": 0.75,
+          "max_transverse_shift_coefficient_bound": 0.0
+        },
+        "entrance": {
+          "max_along_boundary_position_shift": 0.0022275881355071836,
+          "position_witness_label": 0.38118212798994777,
+          "max_parameterized_tangent_shift": 0.13758247357371636,
+          "tangent_witness_label": 0.41666666666666663,
+          "max_transverse_shift_coefficient_bound": 0.0
+        },
+        "exit": {
+          "max_along_boundary_position_shift": 0.00470399013010099,
+          "position_witness_label": 0.11928063092805109,
+          "max_parameterized_tangent_shift": 0.285679067719286,
+          "tangent_witness_label": 0.08333333333333326,
+          "max_transverse_shift_coefficient_bound": 1.1145598333150986e-16
+        }
+      }
+    }
+  },
+  "bicubic_incident_work": {
+    "command": [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_collar_crease_response.py",
+      "_scratch/s11c/r4_crease167_01",
+      "_scratch/s11c/r4_crease167_01/bicubic_incident_work"
+    ],
+    "stdout": {
+      "step_sha": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694",
+      "source_pj": "20ddac5b6b854586d6be1dace6d36e340646744da838291d98a8d2f785527095",
+      "reference": "clamped weld-preserving bicubic",
+      "scope": "entire cell, crystal term only",
+      "work": [
+        {
+          "cell": [
+            23,
+            2,
+            17
+          ],
+          "alpha": 0.0,
+          "energy_delta": 0.0,
+          "physical_directional_slope": -8.546398375529506e-05,
+          "signed_central": -8.54639837566118e-05,
+          "difference": -1.316732052680809e-15
+        },
+        {
+          "cell": [
+            23,
+            2,
+            17
+          ],
+          "alpha": 6.633220944174471e-05,
+          "energy_delta": -5.667677257637248e-09,
+          "physical_directional_slope": -8.542365345324757e-05,
+          "signed_central": -8.542365345839964e-05,
+          "difference": -5.152077914909172e-15
+        },
+        {
+          "cell": [
+            23,
+            2,
+            17
+          ],
+          "alpha": 6.646500665784429e-05,
+          "energy_delta": -5.6790212756429084e-09,
+          "physical_directional_slope": -8.542357271435634e-05,
+          "signed_central": -8.542357272556256e-05,
+          "difference": -1.120621355933861e-14
+        },
+        {
+          "cell": [
+            23,
+            2,
+            17
+          ],
+          "alpha": 0.0001220703125,
+          "energy_delta": -1.0428085246876722e-08,
+          "physical_directional_slope": -8.538976631060608e-05,
+          "signed_central": -8.538976631819462e-05,
+          "difference": -7.588530276344332e-15
+        },
+        {
+          "cell": [
+            24,
+            2,
+            17
+          ],
+          "alpha": 0.0,
+          "energy_delta": 0.0,
+          "physical_directional_slope": -0.00020522139674156186,
+          "signed_central": -0.0002052213967413119,
+          "difference": 2.499607462237241e-16
+        },
+        {
+          "cell": [
+            24,
+            2,
+            17
+          ],
+          "alpha": 6.633220944174471e-05,
+          "energy_delta": -1.3611699783355138e-08,
+          "physical_directional_slope": -0.00020518856574759387,
+          "signed_central": -0.00020518856574910926,
+          "difference": -1.5153883971011443e-15
+        },
+        {
+          "cell": [
+            24,
+            2,
+            17
+          ],
+          "alpha": 6.646500665784429e-05,
+          "energy_delta": -1.36389482492971e-08,
+          "physical_directional_slope": -0.00020518850002188336,
+          "signed_central": -0.00020518850002873568,
+          "difference": -6.852323258875127e-15
+        },
+        {
+          "cell": [
+            24,
+            2,
+            17
+          ],
+          "alpha": 0.0001220703125,
+          "energy_delta": -2.5047752407477733e-08,
+          "physical_directional_slope": -0.00020516097983096058,
+          "signed_central": -0.00020516097983461212,
+          "difference": -3.65153833624564e-15
+        }
+      ],
+      "max_slope_error": 1.120621355933861e-14
+    }
+  }
+}

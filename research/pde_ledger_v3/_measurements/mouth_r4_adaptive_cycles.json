@@ -1,0 +1,1729 @@
+{
+  "preparation": {
+    "radius": 4,
+    "winding": 1,
+    "epsilon": 1e-08,
+    "held_shape_coordinates": [
+      0.03203348161357326,
+      -0.22160765321621922,
+      0.0008870732843312349,
+      -0.0685819081404728,
+      0.0708792715906547,
+      0.02342688643280306
+    ],
+    "depth": 0.8191403557693495,
+    "exit_radius": 3.306377271246663,
+    "parent_exact_Hv_commit": "3203b837",
+    "step382_state_record_commit": "ba838359",
+    "previous_field_ledger_commit": "578a5526",
+    "initial_rematch": true,
+    "source_step382": "346fc15d7dc678db51b420bbfde7e07ba8cbffac68aabc9d5cdbd4dd4b149f4c"
+  },
+  "gate": {
+    "cycles": 10,
+    "post_rematch_peaks": [
+      0.0003132355145352394,
+      0.00020340210992265327,
+      0.00016939411489599933,
+      0.0001123513282042742,
+      7.608487311407114e-05,
+      5.1812834586376934e-05,
+      3.307470449993356e-05,
+      5.639700568064863e-05,
+      6.961014128509149e-05,
+      5.684466664200679e-05
+    ],
+    "second_half": [
+      5.1812834586376934e-05,
+      3.307470449993356e-05,
+      5.639700568064863e-05,
+      6.961014128509149e-05,
+      5.684466664200679e-05
+    ],
+    "checks": {
+      "below_000150": true,
+      "second_half_strictly_down": false,
+      "monotonic_energy": true,
+      "positive_orientation": true,
+      "no_cg_divergence_or_stop": true
+    },
+    "continue": false
+  },
+  "baseline": {
+    "step": 382,
+    "post_force": 0.0003568958955192841,
+    "post_node": {
+      "component": 0,
+      "group": 29057,
+      "chi": 0.0,
+      "signed_force": -0.0003568958955192841,
+      "node": [
+        25,
+        8,
+        14
+      ],
+      "radius": 3.8859275454437556,
+      "depth": 0.2069850407996006,
+      "theta": 0.970514952943746
+    },
+    "post_field": {
+      "order_projected": 4.012479237758271e-11,
+      "order_kkt": 8.2055943965321e-11,
+      "amplitude_raw": 2.28649283398407e-09,
+      "phase_raw": 8.150088776128221e-11,
+      "carrier_metric": 2.249959401373556e-09
+    },
+    "post_field_residual": 2.28649283398407e-09,
+    "total_energy": 92185.38326491858,
+    "crystal_energy": 0.30714328941708463,
+    "gauge_energy": 9.62328815253904e-08,
+    "physical_Jinv_certificate": {
+      "physical_global_lower": 4.4607498695161436e-07,
+      "cell": [
+        25,
+        10,
+        9
+      ],
+      "cell_count": 28080,
+      "chart_global_lower": 7.690322930976627e-07,
+      "limiting_chart_lower": 7.690322930976627e-07,
+      "limiting_radial_metric_lower": 0.5800749156763813,
+      "limiting_sine_ratio_lower": 0.9999521277863359,
+      "global_xi_r_over_x_lower": 0.9405631016814644,
+      "global_sine_ratio_lower": 0.9361080586202513,
+      "angular_rule": "concavity",
+      "collar_patch_determinant_lower": 0.4892248970224547,
+      "collar_S_lower": 3.9998642234235255,
+      "physical_profile_bounds": [
+        3.3063771490447995,
+        4.000000150947135
+      ],
+      "reference_core_profile_lower": 3.97520746439121,
+      "core_metric_lower": 1.1638699165377784,
+      "collar_metric_lower": 0.5800749156763813,
+      "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+      "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+    },
+    "current": {
+      "feed_current": 10.707716624566789,
+      "bulk_current": 10.707716624566878,
+      "port_error": 8.881784197001252e-14,
+      "weak_disk_current": 10.707716624566801,
+      "incident_slice_current": 10.707716624566801,
+      "receiving_slice_current": 10.041065082125353,
+      "positive_slice_current": 10.707716624566801,
+      "dense_total_subsonic_share": 0.66758989496088,
+      "total_axial_stress": -26.58287788775181,
+      "disk_minus_feed_current": 1.2434497875801753e-14
+    },
+    "front": 0.3622238246143633,
+    "free_zero": 51484,
+    "positive_zero": 51484,
+    "max_gauge_over_positive": 4.981723630854344e-11,
+    "source": "fixed-label field rematch"
+  },
+  "cycles": [
+    {
+      "step": 383,
+      "post_force": 0.0003132355145352394,
+      "post_node": {
+        "component": 0,
+        "group": 29057,
+        "chi": 0.0,
+        "signed_force": -0.0003132355145352394,
+        "node": [
+          25,
+          8,
+          14
+        ],
+        "radius": 3.8859275454437556,
+        "depth": 0.2069850407996006,
+        "theta": 0.970514952943746
+      },
+      "post_field": {
+        "order_projected": 6.384833601495027e-11,
+        "order_kkt": 5.164783401825962e-10,
+        "amplitude_raw": 2.404596809693529e-09,
+        "phase_raw": 6.798238299135875e-11,
+        "carrier_metric": 2.270790756981461e-09
+      },
+      "post_field_residual": 2.404596809693529e-09,
+      "total_energy": 92185.38326147762,
+      "crystal_energy": 0.30714351835202447,
+      "gauge_energy": 9.933543166384107e-08,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 1.2634762454154088e-05,
+        "cell": [
+          25,
+          10,
+          9
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 2.1782356871236425e-05,
+        "limiting_chart_lower": 2.1782356871236425e-05,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.999949635846876,
+        "global_xi_r_over_x_lower": 0.9406448188996676,
+        "global_sine_ratio_lower": 0.9325587959703002,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.707716621651292,
+        "bulk_current": 10.70771662165114,
+        "port_error": 1.509903313490213e-13,
+        "weak_disk_current": 10.707716621651276,
+        "incident_slice_current": 10.707716621651276,
+        "receiving_slice_current": 10.041065079347234,
+        "positive_slice_current": 10.707716621651276,
+        "dense_total_subsonic_share": 0.6675898951748904,
+        "total_axial_stress": -26.58287788824096,
+        "disk_minus_feed_current": -1.5987211554602254e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51471,
+      "positive_zero": 51471,
+      "max_gauge_over_positive": 5.859441567740452e-10,
+      "cycle": 1,
+      "crystal_steps": 1,
+      "start_force": 0.0003568958955192841,
+      "pre_force": 0.0001765592932280692,
+      "pre_order_kkt": 0.0014298427261559775,
+      "rebound": 0.00013667622130717023,
+      "crystal_work": -2.104585005789408e-06,
+      "rematch_work": -1.3363606307681108e-06,
+      "cycle_work": -3.4409456365575187e-06,
+      "direct_total_change": -3.440960426814854e-06,
+      "steps": [
+        {
+          "step": 383,
+          "force": 0.0001765592932280692,
+          "constrained_order": 0.0014298427261559775,
+          "trigger_threshold": 0.0003531185864561384,
+          "trigger": "order_residual",
+          "delta_energy": -2.104585005789408e-06,
+          "alpha": 0.5,
+          "chart_lower": 2.1782356871236425e-05,
+          "min_sampled_physical_Jinv": 0.000451614957489206,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 13,
+          "cg_residual_divergence": false
+        }
+      ],
+      "off_to_on": 57,
+      "on_to_off": 44,
+      "previous_toggles_reversed": null,
+      "previous_toggle_reversal_fraction": null,
+      "previous_toggles_stayed": null,
+      "elapsed_seconds": 181.46670054690912,
+      "checkpoint_sha256": "237a4165f59c9e9f8d5aa6758d4703dc381cbe2229c6bc1763181db3ad33a2c6",
+      "motion": {
+        "persistent_ordered_dofs": 19704,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.05666752356419051,
+        "persistent_l2": 0.056015922324664055,
+        "melt_l2": 0.08591693091343602,
+        "chi_l2": 0.0008749186796573715,
+        "ordered_cos": null,
+        "persistent_cos": null,
+        "chi_cos": null
+      }
+    },
+    {
+      "step": 384,
+      "post_force": 0.00020340210992265327,
+      "post_node": {
+        "component": 0,
+        "group": 29057,
+        "chi": 0.0,
+        "signed_force": -0.00020340210992265327,
+        "node": [
+          25,
+          8,
+          14
+        ],
+        "radius": 3.8859275454437556,
+        "depth": 0.2069850407996006,
+        "theta": 0.970514952943746
+      },
+      "post_field": {
+        "order_projected": 2.188797833843452e-10,
+        "order_kkt": 1.0192799751537129e-10,
+        "amplitude_raw": 2.565202127583876e-09,
+        "phase_raw": 6.570041974113434e-11,
+        "carrier_metric": 2.2988079831637714e-09
+      },
+      "post_field_residual": 2.565202127583876e-09,
+      "total_energy": 92185.383257541,
+      "crystal_energy": 0.30714515324427893,
+      "gauge_energy": 1.0026902812883677e-07,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 1.1936629890394354e-05,
+        "cell": [
+          25,
+          10,
+          9
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 2.057882129780164e-05,
+        "limiting_chart_lower": 2.057882129780164e-05,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9999473799891299,
+        "global_xi_r_over_x_lower": 0.9407004484537803,
+        "global_sine_ratio_lower": 0.9309057666319743,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.707716616455297,
+        "bulk_current": 10.707716616455384,
+        "port_error": 8.704148513061227e-14,
+        "weak_disk_current": 10.70771661645525,
+        "incident_slice_current": 10.70771661645525,
+        "receiving_slice_current": 10.04106507445692,
+        "positive_slice_current": 10.70771661645525,
+        "dense_total_subsonic_share": 0.6675898954697943,
+        "total_axial_stress": -26.582877889283342,
+        "disk_minus_feed_current": -4.618527782440651e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51448,
+      "positive_zero": 51448,
+      "max_gauge_over_positive": 1.457402973282696e-10,
+      "cycle": 2,
+      "crystal_steps": 1,
+      "start_force": 0.0003132355145352394,
+      "pre_force": 0.00015550565997467488,
+      "pre_order_kkt": 0.0017481624862403012,
+      "rebound": 4.789644994797839e-05,
+      "crystal_work": -2.196177413785645e-06,
+      "rematch_work": -1.7404382233062953e-06,
+      "cycle_work": -3.93661563709194e-06,
+      "direct_total_change": -3.9366132114082575e-06,
+      "steps": [
+        {
+          "step": 384,
+          "force": 0.00015550565997467488,
+          "constrained_order": 0.0017481624862403012,
+          "trigger_threshold": 0.00031101131994934976,
+          "trigger": "order_residual",
+          "delta_energy": -2.196177413785645e-06,
+          "alpha": 0.5,
+          "chart_lower": 2.057882129780164e-05,
+          "min_sampled_physical_Jinv": 0.00045175606904557063,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 14,
+          "cg_residual_divergence": false
+        }
+      ],
+      "off_to_on": 60,
+      "on_to_off": 37,
+      "previous_toggles_reversed": 63,
+      "previous_toggle_reversal_fraction": 0.6237623762376238,
+      "previous_toggles_stayed": 38,
+      "elapsed_seconds": 181.15071688592434,
+      "checkpoint_sha256": "c3ab4dd11f72073bddae14369a33dc00d42008a15046de3236db01061e454051",
+      "motion": {
+        "persistent_ordered_dofs": 19704,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.05649190776360793,
+        "persistent_l2": 0.008387143526152217,
+        "melt_l2": 0.07429861467384398,
+        "chi_l2": 0.0009759417544055471,
+        "ordered_cos": -0.022473373051087764,
+        "persistent_cos": 0.8044537273722062,
+        "chi_cos": 0.528242757437321
+      }
+    },
+    {
+      "step": 385,
+      "post_force": 0.00016939411489599933,
+      "post_node": {
+        "component": 0,
+        "group": 29057,
+        "chi": 0.0,
+        "signed_force": -0.00016939411489599933,
+        "node": [
+          25,
+          8,
+          14
+        ],
+        "radius": 3.8859275454437556,
+        "depth": 0.2069850407996006,
+        "theta": 0.970514952943746
+      },
+      "post_field": {
+        "order_projected": 2.2936041954579878e-11,
+        "order_kkt": 4.833387862704079e-11,
+        "amplitude_raw": 2.6434575499083702e-09,
+        "phase_raw": 7.372809034770773e-11,
+        "carrier_metric": 2.3125649483674843e-09
+      },
+      "post_field_residual": 2.6434575499083702e-09,
+      "total_energy": 92185.3832555566,
+      "crystal_energy": 0.3071457029527587,
+      "gauge_energy": 1.0085784407231937e-07,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 1.2750054737786413e-06,
+        "cell": [
+          25,
+          10,
+          10
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 2.221466795852888e-06,
+        "limiting_chart_lower": 2.221466795852888e-06,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9894369787389998,
+        "global_xi_r_over_x_lower": 0.9407106405372793,
+        "global_sine_ratio_lower": 0.910228069062249,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.70771661383527,
+        "bulk_current": 10.707716613835291,
+        "port_error": 2.1316282072803006e-14,
+        "weak_disk_current": 10.707716613835284,
+        "incident_slice_current": 10.707716613835284,
+        "receiving_slice_current": 10.04106507199431,
+        "positive_slice_current": 10.707716613835284,
+        "dense_total_subsonic_share": 0.6675898956268221,
+        "total_axial_stress": -26.582877889818064,
+        "disk_minus_feed_current": 1.4210854715202004e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51451,
+      "positive_zero": 51451,
+      "max_gauge_over_positive": 1.2002731273147894e-10,
+      "cycle": 3,
+      "crystal_steps": 1,
+      "start_force": 0.00020340210992265327,
+      "pre_force": 0.00015248641337955332,
+      "pre_order_kkt": 0.0012858211820217429,
+      "rebound": 1.6907701516446014e-05,
+      "crystal_work": -1.370372374448853e-06,
+      "rematch_work": -6.140471937165305e-07,
+      "cycle_work": -1.9844195681653834e-06,
+      "direct_total_change": -1.9844010239467025e-06,
+      "steps": [
+        {
+          "step": 385,
+          "force": 0.00015248641337955332,
+          "constrained_order": 0.0012858211820217429,
+          "trigger_threshold": 0.00030497282675910663,
+          "trigger": "order_residual",
+          "delta_energy": -1.370372374448853e-06,
+          "alpha": 0.25,
+          "chart_lower": 2.221466795852888e-06,
+          "min_sampled_physical_Jinv": 0.00042921408516775325,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 16,
+          "cg_residual_divergence": false
+        }
+      ],
+      "off_to_on": 33,
+      "on_to_off": 36,
+      "previous_toggles_reversed": 66,
+      "previous_toggle_reversal_fraction": 0.6804123711340206,
+      "previous_toggles_stayed": 31,
+      "elapsed_seconds": 179.77783448202536,
+      "checkpoint_sha256": "a4727562d75f80a8828d8aa2536529eedaa533bc0879f867edfdede01f2c98ed",
+      "motion": {
+        "persistent_ordered_dofs": 19704,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.030361419073927753,
+        "persistent_l2": 0.004123051194010448,
+        "melt_l2": 0.04473410736837951,
+        "chi_l2": 0.0005544363482426454,
+        "ordered_cos": -0.05502656303837,
+        "persistent_cos": 0.36563172150978085,
+        "chi_cos": 0.44266594578008156
+      }
+    },
+    {
+      "step": 386,
+      "post_force": 0.0001123513282042742,
+      "post_node": {
+        "component": 0,
+        "group": 29057,
+        "chi": 0.0,
+        "signed_force": -0.0001123513282042742,
+        "node": [
+          25,
+          8,
+          14
+        ],
+        "radius": 3.8859275454437556,
+        "depth": 0.2069850407996006,
+        "theta": 0.970514952943746
+      },
+      "post_field": {
+        "order_projected": 1.034234603340678e-10,
+        "order_kkt": 6.329785956275473e-11,
+        "amplitude_raw": 2.7526537606299586e-09,
+        "phase_raw": 6.806266082014971e-11,
+        "carrier_metric": 2.539843482565755e-09
+      },
+      "post_field_residual": 2.7526537606299586e-09,
+      "total_energy": 92185.38325307162,
+      "crystal_energy": 0.3071465746773391,
+      "gauge_energy": 1.0039163501342898e-07,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 7.6274188158473965e-06,
+        "cell": [
+          25,
+          10,
+          10
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 1.3250891489933907e-05,
+        "limiting_chart_lower": 1.3250891489933907e-05,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9923123823907367,
+        "global_xi_r_over_x_lower": 0.9407265539795523,
+        "global_sine_ratio_lower": 0.9138347538978238,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.707716610759697,
+        "bulk_current": 10.707716610759826,
+        "port_error": 1.2967404927621828e-13,
+        "weak_disk_current": 10.707716610759672,
+        "incident_slice_current": 10.707716610759672,
+        "receiving_slice_current": 10.041065069104397,
+        "positive_slice_current": 10.707716610759672,
+        "dense_total_subsonic_share": 0.6675898958479394,
+        "total_axial_stress": -26.582877890447143,
+        "disk_minus_feed_current": -2.4868995751603507e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51426,
+      "positive_zero": 51426,
+      "max_gauge_over_positive": 1.3766756510221252e-10,
+      "cycle": 4,
+      "crystal_steps": 1,
+      "start_force": 0.00016939411489599933,
+      "pre_force": 8.442482240140603e-05,
+      "pre_order_kkt": 0.0011675047966530434,
+      "rebound": 2.792650580286818e-05,
+      "crystal_work": -1.8794997395682797e-06,
+      "rematch_work": -6.054761240562028e-07,
+      "cycle_work": -2.4849758636244824e-06,
+      "direct_total_change": -2.484986907802522e-06,
+      "steps": [
+        {
+          "step": 386,
+          "force": 8.442482240140603e-05,
+          "constrained_order": 0.0011675047966530434,
+          "trigger_threshold": 0.00016884964480281205,
+          "trigger": "order_residual",
+          "delta_energy": -1.8794997395682797e-06,
+          "alpha": 0.5,
+          "chart_lower": 1.3250891489933907e-05,
+          "min_sampled_physical_Jinv": 0.0004367495452466579,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 17,
+          "cg_residual_divergence": false
+        }
+      ],
+      "off_to_on": 57,
+      "on_to_off": 32,
+      "previous_toggles_reversed": 65,
+      "previous_toggle_reversal_fraction": 0.9420289855072463,
+      "previous_toggles_stayed": 4,
+      "elapsed_seconds": 150.63917691772804,
+      "checkpoint_sha256": "9e386f04524e4b82c8a002b0dd7c60fa91f0be15a0d97c4a49d50152cb2f4d3f",
+      "motion": {
+        "persistent_ordered_dofs": 19704,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.03583115718067468,
+        "persistent_l2": 0.005281406394980992,
+        "melt_l2": 0.049960884227342434,
+        "chi_l2": 0.0005702082569350923,
+        "ordered_cos": 0.7769576245942053,
+        "persistent_cos": 0.9679115522137502,
+        "chi_cos": 0.6408946536319412
+      }
+    },
+    {
+      "step": 387,
+      "post_force": 7.608487311407114e-05,
+      "post_node": {
+        "component": 0,
+        "group": 29057,
+        "chi": 0.0,
+        "signed_force": -7.608487311407114e-05,
+        "node": [
+          25,
+          8,
+          14
+        ],
+        "radius": 3.8859275454437556,
+        "depth": 0.2069850407996006,
+        "theta": 0.970514952943746
+      },
+      "post_field": {
+        "order_projected": 1.5741602178665978e-10,
+        "order_kkt": 9.443427195132792e-11,
+        "amplitude_raw": 2.9258903361053276e-09,
+        "phase_raw": 6.974472210633203e-11,
+        "carrier_metric": 2.887299775598219e-09
+      },
+      "post_field_residual": 2.9258903361053276e-09,
+      "total_energy": 92185.38324914988,
+      "crystal_energy": 0.3071477304518357,
+      "gauge_energy": 9.735530306577855e-08,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 2.9185125236508414e-06,
+        "cell": [
+          25,
+          10,
+          10
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 5.0488178416288776e-06,
+        "limiting_chart_lower": 5.0488178416288776e-06,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9965240257192138,
+        "global_xi_r_over_x_lower": 0.9407353484527112,
+        "global_sine_ratio_lower": 0.9360068130265308,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.707716605488727,
+        "bulk_current": 10.707716605488603,
+        "port_error": 1.2434497875801753e-13,
+        "weak_disk_current": 10.707716605488793,
+        "incident_slice_current": 10.707716605488793,
+        "receiving_slice_current": 10.041065064166323,
+        "positive_slice_current": 10.707716605488793,
+        "dense_total_subsonic_share": 0.6675898962044106,
+        "total_axial_stress": -26.582877891564653,
+        "disk_minus_feed_current": 6.572520305780927e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51410,
+      "positive_zero": 51410,
+      "max_gauge_over_positive": 4.5031549838425225e-10,
+      "cycle": 5,
+      "crystal_steps": 1,
+      "start_force": 0.0001123513282042742,
+      "pre_force": 5.607746074094927e-05,
+      "pre_order_kkt": 0.002381925839758965,
+      "rebound": 2.000741237312187e-05,
+      "crystal_work": -1.957460274584827e-06,
+      "rematch_work": -1.9642757769145446e-06,
+      "cycle_work": -3.921736051499371e-06,
+      "direct_total_change": -3.9217411540448666e-06,
+      "steps": [
+        {
+          "step": 387,
+          "force": 5.607746074094927e-05,
+          "constrained_order": 0.002381925839758965,
+          "trigger_threshold": 0.00011215492148189854,
+          "trigger": "order_residual",
+          "delta_energy": -1.957460274584827e-06,
+          "alpha": 0.5,
+          "chart_lower": 5.0488178416288776e-06,
+          "min_sampled_physical_Jinv": 0.0004455306810624006,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 18,
+          "cg_residual_divergence": false
+        }
+      ],
+      "off_to_on": 53,
+      "on_to_off": 37,
+      "previous_toggles_reversed": 68,
+      "previous_toggle_reversal_fraction": 0.7640449438202247,
+      "previous_toggles_stayed": 21,
+      "elapsed_seconds": 161.712905225344,
+      "checkpoint_sha256": "5172f17afd2c4b53c899670a56fb51b4745fabaa717a2fe6bdcfea6a9e37405e",
+      "motion": {
+        "persistent_ordered_dofs": 19704,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.05897046370944167,
+        "persistent_l2": 0.0021845015081811345,
+        "melt_l2": 0.09987941896515129,
+        "chi_l2": 0.0009205405571204292,
+        "ordered_cos": -0.01335381726843917,
+        "persistent_cos": 0.3140282563939356,
+        "chi_cos": 0.5892862463919456
+      }
+    },
+    {
+      "step": 388,
+      "post_force": 5.1812834586376934e-05,
+      "post_node": {
+        "component": 0,
+        "group": 12997,
+        "chi": 0.00012582067041352917,
+        "signed_force": -5.1812834586376934e-05,
+        "node": [
+          11,
+          13,
+          19
+        ],
+        "radius": 2.5386935647745017,
+        "depth": 0.3363506918035118,
+        "theta": 1.4657055899195157
+      },
+      "post_field": {
+        "order_projected": 2.6144864051502736e-11,
+        "order_kkt": 5.366930120882392e-11,
+        "amplitude_raw": 3.029601818649644e-09,
+        "phase_raw": 8.370100821819483e-11,
+        "carrier_metric": 3.0770044432460825e-09
+      },
+      "post_field_residual": 3.0770044432460825e-09,
+      "total_energy": 92185.3832472195,
+      "crystal_energy": 0.30714845306862126,
+      "gauge_energy": 9.973014532908808e-08,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 7.4999579210049165e-06,
+        "cell": [
+          25,
+          10,
+          10
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 1.2935788242034152e-05,
+        "limiting_chart_lower": 1.2935788242034152e-05,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9994978024833113,
+        "global_xi_r_over_x_lower": 0.9333767278030319,
+        "global_sine_ratio_lower": 0.8951863286254794,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.707716603610605,
+        "bulk_current": 10.707716603610509,
+        "port_error": 9.592326932761353e-14,
+        "weak_disk_current": 10.707716603610548,
+        "incident_slice_current": 10.70771660361055,
+        "receiving_slice_current": 10.041065062394322,
+        "positive_slice_current": 10.70771660361055,
+        "dense_total_subsonic_share": 0.6675898964120779,
+        "total_axial_stress": -26.582877891924216,
+        "disk_minus_feed_current": -5.684341886080802e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51404,
+      "positive_zero": 51404,
+      "max_gauge_over_positive": 7.162554996365932e-11,
+      "cycle": 6,
+      "crystal_steps": 1,
+      "start_force": 7.608487311407114e-05,
+      "pre_force": 1.190068734336678e-05,
+      "pre_order_kkt": 0.0015652552608780457,
+      "rebound": 3.9912147243010157e-05,
+      "crystal_work": -1.1794073858291505e-06,
+      "rematch_work": -7.509516137659761e-07,
+      "cycle_work": -1.9303589995951264e-06,
+      "direct_total_change": -1.9303697627037764e-06,
+      "steps": [
+        {
+          "step": 388,
+          "force": 1.190068734336678e-05,
+          "constrained_order": 0.0015652552608780457,
+          "trigger_threshold": 3e-05,
+          "trigger": "crystal_target",
+          "delta_energy": -1.1794073858291505e-06,
+          "alpha": 1.0,
+          "chart_lower": 1.2935788242034152e-05,
+          "min_sampled_physical_Jinv": 0.0004518810989756956,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 18,
+          "cg_residual_divergence": false
+        }
+      ],
+      "off_to_on": 40,
+      "on_to_off": 34,
+      "previous_toggles_reversed": 66,
+      "previous_toggle_reversal_fraction": 0.7333333333333333,
+      "previous_toggles_stayed": 24,
+      "elapsed_seconds": 155.63766785291955,
+      "checkpoint_sha256": "e5b1847d49f443915032c7f59fb6b5ee21a99a0aba861e47448306a0c6d23992",
+      "motion": {
+        "persistent_ordered_dofs": 19704,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.12001926154961785,
+        "persistent_l2": 0.0024125603380204075,
+        "melt_l2": 0.16085101303843424,
+        "chi_l2": 0.0005745965564875045,
+        "ordered_cos": -0.05477302786408899,
+        "persistent_cos": 0.5381206626030192,
+        "chi_cos": 0.27494075482034236
+      }
+    },
+    {
+      "step": 389,
+      "post_force": 3.307470449993356e-05,
+      "post_node": {
+        "component": 0,
+        "group": 29056,
+        "chi": 0.0010336255718785719,
+        "signed_force": -3.307470449993356e-05,
+        "node": [
+          25,
+          8,
+          13
+        ],
+        "radius": 3.888457287864003,
+        "depth": 0.2069850407996006,
+        "theta": 0.878118058470973
+      },
+      "post_field": {
+        "order_projected": 2.84522405635812e-11,
+        "order_kkt": 5.885193360681132e-11,
+        "amplitude_raw": 3.1624691027801882e-09,
+        "phase_raw": 6.064836863105142e-11,
+        "carrier_metric": 3.308530053924049e-09
+      },
+      "post_field_residual": 3.308530053924049e-09,
+      "total_energy": 92185.38324464927,
+      "crystal_energy": 0.30714897416340387,
+      "gauge_energy": 9.83951612667999e-08,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 3.4666829524635487e-06,
+        "cell": [
+          25,
+          10,
+          10
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 5.980779255564856e-06,
+        "limiting_chart_lower": 5.980779255564856e-06,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9992456490155293,
+        "global_xi_r_over_x_lower": 0.9372957531528257,
+        "global_sine_ratio_lower": 0.9590878937911758,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.707716600494214,
+        "bulk_current": 10.707716600494487,
+        "port_error": 2.7355895326763857e-13,
+        "weak_disk_current": 10.707716600494209,
+        "incident_slice_current": 10.707716600494209,
+        "receiving_slice_current": 10.041065059456832,
+        "positive_slice_current": 10.707716600494209,
+        "dense_total_subsonic_share": 0.6675898966620074,
+        "total_axial_stress": -26.582877892526216,
+        "disk_minus_feed_current": -5.329070518200751e-15
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51382,
+      "positive_zero": 51382,
+      "max_gauge_over_positive": 1.2945842230632397e-10,
+      "cycle": 7,
+      "crystal_steps": 1,
+      "start_force": 5.1812834586376934e-05,
+      "pre_force": 1.0760619257527827e-05,
+      "pre_order_kkt": 0.0014546179033117677,
+      "rebound": 2.231408524240573e-05,
+      "crystal_work": -1.7961840096972076e-06,
+      "rematch_work": -7.740600583759424e-07,
+      "cycle_work": -2.57024406807315e-06,
+      "direct_total_change": -2.570232027210295e-06,
+      "steps": [
+        {
+          "step": 389,
+          "force": 1.0760619257527827e-05,
+          "constrained_order": 0.0014546179033117677,
+          "trigger_threshold": 3e-05,
+          "trigger": "crystal_target",
+          "delta_energy": -1.7961840096972076e-06,
+          "alpha": 1.0,
+          "chart_lower": 5.980779255564856e-06,
+          "min_sampled_physical_Jinv": 0.00045188948760558126,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 20,
+          "cg_residual_divergence": false
+        }
+      ],
+      "off_to_on": 58,
+      "on_to_off": 36,
+      "previous_toggles_reversed": 68,
+      "previous_toggle_reversal_fraction": 0.918918918918919,
+      "previous_toggles_stayed": 6,
+      "elapsed_seconds": 178.5829015909694,
+      "checkpoint_sha256": "6e5e9a7a24d771e911a29e4e18a802b5e3e8f4b347894602fe4236c3cb7dff47",
+      "motion": {
+        "persistent_ordered_dofs": 19704,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.05375793901871142,
+        "persistent_l2": 0.0017576638142631708,
+        "melt_l2": 0.06805306414357108,
+        "chi_l2": 0.0005842056782665913,
+        "ordered_cos": -0.46776534814845055,
+        "persistent_cos": -0.3065095388071499,
+        "chi_cos": 0.7725534731887302
+      }
+    },
+    {
+      "step": 390,
+      "post_force": 5.639700568064863e-05,
+      "post_node": {
+        "component": 0,
+        "group": 14152,
+        "chi": 0.000180837636238551,
+        "signed_force": -5.639700568064863e-05,
+        "node": [
+          12,
+          13,
+          19
+        ],
+        "radius": 2.701518846428303,
+        "depth": 0.3363506918035118,
+        "theta": 1.4657055899195157
+      },
+      "post_field": {
+        "order_projected": 5.481291536109378e-10,
+        "order_kkt": 2.8791640114576464e-10,
+        "amplitude_raw": 3.3794902359949967e-09,
+        "phase_raw": 6.821514012699979e-11,
+        "carrier_metric": 3.627772970288223e-09
+      },
+      "post_field_residual": 3.627772970288223e-09,
+      "total_energy": 92185.3832413252,
+      "crystal_energy": 0.3071512348460416,
+      "gauge_energy": 9.958327661811318e-08,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 1.1016489414008602e-06,
+        "cell": [
+          25,
+          10,
+          10
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 1.9004777486270575e-06,
+        "limiting_chart_lower": 1.9004777486270575e-06,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9993010569933307,
+        "global_xi_r_over_x_lower": 0.9360937108891423,
+        "global_sine_ratio_lower": 0.8282942405722178,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.707716594969906,
+        "bulk_current": 10.707716594969758,
+        "port_error": 1.474376176702208e-13,
+        "weak_disk_current": 10.707716594969881,
+        "incident_slice_current": 10.707716594969883,
+        "receiving_slice_current": 10.041065054242075,
+        "positive_slice_current": 10.707716594969883,
+        "dense_total_subsonic_share": 0.6675898970358778,
+        "total_axial_stress": -26.582877893566348,
+        "disk_minus_feed_current": -2.4868995751603507e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51362,
+      "positive_zero": 51362,
+      "max_gauge_over_positive": 1.5980228745872432e-10,
+      "cycle": 8,
+      "crystal_steps": 1,
+      "start_force": 3.307470449993356e-05,
+      "pre_force": 1.1633751962932841e-05,
+      "pre_order_kkt": 0.002556297460428561,
+      "rebound": 4.476325371771579e-05,
+      "crystal_work": -1.4239198818252242e-06,
+      "rematch_work": -1.9001600324759574e-06,
+      "cycle_work": -3.324079914301182e-06,
+      "direct_total_change": -3.3240794437006116e-06,
+      "steps": [
+        {
+          "step": 390,
+          "force": 1.1633751962932841e-05,
+          "constrained_order": 0.002556297460428561,
+          "trigger_threshold": 3e-05,
+          "trigger": "crystal_target",
+          "delta_energy": -1.4239198818252242e-06,
+          "alpha": 1.0,
+          "chart_lower": 1.9004777486270575e-06,
+          "min_sampled_physical_Jinv": 0.00045202751965805083,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 54,
+          "cg_residual_divergence": false
+        }
+      ],
+      "off_to_on": 57,
+      "on_to_off": 37,
+      "previous_toggles_reversed": 65,
+      "previous_toggle_reversal_fraction": 0.6914893617021277,
+      "previous_toggles_stayed": 29,
+      "elapsed_seconds": 210.0670639690943,
+      "checkpoint_sha256": "82a658c2d82de6c3b5adc6a90395d1fbf6de2d89bfefba8dea9e231b9114f297",
+      "motion": {
+        "persistent_ordered_dofs": 19704,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.11133181717340639,
+        "persistent_l2": 0.0013503920279929469,
+        "melt_l2": 0.19548904049888396,
+        "chi_l2": 0.0008197893221966823,
+        "ordered_cos": -0.03803561747888844,
+        "persistent_cos": -0.29216312511267606,
+        "chi_cos": 0.361678523131799
+      }
+    },
+    {
+      "step": 391,
+      "post_force": 6.961014128509149e-05,
+      "post_node": {
+        "component": 0,
+        "group": 15328,
+        "chi": 0.0,
+        "signed_force": 6.961014128509149e-05,
+        "node": [
+          13,
+          14,
+          19
+        ],
+        "radius": 2.8379302353666733,
+        "depth": 0.3622238246143633,
+        "theta": 1.4657055899195157
+      },
+      "post_field": {
+        "order_projected": 1.9873269696546458e-11,
+        "order_kkt": 4.083259018843197e-11,
+        "amplitude_raw": 3.5016394880254056e-09,
+        "phase_raw": 6.958832159597791e-11,
+        "carrier_metric": 3.787035850476865e-09
+      },
+      "post_field_residual": 3.787035850476865e-09,
+      "total_energy": 92185.38323993447,
+      "crystal_energy": 0.30715350176157363,
+      "gauge_energy": 9.937597894961989e-08,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 1.016312051623221e-06,
+        "cell": [
+          25,
+          10,
+          10
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 1.7532572785512307e-06,
+        "limiting_chart_lower": 1.7532572785512307e-06,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9993033411381554,
+        "global_xi_r_over_x_lower": 0.9369523818386685,
+        "global_sine_ratio_lower": 0.8607634808035055,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.707716591656744,
+        "bulk_current": 10.707716591656697,
+        "port_error": 4.796163466380676e-14,
+        "weak_disk_current": 10.707716591656686,
+        "incident_slice_current": 10.707716591656686,
+        "receiving_slice_current": 10.04106505109413,
+        "positive_slice_current": 10.707716591656686,
+        "dense_total_subsonic_share": 0.6675898972374695,
+        "total_axial_stress": -26.582877894126952,
+        "disk_minus_feed_current": -5.861977570020827e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51359,
+      "positive_zero": 51359,
+      "max_gauge_over_positive": 1.6036988225923e-10,
+      "cycle": 9,
+      "crystal_steps": 1,
+      "start_force": 5.639700568064863e-05,
+      "pre_force": 4.2799914810244546e-05,
+      "pre_order_kkt": 0.0015429301859639268,
+      "rebound": 2.6810226474846942e-05,
+      "crystal_work": -7.499278030144291e-07,
+      "rematch_work": -6.4080816303092e-07,
+      "cycle_work": -1.3907359660453492e-06,
+      "direct_total_change": -1.39072653837502e-06,
+      "steps": [
+        {
+          "step": 391,
+          "force": 4.2799914810244546e-05,
+          "constrained_order": 0.0015429301859639268,
+          "trigger_threshold": 8.559982962048909e-05,
+          "trigger": "order_residual",
+          "delta_energy": -7.499278030144291e-07,
+          "alpha": 0.25,
+          "chart_lower": 1.7532572785512307e-06,
+          "min_sampled_physical_Jinv": 0.00045204039960963636,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 19,
+          "cg_residual_divergence": false
+        }
+      ],
+      "off_to_on": 41,
+      "on_to_off": 38,
+      "previous_toggles_reversed": 66,
+      "previous_toggle_reversal_fraction": 0.7021276595744681,
+      "previous_toggles_stayed": 28,
+      "elapsed_seconds": 180.6084989598021,
+      "checkpoint_sha256": "d7a02a7a3203d084f85dc40cc9b92553b18c00fcd124c659a4b0e22d04e4ca47",
+      "motion": {
+        "persistent_ordered_dofs": 19704,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.024918292641211006,
+        "persistent_l2": 0.00041551608751392514,
+        "melt_l2": 0.026416437995495746,
+        "chi_l2": 0.0004490009634348464,
+        "ordered_cos": -0.25686199656638814,
+        "persistent_cos": -0.06734372512136161,
+        "chi_cos": 0.22681808907610904
+      }
+    },
+    {
+      "step": 392,
+      "post_force": 5.684466664200679e-05,
+      "post_node": {
+        "component": 0,
+        "group": 15328,
+        "chi": 0.0,
+        "signed_force": 5.684466664200679e-05,
+        "node": [
+          13,
+          14,
+          19
+        ],
+        "radius": 2.8379302353666733,
+        "depth": 0.3622238246143633,
+        "theta": 1.4657055899195157
+      },
+      "post_field": {
+        "order_projected": 1.9464596601181938e-11,
+        "order_kkt": 3.9379768128568094e-11,
+        "amplitude_raw": 3.6176284028415114e-09,
+        "phase_raw": 7.023314603369279e-11,
+        "carrier_metric": 3.953050963410835e-09
+      },
+      "post_field_residual": 3.953050963410835e-09,
+      "total_energy": 92185.38323739906,
+      "crystal_energy": 0.3071531764135857,
+      "gauge_energy": 9.92227192134481e-08,
+      "physical_Jinv_certificate": {
+        "physical_global_lower": 6.422976270164946e-07,
+        "cell": [
+          25,
+          10,
+          10
+        ],
+        "cell_count": 28080,
+        "chart_global_lower": 1.1080336281082176e-06,
+        "limiting_chart_lower": 1.1080336281082176e-06,
+        "limiting_radial_metric_lower": 0.5800749156763813,
+        "limiting_sine_ratio_lower": 0.9993078311054503,
+        "global_xi_r_over_x_lower": 0.9383430194428632,
+        "global_sine_ratio_lower": 0.921343856865444,
+        "angular_rule": "concavity",
+        "collar_patch_determinant_lower": 0.4892248970224547,
+        "collar_S_lower": 3.9998642234235255,
+        "physical_profile_bounds": [
+          3.3063771490447995,
+          4.000000150947135
+        ],
+        "reference_core_profile_lower": 3.97520746439121,
+        "core_metric_lower": 1.1638699165377784,
+        "collar_metric_lower": 0.5800749156763813,
+        "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+        "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+      },
+      "current": {
+        "feed_current": 10.707716588450488,
+        "bulk_current": 10.707716588450252,
+        "port_error": 2.362554596402333e-13,
+        "weak_disk_current": 10.707716588450502,
+        "incident_slice_current": 10.707716588450506,
+        "receiving_slice_current": 10.04106504803905,
+        "positive_slice_current": 10.707716588450506,
+        "dense_total_subsonic_share": 0.6675898974296777,
+        "total_axial_stress": -26.582877894644344,
+        "disk_minus_feed_current": 1.4210854715202004e-14
+      },
+      "front": 0.3622238246143633,
+      "free_zero": 51361,
+      "positive_zero": 51361,
+      "max_gauge_over_positive": 1.6139812570010843e-10,
+      "cycle": 10,
+      "crystal_steps": 1,
+      "start_force": 6.961014128509149e-05,
+      "pre_force": 3.8505009854542744e-05,
+      "pre_order_kkt": 0.001442161948927697,
+      "rebound": 1.8339656787464044e-05,
+      "crystal_work": -1.9726637828727013e-06,
+      "rematch_work": -5.627516885859813e-07,
+      "cycle_work": -2.5354154714586825e-06,
+      "direct_total_change": -2.5354092940688133e-06,
+      "steps": [
+        {
+          "step": 392,
+          "force": 3.8505009854542744e-05,
+          "constrained_order": 0.001442161948927697,
+          "trigger_threshold": 7.701001970908549e-05,
+          "trigger": "order_residual",
+          "delta_energy": -1.9726637828727013e-06,
+          "alpha": 0.5,
+          "chart_lower": 1.1080336281082176e-06,
+          "min_sampled_physical_Jinv": 0.000452061570751261,
+          "cg_reason": "CG forcing attained",
+          "cg_iterations": 19,
+          "cg_residual_divergence": false
+        }
+      ],
+      "off_to_on": 37,
+      "on_to_off": 39,
+      "previous_toggles_reversed": 67,
+      "previous_toggle_reversal_fraction": 0.8481012658227848,
+      "previous_toggles_stayed": 12,
+      "elapsed_seconds": 190.98220947105438,
+      "checkpoint_sha256": "9482e6a9ba6d33242526c648bea828d62202bf9c8a1aa6e6243c4c6d1e3a7aa2",
+      "motion": {
+        "persistent_ordered_dofs": 19704,
+        "common_free_dofs": 81144,
+        "ordered_l2": 0.03602122525627688,
+        "persistent_l2": 0.0007525021733039833,
+        "melt_l2": 0.038851997914204434,
+        "chi_l2": 0.00047552446445901434,
+        "ordered_cos": 0.8688134777382996,
+        "persistent_cos": 0.9666998485108071,
+        "chi_cos": 0.9216324512012344
+      }
+    }
+  ],
+  "scientific_endpoint": {
+    "step": 392,
+    "state_kind": "fresh field match, crystal nonstationary",
+    "file": "_scratch/s11c/r4_adaptive382_01/primary/matched_00392.npz",
+    "sha256": "9482e6a9ba6d33242526c648bea828d62202bf9c8a1aa6e6243c4c6d1e3a7aa2",
+    "shape_and_material_readings": {
+      "file": "matched_00392.npz",
+      "sha256": "9482e6a9ba6d33242526c648bea828d62202bf9c8a1aa6e6243c4c6d1e3a7aa2",
+      "iteration": 10,
+      "depth": 0.8191403557693495,
+      "exit_radius": 3.306377271246663,
+      "wall_polar_amplitude": 0.02342688643280306,
+      "extrema": {
+        "pole": {
+          "minimum": 3.3063772712466624,
+          "maximum": 4.0,
+          "narrowest_depth": 0.8191403557693495,
+          "widest_depth": 0.0
+        },
+        "equator": {
+          "minimum": 3.3063772712466624,
+          "maximum": 4.0,
+          "narrowest_depth": 0.8191403557693495,
+          "widest_depth": 0.0
+        }
+      },
+      "depth_samples": [
+        0.0,
+        0.20478508894233738,
+        0.27850772096157883,
+        0.40957017788467476,
+        0.6143552668270121,
+        0.8191403557693495
+      ],
+      "pole_radius": [
+        4.0,
+        3.912140179861228,
+        3.8736002098569164,
+        3.755781124808014,
+        3.496486448231113,
+        3.306377271246663
+      ],
+      "equator_radius": [
+        4.0,
+        3.883885892624784,
+        3.838459880207712,
+        3.7398428411811984,
+        3.496486448231113,
+        3.306377271246663
+      ],
+      "minimum_radius": 3.3063772712466624,
+      "outer": 392,
+      "material": {
+        "min_Jinv_global": 0.000452061570751261,
+        "min_Jinv_active": 0.42361099603294977,
+        "min_chart_Jinv_bound": 1.1080336281082176e-06,
+        "min_chart_Jinv_active_bound": 0.0005914202210847678,
+        "max_Jinv_sampled": 40.16875210450648,
+        "worst_global": {
+          "cell": [
+            25,
+            10,
+            5
+          ],
+          "local": [
+            0.1127016653792583,
+            0.1127016653792583,
+            0.1127016653792583
+          ],
+          "chart": [
+            0.9986874284990818,
+            0.3194168667298769,
+            0.24933762411757476
+          ],
+          "chi": 0.0,
+          "Jinv": 0.000452061570751261,
+          "grad_xi_norm": 0.9223433314761273,
+          "W": 2611618.5399349453
+        },
+        "worst_active": {
+          "cell": [
+            25,
+            9,
+            1
+          ],
+          "local": [
+            0.8872983346207417,
+            0.8872983346207417,
+            0.1127016653792583
+          ],
+          "chart": [
+            0.9998332815600899,
+            0.312297342387719,
+            0.03233070270893903
+          ],
+          "chi": 2.986363496161804e-05,
+          "Jinv": 0.42361099603294977,
+          "grad_xi_norm": 1.17717854870416,
+          "W": 1.780300267419483
+        },
+        "intact_by_depth": [
+          {
+            "peak_W": 0.0004631734211779208,
+            "physical_depth": 0.0029159448508385504,
+            "chi": 0.5116216080587607,
+            "Jinv": 1.000894465501989
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "chart": {
+          "chart_det_global_lower": 1.1080336281082176e-06,
+          "chart_lowest_cell": [
+            25,
+            10,
+            10
+          ],
+          "chart_det_active_lower": 0.0005914202210847678
+        },
+        "elastic_energy": 0.3071531764135857,
+        "gauge_energy": 9.92227192134481e-08,
+        "unit_gauge_energy": 9.922271921344809,
+        "gauge_to_elastic": 3.230398603459123e-07,
+        "max_free_label_force": 5.684466664200679e-05,
+        "max_free_elastic_force": 5.683640200570547e-05,
+        "max_unit_melt_residual": 5.714959089279049,
+        "max_dead_elastic_force": 0.0,
+        "gradient_l2": 0.00025946862028340727,
+        "stationary": false,
+        "worst_free_active": {
+          "component": 0,
+          "group": 15328,
+          "chi": 0.0,
+          "signed_force": 5.684466664200679e-05,
+          "node": [
+            13,
+            14,
+            19
+          ],
+          "radius": 2.8379302353666733,
+          "depth": 0.3622238246143633,
+          "theta": 1.4657055899195157
+        }
+      },
+      "field": {
+        "physical_energy": 92185.38323729983,
+        "unit_gauge": 9.922271921344809,
+        "gauge_energy": 9.92227192134481e-08,
+        "phase_raw": 7.023314603369279e-11,
+        "amplitude_raw": 3.6176284028415114e-09,
+        "order_raw": 0.34959525648184164,
+        "order_kkt": 3.9379768128568094e-11,
+        "order_projected": 1.9464596601181938e-11,
+        "carrier_metric": 3.953050963410835e-09,
+        "shared_work_error": 6.106226635438361e-16,
+        "order_knot_transport": [
+          {
+            "free_interior": -5.171368745205743e-10,
+            "lower_obstacle": 2.902273758405988e-16,
+            "upper_obstacle": -0.0,
+            "total": -5.171365842931984e-10
+          },
+          {
+            "free_interior": -1.128080494047083e-09,
+            "lower_obstacle": -0.03337828608543089,
+            "upper_obstacle": -0.0,
+            "total": -0.03337828721351139
+          }
+        ]
+      },
+      "total_energy": 92185.38323739906,
+      "source_sha256": "346fc15d7dc678db51b420bbfde7e07ba8cbffac68aabc9d5cdbd4dd4b149f4c",
+      "field_work": {
+        "physical_change": -5.627516657114029e-07,
+        "old_gauge": 9.922274208802651e-08,
+        "new_gauge": 9.92227192134481e-08,
+        "delta": -5.627516885859813e-07
+      }
+    },
+    "delta_chi_plus_1e_minus_9": {
+      "former": [
+        {
+          "node": 36353,
+          "after": 0.0004231621989143144,
+          "material_grid": [
+            [
+              13,
+              12,
+              16
+            ]
+          ],
+          "physical_slope": 2.611322559829459e-13,
+          "gauge_slope": -6.466264995141619e-14,
+          "total_slope": 1.9646960603152967e-13,
+          "physical_plus_step": 6.678543702158987e-18,
+          "gauge_plus_step": -6.466267172333575e-23,
+          "total_plus_step": 6.678479039487264e-18
+        },
+        {
+          "node": 45532,
+          "after": 0.0006237278308109777,
+          "material_grid": [
+            [
+              17,
+              11,
+              0
+            ]
+          ],
+          "physical_slope": -9.528568616949576e-17,
+          "gauge_slope": -1.1038328533112329e-16,
+          "total_slope": -2.0566897150061905e-16,
+          "physical_plus_step": 8.093964758954816e-21,
+          "gauge_plus_step": -1.10383306541234e-25,
+          "total_plus_step": 8.093854375648275e-21
+        },
+        {
+          "node": 62811,
+          "after": 0.0004579079927544521,
+          "material_grid": [
+            [
+              23,
+              10,
+              2
+            ]
+          ],
+          "physical_slope": 3.050140033550971e-16,
+          "gauge_slope": -9.066623836507043e-16,
+          "total_slope": -6.016483802956072e-16,
+          "physical_plus_step": 1.7106089625601832e-19,
+          "gauge_plus_step": -9.066626765875769e-25,
+          "total_plus_step": 1.7105998959334174e-19
+        }
+      ],
+      "increment": 1e-09,
+      "free_zero": 51361,
+      "physical": {
+        "positive": 51361,
+        "zero": 0,
+        "negative": 0,
+        "nonfinite": 0
+      },
+      "total": {
+        "positive": 51361,
+        "zero": 0,
+        "negative": 0,
+        "nonfinite": 0
+      },
+      "gauge": {
+        "positive": 0,
+        "zero": 28171,
+        "negative": 23190,
+        "nonfinite": 0
+      },
+      "long_double_mantissa_bits": 63,
+      "min_physical": {
+        "node": 241,
+        "material_grid": [],
+        "depth": 0.930568927197921,
+        "physical": 8.312245827280674e-22,
+        "gauge": 0.0,
+        "total": 8.312245827280674e-22,
+        "physical_slope": 2.5071375009921684e-47,
+        "gauge_slope": 0.0
+      },
+      "min_total": {
+        "node": 241,
+        "material_grid": [],
+        "depth": 0.930568927197921,
+        "physical": 8.312245827280674e-22,
+        "gauge": 0.0,
+        "total": 8.312245827280674e-22,
+        "physical_slope": 2.5071375009921684e-47,
+        "gauge_slope": 0.0
+      },
+      "worst_fraction": {
+        "node": 49582,
+        "material_grid": [
+          [
+            18,
+            11,
+            9
+          ]
+        ],
+        "depth": 0.28460443110718825,
+        "physical": 7.648079908980564e-14,
+        "gauge": -1.2343857625141189e-23,
+        "total": 7.648079907746178e-14,
+        "physical_slope": 7.647782459273956e-05,
+        "gauge_slope": -1.2343848288796462e-14
+      },
+      "max_abs_gauge_over_positive_physical": 1.6139812570010843e-10,
+      "nonpositive": [],
+      "native_physical_slope_max_error": 2.421158976431692e-17,
+      "physical_energy": 92185.38323729983,
+      "unit_gauge": 9.922271921344809,
+      "passed": true,
+      "work_sha256": "acafb88fe6b76ba357fe392a7f78a2d2fc9371fb37e7d49339c3a3bc260d4363",
+      "gauge_energy_difference": 0.0
+    },
+    "flow": {
+      "feed_current": 10.707716588450488,
+      "bulk_current": 10.707716588450252,
+      "port_error": 2.362554596402333e-13,
+      "weak_disk_current": 10.707716588450502,
+      "incident_slice_current": 10.707716588450506,
+      "receiving_slice_current": 10.04106504803905,
+      "positive_slice_current": 10.707716588450506,
+      "dense_total_subsonic_share": 0.6675898974296777,
+      "total_axial_stress": -26.582877894644344,
+      "disk_minus_feed_current": 1.4210854715202004e-14
+    },
+    "fully_melted_front_depth": 0.3622238246143633,
+    "physical_whole_cell_certificate": {
+      "physical_global_lower": 6.422976270164946e-07,
+      "cell": [
+        25,
+        10,
+        10
+      ],
+      "cell_count": 28080,
+      "chart_global_lower": 1.1080336281082176e-06,
+      "limiting_chart_lower": 1.1080336281082176e-06,
+      "limiting_radial_metric_lower": 0.5800749156763813,
+      "limiting_sine_ratio_lower": 0.9993078311054503,
+      "global_xi_r_over_x_lower": 0.9383430194428632,
+      "global_sine_ratio_lower": 0.921343856865444,
+      "angular_rule": "concavity",
+      "collar_patch_determinant_lower": 0.4892248970224547,
+      "collar_S_lower": 3.9998642234235255,
+      "physical_profile_bounds": [
+        3.3063771490447995,
+        4.000000150947135
+      ],
+      "reference_core_profile_lower": 3.97520746439121,
+      "core_metric_lower": 1.1638699165377784,
+      "collar_metric_lower": 0.5800749156763813,
+      "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+      "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+    }
+  },
+  "readback": {
+    "source_files_checked": 1181,
+    "source_manifest_sha256": "bfe9c1e8897cd679f082ff930b4e9299d2adbcbc27a3e815db7fc1db294aebe0",
+    "fresh_matches": [
+      "0270e3efac58dd687e760fe3d8d29102c8e086f4df58ca75f7687d5730665666",
+      "237a4165f59c9e9f8d5aa6758d4703dc381cbe2229c6bc1763181db3ad33a2c6",
+      "c3ab4dd11f72073bddae14369a33dc00d42008a15046de3236db01061e454051",
+      "a4727562d75f80a8828d8aa2536529eedaa533bc0879f867edfdede01f2c98ed",
+      "9e386f04524e4b82c8a002b0dd7c60fa91f0be15a0d97c4a49d50152cb2f4d3f",
+      "5172f17afd2c4b53c899670a56fb51b4745fabaa717a2fe6bdcfea6a9e37405e",
+      "e5b1847d49f443915032c7f59fb6b5ee21a99a0aba861e47448306a0c6d23992",
+      "6e5e9a7a24d771e911a29e4e18a802b5e3e8f4b347894602fe4236c3cb7dff47",
+      "82a658c2d82de6c3b5adc6a90395d1fbf6de2d89bfefba8dea9e231b9114f297",
+      "d7a02a7a3203d084f85dc40cc9b92553b18c00fcd124c659a4b0e22d04e4ca47",
+      "9482e6a9ba6d33242526c648bea828d62202bf9c8a1aa6e6243c4c6d1e3a7aa2"
+    ],
+    "fixed_field_steps": [
+      "67a34b379aba23403ef1543706db4f757622e8bfc03c6b93feff7053a373e9dd",
+      "1d04031ff0bf217d493e37fae7076cc860bc8f5d7e2750869c3aec9cf3cf4715",
+      "a6b274e9907e1b8ff56a5587358eda414b29aa4fda7503cf19dcb8e89b010503",
+      "62a2c6d045acce6fa1c0a14450e23ed74d5b020434b4c82f93035a76c1af8214",
+      "fb14bc458030d754420e00a9f624f4a32b612fef72e8989c87e37de0d4a5c814",
+      "3b1c6a3e94bc0e3b2b9c0b1f1c8a8e35a41fbac259e9c47d8ac66c7b59a4f26f",
+      "dd1c555601c1f5652661416c7a0f4c662b1fcaf54aab1988466904dffc3cfeb1",
+      "7699e8ced604af82fcf5058d94f7de8152f5dcf5000a06734bfdbd559a448029",
+      "56567ba1d2c1ce2e6bfd513674c89732cde4ed021ef10185f821c56bd061fe47",
+      "30ffafae3be3f8a145d5d0825cfd552ccf835ae86802084b26190ef009a5d788"
+    ],
+    "sign_banks": [
+      "776b5f30f89f69fc102ea3b7a13b386fe63561476b6ed25b00b9eb2c9910ad38",
+      "b40a5548d80541b2a2bbc6ebff706937376ceefb048164112b5af3c21fd1ad17",
+      "df4f2aeb2fb706b63853d4bb5f24e98e7fdb3bf8d48c74675ab466bc2ccca7c7",
+      "443ff877e183d9de3d1cd8edeee4e15ebc7732bf4bd3c42c7600b5d80b970087",
+      "d1883f5a9fd190607870c10a557897e3b93ec83e19d4d3860f5232dc011225ce",
+      "737fb14388eca7282c5f12a0fb6e5b357bfe9ffda87744d72067cbefe17b8618",
+      "cd510ab6ea25a857981bad28ebbd17f0d512562c7fd0ec96761953da578bc834",
+      "39b5d9645c85c3e41cd6f6870510b02653458f22b5f126562def410e6d394b48",
+      "23f165a252bc6998cb983f272cce9294363e057490394b47d1dde33702d87f6d",
+      "8020db9299d6de8da52ee580f108830357286fa3d66390ea79d54fb7378a8ddf",
+      "acafb88fe6b76ba357fe392a7f78a2d2fc9371fb37e7d49339c3a3bc260d4363"
+    ],
+    "max_direct_recursive_cg_gap": 2.7755575615628914e-17,
+    "max_reconstructed_cosine_error": 0.0,
+    "max_signed_vs_direct_cycle_energy_discrepancy": 1.8544218680966216e-11,
+    "sum_crystal_work": -1.6630197671415726e-05,
+    "sum_rematch_work": -1.0889329504996461e-05,
+    "direct_ten_cycle_energy_change": -2.751951979007572e-05,
+    "runtime_seconds": 2079.8009462920018,
+    "ten_cycle_wall_seconds": 1770.6256759017706
+  },
+  "independent_review": "Scoped clear for pausing the held primary at step 392. All ten cycles lowered energy and preserved whole-cell orientation. The post-rematch crystal force rose twice in cycles 6–10 and ended above the simultaneous target. The paired gauge and shape release remain gated."
+}

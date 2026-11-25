@@ -179,14 +179,22 @@ def endpoint(driver, trial, solid, case, step, source_sha, material, physical, f
                                             epsilon=driver.epsilon,passed=True))
 
 
-def run(study, case, *, start=None, configure_reference=None, reviewed_match=None, rematch_start=False):
+def run(study, case, *, start=None, configure_reference=None, reviewed_match=None, rematch_start=False,
+        cycles=None):
     path, step = start if start is not None else source_state(study,case)
     directory = study/case
     directory.mkdir()
     driver = SmoothHeld(study.parent,directory,STRENGTH[case])
     with np.load(path,allow_pickle=False) as state:
+        if 'outer' in state:
+            saved_step=int(state['outer'])
+        else:
+            saved=read(path.with_suffix('.json'))
+            if saved['sha256']!=digest(path) or saved['file']!=path.name:
+                raise ValueError('Held internal checkpoint does not match its archived digest')
+            saved_step=saved['outer']
         if (int(state['radius'])!=4 or int(state['winding'])!=1 or str(state['parent_sha256'])!=CHECKPOINT_SHA
-                or not np.array_equal(state['x'],driver.x) or int(state['outer'])!=step):
+                or not np.array_equal(state['x'],driver.x) or saved_step!=step):
             raise ValueError('Wrong held shape or state')
         driver.labels, driver.fields = state['labels'], state['field']
     source_sha = digest(path)
@@ -238,8 +246,12 @@ def run(study, case, *, start=None, configure_reference=None, reviewed_match=Non
                     or any(field[k]!=frozen['final'][k] for k in FIELDS)
                     or any(m[k]!=original[k] for k in ('elastic_energy','gauge_energy','max_free_label_force'))):
                 raise ArithmeticError('The held worker differs from the frozen Gate-1 work or fields')
+        pause=(cycles is not None and cycles.matched(driver,trial,solid,joint,step,m,field,current,
+                                                     sign,total,native<=FORCE_TOL))
         if native<=FORCE_TOL:
             endpoint(driver,trial,solid,case,step,source_sha,m,physical,field,current,sign,smallest)
+            return
+        if pause:
             return
         log('held_fresh_fields',case=case,step=step,physical_energy=physical,total_energy=total,
             native_label=native,field={k:field[k] for k in FIELDS},current=current,front=front(trial,driver.fields))
@@ -259,11 +271,15 @@ def run(study, case, *, start=None, configure_reference=None, reviewed_match=Non
             chatter = faces.observe(labels,joint.order,m['worst_free_active']['node'])
             details = dict(outer=step,labels_fixed_order=True,total_energy=total,material=m,search=search,
                            reference_crossings=chatter,source_sha256=source_sha,seconds=perf_counter()-start)
+            if cycles is not None:
+                details['burst']=cycles.accepted(driver,trial,solid,step,m,search)
             driver.save_internal(f'step_{step:05d}',trial,labels,driver.fields,details)
             log('held_crystal_step',outer=step,force=native,worst=m['worst_free_active'],alpha=alpha,
                 work=work,cg_reason=search['cg_reason'],cg_iterations=search['cg_iterations'],chart=m['chart'],
                 shape_locked=True,reference_planes=chatter,seconds=details['seconds'])
-            if native <= max(FORCE_TOL,burst_start/5):
+            end_burst=(details['burst']['trigger'] is not None if cycles is not None
+                       else native <= max(FORCE_TOL,burst_start/5))
+            if end_burst:
                 break
         driver.fields,_,_,history = coherent(driver,trial,solid,labels,driver.fields,field_target=FIELD_TOL,raw_target=FIELD_TOL)
         joint,value,g,m,physical,load,field = read_joint(driver,trial,solid,compatible=True)
@@ -272,7 +288,8 @@ def run(study, case, *, start=None, configure_reference=None, reviewed_match=Non
         if abs(explicit-(total+history['order_step_energy']['delta']))>64*abs(np.spacing(total)):
             raise ArithmeticError('Cumulative signed crystal and field work differ from the fresh total energy')
         driver.save_internal(f'matched_{step:05d}',trial,driver.labels,driver.fields,
-            dict(outer=step,material=m,field=field,total_energy=explicit,source_sha256=source_sha))
+            dict(outer=step,material=m,field=field,total_energy=explicit,source_sha256=source_sha,
+                 field_work=history['order_step_energy']))
 
 
 if __name__=='__main__':

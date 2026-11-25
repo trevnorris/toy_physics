@@ -2,6 +2,8 @@
 
 ## Common-medium research
 
+**The held radius-4 benchmark paused after step 392.** Exact-Hessian CG met its forcing tolerance in ten energy-lowering, positively oriented steps. Fresh field updates raised the crystal force on all ten cycles. Its matched value reached 0.00003307470, rose twice and ended at 0.00005684467 against 0.000030. The secondary gauge and all six shape coordinates remain gated. [Cycle ledger, endpoint and review](software/stage1_solver/reports/mouth_r4_adaptive_cycles.md)
+
 **The repaired radius-4 primary stopped in the Newton linear solve at attempted step 383.** All 94 crystal steps after step 288 lowered energy and preserved orientation. The last accepted peak crystal force was 0.00008798533 against the 0.000030 target. Re-equilibrating the order and carrier fields raised the crystal residual on all three occasions it first crossed the target. The paired gauge and stationary six-force comparison remain pending. All six shape coordinates are held. [Stop diagnosis, flow and independent review](software/stage1_solver/reports/mouth_r4_projector_held_stop.md)
 
 **The repaired corner projector passed independent review and the held radius-4 primary resumed from step 288.** All 24 permutations matched the 90-digit reference. The production quarter-step lowered energy by 0.00010131370354 and brought peak crystal force to 0.03447917. The certified physical inverse determinant stayed positive over all 28,080 cells. The second gauge is queued behind primary stationarity at 0.000030. [Repair, measurements and paired-run criteria](software/stage1_solver/reports/mouth_r4_projector_repair.md)

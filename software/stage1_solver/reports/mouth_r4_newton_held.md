@@ -1,5 +1,22 @@
 # Radius 4 · Held crystal optimizer
 
+**The five-step benchmark passed.** From step 29 to the rematched step 34, the peak active crystal force fell from 0.29706188 to 0.04750481. The Euclidean norm over all free labels, including the gauge-weighted melted labels, fell from 0.76076053 to 0.42932219. Each accepted step lowered energy, including step 32 when both norms rose. The total energy change was −0.00407338026, including −0.00012309797 in the final order and carrier update.
+
+| Step | CG iterations | Accepted fraction | Crystal step ΔE | Peak force | Joint force norm | Minimum sampled inverse determinant |
+|---:|---:|---:|---:|---:|---:|---:|
+| 30 | 2 | 1/8 | −0.001722481 | 0.247408 | 0.657672 | 0.060883 |
+| 31 | 1 | 1/16 | −0.000827903 | 0.176035 | 0.533929 | 0.048781 |
+| 32 | 1 | 1/16 | −0.000571642 | 0.305431 | 0.656929 | 0.038509 |
+| 33 | 1 | 1/16 | −0.000456771 | 0.069148 | 0.439135 | 0.029652 |
+| 34, before field update | 2 | 1/32 | −0.000371485 | 0.047359 | 0.424601 | 0.018636 |
+
+Time fell from 803.95 to **75.85 seconds per accepted step** including the 311.75-second field update, or **113.28 seconds per step** including one-time geometry setup. All five conjugate-gradient searches encountered nonpositive curvature and used the specified descent fallback. The final minimum sampled inverse determinant was 0.01863644 in fully melted material and 0.35957709 in ordered material. The chart-wide lower bound was positive at 0.0003037594. The unscaled melted-label residual was 52.4763, and the active-crystal target remains 0.000030. [Signed steps, timings and rematched endpoint](../../../research/pde_ledger_v3/_measurements/mouth_r4_newton_benchmark.json)
+
+Independent review concluded, “Scoped pass for Part 4 from the saved, rematched step‑34 state at fixed radius 4.” The primary ε = 10⁻⁸ convergence run starts from that state. Its verified stationary endpoint is the warm start for ε = 10⁻¹⁰. Both endpoints must pass the all-node one-sided work and signed six-force checks before comparison. All six shape coordinates are held for review. The benchmark code and historical timing audit are in `d01cba0b` and `0786cf4b`.
+
+<details>
+<summary>Step-29 baseline, timing attribution, force locations and frozen-evaluator audit</summary>
+
 The guarded primary run at ε = 10⁻⁸ was paused at accepted step 29 of `393aec91`. The saved fields and crystal labels have SHA-256 `d2e764212c08bdcacfbc18121812ceb484f2eaffcd0b44f46991a9cf03120202`. The mouth is held at depth 0.81914036 and exit radius 3.30637727. At the pause the smallest sampled inverse volume determinant was 0.09535070, the intake was 10.70774948, and 66.7589% of inward current was dense and subsonic. The first fully melted section was at depth 0.33635069. These are held-state measurements.
 
 | Original run | Steps 1–21 | Steps 22–29 |
@@ -65,3 +82,5 @@ Wall time runs to the acceptance marker. The two inner columns give recorded ite
 The step-29 evaluator reproduced total energy 92185.40445819321, physical crystal energy 0.318747421489235, gauge energy 4.9558578274692115 × 10⁻⁸, active forces, all field residuals and every current reading with absolute difference zero. The largest relative errors in the Hessian-vector products were 1.20 × 10⁻⁹ in ordered material, 1.11 × 10⁻⁹ at the melting front and 7.36 × 10⁻¹³ in melted material. The largest relative symmetry error was 4.34 × 10⁻⁹. Independent review concluded, “Scoped clear for the five-step benchmark from saved step 29.” [Hessian and invariance measurements](../../../research/pde_ledger_v3/_measurements/mouth_r4_newton_audit.json)
 
 The benchmark uses joint Newton–CG for the active and melted labels, the measured packed Hessian diagonal, and the physical energy of `936ceca4`, `1847f480` and `393aec91`. An order/carrier update is due after a fivefold drop in the peak force, at its target, or after 20 accepted steps. For this five-step comparison we specified a 20% improvement in both mean time per step and final peak force, a lower final Euclidean norm, and a last-three median force below the initial 0.2970619. Timing includes preconditioner setup inside the steps. Initial held-geometry setup is reported separately. Paired stationary forces remain open.
+
+</details>

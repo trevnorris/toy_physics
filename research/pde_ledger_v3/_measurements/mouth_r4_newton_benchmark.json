@@ -1,0 +1,446 @@
+{
+  "passed": true,
+  "checks": {
+    "faster": true,
+    "lower_force": true,
+    "lower_l2": true,
+    "lower_energy": true,
+    "positive_chart": true
+  },
+  "steps": [
+    {
+      "outer": 30,
+      "energy": 92185.40273571241,
+      "work": -0.0017224807898321068,
+      "max_force": 0.24740810897752855,
+      "min_Jinv": 0.060883059002849536,
+      "alpha": 0.125,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "eta": 0.0999900020832272,
+      "cg_residual": 3.2894337314052486,
+      "cg_recursive_residual": 3.289433731405249,
+      "forcing_attained": false,
+      "jacobi": {
+        "colors_by_component": [
+          8,
+          8,
+          8
+        ],
+        "hvp_calls": 24,
+        "negative_diagonal": 16,
+        "zero_diagonal": 0,
+        "floored": 0,
+        "minimum_relative_step": 9.5367431640625e-07,
+        "active_range": [
+          -2721.8066845684566,
+          701.5975232442129
+        ],
+        "melted_range": [
+          6.993380686101492e-11,
+          0.3593099278074303
+        ],
+        "chart_at_assembly": 0.0003013378042568471,
+        "rebuilt": true
+      },
+      "gradient_l2": 0.65767211515852,
+      "initial_gradient_l2": 0.7607605310695462,
+      "projections": 1,
+      "backtracks": 3,
+      "timing": {
+        "hvp": 4.673614786937833,
+        "preconditioner": 38.61236601322889,
+        "projection": 0.001465359702706337,
+        "trial_evaluation": 1.4283971339464188,
+        "total": 44.72032419126481
+      },
+      "crystal_step_seconds": 44.720537052024156
+    },
+    {
+      "outer": 31,
+      "energy": 92185.4019078094,
+      "work": -0.0008279030123992018,
+      "max_force": 0.17603512220006656,
+      "min_Jinv": 0.04878099682012465,
+      "alpha": 0.0625,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "eta": 0.08344219149906144,
+      "cg_residual": 60.03564240960794,
+      "cg_recursive_residual": 1.0,
+      "forcing_attained": false,
+      "jacobi": {
+        "colors_by_component": [
+          8,
+          8,
+          8
+        ],
+        "hvp_calls": 24,
+        "negative_diagonal": 16,
+        "zero_diagonal": 0,
+        "floored": 0,
+        "minimum_relative_step": 9.5367431640625e-07,
+        "active_range": [
+          -2721.8066845684566,
+          701.5975232442129
+        ],
+        "melted_range": [
+          6.993380686101492e-11,
+          0.3593099278074303
+        ],
+        "chart_at_assembly": 0.0003013378042568471,
+        "rebuilt": false
+      },
+      "gradient_l2": 0.5339293345482999,
+      "initial_gradient_l2": 0.65767211515852,
+      "projections": 2,
+      "backtracks": 4,
+      "timing": {
+        "hvp": 3.113890987355262,
+        "preconditioner": 4.876870661973953e-06,
+        "projection": 0.00604887492954731,
+        "trial_evaluation": 1.427878635469824,
+        "total": 4.551791033707559
+      },
+      "crystal_step_seconds": 4.552002247422934
+    },
+    {
+      "outer": 32,
+      "energy": 92185.40133616756,
+      "work": -0.0005716418410588128,
+      "max_force": 0.30543139006856906,
+      "min_Jinv": 0.038509468969666706,
+      "alpha": 0.0625,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "eta": 0.05965615211146951,
+      "cg_residual": 26.65925527265359,
+      "cg_recursive_residual": 1.0,
+      "forcing_attained": false,
+      "jacobi": {
+        "colors_by_component": [
+          8,
+          8,
+          8
+        ],
+        "hvp_calls": 24,
+        "negative_diagonal": 16,
+        "zero_diagonal": 0,
+        "floored": 0,
+        "minimum_relative_step": 9.5367431640625e-07,
+        "active_range": [
+          -2721.8066845684566,
+          701.5975232442129
+        ],
+        "melted_range": [
+          6.993380686101492e-11,
+          0.3593099278074303
+        ],
+        "chart_at_assembly": 0.0003013378042568471,
+        "rebuilt": false
+      },
+      "gradient_l2": 0.6569287683967603,
+      "initial_gradient_l2": 0.5339293345482999,
+      "projections": 2,
+      "backtracks": 4,
+      "timing": {
+        "hvp": 3.1519787651486695,
+        "preconditioner": 4.5388005673885345e-06,
+        "projection": 0.007931947242468596,
+        "trial_evaluation": 1.4596723392605782,
+        "total": 4.623733690008521
+      },
+      "crystal_step_seconds": 4.6239566542208195
+    },
+    {
+      "outer": 33,
+      "energy": 92185.40087939634,
+      "work": -0.0004567712168021481,
+      "max_force": 0.06914758264289715,
+      "min_Jinv": 0.02965246997765609,
+      "alpha": 0.0625,
+      "cg_iterations": 1,
+      "cg_reason": "nonpositive curvature",
+      "eta": 0.1,
+      "cg_residual": 58.36423216807029,
+      "cg_recursive_residual": 1.0,
+      "forcing_attained": false,
+      "jacobi": {
+        "colors_by_component": [
+          8,
+          8,
+          8
+        ],
+        "hvp_calls": 24,
+        "negative_diagonal": 16,
+        "zero_diagonal": 0,
+        "floored": 0,
+        "minimum_relative_step": 9.5367431640625e-07,
+        "active_range": [
+          -2721.8066845684566,
+          701.5975232442129
+        ],
+        "melted_range": [
+          6.993380686101492e-11,
+          0.3593099278074303
+        ],
+        "chart_at_assembly": 0.0003013378042568471,
+        "rebuilt": false
+      },
+      "gradient_l2": 0.4391345347606445,
+      "initial_gradient_l2": 0.6569287683967603,
+      "projections": 1,
+      "backtracks": 4,
+      "timing": {
+        "hvp": 3.1309486371465027,
+        "preconditioner": 3.949273377656937e-06,
+        "projection": 0.005395465064793825,
+        "trial_evaluation": 1.371304758824408,
+        "total": 4.511789623182267
+      },
+      "crystal_step_seconds": 4.511993275023997
+    },
+    {
+      "outer": 34,
+      "energy": 92185.40050791092,
+      "work": -0.00037148542629286305,
+      "max_force": 0.04735941156651596,
+      "min_Jinv": 0.01863643663797248,
+      "alpha": 0.03125,
+      "cg_iterations": 2,
+      "cg_reason": "nonpositive curvature",
+      "eta": 0.024034394626711083,
+      "cg_residual": 3.8168086347425474,
+      "cg_recursive_residual": 3.8168086347425474,
+      "forcing_attained": false,
+      "jacobi": {
+        "colors_by_component": [
+          8,
+          8,
+          8
+        ],
+        "hvp_calls": 24,
+        "negative_diagonal": 16,
+        "zero_diagonal": 0,
+        "floored": 0,
+        "minimum_relative_step": 9.5367431640625e-07,
+        "active_range": [
+          -2721.8066845684566,
+          701.5975232442129
+        ],
+        "melted_range": [
+          6.993380686101492e-11,
+          0.3593099278074303
+        ],
+        "chart_at_assembly": 0.0003013378042568471,
+        "rebuilt": false
+      },
+      "gradient_l2": 0.4246014256143455,
+      "initial_gradient_l2": 0.4391345347606445,
+      "projections": 1,
+      "backtracks": 5,
+      "timing": {
+        "hvp": 4.685211669653654,
+        "preconditioner": 3.8440339267253876e-06,
+        "projection": 0.004736097063869238,
+        "trial_evaluation": 1.3698596116155386,
+        "total": 6.065433797426522
+      },
+      "crystal_step_seconds": 6.065635649021715
+    }
+  ],
+  "rematches": [
+    {
+      "outer": 34,
+      "wall_seconds": 311.74754934571683,
+      "energy_change": -0.00012309796875342727
+    }
+  ],
+  "benchmark_basis": "Accepted-step time includes due rematches and checkpoint I/O. Geometry setup is reported separately.",
+  "setup_seconds": 187.11867770319805,
+  "steady_seconds_per_step": 75.85493849841878,
+  "inclusive_seconds_per_step": 113.278674152866,
+  "baseline_seconds_per_step": 803.9475706315,
+  "required_time_and_peak_fraction": 0.8,
+  "initial_force": 0.2970618847396134,
+  "final_force": 0.04750481411875566,
+  "energy_change": -0.004073380259796977,
+  "min_Jinv_global": 0.01863643663797248,
+  "minimum_alpha": 0.03125,
+  "outer": 34,
+  "burst": {
+    "count": 0,
+    "start_force": 0.04750481411875566
+  },
+  "field": {
+    "physical_energy": 92185.40038475933,
+    "unit_gauge": 5.362638144877769,
+    "gauge_energy": 5.362638144877769e-08,
+    "phase_raw": 6.0624739393379e-11,
+    "amplitude_raw": 7.136313452853949e-10,
+    "order_raw": 0.34959525648184164,
+    "order_kkt": 6.282655210585044e-11,
+    "order_projected": 1.2287282302736457e-11,
+    "carrier_metric": 4.5906881316306936e-10,
+    "shared_work_error": -1.2212453270876722e-15,
+    "order_knot_transport": [
+      {
+        "free_interior": 7.48895959635441e-10,
+        "lower_obstacle": 2.749206731743989e-16,
+        "upper_obstacle": -0.0,
+        "total": 7.488962345561142e-10
+      },
+      {
+        "free_interior": 2.3897270952444123e-10,
+        "lower_obstacle": -0.027762834720074608,
+        "upper_obstacle": -0.0,
+        "total": -0.027762834481101898
+      }
+    ]
+  },
+  "material": {
+    "min_Jinv_global": 0.01863643663797248,
+    "min_Jinv_active": 0.35957708785762893,
+    "min_chart_Jinv_bound": 0.00030375941760513354,
+    "min_chart_Jinv_active_bound": 0.0017055675205064902,
+    "max_Jinv_sampled": 7.444802608322943,
+    "worst_global": {
+      "cell": [
+        25,
+        10,
+        17
+      ],
+      "local": [
+        0.1127016653792583,
+        0.8872983346207417,
+        0.1127016653792583
+      ],
+      "chart": [
+        0.9986874284990818,
+        0.34388305285117043,
+        1.2727530995783605
+      ],
+      "chi": 0.0,
+      "Jinv": 0.01863643663797248,
+      "grad_xi_norm": 1.2618929913121644,
+      "W": 2445.15188908412
+    },
+    "worst_active": {
+      "cell": [
+        13,
+        10,
+        1
+      ],
+      "local": [
+        0.8872983346207417,
+        0.8872983346207417,
+        0.1127016653792583
+      ],
+      "chart": [
+        0.7828142875229565,
+        0.34388305285117043,
+        0.03233070270893903
+      ],
+      "chi": 8.33245705861219e-05,
+      "Jinv": 0.35957708785762893,
+      "grad_xi_norm": 0.5623568166314729,
+      "W": 3.504755971920078
+    },
+    "intact_by_depth": [
+      {
+        "peak_W": 0.0011292485693632853,
+        "physical_depth": 0.0029159448508385504,
+        "chi": 0.500599690599771,
+        "Jinv": 0.9887309272119202
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "chart": {
+      "chart_det_global_lower": 0.0003037594175204841,
+      "chart_lowest_cell": [
+        25,
+        10,
+        16
+      ],
+      "chart_det_active_lower": 0.0017055675203655131
+    },
+    "elastic_energy": 0.31718485402169305,
+    "gauge_energy": 5.362638144877769e-08,
+    "unit_gauge_energy": 5.362638144877769,
+    "gauge_to_elastic": 1.6906980509576933e-07,
+    "max_free_label_force": 0.04750481411875566,
+    "max_free_elastic_force": 0.04750481717443294,
+    "max_unit_melt_residual": 52.47632738650186,
+    "max_dead_elastic_force": 0.0,
+    "gradient_l2": 0.42932219064050187,
+    "stationary": false,
+    "worst_free_active": {
+      "component": 0,
+      "group": 27778,
+      "chi": 0.199047154661352,
+      "signed_force": -0.04750481411875566,
+      "node": [
+        24,
+        2,
+        16
+      ],
+      "radius": 3.952798438331016,
+      "depth": 0.05174626019989946,
+      "theta": 1.1622280678831356
+    }
+  },
+  "source_sha256": "d2e764212c08bdcacfbc18121812ceb484f2eaffcd0b44f46991a9cf03120202",
+  "saved": "5fa13de032efaa1bb9275017bc8df5bcdd8f2e97840283f3a683e66fd1cce775"
+}

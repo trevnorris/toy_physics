@@ -2,6 +2,8 @@
 
 ## Common-medium research
 
+**The smooth radius-4 collar removes the local step-167 crease and preserves the full weld.** The fixed-label two-gauge audit measured a +0.00427217497 crystal-energy shift and a peak crystal force of 0.32030122. Both unsegmented wide depth probes closed within 2.72 × 10⁻⁹. The physical boundary curves and every registered knot are preserved. Between knots, the largest change in reference position is 0.00470399 at the exit. Crystal descent is held for the remaining frozen audits and the boundary-registration decision. [Geometry and frozen forces](software/stage1_solver/reports/mouth_r4_bicubic_reference.md)
+
 **A single crossing of the collar reference plane explains the uphill projected-Jacobi trial at radius 4.** The measured slope agrees with the gradient below the crossing. At the crossing it changes from −0.00154758 to +0.01582285. The independently measured work of the two incident rays accounts for that change. Step 166 stays held during the smooth-reference boundary and derivative audits. [Signed work, location and independent review](software/stage1_solver/reports/mouth_r4_collar_crease.md)
 
 **Radius 4 stopped at step 167 with an open, positively oriented held shape.** The primary accepted 58 energy-lowering crystal steps. Its final crystal residual was 0.10460517 against 0.000030. Both search directions raised energy at every orientation-admitted fraction. The entrance showed repeated sampling across collar plane ξₜ = 1/12, but the fraction tests did not identify which cells supplied the positive work. The secondary gauge and stationary six-force comparison were not reached. [Reviewed numerical stop and saved-state readback](software/stage1_solver/reports/mouth_r4_segmented_held_stop.md)

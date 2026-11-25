@@ -6,4 +6,15 @@ All four boundary curves are straight. At the lateral wall, however, the stored 
 
 With the original step-167 projected-Jacobi direction, both cells incident on the former crossing now lower physical crystal energy at α = 1/8192. The signed changes are −1.04280852 × 10⁻⁸ and −2.50477524 × 10⁻⁸. Smoother quadrature also changes the unchanged core's integrated energy by −3.09442434 × 10⁻¹¹, including the core portions of 2,009 rays that cross the weld. [Signed cell work](../../../research/pde_ledger_v3/_measurements/mouth_r4_smooth_collar_geometry.json) · [Core quadrature](../../../research/pde_ledger_v3/_measurements/mouth_r4_core_quadrature.json)
 
-Independent review concluded, “The opt-in bicubic collar preserves the registered weld and boundary point sets, has continuous first and second derivatives across its 72 interiors, and removes the former positive-work reversal in both incident cells. This clears the geometry and local physical-work checks only.” The full two-gauge audit and the interpretation of between-knot boundary registration govern admission to step 167. The saved step-166 state remains the last accepted crystal configuration.
+At the identical frozen fields, physical crystal energy rises from 0.31109285128 to 0.31536502625. The primary peak active crystal force rises from 0.10460517 to 0.32030122 and is now radial at (23, 1, 19), depth 0.02587313, χ = 0.32422060. Both gauges give zero shift in gauge energy and every saved flow reading. Inward current is 10.70772687 and 66.75897% is dense and subsonic. These comparisons hold the shape, labels and coherent fields fixed. [Two-gauge energies, forces and currents](../../../research/pde_ledger_v3/_measurements/mouth_r4_collar166_static.json)
+
+| Frozen shape force | Linear, 10⁻⁸ | Cubic, 10⁻⁸ | Cubic, 10⁻¹⁰ |
+|---|---:|---:|---:|
+| Log depth | +0.03883339 | +0.00472231 | +0.00472233 |
+| Scaled log exit | −0.55890386 | −0.58832640 | −0.58832639 |
+| Mean width | +0.96217418 | +0.83084993 | +0.83084997 |
+| Depth asymmetry | −0.70304637 | −0.59140129 | −0.59140132 |
+| Waist profile | +0.81205505 | +0.77706111 | +0.77706114 |
+| Polar–equatorial | −0.00503080 | −0.00555240 | −0.00555239 |
+
+Independent review concluded, “The opt-in bicubic collar preserves the registered weld and boundary point sets, has continuous first and second derivatives across its 72 interiors, and removes the former positive-work reversal in both incident cells. This clears the geometry and local physical-work checks only.” Both gauges pass the unsplit log-depth check at h = 2⁻¹⁸ with an error of +2.72 × 10⁻⁹. The full derivative and fresh-field audits and the boundary-registration decision govern admission to step 167. The saved step-166 state remains the last accepted crystal configuration.

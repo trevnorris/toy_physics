@@ -507,5 +507,197 @@
       "literal_stdout": "{\"kind\": \"intermediate\", \"iteration\": 2325, \"snapshot_sha256\": \"2d6b5556672d6377900961a77c1125a39117096add21deb7589bcc89862841a6\", \"inlet\": 2, \"mesh\": 72, \"shape_unchanged\": true, \"exit_radius\": 1.0369738300430225, \"accepted_order_energy_change\": -30.271849746453057, \"restored_inside_error\": 0.0, \"site_residual\": 1.8855900830196024, \"energy\": {\"inner_order\": 31.601076959413547, \"outer_order\": 3623.731698865783, \"static_inside\": 21.813479247818012, \"static_outside\": 4.587931765407801, \"two_sided_carrier\": 0.2990519414048512, \"strained_wave\": 2.9328002410481617}, \"core_elastic_portion\": 0.6865404862963194, \"receiver_residual\": 9.049566939214881e-08, \"current\": 1.3190232138649856, \"outflow\": 1.3190232160157942, \"depth\": 0.8283359568175798, \"waist\": 0.9822599399591303, \"mode_overlap\": 1.0, \"wave_components\": 1, \"cavity_fraction\": 0.9176693431089566, \"pole_residual\": 2.4664313182026965e-11}\n{\"kind\": \"signed\", \"with_order\": false, \"step_log_exit\": -0.002, \"delta_energy\": -0.03335347805295896, \"exit_radius\": 1.0349019549486558, \"energy\": {\"inner_order\": 31.578409705086223, \"outer_order\": 3623.7148312599356, \"static_inside\": 21.815460388630825, \"static_outside\": 4.592127350931739, \"two_sided_carrier\": 0.29811910097943256, \"strained_wave\": 2.933737737257915}, \"core_elastic_portion\": 0.6832845780196025, \"receiver_residual\": 9.054621319393164e-08, \"current\": 1.3148934426852372, \"outflow\": 1.3148934442593405, \"depth\": 0.8283359568175798, \"waist\": 0.9806335180100523, \"mode_overlap\": 0.9992347258903908, \"wave_components\": 1, \"cavity_fraction\": 0.9194964725585856, \"pole_residual\": 3.999451780216581e-14}\n{\"kind\": \"signed\", \"with_order\": false, \"step_log_exit\": -0.001, \"delta_energy\": -0.016720699733014044, \"exit_radius\": 1.035937374527109, \"energy\": {\"inner_order\": 31.58972387023104, \"outer_order\": 3623.7232533403967, \"static_inside\": 21.8144632419322, \"static_outside\": 4.590025514796844, \"two_sided_carrier\": 0.29858525216918136, \"strained_wave\": 2.9332671016162246}, \"core_elastic_portion\": 0.6849098636945974, \"receiver_residual\": 7.269984643107352e-08, \"current\": 1.3169571314902342, \"outflow\": 1.3169571342069886, \"depth\": 0.8283359568175798, \"waist\": 0.9814463223791381, \"mode_overlap\": 0.999819305421238, \"wave_components\": 1, \"cavity_fraction\": 0.9185502975260237, \"pole_residual\": 2.7501573400189803e-14}\n{\"kind\": \"signed\", \"with_order\": false, \"step_log_exit\": 0.001, \"delta_energy\": 0.01680839648543042, \"exit_radius\": 1.038011322532853, \"energy\": {\"inner_order\": 31.61246909523014, \"outer_order\": 3623.7401770455467, \"static_inside\": 21.812508451153686, \"static_outside\": 4.585837002323874, \"two_sided_carrier\": 0.2995191687586976, \"strained_wave\": 2.93233665434777}, \"core_elastic_portion\": 0.6881764660161777, \"receiver_residual\": 9.675393710176228e-08, \"current\": 1.321091689904895, \"outflow\": 1.3210916900156726, \"depth\": 0.8283359568175798, \"waist\": 0.9830743715636472, \"mode_overlap\": 0.9998377661306774, \"wave_components\": 1, \"cavity_fraction\": 0.9168466975707774, \"pole_residual\": 2.893625799101415e-14}\n{\"kind\": \"signed\", \"with_order\": false, \"step_log_exit\": 0.002, \"delta_energy\": 0.03370434896351071, \"exit_radius\": 1.0390498530340921, \"energy\": {\"inner_order\": 31.623900400652495, \"outer_order\": 3623.7486831044707, \"static_inside\": 21.811550896951815, \"static_outside\": 4.583746115056774, \"two_sided_carrier\": 0.29998693430135054, \"strained_wave\": 2.9318759184057406}, \"core_elastic_portion\": 0.6898178231311652, \"receiver_residual\": 1.7982354172385584e-07, \"current\": 1.323162555786786, \"outflow\": 1.3231625565266796, \"depth\": 0.8283359568175798, \"waist\": 0.9838896180071199, \"mode_overlap\": 0.999383385810148, \"wave_components\": 1, \"cavity_fraction\": 0.9160765652414442, \"pole_residual\": 2.9869179214986476e-14}\n{\"kind\": \"signed\", \"with_order\": true, \"step_log_exit\": -0.002, \"delta_energy\": -0.03352452404260475, \"exit_radius\": 1.0349019549486558, \"energy\": {\"inner_order\": 31.578349336991437, \"outer_order\": 3623.7148312599356, \"static_inside\": 21.8153317573588, \"static_outside\": 4.592127350931739, \"two_sided_carrier\": 0.2981190527623234, \"strained_wave\": 2.9337557388532565}, \"core_elastic_portion\": 0.6832218095993204, \"receiver_residual\": 9.054621319393164e-08, \"current\": 1.3148932264713094, \"outflow\": 1.3148932277706509, \"depth\": 0.8283359568175798, \"waist\": 0.9806335180100523, \"mode_overlap\": 0.99924845537737, \"wave_components\": 1, \"cavity_fraction\": 0.9194559783417069, \"pole_residual\": 3.946281315679376e-14}\n{\"kind\": \"signed\", \"with_order\": true, \"step_log_exit\": -0.001, \"delta_energy\": -0.01680648059664236, \"exit_radius\": 1.035937374527109, \"energy\": {\"inner_order\": 31.5896935493535, \"outer_order\": 3623.7232533403967, \"static_inside\": 21.814398824432278, \"static_outside\": 4.590025514796844, \"two_sided_carrier\": 0.2985852280597589, \"strained_wave\": 2.933276083239526}, \"core_elastic_portion\": 0.6848783681223999, \"receiver_residual\": 7.269984643107352e-08, \"current\": 1.3169570238837816, \"outflow\": 1.3169570259587648, \"depth\": 0.8283359568175798, \"waist\": 0.9814463223791381, \"mode_overlap\": 0.9998224057470229, \"wave_components\": 1, \"cavity_fraction\": 0.9185310869025831, \"pole_residual\": 2.72113534362567e-14}\n{\"kind\": \"signed\", \"with_order\": true, \"step_log_exit\": 0.001, \"delta_energy\": 0.016894694002075994, \"exit_radius\": 1.038011322532853, \"energy\": {\"inner_order\": 31.612499690759968, \"outer_order\": 3623.7401770455467, \"static_inside\": 21.812573073894978, \"static_outside\": 4.585837002323874, \"two_sided_carrier\": 0.299519192869762, \"strained_wave\": 2.932327709481915}, \"core_elastic_portion\": 0.6882081856671338, \"receiver_residual\": 9.675393710176228e-08, \"current\": 1.3210917984549737, \"outflow\": 1.3210917982702792, \"depth\": 0.8283359568175798, \"waist\": 0.9830743715636472, \"mode_overlap\": 0.999840315197026, \"wave_components\": 1, \"cavity_fraction\": 0.9168641406582811, \"pole_residual\": 2.5726083957583122e-14}\n{\"kind\": \"signed\", \"with_order\": true, \"step_log_exit\": 0.002, \"delta_energy\": 0.03387746226871968, \"exit_radius\": 1.0390498530340921, \"energy\": {\"inner_order\": 31.62396186735976, \"outer_order\": 3623.7486831044707, \"static_inside\": 21.811680349197633, \"static_outside\": 4.583746115056774, \"two_sided_carrier\": 0.2999869825250268, \"strained_wave\": 2.9318580645341386}, \"core_elastic_portion\": 0.6898814878743826, \"receiver_residual\": 1.7982354172385584e-07, \"current\": 1.3231627724204391, \"outflow\": 1.3231627730431361, \"depth\": 0.8283359568175798, \"waist\": 0.9838896180071199, \"mode_overlap\": 0.9993926580251653, \"wave_components\": 1, \"cavity_fraction\": 0.9161099273697989, \"pole_residual\": 3.1422640320723503e-14}\n",
       "stderr": ""
     }
+  },
+  "final_order_audit": {
+    "earlier_record": "40a560b2",
+    "order_residual_target": 2e-05,
+    "cases": {
+      "r1n48": {
+        "outcome": "order_stationarity_unresolved",
+        "state_file": "_scratch/s11c/mouth_exit_material01/r1n48/endpoint.npz",
+        "state_sha256": "44a5eef77f1e9c1b4022a6a91c331e8c9b871bc3bbdceef0fab388b44d32ed8c",
+        "log_sha256": "c1a28d97f194c6cfdf9f28e696693523b57ff8e699c6f8e1697789756aabe2a2",
+        "parent_sha256": "2b402310cffa38c1cf1e5ece074cfc9eb14ba4bc6b62fa3e5fc5ffebf7ddd52f",
+        "geometry_updates": 0,
+        "exit_radius": 0.4620214039331285,
+        "final_order_update": {
+          "iteration": 49,
+          "order_residual": 4.288419568115521,
+          "reason": "Order line search unresolved: Unresolved energy, occupied pole or terminal current",
+          "current": 0.3040649770525765,
+          "terminal_current": 0.3040649766449633,
+          "wave_components": 1,
+          "detached_mode": false,
+          "wave_frequency": 4.256281035470233,
+          "pole_amplitude_loss": 0.011038809721326544,
+          "wave_pocket_fraction": 0.8724259255075368,
+          "wave_loss_rate": 0.022077958940127044,
+          "inside_energy": 14.009682866412945,
+          "negative_opening_residual": 0.39932229130869745,
+          "uncertified_joint_openings": 83
+        },
+        "saved_chi_range": [
+          0.0,
+          0.999999999986112
+        ],
+        "current_gap_abs": 4.076132209540617e-10,
+        "reassembled_endpoint_current": 0.3040649773477344,
+        "exit_probes": [
+          {
+            "kind": "independent_exit",
+            "step": 0.001,
+            "minus_work": -0.0007201182056633115,
+            "plus_work": 0.0007271799122463563,
+            "exit_energy_slope": 0.7236490589548339
+          },
+          {
+            "kind": "independent_exit",
+            "step": 0.0005,
+            "minus_work": -0.0003609419045460527,
+            "plus_work": 0.000362707270141982,
+            "exit_energy_slope": 0.7236491746880347
+          }
+        ]
+      },
+      "r1n72": {
+        "outcome": "order_stationarity_unresolved",
+        "state_file": "_scratch/s11c/mouth_exit_material01/r1n72/endpoint.npz",
+        "state_sha256": "96185f56cdf26b4749d2c442c44c8a0744a069261ef422854194d2d053efc3be",
+        "log_sha256": "93f2eab7a594c95f5048df31cfccaefb6950884727c304008117e837044434c0",
+        "parent_sha256": "dafe8e6bc8dd317f28bdcf97e26a6aab8007177740bc802c37292f984477544e",
+        "geometry_updates": 0,
+        "exit_radius": 0.44977828605792003,
+        "final_order_update": {
+          "iteration": 100,
+          "order_residual": 19.296033519398485,
+          "reason": "Order line search unresolved: Unresolved energy, occupied pole or terminal current",
+          "current": 0.2857570907180792,
+          "terminal_current": 0.28575708936369626,
+          "wave_components": 1,
+          "detached_mode": false,
+          "wave_frequency": 4.223338358199403,
+          "pole_amplitude_loss": 0.010178419715357871,
+          "wave_pocket_fraction": 0.8799462278327549,
+          "wave_loss_rate": 0.020357152627992554,
+          "inside_energy": 14.036206884635575,
+          "negative_opening_residual": 1.5252526366046173,
+          "uncertified_joint_openings": 222
+        },
+        "saved_chi_range": [
+          0.0,
+          0.999999999986112
+        ],
+        "current_gap_abs": 1.3543829391338136e-09,
+        "reassembled_endpoint_current": 0.2857570901285045,
+        "exit_probes": [
+          {
+            "kind": "independent_exit",
+            "step": 0.001,
+            "minus_work": -0.0008199414969567442,
+            "plus_work": 0.0008267078842436604,
+            "exit_energy_slope": 0.8233246906002023
+          },
+          {
+            "kind": "independent_exit",
+            "step": 0.0005,
+            "minus_work": -0.0004108168614038732,
+            "plus_work": 0.00041250805497838883,
+            "exit_energy_slope": 0.823324916382262
+          }
+        ]
+      },
+      "r2n48": {
+        "outcome": "order_stationarity_unresolved",
+        "state_file": "_scratch/s11c/mouth_exit_material01/r2n48/endpoint.npz",
+        "state_sha256": "05e6c975cbdb06497089bb10e48cb72c33ed4baf7a85b382da9cad5a0f69ca4b",
+        "log_sha256": "0dccfbd2f3ee092eac5a59cabd257d9b6c22bd35127a46bd60fdb2648881ebf9",
+        "parent_sha256": "328eae8f09571f66de44bcbdf602b751d56700af34a0994e4e2b52b65ce38eba",
+        "geometry_updates": 0,
+        "exit_radius": 1.0198611576432295,
+        "final_order_update": {
+          "iteration": 1190,
+          "order_residual": 19.78155112148087,
+          "reason": "Order line search unresolved: Ambiguous occupied wave between disconnected shear regions",
+          "current": 1.2636519923655283,
+          "terminal_current": 1.2636519920079363,
+          "wave_components": 2,
+          "detached_mode": true,
+          "wave_frequency": 1.812557781231089,
+          "pole_amplitude_loss": 0.0,
+          "wave_pocket_fraction": 1.0,
+          "wave_loss_rate": 0.0,
+          "inside_energy": 52.831194851071274,
+          "negative_opening_residual": 0.002886207620049993,
+          "uncertified_joint_openings": 6
+        },
+        "saved_chi_range": [
+          0.0,
+          1.0
+        ],
+        "current_gap_abs": 3.575919560461216e-10,
+        "reassembled_endpoint_current": 1.263651993023878,
+        "exit_probes": [
+          {
+            "kind": "independent_exit",
+            "step": 0.001,
+            "minus_work": -0.01414661177113885,
+            "plus_work": 0.01420785786694978,
+            "exit_energy_slope": 14.177234819044315
+          },
+          {
+            "kind": "independent_exit",
+            "step": 0.0005,
+            "minus_work": -0.007080957947891875,
+            "plus_work": 0.0070962699228402926,
+            "exit_energy_slope": 14.177227870732168
+          }
+        ]
+      },
+      "r2n72": {
+        "last_thousand_order_iterations": {
+          "first": 30475,
+          "last": 31475,
+          "inside_energy_change": -1.5300514633054263e-08,
+          "sample_count": 41,
+          "sampled_residual_range": [
+            0.5351248411432332,
+            0.6765574944087335
+          ]
+        },
+        "outcome": "user_stopped_after_saved_order_update",
+        "state_file": "_scratch/s11c/mouth_exit_material01/r2n72/latest.npz",
+        "state_sha256": "490e02ea9a3a31d89866eda08d6bf785831823473cb12ef0156ec99522911a89",
+        "log_sha256": "3659acfb62ce78eb96f32552dc95e14ec3dbcfbabdf798f4d0d251339dd0d49d",
+        "parent_sha256": "954a5d6d2f4a679e4bb84a437c671458ec9a79c5abf7290c1015d49380eb86be",
+        "geometry_updates": 0,
+        "exit_radius": 1.0369738300430225,
+        "final_order_update": {
+          "iteration": 31475,
+          "order_residual": 0.6393224638065977,
+          "reason": "Accepted order field",
+          "current": 1.3190232126445605,
+          "terminal_current": 1.319023215346975,
+          "wave_components": 1,
+          "detached_mode": false,
+          "wave_frequency": 2.9327998512274625,
+          "pole_amplitude_loss": 0.011303837271376129,
+          "wave_pocket_fraction": 0.917683452111097,
+          "wave_loss_rate": 0.02260907769751274,
+          "inside_energy": 56.646407897537955,
+          "negative_opening_residual": 0.07702360520308334,
+          "uncertified_joint_openings": 217
+        },
+        "saved_chi_range": [
+          0.0,
+          1.0
+        ],
+        "current_gap_abs": 2.7024145143883516e-09,
+        "reassembled_endpoint_current": null,
+        "exit_probes": []
+      }
+    },
+    "fine_radius_2_terminal_joint_probe": "Not admitted after the parent stopped. Signed work in refined_checkpoint applies only to saved iteration 2325.",
+    "conclusion": "Both four-coordinate minima drain. Allowing independent material variations exposes lower-energy states. No unrestricted branch completed its order solve or advanced the shape. The terminal outcome at both radii remains open.",
+    "independent_archive_review": "Scoped clear for the archived bonded-exit readout at radii 1 and 2. Both four-coordinate minima drained, and the signed narrowing tests lowered energy at the sampled states. All four unrestricted runs stopped before a geometry update. The final fine radius-2 checkpoint establishes continued current and unresolved order stationarity. Neither self-support nor healing was established."
   }
 }

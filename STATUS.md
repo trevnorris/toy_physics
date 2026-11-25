@@ -2,7 +2,7 @@
 
 ## Common-medium research
 
-**The approved C² collar is the standing reference for both held radius-4 gauges, subsequent shape release and the blind radius comparison.** Its largest between-knot registration shift is 0.00470399 at the exit. Both wide depth probes passed at step 166. The order and carriers must equilibrate at fixed labels and pass the independent derivative and all-node work review before the primary crystal can move. The secondary starts from a certified primary equilibrium. [Reference and held-run criteria](software/stage1_solver/reports/mouth_r4_bicubic_reference.md)
+**The held radius-4 primary reached step 287 on the approved C² collar.** Both gauges passed the step-166 pre-descent audits. The primary accepted 121 energy-lowering steps before the projection of its next crystal displacement failed. Its lowest peak crystal force was 0.04602958 against the 0.000030 target. The last fresh fields carried 10.70771691 inward current. Radius 4 stays held and radius 3 stays blind. [Numerical stop and independent review](software/stage1_solver/reports/mouth_r4_cubic_held_stop.md) · [Standing cubic reference](software/stage1_solver/reports/mouth_r4_bicubic_reference.md)
 
 **A single crossing of the collar reference plane explains the uphill projected-Jacobi trial at radius 4.** The measured slope agrees with the gradient below the crossing. At the crossing it changes from −0.00154758 to +0.01582285. The independently measured work of the two incident rays accounts for that change. Step 166 stays held during the smooth-reference boundary and derivative audits. [Signed work, location and independent review](software/stage1_solver/reports/mouth_r4_collar_crease.md)
 

@@ -1,0 +1,294 @@
+{
+  "step": 287,
+  "source_sha256": "5683615a04966ef35ba992026c8990965005c13bfec8e6d440534ade1e4b46c0",
+  "record_sha256": "01f328a7f08b65cfa530e430e879558375b2a9561068d38f1ee0ce6952ea44b6",
+  "readout": {
+    "total_energy": 92185.38355095354,
+    "physical_energy": 92185.3835508674,
+    "crystal_energy": 0.3073392682562248,
+    "gauge_energy": 8.614831490634566e-08,
+    "peak_active": 0.04602957770136634,
+    "peak_node": {
+      "component": 0,
+      "group": 27760,
+      "chi": 0.32715615583918867,
+      "signed_force": 0.04602957770136634,
+      "node": [
+        24,
+        1,
+        19
+      ],
+      "radius": 3.965436807425519,
+      "depth": 0.02587313009994973,
+      "theta": 1.4657055899195157
+    },
+    "field": {
+      "physical_energy": 92185.3835508674,
+      "unit_gauge": 8.614831490634568,
+      "gauge_energy": 8.614831490634569e-08,
+      "phase_raw": 5.831115323533037e-11,
+      "amplitude_raw": 7.852308383868291e-10,
+      "order_raw": 0.34959525648184164,
+      "order_kkt": 7.085400365006865e-05,
+      "order_projected": 8.366816650666098e-06,
+      "carrier_metric": 2.532027054237016e-10,
+      "shared_work_error": -5.551115123125783e-17,
+      "order_knot_transport": [
+        {
+          "free_interior": 4.557250575948452e-06,
+          "lower_obstacle": 2.9001027158785153e-16,
+          "upper_obstacle": -0.0,
+          "total": 4.5572505762384625e-06
+        },
+        {
+          "free_interior": 4.547489860893995e-06,
+          "lower_obstacle": -0.032601667673576196,
+          "upper_obstacle": -0.0,
+          "total": -0.0325971201837153
+        }
+      ]
+    },
+    "chart": {
+      "chart_det_global_lower": 7.084565677230213e-07,
+      "chart_lowest_cell": [
+        25,
+        10,
+        6
+      ],
+      "chart_det_active_lower": 0.0007755061913274634
+    },
+    "min_Jinv": 0.0007049519849394677,
+    "front": 0.3363506918035118,
+    "current": {
+      "feed_current": 10.707716913693194,
+      "bulk_current": 10.707716913692746,
+      "weak_disk_current": 10.707716906937218,
+      "incident_slice_current": 10.707716906937218,
+      "receiving_slice_current": 10.041065351177007,
+      "positive_slice_current": 10.707716906937218,
+      "port_error": 4.476419235288631e-13,
+      "disk_minus_feed_current": -6.755975334726827e-09,
+      "dense_total_subsonic_share": 0.6675898861086909,
+      "total_axial_stress": -26.58287784587294
+    }
+  },
+  "physical_certificate": {
+    "physical_global_lower": 4.1095410096212737e-07,
+    "cell": [
+      25,
+      10,
+      6
+    ],
+    "cell_count": 28080,
+    "chart_global_lower": 7.084565677230213e-07,
+    "limiting_chart_lower": 7.084565677230213e-07,
+    "limiting_radial_metric_lower": 0.5800749156763813,
+    "limiting_sine_ratio_lower": 0.999990795114702,
+    "global_xi_r_over_x_lower": 0.9472190408304234,
+    "global_sine_ratio_lower": 0.9518918835650046,
+    "angular_rule": "concavity",
+    "collar_patch_determinant_lower": 0.4892248970224547,
+    "collar_S_lower": 3.9998642234235255,
+    "physical_profile_bounds": [
+      3.3063771490447995,
+      4.000000150947135
+    ],
+    "reference_core_profile_lower": 3.97520746439121,
+    "core_metric_lower": 1.1638699165377784,
+    "collar_metric_lower": 0.5800749156763813,
+    "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+    "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+  },
+  "scope": "Held radius 4, latest accepted step on the cubic reference. Order and carrier fields carried over from step 286.",
+  "solver_commit": "f99601aa",
+  "readout_sha256": "2bb78031ae40875b75d4705d16244b646a6564ac8dd27ac880b7ddf38e8cff33",
+  "depth": 0.8191403557693495,
+  "exit_radius": 3.306377271246663,
+  "initial": {
+    "primary": {
+      "shape": {
+        "max_abs": 5.051327349459012e-09,
+        "wide_depth": 2.715933763466878e-09
+      },
+      "hessian": {
+        "max_relative_Hv_error": 7.460186680297896e-07,
+        "max_relative_symmetry_error": 6.538857222544911e-09
+      },
+      "orientation": {
+        "certified_global_chart_lower": 3.0817260030210546e-05,
+        "inverted_edge": -0.00018162603399689075
+      },
+      "label0": {
+        "free_active": 6433,
+        "free_melt": 21392,
+        "max_abs_at_either_width": 4.305855451229116e-11
+      },
+      "label1": {
+        "free_active": 6446,
+        "free_melt": 21432,
+        "max_abs_at_either_width": 5.250036503303053e-13
+      },
+      "label2": {
+        "free_active": 6069,
+        "free_melt": 19353,
+        "max_abs_at_either_width": 2.494182262995369e-13
+      },
+      "order": {
+        "free_joined_order": 143648,
+        "max_abs_central": 9.814128676399747e-13,
+        "max_abs_inward_one_sided_extrapolate": 6.040081290486186e-13
+      },
+      "fresh_fields": {
+        "max_abs": 6.243825797958456e-10,
+        "residuals": {
+          "phase_raw": 6.476882564483569e-11,
+          "amplitude_raw": 6.243825797958456e-10,
+          "carrier_metric": 1.9808220876463416e-10,
+          "order_kkt": 2.4556356947869062e-11,
+          "order_projected": 3.837929973826704e-12
+        },
+        "front": 0.3363506918035118,
+        "positive_nodes": 52333,
+        "max_abs_gauge_over_physical": 1.1536366279084868e-10,
+        "peak_active": 0.3194613362061772,
+        "whole_chart_lower": 3.0817260030210546e-05,
+        "minimum_sampled_physical_Jinv": 0.0013373441587064205,
+        "current": {
+          "feed_current": 10.707730755492234,
+          "bulk_current": 10.707730755492337,
+          "weak_disk_current": 10.70773075549223,
+          "incident_slice_current": 10.70773075549223,
+          "receiving_slice_current": 10.041078294560792,
+          "positive_slice_current": 10.70773075549223,
+          "port_error": 1.0302869668521453e-13,
+          "disk_minus_feed_current": -3.552713678800501e-15,
+          "dense_total_subsonic_share": 0.6675896166214941,
+          "total_axial_stress": -26.58287498653299
+        },
+        "state_sha256": "a82d40adb827324243ad9a5b7eb7ed5c4b4297f75694f3d783f2b5c54a2f1d85",
+        "total_energy": 92185.39350697513,
+        "crystal_energy": 0.31430012937377505,
+        "gauge_energy": 7.83938224898221e-08
+      }
+    },
+    "secondary": {
+      "shape": {
+        "max_abs": 5.051327357265267e-09,
+        "wide_depth": 2.715933758112783e-09
+      },
+      "hessian": {
+        "max_relative_Hv_error": 7.460186680986287e-07,
+        "max_relative_symmetry_error": 6.538937066090311e-09
+      },
+      "orientation": {
+        "certified_global_chart_lower": 3.0817260030210546e-05,
+        "inverted_edge": -0.00018162603399689075
+      },
+      "label0": {
+        "free_active": 6433,
+        "free_melt": 21392,
+        "max_abs_at_either_width": 4.305855412201169e-11
+      },
+      "label1": {
+        "free_active": 6446,
+        "free_melt": 21432,
+        "max_abs_at_either_width": 5.250036516501926e-13
+      },
+      "label2": {
+        "free_active": 6069,
+        "free_melt": 19353,
+        "max_abs_at_either_width": 2.494182262798874e-13
+      },
+      "order": {
+        "free_joined_order": 143648,
+        "max_abs_central": 9.814128676399747e-13,
+        "max_abs_inward_one_sided_extrapolate": 6.040081358248822e-13
+      },
+      "fresh_fields": {
+        "max_abs": 6.243825799559652e-10,
+        "residuals": {
+          "phase_raw": 6.129877800422094e-11,
+          "amplitude_raw": 6.243825799559652e-10,
+          "carrier_metric": 1.9808236166273927e-10,
+          "order_kkt": 1.9703350062627578e-11,
+          "order_projected": 3.837985484977935e-12
+        },
+        "front": 0.3363506918035118,
+        "positive_nodes": 52333,
+        "max_abs_gauge_over_physical": 1.1536363768756474e-12,
+        "peak_active": 0.3194613337792133,
+        "whole_chart_lower": 3.0817260030210546e-05,
+        "minimum_sampled_physical_Jinv": 0.0013373441587064205,
+        "current": {
+          "feed_current": 10.707730755495694,
+          "bulk_current": 10.707730755495547,
+          "weak_disk_current": 10.70773075549564,
+          "incident_slice_current": 10.70773075549564,
+          "receiving_slice_current": 10.041078294564034,
+          "positive_slice_current": 10.70773075549564,
+          "port_error": 1.474376176702208e-13,
+          "disk_minus_feed_current": -5.5067062021407764e-14,
+          "dense_total_subsonic_share": 0.6675896166213715,
+          "total_axial_stress": -26.58287498653244
+        },
+        "state_sha256": "062b3453d5c1190d9dd8b279d34082880b5279e511115cd22ed57f61e2ff2bac",
+        "total_energy": 92185.39350689751,
+        "crystal_energy": 0.3143001284596095,
+        "gauge_energy": 7.839382250388005e-10
+      }
+    }
+  },
+  "pre_descent_review": "The paired fixed-label step-166 rematches pass their native derivative, field, orientation and all-node energy-sign gates. The approved cubic primary may begin held crystal descent. Admission of the secondary descent requires its primary stationary endpoint.",
+  "accepted_steps": [
+    167,
+    287
+  ],
+  "accepted_crystal_updates": 121,
+  "field_matches": [
+    186,
+    206,
+    226,
+    246,
+    266,
+    286
+  ],
+  "signed_crystal_work": -0.009926255287890642,
+  "signed_field_work": -2.9766320949420333e-05,
+  "last_alpha": 0.0078125,
+  "peak_force_node": {
+    "component": 0,
+    "group": 27760,
+    "chi": 0.32715615583918867,
+    "signed_force": 0.04602957770136634,
+    "node": [
+      24,
+      1,
+      19
+    ],
+    "radius": 3.965436807425519,
+    "depth": 0.02587313009994973,
+    "theta": 1.4657055899195157
+  },
+  "active_force_l2": 0.23727097621352827,
+  "last_fresh_sign": {
+    "step": 286,
+    "increment": 1e-09,
+    "total": {
+      "positive": 51839,
+      "zero": 0,
+      "negative": 0,
+      "nonfinite": 0
+    },
+    "free_zero": 51839,
+    "max_abs_gauge_over_positive_physical": 8.948647524232694e-10
+  },
+  "solver_error": {
+    "type": "ArithmeticError",
+    "reason": "Unresolved corner projection"
+  },
+  "failed_trial": 288,
+  "failed_corner_saved": false,
+  "secondary_admitted": false,
+  "stationary_six_forces": null,
+  "review": "Scoped clear for a numerical projection stop with radius 4 held; paired equilibrium is unestablished."
+}

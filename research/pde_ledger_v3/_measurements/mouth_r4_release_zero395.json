@@ -1,0 +1,503 @@
+{
+  "source_sha256": "67a1cd2b52d258e44c96f0a7c1a2b4b7e96cca133f943860ce7748728d60c738",
+  "code_sha256": "d19e29d4830d8b43ba26b603a57c5f9c0dee2526f2c984ace520c68b2e13ffe2",
+  "accepted_shape_steps": 0,
+  "baseline": {
+    "shape": [
+      0.03203348161357326,
+      -0.22160765321621922,
+      0.0008870732843312349,
+      -0.0685819081404728,
+      0.0708792715906547,
+      0.02342688643280306
+    ],
+    "depth": 0.8191403557693495,
+    "exit_radius": 3.306377271246663,
+    "min_radius": 3.3063772712466624,
+    "min_radius_t": 1.0,
+    "max_radius": 4.0,
+    "total_energy": 92185.38323628501,
+    "crystal_energy": 0.30715233478933646,
+    "gauge_energy": 9.90719913665563e-08,
+    "native_residuals": {
+      "label": 1.6913186196217433e-05,
+      "melted_label": 5.516050712909089e-08,
+      "unit_melt": 5.516050712909089,
+      "order_projected": 4.0023725165257845e-12,
+      "order_kkt": 3.001332515850663e-11,
+      "amplitude_raw": 3.655586613363765e-09,
+      "phase_raw": 7.48227230736411e-11,
+      "carrier_metric": 4.013413466228421e-09
+    },
+    "max_internal": 1.6913186196217433e-05,
+    "certified_Jinv": 1.2015261808214676e-05,
+    "certificate": {
+      "physical_global_lower": 1.2015261808214676e-05,
+      "cell": [
+        25,
+        10,
+        9
+      ],
+      "cell_count": 28080,
+      "chart_global_lower": 2.0714260088009454e-05,
+      "limiting_chart_lower": 2.0714260088009454e-05,
+      "limiting_radial_metric_lower": 0.5800749156763813,
+      "limiting_sine_ratio_lower": 0.9999533227435808,
+      "global_xi_r_over_x_lower": 0.9394889285020764,
+      "global_sine_ratio_lower": 0.9757494581856263,
+      "angular_rule": "concavity",
+      "collar_patch_determinant_lower": 0.4892248970224547,
+      "collar_S_lower": 3.9998642234235255,
+      "physical_profile_bounds": [
+        3.3063771490447995,
+        4.000000150947135
+      ],
+      "reference_core_profile_lower": 3.97520746439121,
+      "core_metric_lower": 1.1638699165377784,
+      "collar_metric_lower": 0.5800749156763813,
+      "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+      "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+    },
+    "current": {
+      "feed_current": 10.70771658765985,
+      "bulk_current": 10.707716587659817,
+      "weak_disk_current": 10.707716587659862,
+      "incident_slice_current": 10.707716587659862,
+      "receiving_slice_current": 10.041065047276213,
+      "positive_slice_current": 10.707716587659862,
+      "port_error": 3.197442310920451e-14,
+      "disk_minus_feed_current": 1.2434497875801753e-14,
+      "dense_total_subsonic_share": 0.6675898974908858,
+      "total_axial_stress": -26.582877894743568
+    },
+    "sampled_melted_front": 0.3622238246143633,
+    "front_fraction": 0.4421999503054113,
+    "free_zero": 51359
+  },
+  "shape_force": [
+    -0.00665626202976338,
+    -0.6382708552237489,
+    0.660848084466227,
+    -0.5279987416325249,
+    0.618248729086325,
+    0.006866546231808025
+  ],
+  "held_deltas": {
+    "total_energy": 0.0,
+    "crystal_energy": 0.0,
+    "gauge_energy": 0.0,
+    "native_residuals.label": 0.0,
+    "native_residuals.melted_label": 0.0,
+    "native_residuals.unit_melt": 0.0,
+    "native_residuals.order_projected": 0.0,
+    "native_residuals.order_kkt": 0.0,
+    "native_residuals.amplitude_raw": 0.0,
+    "native_residuals.phase_raw": 0.0,
+    "native_residuals.carrier_metric": 0.0,
+    "current.feed_current": 0.0,
+    "current.bulk_current": 0.0,
+    "current.weak_disk_current": 0.0,
+    "current.incident_slice_current": 0.0,
+    "current.receiving_slice_current": 0.0,
+    "current.positive_slice_current": 0.0,
+    "current.port_error": 0.0,
+    "current.disk_minus_feed_current": 0.0,
+    "current.dense_total_subsonic_share": 0.0,
+    "current.total_axial_stress": 0.0,
+    "certified_Jinv": 0.0
+  },
+  "force_deltas": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "reference_sha256": "4c09ddff651e5b501e4b58014bd75b109be36878ed5e8d27b954709482ef7b12",
+  "curvatures_wide_narrow": [
+    [
+      67.7607182751101,
+      67.7429121398527
+    ],
+    [
+      9.928677342453739,
+      9.91504605091177
+    ],
+    [
+      167.81559325012495,
+      167.8061309598852
+    ],
+    [
+      113.25196311098989,
+      113.23379808466416
+    ],
+    [
+      35.781451036949875,
+      35.7740237894468
+    ],
+    [
+      8.806102196398115,
+      8.79657414596295
+    ]
+  ],
+  "curvature_convention": "transported, negative minus positive one-sided force divided by h",
+  "shape_audit": {
+    "rows": [
+      {
+        "mode": "log_depth",
+        "analytic": -0.00665626202976338,
+        "elastic": 0.05847656316026667,
+        "bath": -0.06513281636696862,
+        "unit_gauge": -0.8823061435496582,
+        "central": [
+          {
+            "h": 3.814697265625e-06,
+            "central": -0.00665626039018042,
+            "minus_analytic": 1.6395829597691407e-09,
+            "crystal": 0.05847656318934968,
+            "bath": -0.0651328147564687,
+            "unit_gauge": -0.8823061393911641,
+            "negative": -0.006527017076819996,
+            "positive": -0.0067855037035408445
+          },
+          {
+            "h": 9.5367431640625e-07,
+            "central": -0.006656257590878909,
+            "minus_analytic": 4.438884471153958e-09,
+            "crystal": 0.05847656316128267,
+            "bath": -0.06513281192910014,
+            "unit_gauge": -0.8823061435007882,
+            "negative": -0.0066239552531657375,
+            "positive": -0.00668855992859208
+          }
+        ]
+      },
+      {
+        "mode": "scaled_log_exit",
+        "analytic": -0.6382708552237489,
+        "elastic": 0.10615504690217459,
+        "bath": -0.7444258959842386,
+        "unit_gauge": -0.6141684860460217,
+        "central": [
+          {
+            "h": 3.814697265625e-06,
+            "central": -0.6382708552169957,
+            "minus_analytic": 6.7532906892521505e-12,
+            "crystal": 0.1061550468918396,
+            "bath": -0.7444258959671504,
+            "unit_gauge": -0.6141684860516957,
+            "negative": -0.6382519177678408,
+            "positive": -0.6382897926661504
+          },
+          {
+            "h": 9.5367431640625e-07,
+            "central": -0.6382708552174129,
+            "minus_analytic": 6.336043994158158e-12,
+            "crystal": 0.1061550469015427,
+            "bath": -0.7444258959772707,
+            "unit_gauge": -0.6141684860463031,
+            "negative": -0.6382661273550305,
+            "positive": -0.6382755830797953
+          }
+        ]
+      },
+      {
+        "mode": "mean_width",
+        "analytic": 0.660848084466227,
+        "elastic": 0.41028355635777325,
+        "bath": 0.2505645772576107,
+        "unit_gauge": -4.914915700872202,
+        "central": [
+          {
+            "h": 3.814697265625e-06,
+            "central": 0.6608480838231391,
+            "minus_analytic": -6.430879176074801e-10,
+            "crystal": 0.41028355635758385,
+            "bath": 0.2505645766147122,
+            "unit_gauge": -4.914915700883815,
+            "negative": 0.6611681666654893,
+            "positive": 0.6605280009807888
+          },
+          {
+            "h": 9.5367431640625e-07,
+            "central": 0.6608480875565714,
+            "minus_analytic": 3.090344509047889e-09,
+            "crystal": 0.4102835563577448,
+            "bath": 0.2505645803479837,
+            "unit_gauge": -4.914915700872846,
+            "negative": 0.6609281037551874,
+            "positive": 0.6607680713579555
+          }
+        ]
+      },
+      {
+        "mode": "depth_asymmetry",
+        "analytic": -0.5279987416325249,
+        "elastic": -0.23889984634604255,
+        "bath": -0.2890989361422229,
+        "unit_gauge": 4.085574045311669,
+        "central": [
+          {
+            "h": 3.814697265625e-06,
+            "central": -0.5279987421958706,
+            "minus_analytic": -5.633456532207551e-10,
+            "crystal": -0.23889984634597616,
+            "bath": -0.2890989367056349,
+            "unit_gauge": 4.0855740453134155,
+            "negative": -0.5277827312188675,
+            "positive": -0.5282147531728737
+          },
+          {
+            "h": 9.5367431640625e-07,
+            "central": -0.5279987412085295,
+            "minus_analytic": 4.2399538545921656e-10,
+            "crystal": -0.23889984634602662,
+            "bath": -0.2890989357182434,
+            "unit_gauge": 4.085574045311732,
+            "negative": -0.5279447471260383,
+            "positive": -0.5280527352910208
+          }
+        ]
+      },
+      {
+        "mode": "waist_profile",
+        "analytic": 0.618248729086325,
+        "elastic": 0.2847974589641475,
+        "bath": 0.3334513050375332,
+        "unit_gauge": -3.491535565115692,
+        "central": [
+          {
+            "h": 3.814697265625e-06,
+            "central": 0.6182487286213875,
+            "minus_analytic": -4.649375357911219e-10,
+            "crystal": 0.28479745896410474,
+            "bath": 0.3334513045726384,
+            "unit_gauge": -3.491535565137986,
+            "negative": 0.6183169763231028,
+            "positive": 0.618180480919672
+          },
+          {
+            "h": 9.5367431640625e-07,
+            "central": 0.6182487324218754,
+            "minus_analytic": 3.3355504006635575e-09,
+            "crystal": 0.28479745896412606,
+            "bath": 0.333451308373105,
+            "unit_gauge": -3.4915355651171205,
+            "negative": 0.6182657908057166,
+            "positive": 0.6182316740380341
+          }
+        ]
+      },
+      {
+        "mode": "polar_equatorial",
+        "analytic": 0.006866546231808025,
+        "elastic": -0.009910025611254326,
+        "bath": 0.016776572419608702,
+        "unit_gauge": -0.05765463501344297,
+        "central": [
+          {
+            "h": 3.814697265625e-06,
+            "central": 0.006866546707459051,
+            "minus_analytic": 4.756510253522404e-10,
+            "crystal": -0.009910025611254399,
+            "bath": 0.0167765728952598,
+            "unit_gauge": -0.057654635013084016,
+            "negative": 0.006883343014443758,
+            "positive": 0.006849750400474344
+          },
+          {
+            "h": 9.5367431640625e-07,
+            "central": 0.0068665471731860035,
+            "minus_analytic": 9.413779773798028e-10,
+            "crystal": -0.009910025611254904,
+            "bath": 0.016776573360987257,
+            "unit_gauge": -0.05765463501340949,
+            "negative": 0.0068707417066036875,
+            "positive": 0.006862352639768319
+          }
+        ]
+      }
+    ],
+    "threshold": 1e-07,
+    "passed": true
+  },
+  "probes": [
+    {
+      "scale": 1.0,
+      "observables": {
+        "shape": [
+          0.0320324743832905,
+          -0.22170423681390633,
+          0.000987073284331235,
+          -0.06866180528386226,
+          0.07097282542603968,
+          0.023427925483440148
+        ],
+        "depth": 0.819139530706793,
+        "exit_radius": 3.306297436757463,
+        "min_radius": 3.306297436757463,
+        "min_radius_t": 1.0,
+        "max_radius": 4.0,
+        "total_energy": 92185.38301107165,
+        "crystal_energy": 0.30707749634234643,
+        "gauge_energy": 9.908283738405896e-08,
+        "native_residuals": {
+          "label": 0.001466666503129673,
+          "melted_label": 5.5167360946722494e-08,
+          "unit_melt": 5.5167360946722495,
+          "order_projected": 1.5241206659522e-06,
+          "order_kkt": 0.0016572557019571832,
+          "amplitude_raw": 3.171827373975669e-05,
+          "phase_raw": 9.339691554604518e-05,
+          "carrier_metric": 2.4060912054916614e-05
+        },
+        "max_internal": 0.0016572557019571832,
+        "certified_Jinv": 1.2015938140353277e-05,
+        "certificate": {
+          "physical_global_lower": 1.2015938140353277e-05,
+          "cell": [
+            25,
+            10,
+            9
+          ],
+          "cell_count": 28080,
+          "chart_global_lower": 2.071543177577593e-05,
+          "limiting_chart_lower": 2.071543177577593e-05,
+          "limiting_radial_metric_lower": 0.5800747562313371,
+          "limiting_sine_ratio_lower": 0.9999533227435808,
+          "global_xi_r_over_x_lower": 0.9394889285020764,
+          "global_sine_ratio_lower": 0.9757494581856263,
+          "angular_rule": "concavity",
+          "collar_patch_determinant_lower": 0.4892248970224547,
+          "collar_S_lower": 3.9998642234235255,
+          "physical_profile_bounds": [
+            3.306297314477355,
+            4.000000150634755
+          ],
+          "reference_core_profile_lower": 3.97520746439121,
+          "core_metric_lower": 1.163869596625151,
+          "collar_metric_lower": 0.5800747562313371,
+          "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+          "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+        },
+        "current": {
+          "feed_current": 10.70771658765985,
+          "bulk_current": 10.707678540624247,
+          "weak_disk_current": 10.707187977278188,
+          "incident_slice_current": 10.70718797727819,
+          "receiving_slice_current": 10.040159060834208,
+          "positive_slice_current": 10.70718797727819,
+          "port_error": 3.804703560206235e-05,
+          "disk_minus_feed_current": -0.0005286103816608545,
+          "dense_total_subsonic_share": 0.6675951765566287,
+          "total_axial_stress": -26.581653912287873
+        },
+        "sampled_melted_front": 0.36222382461430347,
+        "front_fraction": 0.4422003957027435,
+        "free_zero": 51359
+      },
+      "delta_energy": -0.00022521335631608963,
+      "linear": -0.00022777027401846557,
+      "remainder": 2.5569177023759446e-06
+    },
+    {
+      "scale": 0.5,
+      "observables": {
+        "shape": [
+          0.032032977998431876,
+          -0.22165594501506278,
+          0.000937073284331235,
+          -0.06862185671216753,
+          0.07092604850834719,
+          0.023427405958121605
+        ],
+        "depth": 0.8191399432379675,
+        "exit_radius": 3.306337353761103,
+        "min_radius": 3.306337353761103,
+        "min_radius_t": 1.0,
+        "max_radius": 4.0,
+        "total_energy": 92185.38312303912,
+        "crystal_energy": 0.30711451576862736,
+        "gauge_energy": 9.907741391199453e-08,
+        "native_residuals": {
+          "label": 0.0007331108058965194,
+          "melted_label": 5.5163933962107394e-08,
+          "unit_melt": 5.51639339621074,
+          "order_projected": 7.620833762933543e-07,
+          "order_kkt": 0.0008286266142931709,
+          "amplitude_raw": 1.5858902052164514e-05,
+          "phase_raw": 4.6698308397160964e-05,
+          "carrier_metric": 1.203066835686563e-05
+        },
+        "max_internal": 0.0008286266142931709,
+        "certified_Jinv": 1.2015599974415845e-05,
+        "certificate": {
+          "physical_global_lower": 1.2015599974415845e-05,
+          "cell": [
+            25,
+            10,
+            9
+          ],
+          "cell_count": 28080,
+          "chart_global_lower": 2.071484593204158e-05,
+          "limiting_chart_lower": 2.071484593204158e-05,
+          "limiting_radial_metric_lower": 0.5800748359538014,
+          "limiting_sine_ratio_lower": 0.9999533227435808,
+          "global_xi_r_over_x_lower": 0.9394889285020764,
+          "global_sine_ratio_lower": 0.9757494581856263,
+          "angular_rule": "concavity",
+          "collar_patch_determinant_lower": 0.4892248970224547,
+          "collar_S_lower": 3.9998642234235255,
+          "physical_profile_bounds": [
+            3.3063372315201174,
+            4.000000150790945
+          ],
+          "reference_core_profile_lower": 3.97520746439121,
+          "core_metric_lower": 1.1638697565813487,
+          "collar_metric_lower": 0.5800748359538014,
+          "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+          "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+        },
+        "current": {
+          "feed_current": 10.70771658765985,
+          "bulk_current": 10.707697563738217,
+          "weak_disk_current": 10.707452279870092,
+          "incident_slice_current": 10.707452279870088,
+          "receiving_slice_current": 10.040612044723227,
+          "positive_slice_current": 10.707452279870088,
+          "port_error": 1.9023921632665974e-05,
+          "disk_minus_feed_current": -0.00026430778975772284,
+          "dense_total_subsonic_share": 0.6675925370465564,
+          "total_axial_stress": -26.582265898682806
+        },
+        "sampled_melted_front": 0.3622238246143334,
+        "front_fraction": 0.4422001730040213,
+        "free_zero": 51359
+      },
+      "delta_energy": -0.00011324588558636606,
+      "linear": -0.00011388513700923281,
+      "remainder": 6.392514228667571e-07
+    }
+  ],
+  "passed": true,
+  "base_commit": "e62a30ff3f3924f59aec914781ac9a6d8350100c",
+  "radius": 4,
+  "winding": 1,
+  "source": "research/pde_ledger_v3/_measurements/mouth_r4_held_pair395.json",
+  "raw_output": "_scratch/s11c/r4_release_pilot01/audit/audit.json",
+  "raw_sha256": "faedcb2cf01d9d06d2c16c3a68680c0886a4186419c7ff8662ec1b3065d9d7d3",
+  "reviews": {
+    "Independent local review of the numerical gate": "Scoped clear for the Phase 1 held-state equivalence and finite transported-work gate at step 395. The reviewed evidence admits the bounded primary pilot.",
+    "Independent local review of the outer driver": "Scoped clear for Phase 1 and the reviewed outer-driver logic."
+  },
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_release_pilot.py",
+    "_scratch/s11c/r4_release_pilot01/audit"
+  ],
+  "stdout": "Held-state and transported-work checks passed.\n",
+  "measured_wall_seconds": 610.2495383671485,
+  "zero_drift_channels": 28
+}

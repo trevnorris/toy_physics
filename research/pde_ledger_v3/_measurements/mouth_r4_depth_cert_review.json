@@ -1,0 +1,838 @@
+{
+  "source_checkpoint": "cc11a9f3",
+  "scope": "Independent reconstruction from the stored two-gauge cell work, quadrature rays and the single-node close-approach chart.",
+  "physical_slope": "Per-case centered energy error equals FD(dE/dlogL) minus the analytic energy slope. The signed force excess has the opposite sign.",
+  "sources": {
+    "primary/cells.json": "1bd04be10cc826371a2550a5faf9936e74b45c4ac23910b704df2f912fdcd3c7",
+    "secondary/cells.json": "50bc95235c0c51dc9a4b5a56f87bc30f86f08af14aee8cd742ac365d93ee3969",
+    "primary/cells.npz": "5ccbd42b225897ba6de90c7df1dc9c5a1db0e7186a6e2c3743615530b8a6499a",
+    "secondary/cells.npz": "d366e5e4b4d33f4d5284073148364a17cb71f3ee903effdb7f2cf04d8856affd",
+    "dossier/samples.npz": "424701d03d363d4e51983d18f372f93bc4f1f562dc0a30c171b24332c1d53ecb",
+    "dossier/dossier.json": "cb2f30508d940c7c30806867933612b93b0a59de4efdc5ce51f7b11edfff4479",
+    "certificate.json": "3c58b83f3bef6660b4b629bf2d011532ab98c14d8b31dbc75835598a4ee00b73"
+  },
+  "review": {
+    "command": [
+      "/usr/bin/python3",
+      "-Bu",
+      "_scratch/s11c/r4_depth_cert01/review_archive.py"
+    ],
+    "script_sha256": "4df17f91bdc7d6f90a0c10b1b4632288f3a31e31135139c0a1f7ec6177bf587e",
+    "stdout_sha256": "1651de05404077a5d46ca6a4499ae1810b9b6132e75b9f6c61225f70abaabcc5",
+    "measurement": {
+      "primary": {
+        "ids": [
+          24885,
+          24881,
+          23801,
+          25965,
+          24889,
+          24893,
+          24888,
+          24894,
+          24884,
+          25015
+        ],
+        "derr": [
+          -0.0002901323147090361,
+          3.194773087070407e-10,
+          7.76496763420914e-11
+        ],
+        "curvature": [
+          195.52606697967155,
+          43.41250940871036,
+          43.412550081188606
+        ],
+        "top4_fraction": 1.0000042542707843
+      },
+      "secondary": {
+        "ids": [
+          24885,
+          24881,
+          23801,
+          25965,
+          24889,
+          24893,
+          24888,
+          24894,
+          24884,
+          25015
+        ],
+        "derr": [
+          -0.0002901323139775418,
+          3.1947707964450485e-10,
+          7.764798577596988e-11
+        ],
+        "curvature": [
+          195.5260664356506,
+          43.412509244048906,
+          43.412549894584245
+        ],
+        "top4_fraction": 1.0000042542717134
+      },
+      "changed_rays": [
+        {
+          "rank": 1,
+          "min_J": 0.8974940503244339,
+          "min_s": 0.7264743462710275,
+          "largest": {
+            "ray": [
+              1,
+              1
+            ],
+            "excess": 0.00020875706084877633,
+            "base": [
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "minus": [
+              [
+                0,
+                6,
+                0,
+                1
+              ],
+              [
+                0,
+                6,
+                1,
+                0
+              ]
+            ],
+            "narrow_minus": [
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "n_samples": [
+              6,
+              9,
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "regions_changed": true
+          },
+          "sum": 0.0002087570088582747
+        },
+        {
+          "rank": 2,
+          "min_J": 0.8984021595435417,
+          "min_s": 0.7613146548117894,
+          "largest": {
+            "ray": [
+              1,
+              2
+            ],
+            "excess": 7.039279345085347e-05,
+            "base": [
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "minus": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "narrow_minus": [
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "n_samples": [
+              6,
+              9,
+              6,
+              6,
+              6,
+              6,
+              6
+            ],
+            "regions_changed": true
+          },
+          "sum": 7.039279345072185e-05
+        },
+        {
+          "rank": 3,
+          "min_J": 0.9628861147183583,
+          "min_s": 0.8032538420549605,
+          "largest": {
+            "ray": [
+              1,
+              2
+            ],
+            "excess": 5.690346797319717e-06,
+            "base": [
+              [
+                0,
+                7,
+                0,
+                1
+              ],
+              [
+                0,
+                7,
+                0,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "minus": [
+              [
+                0,
+                7,
+                0,
+                1
+              ],
+              [
+                0,
+                7,
+                0,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ],
+              [
+                0,
+                6,
+                1,
+                0
+              ]
+            ],
+            "narrow_minus": [
+              [
+                0,
+                7,
+                0,
+                1
+              ],
+              [
+                0,
+                7,
+                0,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "n_samples": [
+              9,
+              12,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "regions_changed": true
+          },
+          "sum": 5.690346797617661e-06
+        },
+        {
+          "rank": 4,
+          "min_J": 0.7318537723160331,
+          "min_s": 0.6832876788894806,
+          "largest": {
+            "ray": [
+              1,
+              1
+            ],
+            "excess": 5.293403282110145e-06,
+            "base": [
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "minus": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "narrow_minus": [
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "n_samples": [
+              3,
+              6,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "regions_changed": true
+          },
+          "sum": 5.2934032735142374e-06
+        },
+        {
+          "rank": 5,
+          "min_J": 0.903553181058504,
+          "min_s": 0.7265884983171162,
+          "largest": {
+            "ray": [
+              1,
+              2
+            ],
+            "excess": -6.586374720087256e-10,
+            "base": [
+              [
+                0,
+                6,
+                0,
+                1
+              ],
+              [
+                0,
+                6,
+                1,
+                0
+              ]
+            ],
+            "minus": [
+              [
+                0,
+                6,
+                0,
+                1
+              ],
+              [
+                0,
+                6,
+                1,
+                0
+              ]
+            ],
+            "narrow_minus": [
+              [
+                0,
+                6,
+                0,
+                1
+              ],
+              [
+                0,
+                6,
+                1,
+                0
+              ]
+            ],
+            "n_samples": [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "regions_changed": false
+          },
+          "sum": -6.972110183839971e-10
+        },
+        {
+          "rank": 6,
+          "min_J": 0.9031576364465231,
+          "min_s": 0.7456866328538285,
+          "largest": {
+            "ray": [
+              1,
+              0
+            ],
+            "excess": -1.5723943631515414e-10,
+            "base": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "minus": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "narrow_minus": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "n_samples": [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "regions_changed": false
+          },
+          "sum": -2.498915995733774e-10
+        },
+        {
+          "rank": 7,
+          "min_J": 0.9032614620550412,
+          "min_s": 0.7593926705189401,
+          "largest": {
+            "ray": [
+              1,
+              0
+            ],
+            "excess": -9.209062820040442e-11,
+            "base": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "minus": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "narrow_minus": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "n_samples": [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "regions_changed": false
+          },
+          "sum": -1.8357781358154922e-10
+        },
+        {
+          "rank": 8,
+          "min_J": 0.9048193497097308,
+          "min_s": 0.7366725534677332,
+          "largest": {
+            "ray": [
+              1,
+              0
+            ],
+            "excess": -4.048252640227734e-11,
+            "base": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "minus": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "narrow_minus": [
+              [
+                0,
+                6,
+                1,
+                0
+              ],
+              [
+                0,
+                6,
+                0,
+                1
+              ]
+            ],
+            "n_samples": [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "regions_changed": false
+          },
+          "sum": -4.049769268305199e-11
+        },
+        {
+          "rank": 9,
+          "min_J": 0.9073452606626118,
+          "min_s": 0.731003170909166,
+          "largest": {
+            "ray": [
+              1,
+              2
+            ],
+            "excess": -1.9527815643812993e-11,
+            "base": [
+              [
+                0,
+                6,
+                0,
+                1
+              ],
+              [
+                0,
+                6,
+                1,
+                0
+              ]
+            ],
+            "minus": [
+              [
+                0,
+                6,
+                0,
+                1
+              ],
+              [
+                0,
+                6,
+                1,
+                0
+              ]
+            ],
+            "narrow_minus": [
+              [
+                0,
+                6,
+                0,
+                1
+              ],
+              [
+                0,
+                6,
+                1,
+                0
+              ]
+            ],
+            "n_samples": [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "regions_changed": false
+          },
+          "sum": -2.5133982528157024e-11
+        },
+        {
+          "rank": 10,
+          "min_J": 1.341495871984915,
+          "min_s": 0.803441013831178,
+          "largest": {
+            "ray": [
+              0,
+              0
+            ],
+            "excess": 1.6011869767899e-12,
+            "base": [
+              [
+                0,
+                7,
+                2,
+                1
+              ],
+              [
+                0,
+                7,
+                2,
+                0
+              ],
+              [
+                0,
+                6,
+                2,
+                1
+              ],
+              [
+                0,
+                6,
+                3,
+                0
+              ]
+            ],
+            "minus": [
+              [
+                0,
+                7,
+                2,
+                1
+              ],
+              [
+                0,
+                7,
+                2,
+                0
+              ],
+              [
+                0,
+                6,
+                2,
+                1
+              ],
+              [
+                0,
+                6,
+                3,
+                0
+              ]
+            ],
+            "narrow_minus": [
+              [
+                0,
+                7,
+                2,
+                1
+              ],
+              [
+                0,
+                7,
+                2,
+                0
+              ],
+              [
+                0,
+                6,
+                2,
+                1
+              ],
+              [
+                0,
+                6,
+                3,
+                0
+              ]
+            ],
+            "n_samples": [
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15
+            ],
+            "regions_changed": false
+          },
+          "sum": 2.2909028495022524e-12
+        }
+      ],
+      "certificate": {
+        "depth8_samples_min": 1.5686515812421364e-07,
+        "depth8_lower": -2.7382307051530985e-08,
+        "depth9_min_of_all_8_child_lower": 6.474142553634424e-08
+      }
+    },
+    "convention": "derr arrays report centered minus analytic energy derivatives; chart coefficients enclose. The singular values quoted for cells are the smallest sampled in the saved banks."
+  },
+  "review_onsets": {
+    "command": [
+      "/usr/bin/python3",
+      "-Bu",
+      "_scratch/s11c/r4_depth_cert01/review_onsets.py"
+    ],
+    "script_sha256": "fb9437343b92d8e8b945d4d38033510248b5e1e565b4b18fafe69b8f19312a0e",
+    "stdout_sha256": "c9336fe36a374503f84ad106a787878e33fddf4e47b4e0ff843fac3f6676e83a",
+    "measurement": [
+      {
+        "cell": [
+          23,
+          2,
+          5
+        ],
+        "ray": [
+          1,
+          1
+        ],
+        "face": "outer",
+        "hstar": -3.599849564927515e-06,
+        "cap": 0.00015094429542061378,
+        "minus_wide_signed_excess": 0.00020875706084877633,
+        "local_jump_estimate": 0.0002089165732355597,
+        "ratio": 1.0007641053487475
+      },
+      {
+        "cell": [
+          23,
+          2,
+          1
+        ],
+        "ray": [
+          1,
+          2
+        ],
+        "face": "inner",
+        "hstar": -2.116931972461484e-06,
+        "cap": 0.0011274740769670955,
+        "minus_wide_signed_excess": 7.039279345085347e-05,
+        "local_jump_estimate": 7.039278167550473e-05,
+        "ratio": 0.9999998327193999
+      },
+      {
+        "cell": [
+          22,
+          2,
+          1
+        ],
+        "ray": [
+          1,
+          2
+        ],
+        "face": "outer",
+        "hstar": -2.116931972461484e-06,
+        "cap": 5.530937224270424e-05,
+        "minus_wide_signed_excess": 5.690346797319717e-06,
+        "local_jump_estimate": 5.690168474345837e-06,
+        "ratio": 0.9999686621957797
+      },
+      {
+        "cell": [
+          24,
+          2,
+          5
+        ],
+        "ray": [
+          1,
+          1
+        ],
+        "face": "inner",
+        "hstar": -3.599849564927515e-06,
+        "cap": 8.784169055904257e-06,
+        "minus_wide_signed_excess": 5.293403282110145e-06,
+        "local_jump_estimate": 5.29380793838897e-06,
+        "ratio": 1.0000764453900939
+      }
+    ],
+    "method": "Cubic interpolation of the smooth ray-end coordinate over the seven saved geometry probes estimates the signed crossing. The new segment slope contribution is estimated by continuation of the three adjacent old-branch integrand samples to the new segment; this estimate is diagnostic and is not an alteration of the stored material energy."
+  },
+  "verdict": "Stop before step 109. Four collar cells acquire a different reference-metric branch across the 1/12 material-depth plane on the wider negative probe. The smaller probes converge on the original branch. The separate melted-cell rejection is a conservative depth-eight subdivision limit; the same chart certifies at depth nine. Neither result establishes physical collapse."
+}

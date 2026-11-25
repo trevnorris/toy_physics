@@ -1,0 +1,1298 @@
+{
+  "source_commit": "cc11a9f3",
+  "convention": "energy slopes are dE/d(ln depth); reported forces have the opposite sign. A physical crystal cell includes both sides of all native radial material cuts. Inactive cells have exactly zero weighted crystal work.",
+  "strengths": {
+    "primary": {
+      "source_state_sha256": "d21586ba828f891f67e4601e8a6145a0cf7f25f003273852b159c0094da63837",
+      "source_shape_sha256": "2f8e0ba338b4d395bbbdb937fbab12bf455cba8ac479904008d774a0aeade2e1",
+      "raw_sha256": "5ccbd42b225897ba6de90c7df1dc9c5a1db0e7186a6e2c3743615530b8a6499a",
+      "source_files": {
+        "mouth_r4_depth_cell_work.py": "20fd20d8e1dd897eb758e8f7c97e1bc427aa1bffdddbff37ab77e7863e04f7d2",
+        "mouth_r4_depth_cell_work.hpp": "6ac179cac531df65de5db454377f269b792bf6d9280ad557a230d4c1dc6b5785"
+      },
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_depth_cell_work.py",
+        "_scratch/s11c",
+        "primary",
+        "_scratch/s11c/r4_depth_cert01"
+      ],
+      "mantissa_bits": 63,
+      "dimensions": [
+        26,
+        54,
+        20
+      ],
+      "active": 6290,
+      "depth": 0.8191403557693495,
+      "exit_radius": 3.306377271246663,
+      "force_sign": "F = -dE/d(log depth)",
+      "shifts": [
+        0.0,
+        -3.814697265625e-06,
+        3.814697265625e-06,
+        -1.9073486328125e-06,
+        1.9073486328125e-06,
+        -9.5367431640625e-07,
+        9.5367431640625e-07
+      ],
+      "baseline_crystal_energy": 0.31214886788071616,
+      "analytic_energy_terms": [
+        "moving physical frame",
+        "transport of material labels",
+        "motion of radial integration cuts"
+      ],
+      "analytic_minus_native_energy_derivative": 2.0932962394720755e-15,
+      "levels": [
+        {
+          "h": 3.814697265625e-06,
+          "energy_derivative_analytic": -0.14085733873599582,
+          "energy_slope_plus": -0.14077453467417195,
+          "energy_slope_minus": -0.14152040742723773,
+          "energy_slope_central": -0.14114747105070485,
+          "energy_error_plus": 8.280406182384573e-05,
+          "energy_error_minus": -0.000663068691241918,
+          "energy_error_central": -0.00029013231470903614,
+          "force_error_central": 0.00029013231470903614,
+          "effective_second_derivative": 195.52606697967155,
+          "halving_ratio": -908146.8599037234
+        },
+        {
+          "h": 1.9073486328125e-06,
+          "energy_derivative_analytic": -0.14085733873599582,
+          "energy_slope_plus": -0.14081593702128467,
+          "energy_slope_minus": -0.14089873981175233,
+          "energy_slope_central": -0.14085733841651848,
+          "energy_error_plus": 4.1401714711140455e-05,
+          "energy_error_minus": -4.140107575652306e-05,
+          "energy_error_central": 3.1947730870290555e-10,
+          "force_error_central": -3.1947730870290555e-10,
+          "effective_second_derivative": 43.41250940871037,
+          "halving_ratio": 4.114341794889311
+        },
+        {
+          "h": 9.5367431640625e-07,
+          "energy_derivative_analytic": -0.14085733873599582,
+          "energy_slope_plus": -0.14083663794133505,
+          "energy_slope_minus": -0.1408780393753572,
+          "energy_slope_central": -0.14085733865834613,
+          "energy_error_plus": 2.0700794660741156e-05,
+          "energy_error_minus": -2.0700639361388487e-05,
+          "energy_error_central": 7.764967633455949e-11,
+          "force_error_central": -7.764967633455949e-11,
+          "effective_second_derivative": 43.41255008118861,
+          "halving_ratio": null
+        }
+      ],
+      "top": [
+        {
+          "cell": [
+            23,
+            2,
+            5
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.0035402214021166955,
+              "energy_slope_plus": -0.0035430737271461526,
+              "energy_slope_minus": -0.003954883088049347,
+              "energy_slope_central": -0.00374897840759775,
+              "energy_error_plus": -2.8523250294569385e-06,
+              "energy_error_minus": -0.00041466168593265094,
+              "energy_error_central": -0.00020875700548105393,
+              "force_error_central": 0.00020875700548105393,
+              "effective_second_derivative": 107.95335310460689,
+              "halving_ratio": -15086690.31568425
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.0035402214021166955,
+              "energy_slope_plus": -0.0035416475784158276,
+              "energy_slope_minus": -0.003538795198143236,
+              "energy_slope_central": -0.003540221388279532,
+              "energy_error_plus": -1.4261762991318897e-06,
+              "energy_error_minus": 1.4262039734595405e-06,
+              "energy_error_central": 1.3837163825390411e-11,
+              "force_error_central": -1.3837163825390411e-11,
+              "effective_second_derivative": -1.4954687483564157,
+              "halving_ratio": 4.097204633616864
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.0035402214021166955,
+              "energy_slope_plus": -0.0035409344936855654,
+              "energy_slope_minus": -0.0035395083037933848,
+              "energy_slope_central": -0.003540221398739475,
+              "energy_error_plus": -7.130915688697446e-07,
+              "energy_error_minus": 7.130983233109125e-07,
+              "energy_error_central": 3.377220583970555e-12,
+              "force_error_central": -3.377220583970555e-12,
+              "effective_second_derivative": -1.4954684923832247,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 1.8569507737385764e-05,
+          "analytic_energy_terms": [
+            -3.8084878024270325e-05,
+            0.00010094920579425086,
+            -0.003603085729886676
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            1
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": 7.18692585173727e-06,
+              "energy_slope_plus": 7.187177599508014e-06,
+              "energy_slope_minus": -0.000133598912798195,
+              "energy_slope_central": -6.32058675993435e-05,
+              "energy_error_plus": 2.5174777074452364e-10,
+              "energy_error_minus": -0.00014078583864993228,
+              "energy_error_central": -7.039279345108077e-05,
+              "force_error_central": 7.039279345108077e-05,
+              "effective_second_derivative": 36.90622888121546,
+              "halving_ratio": -38702653537946.31
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": 7.18692585173727e-06,
+              "energy_slope_plus": 7.1870517256229956e-06,
+              "energy_slope_minus": 7.186799977855181e-06,
+              "energy_slope_central": 7.186925851739088e-06,
+              "energy_error_plus": 1.2587388572601346e-10,
+              "energy_error_minus": -1.2587388208839242e-10,
+              "energy_error_central": 1.818810521145885e-18,
+              "force_error_central": -1.818810521145885e-18,
+              "effective_second_derivative": 0.00013198833369187923,
+              "halving_ratio": -0.005068568829856401
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": 7.18692585173727e-06,
+              "energy_slope_plus": 7.186988788066679e-06,
+              "energy_slope_minus": 7.186862914690178e-06,
+              "energy_slope_central": 7.1869258513784285e-06,
+              "energy_error_plus": 6.293632940925095e-11,
+              "energy_error_minus": -6.293704709133527e-11,
+              "energy_error_central": -3.5884104215615716e-16,
+              "force_error_central": 3.5884104215615716e-16,
+              "effective_second_derivative": 0.0001319878016374787,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 1.8471314175828885e-06,
+          "analytic_energy_terms": [
+            -3.755865052937188e-06,
+            1.0942790904674458e-05,
+            0.0
+          ]
+        },
+        {
+          "cell": [
+            22,
+            2,
+            1
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": 2.225337656911883e-06,
+              "energy_slope_plus": 2.2257322367299766e-06,
+              "energy_slope_minus": -9.155750519146806e-06,
+              "energy_slope_central": -3.465009141208415e-06,
+              "energy_error_plus": 3.9457981809340506e-10,
+              "energy_error_minus": -1.1381088176058689e-05,
+              "energy_error_central": -5.690346798120298e-06,
+              "force_error_central": 5.690346798120298e-06,
+              "effective_second_derivative": 2.9835874155565634,
+              "halving_ratio": 45718328158.46373
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": 2.225337656911883e-06,
+              "energy_slope_plus": 2.225534946941629e-06,
+              "energy_slope_minus": 2.2251403666332065e-06,
+              "energy_slope_central": 2.225337656787418e-06,
+              "energy_error_plus": 1.9729002974604912e-10,
+              "energy_error_minus": -1.9729027867670898e-10,
+              "energy_error_central": -1.2446532993063653e-16,
+              "force_error_central": 1.2446532993063653e-16,
+              "effective_second_derivative": 0.000206873720742351,
+              "halving_ratio": 0.24765235882993036
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": 2.225337656911883e-06,
+              "energy_slope_plus": 2.225436301042075e-06,
+              "energy_slope_minus": 2.2252390117765298e-06,
+              "energy_slope_central": 2.2253376564093023e-06,
+              "energy_error_plus": 9.86441301916966e-11,
+              "energy_error_minus": -9.864513535337177e-11,
+              "energy_error_central": -5.025808375849562e-16,
+              "force_error_central": 5.025808375849562e-16,
+              "effective_second_derivative": 0.0002068727889081856,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 1.3353095538426015e-06,
+          "analytic_energy_terms": [
+            -2.7700256806448514e-06,
+            1.9343620195743447e-06,
+            3.06100131798239e-06
+          ]
+        },
+        {
+          "cell": [
+            24,
+            2,
+            5
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -1.100335332677498e-05,
+              "energy_slope_plus": -1.100204924255662e-05,
+              "energy_slope_minus": -2.15914639714156e-05,
+              "energy_slope_central": -1.629675660698611e-05,
+              "energy_error_plus": 1.3040842183602134e-09,
+              "energy_error_minus": -1.0588110644640618e-05,
+              "energy_error_central": -5.293403280211129e-06,
+              "force_error_central": 5.293403280211129e-06,
+              "effective_second_derivative": 2.775951534682008,
+              "halving_ratio": -3227898948.4550056
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -1.100335332677498e-05,
+              "energy_slope_plus": -1.1002701284737286e-05,
+              "energy_slope_minus": -1.1004005365532893e-05,
+              "energy_slope_central": -1.100335332513509e-05,
+              "energy_error_plus": 6.520420376947115e-10,
+              "energy_error_minus": -6.520387579121875e-10,
+              "energy_error_central": 1.6398912620064366e-15,
+              "force_error_central": -1.6398912620064366e-15,
+              "effective_second_derivative": 0.0006837139121671498,
+              "halving_ratio": -0.24481503512731978
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -1.100335332677498e-05,
+              "energy_slope_plus": -1.1003027314486491e-05,
+              "energy_slope_minus": -1.1003679352460452e-05,
+              "energy_slope_central": -1.1003353333473471e-05,
+              "energy_error_plus": 3.260122884897302e-10,
+              "energy_error_minus": -3.260256854713425e-10,
+              "energy_error_central": -6.698490806145081e-15,
+              "force_error_central": 6.698490806145081e-15,
+              "effective_second_derivative": 0.0006837113705842057,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 2.380226395182637e-05,
+          "analytic_energy_terms": [
+            -3.3768479153195934e-05,
+            0.00010074771209932934,
+            -7.798258627290838e-05
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            9
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.024430211292143386,
+              "energy_slope_plus": -0.024449120868459913,
+              "energy_slope_minus": -0.02441130022962219,
+              "energy_slope_central": -0.02443021054904105,
+              "energy_error_plus": -1.8909576316526577e-05,
+              "energy_error_minus": 1.891106252119577e-05,
+              "energy_error_central": 7.431023345946586e-10,
+              "force_error_central": -7.431023345946586e-10,
+              "effective_second_derivative": -9.914453547475887,
+              "halving_ratio": 4.0007736922388535
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.024430211292143386,
+              "energy_slope_plus": -0.02443966626566471,
+              "energy_slope_minus": -0.024420755947142745,
+              "energy_slope_central": -0.024430211106403726,
+              "energy_error_plus": -9.454973521324918e-06,
+              "energy_error_minus": 9.45534500063955e-06,
+              "energy_error_central": 1.857396573158365e-10,
+              "force_error_central": -1.857396573158365e-10,
+              "effective_second_derivative": -9.914453077243707,
+              "halving_ratio": 4.04738159052496
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.024430211292143386,
+              "energy_slope_plus": -0.02443493882503754,
+              "energy_slope_minus": -0.0244254836674666,
+              "energy_slope_central": -0.02443021124625207,
+              "energy_error_plus": -4.727532894156976e-06,
+              "energy_error_minus": 4.727624676783922e-06,
+              "energy_error_central": 4.5891313473050955e-11,
+              "force_error_central": -4.5891313473050955e-11,
+              "effective_second_derivative": -9.914451305106923,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 4.526235179452612e-05,
+          "analytic_energy_terms": [
+            -0.00011332935385409336,
+            0.0002301438349494019,
+            -0.024547025773238692
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            13
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.0348485822851791,
+              "energy_slope_plus": -0.034824777862151705,
+              "energy_slope_minus": -0.034872386176818586,
+              "energy_slope_central": -0.034848582019485146,
+              "energy_error_plus": 2.3804423027390323e-05,
+              "energy_error_minus": -2.3803891639486632e-05,
+              "energy_error_central": 2.656939518454215e-10,
+              "force_error_central": -2.656939518454215e-10,
+              "effective_second_derivative": 12.480234040033793,
+              "halving_ratio": 4.002969042762923
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.0348485822851791,
+              "energy_slope_plus": -0.0348366801395448,
+              "energy_slope_minus": -0.034860484298064945,
+              "energy_slope_central": -0.03484858221880488,
+              "energy_error_plus": 1.1902145634292849e-05,
+              "energy_error_minus": -1.1902012885850877e-05,
+              "energy_error_central": 6.637422098623941e-11,
+              "force_error_central": -6.637422098623941e-11,
+              "effective_second_derivative": 12.480234662209114,
+              "halving_ratio": 4.200276816125995
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.0348485822851791,
+              "energy_slope_plus": -0.034842631228555465,
+              "energy_slope_minus": -0.03485453331019804,
+              "energy_slope_central": -0.03484858226937675,
+              "energy_error_plus": 5.951056623632328e-06,
+              "energy_error_minus": -5.951025018943451e-06,
+              "energy_error_central": 1.5802344438683395e-11,
+              "force_error_central": -1.5802344438683395e-11,
+              "effective_second_derivative": 12.48023716044554,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 0.00010696111829793409,
+          "analytic_energy_terms": [
+            -0.00030880478362189614,
+            0.0004146800690875271,
+            -0.03495445757064473
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            8
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.01595664677347239,
+              "energy_slope_plus": -0.015940876333512433,
+              "energy_slope_minus": -0.015972416822578075,
+              "energy_slope_central": -0.015956646578045255,
+              "energy_error_plus": 1.5770439959959306e-05,
+              "energy_error_minus": -1.5770049105683752e-05,
+              "energy_error_central": 1.9542713777673465e-10,
+              "force_error_central": -1.9542713777673465e-10,
+              "effective_second_derivative": 8.268149965623934,
+              "halving_ratio": 4.001922965411677
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.01595664677347239,
+              "energy_slope_plus": -0.015948761602099987,
+              "energy_slope_minus": -0.01596453184717818,
+              "energy_slope_central": -0.015956646724639083,
+              "energy_error_plus": 7.885171372405189e-06,
+              "energy_error_minus": -7.885073705788682e-06,
+              "energy_error_central": 4.883330825350635e-11,
+              "force_error_central": -4.883330825350635e-11,
+              "effective_second_derivative": 8.268150251556108,
+              "halving_ratio": 4.121190657550275
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.01595664677347239,
+              "energy_slope_plus": -0.015952704199804827,
+              "energy_slope_minus": -0.015960589323441316,
+              "energy_slope_central": -0.01595664676162307,
+              "energy_error_plus": 3.9425736675648715e-06,
+              "energy_error_minus": -3.942549968924206e-06,
+              "energy_error_central": 1.1849320332715189e-11,
+              "force_error_central": -1.1849320332715189e-11,
+              "effective_second_derivative": 8.268151402255171,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 3.994423380360545e-05,
+          "analytic_energy_terms": [
+            -9.570383510982206e-05,
+            0.0002003254777890195,
+            -0.01606126841615159
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            14
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.010711750792951474,
+              "energy_slope_plus": -0.010706488575940636,
+              "energy_slope_minus": -0.010717012924136828,
+              "energy_slope_central": -0.010711750750038732,
+              "energy_error_plus": 5.262217010839362e-06,
+              "energy_error_minus": -5.262131185352606e-06,
+              "energy_error_central": 4.2912743377946315e-11,
+              "force_error_central": -4.2912743377946315e-11,
+              "effective_second_derivative": 2.7588947335425473,
+              "halving_ratio": 4.0046051125710616
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.010711750792951474,
+              "energy_slope_plus": -0.010709119695006663,
+              "energy_slope_minus": -0.010714381869464589,
+              "energy_slope_central": -0.010711750782235626,
+              "energy_error_plus": 2.6310979448120245e-06,
+              "energy_error_minus": -2.631076513114181e-06,
+              "energy_error_central": 1.0715848921841685e-11,
+              "force_error_central": -1.0715848921841685e-11,
+              "effective_second_derivative": 2.7588949221972143,
+              "halving_ratio": 4.437103760803664
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.010711750792951474,
+              "energy_slope_plus": -0.010710435246561338,
+              "energy_slope_minus": -0.010713066334511502,
+              "energy_slope_central": -0.01071175079053642,
+              "energy_error_plus": 1.3155463901368317e-06,
+              "energy_error_minus": -1.3155415600271478e-06,
+              "energy_error_central": 2.4150548419676334e-12,
+              "force_error_central": -2.4150548419676334e-12,
+              "effective_second_derivative": 2.758895678431145,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 0.00010242154314943149,
+          "analytic_energy_terms": [
+            -0.0003187673440330428,
+            0.0004346916942836051,
+            -0.010827675143202037
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            4
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.0049546932432340115,
+              "energy_slope_plus": -0.0049567568958920364,
+              "energy_slope_minus": -0.004952629537199017,
+              "energy_slope_central": -0.004954693216545527,
+              "energy_error_plus": -2.063652658024836e-06,
+              "energy_error_minus": 2.0637060349940642e-06,
+              "energy_error_central": 2.6688484614055942e-11,
+              "force_error_central": -2.6688484614055942e-11,
+              "effective_second_derivative": -1.0819623172227466,
+              "halving_ratio": 4.004213830021383
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.0049546932432340115,
+              "energy_slope_plus": -0.004955725076156598,
+              "energy_slope_minus": -0.0049536613969812255,
+              "energy_slope_central": -0.004954693236568912,
+              "energy_error_plus": -1.0318329225868081e-06,
+              "energy_error_minus": 1.0318462527863164e-06,
+              "energy_error_central": 6.665099754154093e-12,
+              "force_error_central": -6.665099754154093e-12,
+              "effective_second_derivative": -1.0819622274980247,
+              "halving_ratio": 4.287610797655359
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.0049546932432340115,
+              "energy_slope_plus": -0.004955209161302817,
+              "energy_slope_minus": -0.004954177322056202,
+              "energy_slope_central": -0.004954693241679509,
+              "energy_error_plus": -5.159180688055583e-07,
+              "energy_error_minus": 5.159211778096488e-07,
+              "energy_error_central": 1.5545020452413364e-12,
+              "force_error_central": -1.5545020452413364e-12,
+              "effective_second_derivative": -1.0819618698587874,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 1.5231308214082662e-05,
+          "analytic_energy_terms": [
+            -2.8893435523967242e-05,
+            6.972519119373414e-05,
+            -0.004995524998903779
+          ]
+        },
+        {
+          "cell": [
+            23,
+            8,
+            15
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -2.9126729217455224e-06,
+              "energy_slope_plus": -2.9055738318827136e-06,
+              "energy_slope_minus": -2.9197768954295975e-06,
+              "energy_slope_central": -2.9126753636561555e-06,
+              "energy_error_plus": 7.099089862808807e-09,
+              "energy_error_minus": -7.103973684075053e-09,
+              "energy_error_central": -2.4419106331226684e-12,
+              "force_error_central": 2.4419106331226684e-12,
+              "effective_second_derivative": 0.0037232478904343225,
+              "halving_ratio": 3.9951711036021034
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -2.9126729217455224e-06,
+              "energy_slope_plus": -2.909122764262889e-06,
+              "energy_slope_minus": -2.9162243016592204e-06,
+              "energy_slope_central": -2.912673532961055e-06,
+              "energy_error_plus": 3.550157482633217e-09,
+              "energy_error_minus": -3.5513799136980197e-09,
+              "energy_error_central": -6.11215532401355e-13,
+              "force_error_central": 6.11215532401355e-13,
+              "effective_second_derivative": 0.0037232508384477114,
+              "halving_ratio": 4.047584242636805
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -2.9126729217455224e-06,
+              "energy_slope_plus": -2.910897691979844e-06,
+              "energy_slope_minus": -2.9144484535261785e-06,
+              "energy_slope_central": -2.9126730727530113e-06,
+              "energy_error_plus": 1.775229765678351e-09,
+              "energy_error_minus": -1.7755317806560568e-09,
+              "energy_error_central": -1.5100748885295037e-13,
+              "force_error_central": 1.5100748885295037e-13,
+              "effective_second_derivative": 0.003723243339209148,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 5.946431103162515e-06,
+          "analytic_energy_terms": [
+            -1.9354437690080365e-07,
+            5.847667128476331e-07,
+            -3.303895257692352e-06
+          ]
+        }
+      ],
+      "cumulative": {
+        "1": {
+          "signed_force_error": 0.00020875700548105393,
+          "relative_to_total": 0.7195166035704528,
+          "absolute_concentration": 0.719517123964207
+        },
+        "5": {
+          "signed_force_error": 0.00029013280590813154,
+          "relative_to_total": 0.9999921708511483,
+          "absolute_concentration": 0.9999980165616024
+        },
+        "10": {
+          "signed_force_error": 0.00029013227762772454,
+          "relative_to_total": 0.9999903500426763,
+          "absolute_concentration": 0.9999998542043258
+        }
+      },
+      "signed_sum_cell_force_error": 0.0002901323147090361,
+      "archived_total_force_error": 0.00029013507741883974,
+      "noncell_remainder": 2.7627098036305948e-09
+    },
+    "secondary": {
+      "source_state_sha256": "e2c2e2afb9af55e972b57a46b22527a0ba9983fbab173446b17164457564ed10",
+      "source_shape_sha256": "c4c0db0679d059428d354c408f42e6122c73c3a117f1c947f4857bf610bc47ef",
+      "raw_sha256": "d366e5e4b4d33f4d5284073148364a17cb71f3ee903effdb7f2cf04d8856affd",
+      "source_files": {
+        "mouth_r4_depth_cell_work.py": "20fd20d8e1dd897eb758e8f7c97e1bc427aa1bffdddbff37ab77e7863e04f7d2",
+        "mouth_r4_depth_cell_work.hpp": "6ac179cac531df65de5db454377f269b792bf6d9280ad557a230d4c1dc6b5785"
+      },
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_depth_cell_work.py",
+        "_scratch/s11c",
+        "secondary",
+        "_scratch/s11c/r4_depth_cert01"
+      ],
+      "mantissa_bits": 63,
+      "dimensions": [
+        26,
+        54,
+        20
+      ],
+      "active": 6290,
+      "depth": 0.8191403557693495,
+      "exit_radius": 3.306377271246663,
+      "force_sign": "F = -dE/d(log depth)",
+      "shifts": [
+        0.0,
+        -3.814697265625e-06,
+        3.814697265625e-06,
+        -1.9073486328125e-06,
+        1.9073486328125e-06,
+        -9.5367431640625e-07,
+        9.5367431640625e-07
+      ],
+      "baseline_crystal_energy": 0.31214886696676614,
+      "analytic_energy_terms": [
+        "moving physical frame",
+        "transport of material labels",
+        "motion of radial integration cuts"
+      ],
+      "analytic_minus_native_energy_derivative": 2.1145737071071036e-15,
+      "levels": [
+        {
+          "h": 3.814697265625e-06,
+          "energy_derivative_analytic": -0.14085733815157606,
+          "energy_slope_plus": -0.14077453409005836,
+          "energy_slope_minus": -0.14152040684104883,
+          "energy_slope_central": -0.1411474704655536,
+          "energy_error_plus": 8.280406151770243e-05,
+          "energy_error_minus": -0.000663068689472786,
+          "energy_error_central": -0.0002901323139775418,
+          "force_error_central": 0.0002901323139775418,
+          "effective_second_derivative": 195.5260664356506,
+          "halving_ratio": -908147.5087161193
+        },
+        {
+          "h": 1.9073486328125e-06,
+          "energy_derivative_analytic": -0.14085733815157606,
+          "energy_slope_plus": -0.14081593643702217,
+          "energy_slope_minus": -0.14089873922717577,
+          "energy_slope_central": -0.14085733783209897,
+          "energy_error_plus": 4.1401714553878e-05,
+          "energy_error_minus": -4.14010755997187e-05,
+          "energy_error_central": 3.194770796516441e-10,
+          "force_error_central": -3.194770796516441e-10,
+          "effective_second_derivative": 43.412509244048906,
+          "halving_ratio": 4.114428422675137
+        },
+        {
+          "h": 9.5367431640625e-07,
+          "energy_derivative_analytic": -0.14085733815157606,
+          "energy_slope_plus": -0.14083663735700597,
+          "energy_slope_minus": -0.14087803879085015,
+          "energy_slope_central": -0.14085733807392806,
+          "energy_error_plus": 2.070079457007071e-05,
+          "energy_error_minus": -2.070063927409914e-05,
+          "energy_error_central": 7.764798577876951e-11,
+          "force_error_central": -7.764798577876951e-11,
+          "effective_second_derivative": 43.412549894584245,
+          "halving_ratio": null
+        }
+      ],
+      "top": [
+        {
+          "cell": [
+            23,
+            2,
+            5
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.0035402213931797575,
+              "energy_slope_plus": -0.0035430737182023885,
+              "energy_slope_minus": -0.00395488307807384,
+              "energy_slope_central": -0.0037489783981381145,
+              "energy_error_plus": -2.852325022630801e-06,
+              "energy_error_minus": -0.0004146616848940824,
+              "energy_error_central": -0.0002087570049583566,
+              "force_error_central": 0.0002087570049583566,
+              "effective_second_derivative": 107.95335283414181,
+              "halving_ratio": -15086689.804142643
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.0035402213931797575,
+              "energy_slope_plus": -0.0035416475694754765,
+              "energy_slope_minus": -0.0035387951892097104,
+              "energy_slope_central": -0.0035402213793425934,
+              "energy_error_plus": -1.4261762957188204e-06,
+              "energy_error_minus": 1.4262039700473402e-06,
+              "energy_error_central": 1.3837164259918313e-11,
+              "force_error_central": -1.3837164259918313e-11,
+              "effective_second_derivative": -1.4954687447780088,
+              "halving_ratio": 4.097204761253606
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.0035402213931797575,
+              "energy_slope_plus": -0.0035409344847469205,
+              "energy_slope_minus": -0.0035395082948581538,
+              "energy_slope_central": -0.003540221389802537,
+              "energy_error_plus": -7.130915671627758e-07,
+              "energy_error_minus": 7.130983216039454e-07,
+              "energy_error_central": 3.377220584817588e-12,
+              "force_error_central": -3.377220584817588e-12,
+              "effective_second_derivative": -1.4954684888034535,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 1.8569507689135226e-05,
+          "analytic_energy_terms": [
+            -3.8084877926160796e-05,
+            0.00010094920553775145,
+            -0.0036030857207913483
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            1
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": 7.186925833722373e-06,
+              "energy_slope_plus": 7.187177581492558e-06,
+              "energy_slope_minus": -0.0001335989124548661,
+              "energy_slope_central": -6.320586743668677e-05,
+              "energy_error_plus": 2.5174777018506334e-10,
+              "energy_error_minus": -0.0001407858382885885,
+              "energy_error_central": -7.039279327040914e-05,
+              "force_error_central": 7.039279327040914e-05,
+              "effective_second_derivative": 36.906228786491205,
+              "halving_ratio": -38496375988206.09
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": 7.186925833722373e-06,
+              "energy_slope_plus": 7.187051707607784e-06,
+              "energy_slope_minus": 7.18679995984062e-06,
+              "energy_slope_central": 7.186925833724202e-06,
+              "energy_error_plus": 1.2587388541049865e-10,
+              "energy_error_minus": -1.2587388175338593e-10,
+              "energy_error_central": 1.828556363122985e-18,
+              "force_error_central": -1.828556363122985e-18,
+              "effective_second_derivative": 0.00013198833335081872,
+              "halving_ratio": -0.00509432720567404
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": 7.186925833722373e-06,
+              "energy_slope_plus": 7.186988770051684e-06,
+              "energy_slope_minus": 7.186862896675183e-06,
+              "energy_slope_central": 7.186925833363434e-06,
+              "energy_error_plus": 6.293632931057658e-11,
+              "energy_error_minus": -6.293704719000964e-11,
+              "energy_error_central": -3.589397165314286e-16,
+              "force_error_central": 3.589397165314286e-16,
+              "effective_second_derivative": 0.0001319878016374787,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 1.847131412797667e-06,
+          "analytic_energy_terms": [
+            -3.7558650433102007e-06,
+            1.0942790877032575e-05,
+            0.0
+          ]
+        },
+        {
+          "cell": [
+            22,
+            2,
+            1
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": 2.2253376511452373e-06,
+              "energy_slope_plus": 2.225732230962238e-06,
+              "energy_slope_minus": -9.155750495702019e-06,
+              "energy_slope_central": -3.4650091323698903e-06,
+              "energy_error_plus": 3.94579817000606e-10,
+              "energy_error_minus": -1.1381088146847255e-05,
+              "energy_error_central": -5.690346783515128e-06,
+              "force_error_central": 5.690346783515128e-06,
+              "effective_second_derivative": 2.983587407898675,
+              "halving_ratio": 45725127430.62708
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": 2.2253376511452373e-06,
+              "energy_slope_plus": 2.225534941174541e-06,
+              "energy_slope_minus": 2.22514036086704e-06,
+              "energy_slope_central": 2.2253376510207904e-06,
+              "energy_error_plus": 1.9729002930377136e-10,
+              "energy_error_minus": -1.972902781974149e-10,
+              "energy_error_central": -1.2444682176443065e-16,
+              "force_error_central": 1.2444682176443065e-16,
+              "effective_second_derivative": 0.00020687372025918194,
+              "halving_ratio": 0.24753119972605273
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": 2.2253376511452373e-06,
+              "energy_slope_plus": 2.2254362952749867e-06,
+              "energy_slope_minus": 2.2252390060099837e-06,
+              "energy_slope_central": 2.225337650642485e-06,
+              "energy_error_plus": 9.864412974941884e-11,
+              "energy_error_minus": -9.864513525354844e-11,
+              "energy_error_central": -5.027520647989353e-16,
+              "force_error_central": 5.027520647989353e-16,
+              "effective_second_derivative": 0.00020687278833975142,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 1.3353095502713951e-06,
+          "analytic_energy_terms": [
+            -2.77002567328315e-06,
+            1.9343620145352513e-06,
+            3.061001309893136e-06
+          ]
+        },
+        {
+          "cell": [
+            24,
+            2,
+            5
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -1.1003353293737211e-05,
+              "energy_slope_plus": -1.1002049209521414e-05,
+              "energy_slope_minus": -2.1591463911867746e-05,
+              "energy_slope_central": -1.629675656069458e-05,
+              "energy_error_plus": 1.3040842157971314e-09,
+              "energy_error_minus": -1.0588110618130535e-05,
+              "energy_error_central": -5.293403266957369e-06,
+              "force_error_central": 5.293403266957369e-06,
+              "effective_second_derivative": 2.775951527731877,
+              "halving_ratio": -3227822169.7589607
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -1.1003353293737211e-05,
+              "energy_slope_plus": -1.1002701251700345e-05,
+              "energy_slope_minus": -1.1004005332494217e-05,
+              "energy_slope_central": -1.100335329209728e-05,
+              "energy_error_plus": 6.52042036866353e-10,
+              "energy_error_minus": -6.520387570058225e-10,
+              "energy_error_central": 1.6399302652266797e-15,
+              "force_error_central": -1.6399302652266797e-15,
+              "effective_second_derivative": 0.0006837139112576551,
+              "halving_ratio": -0.2448222833387581
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -1.1003353293737211e-05,
+              "energy_slope_plus": -1.1003027281452152e-05,
+              "energy_slope_minus": -1.1003679319419174e-05,
+              "energy_slope_central": -1.1003353300435663e-05,
+              "energy_error_plus": 3.2601228505928645e-10,
+              "energy_error_minus": -3.260256819628923e-10,
+              "energy_error_central": -6.698451802924838e-15,
+              "force_error_central": 6.698451802924838e-15,
+              "effective_second_derivative": 0.0006837113633082481,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 2.3802263892452446e-05,
+          "analytic_energy_terms": [
+            -3.3768479068849185e-05,
+            0.00010074771184967278,
+            -7.79825860745608e-05
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            9
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.024430211230305688,
+              "energy_slope_plus": -0.024449120806577865,
+              "energy_slope_minus": -0.024411300167828855,
+              "energy_slope_central": -0.024430210487203362,
+              "energy_error_plus": -1.8909576272179164e-05,
+              "energy_error_minus": 1.8911062476832026e-05,
+              "energy_error_central": 7.431023264292609e-10,
+              "force_error_central": -7.431023264292609e-10,
+              "effective_second_derivative": -9.91445352422079,
+              "halving_ratio": 4.000773702719885
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.024430211230305688,
+              "energy_slope_plus": -0.02443966620380484,
+              "energy_slope_minus": -0.024420755885327227,
+              "energy_slope_central": -0.02443021104456603,
+              "energy_error_plus": -9.45497349915074e-06,
+              "energy_error_minus": 9.455344978460317e-06,
+              "energy_error_central": 1.857396547882902e-10,
+              "force_error_central": -1.857396547882902e-10,
+              "effective_second_derivative": -9.914453053989746,
+              "halving_ratio": 4.0473817583649705
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.024430211230305688,
+              "energy_slope_plus": -0.024434938763188762,
+              "energy_slope_minus": -0.02442548360563999,
+              "energy_slope_central": -0.024430211184414376,
+              "energy_error_plus": -4.72753288307462e-06,
+              "energy_error_minus": 4.727624665696511e-06,
+              "energy_error_central": 4.589131094550464e-11,
+              "force_error_central": -4.589131094550464e-11,
+              "effective_second_derivative": -9.914451281860238,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 4.526235167606583e-05,
+          "analytic_energy_terms": [
+            -0.00011332935356013637,
+            0.00023014383436167253,
+            -0.024547025711107222
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            13
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.0348485821958576,
+              "energy_slope_plus": -0.034824777772888726,
+              "energy_slope_minus": -0.03487238608743858,
+              "energy_slope_central": -0.03484858193016365,
+              "energy_error_plus": 2.3804422968874407e-05,
+              "energy_error_minus": -2.3803891580983307e-05,
+              "energy_error_central": 2.6569394555027263e-10,
+              "force_error_central": -2.6569394555027263e-10,
+              "effective_second_derivative": 12.4802340093579,
+              "halving_ratio": 4.002969589123444
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.0348485821958576,
+              "energy_slope_plus": -0.034836680050252575,
+              "energy_slope_minus": -0.0348604842087142,
+              "energy_slope_central": -0.034848582129483385,
+              "energy_error_plus": 1.1902145605024371e-05,
+              "energy_error_minus": -1.1902012856603662e-05,
+              "energy_error_central": 6.637421035428186e-11,
+              "force_error_central": -6.637421035428186e-11,
+              "effective_second_derivative": 12.480234631530038,
+              "halving_ratio": 4.200275280572949
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.0348485821958576,
+              "energy_slope_plus": -0.034842631139248584,
+              "energy_slope_minus": -0.03485453322086192,
+              "energy_slope_central": -0.03484858218005525,
+              "energy_error_plus": 5.951056609015325e-06,
+              "energy_error_minus": -5.951025004319956e-06,
+              "energy_error_central": 1.580234768451365e-11,
+              "force_error_central": -1.580234768451365e-11,
+              "effective_second_derivative": 12.480237129784655,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 0.00010696111801815164,
+          "analytic_energy_terms": [
+            -0.000308804782819282,
+            0.00041468006802475007,
+            -0.034954457481063066
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            8
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.01595664673238133,
+              "energy_slope_plus": -0.015940876292460614,
+              "energy_slope_minus": -0.015972416781447774,
+              "energy_slope_central": -0.015956646536954194,
+              "energy_error_plus": 1.5770439920716168e-05,
+              "energy_error_minus": -1.5770049066442796e-05,
+              "energy_error_central": 1.9542713668745028e-10,
+              "force_error_central": -1.9542713668745028e-10,
+              "effective_second_derivative": 8.2681499450498,
+              "halving_ratio": 4.001923103453992
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.01595664673238133,
+              "energy_slope_plus": -0.01594876156102855,
+              "energy_slope_minus": -0.0159645318060675,
+              "energy_slope_central": -0.015956646683548025,
+              "energy_error_plus": 7.885171352780907e-06,
+              "energy_error_minus": -7.885073686168314e-06,
+              "energy_error_central": 4.883330629686024e-11,
+              "force_error_central": -4.883330629686024e-11,
+              "effective_second_derivative": 8.26815023098061,
+              "halving_ratio": 4.121189061267198
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.01595664673238133,
+              "energy_slope_plus": -0.015952704158723574,
+              "energy_slope_minus": -0.01596058928234044,
+              "energy_slope_central": -0.015956646720532007,
+              "energy_error_plus": 3.94257365775739e-06,
+              "energy_error_minus": -3.942549959108495e-06,
+              "energy_error_central": 1.1849324447601246e-11,
+              "force_error_central": -1.1849324447601246e-11,
+              "effective_second_derivative": 8.268151381678763,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 3.99442336992021e-05,
+          "analytic_energy_terms": [
+            -9.570383486182945e-05,
+            0.0002003254772777951,
+            -0.016061268374797297
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            14
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.010711750765620453,
+              "energy_slope_plus": -0.010706488548622325,
+              "energy_slope_minus": -0.01071701289679309,
+              "energy_slope_central": -0.010711750722707707,
+              "energy_error_plus": 5.2622169981279784e-06,
+              "energy_error_minus": -5.262131172636413e-06,
+              "energy_error_central": 4.291274578267285e-11,
+              "force_error_central": -4.291274578267285e-11,
+              "effective_second_derivative": 2.7588947268768607,
+              "halving_ratio": 4.004606383156109
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.010711750765620453,
+              "energy_slope_plus": -0.010709119667682,
+              "energy_slope_minus": -0.010714381842127214,
+              "energy_slope_central": -0.010711750754904607,
+              "energy_error_plus": 2.6310979384531982e-06,
+              "energy_error_minus": -2.6310765067609534e-06,
+              "energy_error_central": 1.0715846122397795e-11,
+              "force_error_central": -1.0715846122397795e-11,
+              "effective_second_derivative": 2.758894915532437,
+              "halving_ratio": 4.437107744974173
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.010711750765620453,
+              "energy_slope_plus": -0.010710435219233483,
+              "energy_slope_minus": -0.010713066307177319,
+              "energy_slope_central": -0.0107117507632054,
+              "energy_error_plus": 1.3155463869698966e-06,
+              "energy_error_minus": -1.3155415568658116e-06,
+              "energy_error_central": 2.4150520425237428e-12,
+              "force_error_central": -2.4150520425237428e-12,
+              "effective_second_derivative": 2.7588956717954716,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 0.00010242154288047221,
+          "analytic_energy_terms": [
+            -0.0003187673432030676,
+            0.0004346916931685737,
+            -0.01082767511558596
+          ]
+        },
+        {
+          "cell": [
+            23,
+            2,
+            4
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -0.004954693230757962,
+              "energy_slope_plus": -0.004956756883411066,
+              "energy_slope_minus": -0.0049526295247278905,
+              "energy_slope_central": -0.004954693204069478,
+              "energy_error_plus": -2.063652653103957e-06,
+              "energy_error_minus": 2.063706030071038e-06,
+              "energy_error_central": 2.668848354044168e-11,
+              "force_error_central": -2.668848354044168e-11,
+              "effective_second_derivative": -1.081962314642226,
+              "halving_ratio": 4.004213597444485
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -0.004954693230757962,
+              "energy_slope_plus": -0.004955725063678088,
+              "energy_slope_minus": -0.004953661384507636,
+              "energy_slope_central": -0.004954693224092862,
+              "energy_error_plus": -1.0318329201259839e-06,
+              "energy_error_minus": 1.0318462503257302e-06,
+              "energy_error_central": 6.665099873162222e-12,
+              "force_error_central": -6.665099873162222e-12,
+              "effective_second_derivative": -1.0819622249177883,
+              "halving_ratio": 4.287615330665812
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -0.004954693230757962,
+              "energy_slope_plus": -0.00495520914882554,
+              "energy_slope_minus": -0.004954177309581383,
+              "energy_slope_central": -0.004954693229203461,
+              "energy_error_plus": -5.159180675781224e-07,
+              "energy_error_minus": 5.159211765789815e-07,
+              "energy_error_central": 1.5545004295259895e-12,
+              "force_error_central": -1.5545004295259895e-12,
+              "effective_second_derivative": -1.0819618672812794,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 1.5231308174742463e-05,
+          "analytic_energy_terms": [
+            -2.8893435449818282e-05,
+            6.972519101689273e-05,
+            -0.004995524986325036
+          ]
+        },
+        {
+          "cell": [
+            23,
+            8,
+            15
+          ],
+          "levels": [
+            {
+              "h": 3.814697265625e-06,
+              "energy_derivative_analytic": -2.9126729041182852e-06,
+              "energy_slope_plus": -2.905573814300749e-06,
+              "energy_slope_minus": -2.919776877756343e-06,
+              "energy_slope_central": -2.912675346028546e-06,
+              "energy_error_plus": 7.099089817536268e-09,
+              "energy_error_minus": -7.103973638057769e-09,
+              "energy_error_central": -2.4419102607505653e-12,
+              "force_error_central": 2.4419102607505653e-12,
+              "effective_second_derivative": 0.003723247866503243,
+              "halving_ratio": 3.9951785978259298
+            },
+            {
+              "h": 1.9073486328125e-06,
+              "energy_derivative_analytic": -2.9126729041182852e-06,
+              "energy_slope_plus": -2.90912274665653e-06,
+              "energy_slope_minus": -2.916224284008626e-06,
+              "energy_slope_central": -2.912673515332578e-06,
+              "energy_error_plus": 3.5501574617552267e-09,
+              "energy_error_minus": -3.5513798903405613e-09,
+              "energy_error_central": -6.112142926675138e-13,
+              "force_error_central": 6.112142926675138e-13,
+              "effective_second_derivative": 0.0037232508152555965,
+              "halving_ratio": 4.047568577441508
+            },
+            {
+              "h": 9.5367431640625e-07,
+              "energy_derivative_analytic": -2.9126729041182852e-06,
+              "energy_slope_plus": -2.9108976743663292e-06,
+              "energy_slope_minus": -2.9144484358857754e-06,
+              "energy_slope_central": -2.9126730551260523e-06,
+              "energy_error_plus": 1.7752297519560948e-09,
+              "energy_error_minus": -1.775531767490099e-09,
+              "energy_error_central": -1.510077670021507e-13,
+              "force_error_central": 1.510077670021507e-13,
+              "effective_second_derivative": 0.003723243311014812,
+              "halving_ratio": null
+            }
+          ],
+          "baseline_energy": 5.946431067131206e-06,
+          "analytic_energy_terms": [
+            -1.935443761237936e-07,
+            5.847667091220432e-07,
+            -3.303895237116535e-06
+          ]
+        }
+      ],
+      "cumulative": {
+        "1": {
+          "signed_force_error": 0.0002087570049583566,
+          "relative_to_total": 0.7195158686618682,
+          "absolute_concentration": 0.7195171239730379
+        },
+        "5": {
+          "signed_force_error": 0.0002901328051769118,
+          "relative_to_total": 0.9999911494505936,
+          "absolute_concentration": 0.9999980165573944
+        },
+        "10": {
+          "signed_force_error": 0.0002901322768965105,
+          "relative_to_total": 0.9999893286439964,
+          "absolute_concentration": 0.9999998542001004
+        }
+      },
+      "signed_sum_cell_force_error": 0.0002901323139775418,
+      "archived_total_force_error": 0.0002901353730343654,
+      "noncell_remainder": 3.0590568236175345e-09
+    }
+  }
+}

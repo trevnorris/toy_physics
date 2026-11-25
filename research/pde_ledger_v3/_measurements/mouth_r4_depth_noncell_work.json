@@ -1,0 +1,122 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_depth_noncell_work.py",
+    "_scratch/s11c/r4_rematch39_01",
+    "_scratch/s11c/r4_depth_cert01/noncell"
+  ],
+  "script_sha256": "9c51af0a2db16c6422505d97bd2a69631edfd2530007e22f6556909aaed409b2",
+  "cases": {
+    "primary": {
+      "state_sha256": "d21586ba828f891f67e4601e8a6145a0cf7f25f003273852b159c0094da63837",
+      "wider_and_narrower_record_sha256": "2f8e0ba338b4d395bbbdb937fbab12bf455cba8ac479904008d774a0aeade2e1",
+      "gauge_strength": 1e-08,
+      "bath_analytic_force": -0.06080389416016701,
+      "gauge_unit_analytic_force": -2.4965937040682626,
+      "ladder": [
+        {
+          "h": 3.814697265625e-06,
+          "bath_force": -0.060803891396470355,
+          "bath_force_error": 2.7636966534738683e-09,
+          "unit_gauge_force": -2.496692179783266,
+          "weighted_gauge_force_error": -9.84757150033211e-13,
+          "noncell_force_error": 2.762711896323835e-09,
+          "archived_crystal_force": 0.14114747105070485,
+          "archived_total_force_error": 0.00029013507741883974,
+          "archived_crystal_force_error": 0.00029013231470695344,
+          "unaccounted_force_error": -1.0028870095490916e-17
+        },
+        {
+          "h": 1.9073486328125e-06,
+          "bath_force": -0.06080389286115029,
+          "bath_force_error": 1.2990167205795267e-09,
+          "unit_gauge_force": -2.496618301245063,
+          "weighted_gauge_force_error": -2.459717680025619e-13,
+          "noncell_force_error": 1.2987707488115241e-09
+        },
+        {
+          "h": 9.5367431640625e-07,
+          "bath_force": -0.060803893226388794,
+          "bath_force_error": 9.337782144736018e-10,
+          "unit_gauge_force": -2.496599852777772,
+          "weighted_gauge_force_error": -6.148709509545825e-14,
+          "noncell_force_error": 9.337167273785063e-10,
+          "archived_crystal_force": 0.14085733865834613,
+          "archived_total_force_error": 8.560649583484671e-10,
+          "archived_crystal_force_error": -7.765177389984501e-11,
+          "unaccounted_force_error": 4.869805826363011e-18
+        }
+      ],
+      "middle_physical_bath_force_terms": [
+        0.015467582756208742,
+        -0.026262261453046776,
+        0.22958818070549114,
+        2.486434254795313,
+        -2.5511482134461403,
+        0.38537501658218787,
+        -0.6002584528011639
+      ]
+    },
+    "secondary": {
+      "state_sha256": "e2c2e2afb9af55e972b57a46b22527a0ba9983fbab173446b17164457564ed10",
+      "wider_and_narrower_record_sha256": "c4c0db0679d059428d354c408f42e6122c73c3a117f1c947f4857bf610bc47ef",
+      "gauge_strength": 1e-10,
+      "bath_analytic_force": -0.060803892992916234,
+      "gauge_unit_analytic_force": -2.4965937053682343,
+      "ladder": [
+        {
+          "h": 3.814697265625e-06,
+          "bath_force": -0.060803889933847444,
+          "bath_force_error": 3.0590687899456626e-09,
+          "unit_gauge_force": -2.496692181083237,
+          "weighted_gauge_force_error": -9.8475715002877e-15,
+          "noncell_force_error": 3.0590589423741624e-09,
+          "archived_crystal_force": 0.1411474704655536,
+          "archived_total_force_error": 0.0002901353730343654,
+          "archived_crystal_force_error": 0.0002901323139754275,
+          "unaccounted_force_error": -4.445228907190568e-18
+        },
+        {
+          "h": 1.9073486328125e-06,
+          "bath_force": -0.06080389279512932,
+          "bath_force_error": 1.9778691184857422e-10,
+          "unit_gauge_force": -2.496618302545035,
+          "weighted_gauge_force_error": -2.4597176800700284e-15,
+          "noncell_force_error": 1.9778445213089414e-10
+        },
+        {
+          "h": 9.5367431640625e-07,
+          "bath_force": -0.06080389222842797,
+          "bath_force_error": 7.644882643598194e-10,
+          "unit_gauge_force": -2.4965998540777408,
+          "weighted_gauge_force_error": -6.148709506437201e-16,
+          "noncell_force_error": 7.644876494888688e-10,
+          "archived_crystal_force": 0.14085733807392806,
+          "archived_total_force_error": 6.868375449279023e-10,
+          "archived_crystal_force_error": -7.765010856530807e-11,
+          "unaccounted_force_error": 4.0043416406998044e-18
+        }
+      ],
+      "middle_physical_bath_force_terms": [
+        0.015467582756137688,
+        -0.02626226145303523,
+        0.22958818070605957,
+        2.486434245482087,
+        -2.551148205064237,
+        0.38537501658233,
+        -0.6002584518044713
+      ]
+    }
+  },
+  "convention": "Forces equal minus the energy derivative in log depth. Errors are centered minus analytic forces.",
+  "physical_bath_terms": [
+    "amplitude gradient",
+    "excess fluid potential",
+    "coherent phase",
+    "order gradient",
+    "order potential",
+    "wall",
+    "exterior crystal"
+  ]
+}

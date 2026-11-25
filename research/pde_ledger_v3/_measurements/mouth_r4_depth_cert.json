@@ -1,0 +1,357 @@
+{
+  "source_checkpoint": "cc11a9f3",
+  "inputs": {
+    "primary": "d21586ba828f891f67e4601e8a6145a0cf7f25f003273852b159c0094da63837",
+    "secondary": "e2c2e2afb9af55e972b57a46b22527a0ba9983fbab173446b17164457564ed10"
+  },
+  "source_measurement_sha256": "5c622b400a9d9cd91df008927976d079040cc143459d1dc0084332556d2b0423",
+  "source_digests": {
+    "mouth_r4_eulerian_solid.cpp": "e798467944c93d1bb99534aa268d2221b8b4e66dcb133246e95c5debbbf96d74",
+    "mouth_cp10_spatial_crystal.cpp": "db6d70ecacd887569435422c039127b647a4b01b422a9c5cdb1cafb1192e9d78",
+    "mouth_free_shape_solid.cpp": "d37b1351e4576ccc5d460a4ae444c1abab9f89f1d83b1e1cb527d836b75a4a03",
+    "mouth_r4_eulerian_solid.py": "51d34d88837b63e2d77dd603227e86393ea6b7a2dd0bba5b3a6707a12db8f38f",
+    "mouth_r4_eulerian_relax_labels.py": "1609778fdced0346b8d3b89823d6086308f3794210e9245608b54a4b1615c8df",
+    "mouth_cp10_label_grid.py": "4aa1512c49764f26f5b8ae27d3b0a084da1d123e7256fd716ac31afa2a733230",
+    "mouth_r4_eulerian_corner_audit.py": "62dd66d8b893bbcc2ffb2627f369a13c50b48504f85f1ca2c4439fc9cc0b7c19",
+    "mouth_r4_refinement_review.py": "28fb3bc6fc283cbe3e33aa25ee9f07b849ca5e53ad159425bd7b89fffa3efdf5",
+    "mouth_r4_edge_descent.py": "a1f6030edd8949637b3ff5d4d6a90a9e343a6b3131cb767e6dabd09d2a54f7b6",
+    "mouth_r4_depth_cert.py": "c29ec283ca9884ec477f5b06d060e538b89ea7e094bee424dc3f5884915bb00c"
+  },
+  "reconstruction": {
+    "node": [
+      25,
+      11,
+      10
+    ],
+    "radial_direction": -6.630945295535191e-09,
+    "parameter": -0.95,
+    "unchanged_input_value": 0.9999394212596694,
+    "trial_value": 0.9999394275590674,
+    "labels_sha256_after": "c5c525fecfe6fa52da6658283c48a3cdb869c905028c9b095038dbc91c6a50ff",
+    "identical_between_gauges": true,
+    "all_eight_cell_orders": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "predicates": {
+    "native": "orientation samples positive, Bernstein minimum <= 0 at depth == 8; returns 3 with lower bound and subbox lower corner",
+    "other": "chart_orientation uses a roundoff margin and de Casteljau subdivision up to depth 12",
+    "native_extra_positive_floor": 0.0,
+    "chart_margin_at_native_cell": 9.281801525842201e-14,
+    "native_location_role": "lower corner of inconclusive subbox; the negative number is a polynomial coefficient enclosure, not a determinant sampled here",
+    "metric_or_cholesky_used_before_refusal": false
+  },
+  "native": {
+    "reason": "unresolved chart orientation bound",
+    "code": 3,
+    "chart_bound": -2.7382330585420528e-08,
+    "cell": [
+      25,
+      11,
+      10
+    ],
+    "local": [
+      0.0,
+      0.0,
+      0.3984375
+    ],
+    "chi": 0.0
+  },
+  "chart": {
+    "chart_det_global_lower": 6.474133271885605e-08,
+    "chart_lowest_cell": [
+      25,
+      11,
+      10
+    ],
+    "chart_det_active_lower": 0.0021257531624534354
+  },
+  "target_cell_exact_proof": {
+    "levels": [
+      {
+        "depth": 0,
+        "visited": 1,
+        "resolved": 0,
+        "unresolved": 1,
+        "minimum_open_coefficient": -0.014371628126066419
+      },
+      {
+        "depth": 1,
+        "visited": 8,
+        "resolved": 7,
+        "unresolved": 1,
+        "minimum_open_coefficient": -0.002410628036572419
+      },
+      {
+        "depth": 2,
+        "visited": 8,
+        "resolved": 7,
+        "unresolved": 1,
+        "minimum_open_coefficient": -0.0009009844490361216
+      },
+      {
+        "depth": 3,
+        "visited": 8,
+        "resolved": 7,
+        "unresolved": 1,
+        "minimum_open_coefficient": -0.00014616265526797294
+      },
+      {
+        "depth": 4,
+        "visited": 8,
+        "resolved": 7,
+        "unresolved": 1,
+        "minimum_open_coefficient": -5.543957513434118e-05
+      },
+      {
+        "depth": 5,
+        "visited": 8,
+        "resolved": 7,
+        "unresolved": 1,
+        "minimum_open_coefficient": -1.0078035067525307e-05
+      },
+      {
+        "depth": 6,
+        "visited": 8,
+        "resolved": 7,
+        "unresolved": 1,
+        "minimum_open_coefficient": -3.500431537326615e-06
+      },
+      {
+        "depth": 7,
+        "visited": 8,
+        "resolved": 7,
+        "unresolved": 1,
+        "minimum_open_coefficient": -2.1162977222726854e-07
+      },
+      {
+        "depth": 8,
+        "visited": 8,
+        "resolved": 7,
+        "unresolved": 1,
+        "minimum_open_coefficient": -2.7382307051527263e-08
+      },
+      {
+        "depth": 9,
+        "visited": 8,
+        "resolved": 8,
+        "unresolved": 0,
+        "minimum_open_coefficient": null
+      }
+    ],
+    "certified_lower": 6.474142553634337e-08,
+    "native_leaf": {
+      "depth": 8,
+      "address": [
+        0,
+        0,
+        102
+      ],
+      "lo": [
+        0.0,
+        0.0,
+        0.3984375
+      ],
+      "hi": [
+        0.00390625,
+        0.00390625,
+        0.40234375
+      ],
+      "coefficient_index": [
+        0,
+        0,
+        1
+      ],
+      "exact_minimum_coefficient": -2.7382307051527263e-08,
+      "min_of_27_actual_samples": 1.56865158124214e-07,
+      "minimum_coefficient_after_one_bisection": 6.474142553634337e-08
+    }
+  },
+  "native_minus_exact_coefficient": -2.353389326490626e-14,
+  "exact_cell_bound_minus_roundoff_buffer_minus_reported_global_bound": -5.279397541558444e-19,
+  "original_edge_minimum": 2.3960118803428543e-06,
+  "trial_edge_minimum_fraction": 0.39922465698591036,
+  "trial_edge_minimum": 1.197370482107782e-07,
+  "points": {
+    "diagnostic_lo": {
+      "chart_singular_values_ascending": [
+        1.1970158602525646e-07,
+        0.9221102306909978,
+        1.4211625230607037
+      ],
+      "exact_chart_det": 1.56865158124214e-07,
+      "rounded_coordinate_physical": {
+        "cell": [
+          25,
+          11,
+          10
+        ],
+        "local": [
+          0.0,
+          0.0,
+          0.3984375
+        ],
+        "material_side": "collar",
+        "physical_chart": [
+          0.9985207100591716,
+          0.34744281502268715,
+          0.6499242861420276
+        ],
+        "physical": {
+          "radius": 3.8510633140555273,
+          "theta": 0.6499242861420276,
+          "cylindrical_radius": 2.3303790374081053,
+          "axial_brane_coordinate": 3.065945562281433,
+          "w": 0.28460443110718825
+        },
+        "label": [
+          0.9999592672731371,
+          0.3483922184638562,
+          0.6487164302138514
+        ],
+        "distance_from_weld_in_label": 0.1174623646885417,
+        "chi": 0.0,
+        "max_vertex_chi": 0.0,
+        "positive_vertices": 0,
+        "chart_det": 1.56865158124214e-07,
+        "Jinv": 2.2683711756794817e-07,
+        "J": 4408449.59908492,
+        "W_formal": 20367949435249.113,
+        "chi_W": 0.0,
+        "chi_Jinv_W": 0.0,
+        "grad_xi_frobenius": 1.0341253888938342,
+        "grad_xi_spectral": 0.9710819888840816,
+        "condition_F": 8927153.669632472,
+        "min_singular_Finv": 1.795511860837433e-07,
+        "max_singular_Finv": 1.6028810297343519
+      },
+      "C_equals_FtF": {
+        "min_eigen": 0.38922203768883906,
+        "max_eigen": 31018689345142.88,
+        "det": 19434427867671.992,
+        "inverse_gram_min_eigen": 3.223862842407901e-14,
+        "eigenvalues_ascending": [
+          0.38922203768883873,
+          0.9297742763565272,
+          1.731304141990753,
+          31018689345142.85
+        ]
+      },
+      "physical_singular_values_Finv_ascending": [
+        1.7955118608374337e-07,
+        0.759999516483195,
+        1.0370775587794787,
+        1.6028810297343525
+      ],
+      "spectrum_product_relative_error_vs_high_precision_Jinv": 8.881784197001252e-16
+    },
+    "quadratic_edge_minimum": {
+      "chart_singular_values_ascending": [
+        9.144480122697998e-08,
+        0.9220341802668894,
+        1.4201117032967259
+      ],
+      "exact_chart_det": 1.197370482107782e-07,
+      "rounded_coordinate_physical": {
+        "cell": [
+          25,
+          11,
+          10
+        ],
+        "local": [
+          0.0,
+          0.0,
+          0.39922465698591036
+        ],
+        "material_side": "collar",
+        "physical_chart": [
+          0.9985207100591716,
+          0.34744281502268715,
+          0.649990890615571
+        ],
+        "physical": {
+          "radius": 3.8510610720626026,
+          "theta": 0.649990890615571,
+          "cylindrical_radius": 2.3305818811216996,
+          "axial_brane_coordinate": 3.0657885569854946,
+          "w": 0.28460443110718825
+        },
+        "label": [
+          0.9999593064686685,
+          0.34839052024205275,
+          0.6487845608206297
+        ],
+        "distance_from_weld_in_label": 0.11746240388407306,
+        "chi": 0.0,
+        "max_vertex_chi": 0.0,
+        "positive_vertices": 0,
+        "chart_det": 1.197370482107782e-07,
+        "Jinv": 1.7314834492229226e-07,
+        "J": 5775394.506073927,
+        "W_formal": 34935705752273.13,
+        "chi_W": 0.0,
+        "chi_Jinv_W": 0.0,
+        "grad_xi_frobenius": 1.0341788047521703,
+        "grad_xi_spectral": 0.9712216420842426,
+        "condition_F": 11683317.196547395,
+        "min_singular_Finv": 1.3711007994681074e-07,
+        "max_singular_Finv": 1.601900554862562
+      },
+      "C_equals_FtF": {
+        "min_eigen": 0.38969864557328454,
+        "max_eigen": 53193826429577.91,
+        "det": 33355181700788.895,
+        "inverse_gram_min_eigen": 1.8799174023020832e-14,
+        "eigenvalues_ascending": [
+          0.38969864557328415,
+          0.9297691364892567,
+          1.7306054091260867,
+          53193826429577.875
+        ]
+      },
+      "physical_singular_values_Finv_ascending": [
+        1.371100799468108e-07,
+        0.7601529261067098,
+        1.0370804253156034,
+        1.6019005548625629
+      ],
+      "spectrum_product_relative_error_vs_high_precision_Jinv": 6.661338147750939e-16
+    }
+  },
+  "float64": {
+    "epsilon": 2.220446049250313e-16,
+    "min_positive_normal": 2.2250738585072014e-308
+  },
+  "interpretation": "The exact binary-input determinant stays positive on the whole limiting cell. Its depth-eight Bernstein control net straddles zero. The exact cover records the first dyadic subdivision level that certifies the whole cell. The physical strain tensor is never formed on this rejection path.",
+  "coordinates": "Chart singular values use d(xi)/d(radius fraction, depth fraction, polar angle). Physical singular values use both stress-free and current orthonormal squared-length metrics and the azimuthal hoop. Physical positions r and w are in solver length units and theta is in radians.",
+  "native_run": {
+    "command": [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_depth_cert.py",
+      "_scratch/s11c/r4_rematch39_01",
+      "_scratch/s11c/r4_depth_cert01/certificate.json"
+    ],
+    "stdout_sha256": "3352b432437b46bd8b13b5af70363a3ee863b5011fd9f16ec3c53c4d55a1066b",
+    "script_sha256_at_cover": "afcae5910d06211d6397f3ab4a04c3949f5d762451c0c127997cd109601911f5"
+  },
+  "local_spectrum_run": {
+    "command": [
+      "/usr/bin/python3",
+      "-Bu",
+      "software/stage1_solver/tools/mouth_r4_depth_cert.py",
+      "_scratch/s11c/r4_rematch39_01",
+      "_scratch/s11c/r4_depth_cert01/edge_frames.json",
+      "--extend-metrics",
+      "_scratch/s11c/r4_depth_cert01/certificate.json"
+    ],
+    "stdout_sha256": "1f6daa6523931b6ef6674425739a9d78844a7499d429fae43b542b136e675163"
+  }
+}

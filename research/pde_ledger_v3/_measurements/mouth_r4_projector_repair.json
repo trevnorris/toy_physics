@@ -1,0 +1,1116 @@
+{
+  "parent": "49220309",
+  "scope": "Production projector on the captured corner system and single held step 288",
+  "regression": {
+    "precision_digits": 90,
+    "compared_dofs": 81125,
+    "local_support_size": 27,
+    "reference_direction": [
+      0.009697758875165835,
+      6.913046204075473e-05,
+      2.1450200277606717e-06,
+      2.9383660263807967e-06,
+      1.6299897891506363e-06,
+      0.00016285828770154202,
+      5.118727491156453e-06,
+      1.6758967313418139e-07,
+      1.030722801760136e-07,
+      0.05024189028451313,
+      0.0032399881350667395,
+      -1.7363875863358914e-05,
+      0.0005631093574384003,
+      -0.000533955774358777,
+      -0.0008383624910865712,
+      0.004171279576706045,
+      -0.0003857017100016191,
+      -0.00025346068784939057,
+      0.0002496100689489781,
+      0.00018976235195545702,
+      -4.751067009706925e-05,
+      1.4067027321689386e-05,
+      -1.7473627702215483e-06,
+      -0.01834170655419017,
+      -0.0019301141418093077,
+      0.003948113215870988,
+      0.0021096899337851435
+    ],
+    "reference_multipliers": [
+      8.350167224388565e-07,
+      0.0,
+      0.0011504208668040557,
+      4.31638245239626e-06
+    ],
+    "reference_slacks": [
+      -3.6335290487165263e-96,
+      1.8001204584584847e-07,
+      -1.1512867648547537e-97,
+      -3.132438912008851e-95
+    ],
+    "permutations": [
+      {
+        "permutation": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "method": "extended",
+        "direction_error": 4.336808689942018e-19,
+        "multiplier_error": 1.0587911840678754e-22,
+        "slack_error": 1.0190865146653301e-21,
+        "primal_violation": 1.0190865146653301e-21,
+        "dual_violation": 0.0,
+        "complementarity": 3.1596287566494112e-27,
+        "stationarity": 5.762543967992221e-20,
+        "kkt_norm": 5.763445007657084e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          0,
+          1,
+          3,
+          2
+        ],
+        "method": "float64",
+        "direction_error": 3.469446951953614e-18,
+        "multiplier_error": 2.117582368135751e-22,
+        "slack_error": 2.7098436867237187e-20,
+        "primal_violation": 3.1326299149663494e-21,
+        "dual_violation": 0.0,
+        "complementarity": 1.358937742183402e-25,
+        "stationarity": 6.74786027257286e-20,
+        "kkt_norm": 6.755127827080193e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "method": "extended",
+        "direction_error": 4.336808689942018e-19,
+        "multiplier_error": 1.0587911840678754e-22,
+        "slack_error": 1.0190865146653301e-21,
+        "primal_violation": 1.0190865146653301e-21,
+        "dual_violation": 0.0,
+        "complementarity": 3.1596287566494112e-27,
+        "stationarity": 5.762543967992221e-20,
+        "kkt_norm": 5.763445007657084e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          0,
+          2,
+          3,
+          1
+        ],
+        "method": "float64",
+        "direction_error": 3.222335592800718e-14,
+        "multiplier_error": 1.3806230464430413e-15,
+        "slack_error": 5.2237518561343214e-18,
+        "primal_violation": 5.2237518561343214e-18,
+        "dual_violation": 0.0,
+        "complementarity": 4.471613579131319e-21,
+        "stationarity": 9.34844065570163e-20,
+        "kkt_norm": 5.2245902025004875e-18,
+        "slope": -2.3534420766336206e-07
+      },
+      {
+        "permutation": [
+          0,
+          3,
+          1,
+          2
+        ],
+        "method": "extended",
+        "direction_error": 4.336808689942018e-19,
+        "multiplier_error": 1.0587911840678754e-22,
+        "slack_error": 1.0190865146653301e-21,
+        "primal_violation": 1.0190865146653301e-21,
+        "dual_violation": 0.0,
+        "complementarity": 3.1596287566494112e-27,
+        "stationarity": 5.762543967992221e-20,
+        "kkt_norm": 5.763445007657084e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          0,
+          3,
+          2,
+          1
+        ],
+        "method": "float64",
+        "direction_error": 1.3877787807814457e-17,
+        "multiplier_error": 6.352747104407253e-22,
+        "slack_error": 9.634338030527624e-20,
+        "primal_violation": 2.8555890332464408e-21,
+        "dual_violation": 0.0,
+        "complementarity": 1.358937742183402e-25,
+        "stationarity": 6.747860839596481e-20,
+        "kkt_norm": 6.753900339656514e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "method": "float64",
+        "direction_error": 1.0362283947573658e-13,
+        "multiplier_error": 4.440241577197135e-15,
+        "slack_error": 2.2822257207472856e-17,
+        "primal_violation": 0.0,
+        "dual_violation": 0.0,
+        "complementarity": 1.4380780832804934e-20,
+        "stationarity": 7.612217184501339e-20,
+        "kkt_norm": 7.74686511032877e-20,
+        "slope": -2.3534420766334314e-07
+      },
+      {
+        "permutation": [
+          1,
+          0,
+          3,
+          2
+        ],
+        "method": "float64",
+        "direction_error": 1.036367172635444e-13,
+        "multiplier_error": 4.440892098500626e-15,
+        "slack_error": 2.273933400542564e-17,
+        "primal_violation": 0.0,
+        "dual_violation": 0.0,
+        "complementarity": 1.4382964797939227e-20,
+        "stationarity": 7.90206095679492e-20,
+        "kkt_norm": 8.031890445510959e-20,
+        "slope": -2.3534420766334314e-07
+      },
+      {
+        "permutation": [
+          1,
+          2,
+          0,
+          3
+        ],
+        "method": "extended",
+        "direction_error": 4.336808689942018e-19,
+        "multiplier_error": 1.0587911840678754e-22,
+        "slack_error": 1.0190865146653301e-21,
+        "primal_violation": 1.0190865146653301e-21,
+        "dual_violation": 0.0,
+        "complementarity": 3.1596287566494112e-27,
+        "stationarity": 5.762543967992221e-20,
+        "kkt_norm": 5.763445007657084e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          1,
+          2,
+          3,
+          0
+        ],
+        "method": "float64",
+        "direction_error": 1.3877787807814457e-17,
+        "multiplier_error": 2.168404344971009e-19,
+        "slack_error": 9.634338030527624e-20,
+        "primal_violation": 2.8555890332464408e-21,
+        "dual_violation": 0.0,
+        "complementarity": 6.652059351631555e-25,
+        "stationarity": 3.0324840640787376e-20,
+        "kkt_norm": 3.0458994551009826e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          1,
+          3,
+          0,
+          2
+        ],
+        "method": "extended",
+        "direction_error": 4.336808689942018e-19,
+        "multiplier_error": 1.0587911840678754e-22,
+        "slack_error": 1.0190865146653301e-21,
+        "primal_violation": 1.0190865146653301e-21,
+        "dual_violation": 0.0,
+        "complementarity": 3.1596287566494112e-27,
+        "stationarity": 5.762543967992221e-20,
+        "kkt_norm": 5.763445007657084e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          1,
+          3,
+          2,
+          0
+        ],
+        "method": "float64",
+        "direction_error": 3.221641703410327e-14,
+        "multiplier_error": 1.3804062060085442e-15,
+        "slack_error": 5.2237518561343214e-18,
+        "primal_violation": 5.2237518561343214e-18,
+        "dual_violation": 0.0,
+        "complementarity": 4.470880601017932e-21,
+        "stationarity": 7.833120972606405e-20,
+        "kkt_norm": 5.224341032288882e-18,
+        "slope": -2.3534420766336206e-07
+      },
+      {
+        "permutation": [
+          2,
+          0,
+          1,
+          3
+        ],
+        "method": "float64",
+        "direction_error": 8.760353553682876e-17,
+        "multiplier_error": 3.903127820947816e-18,
+        "slack_error": 4.378763290610707e-20,
+        "primal_violation": 4.378763290610707e-20,
+        "dual_violation": 0.0,
+        "complementarity": 1.2492774362289507e-23,
+        "stationarity": 7.82921011096934e-20,
+        "kkt_norm": 8.970512832474996e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          2,
+          0,
+          3,
+          1
+        ],
+        "method": "float64",
+        "direction_error": 8.413408858487514e-17,
+        "multiplier_error": 3.686287386450715e-18,
+        "slack_error": 1.6456923722864996e-19,
+        "primal_violation": 0.0,
+        "dual_violation": 0.0,
+        "complementarity": 1.181864712240169e-23,
+        "stationarity": 5.007465036783196e-20,
+        "kkt_norm": 5.007465176255381e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          2,
+          1,
+          0,
+          3
+        ],
+        "method": "float64",
+        "direction_error": 1.3877787807814457e-17,
+        "multiplier_error": 6.352747104407253e-22,
+        "slack_error": 9.634338030527624e-20,
+        "primal_violation": 2.8555890332464408e-21,
+        "dual_violation": 0.0,
+        "complementarity": 1.358937742183402e-25,
+        "stationarity": 6.747860839596481e-20,
+        "kkt_norm": 6.753900339656514e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          2,
+          1,
+          3,
+          0
+        ],
+        "method": "extended",
+        "direction_error": 4.336808689942018e-19,
+        "multiplier_error": 1.0587911840678754e-22,
+        "slack_error": 1.0190865146653301e-21,
+        "primal_violation": 1.0190865146653301e-21,
+        "dual_violation": 0.0,
+        "complementarity": 3.1596287566494112e-27,
+        "stationarity": 5.762543967992221e-20,
+        "kkt_norm": 5.763445007657084e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          2,
+          3,
+          0,
+          1
+        ],
+        "method": "extended",
+        "direction_error": 4.336808689942018e-19,
+        "multiplier_error": 1.0587911840678754e-22,
+        "slack_error": 1.0190865146653301e-21,
+        "primal_violation": 1.0190865146653301e-21,
+        "dual_violation": 0.0,
+        "complementarity": 3.1596287566494112e-27,
+        "stationarity": 5.762543967992221e-20,
+        "kkt_norm": 5.763445007657084e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          2,
+          3,
+          1,
+          0
+        ],
+        "method": "float64",
+        "direction_error": 1.3877787807814457e-17,
+        "multiplier_error": 4.336808689942018e-19,
+        "slack_error": 9.634338030527624e-20,
+        "primal_violation": 2.8555890332464408e-21,
+        "dual_violation": 0.0,
+        "complementarity": 1.3000645654212692e-24,
+        "stationarity": 6.351225354430982e-20,
+        "kkt_norm": 6.35764165449238e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          3,
+          0,
+          1,
+          2
+        ],
+        "method": "float64",
+        "direction_error": 1.3877787807814457e-17,
+        "multiplier_error": 2.168404344971009e-19,
+        "slack_error": 9.634338030527624e-20,
+        "primal_violation": 2.8555890332464408e-21,
+        "dual_violation": 0.0,
+        "complementarity": 6.652059351631555e-25,
+        "stationarity": 3.0324840640787376e-20,
+        "kkt_norm": 3.0458994551009826e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          3,
+          0,
+          2,
+          1
+        ],
+        "method": "extended",
+        "direction_error": 4.336808689942018e-19,
+        "multiplier_error": 1.0587911840678754e-22,
+        "slack_error": 1.0190865146653301e-21,
+        "primal_violation": 1.0190865146653301e-21,
+        "dual_violation": 0.0,
+        "complementarity": 3.1596287566494112e-27,
+        "stationarity": 5.762543967992221e-20,
+        "kkt_norm": 5.763445007657084e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          3,
+          1,
+          0,
+          2
+        ],
+        "method": "float64",
+        "direction_error": 8.760353553682876e-17,
+        "multiplier_error": 3.903127820947816e-18,
+        "slack_error": 3.9102481916606724e-20,
+        "primal_violation": 3.1326299149663494e-21,
+        "dual_violation": 0.0,
+        "complementarity": 1.2492774362289507e-23,
+        "stationarity": 7.829215485882072e-20,
+        "kkt_norm": 7.835480226949155e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          3,
+          1,
+          2,
+          0
+        ],
+        "method": "float64",
+        "direction_error": 8.066464163292153e-17,
+        "multiplier_error": 3.469446951953614e-18,
+        "slack_error": 5.258883462367129e-20,
+        "primal_violation": 0.0,
+        "dual_violation": 0.0,
+        "complementarity": 1.1133907247101832e-23,
+        "stationarity": 3.3672302403990463e-20,
+        "kkt_norm": 3.367230424473016e-20,
+        "slope": -2.353442076633575e-07
+      },
+      {
+        "permutation": [
+          3,
+          2,
+          0,
+          1
+        ],
+        "method": "float64",
+        "direction_error": 1.0362630892268854e-13,
+        "multiplier_error": 4.440458417631632e-15,
+        "slack_error": 2.2822257207472856e-17,
+        "primal_violation": 0.0,
+        "dual_violation": 0.0,
+        "complementarity": 1.4381405179164463e-20,
+        "stationarity": 5.0531957613851893e-20,
+        "kkt_norm": 5.253859110421046e-20,
+        "slope": -2.3534420766334314e-07
+      },
+      {
+        "permutation": [
+          3,
+          2,
+          1,
+          0
+        ],
+        "method": "float64",
+        "direction_error": 1.0362283947573658e-13,
+        "multiplier_error": 4.440241577197135e-15,
+        "slack_error": 2.2822257207472856e-17,
+        "primal_violation": 0.0,
+        "dual_violation": 0.0,
+        "complementarity": 1.4380780832804934e-20,
+        "stationarity": 7.612217184501339e-20,
+        "kkt_norm": 7.74686511032877e-20,
+        "slope": -2.3534420766334314e-07
+      }
+    ],
+    "passed": true,
+    "affine_redundant": true,
+    "corrupt_nnls_method": "extended",
+    "fixture_sha256": "73f6f7f59a47ff313f67a1630b310494de6a61d847872aa5d7b572efa7578198",
+    "production_sha256": "6a358d01cd1f5611cf1deea5ded17cc9133250350951943b12fd43bb24addc2c",
+    "suite_sha256": "9deaeb8e6735cfae7eceabd0ca6b27eafa046116c339bcf031077c8202448379"
+  },
+  "reference287": {
+    "sha256": "5683615a04966ef35ba992026c8990965005c13bfec8e6d440534ade1e4b46c0",
+    "reference_result_sha256": "c7306a7b60047e3943951312fafb12cf22d543ec3592d75d0f7d543c445d6e47",
+    "archived_stop_result_sha256": "2e29762654c8ff0d00688562cf99bf65f5473d0d2f465c26ef0a7816c500d938",
+    "energy_force_deltas": {
+      "total_energy": 0.0,
+      "physical_energy": 0.0,
+      "crystal_energy": 0.0,
+      "gauge_energy": 0.0,
+      "peak_active": 0.0
+    },
+    "max_force_array_deltas": {
+      "physical_nodal": 0.0,
+      "physical_free": 0.0,
+      "total_free": 0.0,
+      "physical_order_load": 0.0
+    },
+    "max_force_count": {
+      "physical_nodal": 93555,
+      "physical_free": 81125,
+      "total_free": 81125,
+      "physical_order_load": 31185
+    },
+    "field_deltas": {
+      "physical_energy": 0.0,
+      "unit_gauge": 0.0,
+      "gauge_energy": 0.0,
+      "phase_raw": 0.0,
+      "amplitude_raw": 0.0,
+      "order_raw": 0.0,
+      "order_kkt": 0.0,
+      "order_projected": 0.0,
+      "carrier_metric": 0.0,
+      "shared_work_error": 0.0
+    },
+    "current_deltas": {
+      "feed_current": 0.0,
+      "bulk_current": 0.0,
+      "weak_disk_current": 0.0,
+      "incident_slice_current": 0.0,
+      "receiving_slice_current": 0.0,
+      "positive_slice_current": 0.0,
+      "port_error": 0.0,
+      "disk_minus_feed_current": 0.0,
+      "dense_total_subsonic_share": 0.0,
+      "total_axial_stress": 0.0
+    },
+    "delta_vs_archived_accumulated_total": 1.4551915228366852e-11,
+    "frozen": {
+      "total_energy": 92185.38355095354,
+      "physical_energy": 92185.3835508674,
+      "crystal_energy": 0.3073392682562248,
+      "gauge_energy": 8.614831490634566e-08,
+      "peak_active": 0.04602957770136634,
+      "peak_node": {
+        "component": 0,
+        "group": 27760,
+        "chi": 0.32715615583918867,
+        "signed_force": 0.04602957770136634,
+        "node": [
+          24,
+          1,
+          19
+        ],
+        "radius": 3.965436807425519,
+        "depth": 0.02587313009994973,
+        "theta": 1.4657055899195157
+      },
+      "field": {
+        "physical_energy": 92185.3835508674,
+        "unit_gauge": 8.614831490634568,
+        "gauge_energy": 8.614831490634569e-08,
+        "phase_raw": 5.831115323533037e-11,
+        "amplitude_raw": 7.852308383868291e-10,
+        "order_raw": 0.34959525648184164,
+        "order_kkt": 7.085400365006865e-05,
+        "order_projected": 8.366816650666098e-06,
+        "carrier_metric": 2.532027054237016e-10,
+        "shared_work_error": -5.551115123125783e-17,
+        "order_knot_transport": [
+          {
+            "free_interior": 4.557250575948452e-06,
+            "lower_obstacle": 2.9001027158785153e-16,
+            "upper_obstacle": -0.0,
+            "total": 4.5572505762384625e-06
+          },
+          {
+            "free_interior": 4.547489860893995e-06,
+            "lower_obstacle": -0.032601667673576196,
+            "upper_obstacle": -0.0,
+            "total": -0.0325971201837153
+          }
+        ]
+      },
+      "chart": {
+        "chart_det_global_lower": 7.084565677230213e-07,
+        "chart_lowest_cell": [
+          25,
+          10,
+          6
+        ],
+        "chart_det_active_lower": 0.0007755061913274634
+      },
+      "min_Jinv": 0.0007049519849394677,
+      "front": 0.3363506918035118,
+      "current": {
+        "feed_current": 10.707716913693194,
+        "bulk_current": 10.707716913692746,
+        "weak_disk_current": 10.707716906937218,
+        "incident_slice_current": 10.707716906937218,
+        "receiving_slice_current": 10.041065351177007,
+        "positive_slice_current": 10.707716906937218,
+        "port_error": 4.476419235288631e-13,
+        "disk_minus_feed_current": -6.755975334726827e-09,
+        "dense_total_subsonic_share": 0.6675898861086909,
+        "total_axial_stress": -26.58287784587294
+      }
+    },
+    "checks": {
+      "original_state": true,
+      "all_force_arrays": true,
+      "physical_and_gauged_material": true,
+      "readout": true,
+      "saved_step_energy": true
+    },
+    "passed": true
+  },
+  "shape": [
+    0.8191403557693495,
+    3.306377271246663
+  ],
+  "replay288": {
+    "post_trial": {
+      "alpha": 0.25,
+      "work": -0.00010131370353644309,
+      "peak_force": 0.034479169454073,
+      "work_error": 5.421010862427522e-20,
+      "peak_force_error": 0.0,
+      "registered_sites": [
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.25,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            4
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.5
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.625
+          ]
+        }
+      ],
+      "accepted_direction_sites": [
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.25,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.5
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.625
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            4
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        }
+      ],
+      "projection_fallbacks": 2,
+      "diagnostic_sha256": "6ea17a65d8419633e8139b0d1d220eab0b522a79b6c1eb7d98a5e0913f1a6e5e"
+    },
+    "orientation": {
+      "physical_global_lower": 8.543232352946087e-08,
+      "cell": [
+        25,
+        10,
+        6
+      ],
+      "cell_count": 28080,
+      "chart_global_lower": 1.4727808636552534e-07,
+      "limiting_chart_lower": 1.4727808636552534e-07,
+      "limiting_radial_metric_lower": 0.5800749156763813,
+      "limiting_sine_ratio_lower": 0.9999999999999999,
+      "global_xi_r_over_x_lower": 0.9469938353317662,
+      "global_sine_ratio_lower": 0.959295898101422,
+      "angular_rule": "concavity",
+      "collar_patch_determinant_lower": 0.4892248970224547,
+      "collar_S_lower": 3.9998642234235255,
+      "physical_profile_bounds": [
+        3.3063771490447995,
+        4.000000150947135
+      ],
+      "reference_core_profile_lower": 3.97520746439121,
+      "core_metric_lower": 1.1638699165377784,
+      "collar_metric_lower": 0.5800749156763813,
+      "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+      "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+    },
+    "checks": {
+      "invariance": true,
+      "diagonal_reconstructed": true,
+      "direction_fraction": true,
+      "signed_work": true,
+      "peak_force": true,
+      "five_sites": true,
+      "projected_work": true,
+      "oriented": true
+    },
+    "cache": {
+      "cache_source": "530dc77673a9c71ada3fd369bed01922098beb2727adbe9941308aae78886282",
+      "jacobi": {
+        "colors_by_component": [
+          8,
+          8,
+          8
+        ],
+        "hvp_calls": 24,
+        "negative_diagonal": 0,
+        "zero_diagonal": 0,
+        "floored": 0,
+        "minimum_relative_step": 9.5367431640625e-07,
+        "active_range": [
+          6.966826815415648e-08,
+          1856.0548230997974
+        ],
+        "melted_range": [
+          6.950867871091813e-11,
+          1804.6381187558347
+        ],
+        "chart_at_assembly": 9.797899943009064e-07,
+        "rebuilt": true
+      },
+      "initial_force": 0.04639206636777481,
+      "previous_norm": 0.23914789962247232,
+      "retained_sites": 3
+    },
+    "state_sha256": "8de6f51d269b6e83339500f82b6eaf533015d67524dc0b7d94e278e4c455a6f9",
+    "record_sha256": "0f90f55b54ea3159e6d82bb4ebf2bcbef0d35d55166e68617e83f71ae60927dd",
+    "initial_sha256": "5683615a04966ef35ba992026c8990965005c13bfec8e6d440534ade1e4b46c0"
+  },
+  "corner_projection_events": [
+    {
+      "method": "float64",
+      "multipliers": [
+        8.527877409178035e-07,
+        0.0,
+        0.001150420866804056
+      ],
+      "slacks": [
+        8.529224732156779e-20,
+        1.800120458458491e-07,
+        5.782283287429764e-22
+      ],
+      "primal_violation": -0.0,
+      "dual_violation": -0.0,
+      "stationarity": 3.03229660146446e-20,
+      "complementarity": 6.652059351631555e-25,
+      "kkt_norm": 3.0322966022028267e-20,
+      "slope": -0.0004632786848365562,
+      "sites": [
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.25,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.5
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.625
+          ]
+        }
+      ]
+    },
+    {
+      "method": "extended",
+      "multipliers": [
+        8.350167224388566e-07,
+        0.0,
+        0.0011504208668040557,
+        4.31638245239626e-06
+      ],
+      "slacks": [
+        -1.0190865146653301e-21,
+        1.8001204584584844e-07,
+        2.7464981276174747e-24,
+        -2.9064412538728453e-22
+      ],
+      "primal_violation": 1.0190865146653301e-21,
+      "dual_violation": -0.0,
+      "stationarity": 5.762543967992221e-20,
+      "complementarity": 3.1596287566494112e-27,
+      "kkt_norm": 5.763518291492064e-20,
+      "slope": -0.0004632777265400113,
+      "float_check": {
+        "method": "float64",
+        "multipliers": [
+          8.350167224388571e-07,
+          0.00024224560927742946,
+          0.0007964481289361526,
+          4.31638245239626e-06
+        ],
+        "slacks": [
+          9.634338030527624e-20,
+          3.0192783829478816e-20,
+          -2.4754210078487444e-07,
+          -2.8555890332464408e-21
+        ],
+        "primal_violation": 2.4754210078487444e-07,
+        "dual_violation": -0.0,
+        "stationarity": 2.6207101706515904e-20,
+        "complementarity": 1.9715444300303777e-10,
+        "kkt_norm": 2.475421792965056e-07,
+        "slope": -0.0004632777200708501
+      },
+      "sites": [
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.25,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.5
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.625
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            4
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "method": "extended",
+      "multipliers": [
+        1.5275603657907365e-06,
+        0.0,
+        0.0011504208668040557,
+        4.300022879446794e-06,
+        2.700964310261809e-07
+      ],
+      "slacks": [
+        -1.9223677435732363e-21,
+        1.8001204584584844e-07,
+        2.7464981276174747e-24,
+        -2.00549293278628e-22,
+        5.442848430598922e-21
+      ],
+      "primal_violation": 1.9223677435732363e-21,
+      "dual_violation": -0.0,
+      "stationarity": 5.762417265534557e-20,
+      "complementarity": 3.1596287566494112e-27,
+      "kkt_norm": 5.765657804599283e-20,
+      "slope": -0.00046327744629353555,
+      "float_check": {
+        "method": "float64",
+        "multipliers": [
+          1.5275603657905694e-06,
+          0.0003545668200354782,
+          0.0006593178642648428,
+          4.30002287944658e-06,
+          2.7009643102611015e-07
+        ],
+        "slacks": [
+          2.4225812307769158e-18,
+          1.023863466353082e-16,
+          -2.863200668942681e-07,
+          -8.862599760755286e-18,
+          -1.0520348059117668e-16
+        ],
+        "primal_violation": 2.863200668942681e-07,
+        "dual_violation": -0.0,
+        "stationarity": 1.2723661213657206e-20,
+        "complementarity": 1.887759350008958e-10,
+        "kkt_norm": 2.863201291259345e-07,
+        "slope": -0.0004632774401335577
+      },
+      "sites": [
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.25,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.5
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            6
+          ],
+          "local": [
+            0.0,
+            1.0,
+            0.625
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            4
+          ],
+          "local": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "cell": [
+            25,
+            10,
+            3
+          ],
+          "local": [
+            0.0,
+            0.5,
+            1.0
+          ]
+        }
+      ]
+    }
+  ],
+  "review": "The 24-permutation regression, native step-288 replay and frozen step-287 invariance all pass independent review. The held primary may continue from the saved step 288. Secondary admission still requires its primary stationary endpoint.",
+  "review_sha256": "1aec40c245205460f008b5aa8bf0d05b374eba2091b670740de263262d2bdcee",
+  "guards": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tests/test_r4_corner_projector.py",
+        "_scratch/s11c/r4_projector_repair01/permutations.json"
+      ],
+      "result": "{\"direction_error\": 1.036367172635444e-13, \"multiplier_error\": 4.440892098500626e-15, \"slack_error\": 2.2822257207472856e-17, \"kkt_norm\": 5.2245902025004875e-18}"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "software/stage1_solver/tools/mouth_r4_projector_replay.py",
+        "replay",
+        "_scratch/s11c/r4_cubic_held01",
+        "_scratch/s11c/r4_projector_repair01/replay"
+      ],
+      "result": "{\"kind\": \"corner_projection_fallback\", \"method\": \"extended\", \"multipliers\": [8.350167224388566e-07, 0.0, 0.0011504208668040557, 4.31638245239626e-06], \"slacks\": [-1.0190865146653301e-21, 1.8001204584584844e-07, 2.7464981276174747e-24, -2.9064412538728453e-22], \"primal_violation\": 1.0190865146653301e-21, \"dual_violation\": -0.0, \"stationarity\": 5.762543967992221e-20, \"complementarity\": 3.1596287566494112e-27, \"kkt_norm\": 5.763518291492064e-20, \"slope\": -0.0004632777265400113, \"float_check\": {\"method\": \"float64\", \"multipliers\": [8.350167224388571e-07, 0.00024224560927742946, 0.0007964481289361526, 4.31638245239626e-06], \"slacks\": [9.634338030527624e-20, 3.0192783829478816e-20, -2.4754210078487444e-07, -2.8555890332464408e-21], \"primal_violation\": 2.4754210078487444e-07, \"dual_violation\": -0.0, \"stationarity\": 2.6207101706515904e-20, \"complementarity\": 1.9715444300303777e-10, \"kkt_norm\": 2.475421792965056e-07, \"slope\": -0.0004632777200708501}, \"sites\": [{\"cell\": [25, 10, 3], \"local\": [0.25, 0.0, 1.0]}, {\"cell\": [25, 10, 6], \"local\": [0.0, 1.0, 0.5]}, {\"cell\": [25, 10, 6], \"local\": [0.0, 1.0, 0.625]}, {\"cell\": [25, 10, 4], \"local\": [0.0, 0.0, 1.0]}]}\n{\"kind\": \"corner_projection_fallback\", \"method\": \"extended\", \"multipliers\": [1.5275603657907365e-06, 0.0, 0.0011504208668040557, 4.300022879446794e-06, 2.700964310261809e-07], \"slacks\": [-1.9223677435732363e-21, 1.8001204584584844e-07, 2.7464981276174747e-24, -2.00549293278628e-22, 5.442848430598922e-21], \"primal_violation\": 1.9223677435732363e-21, \"dual_violation\": -0.0, \"stationarity\": 5.762417265534557e-20, \"complementarity\": 3.1596287566494112e-27, \"kkt_norm\": 5.765657804599283e-20, \"slope\": -0.00046327744629353555, \"float_check\": {\"method\": \"float64\", \"multipliers\": [1.5275603657905694e-06, 0.0003545668200354782, 0.0006593178642648428, 4.30002287944658e-06, 2.7009643102611015e-07], \"slacks\": [2.4225812307769158e-18, 1.023863466353082e-16, -2.863200668942681e-07, -8.862599760755286e-18, -1.0520348059117668e-16], \"primal_violation\": 2.863200668942681e-07, \"dual_violation\": -0.0, \"stationarity\": 1.2723661213657206e-20, \"complementarity\": 1.887759350008958e-10, \"kkt_norm\": 2.863201291259345e-07, \"slope\": -0.0004632774401335577}, \"sites\": [{\"cell\": [25, 10, 3], \"local\": [0.25, 0.0, 1.0]}, {\"cell\": [25, 10, 6], \"local\": [0.0, 1.0, 0.5]}, {\"cell\": [25, 10, 6], \"local\": [0.0, 1.0, 0.625]}, {\"cell\": [25, 10, 4], \"local\": [0.0, 0.0, 1.0]}, {\"cell\": [25, 10, 3], \"local\": [0.0, 0.5, 1.0]}]}\nheld R4 production step 288 {'alpha': 0.25, 'work': -0.00010131370353644309, 'peak_force': 0.034479169454073, 'work_error': 5.421010862427522e-20, 'peak_force_error': 0.0, 'registered_sites': [{'cell': [25, 10, 3], 'local': [0.0, 0.5, 1.0]}, {'cell': [25, 10, 3], 'local': [0.25, 0.0, 1.0]}, {'cell': [25, 10, 4], 'local': [0.0, 0.0, 1.0]}, {'cell': [25, 10, 6], 'local': [0.0, 1.0, 0.5]}, {'cell': [25, 10, 6], 'local': [0.0, 1.0, 0.625]}], 'accepted_direction_sites': [{'cell': [25, 10, 3], 'local': [0.25, 0.0, 1.0]}, {'cell': [25, 10, 6], 'local': [0.0, 1.0, 0.5]}, {'cell': [25, 10, 6], 'local': [0.0, 1.0, 0.625]}, {'cell': [25, 10, 4], 'local': [0.0, 0.0, 1.0]}, {'cell': [25, 10, 3], 'local': [0.0, 0.5, 1.0]}], 'projection_fallbacks': 2, 'diagnostic_sha256': '6ea17a65d8419633e8139b0d1d220eab0b522a79b6c1eb7d98a5e0913f1a6e5e'} physical lower 8.543232352946087e-08"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-Bu",
+        "_scratch/s11c/r4_projector_repair01/test_cone.py"
+      ],
+      "result": "non-descending projection rejected after extended KKT; exact no-descent certificate {'method': 'exact rational normal cone', 'rows': [0, 1], 'original_row_multipliers': ['1', '2']} independent feasible direction [0.0, 2.0]"
+    }
+  ],
+  "no_descent_control": "non-descending projection rejected after extended KKT; exact no-descent certificate {'method': 'exact rational normal cone', 'rows': [0, 1], 'original_row_multipliers': ['1', '2']} independent feasible direction [0.0, 2.0]"
+}

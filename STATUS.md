@@ -2,6 +2,8 @@
 
 ## Common-medium research
 
+**The repaired corner projector passed independent review and the held radius-4 primary resumed from step 288.** All 24 permutations matched the 90-digit reference. The production quarter-step lowered energy by 0.00010131370354 and brought peak crystal force to 0.03447917. The certified physical inverse determinant stayed positive over all 28,080 cells. The second gauge is queued behind primary stationarity at 0.000030. [Repair, measurements and paired-run criteria](software/stage1_solver/reports/mouth_r4_projector_repair.md)
+
 **The step-288 numerical stop has a verified feasible direction.** Starting from the preserved radius-4 step 287, the four-row projection returned a direction that violated one orientation constraint. An independent joint solve protecting five sites lowered total energy by 0.00010131370 on a quarter-step trial with a certified positive physical inverse determinant over all 28,080 cells. The diagnostic accepted zero steps. Production projection repair and held equilibrium are open. [Corner dossier, projection failure and independent check](software/stage1_solver/reports/mouth_r4_step288_projection.md)
 
 **The held radius-4 primary reached step 287 on the approved C² collar.** Both gauges passed the step-166 pre-descent audits. The primary accepted 121 energy-lowering steps before the projection of its next crystal displacement failed. Its lowest peak crystal force was 0.04602958 against the 0.000030 target. The last fresh fields carried 10.70771691 inward current. Radius 4 stays held and radius 3 stays blind. [Numerical stop and independent review](software/stage1_solver/reports/mouth_r4_cubic_held_stop.md) · [Standing cubic reference](software/stage1_solver/reports/mouth_r4_bicubic_reference.md)

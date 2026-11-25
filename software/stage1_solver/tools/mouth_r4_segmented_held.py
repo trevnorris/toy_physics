@@ -179,7 +179,7 @@ def endpoint(driver, trial, solid, case, step, source_sha, material, physical, f
                                             epsilon=driver.epsilon,passed=True))
 
 
-def run(study, case, *, start=None, configure_reference=None, reviewed_match=None):
+def run(study, case, *, start=None, configure_reference=None, reviewed_match=None, rematch_start=False):
     path, step = start if start is not None else source_state(study,case)
     directory = study/case
     directory.mkdir()
@@ -196,12 +196,14 @@ def run(study, case, *, start=None, configure_reference=None, reviewed_match=Non
     if configure_reference is not None:
         configure_reference(trial.b)
     solid = SpatialCrystal(trial.b)
-    if case == 'secondary':
-        driver.fields,_,_,_ = coherent(driver,trial,solid,driver.labels,driver.fields,field_target=FIELD_TOL,raw_target=FIELD_TOL)
-    joint, value, g, m, physical, load, field = read_joint(driver,trial,solid,compatible=case=='secondary')
-    if case=='secondary':
+    rematch = rematch_start or case == 'secondary'
+    if rematch:
+        driver.fields,_,_,initial_history = coherent(driver,trial,solid,driver.labels,driver.fields,field_target=FIELD_TOL,raw_target=FIELD_TOL)
+    joint, value, g, m, physical, load, field = read_joint(driver,trial,solid,compatible=rematch)
+    if rematch:
         driver.save_internal(f'matched_{step:05d}',trial,driver.labels,driver.fields,
-                dict(outer=step,material=m,field=field,total_energy=physical+m['gauge_energy'],source_sha256=source_sha))
+                dict(outer=step,material=m,field=field,total_energy=physical+m['gauge_energy'],
+                     field_work=initial_history['order_step_energy'],source_sha256=source_sha))
     faces = CollarFaces(solid,driver.labels,joint.order)
     smallest = None
     while True:

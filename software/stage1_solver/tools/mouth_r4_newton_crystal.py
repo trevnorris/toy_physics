@@ -8,6 +8,8 @@ at fixed spatial quadrature, without a nested melted-region optimization.
 import ctypes as ct
 from functools import lru_cache
 from hashlib import sha256
+from itertools import combinations
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -18,7 +20,7 @@ import numpy as np
 from scipy import sparse
 
 from mouth_cp10_label_gauge import VERTICES, gradient_basis
-from mouth_r4_corner_projection import project_halfspaces
+from mouth_r4_corner_projection import ProjectionError, project_halfspaces
 from mouth_r4_eulerian_relax_labels import FORCE_TOL, InfeasibleLabels, LabelRelaxation, absmax, chart_orientation
 from mouth_r4_eulerian_solid import InvalidSpatialCrystal
 from mouth_r4_full_label_work import coloring
@@ -28,6 +30,48 @@ from mouth_r4_smooth_static import Gauge, RULE
 
 RELATIVE_STEP = 2.**-20
 UNIT_MELT_TOL = 3e-8
+
+
+def feasible_steepest(gradient, normals, diagonal):
+    """Find strict descent or prove that the gradient belongs to the normal cone.
+
+    Only used if direct KKT verification and its high-precision retry could
+    not produce a descending projection. The determinant tangents are homogeneous.
+    """
+    A = np.asarray(normals)
+    touched = np.any(A != 0,axis=0)
+    if np.any(gradient[~touched]):
+        return np.where(touched,0.,-diagonal*gradient),dict(method='outside corner support')
+    # All remaining gradient components are supported on a few corner nodes.
+    # Use exact binary-input rationals to distinguish zero from tiny descent.
+    from sympy import Matrix, Rational, zeros
+    from sympy.matrices.exceptions import NonInvertibleMatrixError
+    rows = Matrix(A[:,touched].tolist()).applyfunc(Rational)
+    g = Matrix(gradient[touched].tolist()).applyfunc(Rational)
+    for count in range(rows.rows+1):
+        for bank in combinations(range(rows.rows),count):
+            lam = zeros(rows.rows,1)
+            if bank:
+                active = rows[list(bank),:]
+                try:
+                    mu = (active*active.T).inv()*(active*g)
+                except NonInvertibleMatrixError:
+                    continue
+                if min(mu)<0:
+                    continue
+                for i,y in zip(bank,mu):
+                    lam[i] = y
+            candidate = rows.T*lam-g
+            if min(rows*candidate)<0:
+                continue
+            proof = dict(method='exact rational normal cone', rows=list(bank),
+                         original_row_multipliers=[str(t) for t in lam])
+            if candidate.is_zero_matrix:
+                return None,proof
+            out = np.zeros_like(gradient)
+            out[touched] = [float(t) for t in candidate]
+            return out,proof
+    raise ArithmeticError('Exact positive-semidefinite cone projection has no KKT representation')
 
 
 @lru_cache(maxsize=1)
@@ -378,27 +422,52 @@ class JointCrystal:
         tests=[]
         projections=0
         fallback=False
-        normals=[]
+        projection_events=[]
         # Constrain previously identified near-inverting sites in the same
         # scaled metric used by CG. Certify the whole chart at every trial.
-        def project(raw):
+        def project(raw, *, steepest):
             nonlocal projections
             at=perf_counter()
-            normals.clear()
+            normals=[]
+            sites=[]
             for cell,local in self.tight:
-                normal,det=self.corner_normal(labels,cell,local)
+                normal,_=self.corner_normal(labels,cell,local)
                 normal[~moving]=0.
-                if det<.1 and normal@raw < -.9*det and np.any(normal):
+                if np.any(normal):
                     normals.append(normal)
-            out=project_halfspaces(raw,normals,lambda v:diag*v) if normals else raw
+                    sites.append(dict(cell=list(cell),local=list(local)))
             if normals:
                 projections+=1
+                try:
+                    out,info=project_halfspaces(raw,normals,gradient=g,diagonal=diag,return_info=True)
+                except ProjectionError as error:
+                    corner_data=[]
+                    for site in sites:
+                        nodes=VERTICES+site['cell']
+                        corner_data.append(dict(**site,vertex_chi=self.order[tuple(nodes.T)].tolist()))
+                    details=dict(sites=corner_data,projection_error=str(error),projection=error.diagnostics)
+                    projection_events.append(dict(sites=sites,method='extended',failed=True,reason=str(error)))
+                    print(json.dumps(dict(kind='corner_projection_fallback',**details)),flush=True)
+                    if not steepest:
+                        return None
+                    alternate,proof=feasible_steepest(g*moving,normals,diag)
+                    if alternate is None:
+                        raise InfeasibleLabels('Certified absence of strict descent on the mobile corner cone',
+                                               **details,certificate=proof) from error
+                    out,info=project_halfspaces(alternate,normals,gradient=g,diagonal=diag,return_info=True)
+                    info['alternative']=proof
+                event=dict(**info,sites=sites)
+                projection_events.append(event)
+                if info['method']=='extended':
+                    print(json.dumps(dict(kind='corner_projection_fallback',**event)),flush=True)
+            else:
+                out=raw
             ticks['projection']+=perf_counter()-at
             return out
-        for raw in (p,diag*rhs):
-            plan=project(raw)
+        for steepest,raw in ((False,p),(True,diag*rhs)):
+            plan=project(raw,steepest=steepest)
             alpha=1.
-            while alpha>1e-4:
+            while plan is not None and alpha>1e-4:
                 slope=float(g@plan)
                 if slope>=0:
                     break
@@ -423,6 +492,8 @@ class JointCrystal:
                             forcing_attained=actual[0]<=eta,cg_residual_replacements=replacements,
                             jacobi=jacobi,forcing_eta=eta,polished_melt_only=active_polish,
                             jacobi_fallback=fallback,projections=projections,backtracks=len(tests),
+                            projection_events=projection_events,
+                            projection_fallbacks=sum(e['method']=='extended' for e in projection_events),
                             rejections=tests,timing_seconds=ticks,min_Jinv=after['min_Jinv_global'],
                             min_ordered_Jinv=after['min_Jinv_active'])
                     exc=InfeasibleLabels('Insufficient resolved signed work',delta=delta)
@@ -436,8 +507,13 @@ class JointCrystal:
                     pair=(tuple(issue['cell']),tuple(where))
                     if pair not in self.tight:
                         self.tight.append(pair)
-                        plan=project(raw)
+                        plan=project(raw,steepest=steepest)
+                        # This is a different ray. A step fraction rejected on
+                        # the previous ray says nothing about its feasible length.
+                        alpha=1.
+                        continue
                 alpha*=.5
             fallback=True
         raise InfeasibleLabels('Joint Newton and projected Jacobi both failed signed Armijo at healthy fractions',
-                               tests=tests,material=material,cg_iterations=cg,cg_reason=reason)
+                               tests=tests,material=material,cg_iterations=cg,cg_reason=reason,
+                               projection_events=projection_events)

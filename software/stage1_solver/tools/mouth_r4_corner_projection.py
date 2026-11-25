@@ -1,5 +1,7 @@
 """Project a packed active-label direction onto one-sided determinant tangent planes."""
-from itertools import product
+from itertools import combinations, product
+
+import mpmath as mp
 
 import numpy as np
 from scipy.optimize import nnls
@@ -76,30 +78,149 @@ def point_normal(opt, labels, cell, local, reference=None):
                         nodes=ids.tolist(), node_gradient=gradient.tolist(), basis=basis.tolist())
 
 
-def project_halfspaces(direction, normals, metric=None):
-    """Project in inverse-metric norm onto n·d>=0; unit steps still need positivity checks."""
-    N = np.atleast_2d(normals).astype(float)
-    if not N.size:
-        return direction.copy()
-    sizes = np.linalg.norm(N, axis=1)
-    if np.any(sizes == 0):
-        raise ValueError('Empty active constraint normal')
-    N = N/sizes[:,None]
-    response = np.array([metric(n) for n in N]) if metric else N
-    values = N@direction
-    if np.min(values) >= 0:
-        return direction.copy()
-    grams = N@response.T
-    if len(N) == 1:
-        result = direction + response[0]*(-values[0]/grams[0,0])
+class ProjectionError(ArithmeticError):
+    """An unresolved projection, with the rows needed to reproduce it."""
+    def __init__(self, message, diagnostics):
+        super().__init__(message)
+        self.diagnostics = diagnostics
+
+
+class NonDescendingProjection(ProjectionError):
+    """The verified projection of this particular input is non-descending."""
+
+
+def _extended_dual(rows, response, direction, rhs, seed, diagonal):
+    """Solve the small dual on independent binding-row sets using original row products."""
+    used = np.any(rows != 0, axis=0)
+    with mp.workdps(90):
+        A = mp.matrix(rows[:,used].tolist())
+        if diagonal is None:
+            B = mp.matrix(response[:,used].tolist())
+        else:
+            weights = diagonal[used]
+            B = mp.matrix([[A[i,k]*float(w) for k,w in enumerate(weights)] for i in range(A.rows)])
+        G = A * B.T
+        b = A * mp.matrix(direction[used].tolist()) - mp.matrix(rhs.tolist())
+        # A redundant row need never be chosen as an independent multiplier.
+        # Inspect the NNLS support first; the exhaustive fallback is for small m.
+        def supports():
+            yield seed
+            for size in range(A.rows+1):
+                for bank in combinations(range(A.rows),size):
+                    if bank != seed:
+                        yield bank
+        for bank in supports():
+            lam = mp.zeros(A.rows,1)
+            if bank:
+                block = mp.matrix([[G[i,j] for j in bank] for i in bank])
+                try:
+                    active = mp.lu_solve(block,mp.matrix([-b[i] for i in bank]))
+                except (ValueError,ZeroDivisionError):
+                    continue
+                if min(active)<0:
+                    continue
+                for i,x in zip(bank,active):
+                    lam[i] = x
+            slack = b+G*lam
+            if min(slack) >= -mp.mpf('1e-65')*max(1,max(map(abs,b))):
+                # Form the projected direction before rounding, including any
+                # motion outside constraint support for a nonlocal legacy metric.
+                out = direction.copy()
+                moved = np.flatnonzero(np.any(response != 0,axis=0))
+                for j in moved:
+                    if diagonal is None:
+                        correction = mp.fdot(lam, response[:,j].tolist())
+                    else:
+                        correction = float(diagonal[j])*mp.fdot(lam,rows[:,j].tolist())
+                    out[j] = float(mp.mpf(float(direction[j]))+correction)
+                return out,np.array([float(x) for x in lam])
+    return None
+
+
+def project_halfspaces(direction, normals, metric=None, *, gradient=None, return_info=False,
+                       rhs=None, diagonal=None):
+    """Project p onto A d >= b in the inverse-metric norm; directly certify the answer."""
+    p = np.asarray(direction,dtype=float)
+    normals = np.asarray(normals,dtype=float).reshape((-1,len(p)))
+    lengths = np.linalg.norm(normals,axis=1)
+    if not np.all(np.isfinite(lengths) & (lengths>0)):
+        raise ValueError('Nonfinite or empty constraint row')
+    A = normals/lengths[:,None]
+    b = np.zeros(len(A)) if rhs is None else np.asarray(rhs,dtype=float)/lengths
+    if b.shape != (len(A),) or not np.all(np.isfinite(b)):
+        raise ValueError('Invalid corner constraint right-hand side')
+    if diagonal is not None:
+        diagonal = np.asarray(diagonal,dtype=float)
+        if metric is not None or diagonal.shape!=p.shape or not np.all(np.isfinite(diagonal) & (diagonal>0)):
+            raise ValueError('Expected one positive diagonal inverse metric')
+        response = A*diagonal
     else:
-        eig, vec = np.linalg.eigh((grams+grams.T)/2)
-        keep = eig > eig.max()*max(N.shape[0], 1)*np.finfo(float).eps
-        sq = np.sqrt(eig[keep])
-        matrix = sq[:,None]*vec[:,keep].T
-        rhs = -(vec[:,keep].T@values)/sq
-        multipliers = nnls(matrix, rhs)[0]
-        result = direction + multipliers@response
-    if np.min(N@result) < -1e-10*max(1., np.linalg.norm(direction)):
-        raise ArithmeticError('Unresolved corner projection')
-    return result
+        response = np.array([metric(a) for a in A]).reshape(A.shape) if metric else A
+    relevant = np.any((A!=0) | (response!=0),axis=0)
+    # Verify against the returned binary64 direction, in extended arithmetic.
+    # Outside this support the direction is copied bit for bit.
+    L = np.longdouble
+    al = A[:,relevant].astype(L)
+    pl = p[relevant].astype(L)
+    rl = response[:,relevant].astype(L)
+
+    def check(out, lam, method):
+        dl = out[relevant].astype(L)
+        ll = lam.astype(L)
+        slack = al@dl-b
+        change = dl-pl
+        if diagonal is not None:
+            station = change/diagonal[relevant] - ll@al
+        else:
+            station = change - ll@rl
+        primal = np.minimum(slack,0)
+        dual = np.minimum(ll,0)
+        comp = ll*slack
+        norm = float(np.linalg.norm(np.concatenate((station,primal,dual,comp))))
+        slope = None if gradient is None else float(np.dot(gradient,out))
+        info = dict(method=method,multipliers=lam.tolist(),slacks=slack.astype(float).tolist(),
+                    primal_violation=float(-np.min(primal,initial=0)),dual_violation=float(-np.min(dual,initial=0)),
+                    stationarity=float(np.linalg.norm(station)),complementarity=float(np.max(abs(comp),initial=0)),
+                    kkt_norm=norm,slope=slope)
+        ok = (np.isfinite(norm) and norm<=1e-10 and info['dual_violation']<=1e-12
+              and (slope is None or np.isfinite(slope) and slope<0))
+        return info,ok
+
+    def diagnostics(info):
+        return dict(check=info,columns=np.flatnonzero(relevant).tolist(),normalized_rows=A[:,relevant].tolist(),
+                    normalized_rhs=b.tolist(),input_on_columns=p[relevant].tolist())
+
+    lam = np.zeros(len(A))
+    values = A@p-b
+    try:
+        if np.any(values<0):
+            gram = A@response.T
+            if len(A)==1:
+                lam[0] = -values[0]/gram[0,0]
+            else:
+                eig,vec = np.linalg.eigh((gram+gram.T)/2)
+                keep = eig > eig.max()*len(A)*np.finfo(float).eps
+                sq = np.sqrt(eig[keep])
+                mat = sq[:,None]*vec[:,keep].T
+                lam = nnls(mat,-(vec[:,keep].T@values)/sq)[0]
+        out = p + lam@response
+        info,passed = check(out,lam,'float64')
+    except (RuntimeError,ArithmeticError,ValueError,np.linalg.LinAlgError) as err:
+        info,passed = dict(method='float64',error=str(err)),False
+    if not passed:
+        initial = info
+        if len(A):
+            seed = tuple(int(i) for i in np.flatnonzero(lam>0))
+            polished = _extended_dual(A,response,p,b,seed,diagonal)
+            if polished is None:
+                raise ProjectionError('No verified extended-precision KKT solution',diagnostics(initial))
+            out,lam = polished
+        else:
+            out = p.copy()
+        info,passed = check(out,lam,'extended')
+        info['float_check'] = initial
+        if not passed:
+            if info['kkt_norm']<=1e-10 and info['dual_violation']<=1e-12 and gradient is not None and info['slope']>=0:
+                raise NonDescendingProjection('Projected input has no strict descent',diagnostics(info))
+            raise ProjectionError('Returned extended projection failed direct KKT verification',diagnostics(info))
+    return (out,info) if return_info else out

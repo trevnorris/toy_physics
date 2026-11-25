@@ -255,7 +255,7 @@ def certified_state(study, name, epsilon, initial):
         return observed, data['field'], data['labels']
 
 
-def difference_profile(study, first, second, *, aligned=False):
+def difference_profile(study, first, second, *, aligned=False, configure_reference=None):
     from mouth_cp10_label_condition import physical_frame, reference_frame
     from mouth_cp10_label_grid import get_cp10
     from mouth_cp10_label_orientation import basis_and_grad
@@ -263,6 +263,8 @@ def difference_profile(study, first, second, *, aligned=False):
     from mouth_supercore_shape import preparation
     body, cp, axes=get_cp10(study.parent)
     cp.close()
+    if configure_reference is not None:
+        configure_reference(body)
     ref=preparation(4)[0]
 
     def gather(fields,labels):
@@ -315,7 +317,7 @@ def difference_profile(study, first, second, *, aligned=False):
     return dict(file=output.name,sha256=digest(output),maximum_absolute_difference=witnesses)
 
 
-def compare(study, *, primary_initial=None, aligned=False):
+def compare(study, *, primary_initial=None, aligned=False, configure_reference=None):
     if primary_initial is None:
         primary_initial=EXPECTED['held_stop']
     primary,first,labels_a=certified_state(study,'primary',1e-8,primary_initial)
@@ -352,7 +354,8 @@ def compare(study, *, primary_initial=None, aligned=False):
                 status='Held for independent review' if all(checks.values()) else 'Gauge split at held shape',
                 passed=all(checks.values()))
     if not result['passed']:
-        result['local_profile']=difference_profile(study,(first,labels_a),(second,labels_b),aligned=aligned)
+        result['local_profile']=difference_profile(study,(first,labels_a),(second,labels_b),aligned=aligned,
+                                                   configure_reference=configure_reference)
     atomic_json(study/'paired_held.json',result)
     if not result['passed']:
         raise ArithmeticError('Held gauge endpoints differ; see paired_held.json')

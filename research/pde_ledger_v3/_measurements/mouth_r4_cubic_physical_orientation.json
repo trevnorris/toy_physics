@@ -1,0 +1,47 @@
+{
+  "scope": "Frozen R4 step 166, C2 welded collar, all 28,080 spatial-label cells and both one-sided weld limits.",
+  "command": [
+    "/usr/bin/python3",
+    "-Bu",
+    "software/stage1_solver/tools/mouth_r4_cubic_physical_orientation.py",
+    "_scratch/s11c",
+    "_scratch/s11c/r4_segmented_held01/primary/step_00166.npz",
+    "_scratch/s11c/r4_crease167_01/physical_orientation_exact/result.json"
+  ],
+  "result": {
+    "physical_global_lower": 1.782793235331068e-05,
+    "cell": [
+      25,
+      11,
+      9
+    ],
+    "cell_count": 28080,
+    "chart_global_lower": 3.0817260030210546e-05,
+    "limiting_chart_lower": 3.0817260030210546e-05,
+    "limiting_radial_metric_lower": 0.5800749156763813,
+    "limiting_sine_ratio_lower": 0.9972932258200836,
+    "global_xi_r_over_x_lower": 0.9481145304219724,
+    "global_sine_ratio_lower": 0.9543246275730056,
+    "angular_rule": "concavity",
+    "collar_patch_determinant_lower": 0.4892248970224547,
+    "collar_S_lower": 3.9998642234235255,
+    "physical_profile_bounds": [
+      3.3063771490447995,
+      4.000000150947135
+    ],
+    "reference_core_profile_lower": 3.97520746439121,
+    "core_metric_lower": 1.1638699165377784,
+    "collar_metric_lower": 0.5800749156763813,
+    "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+    "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body.",
+    "state_sha256": "4b84a0d2ad53889a1d619e68960df70233ceb589fc4fe6c336c6e59e832a2694",
+    "script_sha256": "c3f6106222e0110b3ee8619a85c9e08f44a47ab852dc7c59477041c623b57331"
+  },
+  "sampled_physical_comparison": {
+    "reference": "research/pde_ledger_v3/_measurements/mouth_r4_collar166_static.json",
+    "reference_sha256": "ec5e25c885703ea8d3a8365c32c366e7f4e724c4fd0080b19a26bd940167b709",
+    "min_sampled_Jinv": 0.0013373441587064205,
+    "meaning": "An upper bound on the actual minimum, computed at the physical-energy quadrature points."
+  },
+  "interpretation": "The native strict orientation certificate encloses the chart determinant. Exact rational Bernstein hulls of both stored reference metrics and nodal coordinate-axis inequalities convert each chart lower bound to a physical lower bound. The smallest such bound is a certificate, not an estimate of the attained minimum."
+}

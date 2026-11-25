@@ -127,12 +127,18 @@ def sign_sweep(driver, trial, path, material):
 
 
 def endpoint(driver, trial, solid, case, step, source_sha, material, physical, field, current, sign, smallest):
-    from mouth_r4_segmented_endpoint_forces import endpoint_shape_work
-    shape = endpoint_shape_work(driver,trial,solid,driver.labels,driver.fields,driver.folder)
+    order = order_grid(trial,driver.fields)
+    if 'collar_coeff' in trial.b.buffers:
+        from mouth_r4_aligned_derivatives import shape_bank
+        # The smooth-reference audit includes the unsplit 2^-18 depth bank.
+        shape = shape_bank(driver,trial,solid,order)
+        shape['six_total'] = [row['analytic'] for row in shape['rows']]
+    else:
+        from mouth_r4_segmented_endpoint_forces import endpoint_shape_work
+        shape = endpoint_shape_work(driver,trial,solid,driver.labels,driver.fields,driver.folder)
     state = driver.folder/'stationary_state.npz'
     save_fields(state, labels=driver.labels, field=driver.fields, x=driver.x,radius=4,winding=1,
         epsilon=driver.epsilon, outer=step, parent_sha256=CHECKPOINT_SHA, initial_sha256=source_sha)
-    order = order_grid(trial,driver.fields)
     chi = driver.fields[2,trial.first]
     if (not np.array_equal(chi[trial.number],driver.fields[2]) or not np.all((chi>=0)&(chi<=1))
             or np.any(driver.fields[1,trial.model.feed]!=0) or np.any(driver.fields[1,trial.model.bulk]!=BIAS)):
@@ -149,11 +155,17 @@ def endpoint(driver, trial, solid, case, step, source_sha, material, physical, f
               signed_work=bool(sign['passed']),six_forces=bool(shape['passed']),
               current=(current['feed_current']>0 and abs(current['port_error'])<=FORCE_TOL
                            and abs(current['disk_minus_feed_current'])<=FORCE_TOL))
+    orientation = dict(material['chart'])
+    if 'collar_coeff' in trial.b.buffers:
+        from mouth_r4_cubic_physical_orientation import physical_certificate
+        certificate = physical_certificate(trial.b, driver.labels, orientation['chart_det_global_lower'])
+        orientation['physical_certificate'] = certificate
+        checks['physical_orientation'] = 0 < certificate['physical_global_lower'] <= material['min_Jinv_global']
     result = dict(case=case,outer=step,initial_sha256=source_sha,state_sha256=digest(state),
                   epsilon=driver.epsilon,shape=driver.x.tolist(),phase_drop=BIAS,depth=float(trial.shape.length),
                   exit_radius=float(trial.shape.exit),physical_energy=physical,total_energy=physical+gauge,
                   crystal_energy=material['elastic_energy'],gauge_energy=gauge,gauge_to_crystal=material['gauge_to_elastic'],
-                  native_residuals=residuals,orientation=material['chart'],
+                  native_residuals=residuals,orientation=orientation,
                   min_sampled_physical_Jinv=material['min_Jinv_global'],min_sampled_ordered_Jinv=material['min_Jinv_active'],
                   smallest_accepted_active_fraction=smallest,order_boundary=sign,sampled_melted_front=front(trial,driver.fields),
                   order_max_by_depth=order.max(axis=(0,2)).tolist(),depth_knots=trial.model.z[1].tolist(),current=current,
@@ -167,8 +179,8 @@ def endpoint(driver, trial, solid, case, step, source_sha, material, physical, f
                                             epsilon=driver.epsilon,passed=True))
 
 
-def run(study, case):
-    path, step = source_state(study,case)
+def run(study, case, *, start=None, configure_reference=None, reviewed_match=None):
+    path, step = start if start is not None else source_state(study,case)
     directory = study/case
     directory.mkdir()
     driver = SmoothHeld(study.parent,directory,STRENGTH[case])
@@ -181,6 +193,8 @@ def run(study, case):
     trial = driver.trial()
     driver.current_trial = trial
     trial.smooth_order_geometry = GaugeGeometry(trial,aligned=True)
+    if configure_reference is not None:
+        configure_reference(trial.b)
     solid = SpatialCrystal(trial.b)
     if case == 'secondary':
         driver.fields,_,_,_ = coherent(driver,trial,solid,driver.labels,driver.fields,field_target=FIELD_TOL,raw_target=FIELD_TOL)
@@ -193,7 +207,15 @@ def run(study, case):
     while True:
         total = physical+m['gauge_energy']
         native = max(m['max_free_label_force'],driver.epsilon*m['max_unit_melt_residual'])
-        if case=='primary' and step==108:
+        if reviewed_match is not None:
+            frozen = reviewed_match['rematched']
+            if (reviewed_match['state_sha256'] != source_sha or reviewed_match['epsilon'] != driver.epsilon
+                    or total != frozen['total_energy'] or m['elastic_energy'] != frozen['crystal_energy']
+                    or m['max_free_label_force'] != frozen['peak_active'] or m['chart'] != frozen['chart']
+                    or any(field[k] != frozen['field'][k] for k in FIELDS)):
+                raise ArithmeticError('The production state differs from the independently reviewed cubic rematch')
+            sign = reviewed_match['sign']
+        elif case=='primary' and step==108:
             # Gate 1's exact sweep is already on disk. Source digest and the
             # fresh raw residuals were verified above; never replay the sweep.
             sign = read(study.parent/'r4_rematch39_01/primary/gate1.json')
@@ -202,6 +224,10 @@ def run(study, case):
         current = {k:float(v) for k,v in trial.measure(driver.fields,load).items() if k in FLOW}
         if set(current)!=set(FLOW):
             raise ArithmeticError('Missing flow diagnostics')
+        if reviewed_match is not None:
+            if current != frozen['current'] or not sign['passed']:
+                raise ArithmeticError('Changed initial current readings or one-sided order work')
+            reviewed_match = None
         if case=='primary' and step==108:
             frozen = read(study.parent/'r4_rematch39_01/primary/rematched.json')
             original = read(study.parent/'r4_rematch39_01/primary/labels.json')['material']

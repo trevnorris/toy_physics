@@ -1,0 +1,526 @@
+{
+  "radius": 4,
+  "winding": 1,
+  "primary_epsilon": 1e-08,
+  "secondary_epsilon": 1e-10,
+  "internal_target": 3e-05,
+  "depth": 0.8191403557693495,
+  "exit_radius": 3.306377271246663,
+  "source_commit": "bef7526a",
+  "source_step288_sha256": "8de6f51d269b6e83339500f82b6eaf533015d67524dc0b7d94e278e4c455a6f9",
+  "step382_sha256": "346fc15d7dc678db51b420bbfde7e07ba8cbffac68aabc9d5cdbd4dd4b149f4c",
+  "match377_sha256": "b1f2b3f3207962918bd0813c04cb89ac77e87fc35d0cb30dc076325c32d040a3",
+  "accepted_steps": [
+    289,
+    382
+  ],
+  "accepted_count": 94,
+  "field_match_count": 10,
+  "signed_crystal_step_work": -0.00015015469855296477,
+  "smallest_accepted_step": 0.0001220703125,
+  "largest_accepted_step": 1.0,
+  "crystal_target_with_fields_frozen": [
+    [
+      325,
+      6.472238042044842e-06
+    ],
+    [
+      358,
+      1.8754039553942914e-06
+    ],
+    [
+      362,
+      6.607757852456144e-06
+    ]
+  ],
+  "certified_projection_events": 456,
+  "extended_projection_rejections": [
+    [
+      377,
+      "Projected input has no strict descent",
+      14
+    ]
+  ],
+  "largest_recorded_successful_kkt_norm": 3.498641106836637e-11,
+  "least_negative_successful_slope": -5.6991366880537926e-08,
+  "step377_accepted_jacobi": {
+    "alpha": 1.0,
+    "energy_change": -6.3163398037309395e-09,
+    "jacobi_fallback": true
+  },
+  "matches": [
+    {
+      "step": 288,
+      "energy": 92185.38344858612,
+      "label": 0.03448609239595739,
+      "field": {
+        "phase_raw": 6.344730474919192e-11,
+        "amplitude_raw": 2.0834228839616267e-09,
+        "carrier_metric": 2.8969737465350787e-09,
+        "order_kkt": 4.024344343691765e-09
+      },
+      "front": 0.3363506918035118,
+      "current": {
+        "feed_current": 10.707716786711622,
+        "bulk_current": 10.70771678671166,
+        "port_error": 3.907985046680551e-14,
+        "weak_disk_current": 10.707716786711677,
+        "incident_slice_current": 10.707716786711677,
+        "receiving_slice_current": 10.041065238071209,
+        "positive_slice_current": 10.707716786711677,
+        "dense_total_subsonic_share": 0.6675898892276295,
+        "total_axial_stress": -26.582877869952746,
+        "disk_minus_feed_current": 5.5067062021407764e-14
+      },
+      "sign": {
+        "free_zero": 51728,
+        "total": {
+          "positive": 51728,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "max_abs_gauge_over_positive_physical": 1.3283109079654056e-09
+      }
+    },
+    {
+      "step": 305,
+      "energy": 92185.38330945835,
+      "label": 0.005607600578160815,
+      "field": {
+        "phase_raw": 8.242773754472813e-11,
+        "amplitude_raw": 7.586290944146808e-10,
+        "carrier_metric": 1.506122284663179e-10,
+        "order_kkt": 7.768328555309196e-09
+      },
+      "front": 0.3363506918035118,
+      "current": {
+        "feed_current": 10.707716652500931,
+        "bulk_current": 10.7077166525006,
+        "port_error": 3.304023721284466e-13,
+        "weak_disk_current": 10.70771664765296,
+        "incident_slice_current": 10.70771664765296,
+        "receiving_slice_current": 10.041065105769968,
+        "positive_slice_current": 10.70771664765296,
+        "dense_total_subsonic_share": 0.6675898938055168,
+        "total_axial_stress": -26.58287788890937,
+        "disk_minus_feed_current": -4.8479709136017846e-09
+      },
+      "sign": {
+        "free_zero": 51714,
+        "total": {
+          "positive": 51714,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "max_abs_gauge_over_positive_physical": 9.765273748603262e-11
+      }
+    },
+    {
+      "step": 313,
+      "energy": 92185.38329814305,
+      "label": 0.0008696764843987786,
+      "field": {
+        "phase_raw": 1.0223295139995736e-10,
+        "amplitude_raw": 7.586255720765564e-10,
+        "carrier_metric": 8.013145498901857e-10,
+        "order_kkt": 2.469136006766348e-11
+      },
+      "front": 0.3363506918035118,
+      "current": {
+        "feed_current": 10.70771665363228,
+        "bulk_current": 10.70771665363208,
+        "port_error": 2.007283228522283e-13,
+        "weak_disk_current": 10.70771665363229,
+        "incident_slice_current": 10.70771665363229,
+        "receiving_slice_current": 10.041065110503197,
+        "positive_slice_current": 10.70771665363229,
+        "dense_total_subsonic_share": 0.6675898946084028,
+        "total_axial_stress": -26.582877885238045,
+        "disk_minus_feed_current": 8.881784197001252e-15
+      },
+      "sign": {
+        "free_zero": 51641,
+        "total": {
+          "positive": 51641,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "max_abs_gauge_over_positive_physical": 1.6281778529664448e-09
+      }
+    },
+    {
+      "step": 325,
+      "energy": 92185.38328905276,
+      "label": 0.0004897279065581855,
+      "field": {
+        "phase_raw": 5.906212389820975e-11,
+        "amplitude_raw": 1.2035944165625432e-09,
+        "carrier_metric": 2.3145061437777656e-09,
+        "order_kkt": 1.6459929430598282e-10
+      },
+      "front": 0.3622238246143633,
+      "current": {
+        "feed_current": 10.707716631619862,
+        "bulk_current": 10.707716631619736,
+        "port_error": 1.2612133559741778e-13,
+        "weak_disk_current": 10.707716631619837,
+        "incident_slice_current": 10.707716631619837,
+        "receiving_slice_current": 10.041065089614337,
+        "positive_slice_current": 10.707716631619837,
+        "dense_total_subsonic_share": 0.6675898944505287,
+        "total_axial_stress": -26.58287788895548,
+        "disk_minus_feed_current": -2.4868995751603507e-14
+      },
+      "sign": {
+        "free_zero": 51659,
+        "total": {
+          "positive": 51659,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "max_abs_gauge_over_positive_physical": 1.8101331280730243e-10
+      }
+    },
+    {
+      "step": 336,
+      "energy": 92185.3832817169,
+      "label": 0.0005164352672881088,
+      "field": {
+        "phase_raw": 7.125779347212278e-11,
+        "amplitude_raw": 1.8893332005359914e-09,
+        "carrier_metric": 2.347311920779363e-09,
+        "order_kkt": 4.2616856026188257e-10
+      },
+      "front": 0.3622238246143633,
+      "current": {
+        "feed_current": 10.707716611671854,
+        "bulk_current": 10.707716611671568,
+        "port_error": 2.859934511434403e-13,
+        "weak_disk_current": 10.707716611671861,
+        "incident_slice_current": 10.707716611671861,
+        "receiving_slice_current": 10.041065070777712,
+        "positive_slice_current": 10.707716611671861,
+        "dense_total_subsonic_share": 0.6675898942283761,
+        "total_axial_stress": -26.58287789258825,
+        "disk_minus_feed_current": 7.105427357601002e-15
+      },
+      "sign": {
+        "free_zero": 51646,
+        "total": {
+          "positive": 51646,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "max_abs_gauge_over_positive_physical": 4.611005325267904e-10
+      }
+    },
+    {
+      "step": 343,
+      "energy": 92185.38327882774,
+      "label": 0.0002772865622118589,
+      "field": {
+        "phase_raw": 7.807043626482067e-11,
+        "amplitude_raw": 2.023046534181433e-09,
+        "carrier_metric": 2.2323674373758104e-09,
+        "order_kkt": 3.2876607291055706e-11
+      },
+      "front": 0.3622238246143633,
+      "current": {
+        "feed_current": 10.70771660841369,
+        "bulk_current": 10.707716608413708,
+        "port_error": 1.7763568394002505e-14,
+        "weak_disk_current": 10.707716608413731,
+        "incident_slice_current": 10.707716608413735,
+        "receiving_slice_current": 10.041065067608542,
+        "positive_slice_current": 10.707716608413735,
+        "dense_total_subsonic_share": 0.6675898942832148,
+        "total_axial_stress": -26.582877892912645,
+        "disk_minus_feed_current": 4.085620730620576e-14
+      },
+      "sign": {
+        "free_zero": 51617,
+        "total": {
+          "positive": 51617,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "max_abs_gauge_over_positive_physical": 5.486992163918364e-11
+      }
+    },
+    {
+      "step": 353,
+      "energy": 92185.38327720154,
+      "label": 0.00022689575298415012,
+      "field": {
+        "phase_raw": 7.26305907235679e-11,
+        "amplitude_raw": 2.055438853856514e-09,
+        "carrier_metric": 2.2203586954106423e-09,
+        "order_kkt": 4.8877640868091284e-11
+      },
+      "front": 0.3622238246143633,
+      "current": {
+        "feed_current": 10.707716612442075,
+        "bulk_current": 10.707716612442354,
+        "port_error": 2.788880237858393e-13,
+        "weak_disk_current": 10.707716612442006,
+        "incident_slice_current": 10.707716612442006,
+        "receiving_slice_current": 10.041065071259506,
+        "positive_slice_current": 10.707716612442006,
+        "dense_total_subsonic_share": 0.6675898943492186,
+        "total_axial_stress": -26.582877891705845,
+        "disk_minus_feed_current": -6.927791673660977e-14
+      },
+      "sign": {
+        "free_zero": 51593,
+        "total": {
+          "positive": 51593,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "max_abs_gauge_over_positive_physical": 4.0393948031979326e-11
+      }
+    },
+    {
+      "step": 358,
+      "energy": 92185.38327498795,
+      "label": 0.00024683500932861437,
+      "field": {
+        "phase_raw": 7.569909694742083e-11,
+        "amplitude_raw": 2.074472888458881e-09,
+        "carrier_metric": 2.2176171232833185e-09,
+        "order_kkt": 6.520797989418376e-11
+      },
+      "front": 0.3622238246143633,
+      "current": {
+        "feed_current": 10.707716618425266,
+        "bulk_current": 10.707716618425197,
+        "port_error": 6.927791673660977e-14,
+        "weak_disk_current": 10.707716618425275,
+        "incident_slice_current": 10.707716618425275,
+        "receiving_slice_current": 10.041065076722568,
+        "positive_slice_current": 10.707716618425275,
+        "dense_total_subsonic_share": 0.6675898944479607,
+        "total_axial_stress": -26.582877890037164,
+        "disk_minus_feed_current": 8.881784197001252e-15
+      },
+      "sign": {
+        "free_zero": 51598,
+        "total": {
+          "positive": 51598,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "max_abs_gauge_over_positive_physical": 3.753831656956723e-11
+      }
+    },
+    {
+      "step": 362,
+      "energy": 92185.38327224665,
+      "label": 0.0003195135362977502,
+      "field": {
+        "phase_raw": 6.541529861195383e-11,
+        "amplitude_raw": 2.0866773656135168e-09,
+        "carrier_metric": 2.2143132130636268e-09,
+        "order_kkt": 7.056009182427919e-11
+      },
+      "front": 0.3622238246143633,
+      "current": {
+        "feed_current": 10.707716627519174,
+        "bulk_current": 10.707716627519195,
+        "port_error": 2.1316282072803006e-14,
+        "weak_disk_current": 10.70771662751913,
+        "incident_slice_current": 10.707716627519131,
+        "receiving_slice_current": 10.041065085088949,
+        "positive_slice_current": 10.707716627519131,
+        "dense_total_subsonic_share": 0.6675898945423707,
+        "total_axial_stress": -26.582877887687577,
+        "disk_minus_feed_current": -4.440892098500626e-14
+      },
+      "sign": {
+        "free_zero": 51537,
+        "total": {
+          "positive": 51537,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "max_abs_gauge_over_positive_physical": 3.742292981277084e-11
+      }
+    },
+    {
+      "step": 377,
+      "energy": 92185.38326849346,
+      "label": 0.00032983424153221837,
+      "field": {
+        "phase_raw": 8.979275179302193e-11,
+        "amplitude_raw": 2.172395806910351e-09,
+        "carrier_metric": 2.2280689520054942e-09,
+        "order_kkt": 3.0965452424425166e-11
+      },
+      "front": 0.3622238246143633,
+      "current": {
+        "feed_current": 10.707716628605539,
+        "bulk_current": 10.70771662860558,
+        "port_error": 4.085620730620576e-14,
+        "weak_disk_current": 10.707716628605548,
+        "incident_slice_current": 10.707716628605548,
+        "receiving_slice_current": 10.041065085980554,
+        "positive_slice_current": 10.707716628605548,
+        "dense_total_subsonic_share": 0.6675898947392895,
+        "total_axial_stress": -26.582877887101112,
+        "disk_minus_feed_current": 8.881784197001252e-15
+      },
+      "sign": {
+        "free_zero": 51504,
+        "total": {
+          "positive": 51504,
+          "zero": 0,
+          "negative": 0,
+          "nonfinite": 0
+        },
+        "max_abs_gauge_over_positive_physical": 1.0964787246644647e-10
+      }
+    }
+  ],
+  "last_evaluation": {
+    "total_energy": 92185.38326662472,
+    "physical_energy": 92185.38326652849,
+    "crystal_energy": 0.3071402521934724,
+    "gauge_energy": 9.623293024685807e-08,
+    "peak_active": 8.798533396107421e-05,
+    "peak_node": {
+      "component": 0,
+      "group": 29057,
+      "chi": 0.0,
+      "signed_force": -8.798533396107421e-05,
+      "node": [
+        25,
+        8,
+        14
+      ],
+      "radius": 3.8859275454437556,
+      "depth": 0.2069850407996006,
+      "theta": 0.970514952943746
+    },
+    "field": {
+      "physical_energy": 92185.38326652849,
+      "unit_gauge": 9.62329302468581,
+      "gauge_energy": 9.623293024685809e-08,
+      "phase_raw": 8.979275179302193e-11,
+      "amplitude_raw": 2.172395806910351e-09,
+      "order_raw": 0.38624204013289093,
+      "order_kkt": 0.0021418348746580266,
+      "order_projected": 0.0002671322683214156,
+      "carrier_metric": 2.2280689520054942e-09,
+      "shared_work_error": -2.7755575615628914e-16,
+      "order_knot_transport": [
+        {
+          "free_interior": 1.445904170285963e-05,
+          "lower_obstacle": 2.9019617425311824e-16,
+          "upper_obstacle": -0.0,
+          "total": 1.4459041703149828e-05
+        },
+        {
+          "free_interior": -1.7987230984998912e-05,
+          "lower_obstacle": -0.0363454525170235,
+          "upper_obstacle": -0.0,
+          "total": -0.0363634397480085
+        }
+      ]
+    },
+    "chart": {
+      "chart_det_global_lower": 7.690322930976627e-07,
+      "chart_lowest_cell": [
+        25,
+        10,
+        9
+      ],
+      "chart_det_active_lower": 0.0005949265521395255
+    },
+    "min_Jinv": 0.0004514965750855049,
+    "front": 0.3622238246143633,
+    "current": {
+      "feed_current": 10.707716628605539,
+      "bulk_current": 10.70771662860558,
+      "weak_disk_current": 10.707716628605548,
+      "incident_slice_current": 10.707716628605548,
+      "receiving_slice_current": 10.041065085980554,
+      "positive_slice_current": 10.707716628605548,
+      "port_error": 4.085620730620576e-14,
+      "disk_minus_feed_current": 8.881784197001252e-15,
+      "dense_total_subsonic_share": 0.6675898947392895,
+      "total_axial_stress": -26.582877887101112
+    }
+  },
+  "physical_certificate": {
+    "physical_global_lower": 4.4607498695161436e-07,
+    "cell": [
+      25,
+      10,
+      9
+    ],
+    "cell_count": 28080,
+    "chart_global_lower": 7.690322930976627e-07,
+    "limiting_chart_lower": 7.690322930976627e-07,
+    "limiting_radial_metric_lower": 0.5800749156763813,
+    "limiting_sine_ratio_lower": 0.9999521277863359,
+    "global_xi_r_over_x_lower": 0.9405631016814644,
+    "global_sine_ratio_lower": 0.9361080586202513,
+    "angular_rule": "concavity",
+    "collar_patch_determinant_lower": 0.4892248970224547,
+    "collar_S_lower": 3.9998642234235255,
+    "physical_profile_bounds": [
+      3.3063771490447995,
+      4.000000150947135
+    ],
+    "reference_core_profile_lower": 3.97520746439121,
+    "core_metric_lower": 1.1638699165377784,
+    "collar_metric_lower": 0.5800749156763813,
+    "coverage": "Both one-sided weld limits; regular coordinate-axis limits by Q1 nodal inequalities.",
+    "interpretation": "Conservative physical inverse-determinant lower bound over the entire held body."
+  },
+  "last_material": {
+    "min_Jinv_global": 0.0004514965750855049,
+    "min_Jinv_active": 0.4235303885986343,
+    "max_unit_melt_residual": 15.711405552770067,
+    "max_free_label_force": 8.798533396107421e-05,
+    "gradient_l2": 0.00012470143286995007,
+    "gauge_to_elastic": 3.1331917441494924e-07
+  },
+  "last_scaled_melt_residual": 1.5711405552770068e-07,
+  "last_step": {
+    "alpha": 0.5,
+    "energy_change": -3.560362119790936e-07,
+    "cg_iterations": 22
+  },
+  "total_energy_method_difference": 1.4551915228366852e-11,
+  "preserved_field_array": true,
+  "attempted_step": 383,
+  "newton_cg_stop": {
+    "reason": "CG residual replacements stagnated above forcing tolerance",
+    "replacements": [
+      {
+        "iteration": 30,
+        "recursive": 0.016907035796648553,
+        "explicit": 0.028488689210726767
+      },
+      {
+        "iteration": 35,
+        "recursive": 0.01783585354604564,
+        "explicit": 0.031006079753728905
+      }
+    ],
+    "eta": 0.018404342361420984
+  },
+  "secondary_admitted": false,
+  "paired_stationary_shape_forces": null,
+  "primary_wall_seconds": 7264.866962562781
+}

@@ -6,7 +6,7 @@ import numpy as np
 
 from mouth_exact_checkpoint_control import digest, read
 from mouth_r4_collar166_state import load_held, readout
-from mouth_r4_cubic_held import approved_reference
+from mouth_r4_cubic_held import approved_reference, reviewed_step288
 from mouth_r4_cubic_physical_orientation import physical_certificate
 from mouth_r4_stage2_outcome import verify_guard
 from mouth_whole_r4_relax import atomic_json
@@ -18,8 +18,12 @@ def measure(study, output):
     state_record = sorted(case.glob('step_*.json'))[-1]
     record = read(state_record)
     saved = case / record['file']
-    reviewed = read(study / 'gate_review.json')['reviewed']['primary']['fresh_fields']
-    if digest(saved) != record['sha256'] or record['source_sha256'] != reviewed['state_sha256']:
+    gate = read(study / 'gate_review.json')
+    if 'step288_sha256' in gate:
+        _, source_sha = reviewed_step288(study)
+    else:
+        source_sha = gate['reviewed']['primary']['fresh_fields']['state_sha256']
+    if digest(saved) != record['sha256'] or record['source_sha256'] != source_sha:
         raise ValueError('Accepted state or rematched source hash differs')
     output.mkdir(exist_ok=False)
     driver, trial, solid, _ = load_held(study, output, 1e-8, solve_fields=True)
